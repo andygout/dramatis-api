@@ -1,0 +1,38 @@
+{
+  "name": "theatrebase-api",
+  "version": "0.0.0",
+  "description": "API for site of theatrical productions and playtexts.",
+  "main": "server/app-dev.js",
+  "scripts": {
+    "pretest": "babel server --out-dir dist --ignore app-dev.js",
+    "test": "find spec -name '*.spec.js' | xargs mocha -R spec",
+    "start": "nodemon server/app-dev.js"
+  },
+  "author": "https://github.com/andygout",
+  "license": "MS-RSL",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "directly": "^2.0.4",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.5.1",
+    "neo4j": "^2.0.0-RC2",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "node-mocks-http": "^1.5.4",
+    "nodemon": "^1.11.0",
+    "proxyquire": "^1.7.10",
+    "sinon": "^2.3.2"
+  },
+  "engines": {
+    "node": "8.1.4"
+  }
+}
