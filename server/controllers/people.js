@@ -1,53 +1,20 @@
+import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import Person from '../models/person';
-import renderJson from '../lib/render-json';
 
-const editRoute = (req, res, next) => {
+const editRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Person(req.params), 'edit');
 
-	const person = new Person(req.params);
+const updateRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Person(Object.assign({}, req.body, req.params)), 'update');
 
-	return person.edit()
-		.then(({ person }) => renderJson(res, person))
-		.catch(err => next(err));
+const deleteRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Person(req.params), 'delete');
 
-};
+const showRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Person(req.params), 'show');
 
-const updateRoute = (req, res, next) => {
-
-	const person = new Person(Object.assign({}, req.body, req.params));
-
-	return person.update()
-		.then(({ person }) => renderJson(res, person))
-		.catch(err => next(err));
-
-};
-
-const deleteRoute = (req, res, next) => {
-
-	const person = new Person(req.params);
-
-	return person.delete()
-		.then(({ person }) => renderJson(res, person))
-		.catch(err => next(err));
-
-};
-
-const showRoute = (req, res, next) => {
-
-	const person = new Person(req.params);
-
-	return person.show()
-		.then(({ person }) => renderJson(res, person))
-		.catch(err => next(err));
-
-};
-
-const listRoute = (req, res, next) => {
-
-	return Person.list('person')
-		.then(({ people }) => renderJson(res, people))
-		.catch(err => next(err));
-
-};
+const listRoute = (req, res, next) =>
+	callStaticListMethod(res, next, Person, 'person');
 
 export {
 	editRoute,

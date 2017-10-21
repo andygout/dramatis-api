@@ -1,53 +1,20 @@
+import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import Playtext from '../models/playtext';
-import renderJson from '../lib/render-json';
 
-const editRoute = (req, res, next) => {
+const editRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Playtext(req.params), 'edit');
 
-	const playtext = new Playtext(req.params);
+const updateRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Playtext(Object.assign({}, req.body, req.params)), 'update');
 
-	return playtext.edit()
-		.then(({ playtext }) => renderJson(res, playtext))
-		.catch(err => next(err));
+const deleteRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Playtext(req.params), 'delete');
 
-};
+const showRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Playtext(req.params), 'show');
 
-const updateRoute = (req, res, next) => {
-
-	const playtext = new Playtext(Object.assign({}, req.body, req.params));
-
-	return playtext.update()
-		.then(({ playtext }) => renderJson(res, playtext))
-		.catch(err => next(err));
-
-};
-
-const deleteRoute = (req, res, next) => {
-
-	const playtext = new Playtext(req.params);
-
-	return playtext.delete()
-		.then(({ playtext }) => renderJson(res, playtext))
-		.catch(err => next(err));
-
-};
-
-const showRoute = (req, res, next) => {
-
-	const playtext = new Playtext(req.params);
-
-	return playtext.show()
-		.then(({ playtext }) => renderJson(res, playtext))
-		.catch(err => next(err));
-
-};
-
-const listRoute = (req, res, next) => {
-
-	return Playtext.list('playtext')
-		.then(({ playtexts }) => renderJson(res, playtexts))
-		.catch(err => next(err));
-
-};
+const listRoute = (req, res, next) =>
+	callStaticListMethod(res, next, Playtext);
 
 export {
 	editRoute,

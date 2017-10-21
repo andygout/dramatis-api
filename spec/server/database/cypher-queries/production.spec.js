@@ -45,7 +45,7 @@ describe('Cypher Queries Production module', () => {
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name
-				} AS production
+				} AS instance
 			`));
 
 		});
@@ -100,7 +100,7 @@ describe('Cypher Queries Production module', () => {
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name
-				} AS production
+				} AS instance
 			`));
 
 		});

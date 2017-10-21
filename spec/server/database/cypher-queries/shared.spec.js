@@ -12,8 +12,7 @@ let subject;
 beforeEach(() => {
 
 	stubs = {
-		capitalise: sandbox.stub().returns('Theatre'),
-		pluralise: sandbox.stub().returns('theatres')
+		capitalise: sandbox.stub().returns('Theatre')
 	};
 
 	subject = createSubject();
@@ -28,8 +27,7 @@ afterEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../../dist/database/cypher-queries/shared', {
-		'../../lib/capitalise': stubOverrides.capitalise || stubs.capitalise,
-		'../../lib/pluralise': stubOverrides.pluralise || stubs.pluralise
+		'../../lib/capitalise': stubOverrides.capitalise || stubs.capitalise
 	});
 
 describe('Cypher Queries Shared module', () => {
@@ -41,13 +39,10 @@ describe('Cypher Queries Shared module', () => {
 			it('will return requisite query', () => {
 
 				const capitaliseStub = sinon.stub().returns('Production');
-				const pluraliseStub = sinon.stub().returns('productions');
-				subject = createSubject({ capitalise: capitaliseStub, pluralise: pluraliseStub });
+				subject = createSubject({ capitalise: capitaliseStub });
 				const result = subject.getListQuery('production');
 				expect(capitaliseStub.calledOnce).to.be.true;
 				expect(capitaliseStub.calledWithExactly('production')).to.be.true;
-				expect(pluraliseStub.calledOnce).to.be.true;
-				expect(pluraliseStub.calledWithExactly('production')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Production)-[:PLAYS_AT]->(t:Theatre)
 
@@ -56,7 +51,7 @@ describe('Cypher Queries Shared module', () => {
 						uuid: n.uuid,
 						name: n.name
 						, theatre: { model: 'theatre', uuid: t.uuid, name: t.name }
-					}) AS productions
+					}) AS instances
 				`));
 
 			});
@@ -99,7 +94,7 @@ describe('Cypher Queries Shared module', () => {
 						model: 'theatre',
 						uuid: n.uuid,
 						name: n.name
-					} AS theatre
+					} AS instance
 				`));
 
 			});
@@ -121,7 +116,7 @@ describe('Cypher Queries Shared module', () => {
 						model: 'theatre',
 						uuid: n.uuid,
 						name: n.name
-					} AS theatre
+					} AS instance
 				`));
 
 			});
@@ -144,7 +139,7 @@ describe('Cypher Queries Shared module', () => {
 					RETURN {
 						model: 'theatre',
 						name: name
-					} AS theatre
+					} AS instance
 				`));
 
 			});
@@ -158,8 +153,6 @@ describe('Cypher Queries Shared module', () => {
 				const result = subject.getListQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(stubs.pluralise.calledOnce).to.be.true;
-				expect(stubs.pluralise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Theatre)
 
@@ -167,7 +160,7 @@ describe('Cypher Queries Shared module', () => {
 						model: 'theatre',
 						uuid: n.uuid,
 						name: n.name
-					}) AS theatres
+					}) AS instances
 				`));
 
 			});

@@ -2,7 +2,6 @@ import { getShowQuery as getCharacterShowQuery } from './character';
 import { getShowQuery as getPersonShowQuery } from './person';
 import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
-import pluralise from '../../lib/pluralise';
 
 const getValidateUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { name: $name })
@@ -18,7 +17,7 @@ const getEditQuery = model => `
 		model: '${model}',
 		uuid: n.uuid,
 		name: n.name
-	} AS ${model}
+	} AS instance
 `;
 
 const getUpdateQuery = model => `
@@ -29,7 +28,7 @@ const getUpdateQuery = model => `
 		model: '${model}',
 		uuid: n.uuid,
 		name: n.name
-	} AS ${model}
+	} AS instance
 `;
 
 const getDeleteQuery = model => `
@@ -41,7 +40,7 @@ const getDeleteQuery = model => `
 	RETURN {
 		model: '${model}',
 		name: name
-	} AS ${model}
+	} AS instance
 `;
 
 const getShowQueries = {
@@ -64,7 +63,7 @@ const getListQuery = model => {
 			uuid: n.uuid,
 			name: n.name
 			${theatreObject}
-		}) AS ${pluralise(model)}
+		}) AS instances
 	`;
 
 };

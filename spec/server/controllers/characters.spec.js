@@ -1,28 +1,31 @@
 const expect = require('chai').expect;
-const httpMocks = require('node-mocks-http');
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
 const Character = require('../../../dist/models/character');
 
-const getResponseFixture = require('../../fixtures/get-response-instance');
-const getResponseListFixture = require('../../fixtures/get-response-instances-list');
-
-const err = new Error('errorText');
-
 const sandbox = sinon.sandbox.create();
 
 let stubs;
-let req;
-let res;
-let next;
 let method;
-let methodStub;
+
+const CharacterStub = function () {
+
+	return sinon.createStubInstance(Character);
+
+};
 
 beforeEach(() => {
 
 	stubs = {
-		renderJson: sandbox.stub()
+		callClassMethods: {
+			callInstanceMethod: sandbox.stub().resolves('callInstanceMethod response'),
+			callStaticListMethod: sandbox.stub().resolves('callStaticListMethod response')
+		},
+		Character: CharacterStub,
+		req: sandbox.stub(),
+		res: sandbox.stub(),
+		next: sandbox.stub()
 	};
 
 });
@@ -33,28 +36,19 @@ afterEach(() => {
 
 });
 
-const createSubject = stubOverrides =>
+const createSubject = () =>
 	proxyquire('../../../dist/controllers/characters', {
-		'../models/character': stubOverrides.CharacterModel,
-		'../lib/render-json': stubs.renderJson
+		'../lib/call-class-methods': stubs.callClassMethods,
+		'../models/character': stubs.Character
 	});
 
-const createInstance = (method, methodStub) => {
+const createInstance = method => {
 
-	req = httpMocks.createRequest();
-	res = httpMocks.createResponse();
-
-	next = sinon.stub();
-
-	const CharacterModel = (method !== 'list') ?
-		function () { this[method] = methodStub; } :
-		sinon.stub(Character, 'list').callsFake(() => { return methodStub });
-
-	const subject = createSubject({ CharacterModel });
+	const subject = createSubject();
 
 	const controllerFunction = `${method}Route`;
 
-	return subject[controllerFunction](req, res, next);
+	return subject[controllerFunction](stubs.req, stubs.res, stubs.next);
 
 };
 
@@ -62,40 +56,16 @@ describe('Characters controller', () => {
 
 	describe('edit method', () => {
 
-		beforeEach(() => {
+		it('will call callInstanceMethod module', done => {
 
 			method = 'edit';
-
-		});
-
-		context('resolves with data', () => {
-
-			it('will call renderJson module', done => {
-
-				const responseFixture = getResponseFixture('character');
-				methodStub = sinon.stub().resolves(responseFixture);
-				createInstance(method, methodStub).then(() => {
-					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(res, responseFixture.character)).to.be.true;
-					expect(next.notCalled).to.be.true;
-					done();
-				});
-
-			});
-
-		});
-
-		context('resolves with error', () => {
-
-			it('will call next() with error', done => {
-
-				methodStub = sinon.stub().rejects(err);
-				createInstance(method, methodStub).then(() => {
-					expect(next.calledOnce).to.be.true;
-					expect(next.calledWithExactly(err)).to.be.true;
-					done();
-				});
-
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Character(), method
+				)).to.be.true;
+				expect(result).to.eq('callInstanceMethod response');
+				done();
 			});
 
 		});
@@ -104,40 +74,16 @@ describe('Characters controller', () => {
 
 	describe('update method', () => {
 
-		beforeEach(() => {
+		it('will call callInstanceMethod module', done => {
 
 			method = 'update';
-
-		});
-
-		context('resolves with data', () => {
-
-			it('will call renderJson module', done => {
-
-				const responseFixture = getResponseFixture('character');
-				methodStub = sinon.stub().resolves(responseFixture);
-				createInstance(method, methodStub).then(() => {
-					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(res, responseFixture.character)).to.be.true;
-					expect(next.notCalled).to.be.true;
-					done();
-				});
-
-			});
-
-		});
-
-		context('resolves with error', () => {
-
-			it('will call next() with error', done => {
-
-				methodStub = sinon.stub().rejects(err);
-				createInstance(method, methodStub).then(() => {
-					expect(next.calledOnce).to.be.true;
-					expect(next.calledWithExactly(err)).to.be.true;
-					done();
-				});
-
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Character(), method
+				)).to.be.true;
+				expect(result).to.eq('callInstanceMethod response');
+				done();
 			});
 
 		});
@@ -146,40 +92,16 @@ describe('Characters controller', () => {
 
 	describe('delete method', () => {
 
-		beforeEach(() => {
+		it('will call callInstanceMethod module', done => {
 
 			method = 'delete';
-
-		});
-
-		context('resolves with data', () => {
-
-			it('will call renderJson module', done => {
-
-				const responseFixture = getResponseFixture('character');
-				methodStub = sinon.stub().resolves(responseFixture);
-				createInstance(method, methodStub).then(() => {
-					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(res, responseFixture.character)).to.be.true;
-					expect(next.notCalled).to.be.true;
-					done();
-				});
-
-			});
-
-		});
-
-		context('resolves with error', () => {
-
-			it('will call next() with error', done => {
-
-				methodStub = sinon.stub().rejects(err);
-				createInstance(method, methodStub).then(() => {
-					expect(next.calledOnce).to.be.true;
-					expect(next.calledWithExactly(err)).to.be.true;
-					done();
-				});
-
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Character(), method
+				)).to.be.true;
+				expect(result).to.eq('callInstanceMethod response');
+				done();
 			});
 
 		});
@@ -188,40 +110,16 @@ describe('Characters controller', () => {
 
 	describe('show method', () => {
 
-		beforeEach(() => {
+		it('will call callInstanceMethod module', done => {
 
 			method = 'show';
-
-		});
-
-		context('resolves with data', () => {
-
-			it('will call renderJson module', done => {
-
-				const responseFixture = getResponseFixture('character');
-				methodStub = sinon.stub().resolves(responseFixture);
-				createInstance(method, methodStub).then(() => {
-					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(res, responseFixture.character)).to.be.true;
-					expect(next.notCalled).to.be.true;
-					done();
-				});
-
-			});
-
-		});
-
-		context('resolves with error', () => {
-
-			it('will call next() with error', done => {
-
-				methodStub = sinon.stub().rejects(err);
-				createInstance(method, methodStub).then(() => {
-					expect(next.calledOnce).to.be.true;
-					expect(next.calledWithExactly(err)).to.be.true;
-					done();
-				});
-
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Character(), method
+				)).to.be.true;
+				expect(result).to.eq('callInstanceMethod response');
+				done();
 			});
 
 		});
@@ -230,46 +128,16 @@ describe('Characters controller', () => {
 
 	describe('list method', () => {
 
-		beforeEach(() => {
+		it('will call callStaticListMethod module', done => {
 
 			method = 'list';
-
-		});
-
-		afterEach(() => {
-
-			Character.list.restore();
-
-		});
-
-		context('resolves with data', () => {
-
-			it('will call renderJson module', done => {
-
-				const responseListFixture = getResponseListFixture('characters');
-				methodStub = Promise.resolve(responseListFixture);
-				createInstance(method, methodStub).then(() => {
-					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(res, responseListFixture.characters)).to.be.true;
-					expect(next.notCalled).to.be.true;
-					done();
-				});
-
-			});
-
-		});
-
-		context('resolves with error', () => {
-
-			it('will call next() with error', done => {
-
-				methodStub = Promise.reject(err);
-				createInstance(method, methodStub).then(() => {
-					expect(next.calledOnce).to.be.true;
-					expect(next.calledWithExactly(err)).to.be.true;
-					done();
-				});
-
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Character, 'character'
+				)).to.be.true;
+				expect(result).to.eq('callStaticListMethod response');
+				done();
 			});
 
 		});

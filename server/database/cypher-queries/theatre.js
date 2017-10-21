@@ -19,7 +19,7 @@ const getShowQuery = () => `
 		productions: COLLECT(CASE WHEN production IS NULL THEN null ELSE
 				{ model: 'production', uuid: production.uuid, name: production.name }
 			END)
-	} AS theatre
+	} AS instance
 `;
 
 export {
