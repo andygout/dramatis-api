@@ -49,7 +49,7 @@ const getCreateUpdateQuery = action => {
 			model: 'production',
 			uuid: production.uuid,
 			name: production.name
-		} AS production
+		} AS instance
 	`;
 
 };
@@ -81,7 +81,7 @@ const getEditQuery = () => `
 		theatre: { name: theatre.name },
 		playtext: CASE WHEN playtext IS NULL THEN '' ELSE { name: playtext.name } END,
 		cast: COLLECT(CASE WHEN person IS NULL THEN null ELSE { name: person.name, roles: roles } END)
-	} AS production
+	} AS instance
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -100,7 +100,7 @@ const getDeleteQuery = () => `
 	RETURN {
 		model: 'production',
 		name: name
-	} AS production
+	} AS instance
 `;
 
 const getShowQuery = () => `
@@ -135,7 +135,7 @@ const getShowQuery = () => `
 		cast: COLLECT(CASE WHEN person IS NULL THEN null ELSE
 				{ model: 'person', uuid: person.uuid, name: person.name, roles: roles }
 			END)
-	} AS production
+	} AS instance
 `;
 
 export {

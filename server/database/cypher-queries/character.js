@@ -66,7 +66,7 @@ const getShowQuery = () => `
 				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
 				performers: performers
 			} END)
-	} AS character
+	} AS instance
 `;
 
 export {

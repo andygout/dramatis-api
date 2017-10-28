@@ -11,7 +11,7 @@ const getEditQuery = () => `
 		uuid: playtext.uuid,
 		name: playtext.name,
 		characters: COLLECT(CASE WHEN character IS NULL THEN null ELSE { name: character.name } END)
-	} AS playtext
+	} AS instance
 `;
 
 const getUpdateQuery = () => `
@@ -34,7 +34,7 @@ const getUpdateQuery = () => `
 		model: 'playtext',
 		uuid: playtext.uuid,
 		name: playtext.name
-	} AS playtext
+	} AS instance
 `;
 
 const getShowQuery = () => `
@@ -65,7 +65,7 @@ const getShowQuery = () => `
 				name: production.name,
 				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
 			} END)
-	} AS playtext
+	} AS instance
 `;
 
 export {
