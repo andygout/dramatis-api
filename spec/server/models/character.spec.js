@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const dbQueryFixture = require('../../fixtures/db-query');
+import dbQueryFixture from '../../fixtures/db-query';
 
 const sandbox = sinon.sandbox.create();
 
@@ -43,10 +43,10 @@ afterEach(() => {
 });
 
 const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../dist/models/character', {
+	proxyquire('../../../server/models/character', {
 		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../database/db-query': stubOverrides.dbQuery || stubs.dbQuery,
-		'./base': proxyquire('../../../dist/models/base', {
+		'./base': proxyquire('../../../server/models/base', {
 			'../database/cypher-queries/shared': stubs.Base.cypherQueriesShared,
 			'../database/db-query': stubOverrides.Base && stubOverrides.Base.dbQuery || stubs.Base.dbQuery,
 			'../lib/trim-strings': stubs.Base.trimStrings,

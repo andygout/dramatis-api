@@ -2,11 +2,10 @@
   "name": "theatrebase-api",
   "version": "0.0.0",
   "description": "API for site of theatrical productions and playtexts.",
-  "main": "server/app-dev.js",
+  "main": "server/app.js",
   "scripts": {
-    "pretest": "babel server --out-dir dist --ignore app-dev.js",
-    "test": "find spec -name '*.spec.js' | xargs mocha -R spec",
-    "start": "nodemon server/app-dev.js"
+    "test": "find spec -name '*.spec.js' | xargs mocha --require babel-register -R spec",
+    "start": "nodemon server/app.js --exec babel-node"
   },
   "author": "https://github.com/andygout",
   "license": "MS-RSL",

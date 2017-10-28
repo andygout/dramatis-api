@@ -1,12 +1,12 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const removeWhitespace = require('../../../spec-helpers').removeWhitespace;
+import { removeWhitespace } from '../../../spec-helpers';
 
-const getProductionInstanceFixture = require('../../../fixtures/productions/get-instance');
+import getProductionInstanceFixture from '../../../fixtures/productions/get-instance';
 
-const subject = require('../../../../dist/database/cypher-queries/production');
+import * as subject from '../../../../server/database/cypher-queries/production';
 
 describe('Cypher Queries Production module', () => {
 

@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const Character = require('../../../dist/models/character');
+import Character from '../../../server/models/character';
 
 const err = new Error('errorText');
 
@@ -21,7 +21,7 @@ beforeEach(() => {
 });
 
 const createSubject = () =>
-	proxyquire('../../../dist/lib/call-class-methods', {
+	proxyquire('../../../server/lib/call-class-methods', {
 		'./render-json': stubs.renderJson
 	});
 

@@ -1,12 +1,11 @@
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
-const constants = require('../../../dist/config/constants');
+import constants from '../../../server/config/constants';
+import subject from '../../../server/lib/validate-string';
 
 const validLengthString = `${'a'.repeat(constants.STRING_MIN_LENGTH)}`;
 const subMinLengthString = `${'a'.repeat(constants.STRING_MIN_LENGTH - 1)}`;
 const surMaxLengthString = `${'a'.repeat(constants.STRING_MAX_LENGTH + 1)}`;
-
-const subject = require('../../../dist/lib/validate-string');
 
 describe('Validate String module', () => {
 

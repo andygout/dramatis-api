@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
 const sandbox = sinon.sandbox.create();
 
@@ -25,7 +25,7 @@ afterEach(() => {
 });
 
 const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../dist/lib/trim-strings', {
+	proxyquire('../../../server/lib/trim-strings', {
 		'./prop-is-object': stubOverrides.propIsObject || stubs.propIsObject
 	});
 

@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const removeWhitespace = require('../../../spec-helpers').removeWhitespace;
+import { removeWhitespace } from '../../../spec-helpers';
 
 const sandbox = sinon.sandbox.create();
 
@@ -26,7 +26,7 @@ afterEach(() => {
 });
 
 const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../../dist/database/cypher-queries/shared', {
+	proxyquire('../../../../server/database/cypher-queries/shared', {
 		'../../lib/capitalise': stubOverrides.capitalise || stubs.capitalise
 	});
 
