@@ -1,10 +1,10 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const Person = require('../../../dist/models/person');
+import Person from '../../../server/models/person';
 
-const dbQueryFixture = require('../../fixtures/db-query');
+import dbQueryFixture from '../../fixtures/db-query';
 
 const sandbox = sinon.sandbox.create();
 
@@ -70,7 +70,7 @@ afterEach(() => {
 });
 
 const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../dist/models/production', {
+	proxyquire('../../../server/models/production', {
 		'../database/cypher-queries/production': stubs.cypherQueriesProduction,
 		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../database/db-query': stubs.dbQuery,

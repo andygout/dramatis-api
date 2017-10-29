@@ -1,4 +1,4 @@
-module.exports = (opts = {}) => {
+export default (opts = {}) => {
 
 	return {
 		model: 'theatre',

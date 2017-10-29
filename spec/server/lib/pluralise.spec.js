@@ -1,6 +1,6 @@
-const expect = require('chai').expect;
+import { expect } from 'chai';
 
-const subject = require('../../../dist/lib/pluralise');
+import subject from '../../../server/lib/pluralise';
 
 describe('Pluralise module', () => {
 

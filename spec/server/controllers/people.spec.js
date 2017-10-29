@@ -1,8 +1,8 @@
-const expect = require('chai').expect;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import { expect } from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
-const Person = require('../../../dist/models/person');
+import Person from '../../../server/models/person';
 
 const sandbox = sinon.sandbox.create();
 
@@ -37,7 +37,7 @@ afterEach(() => {
 });
 
 const createSubject = stubOverrides =>
-	proxyquire('../../../dist/controllers/people', {
+	proxyquire('../../../server/controllers/people', {
 		'../lib/call-class-methods': stubs.callClassMethods,
 		'../models/person': stubs.Person
 	});
