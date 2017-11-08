@@ -15,6 +15,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(logger('dev'));
 
+app.use((req, res, next) => {
+
+	res.header('Access-Control-Allow-Origin', '*');
+
+	next();
+
+});
+
 app.use('/', router);
 
 // Catch 404 and forward to error handler
@@ -102,7 +110,7 @@ const onError = err => {
 
 };
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '4000');
 
 app.set('port', port);
 
