@@ -1,6 +1,6 @@
 # theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api)
 
-API for site of theatrical productions and playtexts.
+Graph database-driven API for site of theatrical productions and playtexts.
 
 To run locally
 -------
