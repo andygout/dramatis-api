@@ -1,6 +1,5 @@
 /* eslint
 	new-cap: 0,
-	no-underscore-dangle: 0,
 	no-unused-vars: ["error", { "argsIgnorePattern": "res" }]
 */
 

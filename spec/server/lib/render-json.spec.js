@@ -1,5 +1,3 @@
-/* eslint no-underscore-dangle: 0 */
-
 import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
 
