@@ -4,29 +4,21 @@ import sinon from 'sinon';
 
 import dbQueryFixture from '../../fixtures/db-query';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let instance;
 
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sandbox.stub().resolves(dbQueryFixture),
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesShared: {
-			getListQuery: sandbox.stub().returns('getListQuery response')
+			getListQuery: sinon.stub().returns('getListQuery response')
 		},
-		trimStrings: sandbox.stub(),
-		validateString: sandbox.stub().returns([])
+		trimStrings: sinon.stub(),
+		validateString: sinon.stub().returns([])
 	};
 
 	instance = createInstance();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

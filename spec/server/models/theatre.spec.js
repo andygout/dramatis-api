@@ -4,45 +4,37 @@ import sinon from 'sinon';
 
 import dbQueryFixture from '../../fixtures/db-query';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let instance;
 
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sandbox.stub().resolves(dbQueryFixture),
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesShared: {
-			getDeleteQuery: sandbox.stub().returns('getDeleteQuery response')
+			getDeleteQuery: sinon.stub().returns('getDeleteQuery response')
 		},
 		cypherQueriesTheatre: {
-			getValidateDeleteQuery: sandbox.stub().returns('getValidateDeleteQuery response')
+			getValidateDeleteQuery: sinon.stub().returns('getValidateDeleteQuery response')
 		},
-		verifyErrorPresence: sandbox.stub().returns(false),
+		verifyErrorPresence: sinon.stub().returns(false),
 		Base: {
-			dbQuery: sandbox.stub().resolves(dbQueryFixture),
+			dbQuery: sinon.stub().resolves(dbQueryFixture),
 			cypherQueriesShared: {
-				getValidateUpdateQuery: sandbox.stub().returns('getValidateUpdateQuery response'),
-				getEditQuery: sandbox.stub().returns('getEditQuery response'),
-				getUpdateQuery: sandbox.stub().returns('getUpdateQuery response'),
+				getValidateUpdateQuery: sinon.stub().returns('getValidateUpdateQuery response'),
+				getEditQuery: sinon.stub().returns('getEditQuery response'),
+				getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
 				getShowQueries: {
-					theatre: sandbox.stub().returns('getShowQuery response')
+					theatre: sinon.stub().returns('getShowQuery response')
 				}
 			},
-			trimStrings: sandbox.stub(),
-			validateString: sandbox.stub().returns([]),
-			verifyErrorPresence: sandbox.stub().returns(false)
+			trimStrings: sinon.stub(),
+			validateString: sinon.stub().returns([]),
+			verifyErrorPresence: sinon.stub().returns(false)
 		}
 	};
 
 	instance = createInstance();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

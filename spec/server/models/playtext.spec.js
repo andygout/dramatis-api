@@ -6,8 +6,6 @@ import Character from '../../../server/models/character';
 
 import dbQueryFixture from '../../fixtures/db-query';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let instance;
 
@@ -20,31 +18,25 @@ const CharacterStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sandbox.stub().resolves(dbQueryFixture),
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesPlaytext: {
-			getEditQuery: sandbox.stub().returns('getEditQuery response'),
-			getUpdateQuery: sandbox.stub().returns('getUpdateQuery response'),
-			getShowQuery: sandbox.stub().returns('getShowQuery response')
+			getEditQuery: sinon.stub().returns('getEditQuery response'),
+			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
+			getShowQuery: sinon.stub().returns('getShowQuery response')
 		},
 		cypherQueriesShared: {
-			getValidateUpdateQuery: sandbox.stub().returns('getValidateUpdateQuery response'),
-			getDeleteQuery: sandbox.stub().returns('getDeleteQuery response'),
-			getListQuery: sandbox.stub().returns('getListQuery response')
+			getValidateUpdateQuery: sinon.stub().returns('getValidateUpdateQuery response'),
+			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
+			getListQuery: sinon.stub().returns('getListQuery response')
 		},
-		prepareAsParams: sandbox.stub().returns('prepareAsParams response'),
-		trimStrings: sandbox.stub(),
-		validateString: sandbox.stub().returns([]),
-		verifyErrorPresence: sandbox.stub().returns(false),
+		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
+		trimStrings: sinon.stub(),
+		validateString: sinon.stub().returns([]),
+		verifyErrorPresence: sinon.stub().returns(false),
 		Character: CharacterStub
 	};
 
 	instance = createInstance();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

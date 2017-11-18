@@ -2,8 +2,6 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let subject;
 let instance;
@@ -12,18 +10,12 @@ beforeEach(() => {
 
 	stubs = {
 		uuid: {
-			v4: sandbox.stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+			v4: sinon.stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		},
-		propIsObject: sandbox.stub().returns(false)
+		propIsObject: sinon.stub().returns(false)
 	};
 
 	subject = createSubject();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

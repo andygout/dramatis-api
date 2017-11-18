@@ -2,25 +2,17 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let instance;
 
 beforeEach(() => {
 
 	stubs = {
-		trimStrings: sandbox.stub(),
-		validateString: sandbox.stub().returns([])
+		trimStrings: sinon.stub(),
+		validateString: sinon.stub().returns([])
 	};
 
 	instance = createInstance();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

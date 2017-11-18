@@ -6,8 +6,6 @@ import Person from '../../../server/models/person';
 
 import dbQueryFixture from '../../fixtures/db-query';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let instance;
 
@@ -39,33 +37,27 @@ const TheatreStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sandbox.stub().resolves(dbQueryFixture),
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesProduction: {
-			getCreateQuery: sandbox.stub().returns('getCreateQuery response'),
-			getEditQuery: sandbox.stub().returns('getEditQuery response'),
-			getUpdateQuery: sandbox.stub().returns('getUpdateQuery response'),
-			getDeleteQuery: sandbox.stub().returns('getDeleteQuery response'),
-			getShowQuery: sandbox.stub().returns('getShowQuery response')
+			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
+			getEditQuery: sinon.stub().returns('getEditQuery response'),
+			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
+			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
+			getShowQuery: sinon.stub().returns('getShowQuery response')
 		},
 		cypherQueriesShared: {
-			getListQuery: sandbox.stub().returns('getListQuery response')
+			getListQuery: sinon.stub().returns('getListQuery response')
 		},
-		prepareAsParams: sandbox.stub().returns('prepareAsParams response'),
-		trimStrings: sandbox.stub(),
-		validateString: sandbox.stub().returns([]),
-		verifyErrorPresence: sandbox.stub().returns(false),
+		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
+		trimStrings: sinon.stub(),
+		validateString: sinon.stub().returns([]),
+		verifyErrorPresence: sinon.stub().returns(false),
 		Person: PersonStub,
 		Playtext: PlaytextStub,
 		Theatre: TheatreStub
 	};
 
 	instance = createInstance();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 
