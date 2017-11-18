@@ -5,8 +5,9 @@
   "main": "server/app.js",
   "scripts": {
     "lint": "eslint --ext .js server/ spec/",
+    "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "unit-test": "find spec -name '*.spec.js' | xargs mocha --require babel-register -R spec",
-    "test": "npm run lint && npm run unit-test",
+    "test": "npm run lint && npm run lintspaces && npm run unit-test",
     "start": "nodemon server/app.js --exec babel-node"
   },
   "pre-commit": [
@@ -31,6 +32,7 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "eslint": "^4.11.0",
+    "lintspaces-cli": "^0.6.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
