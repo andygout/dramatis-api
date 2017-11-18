@@ -1,3 +1,9 @@
+/* eslint
+	new-cap: 0,
+	no-underscore-dangle: 0,
+	no-unused-vars: ["error", { "argsIgnorePattern": "res" }]
+*/
+
 import express from 'express';
 import methodOverride from 'method-override';
 

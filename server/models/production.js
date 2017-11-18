@@ -35,7 +35,7 @@ export default class Production {
 		this.hasError = false;
 		this.errors = {};
 
-	};
+	}
 
 	validate (opts = {}) {
 
@@ -45,7 +45,7 @@ export default class Production {
 
 		if (nameErrors.length) this.errors.name = nameErrors;
 
-	};
+	}
 
 	setErrorStatus () {
 
@@ -65,7 +65,7 @@ export default class Production {
 
 		return this.hasError = verifyErrorPresence(this);
 
-	};
+	}
 
 	create () {
 
@@ -73,13 +73,13 @@ export default class Production {
 
 		return dbQuery({ query: getCreateQuery(), params: prepareAsParams(this) });
 
-	};
+	}
 
 	edit () {
 
 		return dbQuery({ query: getEditQuery(), params: this });
 
-	};
+	}
 
 	update () {
 
@@ -87,24 +87,24 @@ export default class Production {
 
 		return dbQuery({ query: getUpdateQuery(), params: prepareAsParams(this) });
 
-	};
+	}
 
 	delete () {
 
 		return dbQuery({ query: getDeleteQuery(), params: this });
 
-	};
+	}
 
 	show () {
 
 		return dbQuery({ query: getShowQuery(), params: this });
 
-	};
+	}
 
 	static list () {
 
 		return dbQuery({ query: getListQuery('production') });
 
-	};
+	}
 
-};
+}

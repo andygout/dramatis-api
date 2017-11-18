@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 import directly from 'directly';
 import path from 'path';
 

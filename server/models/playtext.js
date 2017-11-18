@@ -25,7 +25,7 @@ export default class Playtext {
 		this.hasError = false;
 		this.errors = {};
 
-	};
+	}
 
 	validate (opts = {}) {
 
@@ -35,7 +35,7 @@ export default class Playtext {
 
 		if (nameErrors.length) this.errors.name = nameErrors;
 
-	};
+	}
 
 	validateUpdateInDb () {
 
@@ -46,7 +46,7 @@ export default class Playtext {
 
 			});
 
-	};
+	}
 
 	setErrorStatus () {
 
@@ -56,13 +56,13 @@ export default class Playtext {
 
 		return this.hasError = verifyErrorPresence(this);
 
-	};
+	}
 
 	edit () {
 
 		return dbQuery({ query: getEditQuery(), params: this });
 
-	};
+	}
 
 	update () {
 
@@ -79,24 +79,24 @@ export default class Playtext {
 
 			});
 
-	};
+	}
 
 	delete () {
 
 		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
-	};
+	}
 
 	show () {
 
 		return dbQuery({ query: getShowQuery(), params: this });
 
-	};
+	}
 
 	static list () {
 
 		return dbQuery({ query: getListQuery('playtext') });
 
-	};
+	}
 
-};
+}
