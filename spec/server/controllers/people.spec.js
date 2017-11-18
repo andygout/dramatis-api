@@ -36,7 +36,7 @@ afterEach(() => {
 
 });
 
-const createSubject = stubOverrides =>
+const createSubject = () =>
 	proxyquire('../../../server/controllers/people', {
 		'../lib/call-class-methods': stubs.callClassMethods,
 		'../models/person': stubs.Person

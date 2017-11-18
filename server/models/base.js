@@ -30,7 +30,7 @@ export default class Base {
 		this.hasError = false;
 		this.errors = {};
 
-	};
+	}
 
 	validate (opts = {}) {
 
@@ -40,7 +40,7 @@ export default class Base {
 
 		if (nameErrors.length) this.errors.name = nameErrors;
 
-	};
+	}
 
 	validateUpdateInDb () {
 
@@ -51,13 +51,13 @@ export default class Base {
 
 			});
 
-	};
+	}
 
 	edit () {
 
 		return dbQuery({ query: getEditQuery(this.model), params: this });
 
-	};
+	}
 
 	update () {
 
@@ -78,18 +78,18 @@ export default class Base {
 
 			});
 
-	};
+	}
 
 	show () {
 
 		return dbQuery({ query: getShowQueries[this.model](), params: this });
 
-	};
+	}
 
 	static list (model) {
 
 		return dbQuery({ query: getListQuery(model) });
 
-	};
+	}
 
-};
+}

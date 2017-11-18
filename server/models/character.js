@@ -14,12 +14,12 @@ export default class Character extends Base {
 
 		this.productions = [];
 
-	};
+	}
 
 	delete () {
 
 		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
-	};
+	}
 
-};
+}

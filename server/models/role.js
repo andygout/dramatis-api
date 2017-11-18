@@ -14,7 +14,7 @@ export default class Role {
 		this.hasError = false;
 		this.errors = {};
 
-	};
+	}
 
 	validate (opts = {}) {
 
@@ -28,6 +28,6 @@ export default class Role {
 
 		if (characterNameErrors.length) this.errors.characterName = characterNameErrors;
 
-	};
+	}
 
-};
+}

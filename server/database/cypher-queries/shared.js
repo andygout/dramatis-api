@@ -53,7 +53,7 @@ const getListQuery = model => {
 
 	const theatreRelationship = (model === 'production') ? '-[:PLAYS_AT]->(t:Theatre)' : '';
 
-	const theatreObject = (model === 'production') ? ", theatre: { model: 'theatre', uuid: t.uuid, name: t.name }" : '';
+	const theatreObject = (model === 'production') ? ', theatre: { model: \'theatre\', uuid: t.uuid, name: t.name }' : '';
 
 	return `
 		MATCH (n:${capitalise(model)})${theatreRelationship}

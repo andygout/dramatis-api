@@ -18,12 +18,12 @@ export default class Person extends Base {
 			props.roles.filter(role => role.name.length).map(role => new Role(role)) :
 			[];
 
-	};
+	}
 
 	delete () {
 
 		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
-	};
+	}
 
-};
+}

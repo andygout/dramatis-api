@@ -1,10 +1,6 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
-import sinon from 'sinon';
 
 import { removeWhitespace } from '../../../spec-helpers';
-
-import getProductionInstanceFixture from '../../../fixtures/productions/get-instance';
 
 import * as subject from '../../../../server/database/cypher-queries/production';
 

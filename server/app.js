@@ -1,9 +1,13 @@
-import _ from './dotenv';
+/* eslint
+	no-console: 0,
+	no-unused-vars: ["error", { "argsIgnorePattern": "next" }]
+*/
+
+import './dotenv';
 import bodyParser from 'body-parser';
 import express from 'express';
 import http from 'http';
 import logger from 'morgan';
-import path from 'path';
 
 import createConstraints from './database/create-constraints';
 import router from './routes';

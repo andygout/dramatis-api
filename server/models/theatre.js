@@ -16,7 +16,7 @@ export default class Theatre extends Base {
 
 		this.productions = [];
 
-	};
+	}
 
 	validateDeleteInDb () {
 
@@ -27,7 +27,7 @@ export default class Theatre extends Base {
 
 			});
 
-	};
+	}
 
 	delete () {
 
@@ -42,6 +42,6 @@ export default class Theatre extends Base {
 
 			});
 
-	};
+	}
 
-};
+}
