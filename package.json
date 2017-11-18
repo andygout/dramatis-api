@@ -9,6 +9,9 @@
     "test": "npm run lint && npm run unit-test",
     "start": "nodemon server/app.js --exec babel-node"
   },
+  "pre-commit": [
+    "test"
+  ],
   "author": "https://github.com/andygout",
   "license": "MS-RSL",
   "dependencies": {
@@ -30,6 +33,7 @@
     "eslint": "^4.11.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
+    "pre-commit": "^1.2.2",
     "proxyquire": "^1.7.10",
     "sinon": "^2.3.2"
   },
