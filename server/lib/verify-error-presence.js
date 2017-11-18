@@ -2,12 +2,7 @@ import propIsObject from './prop-is-object';
 
 const objectWithErrors = item => propIsObject(item) && searchForErrors(item);
 
-const propHasErrors = (prop, instanceProp) =>
-	prop === 'errors' &&
-	instanceProp !== null &&
-	typeof instanceProp === 'object' &&
-	!Array.isArray(instanceProp) &&
-	Object.keys(instanceProp).length;
+const propHasErrors = (prop, instanceProp) => prop === 'errors' && propIsObject(instanceProp);
 
 const searchForErrors = instance => {
 
