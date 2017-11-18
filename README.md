@@ -10,6 +10,10 @@ To run locally
 - Create Neo4j database called `theatrebase` and run on `http://localhost:7474` (using [Neo4j Community Edition](https://neo4j.com/download/community-edition)).
 - Run server using: `$ npm start` and visit routes on: `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
 
+To view content via user interface
+-------
+- Run a local instance of [`theatrebase-frontend`](https://github.com/andygout/theatrebase-frontend) on `http://localhost:3001`.
+
 To test
 -------
 - Ensure `$ npm install` has been run.
