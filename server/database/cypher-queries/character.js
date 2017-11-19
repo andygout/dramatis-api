@@ -3,12 +3,21 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtext:Playtext)
 
+	WITH character, playtext
+		ORDER BY playtext.name
+
 	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(:Playtext)<-[:PRODUCTION_OF]-
-		(productionForVariantNamedRoles:Production)<-[:PERFORMS_IN]-(:Person)-
-		[:PERFORMS_AS { prodUuid: productionForVariantNamedRoles.uuid }]->(variantNamedRole:Role)
+		(production:Production)<-[:PERFORMS_IN]-(:Person)-
+		[:PERFORMS_AS { prodUuid: production.uuid }]->(variantNamedRole:Role)
 		WHERE character.name <> variantNamedRole.name AND character.name = variantNamedRole.characterName
 
-	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtextForProductions:Playtext)<-[prodRel:PRODUCTION_OF]-
+	WITH character, variantNamedRole,
+		COLLECT(CASE WHEN playtext IS NULL THEN null ELSE
+				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+			END) AS playtexts
+		ORDER BY variantNamedRole.name
+
+	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtext:Playtext)<-[prodRel:PRODUCTION_OF]-
 		(production:Production)<-[castRel:PERFORMS_IN]-(person:Person)-
 		[roleRel:PERFORMS_AS { prodUuid: production.uuid }]->(role:Role)
 		WHERE character.name = role.name OR character.name = role.characterName
@@ -17,20 +26,11 @@ const getShowQuery = () => `
 		WHERE otherRole.name <> character.name
 		AND (NOT EXISTS(otherRole.characterName) OR otherRole.characterName <> character.name)
 
-	OPTIONAL MATCH (otherRole)<-[otherRoleRel]-(person)-[castRel]->(production)-[prodRel]->(playtextForProductions)-
+	OPTIONAL MATCH (otherRole)<-[otherRoleRel]-(person)-[castRel]->(production)-[prodRel]->(playtext)-
 		[:INCLUDES_CHARACTER]->(otherCharacter:Character)
 		WHERE otherRole.name = otherCharacter.name OR otherRole.characterName = otherCharacter.name
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
-	WITH character, playtext, variantNamedRole, production, theatre, castRel, person, role, otherRole, otherRoleRel, otherCharacter
-		ORDER BY playtext.name
-
-	WITH character, variantNamedRole, production, theatre, castRel, person, role, otherRole, otherRoleRel, otherCharacter,
-		COLLECT(CASE WHEN playtext IS NULL THEN null ELSE
-				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
-			END) AS playtexts
-		ORDER BY variantNamedRole.name
 
 	WITH character, playtexts, production, theatre, castRel, person, role, otherRole, otherRoleRel, otherCharacter,
 		COLLECT(DISTINCT(variantNamedRole.name)) AS variantNames
