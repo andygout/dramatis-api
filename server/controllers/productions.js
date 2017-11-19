@@ -8,7 +8,7 @@ const newRoute = (req, res, next) =>
 	renderJson(res, new Production());
 
 const createRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Production(Object.assign({}, req.body, req.params)), 'create');
+	callInstanceMethod(res, next, new Production(req.body), 'create');
 
 const editRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Production(req.params), 'edit');

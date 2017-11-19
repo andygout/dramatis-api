@@ -4,8 +4,6 @@ import sinon from 'sinon';
 
 import Production from '../../../server/models/production';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let method;
 
@@ -19,21 +17,15 @@ beforeEach(() => {
 
 	stubs = {
 		callClassMethods: {
-			callInstanceMethod: sandbox.stub().resolves('callInstanceMethod response'),
-			callStaticListMethod: sandbox.stub().resolves('callStaticListMethod response')
+			callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
+			callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
 		},
-		renderJson: sandbox.stub().returns('renderJson response'),
+		renderJson: sinon.stub().returns('renderJson response'),
 		Production: ProductionStub,
-		req: sandbox.stub(),
-		res: sandbox.stub(),
-		next: sandbox.stub()
+		req: sinon.stub(),
+		res: sinon.stub(),
+		next: sinon.stub()
 	};
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

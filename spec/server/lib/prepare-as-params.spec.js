@@ -2,8 +2,6 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let subject;
 let instance;
@@ -12,18 +10,12 @@ beforeEach(() => {
 
 	stubs = {
 		uuid: {
-			v4: sandbox.stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+			v4: sinon.stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		},
-		propIsObject: sandbox.stub().returns(false)
+		propIsObject: sinon.stub().returns(false)
 	};
 
 	subject = createSubject();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 
@@ -45,6 +37,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(stubs.propIsObject.calledOnce).to.be.true;
 				expect(stubs.propIsObject.calledWithExactly('')).to.be.true;
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -55,6 +48,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(stubs.propIsObject.calledOnce).to.be.true;
 				expect(stubs.propIsObject.calledWithExactly(undefined)).to.be.true;
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -65,6 +59,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(stubs.propIsObject.calledOnce).to.be.true;
 				expect(stubs.propIsObject.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 			});
@@ -75,6 +70,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(stubs.propIsObject.calledOnce).to.be.true;
 				expect(stubs.propIsObject.calledWithExactly('')).to.be.true;
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.foo).to.eq('');
 
 			});
@@ -84,6 +80,7 @@ describe('Prepare As Params module', () => {
 				instance = { foo: '' };
 				subject(instance);
 				expect(stubs.propIsObject.calledOnce).to.be.true;
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance).not.to.have.property('position');
 
 			});
@@ -101,6 +98,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.calledTwice).to.be.true;
 				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, '');
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -114,6 +112,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.calledTwice).to.be.true;
 				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, undefined);
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -127,6 +126,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.calledTwice).to.be.true;
 				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.theatre.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 			});
@@ -140,6 +140,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.calledTwice).to.be.true;
 				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, '');
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.theatre.foo).to.eq('');
 
 			});
@@ -152,6 +153,7 @@ describe('Prepare As Params module', () => {
 				instance = { theatre: { uuid: '' } };
 				subject(instance);
 				expect(propIsObjectStub.calledTwice).to.be.true;
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre).not.to.have.property('position');
 
 			});
@@ -173,6 +175,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.callCount).to.eq(4);
 				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, '');
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -190,6 +193,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.callCount).to.eq(4);
 				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, undefined);
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -207,6 +211,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.callCount).to.eq(4);
 				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.cast[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 			});
@@ -224,6 +229,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.callCount).to.eq(4);
 				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, '');
+				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.cast[0].foo).to.eq('');
 
 			});
@@ -241,6 +247,7 @@ describe('Prepare As Params module', () => {
 				subject(instance);
 				expect(propIsObjectStub.callCount).to.eq(4);
 				sinon.assert.calledWithExactly(propIsObjectStub.lastCall, 0);
+				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].position).to.eq(0);
 
 			});

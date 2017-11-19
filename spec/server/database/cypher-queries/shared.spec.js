@@ -4,24 +4,16 @@ import sinon from 'sinon';
 
 import { removeWhitespace } from '../../../spec-helpers';
 
-const sandbox = sinon.sandbox.create();
-
 let stubs;
 let subject;
 
 beforeEach(() => {
 
 	stubs = {
-		capitalise: sandbox.stub().returns('Theatre')
+		capitalise: sinon.stub().returns('Theatre')
 	};
 
 	subject = createSubject();
-
-});
-
-afterEach(() => {
-
-	sandbox.restore();
 
 });
 

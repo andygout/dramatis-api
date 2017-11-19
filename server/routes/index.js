@@ -1,7 +1,6 @@
 /* eslint
 	new-cap: 0,
-	no-underscore-dangle: 0,
-	no-unused-vars: ["error", { "argsIgnorePattern": "res" }]
+	no-unused-vars: ["error", { "argsIgnorePattern": "res|next" }]
 */
 
 import express from 'express';
@@ -56,5 +55,7 @@ router.post('/theatres/:uuid', controllers.theatres.updateRoute);
 router.delete('/theatres/:uuid', controllers.theatres.deleteRoute);
 router.get('/theatres/:uuid', controllers.theatres.showRoute);
 router.get('/theatres', controllers.theatres.listRoute);
+
+router.get('*', (req, res, next) => res.status(404).send('Not Found'));
 
 export default router;
