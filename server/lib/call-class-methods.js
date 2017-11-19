@@ -4,7 +4,13 @@ const callInstanceMethod = (res, next, instance, method) => {
 
 	return instance[method]()
 		.then(({ instance }) => renderJson(res, instance))
-		.catch(err => next(err));
+		.catch(err => {
+
+			if (err.message === 'Not Found') return res.status(404).send(err.message);
+
+			return next(err);
+
+		});
 
 };
 

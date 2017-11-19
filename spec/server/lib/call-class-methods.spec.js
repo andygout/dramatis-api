@@ -1,10 +1,12 @@
 import { expect } from 'chai';
+import httpMocks from 'node-mocks-http';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
 import Character from '../../../server/models/character';
 
 const err = new Error('errorText');
+const notFoundErr = new Error('Not Found');
 
 let stubs;
 let method;
@@ -14,7 +16,7 @@ beforeEach(() => {
 
 	stubs = {
 		renderJson: sinon.stub().returns('renderJson response'),
-		res: sinon.stub(),
+		res: httpMocks.createResponse(),
 		next: sinon.stub()
 	};
 
@@ -65,6 +67,24 @@ describe('Call Class Methods module', () => {
 					expect(stubs.next.calledOnce).to.be.true;
 					expect(stubs.next.calledWithExactly(err)).to.be.true;
 					expect(stubs.renderJson.notCalled).to.be.true;
+					done();
+				});
+
+			});
+
+		});
+
+		context('resolves with \'Not Found\' error', () => {
+
+			it('will respond with 404 status and send error message', done => {
+
+				const subject = createSubject();
+				sinon.stub(character, method).callsFake(() => { return Promise.reject(notFoundErr) });
+				subject.callInstanceMethod(stubs.res, stubs.next, character, method).then(() => {
+					expect(stubs.res.statusCode).to.eq(404);
+					expect(stubs.res._getData()).to.eq('Not Found');
+					expect(stubs.renderJson.notCalled).to.be.true;
+					expect(stubs.next.called).to.be.false;
 					done();
 				});
 
