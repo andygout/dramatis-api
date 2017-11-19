@@ -15,3 +15,53 @@ Graph database-driven API for site of theatrical productions and playtexts.
 ## To test
 - Ensure `$ npm install` has been run.
 - `$ npm test`.
+
+## Endpoints
+Using production model as an example.
+
+### GET /productions/new
+- Get data required to prepare **new** production.
+- N.B. Currently only for productions.
+
+### POST /productions
+- **Create** production.
+- N.B. Currently only for productions.
+- Requires body, e.g.:
+```
+{
+	"name": "Hamlet",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Hamlet"
+	}
+}
+```
+
+### GET /productions/:uuid/edit
+- Get data required to **edit** specific production.
+
+### POST /productions/:uuid
+- **Update** specific production.
+- Requires body, e.g.:
+```
+{
+	"name": "Hamlet",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Hamlet"
+	}
+}
+```
+
+### DELETE /productions/:uuid
+- **Delete** specific production.
+
+### GET /productions/:uuid
+- **Show** specific production.
+
+### GET /productions
+- **List** productions.
