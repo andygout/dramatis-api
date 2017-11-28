@@ -17,51 +17,27 @@ Graph database-driven API for site of theatrical productions and playtexts.
 - `$ npm test`.
 
 ## Endpoints
-Using production model as an example.
+Using theatre model as an example.
 
-### GET /productions/new
-- Get data required to prepare **new** production.
-- N.B. Currently only for productions.
+### GET /theatres/new
+- Get data required to prepare **new** theatre.
 
-### POST /productions
-- **Create** production.
-- N.B. Currently only for productions.
-- Requires body, e.g.:
-```
-{
-	"name": "Hamlet",
-	"theatre": {
-		"name": "National Theatre"
-	},
-	"playtext": {
-		"name": "Hamlet"
-	}
-}
-```
+### POST /theatres
+- **Create** theatre.
+- Requires body, e.g.: `{ "name": "National Theatre" }`.
 
-### GET /productions/:uuid/edit
-- Get data required to **edit** specific production.
+### GET /theatres/:uuid/edit
+- Get data required to **edit** specific theatre.
 
-### POST /productions/:uuid
-- **Update** specific production.
-- Requires body, e.g.:
-```
-{
-	"name": "Hamlet",
-	"theatre": {
-		"name": "National Theatre"
-	},
-	"playtext": {
-		"name": "Hamlet"
-	}
-}
-```
+### POST /theatres/:uuid
+- **Update** specific theatre.
+- Requires body, e.g.: `{ "name": "Almeida Theatre", "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }`.
 
-### DELETE /productions/:uuid
-- **Delete** specific production.
+### DELETE /theatres/:uuid
+- **Delete** specific theatre.
 
-### GET /productions/:uuid
-- **Show** specific production.
+### GET /theatres/:uuid
+- **Show** specific theatre.
 
-### GET /productions
-- **List** productions.
+### GET /theatres
+- **List** theatres.

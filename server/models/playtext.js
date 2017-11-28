@@ -1,5 +1,5 @@
-import { getEditQuery, getUpdateQuery, getShowQuery } from '../database/cypher-queries/playtext';
-import { getValidateUpdateQuery, getDeleteQuery, getListQuery } from '../database/cypher-queries/shared';
+import { getCreateQuery, getEditQuery, getUpdateQuery, getShowQuery } from '../database/cypher-queries/playtext';
+import { getValidateQuery, getDeleteQuery, getListQuery } from '../database/cypher-queries/shared';
 import dbQuery from '../database/db-query';
 import prepareAsParams from '../lib/prepare-as-params';
 import trimStrings from '../lib/trim-strings';
@@ -37,9 +37,9 @@ export default class Playtext {
 
 	}
 
-	validateUpdateInDb () {
+	validateInDb () {
 
-		return dbQuery({ query: getValidateUpdateQuery(this.model), params: this })
+		return dbQuery({ query: getValidateQuery(this.model), params: this })
 			.then(({ instanceCount }) => {
 
 				if (instanceCount > 0) this.errors.name = ['Name already exists'];
@@ -58,6 +58,29 @@ export default class Playtext {
 
 	}
 
+	createUpdate (getCreateUpdateQuery) {
+
+		if (this.setErrorStatus()) return Promise.resolve({ playtext: this });
+
+		return this.validateInDb()
+			.then(() => {
+
+				this.hasError = verifyErrorPresence(this);
+
+				if (this.hasError) return Promise.resolve({ playtext: this });
+
+				return dbQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+
+			});
+
+	}
+
+	create () {
+
+		return this.createUpdate(getCreateQuery);
+
+	}
+
 	edit () {
 
 		return dbQuery({ query: getEditQuery(), params: this });
@@ -66,18 +89,7 @@ export default class Playtext {
 
 	update () {
 
-		if (this.setErrorStatus()) return Promise.resolve({ playtext: this });
-
-		return this.validateUpdateInDb()
-			.then(() => {
-
-				this.hasError = verifyErrorPresence(this);
-
-				if (this.hasError) return Promise.resolve({ playtext: this });
-
-				return dbQuery({ query: getUpdateQuery(), params: prepareAsParams(this) });
-
-			});
+		return this.createUpdate(getUpdateQuery);
 
 	}
 

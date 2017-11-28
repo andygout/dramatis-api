@@ -1,11 +1,13 @@
 import {
-	getValidateUpdateQuery,
+	getValidateQuery,
+	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
 	getShowQueries,
 	getListQuery
 } from '../database/cypher-queries/shared';
 import dbQuery from '../database/db-query';
+import prepareAsParams from '../lib/prepare-as-params';
 import trimStrings from '../lib/trim-strings';
 import validateString from '../lib/validate-string';
 import verifyErrorPresence from '../lib/verify-error-presence';
@@ -42,14 +44,41 @@ export default class Base {
 
 	}
 
-	validateUpdateInDb () {
+	validateInDb () {
 
-		return dbQuery({ query: getValidateUpdateQuery(this.model), params: this })
+		return dbQuery({ query: getValidateQuery(this.model), params: this })
 			.then(({ instanceCount }) => {
 
 				if (instanceCount > 0) this.errors.name = ['Name already exists'];
 
 			});
+
+	}
+
+	createUpdate (getCreateUpdateQuery) {
+
+		this.validate({ required: true });
+
+		this.hasError = verifyErrorPresence(this);
+
+		if (this.hasError) return resolvePromiseWithInstance(this);
+
+		return this.validateInDb()
+			.then(() => {
+
+				this.hasError = verifyErrorPresence(this);
+
+				if (this.hasError) return resolvePromiseWithInstance(this);
+
+				return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
+
+			});
+
+	}
+
+	create () {
+
+		return this.createUpdate(getCreateQuery);
 
 	}
 
@@ -61,22 +90,7 @@ export default class Base {
 
 	update () {
 
-		this.validate({ required: true });
-
-		this.hasError = verifyErrorPresence(this);
-
-		if (this.hasError) return resolvePromiseWithInstance(this);
-
-		return this.validateUpdateInDb()
-			.then(() => {
-
-				this.hasError = verifyErrorPresence(this);
-
-				if (this.hasError) return resolvePromiseWithInstance(this);
-
-				return dbQuery({ query: getUpdateQuery(this.model), params: this });
-
-			});
+		return this.createUpdate(getUpdateQuery);
 
 	}
 
