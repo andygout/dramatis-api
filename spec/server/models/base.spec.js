@@ -10,10 +10,10 @@ let instance;
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesShared: {
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		trimStrings: sinon.stub(),
 		validateString: sinon.stub().returns([])
 	};

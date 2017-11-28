@@ -10,12 +10,11 @@ let instance;
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesShared: {
 			getDeleteQuery: sinon.stub().returns('getDeleteQuery response')
 		},
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		Base: {
-			dbQuery: sinon.stub().resolves(dbQueryFixture),
 			cypherQueriesShared: {
 				getValidateQuery: sinon.stub().returns('getValidateQuery response'),
 				getCreateQuery: sinon.stub().returns('getCreateQuery response'),
@@ -25,6 +24,7 @@ beforeEach(() => {
 					character: sinon.stub().returns('getShowQuery response')
 				}
 			},
+			dbQuery: sinon.stub().resolves(dbQueryFixture),
 			prepareAsParams: sinon.stub().returns('prepareAsParams response'),
 			trimStrings: sinon.stub(),
 			validateString: sinon.stub().returns([]),

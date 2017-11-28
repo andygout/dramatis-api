@@ -37,7 +37,6 @@ const TheatreStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesProduction: {
 			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
 			getEditQuery: sinon.stub().returns('getEditQuery response'),
@@ -48,6 +47,7 @@ beforeEach(() => {
 		cypherQueriesShared: {
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
 		trimStrings: sinon.stub(),
 		validateString: sinon.stub().returns([]),

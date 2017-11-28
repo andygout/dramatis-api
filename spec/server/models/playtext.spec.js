@@ -18,7 +18,6 @@ const CharacterStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		cypherQueriesPlaytext: {
 			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
 			getEditQuery: sinon.stub().returns('getEditQuery response'),
@@ -30,6 +29,7 @@ beforeEach(() => {
 			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
+		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
 		trimStrings: sinon.stub(),
 		validateString: sinon.stub().returns([]),
