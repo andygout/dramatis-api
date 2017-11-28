@@ -1,11 +1,9 @@
 import neo4j from 'neo4j';
 
-const databaseHost = process.env.DEV_DATABASE_HOST
-const databaseName = process.env.DEV_DATABASE_NAME
-const databasePort = process.env.DEV_DATABASE_PORT
+const { DATABASE_HOST, DATABASE_NAME, DATABASE_PORT } = process.env;
 
 const db = new neo4j.GraphDatabase({
-	url: `http://neo4j:${databaseName}@${databaseHost}:${databasePort}`
+	url: `http://neo4j:${DATABASE_NAME}@${DATABASE_HOST}:${DATABASE_PORT}`
 });
 
 export default (queryData, queryOpts = {}) => {
