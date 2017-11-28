@@ -1,8 +1,11 @@
 import {
 	getValidateQuery,
 	getCreateQuery,
+	getCreateQueries,
 	getEditQuery,
+	getEditQueries,
 	getUpdateQuery,
+	getUpdateQueries,
 	getDeleteQuery,
 	getShowQueries,
 	getListQuery
@@ -79,19 +82,22 @@ export default class Base {
 
 	create () {
 
-		return this.createUpdate(getCreateQuery);
+		return this.createUpdate(getCreateQueries[this.model] || getCreateQuery);
 
 	}
 
 	edit () {
 
-		return dbQuery({ query: getEditQuery(this.model), params: this });
+		return dbQuery({
+			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
+			params: this
+		});
 
 	}
 
 	update () {
 
-		return this.createUpdate(getUpdateQuery);
+		return this.createUpdate(getUpdateQueries[this.model] || getUpdateQuery);
 
 	}
 

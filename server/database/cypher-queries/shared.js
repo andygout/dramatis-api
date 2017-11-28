@@ -1,5 +1,11 @@
 import { getShowQuery as getCharacterShowQuery } from './character';
 import { getShowQuery as getPersonShowQuery } from './person';
+import {
+	getShowQuery as getPlaytextShowQuery,
+	getCreateQuery as getPlaytextCreateQuery,
+	getEditQuery as getPlaytextEditQuery,
+	getUpdateQuery as getPlaytextUpdateQuery
+} from './playtext';
 import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
 
@@ -20,6 +26,10 @@ const getCreateQuery = model => `
 	} AS instance
 `;
 
+const getCreateQueries = {
+	playtext: getPlaytextCreateQuery
+};
+
 const getEditQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
@@ -29,6 +39,10 @@ const getEditQuery = model => `
 		name: n.name
 	} AS instance
 `;
+
+const getEditQueries = {
+	playtext: getPlaytextEditQuery
+};
 
 const getUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
@@ -40,6 +54,10 @@ const getUpdateQuery = model => `
 		name: n.name
 	} AS instance
 `;
+
+const getUpdateQueries = {
+	playtext: getPlaytextUpdateQuery
+};
 
 const getDeleteQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
@@ -56,6 +74,7 @@ const getDeleteQuery = model => `
 const getShowQueries = {
 	character: getCharacterShowQuery,
 	person: getPersonShowQuery,
+	playtext: getPlaytextShowQuery,
 	theatre: getTheatreShowQuery
 };
 
@@ -81,8 +100,11 @@ const getListQuery = model => {
 export {
 	getValidateQuery,
 	getCreateQuery,
+	getCreateQueries,
 	getEditQuery,
+	getEditQueries,
 	getUpdateQuery,
+	getUpdateQueries,
 	getDeleteQuery,
 	getShowQueries,
 	getListQuery

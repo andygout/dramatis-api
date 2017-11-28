@@ -13,8 +13,17 @@ beforeEach(() => {
 		cypherQueriesShared: {
 			getValidateQuery: sinon.stub().returns('getValidateQuery response'),
 			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
+			getCreateQueries: {
+				playtext: sinon.stub()
+			},
 			getEditQuery: sinon.stub().returns('getEditQuery response'),
+			getEditQueries: {
+				playtext: sinon.stub().returns('getEditPlaytextQuery response')
+			},
 			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
+			getUpdateQueries: {
+				playtext: sinon.stub()
+			},
 			getShowQueries: {
 				theatre: sinon.stub().returns('getShowTheatreQuery response')
 			},
@@ -286,13 +295,35 @@ describe('Base model', () => {
 
 	describe('create method', () => {
 
-		it('will call createUpdate method', done => {
+		context('instance requires a model-specific query', () => {
 
-			sinon.spy(instance, 'createUpdate');
-			instance.create(stubs.cypherQueriesShared.getCreateQuery).then(() => {
-				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getCreateQuery)).to.be.true;
-				done();
+			it('will call createUpdate method with function to get model-specific create query as argument', done => {
+
+				instance.model = 'playtext';
+				sinon.spy(instance, 'createUpdate');
+				instance.create().then(() => {
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(
+						stubs.cypherQueriesShared.getCreateQueries.playtext
+					)).to.be.true;
+					done();
+				});
+
+			});
+
+		});
+
+		context('instance can use shared query', () => {
+
+			it('will call createUpdate method with function to get shared create query as argument', done => {
+
+				sinon.spy(instance, 'createUpdate');
+				instance.create().then(() => {
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getCreateQuery)).to.be.true;
+					done();
+				});
+
 			});
 
 		});
@@ -301,17 +332,43 @@ describe('Base model', () => {
 
 	describe('edit method', () => {
 
-		it('will get edit data', done => {
+		context('instance requires a specific query', () => {
 
-			instance.edit().then(result => {
-				expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getEditQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
+			it('will get edit data using specific query', done => {
+
+				instance.model = 'playtext';
+				instance.edit().then(result => {
+					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledOnce).to.be.true;
+					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledWithExactly()).to.be.true;
+					expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledWithExactly(
+						{ query: 'getEditPlaytextQuery response', params: instance }
+					)).to.be.true;
+					expect(result).to.deep.eq(dbQueryFixture);
+					done();
+				});
+
+			});
+
+		});
+
+		context('instance can use shared query', () => {
+
+			it('will get edit data using shared query', done => {
+
+				instance.edit().then(result => {
+					expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
+					expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.cypherQueriesShared.getEditQueries.playtext.notCalled).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledWithExactly(
+						{ query: 'getEditQuery response', params: instance }
+					)).to.be.true;
+					expect(result).to.deep.eq(dbQueryFixture);
+					done();
+				});
+
 			});
 
 		});
@@ -320,13 +377,35 @@ describe('Base model', () => {
 
 	describe('update method', () => {
 
-		it('will call createUpdate method', done => {
+		context('instance requires a model-specific query', () => {
 
-			sinon.spy(instance, 'createUpdate');
-			instance.update(stubs.cypherQueriesShared.getUpdateQuery).then(() => {
-				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
-				done();
+			it('will call createUpdate method with function to get model-specific update query as argument', done => {
+
+				instance.model = 'playtext';
+				sinon.spy(instance, 'createUpdate');
+				instance.update().then(() => {
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(
+						stubs.cypherQueriesShared.getUpdateQueries.playtext
+					)).to.be.true;
+					done();
+				});
+
+			});
+
+		});
+
+		context('instance can use shared query', () => {
+
+			it('will call createUpdate method with function to get shared update query as argument', done => {
+
+				sinon.spy(instance, 'createUpdate');
+				instance.update().then(() => {
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
+					done();
+				});
+
 			});
 
 		});
