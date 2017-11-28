@@ -3,6 +3,7 @@ import {
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
+	getDeleteQuery,
 	getShowQueries,
 	getListQuery
 } from '../database/cypher-queries/shared';
@@ -91,6 +92,12 @@ export default class Base {
 	update () {
 
 		return this.createUpdate(getUpdateQuery);
+
+	}
+
+	delete () {
+
+		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
 	}
 

@@ -4,8 +4,6 @@ import sinon from 'sinon';
 
 import Role from '../../../server/models/role';
 
-import dbQueryFixture from '../../fixtures/db-query';
-
 let stubs;
 let instance;
 
@@ -18,10 +16,6 @@ const RoleStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		cypherQueriesShared: {
-			getDeleteQuery: sinon.stub().returns('getDeleteQuery response')
-		},
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		Role: RoleStub
 	};
 
@@ -31,8 +25,6 @@ beforeEach(() => {
 
 const createSubject = () =>
 	proxyquire('../../../server/models/person', {
-		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
-		'../database/db-query': stubs.dbQuery,
 		'./role': stubs.Role
 	});
 
@@ -63,25 +55,6 @@ describe('Person model', () => {
 				expect(instance.roles.length).to.eq(1);
 				expect(instance.roles[0].constructor.name).to.eq('Role');
 
-			});
-
-		});
-
-	});
-
-	describe('delete method', () => {
-
-		it('will delete', done => {
-
-			instance.delete().then(result => {
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getDeleteQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
 			});
 
 		});

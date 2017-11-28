@@ -18,6 +18,7 @@ beforeEach(() => {
 			getShowQueries: {
 				theatre: sinon.stub().returns('getShowTheatreQuery response')
 			},
+			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
 		dbQuery: sinon.stub().resolves(dbQueryFixture),
@@ -325,6 +326,25 @@ describe('Base model', () => {
 			instance.update(stubs.cypherQueriesShared.getUpdateQuery).then(() => {
 				expect(instance.createUpdate.calledOnce).to.be.true;
 				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
+				done();
+			});
+
+		});
+
+	});
+
+	describe('delete method', () => {
+
+		it('will delete', done => {
+
+			instance.delete().then(result => {
+				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getDeleteQuery response', params: instance }
+				)).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 				done();
 			});
 

@@ -1,5 +1,3 @@
-import { getDeleteQuery } from '../database/cypher-queries/shared';
-import dbQuery from '../database/db-query';
 import Base from './base';
 
 export default class Character extends Base {
@@ -13,12 +11,6 @@ export default class Character extends Base {
 		});
 
 		this.productions = [];
-
-	}
-
-	delete () {
-
-		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
 	}
 
