@@ -20,6 +20,7 @@ beforeEach(() => {
 			callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
 			callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
 		},
+		renderJson: sinon.stub().returns('renderJson response'),
 		Playtext: PlaytextStub,
 		req: sinon.stub(),
 		res: sinon.stub(),
@@ -31,6 +32,7 @@ beforeEach(() => {
 const createSubject = () =>
 	proxyquire('../../../server/controllers/playtexts', {
 		'../lib/call-class-methods': stubs.callClassMethods,
+		'../lib/render-json': stubs.renderJson,
 		'../models/playtext': stubs.Playtext
 	});
 
@@ -45,6 +47,37 @@ const createInstance = method => {
 };
 
 describe('Playtexts controller', () => {
+
+	describe('new method', () => {
+
+		it('will call renderJson module', () => {
+
+			method = 'new';
+			expect(createInstance(method)).to.eq('renderJson response');
+			expect(stubs.renderJson.calledOnce).to.be.true;
+			expect(stubs.renderJson.calledWithExactly(stubs.res, stubs.Playtext())).to.be.true;
+
+		});
+
+	});
+
+	describe('create method', () => {
+
+		it('will call callInstanceMethod module', done => {
+
+			method = 'create';
+			createInstance(method).then(result => {
+				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+					stubs.res, stubs.next, stubs.Playtext(), method
+				)).to.be.true;
+				expect(result).to.eq('callInstanceMethod response');
+				done();
+			});
+
+		});
+
+	});
 
 	describe('edit method', () => {
 

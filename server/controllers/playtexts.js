@@ -1,5 +1,14 @@
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
+
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
+import renderJson from '../lib/render-json';
 import Playtext from '../models/playtext';
+
+const newRoute = (req, res, next) =>
+	renderJson(res, new Playtext());
+
+const createRoute = (req, res, next) =>
+	callInstanceMethod(res, next, new Playtext(req.body), 'create');
 
 const editRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Playtext(req.params), 'edit');
@@ -17,6 +26,8 @@ const listRoute = (req, res, next) =>
 	callStaticListMethod(res, next, Playtext);
 
 export {
+	newRoute,
+	createRoute,
 	editRoute,
 	updateRoute,
 	deleteRoute,

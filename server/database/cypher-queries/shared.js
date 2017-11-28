@@ -3,11 +3,21 @@ import { getShowQuery as getPersonShowQuery } from './person';
 import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
 
-const getValidateUpdateQuery = model => `
+const getValidateQuery = model => `
 	MATCH (n:${capitalise(model)} { name: $name })
 		WHERE n.uuid <> $uuid
 
 	RETURN SIGN(COUNT(n)) AS instanceCount
+`;
+
+const getCreateQuery = model => `
+	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name })
+
+	RETURN {
+		model: '${model}',
+		uuid: n.uuid,
+		name: n.name
+	} AS instance
 `;
 
 const getEditQuery = model => `
@@ -69,7 +79,8 @@ const getListQuery = model => {
 };
 
 export {
-	getValidateUpdateQuery,
+	getValidateQuery,
+	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
 	getDeleteQuery,

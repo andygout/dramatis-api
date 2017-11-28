@@ -54,11 +54,11 @@ describe('Cypher Queries Shared module', () => {
 
 	context('Theatre (i.e. non-Production) model usage', () => {
 
-		describe('getValidateUpdateQuery function', () => {
+		describe('getValidateQuery function', () => {
 
 			it('will return requisite query', () => {
 
-				const result = subject.getValidateUpdateQuery('theatre');
+				const result = subject.getValidateQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -66,6 +66,27 @@ describe('Cypher Queries Shared module', () => {
 						WHERE n.uuid <> $uuid
 
 					RETURN SIGN(COUNT(n)) AS instanceCount
+				`));
+
+			});
+
+		});
+
+		describe('getCreateQuery function', () => {
+
+			it('will return requisite query', () => {
+
+				const result = subject.getCreateQuery('theatre');
+				expect(stubs.capitalise.calledOnce).to.be.true;
+				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+					CREATE (n:Theatre { uuid: $uuid, name: $name })
+
+					RETURN {
+						model: 'theatre',
+						uuid: n.uuid,
+						name: n.name
+					} AS instance
 				`));
 
 			});

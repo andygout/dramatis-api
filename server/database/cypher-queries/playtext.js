@@ -1,3 +1,38 @@
+const getCreateUpdateQuery = action => {
+
+	const createUpdateQueryOpeningMap = {
+		create: 'CREATE (playtext:Playtext { uuid: $uuid, name: $name })',
+		update: `
+			MATCH (playtext:Playtext { uuid: $uuid })
+
+			OPTIONAL MATCH (playtext)-[relationship:INCLUDES_CHARACTER]->(:Character)
+
+			WITH playtext, COLLECT(relationship) AS relationships
+				FOREACH (relationship in relationships | DELETE relationship)
+				SET playtext.name = $name
+		`
+	};
+
+	return `
+		${createUpdateQueryOpeningMap[action]}
+
+		FOREACH (char IN $characters |
+			MERGE (character:Character { name: char.name })
+			ON CREATE SET character.uuid = char.uuid
+			CREATE (playtext)-[:INCLUDES_CHARACTER { position: char.position }]->(character)
+		)
+
+		RETURN {
+			model: 'playtext',
+			uuid: playtext.uuid,
+			name: playtext.name
+		} AS instance
+	`;
+
+};
+
+const getCreateQuery = () => getCreateUpdateQuery('create');
+
 const getEditQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
@@ -14,28 +49,7 @@ const getEditQuery = () => `
 	} AS instance
 `;
 
-const getUpdateQuery = () => `
-	MATCH (playtext:Playtext { uuid: $uuid })
-
-	OPTIONAL MATCH (playtext)-[relationship:INCLUDES_CHARACTER]->(:Character)
-
-	WITH playtext, COLLECT(relationship) AS relationships
-		FOREACH (relationship in relationships | DELETE relationship)
-
-	WITH playtext
-		SET playtext.name = $name
-		FOREACH (char IN $characters |
-			MERGE (character:Character { name: char.name })
-			ON CREATE SET character.uuid = char.uuid
-			CREATE (playtext)-[:INCLUDES_CHARACTER { position: char.position }]->(character)
-		)
-
-	RETURN {
-		model: 'playtext',
-		uuid: playtext.uuid,
-		name: playtext.name
-	} AS instance
-`;
+const getUpdateQuery = () => getCreateUpdateQuery('update');
 
 const getShowQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
@@ -69,6 +83,7 @@ const getShowQuery = () => `
 `;
 
 export {
+	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
 	getShowQuery
