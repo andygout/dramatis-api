@@ -22,6 +22,7 @@ const getCreateUpdateQuery = action => {
 
 	return `
 		${createUpdateQueryOpeningMap[action]}
+
 		MERGE (theatre:Theatre { name: $theatre.name })
 			ON CREATE SET theatre.uuid = $theatre.uuid
 
