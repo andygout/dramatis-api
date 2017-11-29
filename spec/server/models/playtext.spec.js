@@ -132,7 +132,7 @@ describe('Playtext model', () => {
 
 		context('valid data', () => {
 
-			it('will create', done => {
+			it('will create using provided function to get appropriate query', done => {
 
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
@@ -158,7 +158,7 @@ describe('Playtext model', () => {
 
 			});
 
-			it('will update', done => {
+			it('will update using provided function to get appropriate query', done => {
 
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
