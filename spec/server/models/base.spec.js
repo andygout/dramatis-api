@@ -335,9 +335,9 @@ describe('Base model', () => {
 
 	describe('edit method', () => {
 
-		context('instance requires a specific query', () => {
+		context('instance requires a model-specific query', () => {
 
-			it('will get edit data using specific query', done => {
+			it('will get edit data using model-specific query', done => {
 
 				instance.model = 'production';
 				instance.edit().then(result => {
@@ -417,9 +417,9 @@ describe('Base model', () => {
 
 	describe('delete method', () => {
 
-		context('instance requires a specific query', () => {
+		context('instance requires a model-specific query', () => {
 
-			it('will delete using specific query', done => {
+			it('will delete using model-specific query', done => {
 
 				instance.model = 'production';
 				instance.delete().then(result => {
