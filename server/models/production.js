@@ -16,7 +16,6 @@ export default class Production extends Base {
 			get: function () { return 'production'; }
 		});
 
-		this.documentTitle = props.documentTitle;
 		this.theatre = new Theatre(props.theatre);
 		this.playtext = new Playtext(props.playtext);
 		this.cast = props.cast ?
