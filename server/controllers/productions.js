@@ -23,7 +23,7 @@ const showRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Production(req.params), 'show');
 
 const listRoute = (req, res, next) =>
-	callStaticListMethod(res, next, Production);
+	callStaticListMethod(res, next, Production, 'production');
 
 export {
 	newRoute,

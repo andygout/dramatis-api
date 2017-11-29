@@ -6,6 +6,13 @@ import {
 	getEditQuery as getPlaytextEditQuery,
 	getUpdateQuery as getPlaytextUpdateQuery
 } from './playtext';
+import {
+	getCreateQuery as getProductionCreateQuery,
+	getEditQuery as getProductionEditQuery,
+	getUpdateQuery as getProductionUpdateQuery,
+	getDeleteQuery as getProductionDeleteQuery,
+	getShowQuery as getProductionShowQuery
+} from './production';
 import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
 
@@ -27,7 +34,8 @@ const getCreateQuery = model => `
 `;
 
 const getCreateQueries = {
-	playtext: getPlaytextCreateQuery
+	playtext: getPlaytextCreateQuery,
+	production: getProductionCreateQuery
 };
 
 const getEditQuery = model => `
@@ -41,7 +49,8 @@ const getEditQuery = model => `
 `;
 
 const getEditQueries = {
-	playtext: getPlaytextEditQuery
+	playtext: getPlaytextEditQuery,
+	production: getProductionEditQuery
 };
 
 const getUpdateQuery = model => `
@@ -56,7 +65,8 @@ const getUpdateQuery = model => `
 `;
 
 const getUpdateQueries = {
-	playtext: getPlaytextUpdateQuery
+	playtext: getPlaytextUpdateQuery,
+	production: getProductionUpdateQuery
 };
 
 const getDeleteQuery = model => `
@@ -71,10 +81,15 @@ const getDeleteQuery = model => `
 	} AS instance
 `;
 
+const getDeleteQueries = {
+	production: getProductionDeleteQuery
+};
+
 const getShowQueries = {
 	character: getCharacterShowQuery,
 	person: getPersonShowQuery,
 	playtext: getPlaytextShowQuery,
+	production: getProductionShowQuery,
 	theatre: getTheatreShowQuery
 };
 
@@ -106,6 +121,7 @@ export {
 	getUpdateQuery,
 	getUpdateQueries,
 	getDeleteQuery,
+	getDeleteQueries,
 	getShowQueries,
 	getListQuery
 };

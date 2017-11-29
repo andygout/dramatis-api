@@ -28,6 +28,9 @@ beforeEach(() => {
 				theatre: sinon.stub().returns('getShowTheatreQuery response')
 			},
 			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
+			getDeleteQueries: {
+				production: sinon.stub().returns('getDeleteProductionQuery response')
+			},
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
 		dbQuery: sinon.stub().resolves(dbQueryFixture),
@@ -414,17 +417,43 @@ describe('Base model', () => {
 
 	describe('delete method', () => {
 
-		it('will delete', done => {
+		context('instance requires a specific query', () => {
 
-			instance.delete().then(result => {
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getDeleteQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
+			it('will delete using specific query', done => {
+
+				instance.model = 'production';
+				instance.delete().then(result => {
+					expect(stubs.cypherQueriesShared.getDeleteQueries[instance.model].calledOnce).to.be.true;
+					expect(stubs.cypherQueriesShared.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
+					expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledWithExactly(
+						{ query: 'getDeleteProductionQuery response', params: instance }
+					)).to.be.true;
+					expect(result).to.deep.eq(dbQueryFixture);
+					done();
+				});
+
+			});
+
+		});
+
+		context('instance can use shared query', () => {
+
+			it('will delete using shared query', done => {
+
+				instance.delete().then(result => {
+					expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
+					expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.cypherQueriesShared.getDeleteQueries.production.notCalled).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledWithExactly(
+						{ query: 'getDeleteQuery response', params: instance }
+					)).to.be.true;
+					expect(result).to.deep.eq(dbQueryFixture);
+					done();
+				});
+
 			});
 
 		});

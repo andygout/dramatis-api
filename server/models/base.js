@@ -7,6 +7,7 @@ import {
 	getUpdateQuery,
 	getUpdateQueries,
 	getDeleteQuery,
+	getDeleteQueries,
 	getShowQueries,
 	getListQuery
 } from '../database/cypher-queries/shared';
@@ -103,7 +104,10 @@ export default class Base {
 
 	delete () {
 
-		return dbQuery({ query: getDeleteQuery(this.model), params: this });
+		return dbQuery({
+			query: (getDeleteQueries[this.model] && getDeleteQueries[this.model]()) || getDeleteQuery(this.model),
+			params: this
+		});
 
 	}
 
