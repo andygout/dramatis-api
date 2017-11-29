@@ -23,7 +23,7 @@ const showRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Playtext(req.params), 'show');
 
 const listRoute = (req, res, next) =>
-	callStaticListMethod(res, next, Playtext);
+	callStaticListMethod(res, next, Playtext, 'playtext');
 
 export {
 	newRoute,

@@ -38,20 +38,12 @@ beforeEach(() => {
 
 	stubs = {
 		dbQuery: sinon.stub().resolves(dbQueryFixture),
-		cypherQueriesProduction: {
-			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
-			getEditQuery: sinon.stub().returns('getEditQuery response'),
-			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
-			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
-			getShowQuery: sinon.stub().returns('getShowQuery response')
-		},
-		cypherQueriesShared: {
-			getListQuery: sinon.stub().returns('getListQuery response')
-		},
 		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
-		trimStrings: sinon.stub(),
-		validateString: sinon.stub().returns([]),
 		verifyErrorPresence: sinon.stub().returns(false),
+		Base: {
+			trimStrings: sinon.stub(),
+			validateString: sinon.stub().returns([])
+		},
 		Person: PersonStub,
 		Playtext: PlaytextStub,
 		Theatre: TheatreStub
@@ -63,13 +55,13 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/production', {
-		'../database/cypher-queries/production': stubs.cypherQueriesProduction,
-		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../database/db-query': stubs.dbQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
-		'../lib/trim-strings': stubs.trimStrings,
-		'../lib/validate-string': stubOverrides.validateString || stubs.validateString,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
+		'./base': proxyquire('../../../server/models/base', {
+			'../lib/trim-strings': stubs.Base.trimStrings,
+			'../lib/validate-string': stubs.Base.validateString
+		}),
 		'./person': stubOverrides.Person || stubs.Person,
 		'./playtext': stubs.Playtext,
 		'./theatre': stubs.Theatre
@@ -104,48 +96,6 @@ describe('Production model', () => {
 				instance = createInstance({ Person: PersonStubOverride }, props);
 				expect(instance.cast.length).to.eq(1);
 				expect(instance.cast[0].constructor.name).to.eq('Person');
-
-			});
-
-		});
-
-	});
-
-	describe('validate method', () => {
-
-		it('will trim strings before validating name', () => {
-
-			instance.validate();
-			expect(stubs.trimStrings.calledBefore(stubs.validateString)).to.be.true;
-			expect(stubs.trimStrings.calledOnce).to.be.true;
-			expect(stubs.trimStrings.calledWithExactly(instance)).to.be.true;
-			expect(stubs.validateString.calledOnce).to.be.true;
-			expect(stubs.validateString.calledWithExactly(instance.name, {})).to.be.true;
-
-		});
-
-		context('valid data', () => {
-
-			it('will not add properties to errors property', () => {
-
-				instance.validate();
-				expect(instance.errors).not.to.have.property('name');
-				expect(instance.errors).to.deep.eq({});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('will add properties that are arrays to errors property', () => {
-
-				instance = createInstance({ validateString: sinon.stub().returns(['Name is too short']) });
-				instance.validate();
-				expect(instance.errors)
-					.to.have.property('name')
-					.that.is.an('array')
-					.that.deep.eq(['Name is too short']);
 
 			});
 
@@ -201,22 +151,44 @@ describe('Production model', () => {
 
 	});
 
-	describe('create method', () => {
+	describe('createUpdate method', () => {
 
 		context('valid data', () => {
 
-			it('will create', done => {
+			it('will create using provided function to get appropriate query', done => {
 
+				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
-				instance.create().then(result => {
+				instance.createUpdate(getCreateQueryStub).then(result => {
 					sinon.assert.callOrder(
 						instance.setErrorStatus.withArgs(),
-						stubs.cypherQueriesProduction.getCreateQuery.withArgs(),
+						getCreateQueryStub.withArgs(),
 						stubs.prepareAsParams.withArgs(instance),
 						stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
 					);
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesProduction.getCreateQuery.calledOnce).to.be.true;
+					expect(getCreateQueryStub.calledOnce).to.be.true;
+					expect(stubs.prepareAsParams.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(result).to.deep.eq(dbQueryFixture);
+					done();
+				});
+
+			});
+
+			it('will update using provided function to get appropriate query', done => {
+
+				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
+				sinon.spy(instance, 'setErrorStatus');
+				instance.createUpdate(getUpdateQueryStub).then(result => {
+					sinon.assert.callOrder(
+						instance.setErrorStatus.withArgs(),
+						getUpdateQueryStub.withArgs(),
+						stubs.prepareAsParams.withArgs(instance),
+						stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
+					);
+					expect(instance.setErrorStatus.calledOnce).to.be.true;
+					expect(getUpdateQueryStub.calledOnce).to.be.true;
 					expect(stubs.prepareAsParams.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(result).to.deep.eq(dbQueryFixture);
@@ -231,141 +203,19 @@ describe('Production model', () => {
 
 			it('will return instance without creating', done => {
 
+				const getCreateUpdateQueryStub = sinon.stub();
 				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
 				sinon.spy(instance, 'setErrorStatus');
-				instance.create().then(result => {
+				instance.createUpdate(getCreateUpdateQueryStub).then(result => {
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
 					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-					expect(stubs.cypherQueriesProduction.getCreateQuery.notCalled).to.be.true;
+					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
 					expect(stubs.dbQuery.notCalled).to.be.true;
 					expect(result).to.deep.eq({ production: instance });
 					done();
 				});
 
-			});
-
-		});
-
-	});
-
-	describe('edit method', () => {
-
-		it('will get edit data', done => {
-
-			instance.edit().then(result => {
-				expect(stubs.cypherQueriesProduction.getEditQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesProduction.getEditQuery.calledWithExactly()).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getEditQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
-			});
-
-		});
-
-	});
-
-	describe('update method', () => {
-
-		context('valid data', () => {
-
-			it('will update', done => {
-
-				sinon.spy(instance, 'setErrorStatus');
-				instance.update().then(result => {
-					sinon.assert.callOrder(
-						instance.setErrorStatus.withArgs(),
-						stubs.cypherQueriesProduction.getUpdateQuery.withArgs(),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
-					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesProduction.getUpdateQuery.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('will return instance without updating', done => {
-
-				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
-				sinon.spy(instance, 'setErrorStatus');
-				instance.update().then(result => {
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-					expect(stubs.cypherQueriesProduction.getUpdateQuery.notCalled).to.be.true;
-					expect(stubs.prepareAsParams.notCalled).to.be.true;
-					expect(stubs.dbQuery.notCalled).to.be.true;
-					expect(result).to.deep.eq({ production: instance });
-					done();
-				});
-
-			});
-
-		});
-
-	});
-
-	describe('delete method', () => {
-
-		it('will delete', done => {
-
-			instance.delete().then(result => {
-				expect(stubs.cypherQueriesProduction.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesProduction.getDeleteQuery.calledWithExactly()).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getDeleteQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
-			});
-
-		});
-
-	});
-
-	describe('show method', () => {
-
-		it('will get show data', done => {
-
-			instance.show().then(result => {
-				expect(stubs.cypherQueriesProduction.getShowQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesProduction.getShowQuery.calledWithExactly()).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getShowQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
-			});
-
-		});
-
-	});
-
-	describe('list method', () => {
-
-		it('will get list data', done => {
-
-			const subject = createSubject();
-			subject.list().then(result => {
-				expect(stubs.cypherQueriesShared.getListQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('production')).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly({ query: 'getListQuery response' })).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
 			});
 
 		});

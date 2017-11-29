@@ -14,7 +14,7 @@ const callInstanceMethod = (res, next, instance, method) => {
 
 };
 
-const callStaticListMethod = (res, next, Class, model = null) => {
+const callStaticListMethod = (res, next, Class, model) => {
 
 	return Class.list(model)
 		.then(({ instances }) => renderJson(res, instances))

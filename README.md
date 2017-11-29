@@ -7,7 +7,7 @@ Graph database-driven API for site of theatrical productions and playtexts.
 - Install node modules: `$ npm install`.
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`.
 - Create Neo4j database called `theatrebase` and run on `http://localhost:7474` (using [Neo4j Community Edition](https://neo4j.com/download/community-edition)).
-- Run server using `$ npm start` and visit routes on `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
+- Run server using `$ npm start` and visit routes at `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
 
 ## To view content via user interface
 - Run a local instance of [`theatrebase-frontend`](https://github.com/andygout/theatrebase-frontend) on `http://localhost:3001`.
@@ -31,7 +31,7 @@ Using theatre model as an example.
 
 ### POST /theatres/:uuid
 - **Update** specific theatre.
-- Requires body, e.g.: `{ "name": "Almeida Theatre", "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }`.
+- Requires body, e.g.: `{ "name": "Almeida Theatre" }`.
 
 ### DELETE /theatres/:uuid
 - **Delete** specific theatre.

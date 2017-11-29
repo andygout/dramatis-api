@@ -1,9 +1,16 @@
 import {
+	getCreateQueries,
+	getEditQueries,
+	getUpdateQueries,
+	getDeleteQueries,
+	getShowQueries
+} from '../database/cypher-queries/model-query-maps';
+import {
 	getValidateQuery,
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
-	getShowQueries,
+	getDeleteQuery,
 	getListQuery
 } from '../database/cypher-queries/shared';
 import dbQuery from '../database/db-query';
@@ -78,19 +85,31 @@ export default class Base {
 
 	create () {
 
-		return this.createUpdate(getCreateQuery);
+		return this.createUpdate(getCreateQueries[this.model] || getCreateQuery);
 
 	}
 
 	edit () {
 
-		return dbQuery({ query: getEditQuery(this.model), params: this });
+		return dbQuery({
+			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
+			params: this
+		});
 
 	}
 
 	update () {
 
-		return this.createUpdate(getUpdateQuery);
+		return this.createUpdate(getUpdateQueries[this.model] || getUpdateQuery);
+
+	}
+
+	delete () {
+
+		return dbQuery({
+			query: (getDeleteQueries[this.model] && getDeleteQueries[this.model]()) || getDeleteQuery(this.model),
+			params: this
+		});
 
 	}
 

@@ -1,6 +1,3 @@
-import { getShowQuery as getCharacterShowQuery } from './character';
-import { getShowQuery as getPersonShowQuery } from './person';
-import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
 
 const getValidateQuery = model => `
@@ -53,12 +50,6 @@ const getDeleteQuery = model => `
 	} AS instance
 `;
 
-const getShowQueries = {
-	character: getCharacterShowQuery,
-	person: getPersonShowQuery,
-	theatre: getTheatreShowQuery
-};
-
 const getListQuery = model => {
 
 	const theatreRelationship = (model === 'production') ? '-[:PLAYS_AT]->(t:Theatre)' : '';
@@ -84,6 +75,5 @@ export {
 	getEditQuery,
 	getUpdateQuery,
 	getDeleteQuery,
-	getShowQueries,
 	getListQuery
 };

@@ -159,7 +159,7 @@ describe('Playtexts controller', () => {
 			createInstance(method).then(result => {
 				expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
 				expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Playtext
+					stubs.res, stubs.next, stubs.Playtext, 'playtext'
 				)).to.be.true;
 				expect(result).to.eq('callStaticListMethod response');
 				done();

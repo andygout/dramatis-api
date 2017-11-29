@@ -159,7 +159,7 @@ describe('Productions controller', () => {
 			createInstance(method).then(result => {
 				expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
 				expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Production
+					stubs.res, stubs.next, stubs.Production, 'production'
 				)).to.be.true;
 				expect(result).to.eq('callStaticListMethod response');
 				done();
