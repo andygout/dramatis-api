@@ -31,7 +31,7 @@ Using theatre model as an example.
 
 ### POST /theatres/:uuid
 - **Update** specific theatre.
-- Requires body, e.g.: `{ "name": "Almeida Theatre", "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" }`.
+- Requires body, e.g.: `{ "name": "Almeida Theatre" }`.
 
 ### DELETE /theatres/:uuid
 - **Delete** specific theatre.
