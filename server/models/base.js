@@ -1,14 +1,16 @@
 import {
+	getCreateQueries,
+	getEditQueries,
+	getUpdateQueries,
+	getDeleteQueries,
+	getShowQueries
+} from '../database/cypher-queries/model-query-maps';
+import {
 	getValidateQuery,
 	getCreateQuery,
-	getCreateQueries,
 	getEditQuery,
-	getEditQueries,
 	getUpdateQuery,
-	getUpdateQueries,
 	getDeleteQuery,
-	getDeleteQueries,
-	getShowQueries,
 	getListQuery
 } from '../database/cypher-queries/shared';
 import dbQuery from '../database/db-query';

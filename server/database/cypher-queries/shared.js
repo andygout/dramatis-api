@@ -1,19 +1,3 @@
-import { getShowQuery as getCharacterShowQuery } from './character';
-import { getShowQuery as getPersonShowQuery } from './person';
-import {
-	getShowQuery as getPlaytextShowQuery,
-	getCreateQuery as getPlaytextCreateQuery,
-	getEditQuery as getPlaytextEditQuery,
-	getUpdateQuery as getPlaytextUpdateQuery
-} from './playtext';
-import {
-	getCreateQuery as getProductionCreateQuery,
-	getEditQuery as getProductionEditQuery,
-	getUpdateQuery as getProductionUpdateQuery,
-	getDeleteQuery as getProductionDeleteQuery,
-	getShowQuery as getProductionShowQuery
-} from './production';
-import { getShowQuery as getTheatreShowQuery } from './theatre';
 import capitalise from '../../lib/capitalise';
 
 const getValidateQuery = model => `
@@ -33,11 +17,6 @@ const getCreateQuery = model => `
 	} AS instance
 `;
 
-const getCreateQueries = {
-	playtext: getPlaytextCreateQuery,
-	production: getProductionCreateQuery
-};
-
 const getEditQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
@@ -47,11 +26,6 @@ const getEditQuery = model => `
 		name: n.name
 	} AS instance
 `;
-
-const getEditQueries = {
-	playtext: getPlaytextEditQuery,
-	production: getProductionEditQuery
-};
 
 const getUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
@@ -64,11 +38,6 @@ const getUpdateQuery = model => `
 	} AS instance
 `;
 
-const getUpdateQueries = {
-	playtext: getPlaytextUpdateQuery,
-	production: getProductionUpdateQuery
-};
-
 const getDeleteQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
@@ -80,18 +49,6 @@ const getDeleteQuery = model => `
 		name: name
 	} AS instance
 `;
-
-const getDeleteQueries = {
-	production: getProductionDeleteQuery
-};
-
-const getShowQueries = {
-	character: getCharacterShowQuery,
-	person: getPersonShowQuery,
-	playtext: getPlaytextShowQuery,
-	production: getProductionShowQuery,
-	theatre: getTheatreShowQuery
-};
 
 const getListQuery = model => {
 
@@ -115,13 +72,8 @@ const getListQuery = model => {
 export {
 	getValidateQuery,
 	getCreateQuery,
-	getCreateQueries,
 	getEditQuery,
-	getEditQueries,
 	getUpdateQuery,
-	getUpdateQueries,
 	getDeleteQuery,
-	getDeleteQueries,
-	getShowQueries,
 	getListQuery
 };

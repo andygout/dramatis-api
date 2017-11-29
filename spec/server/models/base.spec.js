@@ -10,27 +10,29 @@ let instance;
 beforeEach(() => {
 
 	stubs = {
-		cypherQueriesShared: {
-			getValidateQuery: sinon.stub().returns('getValidateQuery response'),
-			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
+		cypherQueriesModelSpecific: {
 			getCreateQueries: {
 				production: sinon.stub()
 			},
-			getEditQuery: sinon.stub().returns('getEditQuery response'),
 			getEditQueries: {
 				production: sinon.stub().returns('getEditProductionQuery response')
 			},
-			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
 			getUpdateQueries: {
 				production: sinon.stub()
 			},
-			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getDeleteQueries: {
 				production: sinon.stub().returns('getDeleteProductionQuery response')
 			},
 			getShowQueries: {
 				theatre: sinon.stub().returns('getShowTheatreQuery response')
-			},
+			}
+		},
+		cypherQueriesShared: {
+			getValidateQuery: sinon.stub().returns('getValidateQuery response'),
+			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
+			getEditQuery: sinon.stub().returns('getEditQuery response'),
+			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
+			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
 		dbQuery: sinon.stub().resolves(dbQueryFixture),
@@ -48,6 +50,7 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/base', {
+		'../database/cypher-queries/model-query-maps': stubs.cypherQueriesModelSpecific,
 		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../database/db-query': stubOverrides.dbQuery || stubs.dbQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
@@ -307,7 +310,7 @@ describe('Base model', () => {
 				instance.create().then(() => {
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesShared.getCreateQueries[instance.model]
+						stubs.cypherQueriesModelSpecific.getCreateQueries[instance.model]
 					)).to.be.true;
 					done();
 				});
@@ -341,8 +344,8 @@ describe('Base model', () => {
 
 				instance.model = 'production';
 				instance.edit().then(result => {
-					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledWithExactly()).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledOnce).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledWithExactly()).to.be.true;
 					expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
@@ -363,7 +366,7 @@ describe('Base model', () => {
 				instance.edit().then(result => {
 					expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
 					expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-					expect(stubs.cypherQueriesShared.getEditQueries.production.notCalled).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getEditQueries.production.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
 						{ query: 'getEditQuery response', params: instance }
@@ -389,7 +392,7 @@ describe('Base model', () => {
 				instance.update().then(() => {
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesShared.getUpdateQueries[instance.model]
+						stubs.cypherQueriesModelSpecific.getUpdateQueries[instance.model]
 					)).to.be.true;
 					done();
 				});
@@ -423,8 +426,8 @@ describe('Base model', () => {
 
 				instance.model = 'production';
 				instance.delete().then(result => {
-					expect(stubs.cypherQueriesShared.getDeleteQueries[instance.model].calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledOnce).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
 					expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
@@ -445,7 +448,7 @@ describe('Base model', () => {
 				instance.delete().then(result => {
 					expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
 					expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQueries.production.notCalled).to.be.true;
+					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries.production.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
 						{ query: 'getDeleteQuery response', params: instance }
@@ -465,8 +468,8 @@ describe('Base model', () => {
 		it('will get show data', done => {
 
 			instance.show().then(result => {
-				expect(stubs.cypherQueriesShared.getShowQueries.theatre.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getShowQueries.theatre.calledWithExactly()).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledWithExactly()).to.be.true;
 				expect(stubs.dbQuery.calledOnce).to.be.true;
 				expect(stubs.dbQuery.calledWithExactly(
 					{ query: 'getShowTheatreQuery response', params: instance }
