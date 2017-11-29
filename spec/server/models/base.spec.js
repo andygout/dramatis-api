@@ -24,12 +24,12 @@ beforeEach(() => {
 			getUpdateQueries: {
 				playtext: sinon.stub()
 			},
-			getShowQueries: {
-				theatre: sinon.stub().returns('getShowTheatreQuery response')
-			},
 			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getDeleteQueries: {
 				production: sinon.stub().returns('getDeleteProductionQuery response')
+			},
+			getShowQueries: {
+				theatre: sinon.stub().returns('getShowTheatreQuery response')
 			},
 			getListQuery: sinon.stub().returns('getListQuery response')
 		},
