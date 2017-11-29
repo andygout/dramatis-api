@@ -157,8 +157,8 @@ describe('Production model', () => {
 
 			it('will create', done => {
 
-				sinon.spy(instance, 'setErrorStatus');
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
+				sinon.spy(instance, 'setErrorStatus');
 				instance.createUpdate(getCreateQueryStub).then(result => {
 					sinon.assert.callOrder(
 						instance.setErrorStatus.withArgs(),
@@ -178,8 +178,8 @@ describe('Production model', () => {
 
 			it('will update', done => {
 
-				sinon.spy(instance, 'setErrorStatus');
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
+				sinon.spy(instance, 'setErrorStatus');
 				instance.createUpdate(getUpdateQueryStub).then(result => {
 					sinon.assert.callOrder(
 						instance.setErrorStatus.withArgs(),

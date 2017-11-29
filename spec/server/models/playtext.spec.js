@@ -134,9 +134,9 @@ describe('Playtext model', () => {
 
 			it('will create', done => {
 
+				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
-				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				instance.createUpdate(getCreateQueryStub).then(result => {
 					sinon.assert.callOrder(
 						instance.setErrorStatus.withArgs(),
@@ -160,9 +160,9 @@ describe('Playtext model', () => {
 
 			it('will update', done => {
 
+				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
-				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				instance.createUpdate(getUpdateQueryStub).then(result => {
 					sinon.assert.callOrder(
 						instance.setErrorStatus.withArgs(),
