@@ -14,15 +14,15 @@ beforeEach(() => {
 			getValidateQuery: sinon.stub().returns('getValidateQuery response'),
 			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
 			getCreateQueries: {
-				playtext: sinon.stub()
+				production: sinon.stub()
 			},
 			getEditQuery: sinon.stub().returns('getEditQuery response'),
 			getEditQueries: {
-				playtext: sinon.stub().returns('getEditPlaytextQuery response')
+				production: sinon.stub().returns('getEditProductionQuery response')
 			},
 			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
 			getUpdateQueries: {
-				playtext: sinon.stub()
+				production: sinon.stub()
 			},
 			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
 			getDeleteQueries: {
@@ -302,12 +302,12 @@ describe('Base model', () => {
 
 			it('will call createUpdate method with function to get model-specific create query as argument', done => {
 
-				instance.model = 'playtext';
+				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
 				instance.create().then(() => {
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesShared.getCreateQueries.playtext
+						stubs.cypherQueriesShared.getCreateQueries[instance.model]
 					)).to.be.true;
 					done();
 				});
@@ -339,14 +339,14 @@ describe('Base model', () => {
 
 			it('will get edit data using specific query', done => {
 
-				instance.model = 'playtext';
+				instance.model = 'production';
 				instance.edit().then(result => {
 					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledOnce).to.be.true;
 					expect(stubs.cypherQueriesShared.getEditQueries[instance.model].calledWithExactly()).to.be.true;
 					expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
-						{ query: 'getEditPlaytextQuery response', params: instance }
+						{ query: 'getEditProductionQuery response', params: instance }
 					)).to.be.true;
 					expect(result).to.deep.eq(dbQueryFixture);
 					done();
@@ -363,7 +363,7 @@ describe('Base model', () => {
 				instance.edit().then(result => {
 					expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
 					expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-					expect(stubs.cypherQueriesShared.getEditQueries.playtext.notCalled).to.be.true;
+					expect(stubs.cypherQueriesShared.getEditQueries.production.notCalled).to.be.true;
 					expect(stubs.dbQuery.calledOnce).to.be.true;
 					expect(stubs.dbQuery.calledWithExactly(
 						{ query: 'getEditQuery response', params: instance }
@@ -384,12 +384,12 @@ describe('Base model', () => {
 
 			it('will call createUpdate method with function to get model-specific update query as argument', done => {
 
-				instance.model = 'playtext';
+				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
 				instance.update().then(() => {
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesShared.getUpdateQueries.playtext
+						stubs.cypherQueriesShared.getUpdateQueries[instance.model]
 					)).to.be.true;
 					done();
 				});
