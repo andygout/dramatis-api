@@ -117,7 +117,9 @@ describe('Base model', () => {
 
 			instance.validateInDb().then(() => {
 				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(
+					instance.model, instance.uuid
+				)).to.be.true;
 				expect(stubs.dbQuery.calledOnce).to.be.true;
 				expect(stubs.dbQuery.calledWithExactly(
 					{ query: 'getValidateQuery response', params: instance }

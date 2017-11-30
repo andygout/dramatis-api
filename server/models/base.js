@@ -43,7 +43,7 @@ export default class Base {
 
 	validateInDb () {
 
-		return dbQuery({ query: getValidateQuery(this.model), params: this })
+		return dbQuery({ query: getValidateQuery(this.model, this.uuid), params: this })
 			.then(({ instanceCount }) => {
 
 				if (instanceCount > 0) this.errors.name = ['Name already exists'];

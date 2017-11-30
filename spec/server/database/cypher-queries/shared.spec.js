@@ -56,17 +56,38 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getValidateQuery function', () => {
 
-			it('will return requisite query', () => {
+			context('uuid agurment given is undefined (i.e. requested as part of create action)', () => {
 
-				const result = subject.getValidateQuery('theatre');
-				expect(stubs.capitalise.calledOnce).to.be.true;
-				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
-					MATCH (n:Theatre { name: $name })
-						WHERE n.uuid <> $uuid
+				it('will return requisite query', () => {
 
-					RETURN SIGN(COUNT(n)) AS instanceCount
-				`));
+					const result = subject.getValidateQuery('theatre', undefined);
+					expect(stubs.capitalise.calledOnce).to.be.true;
+					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+						MATCH (n:Theatre { name: $name })
+
+						RETURN SIGN(COUNT(n)) AS instanceCount
+					`));
+
+				});
+
+			});
+
+			context('uuid argument given is valid string (i.e. requested as part of update action)', () => {
+
+				it('will return requisite query', () => {
+
+					const result = subject.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+					expect(stubs.capitalise.calledOnce).to.be.true;
+					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+						MATCH (n:Theatre { name: $name })
+							WHERE n.uuid <> $uuid
+
+						RETURN SIGN(COUNT(n)) AS instanceCount
+					`));
+
+				});
 
 			});
 
