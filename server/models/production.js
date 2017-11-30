@@ -46,7 +46,7 @@ export default class Production extends Base {
 
 	createUpdate (getCreateUpdateQuery) {
 
-		if (this.setErrorStatus()) return Promise.resolve({ production: this });
+		if (this.setErrorStatus()) return Promise.resolve({ instance: this });
 
 		return dbQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
 

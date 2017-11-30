@@ -19,16 +19,6 @@ import trimStrings from '../lib/trim-strings';
 import validateString from '../lib/validate-string';
 import verifyErrorPresence from '../lib/verify-error-presence';
 
-const resolvePromiseWithInstance = instance => {
-
-	const instanceObject = {};
-
-	instanceObject[instance.model] = instance;
-
-	return Promise.resolve(instanceObject);
-
-};
-
 export default class Base {
 
 	constructor (props = {}) {
@@ -68,14 +58,14 @@ export default class Base {
 
 		this.hasError = verifyErrorPresence(this);
 
-		if (this.hasError) return resolvePromiseWithInstance(this);
+		if (this.hasError) return Promise.resolve({ instance: this });
 
 		return this.validateInDb()
 			.then(() => {
 
 				this.hasError = verifyErrorPresence(this);
 
-				if (this.hasError) return resolvePromiseWithInstance(this);
+				if (this.hasError) return Promise.resolve({ instance: this });
 
 				return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
 
