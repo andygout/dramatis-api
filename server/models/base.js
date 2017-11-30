@@ -34,7 +34,7 @@ export default class Base {
 	constructor (props = {}) {
 
 		this.uuid = props.uuid;
-		this.name = props.name;
+		this.name = props.name || '';
 		this.pageTitle = props.pageTitle;
 		this.hasError = false;
 		this.errors = {};
