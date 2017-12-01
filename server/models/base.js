@@ -58,14 +58,14 @@ export default class Base {
 
 		this.hasError = verifyErrorPresence(this);
 
-		if (this.hasError) return Promise.resolve({ instance: this });
+		if (this.hasError) return Promise.resolve(this);
 
 		return this.validateInDb()
 			.then(() => {
 
 				this.hasError = verifyErrorPresence(this);
 
-				if (this.hasError) return Promise.resolve({ instance: this });
+				if (this.hasError) return Promise.resolve(this);
 
 				return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
 
@@ -111,7 +111,7 @@ export default class Base {
 
 	static list (model) {
 
-		return dbQuery({ query: getListQuery(model) });
+		return dbQuery({ query: getListQuery(model) }, { returnArray: true });
 
 	}
 

@@ -38,12 +38,11 @@ describe('Cypher Queries Shared module', () => {
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Production)-[:PLAYS_AT]->(t:Theatre)
 
-					RETURN COLLECT({
-						model: 'production',
-						uuid: n.uuid,
-						name: n.name
-						, theatre: { model: 'theatre', uuid: t.uuid, name: t.name }
-					}) AS instances
+					RETURN
+						'production' AS model,
+						n.uuid AS uuid,
+						n.name AS name
+						, { model: 'theatre', uuid: t.uuid, name: t.name } AS theatre
 				`));
 
 			});
@@ -103,11 +102,10 @@ describe('Cypher Queries Shared module', () => {
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					CREATE (n:Theatre { uuid: $uuid, name: $name })
 
-					RETURN {
-						model: 'theatre',
-						uuid: n.uuid,
-						name: n.name
-					} AS instance
+					RETURN
+						'theatre' AS model,
+						n.uuid AS uuid,
+						n.name AS name
 				`));
 
 			});
@@ -124,11 +122,10 @@ describe('Cypher Queries Shared module', () => {
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
-					RETURN {
-						model: 'theatre',
-						uuid: n.uuid,
-						name: n.name
-					} AS instance
+					RETURN
+						'theatre' AS model,
+						n.uuid AS uuid,
+						n.name AS name
 				`));
 
 			});
@@ -146,11 +143,10 @@ describe('Cypher Queries Shared module', () => {
 					MATCH (n:Theatre { uuid: $uuid })
 						SET n.name = $name
 
-					RETURN {
-						model: 'theatre',
-						uuid: n.uuid,
-						name: n.name
-					} AS instance
+					RETURN
+						'theatre' AS model,
+						n.uuid AS uuid,
+						n.name AS name
 				`));
 
 			});
@@ -170,10 +166,9 @@ describe('Cypher Queries Shared module', () => {
 					WITH n, n.name AS name
 						DETACH DELETE n
 
-					RETURN {
-						model: 'theatre',
-						name: name
-					} AS instance
+					RETURN
+						'theatre' AS model,
+						n.name AS name
 				`));
 
 			});
@@ -190,11 +185,10 @@ describe('Cypher Queries Shared module', () => {
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Theatre)
 
-					RETURN COLLECT({
-						model: 'theatre',
-						uuid: n.uuid,
-						name: n.name
-					}) AS instances
+					RETURN
+						'theatre' AS model,
+						n.uuid AS uuid,
+						n.name AS name
 				`));
 
 			});

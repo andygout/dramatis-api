@@ -22,11 +22,10 @@ const getCreateUpdateQuery = action => {
 			CREATE (playtext)-[:INCLUDES_CHARACTER { position: char.position }]->(character)
 		)
 
-		RETURN {
-			model: 'playtext',
-			uuid: playtext.uuid,
-			name: playtext.name
-		} AS instance
+		RETURN
+			'playtext' AS model,
+			playtext.uuid AS uuid,
+			playtext.name AS name
 	`;
 
 };
@@ -41,12 +40,11 @@ const getEditQuery = () => `
 	WITH playtext, charRel, character
 		ORDER BY charRel.position
 
-	RETURN {
-		model: 'playtext',
-		uuid: playtext.uuid,
-		name: playtext.name,
-		characters: COLLECT(CASE WHEN character IS NULL THEN null ELSE { name: character.name } END)
-	} AS instance
+	RETURN
+		'playtext' AS model,
+		playtext.uuid AS uuid,
+		playtext.name AS name,
+		COLLECT(CASE WHEN character IS NULL THEN null ELSE { name: character.name } END) AS characters
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -67,19 +65,18 @@ const getShowQuery = () => `
 			END) AS characters
 		ORDER BY production.name, theatre.name
 
-	RETURN {
-		model: 'playtext',
-		uuid: playtext.uuid,
-		name: playtext.name,
-		characters: characters,
-		productions: COLLECT(CASE WHEN production IS NULL THEN null ELSE
+	RETURN
+		'playtext' AS model,
+		playtext.uuid AS uuid,
+		playtext.name AS name,
+		characters,
+		COLLECT(CASE WHEN production IS NULL THEN null ELSE
 			{
 				model: 'production',
 				uuid: production.uuid,
 				name: production.name,
 				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
-			} END)
-	} AS instance
+			} END) AS productions
 `;
 
 export {

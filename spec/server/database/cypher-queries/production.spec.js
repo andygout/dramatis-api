@@ -37,11 +37,10 @@ describe('Cypher Queries Production module', () => {
 					)
 				)
 
-				RETURN {
-					model: 'production',
-					uuid: production.uuid,
-					name: production.name
-				} AS instance
+				RETURN
+					'production' AS model,
+					production.uuid AS uuid,
+					production.name	AS name
 			`));
 
 		});
@@ -92,11 +91,10 @@ describe('Cypher Queries Production module', () => {
 					)
 				)
 
-				RETURN {
-					model: 'production',
-					uuid: production.uuid,
-					name: production.name
-				} AS instance
+				RETURN
+					'production' AS model,
+					production.uuid AS uuid,
+					production.name	AS name
 			`));
 
 		});

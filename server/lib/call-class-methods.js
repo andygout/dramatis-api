@@ -3,7 +3,7 @@ import renderJson from './render-json';
 const callInstanceMethod = (res, next, instance, method) => {
 
 	return instance[method]()
-		.then(({ instance }) => renderJson(res, instance))
+		.then(instance => renderJson(res, instance))
 		.catch(err => {
 
 			if (err.message === 'Not Found') return res.status(404).send(err.message);
@@ -17,7 +17,7 @@ const callInstanceMethod = (res, next, instance, method) => {
 const callStaticListMethod = (res, next, Class, model) => {
 
 	return Class.list(model)
-		.then(({ instances }) => renderJson(res, instances))
+		.then(instances => renderJson(res, instances))
 		.catch(err => next(err));
 
 };

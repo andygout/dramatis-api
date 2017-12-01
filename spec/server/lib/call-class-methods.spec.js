@@ -43,11 +43,11 @@ describe('Call Class Methods module', () => {
 			it('will call renderPage module', done => {
 
 				const subject = createSubject();
-				const instanceMethodResponse = { instance: { property: 'value' } };
+				const instanceMethodResponse = { property: 'value' };
 				sinon.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse) });
 				subject.callInstanceMethod(stubs.res, stubs.next, character, method).then(result => {
 					expect(stubs.renderJson.calledOnce).to.be.true;
-					expect(stubs.renderJson.calledWithExactly(stubs.res, instanceMethodResponse.instance)).to.be.true;
+					expect(stubs.renderJson.calledWithExactly(stubs.res, instanceMethodResponse)).to.be.true;
 					expect(stubs.next.notCalled).to.be.true;
 					expect(result).to.eq('renderJson response');
 					done();
@@ -113,12 +113,12 @@ describe('Call Class Methods module', () => {
 			it('will call renderPage module', done => {
 
 				const subject = createSubject();
-				const staticListMethodResponse = { instances: [{ property: 'value' }] };
+				const staticListMethodResponse = [{ property: 'value' }];
 				sinon.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse) });
 				subject.callStaticListMethod(stubs.res, stubs.next, Character, 'character').then(result => {
 					expect(stubs.renderJson.calledOnce).to.be.true;
 					expect(stubs.renderJson.calledWithExactly(
-						stubs.res, staticListMethodResponse.instances
+						stubs.res, staticListMethodResponse
 					)).to.be.true;
 					expect(stubs.next.notCalled).to.be.true;
 					expect(result).to.eq('renderJson response');

@@ -12,14 +12,13 @@ const getShowQuery = () => `
 	WITH theatre, production
 		ORDER BY production.name, theatre.name
 
-	RETURN {
-		model: 'theatre',
-		uuid: theatre.uuid,
-		name: theatre.name,
-		productions: COLLECT(CASE WHEN production IS NULL THEN null ELSE
+	RETURN
+		'theatre' AS model,
+		theatre.uuid AS uuid,
+		theatre.name AS name,
+		COLLECT(CASE WHEN production IS NULL THEN null ELSE
 				{ model: 'production', uuid: production.uuid, name: production.name }
-			END)
-	} AS instance
+			END) AS productions
 `;
 
 export {

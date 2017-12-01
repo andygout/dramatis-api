@@ -46,11 +46,10 @@ const getCreateUpdateQuery = action => {
 			)
 		)
 
-		RETURN {
-			model: 'production',
-			uuid: production.uuid,
-			name: production.name
-		} AS instance
+		RETURN
+			'production' AS model,
+			production.uuid AS uuid,
+			production.name	AS name
 	`;
 
 };
@@ -75,14 +74,13 @@ const getEditQuery = () => `
 			END) AS roles
 		ORDER BY castRel.position
 
-	RETURN {
-		model: 'production',
-		uuid: production.uuid,
-		name: production.name,
-		theatre: { name: theatre.name },
-		playtext: CASE WHEN playtext IS NULL THEN '' ELSE { name: playtext.name } END,
-		cast: COLLECT(CASE WHEN person IS NULL THEN null ELSE { name: person.name, roles: roles } END)
-	} AS instance
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		{ name: theatre.name } AS theatre,
+		CASE WHEN playtext IS NULL THEN '' ELSE { name: playtext.name } END AS playtext,
+		COLLECT(CASE WHEN person IS NULL THEN null ELSE { name: person.name, roles: roles } END) AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -98,10 +96,9 @@ const getDeleteQuery = () => `
 	WITH production, production.name AS name
 		DETACH DELETE production
 
-	RETURN {
-		model: 'production',
-		name: name
-	} AS instance
+	RETURN
+		'production' AS model,
+		name
 `;
 
 const getShowQuery = () => `
@@ -126,17 +123,17 @@ const getShowQuery = () => `
 			END) AS roles
 		ORDER BY castRel.position
 
-	RETURN {
-		model: 'production',
-		uuid: production.uuid,
-		name: production.name,
-		theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
-		playtext: CASE WHEN playtext IS NULL THEN null ELSE
-			{ model: 'playtext', uuid: playtext.uuid, name: playtext.name } END,
-		cast: COLLECT(CASE WHEN person IS NULL THEN null ELSE
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		{ model: 'theatre', uuid: theatre.uuid, name: theatre.name } AS theatre,
+		CASE WHEN playtext IS NULL THEN null ELSE
+				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+			END AS playtext,
+		COLLECT(CASE WHEN person IS NULL THEN null ELSE
 				{ model: 'person', uuid: person.uuid, name: person.name, roles: roles }
-			END)
-	} AS instance
+			END) AS cast
 `;
 
 export {

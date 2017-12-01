@@ -52,21 +52,20 @@ const getShowQuery = () => `
 		}) AS performers
 		ORDER BY production.name, theatre.name
 
-	RETURN {
-		model: 'character',
-		uuid: character.uuid,
-		name: character.name,
-		playtexts: playtexts,
-		variantNames: variantNames,
-		productions: COLLECT(CASE WHEN production IS NULL THEN null ELSE
+	RETURN
+		'character' AS model,
+		character.uuid AS uuid,
+		character.name AS name,
+		playtexts,
+		variantNames,
+		COLLECT(CASE WHEN production IS NULL THEN null ELSE
 			{
 				model: 'production',
 				uuid: production.uuid,
 				name: production.name,
 				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
 				performers: performers
-			} END)
-	} AS instance
+			} END) AS productions
 `;
 
 export {

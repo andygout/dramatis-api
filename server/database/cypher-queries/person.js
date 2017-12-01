@@ -18,19 +18,18 @@ const getShowQuery = () => `
 			END) AS roles
 		ORDER BY production.name, theatre.name
 
-	RETURN {
-		model: 'person',
-		uuid: person.uuid,
-		name: person.name,
-		productions: COLLECT(CASE WHEN production IS NULL THEN null ELSE
+	RETURN
+		'person' AS model,
+		person.uuid AS uuid,
+		person.name AS name,
+		COLLECT(CASE WHEN production IS NULL THEN null ELSE
 			{
 				model: 'production',
 				uuid: production.uuid,
 				name: production.name,
 				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
 				roles: roles
-			} END)
-	} AS instance
+			} END) AS productions
 `;
 
 export {
