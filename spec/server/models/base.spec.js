@@ -117,7 +117,9 @@ describe('Base model', () => {
 
 			instance.validateInDb().then(() => {
 				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(
+					instance.model, instance.uuid
+				)).to.be.true;
 				expect(stubs.dbQuery.calledOnce).to.be.true;
 				expect(stubs.dbQuery.calledWithExactly(
 					{ query: 'getValidateQuery response', params: instance }
@@ -252,7 +254,7 @@ describe('Base model', () => {
 						expect(stubs.dbQuery.notCalled).to.be.true;
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq({ theatre: instance });
+						expect(result).to.deep.eq({ instance });
 						done();
 					});
 
@@ -287,7 +289,7 @@ describe('Base model', () => {
 						expect(stubs.dbQuery.calledOnce).to.be.true;
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq({ theatre: instance });
+						expect(result).to.deep.eq({ instance });
 						done();
 					});
 

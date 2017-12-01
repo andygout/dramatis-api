@@ -212,7 +212,7 @@ describe('Production model', () => {
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
 					expect(stubs.dbQuery.notCalled).to.be.true;
-					expect(result).to.deep.eq({ production: instance });
+					expect(result).to.deep.eq({ instance });
 					done();
 				});
 

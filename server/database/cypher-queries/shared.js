@@ -1,8 +1,8 @@
 import capitalise from '../../lib/capitalise';
 
-const getValidateQuery = model => `
+const getValidateQuery = (model, uuid) => `
 	MATCH (n:${capitalise(model)} { name: $name })
-		WHERE n.uuid <> $uuid
+		${uuid ? 'WHERE n.uuid <> $uuid' : ''}
 
 	RETURN SIGN(COUNT(n)) AS instanceCount
 `;
