@@ -204,7 +204,7 @@ describe('Playtext model', () => {
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
 						expect(stubs.dbQuery.notCalled).to.be.true;
-						expect(result).to.deep.eq({ instance });
+						expect(result).to.deep.eq(instance);
 						done();
 					});
 
@@ -234,7 +234,7 @@ describe('Playtext model', () => {
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
 						expect(stubs.dbQuery.notCalled).to.be.true;
-						expect(result).to.deep.eq({ instance });
+						expect(result).to.deep.eq(instance);
 						done();
 					});
 

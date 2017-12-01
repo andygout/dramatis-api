@@ -10,32 +10,29 @@ const getValidateQuery = (model, uuid) => `
 const getCreateQuery = model => `
 	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name })
 
-	RETURN {
-		model: '${model}',
-		uuid: n.uuid,
-		name: n.name
-	} AS instance
+	RETURN
+		'${model}' AS model,
+		n.uuid AS uuid,
+		n.name AS name
 `;
 
 const getEditQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
-	RETURN {
-		model: '${model}',
-		uuid: n.uuid,
-		name: n.name
-	} AS instance
+	RETURN
+		'${model}' AS model,
+		n.uuid AS uuid,
+		n.name AS name
 `;
 
 const getUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 		SET n.name = $name
 
-	RETURN {
-		model: '${model}',
-		uuid: n.uuid,
-		name: n.name
-	} AS instance
+	RETURN
+		'${model}' AS model,
+		n.uuid AS uuid,
+		n.name AS name
 `;
 
 const getDeleteQuery = model => `
@@ -44,27 +41,27 @@ const getDeleteQuery = model => `
 	WITH n, n.name AS name
 		DETACH DELETE n
 
-	RETURN {
-		model: '${model}',
-		name: name
-	} AS instance
+	RETURN
+		'${model}' AS model,
+		n.name AS name
 `;
 
 const getListQuery = model => {
 
 	const theatreRelationship = (model === 'production') ? '-[:PLAYS_AT]->(t:Theatre)' : '';
 
-	const theatreObject = (model === 'production') ? ', theatre: { model: \'theatre\', uuid: t.uuid, name: t.name }' : '';
+	const theatreObject = (model === 'production') ?
+		', { model: \'theatre\', uuid: t.uuid, name: t.name } AS theatre' :
+		'';
 
 	return `
 		MATCH (n:${capitalise(model)})${theatreRelationship}
 
-		RETURN COLLECT({
-			model: '${model}',
-			uuid: n.uuid,
-			name: n.name
+		RETURN
+			'${model}' AS model,
+			n.uuid AS uuid,
+			n.name AS name
 			${theatreObject}
-		}) AS instances
 	`;
 
 };

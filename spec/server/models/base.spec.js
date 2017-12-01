@@ -254,7 +254,7 @@ describe('Base model', () => {
 						expect(stubs.dbQuery.notCalled).to.be.true;
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq({ instance });
+						expect(result).to.deep.eq(instance);
 						done();
 					});
 
@@ -289,7 +289,7 @@ describe('Base model', () => {
 						expect(stubs.dbQuery.calledOnce).to.be.true;
 						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq({ instance });
+						expect(result).to.deep.eq(instance);
 						done();
 					});
 
@@ -493,7 +493,9 @@ describe('Base model', () => {
 				expect(stubs.cypherQueriesShared.getListQuery.calledOnce).to.be.true;
 				expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('model')).to.be.true;
 				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly({ query: 'getListQuery response' })).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getListQuery response' }, { returnArray: true }
+				)).to.be.true;
 				expect(result).to.deep.eq(dbQueryFixture);
 				done();
 			});
