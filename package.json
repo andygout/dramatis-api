@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .js server/ spec/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
-    "unit-test": "find spec -name '*.spec.js' | xargs mocha --require babel-register -R spec",
+    "unit-test": "find spec -name '*.spec.js' | xargs mocha --require babel-register spec",
     "test": "npm run lint && npm run lintspaces && npm run unit-test",
     "start": "nodemon server/app.js --exec babel-node"
   },
@@ -22,7 +22,7 @@
     "express": "^4.14.0",
     "method-override": "^2.3.6",
     "morgan": "^1.5.1",
-    "neo4j": "^2.0.0-RC2",
+    "neo4j-driver": "^1.5.1",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
