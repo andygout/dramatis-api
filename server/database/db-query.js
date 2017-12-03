@@ -1,27 +1,40 @@
-import neo4j from 'neo4j';
+import { v1 as neo4j } from 'neo4j-driver';
 
-const { DATABASE_HOST, DATABASE_NAME, DATABASE_PORT } = process.env;
+import convertRecordsToObjects from './convert-records-to-objects';
 
-const db = new neo4j.GraphDatabase({
-	url: `http://neo4j:${DATABASE_NAME}@${DATABASE_HOST}:${DATABASE_PORT}`
-});
+const { DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, NODE_ENV } = process.env;
+
+const driver = (NODE_ENV !== 'test') ?
+	neo4j.driver(DATABASE_URL, neo4j.auth.basic(DATABASE_USERNAME, DATABASE_PASSWORD)) :
+	null;
 
 export default (queryData, queryOpts = {}) => {
+
+	const { query, params } = queryData;
 
 	const isReqdResult = queryOpts.isReqdResult === false ? false : true;
 	const returnArray = queryOpts.returnArray || false;
 
+	const session = driver.session();
+
 	return new Promise((resolve, reject) => {
 
-		db.cypher(queryData, (err, results) => {
+		return session
+			.run(query, params)
+			.then(response => {
 
-			if (err) return reject(err);
+				session.close();
 
-			return (!results.length && isReqdResult) ?
-				reject(new Error('Not Found')) :
-				resolve(returnArray ? results : results[0]);
+				driver.close();
 
-		});
+				const results = convertRecordsToObjects(response);
+
+				return (!results.length && isReqdResult) ?
+					reject(new Error('Not Found')) :
+					resolve(returnArray ? results : results[0]);
+
+			})
+			.catch(err => reject(err));
 
 	});
 
