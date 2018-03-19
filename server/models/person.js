@@ -12,9 +12,11 @@ export default class Person extends Base {
 		});
 
 		this.productions = [];
-		this.roles = props.roles ?
-			props.roles.filter(role => role.name.length).map(role => new Role(role)) :
-			[];
+		this.roles = props.roles
+			? props.roles
+				.filter(role => role.name.length)
+				.map(role => new Role(role))
+			: [];
 
 	}
 
