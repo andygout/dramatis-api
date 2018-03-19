@@ -25,7 +25,6 @@ export default class Base {
 
 		this.uuid = props.uuid;
 		this.name = props.name || '';
-		this.hasError = false;
 		this.errors = {};
 
 	}
