@@ -19,25 +19,25 @@ Graph database-driven API for site of theatrical productions and playtexts.
 ## Endpoints
 Using theatre model as an example.
 
-### GET /theatres/new
+### GET `/theatres/new`
 - Get data required to prepare **new** theatre.
 
-### POST /theatres
+### POST `/theatres`
 - **Create** theatre.
 - Requires body, e.g.: `{ "name": "National Theatre" }`.
 
-### GET /theatres/:uuid/edit
+### GET `/theatres/:uuid/edit`
 - Get data required to **edit** specific theatre.
 
-### POST /theatres/:uuid
+### POST `/theatres/:uuid`
 - **Update** specific theatre.
 - Requires body, e.g.: `{ "name": "Almeida Theatre" }`.
 
-### DELETE /theatres/:uuid
+### DELETE `/theatres/:uuid`
 - **Delete** specific theatre.
 
-### GET /theatres/:uuid
+### GET `/theatres/:uuid`
 - **Show** specific theatre.
 
-### GET /theatres
+### GET `/theatres`
 - **List** theatres.
