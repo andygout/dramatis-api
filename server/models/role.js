@@ -11,7 +11,6 @@ export default class Role {
 
 		this.name = props.name;
 		this.characterName = (props.characterName && props.characterName.length) ? props.characterName : null;
-		this.hasError = false;
 		this.errors = {};
 
 	}

@@ -25,6 +25,7 @@
     "one-var": [2, "never"],
     "quotes": [2, "single"],
     "space-before-function-paren": [2, "always"],
+    "spaced-comment": 2,
     "strict": [2, "global"],
     "wrap-iife": 2
   }

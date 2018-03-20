@@ -14,9 +14,11 @@ export default class Playtext extends Base {
 			get: function () { return 'playtext'; }
 		});
 
-		this.characters = props.characters ?
-			props.characters.filter(character => character.name.length).map(character => new Character(character)) :
-			[];
+		this.characters = props.characters
+			? props.characters
+				.filter(character => character.name.length)
+				.map(character => new Character(character))
+			: [];
 		this.productions = [];
 
 	}

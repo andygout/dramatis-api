@@ -18,9 +18,11 @@ export default class Production extends Base {
 
 		this.theatre = new Theatre(props.theatre);
 		this.playtext = new Playtext(props.playtext);
-		this.cast = props.cast ?
-			props.cast.filter(castMember => castMember.name.length).map(castMember => new Person(castMember)) :
-			[];
+		this.cast = props.cast
+			? props.cast
+				.filter(castMember => castMember.name.length)
+				.map(castMember => new Person(castMember))
+			: [];
 
 	}
 
