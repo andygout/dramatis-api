@@ -494,7 +494,7 @@ describe('Base model', () => {
 				expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('model')).to.be.true;
 				expect(stubs.dbQuery.calledOnce).to.be.true;
 				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getListQuery response' }, { returnArray: true }
+					{ query: 'getListQuery response' }, { isReqdResult: false, returnArray: true }
 				)).to.be.true;
 				expect(result).to.deep.eq(dbQueryFixture);
 				done();
