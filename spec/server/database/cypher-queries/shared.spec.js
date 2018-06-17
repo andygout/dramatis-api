@@ -168,7 +168,7 @@ describe('Cypher Queries Shared module', () => {
 
 					RETURN
 						'theatre' AS model,
-						n.name AS name
+						name
 				`));
 
 			});
