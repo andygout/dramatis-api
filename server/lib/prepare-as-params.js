@@ -4,15 +4,15 @@ import propIsObject from './prop-is-object';
 
 const prepareAsParams = instance => {
 
-	for (const prop in instance) if (instance.hasOwnProperty(prop)) {
+	Object.entries(instance).forEach(([prop, value]) => {
 
-		if (propIsObject(instance[prop])) {
+		if (propIsObject(value)) {
 
-			instance[prop] = prepareAsParams(instance[prop]);
+			instance[prop] = prepareAsParams(value);
 
-		} else if (Array.isArray(instance[prop])) {
+		} else if (Array.isArray(value)) {
 
-			instance[prop].forEach((item, index) => {
+			value.forEach((item, index) => {
 
 				if (propIsObject(item)) {
 
@@ -26,11 +26,11 @@ const prepareAsParams = instance => {
 
 		} else {
 
-			if (prop === 'uuid' && (instance[prop] === undefined || !instance[prop].length)) instance[prop] = uuid();
+			if (prop === 'uuid' && (value === undefined || !value.length)) instance[prop] = uuid();
 
 		}
 
-	}
+	});
 
 	return instance;
 
