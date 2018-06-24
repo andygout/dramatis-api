@@ -12,7 +12,7 @@ beforeEach(() => {
 		uuid: {
 			v4: sinon.stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		},
-		propIsObject: sinon.stub().returns(false)
+		isObject: sinon.stub().returns(false)
 	};
 
 	subject = createSubject();
@@ -22,7 +22,7 @@ beforeEach(() => {
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/lib/prepare-as-params', {
 		'uuid': stubs.uuid,
-		'./prop-is-object': stubOverrides.propIsObject || stubs.propIsObject
+		'./is-object': stubOverrides.isObject || stubs.isObject
 	});
 
 describe('Prepare As Params module', () => {
@@ -35,8 +35,8 @@ describe('Prepare As Params module', () => {
 
 				instance = { uuid: '' };
 				subject(instance);
-				expect(stubs.propIsObject.calledOnce).to.be.true;
-				expect(stubs.propIsObject.calledWithExactly('')).to.be.true;
+				expect(stubs.isObject.calledOnce).to.be.true;
+				expect(stubs.isObject.calledWithExactly('')).to.be.true;
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -46,8 +46,8 @@ describe('Prepare As Params module', () => {
 
 				instance = { uuid: undefined };
 				subject(instance);
-				expect(stubs.propIsObject.calledOnce).to.be.true;
-				expect(stubs.propIsObject.calledWithExactly(undefined)).to.be.true;
+				expect(stubs.isObject.calledOnce).to.be.true;
+				expect(stubs.isObject.calledWithExactly(undefined)).to.be.true;
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -57,8 +57,8 @@ describe('Prepare As Params module', () => {
 
 				instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 				subject(instance);
-				expect(stubs.propIsObject.calledOnce).to.be.true;
-				expect(stubs.propIsObject.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
+				expect(stubs.isObject.calledOnce).to.be.true;
+				expect(stubs.isObject.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -68,8 +68,8 @@ describe('Prepare As Params module', () => {
 
 				instance = { foo: '' };
 				subject(instance);
-				expect(stubs.propIsObject.calledOnce).to.be.true;
-				expect(stubs.propIsObject.calledWithExactly('')).to.be.true;
+				expect(stubs.isObject.calledOnce).to.be.true;
+				expect(stubs.isObject.calledWithExactly('')).to.be.true;
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.foo).to.eq('');
 
@@ -79,7 +79,7 @@ describe('Prepare As Params module', () => {
 
 				instance = { foo: '' };
 				subject(instance);
-				expect(stubs.propIsObject.calledOnce).to.be.true;
+				expect(stubs.isObject.calledOnce).to.be.true;
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance).not.to.have.property('position');
 
@@ -91,13 +91,13 @@ describe('Prepare As Params module', () => {
 
 			it('will assign value to uuid properties if empty string', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				const isObjectStub = sinon.stub();
+				isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { theatre: { uuid: '' } };
 				subject(instance);
-				expect(propIsObjectStub.calledTwice).to.be.true;
-				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, '');
+				expect(isObjectStub.calledTwice).to.be.true;
+				sinon.assert.calledWithExactly(isObjectStub.secondCall, '');
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -105,13 +105,13 @@ describe('Prepare As Params module', () => {
 
 			it('will assign value to uuid properties if undefined', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				const isObjectStub = sinon.stub();
+				isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { theatre: { uuid: undefined } };
 				subject(instance);
-				expect(propIsObjectStub.calledTwice).to.be.true;
-				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, undefined);
+				expect(isObjectStub.calledTwice).to.be.true;
+				sinon.assert.calledWithExactly(isObjectStub.secondCall, undefined);
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -119,13 +119,13 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid properties if already exists', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				const isObjectStub = sinon.stub();
+				isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 				subject(instance);
-				expect(propIsObjectStub.calledTwice).to.be.true;
-				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				expect(isObjectStub.calledTwice).to.be.true;
+				sinon.assert.calledWithExactly(isObjectStub.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.theatre.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -133,13 +133,13 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to non-uuid properties', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				const isObjectStub = sinon.stub();
+				isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { theatre: { foo: '' } };
 				subject(instance);
-				expect(propIsObjectStub.calledTwice).to.be.true;
-				sinon.assert.calledWithExactly(propIsObjectStub.secondCall, '');
+				expect(isObjectStub.calledTwice).to.be.true;
+				sinon.assert.calledWithExactly(isObjectStub.secondCall, '');
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.theatre.foo).to.eq('');
 
@@ -147,12 +147,12 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				const isObjectStub = sinon.stub();
+				isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { theatre: { uuid: '' } };
 				subject(instance);
-				expect(propIsObjectStub.calledTwice).to.be.true;
+				expect(isObjectStub.calledTwice).to.be.true;
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.theatre).not.to.have.property('position');
 
@@ -164,17 +164,17 @@ describe('Prepare As Params module', () => {
 
 			it('will assign value to uuid properties if empty string', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub
+				const isObjectStub = sinon.stub();
+				isObjectStub
 					.onFirstCall().returns(false)
 					.onSecondCall().returns(true)
 					.onThirdCall().returns(false)
 					.onCall(3).returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { cast: [{ uuid: '' }] };
 				subject(instance);
-				expect(propIsObjectStub.callCount).to.eq(4);
-				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, '');
+				expect(isObjectStub.callCount).to.eq(4);
+				sinon.assert.calledWithExactly(isObjectStub.thirdCall, '');
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -182,17 +182,17 @@ describe('Prepare As Params module', () => {
 
 			it('will assign value to uuid properties if undefined', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub
+				const isObjectStub = sinon.stub();
+				isObjectStub
 					.onFirstCall().returns(false)
 					.onSecondCall().returns(true)
 					.onThirdCall().returns(false)
 					.onCall(3).returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { cast: [{ uuid: undefined }] };
 				subject(instance);
-				expect(propIsObjectStub.callCount).to.eq(4);
-				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, undefined);
+				expect(isObjectStub.callCount).to.eq(4);
+				sinon.assert.calledWithExactly(isObjectStub.thirdCall, undefined);
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -200,17 +200,17 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid properties if already exists', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub
+				const isObjectStub = sinon.stub();
+				isObjectStub
 					.onFirstCall().returns(false)
 					.onSecondCall().returns(true)
 					.onThirdCall().returns(false)
 					.onCall(3).returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] };
 				subject(instance);
-				expect(propIsObjectStub.callCount).to.eq(4);
-				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				expect(isObjectStub.callCount).to.eq(4);
+				sinon.assert.calledWithExactly(isObjectStub.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.cast[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -218,17 +218,17 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to non-uuid properties', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub
+				const isObjectStub = sinon.stub();
+				isObjectStub
 					.onFirstCall().returns(false)
 					.onSecondCall().returns(true)
 					.onThirdCall().returns(false)
 					.onCall(3).returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { cast: [{ foo: '' }] }
 				subject(instance);
-				expect(propIsObjectStub.callCount).to.eq(4);
-				sinon.assert.calledWithExactly(propIsObjectStub.thirdCall, '');
+				expect(isObjectStub.callCount).to.eq(4);
+				sinon.assert.calledWithExactly(isObjectStub.thirdCall, '');
 				expect(stubs.uuid.v4.called).to.be.false;
 				expect(instance.cast[0].foo).to.eq('');
 
@@ -236,17 +236,17 @@ describe('Prepare As Params module', () => {
 
 			it('will add position property with value of array index', () => {
 
-				const propIsObjectStub = sinon.stub();
-				propIsObjectStub
+				const isObjectStub = sinon.stub();
+				isObjectStub
 					.onFirstCall().returns(false)
 					.onSecondCall().returns(true)
 					.onThirdCall().returns(false)
 					.onCall(3).returns(false);
-				subject = createSubject({ propIsObject: propIsObjectStub });
+				subject = createSubject({ isObject: isObjectStub });
 				instance = { cast: [{ uuid: '' }] };
 				subject(instance);
-				expect(propIsObjectStub.callCount).to.eq(4);
-				sinon.assert.calledWithExactly(propIsObjectStub.lastCall, 0);
+				expect(isObjectStub.callCount).to.eq(4);
+				sinon.assert.calledWithExactly(isObjectStub.lastCall, 0);
 				expect(stubs.uuid.v4.calledOnce).to.be.true;
 				expect(instance.cast[0].position).to.eq(0);
 

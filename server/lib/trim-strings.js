@@ -1,16 +1,16 @@
-import propIsObject from './prop-is-object';
+import isObject from './is-object';
 
 const trimStrings = instance => {
 
 	Object.entries(instance).forEach(([prop, value]) => {
 
-		if (propIsObject(value)) {
+		if (isObject(value)) {
 
 			instance[prop] = trimStrings(value);
 
 		} else if (Array.isArray(value)) {
 
-			value.forEach(item => { if (propIsObject(item)) trimStrings(item); });
+			value.forEach(item => { if (isObject(item)) trimStrings(item); });
 
 		} else {
 

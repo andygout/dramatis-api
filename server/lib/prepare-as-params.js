@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
-import propIsObject from './prop-is-object';
+import isObject from './is-object';
 
 const prepareAsParams = instance => {
 
 	Object.entries(instance).forEach(([prop, value]) => {
 
-		if (propIsObject(value)) {
+		if (isObject(value)) {
 
 			instance[prop] = prepareAsParams(value);
 
@@ -14,7 +14,7 @@ const prepareAsParams = instance => {
 
 			value.forEach((item, index) => {
 
-				if (propIsObject(item)) {
+				if (isObject(item)) {
 
 					item.position = index;
 
