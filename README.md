@@ -9,8 +9,11 @@ Graph database-driven API for site of theatrical productions and playtexts.
 - Create Neo4j database called `theatrebase` and run on `http://localhost:7474` (using [Neo4j Community Edition](https://neo4j.com/download/community-edition)).
 - Run server using `$ npm start` and visit routes at `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
 
-## To view content via user interface
-- Run a local instance of [`theatrebase-frontend`](https://github.com/andygout/theatrebase-frontend) on `http://localhost:3001`.
+## To view content via user interface (locally)
+- Run a local instance of [`theatrebase-frontend`](https://github.com/andygout/theatrebase-frontend) on `http://localhost:3001`, which will point at this API on port 3000.
+
+## To edit content via CMS (content management system) (locally)
+- Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3002`, which will point at this API on port 3000.
 
 ## To test
 - Ensure `$ npm install` has been run.
