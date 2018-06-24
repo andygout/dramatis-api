@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import subject from '../../../server/lib/prop-is-object';
+import subject from '../../../server/lib/is-object';
 
-describe('Prop Is Object module', () => {
+describe('Is Object module', () => {
 
 	it('will consider object with keys as valid object', () => {
 

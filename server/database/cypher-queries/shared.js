@@ -43,7 +43,7 @@ const getDeleteQuery = model => `
 
 	RETURN
 		'${model}' AS model,
-		n.name AS name
+		name
 `;
 
 const getListQuery = model => {

@@ -1,18 +1,20 @@
-import propIsObject from './prop-is-object';
+import isObject from './is-object';
 
-const objectWithErrors = item => propIsObject(item) && searchForErrors(item);
+const hasErrors = (prop, value) => prop === 'errors' && isObject(value);
 
-const propHasErrors = (prop, instanceProp) => prop === 'errors' && propIsObject(instanceProp);
+const objectWithErrors = item => isObject(item) && searchForErrors(item);
 
 const searchForErrors = instance => {
 
 	for (const prop in instance) if (instance.hasOwnProperty(prop)) {
 
-		if (propHasErrors(prop, instance[prop])) return true;
+		const value = instance[prop];
 
-		if (objectWithErrors(instance[prop])) return true;
+		if (hasErrors(prop, value)) return true;
 
-		if (Array.isArray(instance[prop]) && instance[prop].find(item => objectWithErrors(item))) return true;
+		if (objectWithErrors(value)) return true;
+
+		if (Array.isArray(value) && value.find(item => objectWithErrors(item))) return true;
 
 	}
 

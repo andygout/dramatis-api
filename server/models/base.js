@@ -109,7 +109,7 @@ export default class Base {
 
 	static list (model) {
 
-		return dbQuery({ query: getListQuery(model) }, { returnArray: true });
+		return dbQuery({ query: getListQuery(model) }, { isReqdResult: false, returnArray: true });
 
 	}
 
