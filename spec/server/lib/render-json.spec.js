@@ -10,7 +10,7 @@ describe('Render JSON module', () => {
 		const res = httpMocks.createResponse();
 		subject(res, { instanceProperty: 'instanceValue' });
 		expect(res.statusCode).to.eq(200);
-		expect(res._getHeaders()).to.deep.eq({ 'Content-Type': 'application/json' });
+		expect(res._getHeaders()).to.deep.eq({ 'content-type': 'application/json' });
 		expect(res._getData()).to.eq('{"instanceProperty":"instanceValue"}');
 
 	});
