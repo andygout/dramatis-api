@@ -69,9 +69,10 @@ const getEditQuery = () => `
 		ORDER BY roleRel.position
 
 	WITH production, theatre, playtext, castRel, person,
-		COLLECT(CASE WHEN role IS NULL THEN null ELSE
-				{ name: role.name, characterName: role.characterName }
-			END) AS roles
+		COLLECT(CASE WHEN role IS NULL
+			THEN null
+			ELSE { name: role.name, characterName: role.characterName }
+		END) + [{ name: '', characterName: '' }] AS roles
 		ORDER BY castRel.position
 
 	RETURN
@@ -79,8 +80,11 @@ const getEditQuery = () => `
 		production.uuid AS uuid,
 		production.name AS name,
 		{ name: theatre.name } AS theatre,
-		CASE WHEN playtext IS NULL THEN '' ELSE { name: playtext.name } END AS playtext,
-		COLLECT(CASE WHEN person IS NULL THEN null ELSE { name: person.name, roles: roles } END) AS cast
+		{ name: playtext.name } AS playtext,
+		COLLECT(CASE WHEN person IS NULL
+			THEN null
+			ELSE { name: person.name, roles: roles }
+		END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');

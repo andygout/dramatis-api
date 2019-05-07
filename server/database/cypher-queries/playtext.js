@@ -44,7 +44,10 @@ const getEditQuery = () => `
 		'playtext' AS model,
 		playtext.uuid AS uuid,
 		playtext.name AS name,
-		COLLECT(CASE WHEN character IS NULL THEN null ELSE { name: character.name } END) AS characters
+		COLLECT(CASE WHEN character IS NULL
+			THEN null
+			ELSE { name: character.name }
+		END) + [{ name: '' }] AS characters
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
