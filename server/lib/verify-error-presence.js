@@ -22,4 +22,4 @@ const searchForErrors = instance => {
 
 };
 
-export default instance => searchForErrors(instance);
+export default searchForErrors;

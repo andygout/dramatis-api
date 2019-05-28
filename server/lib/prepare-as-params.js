@@ -36,4 +36,4 @@ const prepareAsParams = instance => {
 
 };
 
-export default instance => prepareAsParams(instance);
+export default prepareAsParams;

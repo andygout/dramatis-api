@@ -24,4 +24,4 @@ const trimStrings = instance => {
 
 };
 
-export default instance => trimStrings(instance);
+export default trimStrings;
