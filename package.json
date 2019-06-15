@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .js server/ spec/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
-    "unit-test": "find spec -name '*.spec.js' | xargs mocha --require babel-register spec",
+    "unit-test": "find spec -name '*.spec.js' | xargs mocha --require @babel/register spec",
     "test": "npm run lint && npm run lintspaces && npm run unit-test",
     "start": "nodemon server/app.js --exec babel-node"
   },
@@ -26,10 +26,11 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
-    "babel-register": "^6.22.0",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "babel-plugin-add-module-exports": "^1.0.2",
     "chai": "^3.5.0",
     "eslint": "^4.11.0",
     "lintspaces-cli": "^0.6.0",
