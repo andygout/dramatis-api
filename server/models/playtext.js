@@ -33,20 +33,17 @@ export default class Playtext extends Base {
 
 	}
 
-	createUpdate (getCreateUpdateQuery) {
+	async createUpdate (getCreateUpdateQuery) {
 
-		if (this.setErrorStatus()) return Promise.resolve(this);
+		if (this.setErrorStatus()) return this;
 
-		return this.validateInDb()
-			.then(() => {
+		await this.validateInDb();
 
-				this.hasError = verifyErrorPresence(this);
+		this.hasError = verifyErrorPresence(this);
 
-				if (this.hasError) return Promise.resolve(this);
+		if (this.hasError) return this;
 
-				return dbQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
-
-			});
+		return dbQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
 
 	}
 

@@ -63,17 +63,15 @@ describe('Characters controller', () => {
 
 	describe('create method', () => {
 
-		it('will call callInstanceMethod module', done => {
+		it('will call callInstanceMethod module', async () => {
 
 			method = 'create';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character(), method
-				)).to.be.true;
-				expect(result).to.eq('callInstanceMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character(), method
+			)).to.be.true;
+			expect(result).to.eq('callInstanceMethod response');
 
 		});
 
@@ -81,17 +79,15 @@ describe('Characters controller', () => {
 
 	describe('edit method', () => {
 
-		it('will call callInstanceMethod module', done => {
+		it('will call callInstanceMethod module', async () => {
 
 			method = 'edit';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character(), method
-				)).to.be.true;
-				expect(result).to.eq('callInstanceMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character(), method
+			)).to.be.true;
+			expect(result).to.eq('callInstanceMethod response');
 
 		});
 
@@ -99,17 +95,15 @@ describe('Characters controller', () => {
 
 	describe('update method', () => {
 
-		it('will call callInstanceMethod module', done => {
+		it('will call callInstanceMethod module', async () => {
 
 			method = 'update';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character(), method
-				)).to.be.true;
-				expect(result).to.eq('callInstanceMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character(), method
+			)).to.be.true;
+			expect(result).to.eq('callInstanceMethod response');
 
 		});
 
@@ -117,17 +111,15 @@ describe('Characters controller', () => {
 
 	describe('delete method', () => {
 
-		it('will call callInstanceMethod module', done => {
+		it('will call callInstanceMethod module', async () => {
 
 			method = 'delete';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character(), method
-				)).to.be.true;
-				expect(result).to.eq('callInstanceMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character(), method
+			)).to.be.true;
+			expect(result).to.eq('callInstanceMethod response');
 
 		});
 
@@ -135,17 +127,15 @@ describe('Characters controller', () => {
 
 	describe('show method', () => {
 
-		it('will call callInstanceMethod module', done => {
+		it('will call callInstanceMethod module', async () => {
 
 			method = 'show';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character(), method
-				)).to.be.true;
-				expect(result).to.eq('callInstanceMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character(), method
+			)).to.be.true;
+			expect(result).to.eq('callInstanceMethod response');
 
 		});
 
@@ -153,17 +143,15 @@ describe('Characters controller', () => {
 
 	describe('list method', () => {
 
-		it('will call callStaticListMethod module', done => {
+		it('will call callStaticListMethod module', async () => {
 
 			method = 'list';
-			createInstance(method).then(result => {
-				expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
-				expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
-					stubs.res, stubs.next, stubs.Character, 'character'
-				)).to.be.true;
-				expect(result).to.eq('callStaticListMethod response');
-				done();
-			});
+			const result = await createInstance(method);
+			expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
+				stubs.res, stubs.next, stubs.Character, 'character'
+			)).to.be.true;
+			expect(result).to.eq('callStaticListMethod response');
 
 		});
 

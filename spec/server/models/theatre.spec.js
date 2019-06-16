@@ -44,30 +44,26 @@ describe('Theatre model', () => {
 
 	describe('validateDeleteInDb method', () => {
 
-		it('will validate delete in database', done => {
+		it('will validate delete in database', async () => {
 
-			instance.validateDeleteInDb().then(() => {
-				expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledWithExactly()).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getValidateDeleteQuery response', params: instance }
-				)).to.be.true;
-				done();
-			});
+			await instance.validateDeleteInDb();
+			expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
+			expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledWithExactly()).to.be.true;
+			expect(stubs.dbQuery.calledOnce).to.be.true;
+			expect(stubs.dbQuery.calledWithExactly(
+				{ query: 'getValidateDeleteQuery response', params: instance }
+			)).to.be.true;
 
 		});
 
 		context('valid data (results returned that indicate no dependent associations exist)', () => {
 
-			it('will not add properties to errors property', done => {
+			it('will not add properties to errors property', async () => {
 
 				instance = createInstance({ dbQuery: sinon.stub().resolves({ relationshipCount: 0 }) });
-				instance.validateDeleteInDb().then(() => {
-					expect(instance.errors).not.to.have.property('associations');
-					expect(instance.errors).to.deep.eq({});
-					done();
-				});
+				await instance.validateDeleteInDb();
+				expect(instance.errors).not.to.have.property('associations');
+				expect(instance.errors).to.deep.eq({});
 
 			});
 
@@ -75,16 +71,14 @@ describe('Theatre model', () => {
 
 		context('invalid data (results returned that indicate dependent associations exist)', () => {
 
-			it('will add properties that are arrays to errors property', done => {
+			it('will add properties that are arrays to errors property', async () => {
 
 				instance = createInstance({ dbQuery: sinon.stub().resolves({ relationshipCount: 1 }) });
-				instance.validateDeleteInDb().then(() => {
-					expect(instance.errors)
-						.to.have.property('associations')
-						.that.is.an('array')
-						.that.deep.eq(['productions']);
-					done();
-				});
+				await instance.validateDeleteInDb();
+				expect(instance.errors)
+					.to.have.property('associations')
+					.that.is.an('array')
+					.that.deep.eq(['productions']);
 
 			});
 
@@ -96,26 +90,24 @@ describe('Theatre model', () => {
 
 		context('no dependent associations', () => {
 
-			it('will delete', done => {
+			it('will delete', async () => {
 
 				sinon.spy(instance, 'validateDeleteInDb');
-				instance.delete().then(result => {
-					sinon.assert.callOrder(
-						instance.validateDeleteInDb.withArgs(),
-						stubs.cypherQueriesTheatre.getValidateDeleteQuery.withArgs(),
-						stubs.dbQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
-						stubs.verifyErrorPresence.withArgs(instance),
-						stubs.cypherQueriesShared.getDeleteQuery.withArgs(instance.model),
-						stubs.dbQuery.withArgs({ query: 'getDeleteQuery response', params: instance })
-					);
-					expect(instance.validateDeleteInDb.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledTwice).to.be.true;
-					expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.delete();
+				sinon.assert.callOrder(
+					instance.validateDeleteInDb.withArgs(),
+					stubs.cypherQueriesTheatre.getValidateDeleteQuery.withArgs(),
+					stubs.dbQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
+					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.cypherQueriesShared.getDeleteQuery.withArgs(instance.model),
+					stubs.dbQuery.withArgs({ query: 'getDeleteQuery response', params: instance })
+				);
+				expect(instance.validateDeleteInDb.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledTwice).to.be.true;
+				expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -123,26 +115,24 @@ describe('Theatre model', () => {
 
 		context('dependent associations', () => {
 
-			it('will return instance without deleting', done => {
+			it('will return instance without deleting', async () => {
 
 				const verifyErrorPresenceStub = sinon.stub().returns(true);
 				instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });
 				sinon.spy(instance, 'validateDeleteInDb');
-				instance.delete().then(result => {
-					sinon.assert.callOrder(
-						instance.validateDeleteInDb.withArgs(),
-						stubs.cypherQueriesTheatre.getValidateDeleteQuery.withArgs(),
-						stubs.dbQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
-						verifyErrorPresenceStub.withArgs(instance)
-					);
-					expect(instance.validateDeleteInDb.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(verifyErrorPresenceStub.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
-					expect(result).to.deep.eq({ theatre: instance });
-					done();
-				});
+				const result = await instance.delete();
+				sinon.assert.callOrder(
+					instance.validateDeleteInDb.withArgs(),
+					stubs.cypherQueriesTheatre.getValidateDeleteQuery.withArgs(),
+					stubs.dbQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
+					verifyErrorPresenceStub.withArgs(instance)
+				);
+				expect(instance.validateDeleteInDb.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(verifyErrorPresenceStub.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
+				expect(result).to.deep.eq({ theatre: instance });
 
 			});
 

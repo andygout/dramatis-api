@@ -3,6 +3,9 @@
 	no-unused-vars: ["error", { "argsIgnorePattern": "next" }]
 */
 
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 import './dotenv';
 import bodyParser from 'body-parser';
 import express from 'express';
@@ -121,10 +124,12 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-createConstraints().then(() => {
+(async () => {
+
+	await createConstraints();
 
 	server.listen(port, () => console.log(`Listening on port ${port}`));
 
 	server.on('error', onError);
 
-});
+})();

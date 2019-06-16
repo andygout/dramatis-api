@@ -11,27 +11,53 @@ const models = require('fs')
 	.filter(filename => filename !== 'base.js')
 	.map(filename => capitalise(filename.replace('.js', '')));
 
-const createConstraint = model =>
-	dbQuery({ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` }, { isReqdResult: false })
-		.then(() => console.log(`Constraint created for ${model}`))
-		.catch(err => console.log(`Error attempting to create constraint for ${model}: `, err));
+const createConstraint = async model => {
 
-export default () => {
+	try {
 
-	return dbQuery({ query: 'CALL db.constraints()' }, { isReqdResult: false, returnArray: true })
-		.then(constraints => {
+		await dbQuery(
+			{ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` },
+			{ isReqdResult: false }
+		);
 
-			const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
+		console.log(`Constraint created for ${model}`);
 
-			const modelsToConstrain = models.filter(model => modelsWithConstraints.indexOf(model) < 0);
+	} catch (err) {
 
-			if (!modelsToConstrain.length) return Promise.resolve().then(() => console.log('No constraints required'));
+		console.log(`Error attempting to create constraint for ${model}: `, err);
 
-			const modelConstraintFunctions = modelsToConstrain.map(model => () => createConstraint(model));
+	}
 
-			return directly(1, modelConstraintFunctions).then(() => console.log('All constraints created'));
+}
 
-		})
-		.catch(err => console.log('Error attempting: CALL db.constraints(): ', err));
+export default async () => {
+
+	try {
+
+		const constraints = await dbQuery({ query: 'CALL db.constraints()' }, { isReqdResult: false, returnArray: true });
+
+		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
+
+		const modelsToConstrain = models.filter(model => modelsWithConstraints.indexOf(model) < 0);
+
+		if (!modelsToConstrain.length) {
+
+			console.log('No constraints required');
+
+			return;
+
+		}
+
+		const modelConstraintFunctions = modelsToConstrain.map(model => () => createConstraint(model));
+
+		await directly(1, modelConstraintFunctions);
+
+		console.log('All constraints created');
+
+	} catch (err) {
+
+		console.log('Error attempting: CALL db.constraints(): ', err);
+
+	}
 
 }

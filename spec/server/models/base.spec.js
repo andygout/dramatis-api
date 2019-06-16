@@ -113,32 +113,28 @@ describe('Base model', () => {
 
 	describe('validateInDb method', () => {
 
-		it('will validate update in database', done => {
+		it('will validate update in database', async () => {
 
-			instance.validateInDb().then(() => {
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(
-					instance.model, instance.uuid
-				)).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getValidateQuery response', params: instance }
-				)).to.be.true;
-				done();
-			});
+			await instance.validateInDb();
+			expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+			expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(
+				instance.model, instance.uuid
+			)).to.be.true;
+			expect(stubs.dbQuery.calledOnce).to.be.true;
+			expect(stubs.dbQuery.calledWithExactly(
+				{ query: 'getValidateQuery response', params: instance }
+			)).to.be.true;
 
 		});
 
 		context('valid data (results returned that indicate name does not already exist)', () => {
 
-			it('will not add properties to errors property', done => {
+			it('will not add properties to errors property', async () => {
 
 				instance = createInstance({ dbQuery: sinon.stub().resolves({ instanceCount: 0 }) });
-				instance.validateInDb().then(() => {
-					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.eq({});
-					done();
-				});
+				await instance.validateInDb();
+				expect(instance.errors).not.to.have.property('name');
+				expect(instance.errors).to.deep.eq({});
 
 			});
 
@@ -146,16 +142,14 @@ describe('Base model', () => {
 
 		context('invalid data (results returned that indicate name already exists)', () => {
 
-			it('will add properties that are arrays to errors property', done => {
+			it('will add properties that are arrays to errors property', async () => {
 
 				instance = createInstance({ dbQuery: sinon.stub().resolves({ instanceCount: 1 }) });
-				instance.validateInDb().then(() => {
-					expect(instance.errors)
-						.to.have.property('name')
-						.that.is.an('array')
-						.that.deep.eq(['Name already exists']);
-					done();
-				});
+				await instance.validateInDb();
+				expect(instance.errors)
+					.to.have.property('name')
+					.that.is.an('array')
+					.that.deep.eq(['Name already exists']);
 
 			});
 
@@ -167,65 +161,61 @@ describe('Base model', () => {
 
 		context('valid data', () => {
 
-			it('will create', done => {
+			it('will create', async () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
-				instance.createUpdate(stubs.cypherQueriesShared.getCreateQuery).then(result => {
-					sinon.assert.callOrder(
-						instance.validate.withArgs({ required: true }),
-						stubs.verifyErrorPresence.withArgs(instance),
-						instance.validateInDb.withArgs(),
-						stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
-						stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-						stubs.verifyErrorPresence.withArgs(instance),
-						stubs.cypherQueriesShared.getCreateQuery.withArgs(instance.model),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs(
-							{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
-						)
-					);
-					expect(instance.validate.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
-					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledTwice).to.be.true;
-					expect(stubs.cypherQueriesShared.getCreateQuery.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(stubs.cypherQueriesShared.getCreateQuery)
+				sinon.assert.callOrder(
+					instance.validate.withArgs({ required: true }),
+					stubs.verifyErrorPresence.withArgs(instance),
+					instance.validateInDb.withArgs(),
+					stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+					stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.cypherQueriesShared.getCreateQuery.withArgs(instance.model),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs(
+						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
+					)
+				);
+				expect(instance.validate.calledOnce).to.be.true;
+				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(instance.validateInDb.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledTwice).to.be.true;
+				expect(stubs.cypherQueriesShared.getCreateQuery.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
-			it('will update', done => {
+			it('will update', async () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
-				instance.createUpdate(stubs.cypherQueriesShared.getUpdateQuery).then(result => {
-					sinon.assert.callOrder(
-						instance.validate.withArgs({ required: true }),
-						stubs.verifyErrorPresence.withArgs(instance),
-						instance.validateInDb.withArgs(),
-						stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
-						stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-						stubs.verifyErrorPresence.withArgs(instance),
-						stubs.cypherQueriesShared.getUpdateQuery.withArgs(instance.model),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs(
-							{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
-						)
-					);
-					expect(instance.validate.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
-					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledTwice).to.be.true;
-					expect(stubs.cypherQueriesShared.getUpdateQuery.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(stubs.cypherQueriesShared.getUpdateQuery);
+				sinon.assert.callOrder(
+					instance.validate.withArgs({ required: true }),
+					stubs.verifyErrorPresence.withArgs(instance),
+					instance.validateInDb.withArgs(),
+					stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+					stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.cypherQueriesShared.getUpdateQuery.withArgs(instance.model),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs(
+						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
+					)
+				);
+				expect(instance.validate.calledOnce).to.be.true;
+				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(instance.validateInDb.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledTwice).to.be.true;
+				expect(stubs.cypherQueriesShared.getUpdateQuery.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -235,7 +225,7 @@ describe('Base model', () => {
 
 			context('initial validation errors caused by submitted values', () => {
 
-				it('will return instance without creating/updating', done => {
+				it('will return instance without creating/updating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub().returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
@@ -243,20 +233,18 @@ describe('Base model', () => {
 					instance.model = 'theatre';
 					sinon.spy(instance, 'validate');
 					sinon.spy(instance, 'validateInDb');
-					instance.createUpdate(getCreateUpdateQueryStub).then(result => {
-						expect(instance.validate.calledBefore(verifyErrorPresenceStub)).to.be.true;
-						expect(instance.validate.calledOnce).to.be.true;
-						expect(instance.validate.calledWithExactly({ required: true })).to.be.true;
-						expect(verifyErrorPresenceStub.calledOnce).to.be.true;
-						expect(verifyErrorPresenceStub.calledWithExactly(instance)).to.be.true;
-						expect(instance.validateInDb.notCalled).to.be.true;
-						expect(stubs.cypherQueriesShared.getValidateQuery.notCalled).to.be.true;
-						expect(stubs.dbQuery.notCalled).to.be.true;
-						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq(instance);
-						done();
-					});
+					const result = await instance.createUpdate(getCreateUpdateQueryStub);
+					expect(instance.validate.calledBefore(verifyErrorPresenceStub)).to.be.true;
+					expect(instance.validate.calledOnce).to.be.true;
+					expect(instance.validate.calledWithExactly({ required: true })).to.be.true;
+					expect(verifyErrorPresenceStub.calledOnce).to.be.true;
+					expect(verifyErrorPresenceStub.calledWithExactly(instance)).to.be.true;
+					expect(instance.validateInDb.notCalled).to.be.true;
+					expect(stubs.cypherQueriesShared.getValidateQuery.notCalled).to.be.true;
+					expect(stubs.dbQuery.notCalled).to.be.true;
+					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
+					expect(stubs.prepareAsParams.notCalled).to.be.true;
+					expect(result).to.deep.eq(instance);
 
 				});
 
@@ -264,7 +252,7 @@ describe('Base model', () => {
 
 			context('secondary validation errors caused by database checks', () => {
 
-				it('will return instance without creating/updating', done => {
+				it('will return instance without creating/updating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub();
 					verifyErrorPresenceStub.onFirstCall().returns(false).onSecondCall().returns(true);
@@ -273,25 +261,23 @@ describe('Base model', () => {
 					instance.model = 'theatre';
 					sinon.spy(instance, 'validate');
 					sinon.spy(instance, 'validateInDb');
-					instance.createUpdate(getCreateUpdateQueryStub).then(result => {
-						sinon.assert.callOrder(
-							instance.validate.withArgs({ required: true }),
-							verifyErrorPresenceStub.withArgs(instance),
-							instance.validateInDb.withArgs(),
-							stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
-							stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-							verifyErrorPresenceStub.withArgs(instance)
-						);
-						expect(instance.validate.calledOnce).to.be.true;
-						expect(verifyErrorPresenceStub.calledTwice).to.be.true;
-						expect(instance.validateInDb.calledOnce).to.be.true;
-						expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-						expect(stubs.dbQuery.calledOnce).to.be.true;
-						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(result).to.deep.eq(instance);
-						done();
-					});
+					const result = await instance.createUpdate(getCreateUpdateQueryStub);
+					sinon.assert.callOrder(
+						instance.validate.withArgs({ required: true }),
+						verifyErrorPresenceStub.withArgs(instance),
+						instance.validateInDb.withArgs(),
+						stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+						stubs.dbQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+						verifyErrorPresenceStub.withArgs(instance)
+					);
+					expect(instance.validate.calledOnce).to.be.true;
+					expect(verifyErrorPresenceStub.calledTwice).to.be.true;
+					expect(instance.validateInDb.calledOnce).to.be.true;
+					expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+					expect(stubs.dbQuery.calledOnce).to.be.true;
+					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
+					expect(stubs.prepareAsParams.notCalled).to.be.true;
+					expect(result).to.deep.eq(instance);
 
 				});
 
@@ -305,17 +291,15 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will call createUpdate method with function to get model-specific create query as argument', done => {
+			it('will call createUpdate method with function to get model-specific create query as argument', async () => {
 
 				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
-				instance.create().then(() => {
-					expect(instance.createUpdate.calledOnce).to.be.true;
-					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesModelSpecific.getCreateQueries[instance.model]
-					)).to.be.true;
-					done();
-				});
+				await instance.create();
+				expect(instance.createUpdate.calledOnce).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(
+					stubs.cypherQueriesModelSpecific.getCreateQueries[instance.model]
+				)).to.be.true;
 
 			});
 
@@ -323,14 +307,12 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will call createUpdate method with function to get shared create query as argument', done => {
+			it('will call createUpdate method with function to get shared create query as argument', async () => {
 
 				sinon.spy(instance, 'createUpdate');
-				instance.create().then(() => {
-					expect(instance.createUpdate.calledOnce).to.be.true;
-					expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getCreateQuery)).to.be.true;
-					done();
-				});
+				await instance.create();
+				expect(instance.createUpdate.calledOnce).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getCreateQuery)).to.be.true;
 
 			});
 
@@ -342,20 +324,18 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will get edit data using model-specific query', done => {
+			it('will get edit data using model-specific query', async () => {
 
 				instance.model = 'production';
-				instance.edit().then(result => {
-					expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledOnce).to.be.true;
-					expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledWithExactly()).to.be.true;
-					expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledWithExactly(
-						{ query: 'getEditProductionQuery response', params: instance }
-					)).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.edit();
+				expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledOnce).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledWithExactly()).to.be.true;
+				expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getEditProductionQuery response', params: instance }
+				)).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -363,19 +343,17 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will get edit data using shared query', done => {
+			it('will get edit data using shared query', async () => {
 
-				instance.edit().then(result => {
-					expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-					expect(stubs.cypherQueriesModelSpecific.getEditQueries.production.notCalled).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledWithExactly(
-						{ query: 'getEditQuery response', params: instance }
-					)).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.edit();
+				expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getEditQueries.production.notCalled).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getEditQuery response', params: instance }
+				)).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -387,17 +365,15 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will call createUpdate method with function to get model-specific update query as argument', done => {
+			it('will call createUpdate method with function to get model-specific update query as argument', async () => {
 
 				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
-				instance.update().then(() => {
-					expect(instance.createUpdate.calledOnce).to.be.true;
-					expect(instance.createUpdate.calledWithExactly(
-						stubs.cypherQueriesModelSpecific.getUpdateQueries[instance.model]
-					)).to.be.true;
-					done();
-				});
+				await instance.update();
+				expect(instance.createUpdate.calledOnce).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(
+					stubs.cypherQueriesModelSpecific.getUpdateQueries[instance.model]
+				)).to.be.true;
 
 			});
 
@@ -405,14 +381,12 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will call createUpdate method with function to get shared update query as argument', done => {
+			it('will call createUpdate method with function to get shared update query as argument', async () => {
 
 				sinon.spy(instance, 'createUpdate');
-				instance.update().then(() => {
-					expect(instance.createUpdate.calledOnce).to.be.true;
-					expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
-					done();
-				});
+				await instance.update();
+				expect(instance.createUpdate.calledOnce).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
 
 			});
 
@@ -424,20 +398,18 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will delete using model-specific query', done => {
+			it('will delete using model-specific query', async () => {
 
 				instance.model = 'production';
-				instance.delete().then(result => {
-					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledOnce).to.be.true;
-					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledWithExactly(
-						{ query: 'getDeleteProductionQuery response', params: instance }
-					)).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.delete();
+				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledOnce).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
+				expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getDeleteProductionQuery response', params: instance }
+				)).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -445,19 +417,17 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will delete using shared query', done => {
+			it('will delete using shared query', async () => {
 
-				instance.delete().then(result => {
-					expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-					expect(stubs.cypherQueriesModelSpecific.getDeleteQueries.production.notCalled).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledWithExactly(
-						{ query: 'getDeleteQuery response', params: instance }
-					)).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.delete();
+				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries.production.notCalled).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledWithExactly(
+					{ query: 'getDeleteQuery response', params: instance }
+				)).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -467,18 +437,16 @@ describe('Base model', () => {
 
 	describe('show method', () => {
 
-		it('will get show data', done => {
+		it('will get show data', async () => {
 
-			instance.show().then(result => {
-				expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledWithExactly()).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getShowTheatreQuery response', params: instance }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
-			});
+			const result = await instance.show();
+			expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledOnce).to.be.true;
+			expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledWithExactly()).to.be.true;
+			expect(stubs.dbQuery.calledOnce).to.be.true;
+			expect(stubs.dbQuery.calledWithExactly(
+				{ query: 'getShowTheatreQuery response', params: instance }
+			)).to.be.true;
+			expect(result).to.deep.eq(dbQueryFixture);
 
 		});
 
@@ -486,19 +454,17 @@ describe('Base model', () => {
 
 	describe('list method', () => {
 
-		it('will get list data', done => {
+		it('will get list data', async () => {
 
 			const subject = createSubject();
-			subject.list('model').then(result => {
-				expect(stubs.cypherQueriesShared.getListQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('model')).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledWithExactly(
-					{ query: 'getListQuery response' }, { isReqdResult: false, returnArray: true }
-				)).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
-				done();
-			});
+			const result = await subject.list('model');
+			expect(stubs.cypherQueriesShared.getListQuery.calledOnce).to.be.true;
+			expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('model')).to.be.true;
+			expect(stubs.dbQuery.calledOnce).to.be.true;
+			expect(stubs.dbQuery.calledWithExactly(
+				{ query: 'getListQuery response' }, { isReqdResult: false, returnArray: true }
+			)).to.be.true;
+			expect(result).to.deep.eq(dbQueryFixture);
 
 		});
 
