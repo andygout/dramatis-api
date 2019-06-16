@@ -8,7 +8,9 @@
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "unit-test": "find spec -name '*.spec.js' | xargs mocha --require @babel/register spec",
     "test": "npm run lint && npm run lintspaces && npm run unit-test",
-    "start": "nodemon server/app.js --exec babel-node"
+    "build": "babel server --out-dir built",
+    "watch": "babel server --watch --out-dir built",
+    "start": "npm run watch & nodemon built/app.js"
   },
   "pre-commit": [
     "test"
@@ -26,8 +28,8 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "babel-plugin-add-module-exports": "^1.0.2",
