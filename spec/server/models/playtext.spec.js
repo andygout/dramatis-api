@@ -132,55 +132,51 @@ describe('Playtext model', () => {
 
 		context('valid data', () => {
 
-			it('will create using provided function to get appropriate query', done => {
+			it('will create using provided function to get appropriate query', async () => {
 
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
-				instance.createUpdate(getCreateQueryStub).then(result => {
-					sinon.assert.callOrder(
-						instance.setErrorStatus.withArgs(),
-						instance.validateInDb.withArgs(),
-						stubs.verifyErrorPresence.withArgs(instance),
-						getCreateQueryStub.withArgs(),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
-					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
-					expect(getCreateQueryStub.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(getCreateQueryStub);
+				sinon.assert.callOrder(
+					instance.setErrorStatus.withArgs(),
+					instance.validateInDb.withArgs(),
+					stubs.verifyErrorPresence.withArgs(instance),
+					getCreateQueryStub.withArgs(),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
+				);
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.validateInDb.calledOnce).to.be.true;
+				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(getCreateQueryStub.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
-			it('will update using provided function to get appropriate query', done => {
+			it('will update using provided function to get appropriate query', async () => {
 
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
-				instance.createUpdate(getUpdateQueryStub).then(result => {
-					sinon.assert.callOrder(
-						instance.setErrorStatus.withArgs(),
-						instance.validateInDb.withArgs(),
-						stubs.verifyErrorPresence.withArgs(instance),
-						getUpdateQueryStub.withArgs(),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
-					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
-					expect(getUpdateQueryStub.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(getUpdateQueryStub);
+				sinon.assert.callOrder(
+					instance.setErrorStatus.withArgs(),
+					instance.validateInDb.withArgs(),
+					stubs.verifyErrorPresence.withArgs(instance),
+					getUpdateQueryStub.withArgs(),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
+				);
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.validateInDb.calledOnce).to.be.true;
+				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(getUpdateQueryStub.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -190,23 +186,21 @@ describe('Playtext model', () => {
 
 			context('initial validation errors caused by submitted values', () => {
 
-				it('will return instance without creating', done => {
+				it('will return instance without creating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub().returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
 					instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });
 					sinon.spy(instance, 'setErrorStatus');
 					sinon.spy(instance, 'validateInDb');
-					instance.createUpdate(getCreateUpdateQueryStub).then(result => {
-						expect(instance.setErrorStatus.calledOnce).to.be.true;
-						expect(verifyErrorPresenceStub.calledOnce).to.be.true;
-						expect(instance.validateInDb.notCalled).to.be.true;
-						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(stubs.dbQuery.notCalled).to.be.true;
-						expect(result).to.deep.eq(instance);
-						done();
-					});
+					const result = await instance.createUpdate(getCreateUpdateQueryStub);
+					expect(instance.setErrorStatus.calledOnce).to.be.true;
+					expect(verifyErrorPresenceStub.calledOnce).to.be.true;
+					expect(instance.validateInDb.notCalled).to.be.true;
+					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
+					expect(stubs.prepareAsParams.notCalled).to.be.true;
+					expect(stubs.dbQuery.notCalled).to.be.true;
+					expect(result).to.deep.eq(instance);
 
 				});
 
@@ -214,7 +208,7 @@ describe('Playtext model', () => {
 
 			context('secondary validation errors caused by database checks', () => {
 
-				it('will return instance without creating', done => {
+				it('will return instance without creating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub();
 					verifyErrorPresenceStub.onFirstCall().returns(false).onSecondCall().returns(true);
@@ -222,21 +216,19 @@ describe('Playtext model', () => {
 					instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });
 					sinon.spy(instance, 'setErrorStatus');
 					sinon.spy(instance, 'validateInDb');
-					instance.createUpdate(getCreateUpdateQueryStub).then(result => {
-						sinon.assert.callOrder(
-							instance.setErrorStatus.withArgs(),
-							instance.validateInDb.withArgs(),
-							verifyErrorPresenceStub.withArgs(instance)
-						);
-						expect(instance.setErrorStatus.calledOnce).to.be.true;
-						expect(instance.validateInDb.calledOnce).to.be.true;
-						expect(verifyErrorPresenceStub.calledTwice).to.be.true;
-						expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-						expect(stubs.prepareAsParams.notCalled).to.be.true;
-						expect(stubs.dbQuery.notCalled).to.be.true;
-						expect(result).to.deep.eq(instance);
-						done();
-					});
+					const result = await instance.createUpdate(getCreateUpdateQueryStub);
+					sinon.assert.callOrder(
+						instance.setErrorStatus.withArgs(),
+						instance.validateInDb.withArgs(),
+						verifyErrorPresenceStub.withArgs(instance)
+					);
+					expect(instance.setErrorStatus.calledOnce).to.be.true;
+					expect(instance.validateInDb.calledOnce).to.be.true;
+					expect(verifyErrorPresenceStub.calledTwice).to.be.true;
+					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
+					expect(stubs.prepareAsParams.notCalled).to.be.true;
+					expect(stubs.dbQuery.notCalled).to.be.true;
+					expect(result).to.deep.eq(instance);
 
 				});
 

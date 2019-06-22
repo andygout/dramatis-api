@@ -39,35 +39,29 @@ export default class Base {
 
 	}
 
-	validateInDb () {
+	async validateInDb () {
 
-		return dbQuery({ query: getValidateQuery(this.model, this.uuid), params: this })
-			.then(({ instanceCount }) => {
+		const { instanceCount } = await dbQuery({ query: getValidateQuery(this.model, this.uuid), params: this });
 
-				if (instanceCount > 0) this.errors.name = ['Name already exists'];
-
-			});
+		if (instanceCount > 0) this.errors.name = ['Name already exists'];
 
 	}
 
-	createUpdate (getCreateUpdateQuery) {
+	async createUpdate (getCreateUpdateQuery) {
 
 		this.validate({ required: true });
 
 		this.hasError = verifyErrorPresence(this);
 
-		if (this.hasError) return Promise.resolve(this);
+		if (this.hasError) return this;
 
-		return this.validateInDb()
-			.then(() => {
+		await this.validateInDb();
 
-				this.hasError = verifyErrorPresence(this);
+		this.hasError = verifyErrorPresence(this);
 
-				if (this.hasError) return Promise.resolve(this);
+		if (this.hasError) return this;
 
-				return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
-
-			});
+		return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
 
 	}
 

@@ -8,7 +8,7 @@ const driver = (NODE_ENV !== 'test') ?
 	neo4j.driver(DATABASE_URL, neo4j.auth.basic(DATABASE_USERNAME, DATABASE_PASSWORD)) :
 	null;
 
-export default (queryData, queryOpts = {}) => {
+export default async (queryData, queryOpts = {}) => {
 
 	const { query, params } = queryData;
 
@@ -17,25 +17,24 @@ export default (queryData, queryOpts = {}) => {
 
 	const session = driver.session();
 
-	return new Promise((resolve, reject) => {
+	try {
 
-		return session
-			.run(query, params)
-			.then(response => {
+		const response = await session.run(query, params);
 
-				session.close();
+		session.close();
 
-				driver.close();
+		driver.close();
 
-				const results = convertRecordsToObjects(response);
+		const results = convertRecordsToObjects(response);
 
-				return (!results.length && isReqdResult) ?
-					reject(new Error('Not Found')) :
-					resolve(returnArray ? results : results[0]);
+		if (!results.length && isReqdResult) throw new Error('Not Found');
 
-			})
-			.catch(err => reject(err));
+		return returnArray ? results : results[0];
 
-	});
+	} catch (err) {
+
+		throw err;
+
+	}
 
 };

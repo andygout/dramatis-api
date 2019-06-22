@@ -155,45 +155,41 @@ describe('Production model', () => {
 
 		context('valid data', () => {
 
-			it('will create using provided function to get appropriate query', done => {
+			it('will create using provided function to get appropriate query', async () => {
 
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
-				instance.createUpdate(getCreateQueryStub).then(result => {
-					sinon.assert.callOrder(
-						instance.setErrorStatus.withArgs(),
-						getCreateQueryStub.withArgs(),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
-					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(getCreateQueryStub.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(getCreateQueryStub);
+				sinon.assert.callOrder(
+					instance.setErrorStatus.withArgs(),
+					getCreateQueryStub.withArgs(),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
+				);
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(getCreateQueryStub.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
-			it('will update using provided function to get appropriate query', done => {
+			it('will update using provided function to get appropriate query', async () => {
 
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
-				instance.createUpdate(getUpdateQueryStub).then(result => {
-					sinon.assert.callOrder(
-						instance.setErrorStatus.withArgs(),
-						getUpdateQueryStub.withArgs(),
-						stubs.prepareAsParams.withArgs(instance),
-						stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
-					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(getUpdateQueryStub.calledOnce).to.be.true;
-					expect(stubs.prepareAsParams.calledOnce).to.be.true;
-					expect(stubs.dbQuery.calledOnce).to.be.true;
-					expect(result).to.deep.eq(dbQueryFixture);
-					done();
-				});
+				const result = await instance.createUpdate(getUpdateQueryStub);
+				sinon.assert.callOrder(
+					instance.setErrorStatus.withArgs(),
+					getUpdateQueryStub.withArgs(),
+					stubs.prepareAsParams.withArgs(instance),
+					stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
+				);
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(getUpdateQueryStub.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.dbQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(dbQueryFixture);
 
 			});
 
@@ -201,20 +197,18 @@ describe('Production model', () => {
 
 		context('invalid data', () => {
 
-			it('will return instance without creating', done => {
+			it('will return instance without creating', async () => {
 
 				const getCreateUpdateQueryStub = sinon.stub();
 				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
 				sinon.spy(instance, 'setErrorStatus');
-				instance.createUpdate(getCreateUpdateQueryStub).then(result => {
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-					expect(stubs.prepareAsParams.notCalled).to.be.true;
-					expect(stubs.dbQuery.notCalled).to.be.true;
-					expect(result).to.deep.eq(instance);
-					done();
-				});
+				const result = await instance.createUpdate(getCreateUpdateQueryStub);
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
+				expect(stubs.prepareAsParams.notCalled).to.be.true;
+				expect(stubs.dbQuery.notCalled).to.be.true;
+				expect(result).to.deep.eq(instance);
 
 			});
 

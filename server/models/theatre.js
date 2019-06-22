@@ -18,29 +18,23 @@ export default class Theatre extends Base {
 
 	}
 
-	validateDeleteInDb () {
+	async validateDeleteInDb () {
 
-		return dbQuery({ query: getValidateDeleteQuery(), params: this })
-			.then(({ relationshipCount }) => {
+		const { relationshipCount } = await dbQuery({ query: getValidateDeleteQuery(), params: this });
 
-				if (relationshipCount > 0) this.errors.associations = ['productions'];
-
-			});
+		if (relationshipCount > 0) this.errors.associations = ['productions'];
 
 	}
 
-	delete () {
+	async delete () {
 
-		return this.validateDeleteInDb()
-			.then(() => {
+		await this.validateDeleteInDb();
 
-				this.hasError = verifyErrorPresence(this);
+		this.hasError = verifyErrorPresence(this);
 
-				if (this.hasError) return Promise.resolve({ theatre: this });
+		if (this.hasError) return { theatre: this };
 
-				return dbQuery({ query: getDeleteQuery(this.model), params: this });
-
-			});
+		return dbQuery({ query: getDeleteQuery(this.model), params: this });
 
 	}
 
