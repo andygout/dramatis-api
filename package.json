@@ -18,11 +18,10 @@
   "author": "https://github.com/andygout",
   "license": "MS-RSL",
   "dependencies": {
-    "body-parser": "^1.10.2",
     "core-js": "^3.1.4",
     "directly": "^2.0.4",
     "dotenv": "^2.0.0",
-    "express": "^4.14.0",
+    "express": "^4.17.1",
     "method-override": "^2.3.6",
     "morgan": "^1.5.1",
     "neo4j-driver": "^1.5.1",
