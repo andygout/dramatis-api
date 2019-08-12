@@ -27,6 +27,15 @@ const createSubject = (stubOverrides = {}) =>
 
 describe('Prepare As Params module', () => {
 
+	it('will return new object with modifications but will not mutate input object', () => {
+
+		instance = { uuid: '' };
+		const result = subject(instance);
+		expect(result.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+		expect(instance.uuid).to.eq('');
+
+	});
+
 	context('top level properties', () => {
 
 		it('will assign value to uuid properties if empty string', () => {
