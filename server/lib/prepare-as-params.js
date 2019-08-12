@@ -4,35 +4,43 @@ import isObject from './is-object';
 
 const prepareAsParams = instance => {
 
-	Object.entries(instance).forEach(([prop, value]) => {
+	return Object.keys(instance).reduce((accumulator, key) => {
 
-		if (isObject(value)) {
+		if (isObject(instance[key])) {
 
-			instance[prop] = prepareAsParams(value);
+			accumulator[key] = prepareAsParams(instance[key]);
 
-		} else if (Array.isArray(value)) {
+		} else if (Array.isArray(instance[key])) {
 
-			value.forEach((item, index) => {
+			accumulator[key] =
+				instance[key]
+					.map((item, index) => {
 
-				if (isObject(item)) {
+						if (isObject(item)) {
 
-					item.position = index;
+							item.position = index;
 
-					prepareAsParams(item);
+							return prepareAsParams(item);
 
-				}
+						}
 
-			});
+						return null;
+
+					})
+					.filter(Boolean);
 
 		} else {
 
-			if (prop === 'uuid' && (value === undefined || !value.length)) instance[prop] = uuid();
+			accumulator[key] =
+				(key === 'uuid' && (instance[key] === undefined || !instance[key].length))
+					? uuid()
+					: instance[key];
 
 		}
 
-	});
+		return accumulator;
 
-	return instance;
+	}, {});
 
 };
 
