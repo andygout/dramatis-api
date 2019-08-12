@@ -261,4 +261,214 @@ describe('Prepare As Params module', () => {
 
 	});
 
+	context('properties in arrays at nested level (nested in object)', () => {
+
+		it('will assign value to uuid properties if empty string', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { playtext: { roles: [{ uuid: '' }] } };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(3), '');
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+		});
+
+		it('will assign value to uuid properties if undefined', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { playtext: { roles: [{ uuid: undefined }] } };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(3), undefined);
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+		});
+
+		it('will not assign value to uuid properties if already exists', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { playtext: { roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.uuid.v4.called).to.be.false;
+			expect(result.playtext.roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+		});
+
+		it('will not assign value to non-uuid properties', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { playtext: { roles: [{ foo: '' }] } };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(3), '');
+			expect(stubs.uuid.v4.called).to.be.false;
+			expect(result.playtext.roles[0].foo).to.eq('');
+
+		});
+
+		it('will add position property with value of array index', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { playtext: { roles: [{ uuid: '' }] } };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(isObjectStub.lastCall, 0);
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.playtext.roles[0].position).to.eq(0);
+
+		});
+
+	});
+
+	context('properties in arrays at nested level (nested in array)', () => {
+
+		it('will assign value to uuid properties if empty string', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { cast: [{ roles: [{ uuid: '' }] }] };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(7);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(4), '');
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+		});
+
+		it('will assign value to uuid properties if undefined', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { cast: [{ roles: [{ uuid: undefined }] }] };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(7);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(4), undefined);
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+		});
+
+		it('will not assign value to uuid properties if already exists', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { cast: [{ roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] }] };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(7);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(4), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.uuid.v4.called).to.be.false;
+			expect(result.cast[0].roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+		});
+
+		it('will not assign value to non-uuid properties', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { cast: [{ roles: [{ foo: '' }] }] };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(7);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(4), '');
+			expect(stubs.uuid.v4.called).to.be.false;
+			expect(result.cast[0].roles[0].foo).to.eq('');
+
+		});
+
+		it('will add position property with value of array index', () => {
+
+			const isObjectStub = sinon.stub();
+			isObjectStub
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			subject = createSubject({ isObject: isObjectStub });
+			instance = { cast: [{ roles: [{ uuid: '' }] }] };
+			const result = subject(instance);
+			expect(isObjectStub.callCount).to.eq(7);
+			sinon.assert.calledWithExactly(isObjectStub.getCall(5), 0);
+			sinon.assert.calledWithExactly(isObjectStub.lastCall, 0);
+			expect(stubs.uuid.v4.calledOnce).to.be.true;
+			expect(result.cast[0].position).to.eq(0);
+			expect(result.cast[0].roles[0].position).to.eq(0);
+
+		});
+
+	});
+
 });
