@@ -8,7 +8,6 @@ let instance;
 beforeEach(() => {
 
 	stubs = {
-		trimStrings: sinon.stub(),
 		validateString: sinon.stub().returns([])
 	};
 
@@ -18,7 +17,6 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/role', {
-		'../lib/trim-strings': stubs.trimStrings,
 		'../lib/validate-string': stubOverrides.validateString || stubs.validateString
 	});
 
@@ -33,6 +31,17 @@ const createInstance = (stubOverrides = {}, props = { name: 'Hamlet, Prince of D
 describe('Role model', () => {
 
 	describe('constructor method', () => {
+
+		describe('name property', () => {
+
+			it('will trim', () => {
+
+				instance = createInstance({}, { name: ' Hamlet, Prince of Denmark ' });
+				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
+
+			});
+
+		});
 
 		describe('characterName property', () => {
 
@@ -49,6 +58,13 @@ describe('Role model', () => {
 
 			});
 
+			it('will assign as null if included in props but value is whitespace-only string', () => {
+
+				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: ' ' });
+				expect(instance.characterName).to.eq(null);
+
+			});
+
 			it('will assign value if included in props and value is string with length', () => {
 
 				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
@@ -61,19 +77,6 @@ describe('Role model', () => {
 	});
 
 	describe('validate method', () => {
-
-		it('will trim strings before validating name and characterName', () => {
-
-			instance.validate();
-			sinon.assert.callOrder(
-				stubs.trimStrings.withArgs(instance),
-				stubs.validateString.withArgs(instance.name, {}),
-				stubs.validateString.withArgs(instance.characterName, {})
-			);
-			expect(stubs.trimStrings.calledOnce).to.be.true;
-			expect(stubs.validateString.calledTwice).to.be.true;
-
-		});
 
 		context('valid data', () => {
 

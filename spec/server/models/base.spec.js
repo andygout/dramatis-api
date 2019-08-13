@@ -37,7 +37,6 @@ beforeEach(() => {
 		},
 		dbQuery: sinon.stub().resolves(dbQueryFixture),
 		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
-		trimStrings: sinon.stub(),
 		validateString: sinon.stub().returns([]),
 		verifyErrorPresence: sinon.stub().returns(false)
 	};
@@ -54,33 +53,43 @@ const createSubject = (stubOverrides = {}) =>
 		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../database/db-query': stubOverrides.dbQuery || stubs.dbQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
-		'../lib/trim-strings': stubs.trimStrings,
 		'../lib/validate-string': stubOverrides.validateString || stubs.validateString,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence
 	});
 
-const createInstance = (stubOverrides = {}) => {
+const createInstance = (stubOverrides = {}, props = { name: 'Foobar' }) => {
 
 	const subject = createSubject(stubOverrides);
 
-	return new subject({ name: 'Foobar' });
+	return new subject(props);
 
 };
 
 describe('Base model', () => {
 
-	describe('validate method', () => {
+	describe('constructor method', () => {
 
-		it('will trim strings before validating name', () => {
+		describe('name property', () => {
 
-			instance.validate();
-			expect(stubs.trimStrings.calledBefore(stubs.validateString)).to.be.true;
-			expect(stubs.trimStrings.calledOnce).to.be.true;
-			expect(stubs.trimStrings.calledWithExactly(instance)).to.be.true;
-			expect(stubs.validateString.calledOnce).to.be.true;
-			expect(stubs.validateString.calledWithExactly(instance.name, {})).to.be.true;
+			it('will assign as empty string if not included in props', () => {
+
+				instance = createInstance({}, {});
+				expect(instance.name).to.eq('');
+
+			});
+
+			it('will trim', () => {
+
+				instance = createInstance({}, { name: ' Barfoo ' });
+				expect(instance.name).to.eq('Barfoo');
+
+			});
 
 		});
+
+	});
+
+	describe('validate method', () => {
 
 		context('valid data', () => {
 

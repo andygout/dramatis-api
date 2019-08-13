@@ -1,4 +1,3 @@
-import trimStrings from '../lib/trim-strings';
 import validateString from '../lib/validate-string';
 
 export default class Role {
@@ -9,15 +8,15 @@ export default class Role {
 			get: function () { return 'role'; }
 		});
 
-		this.name = props.name;
-		this.characterName = (props.characterName && props.characterName.length) ? props.characterName : null;
+		this.name = props.name.trim();
+		this.characterName = props.characterName && props.characterName.trim().length
+			? props.characterName.trim()
+			: null;
 		this.errors = {};
 
 	}
 
 	validate (opts = {}) {
-
-		trimStrings(this);
 
 		const nameErrors = validateString(this.name, opts);
 

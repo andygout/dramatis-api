@@ -14,7 +14,7 @@ export default class Person extends Base {
 		this.productions = [];
 		this.roles = props.roles
 			? props.roles
-				.filter(role => role.name.length)
+				.filter(role => role.name.trim().length)
 				.map(role => new Role(role))
 			: [];
 

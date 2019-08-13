@@ -72,10 +72,17 @@ describe('Playtext model', () => {
 
 			});
 
-			it('will assign as array of characters if included in props, filtering out those with empty string names', () => {
+			it('will assign as array of characters if included in props, filtering out those with empty or whitespace-only string names', () => {
 
 				const CharacterStubOverride = function () { return sinon.createStubInstance(Character); };
-				const props = { name: 'Hamlet', characters: [{ name: 'Hamlet' }, { name: '' }] };
+				const props = {
+					name: 'Hamlet',
+					characters: [
+						{ name: 'Hamlet' },
+						{ name: '' },
+						{ name: ' ' }
+					]
+				};
 				instance = createInstance({ Character: CharacterStubOverride }, props);
 				expect(instance.characters.length).to.eq(1);
 				expect(instance.characters[0].constructor.name).to.eq('Character');

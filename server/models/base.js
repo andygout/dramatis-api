@@ -15,7 +15,6 @@ import {
 } from '../database/cypher-queries/shared';
 import dbQuery from '../database/db-query';
 import prepareAsParams from '../lib/prepare-as-params';
-import trimStrings from '../lib/trim-strings';
 import validateString from '../lib/validate-string';
 import verifyErrorPresence from '../lib/verify-error-presence';
 
@@ -24,14 +23,12 @@ export default class Base {
 	constructor (props = {}) {
 
 		this.uuid = props.uuid;
-		this.name = props.name || '';
+		this.name = props.name && props.name.trim() || '';
 		this.errors = {};
 
 	}
 
 	validate (opts = {}) {
-
-		trimStrings(this);
 
 		const nameErrors = validateString(this.name, opts);
 
