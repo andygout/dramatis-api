@@ -20,7 +20,7 @@ export default class Production extends Base {
 		this.playtext = new Playtext(props.playtext);
 		this.cast = props.cast
 			? props.cast
-				.filter(castMember => castMember.name.length)
+				.filter(castMember => castMember.name.trim().length)
 				.map(castMember => new Person(castMember))
 			: [];
 

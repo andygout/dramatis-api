@@ -16,7 +16,7 @@ export default class Playtext extends Base {
 
 		this.characters = props.characters
 			? props.characters
-				.filter(character => character.name.length)
+				.filter(character => character.name.trim().length)
 				.map(character => new Character(character))
 			: [];
 		this.productions = [];

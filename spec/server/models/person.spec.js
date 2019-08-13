@@ -48,9 +48,16 @@ describe('Person model', () => {
 
 			});
 
-			it('will assign as array of roles if included in props, filtering out those with empty string names', () => {
+			it('will assign as array of roles if included in props, filtering out those with empty or whitespace-only string names', () => {
 
-				const props = { name: 'Ian McKellen', roles: [{ name: 'King Lear' }, { name: '' }] };
+				const props = {
+					name: 'Ian McKellen',
+					roles: [
+						{ name: 'King Lear' },
+						{ name: '' },
+						{ name: ' ' }
+					]
+				};
 				instance = createInstance(props);
 				expect(instance.roles.length).to.eq(1);
 				expect(instance.roles[0].constructor.name).to.eq('Role');

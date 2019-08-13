@@ -89,10 +89,17 @@ describe('Production model', () => {
 
 			});
 
-			it('will assign as array of cast if included in props, filtering out those with empty string names', () => {
+			it('will assign as array of cast if included in props, filtering out those with empty or whitespace-only string names', () => {
 
 				const PersonStubOverride = function () { return sinon.createStubInstance(Person); };
-				const props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }, { name: '' }] };
+				const props = {
+					name: 'Hamlet',
+					cast: [
+						{ name: 'Patrick Stewart' },
+						{ name: '' },
+						{ name: ' ' }
+					]
+				};
 				instance = createInstance({ Person: PersonStubOverride }, props);
 				expect(instance.cast.length).to.eq(1);
 				expect(instance.cast[0].constructor.name).to.eq('Person');
