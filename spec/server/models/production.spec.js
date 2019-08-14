@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import Person from '../../../server/models/person';
 
-import dbQueryFixture from '../../fixtures/db-query';
+import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 let stubs;
 let instance;
@@ -37,7 +37,7 @@ const TheatreStub = function () {
 beforeEach(() => {
 
 	stubs = {
-		dbQuery: sinon.stub().resolves(dbQueryFixture),
+		neo4jQuery: sinon.stub().resolves(neo4jQueryFixture),
 		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
 		verifyErrorPresence: sinon.stub().returns(false),
 		Base: {
@@ -55,7 +55,7 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/production', {
-		'../database/db-query': stubs.dbQuery,
+		'../clients/neo4j': stubs.neo4jQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
 		'./base': proxyquire('../../../server/models/base', {
@@ -171,13 +171,13 @@ describe('Production model', () => {
 					instance.setErrorStatus.withArgs(),
 					getCreateQueryStub.withArgs(),
 					stubs.prepareAsParams.withArgs(instance),
-					stubs.dbQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
+					stubs.neo4jQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
 				);
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(neo4jQueryFixture);
 
 			});
 
@@ -190,13 +190,13 @@ describe('Production model', () => {
 					instance.setErrorStatus.withArgs(),
 					getUpdateQueryStub.withArgs(),
 					stubs.prepareAsParams.withArgs(instance),
-					stubs.dbQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
+					stubs.neo4jQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
 				);
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.dbQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(dbQueryFixture);
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(result).to.deep.eq(neo4jQueryFixture);
 
 			});
 
@@ -214,7 +214,7 @@ describe('Production model', () => {
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 				expect(stubs.prepareAsParams.notCalled).to.be.true;
-				expect(stubs.dbQuery.notCalled).to.be.true;
+				expect(stubs.neo4jQuery.notCalled).to.be.true;
 				expect(result).to.deep.eq(instance);
 
 			});

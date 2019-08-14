@@ -1,6 +1,6 @@
+import neo4jQuery from '../clients/neo4j';
 import { getDeleteQuery } from '../database/cypher-queries/shared';
 import { getValidateDeleteQuery } from '../database/cypher-queries/theatre';
-import dbQuery from '../database/db-query';
 import verifyErrorPresence from '../lib/verify-error-presence';
 import Base from './base';
 
@@ -20,7 +20,7 @@ export default class Theatre extends Base {
 
 	async validateDeleteInDb () {
 
-		const { relationshipCount } = await dbQuery({ query: getValidateDeleteQuery(), params: this });
+		const { relationshipCount } = await neo4jQuery({ query: getValidateDeleteQuery(), params: this });
 
 		if (relationshipCount > 0) this.errors.associations = ['productions'];
 
@@ -34,7 +34,7 @@ export default class Theatre extends Base {
 
 		if (this.hasError) return { theatre: this };
 
-		return dbQuery({ query: getDeleteQuery(this.model), params: this });
+		return neo4jQuery({ query: getDeleteQuery(this.model), params: this });
 
 	}
 

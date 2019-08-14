@@ -1,3 +1,4 @@
+import neo4jQuery from '../clients/neo4j';
 import {
 	getCreateQueries,
 	getEditQueries,
@@ -13,7 +14,6 @@ import {
 	getDeleteQuery,
 	getListQuery
 } from '../database/cypher-queries/shared';
-import dbQuery from '../database/db-query';
 import prepareAsParams from '../lib/prepare-as-params';
 import validateString from '../lib/validate-string';
 import verifyErrorPresence from '../lib/verify-error-presence';
@@ -38,7 +38,7 @@ export default class Base {
 
 	async validateInDb () {
 
-		const { instanceCount } = await dbQuery({ query: getValidateQuery(this.model, this.uuid), params: this });
+		const { instanceCount } = await neo4jQuery({ query: getValidateQuery(this.model, this.uuid), params: this });
 
 		if (instanceCount > 0) this.errors.name = ['Name already exists'];
 
@@ -58,7 +58,7 @@ export default class Base {
 
 		if (this.hasError) return this;
 
-		return dbQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
+		return neo4jQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
 
 	}
 
@@ -70,7 +70,7 @@ export default class Base {
 
 	edit () {
 
-		return dbQuery({
+		return neo4jQuery({
 			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
 			params: this
 		});
@@ -85,7 +85,7 @@ export default class Base {
 
 	delete () {
 
-		return dbQuery({
+		return neo4jQuery({
 			query: (getDeleteQueries[this.model] && getDeleteQueries[this.model]()) || getDeleteQuery(this.model),
 			params: this
 		});
@@ -94,13 +94,13 @@ export default class Base {
 
 	show () {
 
-		return dbQuery({ query: getShowQueries[this.model](), params: this });
+		return neo4jQuery({ query: getShowQueries[this.model](), params: this });
 
 	}
 
 	static list (model) {
 
-		return dbQuery({ query: getListQuery(model) }, { isReqdResult: false, returnArray: true });
+		return neo4jQuery({ query: getListQuery(model) }, { isReqdResult: false, returnArray: true });
 
 	}
 

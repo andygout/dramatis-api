@@ -3,7 +3,7 @@
 import directly from 'directly';
 import path from 'path';
 
-import dbQuery from './db-query';
+import neo4jQuery from '../clients/neo4j';
 import capitalise from '../lib/capitalise';
 
 const models = require('fs')
@@ -15,7 +15,7 @@ const createConstraint = async model => {
 
 	try {
 
-		await dbQuery(
+		await neo4jQuery(
 			{ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` },
 			{ isReqdResult: false }
 		);
@@ -34,7 +34,7 @@ export default async () => {
 
 	try {
 
-		const constraints = await dbQuery({ query: 'CALL db.constraints()' }, { isReqdResult: false, returnArray: true });
+		const constraints = await neo4jQuery({ query: 'CALL db.constraints()' }, { isReqdResult: false, returnArray: true });
 
 		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
 
