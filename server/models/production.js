@@ -1,4 +1,4 @@
-import dbQuery from '../database/db-query';
+import neo4jQuery from '../clients/neo4j';
 import prepareAsParams from '../lib/prepare-as-params';
 import verifyErrorPresence from '../lib/verify-error-presence';
 import Base from './base';
@@ -50,7 +50,7 @@ export default class Production extends Base {
 
 		if (this.setErrorStatus()) return this;
 
-		return dbQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+		return neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
 
 	}
 
