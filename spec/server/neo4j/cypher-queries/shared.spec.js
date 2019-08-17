@@ -18,7 +18,7 @@ beforeEach(() => {
 });
 
 const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../../server/database/cypher-queries/shared', {
+	proxyquire('../../../../server/neo4j/cypher-queries/shared', {
 		'../../lib/capitalise': stubOverrides.capitalise || stubs.capitalise
 	});
 

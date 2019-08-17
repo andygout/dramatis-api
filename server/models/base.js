@@ -1,11 +1,13 @@
-import neo4jQuery from '../clients/neo4j';
+import prepareAsParams from '../lib/prepare-as-params';
+import validateString from '../lib/validate-string';
+import verifyErrorPresence from '../lib/verify-error-presence';
 import {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
 	getDeleteQueries,
 	getShowQueries
-} from '../database/cypher-queries/model-query-maps';
+} from '../neo4j/cypher-queries/model-query-maps';
 import {
 	getValidateQuery,
 	getCreateQuery,
@@ -13,10 +15,8 @@ import {
 	getUpdateQuery,
 	getDeleteQuery,
 	getListQuery
-} from '../database/cypher-queries/shared';
-import prepareAsParams from '../lib/prepare-as-params';
-import validateString from '../lib/validate-string';
-import verifyErrorPresence from '../lib/verify-error-presence';
+} from '../neo4j/cypher-queries/shared';
+import neo4jQuery from '../neo4j/query';
 
 export default class Base {
 

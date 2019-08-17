@@ -26,9 +26,9 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/theatre', {
-		'../clients/neo4j': stubOverrides.neo4jQuery || stubs.neo4jQuery,
-		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
-		'../database/cypher-queries/theatre': stubs.cypherQueriesTheatre,
+		'../neo4j/cypher-queries/shared': stubs.cypherQueriesShared,
+		'../neo4j/cypher-queries/theatre': stubs.cypherQueriesTheatre,
+		'../neo4j/query': stubOverrides.neo4jQuery || stubs.neo4jQuery,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence
 	});
 

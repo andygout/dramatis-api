@@ -49,12 +49,12 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/base', {
-		'../clients/neo4j': stubOverrides.neo4jQuery || stubs.neo4jQuery,
-		'../database/cypher-queries/model-query-maps': stubs.cypherQueriesModelSpecific,
-		'../database/cypher-queries/shared': stubs.cypherQueriesShared,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
 		'../lib/validate-string': stubOverrides.validateString || stubs.validateString,
-		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence
+		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
+		'../neo4j/cypher-queries/model-query-maps': stubs.cypherQueriesModelSpecific,
+		'../neo4j/cypher-queries/shared': stubs.cypherQueriesShared,
+		'../neo4j/query': stubOverrides.neo4jQuery || stubs.neo4jQuery
 	});
 
 const createInstance = (stubOverrides = {}, props = { name: 'Foobar' }) => {

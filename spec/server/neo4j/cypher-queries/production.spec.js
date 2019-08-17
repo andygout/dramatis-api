@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { removeWhitespace } from '../../../spec-helpers';
 
-import * as subject from '../../../../server/database/cypher-queries/production';
+import * as subject from '../../../../server/neo4j/cypher-queries/production';
 
 describe('Cypher Queries Production module', () => {
 
