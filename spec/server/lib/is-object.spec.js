@@ -4,7 +4,7 @@ import subject from '../../../server/lib/is-object';
 
 describe('Is Object module', () => {
 
-	it('will consider object with keys as valid object', () => {
+	it('considers object with keys as valid object', () => {
 
 		expect(subject({ key: 'value' })).to.be.true;
 

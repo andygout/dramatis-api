@@ -43,13 +43,13 @@ describe('Validate String module', () => {
 
 		context('string is required', () => {
 
-			it('will add error to stringErrors array if string is shorter than minimum', () => {
+			it('adds error to stringErrors array if string is shorter than minimum', () => {
 
 				expect(subject(subMinLengthString, { required: true })).to.deep.eq(['Name is too short']);
 
 			});
 
-			it('will add error to stringErrors array if string is longer than maximum', () => {
+			it('adds error to stringErrors array if string is longer than maximum', () => {
 
 				expect(subject(surMaxLengthString, { required: true })).to.deep.eq(['Name is too long']);
 
@@ -59,7 +59,7 @@ describe('Validate String module', () => {
 
 		context('string is not required', () => {
 
-			it('will add error to stringErrors array if string is longer than maximum', () => {
+			it('adds error to stringErrors array if string is longer than maximum', () => {
 
 				expect(subject(surMaxLengthString)).to.deep.eq(['Name is too long']);
 
@@ -73,7 +73,7 @@ describe('Validate String module', () => {
 
 		context('string is required', () => {
 
-			it('will return empty stringErrors array', () => {
+			it('returns empty stringErrors array', () => {
 
 				expect(subject(null, { required: true })).to.deep.eq([]);
 
@@ -83,7 +83,7 @@ describe('Validate String module', () => {
 
 		context('string is not required', () => {
 
-			it('will return empty stringErrors array', () => {
+			it('returns empty stringErrors array', () => {
 
 				expect(subject(null)).to.deep.eq([]);
 

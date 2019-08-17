@@ -81,7 +81,7 @@ describe('Production model', () => {
 
 		describe('cast property', () => {
 
-			it('will assign as empty array if not included in props', () => {
+			it('assigns empty array if not included in props', () => {
 
 				const props = { name: 'Hamlet' };
 				instance = createInstance({}, props);
@@ -89,7 +89,7 @@ describe('Production model', () => {
 
 			});
 
-			it('will assign as array of cast if included in props, filtering out those with empty or whitespace-only string names', () => {
+			it('assigns array of cast if included in props, filtering out those with empty or whitespace-only string names', () => {
 
 				const PersonStubOverride = function () { return sinon.createStubInstance(Person); };
 				const props = {
@@ -112,7 +112,7 @@ describe('Production model', () => {
 
 	describe('setErrorStatus method', () => {
 
-		it('will call instance validate method + associated models\' validate methods then verifyErrorPresence', () => {
+		it('calls instance validate method and associated models\' validate methods then verifyErrorPresence', () => {
 
 			sinon.spy(instance, 'validate');
 			instance.setErrorStatus();
@@ -135,7 +135,7 @@ describe('Production model', () => {
 
 		context('valid data', () => {
 
-			it('will set instance hasError property to false and return same value', () => {
+			it('sets instance hasError property to false and returns same value', () => {
 
 				expect(instance.setErrorStatus()).to.be.false;
 				expect(instance.hasError).to.be.false;
@@ -146,7 +146,7 @@ describe('Production model', () => {
 
 		context('invalid data', () => {
 
-			it('will set instance hasError property to true and return same value', () => {
+			it('sets instance hasError property to true and returns same value', () => {
 
 				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
 				expect(instance.setErrorStatus()).to.be.true;
@@ -162,7 +162,7 @@ describe('Production model', () => {
 
 		context('valid data', () => {
 
-			it('will create using provided function to get appropriate query', async () => {
+			it('creates using provided function to get appropriate query', async () => {
 
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
@@ -181,7 +181,7 @@ describe('Production model', () => {
 
 			});
 
-			it('will update using provided function to get appropriate query', async () => {
+			it('updates using provided function to get appropriate query', async () => {
 
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
 				sinon.spy(instance, 'setErrorStatus');
@@ -204,7 +204,7 @@ describe('Production model', () => {
 
 		context('invalid data', () => {
 
-			it('will return instance without creating', async () => {
+			it('returns instance without creating', async () => {
 
 				const getCreateUpdateQueryStub = sinon.stub();
 				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });

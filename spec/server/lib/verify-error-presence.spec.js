@@ -25,7 +25,7 @@ describe('Verify Error Presence module', () => {
 
 	context('no valid error values present', () => {
 
-		it('will return false if no error values present', () => {
+		it('returns false if no error values present', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -47,7 +47,7 @@ describe('Verify Error Presence module', () => {
 
 		});
 
-		it('will return false if no error properties present', () => {
+		it('returns false if no error properties present', () => {
 
 			instance = { notErrors: {} };
 			const result = subject(instance);
@@ -57,7 +57,7 @@ describe('Verify Error Presence module', () => {
 
 		});
 
-		it('will return false if errors present in form of null value', () => {
+		it('returns false if errors present in form of null value', () => {
 
 			instance = { errors: null };
 			const result = subject(instance);
@@ -68,7 +68,7 @@ describe('Verify Error Presence module', () => {
 
 		});
 
-		it('will return false if errors present in form of array', () => {
+		it('returns false if errors present in form of array', () => {
 
 			instance = { errors: ['Name is too short'] };
 			const result = subject(instance);
@@ -84,7 +84,7 @@ describe('Verify Error Presence module', () => {
 
 	context('top level errors present', () => {
 
-		it('will return true', () => {
+		it('returns true', () => {
 
 			const isObjectStub = sinon.stub().returns(true);
 			subject = createSubject({ isObject: isObjectStub });
@@ -100,7 +100,7 @@ describe('Verify Error Presence module', () => {
 
 	context('nested errors present', () => {
 
-		it('will return true', () => {
+		it('returns true', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -120,7 +120,7 @@ describe('Verify Error Presence module', () => {
 
 	context('errors present in objects in arrays at top level', () => {
 
-		it('will return true', () => {
+		it('returns true', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub

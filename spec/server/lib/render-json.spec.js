@@ -5,7 +5,7 @@ import subject from '../../../server/lib/render-json';
 
 describe('Render JSON module', () => {
 
-	it('will render form page with requisite data', () => {
+	it('renders form page with requisite data', () => {
 
 		const res = httpMocks.createResponse();
 		subject(res, { instanceProperty: 'instanceValue' });

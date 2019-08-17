@@ -42,13 +42,13 @@ describe('Person model', () => {
 
 		describe('roles property', () => {
 
-			it('will assign as empty array if not included in props', () => {
+			it('assigns empty array if not included in props', () => {
 
 				expect(instance.roles).to.deep.eq([]);
 
 			});
 
-			it('will assign as array of roles if included in props, filtering out those with empty or whitespace-only string names', () => {
+			it('assigns array of roles if included in props, filtering out those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'Ian McKellen',

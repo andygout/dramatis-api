@@ -8,7 +8,7 @@ describe('Cypher Queries Production module', () => {
 
 	describe('getCreateQuery function', () => {
 
-		it('will return requisite query', () => {
+		it('returns requisite query', () => {
 
 			const result = subject.getCreateQuery();
 			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -49,7 +49,7 @@ describe('Cypher Queries Production module', () => {
 
 	describe('getUpdateQuery function', () => {
 
-		it('will return requisite query', () => {
+		it('returns requisite query', () => {
 
 			const result = subject.getUpdateQuery();
 			expect(removeWhitespace(result)).to.eq(removeWhitespace(`

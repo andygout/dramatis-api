@@ -71,14 +71,14 @@ describe('Base model', () => {
 
 		describe('name property', () => {
 
-			it('will assign as empty string if not included in props', () => {
+			it('assigns empty string if not included in props', () => {
 
 				instance = createInstance({}, {});
 				expect(instance.name).to.eq('');
 
 			});
 
-			it('will trim', () => {
+			it('trims', () => {
 
 				instance = createInstance({}, { name: ' Barfoo ' });
 				expect(instance.name).to.eq('Barfoo');
@@ -105,7 +105,7 @@ describe('Base model', () => {
 
 		context('invalid data', () => {
 
-			it('will add properties that are arrays to errors property', () => {
+			it('adds properties whose values are arrays to errors property', () => {
 
 				instance = createInstance({ validateString: sinon.stub().returns(['Name is too short']) });
 				instance.validate();
@@ -122,7 +122,7 @@ describe('Base model', () => {
 
 	describe('validateInDb method', () => {
 
-		it('will validate update in database', async () => {
+		it('validates update in database', async () => {
 
 			await instance.validateInDb();
 			expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
@@ -151,7 +151,7 @@ describe('Base model', () => {
 
 		context('invalid data (results returned that indicate name already exists)', () => {
 
-			it('will add properties that are arrays to errors property', async () => {
+			it('adds properties that are arrays to errors property', async () => {
 
 				instance = createInstance({ neo4jQuery: sinon.stub().resolves({ instanceCount: 1 }) });
 				await instance.validateInDb();
@@ -170,7 +170,7 @@ describe('Base model', () => {
 
 		context('valid data', () => {
 
-			it('will create', async () => {
+			it('creates', async () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
@@ -199,7 +199,7 @@ describe('Base model', () => {
 
 			});
 
-			it('will update', async () => {
+			it('updates', async () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
@@ -234,7 +234,7 @@ describe('Base model', () => {
 
 			context('initial validation errors caused by submitted values', () => {
 
-				it('will return instance without creating/updating', async () => {
+				it('returns instance without creating/updating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub().returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
@@ -261,7 +261,7 @@ describe('Base model', () => {
 
 			context('secondary validation errors caused by database checks', () => {
 
-				it('will return instance without creating/updating', async () => {
+				it('returns instance without creating/updating', async () => {
 
 					const verifyErrorPresenceStub = sinon.stub();
 					verifyErrorPresenceStub.onFirstCall().returns(false).onSecondCall().returns(true);
@@ -300,7 +300,7 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will call createUpdate method with function to get model-specific create query as argument', async () => {
+			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
 
 				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
@@ -316,7 +316,7 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will call createUpdate method with function to get shared create query as argument', async () => {
+			it('calls createUpdate method with function to get shared create query as argument', async () => {
 
 				sinon.spy(instance, 'createUpdate');
 				await instance.create();
@@ -333,7 +333,7 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will get edit data using model-specific query', async () => {
+			it('gets edit data using model-specific query', async () => {
 
 				instance.model = 'production';
 				const result = await instance.edit();
@@ -352,7 +352,7 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will get edit data using shared query', async () => {
+			it('gets edit data using shared query', async () => {
 
 				const result = await instance.edit();
 				expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
@@ -374,7 +374,7 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will call createUpdate method with function to get model-specific update query as argument', async () => {
+			it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
 				instance.model = 'production';
 				sinon.spy(instance, 'createUpdate');
@@ -390,7 +390,7 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will call createUpdate method with function to get shared update query as argument', async () => {
+			it('calls createUpdate method with function to get shared update query as argument', async () => {
 
 				sinon.spy(instance, 'createUpdate');
 				await instance.update();
@@ -407,7 +407,7 @@ describe('Base model', () => {
 
 		context('instance requires a model-specific query', () => {
 
-			it('will delete using model-specific query', async () => {
+			it('deletes using model-specific query', async () => {
 
 				instance.model = 'production';
 				const result = await instance.delete();
@@ -426,7 +426,7 @@ describe('Base model', () => {
 
 		context('instance can use shared query', () => {
 
-			it('will delete using shared query', async () => {
+			it('deletes using shared query', async () => {
 
 				const result = await instance.delete();
 				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
@@ -446,7 +446,7 @@ describe('Base model', () => {
 
 	describe('show method', () => {
 
-		it('will get show data', async () => {
+		it('gets show data', async () => {
 
 			const result = await instance.show();
 			expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledOnce).to.be.true;
@@ -463,7 +463,7 @@ describe('Base model', () => {
 
 	describe('list method', () => {
 
-		it('will get list data', async () => {
+		it('gets list data', async () => {
 
 			const subject = createSubject();
 			const result = await subject.list('model');

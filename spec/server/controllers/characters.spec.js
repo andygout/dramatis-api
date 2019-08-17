@@ -50,7 +50,7 @@ describe('Characters controller', () => {
 
 	describe('new method', () => {
 
-		it('will call renderJson module', () => {
+		it('calls renderJson module', () => {
 
 			method = 'new';
 			expect(createInstance(method)).to.eq('renderJson response');
@@ -63,7 +63,7 @@ describe('Characters controller', () => {
 
 	describe('create method', () => {
 
-		it('will call callInstanceMethod module', async () => {
+		it('calls callInstanceMethod module', async () => {
 
 			method = 'create';
 			const result = await createInstance(method);
@@ -79,7 +79,7 @@ describe('Characters controller', () => {
 
 	describe('edit method', () => {
 
-		it('will call callInstanceMethod module', async () => {
+		it('calls callInstanceMethod module', async () => {
 
 			method = 'edit';
 			const result = await createInstance(method);
@@ -95,7 +95,7 @@ describe('Characters controller', () => {
 
 	describe('update method', () => {
 
-		it('will call callInstanceMethod module', async () => {
+		it('calls callInstanceMethod module', async () => {
 
 			method = 'update';
 			const result = await createInstance(method);
@@ -111,7 +111,7 @@ describe('Characters controller', () => {
 
 	describe('delete method', () => {
 
-		it('will call callInstanceMethod module', async () => {
+		it('calls callInstanceMethod module', async () => {
 
 			method = 'delete';
 			const result = await createInstance(method);
@@ -127,7 +127,7 @@ describe('Characters controller', () => {
 
 	describe('show method', () => {
 
-		it('will call callInstanceMethod module', async () => {
+		it('calls callInstanceMethod module', async () => {
 
 			method = 'show';
 			const result = await createInstance(method);
@@ -143,7 +143,7 @@ describe('Characters controller', () => {
 
 	describe('list method', () => {
 
-		it('will call callStaticListMethod module', async () => {
+		it('calls callStaticListMethod module', async () => {
 
 			method = 'list';
 			const result = await createInstance(method);
