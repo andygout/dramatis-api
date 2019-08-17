@@ -27,7 +27,7 @@ const createSubject = (stubOverrides = {}) =>
 
 describe('Prepare As Params module', () => {
 
-	it('will return new object with modifications but will not mutate input object', () => {
+	it('returns new object with modifications but will not mutate input object', () => {
 
 		instance = { uuid: '' };
 		const result = subject(instance);
@@ -38,7 +38,7 @@ describe('Prepare As Params module', () => {
 
 	context('top level properties', () => {
 
-		it('will assign value to uuid properties if empty string', () => {
+		it('assigns value to uuid properties if empty string', () => {
 
 			instance = { uuid: '' };
 			const result = subject(instance);
@@ -49,7 +49,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will assign value to uuid properties if undefined', () => {
+		it('assigns value to uuid properties if undefined', () => {
 
 			instance = { uuid: undefined };
 			const result = subject(instance);
@@ -96,7 +96,7 @@ describe('Prepare As Params module', () => {
 
 	context('nested level properties', () => {
 
-		it('will assign value to uuid properties if empty string', () => {
+		it('assigns value to uuid properties if empty string', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
@@ -110,7 +110,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will assign value to uuid properties if undefined', () => {
+		it('assigns value to uuid properties if undefined', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub.onFirstCall().returns(true).onSecondCall().returns(false);
@@ -169,7 +169,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at top level', () => {
 
-		it('will assign value to uuid properties if empty string', () => {
+		it('assigns value to uuid properties if empty string', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -187,7 +187,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will assign value to uuid properties if undefined', () => {
+		it('assigns value to uuid properties if undefined', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -241,7 +241,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will add position property with value of array index', () => {
+		it('adds position property with value of array index', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -263,7 +263,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in object)', () => {
 
-		it('will assign value to uuid properties if empty string', () => {
+		it('assigns value to uuid properties if empty string', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -282,7 +282,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will assign value to uuid properties if undefined', () => {
+		it('assigns value to uuid properties if undefined', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -339,7 +339,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will add position property with value of array index', () => {
+		it('adds position property with value of array index', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -362,7 +362,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in array)', () => {
 
-		it('will assign value to uuid properties if empty string', () => {
+		it('assigns value to uuid properties if empty string', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -383,7 +383,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will assign value to uuid properties if undefined', () => {
+		it('assigns value to uuid properties if undefined', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub
@@ -446,7 +446,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will add position property with value of array index', () => {
+		it('adds position property with value of array index', () => {
 
 			const isObjectStub = sinon.stub();
 			isObjectStub

@@ -34,7 +34,7 @@ describe('Role model', () => {
 
 		describe('name property', () => {
 
-			it('will trim', () => {
+			it('trims', () => {
 
 				instance = createInstance({}, { name: ' Hamlet, Prince of Denmark ' });
 				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
@@ -45,27 +45,27 @@ describe('Role model', () => {
 
 		describe('characterName property', () => {
 
-			it('will assign as null if not included in props', () => {
+			it('assigns null if not included in props', () => {
 
 				expect(instance.characterName).to.eq(null);
 
 			});
 
-			it('will assign as null if included in props but value is empty string', () => {
+			it('assigns null if included in props but value is empty string', () => {
 
 				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: '' });
 				expect(instance.characterName).to.eq(null);
 
 			});
 
-			it('will assign as null if included in props but value is whitespace-only string', () => {
+			it('assigns null if included in props but value is whitespace-only string', () => {
 
 				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: ' ' });
 				expect(instance.characterName).to.eq(null);
 
 			});
 
-			it('will assign value if included in props and value is string with length', () => {
+			it('assigns value if included in props and value is string with length', () => {
 
 				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 				expect(instance.characterName).to.eq('Hamlet');
@@ -92,7 +92,7 @@ describe('Role model', () => {
 
 		context('invalid data', () => {
 
-			it('will add properties that are arrays to errors property', () => {
+			it('adds properties whose values are arrays to errors property', () => {
 
 				instance = createInstance({ validateString: sinon.stub().returns(['Name is too short']) });
 				instance.validate();

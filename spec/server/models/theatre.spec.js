@@ -44,7 +44,7 @@ describe('Theatre model', () => {
 
 	describe('validateDeleteInDb method', () => {
 
-		it('will validate delete in database', async () => {
+		it('validates delete in database', async () => {
 
 			await instance.validateDeleteInDb();
 			expect(stubs.cypherQueriesTheatre.getValidateDeleteQuery.calledOnce).to.be.true;
@@ -71,7 +71,7 @@ describe('Theatre model', () => {
 
 		context('invalid data (results returned that indicate dependent associations exist)', () => {
 
-			it('will add properties that are arrays to errors property', async () => {
+			it('adds properties whose values are arrays to errors property', async () => {
 
 				instance = createInstance({ neo4jQuery: sinon.stub().resolves({ relationshipCount: 1 }) });
 				await instance.validateDeleteInDb();
@@ -90,7 +90,7 @@ describe('Theatre model', () => {
 
 		context('no dependent associations', () => {
 
-			it('will delete', async () => {
+			it('deletes', async () => {
 
 				sinon.spy(instance, 'validateDeleteInDb');
 				const result = await instance.delete();
@@ -115,7 +115,7 @@ describe('Theatre model', () => {
 
 		context('dependent associations', () => {
 
-			it('will return instance without deleting', async () => {
+			it('returns instance without deleting', async () => {
 
 				const verifyErrorPresenceStub = sinon.stub().returns(true);
 				instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });

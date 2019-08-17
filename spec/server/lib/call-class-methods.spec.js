@@ -40,7 +40,7 @@ describe('Call Class Methods module', () => {
 
 		context('resolves with data', () => {
 
-			it('will call renderPage module', async () => {
+			it('calls renderPage module', async () => {
 
 				const subject = createSubject();
 				const instanceMethodResponse = { property: 'value' };
@@ -57,7 +57,7 @@ describe('Call Class Methods module', () => {
 
 		context('resolves with error', () => {
 
-			it('will call next() with error', async () => {
+			it('calls next() with error', async () => {
 
 				const subject = createSubject();
 				sinon.stub(character, method).callsFake(() => { return Promise.reject(err) });
@@ -72,7 +72,7 @@ describe('Call Class Methods module', () => {
 
 		context('resolves with \'Not Found\' error', () => {
 
-			it('will respond with 404 status and send error message', async () => {
+			it('responds with 404 status and sends error message', async () => {
 
 				const subject = createSubject();
 				sinon.stub(character, method).callsFake(() => { return Promise.reject(notFoundErr) });
@@ -104,7 +104,7 @@ describe('Call Class Methods module', () => {
 
 		context('resolves with data', () => {
 
-			it('will call renderPage module', async () => {
+			it('calls renderPage module', async () => {
 
 				const subject = createSubject();
 				const staticListMethodResponse = [{ property: 'value' }];
@@ -123,7 +123,7 @@ describe('Call Class Methods module', () => {
 
 		context('resolves with error', () => {
 
-			it('will call next() with error', async () => {
+			it('calls next() with error', async () => {
 
 				const subject = createSubject();
 				sinon.stub(Character, method).callsFake(() => { return Promise.reject(err) });

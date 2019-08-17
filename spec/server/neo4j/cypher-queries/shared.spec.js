@@ -28,7 +28,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getListQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const capitaliseStub = sinon.stub().returns('Production');
 				subject = createSubject({ capitalise: capitaliseStub });
@@ -57,7 +57,7 @@ describe('Cypher Queries Shared module', () => {
 
 			context('uuid agurment given is undefined (i.e. requested as part of create action)', () => {
 
-				it('will return requisite query', () => {
+				it('returns requisite query', () => {
 
 					const result = subject.getValidateQuery('theatre', undefined);
 					expect(stubs.capitalise.calledOnce).to.be.true;
@@ -74,7 +74,7 @@ describe('Cypher Queries Shared module', () => {
 
 			context('uuid argument given is valid string (i.e. requested as part of update action)', () => {
 
-				it('will return requisite query', () => {
+				it('returns requisite query', () => {
 
 					const result = subject.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 					expect(stubs.capitalise.calledOnce).to.be.true;
@@ -94,7 +94,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getCreateQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const result = subject.getCreateQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
@@ -114,7 +114,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getEditQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const result = subject.getEditQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
@@ -134,7 +134,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getUpdateQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const result = subject.getUpdateQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
@@ -155,7 +155,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getDeleteQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const result = subject.getDeleteQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
@@ -177,7 +177,7 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getListQuery function', () => {
 
-			it('will return requisite query', () => {
+			it('returns requisite query', () => {
 
 				const result = subject.getListQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
