@@ -38,14 +38,14 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/playtext', {
-		'../clients/neo4j': stubs.neo4jQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
+		'../neo4j/query': stubs.neo4jQuery,
 		'./base': proxyquire('../../../server/models/base', {
-			'../clients/neo4j': stubs.Base.neo4jQuery,
-			'../database/cypher-queries/shared': stubs.Base.cypherQueriesShared,
 			'../lib/trim-strings': stubs.Base.trimStrings,
-			'../lib/validate-string': stubs.Base.validateString
+			'../lib/validate-string': stubs.Base.validateString,
+			'../neo4j/cypher-queries/shared': stubs.Base.cypherQueriesShared,
+			'../neo4j/query': stubs.Base.neo4jQuery
 		}),
 		'./character': stubOverrides.Character || stubs.Character
 	});

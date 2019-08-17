@@ -12,7 +12,7 @@ import express from 'express';
 import http from 'http';
 import logger from 'morgan';
 
-import createConstraints from './database/create-constraints';
+import createNeo4jConstraints from './neo4j/create-constraints';
 import router from './routes';
 
 const app = express();
@@ -126,7 +126,7 @@ const server = http.createServer(app);
 
 (async () => {
 
-	await createConstraints();
+	await createNeo4jConstraints();
 
 	server.listen(port, () => console.log(`Listening on port ${port}`));
 

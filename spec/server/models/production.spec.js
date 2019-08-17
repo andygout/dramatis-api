@@ -55,9 +55,9 @@ beforeEach(() => {
 
 const createSubject = (stubOverrides = {}) =>
 	proxyquire('../../../server/models/production', {
-		'../clients/neo4j': stubs.neo4jQuery,
 		'../lib/prepare-as-params': stubs.prepareAsParams,
 		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
+		'../neo4j/query': stubs.neo4jQuery,
 		'./base': proxyquire('../../../server/models/base', {
 			'../lib/trim-strings': stubs.Base.trimStrings,
 			'../lib/validate-string': stubs.Base.validateString
