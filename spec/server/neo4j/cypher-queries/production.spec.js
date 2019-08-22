@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 
+import * as cypherQueriesProduction from '../../../../server/neo4j/cypher-queries/production';
 import { removeWhitespace } from '../../../spec-helpers';
-
-import * as subject from '../../../../server/neo4j/cypher-queries/production';
 
 describe('Cypher Queries Production module', () => {
 
@@ -10,7 +9,7 @@ describe('Cypher Queries Production module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = subject.getCreateQuery();
+			const result = cypherQueriesProduction.getCreateQuery();
 			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 				CREATE (production:Production { uuid: $uuid, name: $name })
 
@@ -51,7 +50,7 @@ describe('Cypher Queries Production module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = subject.getUpdateQuery();
+			const result = cypherQueriesProduction.getUpdateQuery();
 			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
 

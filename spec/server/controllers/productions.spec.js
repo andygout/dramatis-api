@@ -4,58 +4,60 @@ import sinon from 'sinon';
 
 import Production from '../../../server/models/production';
 
-let stubs;
-let method;
+describe('Productions controller', () => {
 
-const ProductionStub = function () {
+	let stubs;
 
-	return sinon.createStubInstance(Production);
+	const ProductionStub = function () {
 
-};
+		return sinon.createStubInstance(Production);
 
-beforeEach(() => {
-
-	stubs = {
-		callClassMethods: {
-			callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
-			callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
-		},
-		renderJson: sinon.stub().returns('renderJson response'),
-		Production: ProductionStub,
-		req: sinon.stub(),
-		res: sinon.stub(),
-		next: sinon.stub()
 	};
 
-});
+	beforeEach(() => {
 
-const createSubject = () =>
-	proxyquire('../../../server/controllers/productions', {
-		'../lib/call-class-methods': stubs.callClassMethods,
-		'../lib/render-json': stubs.renderJson,
-		'../models/production': stubs.Production
+		stubs = {
+			callClassMethodsModule: {
+				callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
+				callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
+			},
+			renderJsonModule: {
+				renderJson: sinon.stub().returns('renderJson response')
+			},
+			Production: ProductionStub,
+			req: sinon.stub(),
+			res: sinon.stub(),
+			next: sinon.stub()
+		};
+
 	});
 
-const createInstance = method => {
+	const createSubject = () =>
+		proxyquire('../../../server/controllers/productions', {
+			'../lib/call-class-methods': stubs.callClassMethodsModule,
+			'../lib/render-json': stubs.renderJsonModule,
+			'../models/production': stubs.Production
+		});
 
-	const subject = createSubject();
+	const createInstance = method => {
 
-	const controllerFunction = `${method}Route`;
+		const subject = createSubject();
 
-	return subject[controllerFunction](stubs.req, stubs.res, stubs.next);
+		const controllerFunction = `${method}Route`;
 
-};
+		return subject[controllerFunction](stubs.req, stubs.res, stubs.next);
 
-describe('Productions controller', () => {
+	};
 
 	describe('new method', () => {
 
+		const method = 'new';
+
 		it('calls renderJson module', () => {
 
-			method = 'new';
 			expect(createInstance(method)).to.eq('renderJson response');
-			expect(stubs.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJson.calledWithExactly(stubs.res, stubs.Production())).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.Production())).to.be.true;
 
 		});
 
@@ -63,12 +65,13 @@ describe('Productions controller', () => {
 
 	describe('create method', () => {
 
+		const method = 'create';
+
 		it('calls callInstanceMethod module', async () => {
 
-			method = 'create';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production(), method
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
@@ -79,12 +82,13 @@ describe('Productions controller', () => {
 
 	describe('edit method', () => {
 
+		const method = 'edit';
+
 		it('calls callInstanceMethod module', async () => {
 
-			method = 'edit';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production(), method
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
@@ -95,12 +99,13 @@ describe('Productions controller', () => {
 
 	describe('update method', () => {
 
+		const method = 'update';
+
 		it('calls callInstanceMethod module', async () => {
 
-			method = 'update';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production(), method
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
@@ -111,12 +116,13 @@ describe('Productions controller', () => {
 
 	describe('delete method', () => {
 
+		const method = 'delete';
+
 		it('calls callInstanceMethod module', async () => {
 
-			method = 'delete';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production(), method
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
@@ -127,12 +133,13 @@ describe('Productions controller', () => {
 
 	describe('show method', () => {
 
+		const method = 'show';
+
 		it('calls callInstanceMethod module', async () => {
 
-			method = 'show';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callInstanceMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production(), method
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
@@ -143,12 +150,13 @@ describe('Productions controller', () => {
 
 	describe('list method', () => {
 
+		const method = 'list';
+
 		it('calls callStaticListMethod module', async () => {
 
-			method = 'list';
 			const result = await createInstance(method);
-			expect(stubs.callClassMethods.callStaticListMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethods.callStaticListMethod.calledWithExactly(
+			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
+			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Production, 'production'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');

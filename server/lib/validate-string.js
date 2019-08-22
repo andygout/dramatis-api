@@ -1,6 +1,6 @@
 import constants from '../config/constants';
 
-export default (stringValue, opts = {}) => {
+export const validateString = (stringValue, opts = {}) => {
 
 	const stringErrors = [];
 

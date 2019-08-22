@@ -3,8 +3,8 @@
 import directly from 'directly';
 import path from 'path';
 
-import capitalise from '../lib/capitalise';
-import neo4jQuery from '../neo4j/query';
+import { capitalise } from '../lib/strings';
+import { neo4jQuery } from '../neo4j/query';
 
 const models = require('fs')
 	.readdirSync(path.join(__dirname, '..', 'models'))

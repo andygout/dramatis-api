@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import subject from '../../../server/lib/pluralise';
+import { pluralise } from '../../../server/lib/strings';
 
 describe('Pluralise module', () => {
 
@@ -8,7 +8,7 @@ describe('Pluralise module', () => {
 
 		it('returns singular noun with appended \'s\'', () => {
 
-			expect(subject('production')).to.eq('productions');
+			expect(pluralise('production')).to.eq('productions');
 
 		});
 
@@ -18,7 +18,7 @@ describe('Pluralise module', () => {
 
 		it('returns specific plural noun', () => {
 
-			expect(subject('person')).to.eq('people');
+			expect(pluralise('person')).to.eq('people');
 
 		});
 

@@ -3,79 +3,84 @@ import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
 import Person from '../../../server/models/person';
-
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
-let stubs;
-let instance;
+describe('Production model', () => {
 
-const RoleStub = function () {
+	let stubs;
+	let instance;
 
-	this.validate = sinon.stub();
+	const RoleStub = function () {
 
-};
+		this.validate = sinon.stub();
 
-const PersonStub = function () {
-
-	this.roles = [new RoleStub];
-	this.validate = sinon.stub();
-
-};
-
-const PlaytextStub = function () {
-
-	this.validate = sinon.stub();
-
-};
-
-const TheatreStub = function () {
-
-	this.validate = sinon.stub();
-
-};
-
-beforeEach(() => {
-
-	stubs = {
-		neo4jQuery: sinon.stub().resolves(neo4jQueryFixture),
-		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
-		verifyErrorPresence: sinon.stub().returns(false),
-		Base: {
-			trimStrings: sinon.stub(),
-			validateString: sinon.stub().returns([])
-		},
-		Person: PersonStub,
-		Playtext: PlaytextStub,
-		Theatre: TheatreStub
 	};
 
-	instance = createInstance();
+	const PersonStub = function () {
 
-});
+		this.roles = [new RoleStub];
+		this.validate = sinon.stub();
 
-const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../server/models/production', {
-		'../lib/prepare-as-params': stubs.prepareAsParams,
-		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
-		'../neo4j/query': stubs.neo4jQuery,
-		'./base': proxyquire('../../../server/models/base', {
-			'../lib/trim-strings': stubs.Base.trimStrings,
-			'../lib/validate-string': stubs.Base.validateString
-		}),
-		'./person': stubOverrides.Person || stubs.Person,
-		'./playtext': stubs.Playtext,
-		'./theatre': stubs.Theatre
+	};
+
+	const PlaytextStub = function () {
+
+		this.validate = sinon.stub();
+
+	};
+
+	const TheatreStub = function () {
+
+		this.validate = sinon.stub();
+
+	};
+
+	beforeEach(() => {
+
+		stubs = {
+			prepareAsParamsModule: {
+				prepareAsParams: sinon.stub().returns('prepareAsParams response')
+			},
+			verifyErrorPresenceModule: {
+				verifyErrorPresence: sinon.stub().returns(false)
+			},
+			Base: {
+				validateStringModule: {
+					validateString: sinon.stub().returns([])
+				}
+			},
+			Person: PersonStub,
+			Playtext: PlaytextStub,
+			Theatre: TheatreStub,
+			neo4jQueryModule: {
+				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
+			}
+		};
+
+		instance = createInstance();
+
 	});
 
-const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
+	const createSubject = (stubOverrides = {}) =>
+		proxyquire('../../../server/models/production', {
+			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
+			'../lib/verify-error-presence': stubOverrides.verifyErrorPresenceModule || stubs.verifyErrorPresenceModule,
+			'../neo4j/query': stubs.neo4jQueryModule,
+			'./base': proxyquire('../../../server/models/base', {
+				'../lib/validate-string': stubs.Base.validateStringModule
+			}),
+			'./person': stubOverrides.Person || stubs.Person,
+			'./playtext': stubs.Playtext,
+			'./theatre': stubs.Theatre
+		});
 
-	const subject = createSubject(stubOverrides);
+	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
 
-	return new subject(props);
+		const subject = createSubject(stubOverrides);
 
-};
+		return new subject(props);
 
-describe('Production model', () => {
+	};
 
 	describe('constructor method', () => {
 
@@ -84,7 +89,7 @@ describe('Production model', () => {
 			it('assigns empty array if not included in props', () => {
 
 				const props = { name: 'Hamlet' };
-				instance = createInstance({}, props);
+				const instance = createInstance({}, props);
 				expect(instance.cast).to.deep.eq([]);
 
 			});
@@ -100,7 +105,7 @@ describe('Production model', () => {
 						{ name: ' ' }
 					]
 				};
-				instance = createInstance({ Person: PersonStubOverride }, props);
+				const instance = createInstance({ Person: PersonStubOverride }, props);
 				expect(instance.cast.length).to.eq(1);
 				expect(instance.cast[0].constructor.name).to.eq('Person');
 
@@ -122,14 +127,14 @@ describe('Production model', () => {
 				instance.playtext.validate.withArgs(),
 				instance.cast[0].validate.withArgs(),
 				instance.cast[0].roles[0].validate.withArgs(),
-				stubs.verifyErrorPresence.withArgs(instance)
+				stubs.verifyErrorPresenceModule.verifyErrorPresence.withArgs(instance)
 			);
 			expect(instance.validate.calledOnce).to.be.true;
 			expect(instance.theatre.validate.calledOnce).to.be.true;
 			expect(instance.playtext.validate.calledOnce).to.be.true;
 			expect(instance.cast[0].validate.calledOnce).to.be.true;
 			expect(instance.cast[0].roles[0].validate.calledOnce).to.be.true;
-			expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
+			expect(stubs.verifyErrorPresenceModule.verifyErrorPresence.calledOnce).to.be.true;
 
 		});
 
@@ -148,7 +153,13 @@ describe('Production model', () => {
 
 			it('sets instance hasError property to true and returns same value', () => {
 
-				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
+				const instance = createInstance(
+					{
+						verifyErrorPresenceModule: {
+							verifyErrorPresence: sinon.stub().returns(true)
+						}
+					}
+				);
 				expect(instance.setErrorStatus()).to.be.true;
 				expect(instance.hasError).to.be.true;
 
@@ -170,13 +181,15 @@ describe('Production model', () => {
 				sinon.assert.callOrder(
 					instance.setErrorStatus.withArgs(),
 					getCreateQueryStub.withArgs(),
-					stubs.prepareAsParams.withArgs(instance),
-					stubs.neo4jQuery.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
+					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
+					stubs.neo4jQueryModule.neo4jQuery.withArgs(
+						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
+					)
 				);
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(getCreateQueryStub.calledOnce).to.be.true;
-				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
 			});
@@ -189,13 +202,15 @@ describe('Production model', () => {
 				sinon.assert.callOrder(
 					instance.setErrorStatus.withArgs(),
 					getUpdateQueryStub.withArgs(),
-					stubs.prepareAsParams.withArgs(instance),
-					stubs.neo4jQuery.withArgs({ query: 'getUpdateQuery response', params: 'prepareAsParams response' })
+					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
+					stubs.neo4jQueryModule.neo4jQuery.withArgs(
+						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
+					)
 				);
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
-				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
 			});
@@ -207,14 +222,20 @@ describe('Production model', () => {
 			it('returns instance without creating', async () => {
 
 				const getCreateUpdateQueryStub = sinon.stub();
-				instance = createInstance({ verifyErrorPresence: sinon.stub().returns(true) });
+				const instance = createInstance(
+					{
+						verifyErrorPresenceModule: {
+							verifyErrorPresence: sinon.stub().returns(true)
+						}
+					}
+				);
 				sinon.spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-				expect(stubs.prepareAsParams.notCalled).to.be.true;
-				expect(stubs.neo4jQuery.notCalled).to.be.true;
+				expect(stubs.prepareAsParamsModule.prepareAsParams.notCalled).to.be.true;
+				expect(stubs.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
 				expect(result).to.deep.eq(instance);
 
 			});

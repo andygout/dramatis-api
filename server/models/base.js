@@ -1,6 +1,6 @@
-import prepareAsParams from '../lib/prepare-as-params';
-import validateString from '../lib/validate-string';
-import verifyErrorPresence from '../lib/verify-error-presence';
+import { prepareAsParams } from '../lib/prepare-as-params';
+import { validateString } from '../lib/validate-string';
+import { verifyErrorPresence } from '../lib/verify-error-presence';
 import {
 	getCreateQueries,
 	getEditQueries,
@@ -16,7 +16,7 @@ import {
 	getDeleteQuery,
 	getListQuery
 } from '../neo4j/cypher-queries/shared';
-import neo4jQuery from '../neo4j/query';
+import { neo4jQuery } from '../neo4j/query';
 
 export default class Base {
 

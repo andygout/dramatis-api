@@ -1,4 +1,4 @@
-import validateString from '../lib/validate-string';
+import { validateString } from '../lib/validate-string';
 
 export default class Role {
 

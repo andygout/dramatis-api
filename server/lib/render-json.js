@@ -1,4 +1,4 @@
-export default (res, instance) => {
+export const renderJson = (res, instance) => {
 
 	res.setHeader('content-type', 'application/json');
 

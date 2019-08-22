@@ -1,71 +1,71 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
+import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
+import * as validateStringModule from '../../../server/lib/validate-string';
+import * as verifyErrorPresenceModule from '../../../server/lib/verify-error-presence';
+import Base from '../../../server/models/base';
+import * as cypherQueriesModelQueryMaps from '../../../server/neo4j/cypher-queries/model-query-maps';
+import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
+import * as neo4jQueryModule from '../../../server/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
-let stubs;
-let instance;
+describe('Base model', () => {
 
-beforeEach(() => {
+	let stubs;
+	let instance;
 
-	stubs = {
-		cypherQueriesModelSpecific: {
+	const sandbox = sinon.createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns('prepareAsParams response'),
+			validateString: sandbox.stub(validateStringModule, 'validateString').returns([]),
+			verifyErrorPresence: sandbox.stub(verifyErrorPresenceModule, 'verifyErrorPresence').returns(false),
 			getCreateQueries: {
-				production: sinon.stub()
+				production:
+					sandbox.stub(cypherQueriesModelQueryMaps.getCreateQueries, 'production')
 			},
 			getEditQueries: {
-				production: sinon.stub().returns('getEditProductionQuery response')
+				production:
+					sandbox.stub(cypherQueriesModelQueryMaps.getEditQueries, 'production')
+						.returns('getEditProductionQuery response')
 			},
 			getUpdateQueries: {
-				production: sinon.stub()
+				production: sandbox.stub(cypherQueriesModelQueryMaps.getUpdateQueries, 'production')
 			},
 			getDeleteQueries: {
-				production: sinon.stub().returns('getDeleteProductionQuery response')
+				production:
+					sandbox.stub(cypherQueriesModelQueryMaps.getDeleteQueries, 'production')
+						.returns('getDeleteProductionQuery response')
 			},
 			getShowQueries: {
-				theatre: sinon.stub().returns('getShowTheatreQuery response')
-			}
-		},
-		cypherQueriesShared: {
-			getValidateQuery: sinon.stub().returns('getValidateQuery response'),
-			getCreateQuery: sinon.stub().returns('getCreateQuery response'),
-			getEditQuery: sinon.stub().returns('getEditQuery response'),
-			getUpdateQuery: sinon.stub().returns('getUpdateQuery response'),
-			getDeleteQuery: sinon.stub().returns('getDeleteQuery response'),
-			getListQuery: sinon.stub().returns('getListQuery response')
-		},
-		neo4jQuery: sinon.stub().resolves(neo4jQueryFixture),
-		prepareAsParams: sinon.stub().returns('prepareAsParams response'),
-		validateString: sinon.stub().returns([]),
-		verifyErrorPresence: sinon.stub().returns(false)
-	};
+				theatre:
+					sandbox.stub(cypherQueriesModelQueryMaps.getShowQueries, 'theatre')
+						.returns('getShowTheatreQuery response')
+			},
+			getValidateQuery:
+				sandbox.stub(cypherQueriesShared, 'getValidateQuery').returns('getValidateQuery response'),
+			getCreateQuery: sandbox.stub(cypherQueriesShared, 'getCreateQuery').returns('getCreateQuery response'),
+			getEditQuery: sandbox.stub(cypherQueriesShared, 'getEditQuery').returns('getEditQuery response'),
+			getUpdateQuery: sandbox.stub(cypherQueriesShared, 'getUpdateQuery').returns('getUpdateQuery response'),
+			getDeleteQuery: sandbox.stub(cypherQueriesShared, 'getDeleteQuery').returns('getDeleteQuery response'),
+			getListQuery: sandbox.stub(cypherQueriesShared, 'getListQuery').returns('getListQuery response'),
+			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryFixture)
+		};
 
-	instance = createInstance();
+		stubs.validateString.withArgs('').returns(['Name is too short']);
 
-	instance.model = 'theatre';
+		instance = new Base({ name: 'Foobar' });
 
-});
-
-const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../server/models/base', {
-		'../lib/prepare-as-params': stubs.prepareAsParams,
-		'../lib/validate-string': stubOverrides.validateString || stubs.validateString,
-		'../lib/verify-error-presence': stubOverrides.verifyErrorPresence || stubs.verifyErrorPresence,
-		'../neo4j/cypher-queries/model-query-maps': stubs.cypherQueriesModelSpecific,
-		'../neo4j/cypher-queries/shared': stubs.cypherQueriesShared,
-		'../neo4j/query': stubOverrides.neo4jQuery || stubs.neo4jQuery
 	});
 
-const createInstance = (stubOverrides = {}, props = { name: 'Foobar' }) => {
+	afterEach(() => {
 
-	const subject = createSubject(stubOverrides);
+		sandbox.restore();
 
-	return new subject(props);
-
-};
-
-describe('Base model', () => {
+	});
 
 	describe('constructor method', () => {
 
@@ -73,14 +73,14 @@ describe('Base model', () => {
 
 			it('assigns empty string if not included in props', () => {
 
-				instance = createInstance({}, {});
+				instance = new Base({});
 				expect(instance.name).to.eq('');
 
 			});
 
 			it('trims', () => {
 
-				instance = createInstance({}, { name: ' Barfoo ' });
+				instance = new Base({ name: ' Barfoo ' });
 				expect(instance.name).to.eq('Barfoo');
 
 			});
@@ -107,7 +107,7 @@ describe('Base model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				instance = createInstance({ validateString: sinon.stub().returns(['Name is too short']) });
+				instance = new Base({ name: '' });
 				instance.validate();
 				expect(instance.errors)
 					.to.have.property('name')
@@ -125,8 +125,8 @@ describe('Base model', () => {
 		it('validates update in database', async () => {
 
 			await instance.validateInDb();
-			expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
-			expect(stubs.cypherQueriesShared.getValidateQuery.calledWithExactly(
+			expect(stubs.getValidateQuery.calledOnce).to.be.true;
+			expect(stubs.getValidateQuery.calledWithExactly(
 				instance.model, instance.uuid
 			)).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
@@ -140,7 +140,7 @@ describe('Base model', () => {
 
 			it('will not add properties to errors property', async () => {
 
-				instance = createInstance({ neo4jQuery: sinon.stub().resolves({ instanceCount: 0 }) });
+				stubs.neo4jQuery.resolves({ instanceCount: 0 });
 				await instance.validateInDb();
 				expect(instance.errors).not.to.have.property('name');
 				expect(instance.errors).to.deep.eq({});
@@ -153,7 +153,7 @@ describe('Base model', () => {
 
 			it('adds properties that are arrays to errors property', async () => {
 
-				instance = createInstance({ neo4jQuery: sinon.stub().resolves({ instanceCount: 1 }) });
+				stubs.neo4jQuery.resolves({ instanceCount: 1 });
 				await instance.validateInDb();
 				expect(instance.errors)
 					.to.have.property('name')
@@ -174,15 +174,15 @@ describe('Base model', () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
-				const result = await instance.createUpdate(stubs.cypherQueriesShared.getCreateQuery)
+				const result = await instance.createUpdate(stubs.getCreateQuery)
 				sinon.assert.callOrder(
 					instance.validate.withArgs({ required: true }),
 					stubs.verifyErrorPresence.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+					stubs.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.verifyErrorPresence.withArgs(instance),
-					stubs.cypherQueriesShared.getCreateQuery.withArgs(instance.model),
+					stubs.getCreateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
 						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
@@ -191,9 +191,9 @@ describe('Base model', () => {
 				expect(instance.validate.calledOnce).to.be.true;
 				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
-				expect(stubs.cypherQueriesShared.getCreateQuery.calledOnce).to.be.true;
+				expect(stubs.getCreateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
@@ -203,15 +203,15 @@ describe('Base model', () => {
 
 				sinon.spy(instance, 'validate');
 				sinon.spy(instance, 'validateInDb');
-				const result = await instance.createUpdate(stubs.cypherQueriesShared.getUpdateQuery);
+				const result = await instance.createUpdate(stubs.getUpdateQuery);
 				sinon.assert.callOrder(
 					instance.validate.withArgs({ required: true }),
 					stubs.verifyErrorPresence.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+					stubs.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.verifyErrorPresence.withArgs(instance),
-					stubs.cypherQueriesShared.getUpdateQuery.withArgs(instance.model),
+					stubs.getUpdateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
 						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
@@ -220,9 +220,9 @@ describe('Base model', () => {
 				expect(instance.validate.calledOnce).to.be.true;
 				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
-				expect(stubs.cypherQueriesShared.getUpdateQuery.calledOnce).to.be.true;
+				expect(stubs.getUpdateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
@@ -236,20 +236,19 @@ describe('Base model', () => {
 
 				it('returns instance without creating/updating', async () => {
 
-					const verifyErrorPresenceStub = sinon.stub().returns(true);
+					stubs.verifyErrorPresence.returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
-					instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });
 					instance.model = 'theatre';
 					sinon.spy(instance, 'validate');
 					sinon.spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
-					expect(instance.validate.calledBefore(verifyErrorPresenceStub)).to.be.true;
+					expect(instance.validate.calledBefore(stubs.verifyErrorPresence)).to.be.true;
 					expect(instance.validate.calledOnce).to.be.true;
 					expect(instance.validate.calledWithExactly({ required: true })).to.be.true;
-					expect(verifyErrorPresenceStub.calledOnce).to.be.true;
-					expect(verifyErrorPresenceStub.calledWithExactly(instance)).to.be.true;
+					expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
+					expect(stubs.verifyErrorPresence.calledWithExactly(instance)).to.be.true;
 					expect(instance.validateInDb.notCalled).to.be.true;
-					expect(stubs.cypherQueriesShared.getValidateQuery.notCalled).to.be.true;
+					expect(stubs.getValidateQuery.notCalled).to.be.true;
 					expect(stubs.neo4jQuery.notCalled).to.be.true;
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
@@ -263,26 +262,24 @@ describe('Base model', () => {
 
 				it('returns instance without creating/updating', async () => {
 
-					const verifyErrorPresenceStub = sinon.stub();
-					verifyErrorPresenceStub.onFirstCall().returns(false).onSecondCall().returns(true);
+					stubs.verifyErrorPresence.onFirstCall().returns(false).onSecondCall().returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
-					instance = createInstance({ verifyErrorPresence: verifyErrorPresenceStub });
 					instance.model = 'theatre';
 					sinon.spy(instance, 'validate');
 					sinon.spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
 					sinon.assert.callOrder(
 						instance.validate.withArgs({ required: true }),
-						verifyErrorPresenceStub.withArgs(instance),
+						stubs.verifyErrorPresence.withArgs(instance),
 						instance.validateInDb.withArgs(),
-						stubs.cypherQueriesShared.getValidateQuery.withArgs(instance.model),
+						stubs.getValidateQuery.withArgs(instance.model),
 						stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-						verifyErrorPresenceStub.withArgs(instance)
+						stubs.verifyErrorPresence.withArgs(instance)
 					);
 					expect(instance.validate.calledOnce).to.be.true;
-					expect(verifyErrorPresenceStub.calledTwice).to.be.true;
+					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
 					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.cypherQueriesShared.getValidateQuery.calledOnce).to.be.true;
+					expect(stubs.getValidateQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
@@ -306,9 +303,7 @@ describe('Base model', () => {
 				sinon.spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(
-					stubs.cypherQueriesModelSpecific.getCreateQueries[instance.model]
-				)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.getCreateQueries[instance.model])).to.be.true;
 
 			});
 
@@ -321,7 +316,7 @@ describe('Base model', () => {
 				sinon.spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getCreateQuery)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.getCreateQuery)).to.be.true;
 
 			});
 
@@ -337,9 +332,9 @@ describe('Base model', () => {
 
 				instance.model = 'production';
 				const result = await instance.edit();
-				expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledOnce).to.be.true;
-				expect(stubs.cypherQueriesModelSpecific.getEditQueries[instance.model].calledWithExactly()).to.be.true;
-				expect(stubs.cypherQueriesShared.getEditQuery.notCalled).to.be.true;
+				expect(stubs.getEditQueries[instance.model].calledOnce).to.be.true;
+				expect(stubs.getEditQueries[instance.model].calledWithExactly()).to.be.true;
+				expect(stubs.getEditQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditProductionQuery response', params: instance }
@@ -355,9 +350,9 @@ describe('Base model', () => {
 			it('gets edit data using shared query', async () => {
 
 				const result = await instance.edit();
-				expect(stubs.cypherQueriesShared.getEditQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.cypherQueriesModelSpecific.getEditQueries.production.notCalled).to.be.true;
+				expect(stubs.getEditQuery.calledOnce).to.be.true;
+				expect(stubs.getEditQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.getEditQueries.production.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditQuery response', params: instance }
@@ -380,9 +375,7 @@ describe('Base model', () => {
 				sinon.spy(instance, 'createUpdate');
 				await instance.update();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(
-					stubs.cypherQueriesModelSpecific.getUpdateQueries[instance.model]
-				)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQueries[instance.model])).to.be.true;
 
 			});
 
@@ -395,7 +388,7 @@ describe('Base model', () => {
 				sinon.spy(instance, 'createUpdate');
 				await instance.update();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.cypherQueriesShared.getUpdateQuery)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQuery)).to.be.true;
 
 			});
 
@@ -411,9 +404,9 @@ describe('Base model', () => {
 
 				instance.model = 'production';
 				const result = await instance.delete();
-				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledOnce).to.be.true;
-				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
-				expect(stubs.cypherQueriesShared.getDeleteQuery.notCalled).to.be.true;
+				expect(stubs.getDeleteQueries[instance.model].calledOnce).to.be.true;
+				expect(stubs.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
+				expect(stubs.getDeleteQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteProductionQuery response', params: instance }
@@ -429,9 +422,9 @@ describe('Base model', () => {
 			it('deletes using shared query', async () => {
 
 				const result = await instance.delete();
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesShared.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.cypherQueriesModelSpecific.getDeleteQueries.production.notCalled).to.be.true;
+				expect(stubs.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.getDeleteQueries.production.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteQuery response', params: instance }
@@ -448,9 +441,10 @@ describe('Base model', () => {
 
 		it('gets show data', async () => {
 
+			instance.model = 'theatre';
 			const result = await instance.show();
-			expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledOnce).to.be.true;
-			expect(stubs.cypherQueriesModelSpecific.getShowQueries.theatre.calledWithExactly()).to.be.true;
+			expect(stubs.getShowQueries.theatre.calledOnce).to.be.true;
+			expect(stubs.getShowQueries.theatre.calledWithExactly()).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getShowTheatreQuery response', params: instance }
@@ -465,10 +459,9 @@ describe('Base model', () => {
 
 		it('gets list data', async () => {
 
-			const subject = createSubject();
-			const result = await subject.list('model');
-			expect(stubs.cypherQueriesShared.getListQuery.calledOnce).to.be.true;
-			expect(stubs.cypherQueriesShared.getListQuery.calledWithExactly('model')).to.be.true;
+			const result = await Base.list('model');
+			expect(stubs.getListQuery.calledOnce).to.be.true;
+			expect(stubs.getListQuery.calledWithExactly('model')).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getListQuery response' }, { isReqdResult: false, returnArray: true }

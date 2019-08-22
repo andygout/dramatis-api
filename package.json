@@ -42,7 +42,7 @@
     "nodemon": "^1.11.0",
     "pre-commit": "^1.2.2",
     "proxyquire": "^1.7.10",
-    "sinon": "^2.3.2"
+    "sinon": "^7.4.1"
   },
   "engines": {
     "node": "10.16.0",

@@ -1,56 +1,55 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-let stubs;
-let subject;
-let instance;
-
-beforeEach(() => {
-
-	stubs = {
-		isObject: sinon.stub().returns(false)
-	};
-
-	subject = createSubject();
-
-});
-
-const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../server/lib/verify-error-presence', {
-		'./is-object': stubOverrides.isObject || stubs.isObject
-	});
+import * as isObjectModule from '../../../server/lib/is-object';
+import { verifyErrorPresence } from '../../../server/lib/verify-error-presence';
 
 describe('Verify Error Presence module', () => {
+
+	let stubs;
+
+	const sandbox = sinon.createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			isObject: sandbox.stub(isObjectModule, 'isObject')
+		};
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
 
 	context('no valid error values present', () => {
 
 		it('returns false if no error values present', () => {
 
-			const isObjectStub = sinon.stub();
-			isObjectStub
+			stubs.isObject
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			subject = createSubject({ isObject: isObjectStub });
-			instance = { errors: {}, theatre: { errors: {} } };
-			const result = subject(instance);
-			expect(isObjectStub.callCount).to.eq(5);
-			sinon.assert.calledWithExactly(isObjectStub.firstCall, {});
-			sinon.assert.calledWithExactly(isObjectStub.secondCall, {});
-			sinon.assert.calledWithExactly(isObjectStub.thirdCall, { errors: {} });
-			sinon.assert.calledWithExactly(isObjectStub.getCall(3), {});
-			sinon.assert.calledWithExactly(isObjectStub.getCall(4), {});
+			const instance = { errors: {}, theatre: { errors: {} } };
+			const result = verifyErrorPresence(instance);
+			expect(stubs.isObject.callCount).to.eq(5);
+			sinon.assert.calledWithExactly(stubs.isObject.firstCall, {});
+			sinon.assert.calledWithExactly(stubs.isObject.secondCall, {});
+			sinon.assert.calledWithExactly(stubs.isObject.thirdCall, { errors: {} });
+			sinon.assert.calledWithExactly(stubs.isObject.getCall(3), {});
+			sinon.assert.calledWithExactly(stubs.isObject.getCall(4), {});
 			expect(result).to.be.false;
 
 		});
 
 		it('returns false if no error properties present', () => {
 
-			instance = { notErrors: {} };
-			const result = subject(instance);
+			const instance = { notErrors: {} };
+			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledOnce).to.be.true;
 			expect(stubs.isObject.calledWithExactly({})).to.be.true;
 			expect(result).to.be.false;
@@ -59,8 +58,8 @@ describe('Verify Error Presence module', () => {
 
 		it('returns false if errors present in form of null value', () => {
 
-			instance = { errors: null };
-			const result = subject(instance);
+			const instance = { errors: null };
+			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledTwice).to.be.true;
 			sinon.assert.calledWithExactly(stubs.isObject.firstCall, null);
 			sinon.assert.calledWithExactly(stubs.isObject.secondCall, null);
@@ -70,8 +69,8 @@ describe('Verify Error Presence module', () => {
 
 		it('returns false if errors present in form of array', () => {
 
-			instance = { errors: ['Name is too short'] };
-			const result = subject(instance);
+			const instance = { errors: ['Name is too short'] };
+			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledThrice).to.be.true;
 			sinon.assert.calledWithExactly(stubs.isObject.firstCall, ['Name is too short']);
 			sinon.assert.calledWithExactly(stubs.isObject.secondCall, ['Name is too short']);
@@ -86,12 +85,11 @@ describe('Verify Error Presence module', () => {
 
 		it('returns true', () => {
 
-			const isObjectStub = sinon.stub().returns(true);
-			subject = createSubject({ isObject: isObjectStub });
-			instance = { errors: { name: ['Name is too short'] } };
-			const result = subject(instance);
-			expect(isObjectStub.calledOnce).to.be.true;
-			expect(isObjectStub.calledWithExactly({ name: ['Name is too short'] })).to.be.true;
+			stubs.isObject.returns(true);
+			const instance = { errors: { name: ['Name is too short'] } };
+			const result = verifyErrorPresence(instance);
+			expect(stubs.isObject.calledOnce).to.be.true;
+			expect(stubs.isObject.calledWithExactly({ name: ['Name is too short'] })).to.be.true;
 			expect(result).to.be.true;
 
 		});
@@ -102,16 +100,14 @@ describe('Verify Error Presence module', () => {
 
 		it('returns true', () => {
 
-			const isObjectStub = sinon.stub();
-			isObjectStub
+			stubs.isObject
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(true);
-			subject = createSubject({ isObject: isObjectStub });
-			instance = { theatre: { errors: { name: ['Name is too short'] } } };
-			const result = subject(instance);
-			expect(isObjectStub.calledTwice).to.be.true;
-			sinon.assert.calledWithExactly(isObjectStub.firstCall, { errors: { name: ['Name is too short'] } });
-			sinon.assert.calledWithExactly(isObjectStub.secondCall, { name: ['Name is too short'] });
+			const instance = { theatre: { errors: { name: ['Name is too short'] } } };
+			const result = verifyErrorPresence(instance);
+			expect(stubs.isObject.calledTwice).to.be.true;
+			sinon.assert.calledWithExactly(stubs.isObject.firstCall, { errors: { name: ['Name is too short'] } });
+			sinon.assert.calledWithExactly(stubs.isObject.secondCall, { name: ['Name is too short'] });
 			expect(result).to.be.true;
 
 		});
@@ -122,18 +118,16 @@ describe('Verify Error Presence module', () => {
 
 		it('returns true', () => {
 
-			const isObjectStub = sinon.stub();
-			isObjectStub
+			stubs.isObject
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(true);
-			subject = createSubject({ isObject: isObjectStub });
-			instance = { cast: [{ errors: { name: ['Name is too short'] } }] };
-			const result = subject(instance);
-			expect(isObjectStub.calledThrice).to.be.true;
-			sinon.assert.calledWithExactly(isObjectStub.firstCall, [{ errors: { name: ['Name is too short'] } }]);
-			sinon.assert.calledWithExactly(isObjectStub.secondCall, { errors: { name: ['Name is too short'] } });
-			sinon.assert.calledWithExactly(isObjectStub.thirdCall, { name: ['Name is too short'] });
+			const instance = { cast: [{ errors: { name: ['Name is too short'] } }] };
+			const result = verifyErrorPresence(instance);
+			expect(stubs.isObject.calledThrice).to.be.true;
+			sinon.assert.calledWithExactly(stubs.isObject.firstCall, [{ errors: { name: ['Name is too short'] } }]);
+			sinon.assert.calledWithExactly(stubs.isObject.secondCall, { errors: { name: ['Name is too short'] } });
+			sinon.assert.calledWithExactly(stubs.isObject.thirdCall, { name: ['Name is too short'] });
 			expect(result).to.be.true;
 
 		});

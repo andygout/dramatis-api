@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 
-import subject from '../../../server/lib/capitalise';
+import { capitalise } from '../../../server/lib/strings';
 
 describe('Capitalise module', () => {
 
 	it('returns string with initial letter as capital', () => {
 
-		expect(subject('string')).to.eq('String');
+		expect(capitalise('string')).to.eq('String');
 
 	});
 

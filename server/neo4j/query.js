@@ -36,7 +36,7 @@ const convertRecordsToObjects = response => {
 
 };
 
-export default async (queryData, queryOpts = {}) => {
+export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 	const { query, params } = queryData;
 
