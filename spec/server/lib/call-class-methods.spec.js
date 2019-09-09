@@ -1,39 +1,43 @@
 import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
+import * as callClassMethods from '../../../server/lib/call-class-methods';
+import * as renderJsonModule from '../../../server/lib/render-json';
 import Character from '../../../server/models/character';
-
-const err = new Error('errorText');
-const notFoundErr = new Error('Not Found');
-
-let stubs;
-let method;
-let character;
-
-beforeEach(() => {
-
-	stubs = {
-		renderJson: sinon.stub().returns('renderJson response'),
-		res: httpMocks.createResponse(),
-		next: sinon.stub()
-	};
-
-});
-
-const createSubject = () =>
-	proxyquire('../../../server/lib/call-class-methods', {
-		'./render-json': stubs.renderJson
-	});
 
 describe('Call Class Methods module', () => {
 
+	let stubs;
+
+	const err = new Error('errorText');
+	const notFoundErr = new Error('Not Found');
+
+	const sandbox = sinon.createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			renderJson: sandbox.stub(renderJsonModule, 'renderJson').returns('renderJson response'),
+			res: httpMocks.createResponse(),
+			next: sandbox.stub()
+		};
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
+
 	describe('callInstanceMethod function', () => {
+
+		let character;
+		const method = 'edit';
 
 		beforeEach(() => {
 
-			method = 'edit';
 			character = new Character;
 
 		});
@@ -42,10 +46,9 @@ describe('Call Class Methods module', () => {
 
 			it('calls renderPage module', async () => {
 
-				const subject = createSubject();
 				const instanceMethodResponse = { property: 'value' };
-				sinon.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse) });
-				const result = await subject.callInstanceMethod(stubs.res, stubs.next, character, method);
+				sandbox.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse) });
+				const result = await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
 				expect(stubs.renderJson.calledOnce).to.be.true;
 				expect(stubs.renderJson.calledWithExactly(stubs.res, instanceMethodResponse)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
@@ -59,9 +62,8 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				const subject = createSubject();
-				sinon.stub(character, method).callsFake(() => { return Promise.reject(err) });
-				await subject.callInstanceMethod(stubs.res, stubs.next, character, method);
+				sandbox.stub(character, method).callsFake(() => { return Promise.reject(err) });
+				await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
 				expect(stubs.next.calledOnce).to.be.true;
 				expect(stubs.next.calledWithExactly(err)).to.be.true;
 				expect(stubs.renderJson.notCalled).to.be.true;
@@ -74,9 +76,8 @@ describe('Call Class Methods module', () => {
 
 			it('responds with 404 status and sends error message', async () => {
 
-				const subject = createSubject();
-				sinon.stub(character, method).callsFake(() => { return Promise.reject(notFoundErr) });
-				await subject.callInstanceMethod(stubs.res, stubs.next, character, method);
+				sandbox.stub(character, method).callsFake(() => { return Promise.reject(notFoundErr) });
+				await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
 				expect(stubs.res.statusCode).to.eq(404);
 				expect(stubs.res._getData()).to.eq('Not Found');
 				expect(stubs.renderJson.notCalled).to.be.true;
@@ -90,11 +91,7 @@ describe('Call Class Methods module', () => {
 
 	describe('callStaticListMethod function', () => {
 
-		beforeEach(() => {
-
-			method = 'list';
-
-		});
+		const method = 'list';
 
 		afterEach(() => {
 
@@ -106,10 +103,10 @@ describe('Call Class Methods module', () => {
 
 			it('calls renderPage module', async () => {
 
-				const subject = createSubject();
 				const staticListMethodResponse = [{ property: 'value' }];
-				sinon.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse) });
-				const result = await subject.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
+				sandbox.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse) });
+				const result =
+					await callClassMethods.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
 				expect(stubs.renderJson.calledOnce).to.be.true;
 				expect(stubs.renderJson.calledWithExactly(
 					stubs.res, staticListMethodResponse
@@ -125,9 +122,8 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				const subject = createSubject();
-				sinon.stub(Character, method).callsFake(() => { return Promise.reject(err) });
-				await subject.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
+				sandbox.stub(Character, method).callsFake(() => { return Promise.reject(err) });
+				await callClassMethods.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
 				expect(stubs.next.calledOnce).to.be.true;
 				expect(stubs.next.calledWithExactly(err)).to.be.true;
 				expect(stubs.renderJson.notCalled).to.be.true;

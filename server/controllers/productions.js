@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
-import renderJson from '../lib/render-json';
+import { renderJson } from '../lib/render-json';
 import Production from '../models/production';
 
 const newRoute = (req, res, next) =>

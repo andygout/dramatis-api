@@ -1,4 +1,4 @@
-import renderJson from './render-json';
+import { renderJson } from './render-json';
 
 const callInstanceMethod = async (res, next, instance, method) => {
 

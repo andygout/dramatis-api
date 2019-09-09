@@ -1,8 +1,8 @@
-import verifyErrorPresence from '../lib/verify-error-presence';
+import { verifyErrorPresence } from '../lib/verify-error-presence';
 import Base from './base';
 import { getDeleteQuery } from '../neo4j/cypher-queries/shared';
 import { getValidateDeleteQuery } from '../neo4j/cypher-queries/theatre';
-import neo4jQuery from '../neo4j/query';
+import { neo4jQuery } from '../neo4j/query';
 
 export default class Theatre extends Base {
 

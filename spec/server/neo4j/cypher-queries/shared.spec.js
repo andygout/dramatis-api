@@ -1,28 +1,32 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
+import * as strings from '../../../../server/lib/strings';
+import * as cypherQueriesShared from '../../../../server/neo4j/cypher-queries/shared';
 import { removeWhitespace } from '../../../spec-helpers';
 
-let stubs;
-let subject;
+describe('Cypher Queries Shared module', () => {
 
-beforeEach(() => {
+	let stubs;
 
-	stubs = {
-		capitalise: sinon.stub().returns('Theatre')
-	};
+	const sandbox = sinon.createSandbox();
 
-	subject = createSubject();
+	beforeEach(() => {
 
-});
+		stubs = {
+			capitalise: sandbox.stub(strings, 'capitalise')
+		};
 
-const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../../server/neo4j/cypher-queries/shared', {
-		'../../lib/capitalise': stubOverrides.capitalise || stubs.capitalise
+		stubs.capitalise.withArgs('production').returns('Production');
+		stubs.capitalise.withArgs('theatre').returns('Theatre');
+
 	});
 
-describe('Cypher Queries Shared module', () => {
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
 
 	context('Production model usage', () => {
 
@@ -30,11 +34,9 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const capitaliseStub = sinon.stub().returns('Production');
-				subject = createSubject({ capitalise: capitaliseStub });
-				const result = subject.getListQuery('production');
-				expect(capitaliseStub.calledOnce).to.be.true;
-				expect(capitaliseStub.calledWithExactly('production')).to.be.true;
+				const result = cypherQueriesShared.getListQuery('production');
+				expect(stubs.capitalise.calledOnce).to.be.true;
+				expect(stubs.capitalise.calledWithExactly('production')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Production)-[:PLAYS_AT]->(t:Theatre)
 
@@ -55,11 +57,11 @@ describe('Cypher Queries Shared module', () => {
 
 		describe('getValidateQuery function', () => {
 
-			context('uuid agurment given is undefined (i.e. requested as part of create action)', () => {
+			context('uuid argument given is undefined (i.e. requested as part of create action)', () => {
 
 				it('returns requisite query', () => {
 
-					const result = subject.getValidateQuery('theatre', undefined);
+					const result = cypherQueriesShared.getValidateQuery('theatre', undefined);
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -76,7 +78,8 @@ describe('Cypher Queries Shared module', () => {
 
 				it('returns requisite query', () => {
 
-					const result = subject.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+					const result =
+						cypherQueriesShared.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -96,7 +99,7 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const result = subject.getCreateQuery('theatre');
+				const result = cypherQueriesShared.getCreateQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -116,7 +119,7 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const result = subject.getEditQuery('theatre');
+				const result = cypherQueriesShared.getEditQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -136,7 +139,7 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const result = subject.getUpdateQuery('theatre');
+				const result = cypherQueriesShared.getUpdateQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -157,7 +160,7 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const result = subject.getDeleteQuery('theatre');
+				const result = cypherQueriesShared.getDeleteQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
@@ -179,7 +182,7 @@ describe('Cypher Queries Shared module', () => {
 
 			it('returns requisite query', () => {
 
-				const result = subject.getListQuery('theatre');
+				const result = cypherQueriesShared.getListQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`

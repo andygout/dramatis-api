@@ -1,8 +1,8 @@
 import { v4 as uuid } from 'uuid';
 
-import isObject from './is-object';
+import { isObject } from './is-object';
 
-const prepareAsParams = instance => {
+export const prepareAsParams = instance => {
 
 	return Object.keys(instance).reduce((accumulator, key) => {
 
@@ -43,5 +43,3 @@ const prepareAsParams = instance => {
 	}, {});
 
 };
-
-export default prepareAsParams;

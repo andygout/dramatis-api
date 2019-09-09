@@ -1,8 +1,8 @@
-import prepareAsParams from '../lib/prepare-as-params';
-import verifyErrorPresence from '../lib/verify-error-presence';
+import { prepareAsParams } from '../lib/prepare-as-params';
+import { verifyErrorPresence } from '../lib/verify-error-presence';
 import Base from './base';
 import Character from './character';
-import neo4jQuery from '../neo4j/query';
+import { neo4jQuery } from '../neo4j/query';
 
 export default class Playtext extends Base {
 

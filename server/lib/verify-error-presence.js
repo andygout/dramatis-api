@@ -1,10 +1,10 @@
-import isObject from './is-object';
+import { isObject } from './is-object';
 
 const hasErrors = (prop, value) => prop === 'errors' && isObject(value);
 
-const objectWithErrors = item => isObject(item) && searchForErrors(item);
+const objectWithErrors = item => isObject(item) && verifyErrorPresence(item);
 
-const searchForErrors = instance => {
+export const verifyErrorPresence = instance => {
 
 	for (const prop in instance) if (instance.hasOwnProperty(prop)) {
 
@@ -21,5 +21,3 @@ const searchForErrors = instance => {
 	return false;
 
 };
-
-export default searchForErrors;

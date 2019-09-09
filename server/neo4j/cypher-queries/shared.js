@@ -1,4 +1,4 @@
-import capitalise from '../../lib/capitalise';
+import { capitalise } from '../../lib/strings';
 
 const getValidateQuery = (model, uuid) => `
 	MATCH (n:${capitalise(model)} { name: $name })

@@ -4,39 +4,39 @@ import sinon from 'sinon';
 
 import Role from '../../../server/models/role';
 
-let stubs;
-let instance;
+describe('Person model', () => {
 
-const RoleStub = function () {
+	let stubs;
+	let instance;
 
-	return sinon.createStubInstance(Role);
+	const RoleStub = function () {
 
-};
+		return sinon.createStubInstance(Role);
 
-beforeEach(() => {
-
-	stubs = {
-		Role: RoleStub
 	};
 
-	instance = createInstance();
+	beforeEach(() => {
 
-});
+		stubs = {
+			Role: RoleStub
+		};
 
-const createSubject = () =>
-	proxyquire('../../../server/models/person', {
-		'./role': stubs.Role
+		instance = createInstance();
+
 	});
 
-const createInstance = (props = { name: 'Ian McKellen' }) => {
+	const createSubject = () =>
+		proxyquire('../../../server/models/person', {
+			'./role': stubs.Role
+		});
 
-	const subject = createSubject();
+	const createInstance = (props = { name: 'Ian McKellen' }) => {
 
-	return new subject(props);
+		const subject = createSubject();
 
-};
+		return new subject(props);
 
-describe('Person model', () => {
+	};
 
 	describe('constructor method', () => {
 

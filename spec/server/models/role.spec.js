@@ -1,34 +1,30 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-let stubs;
-let instance;
-
-beforeEach(() => {
-
-	stubs = {
-		validateString: sinon.stub().returns([])
-	};
-
-	instance = createInstance();
-
-});
-
-const createSubject = (stubOverrides = {}) =>
-	proxyquire('../../../server/models/role', {
-		'../lib/validate-string': stubOverrides.validateString || stubs.validateString
-	});
-
-const createInstance = (stubOverrides = {}, props = { name: 'Hamlet, Prince of Denmark' }) => {
-
-	const subject = createSubject(stubOverrides);
-
-	return new subject(props);
-
-};
+import * as validateStringModule from '../../../server/lib/validate-string';
+import Role from '../../../server/models/role';
 
 describe('Role model', () => {
+
+	let stubs;
+
+	const sandbox = sinon.createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			validateString: sandbox.stub(validateStringModule, 'validateString').returns([])
+		};
+
+		stubs.validateString.withArgs('').returns(['Name is too short']);
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
 
 	describe('constructor method', () => {
 
@@ -36,7 +32,7 @@ describe('Role model', () => {
 
 			it('trims', () => {
 
-				instance = createInstance({}, { name: ' Hamlet, Prince of Denmark ' });
+				const instance = new Role({ name: ' Hamlet, Prince of Denmark ' });
 				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
 
 			});
@@ -47,27 +43,28 @@ describe('Role model', () => {
 
 			it('assigns null if not included in props', () => {
 
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
 				expect(instance.characterName).to.eq(null);
 
 			});
 
 			it('assigns null if included in props but value is empty string', () => {
 
-				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: '' });
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
 				expect(instance.characterName).to.eq(null);
 
 			});
 
 			it('assigns null if included in props but value is whitespace-only string', () => {
 
-				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: ' ' });
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' ' });
 				expect(instance.characterName).to.eq(null);
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				instance = createInstance({}, { name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 				expect(instance.characterName).to.eq('Hamlet');
 
 			});
@@ -82,6 +79,7 @@ describe('Role model', () => {
 
 			it('will not add properties to errors property', () => {
 
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
 				instance.validate();
 				expect(instance.errors).not.to.have.property('name');
 				expect(instance.errors).to.deep.eq({});
@@ -94,7 +92,7 @@ describe('Role model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				instance = createInstance({ validateString: sinon.stub().returns(['Name is too short']) });
+				const instance = new Role({ name: '' });
 				instance.validate();
 				expect(instance.errors)
 					.to.have.property('name')
