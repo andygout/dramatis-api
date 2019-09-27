@@ -76,6 +76,13 @@ describe('Role model', () => {
 
 			});
 
+			it('trims value before assigning', () => {
+
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' Hamlet ' });
+				expect(instance.characterName).to.eq('Hamlet');
+
+			});
+
 		});
 
 	});
