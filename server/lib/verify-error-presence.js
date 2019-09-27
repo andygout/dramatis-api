@@ -1,6 +1,6 @@
 import { isObject } from './is-object';
 
-const hasErrors = (prop, value) => prop === 'errors' && isObject(value);
+const isErrorsProperty = (prop, value) => prop === 'errors' && isObject(value);
 
 const isObjectWithErrors = item => isObject(item) && verifyErrorPresence(item);
 
@@ -10,7 +10,7 @@ export const verifyErrorPresence = instance => {
 
 		const value = instance[prop];
 
-		if (hasErrors(prop, value)) return true;
+		if (isErrorsProperty(prop, value)) return true;
 
 		if (isObjectWithErrors(value)) return true;
 
