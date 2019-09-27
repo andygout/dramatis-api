@@ -42,7 +42,7 @@ describe('Person model', () => {
 
 		describe('roles property', () => {
 
-			it('assigns empty array if not included in props', () => {
+			it('assigns empty array if absent from props', () => {
 
 				expect(instance.roles).to.deep.eq([]);
 

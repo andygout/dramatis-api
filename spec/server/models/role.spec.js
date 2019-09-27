@@ -48,7 +48,7 @@ describe('Role model', () => {
 
 		describe('characterName property', () => {
 
-			it('assigns null if not included in props', () => {
+			it('assigns null if absent from props', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
 				expect(instance.characterName).to.eq(null);

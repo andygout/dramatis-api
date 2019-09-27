@@ -71,7 +71,7 @@ describe('Base model', () => {
 
 		describe('name property', () => {
 
-			it('assigns empty string if not included in props', () => {
+			it('assigns empty string if absent from props', () => {
 
 				instance = new Base({});
 				expect(instance.name).to.eq('');
