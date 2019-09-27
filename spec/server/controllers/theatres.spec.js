@@ -39,23 +39,19 @@ describe('Theatres controller', () => {
 			'../models/theatre': stubs.Theatre
 		});
 
-	const createInstance = method => {
+	const callFunction = functionName => {
 
-		const subject = createSubject();
+		const theatresController = createSubject();
 
-		const controllerFunction = `${method}Route`;
-
-		return subject[controllerFunction](stubs.req, stubs.res, stubs.next);
+		return theatresController[functionName](stubs.req, stubs.res, stubs.next);
 
 	};
 
-	describe('new method', () => {
-
-		const method = 'new';
+	describe('newRoute function', () => {
 
 		it('calls renderJson module', () => {
 
-			expect(createInstance(method)).to.eq('renderJson response');
+			expect(callFunction('newRoute')).to.eq('renderJson response');
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
 			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.Theatre())).to.be.true;
 
@@ -63,16 +59,14 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('create method', () => {
-
-		const method = 'create';
+	describe('createRoute function', () => {
 
 		it('calls callInstanceMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Theatre(), method
+				stubs.res, stubs.next, stubs.Theatre(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -80,16 +74,14 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('edit method', () => {
-
-		const method = 'edit';
+	describe('editRoute function', () => {
 
 		it('calls callInstanceMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Theatre(), method
+				stubs.res, stubs.next, stubs.Theatre(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -97,16 +89,14 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('update method', () => {
-
-		const method = 'update';
+	describe('updateRoute function', () => {
 
 		it('calls callInstanceMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Theatre(), method
+				stubs.res, stubs.next, stubs.Theatre(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -114,16 +104,14 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('delete method', () => {
-
-		const method = 'delete';
+	describe('deleteRoute function', () => {
 
 		it('calls callInstanceMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Theatre(), method
+				stubs.res, stubs.next, stubs.Theatre(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -131,16 +119,14 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('show method', () => {
-
-		const method = 'show';
+	describe('showRoute function', () => {
 
 		it('calls callInstanceMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Theatre(), method
+				stubs.res, stubs.next, stubs.Theatre(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -148,13 +134,11 @@ describe('Theatres controller', () => {
 
 	});
 
-	describe('list method', () => {
-
-		const method = 'list';
+	describe('listRoute function', () => {
 
 		it('calls callStaticListMethod module', async () => {
 
-			const result = await createInstance(method);
+			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.res, stubs.next, stubs.Theatre, 'theatre'
