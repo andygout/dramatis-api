@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { assert, createSandbox } from 'sinon';
 
 import * as isObjectModule from '../../../server/lib/is-object';
 import { verifyErrorPresence } from '../../../server/lib/verify-error-presence';
@@ -8,7 +8,7 @@ describe('Verify Error Presence module', () => {
 
 	let stubs;
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 
@@ -37,11 +37,11 @@ describe('Verify Error Presence module', () => {
 			const instance = { errors: {}, theatre: { errors: {} } };
 			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
-			sinon.assert.calledWithExactly(stubs.isObject.firstCall, {});
-			sinon.assert.calledWithExactly(stubs.isObject.secondCall, {});
-			sinon.assert.calledWithExactly(stubs.isObject.thirdCall, { errors: {} });
-			sinon.assert.calledWithExactly(stubs.isObject.getCall(3), {});
-			sinon.assert.calledWithExactly(stubs.isObject.getCall(4), {});
+			assert.calledWithExactly(stubs.isObject.firstCall, {});
+			assert.calledWithExactly(stubs.isObject.secondCall, {});
+			assert.calledWithExactly(stubs.isObject.thirdCall, { errors: {} });
+			assert.calledWithExactly(stubs.isObject.getCall(3), {});
+			assert.calledWithExactly(stubs.isObject.getCall(4), {});
 			expect(result).to.be.false;
 
 		});
@@ -61,8 +61,8 @@ describe('Verify Error Presence module', () => {
 			const instance = { errors: null };
 			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledTwice).to.be.true;
-			sinon.assert.calledWithExactly(stubs.isObject.firstCall, null);
-			sinon.assert.calledWithExactly(stubs.isObject.secondCall, null);
+			assert.calledWithExactly(stubs.isObject.firstCall, null);
+			assert.calledWithExactly(stubs.isObject.secondCall, null);
 			expect(result).to.be.false;
 
 		});
@@ -72,9 +72,9 @@ describe('Verify Error Presence module', () => {
 			const instance = { errors: ['Name is too short'] };
 			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledThrice).to.be.true;
-			sinon.assert.calledWithExactly(stubs.isObject.firstCall, ['Name is too short']);
-			sinon.assert.calledWithExactly(stubs.isObject.secondCall, ['Name is too short']);
-			sinon.assert.calledWithExactly(stubs.isObject.thirdCall, 'Name is too short');
+			assert.calledWithExactly(stubs.isObject.firstCall, ['Name is too short']);
+			assert.calledWithExactly(stubs.isObject.secondCall, ['Name is too short']);
+			assert.calledWithExactly(stubs.isObject.thirdCall, 'Name is too short');
 			expect(result).to.be.false;
 
 		});
@@ -106,8 +106,8 @@ describe('Verify Error Presence module', () => {
 			const instance = { theatre: { errors: { name: ['Name is too short'] } } };
 			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledTwice).to.be.true;
-			sinon.assert.calledWithExactly(stubs.isObject.firstCall, { errors: { name: ['Name is too short'] } });
-			sinon.assert.calledWithExactly(stubs.isObject.secondCall, { name: ['Name is too short'] });
+			assert.calledWithExactly(stubs.isObject.firstCall, { errors: { name: ['Name is too short'] } });
+			assert.calledWithExactly(stubs.isObject.secondCall, { name: ['Name is too short'] });
 			expect(result).to.be.true;
 
 		});
@@ -125,9 +125,9 @@ describe('Verify Error Presence module', () => {
 			const instance = { cast: [{ errors: { name: ['Name is too short'] } }] };
 			const result = verifyErrorPresence(instance);
 			expect(stubs.isObject.calledThrice).to.be.true;
-			sinon.assert.calledWithExactly(stubs.isObject.firstCall, [{ errors: { name: ['Name is too short'] } }]);
-			sinon.assert.calledWithExactly(stubs.isObject.secondCall, { errors: { name: ['Name is too short'] } });
-			sinon.assert.calledWithExactly(stubs.isObject.thirdCall, { name: ['Name is too short'] });
+			assert.calledWithExactly(stubs.isObject.firstCall, [{ errors: { name: ['Name is too short'] } }]);
+			assert.calledWithExactly(stubs.isObject.secondCall, { errors: { name: ['Name is too short'] } });
+			assert.calledWithExactly(stubs.isObject.thirdCall, { name: ['Name is too short'] });
 			expect(result).to.be.true;
 
 		});

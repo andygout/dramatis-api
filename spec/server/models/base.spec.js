@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { assert, createSandbox, spy, stub } from 'sinon';
 
 import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
 import * as validateStringModule from '../../../server/lib/validate-string';
@@ -15,7 +15,7 @@ describe('Base model', () => {
 	let stubs;
 	let instance;
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 
@@ -179,10 +179,10 @@ describe('Base model', () => {
 
 			it('creates', async () => {
 
-				sinon.spy(instance, 'validate');
-				sinon.spy(instance, 'validateInDb');
+				spy(instance, 'validate');
+				spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(stubs.getCreateQuery)
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.validate.withArgs({ required: true }),
 					stubs.verifyErrorPresence.withArgs(instance),
 					instance.validateInDb.withArgs(),
@@ -208,10 +208,10 @@ describe('Base model', () => {
 
 			it('updates', async () => {
 
-				sinon.spy(instance, 'validate');
-				sinon.spy(instance, 'validateInDb');
+				spy(instance, 'validate');
+				spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(stubs.getUpdateQuery);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.validate.withArgs({ required: true }),
 					stubs.verifyErrorPresence.withArgs(instance),
 					instance.validateInDb.withArgs(),
@@ -244,10 +244,10 @@ describe('Base model', () => {
 				it('returns instance without creating/updating', async () => {
 
 					stubs.verifyErrorPresence.returns(true);
-					const getCreateUpdateQueryStub = sinon.stub();
+					const getCreateUpdateQueryStub = stub();
 					instance.model = 'theatre';
-					sinon.spy(instance, 'validate');
-					sinon.spy(instance, 'validateInDb');
+					spy(instance, 'validate');
+					spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
 					expect(instance.validate.calledBefore(stubs.verifyErrorPresence)).to.be.true;
 					expect(instance.validate.calledOnce).to.be.true;
@@ -270,12 +270,12 @@ describe('Base model', () => {
 				it('returns instance without creating/updating', async () => {
 
 					stubs.verifyErrorPresence.onFirstCall().returns(false).onSecondCall().returns(true);
-					const getCreateUpdateQueryStub = sinon.stub();
+					const getCreateUpdateQueryStub = stub();
 					instance.model = 'theatre';
-					sinon.spy(instance, 'validate');
-					sinon.spy(instance, 'validateInDb');
+					spy(instance, 'validate');
+					spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
-					sinon.assert.callOrder(
+					assert.callOrder(
 						instance.validate.withArgs({ required: true }),
 						stubs.verifyErrorPresence.withArgs(instance),
 						instance.validateInDb.withArgs(),
@@ -307,7 +307,7 @@ describe('Base model', () => {
 			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
 
 				instance.model = 'production';
-				sinon.spy(instance, 'createUpdate');
+				spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
 				expect(instance.createUpdate.calledWithExactly(stubs.getCreateQueries[instance.model])).to.be.true;
@@ -320,7 +320,7 @@ describe('Base model', () => {
 
 			it('calls createUpdate method with function to get shared create query as argument', async () => {
 
-				sinon.spy(instance, 'createUpdate');
+				spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
 				expect(instance.createUpdate.calledWithExactly(stubs.getCreateQuery)).to.be.true;
@@ -379,7 +379,7 @@ describe('Base model', () => {
 			it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
 				instance.model = 'production';
-				sinon.spy(instance, 'createUpdate');
+				spy(instance, 'createUpdate');
 				await instance.update();
 				expect(instance.createUpdate.calledOnce).to.be.true;
 				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQueries[instance.model])).to.be.true;
@@ -392,7 +392,7 @@ describe('Base model', () => {
 
 			it('calls createUpdate method with function to get shared update query as argument', async () => {
 
-				sinon.spy(instance, 'createUpdate');
+				spy(instance, 'createUpdate');
 				await instance.update();
 				expect(instance.createUpdate.calledOnce).to.be.true;
 				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQuery)).to.be.true;

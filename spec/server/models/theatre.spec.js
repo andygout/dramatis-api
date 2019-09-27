@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
 
 import * as verifyErrorPresenceModule from '../../../server/lib/verify-error-presence';
 import Theatre from '../../../server/models/theatre';
@@ -13,7 +13,7 @@ describe('Theatre model', () => {
 	let stubs;
 	let instance;
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 
@@ -85,9 +85,9 @@ describe('Theatre model', () => {
 
 			it('deletes', async () => {
 
-				sinon.spy(instance, 'validateDeleteInDb');
+				spy(instance, 'validateDeleteInDb');
 				const result = await instance.delete();
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.validateDeleteInDb.withArgs(),
 					stubs.getValidateDeleteQuery.withArgs(),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
@@ -111,9 +111,9 @@ describe('Theatre model', () => {
 			it('returns instance without deleting', async () => {
 
 				stubs.verifyErrorPresence.returns(true);
-				sinon.spy(instance, 'validateDeleteInDb');
+				spy(instance, 'validateDeleteInDb');
 				const result = await instance.delete();
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.validateDeleteInDb.withArgs(),
 					stubs.getValidateDeleteQuery.withArgs(),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),

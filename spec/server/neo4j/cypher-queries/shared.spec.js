@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { createSandbox } from 'sinon';
 
 import * as strings from '../../../../server/lib/strings';
 import * as cypherQueriesShared from '../../../../server/neo4j/cypher-queries/shared';
@@ -9,7 +9,7 @@ describe('Cypher Queries Shared module', () => {
 
 	let stubs;
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 
