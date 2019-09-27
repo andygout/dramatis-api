@@ -71,7 +71,7 @@ describe('Playtext model', () => {
 
 		describe('characters property', () => {
 
-			it('assigns empty array if not included in props', () => {
+			it('assigns empty array if absent from props', () => {
 
 				const props = { name: 'Hamlet' };
 				const instance = createInstance({}, props);
