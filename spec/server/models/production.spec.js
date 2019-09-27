@@ -41,8 +41,8 @@ describe('Production model', () => {
 			prepareAsParamsModule: {
 				prepareAsParams: sinon.stub().returns('prepareAsParams response')
 			},
-			verifyErrorPresenceModule: {
-				verifyErrorPresence: sinon.stub().returns(false)
+			hasErrorsModule: {
+				hasErrors: sinon.stub().returns(false)
 			},
 			Base: {
 				validateStringModule: {
@@ -63,8 +63,8 @@ describe('Production model', () => {
 
 	const createSubject = (stubOverrides = {}) =>
 		proxyquire('../../../server/models/production', {
+			'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.hasErrorsModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
-			'../lib/verify-error-presence': stubOverrides.verifyErrorPresenceModule || stubs.verifyErrorPresenceModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
 			'./base': proxyquire('../../../server/models/base', {
 				'../lib/validate-string': stubs.Base.validateStringModule
@@ -117,7 +117,7 @@ describe('Production model', () => {
 
 	describe('setErrorStatus method', () => {
 
-		it('calls instance validate method and associated models\' validate methods then verifyErrorPresence', () => {
+		it('calls instance validate method and associated models\' validate methods then hasErrors', () => {
 
 			sinon.spy(instance, 'validate');
 			instance.setErrorStatus();
@@ -127,23 +127,23 @@ describe('Production model', () => {
 				instance.playtext.validate.withArgs(),
 				instance.cast[0].validate.withArgs(),
 				instance.cast[0].roles[0].validate.withArgs(),
-				stubs.verifyErrorPresenceModule.verifyErrorPresence.withArgs(instance)
+				stubs.hasErrorsModule.hasErrors.withArgs(instance)
 			);
 			expect(instance.validate.calledOnce).to.be.true;
 			expect(instance.theatre.validate.calledOnce).to.be.true;
 			expect(instance.playtext.validate.calledOnce).to.be.true;
 			expect(instance.cast[0].validate.calledOnce).to.be.true;
 			expect(instance.cast[0].roles[0].validate.calledOnce).to.be.true;
-			expect(stubs.verifyErrorPresenceModule.verifyErrorPresence.calledOnce).to.be.true;
+			expect(stubs.hasErrorsModule.hasErrors.calledOnce).to.be.true;
 
 		});
 
 		context('valid data', () => {
 
-			it('sets instance hasError property to false and returns same value', () => {
+			it('sets instance hasErrors property to false and returns same value', () => {
 
 				expect(instance.setErrorStatus()).to.be.false;
-				expect(instance.hasError).to.be.false;
+				expect(instance.hasErrors).to.be.false;
 
 			});
 
@@ -151,17 +151,17 @@ describe('Production model', () => {
 
 		context('invalid data', () => {
 
-			it('sets instance hasError property to true and returns same value', () => {
+			it('sets instance hasErrors property to true and returns same value', () => {
 
 				const instance = createInstance(
 					{
-						verifyErrorPresenceModule: {
-							verifyErrorPresence: sinon.stub().returns(true)
+						hasErrorsModule: {
+							hasErrors: sinon.stub().returns(true)
 						}
 					}
 				);
 				expect(instance.setErrorStatus()).to.be.true;
-				expect(instance.hasError).to.be.true;
+				expect(instance.hasErrors).to.be.true;
 
 			});
 
@@ -224,8 +224,8 @@ describe('Production model', () => {
 				const getCreateUpdateQueryStub = sinon.stub();
 				const instance = createInstance(
 					{
-						verifyErrorPresenceModule: {
-							verifyErrorPresence: sinon.stub().returns(true)
+						hasErrorsModule: {
+							hasErrors: sinon.stub().returns(true)
 						}
 					}
 				);

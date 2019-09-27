@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy, stub } from 'sinon';
 
+import * as hasErrorsModule from '../../../server/lib/has-errors';
 import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
 import * as validateStringModule from '../../../server/lib/validate-string';
-import * as verifyErrorPresenceModule from '../../../server/lib/verify-error-presence';
 import Base from '../../../server/models/base';
 import * as cypherQueriesModelQueryMaps from '../../../server/neo4j/cypher-queries/model-query-maps';
 import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
@@ -22,7 +22,7 @@ describe('Base model', () => {
 		stubs = {
 			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns('prepareAsParams response'),
 			validateString: sandbox.stub(validateStringModule, 'validateString').returns([]),
-			verifyErrorPresence: sandbox.stub(verifyErrorPresenceModule, 'verifyErrorPresence').returns(false),
+			hasErrors: sandbox.stub(hasErrorsModule, 'hasErrors').returns(false),
 			getCreateQueries: {
 				production:
 					sandbox.stub(cypherQueriesModelQueryMaps.getCreateQueries, 'production')
@@ -184,11 +184,11 @@ describe('Base model', () => {
 				const result = await instance.createUpdate(stubs.getCreateQuery)
 				assert.callOrder(
 					instance.validate.withArgs({ required: true }),
-					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
 					stubs.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.hasErrors.withArgs(instance),
 					stubs.getCreateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
@@ -196,7 +196,7 @@ describe('Base model', () => {
 					)
 				);
 				expect(instance.validate.calledOnce).to.be.true;
-				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(stubs.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
 				expect(stubs.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
@@ -213,11 +213,11 @@ describe('Base model', () => {
 				const result = await instance.createUpdate(stubs.getUpdateQuery);
 				assert.callOrder(
 					instance.validate.withArgs({ required: true }),
-					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
 					stubs.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.hasErrors.withArgs(instance),
 					stubs.getUpdateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
@@ -225,7 +225,7 @@ describe('Base model', () => {
 					)
 				);
 				expect(instance.validate.calledOnce).to.be.true;
-				expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+				expect(stubs.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
 				expect(stubs.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
@@ -243,17 +243,17 @@ describe('Base model', () => {
 
 				it('returns instance without creating/updating', async () => {
 
-					stubs.verifyErrorPresence.returns(true);
+					stubs.hasErrors.returns(true);
 					const getCreateUpdateQueryStub = stub();
 					instance.model = 'theatre';
 					spy(instance, 'validate');
 					spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
-					expect(instance.validate.calledBefore(stubs.verifyErrorPresence)).to.be.true;
+					expect(instance.validate.calledBefore(stubs.hasErrors)).to.be.true;
 					expect(instance.validate.calledOnce).to.be.true;
 					expect(instance.validate.calledWithExactly({ required: true })).to.be.true;
-					expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledWithExactly(instance)).to.be.true;
+					expect(stubs.hasErrors.calledOnce).to.be.true;
+					expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 					expect(instance.validateInDb.notCalled).to.be.true;
 					expect(stubs.getValidateQuery.notCalled).to.be.true;
 					expect(stubs.neo4jQuery.notCalled).to.be.true;
@@ -269,7 +269,7 @@ describe('Base model', () => {
 
 				it('returns instance without creating/updating', async () => {
 
-					stubs.verifyErrorPresence.onFirstCall().returns(false).onSecondCall().returns(true);
+					stubs.hasErrors.onFirstCall().returns(false).onSecondCall().returns(true);
 					const getCreateUpdateQueryStub = stub();
 					instance.model = 'theatre';
 					spy(instance, 'validate');
@@ -277,14 +277,14 @@ describe('Base model', () => {
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
 					assert.callOrder(
 						instance.validate.withArgs({ required: true }),
-						stubs.verifyErrorPresence.withArgs(instance),
+						stubs.hasErrors.withArgs(instance),
 						instance.validateInDb.withArgs(),
 						stubs.getValidateQuery.withArgs(instance.model),
 						stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
-						stubs.verifyErrorPresence.withArgs(instance)
+						stubs.hasErrors.withArgs(instance)
 					);
 					expect(instance.validate.calledOnce).to.be.true;
-					expect(stubs.verifyErrorPresence.calledTwice).to.be.true;
+					expect(stubs.hasErrors.calledTwice).to.be.true;
 					expect(instance.validateInDb.calledOnce).to.be.true;
 					expect(stubs.getValidateQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;

@@ -1,6 +1,6 @@
+import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import { validateString } from '../lib/validate-string';
-import { verifyErrorPresence } from '../lib/verify-error-presence';
 import {
 	getCreateQueries,
 	getEditQueries,
@@ -48,15 +48,15 @@ export default class Base {
 
 		this.validate({ required: true });
 
-		this.hasError = verifyErrorPresence(this);
+		this.hasErrors = hasErrors(this);
 
-		if (this.hasError) return this;
+		if (this.hasErrors) return this;
 
 		await this.validateInDb();
 
-		this.hasError = verifyErrorPresence(this);
+		this.hasErrors = hasErrors(this);
 
-		if (this.hasError) return this;
+		if (this.hasErrors) return this;
 
 		return neo4jQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
 

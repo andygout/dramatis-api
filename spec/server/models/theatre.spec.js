@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
-import * as verifyErrorPresenceModule from '../../../server/lib/verify-error-presence';
+import * as hasErrorsModule from '../../../server/lib/has-errors';
 import Theatre from '../../../server/models/theatre';
 import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
 import * as cypherQueriesTheatre from '../../../server/neo4j/cypher-queries/theatre';
@@ -18,7 +18,7 @@ describe('Theatre model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			verifyErrorPresence: sandbox.stub(verifyErrorPresenceModule, 'verifyErrorPresence').returns(false),
+			hasErrors: sandbox.stub(hasErrorsModule, 'hasErrors').returns(false),
 			getDeleteQuery: sandbox.stub(cypherQueriesShared, 'getDeleteQuery').returns('getDeleteQuery response'),
 			getValidateDeleteQuery:
 				sandbox.stub(cypherQueriesTheatre, 'getValidateDeleteQuery').returns('getValidateDeleteQuery response'),
@@ -91,14 +91,14 @@ describe('Theatre model', () => {
 					instance.validateDeleteInDb.withArgs(),
 					stubs.getValidateDeleteQuery.withArgs(),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
-					stubs.verifyErrorPresence.withArgs(instance),
+					stubs.hasErrors.withArgs(instance),
 					stubs.getDeleteQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getDeleteQuery response', params: instance })
 				);
 				expect(instance.validateDeleteInDb.calledOnce).to.be.true;
 				expect(stubs.getValidateDeleteQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
-				expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
+				expect(stubs.hasErrors.calledOnce).to.be.true;
 				expect(stubs.getDeleteQuery.calledOnce).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
@@ -110,19 +110,19 @@ describe('Theatre model', () => {
 
 			it('returns instance without deleting', async () => {
 
-				stubs.verifyErrorPresence.returns(true);
+				stubs.hasErrors.returns(true);
 				spy(instance, 'validateDeleteInDb');
 				const result = await instance.delete();
 				assert.callOrder(
 					instance.validateDeleteInDb.withArgs(),
 					stubs.getValidateDeleteQuery.withArgs(),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateDeleteQuery response', params: instance }),
-					stubs.verifyErrorPresence.withArgs(instance)
+					stubs.hasErrors.withArgs(instance)
 				);
 				expect(instance.validateDeleteInDb.calledOnce).to.be.true;
 				expect(stubs.getValidateDeleteQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
-				expect(stubs.verifyErrorPresence.calledOnce).to.be.true;
+				expect(stubs.hasErrors.calledOnce).to.be.true;
 				expect(stubs.getDeleteQuery.notCalled).to.be.true;
 				expect(result).to.deep.eq({ theatre: instance });
 
