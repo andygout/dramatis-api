@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import sinon from 'sinon';
+import { createSandbox } from 'sinon';
 
 import * as validateStringModule from '../../../server/lib/validate-string';
 import Role from '../../../server/models/role';
@@ -8,7 +8,7 @@ describe('Role model', () => {
 
 	let stubs;
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
-import sinon from 'sinon';
+import { createSandbox } from 'sinon';
 
 import * as callClassMethods from '../../../server/lib/call-class-methods';
 import * as renderJsonModule from '../../../server/lib/render-json';
@@ -13,7 +13,7 @@ describe('Call Class Methods module', () => {
 	const err = new Error('errorText');
 	const notFoundErr = new Error('Not Found');
 
-	const sandbox = sinon.createSandbox();
+	const sandbox = createSandbox();
 
 	beforeEach(() => {
 
