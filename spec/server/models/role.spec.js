@@ -30,7 +30,14 @@ describe('Role model', () => {
 
 		describe('name property', () => {
 
-			it('trims', () => {
+			it('assigns given value', () => {
+
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
+				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
+
+			});
+
+			it('trims given value before assigning', () => {
 
 				const instance = new Role({ name: ' Hamlet, Prince of Denmark ' });
 				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
