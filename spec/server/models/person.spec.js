@@ -32,9 +32,9 @@ describe('Person model', () => {
 
 	const createInstance = (props = { name: 'Ian McKellen' }) => {
 
-		const subject = createSubject();
+		const Person = createSubject();
 
-		return new subject(props);
+		return new Person(props);
 
 	};
 

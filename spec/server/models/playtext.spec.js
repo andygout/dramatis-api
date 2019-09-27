@@ -61,9 +61,9 @@ describe('Playtext model', () => {
 
 	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', characters: [{ name: 'Hamlet' }] }) => {
 
-		const subject = createSubject(stubOverrides);
+		const Playtext = createSubject(stubOverrides);
 
-		return new subject(props);
+		return new Playtext(props);
 
 	};
 
