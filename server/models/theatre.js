@@ -1,4 +1,4 @@
-import { verifyErrorPresence } from '../lib/verify-error-presence';
+import { hasErrors } from '../lib/has-errors';
 import Base from './base';
 import { getDeleteQuery } from '../neo4j/cypher-queries/shared';
 import { getValidateDeleteQuery } from '../neo4j/cypher-queries/theatre';
@@ -30,9 +30,9 @@ export default class Theatre extends Base {
 
 		await this.validateDeleteInDb();
 
-		this.hasError = verifyErrorPresence(this);
+		this.hasErrors = hasErrors(this);
 
-		if (this.hasError) return { theatre: this };
+		if (this.hasErrors) return { theatre: this };
 
 		return neo4jQuery({ query: getDeleteQuery(this.model), params: this });
 

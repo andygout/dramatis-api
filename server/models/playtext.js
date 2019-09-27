@@ -1,5 +1,5 @@
+import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
-import { verifyErrorPresence } from '../lib/verify-error-presence';
 import Base from './base';
 import Character from './character';
 import { neo4jQuery } from '../neo4j/query';
@@ -29,7 +29,7 @@ export default class Playtext extends Base {
 
 		this.characters.forEach(character => character.validate());
 
-		return this.hasError = verifyErrorPresence(this);
+		return this.hasErrors = hasErrors(this);
 
 	}
 
@@ -39,9 +39,9 @@ export default class Playtext extends Base {
 
 		await this.validateInDb();
 
-		this.hasError = verifyErrorPresence(this);
+		this.hasErrors = hasErrors(this);
 
-		if (this.hasError) return this;
+		if (this.hasErrors) return this;
 
 		return neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
 

@@ -1,5 +1,5 @@
+import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
-import { verifyErrorPresence } from '../lib/verify-error-presence';
 import Base from './base';
 import Person from './person';
 import Playtext from './playtext';
@@ -42,7 +42,7 @@ export default class Production extends Base {
 
 		});
 
-		return this.hasError = verifyErrorPresence(this);
+		return this.hasErrors = hasErrors(this);
 
 	}
 
