@@ -76,9 +76,9 @@ describe('Production model', () => {
 
 	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
 
-		const subject = createSubject(stubOverrides);
+		const Production = createSubject(stubOverrides);
 
-		return new subject(props);
+		return new Production(props);
 
 	};
 
