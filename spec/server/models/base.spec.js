@@ -78,6 +78,13 @@ describe('Base model', () => {
 
 			});
 
+			it('assigns given value', () => {
+
+				instance = new Base({ name: 'Barfoo' });
+				expect(instance.name).to.eq('Barfoo');
+
+			});
+
 			it('trims', () => {
 
 				instance = new Base({ name: ' Barfoo ' });
