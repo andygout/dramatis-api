@@ -37,7 +37,7 @@ describe('Role model', () => {
 
 			});
 
-			it('trims', () => {
+			it('trims given value before assigning', () => {
 
 				const instance = new Role({ name: ' Hamlet, Prince of Denmark ' });
 				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
