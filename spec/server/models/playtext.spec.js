@@ -107,7 +107,7 @@ describe('Playtext model', () => {
 			sinon.spy(instance, 'validate');
 			instance.setErrorStatus();
 			sinon.assert.callOrder(
-				instance.validate.withArgs({ required: true }),
+				instance.validate.withArgs({ requiresName: true }),
 				instance.characters[0].validate.withArgs(),
 				stubs.hasErrorsModule.hasErrors.withArgs(instance)
 			);

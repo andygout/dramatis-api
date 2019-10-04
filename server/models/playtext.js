@@ -25,7 +25,7 @@ export default class Playtext extends Base {
 
 	setErrorStatus () {
 
-		this.validate({ required: true });
+		this.validate({ requiresName: true });
 
 		this.characters.forEach(character => character.validate());
 

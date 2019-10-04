@@ -30,7 +30,7 @@ export default class Base {
 
 	validate (opts = {}) {
 
-		const nameErrors = validateString(this.name, opts);
+		const nameErrors = validateString(this.name, opts.requiresName);
 
 		if (nameErrors.length) this.errors.name = nameErrors;
 
@@ -46,7 +46,7 @@ export default class Base {
 
 	async createUpdate (getCreateUpdateQuery) {
 
-		this.validate({ required: true });
+		this.validate({ requiresName: true });
 
 		this.hasErrors = hasErrors(this);
 

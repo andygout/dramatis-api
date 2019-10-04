@@ -122,8 +122,8 @@ describe('Production model', () => {
 			sinon.spy(instance, 'validate');
 			instance.setErrorStatus();
 			sinon.assert.callOrder(
-				instance.validate.withArgs({ required: true }),
-				instance.theatre.validate.withArgs({ required: true }),
+				instance.validate.withArgs({ requiresName: true }),
+				instance.theatre.validate.withArgs({ requiresName: true }),
 				instance.playtext.validate.withArgs(),
 				instance.cast[0].validate.withArgs(),
 				instance.cast[0].roles[0].validate.withArgs(),
