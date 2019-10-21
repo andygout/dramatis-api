@@ -1,14 +1,20 @@
-import constants from '../config/constants';
-
 export const validateString = (stringValue, isRequiredString) => {
+
+	const STRING_MAX_LENGTH = 1000;
 
 	const stringErrors = [];
 
-	if (stringValue === null) return stringErrors;
+	const isStringWithLength =
+		stringValue !== null &&
+		!!stringValue.length;
 
-	if (isRequiredString && (stringValue.length < constants.STRING_MIN_LENGTH)) stringErrors.push('Name is too short');
+	if (isRequiredString && !isStringWithLength) stringErrors.push('Name is too short');
 
-	if (stringValue.length > constants.STRING_MAX_LENGTH) stringErrors.push('Name is too long');
+	const isStringExceedingMaxLength =
+		isStringWithLength &&
+		stringValue.length > STRING_MAX_LENGTH;
+
+	if (isStringExceedingMaxLength) stringErrors.push('Name is too long');
 
 	return stringErrors;
 
