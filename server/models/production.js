@@ -28,9 +28,9 @@ export default class Production extends Base {
 
 	setErrorStatus () {
 
-		this.validate({ required: true });
+		this.validate({ requiresName: true });
 
-		this.theatre.validate({ required: true });
+		this.theatre.validate({ requiresName: true });
 
 		this.playtext.validate();
 

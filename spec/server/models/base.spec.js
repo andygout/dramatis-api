@@ -183,7 +183,7 @@ describe('Base model', () => {
 				spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(stubs.getCreateQuery)
 				assert.callOrder(
-					instance.validate.withArgs({ required: true }),
+					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
 					stubs.getValidateQuery.withArgs(instance.model),
@@ -212,7 +212,7 @@ describe('Base model', () => {
 				spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(stubs.getUpdateQuery);
 				assert.callOrder(
-					instance.validate.withArgs({ required: true }),
+					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
 					stubs.getValidateQuery.withArgs(instance.model),
@@ -251,7 +251,7 @@ describe('Base model', () => {
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
 					expect(instance.validate.calledBefore(stubs.hasErrors)).to.be.true;
 					expect(instance.validate.calledOnce).to.be.true;
-					expect(instance.validate.calledWithExactly({ required: true })).to.be.true;
+					expect(instance.validate.calledWithExactly({ requiresName: true })).to.be.true;
 					expect(stubs.hasErrors.calledOnce).to.be.true;
 					expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 					expect(instance.validateInDb.notCalled).to.be.true;
@@ -276,7 +276,7 @@ describe('Base model', () => {
 					spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
 					assert.callOrder(
-						instance.validate.withArgs({ required: true }),
+						instance.validate.withArgs({ requiresName: true }),
 						stubs.hasErrors.withArgs(instance),
 						instance.validateInDb.withArgs(),
 						stubs.getValidateQuery.withArgs(instance.model),
