@@ -23,6 +23,14 @@ Graph database-driven API for site of theatrical productions and playtexts.
 - Ensure `$ npm install` has been run.
 - `$ npm test`.
 
+## To run integration tests
+- Ensure `$ npm install` has been run.
+- Download and run the [Docker desktop app](https://www.docker.com/products/docker-desktop).
+- Stop any Neo4j databases running on the Desktop app.
+- Start the Docker-served resources by running `$ npm run start:test-int:dependencies` and wait until they are ready.
+- In a separate CLI tab run `$ npm run test-int`.
+- The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`.
+
 ## Endpoints
 Using theatre model as an example.
 
