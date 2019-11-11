@@ -28,7 +28,7 @@ export default class Base {
 
 	}
 
-	validate (opts = {}) {
+	validate (opts = { requiresName: false }) {
 
 		const nameErrors = validateString(this.name, opts.requiresName);
 

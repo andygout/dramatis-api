@@ -16,13 +16,13 @@ export default class Role {
 
 	}
 
-	validate (opts = {}) {
+	validate (opts = { requiresName: false, requiresCharacterName: false }) {
 
-		const nameErrors = validateString(this.name, opts);
+		const nameErrors = validateString(this.name, opts.requiresName);
 
 		if (nameErrors.length) this.errors.name = nameErrors;
 
-		const characterNameErrors = validateString(this.characterName, opts);
+		const characterNameErrors = validateString(this.characterName, opts.requiresCharacterName);
 
 		if (characterNameErrors.length) this.errors.characterName = characterNameErrors;
 
