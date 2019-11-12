@@ -12,7 +12,6 @@ import express from 'express';
 import http from 'http';
 import logger from 'morgan';
 
-import createNeo4jConstraints from './neo4j/create-constraints';
 import router from './routes';
 
 const app = express();
@@ -124,12 +123,9 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-(async () => {
+server.listen(port, () => console.log(`Listening on port ${port}`));
 
-	await createNeo4jConstraints();
+server.on('error', onError);
 
-	server.listen(port, () => console.log(`Listening on port ${port}`));
-
-	server.on('error', onError);
-
-})();
+// Export for integration tests.
+export default app;

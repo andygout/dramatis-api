@@ -6,11 +6,13 @@
   "scripts": {
     "lint": "eslint --ext .js server/ spec/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
+    "start:test-int:dependencies": "docker-compose -f ./docker/docker-compose.yml up",
+    "test-int": "find spec-int -name '*.spec-int.js' | xargs mocha --require @babel/register spec-int",
     "unit-test": "find spec -name '*.spec.js' | xargs mocha --require @babel/register spec",
     "test": "npm run lint && npm run lintspaces && npm run unit-test",
     "build": "babel server --out-dir built",
     "watch": "babel server --watch --out-dir built",
-    "start": "npm run watch & nodemon built/app.js"
+    "start": "node built/setup.js && npm run watch & nodemon built/app.js"
   },
   "pre-commit": [
     "test"
@@ -35,6 +37,7 @@
     "@babel/register": "^7.4.4",
     "babel-plugin-add-module-exports": "^1.0.2",
     "chai": "^3.5.0",
+    "chai-http": "^4.3.0",
     "eslint": "^4.11.0",
     "lintspaces-cli": "^0.6.0",
     "mocha": "^3.2.0",

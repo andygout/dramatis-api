@@ -3,7 +3,11 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.16.0
+      - image: neo4j:3.5.12
+        environment:
+          NEO4J_AUTH: none
     steps:
       - checkout
       - run: npm install
       - run: npm test
+      - run: npm run test-int
