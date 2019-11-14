@@ -7,7 +7,7 @@
     "lint": "eslint --ext .js server/ spec/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "start:test-int:dependencies": "docker-compose -f ./docker/docker-compose.yml up",
-    "test-int": "find spec-int -name '*.spec-int.js' | xargs mocha --require @babel/register spec-int",
+    "test-int": "find spec-int -name '*.spec-int.js' | xargs mocha --require @babel/register --require spec-int/mocha.env.js spec-int",
     "unit-test": "find spec -name '*.spec.js' | xargs mocha --require @babel/register spec",
     "test": "npm run lint && npm run lintspaces && npm run unit-test",
     "build": "babel server --out-dir built",
