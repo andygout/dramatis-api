@@ -13,149 +13,157 @@ const expect = chai.expect;
 
 describe('People API', () => {
 
-	const PERSON_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+	describe('GET new endpoint', () => {
 
-	const sandbox = createSandbox();
+		it('responds with data required to prepare new person', async () => {
 
-	before(async () => {
+			const response = await chai.request(app)
+				.get('/people/new');
 
-		let uuidCallCount = 0;
+			const expectedResponseBody = {
+				name: '',
+				productions: [],
+				roles: [],
+				errors: {}
+			};
 
-		sandbox.stub(uuid, 'v4').returns(PERSON_UUID)
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-		await purgeDatabase();
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
-
-	});
-
-	it('gets data required to prepare new person', async () => {
-
-		const response = await chai.request(app)
-			.get('/people/new');
-
-		const expectedResponseBody = {
-			name: '',
-			productions: [],
-			roles: [],
-			errors: {}
-		};
-
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+		});
 
 	});
 
-	it('creates person', async () => {
+	describe('CRUD', () => {
 
-		expect(await countNodesWithLabel('Person')).to.equal(0);
+		const PERSON_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-		const response = await chai.request(app)
-			.post('/people')
-			.send({ name: 'Ian McKellen' });
+		const sandbox = createSandbox();
 
-		const expectedResponseBody = {
-			model: 'person',
-			uuid: PERSON_UUID,
-			name: 'Ian McKellen'
-		};
+		before(async () => {
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+			let uuidCallCount = 0;
 
-	});
+			sandbox.stub(uuid, 'v4').returns(PERSON_UUID)
 
-	it('gets data required to edit specific person', async () => {
+			await purgeDatabase();
 
-		const response = await chai.request(app)
-			.get(`/people/${PERSON_UUID}/edit`);
+		});
 
-		const expectedResponseBody = {
-			model: 'person',
-			uuid: PERSON_UUID,
-			name: 'Ian McKellen'
-		};
+		after(() => {
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			sandbox.restore();
 
-	});
+		});
 
-	it('updates person', async () => {
+		it('creates person', async () => {
 
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-		const response = await chai.request(app)
-			.post(`/people/${PERSON_UUID}`)
-			.send({ name: 'Patrick Stewart' })
+			const response = await chai.request(app)
+				.post('/people')
+				.send({ name: 'Ian McKellen' });
 
-		const expectedResponseBody = {
-			model: 'person',
-			uuid: PERSON_UUID,
-			name: 'Patrick Stewart'
-		};
+			const expectedResponseBody = {
+				model: 'person',
+				uuid: PERSON_UUID,
+				name: 'Ian McKellen'
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-	});
+		});
 
-	it('shows person', async () => {
+		it('gets data required to edit specific person', async () => {
 
-		const response = await chai.request(app)
-			.get(`/people/${PERSON_UUID}`);
+			const response = await chai.request(app)
+				.get(`/people/${PERSON_UUID}/edit`);
 
-		const expectedResponseBody = {
-			model: 'person',
-			uuid: PERSON_UUID,
-			name: 'Patrick Stewart',
-			productions: []
-		};
+			const expectedResponseBody = {
+				model: 'person',
+				uuid: PERSON_UUID,
+				name: 'Ian McKellen'
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-	});
+		});
 
-	it('lists all people', async () => {
+		it('updates person', async () => {
 
-		const response = await chai.request(app)
-			.get('/people');
+			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-		const expectedResponseBody = [
-			{
+			const response = await chai.request(app)
+				.post(`/people/${PERSON_UUID}`)
+				.send({ name: 'Patrick Stewart' });
+
+			const expectedResponseBody = {
 				model: 'person',
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart'
-			}
-		];
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-	});
+		});
 
-	it('deletes person', async () => {
+		it('shows person', async () => {
 
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+			const response = await chai.request(app)
+				.get(`/people/${PERSON_UUID}`);
 
-		const response = await chai.request(app)
-			.delete(`/people/${PERSON_UUID}`);
+			const expectedResponseBody = {
+				model: 'person',
+				uuid: PERSON_UUID,
+				name: 'Patrick Stewart',
+				productions: []
+			};
 
-		const expectedResponseBody = {
-			model: 'person',
-			name: 'Patrick Stewart'
-		};
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(0);
+		});
+
+		it('lists all people', async () => {
+
+			const response = await chai.request(app)
+				.get('/people');
+
+			const expectedResponseBody = [
+				{
+					model: 'person',
+					uuid: PERSON_UUID,
+					name: 'Patrick Stewart'
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+
+		});
+
+		it('deletes person', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.delete(`/people/${PERSON_UUID}`);
+
+			const expectedResponseBody = {
+				model: 'person',
+				name: 'Patrick Stewart'
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+		});
 
 	});
 
