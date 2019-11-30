@@ -13,150 +13,158 @@ const expect = chai.expect;
 
 describe('Characters API', () => {
 
-	const CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+	describe('GET new endpoint', () => {
 
-	const sandbox = createSandbox();
+		it('responds with data required to prepare new character', async () => {
 
-	before(async () => {
+			const response = await chai.request(app)
+				.get('/characters/new');
 
-		let uuidCallCount = 0;
+			const expectedResponseBody = {
+				name: '',
+				productions: [],
+				errors: {}
+			};
 
-		sandbox.stub(uuid, 'v4').returns(CHARACTER_UUID);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-		await purgeDatabase();
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
-
-	});
-
-	it('gets data required to prepare new character', async () => {
-
-		const response = await chai.request(app)
-			.get('/characters/new');
-
-		const expectedResponseBody = {
-			name: '',
-			productions: [],
-			errors: {}
-		};
-
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+		});
 
 	});
 
-	it('creates character', async () => {
+	describe('CRUD', () => {
 
-		expect(await countNodesWithLabel('Character')).to.equal(0);
+		const CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-		const response = await chai.request(app)
-			.post('/characters')
-			.send({ name: 'Romeo' });
+		const sandbox = createSandbox();
 
-		const expectedResponseBody = {
-			model: 'character',
-			uuid: CHARACTER_UUID,
-			name: 'Romeo'
-		};
+		before(async () => {
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+			let uuidCallCount = 0;
 
-	});
+			sandbox.stub(uuid, 'v4').returns(CHARACTER_UUID);
 
-	it('gets data required to edit specific character', async () => {
+			await purgeDatabase();
 
-		const response = await chai.request(app)
-			.get(`/characters/${CHARACTER_UUID}/edit`);
+		});
 
-		const expectedResponseBody = {
-			model: 'character',
-			uuid: CHARACTER_UUID,
-			name: 'Romeo'
-		};
+		after(() => {
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			sandbox.restore();
 
-	});
+		});
 
-	it('updates character', async () => {
+		it('creates character', async () => {
 
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(await countNodesWithLabel('Character')).to.equal(0);
 
-		const response = await chai.request(app)
-			.post(`/characters/${CHARACTER_UUID}`)
-			.send({ name: 'Juliet' })
+			const response = await chai.request(app)
+				.post('/characters')
+				.send({ name: 'Romeo' });
 
-		const expectedResponseBody = {
-			model: 'character',
-			uuid: CHARACTER_UUID,
-			name: 'Juliet'
-		};
+			const expectedResponseBody = {
+				model: 'character',
+				uuid: CHARACTER_UUID,
+				name: 'Romeo'
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-	});
+		});
 
-	it('shows character', async () => {
+		it('gets data required to edit specific character', async () => {
 
-		const response = await chai.request(app)
-			.get(`/characters/${CHARACTER_UUID}`);
+			const response = await chai.request(app)
+				.get(`/characters/${CHARACTER_UUID}/edit`);
 
-		const expectedResponseBody = {
-			model: 'character',
-			uuid: CHARACTER_UUID,
-			name: 'Juliet',
-			playtexts: [],
-			productions: [],
-			variantNames: []
-		};
+			const expectedResponseBody = {
+				model: 'character',
+				uuid: CHARACTER_UUID,
+				name: 'Romeo'
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-	});
+		});
 
-	it('lists all characters', async () => {
+		it('updates character', async () => {
 
-		const response = await chai.request(app)
-			.get('/characters');
+			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-		const expectedResponseBody = [
-			{
+			const response = await chai.request(app)
+				.post(`/characters/${CHARACTER_UUID}`)
+				.send({ name: 'Juliet' });
+
+			const expectedResponseBody = {
 				model: 'character',
 				uuid: CHARACTER_UUID,
 				name: 'Juliet'
-			}
-		];
+			};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-	});
+		});
 
-	it('deletes character', async () => {
+		it('shows character', async () => {
 
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+			const response = await chai.request(app)
+				.get(`/characters/${CHARACTER_UUID}`);
 
-		const response = await chai.request(app)
-			.delete(`/characters/${CHARACTER_UUID}`);
+			const expectedResponseBody = {
+				model: 'character',
+				uuid: CHARACTER_UUID,
+				name: 'Juliet',
+				playtexts: [],
+				productions: [],
+				variantNames: []
+			};
 
-		const expectedResponseBody = {
-			model: 'character',
-			name: 'Juliet'
-		};
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(0);
+		});
+
+		it('lists all characters', async () => {
+
+			const response = await chai.request(app)
+				.get('/characters');
+
+			const expectedResponseBody = [
+				{
+					model: 'character',
+					uuid: CHARACTER_UUID,
+					name: 'Juliet'
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+
+		});
+
+		it('deletes character', async () => {
+
+			expect(await countNodesWithLabel('Character')).to.equal(1);
+
+			const response = await chai.request(app)
+				.delete(`/characters/${CHARACTER_UUID}`);
+
+			const expectedResponseBody = {
+				model: 'character',
+				name: 'Juliet'
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Character')).to.equal(0);
+
+		});
 
 	});
 
