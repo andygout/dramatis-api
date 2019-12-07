@@ -1,0 +1,208 @@
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import { createSandbox } from 'sinon';
+import { v4 as uuid } from 'uuid';
+
+import app from '../../server/app';
+import purgeDatabase from '../spec-helpers/neo4j/purge-database';
+
+chai.use(chaiHttp);
+
+const expect = chai.expect;
+
+describe('Playtext with multiple productions', () => {
+
+	const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
+	const NATIONAL_THEATRE_UUID = '1';
+	const MEASURE_FOR_MEASURE_PLAYTEXT_UUID = '2';
+	const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '3';
+	const ALMEIDA_THEATRE_UUID = '4';
+	const MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID = '6';
+	const DONMAR_WAREHOUSE_THEATRE_UUID = '7';
+
+	let measureForMeasurePlaytext;
+	let measureForMeasureNationalProduction;
+	let measureForMeasureAlmeidaProduction;
+	let measureForMeasureDonmarProduction;
+
+	const sandbox = createSandbox();
+
+	before(async () => {
+
+		let uuidCallCount = 0;
+
+		sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Measure for Measure',
+				theatre: {
+					name: 'National Theatre'
+				},
+				playtext: {
+					name: 'Measure for Measure'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Measure for Measure',
+				theatre: {
+					name: 'Almeida Theatre'
+				},
+				playtext: {
+					name: 'Measure for Measure'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Measure for Measure',
+				theatre: {
+					name: 'Donmar Warehouse'
+				},
+				playtext: {
+					name: 'Measure for Measure'
+				}
+			});
+
+		measureForMeasurePlaytext = await chai.request(app)
+			.get(`/playtexts/${MEASURE_FOR_MEASURE_PLAYTEXT_UUID}`);
+
+		measureForMeasureNationalProduction = await chai.request(app)
+			.get(`/productions/${MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID}`);
+
+		measureForMeasureAlmeidaProduction = await chai.request(app)
+			.get(`/productions/${MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID}`);
+
+		measureForMeasureDonmarProduction = await chai.request(app)
+			.get(`/productions/${MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID}`);
+
+	});
+
+	after(() => {
+
+		sandbox.restore();
+
+	});
+
+	describe('Measure for Measure (playtext)', () => {
+
+		it('includes productions of playtext', () => {
+
+			const expectedMeasureForMeasureNationalProductionCredit = {
+				model: 'production',
+				uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
+				name: 'Measure for Measure',
+				theatre: {
+					model: 'theatre',
+					uuid: NATIONAL_THEATRE_UUID,
+					name: 'National Theatre'
+				}
+			};
+
+			const expectedMeasureForMeasureAlmeidaProductionCredit = {
+				model: 'production',
+				uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
+				name: 'Measure for Measure',
+				theatre: {
+					model: 'theatre',
+					uuid: ALMEIDA_THEATRE_UUID,
+					name: 'Almeida Theatre'
+				}
+			};
+
+			const expectedMeasureForMeasureDonmarProductionCredit = {
+				model: 'production',
+				uuid: MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID,
+				name: 'Measure for Measure',
+				theatre: {
+					model: 'theatre',
+					uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+					name: 'Donmar Warehouse'
+				}
+			};
+
+			const { productions } = measureForMeasurePlaytext.body;
+
+			const measureForMeasureNationalProductionCredit =
+				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID);
+
+			const measureForMeasureAlmeidaProductionCredit =
+				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID);
+
+			const measureForMeasureDonmarProductionCredit =
+				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID);
+
+			expect(productions.length).to.equal(3);
+			expect(expectedMeasureForMeasureNationalProductionCredit)
+				.to.deep.equal(measureForMeasureNationalProductionCredit);
+			expect(expectedMeasureForMeasureAlmeidaProductionCredit)
+				.to.deep.equal(measureForMeasureAlmeidaProductionCredit);
+			expect(expectedMeasureForMeasureDonmarProductionCredit)
+				.to.deep.equal(measureForMeasureDonmarProductionCredit);
+
+		});
+
+	});
+
+	describe('Measure for Measure at National Theatre (production)', () => {
+
+		it('attributes playtext as Measure for Measure', () => {
+
+			const expectedPlaytextMeasureForMeasure = {
+				model: 'playtext',
+				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
+				name: 'Measure for Measure'
+			};
+
+			const { playtext } = measureForMeasureNationalProduction.body;
+
+			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+
+		});
+
+	});
+
+	describe('Measure for Measure at Almeida Theatre (production)', () => {
+
+		it('attributes playtext as Measure for Measure', () => {
+
+			const expectedPlaytextMeasureForMeasure = {
+				model: 'playtext',
+				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
+				name: 'Measure for Measure'
+			};
+
+			const { playtext } = measureForMeasureAlmeidaProduction.body;
+
+			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+
+		});
+
+	});
+
+	describe('Measure for Measure at Donmar Warehouse (production)', () => {
+
+		it('attributes playtext as Measure for Measure', () => {
+
+			const expectedPlaytextMeasureForMeasure = {
+				model: 'playtext',
+				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
+				name: 'Measure for Measure'
+			};
+
+			const { playtext } = measureForMeasureDonmarProduction.body;
+
+			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+
+		});
+
+	});
+
+});
