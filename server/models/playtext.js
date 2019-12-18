@@ -10,16 +10,10 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		Object.defineProperty(this, 'model', {
-			get: function () { return 'playtext'; }
-		});
-
+		this.model = 'playtext';
 		this.characters = props.characters
-			? props.characters
-				.filter(character => character.name.trim().length)
-				.map(character => new Character(character))
+			? props.characters.map(character => new Character(character))
 			: [];
-		this.productions = [];
 
 	}
 
@@ -43,7 +37,9 @@ export default class Playtext extends Base {
 
 		if (this.hasErrors) return this;
 
-		return neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+		const neo4jInstance = await neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+
+		return new this.constructor(neo4jInstance);
 
 	}
 

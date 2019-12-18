@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Person from '../../../server/models/person';
+import PersonCastMember from '../../../server/models/person-cast-member';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Production model', () => {
@@ -10,21 +10,21 @@ describe('Production model', () => {
 	let stubs;
 	let instance;
 
+	const BaseStub = function () {
+
+		this.validate = sinon.stub();
+
+	};
+
 	const RoleStub = function () {
 
 		this.validate = sinon.stub();
 
 	};
 
-	const PersonStub = function () {
+	const PersonCastMemberStub = function () {
 
 		this.roles = [new RoleStub];
-		this.validate = sinon.stub();
-
-	};
-
-	const PlaytextStub = function () {
-
 		this.validate = sinon.stub();
 
 	};
@@ -44,13 +44,8 @@ describe('Production model', () => {
 			hasErrorsModule: {
 				hasErrors: sinon.stub().returns(false)
 			},
-			Base: {
-				validateStringModule: {
-					validateString: sinon.stub().returns([])
-				}
-			},
-			Person: PersonStub,
-			Playtext: PlaytextStub,
+			Base: BaseStub,
+			PersonCastMember: PersonCastMemberStub,
 			Theatre: TheatreStub,
 			neo4jQueryModule: {
 				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
@@ -66,11 +61,8 @@ describe('Production model', () => {
 			'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.hasErrorsModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
-			'./base': proxyquire('../../../server/models/base', {
-				'../lib/validate-string': stubs.Base.validateStringModule
-			}),
-			'./person': stubOverrides.Person || stubs.Person,
-			'./playtext': stubs.Playtext,
+			'./base': stubs.Base,
+			'./person-cast-member': stubOverrides.PersonCastMember || stubs.PersonCastMember,
 			'./theatre': stubs.Theatre
 		});
 
@@ -94,9 +86,9 @@ describe('Production model', () => {
 
 			});
 
-			it('assigns array of cast if included in props, filtering out those with empty or whitespace-only string names', () => {
+			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				const PersonStubOverride = function () { return sinon.createStubInstance(Person); };
+				const PersonCastMemberStubOverride = function () { return sinon.createStubInstance(PersonCastMember); };
 				const props = {
 					name: 'Hamlet',
 					cast: [
@@ -105,9 +97,11 @@ describe('Production model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance({ Person: PersonStubOverride }, props);
-				expect(instance.cast.length).to.eq(1);
-				expect(instance.cast[0].constructor.name).to.eq('Person');
+				const instance = createInstance({ PersonCastMember: PersonCastMemberStubOverride }, props);
+				expect(instance.cast.length).to.eq(3);
+				expect(instance.cast[0].constructor.name).to.eq('PersonCastMember');
+				expect(instance.cast[1].constructor.name).to.eq('PersonCastMember');
+				expect(instance.cast[2].constructor.name).to.eq('PersonCastMember');
 
 			});
 
@@ -119,7 +113,6 @@ describe('Production model', () => {
 
 		it('calls instance validate method and associated models\' validate methods then hasErrors', () => {
 
-			sinon.spy(instance, 'validate');
 			instance.setErrorStatus();
 			sinon.assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
@@ -190,7 +183,7 @@ describe('Production model', () => {
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Production');
 
 			});
 
@@ -211,7 +204,7 @@ describe('Production model', () => {
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Production');
 
 			});
 

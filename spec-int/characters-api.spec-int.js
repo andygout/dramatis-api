@@ -21,8 +21,8 @@ describe('Characters API', () => {
 				.get('/characters/new');
 
 			const expectedResponseBody = {
+				model: 'character',
 				name: '',
-				productions: [],
 				errors: {}
 			};
 
@@ -66,7 +66,8 @@ describe('Characters API', () => {
 			const expectedResponseBody = {
 				model: 'character',
 				uuid: CHARACTER_UUID,
-				name: 'Romeo'
+				name: 'Romeo',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -83,7 +84,8 @@ describe('Characters API', () => {
 			const expectedResponseBody = {
 				model: 'character',
 				uuid: CHARACTER_UUID,
-				name: 'Romeo'
+				name: 'Romeo',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -102,7 +104,8 @@ describe('Characters API', () => {
 			const expectedResponseBody = {
 				model: 'character',
 				uuid: CHARACTER_UUID,
-				name: 'Juliet'
+				name: 'Juliet',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

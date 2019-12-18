@@ -6,11 +6,7 @@ export default class Character extends Base {
 
 		super(props);
 
-		Object.defineProperty(this, 'model', {
-			get: function () { return 'character'; }
-		});
-
-		this.productions = [];
+		this.model = 'character';
 
 	}
 

@@ -1,5 +1,4 @@
 import Base from './base';
-import Role from './role';
 
 export default class Person extends Base {
 
@@ -7,16 +6,7 @@ export default class Person extends Base {
 
 		super(props);
 
-		Object.defineProperty(this, 'model', {
-			get: function () { return 'person'; }
-		});
-
-		this.productions = [];
-		this.roles = props.roles
-			? props.roles
-				.filter(role => role.name.trim().length)
-				.map(role => new Role(role))
-			: [];
+		this.model = 'person';
 
 	}
 

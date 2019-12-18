@@ -21,20 +21,20 @@ describe('Productions API', () => {
 				.get('/productions/new');
 
 			const expectedResponseBody = {
+				model: 'production',
 				name: '',
+				errors: {},
 				theatre: {
+					model: 'theatre',
 					name: '',
-					productions: [],
 					errors: {}
 				},
 				playtext: {
+					model: 'playtext',
 					name: '',
-					characters: [],
-					productions: [],
 					errors: {}
 				},
-				cast: [],
-				errors: {}
+				cast: []
 			};
 
 			expect(response).to.have.status(200);
@@ -78,7 +78,33 @@ describe('Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
-				name: 'As You Like It'
+				name: 'As You Like It',
+				errors: {},
+				theatre: {
+					model: 'theatre',
+					name: 'Novello Theatre',
+					errors: {}
+				},
+				playtext: {
+					model: 'playtext',
+					name: '',
+					errors: {}
+				},
+				cast: [
+					{
+						model: 'person',
+						name: '',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -96,19 +122,28 @@ describe('Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
+				errors: {},
 				theatre: {
-					name: 'Novello Theatre'
+					model: 'theatre',
+					name: 'Novello Theatre',
+					errors: {}
 				},
 				playtext: {
-					name: ''
+					model: 'playtext',
+					name: '',
+					errors: {}
 				},
 				cast: [
 					{
+						model: 'person',
 						name: '',
+						errors: {},
 						roles: [
 							{
+								model: 'role',
+								name: '',
 								characterName: '',
-								name: ''
+								errors: {}
 							}
 						]
 					}
@@ -131,7 +166,33 @@ describe('Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
-				name: 'The Tempest'
+				name: 'The Tempest',
+				errors: {},
+				theatre: {
+					model: 'theatre',
+					name: 'Novello Theatre',
+					errors: {}
+				},
+				playtext: {
+					model: 'playtext',
+					name: '',
+					errors: {}
+				},
+				cast: [
+					{
+						model: 'person',
+						name: '',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -305,7 +366,115 @@ describe('Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
-				name: 'Hamlet'
+				name: 'Hamlet',
+				errors: {},
+				theatre: {
+					model: 'theatre',
+					name: 'National Theatre',
+					errors: {}
+				},
+				playtext: {
+					model: 'playtext',
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					errors: {}
+				},
+				cast: [
+					{
+						model: 'person',
+						name: 'Rory Kinnear',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: 'Hamlet',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'person',
+						name: 'James Laurenson',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: 'Ghost',
+								characterName: 'Ghost of King Hamlet',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: 'Player King',
+								characterName: 'First Player',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'person',
+						name: 'Michael Sheldon',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: 'Lucianus',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: 'English Ambassador',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'person',
+						name: 'Leo Staar',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'person',
+						name: '',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -407,75 +576,110 @@ describe('Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				errors: {},
 				theatre: {
-					name: 'National Theatre'
+					name: 'National Theatre',
+					errors: {},
+					model: 'theatre'
 				},
 				playtext: {
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
+					model: 'playtext',
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					errors: {}
 				},
 				cast: [
 					{
 						name: 'Rory Kinnear',
+						errors: {},
+						model: 'person',
 						roles: [
 							{
+								model: 'role',
 								name: 'Hamlet',
-								characterName: ''
+								characterName: '',
+								errors: {}
 							},
 							{
+								model: 'role',
+								name: '',
 								characterName: '',
-								name: ''
+								errors: {}
 							}
 						]
 					},
 					{
 						name: 'James Laurenson',
+						errors: {},
+						model: 'person',
 						roles: [
 							{
+								model: 'role',
 								name: 'Ghost',
-								characterName: 'Ghost of King Hamlet'
+								characterName: 'Ghost of King Hamlet',
+								errors: {}
 							},
 							{
+								model: 'role',
 								name: 'Player King',
-								characterName: 'First Player'
+								characterName: 'First Player',
+								errors: {}
 							},
 							{
+								model: 'role',
+								name: '',
 								characterName: '',
-								name: ''
+								errors: {}
 							}
 						]
 					},
 					{
 						name: 'Michael Sheldon',
+						errors: {},
+						model: 'person',
 						roles: [
 							{
+								model: 'role',
 								name: 'Lucianus',
-								characterName: ''
-							},
-							{
-								name: 'English Ambassador',
-								characterName: ''
-							},
-							{
 								characterName: '',
-								name: ''
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: 'English Ambassador',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
 							}
 						]
 					},
 					{
 						name: 'Leo Staar',
+						errors: {},
+						model: 'person',
 						roles: [
 							{
+								model: 'role',
 								name: '',
-								characterName: ''
+								characterName: '',
+								errors: {}
 							}
 						]
 					},
 					{
 						name: '',
+						errors: {},
+						model: 'person',
 						roles: [
 							{
+								model: 'role',
 								name: '',
-								characterName: ''
+								characterName: '',
+								errors: {}
 							}
 						]
 					}
@@ -552,7 +756,115 @@ describe('Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
-				name: 'Richard III'
+				name: 'Richard III',
+				errors: {},
+				theatre: {
+					name: 'Almeida Theatre',
+					errors: {},
+					model: 'theatre'
+				},
+				playtext: {
+					model: 'playtext',
+					name: 'The Tragedy of King Richard III',
+					errors: {}
+				},
+				cast: [
+					{
+						name: 'Ralph Fiennes',
+						errors: {},
+						model: 'person',
+						roles: [
+							{
+								model: 'role',
+								name: 'Richard, Duke of Gloucester',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						name: 'Tom Canton',
+						errors: {},
+						model: 'person',
+						roles: [
+							{
+								model: 'role',
+								name: 'Brakenbury',
+								characterName: 'Sir Robert Brakenbury',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: 'Richmond',
+								characterName: 'Henry, Earl of Richmond',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						name: 'Mark Hadfield',
+						errors: {},
+						model: 'person',
+						roles: [
+							{
+								model: 'role',
+								name: 'Ratcliffe',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: 'Lord Mayor',
+								characterName: '',
+								errors: {}
+							},
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						name: 'Josh Collins',
+						errors: {},
+						model: 'person',
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						name: '',
+						errors: {},
+						model: 'person',
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);

@@ -36,10 +36,39 @@ describe('Cypher Queries Production module', () => {
 					)
 				)
 
+				WITH production
+
+				MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+
+				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+
+				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
+
+				OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
+
+				WITH production, theatre, playtext, castRel, person, roleRel, role
+					ORDER BY roleRel.position
+
+				WITH production, theatre, playtext, castRel, person,
+					COLLECT(CASE WHEN role IS NULL
+						THEN null
+						ELSE {
+							name: role.name,
+							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+						}
+					END) + [{ name: '', characterName: '' }] AS roles
+					ORDER BY castRel.position
+
 				RETURN
 					'production' AS model,
 					production.uuid AS uuid,
-					production.name	AS name
+					production.name AS name,
+					{ name: theatre.name } AS theatre,
+					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
+					COLLECT(CASE WHEN person IS NULL
+						THEN null
+						ELSE { name: person.name, roles: roles }
+					END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 			`));
 
 		});
@@ -90,10 +119,39 @@ describe('Cypher Queries Production module', () => {
 					)
 				)
 
+				WITH production
+
+				MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+
+				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+
+				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
+
+				OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
+
+				WITH production, theatre, playtext, castRel, person, roleRel, role
+					ORDER BY roleRel.position
+
+				WITH production, theatre, playtext, castRel, person,
+					COLLECT(CASE WHEN role IS NULL
+						THEN null
+						ELSE {
+							name: role.name,
+							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+						}
+					END) + [{ name: '', characterName: '' }] AS roles
+					ORDER BY castRel.position
+
 				RETURN
 					'production' AS model,
 					production.uuid AS uuid,
-					production.name	AS name
+					production.name AS name,
+					{ name: theatre.name } AS theatre,
+					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
+					COLLECT(CASE WHEN person IS NULL
+						THEN null
+						ELSE { name: person.name, roles: roles }
+					END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 			`));
 
 		});

@@ -1,8 +1,7 @@
 import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
-import Person from './person';
-import Playtext from './playtext';
+import PersonCastMember from './person-cast-member';
 import Theatre from './theatre';
 import { neo4jQuery } from '../neo4j/query';
 
@@ -12,16 +11,11 @@ export default class Production extends Base {
 
 		super(props);
 
-		Object.defineProperty(this, 'model', {
-			get: function () { return 'production'; }
-		});
-
+		this.model = 'production';
 		this.theatre = new Theatre(props.theatre);
-		this.playtext = new Playtext(props.playtext);
+		this.playtext = new Base({ model: 'playtext', ...props.playtext });
 		this.cast = props.cast
-			? props.cast
-				.filter(castMember => castMember.name.trim().length)
-				.map(castMember => new Person(castMember))
+			? props.cast.map(castMember => new PersonCastMember(castMember))
 			: [];
 
 	}
@@ -46,11 +40,13 @@ export default class Production extends Base {
 
 	}
 
-	createUpdate (getCreateUpdateQuery) {
+	async createUpdate (getCreateUpdateQuery) {
 
 		if (this.setErrorStatus()) return this;
 
-		return neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+		const neo4jInstance = await neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
+
+		return new this.constructor(neo4jInstance);
 
 	}
 

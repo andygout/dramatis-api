@@ -10,11 +10,7 @@ export default class Theatre extends Base {
 
 		super(props);
 
-		Object.defineProperty(this, 'model', {
-			get: function () { return 'theatre'; }
-		});
-
-		this.productions = [];
+		this.model = 'theatre';
 
 	}
 

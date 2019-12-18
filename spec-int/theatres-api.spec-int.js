@@ -21,8 +21,8 @@ describe('Theatres API', () => {
 				.get('/theatres/new');
 
 			const expectedResponseBody = {
+				model: 'theatre',
 				name: '',
-				productions: [],
 				errors: {}
 			};
 
@@ -66,7 +66,8 @@ describe('Theatres API', () => {
 			const expectedResponseBody = {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
-				name: 'National Theatre'
+				name: 'National Theatre',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -83,7 +84,8 @@ describe('Theatres API', () => {
 			const expectedResponseBody = {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
-				name: 'National Theatre'
+				name: 'National Theatre',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -102,7 +104,8 @@ describe('Theatres API', () => {
 			const expectedResponseBody = {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
-				name: 'Almeida Theatre'
+				name: 'Almeida Theatre',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

@@ -21,10 +21,10 @@ describe('Playtexts API', () => {
 				.get('/playtexts/new');
 
 			const expectedResponseBody = {
+				model: 'playtext',
 				name: '',
-				characters: [],
-				productions: [],
-				errors: {}
+				errors: {},
+				characters: []
 			};
 
 			expect(response).to.have.status(200);
@@ -67,7 +67,15 @@ describe('Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'Uncle Vanya'
+				name: 'Uncle Vanya',
+				errors: {},
+				characters: [
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -85,9 +93,12 @@ describe('Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Uncle Vanya',
+				errors: {},
 				characters: [
 					{
-						name: ''
+						model: 'character',
+						name: '',
+						errors: {}
 					}
 				]
 			};
@@ -108,7 +119,15 @@ describe('Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'The Cherry Orchard'
+				name: 'The Cherry Orchard',
+				errors: {},
+				characters: [
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -225,7 +244,30 @@ describe('Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'The Seagull'
+				name: 'The Seagull',
+				errors: {},
+				characters: [
+					{
+						model: 'character',
+						name: 'Irina Nikolayevna Arkadina',
+						errors: {},
+					},
+					{
+						model: 'character',
+						name: 'Konstantin Gavrilovich Treplyov',
+						errors: {}
+					},
+					{
+						model: 'character',
+						name: 'Boris Alexeyevich Trigorin',
+						errors: {}
+					},
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -277,18 +319,27 @@ describe('Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
+				errors: {},
 				characters: [
 					{
-						name: 'Irina Nikolayevna Arkadina'
+						model: 'character',
+						name: 'Irina Nikolayevna Arkadina',
+						errors: {},
 					},
 					{
-						name: 'Konstantin Gavrilovich Treplyov'
+						model: 'character',
+						name: 'Konstantin Gavrilovich Treplyov',
+						errors: {}
 					},
 					{
-						name: 'Boris Alexeyevich Trigorin'
+						model: 'character',
+						name: 'Boris Alexeyevich Trigorin',
+						errors: {}
 					},
 					{
-						name: ''
+						model: 'character',
+						name: '',
+						errors: {}
 					}
 				]
 			};
@@ -322,7 +373,30 @@ describe('Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'Three Sisters'
+				name: 'Three Sisters',
+				errors: {},
+				characters: [
+					{
+						model: 'character',
+						name: 'Olga Sergeyevna Prozorova',
+						errors: {},
+					},
+					{
+						model: 'character',
+						name: 'Maria Sergeyevna Kulygina',
+						errors: {}
+					},
+					{
+						model: 'character',
+						name: 'Irina Sergeyevna Prozorova',
+						errors: {}
+					},
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
