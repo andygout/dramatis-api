@@ -100,7 +100,7 @@ describe('Productions API', () => {
 					name: 'Novello Theatre'
 				},
 				playtext: {
-					name: null
+					name: ''
 				},
 				cast: [
 					{
@@ -419,7 +419,7 @@ describe('Productions API', () => {
 						roles: [
 							{
 								name: 'Hamlet',
-								characterName: null
+								characterName: ''
 							},
 							{
 								characterName: '',
@@ -449,11 +449,11 @@ describe('Productions API', () => {
 						roles: [
 							{
 								name: 'Lucianus',
-								characterName: null
+								characterName: ''
 							},
 							{
 								name: 'English Ambassador',
-								characterName: null
+								characterName: ''
 							},
 							{
 								characterName: '',

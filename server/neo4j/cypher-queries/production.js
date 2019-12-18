@@ -71,7 +71,10 @@ const getEditQuery = () => `
 	WITH production, theatre, playtext, castRel, person,
 		COLLECT(CASE WHEN role IS NULL
 			THEN null
-			ELSE { name: role.name, characterName: role.characterName }
+			ELSE {
+				name: role.name,
+				characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+			}
 		END) + [{ name: '', characterName: '' }] AS roles
 		ORDER BY castRel.position
 
@@ -80,7 +83,7 @@ const getEditQuery = () => `
 		production.uuid AS uuid,
 		production.name AS name,
 		{ name: theatre.name } AS theatre,
-		{ name: playtext.name } AS playtext,
+		{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
 		COLLECT(CASE WHEN person IS NULL
 			THEN null
 			ELSE { name: person.name, roles: roles }
