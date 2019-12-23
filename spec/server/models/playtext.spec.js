@@ -79,7 +79,7 @@ describe('Playtext model', () => {
 
 			});
 
-			it('assigns array of characters if included in props, filtering out those with empty or whitespace-only string names', () => {
+			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const CharacterStubOverride = function () { return sinon.createStubInstance(Character); };
 				const props = {
@@ -91,8 +91,10 @@ describe('Playtext model', () => {
 					]
 				};
 				const instance = createInstance({ Character: CharacterStubOverride }, props);
-				expect(instance.characters.length).to.eq(1);
+				expect(instance.characters.length).to.eq(3);
 				expect(instance.characters[0].constructor.name).to.eq('Character');
+				expect(instance.characters[1].constructor.name).to.eq('Character');
+				expect(instance.characters[2].constructor.name).to.eq('Character');
 
 			});
 
@@ -173,7 +175,7 @@ describe('Playtext model', () => {
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Playtext');
 
 			});
 
@@ -199,7 +201,7 @@ describe('Playtext model', () => {
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Playtext');
 
 			});
 

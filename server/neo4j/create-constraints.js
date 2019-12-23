@@ -6,10 +6,16 @@ import path from 'path';
 import { capitalise } from '../lib/strings';
 import { neo4jQuery } from '../neo4j/query';
 
+const EXCLUDED_MODELS = [
+	'base',
+	'person-cast-member'
+];
+
 const models = require('fs')
 	.readdirSync(path.join(__dirname, '..', 'models'))
-	.filter(filename => filename !== 'base.js')
-	.map(filename => capitalise(filename.replace('.js', '')));
+	.map(filename => filename.replace('.js', ''))
+	.filter(filename => !EXCLUDED_MODELS.includes(filename))
+	.map(filename => capitalise(filename));
 
 const createConstraint = async model => {
 

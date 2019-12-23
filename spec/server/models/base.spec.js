@@ -202,7 +202,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.getCreateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Base');
 
 			});
 
@@ -231,7 +231,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.getUpdateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Base');
 
 			});
 
@@ -346,7 +346,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditProductionQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Base');
 
 			});
 
@@ -364,7 +364,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result.constructor.name).to.eq('Base');
 
 			});
 

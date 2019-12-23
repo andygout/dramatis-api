@@ -10,10 +10,9 @@ const getValidateQuery = (model, uuid) => `
 const getCreateQuery = model => `
 	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name })
 
-	RETURN
-		'${model}' AS model,
-		n.uuid AS uuid,
-		n.name AS name
+	WITH n
+
+	${getEditQuery(model)}
 `;
 
 const getEditQuery = model => `
@@ -29,10 +28,9 @@ const getUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 		SET n.name = $name
 
-	RETURN
-		'${model}' AS model,
-		n.uuid AS uuid,
-		n.name AS name
+	WITH n
+
+	${getEditQuery(model)}
 `;
 
 const getDeleteQuery = model => `

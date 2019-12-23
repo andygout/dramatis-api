@@ -238,6 +238,25 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		it('filters out objects in array that have a name attribute which is an empty string', () => {
+
+			stubs.isObject
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObject.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(result.cast.length).to.eq(1);
+			expect(result.cast[0].name).to.eq('Ian McKellen');
+			expect(result.cast[0].position).to.eq(0);
+
+		});
+
 	});
 
 	context('properties in arrays at nested level (nested in object)', () => {
@@ -323,6 +342,26 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(result.playtext.roles[0].position).to.eq(0);
+
+		});
+
+		it('filters out objects in array that have a name attribute which is an empty string', () => {
+
+			stubs.isObject
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false);
+			const instance = { playtext: { roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObject.callCount).to.eq(6);
+			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(result.playtext.roles.length).to.eq(1);
+			expect(result.playtext.roles[0].name).to.eq('Laertes');
 			expect(result.playtext.roles[0].position).to.eq(0);
 
 		});
@@ -424,6 +463,28 @@ describe('Prepare As Params module', () => {
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].position).to.eq(0);
+			expect(result.cast[0].roles[0].position).to.eq(0);
+
+		});
+
+		it('filters out objects in array that have a name attribute which is an empty string', () => {
+
+			stubs.isObject
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false)
+				.onCall(7).returns(false);
+			const instance = { cast: [{ roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] }] };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObject.callCount).to.eq(8);
+			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(result.cast[0].roles.length).to.eq(1);
+			expect(result.cast[0].roles[0].name).to.eq('Laertes');
 			expect(result.cast[0].roles[0].position).to.eq(0);
 
 		});

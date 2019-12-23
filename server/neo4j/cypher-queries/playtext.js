@@ -22,10 +22,9 @@ const getCreateUpdateQuery = action => {
 			CREATE (playtext)-[:INCLUDES_CHARACTER { position: char.position }]->(character)
 		)
 
-		RETURN
-			'playtext' AS model,
-			playtext.uuid AS uuid,
-			playtext.name AS name
+		WITH playtext
+
+		${getEditQuery()}
 	`;
 
 };

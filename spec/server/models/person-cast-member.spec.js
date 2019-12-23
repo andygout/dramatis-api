@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import Role from '../../../server/models/role';
 
-describe('Person model', () => {
+describe('Person Cast Member model', () => {
 
 	let stubs;
 	let instance;
@@ -26,15 +26,15 @@ describe('Person model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../server/models/person', {
+		proxyquire('../../../server/models/person-cast-member', {
 			'./role': stubs.Role
 		});
 
 	const createInstance = (props = { name: 'Ian McKellen' }) => {
 
-		const Person = createSubject();
+		const PersonCastMember = createSubject();
 
-		return new Person(props);
+		return new PersonCastMember(props);
 
 	};
 
@@ -48,7 +48,7 @@ describe('Person model', () => {
 
 			});
 
-			it('assigns array of roles if included in props, filtering out those with empty or whitespace-only string names', () => {
+			it('assigns array of roles if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'Ian McKellen',
@@ -59,8 +59,10 @@ describe('Person model', () => {
 					]
 				};
 				instance = createInstance(props);
-				expect(instance.roles.length).to.eq(1);
+				expect(instance.roles.length).to.eq(3);
 				expect(instance.roles[0].constructor.name).to.eq('Role');
+				expect(instance.roles[1].constructor.name).to.eq('Role');
+				expect(instance.roles[2].constructor.name).to.eq('Role');
 
 			});
 

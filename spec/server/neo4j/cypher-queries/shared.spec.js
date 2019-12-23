@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
+import { assert, createSandbox } from 'sinon';
 
 import * as strings from '../../../../server/lib/strings';
 import * as cypherQueriesShared from '../../../../server/neo4j/cypher-queries/shared';
@@ -100,10 +100,15 @@ describe('Cypher Queries Shared module', () => {
 			it('returns requisite query', () => {
 
 				const result = cypherQueriesShared.getCreateQuery('theatre');
-				expect(stubs.capitalise.calledOnce).to.be.true;
-				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+				expect(stubs.capitalise.calledTwice).to.be.true;
+				assert.calledWithExactly(stubs.capitalise.firstCall, 'theatre');
+				assert.calledWithExactly(stubs.capitalise.secondCall, 'theatre');
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					CREATE (n:Theatre { uuid: $uuid, name: $name })
+
+					WITH n
+
+					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN
 						'theatre' AS model,
@@ -140,11 +145,16 @@ describe('Cypher Queries Shared module', () => {
 			it('returns requisite query', () => {
 
 				const result = cypherQueriesShared.getUpdateQuery('theatre');
-				expect(stubs.capitalise.calledOnce).to.be.true;
-				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+				expect(stubs.capitalise.calledTwice).to.be.true;
+				assert.calledWithExactly(stubs.capitalise.firstCall, 'theatre');
+				assert.calledWithExactly(stubs.capitalise.secondCall, 'theatre');
 				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 						SET n.name = $name
+
+					WITH n
+
+					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN
 						'theatre' AS model,

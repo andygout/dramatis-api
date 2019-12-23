@@ -46,10 +46,9 @@ const getCreateUpdateQuery = action => {
 			)
 		)
 
-		RETURN
-			'production' AS model,
-			production.uuid AS uuid,
-			production.name	AS name
+		WITH production
+
+		${getEditQuery()}
 	`;
 
 };

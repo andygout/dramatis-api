@@ -21,9 +21,8 @@ describe('People API', () => {
 				.get('/people/new');
 
 			const expectedResponseBody = {
+				model: 'person',
 				name: '',
-				productions: [],
-				roles: [],
 				errors: {}
 			};
 
@@ -67,7 +66,8 @@ describe('People API', () => {
 			const expectedResponseBody = {
 				model: 'person',
 				uuid: PERSON_UUID,
-				name: 'Ian McKellen'
+				name: 'Ian McKellen',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -84,7 +84,8 @@ describe('People API', () => {
 			const expectedResponseBody = {
 				model: 'person',
 				uuid: PERSON_UUID,
-				name: 'Ian McKellen'
+				name: 'Ian McKellen',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);
@@ -103,7 +104,8 @@ describe('People API', () => {
 			const expectedResponseBody = {
 				model: 'person',
 				uuid: PERSON_UUID,
-				name: 'Patrick Stewart'
+				name: 'Patrick Stewart',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

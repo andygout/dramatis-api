@@ -22,8 +22,12 @@ export default class Base {
 
 	constructor (props = {}) {
 
-		this.uuid = props.uuid;
-		this.name = props.name && props.name.trim() || '';
+		const { model, uuid, name } = props;
+
+		if (model) this.model = model;
+
+		this.uuid = uuid;
+		this.name = name && name.trim() || '';
 		this.errors = {};
 
 	}
@@ -58,7 +62,12 @@ export default class Base {
 
 		if (this.hasErrors) return this;
 
-		return neo4jQuery({ query: getCreateUpdateQuery(this.model), params: prepareAsParams(this) });
+		const neo4jInstance = await neo4jQuery({
+			query: getCreateUpdateQuery(this.model),
+			params: prepareAsParams(this)
+		});
+
+		return new this.constructor(neo4jInstance);
 
 	}
 
@@ -68,12 +77,14 @@ export default class Base {
 
 	}
 
-	edit () {
+	async edit () {
 
-		return neo4jQuery({
+		const neo4jInstance = await neo4jQuery({
 			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
 			params: this
 		});
+
+		return new this.constructor(neo4jInstance);
 
 	}
 
