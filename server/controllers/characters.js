@@ -14,7 +14,7 @@ const editRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Character(req.params), 'edit');
 
 const updateRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character(Object.assign({}, req.body, req.params)), 'update');
+	callInstanceMethod(res, next, new Character({ ...req.body, ...req.params }), 'update');
 
 const deleteRoute = (req, res, next) =>
 	callInstanceMethod(res, next, new Character(req.params), 'delete');
