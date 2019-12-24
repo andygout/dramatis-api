@@ -269,12 +269,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '' }] } };
+			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
@@ -286,12 +286,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: undefined }] } };
+			const instance = { playtext: { characters: [{ uuid: undefined }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
@@ -303,12 +303,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
+			const instance = { playtext: { characters: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
-			expect(result.playtext.roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(result.playtext.characters[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
 
@@ -320,12 +320,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ foo: '' }] } };
+			const instance = { playtext: { characters: [{ foo: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), '');
 			expect(stubs.uuid.called).to.be.false;
-			expect(result.playtext.roles[0].foo).to.eq('');
+			expect(result.playtext.characters[0].foo).to.eq('');
 
 		});
 
@@ -337,12 +337,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '' }] } };
+			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].position).to.eq(0);
+			expect(result.playtext.characters[0].position).to.eq(0);
 
 		});
 
@@ -355,14 +355,14 @@ describe('Prepare As Params module', () => {
 				.onCall(3).returns(false)
 				.onCall(4).returns(false)
 				.onCall(5).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
+			const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(6);
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles.length).to.eq(1);
-			expect(result.playtext.roles[0].name).to.eq('Laertes');
-			expect(result.playtext.roles[0].position).to.eq(0);
+			expect(result.playtext.characters.length).to.eq(1);
+			expect(result.playtext.characters[0].name).to.eq('Laertes');
+			expect(result.playtext.characters[0].position).to.eq(0);
 
 		});
 
