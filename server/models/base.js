@@ -48,17 +48,23 @@ export default class Base {
 
 	}
 
+	setErrorStatus () {
+
+		this.hasErrors = hasErrors(this);
+
+	}
+
 	async createUpdate (getCreateUpdateQuery) {
 
 		this.validate({ requiresName: true });
 
-		this.hasErrors = hasErrors(this);
+		this.setErrorStatus();
 
 		if (this.hasErrors) return this;
 
 		await this.validateInDb();
 
-		this.hasErrors = hasErrors(this);
+		this.setErrorStatus();
 
 		if (this.hasErrors) return this;
 

@@ -1,4 +1,3 @@
-import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
 import Character from './character';
@@ -17,23 +16,25 @@ export default class Playtext extends Base {
 
 	}
 
-	setErrorStatus () {
+	runValidations () {
 
 		this.validate({ requiresName: true });
 
 		this.characters.forEach(character => character.validate());
 
-		return this.hasErrors = hasErrors(this);
-
 	}
 
 	async createUpdate (getCreateUpdateQuery) {
 
-		if (this.setErrorStatus()) return this;
+		this.runValidations();
+
+		this.setErrorStatus();
+
+		if (this.hasErrors) return this;
 
 		await this.validateInDb();
 
-		this.hasErrors = hasErrors(this);
+		this.setErrorStatus();
 
 		if (this.hasErrors) return this;
 

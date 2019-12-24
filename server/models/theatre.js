@@ -1,4 +1,3 @@
-import { hasErrors } from '../lib/has-errors';
 import Base from './base';
 import { getDeleteQuery } from '../neo4j/cypher-queries/shared';
 import { getValidateDeleteQuery } from '../neo4j/cypher-queries/theatre';
@@ -26,7 +25,7 @@ export default class Theatre extends Base {
 
 		await this.validateDeleteInDb();
 
-		this.hasErrors = hasErrors(this);
+		this.setErrorStatus();
 
 		if (this.hasErrors) return { theatre: this };
 
