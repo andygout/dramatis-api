@@ -37,7 +37,7 @@ describe('Prepare As Params module', () => {
 
 	context('top level properties', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			const instance = { uuid: '' };
 			const result = prepareAsParams(instance);
@@ -48,7 +48,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			const instance = { uuid: undefined };
 			const result = prepareAsParams(instance);
@@ -59,7 +59,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 			const result = prepareAsParams(instance);
@@ -95,7 +95,7 @@ describe('Prepare As Params module', () => {
 
 	context('nested level properties', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: '' } };
@@ -107,7 +107,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: undefined } };
@@ -119,7 +119,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
@@ -158,7 +158,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at top level', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -174,7 +174,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -190,7 +190,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -261,7 +261,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in object)', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -269,16 +269,16 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '' }] } };
+			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -286,16 +286,16 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: undefined }] } };
+			const instance = { playtext: { characters: [{ uuid: undefined }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -303,12 +303,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
+			const instance = { playtext: { characters: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
-			expect(result.playtext.roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(result.playtext.characters[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
 
@@ -320,12 +320,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ foo: '' }] } };
+			const instance = { playtext: { characters: [{ foo: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.getCall(3), '');
 			expect(stubs.uuid.called).to.be.false;
-			expect(result.playtext.roles[0].foo).to.eq('');
+			expect(result.playtext.characters[0].foo).to.eq('');
 
 		});
 
@@ -337,12 +337,12 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns(true)
 				.onCall(3).returns(false)
 				.onCall(4).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '' }] } };
+			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles[0].position).to.eq(0);
+			expect(result.playtext.characters[0].position).to.eq(0);
 
 		});
 
@@ -355,14 +355,14 @@ describe('Prepare As Params module', () => {
 				.onCall(3).returns(false)
 				.onCall(4).returns(false)
 				.onCall(5).returns(false);
-			const instance = { playtext: { roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
+			const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObject.callCount).to.eq(6);
 			assert.calledWithExactly(stubs.isObject.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(result.playtext.roles.length).to.eq(1);
-			expect(result.playtext.roles[0].name).to.eq('Laertes');
-			expect(result.playtext.roles[0].position).to.eq(0);
+			expect(result.playtext.characters.length).to.eq(1);
+			expect(result.playtext.characters[0].name).to.eq('Laertes');
+			expect(result.playtext.characters[0].position).to.eq(0);
 
 		});
 
@@ -370,7 +370,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in array)', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -389,7 +389,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -408,7 +408,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
