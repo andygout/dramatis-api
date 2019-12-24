@@ -37,7 +37,7 @@ describe('Prepare As Params module', () => {
 
 	context('top level properties', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			const instance = { uuid: '' };
 			const result = prepareAsParams(instance);
@@ -48,7 +48,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			const instance = { uuid: undefined };
 			const result = prepareAsParams(instance);
@@ -59,7 +59,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 			const result = prepareAsParams(instance);
@@ -95,7 +95,7 @@ describe('Prepare As Params module', () => {
 
 	context('nested level properties', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: '' } };
@@ -107,7 +107,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: undefined } };
@@ -119,7 +119,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
@@ -158,7 +158,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at top level', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -174,7 +174,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -190,7 +190,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -261,7 +261,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in object)', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -278,7 +278,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -295,7 +295,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(true)
@@ -370,7 +370,7 @@ describe('Prepare As Params module', () => {
 
 	context('properties in arrays at nested level (nested in array)', () => {
 
-		it('assigns value to uuid properties if empty string', () => {
+		it('assigns value to uuid property if empty string', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -389,7 +389,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('assigns value to uuid properties if undefined', () => {
+		it('assigns value to uuid property if undefined', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
@@ -408,7 +408,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to uuid properties if already exists', () => {
+		it('will not assign value to uuid property if one already exists', () => {
 
 			stubs.isObject
 				.onFirstCall().returns(false)
