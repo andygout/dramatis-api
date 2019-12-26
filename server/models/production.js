@@ -1,4 +1,3 @@
-import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
 import PersonCastMember from './person-cast-member';
@@ -20,7 +19,7 @@ export default class Production extends Base {
 
 	}
 
-	setErrorStatus () {
+	runValidations () {
 
 		this.validate({ requiresName: true });
 
@@ -36,13 +35,15 @@ export default class Production extends Base {
 
 		});
 
-		return this.hasErrors = hasErrors(this);
-
 	}
 
 	async createUpdate (getCreateUpdateQuery) {
 
-		if (this.setErrorStatus()) return this;
+		this.runValidations();
+
+		this.setErrorStatus();
+
+		if (this.hasErrors) return this;
 
 		const neo4jInstance = await neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
 

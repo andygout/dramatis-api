@@ -22,10 +22,10 @@ describe('Playtext model', () => {
 			prepareAsParamsModule: {
 				prepareAsParams: sinon.stub().returns('prepareAsParams response')
 			},
-			hasErrorsModule: {
-				hasErrors: sinon.stub().returns(false)
-			},
 			Base: {
+				hasErrorsModule: {
+					hasErrors: sinon.stub().returns(false)
+				},
 				validateStringModule: {
 					validateString: sinon.stub().returns([])
 				},
@@ -48,10 +48,10 @@ describe('Playtext model', () => {
 
 	const createSubject = (stubOverrides = {}) =>
 		proxyquire('../../../server/models/playtext', {
-			'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.hasErrorsModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
 			'./base': proxyquire('../../../server/models/base', {
+				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/cypher-queries/shared': stubs.Base.cypherQueriesShared,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
@@ -102,49 +102,18 @@ describe('Playtext model', () => {
 
 	});
 
-	describe('setErrorStatus method', () => {
+	describe('runValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods then hasErrors', () => {
+		it('calls instance validate method and associated models\' validate methods', () => {
 
 			sinon.spy(instance, 'validate');
-			instance.setErrorStatus();
+			instance.runValidations();
 			sinon.assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
-				instance.characters[0].validate.withArgs(),
-				stubs.hasErrorsModule.hasErrors.withArgs(instance)
+				instance.characters[0].validate.withArgs()
 			);
 			expect(instance.validate.calledOnce).to.be.true;
 			expect(instance.characters[0].validate.calledOnce).to.be.true;
-			expect(stubs.hasErrorsModule.hasErrors.calledOnce).to.be.true;
-
-		});
-
-		context('valid data', () => {
-
-			it('sets instance hasErrors property to false and returns same value', () => {
-
-				expect(instance.setErrorStatus()).to.be.false;
-				expect(instance.hasErrors).to.be.false;
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('sets instance hasErrors property to true and returns same value', () => {
-
-				const instance = createInstance(
-					{
-						hasErrorsModule: {
-							hasErrors: sinon.stub().returns(true)
-						}
-					}
-				);
-				expect(instance.setErrorStatus()).to.be.true;
-				expect(instance.hasErrors).to.be.true;
-
-			});
 
 		});
 
@@ -157,21 +126,24 @@ describe('Playtext model', () => {
 			it('creates using provided function to get appropriate query', async () => {
 
 				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
+				sinon.spy(instance, 'runValidations');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(getCreateQueryStub);
 				sinon.assert.callOrder(
+					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
 					instance.validateInDb.withArgs(),
-					stubs.hasErrorsModule.hasErrors.withArgs(instance),
+					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getCreateQueryStub.withArgs(),
 					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
 					stubs.neo4jQueryModule.neo4jQuery
 						.withArgs({ query: 'getCreateQuery response', params: 'prepareAsParams response' })
 				);
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.runValidations.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledTwice).to.be.true;
+				expect(stubs.Base.hasErrorsModule.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.hasErrorsModule.hasErrors.calledTwice).to.be.true;
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
@@ -182,22 +154,25 @@ describe('Playtext model', () => {
 			it('updates using provided function to get appropriate query', async () => {
 
 				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
+				sinon.spy(instance, 'runValidations');
 				sinon.spy(instance, 'setErrorStatus');
 				sinon.spy(instance, 'validateInDb');
 				const result = await instance.createUpdate(getUpdateQueryStub);
 				sinon.assert.callOrder(
+					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
 					instance.validateInDb.withArgs(),
-					stubs.hasErrorsModule.hasErrors.withArgs(instance),
+					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getUpdateQueryStub.withArgs(),
 					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
 					stubs.neo4jQueryModule.neo4jQuery.withArgs(
 						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
 					)
 				);
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.runValidations.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledTwice).to.be.true;
+				expect(stubs.Base.hasErrorsModule.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.hasErrorsModule.hasErrors.calledTwice).to.be.true;
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
@@ -216,9 +191,11 @@ describe('Playtext model', () => {
 					const hasErrorsModuleStub = { hasErrors: sinon.stub().returns(true) };
 					const getCreateUpdateQueryStub = sinon.stub();
 					const instance = createInstance({ hasErrorsModule: hasErrorsModuleStub });
+					sinon.spy(instance, 'runValidations');
 					sinon.spy(instance, 'setErrorStatus');
 					sinon.spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
+					expect(instance.runValidations.calledOnce).to.be.true;
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
 					expect(hasErrorsModuleStub.hasErrors.calledOnce).to.be.true;
 					expect(instance.validateInDb.notCalled).to.be.true;
@@ -241,6 +218,7 @@ describe('Playtext model', () => {
 						.onSecondCall().returns(true);
 					const getCreateUpdateQueryStub = sinon.stub();
 					const instance = createInstance({ hasErrorsModule: hasErrorsModuleStub });
+					sinon.spy(instance, 'runValidations');
 					sinon.spy(instance, 'setErrorStatus');
 					sinon.spy(instance, 'validateInDb');
 					const result = await instance.createUpdate(getCreateUpdateQueryStub);
@@ -249,9 +227,10 @@ describe('Playtext model', () => {
 						instance.validateInDb.withArgs(),
 						hasErrorsModuleStub.hasErrors.withArgs(instance)
 					);
-					expect(instance.setErrorStatus.calledOnce).to.be.true;
-					expect(instance.validateInDb.calledOnce).to.be.true;
+					expect(instance.runValidations.calledOnce).to.be.true;
+					expect(instance.setErrorStatus.calledTwice).to.be.true;
 					expect(hasErrorsModuleStub.hasErrors.calledTwice).to.be.true;
+					expect(instance.validateInDb.calledOnce).to.be.true;
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParamsModule.prepareAsParams.notCalled).to.be.true;
 					expect(stubs.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
