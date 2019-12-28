@@ -10,6 +10,11 @@ describe('Playtext model', () => {
 	let stubs;
 	let instance;
 
+	const DEFAULT_INSTANCE_PROPS = {
+		name: 'The Tragedy of Hamlet, Prince of Denmark',
+		characters: [{ name: 'Hamlet' }]
+	};
+
 	const CharacterStub = function () {
 
 		this.validate = sinon.stub();
@@ -59,7 +64,7 @@ describe('Playtext model', () => {
 			'./character': stubOverrides.Character || stubs.Character
 		});
 
-	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', characters: [{ name: 'Hamlet' }] }) => {
+	const createInstance = (stubOverrides = {}, props = DEFAULT_INSTANCE_PROPS) => {
 
 		const Playtext = createSubject(stubOverrides);
 
@@ -73,7 +78,7 @@ describe('Playtext model', () => {
 
 			it('assigns empty array if absent from props', () => {
 
-				const props = { name: 'Hamlet' };
+				const props = { name: 'The Tragedy of Hamlet, Prince of Denmark' };
 				const instance = createInstance({}, props);
 				expect(instance.characters).to.deep.eq([]);
 
@@ -83,7 +88,7 @@ describe('Playtext model', () => {
 
 				const CharacterStubOverride = function () { return sinon.createStubInstance(Character); };
 				const props = {
-					name: 'Hamlet',
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					characters: [
 						{ name: 'Hamlet' },
 						{ name: '' },
