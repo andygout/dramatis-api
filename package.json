@@ -4,18 +4,18 @@
   "description": "Graph database-driven API for site of theatrical productions and playtexts.",
   "main": "server/app.js",
   "scripts": {
-    "lint": "eslint --ext .js server/ spec/",
+    "lint": "eslint --ext .js server/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
-    "start:test-int:dependencies": "docker-compose -f ./docker/docker-compose.yml up",
-    "test-int": "find spec-int -name '*.spec-int.js' | xargs mocha --require @babel/register --require spec-int/mocha.env.js spec-int",
-    "unit-test": "find spec -name '*.spec.js' | xargs mocha --require @babel/register spec",
-    "test": "npm run lint && npm run lintspaces && npm run unit-test",
+    "unit-test": "find test-unit -name '*.test.js' | xargs mocha --require @babel/register test-unit",
+    "checks": "npm run lint && npm run lintspaces && npm run unit-test",
+    "int-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
+    "int-test": "find test-int -name '*.test.js' | xargs mocha --require @babel/register --require test-int/mocha.env.js test-int",
     "build": "babel server --out-dir built",
     "watch": "babel server --watch --out-dir built",
     "start": "node built/setup.js && npm run watch & nodemon built/app.js"
   },
   "pre-commit": [
-    "test"
+    "checks"
   ],
   "author": "https://github.com/andygout",
   "license": "MS-RSL",
