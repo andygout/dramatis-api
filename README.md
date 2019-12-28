@@ -19,16 +19,20 @@ Graph database-driven API for site of theatrical productions and playtexts.
 ## To edit content via CMS (content management system) (locally)
 - Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3002`, which will point at this API on port 3000.
 
-## To test
+## To run checks (e.g. linting and unit tests)
 - Ensure `$ npm install` has been run.
-- `$ npm test`.
+- `$ npm run checks`.
+
+## To run unit tests
+- Ensure `$ npm install` has been run.
+- `$ npm run unit-test`.
 
 ## To run integration tests
 - Ensure `$ npm install` has been run.
 - Download and run the [Docker desktop app](https://www.docker.com/products/docker-desktop).
 - Stop any Neo4j databases running on the Desktop app.
-- Start the Docker-served resources by running `$ npm run start:test-int:dependencies` and wait until they are ready.
-- In a separate CLI tab run `$ npm run test-int`.
+- Start the Docker-served resources by running `$ npm run int-test-resources` and wait until they are ready.
+- In a separate CLI tab run `$ npm run int-test`.
 - The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`.
 
 ## Endpoints

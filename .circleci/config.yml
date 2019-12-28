@@ -9,5 +9,5 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm test
-      - run: npm run test-int
+      - run: npm run checks
+      - run: npm run int-test
