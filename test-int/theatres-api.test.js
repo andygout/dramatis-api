@@ -41,8 +41,6 @@ describe('Theatres API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
 			sandbox.stub(uuid, 'v4').returns(THEATRE_UUID);
 
 			await purgeDatabase();

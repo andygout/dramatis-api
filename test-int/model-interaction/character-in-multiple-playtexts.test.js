@@ -30,9 +30,6 @@ describe('Character in multiple playtexts', () => {
 	let henryIVPart1Playtext;
 	let henryIVPart2Playtext;
 	let merryWivesOfWindsorPlaytext;
-	let henryIVPart1NationalProduction;
-	let henryIVPart2GlobeProduction;
-	let merryWivesOfWindsorSwanProduction;
 
 	const sandbox = createSandbox();
 
@@ -157,15 +154,6 @@ describe('Character in multiple playtexts', () => {
 
 		merryWivesOfWindsorPlaytext = await chai.request(app)
 			.get(`/playtexts/${MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID}`);
-
-		henryIVPart1NationalProduction = await chai.request(app)
-			.get(`/productions/${HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID}`);
-
-		henryIVPart2GlobeProduction = await chai.request(app)
-			.get(`/productions/${HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID}`);
-
-		merryWivesOfWindsorSwanProduction = await chai.request(app)
-			.get(`/productions/${MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID}`);
 
 	});
 

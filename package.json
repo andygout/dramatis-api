@@ -4,7 +4,7 @@
   "description": "Graph database-driven API for site of theatrical productions and playtexts.",
   "main": "server/app.js",
   "scripts": {
-    "lint": "eslint --ext .js server/ test-unit/",
+    "lint": "eslint --ext .js server/ test-int/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "unit-test": "find test-unit -name '*.test.js' | xargs mocha --require @babel/register --require test-unit/mocha.env.js test-unit",
     "checks": "npm run lint && npm run lintspaces && npm run unit-test",

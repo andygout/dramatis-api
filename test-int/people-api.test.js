@@ -41,8 +41,6 @@ describe('People API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
 			sandbox.stub(uuid, 'v4').returns(PERSON_UUID)
 
 			await purgeDatabase();
