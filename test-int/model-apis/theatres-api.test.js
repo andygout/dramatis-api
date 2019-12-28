@@ -4,8 +4,8 @@ import { createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
 
 import app from '../../server/app';
-import countNodesWithLabel from '../spec-helpers/neo4j/count-nodes-with-label';
-import purgeDatabase from '../spec-helpers/neo4j/purge-database';
+import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
+import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 chai.use(chaiHttp);
 
