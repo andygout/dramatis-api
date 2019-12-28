@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
 
-import * as isObjectModule from '../../../server/lib/is-object';
+import * as isObjectWithKeysModule from '../../../server/lib/is-object-with-keys';
 import { prepareAsParams } from '../../../server/lib/prepare-as-params';
 
 describe('Prepare As Params module', () => {
@@ -15,7 +15,7 @@ describe('Prepare As Params module', () => {
 
 		stubs = {
 			uuid: sandbox.stub(uuid, 'v4').returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'),
-			isObject: sandbox.stub(isObjectModule, 'isObject').returns(false)
+			isObjectWithKeys: sandbox.stub(isObjectWithKeysModule, 'isObjectWithKeys').returns(false)
 		};
 
 	});
@@ -41,8 +41,8 @@ describe('Prepare As Params module', () => {
 
 			const instance = { uuid: '' };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledOnce).to.be.true;
-			expect(stubs.isObject.calledWithExactly('')).to.be.true;
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -52,8 +52,8 @@ describe('Prepare As Params module', () => {
 
 			const instance = { uuid: undefined };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledOnce).to.be.true;
-			expect(stubs.isObject.calledWithExactly(undefined)).to.be.true;
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -63,8 +63,8 @@ describe('Prepare As Params module', () => {
 
 			const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledOnce).to.be.true;
-			expect(stubs.isObject.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -74,8 +74,8 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledOnce).to.be.true;
-			expect(stubs.isObject.calledWithExactly('')).to.be.true;
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.foo).to.eq('');
 
@@ -85,7 +85,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(result).not.to.have.property('position');
 
@@ -97,11 +97,11 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: '' } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObject.secondCall, '');
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
+			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -109,11 +109,11 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: undefined } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObject.secondCall, undefined);
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
+			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -121,11 +121,11 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObject.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
+			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.theatre.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -133,11 +133,11 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to non-uuid properties', () => {
 
-			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { foo: '' } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObject.secondCall, '');
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
+			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.theatre.foo).to.eq('');
 
@@ -145,10 +145,10 @@ describe('Prepare As Params module', () => {
 
 		it('will not add position property', () => {
 
-			stubs.isObject.onFirstCall().returns(true).onSecondCall().returns(false);
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { uuid: '' } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.calledTwice).to.be.true;
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.theatre).not.to.have.property('position');
 
@@ -160,15 +160,15 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
 				.onCall(3).returns(false);
 			const instance = { cast: [{ uuid: '' }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(4);
-			assert.calledWithExactly(stubs.isObject.thirdCall, '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -176,15 +176,15 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
 				.onCall(3).returns(false);
 			const instance = { cast: [{ uuid: undefined }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(4);
-			assert.calledWithExactly(stubs.isObject.thirdCall, undefined);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -192,15 +192,15 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
 				.onCall(3).returns(false);
 			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(4);
-			assert.calledWithExactly(stubs.isObject.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.cast[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -208,15 +208,15 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to non-uuid properties', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
 				.onCall(3).returns(false);
 			const instance = { cast: [{ foo: '' }] }
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(4);
-			assert.calledWithExactly(stubs.isObject.thirdCall, '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.cast[0].foo).to.eq('');
 
@@ -224,15 +224,15 @@ describe('Prepare As Params module', () => {
 
 		it('adds position property with value of array index', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
 				.onCall(3).returns(false);
 			const instance = { cast: [{ uuid: '' }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(4);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].position).to.eq(0);
 
@@ -240,7 +240,7 @@ describe('Prepare As Params module', () => {
 
 		it('filters out objects in array that have a name attribute which is an empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -248,8 +248,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast.length).to.eq(1);
 			expect(result.cast[0].name).to.eq('Ian McKellen');
@@ -263,7 +263,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -271,8 +271,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.getCall(3), '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -280,7 +280,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -288,8 +288,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { playtext: { characters: [{ uuid: undefined }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.getCall(3), undefined);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -297,7 +297,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -305,8 +305,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { playtext: { characters: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.playtext.characters[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -314,7 +314,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to non-uuid properties', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -322,8 +322,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { playtext: { characters: [{ foo: '' }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.getCall(3), '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.playtext.characters[0].foo).to.eq('');
 
@@ -331,7 +331,7 @@ describe('Prepare As Params module', () => {
 
 		it('adds position property with value of array index', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -339,8 +339,8 @@ describe('Prepare As Params module', () => {
 				.onCall(4).returns(false);
 			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(5);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.playtext.characters[0].position).to.eq(0);
 
@@ -348,7 +348,7 @@ describe('Prepare As Params module', () => {
 
 		it('filters out objects in array that have a name attribute which is an empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(false)
 				.onThirdCall().returns(true)
@@ -357,8 +357,8 @@ describe('Prepare As Params module', () => {
 				.onCall(5).returns(false);
 			const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(6);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(6);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.playtext.characters.length).to.eq(1);
 			expect(result.playtext.characters[0].name).to.eq('Laertes');
@@ -372,7 +372,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -382,8 +382,8 @@ describe('Prepare As Params module', () => {
 				.onCall(6).returns(false);
 			const instance = { cast: [{ roles: [{ uuid: '' }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(7);
-			assert.calledWithExactly(stubs.isObject.getCall(4), '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -391,7 +391,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -401,8 +401,8 @@ describe('Prepare As Params module', () => {
 				.onCall(6).returns(false);
 			const instance = { cast: [{ roles: [{ uuid: undefined }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(7);
-			assert.calledWithExactly(stubs.isObject.getCall(4), undefined);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -410,7 +410,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -420,8 +420,8 @@ describe('Prepare As Params module', () => {
 				.onCall(6).returns(false);
 			const instance = { cast: [{ roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(7);
-			assert.calledWithExactly(stubs.isObject.getCall(4), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.cast[0].roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -429,7 +429,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to non-uuid properties', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -439,8 +439,8 @@ describe('Prepare As Params module', () => {
 				.onCall(6).returns(false);
 			const instance = { cast: [{ roles: [{ foo: '' }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(7);
-			assert.calledWithExactly(stubs.isObject.getCall(4), '');
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
 			expect(stubs.uuid.called).to.be.false;
 			expect(result.cast[0].roles[0].foo).to.eq('');
 
@@ -448,7 +448,7 @@ describe('Prepare As Params module', () => {
 
 		it('adds position property with value of array index', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -458,9 +458,9 @@ describe('Prepare As Params module', () => {
 				.onCall(6).returns(false);
 			const instance = { cast: [{ roles: [{ uuid: '' }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(7);
-			assert.calledWithExactly(stubs.isObject.getCall(5), 0);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(5), 0);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].position).to.eq(0);
 			expect(result.cast[0].roles[0].position).to.eq(0);
@@ -469,7 +469,7 @@ describe('Prepare As Params module', () => {
 
 		it('filters out objects in array that have a name attribute which is an empty string', () => {
 
-			stubs.isObject
+			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false)
@@ -480,8 +480,8 @@ describe('Prepare As Params module', () => {
 				.onCall(7).returns(false);
 			const instance = { cast: [{ roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] }] };
 			const result = prepareAsParams(instance);
-			expect(stubs.isObject.callCount).to.eq(8);
-			assert.calledWithExactly(stubs.isObject.lastCall, 0);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(8);
+			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(result.cast[0].roles.length).to.eq(1);
 			expect(result.cast[0].roles[0].name).to.eq('Laertes');
