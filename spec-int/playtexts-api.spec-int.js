@@ -62,7 +62,9 @@ describe('Playtexts API', () => {
 
 			const response = await chai.request(app)
 				.post('/playtexts')
-				.send({ name: 'Uncle Vanya' });
+				.send({
+					name: 'Uncle Vanya'
+				});
 
 			const expectedResponseBody = {
 				model: 'playtext',
@@ -114,7 +116,9 @@ describe('Playtexts API', () => {
 
 			const response = await chai.request(app)
 				.post(`/playtexts/${PLAYTEXT_UUID}`)
-				.send({ name: 'The Cherry Orchard' });
+				.send({
+					name: 'The Cherry Orchard'
+				});
 
 			const expectedResponseBody = {
 				model: 'playtext',
