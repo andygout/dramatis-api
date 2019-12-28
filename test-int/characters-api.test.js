@@ -41,8 +41,6 @@ describe('Characters API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
 			sandbox.stub(uuid, 'v4').returns(CHARACTER_UUID);
 
 			await purgeDatabase();

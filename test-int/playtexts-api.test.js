@@ -42,8 +42,6 @@ describe('Playtexts API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
 			sandbox.stub(uuid, 'v4').returns(PLAYTEXT_UUID);
 
 			await purgeDatabase();
