@@ -3,25 +3,25 @@ import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
 
-import app from '../server/app';
-import countNodesWithLabel from './spec-helpers/neo4j/count-nodes-with-label';
-import purgeDatabase from './spec-helpers/neo4j/purge-database';
+import app from '../../server/app';
+import countNodesWithLabel from '../spec-helpers/neo4j/count-nodes-with-label';
+import purgeDatabase from '../spec-helpers/neo4j/purge-database';
 
 chai.use(chaiHttp);
 
 const expect = chai.expect;
 
-describe('Characters API', () => {
+describe('Theatres API', () => {
 
 	describe('GET new endpoint', () => {
 
-		it('responds with data required to prepare new character', async () => {
+		it('responds with data required to prepare new theatre', async () => {
 
 			const response = await chai.request(app)
-				.get('/characters/new');
+				.get('/theatres/new');
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'theatre',
 				name: '',
 				errors: {}
 			};
@@ -35,13 +35,13 @@ describe('Characters API', () => {
 
 	describe('CRUD', () => {
 
-		const CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const sandbox = createSandbox();
 
 		before(async () => {
 
-			sandbox.stub(uuid, 'v4').returns(CHARACTER_UUID);
+			sandbox.stub(uuid, 'v4').returns(THEATRE_UUID);
 
 			await purgeDatabase();
 
@@ -53,38 +53,38 @@ describe('Characters API', () => {
 
 		});
 
-		it('creates character', async () => {
+		it('creates theatre', async () => {
 
-			expect(await countNodesWithLabel('Character')).to.equal(0);
+			expect(await countNodesWithLabel('Theatre')).to.equal(0);
 
 			const response = await chai.request(app)
-				.post('/characters')
+				.post('/theatres')
 				.send({
-					name: 'Romeo'
+					name: 'National Theatre'
 				});
 
 			const expectedResponseBody = {
-				model: 'character',
-				uuid: CHARACTER_UUID,
-				name: 'Romeo',
+				model: 'theatre',
+				uuid: THEATRE_UUID,
+				name: 'National Theatre',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
 
 		});
 
-		it('gets data required to edit specific character', async () => {
+		it('gets data required to edit specific theatre', async () => {
 
 			const response = await chai.request(app)
-				.get(`/characters/${CHARACTER_UUID}/edit`);
+				.get(`/theatres/${THEATRE_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'character',
-				uuid: CHARACTER_UUID,
-				name: 'Romeo',
+				model: 'theatre',
+				uuid: THEATRE_UUID,
+				name: 'National Theatre',
 				errors: {}
 			};
 
@@ -93,41 +93,39 @@ describe('Characters API', () => {
 
 		});
 
-		it('updates character', async () => {
+		it('updates theatre', async () => {
 
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/characters/${CHARACTER_UUID}`)
+				.post(`/theatres/${THEATRE_UUID}`)
 				.send({
-					name: 'Juliet'
+					name: 'Almeida Theatre'
 				});
 
 			const expectedResponseBody = {
-				model: 'character',
-				uuid: CHARACTER_UUID,
-				name: 'Juliet',
+				model: 'theatre',
+				uuid: THEATRE_UUID,
+				name: 'Almeida Theatre',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
 
 		});
 
-		it('shows character', async () => {
+		it('shows theatre', async () => {
 
 			const response = await chai.request(app)
-				.get(`/characters/${CHARACTER_UUID}`);
+				.get(`/theatres/${THEATRE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'character',
-				uuid: CHARACTER_UUID,
-				name: 'Juliet',
-				playtexts: [],
-				productions: [],
-				variantNames: []
+				model: 'theatre',
+				uuid: THEATRE_UUID,
+				name: 'Almeida Theatre',
+				productions: []
 			};
 
 			expect(response).to.have.status(200);
@@ -135,16 +133,16 @@ describe('Characters API', () => {
 
 		});
 
-		it('lists all characters', async () => {
+		it('lists all theatres', async () => {
 
 			const response = await chai.request(app)
-				.get('/characters');
+				.get('/theatres');
 
 			const expectedResponseBody = [
 				{
-					model: 'character',
-					uuid: CHARACTER_UUID,
-					name: 'Juliet'
+					model: 'theatre',
+					uuid: THEATRE_UUID,
+					name: 'Almeida Theatre'
 				}
 			];
 
@@ -153,21 +151,21 @@ describe('Characters API', () => {
 
 		});
 
-		it('deletes character', async () => {
+		it('deletes theatre', async () => {
 
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
 
 			const response = await chai.request(app)
-				.delete(`/characters/${CHARACTER_UUID}`);
+				.delete(`/theatres/${THEATRE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'character',
-				name: 'Juliet'
+				model: 'theatre',
+				name: 'Almeida Theatre'
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Character')).to.equal(0);
+			expect(await countNodesWithLabel('Theatre')).to.equal(0);
 
 		});
 
