@@ -61,7 +61,9 @@ describe('Theatres API', () => {
 
 			const response = await chai.request(app)
 				.post('/theatres')
-				.send({ name: 'National Theatre' });
+				.send({
+					name: 'National Theatre'
+				});
 
 			const expectedResponseBody = {
 				model: 'theatre',
@@ -99,7 +101,9 @@ describe('Theatres API', () => {
 
 			const response = await chai.request(app)
 				.post(`/theatres/${THEATRE_UUID}`)
-				.send({ name: 'Almeida Theatre' });
+				.send({
+					name: 'Almeida Theatre'
+				});
 
 			const expectedResponseBody = {
 				model: 'theatre',

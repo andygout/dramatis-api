@@ -61,7 +61,9 @@ describe('People API', () => {
 
 			const response = await chai.request(app)
 				.post('/people')
-				.send({ name: 'Ian McKellen' });
+				.send({
+					name: 'Ian McKellen'
+				});
 
 			const expectedResponseBody = {
 				model: 'person',
@@ -99,7 +101,9 @@ describe('People API', () => {
 
 			const response = await chai.request(app)
 				.post(`/people/${PERSON_UUID}`)
-				.send({ name: 'Patrick Stewart' });
+				.send({
+					name: 'Patrick Stewart'
+				});
 
 			const expectedResponseBody = {
 				model: 'person',
