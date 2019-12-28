@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint --ext .js server/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
-    "unit-test": "find test-unit -name '*.test.js' | xargs mocha --require @babel/register test-unit",
+    "unit-test": "find test-unit -name '*.test.js' | xargs mocha --require @babel/register --require test-unit/mocha.env.js test-unit",
     "checks": "npm run lint && npm run lintspaces && npm run unit-test",
     "int-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
     "int-test": "find test-int -name '*.test.js' | xargs mocha --require @babel/register --require test-int/mocha.env.js test-int",
