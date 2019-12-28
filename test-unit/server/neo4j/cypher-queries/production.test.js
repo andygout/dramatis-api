@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import * as cypherQueriesProduction from '../../../../server/neo4j/cypher-queries/production';
-import { removeWhitespace } from '../../../spec-helpers';
+import removeWhitespace from '../../../test-helpers/remove-whitespace';
 
 describe('Cypher Queries Production module', () => {
 
