@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
-import { isObject } from './is-object';
+import { isObjectWithKeys } from './is-object-with-keys';
 
 export const prepareAsParams = instance => {
 
 	return Object.keys(instance).reduce((accumulator, key) => {
 
-		if (isObject(instance[key])) {
+		if (isObjectWithKeys(instance[key])) {
 
 			accumulator[key] = prepareAsParams(instance[key]);
 
@@ -17,7 +17,7 @@ export const prepareAsParams = instance => {
 					.filter(item => !item.hasOwnProperty('name') || !!item.name.length)
 					.map((item, index) => {
 
-						if (isObject(item)) {
+						if (isObjectWithKeys(item)) {
 
 							item.position = index;
 

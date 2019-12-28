@@ -1,8 +1,8 @@
-import { isObject } from './is-object';
+import { isObjectWithKeys } from './is-object-with-keys';
 
-const isErrorsProperty = (prop, value) => prop === 'errors' && isObject(value);
+const isErrorsProperty = (prop, value) => prop === 'errors' && isObjectWithKeys(value);
 
-const isObjectWithErrors = item => isObject(item) && hasErrors(item);
+const isObjectWithErrors = item => isObjectWithKeys(item) && hasErrors(item);
 
 export const hasErrors = instance => {
 
