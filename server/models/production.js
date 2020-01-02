@@ -1,3 +1,4 @@
+import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
 import PersonCastMember from './person-cast-member';
@@ -27,13 +28,11 @@ export default class Production extends Base {
 
 		this.playtext.validate();
 
-		this.cast.forEach(castMember => {
+		const duplicateNameIndices = getDuplicateNameIndices(this.cast);
 
-			castMember.validate();
-
-			castMember.roles.forEach(role => role.validate());
-
-		});
+		this.cast.forEach((castMember, index) =>
+			castMember.runValidations({ hasDuplicateName: duplicateNameIndices.includes(index) })
+		);
 
 	}
 

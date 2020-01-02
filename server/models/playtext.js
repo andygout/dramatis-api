@@ -1,3 +1,4 @@
+import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
 import Character from './character';
@@ -20,7 +21,11 @@ export default class Playtext extends Base {
 
 		this.validate({ requiresName: true });
 
-		this.characters.forEach(character => character.validate());
+		const duplicateNameIndices = getDuplicateNameIndices(this.characters);
+
+		this.characters.forEach((character, index) =>
+			character.validateGroupItem({ hasDuplicateName: duplicateNameIndices.includes(index) })
+		);
 
 	}
 

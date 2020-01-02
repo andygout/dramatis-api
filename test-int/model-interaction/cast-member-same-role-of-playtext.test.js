@@ -16,8 +16,8 @@ describe('Character performing same role in different productions of same playte
 	const MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '2';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '3';
 	const JUDI_DENCH_PERSON_UUID = '5';
-	const MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '6';
-	const ROSE_THEATRE_UUID = '7';
+	const MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '7';
+	const ROSE_THEATRE_UUID = '8';
 
 	let titaniaCharacter;
 	let midsummerNightsDreamRoyalShakespeareProduction;

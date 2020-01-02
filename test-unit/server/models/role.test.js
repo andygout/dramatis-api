@@ -8,6 +8,9 @@ describe('Role model', () => {
 
 	let stubs;
 
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	const sandbox = createSandbox();
 
 	beforeEach(() => {
@@ -16,7 +19,7 @@ describe('Role model', () => {
 			validateString: sandbox.stub(validateStringModule, 'validateString').returns([])
 		};
 
-		stubs.validateString.withArgs('', true).returns(['Name is too short']);
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, false).returns(['Name is too long']);
 
 	});
 
@@ -87,14 +90,14 @@ describe('Role model', () => {
 
 	});
 
-	describe('validate method', () => {
+	describe('validateCharacterName method', () => {
 
 		context('valid data', () => {
 
 			it('will not add properties to errors property', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				instance.validate();
+				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(instance.errors).not.to.have.property('name');
 				expect(instance.errors).to.deep.eq({});
 
@@ -106,12 +109,12 @@ describe('Role model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				const instance = new Role({ name: '', characterName: '' });
-				instance.validate({ requiresName: true, requiresCharacterName: false });
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
+				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(instance.errors)
-					.to.have.property('name')
+					.to.have.property('characterName')
 					.that.is.an('array')
-					.that.deep.eq(['Name is too short']);
+					.that.deep.eq(['Name is too long']);
 
 			});
 

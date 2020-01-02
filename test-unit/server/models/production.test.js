@@ -10,16 +10,9 @@ describe('Production model', () => {
 	let stubs;
 	let instance;
 
-	const RoleStub = function () {
-
-		this.validate = sinon.stub();
-
-	};
-
 	const PersonCastMemberStub = function () {
 
-		this.roles = [new RoleStub];
-		this.validate = sinon.stub();
+		this.runValidations = sinon.stub();
 
 	};
 
@@ -32,6 +25,9 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
+			getDuplicateNameIndicesModule: {
+				getDuplicateNameIndices: sinon.stub().returns([])
+			},
 			prepareAsParamsModule: {
 				prepareAsParams: sinon.stub().returns('prepareAsParams response')
 			},
@@ -63,6 +59,7 @@ describe('Production model', () => {
 	const createSubject = (stubOverrides = {}) =>
 		proxyquire('../../../server/models/production', {
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
+			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
 			'./base': proxyquire('../../../server/models/base', {
 				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
@@ -127,14 +124,14 @@ describe('Production model', () => {
 				instance.validate.withArgs({ requiresName: true }),
 				instance.theatre.validate.withArgs({ requiresName: true }),
 				instance.playtext.validate.withArgs(),
-				instance.cast[0].validate.withArgs(),
-				instance.cast[0].roles[0].validate.withArgs()
+				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.cast),
+				instance.cast[0].runValidations.withArgs()
 			);
 			expect(instance.validate.calledOnce).to.be.true;
 			expect(instance.theatre.validate.calledOnce).to.be.true;
 			expect(instance.playtext.validate.calledOnce).to.be.true;
-			expect(instance.cast[0].validate.calledOnce).to.be.true;
-			expect(instance.cast[0].roles[0].validate.calledOnce).to.be.true;
+			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(instance.cast[0].runValidations.calledOnce).to.be.true;
 
 		});
 

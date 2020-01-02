@@ -15,10 +15,10 @@ describe('Cast member with multiple production credits', () => {
 	const TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '0';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '1';
 	const PATRICK_STEWART_PERSON_UUID = '3';
-	const MACBETH_GIELGUD_PRODUCTION_UUID = '4';
-	const GIELGUD_THEATRE_UUID = '5';
-	const WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID = '8';
-	const HAYMARKET_THEATRE_UUID = '9';
+	const MACBETH_GIELGUD_PRODUCTION_UUID = '5';
+	const GIELGUD_THEATRE_UUID = '6';
+	const WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID = '10';
+	const HAYMARKET_THEATRE_UUID = '11';
 
 	let patrickStewartPerson;
 	let tempestRoyalShakespeareProduction;

@@ -15,6 +15,10 @@ describe('Base model', () => {
 	let stubs;
 	let instance;
 
+	const EMPTY_STRING = '';
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	const sandbox = createSandbox();
 
 	beforeEach(() => {
@@ -55,7 +59,8 @@ describe('Base model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryFixture)
 		};
 
-		stubs.validateString.withArgs('').returns(['Name is too short']);
+		stubs.validateString.withArgs(EMPTY_STRING).returns(['Name is too short']);
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING).returns(['Name is too long']);
 
 		instance = new Base({ name: 'Foobar' });
 
@@ -114,12 +119,76 @@ describe('Base model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				instance = new Base({ name: '' });
+				instance = new Base({ name: EMPTY_STRING });
 				instance.validate();
 				expect(instance.errors)
 					.to.have.property('name')
 					.that.is.an('array')
 					.that.deep.eq(['Name is too short']);
+
+			});
+
+		});
+
+	});
+
+	describe('validateGroupItem method', () => {
+
+		context('valid data', () => {
+
+			it('will not add properties to errors property', () => {
+
+				spy(instance, 'validate');
+				const opts = {};
+				instance.validateGroupItem(opts);
+				expect(instance.validate.calledOnce).to.be.true;
+				expect((instance.validate.getCall(0)).calledWith(opts)).to.be.true;
+				expect(instance.errors).not.to.have.property('name');
+				expect(instance.errors).to.deep.eq({});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			context('invalid data in group context', () => {
+
+				it('adds properties whose values are arrays to errors property', () => {
+
+					spy(instance, 'validate');
+					const opts = { hasDuplicateName: true };
+					instance.validateGroupItem(opts);
+					expect(instance.validate.calledOnce).to.be.true;
+					expect((instance.validate.getCall(0)).calledWith(opts)).to.be.true;
+					expect(instance.errors)
+						.to.have.property('name')
+						.that.is.an('array')
+						.that.deep.eq(['Name has been duplicated in this group']);
+
+				});
+
+			});
+
+			context('invalid data on individual basis and in group context', () => {
+
+				it('adds properties whose values are arrays (containing multiple items) to errors property', () => {
+
+					instance = new Base({ name: ABOVE_MAX_LENGTH_STRING });
+					spy(instance, 'validate');
+					const opts = { hasDuplicateName: true };
+					instance.validateGroupItem(opts);
+					expect(instance.validate.calledOnce).to.be.true;
+					expect((instance.validate.getCall(0)).calledWith(opts)).to.be.true;
+					expect(instance.errors)
+						.to.have.property('name')
+						.that.is.an('array')
+						.that.deep.eq([
+							'Name is too long',
+							'Name has been duplicated in this group'
+						]);
+
+				});
 
 			});
 

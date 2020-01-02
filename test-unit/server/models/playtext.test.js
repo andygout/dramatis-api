@@ -17,13 +17,16 @@ describe('Playtext model', () => {
 
 	const CharacterStub = function () {
 
-		this.validate = sinon.stub();
+		this.validateGroupItem = sinon.stub();
 
 	};
 
 	beforeEach(() => {
 
 		stubs = {
+			getDuplicateNameIndicesModule: {
+				getDuplicateNameIndices: sinon.stub().returns([])
+			},
 			prepareAsParamsModule: {
 				prepareAsParams: sinon.stub().returns('prepareAsParams response')
 			},
@@ -53,6 +56,7 @@ describe('Playtext model', () => {
 
 	const createSubject = (stubOverrides = {}) =>
 		proxyquire('../../../server/models/playtext', {
+			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
 			'./base': proxyquire('../../../server/models/base', {
@@ -115,10 +119,12 @@ describe('Playtext model', () => {
 			instance.runValidations();
 			sinon.assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
-				instance.characters[0].validate.withArgs()
+				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.characters),
+				instance.characters[0].validateGroupItem.withArgs({ hasDuplicateName: false })
 			);
 			expect(instance.validate.calledOnce).to.be.true;
-			expect(instance.characters[0].validate.calledOnce).to.be.true;
+			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(instance.characters[0].validateGroupItem.calledOnce).to.be.true;
 
 		});
 
