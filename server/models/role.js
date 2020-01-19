@@ -1,21 +1,19 @@
 import { validateString } from '../lib/validate-string';
+import Base from './base';
 
-export default class Role {
+export default class Role extends Base {
 
 	constructor (props = {}) {
 
+		super(props);
+
 		this.model = 'role';
-		this.name = props.name.trim();
 		this.characterName = props.characterName.trim();
 		this.errors = {};
 
 	}
 
-	validate (opts = { requiresName: false, requiresCharacterName: false }) {
-
-		const nameErrors = validateString(this.name, opts.requiresName);
-
-		if (nameErrors.length) this.errors.name = nameErrors;
+	validateCharacterName (opts) {
 
 		const characterNameErrors = validateString(this.characterName, opts.requiresCharacterName);
 

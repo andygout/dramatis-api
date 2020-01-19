@@ -40,6 +40,22 @@ export default class Base {
 
 	}
 
+	validateGroupItem (opts) {
+
+		this.validate(opts);
+
+		if (opts.hasDuplicateName) {
+
+			const nameDuplicationErrorText = 'Name has been duplicated in this group';
+
+			this.errors.name
+				? this.errors.name.push(nameDuplicationErrorText)
+				: this.errors.name = [nameDuplicationErrorText];
+
+		}
+
+	}
+
 	async validateInDb () {
 
 		const { instanceCount } = await neo4jQuery({ query: getValidateQuery(this.model, this.uuid), params: this });
