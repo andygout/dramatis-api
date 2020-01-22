@@ -22,12 +22,7 @@ export default class Base {
 
 	constructor (props = {}) {
 
-		const { model, uuid, name } = props;
-
-		if (model) this.model = model;
-
-		this.uuid = uuid;
-		this.name = name && name.trim() || '';
+		this.name = props.name && props.name.trim() || '';
 		this.errors = {};
 
 	}

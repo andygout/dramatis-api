@@ -283,15 +283,15 @@ describe('Productions API', () => {
 		const NATIONAL_THEATRE_UUID = '1';
 		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID = '2';
 		const RORY_KINNEAR_UUID = '3';
-		const JAMES_LAURENSON_UUID = '5';
-		const MICHAEL_SHELDON_UUID = '8';
-		const LEO_STAAR_UUID = '11';
-		const ALMEIDA_THEATRE_UUID = '12';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_UUID = '13';
-		const RALPH_FIENNES_UUID = '14';
-		const TOM_CANTON_UUID = '16';
-		const MARK_HADFIELD_UUID = '19';
-		const JOSH_COLLINS_UUID = '22';
+		const JAMES_LAURENSON_UUID = '4';
+		const MICHAEL_SHELDON_UUID = '5';
+		const LEO_STAAR_UUID = '6';
+		const ALMEIDA_THEATRE_UUID = '7';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_UUID = '8';
+		const RALPH_FIENNES_UUID = '9';
+		const TOM_CANTON_UUID = '10';
+		const MARK_HADFIELD_UUID = '11';
+		const JOSH_COLLINS_UUID = '12';
 
 		const sandbox = createSandbox();
 

@@ -7,6 +7,7 @@ export default class Person extends Base {
 		super(props);
 
 		this.model = 'person';
+		this.uuid = props.uuid;
 
 	}
 

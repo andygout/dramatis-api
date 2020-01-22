@@ -10,6 +10,7 @@ export default class Theatre extends Base {
 		super(props);
 
 		this.model = 'theatre';
+		this.uuid = props.uuid;
 
 	}
 

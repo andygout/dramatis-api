@@ -8,9 +8,12 @@ export default class PersonCastMember extends Base {
 
 		super(props);
 
+		const { uuid, roles } = props;
+
 		this.model = 'person';
-		this.roles = props.roles
-			? props.roles.map(role => new Role(role))
+		this.uuid = uuid;
+		this.roles = roles
+			? roles.map(role => new Role(role))
 			: [];
 
 	}

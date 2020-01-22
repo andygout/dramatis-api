@@ -17,10 +17,10 @@ describe('Character performing different roles in different productions of same 
 	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '3';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '4';
 	const MICHAEL_GAMBON_PERSON_UUID = '6';
-	const ANTONY_SHER_PERSON_UUID = '8';
-	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '10';
-	const BARBICAN_THEATRE_UUID = '11';
-	const GRAHAM_TURNER_PERSON_UUID = '15';
+	const ANTONY_SHER_PERSON_UUID = '7';
+	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '8';
+	const BARBICAN_THEATRE_UUID = '9';
+	const GRAHAM_TURNER_PERSON_UUID = '12';
 
 	let kingLearCharacter;
 	let foolCharacter;
