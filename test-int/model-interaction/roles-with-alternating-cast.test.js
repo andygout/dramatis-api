@@ -17,11 +17,11 @@ describe('Roles with alternating cast', () => {
 	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = '3';
 	const CRUCIBLE_THEATRE_UUID = '4';
 	const NIGEL_HARMAN_PERSON_UUID = '6';
-	const JOHN_LIGHT_PERSON_UUID = '9';
-	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '12';
-	const VAUDEVILLE_THEATRE_UUID = '13';
-	const KIT_HARINGTON_PERSON_UUID = '15';
-	const JOHNNY_FLYNN_PERSON_UUID = '18';
+	const JOHN_LIGHT_PERSON_UUID = '7';
+	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '8';
+	const VAUDEVILLE_THEATRE_UUID = '9';
+	const KIT_HARINGTON_PERSON_UUID = '11';
+	const JOHNNY_FLYNN_PERSON_UUID = '12';
 
 	let austinCharacter;
 	let leeCharacter;

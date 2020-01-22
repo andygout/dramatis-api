@@ -10,6 +10,12 @@ describe('Production model', () => {
 	let stubs;
 	let instance;
 
+	const BasicModelStub = function () {
+
+		this.validate = sinon.stub();
+
+	};
+
 	const PersonCastMemberStub = function () {
 
 		this.runValidations = sinon.stub();
@@ -45,6 +51,7 @@ describe('Production model', () => {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 				}
 			},
+			BasicModel: BasicModelStub,
 			PersonCastMember: PersonCastMemberStub,
 			Theatre: TheatreStub,
 			neo4jQueryModule: {
@@ -66,6 +73,7 @@ describe('Production model', () => {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
+			'./basic-model': stubs.BasicModel,
 			'./person-cast-member': stubOverrides.PersonCastMember || stubs.PersonCastMember,
 			'./theatre': stubs.Theatre
 		});
@@ -118,7 +126,6 @@ describe('Production model', () => {
 		it('calls instance validate method and associated models\' validate methods', () => {
 
 			sinon.spy(instance, 'validate');
-			sinon.spy(instance.playtext, 'validate');
 			instance.runValidations();
 			sinon.assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),

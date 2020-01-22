@@ -10,9 +10,12 @@ export default class Playtext extends Base {
 
 		super(props);
 
+		const { uuid, characters } = props;
+
 		this.model = 'playtext';
-		this.characters = props.characters
-			? props.characters.map(character => new Character(character))
+		this.uuid = uuid;
+		this.characters = characters
+			? characters.map(character => new Character(character))
 			: [];
 
 	}

@@ -8,6 +8,7 @@ import { neo4jQuery } from '../neo4j/query';
 
 const EXCLUDED_MODELS = [
 	'base',
+	'basic-model',
 	'person-cast-member'
 ];
 

@@ -1,6 +1,7 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
+import BasicModel from './basic-model';
 import PersonCastMember from './person-cast-member';
 import Theatre from './theatre';
 import { neo4jQuery } from '../neo4j/query';
@@ -11,11 +12,14 @@ export default class Production extends Base {
 
 		super(props);
 
+		const { uuid, theatre, playtext, cast } = props;
+
 		this.model = 'production';
-		this.theatre = new Theatre(props.theatre);
-		this.playtext = new Base({ model: 'playtext', ...props.playtext });
-		this.cast = props.cast
-			? props.cast.map(castMember => new PersonCastMember(castMember))
+		this.uuid = uuid;
+		this.theatre = new Theatre(theatre);
+		this.playtext = new BasicModel({ model: 'playtext', ...playtext });
+		this.cast = cast
+			? cast.map(castMember => new PersonCastMember(castMember))
 			: [];
 
 	}
