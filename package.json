@@ -26,7 +26,6 @@
     "method-override": "^2.3.6",
     "morgan": "^1.5.1",
     "neo4j-driver": "^1.5.1",
-    "regenerator-runtime": "^0.13.2",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

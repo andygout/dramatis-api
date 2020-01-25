@@ -3,8 +3,6 @@
 	no-unused-vars: ["error", { "argsIgnorePattern": "next" }]
 */
 
-import 'regenerator-runtime/runtime';
-
 import './dotenv';
 import bodyParser from 'body-parser';
 import express from 'express';
