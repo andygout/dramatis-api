@@ -51,9 +51,15 @@ describe('Production model', () => {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 				}
 			},
-			BasicModel: BasicModelStub,
-			PersonCastMember: PersonCastMemberStub,
-			Theatre: TheatreStub,
+			BasicModel: {
+				default: BasicModelStub
+			},
+			PersonCastMember: {
+				default: PersonCastMemberStub
+			},
+			Theatre: {
+				default: TheatreStub
+			},
 			neo4jQueryModule: {
 				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 			}
@@ -76,7 +82,7 @@ describe('Production model', () => {
 			'./basic-model': stubs.BasicModel,
 			'./person-cast-member': stubOverrides.PersonCastMember || stubs.PersonCastMember,
 			'./theatre': stubs.Theatre
-		});
+		}).default;
 
 	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
 

@@ -21,7 +21,9 @@ describe('Person Cast Member model', () => {
 			getDuplicateNameIndicesModule: {
 				getDuplicateNameIndices: sinon.stub().returns([])
 			},
-			Role: RoleStub
+			Role: {
+				default: RoleStub
+			}
 		};
 
 		instance = createInstance();
@@ -32,7 +34,7 @@ describe('Person Cast Member model', () => {
 		proxyquire('../../../server/models/person-cast-member', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'./role': stubs.Role
-		});
+		}).default;
 
 	const createInstance = (props = { name: 'Ian McKellen', roles: [{ name: 'King Lear' }] }) => {
 
