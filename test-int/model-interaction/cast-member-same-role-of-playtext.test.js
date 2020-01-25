@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 const expect = chai.expect;
 
-describe('Character performing same role in different productions of same playtext', () => {
+describe('Cast member performing same role in different productions of same playtext', () => {
 
 	const TITANIA_CHARACTER_UUID = '1';
 	const MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '2';

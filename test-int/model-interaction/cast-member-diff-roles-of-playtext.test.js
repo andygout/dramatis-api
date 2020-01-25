@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 const expect = chai.expect;
 
-describe('Character performing different roles in different productions of same playtext', () => {
+describe('Cast member performing different roles in different productions of same playtext', () => {
 
 	const KING_LEAR_CHARACTER_UUID = '1';
 	const FOOL_CHARACTER_UUID = '2';
