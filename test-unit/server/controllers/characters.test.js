@@ -24,7 +24,9 @@ describe('Characters controller', () => {
 			renderJsonModule: {
 				renderJson: sinon.stub().returns('renderJson response')
 			},
-			Character: CharacterStub,
+			Character: {
+				default: CharacterStub
+			},
 			req: sinon.stub(),
 			res: sinon.stub(),
 			next: sinon.stub()
@@ -53,7 +55,10 @@ describe('Characters controller', () => {
 
 			expect(callFunction('newRoute')).to.eq('renderJson response');
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.Character())).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledWithExactly(
+				stubs.res,
+				stubs.Character.default()
+			)).to.be.true;
 
 		});
 
@@ -66,7 +71,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character(), 'create'
+				stubs.res, stubs.next, stubs.Character.default(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -81,7 +86,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character(), 'edit'
+				stubs.res, stubs.next, stubs.Character.default(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -96,7 +101,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character(), 'update'
+				stubs.res, stubs.next, stubs.Character.default(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -111,7 +116,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character(), 'delete'
+				stubs.res, stubs.next, stubs.Character.default(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -126,7 +131,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character(), 'show'
+				stubs.res, stubs.next, stubs.Character.default(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -141,7 +146,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character, 'character'
+				stubs.res, stubs.next, stubs.Character.default, 'character'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 

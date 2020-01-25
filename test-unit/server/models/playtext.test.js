@@ -44,7 +44,9 @@ describe('Playtext model', () => {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 				}
 			},
-			Character: CharacterStub,
+			Character: {
+				default: CharacterStub
+			},
 			neo4jQueryModule: {
 				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 			}
@@ -66,7 +68,7 @@ describe('Playtext model', () => {
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
 			'./character': stubOverrides.Character || stubs.Character
-		});
+		}).default;
 
 	const createInstance = (stubOverrides = {}, props = DEFAULT_INSTANCE_PROPS) => {
 
