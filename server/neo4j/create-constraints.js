@@ -44,7 +44,7 @@ export default async () => {
 
 		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
 
-		const modelsToConstrain = models.filter(model => modelsWithConstraints.indexOf(model) < 0);
+		const modelsToConstrain = models.filter(model => !modelsWithConstraints.includes(model));
 
 		if (!modelsToConstrain.length) {
 
