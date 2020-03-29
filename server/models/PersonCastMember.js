@@ -1,5 +1,5 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
-import Base from './base';
+import Base from './Base';
 import { Role } from '.';
 
 export default class PersonCastMember extends Base {

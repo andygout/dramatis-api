@@ -31,7 +31,7 @@ describe('Person Cast Member model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../server/models/person-cast-member', {
+		proxyquire('../../../server/models/PersonCastMember', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'.': stubs.models
 		}).default;

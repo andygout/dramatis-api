@@ -1,11 +1,11 @@
-import BasicModel from './basic-model';
-import Character from './character';
-import PersonCastMember from './person-cast-member';
-import Person from './person';
-import Playtext from './playtext';
-import Production from './production';
-import Role from './role';
-import Theatre from './theatre';
+import BasicModel from './BasicModel';
+import Character from './Character';
+import PersonCastMember from './PersonCastMember';
+import Person from './Person';
+import Playtext from './Playtext';
+import Production from './Production';
+import Role from './Role';
+import Theatre from './Theatre';
 
 export {
 	BasicModel,

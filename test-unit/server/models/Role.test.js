@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { createSandbox } from 'sinon';
 
 import * as validateStringModule from '../../../server/lib/validate-string';
-import Role from '../../../server/models/role';
+import Role from '../../../server/models/Role';
 
 describe('Role model', () => {
 

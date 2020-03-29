@@ -1,5 +1,5 @@
 import { validateString } from '../lib/validate-string';
-import Base from './base';
+import Base from './Base';
 
 export default class Role extends Base {
 

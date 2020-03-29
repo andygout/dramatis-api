@@ -4,7 +4,7 @@ import { assert, createSandbox, spy, stub } from 'sinon';
 import * as hasErrorsModule from '../../../server/lib/has-errors';
 import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
 import * as validateStringModule from '../../../server/lib/validate-string';
-import Base from '../../../server/models/base';
+import Base from '../../../server/models/Base';
 import * as cypherQueriesModelQueryMaps from '../../../server/neo4j/cypher-queries/model-query-maps';
 import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
 import * as neo4jQueryModule from '../../../server/neo4j/query';
