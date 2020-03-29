@@ -3,20 +3,18 @@
 import directly from 'directly';
 import path from 'path';
 
-import { capitalise } from '../lib/strings';
 import { neo4jQuery } from '../neo4j/query';
 
 const EXCLUDED_MODELS = [
-	'base',
-	'basic-model',
-	'person-cast-member'
+	'Base',
+	'BasicModel',
+	'PersonCastMember'
 ];
 
 const models = require('fs')
 	.readdirSync(path.join(__dirname, '..', 'models'))
 	.map(filename => filename.replace('.js', ''))
-	.filter(filename => !EXCLUDED_MODELS.includes(filename))
-	.map(filename => capitalise(filename));
+	.filter(filename => !EXCLUDED_MODELS.includes(filename));
 
 const createConstraint = async model => {
 

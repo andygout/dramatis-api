@@ -57,11 +57,11 @@ describe('Playtext model', () => {
 	});
 
 	const createSubject = (stubOverrides = {}) =>
-		proxyquire('../../../server/models/playtext', {
+		proxyquire('../../../server/models/Playtext', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
-			'./base': proxyquire('../../../server/models/base', {
+			'./Base': proxyquire('../../../server/models/Base', {
 				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/cypher-queries/shared': stubs.Base.cypherQueriesShared,

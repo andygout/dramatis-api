@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
 import * as hasErrorsModule from '../../../server/lib/has-errors';
-import Theatre from '../../../server/models/theatre';
+import Theatre from '../../../server/models/Theatre';
 import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
 import * as cypherQueriesTheatre from '../../../server/neo4j/cypher-queries/theatre';
 import * as neo4jQueryModule from '../../../server/neo4j/query';

@@ -1,4 +1,4 @@
-import Base from './base';
+import Base from './Base';
 import { getDeleteQuery } from '../neo4j/cypher-queries/shared';
 import { getValidateDeleteQuery } from '../neo4j/cypher-queries/theatre';
 import { neo4jQuery } from '../neo4j/query';
