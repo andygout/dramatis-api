@@ -2,16 +2,24 @@
 
 Graph database-driven API for site of theatrical productions and playtexts.
 
-## To run locally
+## Setup
 - Clone this repo.
 - Install node modules: `$ npm install`.
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`.
 - Download the [Neo4j desktop app](https://neo4j.com/download).
-- Create and run a local Neo4j graph database, configuring as to:
+- Create a local Neo4j graph database, configuring as to:
 	- Neo4j user name matches `.env` `DATABASE_USERNAME` value.
 	- Neo4j local graph database password matches `.env` `DATABASE_PASSWORD` value.
-	- `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running. This can be ascertained by launching the Neo4j Browser from the desktop app and viewing its connection status, which is displayed upon opening the browser, or returned via browser command `:server status`).
-- Run server using `$ npm start` and visit routes via `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
+	- `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running. This can be ascertained by running local Neo4j graph database, launching the Neo4j Browser from desktop app and viewing its connection status, which is displayed upon opening the browser, or returned via browser command `:server status`).
+
+## To run local Neo4j graph database
+- Open Neo4j desktop app.
+- Press `► Start` for requisite database.
+
+## To run locally
+- Run local Neo4j graph database.
+- Run server using `$ npm start`.
+- Visit routes via `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
 
 ## To view content via user interface (locally)
 - Run a local instance of [`theatrebase-frontend`](https://github.com/andygout/theatrebase-frontend) on `http://localhost:3001`, which will point at this API on port 3000.
@@ -20,15 +28,12 @@ Graph database-driven API for site of theatrical productions and playtexts.
 - Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3002`, which will point at this API on port 3000.
 
 ## To run linting checks
-- Ensure `$ npm install` has been run.
 - `$ npm run lint-check`.
 
 ## To run unit tests
-- Ensure `$ npm install` has been run.
 - `$ npm run unit-test`.
 
 ## To run integration tests
-- Ensure `$ npm install` has been run.
 - Download and run the [Docker desktop app](https://www.docker.com/products/docker-desktop).
 - Stop any Neo4j databases running on the Desktop app.
 - Start the Docker-served resources by running `$ npm run int-test-resources` and wait until they are ready.
