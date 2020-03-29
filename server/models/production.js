@@ -1,9 +1,7 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
-import BasicModel from './basic-model';
-import PersonCastMember from './person-cast-member';
-import Theatre from './theatre';
+import { BasicModel, PersonCastMember, Theatre } from '.';
 import { neo4jQuery } from '../neo4j/query';
 
 export default class Production extends Base {

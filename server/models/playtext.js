@@ -1,7 +1,7 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './base';
-import Character from './character';
+import { Character } from '.';
 import { neo4jQuery } from '../neo4j/query';
 
 export default class Playtext extends Base {

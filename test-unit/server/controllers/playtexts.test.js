@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Playtext from '../../../server/models/playtext';
+import { Playtext } from '../../../server/models';
 
 describe('Playtexts controller', () => {
 
@@ -24,8 +24,8 @@ describe('Playtexts controller', () => {
 			renderJsonModule: {
 				renderJson: sinon.stub().returns('renderJson response')
 			},
-			Playtext: {
-				default: PlaytextStub
+			models: {
+				Playtext: PlaytextStub
 			},
 			req: sinon.stub(),
 			res: sinon.stub(),
@@ -38,7 +38,7 @@ describe('Playtexts controller', () => {
 		proxyquire('../../../server/controllers/playtexts', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
 			'../lib/render-json': stubs.renderJsonModule,
-			'../models/playtext': stubs.Playtext
+			'../models': stubs.models
 		});
 
 	const callFunction = functionName => {
@@ -55,7 +55,7 @@ describe('Playtexts controller', () => {
 
 			expect(callFunction('newRoute')).to.eq('renderJson response');
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.Playtext.default())).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.models.Playtext())).to.be.true;
 
 		});
 
@@ -68,7 +68,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default(), 'create'
+				stubs.res, stubs.next, stubs.models.Playtext(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -83,7 +83,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default(), 'edit'
+				stubs.res, stubs.next, stubs.models.Playtext(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -98,7 +98,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default(), 'update'
+				stubs.res, stubs.next, stubs.models.Playtext(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -113,7 +113,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default(), 'delete'
+				stubs.res, stubs.next, stubs.models.Playtext(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -128,7 +128,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default(), 'show'
+				stubs.res, stubs.next, stubs.models.Playtext(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -143,7 +143,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Playtext.default, 'playtext'
+				stubs.res, stubs.next, stubs.models.Playtext, 'playtext'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 

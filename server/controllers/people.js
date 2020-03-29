@@ -2,7 +2,7 @@
 
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { renderJson } from '../lib/render-json';
-import Person from '../models/person';
+import { Person } from '../models';
 
 const newRoute = (req, res, next) =>
 	renderJson(res, new Person());
