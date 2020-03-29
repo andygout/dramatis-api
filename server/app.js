@@ -4,7 +4,6 @@
 */
 
 import './dotenv';
-import bodyParser from 'body-parser';
 import express from 'express';
 import http from 'http';
 import logger from 'morgan';
@@ -13,8 +12,7 @@ import router from './routes';
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(logger('dev'));
 
