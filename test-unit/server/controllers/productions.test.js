@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Production from '../../../server/models/production';
+import { Production } from '../../../server/models';
 
 describe('Productions controller', () => {
 
@@ -24,8 +24,8 @@ describe('Productions controller', () => {
 			renderJsonModule: {
 				renderJson: sinon.stub().returns('renderJson response')
 			},
-			Production: {
-				default: ProductionStub
+			models: {
+				Production: ProductionStub
 			},
 			req: sinon.stub(),
 			res: sinon.stub(),
@@ -38,7 +38,7 @@ describe('Productions controller', () => {
 		proxyquire('../../../server/controllers/productions', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
 			'../lib/render-json': stubs.renderJsonModule,
-			'../models/production': stubs.Production
+			'../models': stubs.models
 		});
 
 	const callFunction = functionName => {
@@ -57,7 +57,7 @@ describe('Productions controller', () => {
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
 			expect(stubs.renderJsonModule.renderJson.calledWithExactly(
 				stubs.res,
-				stubs.Production.default()
+				stubs.models.Production()
 			)).to.be.true;
 
 		});
@@ -71,7 +71,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default(), 'create'
+				stubs.res, stubs.next, stubs.models.Production(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -86,7 +86,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default(), 'edit'
+				stubs.res, stubs.next, stubs.models.Production(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -101,7 +101,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default(), 'update'
+				stubs.res, stubs.next, stubs.models.Production(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -116,7 +116,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default(), 'delete'
+				stubs.res, stubs.next, stubs.models.Production(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -131,7 +131,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default(), 'show'
+				stubs.res, stubs.next, stubs.models.Production(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -146,7 +146,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Production.default, 'production'
+				stubs.res, stubs.next, stubs.models.Production, 'production'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 

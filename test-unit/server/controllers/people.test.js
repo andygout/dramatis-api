@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Person from '../../../server/models/person';
+import { Person } from '../../../server/models';
 
 describe('People controller', () => {
 
@@ -24,8 +24,8 @@ describe('People controller', () => {
 			renderJsonModule: {
 				renderJson: sinon.stub().returns('renderJson response')
 			},
-			Person: {
-				default: PersonStub
+			models: {
+				Person: PersonStub
 			},
 			req: sinon.stub(),
 			res: sinon.stub(),
@@ -38,7 +38,7 @@ describe('People controller', () => {
 		proxyquire('../../../server/controllers/people', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
 			'../lib/render-json': stubs.renderJsonModule,
-			'../models/person': stubs.Person
+			'../models': stubs.models
 		});
 
 	const callFunction = functionName => {
@@ -55,7 +55,7 @@ describe('People controller', () => {
 
 			expect(callFunction('newRoute')).to.eq('renderJson response');
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.Person.default())).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.models.Person())).to.be.true;
 
 		});
 
@@ -68,7 +68,7 @@ describe('People controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default(), 'create'
+				stubs.res, stubs.next, stubs.models.Person(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -83,7 +83,7 @@ describe('People controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default(), 'edit'
+				stubs.res, stubs.next, stubs.models.Person(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -98,7 +98,7 @@ describe('People controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default(), 'update'
+				stubs.res, stubs.next, stubs.models.Person(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -113,7 +113,7 @@ describe('People controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default(), 'delete'
+				stubs.res, stubs.next, stubs.models.Person(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -128,7 +128,7 @@ describe('People controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default(), 'show'
+				stubs.res, stubs.next, stubs.models.Person(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -143,7 +143,7 @@ describe('People controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Person.default, 'person'
+				stubs.res, stubs.next, stubs.models.Person, 'person'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 

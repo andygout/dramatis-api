@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Role from '../../../server/models/role';
+import { Role } from '../../../server/models';
 
 describe('Person Cast Member model', () => {
 
@@ -21,8 +21,8 @@ describe('Person Cast Member model', () => {
 			getDuplicateNameIndicesModule: {
 				getDuplicateNameIndices: sinon.stub().returns([])
 			},
-			Role: {
-				default: RoleStub
+			models: {
+				Role: RoleStub
 			}
 		};
 
@@ -33,7 +33,7 @@ describe('Person Cast Member model', () => {
 	const createSubject = () =>
 		proxyquire('../../../server/models/person-cast-member', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
-			'./role': stubs.Role
+			'.': stubs.models
 		}).default;
 
 	const createInstance = (props = { name: 'Ian McKellen', roles: [{ name: 'King Lear' }] }) => {

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Character from '../../../server/models/character';
+import { Character } from '../../../server/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Playtext model', () => {
@@ -44,8 +44,8 @@ describe('Playtext model', () => {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 				}
 			},
-			Character: {
-				default: CharacterStub
+			models: {
+				Character: CharacterStub
 			},
 			neo4jQueryModule: {
 				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
@@ -67,7 +67,7 @@ describe('Playtext model', () => {
 				'../neo4j/cypher-queries/shared': stubs.Base.cypherQueriesShared,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
-			'./character': stubOverrides.Character || stubs.Character
+			'.': stubOverrides.models || stubs.models
 		}).default;
 
 	const createInstance = (stubOverrides = {}, props = DEFAULT_INSTANCE_PROPS) => {
@@ -101,7 +101,7 @@ describe('Playtext model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance({ Character: CharacterStubOverride }, props);
+				const instance = createInstance({ models: { Character: CharacterStubOverride } }, props);
 				expect(instance.characters.length).to.eq(3);
 				expect(instance.characters[0].constructor.name).to.eq('Character');
 				expect(instance.characters[1].constructor.name).to.eq('Character');

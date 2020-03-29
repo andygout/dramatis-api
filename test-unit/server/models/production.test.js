@@ -51,14 +51,10 @@ describe('Production model', () => {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
 				}
 			},
-			BasicModel: {
-				default: BasicModelStub
-			},
-			PersonCastMember: {
-				default: PersonCastMemberStub
-			},
-			Theatre: {
-				default: TheatreStub
+			models: {
+				BasicModel: BasicModelStub,
+				PersonCastMember: PersonCastMemberStub,
+				Theatre: TheatreStub
 			},
 			neo4jQueryModule: {
 				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
@@ -79,9 +75,7 @@ describe('Production model', () => {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
-			'./basic-model': stubs.BasicModel,
-			'./person-cast-member': stubOverrides.PersonCastMember || stubs.PersonCastMember,
-			'./theatre': stubs.Theatre
+			'.': stubOverrides.models || stubs.models
 		}).default;
 
 	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
@@ -115,7 +109,16 @@ describe('Production model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance({ PersonCastMember: PersonCastMemberStubOverride }, props);
+				const instance = createInstance(
+					{
+						models: {
+							BasicModel: BasicModelStub,
+							PersonCastMember: PersonCastMemberStubOverride,
+							Theatre: TheatreStub
+						}
+					},
+					props
+				);
 				expect(instance.cast.length).to.eq(3);
 				expect(instance.cast[0].constructor.name).to.eq('PersonCastMember');
 				expect(instance.cast[1].constructor.name).to.eq('PersonCastMember');

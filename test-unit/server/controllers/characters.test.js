@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Character from '../../../server/models/character';
+import { Character } from '../../../server/models';
 
 describe('Characters controller', () => {
 
@@ -24,8 +24,8 @@ describe('Characters controller', () => {
 			renderJsonModule: {
 				renderJson: sinon.stub().returns('renderJson response')
 			},
-			Character: {
-				default: CharacterStub
+			models: {
+				Character: CharacterStub
 			},
 			req: sinon.stub(),
 			res: sinon.stub(),
@@ -38,7 +38,7 @@ describe('Characters controller', () => {
 		proxyquire('../../../server/controllers/characters', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
 			'../lib/render-json': stubs.renderJsonModule,
-			'../models/character': stubs.Character
+			'../models': stubs.models
 		});
 
 	const callFunction = functionName => {
@@ -57,7 +57,7 @@ describe('Characters controller', () => {
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
 			expect(stubs.renderJsonModule.renderJson.calledWithExactly(
 				stubs.res,
-				stubs.Character.default()
+				stubs.models.Character()
 			)).to.be.true;
 
 		});
@@ -71,7 +71,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default(), 'create'
+				stubs.res, stubs.next, stubs.models.Character(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -86,7 +86,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default(), 'edit'
+				stubs.res, stubs.next, stubs.models.Character(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -101,7 +101,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default(), 'update'
+				stubs.res, stubs.next, stubs.models.Character(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -116,7 +116,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default(), 'delete'
+				stubs.res, stubs.next, stubs.models.Character(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -131,7 +131,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default(), 'show'
+				stubs.res, stubs.next, stubs.models.Character(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -146,7 +146,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.Character.default, 'character'
+				stubs.res, stubs.next, stubs.models.Character, 'character'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 
