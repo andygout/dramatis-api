@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import PersonCastMember from '../../../server/models/person-cast-member';
+import { PersonCastMember } from '../../../server/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Production model', () => {

@@ -4,7 +4,7 @@ import { createSandbox } from 'sinon';
 
 import * as callClassMethods from '../../../server/lib/call-class-methods';
 import * as renderJsonModule from '../../../server/lib/render-json';
-import Character from '../../../server/models/character';
+import { Character } from '../../../server/models';
 
 describe('Call Class Methods module', () => {
 
