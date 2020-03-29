@@ -6,10 +6,10 @@
   "scripts": {
     "lint": "eslint --ext .js server/ test-int/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
-    "unit-test": "find test-unit -name '*.test.js' | xargs mocha --require @babel/register test-unit/mocha.env.js test-unit",
+    "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
     "checks": "npm run lint && npm run lintspaces && npm run unit-test",
     "int-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
-    "int-test": "find test-int -name '*.test.js' | xargs mocha --require @babel/register test-int/mocha.env.js test-int",
+    "int-test": "mocha --require @babel/register test-int/mocha.env.js test-int/**/*.test.js",
     "build": "babel server --out-dir built",
     "watch": "babel server --watch --out-dir built",
     "start": "node built/setup.js && npm run watch & nodemon built/app.js"
