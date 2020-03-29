@@ -9,6 +9,6 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: npm run lint-checks
+      - run: npm run lint-check
       - run: npm run unit-test
       - run: npm run int-test

@@ -21,7 +21,7 @@ Graph database-driven API for site of theatrical productions and playtexts.
 
 ## To run linting checks
 - Ensure `$ npm install` has been run.
-- `$ npm run lint-checks`.
+- `$ npm run lint-check`.
 
 ## To run unit tests
 - Ensure `$ npm install` has been run.
