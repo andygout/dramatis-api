@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import Theatre from '../../../server/models/theatre';
+import { Theatre } from '../../../server/models';
 
 describe('Theatres controller', () => {
 
