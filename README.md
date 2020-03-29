@@ -19,9 +19,9 @@ Graph database-driven API for site of theatrical productions and playtexts.
 ## To edit content via CMS (content management system) (locally)
 - Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3002`, which will point at this API on port 3000.
 
-## To run checks (e.g. linting and unit tests)
+## To run linting checks
 - Ensure `$ npm install` has been run.
-- `$ npm run checks`.
+- `$ npm run lint-checks`.
 
 ## To run unit tests
 - Ensure `$ npm install` has been run.
