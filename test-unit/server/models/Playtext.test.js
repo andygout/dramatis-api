@@ -37,8 +37,11 @@ describe('Playtext model', () => {
 				validateStringModule: {
 					validateString: sinon.stub().returns([])
 				},
-				cypherQueriesShared: {
-					getValidateQuery: sinon.stub().returns('getValidateQuery response')
+				cypherQueries: {
+					sharedQueries: {
+						getValidateQuery:
+							sinon.stub().returns('getValidateQuery response')
+					}
 				},
 				neo4jQueryModule: {
 					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
@@ -64,7 +67,7 @@ describe('Playtext model', () => {
 			'./Base': proxyquire('../../../server/models/Base', {
 				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
-				'../neo4j/cypher-queries/shared': stubs.Base.cypherQueriesShared,
+				'../neo4j/cypher-queries': stubs.Base.cypherQueries,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
 			'.': stubOverrides.models || stubs.models
