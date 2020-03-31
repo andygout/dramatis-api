@@ -6,16 +6,9 @@ import {
 	getEditQueries,
 	getUpdateQueries,
 	getDeleteQueries,
-	getShowQueries
-} from '../neo4j/cypher-queries/model-query-maps';
-import {
-	getValidateQuery,
-	getCreateQuery,
-	getEditQuery,
-	getUpdateQuery,
-	getDeleteQuery,
-	getListQuery
-} from '../neo4j/cypher-queries/shared';
+	getShowQueries,
+	sharedQueries
+} from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 
 export default class Base {
@@ -53,7 +46,12 @@ export default class Base {
 
 	async validateInDb () {
 
-		const { instanceCount } = await neo4jQuery({ query: getValidateQuery(this.model, this.uuid), params: this });
+		const { getValidateQuery } = sharedQueries;
+
+		const { instanceCount } = await neo4jQuery({
+			query: getValidateQuery(this.model, this.uuid),
+			params: this
+		});
 
 		if (instanceCount > 0) this.errors.name = ['Name already exists'];
 
@@ -90,11 +88,15 @@ export default class Base {
 
 	create () {
 
+		const { getCreateQuery } = sharedQueries;
+
 		return this.createUpdate(getCreateQueries[this.model] || getCreateQuery);
 
 	}
 
 	async edit () {
+
+		const { getEditQuery } = sharedQueries;
 
 		const neo4jInstance = await neo4jQuery({
 			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
@@ -107,11 +109,15 @@ export default class Base {
 
 	update () {
 
+		const { getUpdateQuery } = sharedQueries;
+
 		return this.createUpdate(getUpdateQueries[this.model] || getUpdateQuery);
 
 	}
 
 	delete () {
+
+		const { getDeleteQuery } = sharedQueries;
 
 		return neo4jQuery({
 			query: (getDeleteQueries[this.model] && getDeleteQueries[this.model]()) || getDeleteQuery(this.model),
@@ -122,13 +128,26 @@ export default class Base {
 
 	show () {
 
-		return neo4jQuery({ query: getShowQueries[this.model](), params: this });
+		return neo4jQuery({
+			query: getShowQueries[this.model](),
+			params: this
+		});
 
 	}
 
 	static list (model) {
 
-		return neo4jQuery({ query: getListQuery(model) }, { isReqdResult: false, returnArray: true });
+		const { getListQuery } = sharedQueries;
+
+		return neo4jQuery(
+			{
+				query: getListQuery(model)
+			},
+			{
+				isReqdResult: false,
+				returnArray: true
+			}
+		);
 
 	}
 

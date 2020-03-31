@@ -5,8 +5,7 @@ import * as hasErrorsModule from '../../../server/lib/has-errors';
 import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
 import * as validateStringModule from '../../../server/lib/validate-string';
 import Base from '../../../server/models/Base';
-import * as cypherQueriesModelQueryMaps from '../../../server/neo4j/cypher-queries/model-query-maps';
-import * as cypherQueriesShared from '../../../server/neo4j/cypher-queries/shared';
+import * as cypherQueries from '../../../server/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../server/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
@@ -29,33 +28,40 @@ describe('Base model', () => {
 			hasErrors: sandbox.stub(hasErrorsModule, 'hasErrors').returns(false),
 			getCreateQueries: {
 				production:
-					sandbox.stub(cypherQueriesModelQueryMaps.getCreateQueries, 'production')
+					sandbox.stub(cypherQueries.getCreateQueries, 'production')
 			},
 			getEditQueries: {
 				production:
-					sandbox.stub(cypherQueriesModelQueryMaps.getEditQueries, 'production')
+					sandbox.stub(cypherQueries.getEditQueries, 'production')
 						.returns('getEditProductionQuery response')
 			},
 			getUpdateQueries: {
-				production: sandbox.stub(cypherQueriesModelQueryMaps.getUpdateQueries, 'production')
+				production: sandbox.stub(cypherQueries.getUpdateQueries, 'production')
 			},
 			getDeleteQueries: {
 				production:
-					sandbox.stub(cypherQueriesModelQueryMaps.getDeleteQueries, 'production')
+					sandbox.stub(cypherQueries.getDeleteQueries, 'production')
 						.returns('getDeleteProductionQuery response')
 			},
 			getShowQueries: {
 				theatre:
-					sandbox.stub(cypherQueriesModelQueryMaps.getShowQueries, 'theatre')
+					sandbox.stub(cypherQueries.getShowQueries, 'theatre')
 						.returns('getShowTheatreQuery response')
 			},
-			getValidateQuery:
-				sandbox.stub(cypherQueriesShared, 'getValidateQuery').returns('getValidateQuery response'),
-			getCreateQuery: sandbox.stub(cypherQueriesShared, 'getCreateQuery').returns('getCreateQuery response'),
-			getEditQuery: sandbox.stub(cypherQueriesShared, 'getEditQuery').returns('getEditQuery response'),
-			getUpdateQuery: sandbox.stub(cypherQueriesShared, 'getUpdateQuery').returns('getUpdateQuery response'),
-			getDeleteQuery: sandbox.stub(cypherQueriesShared, 'getDeleteQuery').returns('getDeleteQuery response'),
-			getListQuery: sandbox.stub(cypherQueriesShared, 'getListQuery').returns('getListQuery response'),
+			sharedQueries: {
+				getValidateQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getValidateQuery').returns('getValidateQuery response'),
+				getCreateQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getCreateQuery').returns('getCreateQuery response'),
+				getEditQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getEditQuery').returns('getEditQuery response'),
+				getUpdateQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getUpdateQuery').returns('getUpdateQuery response'),
+				getDeleteQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getDeleteQuery').returns('getDeleteQuery response'),
+				getListQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getListQuery').returns('getListQuery response')
+			},
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryFixture)
 		};
 
@@ -201,8 +207,8 @@ describe('Base model', () => {
 		it('validates update in database', async () => {
 
 			await instance.validateInDb();
-			expect(stubs.getValidateQuery.calledOnce).to.be.true;
-			expect(stubs.getValidateQuery.calledWithExactly(
+			expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
+			expect(stubs.sharedQueries.getValidateQuery.calledWithExactly(
 				instance.model, instance.uuid
 			)).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
@@ -250,15 +256,15 @@ describe('Base model', () => {
 
 				spy(instance, 'validate');
 				spy(instance, 'validateInDb');
-				const result = await instance.createUpdate(stubs.getCreateQuery)
+				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery)
 				assert.callOrder(
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
-					stubs.getCreateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getCreateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
 						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
@@ -267,9 +273,9 @@ describe('Base model', () => {
 				expect(instance.validate.calledOnce).to.be.true;
 				expect(stubs.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
-				expect(stubs.getCreateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getCreateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(result.constructor.name).to.eq('Base');
 
@@ -279,15 +285,15 @@ describe('Base model', () => {
 
 				spy(instance, 'validate');
 				spy(instance, 'validateInDb');
-				const result = await instance.createUpdate(stubs.getUpdateQuery);
+				const result = await instance.createUpdate(stubs.sharedQueries.getUpdateQuery);
 				assert.callOrder(
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
-					stubs.getUpdateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getUpdateQuery.withArgs(instance.model),
 					stubs.prepareAsParams.withArgs(instance),
 					stubs.neo4jQuery.withArgs(
 						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
@@ -296,9 +302,9 @@ describe('Base model', () => {
 				expect(instance.validate.calledOnce).to.be.true;
 				expect(stubs.hasErrors.calledTwice).to.be.true;
 				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.getValidateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
-				expect(stubs.getUpdateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getUpdateQuery.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(result.constructor.name).to.eq('Base');
 
@@ -324,7 +330,7 @@ describe('Base model', () => {
 					expect(stubs.hasErrors.calledOnce).to.be.true;
 					expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 					expect(instance.validateInDb.notCalled).to.be.true;
-					expect(stubs.getValidateQuery.notCalled).to.be.true;
+					expect(stubs.sharedQueries.getValidateQuery.notCalled).to.be.true;
 					expect(stubs.neo4jQuery.notCalled).to.be.true;
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
@@ -348,14 +354,14 @@ describe('Base model', () => {
 						instance.validate.withArgs({ requiresName: true }),
 						stubs.hasErrors.withArgs(instance),
 						instance.validateInDb.withArgs(),
-						stubs.getValidateQuery.withArgs(instance.model),
+						stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
 						stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 						stubs.hasErrors.withArgs(instance)
 					);
 					expect(instance.validate.calledOnce).to.be.true;
 					expect(stubs.hasErrors.calledTwice).to.be.true;
 					expect(instance.validateInDb.calledOnce).to.be.true;
-					expect(stubs.getValidateQuery.calledOnce).to.be.true;
+					expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 					expect(stubs.prepareAsParams.notCalled).to.be.true;
@@ -392,7 +398,7 @@ describe('Base model', () => {
 				spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.getCreateQuery)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.sharedQueries.getCreateQuery)).to.be.true;
 
 			});
 
@@ -410,7 +416,7 @@ describe('Base model', () => {
 				const result = await instance.edit();
 				expect(stubs.getEditQueries[instance.model].calledOnce).to.be.true;
 				expect(stubs.getEditQueries[instance.model].calledWithExactly()).to.be.true;
-				expect(stubs.getEditQuery.notCalled).to.be.true;
+				expect(stubs.sharedQueries.getEditQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditProductionQuery response', params: instance }
@@ -426,8 +432,8 @@ describe('Base model', () => {
 			it('gets edit data using shared query', async () => {
 
 				const result = await instance.edit();
-				expect(stubs.getEditQuery.calledOnce).to.be.true;
-				expect(stubs.getEditQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.sharedQueries.getEditQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getEditQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.getEditQueries.production.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
@@ -464,7 +470,7 @@ describe('Base model', () => {
 				spy(instance, 'createUpdate');
 				await instance.update();
 				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQuery)).to.be.true;
+				expect(instance.createUpdate.calledWithExactly(stubs.sharedQueries.getUpdateQuery)).to.be.true;
 
 			});
 
@@ -482,7 +488,7 @@ describe('Base model', () => {
 				const result = await instance.delete();
 				expect(stubs.getDeleteQueries[instance.model].calledOnce).to.be.true;
 				expect(stubs.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
-				expect(stubs.getDeleteQuery.notCalled).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteProductionQuery response', params: instance }
@@ -498,8 +504,8 @@ describe('Base model', () => {
 			it('deletes using shared query', async () => {
 
 				const result = await instance.delete();
-				expect(stubs.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.getDeleteQueries.production.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
@@ -536,8 +542,8 @@ describe('Base model', () => {
 		it('gets list data', async () => {
 
 			const result = await Base.list('model');
-			expect(stubs.getListQuery.calledOnce).to.be.true;
-			expect(stubs.getListQuery.calledWithExactly('model')).to.be.true;
+			expect(stubs.sharedQueries.getListQuery.calledOnce).to.be.true;
+			expect(stubs.sharedQueries.getListQuery.calledWithExactly('model')).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getListQuery response' }, { isReqdResult: false, returnArray: true }

@@ -1,6 +1,5 @@
 import Base from './Base';
-import { getDeleteQuery } from '../neo4j/cypher-queries/shared';
-import { getValidateDeleteQuery } from '../neo4j/cypher-queries/theatre';
+import { getValidateDeleteQueries, sharedQueries } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 
 export default class Theatre extends Base {
@@ -16,7 +15,7 @@ export default class Theatre extends Base {
 
 	async validateDeleteInDb () {
 
-		const { relationshipCount } = await neo4jQuery({ query: getValidateDeleteQuery(), params: this });
+		const { relationshipCount } = await neo4jQuery({ query: getValidateDeleteQueries[this.model](), params: this });
 
 		if (relationshipCount > 0) this.errors.associations = ['productions'];
 
@@ -30,7 +29,7 @@ export default class Theatre extends Base {
 
 		if (this.hasErrors) return { theatre: this };
 
-		return neo4jQuery({ query: getDeleteQuery(this.model), params: this });
+		return neo4jQuery({ query: sharedQueries.getDeleteQuery(this.model), params: this });
 
 	}
 
