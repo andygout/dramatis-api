@@ -8,7 +8,15 @@ jobs:
           NEO4J_AUTH: none
     steps:
       - checkout
-      - run: npm install
-      - run: npm run lint-check
-      - run: npm run unit-test
-      - run: npm run int-test
+      - run:
+          name: Install
+          command: npm install
+      - run:
+          name: Lint checks
+          command: npm run lint-check
+      - run:
+          name: Unit tests
+          command: npm run unit-test
+      - run:
+          name: Integration tests
+          command: npm run int-test
