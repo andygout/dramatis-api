@@ -1,6 +1,6 @@
 /* eslint
 	new-cap: 0,
-	no-unused-vars: ["error", { "argsIgnorePattern": "res|next" }]
+	no-unused-vars: ["error", { "argsIgnorePattern": "response|next" }]
 */
 
 import express from 'express';
@@ -10,13 +10,13 @@ import * as controllers from '../controllers';
 
 const router = express.Router();
 
-router.use(methodOverride((req, res) => {
+router.use(methodOverride((request, response) => {
 
-	if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+	if (request.body && typeof request.body === 'object' && '_method' in request.body) {
 
-		const method = req.body._method;
+		const method = request.body._method;
 
-		delete req.body._method;
+		delete request.body._method;
 
 		return method;
 
@@ -64,6 +64,6 @@ router.delete('/theatres/:uuid', controllers.theatres.deleteRoute);
 router.get('/theatres/:uuid', controllers.theatres.showRoute);
 router.get('/theatres', controllers.theatres.listRoute);
 
-router.get('*', (req, res, next) => res.status(404).send('Not Found'));
+router.get('*', (request, response, next) => response.status(404).send('Not Found'));
 
 export default router;

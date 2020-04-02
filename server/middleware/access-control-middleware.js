@@ -1,7 +1,7 @@
-export default function (req, res, next) {
+export default function (request, response, next) {
 
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'content-type');
+	response.header('Access-Control-Allow-Origin', '*');
+	response.header('Access-Control-Allow-Headers', 'content-type');
 
 	next();
 

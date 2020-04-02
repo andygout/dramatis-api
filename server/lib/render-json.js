@@ -1,7 +1,7 @@
-export const renderJson = (res, instance) => {
+export const renderJson = (response, instance) => {
 
-	res.setHeader('content-type', 'application/json');
+	response.setHeader('content-type', 'application/json');
 
-	return res.send(JSON.stringify(instance));
+	return response.send(JSON.stringify(instance));
 
 };

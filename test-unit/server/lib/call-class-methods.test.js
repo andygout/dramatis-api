@@ -10,8 +10,8 @@ describe('Call Class Methods module', () => {
 
 	let stubs;
 
-	const err = new Error('errorText');
-	const notFoundErr = new Error('Not Found');
+	const error = new Error('errorText');
+	const notFoundError = new Error('Not Found');
 
 	const sandbox = createSandbox();
 
@@ -19,7 +19,7 @@ describe('Call Class Methods module', () => {
 
 		stubs = {
 			renderJson: sandbox.stub(renderJsonModule, 'renderJson').returns('renderJson response'),
-			res: httpMocks.createResponse(),
+			response: httpMocks.createResponse(),
 			next: sandbox.stub()
 		};
 
@@ -48,9 +48,9 @@ describe('Call Class Methods module', () => {
 
 				const instanceMethodResponse = { property: 'value' };
 				sandbox.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse) });
-				const result = await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
+				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.renderJson.calledOnce).to.be.true;
-				expect(stubs.renderJson.calledWithExactly(stubs.res, instanceMethodResponse)).to.be.true;
+				expect(stubs.renderJson.calledWithExactly(stubs.response, instanceMethodResponse)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
 				expect(result).to.eq('renderJson response');
 
@@ -62,10 +62,10 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				sandbox.stub(character, method).callsFake(() => { return Promise.reject(err) });
-				await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
+				sandbox.stub(character, method).callsFake(() => { return Promise.reject(error) });
+				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.next.calledOnce).to.be.true;
-				expect(stubs.next.calledWithExactly(err)).to.be.true;
+				expect(stubs.next.calledWithExactly(error)).to.be.true;
 				expect(stubs.renderJson.notCalled).to.be.true;
 
 			});
@@ -76,10 +76,10 @@ describe('Call Class Methods module', () => {
 
 			it('responds with 404 status and sends error message', async () => {
 
-				sandbox.stub(character, method).callsFake(() => { return Promise.reject(notFoundErr) });
-				await callClassMethods.callInstanceMethod(stubs.res, stubs.next, character, method);
-				expect(stubs.res.statusCode).to.eq(404);
-				expect(stubs.res._getData()).to.eq('Not Found');
+				sandbox.stub(character, method).callsFake(() => { return Promise.reject(notFoundError) });
+				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
+				expect(stubs.response.statusCode).to.eq(404);
+				expect(stubs.response._getData()).to.eq('Not Found');
 				expect(stubs.renderJson.notCalled).to.be.true;
 				expect(stubs.next.called).to.be.false;
 
@@ -106,10 +106,10 @@ describe('Call Class Methods module', () => {
 				const staticListMethodResponse = [{ property: 'value' }];
 				sandbox.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse) });
 				const result =
-					await callClassMethods.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
+					await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				expect(stubs.renderJson.calledOnce).to.be.true;
 				expect(stubs.renderJson.calledWithExactly(
-					stubs.res, staticListMethodResponse
+					stubs.response, staticListMethodResponse
 				)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
 				expect(result).to.eq('renderJson response');
@@ -122,10 +122,10 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				sandbox.stub(Character, method).callsFake(() => { return Promise.reject(err) });
-				await callClassMethods.callStaticListMethod(stubs.res, stubs.next, Character, 'character');
+				sandbox.stub(Character, method).callsFake(() => { return Promise.reject(error) });
+				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				expect(stubs.next.calledOnce).to.be.true;
-				expect(stubs.next.calledWithExactly(err)).to.be.true;
+				expect(stubs.next.calledWithExactly(error)).to.be.true;
 				expect(stubs.renderJson.notCalled).to.be.true;
 
 			});

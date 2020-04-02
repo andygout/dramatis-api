@@ -27,8 +27,8 @@ describe('Playtexts controller', () => {
 			models: {
 				Playtext: PlaytextStub
 			},
-			req: sinon.stub(),
-			res: sinon.stub(),
+			request: sinon.stub(),
+			response: sinon.stub(),
 			next: sinon.stub()
 		};
 
@@ -45,7 +45,7 @@ describe('Playtexts controller', () => {
 
 		const playtextsController = createSubject();
 
-		return playtextsController[functionName](stubs.req, stubs.res, stubs.next);
+		return playtextsController[functionName](stubs.request, stubs.response, stubs.next);
 
 	};
 
@@ -55,7 +55,7 @@ describe('Playtexts controller', () => {
 
 			expect(callFunction('newRoute')).to.eq('renderJson response');
 			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.res, stubs.models.Playtext())).to.be.true;
+			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.response, stubs.models.Playtext())).to.be.true;
 
 		});
 
@@ -68,7 +68,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext(), 'create'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'create'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -83,7 +83,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext(), 'edit'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'edit'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -98,7 +98,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext(), 'update'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'update'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -113,7 +113,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext(), 'delete'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'delete'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -128,7 +128,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext(), 'show'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'show'
 			)).to.be.true;
 			expect(result).to.eq('callInstanceMethod response');
 
@@ -143,7 +143,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.res, stubs.next, stubs.models.Playtext, 'playtext'
+				stubs.response, stubs.next, stubs.models.Playtext, 'playtext'
 			)).to.be.true;
 			expect(result).to.eq('callStaticListMethod response');
 

@@ -21,14 +21,14 @@ const createConstraint = async model => {
 
 		await neo4jQuery(
 			{ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` },
-			{ isReqdResult: false }
+			{ isRequiredResult: false }
 		);
 
 		console.log(`Constraint created for ${model}`); // eslint-disable-line no-console
 
-	} catch (err) {
+	} catch (error) {
 
-		console.log(`Error attempting to create constraint for ${model}: `, err); // eslint-disable-line no-console
+		console.log(`Error attempting to create constraint for ${model}: `, error); // eslint-disable-line no-console
 
 	}
 
@@ -38,7 +38,10 @@ export default async () => {
 
 	try {
 
-		const constraints = await neo4jQuery({ query: 'CALL db.constraints()' }, { isReqdResult: false, returnArray: true });
+		const constraints = await neo4jQuery(
+			{ query: 'CALL db.constraints()' },
+			{ isRequiredResult: false, returnArray: true }
+		);
 
 		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
 
@@ -58,9 +61,9 @@ export default async () => {
 
 		console.log('All constraints created'); // eslint-disable-line no-console
 
-	} catch (err) {
+	} catch (error) {
 
-		console.log('Error attempting: CALL db.constraints(): ', err); // eslint-disable-line no-console
+		console.log('Error attempting: CALL db.constraints(): ', error); // eslint-disable-line no-console
 
 	}
 
