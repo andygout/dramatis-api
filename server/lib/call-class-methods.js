@@ -10,7 +10,7 @@ const callInstanceMethod = async (response, next, classInstance, method) => {
 
 	} catch (error) {
 
-		if (error.message === 'Not Found') return response.status(404).send(error.message);
+		if (error.message === 'Not Found') return response.sendStatus(404);
 
 		return next(error);
 

@@ -64,6 +64,6 @@ router.delete('/theatres/:uuid', controllers.theatres.deleteRoute);
 router.get('/theatres/:uuid', controllers.theatres.showRoute);
 router.get('/theatres', controllers.theatres.listRoute);
 
-router.get('*', (request, response, next) => response.status(404).send('Not Found'));
+router.get('*', (request, response, next) => response.sendStatus(404));
 
 export default router;
