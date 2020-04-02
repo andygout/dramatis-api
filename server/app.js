@@ -6,7 +6,7 @@ import http from 'http';
 import logger from 'morgan';
 
 import { accessControlMiddleware, errorHandlingMiddleware } from './middleware';
-import router from './routes';
+import router from './router';
 
 const app = express();
 
