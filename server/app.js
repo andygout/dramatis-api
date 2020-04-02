@@ -8,76 +8,18 @@ import express from 'express';
 import http from 'http';
 import logger from 'morgan';
 
+import { accessControlMiddleware, errorHandlingMiddleware } from './middleware';
 import router from './routes';
 
 const app = express();
 
-app.use(express.json());
-
-app.use(logger('dev'));
-
-app.use((req, res, next) => {
-
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Headers', 'content-type');
-
-	next();
-
-});
-
-app.use('/', router);
-
-// Catch 404 and forward to error handler
-app.use((req, res, next) => {
-
-	const err = new Error('Not Found');
-
-	err.status = 404;
-
-	next(err);
-
-});
-
-// Error handlers
-// Development error handler - will print stacktrace
-if (app.get('env') === 'development') {
-
-	app.use((err, req, res, next) => {
-
-		console.log(err);
-
-		const errStatus = err.status || 500;
-
-		const errMsg = `${errStatus} Error: ${err.message}`;
-
-		res.status(errStatus);
-
-		return res.render('partials/templates/error', {
-			page: { title: errMsg },
-			message: errMsg,
-			error: err
-		});
-
-	});
-
-}
-
-// Production error handler - no stacktraces leaked to user
-app.use((err, req, res, next) => {
-
-	const errStatus = err.status || 500;
-
-	const errMsg = `${errStatus} Error: ${err.message}`;
-
-	res.status(errStatus);
-
-	return res.render('partials/templates/error', {
-		page: { title: errMsg },
-		message: errMsg,
-		error: {}
-	});
-
-});
+app.use(
+	express.json(),
+	logger('dev'),
+	accessControlMiddleware,
+	router,
+	errorHandlingMiddleware
+);
 
 const normalizePort = val => {
 
