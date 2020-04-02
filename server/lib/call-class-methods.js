@@ -1,34 +1,34 @@
 import { renderJson } from './render-json';
 
-const callInstanceMethod = async (res, next, instance, method) => {
+const callInstanceMethod = async (response, next, classInstance, method) => {
 
 	try {
 
-		const response = await instance[method]();
+		const instance = await classInstance[method]();
 
-		return renderJson(res, response)
+		return renderJson(response, instance)
 
-	} catch (err) {
+	} catch (error) {
 
-		if (err.message === 'Not Found') return res.status(404).send(err.message);
+		if (error.message === 'Not Found') return response.status(404).send(error.message);
 
-		return next(err);
+		return next(error);
 
 	}
 
 };
 
-const callStaticListMethod = async (res, next, Class, model) => {
+const callStaticListMethod = async (response, next, Class, model) => {
 
 	try {
 
 		const instances = await Class.list(model);
 
-		return renderJson(res, instances);
+		return renderJson(response, instances);
 
-	} catch (err) {
+	} catch (error) {
 
-		return next(err);
+		return next(error);
 
 	}
 

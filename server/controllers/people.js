@@ -4,26 +4,26 @@ import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-meth
 import { renderJson } from '../lib/render-json';
 import { Person } from '../models';
 
-const newRoute = (req, res, next) =>
-	renderJson(res, new Person());
+const newRoute = (request, response, next) =>
+	renderJson(response, new Person());
 
-const createRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Person(req.body), 'create');
+const createRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Person(request.body), 'create');
 
-const editRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Person(req.params), 'edit');
+const editRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Person(request.params), 'edit');
 
-const updateRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Person({ ...req.body, ...req.params }), 'update');
+const updateRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Person({ ...request.body, ...request.params }), 'update');
 
-const deleteRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Person(req.params), 'delete');
+const deleteRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Person(request.params), 'delete');
 
-const showRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Person(req.params), 'show');
+const showRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Person(request.params), 'show');
 
-const listRoute = (req, res, next) =>
-	callStaticListMethod(res, next, Person, 'person');
+const listRoute = (request, response, next) =>
+	callStaticListMethod(response, next, Person, 'person');
 
 export {
 	newRoute,

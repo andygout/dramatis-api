@@ -4,26 +4,26 @@ import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-meth
 import { renderJson } from '../lib/render-json';
 import { Character } from '../models';
 
-const newRoute = (req, res, next) =>
-	renderJson(res, new Character());
+const newRoute = (request, response, next) =>
+	renderJson(response, new Character());
 
-const createRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character(req.body), 'create');
+const createRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Character(request.body), 'create');
 
-const editRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character(req.params), 'edit');
+const editRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Character(request.params), 'edit');
 
-const updateRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character({ ...req.body, ...req.params }), 'update');
+const updateRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Character({ ...request.body, ...request.params }), 'update');
 
-const deleteRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character(req.params), 'delete');
+const deleteRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Character(request.params), 'delete');
 
-const showRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Character(req.params), 'show');
+const showRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Character(request.params), 'show');
 
-const listRoute = (req, res, next) =>
-	callStaticListMethod(res, next, Character, 'character');
+const listRoute = (request, response, next) =>
+	callStaticListMethod(response, next, Character, 'character');
 
 export {
 	newRoute,

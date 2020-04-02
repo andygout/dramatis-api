@@ -4,26 +4,26 @@ import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-meth
 import { renderJson } from '../lib/render-json';
 import { Theatre } from '../models';
 
-const newRoute = (req, res, next) =>
-	renderJson(res, new Theatre());
+const newRoute = (request, response, next) =>
+	renderJson(response, new Theatre());
 
-const createRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Theatre(req.body), 'create');
+const createRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Theatre(request.body), 'create');
 
-const editRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Theatre(req.params), 'edit');
+const editRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Theatre(request.params), 'edit');
 
-const updateRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Theatre({ ...req.body, ...req.params }), 'update');
+const updateRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Theatre({ ...request.body, ...request.params }), 'update');
 
-const deleteRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Theatre(req.params), 'delete');
+const deleteRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Theatre(request.params), 'delete');
 
-const showRoute = (req, res, next) =>
-	callInstanceMethod(res, next, new Theatre(req.params), 'show');
+const showRoute = (request, response, next) =>
+	callInstanceMethod(response, next, new Theatre(request.params), 'show');
 
-const listRoute = (req, res, next) =>
-	callStaticListMethod(res, next, Theatre, 'theatre');
+const listRoute = (request, response, next) =>
+	callStaticListMethod(response, next, Theatre, 'theatre');
 
 export {
 	newRoute,
