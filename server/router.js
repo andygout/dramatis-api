@@ -1,14 +1,11 @@
-/* eslint
-	new-cap: 0,
-	no-unused-vars: ["error", { "argsIgnorePattern": "response|next" }]
-*/
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "response|next" }] */
 
-import express from 'express';
+import { Router } from 'express';
 import methodOverride from 'method-override';
 
 import * as controllers from './controllers';
 
-const router = express.Router();
+const router = new Router();
 
 router.use(methodOverride((request, response) => {
 
