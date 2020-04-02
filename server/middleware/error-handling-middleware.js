@@ -1,11 +1,8 @@
-/* eslint
-	no-console: 0,
-	no-unused-vars: ["error", { "argsIgnorePattern": "next" }]
-*/
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
 export default function (error, req, res, next) {
 
-	console.error(error);
+	console.error(error); // eslint-disable-line no-console
 
 	const status = error.status || 500;
 

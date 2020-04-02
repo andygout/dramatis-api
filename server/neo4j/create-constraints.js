@@ -1,5 +1,3 @@
-/* eslint no-console: 0 */
-
 import directly from 'directly';
 import path from 'path';
 
@@ -26,11 +24,11 @@ const createConstraint = async model => {
 			{ isReqdResult: false }
 		);
 
-		console.log(`Constraint created for ${model}`);
+		console.log(`Constraint created for ${model}`); // eslint-disable-line no-console
 
 	} catch (err) {
 
-		console.log(`Error attempting to create constraint for ${model}: `, err);
+		console.log(`Error attempting to create constraint for ${model}: `, err); // eslint-disable-line no-console
 
 	}
 
@@ -48,7 +46,7 @@ export default async () => {
 
 		if (!modelsToConstrain.length) {
 
-			console.log('No constraints required');
+			console.log('No constraints required'); // eslint-disable-line no-console
 
 			return;
 
@@ -58,11 +56,11 @@ export default async () => {
 
 		await directly(1, modelConstraintFunctions);
 
-		console.log('All constraints created');
+		console.log('All constraints created'); // eslint-disable-line no-console
 
 	} catch (err) {
 
-		console.log('Error attempting: CALL db.constraints(): ', err);
+		console.log('Error attempting: CALL db.constraints(): ', err); // eslint-disable-line no-console
 
 	}
 
