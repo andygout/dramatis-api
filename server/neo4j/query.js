@@ -51,8 +51,6 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 		session.close();
 
-		driver.close();
-
 		const results = convertRecordsToObjects(response);
 
 		if (!results.length && isRequiredResult) throw new Error('Not Found');
