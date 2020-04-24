@@ -1,12 +1,16 @@
 # theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api)
 
-Graph database-driven API for site of theatrical productions and playtexts.
+Graph database-driven API for site of theatrical productions, playtexts, and associated data.
 
 ## Setup
 - Clone this repo.
+- Set local Node version to same as listed in `package.json` `engines.node`.
 - Install node modules: `$ npm install`.
+- Compile code: `$ npm run build`.
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`.
-- Download the [Neo4j desktop app](https://neo4j.com/download).
+
+## Database setup
+- Download the [Neo4j desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version).
 - Create a local Neo4j graph database, configuring as to:
 	- Neo4j user name matches `.env` `DATABASE_USERNAME` value.
 	- Neo4j local graph database password matches `.env` `DATABASE_PASSWORD` value.
