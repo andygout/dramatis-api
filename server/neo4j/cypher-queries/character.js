@@ -47,7 +47,7 @@ const getShowQuery = () => `
 			model: 'person',
 			uuid: person.uuid,
 			name: person.name,
-			role: { name: role.name },
+			roleName: role.name,
 			otherRoles: otherRoles
 		}) AS performers
 		ORDER BY production.name, theatre.name

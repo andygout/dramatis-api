@@ -231,9 +231,7 @@ describe('Character with variant names', () => {
 						model: 'person',
 						uuid: DAVID_RINTOUL_PERSON_UUID,
 						name: 'David Rintoul',
-						role: {
-							name: 'Ghost'
-						},
+						roleName: 'Ghost',
 						otherRoles: [
 							{
 								model: 'character',
@@ -259,9 +257,7 @@ describe('Character with variant names', () => {
 						model: 'person',
 						uuid: PATRICK_STEWART_PERSON_UUID,
 						name: 'Patrick Stewart',
-						role: {
-							name: 'Ghost of King Hamlet'
-						},
+						roleName: 'Ghost of King Hamlet',
 						otherRoles: [
 							{
 								model: 'character',
@@ -287,9 +283,7 @@ describe('Character with variant names', () => {
 						model: 'person',
 						uuid: PETER_EYRE_PERSON_UUID,
 						name: 'Peter Eyre',
-						role: {
-							name: 'King Hamlet'
-						},
+						roleName: 'King Hamlet',
 						otherRoles: [
 							{
 								model: 'character',
