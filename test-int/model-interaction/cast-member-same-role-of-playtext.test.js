@@ -129,9 +129,7 @@ describe('Cast member performing same role in different productions of same play
 						model: 'person',
 						uuid: JUDI_DENCH_PERSON_UUID,
 						name: 'Judi Dench',
-						role: {
-							name: 'Titania'
-						},
+						roleName: 'Titania',
 						otherRoles: []
 					}
 				]
@@ -151,9 +149,7 @@ describe('Cast member performing same role in different productions of same play
 						model: 'person',
 						uuid: JUDI_DENCH_PERSON_UUID,
 						name: 'Judi Dench',
-						role: {
-							name: 'Titania, Faerie Queene'
-						},
+						roleName: 'Titania, Faerie Queene',
 						otherRoles: []
 					}
 				]

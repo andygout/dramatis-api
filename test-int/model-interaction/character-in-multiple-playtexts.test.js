@@ -222,9 +222,7 @@ describe('Character in multiple playtexts', () => {
 						model: 'person',
 						uuid: MICHAEL_GAMBON_PERSON_UUID,
 						name: 'Michael Gambon',
-						role: {
-							name: 'Sir John Falstaff'
-						},
+						roleName: 'Sir John Falstaff',
 						otherRoles: []
 					}
 				]
@@ -244,9 +242,7 @@ describe('Character in multiple playtexts', () => {
 						model: 'person',
 						uuid: ROGER_ALLAM_PERSON_UUID,
 						name: 'Roger Allam',
-						role: {
-							name: 'Sir John Falstaff'
-						},
+						roleName: 'Sir John Falstaff',
 						otherRoles: []
 					}
 				]
@@ -266,9 +262,7 @@ describe('Character in multiple playtexts', () => {
 						model: 'person',
 						uuid: RICHARD_CORDERY_PERSON_UUID,
 						name: 'Richard Cordery',
-						role: {
-							name: 'Sir John Falstaff'
-						},
+						roleName: 'Sir John Falstaff',
 						otherRoles: []
 					}
 				]

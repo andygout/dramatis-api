@@ -186,9 +186,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: NIGEL_HARMAN_PERSON_UUID,
 						name: 'Nigel Harman',
-						role: {
-							name: 'Austin'
-						},
+						roleName: 'Austin',
 						otherRoles: [
 							{
 								model: 'character',
@@ -201,9 +199,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: JOHN_LIGHT_PERSON_UUID,
 						name: 'John Light',
-						role: {
-							name: 'Austin'
-						},
+						roleName: 'Austin',
 						otherRoles: [
 							{
 								model: 'character',
@@ -229,9 +225,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: KIT_HARINGTON_PERSON_UUID,
 						name: 'Kit Harington',
-						role: {
-							name: 'Austin'
-						},
+						roleName: 'Austin',
 						otherRoles: [
 							{
 								model: 'character',
@@ -244,9 +238,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: JOHNNY_FLYNN_PERSON_UUID,
 						name: 'Johnny Flynn',
-						role: {
-							name: 'Austin'
-						},
+						roleName: 'Austin',
 						otherRoles: [
 							{
 								model: 'character',
@@ -292,9 +284,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: NIGEL_HARMAN_PERSON_UUID,
 						name: 'Nigel Harman',
-						role: {
-							name: 'Lee'
-						},
+						roleName: 'Lee',
 						otherRoles: [
 							{
 								model: 'character',
@@ -307,9 +297,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: JOHN_LIGHT_PERSON_UUID,
 						name: 'John Light',
-						role: {
-							name: 'Lee'
-						},
+						roleName: 'Lee',
 						otherRoles: [
 							{
 								model: 'character',
@@ -335,9 +323,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: KIT_HARINGTON_PERSON_UUID,
 						name: 'Kit Harington',
-						role: {
-							name: 'Lee'
-						},
+						roleName: 'Lee',
 						otherRoles: [
 							{
 								model: 'character',
@@ -350,9 +336,7 @@ describe('Roles with alternating cast', () => {
 						model: 'person',
 						uuid: JOHNNY_FLYNN_PERSON_UUID,
 						name: 'Johnny Flynn',
-						role: {
-							name: 'Lee'
-						},
+						roleName: 'Lee',
 						otherRoles: [
 							{
 								model: 'character',

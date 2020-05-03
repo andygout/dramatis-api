@@ -165,9 +165,7 @@ describe('Cast member performing different roles in different productions of sam
 						model: 'person',
 						uuid: MICHAEL_GAMBON_PERSON_UUID,
 						name: 'Michael Gambon',
-						role: {
-							name: 'King Lear'
-						},
+						roleName: 'King Lear',
 						otherRoles: []
 					}
 				]
@@ -187,9 +185,7 @@ describe('Cast member performing different roles in different productions of sam
 						model: 'person',
 						uuid: ANTONY_SHER_PERSON_UUID,
 						name: 'Antony Sher',
-						role: {
-							name: 'King Lear'
-						},
+						roleName: 'King Lear',
 						otherRoles: []
 					}
 				]
@@ -230,9 +226,7 @@ describe('Cast member performing different roles in different productions of sam
 						model: 'person',
 						uuid: ANTONY_SHER_PERSON_UUID,
 						name: 'Antony Sher',
-						role: {
-							name: 'Fool'
-						},
+						roleName: 'Fool',
 						otherRoles: []
 					}
 				]
@@ -252,9 +246,7 @@ describe('Cast member performing different roles in different productions of sam
 						model: 'person',
 						uuid: GRAHAM_TURNER_PERSON_UUID,
 						name: 'Graham Turner',
-						role: {
-							name: 'Fool'
-						},
+						roleName: 'Fool',
 						otherRoles: []
 					}
 				]
