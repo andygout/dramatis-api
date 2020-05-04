@@ -1,7 +1,7 @@
-import accessControlMiddleware from './access-control-middleware';
-import errorHandlingMiddleware from './error-handling-middleware';
+import accessControlSetter from './access-control-setter';
+import errorHandler from './error-handler';
 
 export {
-	accessControlMiddleware,
-	errorHandlingMiddleware
+	accessControlSetter,
+	errorHandler
 };
