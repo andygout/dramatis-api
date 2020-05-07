@@ -5,13 +5,6 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (production:Production { uuid: $uuid })
 
-			OPTIONAL MATCH (:Person)-[:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
-
-			WITH production, COLLECT(role) AS roles
-				FOREACH (role in roles | DETACH DELETE role)
-
-			WITH production
-
 			OPTIONAL MATCH (production)-[relationship]-()
 
 			WITH production, COLLECT(relationship) AS relationships
@@ -38,11 +31,14 @@ const getCreateUpdateQuery = action => {
 			MERGE (person:Person { name: castMember.name })
 				ON CREATE SET person.uuid = castMember.uuid
 
-			CREATE (production)<-[:PERFORMS_IN { position: castMember.position }]-(person)
-
-			FOREACH (role in castMember.roles |
-				CREATE (person)-[:PERFORMS_AS { position: role.position, prodUuid: $uuid }]->
-					(:Role { name: role.name, characterName: role.characterName })
+			FOREACH (role in CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
+				CREATE (production)
+					<-[:PERFORMS_IN {
+						castMemberPosition: castMember.position,
+						rolePosition: role.position,
+						roleName: role.name,
+						characterName: role.characterName
+					}]-(person)
 			)
 		)
 
@@ -62,20 +58,17 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
 
-	OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
+	WITH production, theatre, playtext, castRel, person
+		ORDER BY castRel.castMemberPosition, castRel.rolePosition
 
-	WITH production, theatre, playtext, castRel, person, roleRel, role
-		ORDER BY roleRel.position
-
-	WITH production, theatre, playtext, castRel, person,
-		COLLECT(CASE WHEN role IS NULL
+	WITH production, theatre, playtext, person,
+		COLLECT(CASE WHEN castRel.roleName IS NULL
 			THEN null
 			ELSE {
-				name: role.name,
-				characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+				name: castRel.roleName,
+				characterName: CASE WHEN castRel.characterName IS NULL THEN '' ELSE castRel.characterName END
 			}
 		END) + [{ name: '', characterName: '' }] AS roles
-		ORDER BY castRel.position
 
 	RETURN
 		'production' AS model,
@@ -94,11 +87,6 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getDeleteQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (:Person)-[:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
-
-	WITH production, COLLECT(role) AS roles
-		FOREACH (role in roles | DETACH DELETE role)
-
 	WITH production, production.name AS name
 		DETACH DELETE production
 
@@ -114,20 +102,17 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
 
-	OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
-
-	OPTIONAL MATCH (role)<-[roleRel]-(person)-[castRel]->(production)-[playtextRel]->
+	OPTIONAL MATCH (person)-[castRel]->(production)-[playtextRel]->
 		(playtext)-[:INCLUDES_CHARACTER]->(character:Character)
-		WHERE role.name = character.name OR role.characterName = character.name
+		WHERE castRel.roleName = character.name OR castRel.characterName = character.name
 
-	WITH production, theatre, playtext, castRel, person, roleRel, role, character
-		ORDER BY roleRel.position
+	WITH production, theatre, playtext, person, castRel, character
+		ORDER BY castRel.castMemberPosition, castRel.rolePosition
 
-	WITH production, theatre, playtext, castRel, person,
-		COLLECT(CASE WHEN role IS NULL THEN { name: 'Performer' } ELSE
-				{ model: 'character', uuid: character.uuid, name: role.name }
+	WITH production, theatre, playtext, person,
+		COLLECT(CASE WHEN castRel.roleName IS NULL THEN { name: 'Performer' } ELSE
+				{ model: 'character', uuid: character.uuid, name: castRel.roleName }
 			END) AS roles
-		ORDER BY castRel.position
 
 	RETURN
 		'production' AS model,

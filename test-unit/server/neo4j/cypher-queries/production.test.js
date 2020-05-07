@@ -28,11 +28,14 @@ describe('Cypher Queries Production module', () => {
 					MERGE (person:Person { name: castMember.name })
 						ON CREATE SET person.uuid = castMember.uuid
 
-					CREATE (production)<-[:PERFORMS_IN { position: castMember.position }]-(person)
-
-					FOREACH (role in castMember.roles |
-						CREATE (person)-[:PERFORMS_AS { position: role.position, prodUuid: $uuid }]->
-							(:Role { name: role.name, characterName: role.characterName })
+					FOREACH (role in CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
+						CREATE (production)
+							<-[:PERFORMS_IN {
+								castMemberPosition: castMember.position,
+								rolePosition: role.position,
+								roleName: role.name,
+								characterName: role.characterName
+							}]-(person)
 					)
 				)
 
@@ -44,20 +47,17 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
 
-				OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
+				WITH production, theatre, playtext, castRel, person
+					ORDER BY castRel.castMemberPosition, castRel.rolePosition
 
-				WITH production, theatre, playtext, castRel, person, roleRel, role
-					ORDER BY roleRel.position
-
-				WITH production, theatre, playtext, castRel, person,
-					COLLECT(CASE WHEN role IS NULL
+				WITH production, theatre, playtext, person,
+					COLLECT(CASE WHEN castRel.roleName IS NULL
 						THEN null
 						ELSE {
-							name: role.name,
-							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+							name: castRel.roleName,
+							characterName: CASE WHEN castRel.characterName IS NULL THEN '' ELSE castRel.characterName END
 						}
 					END) + [{ name: '', characterName: '' }] AS roles
-					ORDER BY castRel.position
 
 				RETURN
 					'production' AS model,
@@ -83,13 +83,6 @@ describe('Cypher Queries Production module', () => {
 			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
 
-				OPTIONAL MATCH (:Person)-[:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
-
-				WITH production, COLLECT(role) AS roles
-					FOREACH (role in roles | DETACH DELETE role)
-
-				WITH production
-
 				OPTIONAL MATCH (production)-[relationship]-()
 
 				WITH production, COLLECT(relationship) AS relationships
@@ -111,11 +104,14 @@ describe('Cypher Queries Production module', () => {
 					MERGE (person:Person { name: castMember.name })
 						ON CREATE SET person.uuid = castMember.uuid
 
-					CREATE (production)<-[:PERFORMS_IN { position: castMember.position }]-(person)
-
-					FOREACH (role in castMember.roles |
-						CREATE (person)-[:PERFORMS_AS { position: role.position, prodUuid: $uuid }]->
-							(:Role { name: role.name, characterName: role.characterName })
+					FOREACH (role in CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
+						CREATE (production)
+							<-[:PERFORMS_IN {
+								castMemberPosition: castMember.position,
+								rolePosition: role.position,
+								roleName: role.name,
+								characterName: role.characterName
+							}]-(person)
 					)
 				)
 
@@ -127,20 +123,17 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
 
-				OPTIONAL MATCH (person)-[roleRel:PERFORMS_AS { prodUuid: $uuid }]->(role:Role)
+				WITH production, theatre, playtext, castRel, person
+					ORDER BY castRel.castMemberPosition, castRel.rolePosition
 
-				WITH production, theatre, playtext, castRel, person, roleRel, role
-					ORDER BY roleRel.position
-
-				WITH production, theatre, playtext, castRel, person,
-					COLLECT(CASE WHEN role IS NULL
+				WITH production, theatre, playtext, person,
+					COLLECT(CASE WHEN castRel.roleName IS NULL
 						THEN null
 						ELSE {
-							name: role.name,
-							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+							name: castRel.roleName,
+							characterName: CASE WHEN castRel.characterName IS NULL THEN '' ELSE castRel.characterName END
 						}
 					END) + [{ name: '', characterName: '' }] AS roles
-					ORDER BY castRel.position
 
 				RETURN
 					'production' AS model,
