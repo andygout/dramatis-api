@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
+import neo4j from 'neo4j-driver';
 import { v4 as uuid } from 'uuid';
 
 import * as isObjectWithKeysModule from '../../../server/lib/is-object-with-keys';
@@ -14,6 +15,7 @@ describe('Prepare As Params module', () => {
 	beforeEach(() => {
 
 		stubs = {
+			neo4jInt: sandbox.stub(neo4j, 'int').returnsArg(0),
 			uuid: sandbox.stub(uuid, 'v4').returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'),
 			isObjectWithKeys: sandbox.stub(isObjectWithKeysModule, 'isObjectWithKeys').returns(false)
 		};
@@ -44,6 +46,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.isObjectWithKeys.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -55,6 +58,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.isObjectWithKeys.calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -66,6 +70,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.isObjectWithKeys.calledWithExactly('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
@@ -77,6 +82,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.isObjectWithKeys.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.foo).to.eq('');
 
 		});
@@ -87,6 +93,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result).not.to.have.property('position');
 
 		});
@@ -103,6 +110,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -115,6 +123,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -127,6 +136,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
@@ -139,6 +149,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.foo).to.eq('');
 
 		});
@@ -150,6 +161,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre).not.to.have.property('position');
 
 		});
@@ -170,6 +182,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
 			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -186,6 +200,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
 			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -202,6 +218,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
 			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
@@ -218,6 +236,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
 			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast[0].foo).to.eq('');
 
 		});
@@ -234,6 +254,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast[0].position).to.eq(0);
 
 		});
@@ -251,6 +273,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.cast.length).to.eq(1);
 			expect(result.cast[0].name).to.eq('Ian McKellen');
 			expect(result.cast[0].position).to.eq(0);
@@ -274,6 +298,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -291,6 +317,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -308,6 +336,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
@@ -325,6 +355,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters[0].foo).to.eq('');
 
 		});
@@ -342,6 +374,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters[0].position).to.eq(0);
 
 		});
@@ -360,6 +394,8 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(6);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
 			expect(result.playtext.characters.length).to.eq(1);
 			expect(result.playtext.characters[0].name).to.eq('Laertes');
 			expect(result.playtext.characters[0].position).to.eq(0);
@@ -385,6 +421,9 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -404,6 +443,9 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), undefined);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.eq('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
@@ -423,6 +465,9 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.eq('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
@@ -442,6 +487,9 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
 			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].roles[0].foo).to.eq('');
 
 		});
@@ -462,6 +510,9 @@ describe('Prepare As Params module', () => {
 			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(5), 0);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].position).to.eq(0);
 			expect(result.cast[0].roles[0].position).to.eq(0);
 
@@ -483,6 +534,9 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.callCount).to.eq(8);
 			assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 0);
 			expect(stubs.uuid.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
 			expect(result.cast[0].roles.length).to.eq(1);
 			expect(result.cast[0].roles[0].name).to.eq('Laertes');
 			expect(result.cast[0].roles[0].position).to.eq(0);
