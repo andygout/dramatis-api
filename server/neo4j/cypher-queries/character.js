@@ -6,46 +6,44 @@ const getShowQuery = () => `
 	WITH character, playtext
 		ORDER BY playtext.name
 
-	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)<-[:PERFORMS_IN]-(:Person)-
-		[:PERFORMS_AS { prodUuid: production.uuid }]->(variantNamedRole:Role)
-		WHERE character.name <> variantNamedRole.name AND character.name = variantNamedRole.characterName
+	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
+		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
 	WITH character, variantNamedRole,
 		COLLECT(CASE WHEN playtext IS NULL THEN null ELSE
 				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
 			END) AS playtexts
-		ORDER BY variantNamedRole.name
+		ORDER BY variantNamedRole.roleName
 
-	OPTIONAL MATCH (playtext)<-[prodRel:PRODUCTION_OF]-(production:Production)<-[castRel:PERFORMS_IN]-(person:Person)-
-		[roleRel:PERFORMS_AS { prodUuid: production.uuid }]->(role:Role)
-		WHERE character.name = role.name OR character.name = role.characterName
+	OPTIONAL MATCH (playtext)<-[prodRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
+		WHERE character.name = role.roleName OR character.name = role.characterName
 
-	OPTIONAL MATCH (person)-[otherRoleRel:PERFORMS_AS { prodUuid: production.uuid }]->(otherRole:Role)
-		WHERE otherRole.name <> character.name
+	OPTIONAL MATCH (production)<-[otherRole:PERFORMS_IN]-(person)
+		WHERE otherRole.roleName <> character.name
 		AND (NOT EXISTS(otherRole.characterName) OR otherRole.characterName <> character.name)
 
-	OPTIONAL MATCH (otherRole)<-[otherRoleRel]-(person)-[castRel]->(production)-[prodRel]->(playtext)-
-		[:INCLUDES_CHARACTER]->(otherCharacter:Character)
-		WHERE otherRole.name = otherCharacter.name OR otherRole.characterName = otherCharacter.name
+	OPTIONAL MATCH (person)-[otherRole]->(production)-[prodRel]->
+		(playtext)-[:INCLUDES_CHARACTER]->(otherCharacter:Character)
+		WHERE otherRole.roleName = otherCharacter.name OR otherRole.characterName = otherCharacter.name
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH character, playtexts, production, theatre, castRel, person, role, otherRole, otherRoleRel, otherCharacter,
-		COLLECT(DISTINCT(variantNamedRole.name)) AS variantNames
-		ORDER BY otherRoleRel.position
+	WITH character, playtexts, production, theatre, person, role, otherRole, otherCharacter,
+		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames
+		ORDER BY otherRole.rolePosition
 
-	WITH character, playtexts, variantNames, production, theatre, castRel, person, role,
+	WITH character, playtexts, variantNames, production, theatre, person, role,
 		COLLECT(CASE WHEN otherRole IS NULL THEN null ELSE
-				{ model: 'character', uuid: otherCharacter.uuid, name: otherRole.name }
+				{ model: 'character', uuid: otherCharacter.uuid, name: otherRole.roleName }
 			END) AS otherRoles
-		ORDER BY castRel.position
+		ORDER BY role.castMemberPosition
 
 	WITH character, playtexts, variantNames, production, theatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,
 			name: person.name,
-			roleName: role.name,
+			roleName: role.roleName,
 			otherRoles: otherRoles
 		}) AS performers
 		ORDER BY production.name, theatre.name
