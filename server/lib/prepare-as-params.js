@@ -1,3 +1,4 @@
+import neo4j from 'neo4j-driver';
 import { v4 as uuid } from 'uuid';
 
 import { isObjectWithKeys } from './is-object-with-keys';
@@ -32,10 +33,13 @@ export const prepareAsParams = instance => {
 
 		} else {
 
-			accumulator[key] =
-				(key === 'uuid' && (instance[key] === undefined || !instance[key].length))
-					? uuid()
-					: instance[key];
+			const requiresUuidValue =
+				key === 'uuid' &&
+				(instance[key] === undefined || !instance[key].length);
+
+			if (requiresUuidValue) accumulator[key] = uuid();
+			else if (typeof instance[key] === 'number') accumulator[key] = neo4j.int(instance[key]);
+			else accumulator[key] = instance[key];
 
 		}
 
