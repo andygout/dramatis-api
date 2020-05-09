@@ -6,8 +6,7 @@ const getShowQuery = () => `
 	WITH character, playtext
 		ORDER BY playtext.name
 
-	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(:Playtext)<-[:PRODUCTION_OF]-
-		(production:Production)<-[:PERFORMS_IN]-(:Person)-
+	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)<-[:PERFORMS_IN]-(:Person)-
 		[:PERFORMS_AS { prodUuid: production.uuid }]->(variantNamedRole:Role)
 		WHERE character.name <> variantNamedRole.name AND character.name = variantNamedRole.characterName
 
@@ -17,8 +16,7 @@ const getShowQuery = () => `
 			END) AS playtexts
 		ORDER BY variantNamedRole.name
 
-	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtext:Playtext)<-[prodRel:PRODUCTION_OF]-
-		(production:Production)<-[castRel:PERFORMS_IN]-(person:Person)-
+	OPTIONAL MATCH (playtext)<-[prodRel:PRODUCTION_OF]-(production:Production)<-[castRel:PERFORMS_IN]-(person:Person)-
 		[roleRel:PERFORMS_AS { prodUuid: production.uuid }]->(role:Role)
 		WHERE character.name = role.name OR character.name = role.characterName
 
