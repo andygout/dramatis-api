@@ -39,6 +39,7 @@ export const prepareAsParams = instance => {
 
 			if (requiresUuidValue) accumulator[key] = uuid();
 			else if (typeof instance[key] === 'number') accumulator[key] = neo4j.int(instance[key]);
+			else if (instance[key] === '') accumulator[key] = null;
 			else accumulator[key] = instance[key];
 
 		}

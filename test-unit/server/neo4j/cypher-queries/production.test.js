@@ -18,7 +18,7 @@ describe('Cypher Queries Production module', () => {
 
 				CREATE (production)-[:PLAYS_AT]->(theatre)
 
-				FOREACH (item IN CASE WHEN $playtext.name <> '' THEN [1] ELSE [] END |
+				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (playtext:Playtext { name: $playtext.name })
 					ON CREATE SET playtext.uuid = $playtext.uuid
 					CREATE (production)-[:PRODUCTION_OF]->(playtext)
@@ -94,7 +94,7 @@ describe('Cypher Queries Production module', () => {
 
 				CREATE (production)-[:PLAYS_AT]->(theatre)
 
-				FOREACH (item IN CASE WHEN $playtext.name <> '' THEN [1] ELSE [] END |
+				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (playtext:Playtext { name: $playtext.name })
 					ON CREATE SET playtext.uuid = $playtext.uuid
 					CREATE (production)-[:PRODUCTION_OF]->(playtext)
