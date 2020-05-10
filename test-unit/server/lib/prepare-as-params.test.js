@@ -75,7 +75,19 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to non-uuid properties', () => {
+		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
+
+			const instance = { foo: 'bar' };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly('bar')).to.be.true;
+			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
+			expect(result.foo).to.eq('bar');
+
+		});
+
+		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
@@ -83,7 +95,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.isObjectWithKeys.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.called).to.be.false;
-			expect(result.foo).to.eq('');
+			expect(result.foo).to.eq(null);
 
 		});
 
@@ -141,7 +153,20 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to non-uuid properties', () => {
+		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
+
+			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
+			const instance = { theatre: { foo: 'bar' } };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
+			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, 'bar');
+			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.called).to.be.false;
+			expect(result.theatre.foo).to.eq('bar');
+
+		});
+
+		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			stubs.isObjectWithKeys.onFirstCall().returns(true).onSecondCall().returns(false);
 			const instance = { theatre: { foo: '' } };
@@ -150,7 +175,7 @@ describe('Prepare As Params module', () => {
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.called).to.be.false;
-			expect(result.theatre.foo).to.eq('');
+			expect(result.theatre.foo).to.eq(null);
 
 		});
 
@@ -224,7 +249,25 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to non-uuid properties', () => {
+		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
+
+			stubs.isObjectWithKeys
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(false);
+			const instance = { cast: [{ foo: 'bar' }] }
+			const result = prepareAsParams(instance);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(4);
+			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'bar');
+			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
+			expect(result.cast[0].foo).to.eq('bar');
+
+		});
+
+		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
@@ -238,7 +281,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
-			expect(result.cast[0].foo).to.eq('');
+			expect(result.cast[0].foo).to.eq(null);
 
 		});
 
@@ -342,7 +385,26 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to non-uuid properties', () => {
+		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
+
+			stubs.isObjectWithKeys
+				.onFirstCall().returns(true)
+				.onSecondCall().returns(false)
+				.onThirdCall().returns(true)
+				.onCall(3).returns(false)
+				.onCall(4).returns(false);
+			const instance = { playtext: { characters: [{ foo: 'bar' }] } };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), 'bar');
+			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledOnce).to.be.true;
+			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
+			expect(result.playtext.characters[0].foo).to.eq('bar');
+
+		});
+
+		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
@@ -357,7 +419,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.calledWith(0)).to.be.true;
-			expect(result.playtext.characters[0].foo).to.eq('');
+			expect(result.playtext.characters[0].foo).to.eq(null);
 
 		});
 
@@ -472,7 +534,29 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('will not assign value to non-uuid properties', () => {
+		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
+
+			stubs.isObjectWithKeys
+				.onFirstCall().returns(false)
+				.onSecondCall().returns(true)
+				.onThirdCall().returns(false)
+				.onCall(3).returns(true)
+				.onCall(4).returns(false)
+				.onCall(5).returns(false)
+				.onCall(6).returns(false);
+			const instance = { cast: [{ roles: [{ foo: 'bar' }] }] };
+			const result = prepareAsParams(instance);
+			expect(stubs.isObjectWithKeys.callCount).to.eq(7);
+			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), 'bar');
+			expect(stubs.uuid.called).to.be.false;
+			expect(stubs.neo4jInt.calledTwice).to.be.true;
+			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
+			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
+			expect(result.cast[0].roles[0].foo).to.eq('bar');
+
+		});
+
+		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			stubs.isObjectWithKeys
 				.onFirstCall().returns(false)
@@ -490,7 +574,7 @@ describe('Prepare As Params module', () => {
 			expect(stubs.neo4jInt.calledTwice).to.be.true;
 			expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
 			expect((stubs.neo4jInt.getCall(1)).calledWith(0)).to.be.true;
-			expect(result.cast[0].roles[0].foo).to.eq('');
+			expect(result.cast[0].roles[0].foo).to.eq(null);
 
 		});
 
