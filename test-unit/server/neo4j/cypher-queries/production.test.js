@@ -45,17 +45,17 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
 
-				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
+				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, theatre, playtext, castRel, person
-					ORDER BY castRel.castMemberPosition, castRel.rolePosition
+				WITH production, theatre, playtext, role, person
+					ORDER BY role.castMemberPosition, role.rolePosition
 
 				WITH production, theatre, playtext, person,
-					COLLECT(CASE WHEN castRel.roleName IS NULL
+					COLLECT(CASE WHEN role.roleName IS NULL
 						THEN null
 						ELSE {
-							name: castRel.roleName,
-							characterName: CASE WHEN castRel.characterName IS NULL THEN '' ELSE castRel.characterName END
+							name: role.roleName,
+							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
 						}
 					END) + [{ name: '', characterName: '' }] AS roles
 
@@ -121,17 +121,17 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
 
-				OPTIONAL MATCH (production)<-[castRel:PERFORMS_IN]-(person:Person)
+				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, theatre, playtext, castRel, person
-					ORDER BY castRel.castMemberPosition, castRel.rolePosition
+				WITH production, theatre, playtext, role, person
+					ORDER BY role.castMemberPosition, role.rolePosition
 
 				WITH production, theatre, playtext, person,
-					COLLECT(CASE WHEN castRel.roleName IS NULL
+					COLLECT(CASE WHEN role.roleName IS NULL
 						THEN null
 						ELSE {
-							name: castRel.roleName,
-							characterName: CASE WHEN castRel.characterName IS NULL THEN '' ELSE castRel.characterName END
+							name: role.roleName,
+							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
 						}
 					END) + [{ name: '', characterName: '' }] AS roles
 
