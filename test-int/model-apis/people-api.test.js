@@ -98,7 +98,7 @@ describe('People API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/people/${PERSON_UUID}`)
+				.put(`/people/${PERSON_UUID}`)
 				.send({
 					name: 'Patrick Stewart'
 				});

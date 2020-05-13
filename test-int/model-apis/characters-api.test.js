@@ -98,7 +98,7 @@ describe('Characters API', () => {
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/characters/${CHARACTER_UUID}`)
+				.put(`/characters/${CHARACTER_UUID}`)
 				.send({
 					name: 'Juliet'
 				});
