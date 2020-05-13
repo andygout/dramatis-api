@@ -1,25 +1,10 @@
-/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "response|next" }] */
+/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
 import { Router } from 'express';
-import methodOverride from 'method-override';
 
 import * as controllers from './controllers';
 
 const router = new Router();
-
-router.use(methodOverride((request, response) => {
-
-	if (request.body && typeof request.body === 'object' && '_method' in request.body) {
-
-		const method = request.body._method;
-
-		delete request.body._method;
-
-		return method;
-
-	}
-
-}));
 
 router.get('/characters/new', controllers.characters.newRoute);
 router.post('/characters', controllers.characters.createRoute);
