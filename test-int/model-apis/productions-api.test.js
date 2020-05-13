@@ -165,7 +165,7 @@ describe('Productions API', () => {
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/productions/${PRODUCTION_UUID}`)
+				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'The Tempest',
 					theatre: {
@@ -706,7 +706,7 @@ describe('Productions API', () => {
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/productions/${PRODUCTION_UUID}`)
+				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
 					theatre: {

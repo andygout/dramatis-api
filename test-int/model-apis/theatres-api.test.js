@@ -98,7 +98,7 @@ describe('Theatres API', () => {
 			expect(await countNodesWithLabel('Theatre')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/theatres/${THEATRE_UUID}`)
+				.put(`/theatres/${THEATRE_UUID}`)
 				.send({
 					name: 'Almeida Theatre'
 				});

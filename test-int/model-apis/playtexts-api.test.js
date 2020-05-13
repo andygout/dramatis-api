@@ -113,7 +113,7 @@ describe('Playtexts API', () => {
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/playtexts/${PLAYTEXT_UUID}`)
+				.put(`/playtexts/${PLAYTEXT_UUID}`)
 				.send({
 					name: 'The Cherry Orchard'
 				});
@@ -356,7 +356,7 @@ describe('Playtexts API', () => {
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post(`/playtexts/${PLAYTEXT_UUID}`)
+				.put(`/playtexts/${PLAYTEXT_UUID}`)
 				.send({
 					name: 'Three Sisters',
 					characters: [
