@@ -2,49 +2,55 @@
 
 import { Router } from 'express';
 
-import * as controllers from './controllers';
+import {
+	characters as charactersController,
+	people as peopleController,
+	playtexts as playtextsController,
+	productions as productionsController,
+	theatres as theatresController
+} from './controllers';
 
 const router = new Router();
 
-router.get('/characters/new', controllers.characters.newRoute);
-router.post('/characters', controllers.characters.createRoute);
-router.get('/characters/:uuid/edit', controllers.characters.editRoute);
-router.put('/characters/:uuid', controllers.characters.updateRoute);
-router.delete('/characters/:uuid', controllers.characters.deleteRoute);
-router.get('/characters/:uuid', controllers.characters.showRoute);
-router.get('/characters', controllers.characters.listRoute);
+router.get('/characters/new', charactersController.newRoute);
+router.post('/characters', charactersController.createRoute);
+router.get('/characters/:uuid/edit', charactersController.editRoute);
+router.put('/characters/:uuid', charactersController.updateRoute);
+router.delete('/characters/:uuid', charactersController.deleteRoute);
+router.get('/characters/:uuid', charactersController.showRoute);
+router.get('/characters', charactersController.listRoute);
 
-router.get('/people/new', controllers.people.newRoute);
-router.post('/people', controllers.people.createRoute);
-router.get('/people/:uuid/edit', controllers.people.editRoute);
-router.put('/people/:uuid', controllers.people.updateRoute);
-router.delete('/people/:uuid', controllers.people.deleteRoute);
-router.get('/people/:uuid', controllers.people.showRoute);
-router.get('/people', controllers.people.listRoute);
+router.get('/people/new', peopleController.newRoute);
+router.post('/people', peopleController.createRoute);
+router.get('/people/:uuid/edit', peopleController.editRoute);
+router.put('/people/:uuid', peopleController.updateRoute);
+router.delete('/people/:uuid', peopleController.deleteRoute);
+router.get('/people/:uuid', peopleController.showRoute);
+router.get('/people', peopleController.listRoute);
 
-router.get('/playtexts/new', controllers.playtexts.newRoute);
-router.post('/playtexts', controllers.playtexts.createRoute);
-router.get('/playtexts/:uuid/edit', controllers.playtexts.editRoute);
-router.put('/playtexts/:uuid', controllers.playtexts.updateRoute);
-router.delete('/playtexts/:uuid', controllers.playtexts.deleteRoute);
-router.get('/playtexts/:uuid', controllers.playtexts.showRoute);
-router.get('/playtexts', controllers.playtexts.listRoute);
+router.get('/playtexts/new', playtextsController.newRoute);
+router.post('/playtexts', playtextsController.createRoute);
+router.get('/playtexts/:uuid/edit', playtextsController.editRoute);
+router.put('/playtexts/:uuid', playtextsController.updateRoute);
+router.delete('/playtexts/:uuid', playtextsController.deleteRoute);
+router.get('/playtexts/:uuid', playtextsController.showRoute);
+router.get('/playtexts', playtextsController.listRoute);
 
-router.get('/productions/new', controllers.productions.newRoute);
-router.post('/productions', controllers.productions.createRoute);
-router.get('/productions/:uuid/edit', controllers.productions.editRoute);
-router.put('/productions/:uuid', controllers.productions.updateRoute);
-router.delete('/productions/:uuid', controllers.productions.deleteRoute);
-router.get('/productions/:uuid', controllers.productions.showRoute);
-router.get('/productions', controllers.productions.listRoute);
+router.get('/productions/new', productionsController.newRoute);
+router.post('/productions', productionsController.createRoute);
+router.get('/productions/:uuid/edit', productionsController.editRoute);
+router.put('/productions/:uuid', productionsController.updateRoute);
+router.delete('/productions/:uuid', productionsController.deleteRoute);
+router.get('/productions/:uuid', productionsController.showRoute);
+router.get('/productions', productionsController.listRoute);
 
-router.get('/theatres/new', controllers.theatres.newRoute);
-router.post('/theatres', controllers.theatres.createRoute);
-router.get('/theatres/:uuid/edit', controllers.theatres.editRoute);
-router.put('/theatres/:uuid', controllers.theatres.updateRoute);
-router.delete('/theatres/:uuid', controllers.theatres.deleteRoute);
-router.get('/theatres/:uuid', controllers.theatres.showRoute);
-router.get('/theatres', controllers.theatres.listRoute);
+router.get('/theatres/new', theatresController.newRoute);
+router.post('/theatres', theatresController.createRoute);
+router.get('/theatres/:uuid/edit', theatresController.editRoute);
+router.put('/theatres/:uuid', theatresController.updateRoute);
+router.delete('/theatres/:uuid', theatresController.deleteRoute);
+router.get('/theatres/:uuid', theatresController.showRoute);
+router.get('/theatres', theatresController.listRoute);
 
 router.get('*', (request, response, next) => response.sendStatus(404));
 
