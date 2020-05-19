@@ -61,7 +61,7 @@ Using theatre model as an example.
 ### GET `/theatres/:uuid/edit`
 - Get data required to **edit** specific theatre.
 
-### POST `/theatres/:uuid`
+### PUT `/theatres/:uuid`
 - **Update** specific theatre.
 - Requires body, e.g.: `{ "name": "Almeida Theatre" }`.
 
