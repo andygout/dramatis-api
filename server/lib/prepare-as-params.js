@@ -16,11 +16,11 @@ export const prepareAsParams = instance => {
 			accumulator[key] =
 				instance[key]
 					.filter(item => !item.hasOwnProperty('name') || !!item.name.length)
-					.map((item, index) => {
+					.map((item, index, array) => {
 
 						if (isObjectWithKeys(item)) {
 
-							item.position = index;
+							if (array.length > 1) item.position = index;
 
 							return prepareAsParams(item);
 
