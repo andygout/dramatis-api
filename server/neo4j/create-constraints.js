@@ -24,11 +24,11 @@ const createConstraint = async model => {
 			{ isRequiredResult: false }
 		);
 
-		console.log(`Constraint created for ${model}`); // eslint-disable-line no-console
+		console.log(`Neo4j database: Constraint created for ${model}`); // eslint-disable-line no-console
 
 	} catch (error) {
 
-		console.log(`Error attempting to create constraint for ${model}: `, error); // eslint-disable-line no-console
+		console.log(`Neo4j database: Error attempting to create constraint for ${model}: `, error); // eslint-disable-line no-console
 
 	}
 
@@ -47,9 +47,11 @@ export default async () => {
 
 		const modelsToConstrain = models.filter(model => !modelsWithConstraints.includes(model));
 
+		console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
+
 		if (!modelsToConstrain.length) {
 
-			console.log('No constraints required'); // eslint-disable-line no-console
+			console.log('Neo4j database: No constraints required'); // eslint-disable-line no-console
 
 			return;
 
@@ -59,11 +61,11 @@ export default async () => {
 
 		await directly(1, modelConstraintFunctions);
 
-		console.log('All constraints created'); // eslint-disable-line no-console
+		console.log('Neo4j database: All constraints created'); // eslint-disable-line no-console
 
 	} catch (error) {
 
-		console.log('Error attempting: CALL db.constraints(): ', error); // eslint-disable-line no-console
+		console.log('Neo4j database: Error attempting: CALL db.constraints(): ', error); // eslint-disable-line no-console
 
 	}
 
