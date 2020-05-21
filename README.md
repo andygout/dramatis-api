@@ -7,7 +7,7 @@ Graph database-driven API for site of theatrical productions, playtexts, and ass
 - Set local Node version to same as listed in `package.json` `engines.node`.
 - Install node modules: `$ npm install`.
 - Compile code: `$ npm run build`.
-- Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`.
+- Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`. N.B. Values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/theatrebase-api#user-content-database-setup)).
 
 ## Database setup
 - Download the [Neo4j desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version).
