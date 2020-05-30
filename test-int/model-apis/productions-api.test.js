@@ -34,7 +34,21 @@ describe('Productions API', () => {
 					name: '',
 					errors: {}
 				},
-				cast: []
+				cast: [
+					{
+						model: 'person',
+						name: '',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
