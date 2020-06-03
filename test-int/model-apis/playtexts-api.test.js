@@ -24,7 +24,13 @@ describe('Playtexts API', () => {
 				model: 'playtext',
 				name: '',
 				errors: {},
-				characters: []
+				characters: [
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
