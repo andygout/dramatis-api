@@ -1,14 +1,8 @@
+import { IRREGULAR_PLURAL_NOUNS_MAP } from '../utils/constants';
+
 const capitalise = (string) => string.charAt(0).toUpperCase() + string.substring(1);
 
-const pluralise = model => {
-
-	const irregularPluralNouns = {
-		'person': 'people'
-	};
-
-	return irregularPluralNouns[model] || `${model}s`;
-
-}
+const pluralise = model => IRREGULAR_PLURAL_NOUNS_MAP[model] || `${model}s`;
 
 export {
 	capitalise,
