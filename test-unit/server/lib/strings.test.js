@@ -6,9 +6,23 @@ describe('Strings module', () => {
 
 	describe('Capitalise function', () => {
 
-		it('returns string with initial letter as capital', () => {
+		context('Input string is lowercase', () => {
 
-			expect(capitalise('string')).to.eq('String');
+			it('returns string with initial letter as capital', () => {
+
+				expect(capitalise('string')).to.eq('String');
+
+			});
+
+		});
+
+		context('Input string is uppercase', () => {
+
+			it('returns string with initial letter as capital', () => {
+
+				expect(capitalise('STRING')).to.eq('String');
+
+			});
 
 		});
 
