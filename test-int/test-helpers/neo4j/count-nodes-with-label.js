@@ -1,6 +1,6 @@
 import { neo4jQuery } from '../../../server/neo4j/query';
 
-export default async function (label) {
+export default async label => {
 
 	const countNodesWithLabelQuery = `
 		MATCH (n:${label})

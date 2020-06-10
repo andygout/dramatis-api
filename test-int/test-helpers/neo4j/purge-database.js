@@ -1,6 +1,6 @@
 import { neo4jQuery } from '../../../server/neo4j/query';
 
-export default async function () {
+export default async () => {
 
 	const purgeDatabaseQuery = `
 		MATCH (n)
