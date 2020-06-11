@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import { Role } from '../../../server/models';
+import { Role } from '../../../src/models';
 
 describe('Person Cast Member model', () => {
 
@@ -31,7 +31,7 @@ describe('Person Cast Member model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../server/models/PersonCastMember', {
+		proxyquire('../../../src/models/PersonCastMember', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'.': stubs.models
 		}).default;

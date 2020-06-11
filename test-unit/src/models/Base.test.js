@@ -1,12 +1,12 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy, stub } from 'sinon';
 
-import * as hasErrorsModule from '../../../server/lib/has-errors';
-import * as prepareAsParamsModule from '../../../server/lib/prepare-as-params';
-import * as validateStringModule from '../../../server/lib/validate-string';
-import Base from '../../../server/models/Base';
-import * as cypherQueries from '../../../server/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../server/neo4j/query';
+import * as hasErrorsModule from '../../../src/lib/has-errors';
+import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
+import * as validateStringModule from '../../../src/lib/validate-string';
+import Base from '../../../src/models/Base';
+import * as cypherQueries from '../../../src/neo4j/cypher-queries';
+import * as neo4jQueryModule from '../../../src/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Base model', () => {

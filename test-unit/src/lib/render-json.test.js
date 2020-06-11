@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
 
-import { renderJson } from '../../../server/lib/render-json';
+import { renderJson } from '../../../src/lib/render-json';
 
 describe('Render JSON module', () => {
 

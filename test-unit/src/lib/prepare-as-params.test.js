@@ -3,8 +3,8 @@ import { assert, createSandbox } from 'sinon';
 import neo4j from 'neo4j-driver';
 import { v4 as uuid } from 'uuid';
 
-import * as isObjectWithKeysModule from '../../../server/lib/is-object-with-keys';
-import { prepareAsParams } from '../../../server/lib/prepare-as-params';
+import * as isObjectWithKeysModule from '../../../src/lib/is-object-with-keys';
+import { prepareAsParams } from '../../../src/lib/prepare-as-params';
 
 describe('Prepare As Params module', () => {
 

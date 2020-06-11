@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
 import { createSandbox } from 'sinon';
 
-import * as callClassMethods from '../../../server/lib/call-class-methods';
-import * as renderJsonModule from '../../../server/lib/render-json';
-import { Character } from '../../../server/models';
+import * as callClassMethods from '../../../src/lib/call-class-methods';
+import * as renderJsonModule from '../../../src/lib/render-json';
+import { Character } from '../../../src/models';
 
 describe('Call Class Methods module', () => {
 
