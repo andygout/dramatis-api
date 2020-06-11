@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { validateString } from '../../../server/lib/validate-string';
+import { validateString } from '../../../src/lib/validate-string';
 
 describe('Validate String module', () => {
 

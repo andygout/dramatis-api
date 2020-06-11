@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { capitalise, pluralise } from '../../../server/lib/strings';
+import { capitalise, pluralise } from '../../../src/lib/strings';
 
 describe('Strings module', () => {
 
@@ -30,7 +30,7 @@ describe('Strings module', () => {
 
 	describe('Pluralise function', () => {
 
-		context('Model is regular plural noun', () => {
+		context('Model has regular plural noun', () => {
 
 			it('returns singular noun with appended \'s\'', () => {
 
@@ -40,7 +40,7 @@ describe('Strings module', () => {
 
 		});
 
-		context('Model is irregular plural noun', () => {
+		context('Model has irregular plural noun', () => {
 
 			it('returns specific plural noun', () => {
 

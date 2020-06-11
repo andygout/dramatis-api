@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
 
-import * as strings from '../../../../server/lib/strings';
-import * as cypherQueriesShared from '../../../../server/neo4j/cypher-queries/shared';
+import * as strings from '../../../../src/lib/strings';
+import * as cypherQueriesShared from '../../../../src/neo4j/cypher-queries/shared';
 import removeWhitespace from '../../../test-helpers/remove-whitespace';
 
 describe('Cypher Queries Shared module', () => {

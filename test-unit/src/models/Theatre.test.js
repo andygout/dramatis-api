@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
-import * as hasErrorsModule from '../../../server/lib/has-errors';
-import Theatre from '../../../server/models/Theatre';
-import * as cypherQueries from '../../../server/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../server/neo4j/query';
+import * as hasErrorsModule from '../../../src/lib/has-errors';
+import Theatre from '../../../src/models/Theatre';
+import * as cypherQueries from '../../../src/neo4j/cypher-queries';
+import * as neo4jQueryModule from '../../../src/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Theatre model', () => {

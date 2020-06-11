@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import { PersonCastMember } from '../../../server/models';
+import { PersonCastMember } from '../../../src/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Production model', () => {
@@ -66,11 +66,11 @@ describe('Production model', () => {
 	});
 
 	const createSubject = (stubOverrides = {}) =>
-		proxyquire('../../../server/models/Production', {
+		proxyquire('../../../src/models/Production', {
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
-			'./Base': proxyquire('../../../server/models/Base', {
+			'./Base': proxyquire('../../../src/models/Base', {
 				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule

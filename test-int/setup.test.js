@@ -1,4 +1,4 @@
-import createNeo4jConstraints from '../server/neo4j/create-constraints';
+import createNeo4jConstraints from '../src/neo4j/create-constraints';
 
 before(async () => {
 

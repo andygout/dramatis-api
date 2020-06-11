@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { getDuplicateNameIndices } from '../../../server/lib/get-duplicate-name-indices';
+import { getDuplicateNameIndices } from '../../../src/lib/get-duplicate-name-indices';
 
 describe('Get Duplicate Name Indices module', () => {
 

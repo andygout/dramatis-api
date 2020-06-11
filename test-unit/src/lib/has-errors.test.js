@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
 
-import { hasErrors } from '../../../server/lib/has-errors';
-import * as isObjectWithKeysModule from '../../../server/lib/is-object-with-keys';
+import { hasErrors } from '../../../src/lib/has-errors';
+import * as isObjectWithKeysModule from '../../../src/lib/is-object-with-keys';
 
 describe('Has Errors module', () => {
 
