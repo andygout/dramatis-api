@@ -17,7 +17,7 @@ describe('Playtext model', () => {
 
 	const CharacterStub = function () {
 
-		this.validateGroupItem = sinon.stub();
+		return sinon.createStubInstance(Character);
 
 	};
 
@@ -70,7 +70,7 @@ describe('Playtext model', () => {
 				'../neo4j/cypher-queries': stubs.Base.cypherQueries,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
-			'.': stubOverrides.models || stubs.models
+			'.': stubs.models
 		}).default;
 
 	const createInstance = (stubOverrides = {}, props = DEFAULT_INSTANCE_PROPS) => {
@@ -95,7 +95,6 @@ describe('Playtext model', () => {
 
 			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				const CharacterStubOverride = function () { return sinon.createStubInstance(Character); };
 				const props = {
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					characters: [
@@ -104,7 +103,7 @@ describe('Playtext model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance({ models: { Character: CharacterStubOverride } }, props);
+				const instance = createInstance({}, props);
 				expect(instance.characters.length).to.eq(3);
 				expect(instance.characters[0].constructor.name).to.eq('Character');
 				expect(instance.characters[1].constructor.name).to.eq('Character');

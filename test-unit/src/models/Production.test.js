@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
-import { PersonCastMember } from '../../../src/models';
+import { BasicModel, PersonCastMember, Theatre } from '../../../src/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Production model', () => {
@@ -12,19 +12,19 @@ describe('Production model', () => {
 
 	const BasicModelStub = function () {
 
-		this.validate = sinon.stub();
+		return sinon.createStubInstance(BasicModel);
 
 	};
 
 	const PersonCastMemberStub = function () {
 
-		this.runValidations = sinon.stub();
+		return sinon.createStubInstance(PersonCastMember);
 
 	};
 
 	const TheatreStub = function () {
 
-		this.validate = sinon.stub();
+		return sinon.createStubInstance(Theatre);
 
 	};
 
@@ -75,7 +75,7 @@ describe('Production model', () => {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
-			'.': stubOverrides.models || stubs.models
+			'.': stubs.models
 		}).default;
 
 	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
@@ -100,7 +100,6 @@ describe('Production model', () => {
 
 			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				const PersonCastMemberStubOverride = function () { return sinon.createStubInstance(PersonCastMember); };
 				const props = {
 					name: 'Hamlet',
 					cast: [
@@ -109,16 +108,7 @@ describe('Production model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance(
-					{
-						models: {
-							BasicModel: BasicModelStub,
-							PersonCastMember: PersonCastMemberStubOverride,
-							Theatre: TheatreStub
-						}
-					},
-					props
-				);
+				const instance = createInstance({}, props);
 				expect(instance.cast.length).to.eq(3);
 				expect(instance.cast[0].constructor.name).to.eq('PersonCastMember');
 				expect(instance.cast[1].constructor.name).to.eq('PersonCastMember');
