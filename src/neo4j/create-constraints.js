@@ -1,7 +1,7 @@
 import directly from 'directly';
 import path from 'path';
 
-import { neo4jQuery } from '../neo4j/query';
+import { neo4jQuery } from './query';
 
 const EXCLUDED_MODELS = [
 	'Base',
