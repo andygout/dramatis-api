@@ -5,10 +5,9 @@ import { validateString } from '../../../src/lib/validate-string';
 describe('Validate String module', () => {
 
 	const STRING_MAX_LENGTH = 1000;
-
-	const emptyString = '';
-	const maxLengthString = 'a'.repeat(STRING_MAX_LENGTH);
-	const aboveMaxLengthString = 'a'.repeat(STRING_MAX_LENGTH + 1);
+	const EMPTY_STRING = '';
+	const MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH);
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 	context('string is empty', () => {
 
@@ -16,7 +15,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(emptyString, true)).to.deep.eq(['Name is too short']);
+				expect(validateString(EMPTY_STRING, true)).to.deep.eq(['Name is too short']);
 
 			});
 
@@ -26,7 +25,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(emptyString, false)).to.deep.eq([]);
+				expect(validateString(EMPTY_STRING, false)).to.deep.eq([]);
 
 			});
 
@@ -40,7 +39,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(maxLengthString, true)).to.deep.eq([]);
+				expect(validateString(MAX_LENGTH_STRING, true)).to.deep.eq([]);
 
 			});
 
@@ -50,7 +49,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(maxLengthString, false)).to.deep.eq([]);
+				expect(validateString(MAX_LENGTH_STRING, false)).to.deep.eq([]);
 
 			});
 
@@ -64,7 +63,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(aboveMaxLengthString, true)).to.deep.eq(['Name is too long']);
+				expect(validateString(ABOVE_MAX_LENGTH_STRING, true)).to.deep.eq(['Name is too long']);
 
 			});
 
@@ -74,7 +73,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(aboveMaxLengthString, false)).to.deep.eq(['Name is too long']);
+				expect(validateString(ABOVE_MAX_LENGTH_STRING, false)).to.deep.eq(['Name is too long']);
 
 			});
 
