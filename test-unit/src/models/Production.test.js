@@ -110,9 +110,9 @@ describe('Production model', () => {
 				};
 				const instance = createInstance({}, props);
 				expect(instance.cast.length).to.eq(3);
-				expect(instance.cast[0].constructor.name).to.eq('PersonCastMember');
-				expect(instance.cast[1].constructor.name).to.eq('PersonCastMember');
-				expect(instance.cast[2].constructor.name).to.eq('PersonCastMember');
+				expect(instance.cast[0] instanceof PersonCastMember).to.be.true;
+				expect(instance.cast[1] instanceof PersonCastMember).to.be.true;
+				expect(instance.cast[2] instanceof PersonCastMember).to.be.true;
 
 			});
 

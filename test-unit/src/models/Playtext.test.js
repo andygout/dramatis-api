@@ -105,9 +105,9 @@ describe('Playtext model', () => {
 				};
 				const instance = createInstance({}, props);
 				expect(instance.characters.length).to.eq(3);
-				expect(instance.characters[0].constructor.name).to.eq('Character');
-				expect(instance.characters[1].constructor.name).to.eq('Character');
-				expect(instance.characters[2].constructor.name).to.eq('Character');
+				expect(instance.characters[0] instanceof Character).to.be.true;
+				expect(instance.characters[1] instanceof Character).to.be.true;
+				expect(instance.characters[2] instanceof Character).to.be.true;
 
 			});
 
