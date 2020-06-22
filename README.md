@@ -10,14 +10,15 @@ Graph database-driven API for site of theatrical productions, playtexts, and ass
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`. N.B. Values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/theatrebase-api#user-content-database-setup)).
 
 ## Database setup
-- Download the [Neo4j desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version).
+- Download the [Neo4j Desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version).
 - Create a local Neo4j graph database, configuring as to:
 	- Neo4j user name matches `.env` `DATABASE_USERNAME` value.
 	- Neo4j local graph database password matches `.env` `DATABASE_PASSWORD` value.
-	- `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running. This can be ascertained by running local Neo4j graph database, launching the Neo4j Browser from desktop app and viewing its connection status, which is displayed upon opening the browser, or returned via browser command `:server status`).
+	- `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running.
+	- N.B. Neo4j user name and Neo4j local graph database endpoint can be viewed via the Desktop app by running the local Neo4j graph database, then launching the Neo4j Browser and viewing its connection status, which is displayed upon opening the browser and can be returned via browser command `:server status`).
 
 ## To run local Neo4j graph database
-- Open Neo4j desktop app.
+- Open Neo4j Desktop app.
 - Press `► Start` for requisite database.
 
 ## To run locally
@@ -42,7 +43,7 @@ or
 - `$ npm run unit-test`.
 
 ## To run integration tests
-- Download and run the [Docker desktop app](https://www.docker.com/products/docker-desktop).
+- Download and run the [Docker Desktop app](https://www.docker.com/products/docker-desktop).
 - Stop any Neo4j databases running on the Desktop app.
 - Start the Docker-served resources by running `$ npm run int-test-resources` and wait until they are ready.
 - In a separate CLI tab run `$ npm run int-test`.
