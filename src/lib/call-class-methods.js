@@ -1,4 +1,4 @@
-import { renderJson } from './render-json';
+import { sendJsonResponse } from './send-json-response';
 
 const callInstanceMethod = async (response, next, classInstance, method) => {
 
@@ -6,7 +6,7 @@ const callInstanceMethod = async (response, next, classInstance, method) => {
 
 		const instance = await classInstance[method]();
 
-		return renderJson(response, instance)
+		return sendJsonResponse(response, instance)
 
 	} catch (error) {
 
@@ -24,7 +24,7 @@ const callStaticListMethod = async (response, next, Class, model) => {
 
 		const instances = await Class.list(model);
 
-		return renderJson(response, instances);
+		return sendJsonResponse(response, instances);
 
 	} catch (error) {
 

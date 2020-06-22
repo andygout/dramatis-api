@@ -1,4 +1,4 @@
-export const renderJson = (response, instance) => {
+export const sendJsonResponse = (response, instance) => {
 
 	response.setHeader('content-type', 'application/json');
 
