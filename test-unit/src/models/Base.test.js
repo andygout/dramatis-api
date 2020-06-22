@@ -546,7 +546,7 @@ describe('Base model', () => {
 			expect(stubs.sharedQueries.getListQuery.calledWithExactly('model')).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getListQuery response' }, { isRequiredResult: false, returnArray: true }
+				{ query: 'getListQuery response' }, { isOptionalResult: true, isArrayResult: true }
 			)).to.be.true;
 			expect(result).to.deep.eq(neo4jQueryFixture);
 
