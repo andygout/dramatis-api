@@ -2,11 +2,11 @@
 
 import { production as productionTemplateProps } from './model-template-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
-import { renderJson } from '../lib/render-json';
+import { sendJsonResponse } from '../lib/send-json-response';
 import { Production } from '../models';
 
 const newRoute = (request, response, next) =>
-	renderJson(response, new Production(productionTemplateProps));
+	sendJsonResponse(response, new Production(productionTemplateProps));
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Production(request.body), 'create');

@@ -3,7 +3,7 @@ import httpMocks from 'node-mocks-http';
 import { createSandbox } from 'sinon';
 
 import * as callClassMethods from '../../../src/lib/call-class-methods';
-import * as renderJsonModule from '../../../src/lib/render-json';
+import * as sendJsonResponseModule from '../../../src/lib/send-json-response';
 import { Character } from '../../../src/models';
 
 describe('Call Class Methods module', () => {
@@ -18,7 +18,8 @@ describe('Call Class Methods module', () => {
 	beforeEach(() => {
 
 		stubs = {
-			renderJson: sandbox.stub(renderJsonModule, 'renderJson').returns('renderJson response'),
+			sendJsonResponse:
+				sandbox.stub(sendJsonResponseModule, 'sendJsonResponse').returns('sendJsonResponse response'),
 			response: httpMocks.createResponse(),
 			next: sandbox.stub()
 		};
@@ -49,10 +50,10 @@ describe('Call Class Methods module', () => {
 				const instanceMethodResponse = { property: 'value' };
 				sandbox.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse) });
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
-				expect(stubs.renderJson.calledOnce).to.be.true;
-				expect(stubs.renderJson.calledWithExactly(stubs.response, instanceMethodResponse)).to.be.true;
+				expect(stubs.sendJsonResponse.calledOnce).to.be.true;
+				expect(stubs.sendJsonResponse.calledWithExactly(stubs.response, instanceMethodResponse)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
-				expect(result).to.eq('renderJson response');
+				expect(result).to.eq('sendJsonResponse response');
 
 			});
 
@@ -66,7 +67,7 @@ describe('Call Class Methods module', () => {
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.next.calledOnce).to.be.true;
 				expect(stubs.next.calledWithExactly(error)).to.be.true;
-				expect(stubs.renderJson.notCalled).to.be.true;
+				expect(stubs.sendJsonResponse.notCalled).to.be.true;
 
 			});
 
@@ -80,7 +81,7 @@ describe('Call Class Methods module', () => {
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.response.statusCode).to.eq(404);
 				expect(stubs.response._getData()).to.eq('Not Found');
-				expect(stubs.renderJson.notCalled).to.be.true;
+				expect(stubs.sendJsonResponse.notCalled).to.be.true;
 				expect(stubs.next.called).to.be.false;
 
 			});
@@ -107,12 +108,12 @@ describe('Call Class Methods module', () => {
 				sandbox.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse) });
 				const result =
 					await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
-				expect(stubs.renderJson.calledOnce).to.be.true;
-				expect(stubs.renderJson.calledWithExactly(
+				expect(stubs.sendJsonResponse.calledOnce).to.be.true;
+				expect(stubs.sendJsonResponse.calledWithExactly(
 					stubs.response, staticListMethodResponse
 				)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
-				expect(result).to.eq('renderJson response');
+				expect(result).to.eq('sendJsonResponse response');
 
 			});
 
@@ -126,7 +127,7 @@ describe('Call Class Methods module', () => {
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				expect(stubs.next.calledOnce).to.be.true;
 				expect(stubs.next.calledWithExactly(error)).to.be.true;
-				expect(stubs.renderJson.notCalled).to.be.true;
+				expect(stubs.sendJsonResponse.notCalled).to.be.true;
 
 			});
 

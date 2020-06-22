@@ -21,8 +21,8 @@ describe('Theatres controller', () => {
 				callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
 				callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
 			},
-			renderJsonModule: {
-				renderJson: sinon.stub().returns('renderJson response')
+			sendJsonResponseModule: {
+				sendJsonResponse: sinon.stub().returns('sendJsonResponse response')
 			},
 			models: {
 				Theatre: TheatreStub
@@ -37,7 +37,7 @@ describe('Theatres controller', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/controllers/theatres', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
-			'../lib/render-json': stubs.renderJsonModule,
+			'../lib/send-json-response': stubs.sendJsonResponseModule,
 			'../models': stubs.models
 		});
 
@@ -51,11 +51,13 @@ describe('Theatres controller', () => {
 
 	describe('newRoute function', () => {
 
-		it('calls renderJson module', () => {
+		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('renderJson response');
-			expect(stubs.renderJsonModule.renderJson.calledOnce).to.be.true;
-			expect(stubs.renderJsonModule.renderJson.calledWithExactly(stubs.response, stubs.models.Theatre())).to.be.true;
+			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
+			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
+				stubs.response, stubs.models.Theatre()
+			)).to.be.true;
 
 		});
 

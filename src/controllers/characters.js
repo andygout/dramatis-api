@@ -1,11 +1,11 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
-import { renderJson } from '../lib/render-json';
+import { sendJsonResponse } from '../lib/send-json-response';
 import { Character } from '../models';
 
 const newRoute = (request, response, next) =>
-	renderJson(response, new Character());
+	sendJsonResponse(response, new Character());
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Character(request.body), 'create');
