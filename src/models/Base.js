@@ -144,8 +144,8 @@ export default class Base {
 				query: getListQuery(model)
 			},
 			{
-				isRequiredResult: false,
-				returnArray: true
+				isOptionalResult: true,
+				isArrayResult: true
 			}
 		);
 

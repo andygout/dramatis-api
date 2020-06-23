@@ -7,6 +7,6 @@ export default async () => {
 		DETACH DELETE n
 	`;
 
-	await neo4jQuery({ query: purgeDatabaseQuery, params: {} }, { isRequiredResult: false });
+	await neo4jQuery({ query: purgeDatabaseQuery, params: {} }, { isOptionalResult: true });
 
 }

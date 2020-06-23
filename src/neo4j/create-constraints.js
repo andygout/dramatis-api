@@ -21,7 +21,7 @@ const createConstraint = async model => {
 
 		await neo4jQuery(
 			{ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` },
-			{ isRequiredResult: false }
+			{ isOptionalResult: true }
 		);
 
 		console.log(`Neo4j database: Constraint created for ${model}`); // eslint-disable-line no-console
@@ -40,7 +40,7 @@ export default async () => {
 
 		const constraints = await neo4jQuery(
 			{ query: 'CALL db.constraints()' },
-			{ isRequiredResult: false, returnArray: true }
+			{ isOptionalResult: true, isArrayResult: true }
 		);
 
 		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);

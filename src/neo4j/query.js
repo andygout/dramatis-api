@@ -7,8 +7,8 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 	const { query, params } = queryData;
 
-	const isRequiredResult = queryOpts.isRequiredResult === false ? false : true;
-	const returnArray = queryOpts.returnArray || false;
+	const isOptionalResult = !!queryOpts.isOptionalResult;
+	const isArrayResult = !!queryOpts.isArrayResult;
 
 	const session = driver.session();
 
@@ -20,9 +20,9 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 		const results = convertRecordsToObjects(response);
 
-		if (!results.length && isRequiredResult) throw new Error('Not Found');
+		if (!results.length && !isOptionalResult) throw new Error('Not Found');
 
-		return returnArray ? results : results[0];
+		return isArrayResult ? results : results[0];
 
 	} catch (error) {
 
