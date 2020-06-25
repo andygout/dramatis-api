@@ -1,5 +1,15 @@
 import { capitalise } from '../../lib/strings';
 
+const getExistenceQuery = model => `
+	MATCH (n:${capitalise(model)} { uuid: $uuid })
+
+	RETURN
+		CASE WHEN SIGN(COUNT(n)) = 1
+			THEN true
+			ELSE false
+		END AS exists
+`;
+
 const getValidateQuery = (model, uuid) => `
 	MATCH (n:${capitalise(model)} { name: $name })
 		${uuid ? 'WHERE n.uuid <> $uuid' : ''}
@@ -65,6 +75,7 @@ const getListQuery = model => {
 };
 
 export {
+	getExistenceQuery,
 	getValidateQuery,
 	getCreateQuery,
 	getEditQuery,

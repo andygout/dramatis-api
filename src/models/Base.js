@@ -57,6 +57,19 @@ export default class Base {
 
 	}
 
+	async confirmExistenceInDb () {
+
+		const { getExistenceQuery } = sharedQueries;
+
+		const { exists } = await neo4jQuery({
+			query: getExistenceQuery(this.model),
+			params: this
+		});
+
+		if (!exists) throw new Error('Not Found');
+
+	}
+
 	setErrorStatus () {
 
 		this.hasErrors = hasErrors(this);
@@ -107,7 +120,9 @@ export default class Base {
 
 	}
 
-	update () {
+	async update () {
+
+		await this.confirmExistenceInDb();
 
 		const { getUpdateQuery } = sharedQueries;
 

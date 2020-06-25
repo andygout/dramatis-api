@@ -49,6 +49,8 @@ describe('Base model', () => {
 						.returns('getShowTheatreQuery response')
 			},
 			sharedQueries: {
+				getExistenceQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery').returns('getExistenceQuery response'),
 				getValidateQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getValidateQuery').returns('getValidateQuery response'),
 				getCreateQuery:
@@ -241,6 +243,65 @@ describe('Base model', () => {
 					.to.have.property('name')
 					.that.is.an('array')
 					.that.deep.eq(['Name already exists']);
+
+			});
+
+		});
+
+	});
+
+	describe('confirmExistenceInDb method', () => {
+
+		it('confirms existence of instance in database', async () => {
+
+			stubs.neo4jQuery.resolves({ exists: true });
+			await instance.confirmExistenceInDb();
+			expect(stubs.sharedQueries.getExistenceQuery.calledOnce).to.be.true;
+			expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(instance.model)).to.be.true;
+			expect(stubs.neo4jQuery.calledOnce).to.be.true;
+			expect(stubs.neo4jQuery.calledWithExactly(
+				{ query: 'getExistenceQuery response', params: instance }
+			)).to.be.true;
+
+		});
+
+		context('instance exists', () => {
+
+			it('will not throw Not Found error', async () => {
+
+				stubs.neo4jQuery.resolves({ exists: true });
+
+				try {
+
+					await instance.confirmExistenceInDb();
+
+				} catch (error) {
+
+					expect(true).to.be.false;
+
+				}
+
+				expect(true).to.be.true;
+
+			});
+
+		});
+
+		context('instance does not exist', () => {
+
+			it('will throw Not Found error', async () => {
+
+				stubs.neo4jQuery.resolves({ exists: false });
+
+				try {
+
+					await instance.confirmExistenceInDb();
+
+				} catch (error) {
+
+					expect(error.message).to.eq('Not Found');
+
+				}
 
 			});
 
@@ -449,28 +510,65 @@ describe('Base model', () => {
 
 	describe('update method', () => {
 
-		context('instance requires a model-specific query', () => {
+		context('instance does not exist', () => {
 
 			it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
-				instance.model = 'production';
+				stubs.neo4jQuery.resolves({ exists: false });
+				spy(instance, 'confirmExistenceInDb');
 				spy(instance, 'createUpdate');
-				await instance.update();
-				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQueries[instance.model])).to.be.true;
+
+				try {
+
+					await instance.update();
+
+				} catch (error) {
+
+					expect(error.message).to.eq('Not Found');
+					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
+					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+					expect(instance.createUpdate.called).to.be.false;
+
+				}
 
 			});
 
 		});
 
-		context('instance can use shared query', () => {
+		context('instance exists', () => {
 
-			it('calls createUpdate method with function to get shared update query as argument', async () => {
+			context('instance requires a model-specific query', () => {
 
-				spy(instance, 'createUpdate');
-				await instance.update();
-				expect(instance.createUpdate.calledOnce).to.be.true;
-				expect(instance.createUpdate.calledWithExactly(stubs.sharedQueries.getUpdateQuery)).to.be.true;
+				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
+
+					stubs.neo4jQuery.resolves({ exists: true });
+					instance.model = 'production';
+					spy(instance, 'confirmExistenceInDb');
+					spy(instance, 'createUpdate');
+					await instance.update();
+					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
+					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQueries[instance.model])).to.be.true;
+
+				});
+
+			});
+
+			context('instance can use shared query', () => {
+
+				it('calls createUpdate method with function to get shared update query as argument', async () => {
+
+					stubs.neo4jQuery.resolves({ exists: true });
+					spy(instance, 'confirmExistenceInDb');
+					spy(instance, 'createUpdate');
+					await instance.update();
+					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
+					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+					expect(instance.createUpdate.calledOnce).to.be.true;
+					expect(instance.createUpdate.calledWithExactly(stubs.sharedQueries.getUpdateQuery)).to.be.true;
+
+				});
 
 			});
 
