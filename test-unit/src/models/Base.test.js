@@ -1,4 +1,5 @@
-import { expect } from 'chai';
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 import { assert, createSandbox, spy, stub } from 'sinon';
 
 import * as hasErrorsModule from '../../../src/lib/has-errors';
@@ -10,6 +11,9 @@ import * as neo4jQueryModule from '../../../src/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Base model', () => {
+
+	const expect = chai.expect;
+	chai.use(chaiAsPromised);
 
 	let stubs;
 	let instance;
@@ -271,17 +275,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ exists: true });
 
-				try {
-
-					await instance.confirmExistenceInDb();
-
-				} catch (error) {
-
-					expect(true).to.be.false;
-
-				}
-
-				expect(true).to.be.true;
+				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
 
 			});
 
@@ -293,15 +287,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ exists: false });
 
-				try {
-
-					await instance.confirmExistenceInDb();
-
-				} catch (error) {
-
-					expect(error.message).to.eq('Not Found');
-
-				}
+				await expect(instance.confirmExistenceInDb()).to.be.rejectedWith(Error, 'Not Found');
 
 			});
 
@@ -518,18 +504,11 @@ describe('Base model', () => {
 				spy(instance, 'confirmExistenceInDb');
 				spy(instance, 'createUpdate');
 
-				try {
+				await expect(instance.update()).to.be.rejectedWith(Error, 'Not Found');
 
-					await instance.update();
-
-				} catch (error) {
-
-					expect(error.message).to.eq('Not Found');
-					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
-					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
-					expect(instance.createUpdate.called).to.be.false;
-
-				}
+				expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
+				expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+				expect(instance.createUpdate.called).to.be.false;
 
 			});
 
