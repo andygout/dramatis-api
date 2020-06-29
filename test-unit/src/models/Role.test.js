@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
+import { createSandbox, spy } from 'sinon';
 
 import * as validateStringModule from '../../../src/lib/validate-string';
 import Role from '../../../src/models/Role';
@@ -16,10 +16,10 @@ describe('Role model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			validateString: sandbox.stub(validateStringModule, 'validateString').returns([])
+			validateString: sandbox.stub(validateStringModule, 'validateString').returns(undefined)
 		};
 
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, false).returns(['Name is too long']);
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, false).returns('Name is too long');
 
 	});
 
@@ -97,7 +97,11 @@ describe('Role model', () => {
 			it('will not add properties to errors property', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
+				expect(stubs.validateString.calledOnce).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.characterName, false)).to.be.true;
+				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.errors).not.to.have.property('name');
 				expect(instance.errors).to.deep.eq({});
 
@@ -110,7 +114,12 @@ describe('Role model', () => {
 			it('adds properties whose values are arrays to errors property', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
+				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
+				expect(stubs.validateString.calledOnce).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.characterName, false)).to.be.true;
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('characterName', 'Name is too long')).to.be.true;
 				expect(instance.errors)
 					.to.have.property('characterName')
 					.that.is.an('array')

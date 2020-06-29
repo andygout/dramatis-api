@@ -14,9 +14,9 @@ export default class Role extends Base {
 
 	validateCharacterName (opts) {
 
-		const characterNameErrors = validateString(this.characterName, opts.requiresCharacterName);
+		const characterNameErrorText = validateString(this.characterName, opts.requiresCharacterName);
 
-		if (characterNameErrors.length) this.errors.characterName = characterNameErrors;
+		if (characterNameErrorText) this.addPropertyError('characterName', characterNameErrorText);
 
 	}
 

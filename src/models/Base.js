@@ -22,9 +22,9 @@ export default class Base {
 
 	validate (opts = { requiresName: false }) {
 
-		const nameErrors = validateString(this.name, opts.requiresName);
+		const nameErrorText = validateString(this.name, opts.requiresName);
 
-		if (nameErrors.length) this.errors.name = nameErrors;
+		if (nameErrorText) this.addPropertyError('name', nameErrorText);
 
 	}
 
@@ -32,15 +32,7 @@ export default class Base {
 
 		this.validate(opts);
 
-		if (opts.hasDuplicateName) {
-
-			const nameDuplicationErrorText = 'Name has been duplicated in this group';
-
-			this.errors.name
-				? this.errors.name.push(nameDuplicationErrorText)
-				: this.errors.name = [nameDuplicationErrorText];
-
-		}
+		if (opts.hasDuplicateName) this.addPropertyError('name', 'Name has been duplicated in this group');
 
 	}
 
@@ -53,7 +45,15 @@ export default class Base {
 			params: this
 		});
 
-		if (instanceCount > 0) this.errors.name = ['Name already exists'];
+		if (instanceCount > 0) this.addPropertyError('name', 'Name already exists');
+
+	}
+
+	addPropertyError (property, errorText) {
+
+		this.errors[property]
+			? this.errors[property].push(errorText)
+			: this.errors[property] = [errorText];
 
 	}
 
@@ -79,10 +79,6 @@ export default class Base {
 	async createUpdate (getCreateUpdateQuery) {
 
 		this.validate({ requiresName: true });
-
-		this.setErrorStatus();
-
-		if (this.hasErrors) return this;
 
 		await this.validateInDb();
 
