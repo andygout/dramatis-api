@@ -269,18 +269,6 @@ describe('Base model', () => {
 
 		});
 
-		context('instance exists', () => {
-
-			it('will not throw Not Found error', async () => {
-
-				stubs.neo4jQuery.resolves({ exists: true });
-
-				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
-
-			});
-
-		});
-
 		context('instance does not exist', () => {
 
 			it('will throw Not Found error', async () => {
@@ -288,6 +276,18 @@ describe('Base model', () => {
 				stubs.neo4jQuery.resolves({ exists: false });
 
 				await expect(instance.confirmExistenceInDb()).to.be.rejectedWith(Error, 'Not Found');
+
+			});
+
+		});
+
+		context('instance exists', () => {
+
+			it('will not throw Not Found error', async () => {
+
+				stubs.neo4jQuery.resolves({ exists: true });
+
+				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
 
 			});
 
