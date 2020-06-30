@@ -2,20 +2,20 @@ export const validateString = (stringValue, isRequiredString) => {
 
 	const STRING_MAX_LENGTH = 1000;
 
-	const stringErrors = [];
+	let errorText;
 
 	const isStringWithLength =
 		stringValue !== null &&
 		!!stringValue.length;
 
-	if (isRequiredString && !isStringWithLength) stringErrors.push('Name is too short');
+	if (isRequiredString && !isStringWithLength) errorText = 'Name is too short';
 
 	const isStringExceedingMaxLength =
 		isStringWithLength &&
 		stringValue.length > STRING_MAX_LENGTH;
 
-	if (isStringExceedingMaxLength) stringErrors.push('Name is too long');
+	if (isStringExceedingMaxLength) errorText = 'Name is too long';
 
-	return stringErrors;
+	return errorText;
 
 };

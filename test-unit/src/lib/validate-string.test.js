@@ -15,7 +15,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(EMPTY_STRING, true)).to.deep.eq(['Name is too short']);
+				expect(validateString(EMPTY_STRING, true)).to.eq('Name is too short');
 
 			});
 
@@ -25,7 +25,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(EMPTY_STRING, false)).to.deep.eq([]);
+				expect(validateString(EMPTY_STRING, false)).to.eq(undefined);
 
 			});
 
@@ -39,7 +39,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(MAX_LENGTH_STRING, true)).to.deep.eq([]);
+				expect(validateString(MAX_LENGTH_STRING, true)).to.eq(undefined);
 
 			});
 
@@ -49,7 +49,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(MAX_LENGTH_STRING, false)).to.deep.eq([]);
+				expect(validateString(MAX_LENGTH_STRING, false)).to.eq(undefined);
 
 			});
 
@@ -63,7 +63,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(ABOVE_MAX_LENGTH_STRING, true)).to.deep.eq(['Name is too long']);
+				expect(validateString(ABOVE_MAX_LENGTH_STRING, true)).to.eq('Name is too long');
 
 			});
 
@@ -73,7 +73,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(ABOVE_MAX_LENGTH_STRING, false)).to.deep.eq(['Name is too long']);
+				expect(validateString(ABOVE_MAX_LENGTH_STRING, false)).to.eq('Name is too long');
 
 			});
 
@@ -87,7 +87,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(null, true)).to.deep.eq(['Name is too short']);
+				expect(validateString(null, true)).to.eq('Name is too short');
 
 			});
 
@@ -97,7 +97,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(null, false)).to.deep.eq([]);
+				expect(validateString(null, false)).to.eq(undefined);
 
 			});
 

@@ -36,10 +36,6 @@ export default class Playtext extends Base {
 
 		this.runValidations();
 
-		this.setErrorStatus();
-
-		if (this.hasErrors) return this;
-
 		await this.validateInDb();
 
 		this.setErrorStatus();
