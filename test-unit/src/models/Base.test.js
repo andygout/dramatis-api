@@ -269,18 +269,6 @@ describe('Base model', () => {
 
 		});
 
-		context('instance exists', () => {
-
-			it('will not throw Not Found error', async () => {
-
-				stubs.neo4jQuery.resolves({ exists: true });
-
-				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
-
-			});
-
-		});
-
 		context('instance does not exist', () => {
 
 			it('will throw Not Found error', async () => {
@@ -288,6 +276,18 @@ describe('Base model', () => {
 				stubs.neo4jQuery.resolves({ exists: false });
 
 				await expect(instance.confirmExistenceInDb()).to.be.rejectedWith(Error, 'Not Found');
+
+			});
+
+		});
+
+		context('instance exists', () => {
+
+			it('will not throw Not Found error', async () => {
+
+				stubs.neo4jQuery.resolves({ exists: true });
+
+				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
 
 			});
 
@@ -308,7 +308,7 @@ describe('Base model', () => {
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getCreateQuery.withArgs(instance.model),
@@ -337,7 +337,7 @@ describe('Base model', () => {
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getUpdateQuery.withArgs(instance.model),
@@ -401,7 +401,7 @@ describe('Base model', () => {
 						instance.validate.withArgs({ requiresName: true }),
 						stubs.hasErrors.withArgs(instance),
 						instance.validateInDb.withArgs(),
-						stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+						stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 						stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 						stubs.hasErrors.withArgs(instance)
 					);
@@ -498,7 +498,7 @@ describe('Base model', () => {
 
 		context('instance does not exist', () => {
 
-			it('calls createUpdate method with function to get model-specific update query as argument', async () => {
+			it('will throw Not Found error', async () => {
 
 				stubs.neo4jQuery.resolves({ exists: false });
 				spy(instance, 'confirmExistenceInDb');
