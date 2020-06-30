@@ -498,7 +498,7 @@ describe('Base model', () => {
 
 		context('instance does not exist', () => {
 
-			it('calls createUpdate method with function to get model-specific update query as argument', async () => {
+			it('will throw Not Found error', async () => {
 
 				stubs.neo4jQuery.resolves({ exists: false });
 				spy(instance, 'confirmExistenceInDb');
