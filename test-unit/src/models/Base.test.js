@@ -308,7 +308,7 @@ describe('Base model', () => {
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getCreateQuery.withArgs(instance.model),
@@ -337,7 +337,7 @@ describe('Base model', () => {
 					instance.validate.withArgs({ requiresName: true }),
 					stubs.hasErrors.withArgs(instance),
 					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getUpdateQuery.withArgs(instance.model),
@@ -401,7 +401,7 @@ describe('Base model', () => {
 						instance.validate.withArgs({ requiresName: true }),
 						stubs.hasErrors.withArgs(instance),
 						instance.validateInDb.withArgs(),
-						stubs.sharedQueries.getValidateQuery.withArgs(instance.model),
+						stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
 						stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
 						stubs.hasErrors.withArgs(instance)
 					);
