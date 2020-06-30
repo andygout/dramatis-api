@@ -55,6 +55,27 @@ describe('Cypher Queries Shared module', () => {
 
 	context('Theatre (i.e. non-Production) model usage', () => {
 
+		describe('getExistenceQuery function', () => {
+
+			it('returns requisite query', () => {
+
+				const result = cypherQueriesShared.getExistenceQuery('theatre');
+				expect(stubs.capitalise.calledOnce).to.be.true;
+				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+					MATCH (n:Theatre { uuid: $uuid })
+
+					RETURN
+						CASE WHEN SIGN(COUNT(n)) = 1
+							THEN true
+							ELSE false
+						END AS exists
+				`));
+
+			});
+
+		});
+
 		describe('getValidateQuery function', () => {
 
 			context('uuid argument given is undefined (i.e. requested as part of create action)', () => {
