@@ -65,22 +65,22 @@ describe('Production model', () => {
 
 	});
 
-	const createSubject = (stubOverrides = {}) =>
+	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'../neo4j/query': stubs.neo4jQueryModule,
 			'./Base': proxyquire('../../../src/models/Base', {
-				'../lib/has-errors': stubOverrides.hasErrorsModule || stubs.Base.hasErrorsModule,
+				'../lib/has-errors': stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
 			'.': stubs.models
 		}).default;
 
-	const createInstance = (stubOverrides = {}, props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
+	const createInstance = (props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
 
-		const Production = createSubject(stubOverrides);
+		const Production = createSubject();
 
 		return new Production(props);
 
@@ -93,7 +93,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', () => {
 
 				const props = { name: 'Hamlet' };
-				const instance = createInstance({}, props);
+				const instance = createInstance(props);
 				expect(instance.cast).to.deep.eq([]);
 
 			});
@@ -108,7 +108,7 @@ describe('Production model', () => {
 						{ name: ' ' }
 					]
 				};
-				const instance = createInstance({}, props);
+				const instance = createInstance(props);
 				expect(instance.cast.length).to.eq(3);
 				expect(instance.cast[0] instanceof PersonCastMember).to.be.true;
 				expect(instance.cast[1] instanceof PersonCastMember).to.be.true;
@@ -201,14 +201,8 @@ describe('Production model', () => {
 
 			it('returns instance without creating', async () => {
 
+				stubs.Base.hasErrorsModule.hasErrors.returns(true);
 				const getCreateUpdateQueryStub = stub();
-				const instance = createInstance(
-					{
-						hasErrorsModule: {
-							hasErrors: stub().returns(true)
-						}
-					}
-				);
 				spy(instance, 'runValidations');
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
