@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { BasicModel, PersonCastMember, Theatre } from '../../../src/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
@@ -12,19 +12,19 @@ describe('Production model', () => {
 
 	const BasicModelStub = function () {
 
-		return sinon.createStubInstance(BasicModel);
+		return createStubInstance(BasicModel);
 
 	};
 
 	const PersonCastMemberStub = function () {
 
-		return sinon.createStubInstance(PersonCastMember);
+		return createStubInstance(PersonCastMember);
 
 	};
 
 	const TheatreStub = function () {
 
-		return sinon.createStubInstance(Theatre);
+		return createStubInstance(Theatre);
 
 	};
 
@@ -32,23 +32,23 @@ describe('Production model', () => {
 
 		stubs = {
 			getDuplicateNameIndicesModule: {
-				getDuplicateNameIndices: sinon.stub().returns([])
+				getDuplicateNameIndices: stub().returns([])
 			},
 			prepareAsParamsModule: {
-				prepareAsParams: sinon.stub().returns('prepareAsParams response')
+				prepareAsParams: stub().returns('prepareAsParams response')
 			},
 			hasErrorsModule: {
-				hasErrors: sinon.stub().returns(false)
+				hasErrors: stub().returns(false)
 			},
 			Base: {
 				hasErrorsModule: {
-					hasErrors: sinon.stub().returns(false)
+					hasErrors: stub().returns(false)
 				},
 				validateStringModule: {
-					validateString: sinon.stub().returns([])
+					validateString: stub().returns([])
 				},
 				neo4jQueryModule: {
-					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
+					neo4jQuery: stub().resolves(neo4jQueryFixture)
 				}
 			},
 			models: {
@@ -57,7 +57,7 @@ describe('Production model', () => {
 				Theatre: TheatreStub
 			},
 			neo4jQueryModule: {
-				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
+				neo4jQuery: stub().resolves(neo4jQueryFixture)
 			}
 		};
 
@@ -124,9 +124,9 @@ describe('Production model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			sinon.spy(instance, 'validate');
+			spy(instance, 'validate');
 			instance.runValidations();
-			sinon.assert.callOrder(
+			assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
 				instance.theatre.validate.withArgs({ requiresName: true }),
 				instance.playtext.validate.withArgs(),
@@ -149,11 +149,11 @@ describe('Production model', () => {
 
 			it('creates using provided function to get appropriate query', async () => {
 
-				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'setErrorStatus');
+				const getCreateQueryStub = stub().returns('getCreateQuery response');
+				spy(instance, 'runValidations');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateQueryStub);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
 					getCreateQueryStub.withArgs(),
@@ -173,11 +173,11 @@ describe('Production model', () => {
 
 			it('updates using provided function to get appropriate query', async () => {
 
-				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'setErrorStatus');
+				const getUpdateQueryStub = stub().returns('getUpdateQuery response');
+				spy(instance, 'runValidations');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getUpdateQueryStub);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
 					getUpdateQueryStub.withArgs(),
@@ -201,16 +201,16 @@ describe('Production model', () => {
 
 			it('returns instance without creating', async () => {
 
-				const getCreateUpdateQueryStub = sinon.stub();
+				const getCreateUpdateQueryStub = stub();
 				const instance = createInstance(
 					{
 						hasErrorsModule: {
-							hasErrors: sinon.stub().returns(true)
+							hasErrors: stub().returns(true)
 						}
 					}
 				);
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'setErrorStatus');
+				spy(instance, 'runValidations');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 				expect(instance.runValidations.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;

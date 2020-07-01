@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Character } from '../../../src/models';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
@@ -17,7 +17,7 @@ describe('Playtext model', () => {
 
 	const CharacterStub = function () {
 
-		return sinon.createStubInstance(Character);
+		return createStubInstance(Character);
 
 	};
 
@@ -25,33 +25,33 @@ describe('Playtext model', () => {
 
 		stubs = {
 			getDuplicateNameIndicesModule: {
-				getDuplicateNameIndices: sinon.stub().returns([])
+				getDuplicateNameIndices: stub().returns([])
 			},
 			prepareAsParamsModule: {
-				prepareAsParams: sinon.stub().returns('prepareAsParams response')
+				prepareAsParams: stub().returns('prepareAsParams response')
 			},
 			Base: {
 				hasErrorsModule: {
-					hasErrors: sinon.stub().returns(false)
+					hasErrors: stub().returns(false)
 				},
 				validateStringModule: {
-					validateString: sinon.stub().returns([])
+					validateString: stub().returns([])
 				},
 				cypherQueries: {
 					sharedQueries: {
 						getValidateQuery:
-							sinon.stub().returns('getValidateQuery response')
+							stub().returns('getValidateQuery response')
 					}
 				},
 				neo4jQueryModule: {
-					neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
+					neo4jQuery: stub().resolves(neo4jQueryFixture)
 				}
 			},
 			models: {
 				Character: CharacterStub
 			},
 			neo4jQueryModule: {
-				neo4jQuery: sinon.stub().resolves(neo4jQueryFixture)
+				neo4jQuery: stub().resolves(neo4jQueryFixture)
 			}
 		};
 
@@ -119,9 +119,9 @@ describe('Playtext model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			sinon.spy(instance, 'validate');
+			spy(instance, 'validate');
 			instance.runValidations();
-			sinon.assert.callOrder(
+			assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.characters),
 				instance.characters[0].validateGroupItem.withArgs({ hasDuplicateName: false })
@@ -140,12 +140,12 @@ describe('Playtext model', () => {
 
 			it('creates using provided function to get appropriate query', async () => {
 
-				const getCreateQueryStub = sinon.stub().returns('getCreateQuery response');
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'validateInDb');
-				sinon.spy(instance, 'setErrorStatus');
+				const getCreateQueryStub = stub().returns('getCreateQuery response');
+				spy(instance, 'runValidations');
+				spy(instance, 'validateInDb');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateQueryStub);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
@@ -172,12 +172,12 @@ describe('Playtext model', () => {
 
 			it('updates using provided function to get appropriate query', async () => {
 
-				const getUpdateQueryStub = sinon.stub().returns('getUpdateQuery response');
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'validateInDb');
-				sinon.spy(instance, 'setErrorStatus');
+				const getUpdateQueryStub = stub().returns('getUpdateQuery response');
+				spy(instance, 'runValidations');
+				spy(instance, 'validateInDb');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getUpdateQueryStub);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
@@ -209,14 +209,14 @@ describe('Playtext model', () => {
 
 			it('returns instance without creating', async () => {
 
-				const hasErrorsModuleStub = { hasErrors: sinon.stub().returns(true) };
-				const getCreateUpdateQueryStub = sinon.stub();
+				const hasErrorsModuleStub = { hasErrors: stub().returns(true) };
+				const getCreateUpdateQueryStub = stub();
 				const instance = createInstance({ hasErrorsModule: hasErrorsModuleStub });
-				sinon.spy(instance, 'runValidations');
-				sinon.spy(instance, 'validateInDb');
-				sinon.spy(instance, 'setErrorStatus');
+				spy(instance, 'runValidations');
+				spy(instance, 'validateInDb');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
-				sinon.assert.callOrder(
+				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),

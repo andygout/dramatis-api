@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { createStubInstance, stub } from 'sinon';
 
 import { Character } from '../../../src/models';
 
@@ -10,7 +10,7 @@ describe('Characters controller', () => {
 
 	const CharacterStub = function () {
 
-		return sinon.createStubInstance(Character);
+		return createStubInstance(Character);
 
 	};
 
@@ -18,18 +18,18 @@ describe('Characters controller', () => {
 
 		stubs = {
 			callClassMethodsModule: {
-				callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
-				callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
+				callInstanceMethod: stub().resolves('callInstanceMethod response'),
+				callStaticListMethod: stub().resolves('callStaticListMethod response')
 			},
 			sendJsonResponseModule: {
-				sendJsonResponse: sinon.stub().returns('sendJsonResponse response')
+				sendJsonResponse: stub().returns('sendJsonResponse response')
 			},
 			models: {
 				Character: CharacterStub
 			},
-			request: sinon.stub(),
-			response: sinon.stub(),
-			next: sinon.stub()
+			request: stub(),
+			response: stub(),
+			next: stub()
 		};
 
 	});
