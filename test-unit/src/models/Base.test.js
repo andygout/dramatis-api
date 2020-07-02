@@ -91,21 +91,21 @@ describe('Base model', () => {
 			it('assigns empty string if absent from props', () => {
 
 				instance = new Base({});
-				expect(instance.name).to.eq('');
+				expect(instance.name).to.equal('');
 
 			});
 
 			it('assigns given value', () => {
 
 				instance = new Base({ name: 'Barfoo' });
-				expect(instance.name).to.eq('Barfoo');
+				expect(instance.name).to.equal('Barfoo');
 
 			});
 
 			it('trims given value before assigning', () => {
 
 				instance = new Base({ name: ' Barfoo ' });
-				expect(instance.name).to.eq('Barfoo');
+				expect(instance.name).to.equal('Barfoo');
 
 			});
 

@@ -109,7 +109,7 @@ describe('Production model', () => {
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.cast.length).to.eq(3);
+				expect(instance.cast.length).to.equal(3);
 				expect(instance.cast[0] instanceof PersonCastMember).to.be.true;
 				expect(instance.cast[1] instanceof PersonCastMember).to.be.true;
 				expect(instance.cast[2] instanceof PersonCastMember).to.be.true;
@@ -169,7 +169,7 @@ describe('Production model', () => {
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.eq('Production');
+				expect(result.constructor.name).to.equal('Production');
 
 			});
 
@@ -195,7 +195,7 @@ describe('Production model', () => {
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.eq('Production');
+				expect(result.constructor.name).to.equal('Production');
 
 			});
 

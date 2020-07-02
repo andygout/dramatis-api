@@ -53,7 +53,7 @@ describe('Productions controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response,
@@ -73,7 +73,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production(), 'create'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -88,7 +88,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production(), 'edit'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -103,7 +103,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production(), 'update'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -118,7 +118,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production(), 'delete'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -133,7 +133,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production(), 'show'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -148,7 +148,7 @@ describe('Productions controller', () => {
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Production, 'production'
 			)).to.be.true;
-			expect(result).to.eq('callStaticListMethod response');
+			expect(result).to.equal('callStaticListMethod response');
 
 		});
 

@@ -10,7 +10,7 @@ describe('Cypher Queries Production module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesProduction.getCreateQuery();
-			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 				CREATE (production:Production { uuid: $uuid, name: $name })
 
 				MERGE (theatre:Theatre { name: $theatre.name })
@@ -80,7 +80,7 @@ describe('Cypher Queries Production module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesProduction.getUpdateQuery();
-			expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (production)-[relationship]-()

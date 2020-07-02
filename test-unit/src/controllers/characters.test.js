@@ -53,7 +53,7 @@ describe('Characters controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response,
@@ -73,7 +73,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character(), 'create'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -88,7 +88,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character(), 'edit'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -103,7 +103,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character(), 'update'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -118,7 +118,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character(), 'delete'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -133,7 +133,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character(), 'show'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -148,7 +148,7 @@ describe('Characters controller', () => {
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Character, 'character'
 			)).to.be.true;
-			expect(result).to.eq('callStaticListMethod response');
+			expect(result).to.equal('callStaticListMethod response');
 
 		});
 

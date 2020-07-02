@@ -36,7 +36,7 @@ describe('Has Errors module', () => {
 				.onCall(4).returns(false);
 			const instance = { errors: {}, theatre: { errors: {} } };
 			const result = hasErrors(instance);
-			expect(stubs.isObjectWithKeys.callCount).to.eq(5);
+			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
 			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, {});
 			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, {});
 			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, { errors: {} });

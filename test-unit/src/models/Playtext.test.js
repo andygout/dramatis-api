@@ -104,7 +104,7 @@ describe('Playtext model', () => {
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.characters.length).to.eq(3);
+				expect(instance.characters.length).to.equal(3);
 				expect(instance.characters[0] instanceof Character).to.be.true;
 				expect(instance.characters[1] instanceof Character).to.be.true;
 				expect(instance.characters[2] instanceof Character).to.be.true;
@@ -166,7 +166,7 @@ describe('Playtext model', () => {
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.eq('Playtext');
+				expect(result.constructor.name).to.equal('Playtext');
 
 			});
 
@@ -199,7 +199,7 @@ describe('Playtext model', () => {
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.eq('Playtext');
+				expect(result.constructor.name).to.equal('Playtext');
 
 			});
 

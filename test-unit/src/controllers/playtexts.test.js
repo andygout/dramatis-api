@@ -53,7 +53,7 @@ describe('Playtexts controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response, stubs.models.Playtext()
@@ -72,7 +72,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext(), 'create'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -87,7 +87,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext(), 'edit'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -102,7 +102,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext(), 'update'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -117,7 +117,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext(), 'delete'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -132,7 +132,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext(), 'show'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -147,7 +147,7 @@ describe('Playtexts controller', () => {
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Playtext, 'playtext'
 			)).to.be.true;
-			expect(result).to.eq('callStaticListMethod response');
+			expect(result).to.equal('callStaticListMethod response');
 
 		});
 

@@ -66,7 +66,7 @@ describe('Person Cast Member model', () => {
 					]
 				};
 				instance = createInstance(props);
-				expect(instance.roles.length).to.eq(3);
+				expect(instance.roles.length).to.equal(3);
 				expect(instance.roles[0] instanceof Role).to.be.true;
 				expect(instance.roles[1] instanceof Role).to.be.true;
 				expect(instance.roles[2] instanceof Role).to.be.true;
