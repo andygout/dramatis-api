@@ -113,7 +113,8 @@ describe('Role model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
+				const instance =
+					new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(stubs.validateString.calledOnce).to.be.true;

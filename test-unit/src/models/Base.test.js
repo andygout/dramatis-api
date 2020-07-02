@@ -54,7 +54,8 @@ describe('Base model', () => {
 			},
 			sharedQueries: {
 				getExistenceQuery:
-					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery').returns('getExistenceQuery response'),
+					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery')
+						.returns('getExistenceQuery response'),
 				getValidateQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getValidateQuery').returns('getValidateQuery response'),
 				getCreateQuery:

@@ -149,7 +149,8 @@ describe('Playtext model', () => {
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.Base.neo4jQueryModule.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					stubs.Base.neo4jQueryModule.neo4jQuery
+						.withArgs({ query: 'getValidateQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getCreateQueryStub.withArgs(),
@@ -181,7 +182,8 @@ describe('Playtext model', () => {
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.Base.neo4jQueryModule.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					stubs.Base.neo4jQueryModule.neo4jQuery
+						.withArgs({ query: 'getValidateQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getUpdateQueryStub.withArgs(),
@@ -219,7 +221,8 @@ describe('Playtext model', () => {
 					instance.runValidations.withArgs(),
 					instance.validateInDb.withArgs(),
 					stubs.Base.cypherQueries.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.Base.neo4jQueryModule.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					stubs.Base.neo4jQueryModule.neo4jQuery
+						.withArgs({ query: 'getValidateQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance)
 				);
