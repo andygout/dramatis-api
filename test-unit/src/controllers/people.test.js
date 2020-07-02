@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { createStubInstance, stub } from 'sinon';
 
 import { Person } from '../../../src/models';
 
@@ -10,7 +10,7 @@ describe('People controller', () => {
 
 	const PersonStub = function () {
 
-		return sinon.createStubInstance(Person);
+		return createStubInstance(Person);
 
 	};
 
@@ -18,18 +18,18 @@ describe('People controller', () => {
 
 		stubs = {
 			callClassMethodsModule: {
-				callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
-				callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
+				callInstanceMethod: stub().resolves('callInstanceMethod response'),
+				callStaticListMethod: stub().resolves('callStaticListMethod response')
 			},
 			sendJsonResponseModule: {
-				sendJsonResponse: sinon.stub().returns('sendJsonResponse response')
+				sendJsonResponse: stub().returns('sendJsonResponse response')
 			},
 			models: {
 				Person: PersonStub
 			},
-			request: sinon.stub(),
-			response: sinon.stub(),
-			next: sinon.stub()
+			request: stub(),
+			response: stub(),
+			next: stub()
 		};
 
 	});
@@ -53,7 +53,7 @@ describe('People controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response, stubs.models.Person()
@@ -72,7 +72,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person(), 'create'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -87,7 +87,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person(), 'edit'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -102,7 +102,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person(), 'update'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -117,7 +117,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person(), 'delete'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -132,7 +132,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person(), 'show'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -147,7 +147,7 @@ describe('People controller', () => {
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Person, 'person'
 			)).to.be.true;
-			expect(result).to.eq('callStaticListMethod response');
+			expect(result).to.equal('callStaticListMethod response');
 
 		});
 

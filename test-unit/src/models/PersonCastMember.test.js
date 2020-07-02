@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Role } from '../../../src/models';
 
@@ -11,7 +11,7 @@ describe('Person Cast Member model', () => {
 
 	const RoleStub = function () {
 
-		return sinon.createStubInstance(Role);
+		return createStubInstance(Role);
 
 	};
 
@@ -19,7 +19,7 @@ describe('Person Cast Member model', () => {
 
 		stubs = {
 			getDuplicateNameIndicesModule: {
-				getDuplicateNameIndices: sinon.stub().returns([])
+				getDuplicateNameIndices: stub().returns([])
 			},
 			models: {
 				Role: RoleStub
@@ -66,7 +66,7 @@ describe('Person Cast Member model', () => {
 					]
 				};
 				instance = createInstance(props);
-				expect(instance.roles.length).to.eq(3);
+				expect(instance.roles.length).to.equal(3);
 				expect(instance.roles[0] instanceof Role).to.be.true;
 				expect(instance.roles[1] instanceof Role).to.be.true;
 				expect(instance.roles[2] instanceof Role).to.be.true;
@@ -81,9 +81,9 @@ describe('Person Cast Member model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			sinon.spy(instance, 'validateGroupItem');
+			spy(instance, 'validateGroupItem');
 			instance.runValidations({ hasDuplicateName: false });
-			sinon.assert.callOrder(
+			assert.callOrder(
 				instance.validateGroupItem.withArgs({ hasDuplicateName: false, requiresName: false }),
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.roles),
 				instance.roles[0].validateGroupItem.withArgs({ hasDuplicateName: false, requiresName: false }),

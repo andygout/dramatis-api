@@ -53,7 +53,7 @@ describe('Call Class Methods module', () => {
 				expect(stubs.sendJsonResponse.calledOnce).to.be.true;
 				expect(stubs.sendJsonResponse.calledWithExactly(stubs.response, instanceMethodResponse)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
-				expect(result).to.eq('sendJsonResponse response');
+				expect(result).to.equal('sendJsonResponse response');
 
 			});
 
@@ -79,8 +79,8 @@ describe('Call Class Methods module', () => {
 
 				sandbox.stub(character, method).callsFake(() => { return Promise.reject(notFoundError) });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
-				expect(stubs.response.statusCode).to.eq(404);
-				expect(stubs.response._getData()).to.eq('Not Found');
+				expect(stubs.response.statusCode).to.equal(404);
+				expect(stubs.response._getData()).to.equal('Not Found');
 				expect(stubs.sendJsonResponse.notCalled).to.be.true;
 				expect(stubs.next.called).to.be.false;
 
@@ -113,7 +113,7 @@ describe('Call Class Methods module', () => {
 					stubs.response, staticListMethodResponse
 				)).to.be.true;
 				expect(stubs.next.notCalled).to.be.true;
-				expect(result).to.eq('sendJsonResponse response');
+				expect(result).to.equal('sendJsonResponse response');
 
 			});
 

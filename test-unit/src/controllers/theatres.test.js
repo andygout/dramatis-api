@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import sinon from 'sinon';
+import { createStubInstance, stub } from 'sinon';
 
 import { Theatre } from '../../../src/models';
 
@@ -10,7 +10,7 @@ describe('Theatres controller', () => {
 
 	const TheatreStub = function () {
 
-		return sinon.createStubInstance(Theatre);
+		return createStubInstance(Theatre);
 
 	};
 
@@ -18,18 +18,18 @@ describe('Theatres controller', () => {
 
 		stubs = {
 			callClassMethodsModule: {
-				callInstanceMethod: sinon.stub().resolves('callInstanceMethod response'),
-				callStaticListMethod: sinon.stub().resolves('callStaticListMethod response')
+				callInstanceMethod: stub().resolves('callInstanceMethod response'),
+				callStaticListMethod: stub().resolves('callStaticListMethod response')
 			},
 			sendJsonResponseModule: {
-				sendJsonResponse: sinon.stub().returns('sendJsonResponse response')
+				sendJsonResponse: stub().returns('sendJsonResponse response')
 			},
 			models: {
 				Theatre: TheatreStub
 			},
-			request: sinon.stub(),
-			response: sinon.stub(),
-			next: sinon.stub()
+			request: stub(),
+			response: stub(),
+			next: stub()
 		};
 
 	});
@@ -53,7 +53,7 @@ describe('Theatres controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.eq('sendJsonResponse response');
+			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response, stubs.models.Theatre()
@@ -72,7 +72,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre(), 'create'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -87,7 +87,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre(), 'edit'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -102,7 +102,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre(), 'update'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -117,7 +117,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre(), 'delete'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -132,7 +132,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre(), 'show'
 			)).to.be.true;
-			expect(result).to.eq('callInstanceMethod response');
+			expect(result).to.equal('callInstanceMethod response');
 
 		});
 
@@ -147,7 +147,7 @@ describe('Theatres controller', () => {
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
 				stubs.response, stubs.next, stubs.models.Theatre, 'theatre'
 			)).to.be.true;
-			expect(result).to.eq('callStaticListMethod response');
+			expect(result).to.equal('callStaticListMethod response');
 
 		});
 

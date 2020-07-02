@@ -36,14 +36,14 @@ describe('Role model', () => {
 			it('assigns given value', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
+				expect(instance.name).to.equal('Hamlet, Prince of Denmark');
 
 			});
 
 			it('trims given value before assigning', () => {
 
 				const instance = new Role({ name: ' Hamlet, Prince of Denmark ', characterName: '' });
-				expect(instance.name).to.eq('Hamlet, Prince of Denmark');
+				expect(instance.name).to.equal('Hamlet, Prince of Denmark');
 
 			});
 
@@ -54,35 +54,35 @@ describe('Role model', () => {
 			it('assigns empty string if absent from props', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				expect(instance.characterName).to.eq('');
+				expect(instance.characterName).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				expect(instance.characterName).to.eq('');
+				expect(instance.characterName).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' ' });
-				expect(instance.characterName).to.eq('');
+				expect(instance.characterName).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
-				expect(instance.characterName).to.eq('Hamlet');
+				expect(instance.characterName).to.equal('Hamlet');
 
 			});
 
 			it('trims value before assigning', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' Hamlet ' });
-				expect(instance.characterName).to.eq('Hamlet');
+				expect(instance.characterName).to.equal('Hamlet');
 
 			});
 
@@ -113,7 +113,8 @@ describe('Role model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
+				const instance =
+					new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(stubs.validateString.calledOnce).to.be.true;

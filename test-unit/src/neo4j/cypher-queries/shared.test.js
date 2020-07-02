@@ -37,7 +37,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getListQuery('production');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('production')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Production)-[:PLAYS_AT]->(t:Theatre)
 
 					RETURN
@@ -62,7 +62,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getExistenceQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN
@@ -85,7 +85,7 @@ describe('Cypher Queries Shared module', () => {
 					const result = cypherQueriesShared.getValidateQuery('theatre', undefined);
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+					expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 						MATCH (n:Theatre { name: $name })
 
 						RETURN SIGN(COUNT(n)) AS instanceCount
@@ -103,7 +103,7 @@ describe('Cypher Queries Shared module', () => {
 						cypherQueriesShared.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+					expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 						MATCH (n:Theatre { name: $name })
 							WHERE n.uuid <> $uuid
 
@@ -124,7 +124,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledTwice).to.be.true;
 				assert.calledWithExactly(stubs.capitalise.firstCall, 'theatre');
 				assert.calledWithExactly(stubs.capitalise.secondCall, 'theatre');
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					CREATE (n:Theatre { uuid: $uuid, name: $name })
 
 					WITH n
@@ -148,7 +148,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getEditQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN
@@ -169,7 +169,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledTwice).to.be.true;
 				assert.calledWithExactly(stubs.capitalise.firstCall, 'theatre');
 				assert.calledWithExactly(stubs.capitalise.secondCall, 'theatre');
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 						SET n.name = $name
 
@@ -194,7 +194,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getDeleteQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
 					WITH n, n.name AS name
@@ -216,7 +216,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getListQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.eq(removeWhitespace(`
+				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre)
 
 					RETURN
