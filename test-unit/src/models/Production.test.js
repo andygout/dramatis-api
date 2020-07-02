@@ -156,6 +156,7 @@ describe('Production model', () => {
 				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
+					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getCreateQueryStub.withArgs(),
 					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
 					stubs.neo4jQueryModule.neo4jQuery.withArgs(
@@ -164,6 +165,7 @@ describe('Production model', () => {
 				);
 				expect(instance.runValidations.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
 				expect(getCreateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
@@ -180,6 +182,7 @@ describe('Production model', () => {
 				assert.callOrder(
 					instance.runValidations.withArgs(),
 					instance.setErrorStatus.withArgs(),
+					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
 					getUpdateQueryStub.withArgs(),
 					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
 					stubs.neo4jQueryModule.neo4jQuery.withArgs(
@@ -188,6 +191,7 @@ describe('Production model', () => {
 				);
 				expect(instance.runValidations.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
 				expect(getUpdateQueryStub.calledOnce).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
@@ -206,8 +210,14 @@ describe('Production model', () => {
 				spy(instance, 'runValidations');
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
+				assert.callOrder(
+					instance.runValidations.withArgs(),
+					instance.setErrorStatus.withArgs(),
+					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance)
+				);
 				expect(instance.runValidations.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
 				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 				expect(stubs.prepareAsParamsModule.prepareAsParams.notCalled).to.be.true;
 				expect(stubs.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
