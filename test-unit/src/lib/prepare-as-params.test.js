@@ -312,8 +312,8 @@ describe('Prepare As Params module', () => {
 				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
-				expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
-				expect((stubs.neo4jInt.getCall(1)).calledWith(1)).to.be.true;
+				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
+				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
 				expect(result.cast[0]).to.have.property('position');
 				expect(result.cast[0].position).to.eq(0);
 				expect(result.cast[1]).to.have.property('position');
@@ -469,8 +469,8 @@ describe('Prepare As Params module', () => {
 				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
-				expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
-				expect((stubs.neo4jInt.getCall(1)).calledWith(1)).to.be.true;
+				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
+				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
 				expect(result.playtext.characters[0]).to.have.property('position');
 				expect(result.playtext.characters[0].position).to.eq(0);
 				expect(result.playtext.characters[1]).to.have.property('position');
@@ -635,8 +635,8 @@ describe('Prepare As Params module', () => {
 				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
-				expect((stubs.neo4jInt.getCall(0)).calledWith(0)).to.be.true;
-				expect((stubs.neo4jInt.getCall(1)).calledWith(1)).to.be.true;
+				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
+				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
 				expect(result.cast[0]).to.not.have.property('position');
 				expect(result.cast[0].roles[0]).to.have.property('position');
 				expect(result.cast[0].roles[0].position).to.eq(0);
