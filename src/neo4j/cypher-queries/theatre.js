@@ -1,4 +1,4 @@
-const getValidateDeleteQuery = () => `
+const getValidateDeleteRequestQuery = () => `
 	MATCH (theatre:Theatre { uuid: $uuid })<-[relationship:PLAYS_AT]-(production:Production)
 
 	RETURN SIGN(COUNT(relationship)) AS relationshipCount
@@ -25,6 +25,6 @@ const getShowQuery = () => `
 `;
 
 export {
-	getValidateDeleteQuery,
+	getValidateDeleteRequestQuery,
 	getShowQuery
 };
