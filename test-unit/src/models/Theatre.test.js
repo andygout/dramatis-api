@@ -47,6 +47,7 @@ describe('Theatre model', () => {
 			it('will not add properties to errors property', async () => {
 
 				stubs.neo4jQuery.resolves({ relationshipCount: 0 });
+				spy(instance, 'addPropertyError');
 				await instance.validateDeleteRequestInDatabase();
 				assert.callOrder(
 					stubs.getValidateDeleteQueries.theatre,
@@ -58,6 +59,7 @@ describe('Theatre model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getValidateDeleteQuery response', params: instance }
 				)).to.be.true;
+				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.errors).not.to.have.property('associations');
 				expect(instance.errors).to.deep.eq({});
 
@@ -70,10 +72,12 @@ describe('Theatre model', () => {
 			it('adds properties whose values are arrays to errors property', async () => {
 
 				stubs.neo4jQuery.resolves({ relationshipCount: 1 });
+				spy(instance, 'addPropertyError');
 				await instance.validateDeleteRequestInDatabase();
 				assert.callOrder(
 					stubs.getValidateDeleteQueries.theatre,
-					stubs.neo4jQuery
+					stubs.neo4jQuery,
+					instance.addPropertyError
 				);
 				expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
 				expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
@@ -81,6 +85,8 @@ describe('Theatre model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getValidateDeleteQuery response', params: instance }
 				)).to.be.true;
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('associations', 'productions')).to.be.true;
 				expect(instance.errors)
 					.to.have.property('associations')
 					.that.is.an('array')

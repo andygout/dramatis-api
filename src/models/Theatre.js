@@ -17,7 +17,7 @@ export default class Theatre extends Base {
 
 		const { relationshipCount } = await neo4jQuery({ query: getValidateDeleteQueries[this.model](), params: this });
 
-		if (relationshipCount > 0) this.errors.associations = ['productions'];
+		if (relationshipCount > 0) this.addPropertyError('associations', 'productions');
 
 	}
 
