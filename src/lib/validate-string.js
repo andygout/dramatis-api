@@ -1,4 +1,4 @@
-export const validateString = (stringValue, isRequiredString) => {
+export const validateString = (stringValue, opts) => {
 
 	const STRING_MAX_LENGTH = 1000;
 
@@ -8,7 +8,7 @@ export const validateString = (stringValue, isRequiredString) => {
 		stringValue !== null &&
 		!!stringValue.length;
 
-	if (isRequiredString && !isStringWithLength) errorText = 'Name is too short';
+	if (opts.isRequiredString && !isStringWithLength) errorText = 'Name is too short';
 
 	const isStringExceedingMaxLength =
 		isStringWithLength &&

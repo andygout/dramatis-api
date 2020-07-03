@@ -1,8 +1,6 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
-import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './Base';
 import { Character } from '.';
-import { neo4jQuery } from '../neo4j/query';
 
 export default class Playtext extends Base {
 
@@ -20,31 +18,19 @@ export default class Playtext extends Base {
 
 	}
 
-	runValidations () {
+	runInputValidations () {
 
-		this.validate({ requiresName: true });
+		this.validateName({ requiresName: true });
 
 		const duplicateNameIndices = getDuplicateNameIndices(this.characters);
 
-		this.characters.forEach((character, index) =>
-			character.validateGroupItem({ hasDuplicateName: duplicateNameIndices.includes(index), requiresName: false })
-		);
+		this.characters.forEach((character, index) => {
 
-	}
+			character.validateName({ requiresName: false });
 
-	async createUpdate (getCreateUpdateQuery) {
+			character.validateNameUniquenessInGroup({ hasDuplicateName: duplicateNameIndices.includes(index) });
 
-		this.runValidations();
-
-		await this.validateInDb();
-
-		this.setErrorStatus();
-
-		if (this.hasErrors) return this;
-
-		const neo4jInstance = await neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
-
-		return new this.constructor(neo4jInstance);
+		});
 
 	}
 

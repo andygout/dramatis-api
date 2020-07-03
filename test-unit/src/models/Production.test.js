@@ -3,7 +3,6 @@ import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { BasicModel, PersonCastMember, Theatre } from '../../../src/models';
-import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Production model', () => {
 
@@ -34,30 +33,18 @@ describe('Production model', () => {
 			getDuplicateNameIndicesModule: {
 				getDuplicateNameIndices: stub().returns([])
 			},
-			prepareAsParamsModule: {
-				prepareAsParams: stub().returns('prepareAsParams response')
-			},
-			hasErrorsModule: {
-				hasErrors: stub().returns(false)
-			},
 			Base: {
-				hasErrorsModule: {
-					hasErrors: stub().returns(false)
-				},
 				validateStringModule: {
-					validateString: stub().returns([])
+					validateString: stub()
 				},
 				neo4jQueryModule: {
-					neo4jQuery: stub().resolves(neo4jQueryFixture)
+					neo4jQuery: stub()
 				}
 			},
 			models: {
 				BasicModel: BasicModelStub,
 				PersonCastMember: PersonCastMemberStub,
 				Theatre: TheatreStub
-			},
-			neo4jQueryModule: {
-				neo4jQuery: stub().resolves(neo4jQueryFixture)
 			}
 		};
 
@@ -67,11 +54,8 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
-			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
-			'../neo4j/query': stubs.neo4jQueryModule,
 			'./Base': proxyquire('../../../src/models/Base', {
-				'../lib/has-errors': stubs.Base.hasErrorsModule,
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
@@ -120,110 +104,35 @@ describe('Production model', () => {
 
 	});
 
-	describe('runValidations method', () => {
+	describe('runInputValidations method', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			spy(instance, 'validate');
-			instance.runValidations();
+			spy(instance, 'validateName');
+			instance.runInputValidations();
 			assert.callOrder(
-				instance.validate.withArgs({ requiresName: true }),
-				instance.theatre.validate.withArgs({ requiresName: true }),
-				instance.playtext.validate.withArgs(),
+				instance.validateName.withArgs({ requiresName: true }),
+				instance.theatre.validateName.withArgs({ requiresName: true }),
+				instance.playtext.validateName.withArgs({ requiresName: false }),
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.cast),
-				instance.cast[0].runValidations.withArgs()
+				instance.cast[0].runInputValidations.withArgs({ hasDuplicateName: false })
 			);
-			expect(instance.validate.calledOnce).to.be.true;
-			expect(instance.theatre.validate.calledOnce).to.be.true;
-			expect(instance.playtext.validate.calledOnce).to.be.true;
+			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.theatre.validateName.calledOnce).to.be.true;
+			expect(instance.playtext.validateName.calledOnce).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
-			expect(instance.cast[0].runValidations.calledOnce).to.be.true;
+			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
 
 		});
 
 	});
 
-	describe('createUpdate method', () => {
+	describe('runDatabaseValidations method', () => {
 
-		context('valid data', () => {
+		it('does nothing, i.e. it overrides the Base model runDatabaseValidations() method with an empty function', () => {
 
-			it('creates using provided function to get appropriate query', async () => {
-
-				const getCreateQueryStub = stub().returns('getCreateQuery response');
-				spy(instance, 'runValidations');
-				spy(instance, 'setErrorStatus');
-				const result = await instance.createUpdate(getCreateQueryStub);
-				assert.callOrder(
-					instance.runValidations.withArgs(),
-					instance.setErrorStatus.withArgs(),
-					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
-					getCreateQueryStub.withArgs(),
-					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
-					stubs.neo4jQueryModule.neo4jQuery.withArgs(
-						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
-					)
-				);
-				expect(instance.runValidations.calledOnce).to.be.true;
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
-				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
-				expect(getCreateQueryStub.calledOnce).to.be.true;
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.equal('Production');
-
-			});
-
-			it('updates using provided function to get appropriate query', async () => {
-
-				const getUpdateQueryStub = stub().returns('getUpdateQuery response');
-				spy(instance, 'runValidations');
-				spy(instance, 'setErrorStatus');
-				const result = await instance.createUpdate(getUpdateQueryStub);
-				assert.callOrder(
-					instance.runValidations.withArgs(),
-					instance.setErrorStatus.withArgs(),
-					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance),
-					getUpdateQueryStub.withArgs(),
-					stubs.prepareAsParamsModule.prepareAsParams.withArgs(instance),
-					stubs.neo4jQueryModule.neo4jQuery.withArgs(
-						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
-					)
-				);
-				expect(instance.runValidations.calledOnce).to.be.true;
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
-				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
-				expect(getUpdateQueryStub.calledOnce).to.be.true;
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(result.constructor.name).to.equal('Production');
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('returns instance without creating', async () => {
-
-				stubs.Base.hasErrorsModule.hasErrors.returns(true);
-				const getCreateUpdateQueryStub = stub();
-				spy(instance, 'runValidations');
-				spy(instance, 'setErrorStatus');
-				const result = await instance.createUpdate(getCreateUpdateQueryStub);
-				assert.callOrder(
-					instance.runValidations.withArgs(),
-					instance.setErrorStatus.withArgs(),
-					stubs.Base.hasErrorsModule.hasErrors.withArgs(instance)
-				);
-				expect(instance.runValidations.calledOnce).to.be.true;
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
-				expect(stubs.Base.hasErrorsModule.hasErrors.calledOnce).to.be.true;
-				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-				expect(stubs.prepareAsParamsModule.prepareAsParams.notCalled).to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
-				expect(result).to.deep.eq(instance);
-
-			});
+			instance.runDatabaseValidations();
+			expect(stubs.Base.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
 
 		});
 

@@ -1,8 +1,6 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
-import { prepareAsParams } from '../lib/prepare-as-params';
 import Base from './Base';
 import { BasicModel, PersonCastMember, Theatre } from '.';
-import { neo4jQuery } from '../neo4j/query';
 
 export default class Production extends Base {
 
@@ -22,33 +20,27 @@ export default class Production extends Base {
 
 	}
 
-	runValidations () {
+	runInputValidations () {
 
-		this.validate({ requiresName: true });
+		this.validateName({ requiresName: true });
 
-		this.theatre.validate({ requiresName: true });
+		this.theatre.validateName({ requiresName: true });
 
-		this.playtext.validate();
+		this.playtext.validateName({ requiresName: false });
 
 		const duplicateNameIndices = getDuplicateNameIndices(this.cast);
 
 		this.cast.forEach((castMember, index) =>
-			castMember.runValidations({ hasDuplicateName: duplicateNameIndices.includes(index) })
+			castMember.runInputValidations({ hasDuplicateName: duplicateNameIndices.includes(index) })
 		);
 
 	}
 
-	async createUpdate (getCreateUpdateQuery) {
+	// Overrides Base model runDatabaseValidations() method because Production instances
+	// do not require database validation as they can have the same name as others.
+	runDatabaseValidations () {
 
-		this.runValidations();
-
-		this.setErrorStatus();
-
-		if (this.hasErrors) return this;
-
-		const neo4jInstance = await neo4jQuery({ query: getCreateUpdateQuery(), params: prepareAsParams(this) });
-
-		return new this.constructor(neo4jInstance);
+		return;
 
 	}
 

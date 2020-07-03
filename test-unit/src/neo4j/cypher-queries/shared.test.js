@@ -76,13 +76,13 @@ describe('Cypher Queries Shared module', () => {
 
 		});
 
-		describe('getValidateQuery function', () => {
+		describe('getDuplicateNameCountQuery function', () => {
 
 			context('uuid argument given is undefined (i.e. requested as part of create action)', () => {
 
 				it('returns requisite query', () => {
 
-					const result = cypherQueriesShared.getValidateQuery('theatre', undefined);
+					const result = cypherQueriesShared.getDuplicateNameCountQuery('theatre', undefined);
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 					expect(removeWhitespace(result)).to.equal(removeWhitespace(`
@@ -100,7 +100,7 @@ describe('Cypher Queries Shared module', () => {
 				it('returns requisite query', () => {
 
 					const result =
-						cypherQueriesShared.getValidateQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+						cypherQueriesShared.getDuplicateNameCountQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 					expect(removeWhitespace(result)).to.equal(removeWhitespace(`

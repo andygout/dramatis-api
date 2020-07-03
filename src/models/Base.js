@@ -20,28 +20,38 @@ export default class Base {
 
 	}
 
-	validate (opts = { requiresName: false }) {
+	runInputValidations () {
 
-		const nameErrorText = validateString(this.name, opts.requiresName);
+		this.validateName({ requiresName: true });
+
+	}
+
+	validateName (opts) {
+
+		const nameErrorText = validateString(this.name, { isRequiredString: opts.requiresName });
 
 		if (nameErrorText) this.addPropertyError('name', nameErrorText);
 
 	}
 
-	validateGroupItem (opts) {
-
-		this.validate(opts);
+	validateNameUniquenessInGroup (opts) {
 
 		if (opts.hasDuplicateName) this.addPropertyError('name', 'Name has been duplicated in this group');
 
 	}
 
-	async validateInDb () {
+	async runDatabaseValidations () {
 
-		const { getValidateQuery } = sharedQueries;
+		await this.validateNameUniquenessInDatabase();
+
+	}
+
+	async validateNameUniquenessInDatabase () {
+
+		const { getDuplicateNameCountQuery } = sharedQueries;
 
 		const { instanceCount } = await neo4jQuery({
-			query: getValidateQuery(this.model, this.uuid),
+			query: getDuplicateNameCountQuery(this.model, this.uuid),
 			params: this
 		});
 
@@ -57,7 +67,13 @@ export default class Base {
 
 	}
 
-	async confirmExistenceInDb () {
+	setErrorStatus () {
+
+		this.hasErrors = hasErrors(this);
+
+	}
+
+	async confirmExistenceInDatabase () {
 
 		const { getExistenceQuery } = sharedQueries;
 
@@ -70,17 +86,11 @@ export default class Base {
 
 	}
 
-	setErrorStatus () {
-
-		this.hasErrors = hasErrors(this);
-
-	}
-
 	async createUpdate (getCreateUpdateQuery) {
 
-		this.validate({ requiresName: true });
+		this.runInputValidations();
 
-		await this.validateInDb();
+		await this.runDatabaseValidations();
 
 		this.setErrorStatus();
 
@@ -118,7 +128,7 @@ export default class Base {
 
 	async update () {
 
-		await this.confirmExistenceInDb();
+		await this.confirmExistenceInDatabase();
 
 		const { getUpdateQuery } = sharedQueries;
 

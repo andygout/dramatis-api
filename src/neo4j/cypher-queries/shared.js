@@ -10,7 +10,7 @@ const getExistenceQuery = model => `
 		END AS exists
 `;
 
-const getValidateQuery = (model, uuid) => `
+const getDuplicateNameCountQuery = (model, uuid) => `
 	MATCH (n:${capitalise(model)} { name: $name })
 		${uuid ? 'WHERE n.uuid <> $uuid' : ''}
 
@@ -76,7 +76,7 @@ const getListQuery = model => {
 
 export {
 	getExistenceQuery,
-	getValidateQuery,
+	getDuplicateNameCountQuery,
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
