@@ -98,15 +98,23 @@ describe('Playtext model', () => {
 			spy(instance, 'validateName');
 			instance.runInputValidations();
 			assert.callOrder(
-				instance.validateName.withArgs({ requiresName: true }),
-				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.characters),
-				instance.characters[0].validateName.withArgs({ requiresName: false }),
-				instance.characters[0].validateNameUniquenessInGroup.withArgs({ hasDuplicateName: false })
+				instance.validateName,
+				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
+				instance.characters[0].validateName,
+				instance.characters[0].validateNameUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
+				instance.characters
+			)).to.be.true;
 			expect(instance.characters[0].validateName.calledOnce).to.be.true;
+			expect(instance.characters[0].validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(instance.characters[0].validateNameUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.characters[0].validateNameUniquenessInGroup.calledWithExactly(
+				{ hasDuplicateName: false }
+			)).to.be.true;
 
 		});
 

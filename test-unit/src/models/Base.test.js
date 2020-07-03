@@ -343,26 +343,38 @@ describe('Base model', () => {
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery)
 				assert.callOrder(
-					instance.runInputValidations.withArgs(),
-					instance.runDatabaseValidations.withArgs(),
-					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
-					instance.setErrorStatus.withArgs(),
-					stubs.hasErrors.withArgs(instance),
-					stubs.sharedQueries.getCreateQuery.withArgs(instance.model),
-					stubs.prepareAsParams.withArgs(instance),
-					stubs.neo4jQuery.withArgs(
-						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
-					)
+					instance.runInputValidations,
+					instance.runDatabaseValidations,
+					stubs.sharedQueries.getDuplicateNameCountQuery,
+					stubs.neo4jQuery,
+					instance.setErrorStatus,
+					stubs.hasErrors,
+					stubs.prepareAsParams,
+					stubs.neo4jQuery
 				);
 				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledWithExactly()).to.be.true;
 				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
+					instance.model, instance.uuid
+				)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
+				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
+					{ query: 'getDuplicateNameCountQuery response', params: instance }
+				)).to.be.true;
+				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
+					{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
+				)).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
+				expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 				expect(stubs.sharedQueries.getCreateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getCreateQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -374,26 +386,39 @@ describe('Base model', () => {
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(stubs.sharedQueries.getUpdateQuery);
 				assert.callOrder(
-					instance.runInputValidations.withArgs(),
-					instance.runDatabaseValidations.withArgs(),
-					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
-					instance.setErrorStatus.withArgs(),
-					stubs.hasErrors.withArgs(instance),
-					stubs.sharedQueries.getUpdateQuery.withArgs(instance.model),
-					stubs.prepareAsParams.withArgs(instance),
-					stubs.neo4jQuery.withArgs(
-						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
-					)
+					instance.runInputValidations,
+					instance.runDatabaseValidations,
+					stubs.sharedQueries.getDuplicateNameCountQuery,
+					stubs.neo4jQuery,
+					instance.setErrorStatus,
+					stubs.hasErrors,
+					stubs.sharedQueries.getUpdateQuery,
+					stubs.prepareAsParams,
+					stubs.neo4jQuery
 				);
 				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledWithExactly()).to.be.true;
 				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
+					instance.model, instance.uuid
+				)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
+				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
+					{ query: 'getDuplicateNameCountQuery response', params: instance }
+				)).to.be.true;
+				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
+					{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
+				)).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
+				expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 				expect(stubs.sharedQueries.getUpdateQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getUpdateQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -412,19 +437,29 @@ describe('Base model', () => {
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 				assert.callOrder(
-					instance.runInputValidations.withArgs(),
-					instance.runDatabaseValidations.withArgs(),
-					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
-					instance.setErrorStatus.withArgs(),
-					stubs.hasErrors.withArgs(instance)
+					instance.runInputValidations,
+					instance.runDatabaseValidations,
+					stubs.sharedQueries.getDuplicateNameCountQuery,
+					stubs.neo4jQuery,
+					instance.setErrorStatus,
+					stubs.hasErrors
 				);
 				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledWithExactly()).to.be.true;
 				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
+					instance.model, instance.uuid
+				)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.neo4jQuery.calledWithExactly(
+					{ query: 'getDuplicateNameCountQuery response', params: instance }
+				)).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
+				expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
 				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
 				expect(stubs.prepareAsParams.notCalled).to.be.true;
 				expect(result).to.deep.eq(instance);

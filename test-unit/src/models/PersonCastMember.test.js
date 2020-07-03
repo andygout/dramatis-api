@@ -85,19 +85,31 @@ describe('Person Cast Member model', () => {
 			spy(instance, 'validateNameUniquenessInGroup');
 			instance.runInputValidations({ hasDuplicateName: false });
 			assert.callOrder(
-				instance.validateName.withArgs({ requiresName: false }),
-				instance.validateNameUniquenessInGroup.withArgs({ hasDuplicateName: false }),
-				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.roles),
-				instance.roles[0].validateName.withArgs({ requiresName: false }),
-				instance.roles[0].validateCharacterName.withArgs({ requiresCharacterName: false }),
-				instance.roles[0].validateNameUniquenessInGroup.withArgs({ hasDuplicateName: false })
+				instance.validateName,
+				instance.validateNameUniquenessInGroup,
+				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
+				instance.roles[0].validateName,
+				instance.roles[0].validateCharacterName,
+				instance.roles[0].validateNameUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(instance.validateNameUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.validateNameUniquenessInGroup.calledWithExactly({ hasDuplicateName: false })).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
+				instance.roles
+			)).to.be.true;
 			expect(instance.roles[0].validateName.calledOnce).to.be.true;
+			expect(instance.roles[0].validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(instance.roles[0].validateCharacterName.calledOnce).to.be.true;
+			expect(instance.roles[0].validateCharacterName.calledWithExactly(
+				{ requiresCharacterName: false }
+			)).to.be.true;
 			expect(instance.roles[0].validateNameUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.roles[0].validateNameUniquenessInGroup.calledWithExactly(
+				{ hasDuplicateName: false }
+			)).to.be.true;
 
 		});
 
