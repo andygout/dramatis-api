@@ -27,7 +27,7 @@ export default class Playtext extends Base {
 		const duplicateNameIndices = getDuplicateNameIndices(this.characters);
 
 		this.characters.forEach((character, index) =>
-			character.validateGroupItem({ hasDuplicateName: duplicateNameIndices.includes(index) })
+			character.validateGroupItem({ hasDuplicateName: duplicateNameIndices.includes(index), requiresName: false })
 		);
 
 	}
