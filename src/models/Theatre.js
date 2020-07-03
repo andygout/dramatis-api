@@ -13,7 +13,7 @@ export default class Theatre extends Base {
 
 	}
 
-	async validateDeleteInDb () {
+	async validateDeleteRequestInDatabase () {
 
 		const { relationshipCount } = await neo4jQuery({ query: getValidateDeleteQueries[this.model](), params: this });
 
@@ -23,7 +23,7 @@ export default class Theatre extends Base {
 
 	async delete () {
 
-		await this.validateDeleteInDb();
+		await this.validateDeleteRequestInDatabase();
 
 		this.setErrorStatus();
 

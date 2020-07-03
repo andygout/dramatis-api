@@ -19,7 +19,7 @@ describe('Role model', () => {
 			validateString: sandbox.stub(validateStringModule, 'validateString').returns(undefined)
 		};
 
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, false).returns('Name is too long');
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false }).returns('Name is too long');
 
 	});
 
@@ -100,7 +100,9 @@ describe('Role model', () => {
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.characterName, false)).to.be.true;
+				expect(stubs.validateString.calledWithExactly(
+					instance.characterName, { isRequiredString: false })
+				).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.errors).not.to.have.property('name');
 				expect(instance.errors).to.deep.eq({});
@@ -118,7 +120,9 @@ describe('Role model', () => {
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.characterName, false)).to.be.true;
+				expect(stubs.validateString.calledWithExactly(
+					instance.characterName, { isRequiredString: false })
+				).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
 				expect(instance.addPropertyError.calledWithExactly('characterName', 'Name is too long')).to.be.true;
 				expect(instance.errors)

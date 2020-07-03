@@ -77,22 +77,27 @@ describe('Person Cast Member model', () => {
 
 	});
 
-	describe('runValidations method', () => {
+	describe('runInputValidations method', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			spy(instance, 'validateGroupItem');
-			instance.runValidations({ hasDuplicateName: false });
+			spy(instance, 'validateName');
+			spy(instance, 'validateNameUniquenessInGroup');
+			instance.runInputValidations({ hasDuplicateName: false });
 			assert.callOrder(
-				instance.validateGroupItem.withArgs({ hasDuplicateName: false, requiresName: false }),
+				instance.validateName.withArgs({ requiresName: false }),
+				instance.validateNameUniquenessInGroup.withArgs({ hasDuplicateName: false }),
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.roles),
-				instance.roles[0].validateGroupItem.withArgs({ hasDuplicateName: false, requiresName: false }),
-				instance.roles[0].validateCharacterName.withArgs({ requiresCharacterName: false })
+				instance.roles[0].validateName.withArgs({ requiresName: false }),
+				instance.roles[0].validateCharacterName.withArgs({ requiresCharacterName: false }),
+				instance.roles[0].validateNameUniquenessInGroup.withArgs({ hasDuplicateName: false })
 			);
-			expect(instance.validateGroupItem.calledOnce).to.be.true;
+			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateNameUniquenessInGroup.calledOnce).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
-			expect(instance.roles[0].validateGroupItem.calledOnce).to.be.true;
+			expect(instance.roles[0].validateName.calledOnce).to.be.true;
 			expect(instance.roles[0].validateCharacterName.calledOnce).to.be.true;
+			expect(instance.roles[0].validateNameUniquenessInGroup.calledOnce).to.be.true;
 
 		});
 

@@ -18,17 +18,21 @@ export default class PersonCastMember extends Base {
 
 	}
 
-	runValidations (opts) {
+	runInputValidations (opts) {
 
-		this.validateGroupItem({ ...opts, requiresName: false });
+		this.validateName({ requiresName: false });
+
+		this.validateNameUniquenessInGroup({ hasDuplicateName: opts.hasDuplicateName });
 
 		const duplicateNameIndices = getDuplicateNameIndices(this.roles);
 
 		this.roles.forEach((role, index) => {
 
-			role.validateGroupItem({ hasDuplicateName: duplicateNameIndices.includes(index), requiresName: false });
+			role.validateName({ requiresName: false });
 
 			role.validateCharacterName({ requiresCharacterName: false });
+
+			role.validateNameUniquenessInGroup({ hasDuplicateName: duplicateNameIndices.includes(index) });
 
 		});
 

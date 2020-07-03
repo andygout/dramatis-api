@@ -56,8 +56,9 @@ describe('Base model', () => {
 				getExistenceQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery')
 						.returns('getExistenceQuery response'),
-				getValidateQuery:
-					sandbox.stub(cypherQueries.sharedQueries, 'getValidateQuery').returns('getValidateQuery response'),
+				getDuplicateNameCountQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getDuplicateNameCountQuery')
+						.returns('getDuplicateNameCountQuery response'),
 				getCreateQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getCreateQuery').returns('getCreateQuery response'),
 				getEditQuery:
@@ -72,8 +73,8 @@ describe('Base model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryFixture)
 		};
 
-		stubs.validateString.withArgs(EMPTY_STRING).returns('Name is too short');
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING).returns('Name is too long');
+		stubs.validateString.withArgs(EMPTY_STRING, { isRequiredString: true }).returns('Name is too short');
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false }).returns('Name is too long');
 
 		instance = new Base({ name: 'Foobar' });
 
@@ -114,16 +115,29 @@ describe('Base model', () => {
 
 	});
 
-	describe('validate method', () => {
+	describe('runInputValidations method', () => {
+
+		it('will call validateName method', () => {
+
+			spy(instance, 'validateName');
+			instance.runInputValidations();
+			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
+
+		});
+
+	});
+
+	describe('validateName method', () => {
 
 		context('valid data', () => {
 
 			it('will not call addPropertyError method', () => {
 
 				spy(instance, 'addPropertyError');
-				instance.validate();
+				instance.validateName({ requiresName: false });
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, false)).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.name, { isRequiredString: false })).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -136,9 +150,9 @@ describe('Base model', () => {
 
 				instance = new Base({ name: EMPTY_STRING });
 				spy(instance, 'addPropertyError');
-				instance.validate();
+				instance.validateName({ requiresName: true });
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, false)).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.name, { isRequiredString: true })).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
 				expect(instance.addPropertyError.calledWithExactly('name', 'Name is too short')).to.be.true;
 
@@ -148,18 +162,15 @@ describe('Base model', () => {
 
 	});
 
-	describe('validateGroupItem method', () => {
+	describe('validateNameUniquenessInGroup method', () => {
 
 		context('valid data', () => {
 
 			it('will not call addPropertyError method', () => {
 
-				spy(instance, 'validate');
 				spy(instance, 'addPropertyError');
-				const opts = {};
-				instance.validateGroupItem(opts);
-				expect(instance.validate.calledOnce).to.be.true;
-				expect(instance.validate.calledWithExactly(opts)).to.be.true;
+				const opts = { hasDuplicateName: false };
+				instance.validateNameUniquenessInGroup(opts);
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -168,45 +179,15 @@ describe('Base model', () => {
 
 		context('invalid data', () => {
 
-			context('invalid data in group context', () => {
+			it('will call addPropertyError method with group context error text', () => {
 
-				it('will call addPropertyError method with group context error text', () => {
-
-					spy(instance, 'validate');
-					spy(instance, 'addPropertyError');
-					const opts = { hasDuplicateName: true };
-					instance.validateGroupItem(opts);
-					expect(instance.validate.calledOnce).to.be.true;
-					expect(instance.validate.calledWithExactly(opts)).to.be.true;
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
-						'name', 'Name has been duplicated in this group'
-					)).to.be.true;
-
-				});
-
-			});
-
-			context('invalid data on individual basis and in group context', () => {
-
-				it('will call addPropertyError method with both individual basis and group context error text', () => {
-
-					instance = new Base({ name: ABOVE_MAX_LENGTH_STRING });
-					spy(instance, 'validate');
-					spy(instance, 'addPropertyError');
-					const opts = { hasDuplicateName: true };
-					instance.validateGroupItem(opts);
-					expect(instance.validate.calledOnce).to.be.true;
-					expect(instance.validate.calledWithExactly(opts)).to.be.true;
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect((instance.addPropertyError.getCall(0)).calledWithExactly(
-						'name', 'Name is too long'
-					)).to.be.true;
-					expect((instance.addPropertyError.getCall(1)).calledWithExactly(
-						'name', 'Name has been duplicated in this group'
-					)).to.be.true;
-
-				});
+				spy(instance, 'addPropertyError');
+				const opts = { hasDuplicateName: true };
+				instance.validateNameUniquenessInGroup(opts);
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'name', 'Name has been duplicated in this group'
+				)).to.be.true;
 
 			});
 
@@ -214,18 +195,31 @@ describe('Base model', () => {
 
 	});
 
-	describe('validateInDb method', () => {
+	describe('runDatabaseValidations method', () => {
 
-		it('validates update in database', async () => {
+		it('will call validateNameUniquenessInDatabase method', () => {
 
-			await instance.validateInDb();
-			expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
-			expect(stubs.sharedQueries.getValidateQuery.calledWithExactly(
+			spy(instance, 'validateNameUniquenessInDatabase');
+			instance.runDatabaseValidations();
+			expect(instance.validateNameUniquenessInDatabase.calledOnce).to.be.true;
+			expect(instance.validateNameUniquenessInDatabase.calledWithExactly()).to.be.true;
+
+		});
+
+	});
+
+	describe('validateNameUniquenessInDatabase method', () => {
+
+		it('makes call to database get duplicate name count', async () => {
+
+			await instance.validateNameUniquenessInDatabase();
+			expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
+			expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
 				instance.model, instance.uuid
 			)).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getValidateQuery response', params: instance }
+				{ query: 'getDuplicateNameCountQuery response', params: instance }
 			)).to.be.true;
 
 		});
@@ -236,7 +230,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ instanceCount: 0 });
 				spy(instance, 'addPropertyError');
-				await instance.validateInDb();
+				await instance.validateNameUniquenessInDatabase();
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -249,7 +243,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ instanceCount: 1 });
 				spy(instance, 'addPropertyError');
-				await instance.validateInDb();
+				await instance.validateNameUniquenessInDatabase();
 				expect(instance.addPropertyError.calledOnce).to.be.true;
 				expect(instance.addPropertyError.calledWithExactly('name', 'Name already exists')).to.be.true;
 
@@ -297,12 +291,12 @@ describe('Base model', () => {
 
 	});
 
-	describe('confirmExistenceInDb method', () => {
+	describe('confirmExistenceInDatabase method', () => {
 
 		it('confirms existence of instance in database', async () => {
 
 			stubs.neo4jQuery.resolves({ exists: true });
-			await instance.confirmExistenceInDb();
+			await instance.confirmExistenceInDatabase();
 			expect(stubs.sharedQueries.getExistenceQuery.calledOnce).to.be.true;
 			expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(instance.model)).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
@@ -318,7 +312,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ exists: false });
 
-				await expect(instance.confirmExistenceInDb()).to.be.rejectedWith(Error, 'Not Found');
+				await expect(instance.confirmExistenceInDatabase()).to.be.rejectedWith(Error, 'Not Found');
 
 			});
 
@@ -330,7 +324,7 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ exists: true });
 
-				await expect(instance.confirmExistenceInDb()).to.not.be.rejectedWith(Error, 'Not Found');
+				await expect(instance.confirmExistenceInDatabase()).to.not.be.rejectedWith(Error, 'Not Found');
 
 			});
 
@@ -344,15 +338,15 @@ describe('Base model', () => {
 
 			it('creates', async () => {
 
-				spy(instance, 'validate');
-				spy(instance, 'validateInDb');
+				spy(instance, 'runInputValidations');
+				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery)
 				assert.callOrder(
-					instance.validate.withArgs({ requiresName: true }),
-					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					instance.runInputValidations.withArgs(),
+					instance.runDatabaseValidations.withArgs(),
+					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
+					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getCreateQuery.withArgs(instance.model),
@@ -361,9 +355,9 @@ describe('Base model', () => {
 						{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
 					)
 				);
-				expect(instance.validate.calledOnce).to.be.true;
-				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
@@ -375,15 +369,15 @@ describe('Base model', () => {
 
 			it('updates', async () => {
 
-				spy(instance, 'validate');
-				spy(instance, 'validateInDb');
+				spy(instance, 'runInputValidations');
+				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(stubs.sharedQueries.getUpdateQuery);
 				assert.callOrder(
-					instance.validate.withArgs({ requiresName: true }),
-					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					instance.runInputValidations.withArgs(),
+					instance.runDatabaseValidations.withArgs(),
+					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
+					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.hasErrors.withArgs(instance),
 					stubs.sharedQueries.getUpdateQuery.withArgs(instance.model),
@@ -392,9 +386,9 @@ describe('Base model', () => {
 						{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
 					)
 				);
-				expect(instance.validate.calledOnce).to.be.true;
-				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
@@ -413,21 +407,21 @@ describe('Base model', () => {
 				stubs.hasErrors.returns(true);
 				const getCreateUpdateQueryStub = stub();
 				instance.model = 'theatre';
-				spy(instance, 'validate');
-				spy(instance, 'validateInDb');
+				spy(instance, 'runInputValidations');
+				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 				assert.callOrder(
-					instance.validate.withArgs({ requiresName: true }),
-					instance.validateInDb.withArgs(),
-					stubs.sharedQueries.getValidateQuery.withArgs(instance.model, instance.uuid),
-					stubs.neo4jQuery.withArgs({ query: 'getValidateQuery response', params: instance }),
+					instance.runInputValidations.withArgs(),
+					instance.runDatabaseValidations.withArgs(),
+					stubs.sharedQueries.getDuplicateNameCountQuery.withArgs(instance.model, instance.uuid),
+					stubs.neo4jQuery.withArgs({ query: 'getDuplicateNameCountQuery response', params: instance }),
 					instance.setErrorStatus.withArgs(),
 					stubs.hasErrors.withArgs(instance)
 				);
-				expect(instance.validate.calledOnce).to.be.true;
-				expect(instance.validateInDb.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getValidateQuery.calledOnce).to.be.true;
+				expect(instance.runInputValidations.calledOnce).to.be.true;
+				expect(instance.runDatabaseValidations.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(stubs.hasErrors.calledOnce).to.be.true;
@@ -520,13 +514,13 @@ describe('Base model', () => {
 			it('will throw Not Found error', async () => {
 
 				stubs.neo4jQuery.resolves({ exists: false });
-				spy(instance, 'confirmExistenceInDb');
+				spy(instance, 'confirmExistenceInDatabase');
 				spy(instance, 'createUpdate');
 
 				await expect(instance.update()).to.be.rejectedWith(Error, 'Not Found');
 
-				expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
-				expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+				expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
+				expect(instance.confirmExistenceInDatabase.calledWithExactly()).to.be.true;
 				expect(instance.createUpdate.called).to.be.false;
 
 			});
@@ -541,11 +535,11 @@ describe('Base model', () => {
 
 					stubs.neo4jQuery.resolves({ exists: true });
 					instance.model = 'production';
-					spy(instance, 'confirmExistenceInDb');
+					spy(instance, 'confirmExistenceInDatabase');
 					spy(instance, 'createUpdate');
 					await instance.update();
-					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
-					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+					expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
+					expect(instance.confirmExistenceInDatabase.calledWithExactly()).to.be.true;
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(stubs.getUpdateQueries[instance.model])).to.be.true;
 
@@ -558,11 +552,11 @@ describe('Base model', () => {
 				it('calls createUpdate method with function to get shared update query as argument', async () => {
 
 					stubs.neo4jQuery.resolves({ exists: true });
-					spy(instance, 'confirmExistenceInDb');
+					spy(instance, 'confirmExistenceInDatabase');
 					spy(instance, 'createUpdate');
 					await instance.update();
-					expect(instance.confirmExistenceInDb.calledOnce).to.be.true;
-					expect(instance.confirmExistenceInDb.calledWithExactly()).to.be.true;
+					expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
+					expect(instance.confirmExistenceInDatabase.calledWithExactly()).to.be.true;
 					expect(instance.createUpdate.calledOnce).to.be.true;
 					expect(instance.createUpdate.calledWithExactly(stubs.sharedQueries.getUpdateQuery)).to.be.true;
 
