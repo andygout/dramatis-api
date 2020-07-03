@@ -51,13 +51,15 @@ describe('Cypher Queries Production module', () => {
 					ORDER BY role.castMemberPosition, role.rolePosition
 
 				WITH production, theatre, playtext, person,
-					COLLECT(CASE WHEN role.roleName IS NULL
-						THEN null
-						ELSE {
-							name: role.roleName,
-							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
-						}
-					END) + [{ name: '', characterName: '' }] AS roles
+					COLLECT(
+						CASE WHEN role.roleName IS NULL
+							THEN null
+							ELSE {
+								name: role.roleName,
+								characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+							}
+						END
+					) + [{ name: '', characterName: '' }] AS roles
 
 				RETURN
 					'production' AS model,
@@ -65,10 +67,12 @@ describe('Cypher Queries Production module', () => {
 					production.name AS name,
 					{ name: theatre.name } AS theatre,
 					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
-					COLLECT(CASE WHEN person IS NULL
-						THEN null
-						ELSE { name: person.name, roles: roles }
-					END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+					COLLECT(
+						CASE WHEN person IS NULL
+							THEN null
+							ELSE { name: person.name, roles: roles }
+						END
+					) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 			`));
 
 		});
@@ -127,13 +131,15 @@ describe('Cypher Queries Production module', () => {
 					ORDER BY role.castMemberPosition, role.rolePosition
 
 				WITH production, theatre, playtext, person,
-					COLLECT(CASE WHEN role.roleName IS NULL
-						THEN null
-						ELSE {
-							name: role.roleName,
-							characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
-						}
-					END) + [{ name: '', characterName: '' }] AS roles
+					COLLECT(
+						CASE WHEN role.roleName IS NULL
+							THEN null
+							ELSE {
+								name: role.roleName,
+								characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+							}
+						END
+					) + [{ name: '', characterName: '' }] AS roles
 
 				RETURN
 					'production' AS model,
@@ -141,10 +147,12 @@ describe('Cypher Queries Production module', () => {
 					production.name AS name,
 					{ name: theatre.name } AS theatre,
 					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
-					COLLECT(CASE WHEN person IS NULL
-						THEN null
-						ELSE { name: person.name, roles: roles }
-					END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+					COLLECT(
+						CASE WHEN person IS NULL
+							THEN null
+							ELSE { name: person.name, roles: roles }
+						END
+					) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 			`));
 
 		});

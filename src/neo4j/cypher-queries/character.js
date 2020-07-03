@@ -10,9 +10,12 @@ const getShowQuery = () => `
 		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
 	WITH character, variantNamedRole,
-		COLLECT(CASE WHEN playtext IS NULL THEN null ELSE
-				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
-			END) AS playtexts
+		COLLECT(
+			CASE WHEN playtext IS NULL
+				THEN null
+				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+			END
+		) AS playtexts
 		ORDER BY variantNamedRole.roleName
 
 	OPTIONAL MATCH (playtext)<-[prodRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
@@ -33,9 +36,12 @@ const getShowQuery = () => `
 		ORDER BY otherRole.rolePosition
 
 	WITH character, playtexts, variantNames, production, theatre, person, role,
-		COLLECT(CASE WHEN otherRole IS NULL THEN null ELSE
-				{ model: 'character', uuid: otherCharacter.uuid, name: otherRole.roleName }
-			END) AS otherRoles
+		COLLECT(
+			CASE WHEN otherRole IS NULL
+				THEN null
+				ELSE { model: 'character', uuid: otherCharacter.uuid, name: otherRole.roleName }
+			END
+		) AS otherRoles
 		ORDER BY role.castMemberPosition
 
 	WITH character, playtexts, variantNames, production, theatre,
@@ -54,14 +60,18 @@ const getShowQuery = () => `
 		character.name AS name,
 		playtexts,
 		variantNames,
-		COLLECT(CASE WHEN production IS NULL THEN null ELSE
-			{
-				model: 'production',
-				uuid: production.uuid,
-				name: production.name,
-				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
-				performers: performers
-			} END) AS productions
+		COLLECT(
+			CASE WHEN production IS NULL
+				THEN null
+				ELSE {
+					model: 'production',
+					uuid: production.uuid,
+					name: production.name,
+					theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
+					performers: performers
+				}
+			END
+		) AS productions
 `;
 
 export {
