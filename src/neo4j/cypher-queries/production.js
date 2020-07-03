@@ -31,7 +31,7 @@ const getCreateUpdateQuery = action => {
 			MERGE (person:Person { name: castMember.name })
 				ON CREATE SET person.uuid = castMember.uuid
 
-			FOREACH (role in CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
+			FOREACH (role IN CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
 				CREATE (production)
 					<-[:PERFORMS_IN {
 						castMemberPosition: castMember.position,
