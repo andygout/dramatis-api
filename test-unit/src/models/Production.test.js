@@ -111,17 +111,24 @@ describe('Production model', () => {
 			spy(instance, 'validateName');
 			instance.runInputValidations();
 			assert.callOrder(
-				instance.validateName.withArgs({ requiresName: true }),
-				instance.theatre.validateName.withArgs({ requiresName: true }),
-				instance.playtext.validateName.withArgs({ requiresName: false }),
-				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.cast),
-				instance.cast[0].runInputValidations.withArgs({ hasDuplicateName: false })
+				instance.validateName,
+				instance.theatre.validateName,
+				instance.playtext.validateName,
+				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
+				instance.cast[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
 			expect(instance.theatre.validateName.calledOnce).to.be.true;
+			expect(instance.theatre.validateName.calledWithExactly({ requiresName: true })).to.be.true;
 			expect(instance.playtext.validateName.calledOnce).to.be.true;
+			expect(instance.playtext.validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
+				instance.cast
+			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.cast[0].runInputValidations.calledWithExactly({ hasDuplicateName: false })).to.be.true;
 
 		});
 
