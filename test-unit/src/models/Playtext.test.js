@@ -124,7 +124,7 @@ describe('Playtext model', () => {
 			assert.callOrder(
 				instance.validate.withArgs({ requiresName: true }),
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.withArgs(instance.characters),
-				instance.characters[0].validateGroupItem.withArgs({ hasDuplicateName: false })
+				instance.characters[0].validateGroupItem.withArgs({ hasDuplicateName: false, requiresName: false })
 			);
 			expect(instance.validate.calledOnce).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
