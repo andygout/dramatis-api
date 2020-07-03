@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { assert, createSandbox } from 'sinon';
+import { createSandbox } from 'sinon';
 import neo4j from 'neo4j-driver';
 import { v4 as uuid } from 'uuid';
 
@@ -120,7 +120,7 @@ describe('Prepare As Params module', () => {
 			const instance = { theatre: { uuid: '' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -133,7 +133,7 @@ describe('Prepare As Params module', () => {
 			const instance = { theatre: { uuid: undefined } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, undefined);
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -146,7 +146,9 @@ describe('Prepare As Params module', () => {
 			const instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(
+				'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+			)).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
@@ -159,7 +161,7 @@ describe('Prepare As Params module', () => {
 			const instance = { theatre: { foo: 'bar' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, 'bar');
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly('bar')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.foo).to.equal('bar');
@@ -172,7 +174,7 @@ describe('Prepare As Params module', () => {
 			const instance = { theatre: { foo: '' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, '');
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.called).to.be.false;
 			expect(result.theatre.foo).to.equal(null);
@@ -204,7 +206,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ uuid: '' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -220,7 +222,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ uuid: undefined }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, undefined);
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -236,7 +238,9 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly(
+				'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+			)).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
@@ -252,7 +256,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ foo: 'bar' }] }
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'bar');
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('bar')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].foo).to.equal('bar');
@@ -268,7 +272,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ foo: '' }] }
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, '');
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].foo).to.equal(null);
@@ -309,7 +313,7 @@ describe('Prepare As Params module', () => {
 				const instance = { cast: [{ uuid: '' }, { uuid: '' }] };
 				const result = prepareAsParams(instance);
 				expect(stubs.isObjectWithKeys.callCount).to.equal(7);
-				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
+				expect(stubs.isObjectWithKeys.lastCall.calledWithExactly(1)).to.be.true;
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
@@ -355,7 +359,7 @@ describe('Prepare As Params module', () => {
 			const instance = { playtext: { characters: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(4);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -372,7 +376,7 @@ describe('Prepare As Params module', () => {
 			const instance = { playtext: { characters: [{ uuid: undefined }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(4);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), undefined);
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -389,7 +393,9 @@ describe('Prepare As Params module', () => {
 			const instance = { playtext: { characters: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(4);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly(
+				'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+			)).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.playtext.characters[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
@@ -406,7 +412,7 @@ describe('Prepare As Params module', () => {
 			const instance = { playtext: { characters: [{ foo: 'bar' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(4);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), 'bar');
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly('bar')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.playtext.characters[0].foo).to.equal('bar');
@@ -423,7 +429,7 @@ describe('Prepare As Params module', () => {
 			const instance = { playtext: { characters: [{ foo: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(4);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), '');
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.playtext.characters[0].foo).to.equal(null);
@@ -466,7 +472,7 @@ describe('Prepare As Params module', () => {
 				const instance = { playtext: { characters: [{ uuid: '' }, { uuid: '' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.isObjectWithKeys.callCount).to.equal(8);
-				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
+				expect(stubs.isObjectWithKeys.lastCall.calledWithExactly(1)).to.be.true;
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
@@ -514,7 +520,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ roles: [{ uuid: '' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -532,7 +538,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ roles: [{ uuid: undefined }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), undefined);
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly(undefined)).to.be.true;
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -550,7 +556,9 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly(
+				'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+			)).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].roles[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
@@ -568,7 +576,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ roles: [{ foo: 'bar' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), 'bar');
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly('bar')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].roles[0].foo).to.equal('bar');
@@ -586,7 +594,7 @@ describe('Prepare As Params module', () => {
 			const instance = { cast: [{ roles: [{ foo: '' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), '');
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly('')).to.be.true;
 			expect(stubs.uuid.called).to.be.false;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.cast[0].roles[0].foo).to.equal(null);
@@ -632,7 +640,7 @@ describe('Prepare As Params module', () => {
 				const instance = { cast: [{ roles: [{ uuid: '' }, { uuid: '' }] }] };
 				const result = prepareAsParams(instance);
 				expect(stubs.isObjectWithKeys.callCount).to.equal(9);
-				assert.calledWithExactly(stubs.isObjectWithKeys.lastCall, 1);
+				expect(stubs.isObjectWithKeys.lastCall.calledWithExactly(1)).to.be.true;
 				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
