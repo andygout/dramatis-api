@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { createSandbox, spy } from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
 
 import * as validateStringModule from '../../../src/lib/validate-string';
 import Role from '../../../src/models/Role';
@@ -119,6 +119,10 @@ describe('Role model', () => {
 					new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterName({ requiresCharacterName: false });
+				assert.callOrder(
+					stubs.validateString,
+					instance.addPropertyError
+				);
 				expect(stubs.validateString.calledOnce).to.be.true;
 				expect(stubs.validateString.calledWithExactly(
 					instance.characterName, { isRequiredString: false })

@@ -42,24 +42,22 @@ describe('Theatre model', () => {
 
 	describe('validateDeleteRequestInDatabase method', () => {
 
-		it('validates delete in database', async () => {
-
-			await instance.validateDeleteRequestInDatabase();
-			expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
-			expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
-			expect(stubs.neo4jQuery.calledOnce).to.be.true;
-			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getValidateDeleteQuery response', params: instance }
-			)).to.be.true;
-
-		});
-
 		context('valid data (results returned that indicate no dependent associations exist)', () => {
 
 			it('will not add properties to errors property', async () => {
 
 				stubs.neo4jQuery.resolves({ relationshipCount: 0 });
 				await instance.validateDeleteRequestInDatabase();
+				assert.callOrder(
+					stubs.getValidateDeleteQueries.theatre,
+					stubs.neo4jQuery
+				);
+				expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
+				expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.neo4jQuery.calledWithExactly(
+					{ query: 'getValidateDeleteQuery response', params: instance }
+				)).to.be.true;
 				expect(instance.errors).not.to.have.property('associations');
 				expect(instance.errors).to.deep.eq({});
 
@@ -73,6 +71,16 @@ describe('Theatre model', () => {
 
 				stubs.neo4jQuery.resolves({ relationshipCount: 1 });
 				await instance.validateDeleteRequestInDatabase();
+				assert.callOrder(
+					stubs.getValidateDeleteQueries.theatre,
+					stubs.neo4jQuery
+				);
+				expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
+				expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.neo4jQuery.calledWithExactly(
+					{ query: 'getValidateDeleteQuery response', params: instance }
+				)).to.be.true;
 				expect(instance.errors)
 					.to.have.property('associations')
 					.that.is.an('array')
@@ -91,19 +99,20 @@ describe('Theatre model', () => {
 			it('deletes', async () => {
 
 				spy(instance, 'validateDeleteRequestInDatabase');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.delete();
 				assert.callOrder(
 					instance.validateDeleteRequestInDatabase,
-					stubs.getValidateDeleteQueries.theatre,
-					stubs.neo4jQuery,
-					stubs.hasErrors,
+					instance.setErrorStatus,
 					stubs.sharedQueries.getDeleteQuery,
 					stubs.neo4jQuery
 				);
 				expect(instance.validateDeleteRequestInDatabase.calledOnce).to.be.true;
 				expect(instance.validateDeleteRequestInDatabase.calledWithExactly()).to.be.true;
-				expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
-				expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
 					{ query: 'getValidateDeleteQuery response', params: instance }
@@ -111,10 +120,6 @@ describe('Theatre model', () => {
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
 					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
-				expect(stubs.hasErrors.calledOnce).to.be.true;
-				expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryFixture);
 
 			});
@@ -127,24 +132,21 @@ describe('Theatre model', () => {
 
 				stubs.hasErrors.returns(true);
 				spy(instance, 'validateDeleteRequestInDatabase');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.delete();
 				assert.callOrder(
 					instance.validateDeleteRequestInDatabase,
-					stubs.getValidateDeleteQueries.theatre,
-					stubs.neo4jQuery,
-					stubs.hasErrors
+					instance.setErrorStatus
 				);
 				expect(instance.validateDeleteRequestInDatabase.calledOnce).to.be.true;
 				expect(instance.validateDeleteRequestInDatabase.calledWithExactly()).to.be.true;
-				expect(stubs.getValidateDeleteQueries.theatre.calledOnce).to.be.true;
-				expect(stubs.getValidateDeleteQueries.theatre.calledWithExactly()).to.be.true;
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getValidateDeleteQuery response', params: instance }
 				)).to.be.true;
-				expect(stubs.hasErrors.calledOnce).to.be.true;
-				expect(stubs.hasErrors.calledWithExactly(instance)).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.notCalled).to.be.true;
 				expect(result).to.deep.eq({ theatre: instance });
 
 			});
