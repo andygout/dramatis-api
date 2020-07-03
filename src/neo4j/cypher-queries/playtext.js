@@ -8,7 +8,7 @@ const getCreateUpdateQuery = action => {
 			OPTIONAL MATCH (playtext)-[relationship:INCLUDES_CHARACTER]->(:Character)
 
 			WITH playtext, COLLECT(relationship) AS relationships
-				FOREACH (relationship in relationships | DELETE relationship)
+				FOREACH (relationship IN relationships | DELETE relationship)
 				SET playtext.name = $name
 		`
 	};
@@ -43,10 +43,12 @@ const getEditQuery = () => `
 		'playtext' AS model,
 		playtext.uuid AS uuid,
 		playtext.name AS name,
-		COLLECT(CASE WHEN character IS NULL
-			THEN null
-			ELSE { name: character.name }
-		END) + [{ name: '' }] AS characters
+		COLLECT(
+			CASE WHEN character IS NULL
+				THEN null
+				ELSE { name: character.name }
+			END
+		) + [{ name: '' }] AS characters
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -62,9 +64,12 @@ const getShowQuery = () => `
 		ORDER BY charRel.position
 
 	WITH playtext, production, theatre,
-		COLLECT(CASE WHEN character IS NULL THEN null ELSE
-				{ model: 'character', uuid: character.uuid, name: character.name }
-			END) AS characters
+		COLLECT(
+			CASE WHEN character IS NULL
+				THEN null
+				ELSE { model: 'character', uuid: character.uuid, name: character.name }
+			END
+		) AS characters
 		ORDER BY production.name, theatre.name
 
 	RETURN
@@ -72,13 +77,17 @@ const getShowQuery = () => `
 		playtext.uuid AS uuid,
 		playtext.name AS name,
 		characters,
-		COLLECT(CASE WHEN production IS NULL THEN null ELSE
-			{
-				model: 'production',
-				uuid: production.uuid,
-				name: production.name,
-				theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
-			} END) AS productions
+		COLLECT(
+			CASE WHEN production IS NULL
+				THEN null
+				ELSE {
+					model: 'production',
+					uuid: production.uuid,
+					name: production.name,
+					theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+				}
+			END
+		) AS productions
 `;
 
 export {

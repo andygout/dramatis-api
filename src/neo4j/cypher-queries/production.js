@@ -31,7 +31,7 @@ const getCreateUpdateQuery = action => {
 			MERGE (person:Person { name: castMember.name })
 				ON CREATE SET person.uuid = castMember.uuid
 
-			FOREACH (role in CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
+			FOREACH (role IN CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
 				CREATE (production)
 					<-[:PERFORMS_IN {
 						castMemberPosition: castMember.position,
@@ -62,13 +62,15 @@ const getEditQuery = () => `
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, theatre, playtext, person,
-		COLLECT(CASE WHEN role.roleName IS NULL
-			THEN null
-			ELSE {
-				name: role.roleName,
-				characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
-			}
-		END) + [{ name: '', characterName: '' }] AS roles
+		COLLECT(
+			CASE WHEN role.roleName IS NULL
+				THEN null
+				ELSE {
+					name: role.roleName,
+					characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+				}
+			END
+		) + [{ name: '', characterName: '' }] AS roles
 
 	RETURN
 		'production' AS model,
@@ -76,10 +78,12 @@ const getEditQuery = () => `
 		production.name AS name,
 		{ name: theatre.name } AS theatre,
 		{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
-		COLLECT(CASE WHEN person IS NULL
-			THEN null
-			ELSE { name: person.name, roles: roles }
-		END) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+		COLLECT(
+			CASE WHEN person IS NULL
+				THEN null
+				ELSE { name: person.name, roles: roles }
+			END
+		) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -110,9 +114,12 @@ const getShowQuery = () => `
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, theatre, playtext, person,
-		COLLECT(CASE WHEN role.roleName IS NULL THEN { name: 'Performer' } ELSE
-				{ model: 'character', uuid: character.uuid, name: role.roleName }
-			END) AS roles
+		COLLECT(
+			CASE WHEN role.roleName IS NULL
+				THEN { name: 'Performer' }
+				ELSE { model: 'character', uuid: character.uuid, name: role.roleName }
+			END
+		) AS roles
 
 	RETURN
 		'production' AS model,
@@ -122,9 +129,12 @@ const getShowQuery = () => `
 		CASE WHEN playtext IS NULL THEN null ELSE
 				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
 			END AS playtext,
-		COLLECT(CASE WHEN person IS NULL THEN null ELSE
-				{ model: 'person', uuid: person.uuid, name: person.name, roles: roles }
-			END) AS cast
+		COLLECT(
+			CASE WHEN person IS NULL
+				THEN null
+				ELSE { model: 'person', uuid: person.uuid, name: person.name, roles: roles }
+			END
+		) AS cast
 `;
 
 export {

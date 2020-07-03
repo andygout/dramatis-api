@@ -16,9 +16,12 @@ const getShowQuery = () => `
 		'theatre' AS model,
 		theatre.uuid AS uuid,
 		theatre.name AS name,
-		COLLECT(CASE WHEN production IS NULL THEN null ELSE
-				{ model: 'production', uuid: production.uuid, name: production.name }
-			END) AS productions
+		COLLECT(
+			CASE WHEN production IS NULL
+				THEN null
+				ELSE { model: 'production', uuid: production.uuid, name: production.name }
+			END
+		) AS productions
 `;
 
 export {
