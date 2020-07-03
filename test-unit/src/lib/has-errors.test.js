@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { assert, createSandbox } from 'sinon';
+import { createSandbox } from 'sinon';
 
 import { hasErrors } from '../../../src/lib/has-errors';
 import * as isObjectWithKeysModule from '../../../src/lib/is-object-with-keys';
@@ -37,11 +37,11 @@ describe('Has Errors module', () => {
 			const instance = { errors: {}, theatre: { errors: {} } };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(5);
-			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, {});
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, {});
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, { errors: {} });
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(3), {});
-			assert.calledWithExactly(stubs.isObjectWithKeys.getCall(4), {});
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly({})).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly({})).to.be.true;
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly({ errors: {} })).to.be.true;
+			expect(stubs.isObjectWithKeys.getCall(3).calledWithExactly({})).to.be.true;
+			expect(stubs.isObjectWithKeys.getCall(4).calledWithExactly({})).to.be.true;
 			expect(result).to.be.false;
 
 		});
@@ -61,8 +61,8 @@ describe('Has Errors module', () => {
 			const instance = { errors: null };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, null);
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, null);
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(null)).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(null)).to.be.true;
 			expect(result).to.be.false;
 
 		});
@@ -72,9 +72,9 @@ describe('Has Errors module', () => {
 			const instance = { errors: ['Name is too short'] };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledThrice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, ['Name is too short']);
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, ['Name is too short']);
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, 'Name is too short');
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(['Name is too short'])).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(['Name is too short'])).to.be.true;
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('Name is too short')).to.be.true;
 			expect(result).to.be.false;
 
 		});
@@ -106,8 +106,12 @@ describe('Has Errors module', () => {
 			const instance = { theatre: { errors: { name: ['Name is too short'] } } };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, { errors: { name: ['Name is too short'] } });
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, { name: ['Name is too short'] });
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(
+				{ errors: { name: ['Name is too short'] } }
+			)).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(
+				{ name: ['Name is too short'] }
+			)).to.be.true;
 			expect(result).to.be.true;
 
 		});
@@ -125,9 +129,13 @@ describe('Has Errors module', () => {
 			const instance = { cast: [{ errors: { name: ['Name is too short'] } }] };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledThrice).to.be.true;
-			assert.calledWithExactly(stubs.isObjectWithKeys.firstCall, [{ errors: { name: ['Name is too short'] } }]);
-			assert.calledWithExactly(stubs.isObjectWithKeys.secondCall, { errors: { name: ['Name is too short'] } });
-			assert.calledWithExactly(stubs.isObjectWithKeys.thirdCall, { name: ['Name is too short'] });
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(
+				[{ errors: { name: ['Name is too short'] } }]
+			)).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(
+				{ errors: { name: ['Name is too short'] } }
+			)).to.be.true;
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly({ name: ['Name is too short'] })).to.be.true;
 			expect(result).to.be.true;
 
 		});
