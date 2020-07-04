@@ -77,12 +77,10 @@ export default class Base {
 
 		const { getExistenceQuery } = sharedQueries;
 
-		const { exists } = await neo4jQuery({
+		await neo4jQuery({
 			query: getExistenceQuery(this.model),
 			params: this
 		});
-
-		if (!exists) throw new Error('Not Found');
 
 	}
 

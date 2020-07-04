@@ -1,5 +1,4 @@
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
+import { expect } from 'chai';
 import { assert, createSandbox, spy, stub } from 'sinon';
 
 import * as hasErrorsModule from '../../../src/lib/has-errors';
@@ -11,9 +10,6 @@ import * as neo4jQueryModule from '../../../src/neo4j/query';
 import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Base model', () => {
-
-	const expect = chai.expect;
-	chai.use(chaiAsPromised);
 
 	let stubs;
 	let instance;
@@ -338,28 +334,6 @@ describe('Base model', () => {
 
 		});
 
-		context('instance does not exist', () => {
-
-			it('will throw Not Found error', async () => {
-
-				stubs.neo4jQuery.resolves({ exists: false });
-				await expect(instance.confirmExistenceInDatabase()).to.be.rejectedWith(Error, 'Not Found');
-
-			});
-
-		});
-
-		context('instance exists', () => {
-
-			it('will not throw Not Found error', async () => {
-
-				stubs.neo4jQuery.resolves({ exists: true });
-				await expect(instance.confirmExistenceInDatabase()).to.not.be.rejectedWith(Error, 'Not Found');
-
-			});
-
-		});
-
 	});
 
 	describe('createUpdate method', () => {
@@ -548,29 +522,12 @@ describe('Base model', () => {
 
 	describe('update method', () => {
 
-		context('instance does not exist', () => {
-
-			it('will throw Not Found error', async () => {
-
-				stubs.neo4jQuery.resolves({ exists: false });
-				spy(instance, 'confirmExistenceInDatabase');
-				spy(instance, 'createUpdate');
-				await expect(instance.update()).to.be.rejectedWith(Error, 'Not Found');
-				expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
-				expect(instance.confirmExistenceInDatabase.calledWithExactly()).to.be.true;
-				expect(instance.createUpdate.called).to.be.false;
-
-			});
-
-		});
-
 		context('instance exists', () => {
 
 			context('instance requires a model-specific query', () => {
 
 				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
-					stubs.neo4jQuery.resolves({ exists: true });
 					instance.model = 'production';
 					spy(instance, 'confirmExistenceInDatabase');
 					spy(instance, 'createUpdate');
@@ -588,7 +545,6 @@ describe('Base model', () => {
 
 				it('calls createUpdate method with function to get shared update query as argument', async () => {
 
-					stubs.neo4jQuery.resolves({ exists: true });
 					spy(instance, 'confirmExistenceInDatabase');
 					spy(instance, 'createUpdate');
 					await instance.update();

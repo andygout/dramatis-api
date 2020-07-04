@@ -65,11 +65,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
-					RETURN
-						CASE WHEN SIGN(COUNT(n)) = 1
-							THEN true
-							ELSE false
-						END AS exists
+					RETURN n
 				`));
 
 			});
