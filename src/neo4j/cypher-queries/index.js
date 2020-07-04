@@ -15,7 +15,7 @@ import {
 } from './production';
 import * as sharedQueries from './shared';
 import {
-	getValidateDeleteRequestQuery as getTheatreValidateDeleteRequestQuery,
+	getDeleteQuery as getTheatreDeleteQuery,
 	getShowQuery as getTheatreShowQuery
 } from './theatre';
 
@@ -35,7 +35,8 @@ const getUpdateQueries = {
 };
 
 const getDeleteQueries = {
-	production: getProductionDeleteQuery
+	production: getProductionDeleteQuery,
+	theatre: getTheatreDeleteQuery
 };
 
 const getShowQueries = {
@@ -46,16 +47,11 @@ const getShowQueries = {
 	theatre: getTheatreShowQuery
 };
 
-const getValidateDeleteRequestQueries = {
-	theatre: getTheatreValidateDeleteRequestQuery
-};
-
 export {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
 	getDeleteQueries,
 	getShowQueries,
-	getValidateDeleteRequestQueries,
 	sharedQueries
 };
