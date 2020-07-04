@@ -1,5 +1,5 @@
 const getValidateDeleteRequestQuery = () => `
-	MATCH (theatre:Theatre { uuid: $uuid })<-[relationship:PLAYS_AT]-(production:Production)
+	MATCH (:Theatre { uuid: $uuid })<-[relationship:PLAYS_AT]-(:Production)
 
 	RETURN SIGN(COUNT(relationship)) AS relationshipCount
 `;
