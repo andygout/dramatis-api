@@ -4,7 +4,7 @@ import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Role } from '../../../src/models';
 
-describe('Person Cast Member model', () => {
+describe('Cast Member model', () => {
 
 	let stubs;
 	let instance;
@@ -31,16 +31,16 @@ describe('Person Cast Member model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/PersonCastMember', {
+		proxyquire('../../../src/models/CastMember', {
 			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
 			'.': stubs.models
 		}).default;
 
 	const createInstance = (props = { name: 'Ian McKellen', roles: [{ name: 'King Lear' }] }) => {
 
-		const PersonCastMember = createSubject();
+		const CastMember = createSubject();
 
-		return new PersonCastMember(props);
+		return new CastMember(props);
 
 	};
 
@@ -48,14 +48,7 @@ describe('Person Cast Member model', () => {
 
 		describe('roles property', () => {
 
-			it('assigns empty array if absent from props', () => {
-
-				instance = createInstance({ name: 'Ian McKellen' });
-				expect(instance.roles).to.deep.eq([]);
-
-			});
-
-			it('assigns array of roles if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of role instances, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'Ian McKellen',

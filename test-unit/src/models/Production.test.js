@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { BasicModel, PersonCastMember, Theatre } from '../../../src/models';
+import { BasicModel, CastMember, Theatre } from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -15,9 +15,9 @@ describe('Production model', () => {
 
 	};
 
-	const PersonCastMemberStub = function () {
+	const CastMemberStub = function () {
 
-		return createStubInstance(PersonCastMember);
+		return createStubInstance(CastMember);
 
 	};
 
@@ -43,7 +43,7 @@ describe('Production model', () => {
 			},
 			models: {
 				BasicModel: BasicModelStub,
-				PersonCastMember: PersonCastMemberStub,
+				CastMember: CastMemberStub,
 				Theatre: TheatreStub
 			}
 		};
@@ -94,9 +94,9 @@ describe('Production model', () => {
 				};
 				const instance = createInstance(props);
 				expect(instance.cast.length).to.equal(3);
-				expect(instance.cast[0] instanceof PersonCastMember).to.be.true;
-				expect(instance.cast[1] instanceof PersonCastMember).to.be.true;
-				expect(instance.cast[2] instanceof PersonCastMember).to.be.true;
+				expect(instance.cast[0] instanceof CastMember).to.be.true;
+				expect(instance.cast[1] instanceof CastMember).to.be.true;
+				expect(instance.cast[2] instanceof CastMember).to.be.true;
 
 			});
 

@@ -7,7 +7,7 @@ const EXCLUDED_MODELS = [
 	'Base',
 	'BasicModel',
 	'index',
-	'PersonCastMember'
+	'CastMember'
 ];
 
 const models = require('fs')
