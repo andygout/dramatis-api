@@ -1,6 +1,6 @@
 import BasicModel from './BasicModel';
+import CastMember from './CastMember';
 import Character from './Character';
-import PersonCastMember from './PersonCastMember';
 import Person from './Person';
 import Playtext from './Playtext';
 import Production from './Production';
@@ -9,8 +9,8 @@ import Theatre from './Theatre';
 
 export {
 	BasicModel,
+	CastMember,
 	Character,
-	PersonCastMember,
 	Person,
 	Playtext,
 	Production,

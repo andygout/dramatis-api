@@ -1,6 +1,6 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
 import Base from './Base';
-import { BasicModel, PersonCastMember, Theatre } from '.';
+import { BasicModel, CastMember, Theatre } from '.';
 
 export default class Production extends Base {
 
@@ -15,7 +15,7 @@ export default class Production extends Base {
 		this.theatre = new Theatre(theatre);
 		this.playtext = new BasicModel({ model: 'playtext', ...playtext });
 		this.cast = cast
-			? cast.map(castMember => new PersonCastMember(castMember))
+			? cast.map(castMember => new CastMember(castMember))
 			: [];
 
 	}

@@ -1,20 +1,14 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
-import Base from './Base';
+import Person from './Person';
 import { Role } from '.';
 
-export default class PersonCastMember extends Base {
+export default class CastMember extends Person {
 
 	constructor (props = {}) {
 
 		super(props);
 
-		const { uuid, roles } = props;
-
-		this.model = 'person';
-		this.uuid = uuid;
-		this.roles = roles
-			? roles.map(role => new Role(role))
-			: [];
+		this.roles = props.roles.map(role => new Role(role));
 
 	}
 
