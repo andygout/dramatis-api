@@ -47,7 +47,8 @@ const getDeleteQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
 	WITH n, n.name AS name
-		DETACH DELETE n
+
+	DETACH DELETE n
 
 	RETURN
 		'${model}' AS model,
