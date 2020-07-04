@@ -3,11 +3,7 @@ import { capitalise } from '../../lib/strings';
 const getExistenceQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
 
-	RETURN
-		CASE WHEN SIGN(COUNT(n)) = 1
-			THEN true
-			ELSE false
-		END AS exists
+	RETURN n
 `;
 
 const getDuplicateNameCountQuery = (model, uuid) => `
