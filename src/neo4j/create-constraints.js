@@ -5,7 +5,6 @@ import { neo4jQuery } from './query';
 
 const EXCLUDED_MODELS = [
 	'Base',
-	'BasicModel',
 	'index',
 	'CastMember'
 ];
