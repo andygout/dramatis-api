@@ -8,7 +8,10 @@ const getExistenceQuery = model => `
 
 const getDuplicateNameCountQuery = (model, uuid) => `
 	MATCH (n:${capitalise(model)} { name: $name })
-		${uuid ? 'WHERE n.uuid <> $uuid' : ''}
+		${uuid
+			? 'WHERE n.uuid <> $uuid'
+			: ''
+		}
 
 	RETURN SIGN(COUNT(n)) AS instanceCount
 `;
@@ -53,11 +56,13 @@ const getDeleteQuery = model => `
 
 const getListQuery = model => {
 
-	const theatreRelationship = (model === 'production') ? '-[:PLAYS_AT]->(t:Theatre)' : '';
+	const theatreRelationship = (model === 'production')
+		? '-[:PLAYS_AT]->(t:Theatre)'
+		: '';
 
-	const theatreObject = (model === 'production') ?
-		', { model: \'theatre\', uuid: t.uuid, name: t.name } AS theatre' :
-		'';
+	const theatreObject = (model === 'production')
+		? ', { model: \'theatre\', uuid: t.uuid, name: t.name } AS theatre'
+		: '';
 
 	return `
 		MATCH (n:${capitalise(model)})${theatreRelationship}
