@@ -22,7 +22,9 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 		if (!results.length && !isOptionalResult) throw new Error('Not Found');
 
-		return isArrayResult ? results : results[0];
+		return isArrayResult
+			? results
+			: results[0];
 
 	} catch (error) {
 
