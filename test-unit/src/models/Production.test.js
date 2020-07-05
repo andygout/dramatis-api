@@ -2,22 +2,22 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { BasicModel, CastMember, Theatre } from '../../../src/models';
+import { CastMember, Playtext, Theatre } from '../../../src/models';
 
 describe('Production model', () => {
 
 	let stubs;
 	let instance;
 
-	const BasicModelStub = function () {
-
-		return createStubInstance(BasicModel);
-
-	};
-
 	const CastMemberStub = function () {
 
 		return createStubInstance(CastMember);
+
+	};
+
+	const PlaytextStub = function () {
+
+		return createStubInstance(Playtext);
 
 	};
 
@@ -42,8 +42,8 @@ describe('Production model', () => {
 				}
 			},
 			models: {
-				BasicModel: BasicModelStub,
 				CastMember: CastMemberStub,
+				Playtext: PlaytextStub,
 				Theatre: TheatreStub
 			}
 		};

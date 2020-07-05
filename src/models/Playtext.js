@@ -8,13 +8,18 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		const { uuid, characters } = props;
+		const { uuid, characters, isAssociation } = props;
 
 		this.model = 'playtext';
 		this.uuid = uuid;
-		this.characters = characters
-			? characters.map(character => new Character(character))
-			: [];
+
+		if (!isAssociation) {
+
+			this.characters = characters
+				? characters.map(character => new Character(character))
+				: [];
+
+		}
 
 	}
 

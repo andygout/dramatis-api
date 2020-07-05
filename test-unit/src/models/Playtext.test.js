@@ -59,31 +59,63 @@ describe('Playtext model', () => {
 
 	describe('constructor method', () => {
 
-		describe('characters property', () => {
+		context('instance is subject', () => {
 
-			it('assigns empty array if absent from props', () => {
+			describe('characters property', () => {
 
-				const props = { name: 'The Tragedy of Hamlet, Prince of Denmark' };
-				const instance = createInstance(props);
-				expect(instance.characters).to.deep.eq([]);
+				it('assigns empty array if absent from props', () => {
+
+					const props = { name: 'The Tragedy of Hamlet, Prince of Denmark' };
+					const instance = createInstance(props);
+					expect(instance.characters).to.deep.eq([]);
+
+				});
+
+				it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
+
+					const props = {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						characters: [
+							{ name: 'Hamlet' },
+							{ name: '' },
+							{ name: ' ' }
+						]
+					};
+					const instance = createInstance(props);
+					expect(instance.characters.length).to.equal(3);
+					expect(instance.characters[0] instanceof Character).to.be.true;
+					expect(instance.characters[1] instanceof Character).to.be.true;
+					expect(instance.characters[2] instanceof Character).to.be.true;
+
+				});
 
 			});
 
-			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
+		});
 
-				const props = {
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
-					characters: [
-						{ name: 'Hamlet' },
-						{ name: '' },
-						{ name: ' ' }
-					]
-				};
-				const instance = createInstance(props);
-				expect(instance.characters.length).to.equal(3);
-				expect(instance.characters[0] instanceof Character).to.be.true;
-				expect(instance.characters[1] instanceof Character).to.be.true;
-				expect(instance.characters[2] instanceof Character).to.be.true;
+		context('instance is not subject, i.e. it is an association of another instance', () => {
+
+			describe('characters property', () => {
+
+				it('will not assign any value if absent from props', () => {
+
+					const props = { name: 'The Tragedy of Hamlet, Prince of Denmark', isAssociation: true };
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('characters');
+
+				});
+
+				it('will not assign any value if included in props', () => {
+
+					const props = {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						characters: [{ name: 'Hamlet' }],
+						isAssociation: true
+					};
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('characters');
+
+				});
 
 			});
 
