@@ -16,10 +16,10 @@ const getCreateUpdateQuery = action => {
 	return `
 		${createUpdateQueryOpeningMap[action]}
 
-		FOREACH (char IN $characters |
-			MERGE (character:Character { name: char.name })
-			ON CREATE SET character.uuid = char.uuid
-			CREATE (playtext)-[:INCLUDES_CHARACTER { position: char.position }]->(character)
+		FOREACH (characterParam IN $characters |
+			MERGE (character:Character { name: characterParam.name })
+			ON CREATE SET character.uuid = characterParam.uuid
+			CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
 		)
 
 		WITH playtext
@@ -34,10 +34,10 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
-	OPTIONAL MATCH (playtext)-[charRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-	WITH playtext, charRel, character
-		ORDER BY charRel.position
+	WITH playtext, characterRel, character
+		ORDER BY characterRel.position
 
 	RETURN
 		'playtext' AS model,
@@ -56,12 +56,12 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getShowQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
-	OPTIONAL MATCH (playtext)-[charRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
 	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	WITH playtext, character, production, theatre
-		ORDER BY charRel.position
+		ORDER BY characterRel.position
 
 	WITH playtext, production, theatre,
 		COLLECT(
