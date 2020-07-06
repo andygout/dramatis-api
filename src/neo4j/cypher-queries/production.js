@@ -8,8 +8,10 @@ const getCreateUpdateQuery = action => {
 			OPTIONAL MATCH (production)-[relationship]-()
 
 			WITH production, COLLECT(relationship) AS relationships
-				FOREACH (relationship IN relationships | DELETE relationship)
-				SET production.name = $name
+
+			FOREACH (relationship IN relationships | DELETE relationship)
+
+			SET production.name = $name
 		`
 	};
 
@@ -92,7 +94,8 @@ const getDeleteQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
 	WITH production, production.name AS name
-		DETACH DELETE production
+
+	DETACH DELETE production
 
 	RETURN
 		'production' AS model,
