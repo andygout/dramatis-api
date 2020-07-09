@@ -6,11 +6,11 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Cast member with multiple production credits', () => {
+
+	chai.use(chaiHttp);
+
+	const expect = chai.expect;
 
 	const TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '0';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '1';

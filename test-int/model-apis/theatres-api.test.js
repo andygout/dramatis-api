@@ -7,11 +7,11 @@ import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Theatres API', () => {
+
+	chai.use(chaiHttp);
+
+	const expect = chai.expect;
 
 	describe('GET new endpoint', () => {
 

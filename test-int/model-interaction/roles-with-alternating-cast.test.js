@@ -6,11 +6,11 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Roles with alternating cast', () => {
+
+	chai.use(chaiHttp);
+
+	const expect = chai.expect;
 
 	const AUSTIN_CHARACTER_UUID = '1';
 	const LEE_CHARACTER_UUID = '2';
