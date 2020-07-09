@@ -1,4 +1,4 @@
-import chai from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
@@ -6,11 +6,9 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Playtext with multiple productions', () => {
+
+	chai.use(chaiHttp);
 
 	const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
 	const NATIONAL_THEATRE_UUID = '1';

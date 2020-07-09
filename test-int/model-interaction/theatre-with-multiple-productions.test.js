@@ -1,4 +1,4 @@
-import chai from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
@@ -6,11 +6,9 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Theatre with multiple productions', () => {
+
+	chai.use(chaiHttp);
 
 	const STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
 	const DONMAR_WAREHOUSE_THEATRE_UUID = '1';

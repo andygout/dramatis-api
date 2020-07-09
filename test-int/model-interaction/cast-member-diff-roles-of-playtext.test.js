@@ -1,4 +1,4 @@
-import chai from 'chai';
+import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 import { v4 as uuid } from 'uuid';
@@ -6,11 +6,9 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-chai.use(chaiHttp);
-
-const expect = chai.expect;
-
 describe('Cast member performing different roles in different productions of same playtext', () => {
+
+	chai.use(chaiHttp);
 
 	const KING_LEAR_CHARACTER_UUID = '1';
 	const FOOL_CHARACTER_UUID = '2';
