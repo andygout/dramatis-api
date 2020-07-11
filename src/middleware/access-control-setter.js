@@ -5,7 +5,7 @@ export default (request, response, next) => {
 
 	if (request.method === 'OPTIONS') {
 
-		response.header('Access-Control-Allow-Methods', 'PUT');
+		response.header('Access-Control-Allow-Methods', 'PUT, DELETE');
 
 		return response.sendStatus(200);
 
