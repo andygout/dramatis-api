@@ -81,7 +81,7 @@ describe('Theatre model', () => {
 				expect(instance.addPropertyError.calledWithExactly('associations', 'productions')).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-				expect(result).to.deep.eq({ theatre: instance });
+				expect(result).to.deep.eq(instance);
 
 			});
 
