@@ -22,11 +22,13 @@ export default class Theatre extends Base {
 
 		if (isDeleted) return { model, name };
 
+		this.name = name;
+
 		this.addPropertyError('associations', 'productions');
 
 		this.setErrorStatus();
 
-		return { theatre: this };
+		return this;
 
 	}
 
