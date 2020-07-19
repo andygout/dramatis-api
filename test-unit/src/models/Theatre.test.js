@@ -78,7 +78,7 @@ describe('Theatre model', () => {
 					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('associations', 'productions')).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('dependentAssociations', 'productions')).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(result).to.deep.eq(instance);
