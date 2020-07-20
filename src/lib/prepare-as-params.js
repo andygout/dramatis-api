@@ -15,7 +15,7 @@ export const prepareAsParams = instance => {
 
 			accumulator[key] =
 				instance[key]
-					.filter(item => !item.hasOwnProperty('name') || !!item.name.length)
+					.filter(item => !Object.prototype.hasOwnProperty.call(item, 'name') || !!item.name.length)
 					.map((item, index, array) => {
 
 						if (isObjectWithKeys(item)) {
