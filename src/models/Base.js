@@ -15,7 +15,7 @@ export default class Base {
 
 	constructor (props = {}) {
 
-		this.name = props.name && props.name.trim() || '';
+		this.name = props.name?.trim() || '';
 		this.errors = {};
 
 	}
@@ -116,7 +116,7 @@ export default class Base {
 		const { getEditQuery } = sharedQueries;
 
 		const neo4jInstance = await neo4jQuery({
-			query: (getEditQueries[this.model] && getEditQueries[this.model]()) || getEditQuery(this.model),
+			query: (getEditQueries[this.model]?.()) || getEditQuery(this.model),
 			params: this
 		});
 
@@ -139,7 +139,7 @@ export default class Base {
 		const { getDeleteQuery } = sharedQueries;
 
 		return neo4jQuery({
-			query: (getDeleteQueries[this.model] && getDeleteQueries[this.model]()) || getDeleteQuery(this.model),
+			query: (getDeleteQueries[this.model]?.()) || getDeleteQuery(this.model),
 			params: this
 		});
 
