@@ -14,4 +14,4 @@ export const getDuplicateNameIndices = arrayOfObjects => {
 		return accumulator;
 	}, []);
 
-}
+};

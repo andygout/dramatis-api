@@ -8,4 +8,4 @@ export default (error, request, response, next) => {
 
 	return response.sendStatus(status);
 
-}
+};

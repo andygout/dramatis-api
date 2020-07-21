@@ -253,7 +253,7 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false);
-			const instance = { cast: [{ foo: 'bar' }] }
+			const instance = { cast: [{ foo: 'bar' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
 			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('bar')).to.be.true;
@@ -269,7 +269,7 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(false);
-			const instance = { cast: [{ foo: '' }] }
+			const instance = { cast: [{ foo: '' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.isObjectWithKeys.callCount).to.equal(3);
 			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('')).to.be.true;

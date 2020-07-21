@@ -31,7 +31,7 @@ const createConstraint = async model => {
 
 	}
 
-}
+};
 
 export default async () => {
 
@@ -68,4 +68,4 @@ export default async () => {
 
 	}
 
-}
+};

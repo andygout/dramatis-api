@@ -39,7 +39,7 @@ describe('People API', () => {
 
 		before(async () => {
 
-			sandbox.stub(uuid, 'v4').returns(PERSON_UUID)
+			sandbox.stub(uuid, 'v4').returns(PERSON_UUID);
 
 			await purgeDatabase();
 
