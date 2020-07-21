@@ -12,24 +12,16 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 	const session = driver.session();
 
-	try {
+	const response = await session.run(query, params);
 
-		const response = await session.run(query, params);
+	session.close();
 
-		session.close();
+	const results = convertRecordsToObjects(response);
 
-		const results = convertRecordsToObjects(response);
+	if (!results.length && !isOptionalResult) throw new Error('Not Found');
 
-		if (!results.length && !isOptionalResult) throw new Error('Not Found');
-
-		return isArrayResult
-			? results
-			: results[0];
-
-	} catch (error) {
-
-		throw error;
-
-	}
+	return isArrayResult
+		? results
+		: results[0];
 
 };
