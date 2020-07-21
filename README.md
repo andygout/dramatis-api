@@ -30,11 +30,11 @@ Graph database-driven API for site of theatrical productions, playtexts, and ass
 - Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3001`, which will point at this API on port 3000.
 
 ## To view content via user interface (locally)
-- Run a local instance of [`theatrebase-ssr`](https://github.com/andygout/theatrebase-ssr) (server-side rendered) on `http://localhost:3002`, which will point at this API on port 3000.
+- Run a local instance of [`theatrebase-spa`](https://github.com/andygout/theatrebase-spa) (single-page application) on `http://localhost:3002`, which will point at this API on port 3000.
 
 or
 
-- Run a local instance of [`theatrebase-spa`](https://github.com/andygout/theatrebase-spa) (single-page application) on `http://localhost:3003`, which will point at this API on port 3000.
+- Run a local instance of [`theatrebase-ssr`](https://github.com/andygout/theatrebase-ssr) (server-side rendered) on `http://localhost:3003`, which will point at this API on port 3000.
 
 ## To run linting checks
 - `$ npm run lint-check`.
