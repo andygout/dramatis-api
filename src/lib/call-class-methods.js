@@ -6,7 +6,7 @@ const callInstanceMethod = async (response, next, classInstance, method) => {
 
 		const instance = await classInstance[method]();
 
-		return sendJsonResponse(response, instance)
+		return sendJsonResponse(response, instance);
 
 	} catch (error) {
 

@@ -345,7 +345,7 @@ describe('Base model', () => {
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
-				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery)
+				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery);
 				assert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,

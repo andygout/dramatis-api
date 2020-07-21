@@ -9,4 +9,4 @@ export default async () => {
 
 	await neo4jQuery({ query: purgeDatabaseQuery, params: {} }, { isOptionalResult: true });
 
-}
+};
