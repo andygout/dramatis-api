@@ -16,10 +16,12 @@ const models = require('fs')
 
 const createConstraint = async model => {
 
+	const createConstraintQuery = `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE`;
+
 	try {
 
 		await neo4jQuery(
-			{ query: `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE` },
+			{ query: createConstraintQuery },
 			{ isOptionalResult: true }
 		);
 
@@ -27,7 +29,7 @@ const createConstraint = async model => {
 
 	} catch (error) {
 
-		console.log(`Neo4j database: Error attempting to create constraint for ${model}: `, error); // eslint-disable-line no-console
+		console.log(`Neo4j database: Error attempting query '${createConstraintQuery}': `, error); // eslint-disable-line no-console
 
 	}
 
@@ -35,10 +37,12 @@ const createConstraint = async model => {
 
 export default async () => {
 
+	const callDbConstraintsQuery = 'CALL db.constraints()';
+
 	try {
 
 		const constraints = await neo4jQuery(
-			{ query: 'CALL db.constraints()' },
+			{ query: callDbConstraintsQuery },
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
@@ -64,7 +68,7 @@ export default async () => {
 
 	} catch (error) {
 
-		console.log('Neo4j database: Error attempting: CALL db.constraints(): ', error); // eslint-disable-line no-console
+		console.log(`Neo4j database: Error attempting query '${callDbConstraintsQuery}': `, error); // eslint-disable-line no-console
 
 	}
 
