@@ -12,9 +12,10 @@
     "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
     "int-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
     "int-test": "mocha --require @babel/register test-int/mocha.env.js test-int/**/*.test.js",
-    "build": "babel src --out-dir built",
-    "watch": "babel src --watch --out-dir built",
-    "start": "node built/setup.js && npm run watch & nodemon built/app.js"
+    "build": "babel src --out-dir built --source-maps inline",
+    "watch": "babel src --watch --out-dir built --source-maps inline",
+    "setup": "node --require source-map-support/register built/setup.js",
+    "start": "npm run setup && npm run watch & nodemon --require source-map-support/register built/app.js"
   },
   "pre-commit": [
     "lint-check",
@@ -30,6 +31,7 @@
     "express": "^4.17.1",
     "morgan": "^1.5.1",
     "neo4j-driver": "^4.0.2",
+    "source-map-support": "^0.5.19",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
