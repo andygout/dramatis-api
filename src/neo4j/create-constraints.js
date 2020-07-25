@@ -29,7 +29,7 @@ const createConstraint = async model => {
 
 	} catch (error) {
 
-		console.log(`Neo4j database: Error attempting query '${createConstraintQuery}': `, error); // eslint-disable-line no-console
+		console.error(`Neo4j database: Error attempting query '${createConstraintQuery}': `, error); // eslint-disable-line no-console
 
 	}
 
@@ -68,7 +68,7 @@ export default async () => {
 
 	} catch (error) {
 
-		console.log(`Neo4j database: Error attempting query '${callDbConstraintsQuery}': `, error); // eslint-disable-line no-console
+		console.error(`Neo4j database: Error attempting query '${callDbConstraintsQuery}': `, error); // eslint-disable-line no-console
 
 	}
 
