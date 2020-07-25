@@ -2,6 +2,8 @@
   "name": "theatrebase-api",
   "version": "0.0.0",
   "description": "Graph database-driven API for site of theatrical productions, playtexts, and associated data.",
+  "author": "https://github.com/andygout",
+  "license": "MS-RSL",
   "main": "src/app.js",
   "scripts": {
     "lint": "eslint --ext .js src/ test-int/ test-unit/",
@@ -18,8 +20,10 @@
     "lint-check",
     "unit-test"
   ],
-  "author": "https://github.com/andygout",
-  "license": "MS-RSL",
+  "engines": {
+    "node": "14.5.0",
+    "npm": "6.14.5"
+  },
   "dependencies": {
     "directly": "^2.0.4",
     "dotenv": "^2.0.0",
@@ -43,9 +47,5 @@
     "pre-commit": "^1.2.2",
     "proxyquire": "^1.7.10",
     "sinon": "^7.4.1"
-  },
-  "engines": {
-    "node": "14.5.0",
-    "npm": "6.14.5"
   }
 }
