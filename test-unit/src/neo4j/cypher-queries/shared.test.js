@@ -45,6 +45,8 @@ describe('Cypher Queries Shared module', () => {
 						n.uuid AS uuid,
 						n.name AS name
 						, { model: 'theatre', uuid: t.uuid, name: t.name } AS theatre
+
+					LIMIT 100
 				`));
 
 			});
@@ -219,6 +221,8 @@ describe('Cypher Queries Shared module', () => {
 						'theatre' AS model,
 						n.uuid AS uuid,
 						n.name AS name
+
+					LIMIT 100
 				`));
 
 			});
