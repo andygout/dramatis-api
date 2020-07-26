@@ -72,6 +72,8 @@ const getListQuery = model => {
 			n.uuid AS uuid,
 			n.name AS name
 			${theatreObject}
+
+		LIMIT 100
 	`;
 
 };
