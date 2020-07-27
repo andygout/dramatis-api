@@ -42,6 +42,9 @@ or
 ## To run unit tests
 - `$ npm run unit-test`.
 
+## To run integration tests
+- `$ npm run int-test`.
+
 ## To run end-to-end tests
 - Download and run the [Docker Desktop app](https://www.docker.com/products/docker-desktop).
 - Stop any Neo4j databases running on the Desktop app.

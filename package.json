@@ -6,10 +6,11 @@
   "license": "MS-RSL",
   "main": "src/app.js",
   "scripts": {
-    "lint": "eslint --ext .js src/ test-e2e/ test-unit/",
+    "lint": "eslint --ext .js src/ test-e2e/ test-int/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
     "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
+    "int-test": "mocha --require @babel/register test-int/mocha.env.js test-int/**/*.test.js",
     "e2e-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
     "e2e-test": "mocha --require @babel/register test-e2e/mocha.env.js test-e2e/**/*.test.js",
     "build": "babel src --out-dir built --source-maps inline",
@@ -19,7 +20,8 @@
   },
   "pre-commit": [
     "lint-check",
-    "unit-test"
+    "unit-test",
+    "int-test"
   ],
   "engines": {
     "node": "14.5.0",
