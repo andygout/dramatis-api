@@ -18,5 +18,5 @@ jobs:
           name: Unit tests
           command: npm run unit-test
       - run:
-          name: Integration tests
-          command: npm run int-test
+          name: End-to-end tests
+          command: npm run e2e-test
