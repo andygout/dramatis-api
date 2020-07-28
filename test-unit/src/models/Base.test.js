@@ -7,12 +7,13 @@ import * as validateStringModule from '../../../src/lib/validate-string';
 import Base from '../../../src/models/Base';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
-import neo4jQueryFixture from '../../fixtures/neo4j-query';
 
 describe('Base model', () => {
 
 	let stubs;
 	let instance;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	const EMPTY_STRING = '';
 	const STRING_MAX_LENGTH = 1000;
@@ -66,7 +67,7 @@ describe('Base model', () => {
 				getListQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getListQuery').returns('getListQuery response')
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryFixture)
+			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
 		stubs.validateString.withArgs(EMPTY_STRING, { isRequiredString: true }).returns('Name is too short');
@@ -576,7 +577,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteProductionQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result).to.deep.eq(neo4jQueryMockResponse);
 
 			});
 
@@ -594,7 +595,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryFixture);
+				expect(result).to.deep.eq(neo4jQueryMockResponse);
 
 			});
 
@@ -614,7 +615,7 @@ describe('Base model', () => {
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getShowTheatreQuery response', params: instance }
 			)).to.be.true;
-			expect(result).to.deep.eq(neo4jQueryFixture);
+			expect(result).to.deep.eq(neo4jQueryMockResponse);
 
 		});
 
@@ -631,7 +632,7 @@ describe('Base model', () => {
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getListQuery response' }, { isOptionalResult: true, isArrayResult: true }
 			)).to.be.true;
-			expect(result).to.deep.eq(neo4jQueryFixture);
+			expect(result).to.deep.eq(neo4jQueryMockResponse);
 
 		});
 
