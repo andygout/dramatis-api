@@ -36,5 +36,5 @@ const shutDown = () => server.close(() => neo4jDriver.close().then(() => process
 process.on('SIGTERM', shutDown);
 process.on('SIGINT', shutDown);
 
-// Export for integration tests.
+// Export for end-to-end tests.
 export default app;
