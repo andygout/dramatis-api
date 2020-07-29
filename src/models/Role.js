@@ -8,7 +8,7 @@ export default class Role extends Base {
 		super(props);
 
 		this.model = 'role';
-		this.characterName = props.characterName.trim();
+		this.characterName = props.characterName?.trim() || '';
 
 	}
 
