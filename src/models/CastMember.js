@@ -8,7 +8,11 @@ export default class CastMember extends Person {
 
 		super(props);
 
-		this.roles = props.roles.map(role => new Role(role));
+		const { roles } = props;
+
+		this.roles = roles
+			? roles.map(role => new Role(role))
+			: [];
 
 	}
 
