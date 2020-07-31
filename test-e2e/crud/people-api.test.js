@@ -7,7 +7,7 @@ import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('People API', () => {
+describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 	chai.use(chaiHttp);
 
@@ -164,69 +164,6 @@ describe('People API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Person')).to.equal(0);
-
-		});
-
-	});
-
-	describe('requests for instances that do not exist in database', () => {
-
-		const NON_EXISTENT_PERSON_UUID = 'foobar';
-
-		describe('GET edit endpoint', () => {
-
-			it('responds with 404 Not Found error', async () => {
-
-				const response = await chai.request(app)
-					.get(`/people/${NON_EXISTENT_PERSON_UUID}/edit`);
-
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
-
-			});
-
-		});
-
-		describe('PUT update endpoint', () => {
-
-			it('responds with 404 Not Found error', async () => {
-
-				const response = await chai.request(app)
-					.put(`/people/${NON_EXISTENT_PERSON_UUID}`)
-					.send({ name: 'Patrick Stewart' });
-
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
-
-			});
-
-		});
-
-		describe('GET show endpoint', () => {
-
-			it('responds with 404 Not Found error', async () => {
-
-				const response = await chai.request(app)
-					.get(`/people/${NON_EXISTENT_PERSON_UUID}`);
-
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
-
-			});
-
-		});
-
-		describe('DELETE delete endpoint', () => {
-
-			it('responds with 404 Not Found error', async () => {
-
-				const response = await chai.request(app)
-					.delete(`/people/${NON_EXISTENT_PERSON_UUID}`);
-
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
-
-			});
 
 		});
 
