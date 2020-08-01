@@ -6,7 +6,6 @@ import * as neo4jQueryModule from '../../src/neo4j/query';
 
 describe('Production instance', () => {
 
-	const EMPTY_STRING = '';
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
@@ -31,7 +30,7 @@ describe('Production instance', () => {
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
-					name: EMPTY_STRING,
+					name: '',
 					theatre: {
 						name: 'National Theatre'
 					}
@@ -44,7 +43,7 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					model: 'production',
 					uuid: undefined,
-					name: EMPTY_STRING,
+					name: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -125,7 +124,7 @@ describe('Production instance', () => {
 				const instanceProps = {
 					name: 'Hamlet',
 					theatre: {
-						name: EMPTY_STRING
+						name: ''
 					}
 				};
 
@@ -142,7 +141,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: EMPTY_STRING,
+						name: '',
 						errors: {
 							name: [
 								'Name is too short'

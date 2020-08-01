@@ -15,7 +15,6 @@ describe('Base model', () => {
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	const EMPTY_STRING = '';
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
@@ -70,7 +69,7 @@ describe('Base model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
-		stubs.validateString.withArgs(EMPTY_STRING, { isRequiredString: true }).returns('Name is too short');
+		stubs.validateString.withArgs('', { isRequiredString: true }).returns('Name is too short');
 		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false }).returns('Name is too long');
 
 		instance = new Base({ name: 'Foobar' });
@@ -145,7 +144,7 @@ describe('Base model', () => {
 
 			it('will call addPropertyError method', () => {
 
-				instance = new Base({ name: EMPTY_STRING });
+				instance = new Base({ name: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateName({ requiresName: true });
 				assert.callOrder(
