@@ -1,10 +1,11 @@
 {
   "env": {
-    "es6": true,
-    "node": true,
     "mocha": true
   },
+  "plugins": [
+    "no-only-tests"
+  ],
   "rules": {
-  	"new-cap": 0
+    "no-only-tests/no-only-tests": 2
   }
 }

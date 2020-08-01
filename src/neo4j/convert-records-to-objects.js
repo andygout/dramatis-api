@@ -10,7 +10,7 @@ export default response => {
 
 		record.keys.forEach((key, index) => {
 
-			object[key] = record._fields[index];
+			object[key] = record._fields[index]; // eslint-disable-line no-underscore-dangle
 
 			if (neo4j.isInt(object[key])) {
 

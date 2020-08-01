@@ -20,7 +20,7 @@
     "no-multi-spaces": 2,
     "no-multiple-empty-lines": [2, {"max": 1}],
     "no-undef": 2,
-    "no-underscore-dangle": 0,
+    "no-underscore-dangle": 2,
     "no-unused-vars": 2,
     "no-var": 2,
     "one-var": [2, "never"],

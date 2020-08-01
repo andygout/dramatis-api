@@ -57,7 +57,7 @@ describe('Productions controller', () => {
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
 				stubs.response,
-				stubs.models.Production()
+				stubs.models.Production() // eslint-disable-line new-cap
 			)).to.be.true;
 
 		});
@@ -71,7 +71,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production(), 'create'
+				stubs.response, stubs.next, stubs.models.Production(), 'create' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -86,7 +86,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production(), 'edit'
+				stubs.response, stubs.next, stubs.models.Production(), 'edit' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -101,7 +101,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production(), 'update'
+				stubs.response, stubs.next, stubs.models.Production(), 'update' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -116,7 +116,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production(), 'delete'
+				stubs.response, stubs.next, stubs.models.Production(), 'delete' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -131,7 +131,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production(), 'show'
+				stubs.response, stubs.next, stubs.models.Production(), 'show' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 

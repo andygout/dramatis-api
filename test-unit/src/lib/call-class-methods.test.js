@@ -80,7 +80,7 @@ describe('Call Class Methods module', () => {
 				sandbox.stub(character, method).callsFake(() => { return Promise.reject(notFoundError); });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.response.statusCode).to.equal(404);
-				expect(stubs.response._getData()).to.equal('Not Found');
+				expect(stubs.response._getData()).to.equal('Not Found'); // eslint-disable-line no-underscore-dangle
 				expect(stubs.sendJsonResponse.notCalled).to.be.true;
 				expect(stubs.next.called).to.be.false;
 
