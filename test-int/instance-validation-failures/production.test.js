@@ -26,7 +26,7 @@ describe('Production instance', () => {
 
 	describe('input validation failure', () => {
 
-		describe('name value is empty string', () => {
+		context('name value is empty string', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -72,7 +72,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('name value exceeds maximum limit', () => {
+		context('name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -118,7 +118,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('theatre name value is empty string', () => {
+		context('theatre name value is empty string', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -164,7 +164,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('theatre name value exceeds maximum limit', () => {
+		context('theatre name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -210,7 +210,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('playtext name value exceeds maximum limit', () => {
+		context('playtext name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -259,7 +259,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('cast member name value exceeds maximum limit', () => {
+		context('cast member name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -319,7 +319,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('duplicate cast member name values', () => {
+		context('duplicate cast member name values', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -405,7 +405,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('cast member role name value exceeds maximum limit', () => {
+		context('cast member role name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -477,7 +477,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('cast member role characterName value exceeds maximum limit', () => {
+		context('cast member role characterName value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -549,7 +549,7 @@ describe('Production instance', () => {
 
 		});
 
-		describe('duplicate cast member role name values', () => {
+		context('duplicate cast member role name values', () => {
 
 			it('assigns appropriate error', async () => {
 

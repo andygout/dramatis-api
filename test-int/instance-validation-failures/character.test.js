@@ -26,7 +26,7 @@ describe('Character instance', () => {
 
 		});
 
-		describe('name value is empty string', () => {
+		context('name value is empty string', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -52,7 +52,7 @@ describe('Character instance', () => {
 
 		});
 
-		describe('name value exceeds maximum limit', () => {
+		context('name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -88,7 +88,7 @@ describe('Character instance', () => {
 
 		});
 
-		describe('name value already exists in database', () => {
+		context('name value already exists in database', () => {
 
 			it('assigns appropriate error', async () => {
 
