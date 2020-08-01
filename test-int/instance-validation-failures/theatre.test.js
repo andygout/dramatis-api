@@ -6,7 +6,6 @@ import * as neo4jQueryModule from '../../src/neo4j/query';
 
 describe('Theatre instance', () => {
 
-	const EMPTY_STRING = '';
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
@@ -30,14 +29,14 @@ describe('Theatre instance', () => {
 
 			it('assigns appropriate error', async () => {
 
-				const instance = new Theatre({ name: EMPTY_STRING });
+				const instance = new Theatre({ name: '' });
 
 				const result = await instance.create();
 
 				const expectedResponseBody = {
 					model: 'theatre',
 					uuid: undefined,
-					name: EMPTY_STRING,
+					name: '',
 					hasErrors: true,
 					errors: {
 						name: [

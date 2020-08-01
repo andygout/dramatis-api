@@ -5,7 +5,6 @@ import { validateString } from '../../../src/lib/validate-string';
 describe('Validate String module', () => {
 
 	const STRING_MAX_LENGTH = 1000;
-	const EMPTY_STRING = '';
 	const MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH);
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
@@ -15,7 +14,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(EMPTY_STRING, { isRequiredString: true })).to.equal('Name is too short');
+				expect(validateString('', { isRequiredString: true })).to.equal('Name is too short');
 
 			});
 
@@ -25,7 +24,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(EMPTY_STRING, { isRequiredString: false })).to.equal(undefined);
+				expect(validateString('', { isRequiredString: false })).to.equal(undefined);
 
 			});
 
