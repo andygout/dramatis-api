@@ -38,13 +38,15 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('production')).to.be.true;
 				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
-					MATCH (n:Production)-[:PLAYS_AT]->(t:Theatre)
+					MATCH (n:Production)
+
+					OPTIONAL MATCH (n)-[:PLAYS_AT]->(t:Theatre)
 
 					RETURN
 						'production' AS model,
 						n.uuid AS uuid,
 						n.name AS name
-						, { model: 'theatre', uuid: t.uuid, name: t.name } AS theatre
+						, CASE WHEN t IS NULL THEN null ELSE { model: 'theatre', uuid: t.uuid, name: t.name } END AS theatre
 
 					LIMIT 100
 				`));

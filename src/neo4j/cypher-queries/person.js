@@ -1,7 +1,9 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Playtext)-[:INCLUDES_CHARACTER]->(character:Character)
 		WHERE role.roleName = character.name OR role.characterName = character.name
@@ -29,7 +31,11 @@ const getShowQuery = () => `
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
-					theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
+					theatre:
+						CASE WHEN theatre IS NULL
+							THEN null
+							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+						END,
 					roles: roles
 				}
 			END

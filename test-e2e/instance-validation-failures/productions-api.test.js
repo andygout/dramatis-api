@@ -4,7 +4,6 @@ import chaiHttp from 'chai-http';
 import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import createNode from '../test-helpers/neo4j/create-node';
-import createRelationship from '../test-helpers/neo4j/create-relationship';
 import matchNode from '../test-helpers/neo4j/match-node';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
@@ -29,10 +28,7 @@ describe('Instance validation failures: Productions API', () => {
 				const response = await chai.request(app)
 					.post('/productions')
 					.send({
-						name: '',
-						theatre: {
-							name: 'Almeida Theatre'
-						}
+						name: ''
 					});
 
 				const expectedResponseBody = {
@@ -46,7 +42,7 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					theatre: {
 						model: 'theatre',
-						name: 'Almeida Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -69,8 +65,7 @@ describe('Instance validation failures: Productions API', () => {
 
 	describe('attempt to update instance', () => {
 
-		const MACBETH_ALMEIDA_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const ALMEIDA_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const MACBETH_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
@@ -79,21 +74,7 @@ describe('Instance validation failures: Productions API', () => {
 			await createNode({
 				label: 'Production',
 				name: 'Macbeth',
-				uuid: MACBETH_ALMEIDA_PRODUCTION_UUID
-			});
-
-			await createNode({
-				label: 'Theatre',
-				name: 'Almeida Theatre',
-				uuid: ALMEIDA_THEATRE_UUID
-			});
-
-			await createRelationship({
-				sourceLabel: 'Production',
-				sourceUuid: MACBETH_ALMEIDA_PRODUCTION_UUID,
-				destinationLabel: 'Theatre',
-				destinationUuid: ALMEIDA_THEATRE_UUID,
-				relationshipName: 'PLAYS_AT'
+				uuid: MACBETH_PRODUCTION_UUID
 			});
 
 		});
@@ -105,17 +86,14 @@ describe('Instance validation failures: Productions API', () => {
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
 				const response = await chai.request(app)
-					.put(`/productions/${MACBETH_ALMEIDA_PRODUCTION_UUID}`)
+					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
-						name: '',
-						theatre: {
-							name: 'Almeida Theatre'
-						}
+						name: ''
 					});
 
 				const expectedResponseBody = {
 					model: 'production',
-					uuid: MACBETH_ALMEIDA_PRODUCTION_UUID,
+					uuid: MACBETH_PRODUCTION_UUID,
 					name: '',
 					hasErrors: true,
 					errors: {
@@ -125,7 +103,7 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					theatre: {
 						model: 'theatre',
-						name: 'Almeida Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -142,7 +120,7 @@ describe('Instance validation failures: Productions API', () => {
 				expect(await matchNode({
 					label: 'Production',
 					name: 'Macbeth',
-					uuid: MACBETH_ALMEIDA_PRODUCTION_UUID
+					uuid: MACBETH_PRODUCTION_UUID
 				})).to.be.true;
 
 			});

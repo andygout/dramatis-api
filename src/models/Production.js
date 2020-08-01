@@ -24,7 +24,7 @@ export default class Production extends Base {
 
 		this.validateName({ requiresName: true });
 
-		this.theatre.validateName({ requiresName: true });
+		this.theatre.validateName({ requiresName: false });
 
 		this.playtext.validateName({ requiresName: false });
 

@@ -59,7 +59,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('CRUD with minimum range of attributes assigned values', () => {
 
 		const PRODUCTION_UUID = '0';
-		const THEATRE_UUID = '1';
 
 		const sandbox = createSandbox();
 
@@ -86,10 +85,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const response = await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'As You Like It',
-					theatre: {
-						name: 'Novello Theatre'
-					}
+					name: 'As You Like It'
 				});
 
 			const expectedResponseBody = {
@@ -99,7 +95,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				errors: {},
 				theatre: {
 					model: 'theatre',
-					name: 'Novello Theatre',
+					name: '',
 					errors: {}
 				},
 				playtext: {
@@ -142,7 +138,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				errors: {},
 				theatre: {
 					model: 'theatre',
-					name: 'Novello Theatre',
+					name: '',
 					errors: {}
 				},
 				playtext: {
@@ -179,10 +175,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const response = await chai.request(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
-					name: 'The Tempest',
-					theatre: {
-						name: 'Novello Theatre'
-					}
+					name: 'The Tempest'
 				});
 
 			const expectedResponseBody = {
@@ -192,7 +185,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				errors: {},
 				theatre: {
 					model: 'theatre',
-					name: 'Novello Theatre',
+					name: '',
 					errors: {}
 				},
 				playtext: {
@@ -232,11 +225,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
-				theatre: {
-					model: 'theatre',
-					uuid: THEATRE_UUID,
-					name: 'Novello Theatre'
-				},
+				theatre: null,
 				playtext: null,
 				cast: []
 			};
@@ -256,11 +245,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					model: 'production',
 					uuid: PRODUCTION_UUID,
 					name: 'The Tempest',
-					theatre: {
-						model: 'theatre',
-						uuid: THEATRE_UUID,
-						name: 'Novello Theatre'
-					}
+					theatre: null
 				}
 			];
 

@@ -30,10 +30,7 @@ describe('Production instance', () => {
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
-					name: '',
-					theatre: {
-						name: 'National Theatre'
-					}
+					name: ''
 				};
 
 				const instance = new Production(instanceProps);
@@ -53,7 +50,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -76,10 +73,7 @@ describe('Production instance', () => {
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
-					name: ABOVE_MAX_LENGTH_STRING,
-					theatre: {
-						name: 'National Theatre'
-					}
+					name: ABOVE_MAX_LENGTH_STRING
 				};
 
 				const instance = new Production(instanceProps);
@@ -99,54 +93,8 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
-						errors: {}
-					},
-					playtext: {
-						model: 'playtext',
-						uuid: undefined,
 						name: '',
 						errors: {}
-					},
-					cast: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-		context('theatre name value is empty string', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'Hamlet',
-					theatre: {
-						name: ''
-					}
-				};
-
-				const instance = new Production(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					model: 'production',
-					uuid: undefined,
-					name: 'Hamlet',
-					hasErrors: true,
-					errors: {},
-					theatre: {
-						model: 'theatre',
-						uuid: undefined,
-						name: '',
-						errors: {
-							name: [
-								'Name is too short'
-							]
-						}
 					},
 					playtext: {
 						model: 'playtext',
@@ -215,9 +163,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					playtext: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
@@ -236,7 +181,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -264,9 +209,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					cast: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
@@ -288,7 +230,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -324,9 +266,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					cast: [
 						{
 							name: 'Rory Kinnear',
@@ -356,7 +295,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -410,9 +349,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					cast: [
 						{
 							name: 'Rory Kinnear',
@@ -439,7 +375,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -482,9 +418,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					cast: [
 						{
 							name: 'Rory Kinnear',
@@ -511,7 +444,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {
@@ -554,9 +487,6 @@ describe('Production instance', () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					cast: [
 						{
 							name: 'David Calder',
@@ -591,7 +521,7 @@ describe('Production instance', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
-						name: 'National Theatre',
+						name: '',
 						errors: {}
 					},
 					playtext: {

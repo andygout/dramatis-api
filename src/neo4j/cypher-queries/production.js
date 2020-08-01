@@ -18,10 +18,11 @@ const getCreateUpdateQuery = action => {
 	return `
 		${createUpdateQueryOpeningMap[action]}
 
-		MERGE (theatre:Theatre { name: $theatre.name })
+		FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
+			MERGE (theatre:Theatre { name: $theatre.name })
 			ON CREATE SET theatre.uuid = $theatre.uuid
-
-		CREATE (production)-[:PLAYS_AT]->(theatre)
+			CREATE (production)-[:PLAYS_AT]->(theatre)
+		)
 
 		FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
 			MERGE (playtext:Playtext { name: $playtext.name })
@@ -54,7 +55,9 @@ const getCreateUpdateQuery = action => {
 const getCreateQuery = () => getCreateUpdateQuery('create');
 
 const getEditQuery = () => `
-	MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+	MATCH (production:Production { uuid: $uuid })
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
 
@@ -78,7 +81,7 @@ const getEditQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
-		{ name: theatre.name } AS theatre,
+		{ name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END } AS theatre,
 		{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
 		COLLECT(
 			CASE WHEN person IS NULL
@@ -103,7 +106,9 @@ const getDeleteQuery = () => `
 `;
 
 const getShowQuery = () => `
-	MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+	MATCH (production:Production { uuid: $uuid })
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
 
@@ -128,7 +133,10 @@ const getShowQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
-		{ model: 'theatre', uuid: theatre.uuid, name: theatre.name } AS theatre,
+		CASE WHEN theatre IS NULL
+			THEN null
+			ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+		END AS theatre,
 		CASE WHEN playtext IS NULL THEN null ELSE
 				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
 			END AS playtext,
