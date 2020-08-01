@@ -25,7 +25,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('name value is empty string', () => {
+		context('name value is empty string', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -52,7 +52,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('name value exceeds maximum limit', () => {
+		context('name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -79,7 +79,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('character name value exceeds maximum limit', () => {
+		context('character name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -122,7 +122,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('duplicate character name values', () => {
+		context('duplicate character name values', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -197,7 +197,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('name value already exists in database', () => {
+		context('name value already exists in database', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -234,7 +234,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		describe('character name value exceeds maximum limit and name value already exists in database', () => {
+		context('character name value exceeds maximum limit and name value already exists in database', () => {
 
 			it('assigns appropriate error', async () => {
 
