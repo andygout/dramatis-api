@@ -137,9 +137,10 @@ const getShowQuery = () => `
 			THEN null
 			ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
 		END AS theatre,
-		CASE WHEN playtext IS NULL THEN null ELSE
-				{ model: 'playtext', uuid: playtext.uuid, name: playtext.name }
-			END AS playtext,
+		CASE WHEN playtext IS NULL
+			THEN null
+			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+		END AS playtext,
 		COLLECT(
 			CASE WHEN person IS NULL
 				THEN null
