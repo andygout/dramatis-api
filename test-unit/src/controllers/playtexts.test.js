@@ -56,7 +56,7 @@ describe('Playtexts controller', () => {
 			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
-				stubs.response, stubs.models.Playtext()
+				stubs.response, stubs.models.Playtext() // eslint-disable-line new-cap
 			)).to.be.true;
 
 		});
@@ -70,7 +70,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Playtext(), 'create'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'create' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -85,7 +85,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Playtext(), 'edit'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'edit' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -100,7 +100,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Playtext(), 'update'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'update' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -115,7 +115,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Playtext(), 'delete'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'delete' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -130,7 +130,7 @@ describe('Playtexts controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Playtext(), 'show'
+				stubs.response, stubs.next, stubs.models.Playtext(), 'show' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
