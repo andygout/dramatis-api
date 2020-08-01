@@ -120,7 +120,7 @@ describe('Production model', () => {
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
 			expect(instance.theatre.validateName.calledOnce).to.be.true;
-			expect(instance.theatre.validateName.calledWithExactly({ requiresName: true })).to.be.true;
+			expect(instance.theatre.validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(instance.playtext.validateName.calledOnce).to.be.true;
 			expect(instance.playtext.validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;

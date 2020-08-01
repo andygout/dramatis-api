@@ -67,7 +67,11 @@ const getShowQuery = () => `
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
-					theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name },
+					theatre:
+						CASE WHEN theatre IS NULL
+							THEN null
+							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+						END,
 					performers: performers
 				}
 			END

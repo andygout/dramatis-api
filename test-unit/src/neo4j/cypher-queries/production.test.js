@@ -13,10 +13,11 @@ describe('Cypher Queries Production module', () => {
 			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
 				CREATE (production:Production { uuid: $uuid, name: $name })
 
-				MERGE (theatre:Theatre { name: $theatre.name })
+				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
+					MERGE (theatre:Theatre { name: $theatre.name })
 					ON CREATE SET theatre.uuid = $theatre.uuid
-
-				CREATE (production)-[:PLAYS_AT]->(theatre)
+					CREATE (production)-[:PLAYS_AT]->(theatre)
+				)
 
 				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (playtext:Playtext { name: $playtext.name })
@@ -41,7 +42,9 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+				MATCH (production:Production { uuid: $uuid })
+
+				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
 
@@ -65,7 +68,7 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
-					{ name: theatre.name } AS theatre,
+					{ name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END } AS theatre,
 					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
 					COLLECT(
 						CASE WHEN person IS NULL
@@ -93,10 +96,11 @@ describe('Cypher Queries Production module', () => {
 					FOREACH (relationship IN relationships | DELETE relationship)
 					SET production.name = $name
 
-				MERGE (theatre:Theatre { name: $theatre.name })
+				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
+					MERGE (theatre:Theatre { name: $theatre.name })
 					ON CREATE SET theatre.uuid = $theatre.uuid
-
-				CREATE (production)-[:PLAYS_AT]->(theatre)
+					CREATE (production)-[:PLAYS_AT]->(theatre)
+				)
 
 				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (playtext:Playtext { name: $playtext.name })
@@ -121,7 +125,9 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				MATCH (production:Production { uuid: $uuid })-[:PLAYS_AT]->(theatre:Theatre)
+				MATCH (production:Production { uuid: $uuid })
+
+				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
 
@@ -145,7 +151,7 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
-					{ name: theatre.name } AS theatre,
+					{ name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END } AS theatre,
 					{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
 					COLLECT(
 						CASE WHEN person IS NULL

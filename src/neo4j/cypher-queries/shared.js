@@ -57,15 +57,17 @@ const getDeleteQuery = model => `
 const getListQuery = model => {
 
 	const theatreRelationship = (model === 'production')
-		? '-[:PLAYS_AT]->(t:Theatre)'
+		? 'OPTIONAL MATCH (n)-[:PLAYS_AT]->(t:Theatre)'
 		: '';
 
 	const theatreObject = (model === 'production')
-		? ', { model: \'theatre\', uuid: t.uuid, name: t.name } AS theatre'
+		? ', CASE WHEN t IS NULL THEN null ELSE { model: \'theatre\', uuid: t.uuid, name: t.name } END AS theatre'
 		: '';
 
 	return `
-		MATCH (n:${capitalise(model)})${theatreRelationship}
+		MATCH (n:${capitalise(model)})
+
+		${theatreRelationship}
 
 		RETURN
 			'${model}' AS model,

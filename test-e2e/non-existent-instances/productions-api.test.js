@@ -39,10 +39,7 @@ describe('Non-existent instances: Productions API', () => {
 				const response = await chai.request(app)
 					.put(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`)
 					.send({
-						name: 'The Tempest',
-						theatre: {
-							name: 'Novello Theatre'
-						}
+						name: 'The Tempest'
 					});
 
 				expect(response).to.have.status(404);

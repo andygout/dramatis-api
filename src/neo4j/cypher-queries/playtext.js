@@ -60,7 +60,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	WITH playtext, character, production, theatre
 		ORDER BY characterRel.position
@@ -86,7 +88,11 @@ const getShowQuery = () => `
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
-					theatre: { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+					theatre:
+						CASE WHEN theatre IS NULL
+							THEN null
+							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+						END
 				}
 			END
 		) AS productions
