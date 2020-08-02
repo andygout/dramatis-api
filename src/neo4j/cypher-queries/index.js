@@ -14,7 +14,6 @@ import {
 } from './production';
 import * as sharedQueries from './shared';
 import {
-	getDeleteQuery as getTheatreDeleteQuery,
 	getShowQuery as getTheatreShowQuery
 } from './theatre';
 
@@ -33,10 +32,6 @@ const getUpdateQueries = {
 	production: getProductionUpdateQuery
 };
 
-const getDeleteQueries = {
-	theatre: getTheatreDeleteQuery
-};
-
 const getShowQueries = {
 	character: getCharacterShowQuery,
 	person: getPersonShowQuery,
@@ -49,7 +44,6 @@ export {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
-	getDeleteQueries,
 	getShowQueries,
 	sharedQueries
 };

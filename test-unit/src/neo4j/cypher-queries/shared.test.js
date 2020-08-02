@@ -195,14 +195,43 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
 				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
-					MATCH (n:Theatre { uuid: $uuid })
+					MATCH (:Theatre { uuid: $uuid })
 
-					WITH n, n.name AS name
-						DETACH DELETE n
+					OPTIONAL MATCH (deletableInstance:Theatre { uuid: $uuid })
+						WHERE NOT (deletableInstance)-[]-()
 
-					RETURN
-						'theatre' AS model,
-						name
+					OPTIONAL MATCH (undeletableInstance:Theatre { uuid: $uuid })
+						-[]-(undeleteableInstanceAssociate)
+
+					UNWIND
+						CASE WHEN undeleteableInstanceAssociate IS NOT NULL
+							THEN LABELS(undeleteableInstanceAssociate)
+							ELSE [null]
+						END AS associateLabel
+
+						WITH
+							DISTINCT(associateLabel) AS distinctAssociateLabel,
+							undeletableInstance,
+							deletableInstance
+							ORDER BY distinctAssociateLabel
+
+						WITH
+							undeletableInstance,
+							deletableInstance,
+							deletableInstance IS NOT NULL AS isDeleted,
+							deletableInstance.name AS deletableInstanceName,
+							COLLECT(distinctAssociateLabel) AS associatedModels
+
+						DETACH DELETE deletableInstance
+
+						RETURN
+							'theatre' AS model,
+							CASE WHEN isDeleted
+								THEN deletableInstanceName
+								ELSE undeletableInstance.name
+							END AS name,
+							isDeleted,
+							associatedModels
 				`));
 
 			});

@@ -38,11 +38,6 @@ describe('Base model', () => {
 			getUpdateQueries: {
 				production: sandbox.stub(cypherQueries.getUpdateQueries, 'production')
 			},
-			getDeleteQueries: {
-				theatre:
-					sandbox.stub(cypherQueries.getDeleteQueries, 'theatre')
-						.returns('getDeleteTheatreQuery response')
-			},
 			getShowQueries: {
 				theatre:
 					sandbox.stub(cypherQueries.getShowQueries, 'theatre')
@@ -563,38 +558,65 @@ describe('Base model', () => {
 
 	describe('delete method', () => {
 
-		context('instance requires a model-specific query', () => {
+		context('instance has no associations', () => {
 
-			it('deletes using model-specific query', async () => {
+			it('deletes instance and returns object with its model and name properties', async () => {
 
-				instance.model = 'theatre';
+				stubs.neo4jQuery.resolves({
+					model: 'theatre',
+					name: 'Almeida Theatre',
+					isDeleted: true,
+					associatedModels: []
+				});
+				spy(instance, 'addPropertyError');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.delete();
-				expect(stubs.getDeleteQueries[instance.model].calledOnce).to.be.true;
-				expect(stubs.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.notCalled).to.be.true;
+				assert.callOrder(
+					stubs.sharedQueries.getDeleteQuery,
+					stubs.neo4jQuery
+				);
+				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDeleteTheatreQuery response', params: instance }
+					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryMockResponse);
+				expect(instance.addPropertyError.notCalled).to.be.true;
+				expect(instance.setErrorStatus.notCalled).to.be.true;
+				expect(result).to.deep.eq({ model: 'theatre', name: 'Almeida Theatre' });
 
 			});
 
 		});
 
-		context('instance can use shared query', () => {
+		context('instance has associations', () => {
 
-			it('deletes using shared query', async () => {
+			it('returns instance without deleting', async () => {
 
+				stubs.neo4jQuery.resolves({
+					model: 'theatre',
+					name: 'Almeida Theatre',
+					isDeleted: false,
+					associatedModels: ['Production']
+				});
+				spy(instance, 'addPropertyError');
+				spy(instance, 'setErrorStatus');
 				const result = await instance.delete();
+				assert.callOrder(
+					stubs.sharedQueries.getDeleteQuery,
+					stubs.neo4jQuery
+				);
 				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.getDeleteQueries.theatre.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(neo4jQueryMockResponse);
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('associations', 'Production')).to.be.true;
+				expect(instance.setErrorStatus.calledOnce).to.be.true;
+				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+				expect(result).to.deep.eq(instance);
 
 			});
 
