@@ -10,7 +10,6 @@ import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
 	getUpdateQuery as getProductionUpdateQuery,
-	getDeleteQuery as getProductionDeleteQuery,
 	getShowQuery as getProductionShowQuery
 } from './production';
 import * as sharedQueries from './shared';
@@ -35,7 +34,6 @@ const getUpdateQueries = {
 };
 
 const getDeleteQueries = {
-	production: getProductionDeleteQuery,
 	theatre: getTheatreDeleteQuery
 };
 
