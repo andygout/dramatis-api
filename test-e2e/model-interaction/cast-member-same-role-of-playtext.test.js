@@ -11,10 +11,10 @@ describe('Cast member performing same role in different productions of same play
 	chai.use(chaiHttp);
 
 	const TITANIA_CHARACTER_UUID = '1';
-	const MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '2';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '2';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '3';
 	const JUDI_DENCH_PERSON_UUID = '5';
-	const MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '6';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '6';
 	const ROSE_THEATRE_UUID = '7';
 
 	let titaniaCharacter;
@@ -93,10 +93,10 @@ describe('Cast member performing same role in different productions of same play
 			.get(`/characters/${TITANIA_CHARACTER_UUID}`);
 
 		midsummerNightsDreamRoyalShakespeareProduction = await chai.request(app)
-			.get(`/productions/${MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
 		midsummerNightsDreamRoseProduction = await chai.request(app)
-			.get(`/productions/${MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`);
+			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`);
 
 		judiDenchPerson = await chai.request(app)
 			.get(`/people/${JUDI_DENCH_PERSON_UUID}`);
@@ -115,7 +115,7 @@ describe('Cast member performing same role in different productions of same play
 
 			const expectedMidsummerNightsDreamRoyalShakespeareProduction = {
 				model: 'production',
-				uuid: MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
 				theatre: {
 					model: 'theatre',
@@ -135,7 +135,7 @@ describe('Cast member performing same role in different productions of same play
 
 			const expectedMidsummerNightsDreamRoseProduction = {
 				model: 'production',
-				uuid: MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
 				theatre: {
 					model: 'theatre',
@@ -157,12 +157,12 @@ describe('Cast member performing same role in different productions of same play
 
 			const midsummerNightsDreamRoyalShakespeareProductionCredit =
 				productions.find(production =>
-					production.uuid === MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID
+					production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID
 				);
 
 			const midsummerNightsDreamRoseProductionCredit =
 				productions.find(production =>
-					production.uuid === MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID
+					production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID
 				);
 
 			expect(productions.length).to.equal(2);
@@ -236,7 +236,7 @@ describe('Cast member performing same role in different productions of same play
 
 			const expectedmidsummerNightsDreamRoyalShakespeareProductionCredit = {
 				model: 'production',
-				uuid: MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
 				theatre: {
 					model: 'theatre',
@@ -254,7 +254,7 @@ describe('Cast member performing same role in different productions of same play
 
 			const expectedmidsummerNightsDreamRoseProductionCredit = {
 				model: 'production',
-				uuid: MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
 				theatre: {
 					model: 'theatre',
@@ -274,11 +274,11 @@ describe('Cast member performing same role in different productions of same play
 
 			const midsummerNightsDreamRoyalShakespeareProductionCredit =
 				productions.find(production =>
-					production.uuid === MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID
+					production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID
 				);
 
 			const midsummerNightsDreamRoseProductionCredit =
-				productions.find(production => production.uuid === MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID);
+				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
 			expect(expectedmidsummerNightsDreamRoyalShakespeareProductionCredit)

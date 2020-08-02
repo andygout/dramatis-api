@@ -13,14 +13,14 @@ describe('Character in multiple playtexts', () => {
 	const HENRY_IV_PART_1_PLAYTEXT_UUID = '0';
 	const SIR_JOHN_FALSTAFF_CHARACTER_UUID = '1';
 	const HENRY_IV_PART_2_PLAYTEXT_UUID = '2';
-	const MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID = '4';
+	const THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID = '4';
 	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '6';
 	const NATIONAL_THEATRE_UUID = '7';
 	const MICHAEL_GAMBON_PERSON_UUID = '9';
 	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '10';
 	const GLOBE_THEATRE_UUID = '11';
 	const ROGER_ALLAM_PERSON_UUID = '13';
-	const MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '14';
+	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '14';
 	const SWAN_THEATRE_UUID = '15';
 	const RICHARD_CORDERY_PERSON_UUID = '17';
 
@@ -151,7 +151,7 @@ describe('Character in multiple playtexts', () => {
 			.get(`/playtexts/${HENRY_IV_PART_2_PLAYTEXT_UUID}`);
 
 		merryWivesOfWindsorPlaytext = await chai.request(app)
-			.get(`/playtexts/${MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID}`);
+			.get(`/playtexts/${THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID}`);
 
 	});
 
@@ -179,7 +179,7 @@ describe('Character in multiple playtexts', () => {
 
 			const expectedMerryWivesOfWindsorPlaytextCredit = {
 				model: 'playtext',
-				uuid: MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
+				uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
 				name: 'The Merry Wives of Windsor'
 			};
 
@@ -192,7 +192,7 @@ describe('Character in multiple playtexts', () => {
 				playtexts.find(playtext => playtext.uuid === HENRY_IV_PART_2_PLAYTEXT_UUID);
 
 			const merryWivesOfWindsorPlaytextCredit =
-				playtexts.find(playtext => playtext.uuid === MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID);
+				playtexts.find(playtext => playtext.uuid === THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID);
 
 			expect(playtexts.length).to.equal(3);
 			expect(expectedHenryIVPart1PlaytextCredit)
@@ -248,7 +248,7 @@ describe('Character in multiple playtexts', () => {
 
 			const expectedMerryWivesOfWindsorSwanProductionCredit = {
 				model: 'production',
-				uuid: MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
+				uuid: THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
 				name: 'The Merry Wives of Windsor',
 				theatre: {
 					model: 'theatre',
@@ -275,7 +275,7 @@ describe('Character in multiple playtexts', () => {
 				productions.find(production => production.uuid === HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID);
 
 			const merryWivesOfWindsorSwanProductionCredit =
-				productions.find(production => production.uuid === MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID);
+				productions.find(production => production.uuid === THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(3);
 			expect(expectedHenryIVPart1NationalProductionCredit)

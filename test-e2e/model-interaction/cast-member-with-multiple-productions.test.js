@@ -10,7 +10,7 @@ describe('Cast member with multiple production credits', () => {
 
 	chai.use(chaiHttp);
 
-	const TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '0';
+	const THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '0';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '1';
 	const PATRICK_STEWART_PERSON_UUID = '3';
 	const MACBETH_GIELGUD_PRODUCTION_UUID = '4';
@@ -97,7 +97,7 @@ describe('Cast member with multiple production credits', () => {
 			.get(`/people/${PATRICK_STEWART_PERSON_UUID}`);
 
 		tempestRoyalShakespeareProduction = await chai.request(app)
-			.get(`/productions/${TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+			.get(`/productions/${THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
 		macbethGielgudProduction = await chai.request(app)
 			.get(`/productions/${MACBETH_GIELGUD_PRODUCTION_UUID}`);
@@ -119,7 +119,7 @@ describe('Cast member with multiple production credits', () => {
 
 			const expectedTempestRoyalShakespeareProductionCredit = {
 				model: 'production',
-				uuid: TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+				uuid: THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'The Tempest',
 				theatre: {
 					model: 'theatre',
@@ -174,7 +174,7 @@ describe('Cast member with multiple production credits', () => {
 			const { productions } = patrickStewartPerson.body;
 
 			const tempestRoyalShakespeareProductionCredit =
-				productions.find(production => production.uuid === TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
+				productions.find(production => production.uuid === THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
 
 			const macbethGielgudProductionCredit =
 				productions.find(production => production.uuid === MACBETH_GIELGUD_PRODUCTION_UUID);

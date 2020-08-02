@@ -10,7 +10,7 @@ describe('Theatre with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
+	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
 	const DONMAR_WAREHOUSE_THEATRE_UUID = '1';
 	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '3';
 	const RED_DONMAR_PRODUCTION_UUID = '6';
@@ -61,7 +61,7 @@ describe('Theatre with multiple productions', () => {
 			.get(`/theatres/${DONMAR_WAREHOUSE_THEATRE_UUID}`);
 
 		streetcarNamedDesireDonmarProduction = await chai.request(app)
-			.get(`/productions/${STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
+			.get(`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
 
 		lifeIsADreamDonmarProduction = await chai.request(app)
 			.get(`/productions/${LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID}`);
@@ -83,7 +83,7 @@ describe('Theatre with multiple productions', () => {
 
 			const expectedStreetcarNamedDesireDonmarProductionCredit = {
 				model: 'production',
-				uuid: STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
+				uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
 				name: 'A Streetcar Named Desire'
 			};
 
@@ -102,7 +102,7 @@ describe('Theatre with multiple productions', () => {
 			const { productions } = donmarWarehouseTheatre.body;
 
 			const streetcarNamedDesireDonmarProductionCredit =
-				productions.find(production => production.uuid === STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID);
+				productions.find(production => production.uuid === A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID);
 
 			const lifeIsADreamDonmarProductionCredit =
 				productions.find(production => production.uuid === LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID);
