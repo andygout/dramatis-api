@@ -93,18 +93,6 @@ const getEditQuery = () => `
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
 
-const getDeleteQuery = () => `
-	MATCH (production:Production { uuid: $uuid })
-
-	WITH production, production.name AS name
-
-	DETACH DELETE production
-
-	RETURN
-		'production' AS model,
-		name
-`;
-
 const getShowQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
@@ -153,6 +141,5 @@ export {
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
-	getDeleteQuery,
 	getShowQuery
 };

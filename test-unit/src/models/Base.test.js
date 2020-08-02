@@ -39,9 +39,9 @@ describe('Base model', () => {
 				production: sandbox.stub(cypherQueries.getUpdateQueries, 'production')
 			},
 			getDeleteQueries: {
-				production:
-					sandbox.stub(cypherQueries.getDeleteQueries, 'production')
-						.returns('getDeleteProductionQuery response')
+				theatre:
+					sandbox.stub(cypherQueries.getDeleteQueries, 'theatre')
+						.returns('getDeleteTheatreQuery response')
 			},
 			getShowQueries: {
 				theatre:
@@ -567,14 +567,14 @@ describe('Base model', () => {
 
 			it('deletes using model-specific query', async () => {
 
-				instance.model = 'production';
+				instance.model = 'theatre';
 				const result = await instance.delete();
 				expect(stubs.getDeleteQueries[instance.model].calledOnce).to.be.true;
 				expect(stubs.getDeleteQueries[instance.model].calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getDeleteQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDeleteProductionQuery response', params: instance }
+					{ query: 'getDeleteTheatreQuery response', params: instance }
 				)).to.be.true;
 				expect(result).to.deep.eq(neo4jQueryMockResponse);
 
@@ -589,7 +589,7 @@ describe('Base model', () => {
 				const result = await instance.delete();
 				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.getDeleteQueries.production.notCalled).to.be.true;
+				expect(stubs.getDeleteQueries.theatre.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDeleteQuery response', params: instance }
