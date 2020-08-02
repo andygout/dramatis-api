@@ -194,7 +194,7 @@ describe('Instance validation failures: People API', () => {
 	describe('attempt to delete instance', () => {
 
 		const JUDI_DENCH_PERSON_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
 
@@ -209,14 +209,14 @@ describe('Instance validation failures: People API', () => {
 			await createNode({
 				label: 'Production',
 				name: 'A Midsummer Night\'s Dream',
-				uuid: MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID
 			});
 
 			await createRelationship({
 				sourceLabel: 'Person',
 				sourceUuid: JUDI_DENCH_PERSON_UUID,
 				destinationLabel: 'Production',
-				destinationUuid: MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+				destinationUuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 				relationshipName: 'PERFORMS_IN'
 			});
 
