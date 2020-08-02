@@ -12,7 +12,7 @@
     "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
     "int-test": "mocha --require @babel/register test-int/mocha.env.js test-int/**/*.test.js",
     "e2e-test-resources": "docker-compose -f ./docker/docker-compose.yml up",
-    "e2e-test": "mocha --require @babel/register test-e2e/mocha.env.js test-e2e/**/*.test.js",
+    "e2e-test": "mocha --timeout 5000  --require @babel/register test-e2e/mocha.env.js test-e2e/**/*.test.js",
     "build": "babel src --out-dir built --source-maps inline",
     "watch": "babel src --watch --out-dir built --source-maps inline",
     "setup": "node --require source-map-support/register built/setup.js",
