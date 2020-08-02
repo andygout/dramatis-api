@@ -238,7 +238,7 @@ describe('Instance validation failures: Theatres API', () => {
 					hasErrors: true,
 					errors: {
 						associations: [
-							'productions'
+							'Production'
 						]
 					}
 				};

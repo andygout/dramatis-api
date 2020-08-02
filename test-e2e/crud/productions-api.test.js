@@ -987,6 +987,54 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
+		it('updates production to remove all associations prior to deletion', async () => {
+
+			expect(await countNodesWithLabel('Production')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${PRODUCTION_UUID}`)
+				.send({
+					name: 'Richard III'
+				});
+
+			const expectedResponseBody = {
+				model: 'production',
+				uuid: PRODUCTION_UUID,
+				name: 'Richard III',
+				errors: {},
+				theatre: {
+					model: 'theatre',
+					name: '',
+					errors: {}
+				},
+				playtext: {
+					model: 'playtext',
+					name: '',
+					errors: {}
+				},
+				cast: [
+					{
+						model: 'person',
+						name: '',
+						errors: {},
+						roles: [
+							{
+								model: 'role',
+								name: '',
+								characterName: '',
+								errors: {}
+							}
+						]
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Production')).to.equal(1);
+
+		});
+
 		it('deletes production', async () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(1);

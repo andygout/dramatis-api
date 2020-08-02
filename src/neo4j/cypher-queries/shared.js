@@ -42,17 +42,51 @@ const getUpdateQuery = model => `
 	${getEditQuery(model)}
 `;
 
-const getDeleteQuery = model => `
-	MATCH (n:${capitalise(model)} { uuid: $uuid })
+const getDeleteQuery = model => {
 
-	WITH n, n.name AS name
+	const label = capitalise(model);
 
-	DETACH DELETE n
+	return `
+		MATCH (:${label} { uuid: $uuid })
 
-	RETURN
-		'${model}' AS model,
-		name
-`;
+		OPTIONAL MATCH (deletableInstance:${label} { uuid: $uuid })
+			WHERE NOT (deletableInstance)-[]-()
+
+		OPTIONAL MATCH (undeletableInstance:${label} { uuid: $uuid })
+			-[]-(undeleteableInstanceAssociate)
+
+		UNWIND
+			CASE WHEN undeleteableInstanceAssociate IS NOT NULL
+				THEN LABELS(undeleteableInstanceAssociate)
+				ELSE [null]
+			END AS associateLabel
+
+			WITH
+				DISTINCT(associateLabel) AS distinctAssociateLabel,
+				undeletableInstance,
+				deletableInstance
+				ORDER BY distinctAssociateLabel
+
+			WITH
+				undeletableInstance,
+				deletableInstance,
+				deletableInstance IS NOT NULL AS isDeleted,
+				deletableInstance.name AS deletableInstanceName,
+				COLLECT(distinctAssociateLabel) AS associatedModels
+
+			DETACH DELETE deletableInstance
+
+			RETURN
+				'${model}' AS model,
+				CASE WHEN isDeleted
+					THEN deletableInstanceName
+					ELSE undeletableInstance.name
+				END AS name,
+				isDeleted,
+				associatedModels
+	`;
+
+};
 
 const getListQuery = model => {
 

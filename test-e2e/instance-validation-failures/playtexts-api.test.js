@@ -4,6 +4,7 @@ import chaiHttp from 'chai-http';
 import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import createNode from '../test-helpers/neo4j/create-node';
+import createRelationship from '../test-helpers/neo4j/create-relationship';
 import matchNode from '../test-helpers/neo4j/match-node';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
@@ -187,6 +188,69 @@ describe('Instance validation failures: Playtexts API', () => {
 					name: 'Ghosts',
 					uuid: GHOSTS_PLAYTEXT_UUID
 				})).to.be.true;
+
+			});
+
+		});
+
+	});
+
+	describe('attempt to delete instance', () => {
+
+		const GHOSTS_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const GHOSTS_ALMEIDA_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+
+		before(async () => {
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Playtext',
+				name: 'Ghosts',
+				uuid: GHOSTS_PLAYTEXT_UUID
+			});
+
+			await createNode({
+				label: 'Production',
+				name: 'Ghosts',
+				uuid: GHOSTS_ALMEIDA_PRODUCTION_UUID
+			});
+
+			await createRelationship({
+				sourceLabel: 'Production',
+				sourceUuid: GHOSTS_ALMEIDA_PRODUCTION_UUID,
+				destinationLabel: 'Playtext',
+				destinationUuid: GHOSTS_PLAYTEXT_UUID,
+				relationshipName: 'PRODUCTION_OF'
+			});
+
+		});
+
+		context('instance has associations', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Playtext')).to.equal(1);
+
+				const response = await chai.request(app)
+					.delete(`/playtexts/${GHOSTS_PLAYTEXT_UUID}`);
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: GHOSTS_PLAYTEXT_UUID,
+					name: 'Ghosts',
+					hasErrors: true,
+					errors: {
+						associations: [
+							'Production'
+						]
+					},
+					characters: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Playtext')).to.equal(1);
 
 			});
 

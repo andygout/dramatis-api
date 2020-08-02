@@ -5,7 +5,6 @@ import {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
-	getDeleteQueries,
 	getShowQueries,
 	sharedQueries
 } from '../neo4j/cypher-queries';
@@ -134,14 +133,26 @@ export default class Base {
 
 	}
 
-	delete () {
+	async delete () {
 
 		const { getDeleteQuery } = sharedQueries;
 
-		return neo4jQuery({
-			query: (getDeleteQueries[this.model]?.()) || getDeleteQuery(this.model),
+		const { model, name, isDeleted, associatedModels } = await neo4jQuery({
+			query: getDeleteQuery(this.model),
 			params: this
 		});
+
+		if (isDeleted) return { model, name };
+
+		this.name = name;
+
+		associatedModels.forEach(associatedModel =>
+			this.addPropertyError('associations', associatedModel)
+		);
+
+		this.setErrorStatus();
+
+		return this;
 
 	}
 

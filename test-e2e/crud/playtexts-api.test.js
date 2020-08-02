@@ -463,6 +463,36 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 		});
 
+		it('updates playtext to remove all associations prior to deletion', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${PLAYTEXT_UUID}`)
+				.send({
+					name: 'Three Sisters'
+				});
+
+			const expectedResponseBody = {
+				model: 'playtext',
+				uuid: PLAYTEXT_UUID,
+				name: 'Three Sisters',
+				errors: {},
+				characters: [
+					{
+						model: 'character',
+						name: '',
+						errors: {}
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+
+		});
+
 		it('deletes playtext', async () => {
 
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
