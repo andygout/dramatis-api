@@ -24,7 +24,7 @@ export default class Theatre extends Base {
 
 		this.name = name;
 
-		this.addPropertyError('dependentAssociations', 'productions');
+		this.addPropertyError('associations', 'productions');
 
 		this.setErrorStatus();
 

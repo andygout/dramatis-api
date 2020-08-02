@@ -222,7 +222,7 @@ describe('Instance validation failures: Theatres API', () => {
 
 		});
 
-		context('instance has dependent associations', () => {
+		context('instance has associations', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -237,7 +237,7 @@ describe('Instance validation failures: Theatres API', () => {
 					name: 'Almeida Theatre',
 					hasErrors: true,
 					errors: {
-						dependentAssociations: [
+						associations: [
 							'productions'
 						]
 					}

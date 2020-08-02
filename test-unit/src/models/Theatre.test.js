@@ -33,9 +33,9 @@ describe('Theatre model', () => {
 
 	describe('delete method', () => {
 
-		context('no dependent associations', () => {
+		context('instance has no associations', () => {
 
-			it('deletes', async () => {
+			it('deletes instance and returns object with its model and name properties', async () => {
 
 				stubs.neo4jQuery.resolves({ model: 'theatre', name: 'Almeida Theatre', isDeleted: true });
 				spy(instance, 'addPropertyError');
@@ -59,7 +59,7 @@ describe('Theatre model', () => {
 
 		});
 
-		context('dependent associations', () => {
+		context('instance has associations', () => {
 
 			it('returns instance without deleting', async () => {
 
@@ -78,7 +78,7 @@ describe('Theatre model', () => {
 					{ query: 'getDeleteQuery response', params: instance }
 				)).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('dependentAssociations', 'productions')).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('associations', 'productions')).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(result).to.deep.eq(instance);
