@@ -481,6 +481,75 @@ describe('Production instance', () => {
 
 		});
 
+		context('cast member role characterName property is present but name property is absent', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							roles: [
+								{
+									name: '',
+									characterName: 'Hamlet'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					cast: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Rory Kinnear',
+							errors: {},
+							roles: [
+								{
+									model: 'role',
+									name: '',
+									characterName: 'Hamlet',
+									errors: {
+										name: [
+											'Role name is required when character name is present'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('cast member role name and characterName properties are the same', () => {
 
 			it('assigns appropriate error', async () => {
