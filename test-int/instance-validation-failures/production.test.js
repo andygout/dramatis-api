@@ -481,6 +481,75 @@ describe('Production instance', () => {
 
 		});
 
+		context('cast member role name and characterName properties are the same', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							roles: [
+								{
+									name: 'Hamlet',
+									characterName: 'Hamlet'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					cast: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Rory Kinnear',
+							errors: {},
+							roles: [
+								{
+									model: 'role',
+									name: 'Hamlet',
+									characterName: 'Hamlet',
+									errors: {
+										characterName: [
+											'Character name is only required if different from role name'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('duplicate cast member role name values', () => {
 
 			it('assigns appropriate error', async () => {

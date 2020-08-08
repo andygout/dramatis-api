@@ -21,4 +21,14 @@ export default class Role extends Base {
 
 	}
 
+	validateRoleNameCharacterNameDisparity () {
+
+		if (!!this.characterName && this.name === this.characterName) {
+
+			this.addPropertyError('characterName', 'Character name is only required if different from role name');
+
+		}
+
+	}
+
 }
