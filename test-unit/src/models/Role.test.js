@@ -140,4 +140,78 @@ describe('Role model', () => {
 
 	});
 
+	describe('validateRoleNameCharacterNameDisparity method', () => {
+
+		context('valid data', () => {
+
+			context('role name without a character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Role({ name: 'Hamlet', characterName: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateRoleNameCharacterNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('characterName');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+			context('role name a different character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
+					spy(instance, 'addPropertyError');
+					instance.validateRoleNameCharacterNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('characterName');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+			context('no role name and no character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Role({ name: '', characterName: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateRoleNameCharacterNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('characterName');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties whose values are arrays to errors property', () => {
+
+				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
+				spy(instance, 'addPropertyError');
+				instance.validateRoleNameCharacterNameDisparity();
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'characterName',
+					'Character name is only required if different from role name'
+				)).to.be.true;
+				expect(instance.errors)
+					.to.have.property('characterName')
+					.that.is.an('array')
+					.that.deep.eq(['Character name is only required if different from role name']);
+
+			});
+
+		});
+
+	});
+
 });

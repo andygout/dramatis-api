@@ -83,6 +83,7 @@ describe('Cast Member model', () => {
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
+				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateNameUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -99,6 +100,8 @@ describe('Cast Member model', () => {
 			expect(instance.roles[0].validateCharacterName.calledWithExactly(
 				{ requiresCharacterName: false }
 			)).to.be.true;
+			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledOnce).to.be.true;
+			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateNameUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.roles[0].validateNameUniquenessInGroup.calledWithExactly(
 				{ hasDuplicateName: false }
