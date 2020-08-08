@@ -76,10 +76,12 @@ describe('Cast Member model', () => {
 
 			spy(instance, 'validateName');
 			spy(instance, 'validateNameUniquenessInGroup');
+			spy(instance, 'validateNamePresenceIfRoles');
 			instance.runInputValidations({ hasDuplicateName: false });
 			assert.callOrder(
 				instance.validateName,
 				instance.validateNameUniquenessInGroup,
+				instance.validateNamePresenceIfRoles,
 				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
@@ -91,6 +93,8 @@ describe('Cast Member model', () => {
 			expect(instance.validateName.calledWithExactly({ requiresName: false })).to.be.true;
 			expect(instance.validateNameUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.validateNameUniquenessInGroup.calledWithExactly({ hasDuplicateName: false })).to.be.true;
+			expect(instance.validateNamePresenceIfRoles.calledOnce).to.be.true;
+			expect(instance.validateNamePresenceIfRoles.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
 				instance.roles
@@ -109,6 +113,90 @@ describe('Cast Member model', () => {
 			expect(instance.roles[0].validateNameUniquenessInGroup.calledWithExactly(
 				{ hasDuplicateName: false }
 			)).to.be.true;
+
+		});
+
+	});
+
+	describe('validateNamePresenceIfRoles method', () => {
+
+		beforeEach(() => {
+
+			stubs.models.Role = function (props) {
+
+				this.name = props.name;
+
+			};
+
+		});
+
+		context('valid data', () => {
+
+			context('cast member does not have name nor any roles with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					instance = createInstance({ name: '', roles: [{ name: '' }] });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfRoles();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('name');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+			context('cast member has a name and no roles with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					instance = createInstance({ name: 'Ian McKellen', roles: [{ name: '' }] });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfRoles();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('name');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+			context('cast member has a name and roles with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					instance = createInstance({ name: 'Ian McKellen', roles: [{ name: 'King Lear' }] });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfRoles();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.errors).not.to.have.property('name');
+					expect(instance.errors).to.deep.eq({});
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties whose values are arrays to errors property', () => {
+
+				instance = createInstance({ name: '', roles: [{ name: 'King Lear' }] });
+				spy(instance, 'addPropertyError');
+				instance.validateNamePresenceIfRoles();
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'name',
+					'Name is required if cast member has named roles'
+				)).to.be.true;
+				expect(instance.errors)
+					.to.have.property('name')
+					.that.is.an('array')
+					.that.deep.eq([	'Name is required if cast member has named roles']);
+
+			});
 
 		});
 

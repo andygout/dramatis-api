@@ -343,6 +343,74 @@ describe('Production instance', () => {
 
 		});
 
+		context('cast member without name has named roles', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					cast: [
+						{
+							name: '',
+							roles: [
+								{
+									name: 'Hamlet'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						errors: {}
+					},
+					cast: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: '',
+							errors: {
+								name: [
+									'Name is required if cast member has named roles'
+								]
+							},
+							roles: [
+								{
+									model: 'role',
+									name: 'Hamlet',
+									characterName: '',
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('cast member role name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
