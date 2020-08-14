@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import * as cypherQueriesProduction from '../../../../src/neo4j/cypher-queries/production';
-import removeWhitespace from '../../../test-helpers/remove-whitespace';
+import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace';
 
 describe('Cypher Queries Production module', () => {
 
@@ -10,7 +10,7 @@ describe('Cypher Queries Production module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesProduction.getCreateQuery();
-			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				CREATE (production:Production { uuid: $uuid, name: $name })
 
 				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
@@ -87,7 +87,7 @@ describe('Cypher Queries Production module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesProduction.getUpdateQuery();
-			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (production)-[relationship]-()

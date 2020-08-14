@@ -3,7 +3,7 @@ import { createSandbox } from 'sinon';
 
 import * as strings from '../../../../src/lib/strings';
 import * as cypherQueriesShared from '../../../../src/neo4j/cypher-queries/shared';
-import removeWhitespace from '../../../test-helpers/remove-whitespace';
+import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace';
 
 describe('Cypher Queries Shared module', () => {
 
@@ -37,7 +37,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getListQuery('production');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('production')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Production)
 
 					OPTIONAL MATCH (n)-[:PLAYS_AT]->(t:Theatre)
@@ -66,7 +66,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getExistenceQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN n
@@ -85,7 +85,7 @@ describe('Cypher Queries Shared module', () => {
 					const result = cypherQueriesShared.getDuplicateNameCountQuery('theatre', undefined);
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+					expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 						MATCH (n:Theatre { name: $name })
 
 						RETURN SIGN(COUNT(n)) AS instanceCount
@@ -103,7 +103,7 @@ describe('Cypher Queries Shared module', () => {
 						cypherQueriesShared.getDuplicateNameCountQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 					expect(stubs.capitalise.calledOnce).to.be.true;
 					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+					expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 						MATCH (n:Theatre { name: $name })
 							WHERE n.uuid <> $uuid
 
@@ -124,7 +124,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledTwice).to.be.true;
 				expect(stubs.capitalise.firstCall.calledWithExactly('theatre')).to.be.true;
 				expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					CREATE (n:Theatre { uuid: $uuid, name: $name })
 
 					WITH n
@@ -148,7 +148,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getEditQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 
 					RETURN
@@ -169,7 +169,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.calledTwice).to.be.true;
 				expect(stubs.capitalise.firstCall.calledWithExactly('theatre')).to.be.true;
 				expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
 						SET n.name = $name
 
@@ -194,7 +194,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getDeleteQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (:Theatre { uuid: $uuid })
 
 					OPTIONAL MATCH (deletableInstance:Theatre { uuid: $uuid })
@@ -245,7 +245,7 @@ describe('Cypher Queries Shared module', () => {
 				const result = cypherQueriesShared.getListQuery('theatre');
 				expect(stubs.capitalise.calledOnce).to.be.true;
 				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-				expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Theatre)
 
 					RETURN
