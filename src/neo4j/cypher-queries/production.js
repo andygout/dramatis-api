@@ -7,9 +7,9 @@ const getCreateUpdateQuery = action => {
 
 			OPTIONAL MATCH (production)-[relationship]-()
 
-			WITH production, COLLECT(relationship) AS relationships
+			DELETE relationship
 
-			FOREACH (relationship IN relationships | DELETE relationship)
+			WITH DISTINCT production
 
 			SET production.name = $name
 		`
