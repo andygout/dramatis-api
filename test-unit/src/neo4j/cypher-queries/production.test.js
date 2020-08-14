@@ -92,9 +92,11 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[relationship]-()
 
-				WITH production, COLLECT(relationship) AS relationships
-					FOREACH (relationship IN relationships | DELETE relationship)
-					SET production.name = $name
+				DELETE relationship
+
+				WITH DISTINCT production
+
+				SET production.name = $name
 
 				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (theatre:Theatre { name: $theatre.name })

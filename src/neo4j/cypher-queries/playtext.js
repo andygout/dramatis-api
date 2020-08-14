@@ -7,9 +7,9 @@ const getCreateUpdateQuery = action => {
 
 			OPTIONAL MATCH (playtext)-[relationship:INCLUDES_CHARACTER]->(:Character)
 
-			WITH playtext, COLLECT(relationship) AS relationships
+			DELETE relationship
 
-			FOREACH (relationship IN relationships | DELETE relationship)
+			WITH DISTINCT playtext
 
 			SET playtext.name = $name
 		`
