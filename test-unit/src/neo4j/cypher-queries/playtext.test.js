@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import * as cypherQueriesPlaytext from '../../../../src/neo4j/cypher-queries/playtext';
-import removeWhitespace from '../../../test-helpers/remove-whitespace';
+import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace';
 
 describe('Cypher Queries Playtext module', () => {
 
@@ -10,7 +10,7 @@ describe('Cypher Queries Playtext module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesPlaytext.getCreateQuery();
-			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				CREATE (playtext:Playtext { uuid: $uuid, name: $name })
 
 				FOREACH (characterParam IN $characters |
@@ -49,7 +49,7 @@ describe('Cypher Queries Playtext module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesPlaytext.getUpdateQuery();
-			expect(removeWhitespace(result)).to.equal(removeWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (playtext:Playtext { uuid: $uuid })
 
 				OPTIONAL MATCH (playtext)-[relationship:INCLUDES_CHARACTER]->(:Character)
