@@ -1,6 +1,6 @@
 {
   "watch": [
-    "src"
+    "built"
   ],
   "ext": "js"
 }
