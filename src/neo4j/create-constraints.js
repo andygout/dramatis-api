@@ -1,18 +1,14 @@
 import directly from 'directly';
-import path from 'path';
 
 import { neo4jQuery } from './query';
 
-const EXCLUDED_MODELS = [
-	'Base',
-	'index',
-	'CastMember'
+const MODELS = [
+	'Character',
+	'Person',
+	'Playtext',
+	'Production',
+	'Theatre'
 ];
-
-const models = require('fs')
-	.readdirSync(path.join(__dirname, '..', 'models'))
-	.map(filename => filename.replace('.js', ''))
-	.filter(filename => !EXCLUDED_MODELS.includes(filename));
 
 const createConstraint = async model => {
 
@@ -48,7 +44,7 @@ export default async () => {
 
 		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
 
-		const modelsToConstrain = models.filter(model => !modelsWithConstraints.includes(model));
+		const modelsToConstrain = MODELS.filter(model => !modelsWithConstraints.includes(model));
 
 		console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
 
