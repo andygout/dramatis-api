@@ -1,0 +1,208 @@
+{
+	"name": "Hamlet",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Hamlet"
+	},
+	"cast": [
+		{
+			"name": "Michael Peavoy",
+			"roles": [
+				{
+					"name": "Barnardo"
+				}
+			]
+		},
+		{
+			"name": "Matthew Barker",
+			"roles": [
+				{
+					"name": "Francisco"
+				},
+				{
+					"name": "Captain in Fortinbras' Army"
+				}
+			]
+		},
+		{
+			"name": "Giles Terera",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Marcus Cunningham",
+			"roles": [
+				{
+					"name": "Marcellus"
+				}
+			]
+		},
+		{
+			"name": "James Laurenson",
+			"roles": [
+				{
+					"name": "Ghost of the late King"
+				},
+				{
+					"name": "Player King"
+				}
+			]
+		},
+		{
+			"name": "Patrick Malahide",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "James Pearse",
+			"roles": [
+				{
+					"name": "Voltemand"
+				}
+			]
+		},
+		{
+			"name": "Ellie Turner",
+			"roles": [
+				{
+					"name": "Cornelia",
+					"characterName": "Cornelius"
+				}
+			]
+		},
+		{
+			"name": "Alex Lanipekun",
+			"roles": [
+				{
+					"name": "Laertes"
+				}
+			]
+		},
+		{
+			"name": "David Calder",
+			"roles": [
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Gravedigger"
+				}
+			]
+		},
+		{
+			"name": "Rory Kinnear",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Clare Higgins",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Ruth Negga",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Victor Power",
+			"roles": [
+				{
+					"name": "Reynaldo"
+				}
+			]
+		},
+		{
+			"name": "Ferdinand Kingsley",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "Presanna Puwanarajah",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "Saskia Portway",
+			"roles": [
+				{
+					"name": "Player Queen"
+				}
+			]
+		},
+		{
+			"name": "Michael Sheldon",
+			"roles": [
+				{
+					"name": "Lucianus"
+				},
+				{
+					"name": "English Ambassador"
+				}
+			]
+		},
+		{
+			"name": "Richie Hart",
+			"roles": [
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Jake Fairbrother",
+			"roles": [
+				{
+					"name": "Fortinbras"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Osric"
+				}
+			]
+		},
+		{
+			"name": "Zara Tempest-Walters",
+			"roles": [
+				{
+					"name": "Messenger"
+				}
+			]
+		},
+		{
+			"name": "Leo Staar",
+			"roles": [
+				{
+					"name": "Priest"
+				}
+			]
+		}
+	]
+}

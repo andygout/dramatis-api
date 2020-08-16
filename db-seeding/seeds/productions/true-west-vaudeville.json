@@ -1,0 +1,33 @@
+{
+	"name": "True West",
+	"theatre": {
+		"name": "Vaudeville Theatre"
+	},
+	"playtext": {
+		"name": "True West"
+	},
+	"cast": [
+		{
+			"name": "Kit Harington",
+			"roles": [
+				{
+					"name": "Austin"
+				},
+				{
+					"name": "Lee"
+				}
+			]
+		},
+		{
+			"name": "Johnny Flynn",
+			"roles": [
+				{
+					"name": "Lee"
+				},
+				{
+					"name": "Austin"
+				}
+			]
+		}
+	]
+}

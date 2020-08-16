@@ -1,0 +1,585 @@
+{
+	"name": "Coriolanus",
+	"theatre": {
+		"name": "Barbican"
+	},
+	"playtext": {
+		"name": "Coriolanus"
+	},
+	"cast": [
+		{
+			"name": "Toshiaki Karasawa",
+			"roles": [
+				{
+					"name": "Caius Martius Coriolanus"
+				}
+			]
+		},
+		{
+			"name": "Kayako Shiraishi",
+			"roles": [
+				{
+					"name": "Volumnia"
+				}
+			]
+		},
+		{
+			"name": "Masanobu Katsumura",
+			"roles": [
+				{
+					"name": "Tullus Aufidius"
+				}
+			]
+		},
+		{
+			"name": "Tatsuki Kohju",
+			"roles": [
+				{
+					"name": "Virgilia"
+				}
+			]
+		},
+		{
+			"name": "Kotaro Yoshida",
+			"roles": [
+				{
+					"name": "Menenius Agrippa"
+				}
+			]
+		},
+		{
+			"name": "Tetsuro Sagawa",
+			"roles": [
+				{
+					"name": "Sicinius Velutus"
+				}
+			]
+		},
+		{
+			"name": "Yasuyoshi Hara",
+			"roles": [
+				{
+					"name": "Cominius"
+				}
+			]
+		},
+		{
+			"name": "Ryuzaburo Otomo",
+			"roles": [
+				{
+					"name": "Titus Lartius"
+				}
+			]
+		},
+		{
+			"name": "Hideaki Tezuka",
+			"roles": [
+				{
+					"name": "Junius Brutus"
+				}
+			]
+		},
+		{
+			"name": "Yutaka Oda",
+			"roles": [
+				{
+					"name": "Roman Senator",
+					"characterName": "Roman Senators"
+				},
+				{
+					"name": "Patrician 1",
+					"characterName": "Patricians"
+				}
+			]
+		},
+		{
+			"name": "Hiroshi Tomioka",
+			"roles": [
+				{
+					"name": "Citizen 5"
+				},
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Officer 1"
+				}
+			]
+		},
+		{
+			"name": "Hiroki Okawa",
+			"roles": [
+				{
+					"name": "Citizen 1"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Roman 1",
+					"characterName": "Roman Citizens"
+				},
+				{
+					"name": "Servingman 3"
+				}
+			]
+		},
+		{
+			"name": "Masahiro Kobayashi",
+			"roles": [
+				{
+					"name": "Citizen 2"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Tetsuo Takase",
+			"roles": [
+				{
+					"name": "Citizen 4"
+				},
+				{
+					"name": "A Citizen of Antium"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Norie Takahashi",
+			"roles": [
+				{
+					"name": "Valeria"
+				}
+			]
+		},
+		{
+			"name": "Ben Hiura",
+			"roles": [
+				{
+					"name": "Citizen 3"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Roman 3",
+					"characterName": "Roman Citizens"
+				},
+				{
+					"name": "Servingman 1"
+				}
+			]
+		},
+		{
+			"name": "Yutaka Suzuki",
+			"roles": [
+				{
+					"name": "Nicanor"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Eiichi Seike",
+			"roles": [
+				{
+					"name": "Aedile",
+					"characterName": "Aediles"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Lieutenant"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Yukio Tsukamoto",
+			"roles": [
+				{
+					"name": "Servingman 2"
+				},
+				{
+					"name": "Citizen 7"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Officer 2"
+				}
+			]
+		},
+		{
+			"name": "Masato Shinkawa",
+			"roles": [
+				{
+					"name": "Conspirator 1",
+					"characterName": "Conspirators"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Sentinel 2"
+				}
+			]
+		},
+		{
+			"name": "Masazumi Nitanda",
+			"roles": [
+				{
+					"name": "Conspirator 3",
+					"characterName": "Conspirators"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Lieutenant"
+				}
+			]
+		},
+		{
+			"name": "Kiyoshi Fukuda",
+			"roles": [
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier 1",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Bugler"
+				}
+			]
+		},
+		{
+			"name": "Takeshi Inomo",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Servingman"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Masashi Shinohara",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Servingman"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Naoto Kaji",
+			"roles": [
+				{
+					"name": "Sentinel 1"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Haruo Takayama",
+			"roles": [
+				{
+					"name": "Roman Senator 3",
+					"characterName": "Roman Senators"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Patrician",
+					"characterName": "Patricians"
+				}
+			]
+		},
+		{
+			"name": "Katsuhiro Kitagawa",
+			"roles": [
+				{
+					"name": "Roman Senator 2",
+					"characterName": "Roman Senators"
+				},
+				{
+					"name": "Volscian Senator 1",
+					"characterName": "Volscian Senators"
+				},
+				{
+					"name": "Patrician 2",
+					"characterName": "Patricians"
+				}
+			]
+		},
+		{
+			"name": "Tomoya Hoshi",
+			"roles": [
+				{
+					"name": "Herald",
+					"characterName": "Roman Herald"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Conspirator 2",
+					"characterName": "Conspirators"
+				}
+			]
+		},
+		{
+			"name": "Kai",
+			"roles": [
+				{
+					"name": "Citizen 8"
+				},
+				{
+					"name": "Soldier 2",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Roman 2",
+					"characterName": "Roman Citizens"
+				}
+			]
+		},
+		{
+			"name": "Akihiko Tsunoda",
+			"roles": [
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Go Fujinuma",
+			"roles": [
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Servingman"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Miki Kajiwara",
+			"roles": [
+				{
+					"name": "Gentlewoman"
+				}
+			]
+		},
+		{
+			"name": "Yutaka Izumi",
+			"roles": [
+				{
+					"name": "Citizen 6"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		},
+		{
+			"name": "Seichiro Kawasaki",
+			"roles": [
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Seiji Kawasaki",
+			"roles": [
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Takuma Harada",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Servingman"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Yoshihisa Ishida",
+			"roles": [
+				{
+					"name": "Adrian"
+				},
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		},
+		{
+			"name": "Daisuke Sugiura",
+			"roles": [
+				{
+					"name": "Citizen"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Chihiro Maebashi",
+			"roles": [
+				{
+					"name": "Young Martius"
+				},
+				{
+					"name": "Citizen"
+				}
+			]
+		}
+	]
+}

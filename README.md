@@ -26,6 +26,10 @@ Graph database-driven API for site of theatrical productions, playtexts, and ass
 - Run server using `$ npm start`.
 - Visit routes via `http://localhost:3000` (e.g. `http://localhost:3000/productions`).
 
+## To seed database
+- Ensure that a local instance of Neo4j graph database and app are running.
+- Run `$ npm run seed-db`.
+
 ## To edit content via CMS (content management system) (locally)
 - Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3001`, which will point at this API on port 3000.
 
