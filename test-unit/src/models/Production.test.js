@@ -78,7 +78,7 @@ describe('Production model', () => {
 
 				const props = { name: 'Hamlet' };
 				const instance = createInstance(props);
-				expect(instance.cast).to.deep.eq([]);
+				expect(instance.cast).to.deep.equal([]);
 
 			});
 

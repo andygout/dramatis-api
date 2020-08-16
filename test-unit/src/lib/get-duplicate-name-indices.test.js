@@ -17,7 +17,7 @@ describe('Get Duplicate Name Indices module', () => {
 				]
 			);
 
-			expect(result).to.deep.eq([]);
+			expect(result).to.deep.equal([]);
 
 		});
 
@@ -39,7 +39,7 @@ describe('Get Duplicate Name Indices module', () => {
 					]
 				);
 
-				expect(result).to.deep.eq([0, 3]);
+				expect(result).to.deep.equal([0, 3]);
 
 			});
 
@@ -60,7 +60,7 @@ describe('Get Duplicate Name Indices module', () => {
 					]
 				);
 
-				expect(result).to.deep.eq([0, 1, 3, 4]);
+				expect(result).to.deep.equal([0, 1, 3, 4]);
 
 			});
 
@@ -83,7 +83,7 @@ describe('Get Duplicate Name Indices module', () => {
 					]
 				);
 
-				expect(result).to.deep.eq([0, 2, 5, 6]);
+				expect(result).to.deep.equal([0, 2, 5, 6]);
 
 			});
 

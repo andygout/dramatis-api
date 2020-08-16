@@ -67,7 +67,7 @@ describe('Playtext model', () => {
 
 					const props = { name: 'The Tragedy of Hamlet, Prince of Denmark' };
 					const instance = createInstance(props);
-					expect(instance.characters).to.deep.eq([]);
+					expect(instance.characters).to.deep.equal([]);
 
 				});
 

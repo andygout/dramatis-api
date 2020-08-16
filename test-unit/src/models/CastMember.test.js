@@ -141,7 +141,7 @@ describe('Cast Member model', () => {
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -156,7 +156,7 @@ describe('Cast Member model', () => {
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -171,7 +171,7 @@ describe('Cast Member model', () => {
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
