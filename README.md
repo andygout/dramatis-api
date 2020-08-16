@@ -4,7 +4,7 @@ Graph database-driven API for site of theatrical productions, playtexts, and ass
 
 ## Setup
 - Clone this repo.
-- Set local Node version to same as listed in `package.json` `engines.node`.
+- Set Node to version specified in `.nvmrc`, which can be achieved by running `$ nvm use`.
 - Install node modules: `$ npm install`.
 - Compile code: `$ npm run build`.
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ node transfer-env-dev`. N.B. Values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/theatrebase-api#user-content-database-setup)).
