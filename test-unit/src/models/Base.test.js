@@ -435,7 +435,7 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getDuplicateNameCountQuery response', params: instance }
 				)).to.be.true;
-				expect(result).to.deep.eq(instance);
+				expect(result).to.deep.equal(instance);
 
 			});
 
@@ -583,7 +583,7 @@ describe('Base model', () => {
 				)).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.setErrorStatus.notCalled).to.be.true;
-				expect(result).to.deep.eq({ model: 'theatre', name: 'Almeida Theatre' });
+				expect(result).to.deep.equal({ model: 'theatre', name: 'Almeida Theatre' });
 
 			});
 
@@ -616,7 +616,7 @@ describe('Base model', () => {
 				expect(instance.addPropertyError.calledWithExactly('associations', 'Production')).to.be.true;
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-				expect(result).to.deep.eq(instance);
+				expect(result).to.deep.equal(instance);
 
 			});
 
@@ -636,7 +636,7 @@ describe('Base model', () => {
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getShowTheatreQuery response', params: instance }
 			)).to.be.true;
-			expect(result).to.deep.eq(neo4jQueryMockResponse);
+			expect(result).to.deep.equal(neo4jQueryMockResponse);
 
 		});
 
@@ -653,7 +653,7 @@ describe('Base model', () => {
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getListQuery response' }, { isOptionalResult: true, isArrayResult: true }
 			)).to.be.true;
-			expect(result).to.deep.eq(neo4jQueryMockResponse);
+			expect(result).to.deep.equal(neo4jQueryMockResponse);
 
 		});
 

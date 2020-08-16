@@ -105,7 +105,7 @@ describe('Role model', () => {
 				).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.errors).not.to.have.property('name');
-				expect(instance.errors).to.deep.eq({});
+				expect(instance.errors).to.deep.equal({});
 
 			});
 
@@ -151,7 +151,7 @@ describe('Role model', () => {
 				instance.validateCharacterNameHasRoleName();
 				expect(instance.addPropertyError.notCalled).to.be.true;
 				expect(instance.errors).not.to.have.property('characterName');
-				expect(instance.errors).to.deep.eq({});
+				expect(instance.errors).to.deep.equal({});
 
 			});
 
@@ -193,7 +193,7 @@ describe('Role model', () => {
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -208,7 +208,7 @@ describe('Role model', () => {
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -223,7 +223,7 @@ describe('Role model', () => {
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.eq({});
+					expect(instance.errors).to.deep.equal({});
 
 				});
 
