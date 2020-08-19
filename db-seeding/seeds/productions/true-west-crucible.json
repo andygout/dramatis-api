@@ -1,0 +1,33 @@
+{
+	"name": "True West",
+	"theatre": {
+		"name": "Crucible Theatre"
+	},
+	"playtext": {
+		"name": "True West"
+	},
+	"cast": [
+		{
+			"name": "Nigel Harman",
+			"roles": [
+				{
+					"name": "Austin"
+				},
+				{
+					"name": "Lee"
+				}
+			]
+		},
+		{
+			"name": "John Light",
+			"roles": [
+				{
+					"name": "Lee"
+				},
+				{
+					"name": "Austin"
+				}
+			]
+		}
+	]
+}

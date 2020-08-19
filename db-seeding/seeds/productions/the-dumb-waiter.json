@@ -1,0 +1,27 @@
+{
+	"name": "The Dumb Waiter",
+	"theatre": {
+		"name": "Trafalgar Studios"
+	},
+	"playtext": {
+		"name": "The Dumb Waiter"
+	},
+	"cast": [
+		{
+			"name": "Jason Isaacs",
+			"roles": [
+				{
+					"name": "Ben"
+				}
+			]
+		},
+		{
+			"name": "Lee Evans",
+			"roles": [
+				{
+					"name": "Gus"
+				}
+			]
+		}
+	]
+}

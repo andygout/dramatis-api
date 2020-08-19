@@ -1,0 +1,75 @@
+{
+	"name": "Rope",
+	"theatre": {
+		"name": "Almeida Theatre"
+	},
+	"playtext": {
+		"name": "Rope"
+	},
+	"cast": [
+		{
+			"name": "Philip Arditti",
+			"roles": [
+				{
+					"name": "Sabot"
+				}
+			]
+		},
+		{
+			"name": "Bertie Carvel",
+			"roles": [
+				{
+					"name": "Rupert Cadell"
+				}
+			]
+		},
+		{
+			"name": "Emma Dewhurt",
+			"roles": [
+				{
+					"name": "Mrs Debenham"
+				}
+			]
+		},
+		{
+			"name": "Michael Elwyn",
+			"roles": [
+				{
+					"name": "Sir Johnstone Kentley"
+				}
+			]
+		},
+		{
+			"name": "Henry Lloyd-Hughes",
+			"roles": [
+				{
+					"name": "Kenneth Raglan"
+				}
+			]
+		},
+		{
+			"name": "Blake Ritson",
+			"roles": [
+				{
+					"name": "Wyndham Brandon"
+				}
+			]
+		},
+		{
+			"name": "Alex Waldmann",
+			"roles": [
+				{
+					"name": "Charles Granillo"
+				}
+			]
+		},
+		{
+			"name": "Phoebe Waller-Bridge",
+			"roles": [
+				{
+					"name": "Leila Arden"
+				}
+			]
+		}
+	]
+}

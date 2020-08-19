@@ -1,0 +1,95 @@
+{
+	"name": "Coriolanus",
+	"characters": [
+		{
+			"name": "Caius Martius Coriolanus"
+		},
+		{
+			"name": "Titus Lartius"
+		},
+		{
+			"name": "Cominius"
+		},
+		{
+			"name": "Menenius Agrippa"
+		},
+		{
+			"name": "Sicinius Velutus"
+		},
+		{
+			"name": "Junius Brutus"
+		},
+		{
+			"name": "Roman Citizens"
+		},
+		{
+			"name": "Roman Herald"
+		},
+		{
+			"name": "Nicanor"
+		},
+		{
+			"name": "Volumnia"
+		},
+		{
+			"name": "Virgilia"
+		},
+		{
+			"name": "Young Martius"
+		},
+		{
+			"name": "Valeria"
+		},
+		{
+			"name": "Gentlewoman"
+		},
+		{
+			"name": "Tullus Aufidius"
+		},
+		{
+			"name": "Lieutenant"
+		},
+		{
+			"name": "Conspirators"
+		},
+		{
+			"name": "Adrian"
+		},
+		{
+			"name": "A Citizen of Antium"
+		},
+		{
+			"name": "Volscian Guards"
+		},
+		{
+			"name": "Roman Senators"
+		},
+		{
+			"name": "Volscian Senators"
+		},
+		{
+			"name": "Patricians"
+		},
+		{
+			"name": "Aediles"
+		},
+		{
+			"name": "Lictors"
+		},
+		{
+			"name": "Soldiers"
+		},
+		{
+			"name": "Messengers"
+		},
+		{
+			"name": "Volscian Citizens"
+		},
+		{
+			"name": "Servants of Aufidius"
+		},
+		{
+			"name": "Attendants"
+		}
+	]
+}
