@@ -125,8 +125,7 @@ describe('Character with variant names', () => {
 								characterName: 'Claudius, King of Denmark'
 							},
 							{
-								name: 'Ghost of King Hamlet',
-								characterName: ''
+								name: 'Ghost of King Hamlet'
 							}
 						]
 					}
@@ -161,8 +160,7 @@ describe('Character with variant names', () => {
 								characterName: 'Ghost of King Hamlet'
 							},
 							{
-								name: 'First Player',
-								characterName: ''
+								name: 'First Player'
 							}
 						]
 					}

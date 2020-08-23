@@ -327,8 +327,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Rory Kinnear',
 							roles: [
 								{
-									name: 'Hamlet',
-									characterName: ''
+									name: 'Hamlet'
 								}
 							]
 						},
@@ -349,23 +348,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Michael Sheldon',
 							roles: [
 								{
-									name: 'Lucianus',
-									characterName: ''
+									name: 'Lucianus'
 								},
 								{
-									name: 'English Ambassador',
-									characterName: ''
+									name: 'English Ambassador'
 								}
 							]
 						},
 						{
-							name: 'Leo Staar',
-							roles: [
-								{
-									name: '',
-									characterName: ''
-								}
-							]
+							name: 'Leo Staar'
 						}
 					]
 				});
@@ -717,8 +708,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Ralph Fiennes',
 							roles: [
 								{
-									name: 'Richard, Duke of Gloucester',
-									characterName: ''
+									name: 'Richard, Duke of Gloucester'
 								}
 							]
 						},
@@ -739,23 +729,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Mark Hadfield',
 							roles: [
 								{
-									name: 'Ratcliffe',
-									characterName: ''
+									name: 'Ratcliffe'
 								},
 								{
-									name: 'Lord Mayor',
-									characterName: ''
+									name: 'Lord Mayor'
 								}
 							]
 						},
 						{
-							name: 'Josh Collins',
-							roles: [
-								{
-									name: '',
-									characterName: ''
-								}
-							]
+							name: 'Josh Collins'
 						}
 					]
 				});

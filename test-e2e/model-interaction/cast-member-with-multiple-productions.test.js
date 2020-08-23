@@ -45,8 +45,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Patrick Stewart',
 						roles: [
 							{
-								name: 'Prospero',
-								characterName: ''
+								name: 'Prospero'
 							}
 						]
 					}
@@ -65,8 +64,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Patrick Stewart',
 						roles: [
 							{
-								name: 'Macbeth',
-								characterName: ''
+								name: 'Macbeth'
 							}
 						]
 					}
@@ -85,8 +83,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Patrick Stewart',
 						roles: [
 							{
-								name: 'Vladimir',
-								characterName: ''
+								name: 'Vladimir'
 							}
 						]
 					}

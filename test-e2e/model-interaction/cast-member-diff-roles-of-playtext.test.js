@@ -67,8 +67,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Michael Gambon',
 						roles: [
 							{
-								name: 'King Lear',
-								characterName: ''
+								name: 'King Lear'
 							}
 						]
 					},
@@ -76,8 +75,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Antony Sher',
 						roles: [
 							{
-								name: 'Fool',
-								characterName: ''
+								name: 'Fool'
 							}
 						]
 					}
@@ -99,8 +97,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Antony Sher',
 						roles: [
 							{
-								name: 'King Lear',
-								characterName: ''
+								name: 'King Lear'
 							}
 						]
 					},
@@ -108,8 +105,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Graham Turner',
 						roles: [
 							{
-								name: 'Fool',
-								characterName: ''
+								name: 'Fool'
 							}
 						]
 					}

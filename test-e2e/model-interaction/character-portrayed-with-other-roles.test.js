@@ -71,8 +71,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'Jamie Ballard',
 						roles: [
 							{
-								name: 'Major Nicholls',
-								characterName: ''
+								name: 'Major Nicholls'
 							}
 						]
 					},
@@ -80,20 +79,16 @@ describe('Character portrayed with other roles', () => {
 						name: 'Stephen Harper',
 						roles: [
 							{
-								name: 'Joey\'s mother',
-								characterName: ''
+								name: 'Joey\'s mother'
 							},
 							{
-								name: 'Dr Schweyk',
-								characterName: ''
+								name: 'Dr Schweyk'
 							},
 							{
-								name: 'Coco',
-								characterName: ''
+								name: 'Coco'
 							},
 							{
-								name: 'Geordie',
-								characterName: ''
+								name: 'Geordie'
 							}
 						]
 					}
