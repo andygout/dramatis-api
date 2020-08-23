@@ -87,8 +87,7 @@ describe('Character in multiple playtexts', () => {
 						name: 'Michael Gambon',
 						roles: [
 							{
-								name: 'Sir John Falstaff',
-								characterName: ''
+								name: 'Sir John Falstaff'
 							}
 						]
 					}
@@ -110,8 +109,7 @@ describe('Character in multiple playtexts', () => {
 						name: 'Roger Allam',
 						roles: [
 							{
-								name: 'Sir John Falstaff',
-								characterName: ''
+								name: 'Sir John Falstaff'
 							}
 						]
 					}
@@ -133,8 +131,7 @@ describe('Character in multiple playtexts', () => {
 						name: 'Richard Cordery',
 						roles: [
 							{
-								name: 'Sir John Falstaff',
-								characterName: ''
+								name: 'Sir John Falstaff'
 							}
 						]
 					}

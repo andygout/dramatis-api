@@ -69,12 +69,10 @@ describe('Roles with alternating cast', () => {
 						name: 'Nigel Harman',
 						roles: [
 							{
-								name: 'Austin',
-								characterName: ''
+								name: 'Austin'
 							},
 							{
-								name: 'Lee',
-								characterName: ''
+								name: 'Lee'
 							}
 						]
 					},
@@ -82,12 +80,10 @@ describe('Roles with alternating cast', () => {
 						name: 'John Light',
 						roles: [
 							{
-								name: 'Lee',
-								characterName: ''
+								name: 'Lee'
 							},
 							{
-								name: 'Austin',
-								characterName: ''
+								name: 'Austin'
 							}
 						]
 					}
@@ -109,12 +105,10 @@ describe('Roles with alternating cast', () => {
 						name: 'Kit Harington',
 						roles: [
 							{
-								name: 'Austin',
-								characterName: ''
+								name: 'Austin'
 							},
 							{
-								name: 'Lee',
-								characterName: ''
+								name: 'Lee'
 							}
 						]
 					},
@@ -122,12 +116,10 @@ describe('Roles with alternating cast', () => {
 						name: 'Johnny Flynn',
 						roles: [
 							{
-								name: 'Lee',
-								characterName: ''
+								name: 'Lee'
 							},
 							{
-								name: 'Austin',
-								characterName: ''
+								name: 'Austin'
 							}
 						]
 					}
