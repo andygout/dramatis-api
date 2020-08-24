@@ -134,6 +134,7 @@ describe('Instance validation failures: Productions API', () => {
 
 		const OTHELLO_DONMAR_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const DONMAR_WAREHOUSE_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const OTHELLO_PLAYTEXT_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
 
@@ -151,12 +152,26 @@ describe('Instance validation failures: Productions API', () => {
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID
 			});
 
+			await createNode({
+				label: 'Playtext',
+				name: 'Othello',
+				uuid: OTHELLO_PLAYTEXT_UUID
+			});
+
 			await createRelationship({
 				sourceLabel: 'Production',
 				sourceUuid: OTHELLO_DONMAR_PRODUCTION_UUID,
 				destinationLabel: 'Theatre',
 				destinationUuid: DONMAR_WAREHOUSE_THEATRE_UUID,
 				relationshipName: 'PLAYS_AT'
+			});
+
+			await createRelationship({
+				sourceLabel: 'Production',
+				sourceUuid: OTHELLO_DONMAR_PRODUCTION_UUID,
+				destinationLabel: 'Playtext',
+				destinationUuid: OTHELLO_PLAYTEXT_UUID,
+				relationshipName: 'PRODUCTION_OF'
 			});
 
 		});
@@ -177,6 +192,7 @@ describe('Instance validation failures: Productions API', () => {
 					hasErrors: true,
 					errors: {
 						associations: [
+							'Playtext',
 							'Theatre'
 						]
 					},

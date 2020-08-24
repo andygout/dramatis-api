@@ -81,40 +81,27 @@ describe('Theatre with multiple productions', () => {
 
 		it('includes productions at this theatre', () => {
 
-			const expectedStreetcarNamedDesireDonmarProductionCredit = {
-				model: 'production',
-				uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
-				name: 'A Streetcar Named Desire'
-			};
-
-			const expectedLifeIsADreamDonmarProductionCredit = {
-				model: 'production',
-				uuid: LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID,
-				name: 'Life is a Dream'
-			};
-
-			const expectedRedDonmarProductionCredit = {
-				model: 'production',
-				uuid: RED_DONMAR_PRODUCTION_UUID,
-				name: 'Red'
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
+					name: 'A Streetcar Named Desire'
+				},
+				{
+					model: 'production',
+					uuid: LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID,
+					name: 'Life is a Dream'
+				},
+				{
+					model: 'production',
+					uuid: RED_DONMAR_PRODUCTION_UUID,
+					name: 'Red'
+				}
+			];
 
 			const { productions } = donmarWarehouseTheatre.body;
 
-			const streetcarNamedDesireDonmarProductionCredit =
-				productions.find(production => production.uuid === A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID);
-
-			const lifeIsADreamDonmarProductionCredit =
-				productions.find(production => production.uuid === LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID);
-
-			const redDonmarProductionCredit =
-				productions.find(production => production.uuid === RED_DONMAR_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(3);
-			expect(expectedStreetcarNamedDesireDonmarProductionCredit)
-				.to.deep.equal(streetcarNamedDesireDonmarProductionCredit);
-			expect(expectedLifeIsADreamDonmarProductionCredit).to.deep.equal(lifeIsADreamDonmarProductionCredit);
-			expect(expectedRedDonmarProductionCredit).to.deep.equal(redDonmarProductionCredit);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

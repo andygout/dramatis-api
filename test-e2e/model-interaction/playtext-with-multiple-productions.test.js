@@ -93,57 +93,42 @@ describe('Playtext with multiple productions', () => {
 
 		it('includes productions of playtext', () => {
 
-			const expectedMeasureForMeasureNationalProductionCredit = {
-				model: 'production',
-				uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
-				name: 'Measure for Measure',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
+					name: 'Measure for Measure',
+					theatre: {
+						model: 'theatre',
+						uuid: ALMEIDA_THEATRE_UUID,
+						name: 'Almeida Theatre'
+					}
+				},
+				{
+					model: 'production',
+					uuid: MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID,
+					name: 'Measure for Measure',
+					theatre: {
+						model: 'theatre',
+						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+						name: 'Donmar Warehouse'
+					}
+				},
+				{
+					model: 'production',
+					uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
+					name: 'Measure for Measure',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					}
 				}
-			};
-
-			const expectedMeasureForMeasureAlmeidaProductionCredit = {
-				model: 'production',
-				uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
-				name: 'Measure for Measure',
-				theatre: {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
-					name: 'Almeida Theatre'
-				}
-			};
-
-			const expectedMeasureForMeasureDonmarProductionCredit = {
-				model: 'production',
-				uuid: MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID,
-				name: 'Measure for Measure',
-				theatre: {
-					model: 'theatre',
-					uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-					name: 'Donmar Warehouse'
-				}
-			};
+			];
 
 			const { productions } = measureForMeasurePlaytext.body;
 
-			const measureForMeasureNationalProductionCredit =
-				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID);
-
-			const measureForMeasureAlmeidaProductionCredit =
-				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID);
-
-			const measureForMeasureDonmarProductionCredit =
-				productions.find(production => production.uuid === MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(3);
-			expect(expectedMeasureForMeasureNationalProductionCredit)
-				.to.deep.equal(measureForMeasureNationalProductionCredit);
-			expect(expectedMeasureForMeasureAlmeidaProductionCredit)
-				.to.deep.equal(measureForMeasureAlmeidaProductionCredit);
-			expect(expectedMeasureForMeasureDonmarProductionCredit)
-				.to.deep.equal(measureForMeasureDonmarProductionCredit);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

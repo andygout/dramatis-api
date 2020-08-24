@@ -10,18 +10,18 @@ describe('Cast member with multiple production credits', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '0';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '1';
-	const PATRICK_STEWART_PERSON_UUID = '3';
-	const MACBETH_GIELGUD_PRODUCTION_UUID = '4';
-	const GIELGUD_THEATRE_UUID = '5';
-	const WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID = '8';
-	const HAYMARKET_THEATRE_UUID = '9';
+	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = '0';
+	const ALDWYCH_THEATRE_UUID = '1';
+	const SUSANNAH_FELLOWS_PERSON_UUID = '3';
+	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = '4';
+	const PRINCE_OF_WALES_THEATRE_UUID = '5';
+	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = '8';
+	const CHICHESTER_FESTIVAL_THEATRE_UUID = '9';
 
-	let patrickStewartPerson;
-	let tempestRoyalShakespeareProduction;
-	let macbethGielgudProduction;
-	let waitingForGodotHaymarketProduction;
+	let susannahFellowsPerson;
+	let theGreeksAldwychProduction;
+	let cityOfAngelsPrinceOfWalesProduction;
+	let enronChichesterFestivalProduction;
 
 	const sandbox = createSandbox();
 
@@ -36,16 +36,19 @@ describe('Cast member with multiple production credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'The Tempest',
+				name: 'The Greeks',
 				theatre: {
-					name: 'Royal Shakespeare Theatre'
+					name: 'Aldwych Theatre'
 				},
 				cast: [
 					{
-						name: 'Patrick Stewart',
+						name: 'Susannah Fellows',
 						roles: [
 							{
-								name: 'Prospero'
+								name: 'Chorus'
+							},
+							{
+								name: 'Trojan slave'
 							}
 						]
 					}
@@ -55,16 +58,19 @@ describe('Cast member with multiple production credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Macbeth',
+				name: 'City of Angels',
 				theatre: {
-					name: 'Gielgud Theatre'
+					name: 'Prince of Wales Theatre'
 				},
 				cast: [
 					{
-						name: 'Patrick Stewart',
+						name: 'Susannah Fellows',
 						roles: [
 							{
-								name: 'Macbeth'
+								name: 'Alaura Kingsley'
+							},
+							{
+								name: 'Carla Haywood'
 							}
 						]
 					}
@@ -74,33 +80,39 @@ describe('Cast member with multiple production credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Waiting for Godot',
+				name: 'Enron',
 				theatre: {
-					name: 'Theatre Royal Haymarket'
+					name: 'Chichester Festival Theatre'
 				},
 				cast: [
 					{
-						name: 'Patrick Stewart',
+						name: 'Susannah Fellows',
 						roles: [
 							{
-								name: 'Vladimir'
+								name: 'Congresswoman'
+							},
+							{
+								name: 'Sheryl Sloman'
+							},
+							{
+								name: 'Irene Gant'
 							}
 						]
 					}
 				]
 			});
 
-		patrickStewartPerson = await chai.request(app)
-			.get(`/people/${PATRICK_STEWART_PERSON_UUID}`);
+		susannahFellowsPerson = await chai.request(app)
+			.get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
 
-		tempestRoyalShakespeareProduction = await chai.request(app)
-			.get(`/productions/${THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		theGreeksAldwychProduction = await chai.request(app)
+			.get(`/productions/${THE_GREEKS_ALDWYCH_PRODUCTION_UUID}`);
 
-		macbethGielgudProduction = await chai.request(app)
-			.get(`/productions/${MACBETH_GIELGUD_PRODUCTION_UUID}`);
+		cityOfAngelsPrinceOfWalesProduction = await chai.request(app)
+			.get(`/productions/${CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID}`);
 
-		waitingForGodotHaymarketProduction = await chai.request(app)
-			.get(`/productions/${WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID}`);
+		enronChichesterFestivalProduction = await chai.request(app)
+			.get(`/productions/${ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID}`);
 
 	});
 
@@ -110,165 +122,191 @@ describe('Cast member with multiple production credits', () => {
 
 	});
 
-	describe('Patrick Stewart (person)', () => {
+	describe('Susannah Fellows (person)', () => {
 
 		it('includes productions in which cast member performed (including characters they portrayed)', () => {
 
-			const expectedTempestRoyalShakespeareProductionCredit = {
-				model: 'production',
-				uuid: THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'The Tempest',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
+					name: 'City of Angels',
+					theatre: {
+						model: 'theatre',
+						uuid: PRINCE_OF_WALES_THEATRE_UUID,
+						name: 'Prince of Wales Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Alaura Kingsley'
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Carla Haywood'
+						}
+					]
 				},
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Prospero'
-					}
-				]
-			};
-
-			const expectedMacbethGielgudProductionCredit = {
-				model: 'production',
-				uuid: MACBETH_GIELGUD_PRODUCTION_UUID,
-				name: 'Macbeth',
-				theatre: {
-					model: 'theatre',
-					uuid: GIELGUD_THEATRE_UUID,
-					name: 'Gielgud Theatre'
+				{
+					model: 'production',
+					uuid: ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID,
+					name: 'Enron',
+					theatre: {
+						model: 'theatre',
+						uuid: CHICHESTER_FESTIVAL_THEATRE_UUID,
+						name: 'Chichester Festival Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Congresswoman'
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Sheryl Sloman'
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Irene Gant'
+						}
+					]
 				},
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Macbeth'
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: THE_GREEKS_ALDWYCH_PRODUCTION_UUID,
+					name: 'The Greeks',
+					theatre: {
+						model: 'theatre',
+						uuid: ALDWYCH_THEATRE_UUID,
+						name: 'Aldwych Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Chorus'
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Trojan slave'
+						}
+					]
+				}
+			];
 
-			const expectedWaitingForGodotHaymarketProductionCredit = {
-				model: 'production',
-				uuid: WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID,
-				name: 'Waiting for Godot',
-				theatre: {
-					model: 'theatre',
-					uuid: HAYMARKET_THEATRE_UUID,
-					name: 'Theatre Royal Haymarket'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Vladimir'
-					}
-				]
-			};
+			const { productions } = susannahFellowsPerson.body;
 
-			const { productions } = patrickStewartPerson.body;
-
-			const tempestRoyalShakespeareProductionCredit =
-				productions.find(production => production.uuid === THE_TEMPEST_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			const macbethGielgudProductionCredit =
-				productions.find(production => production.uuid === MACBETH_GIELGUD_PRODUCTION_UUID);
-
-			const waitingForGodotHaymarketProductionCredit =
-				productions.find(production => production.uuid === WAITING_FOR_GODOT_HAYMARKET_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(3);
-			expect(expectedTempestRoyalShakespeareProductionCredit)
-				.to.deep.equal(tempestRoyalShakespeareProductionCredit);
-			expect(expectedMacbethGielgudProductionCredit).to.deep.equal(macbethGielgudProductionCredit);
-			expect(expectedWaitingForGodotHaymarketProductionCredit)
-				.to.deep.equal(waitingForGodotHaymarketProductionCredit);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
 	});
 
-	describe('The Tempest at Royal Shakespeare Theatre (production)', () => {
+	describe('The Greeks at Aldwych Theatre (production)', () => {
 
-		it('includes Patrick Stewart in its cast (including character he portrayed)', () => {
+		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberPatrickStewart = {
+			const expectedCastMemberSusannahFellows = {
 				model: 'person',
-				uuid: PATRICK_STEWART_PERSON_UUID,
-				name: 'Patrick Stewart',
+				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+				name: 'Susannah Fellows',
 				roles: [
 					{
 						model: 'character',
 						uuid: null,
-						name: 'Prospero'
+						name: 'Chorus'
+					},
+					{
+						model: 'character',
+						uuid: null,
+						name: 'Trojan slave'
 					}
 				]
 			};
 
-			const { cast } = tempestRoyalShakespeareProduction.body;
+			const { cast } = theGreeksAldwychProduction.body;
 
-			const castMemberPatrickStewart =
-				cast.find(castMember => castMember.uuid === PATRICK_STEWART_PERSON_UUID);
+			const castMemberSusannahFellows =
+				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberPatrickStewart).to.deep.equal(castMemberPatrickStewart);
+			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
 
 		});
 
 	});
 
-	describe('Macbeth at Gielgud Theatre (production)', () => {
+	describe('City of Angels at Prince of Wales Theatre (production)', () => {
 
-		it('includes Patrick Stewart in its cast (including character he portrayed)', () => {
+		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberPatrickStewart = {
+			const expectedCastMemberSusannahFellows = {
 				model: 'person',
-				uuid: PATRICK_STEWART_PERSON_UUID,
-				name: 'Patrick Stewart',
+				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+				name: 'Susannah Fellows',
 				roles: [
 					{
 						model: 'character',
 						uuid: null,
-						name: 'Macbeth'
+						name: 'Alaura Kingsley'
+					},
+					{
+						model: 'character',
+						uuid: null,
+						name: 'Carla Haywood'
 					}
 				]
 			};
 
-			const { cast } = macbethGielgudProduction.body;
+			const { cast } = cityOfAngelsPrinceOfWalesProduction.body;
 
-			const castMemberPatrickStewart =
-				cast.find(castMember => castMember.uuid === PATRICK_STEWART_PERSON_UUID);
+			const castMemberSusannahFellows =
+				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberPatrickStewart).to.deep.equal(castMemberPatrickStewart);
+			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
 
 		});
 
 	});
 
-	describe('Waiting for Godot at Theatre Royal Haymarket (production)', () => {
+	describe('Enron at Chichester Festival Theatre (production)', () => {
 
-		it('includes Patrick Stewart in its cast (including character he portrayed)', () => {
+		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberPatrickStewart = {
+			const expectedCastMemberSusannahFellows = {
 				model: 'person',
-				uuid: PATRICK_STEWART_PERSON_UUID,
-				name: 'Patrick Stewart',
+				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+				name: 'Susannah Fellows',
 				roles: [
 					{
 						model: 'character',
 						uuid: null,
-						name: 'Vladimir'
+						name: 'Congresswoman'
+					},
+					{
+						model: 'character',
+						uuid: null,
+						name: 'Sheryl Sloman'
+					},
+					{
+						model: 'character',
+						uuid: null,
+						name: 'Irene Gant'
 					}
 				]
 			};
 
-			const { cast } = waitingForGodotHaymarketProduction.body;
+			const { cast } = enronChichesterFestivalProduction.body;
 
-			const castMemberPatrickStewart =
-				cast.find(castMember => castMember.uuid === PATRICK_STEWART_PERSON_UUID);
+			const castMemberSusannahFellows =
+				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberPatrickStewart).to.deep.equal(castMemberPatrickStewart);
+			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
 
 		});
 
