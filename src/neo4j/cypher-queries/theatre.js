@@ -4,7 +4,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (theatre)<-[:PLAYS_AT]-(production:Production)
 
 	WITH theatre, production
-		ORDER BY production.name, theatre.name
+		ORDER BY production.name
 
 	RETURN
 		'theatre' AS model,
