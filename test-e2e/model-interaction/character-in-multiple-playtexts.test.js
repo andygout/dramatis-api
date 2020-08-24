@@ -162,125 +162,95 @@ describe('Character in multiple playtexts', () => {
 
 		it('includes playtexts in which character appears', () => {
 
-			const expectedHenryIVPart1PlaytextCredit = {
-				model: 'playtext',
-				uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
-				name: 'Henry IV: Part 1'
-			};
-
-			const expectedHenryIVPart2PlaytextCredit = {
-				model: 'playtext',
-				uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
-				name: 'Henry IV: Part 2'
-			};
-
-			const expectedMerryWivesOfWindsorPlaytextCredit = {
-				model: 'playtext',
-				uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
-				name: 'The Merry Wives of Windsor'
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
+					name: 'Henry IV: Part 1'
+				},
+				{
+					model: 'playtext',
+					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
+					name: 'Henry IV: Part 2'
+				},
+				{
+					model: 'playtext',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
+					name: 'The Merry Wives of Windsor'
+				}
+			];
 
 			const { playtexts } = sirJohnFalstaffCharacter.body;
 
-			const henryIVPart1PlaytextCredit =
-				playtexts.find(playtext => playtext.uuid === HENRY_IV_PART_1_PLAYTEXT_UUID);
-
-			const henryIVPart2PlaytextCredit =
-				playtexts.find(playtext => playtext.uuid === HENRY_IV_PART_2_PLAYTEXT_UUID);
-
-			const merryWivesOfWindsorPlaytextCredit =
-				playtexts.find(playtext => playtext.uuid === THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(3);
-			expect(expectedHenryIVPart1PlaytextCredit)
-				.to.deep.equal(henryIVPart1PlaytextCredit);
-			expect(expectedHenryIVPart2PlaytextCredit)
-				.to.deep.equal(henryIVPart2PlaytextCredit);
-			expect(expectedMerryWivesOfWindsorPlaytextCredit)
-				.to.deep.equal(merryWivesOfWindsorPlaytextCredit);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions of playtexts in which character appears (including cast member who portrayed them)', () => {
 
-			const expectedHenryIVPart1NationalProductionCredit = {
-				model: 'production',
-				uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-				name: 'Henry IV: Part 1',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							otherRoles: []
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: MICHAEL_GAMBON_PERSON_UUID,
-						name: 'Michael Gambon',
-						roleName: 'Sir John Falstaff',
-						otherRoles: []
-					}
-				]
-			};
-
-			const expectedHenryIVPart2GlobeProductionCredit = {
-				model: 'production',
-				uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
-				name: 'Henry IV: Part 2',
-				theatre: {
-					model: 'theatre',
-					uuid: GLOBE_THEATRE_UUID,
-					name: 'Globe Theatre'
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					theatre: {
+						model: 'theatre',
+						uuid: GLOBE_THEATRE_UUID,
+						name: 'Globe Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
+							roleName: 'Sir John Falstaff',
+							otherRoles: []
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: ROGER_ALLAM_PERSON_UUID,
-						name: 'Roger Allam',
-						roleName: 'Sir John Falstaff',
-						otherRoles: []
-					}
-				]
-			};
-
-			const expectedMerryWivesOfWindsorSwanProductionCredit = {
-				model: 'production',
-				uuid: THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
-				name: 'The Merry Wives of Windsor',
-				theatre: {
-					model: 'theatre',
-					uuid: SWAN_THEATRE_UUID,
-					name: 'Swan Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: RICHARD_CORDERY_PERSON_UUID,
-						name: 'Richard Cordery',
-						roleName: 'Sir John Falstaff',
-						otherRoles: []
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
+					name: 'The Merry Wives of Windsor',
+					theatre: {
+						model: 'theatre',
+						uuid: SWAN_THEATRE_UUID,
+						name: 'Swan Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RICHARD_CORDERY_PERSON_UUID,
+							name: 'Richard Cordery',
+							roleName: 'Sir John Falstaff',
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = sirJohnFalstaffCharacter.body;
 
-			const henryIVPart1NationalProductionCredit =
-				productions.find(production => production.uuid === HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID);
-
-			const henryIVPart2NationalProductionCredit =
-				productions.find(production => production.uuid === HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID);
-
-			const merryWivesOfWindsorSwanProductionCredit =
-				productions.find(production => production.uuid === THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(3);
-			expect(expectedHenryIVPart1NationalProductionCredit)
-				.to.deep.equal(henryIVPart1NationalProductionCredit);
-			expect(expectedHenryIVPart2GlobeProductionCredit)
-				.to.deep.equal(henryIVPart2NationalProductionCredit);
-			expect(expectedMerryWivesOfWindsorSwanProductionCredit)
-				.to.deep.equal(merryWivesOfWindsorSwanProductionCredit);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
