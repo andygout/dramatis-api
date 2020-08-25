@@ -69,12 +69,12 @@ describe('Has Errors module', () => {
 
 		it('returns false if errors present in form of array', () => {
 
-			const instance = { errors: ['Name is too short'] };
+			const instance = { errors: ['Value is too short'] };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledThrice).to.be.true;
-			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(['Name is too short'])).to.be.true;
-			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(['Name is too short'])).to.be.true;
-			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('Name is too short')).to.be.true;
+			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(['Value is too short'])).to.be.true;
+			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(['Value is too short'])).to.be.true;
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly('Value is too short')).to.be.true;
 			expect(result).to.be.false;
 
 		});
@@ -86,10 +86,10 @@ describe('Has Errors module', () => {
 		it('returns true', () => {
 
 			stubs.isObjectWithKeys.returns(true);
-			const instance = { errors: { name: ['Name is too short'] } };
+			const instance = { errors: { name: ['Value is too short'] } };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledOnce).to.be.true;
-			expect(stubs.isObjectWithKeys.calledWithExactly({ name: ['Name is too short'] })).to.be.true;
+			expect(stubs.isObjectWithKeys.calledWithExactly({ name: ['Value is too short'] })).to.be.true;
 			expect(result).to.be.true;
 
 		});
@@ -103,14 +103,14 @@ describe('Has Errors module', () => {
 			stubs.isObjectWithKeys
 				.onFirstCall().returns(true)
 				.onSecondCall().returns(true);
-			const instance = { theatre: { errors: { name: ['Name is too short'] } } };
+			const instance = { theatre: { errors: { name: ['Value is too short'] } } };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledTwice).to.be.true;
 			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(
-				{ errors: { name: ['Name is too short'] } }
+				{ errors: { name: ['Value is too short'] } }
 			)).to.be.true;
 			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(
-				{ name: ['Name is too short'] }
+				{ name: ['Value is too short'] }
 			)).to.be.true;
 			expect(result).to.be.true;
 
@@ -126,16 +126,16 @@ describe('Has Errors module', () => {
 				.onFirstCall().returns(false)
 				.onSecondCall().returns(true)
 				.onThirdCall().returns(true);
-			const instance = { cast: [{ errors: { name: ['Name is too short'] } }] };
+			const instance = { cast: [{ errors: { name: ['Value is too short'] } }] };
 			const result = hasErrors(instance);
 			expect(stubs.isObjectWithKeys.calledThrice).to.be.true;
 			expect(stubs.isObjectWithKeys.firstCall.calledWithExactly(
-				[{ errors: { name: ['Name is too short'] } }]
+				[{ errors: { name: ['Value is too short'] } }]
 			)).to.be.true;
 			expect(stubs.isObjectWithKeys.secondCall.calledWithExactly(
-				{ errors: { name: ['Name is too short'] } }
+				{ errors: { name: ['Value is too short'] } }
 			)).to.be.true;
-			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly({ name: ['Name is too short'] })).to.be.true;
+			expect(stubs.isObjectWithKeys.thirdCall.calledWithExactly({ name: ['Value is too short'] })).to.be.true;
 			expect(result).to.be.true;
 
 		});

@@ -43,10 +43,11 @@ describe('Instance validation failures: Characters API', () => {
 				const expectedResponseBody = {
 					model: 'character',
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -74,10 +75,14 @@ describe('Instance validation failures: Characters API', () => {
 				const expectedResponseBody = {
 					model: 'character',
 					name: 'Orsino',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -131,10 +136,11 @@ describe('Instance validation failures: Characters API', () => {
 					model: 'character',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -168,10 +174,14 @@ describe('Instance validation failures: Characters API', () => {
 					model: 'character',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: 'Orsino',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -235,6 +245,7 @@ describe('Instance validation failures: Characters API', () => {
 					model: 'character',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: 'Viola',
+					differentiator: null,
 					hasErrors: true,
 					errors: {
 						associations: [

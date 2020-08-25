@@ -6,18 +6,23 @@ const getExistenceQuery = model => `
 	RETURN n
 `;
 
-const getDuplicateNameCountQuery = (model, uuid) => `
+const getDuplicateRecordCountQuery = model => `
 	MATCH (n:${capitalise(model)} { name: $name })
-		${uuid
-			? 'WHERE n.uuid <> $uuid'
-			: ''
-		}
+		WHERE
+			(
+				($differentiator IS NULL AND n.differentiator IS NULL) OR
+				($differentiator = n.differentiator)
+			) AND
+			(
+				($uuid IS NULL) OR
+				($uuid <> n.uuid)
+			)
 
 	RETURN SIGN(COUNT(n)) AS instanceCount
 `;
 
 const getCreateQuery = model => `
-	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name })
+	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 	WITH n
 
@@ -30,12 +35,15 @@ const getEditQuery = model => `
 	RETURN
 		'${model}' AS model,
 		n.uuid AS uuid,
-		n.name AS name
+		n.name AS name,
+		n.differentiator AS differentiator
 `;
 
 const getUpdateQuery = model => `
 	MATCH (n:${capitalise(model)} { uuid: $uuid })
-		SET n.name = $name
+		SET
+			n.name = $name,
+			n.differentiator = $differentiator
 
 	WITH n
 
@@ -72,6 +80,7 @@ const getDeleteQuery = model => {
 				deletableInstance,
 				deletableInstance IS NOT NULL AS isDeleted,
 				deletableInstance.name AS deletableInstanceName,
+				deletableInstance.differentiator AS deletableInstancedifferentiator,
 				COLLECT(distinctAssociateLabel) AS associatedModels
 
 			DETACH DELETE deletableInstance
@@ -82,6 +91,10 @@ const getDeleteQuery = model => {
 					THEN deletableInstanceName
 					ELSE undeletableInstance.name
 				END AS name,
+				CASE WHEN isDeleted
+					THEN deletableInstancedifferentiator
+					ELSE undeletableInstance.differentiator
+				END AS differentiator,
 				isDeleted,
 				associatedModels
 	`;
@@ -95,7 +108,14 @@ const getListQuery = model => {
 		: '';
 
 	const theatreObject = (model === 'production')
-		? ', CASE WHEN t IS NULL THEN null ELSE { model: \'theatre\', uuid: t.uuid, name: t.name } END AS theatre'
+		? `, CASE WHEN t IS NULL
+				THEN null
+				ELSE { model: 'theatre', uuid: t.uuid, name: t.name, differentiator: t.differentiator }
+			END AS theatre`
+		: '';
+
+	const differentiator = (model !== 'production')
+		? ', n.differentiator AS differentiator'
 		: '';
 
 	return `
@@ -107,6 +127,7 @@ const getListQuery = model => {
 			'${model}' AS model,
 			n.uuid AS uuid,
 			n.name AS name
+			${differentiator}
 			${theatreObject}
 
 		LIMIT 100
@@ -116,7 +137,7 @@ const getListQuery = model => {
 
 export {
 	getExistenceQuery,
-	getDuplicateNameCountQuery,
+	getDuplicateRecordCountQuery,
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,

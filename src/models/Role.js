@@ -1,4 +1,3 @@
-import { validateString } from '../lib/validate-string';
 import Base from './Base';
 
 export default class Role extends Base {
@@ -12,12 +11,9 @@ export default class Role extends Base {
 
 	}
 
-	validateCharacterName (opts) {
+	validateCharacterName () {
 
-		const characterNameErrorText =
-			validateString(this.characterName, { isRequiredString: opts.requiresCharacterName });
-
-		if (characterNameErrorText) this.addPropertyError('characterName', characterNameErrorText);
+		this.validateStringForProperty('characterName', { isRequired: false });
 
 	}
 

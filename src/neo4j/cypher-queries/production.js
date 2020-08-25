@@ -18,34 +18,85 @@ const getCreateUpdateQuery = action => {
 	return `
 		${createUpdateQueryOpeningMap[action]}
 
+		WITH production
+
+		OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
+			WHERE
+				($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
+				($theatre.differentiator = existingTheatre.differentiator)
+
+		WITH
+			production,
+			CASE WHEN existingTheatre IS NULL
+				THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
+				ELSE existingTheatre
+			END AS theatreProps
+
 		FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
-			MERGE (theatre:Theatre { name: $theatre.name })
-			ON CREATE SET theatre.uuid = $theatre.uuid
+			MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
+				ON CREATE SET theatre.differentiator = theatreProps.differentiator
+
 			CREATE (production)-[:PLAYS_AT]->(theatre)
 		)
 
+		WITH production
+
+		OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
+			WHERE
+				($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
+				($playtext.differentiator = existingPlaytext.differentiator)
+
+		WITH
+			production,
+			CASE WHEN existingPlaytext IS NULL
+				THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
+				ELSE existingPlaytext
+			END AS playtextProps
+
 		FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
-			MERGE (playtext:Playtext { name: $playtext.name })
-			ON CREATE SET playtext.uuid = $playtext.uuid
+			MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
+				ON CREATE SET playtext.differentiator = playtextProps.differentiator
+
 			CREATE (production)-[:PRODUCTION_OF]->(playtext)
 		)
 
-		FOREACH (castMember IN $cast |
-			MERGE (person:Person { name: castMember.name })
-				ON CREATE SET person.uuid = castMember.uuid
-
-			FOREACH (role IN CASE WHEN size(castMember.roles) > 0 THEN castMember.roles ELSE [{}] END |
-				CREATE (production)
-					<-[:PERFORMS_IN {
-						castMemberPosition: castMember.position,
-						rolePosition: role.position,
-						roleName: role.name,
-						characterName: role.characterName
-					}]-(person)
-			)
-		)
-
 		WITH production
+
+		UNWIND (CASE $cast WHEN [] THEN [null] ELSE $cast END) AS castMemberParam
+
+			OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
+				WHERE
+					(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
+					(castMemberParam.differentiator = existingPerson.differentiator)
+
+			WITH
+				production,
+				castMemberParam,
+				CASE WHEN existingPerson IS NULL
+					THEN {
+						uuid: castMemberParam.uuid,
+						name: castMemberParam.name,
+						differentiator: castMemberParam.differentiator
+					}
+					ELSE existingPerson
+				END AS castMemberProps
+
+			FOREACH (item IN CASE WHEN castMemberParam IS NOT NULL THEN [1] ELSE [] END |
+				MERGE (person:Person { uuid: castMemberProps.uuid, name: castMemberProps.name })
+					ON CREATE SET person.differentiator = castMemberProps.differentiator
+
+				FOREACH (role IN CASE castMemberParam.roles WHEN [] THEN [{}] ELSE castMemberParam.roles END |
+					CREATE (production)
+						<-[:PERFORMS_IN {
+							castMemberPosition: castMemberParam.position,
+							rolePosition: role.position,
+							roleName: role.name,
+							characterName: role.characterName
+						}]-(person)
+				)
+			)
+
+		WITH DISTINCT production
 
 		${getEditQuery()}
 	`;
@@ -81,12 +132,18 @@ const getEditQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
-		{ name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END } AS theatre,
-		{ name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END } AS playtext,
+		{
+			name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END,
+			differentiator: CASE WHEN theatre.differentiator IS NULL THEN '' ELSE theatre.differentiator END
+		} AS theatre,
+		{
+			name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END,
+			differentiator: CASE WHEN playtext.differentiator IS NULL THEN '' ELSE playtext.differentiator END
+		} AS playtext,
 		COLLECT(
 			CASE WHEN person IS NULL
 				THEN null
-				ELSE { name: person.name, roles: roles }
+				ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 			END
 		) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
 `;

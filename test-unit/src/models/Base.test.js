@@ -47,9 +47,9 @@ describe('Base model', () => {
 				getExistenceQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery')
 						.returns('getExistenceQuery response'),
-				getDuplicateNameCountQuery:
-					sandbox.stub(cypherQueries.sharedQueries, 'getDuplicateNameCountQuery')
-						.returns('getDuplicateNameCountQuery response'),
+				getDuplicateRecordCountQuery:
+					sandbox.stub(cypherQueries.sharedQueries, 'getDuplicateRecordCountQuery')
+						.returns('getDuplicateRecordCountQuery response'),
 				getCreateQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getCreateQuery').returns('getCreateQuery response'),
 				getEditQuery:
@@ -64,8 +64,8 @@ describe('Base model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
-		stubs.validateString.withArgs('', { isRequiredString: true }).returns('Name is too short');
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false }).returns('Name is too long');
+		stubs.validateString.withArgs('', { isRequired: true }).returns('Value is too short');
+		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequired: false }).returns('Value is too long');
 
 		instance = new Base({ name: 'Foobar' });
 
@@ -106,14 +106,44 @@ describe('Base model', () => {
 
 	});
 
+	describe('hasdifferentiatorProperty method', () => {
+
+		context('instance has differentiator property', () => {
+
+			it('returns true', () => {
+
+				instance.differentiator = '';
+				const result = instance.hasdifferentiatorProperty();
+				expect(result).to.be.true;
+
+			});
+
+		});
+
+		context('instance does not have differentiator property', () => {
+
+			it('returns false', () => {
+
+				const result = instance.hasdifferentiatorProperty();
+				expect(result).to.be.false;
+
+			});
+
+		});
+
+	});
+
 	describe('runInputValidations method', () => {
 
 		it('will call validateName method', () => {
 
 			spy(instance, 'validateName');
+			spy(instance, 'validatedifferentiator');
 			instance.runInputValidations();
 			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
+			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
+			expect(instance.validatedifferentiator.calledOnce).to.be.true;
+			expect(instance.validatedifferentiator.calledWithExactly()).to.be.true;
 
 		});
 
@@ -121,14 +151,42 @@ describe('Base model', () => {
 
 	describe('validateName method', () => {
 
+		it('will call validateStringForProperty method', () => {
+
+			spy(instance, 'validateStringForProperty');
+			instance.validateName({ isRequired: false });
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly('name', { isRequired: false })).to.be.true;
+
+		});
+
+	});
+
+	describe('validatedifferentiator method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			spy(instance, 'validateStringForProperty');
+			instance.validatedifferentiator();
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly(
+				'differentiator', { isRequired: false })
+			).to.be.true;
+
+		});
+
+	});
+
+	describe('validateStringForProperty method', () => {
+
 		context('valid data', () => {
 
 			it('will not call addPropertyError method', () => {
 
 				spy(instance, 'addPropertyError');
-				instance.validateName({ requiresName: false });
+				instance.validateStringForProperty('name', { isRequired: false });
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, { isRequiredString: false })).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.name, { isRequired: false })).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -141,15 +199,15 @@ describe('Base model', () => {
 
 				instance = new Base({ name: '' });
 				spy(instance, 'addPropertyError');
-				instance.validateName({ requiresName: true });
+				instance.validateStringForProperty('name', { isRequired: true });
 				assert.callOrder(
 					stubs.validateString,
 					instance.addPropertyError
 				);
 				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, { isRequiredString: true })).to.be.true;
+				expect(stubs.validateString.calledWithExactly(instance.name, { isRequired: true })).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('name', 'Name is too short')).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly('name', 'Value is too short')).to.be.true;
 
 			});
 
@@ -157,15 +215,17 @@ describe('Base model', () => {
 
 	});
 
-	describe('validateNameUniquenessInGroup method', () => {
+	describe('validateUniquenessInGroup method', () => {
 
 		context('valid data', () => {
 
 			it('will not call addPropertyError method', () => {
 
+				spy(instance, 'hasdifferentiatorProperty');
 				spy(instance, 'addPropertyError');
-				const opts = { hasDuplicateName: false };
-				instance.validateNameUniquenessInGroup(opts);
+				const opts = { isDuplicate: false };
+				instance.validateUniquenessInGroup(opts);
+				expect(instance.hasdifferentiatorProperty.notCalled).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -174,15 +234,45 @@ describe('Base model', () => {
 
 		context('invalid data', () => {
 
-			it('will call addPropertyError method with group context error text', () => {
+			context('instance has differentiator property', () => {
 
-				spy(instance, 'addPropertyError');
-				const opts = { hasDuplicateName: true };
-				instance.validateNameUniquenessInGroup(opts);
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'name', 'Name has been duplicated in this group'
-				)).to.be.true;
+				it('will call addPropertyError method with group context error text for name and differentiator properties', () => {
+
+					instance.differentiator = '';
+					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.firstCall.calledWithExactly(
+						'name', 'Name and differentiator combination has been duplicated in this group'
+					)).to.be.true;
+					expect(instance.addPropertyError.secondCall.calledWithExactly(
+						'differentiator', 'Name and differentiator combination has been duplicated in this group'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('instance does not have differentiator property', () => {
+
+				it('will call addPropertyError method with group context error text for name property only', () => {
+
+					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'name', 'Name has been duplicated in this group'
+					)).to.be.true;
+
+				});
 
 			});
 
@@ -192,18 +282,18 @@ describe('Base model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('will call validateNameUniquenessInDatabase method', () => {
+		it('will call validateUniquenessInDatabase method', () => {
 
-			spy(instance, 'validateNameUniquenessInDatabase');
+			spy(instance, 'validateUniquenessInDatabase');
 			instance.runDatabaseValidations();
-			expect(instance.validateNameUniquenessInDatabase.calledOnce).to.be.true;
-			expect(instance.validateNameUniquenessInDatabase.calledWithExactly()).to.be.true;
+			expect(instance.validateUniquenessInDatabase.calledOnce).to.be.true;
+			expect(instance.validateUniquenessInDatabase.calledWithExactly()).to.be.true;
 
 		});
 
 	});
 
-	describe('validateNameUniquenessInDatabase method', () => {
+	describe('validateUniquenessInDatabase method', () => {
 
 		context('valid data (results returned that indicate name does not already exist)', () => {
 
@@ -211,18 +301,19 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ instanceCount: 0 });
 				spy(instance, 'addPropertyError');
-				await instance.validateNameUniquenessInDatabase();
+				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
-					stubs.sharedQueries.getDuplicateNameCountQuery,
+					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery
 				);
-				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
-					instance.model, instance.uuid
-				)).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDuplicateNameCountQuery response', params: instance }
+					{
+						query: 'getDuplicateRecordCountQuery response',
+						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+					}
 				)).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
@@ -236,22 +327,28 @@ describe('Base model', () => {
 
 				stubs.neo4jQuery.resolves({ instanceCount: 1 });
 				spy(instance, 'addPropertyError');
-				await instance.validateNameUniquenessInDatabase();
+				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
-					stubs.sharedQueries.getDuplicateNameCountQuery,
+					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDuplicateNameCountQuery.calledWithExactly(
-					instance.model, instance.uuid
-				)).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDuplicateNameCountQuery response', params: instance }
+					{
+						query: 'getDuplicateRecordCountQuery response',
+						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+					}
 				)).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('name', 'Name already exists')).to.be.true;
+				expect(instance.addPropertyError.calledTwice).to.be.true;
+				expect(instance.addPropertyError.firstCall.calledWithExactly(
+					'name', 'Name and differentiator combination already exists'
+				)).to.be.true;
+				expect(instance.addPropertyError.secondCall.calledWithExactly(
+					'differentiator', 'Name and differentiator combination already exists'
+				)).to.be.true;
 
 			});
 
@@ -265,12 +362,12 @@ describe('Base model', () => {
 
 			it('merges error into existing array', async () => {
 
-				instance.errors.name = ['Name is too long'];
+				instance.errors.name = ['Value is too long'];
 				instance.addPropertyError('name', 'Name has been duplicated in this group');
 				expect(instance.errors)
 					.to.have.property('name')
 					.that.is.an('array')
-					.that.deep.eq(['Name is too long', 'Name has been duplicated in this group']);
+					.that.deep.eq(['Value is too long', 'Name has been duplicated in this group']);
 
 			});
 
@@ -281,7 +378,7 @@ describe('Base model', () => {
 			it('adds new property to errors object and assigns a value of an array containing error text', async () => {
 
 				instance.errors.name = ['Name has been duplicated in this group'];
-				instance.addPropertyError('characterName', 'Name is too long');
+				instance.addPropertyError('characterName', 'Value is too long');
 				expect(instance.errors)
 					.to.have.property('name')
 					.that.is.an('array')
@@ -289,7 +386,7 @@ describe('Base model', () => {
 				expect(instance.errors)
 					.to.have.property('characterName')
 					.that.is.an('array')
-					.that.deep.eq(['Name is too long']);
+					.that.deep.eq(['Value is too long']);
 
 			});
 
@@ -361,7 +458,10 @@ describe('Base model', () => {
 				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
-					{ query: 'getDuplicateNameCountQuery response', params: instance }
+					{
+						query: 'getDuplicateRecordCountQuery response',
+						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
 					{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
@@ -396,7 +496,10 @@ describe('Base model', () => {
 				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
-					{ query: 'getDuplicateNameCountQuery response', params: instance }
+					{
+						query: 'getDuplicateRecordCountQuery response',
+						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
 					{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
@@ -433,7 +536,10 @@ describe('Base model', () => {
 				expect(stubs.prepareAsParams.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDuplicateNameCountQuery response', params: instance }
+					{
+						query: 'getDuplicateRecordCountQuery response',
+						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+					}
 				)).to.be.true;
 				expect(result).to.deep.equal(instance);
 
@@ -560,30 +666,68 @@ describe('Base model', () => {
 
 		context('instance has no associations', () => {
 
-			it('deletes instance and returns object with its model and name properties', async () => {
+			context('instance has differentiator property', () => {
 
-				stubs.neo4jQuery.resolves({
-					model: 'theatre',
-					name: 'Almeida Theatre',
-					isDeleted: true,
-					associatedModels: []
+				it('deletes instance and returns object with its model and name properties', async () => {
+
+					stubs.neo4jQuery.resolves({
+						model: 'theatre',
+						name: 'Almeida Theatre',
+						differentiator: null,
+						isDeleted: true,
+						associatedModels: []
+					});
+					instance.differentiator = '';
+					spy(instance, 'addPropertyError');
+					spy(instance, 'setErrorStatus');
+					const result = await instance.delete();
+					assert.callOrder(
+						stubs.sharedQueries.getDeleteQuery,
+						stubs.neo4jQuery
+					);
+					expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.neo4jQuery.calledOnce).to.be.true;
+					expect(stubs.neo4jQuery.calledWithExactly(
+						{ query: 'getDeleteQuery response', params: instance }
+					)).to.be.true;
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.setErrorStatus.notCalled).to.be.true;
+					expect(result).to.deep.equal({ name: 'Almeida Theatre', errors: {} });
+
 				});
-				spy(instance, 'addPropertyError');
-				spy(instance, 'setErrorStatus');
-				const result = await instance.delete();
-				assert.callOrder(
-					stubs.sharedQueries.getDeleteQuery,
-					stubs.neo4jQuery
-				);
-				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.neo4jQuery.calledOnce).to.be.true;
-				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDeleteQuery response', params: instance }
-				)).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
-				expect(instance.setErrorStatus.notCalled).to.be.true;
-				expect(result).to.deep.equal({ model: 'theatre', name: 'Almeida Theatre' });
+
+			});
+
+			context('instance does not have differentiator property', () => {
+
+				it('deletes instance and returns object with its model and name properties', async () => {
+
+					stubs.neo4jQuery.resolves({
+						model: 'production',
+						name: 'Hamlet',
+						differentiator: null,
+						isDeleted: true,
+						associatedModels: []
+					});
+					spy(instance, 'addPropertyError');
+					spy(instance, 'setErrorStatus');
+					const result = await instance.delete();
+					assert.callOrder(
+						stubs.sharedQueries.getDeleteQuery,
+						stubs.neo4jQuery
+					);
+					expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.neo4jQuery.calledOnce).to.be.true;
+					expect(stubs.neo4jQuery.calledWithExactly(
+						{ query: 'getDeleteQuery response', params: instance }
+					)).to.be.true;
+					expect(instance.addPropertyError.notCalled).to.be.true;
+					expect(instance.setErrorStatus.notCalled).to.be.true;
+					expect(result).to.deep.equal({ name: 'Hamlet', errors: {} });
+
+				});
 
 			});
 
@@ -591,32 +735,72 @@ describe('Base model', () => {
 
 		context('instance has associations', () => {
 
-			it('returns instance without deleting', async () => {
+			context('instance has differentiator property', () => {
 
-				stubs.neo4jQuery.resolves({
-					model: 'theatre',
-					name: 'Almeida Theatre',
-					isDeleted: false,
-					associatedModels: ['Production']
+				it('returns instance without deleting', async () => {
+
+					stubs.neo4jQuery.resolves({
+						model: 'theatre',
+						name: 'Almeida Theatre',
+						differentiator: null,
+						isDeleted: false,
+						associatedModels: ['Production']
+					});
+					instance.differentiator = '';
+					spy(instance, 'addPropertyError');
+					spy(instance, 'setErrorStatus');
+					const result = await instance.delete();
+					assert.callOrder(
+						stubs.sharedQueries.getDeleteQuery,
+						stubs.neo4jQuery
+					);
+					expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.neo4jQuery.calledOnce).to.be.true;
+					expect(stubs.neo4jQuery.calledWithExactly(
+						{ query: 'getDeleteQuery response', params: instance }
+					)).to.be.true;
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly('associations', 'Production')).to.be.true;
+					expect(instance.setErrorStatus.calledOnce).to.be.true;
+					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+					expect(result).to.deep.equal(instance);
+
 				});
-				spy(instance, 'addPropertyError');
-				spy(instance, 'setErrorStatus');
-				const result = await instance.delete();
-				assert.callOrder(
-					stubs.sharedQueries.getDeleteQuery,
-					stubs.neo4jQuery
-				);
-				expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.neo4jQuery.calledOnce).to.be.true;
-				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getDeleteQuery response', params: instance }
-				)).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('associations', 'Production')).to.be.true;
-				expect(instance.setErrorStatus.calledOnce).to.be.true;
-				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
-				expect(result).to.deep.equal(instance);
+
+			});
+
+			context('instance does not have differentiator property', () => {
+
+				it('returns instance without deleting', async () => {
+
+					stubs.neo4jQuery.resolves({
+						model: 'production',
+						name: 'Hamlet',
+						differentiator: null,
+						isDeleted: false,
+						associatedModels: ['Theatre']
+					});
+					spy(instance, 'addPropertyError');
+					spy(instance, 'setErrorStatus');
+					const result = await instance.delete();
+					assert.callOrder(
+						stubs.sharedQueries.getDeleteQuery,
+						stubs.neo4jQuery
+					);
+					expect(stubs.sharedQueries.getDeleteQuery.calledOnce).to.be.true;
+					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
+					expect(stubs.neo4jQuery.calledOnce).to.be.true;
+					expect(stubs.neo4jQuery.calledWithExactly(
+						{ query: 'getDeleteQuery response', params: instance }
+					)).to.be.true;
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly('associations', 'Theatre')).to.be.true;
+					expect(instance.setErrorStatus.calledOnce).to.be.true;
+					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
+					expect(result).to.deep.equal(instance);
+
+				});
 
 			});
 

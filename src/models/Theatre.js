@@ -6,8 +6,11 @@ export default class Theatre extends Base {
 
 		super(props);
 
+		const { uuid, differentiator } = props;
+
 		this.model = 'theatre';
-		this.uuid = props.uuid;
+		this.uuid = uuid;
+		this.differentiator = differentiator?.trim() || '';
 
 	}
 

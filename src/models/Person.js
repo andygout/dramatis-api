@@ -6,8 +6,11 @@ export default class Person extends Base {
 
 		super(props);
 
+		const { uuid, differentiator } = props;
+
 		this.model = 'person';
-		this.uuid = props.uuid;
+		this.uuid = uuid;
+		this.differentiator = differentiator?.trim() || '';
 
 	}
 

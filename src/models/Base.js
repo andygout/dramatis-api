@@ -19,42 +19,85 @@ export default class Base {
 
 	}
 
+	hasdifferentiatorProperty () {
+
+		return Object.prototype.hasOwnProperty.call(this, 'differentiator');
+
+	}
+
 	runInputValidations () {
 
-		this.validateName({ requiresName: true });
+		this.validateName({ isRequired: true });
+
+		this.validatedifferentiator();
 
 	}
 
 	validateName (opts) {
 
-		const nameErrorText = validateString(this.name, { isRequiredString: opts.requiresName });
-
-		if (nameErrorText) this.addPropertyError('name', nameErrorText);
+		this.validateStringForProperty('name', { isRequired: opts.isRequired });
 
 	}
 
-	validateNameUniquenessInGroup (opts) {
+	validatedifferentiator () {
 
-		if (opts.hasDuplicateName) this.addPropertyError('name', 'Name has been duplicated in this group');
+		this.validateStringForProperty('differentiator', { isRequired: false });
+
+	}
+
+	validateStringForProperty (property, opts) {
+
+		const stringErrorText = validateString(this[property], { isRequired: opts.isRequired });
+
+		if (stringErrorText) this.addPropertyError(property, stringErrorText);
+
+	}
+
+	validateUniquenessInGroup (opts) {
+
+		if (opts.isDuplicate) {
+
+			const thisHasdifferentiatorProperty = this.hasdifferentiatorProperty();
+
+			const uniquenessErrorMessage = thisHasdifferentiatorProperty
+				? 'Name and differentiator combination has been duplicated in this group'
+				: 'Name has been duplicated in this group';
+
+			this.addPropertyError('name', uniquenessErrorMessage);
+
+			if (thisHasdifferentiatorProperty) this.addPropertyError('differentiator', uniquenessErrorMessage);
+
+		}
 
 	}
 
 	async runDatabaseValidations () {
 
-		await this.validateNameUniquenessInDatabase();
+		await this.validateUniquenessInDatabase();
 
 	}
 
-	async validateNameUniquenessInDatabase () {
+	async validateUniquenessInDatabase () {
 
-		const { getDuplicateNameCountQuery } = sharedQueries;
+		const { getDuplicateRecordCountQuery } = sharedQueries;
 
 		const { instanceCount } = await neo4jQuery({
-			query: getDuplicateNameCountQuery(this.model, this.uuid),
-			params: this
+			query: getDuplicateRecordCountQuery(this.model),
+			params: {
+				uuid: this.uuid || null,
+				name: this.name,
+				differentiator: this.differentiator === '' ? null : this.differentiator
+			}
 		});
 
-		if (instanceCount > 0) this.addPropertyError('name', 'Name already exists');
+		if (instanceCount > 0) {
+
+			const uniquenessErrorMessage = 'Name and differentiator combination already exists';
+
+			this.addPropertyError('name', uniquenessErrorMessage);
+			this.addPropertyError('differentiator', uniquenessErrorMessage);
+
+		}
 
 	}
 
@@ -137,18 +180,26 @@ export default class Base {
 
 		const { getDeleteQuery } = sharedQueries;
 
-		const { model, name, isDeleted, associatedModels } = await neo4jQuery({
+		const { model, name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
 			query: getDeleteQuery(this.model),
 			params: this
 		});
 
-		if (isDeleted) return { model, name };
+		if (isDeleted) {
+
+			return new this.constructor({
+				model,
+				name,
+				...(this.hasdifferentiatorProperty() && { differentiator })
+			});
+
+		}
 
 		this.name = name;
 
-		associatedModels.forEach(associatedModel =>
-			this.addPropertyError('associations', associatedModel)
-		);
+		if (this.hasdifferentiatorProperty()) this.differentiator = differentiator;
+
+		associatedModels.forEach(associatedModel => this.addPropertyError('associations', associatedModel));
 
 		this.setErrorStatus();
 

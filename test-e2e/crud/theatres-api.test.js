@@ -21,6 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 			const expectedResponseBody = {
 				model: 'theatre',
 				name: '',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -65,6 +66,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'National Theatre',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -83,6 +85,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'National Theatre',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -105,6 +108,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'Almeida Theatre',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -123,6 +127,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'Almeida Theatre',
+				differentiator: null,
 				productions: []
 			};
 
@@ -140,7 +145,8 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				{
 					model: 'theatre',
 					uuid: THEATRE_UUID,
-					name: 'Almeida Theatre'
+					name: 'Almeida Theatre',
+					differentiator: null
 				}
 			];
 
@@ -158,7 +164,9 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 
 			const expectedResponseBody = {
 				model: 'theatre',
-				name: 'Almeida Theatre'
+				name: 'Almeida Theatre',
+				differentiator: '',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

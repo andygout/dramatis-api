@@ -43,10 +43,11 @@ describe('Instance validation failures: People API', () => {
 				const expectedResponseBody = {
 					model: 'person',
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -74,10 +75,14 @@ describe('Instance validation failures: People API', () => {
 				const expectedResponseBody = {
 					model: 'person',
 					name: 'Maggie Smith',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -131,10 +136,11 @@ describe('Instance validation failures: People API', () => {
 					model: 'person',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -168,10 +174,14 @@ describe('Instance validation failures: People API', () => {
 					model: 'person',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Maggie Smith',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -235,6 +245,7 @@ describe('Instance validation failures: People API', () => {
 					model: 'person',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Judi Dench',
+					differentiator: null,
 					hasErrors: true,
 					errors: {
 						associations: [

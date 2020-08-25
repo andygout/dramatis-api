@@ -25,17 +25,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -96,17 +99,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -139,17 +145,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -186,17 +195,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -263,7 +275,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = {
 				model: 'production',
-				name: 'The Tempest'
+				name: 'The Tempest',
+				errors: {},
+				theatre: {
+					differentiator: '',
+					errors: {},
+					model: 'theatre',
+					name: ''
+				},
+				playtext: {
+					differentiator: '',
+					errors: {},
+					model: 'playtext',
+					name: ''
+				},
+				cast: []
 			};
 
 			expect(response).to.have.status(200);
@@ -369,17 +395,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: 'National Theatre',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: 'Rory Kinnear',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -399,6 +428,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'James Laurenson',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -424,6 +454,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Michael Sheldon',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -449,6 +480,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Leo Staar',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -462,6 +494,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -576,20 +609,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'Hamlet',
 				errors: {},
 				theatre: {
+					model: 'theatre',
 					name: 'National Theatre',
-					errors: {},
-					model: 'theatre'
+					differentiator: '',
+					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
-						name: 'Rory Kinnear',
-						errors: {},
 						model: 'person',
+						name: 'Rory Kinnear',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -606,9 +642,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'James Laurenson',
-						errors: {},
 						model: 'person',
+						name: 'James Laurenson',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -631,9 +668,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'Michael Sheldon',
-						errors: {},
 						model: 'person',
+						name: 'Michael Sheldon',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -656,9 +694,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'Leo Staar',
-						errors: {},
 						model: 'person',
+						name: 'Leo Staar',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -669,9 +708,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: '',
-						errors: {},
 						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -748,20 +788,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'Richard III',
 				errors: {},
 				theatre: {
+					model: 'theatre',
 					name: 'Almeida Theatre',
-					errors: {},
-					model: 'theatre'
+					differentiator: '',
+					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of King Richard III',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
-						name: 'Ralph Fiennes',
-						errors: {},
 						model: 'person',
+						name: 'Ralph Fiennes',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -778,9 +821,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'Tom Canton',
-						errors: {},
 						model: 'person',
+						name: 'Tom Canton',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -803,9 +847,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'Mark Hadfield',
-						errors: {},
 						model: 'person',
+						name: 'Mark Hadfield',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -828,9 +873,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: 'Josh Collins',
-						errors: {},
 						model: 'person',
+						name: 'Josh Collins',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -841,9 +887,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						name: '',
-						errors: {},
 						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {},
 						roles: [
 							{
 								model: 'role',
@@ -959,7 +1006,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre'
+						name: 'Almeida Theatre',
+						differentiator: null
 					}
 				}
 			];
@@ -987,17 +1035,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				playtext: {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: '',
+						differentiator: '',
 						errors: {},
 						roles: [
 							{
@@ -1026,7 +1077,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = {
 				model: 'production',
-				name: 'Richard III'
+				name: 'Richard III',
+				errors: {},
+				theatre: {
+					differentiator: '',
+					errors: {},
+					model: 'theatre',
+					name: ''
+				},
+				playtext: {
+					differentiator: '',
+					errors: {},
+					model: 'playtext',
+					name: ''
+				},
+				cast: []
 			};
 
 			expect(response).to.have.status(200);

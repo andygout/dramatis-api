@@ -2,7 +2,8 @@ export default {
 	name: '',
 	characters: [
 		{
-			name: ''
+			name: '',
+			differentiator: ''
 		}
 	]
 };

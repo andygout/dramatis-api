@@ -18,8 +18,8 @@ describe('Cast Member model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateNameIndicesModule: {
-				getDuplicateNameIndices: stub().returns([])
+			getDuplicateIndicesModule: {
+				getDuplicateIndices: stub().returns([])
 			},
 			models: {
 				Role: RoleStub
@@ -32,7 +32,7 @@ describe('Cast Member model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/CastMember', {
-			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -75,44 +75,42 @@ describe('Cast Member model', () => {
 		it('calls instance validate method and associated models\' validate methods', () => {
 
 			spy(instance, 'validateName');
-			spy(instance, 'validateNameUniquenessInGroup');
+			spy(instance, 'validatedifferentiator');
+			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfRoles');
-			instance.runInputValidations({ hasDuplicateName: false });
+			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(
 				instance.validateName,
-				instance.validateNameUniquenessInGroup,
+				instance.validatedifferentiator,
+				instance.validateUniquenessInGroup,
 				instance.validateNamePresenceIfRoles,
-				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
 				instance.roles[0].validateCharacterNameHasRoleName,
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
-				instance.roles[0].validateNameUniquenessInGroup
+				instance.roles[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ requiresName: false })).to.be.true;
-			expect(instance.validateNameUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.validateNameUniquenessInGroup.calledWithExactly({ hasDuplicateName: false })).to.be.true;
+			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.validatedifferentiator.calledOnce).to.be.true;
+			expect(instance.validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.validateNamePresenceIfRoles.calledOnce).to.be.true;
 			expect(instance.validateNamePresenceIfRoles.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
-				instance.roles
-			)).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(instance.roles)).to.be.true;
 			expect(instance.roles[0].validateName.calledOnce).to.be.true;
-			expect(instance.roles[0].validateName.calledWithExactly({ requiresName: false })).to.be.true;
+			expect(instance.roles[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.roles[0].validateCharacterName.calledOnce).to.be.true;
-			expect(instance.roles[0].validateCharacterName.calledWithExactly(
-				{ requiresCharacterName: false }
-			)).to.be.true;
+			expect(instance.roles[0].validateCharacterName.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateCharacterNameHasRoleName.calledOnce).to.be.true;
 			expect(instance.roles[0].validateCharacterNameHasRoleName.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledOnce).to.be.true;
 			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledWithExactly()).to.be.true;
-			expect(instance.roles[0].validateNameUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.roles[0].validateNameUniquenessInGroup.calledWithExactly(
-				{ hasDuplicateName: false }
-			)).to.be.true;
+			expect(instance.roles[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.roles[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 

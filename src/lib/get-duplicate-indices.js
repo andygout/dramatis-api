@@ -1,4 +1,4 @@
-export const getDuplicateNameIndices = arrayOfObjects => {
+export const getDuplicateIndices = arrayOfObjects => {
 
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
@@ -6,12 +6,14 @@ export const getDuplicateNameIndices = arrayOfObjects => {
 			object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				object.name === comparisonObject.name &&
+				object.differentiator === comparisonObject.differentiator &&
 				index !== comparisonIndex
 			);
 
 		if (isDuplicate) accumulator.push(index);
 
 		return accumulator;
+
 	}, []);
 
 };

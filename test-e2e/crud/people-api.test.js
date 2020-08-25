@@ -21,6 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 			const expectedResponseBody = {
 				model: 'person',
 				name: '',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -65,6 +66,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				model: 'person',
 				uuid: PERSON_UUID,
 				name: 'Ian McKellen',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -83,6 +85,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				model: 'person',
 				uuid: PERSON_UUID,
 				name: 'Ian McKellen',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -105,6 +108,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				model: 'person',
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -123,6 +127,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				model: 'person',
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart',
+				differentiator: null,
 				productions: []
 			};
 
@@ -140,7 +145,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				{
 					model: 'person',
 					uuid: PERSON_UUID,
-					name: 'Patrick Stewart'
+					name: 'Patrick Stewart',
+					differentiator: null
 				}
 			];
 
@@ -158,7 +164,9 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			const expectedResponseBody = {
 				model: 'person',
-				name: 'Patrick Stewart'
+				name: 'Patrick Stewart',
+				differentiator: '',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

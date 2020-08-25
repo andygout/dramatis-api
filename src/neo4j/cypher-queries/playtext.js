@@ -1,7 +1,7 @@
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: 'CREATE (playtext:Playtext { uuid: $uuid, name: $name })',
+		create: 'CREATE (playtext:Playtext { uuid: $uuid, name: $name, differentiator: $differentiator })',
 		update: `
 			MATCH (playtext:Playtext { uuid: $uuid })
 
@@ -11,20 +11,40 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT playtext
 
-			SET playtext.name = $name
+			SET
+				playtext.name = $name,
+				playtext.differentiator = $differentiator
 		`
 	};
 
 	return `
 		${createUpdateQueryOpeningMap[action]}
 
-		FOREACH (characterParam IN $characters |
-			MERGE (character:Character { name: characterParam.name })
-			ON CREATE SET character.uuid = characterParam.uuid
-			CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
-		)
-
 		WITH playtext
+
+		UNWIND (CASE $characters WHEN [] THEN [null] ELSE $characters END) AS characterParam
+
+			OPTIONAL MATCH (existingCharacter:Character { name: characterParam.name })
+				WHERE
+					(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
+					(characterParam.differentiator = existingCharacter.differentiator)
+
+			WITH
+				playtext,
+				characterParam,
+				CASE WHEN existingCharacter IS NULL
+					THEN { uuid: characterParam.uuid, name: characterParam.name, differentiator: characterParam.differentiator }
+					ELSE existingCharacter
+				END AS characterProps
+
+			FOREACH (item IN CASE WHEN characterParam IS NOT NULL THEN [1] ELSE [] END |
+				MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
+					ON CREATE SET character.differentiator = characterProps.differentiator
+
+				CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
+			)
+
+		WITH DISTINCT playtext
 
 		${getEditQuery()}
 	`;
@@ -45,10 +65,11 @@ const getEditQuery = () => `
 		'playtext' AS model,
 		playtext.uuid AS uuid,
 		playtext.name AS name,
+		playtext.differentiator AS differentiator,
 		COLLECT(
 			CASE WHEN character IS NULL
 				THEN null
-				ELSE { name: character.name }
+				ELSE { name: character.name, differentiator: character.differentiator }
 			END
 		) + [{ name: '' }] AS characters
 `;
@@ -80,6 +101,7 @@ const getShowQuery = () => `
 		'playtext' AS model,
 		playtext.uuid AS uuid,
 		playtext.name AS name,
+		playtext.differentiator AS differentiator,
 		characters,
 		COLLECT(
 			CASE WHEN production IS NULL

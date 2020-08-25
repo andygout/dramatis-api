@@ -8,13 +8,13 @@ export const validateString = (stringValue, opts) => {
 		stringValue !== null &&
 		!!stringValue.length;
 
-	if (opts.isRequiredString && !isStringWithLength) errorText = 'Name is too short';
+	if (opts.isRequired && !isStringWithLength) errorText = 'Value is too short';
 
 	const isStringExceedingMaxLength =
 		isStringWithLength &&
 		stringValue.length > STRING_MAX_LENGTH;
 
-	if (isStringExceedingMaxLength) errorText = 'Name is too long';
+	if (isStringExceedingMaxLength) errorText = 'Value is too long';
 
 	return errorText;
 

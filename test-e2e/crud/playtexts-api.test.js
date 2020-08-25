@@ -21,11 +21,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				name: '',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -72,11 +74,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Uncle Vanya',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -97,11 +101,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Uncle Vanya',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -126,11 +132,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Cherry Orchard',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -151,6 +159,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Cherry Orchard',
+				differentiator: null,
 				characters: [],
 				productions: []
 			};
@@ -169,7 +178,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'The Cherry Orchard'
+					name: 'The Cherry Orchard',
+					differentiator: null
 				}
 			];
 
@@ -187,7 +197,10 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			const expectedResponseBody = {
 				model: 'playtext',
-				name: 'The Cherry Orchard'
+				name: 'The Cherry Orchard',
+				differentiator: '',
+				errors: {},
+				characters: []
 			};
 
 			expect(response).to.have.status(200);
@@ -251,26 +264,31 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
-						errors: {},
+						differentiator: '',
+						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -291,6 +309,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
+				differentiator: null,
 				characters: [
 					{
 						model: 'character',
@@ -325,26 +344,31 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
-						errors: {},
+						differentiator: '',
+						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -380,26 +404,31 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: 'Olga Sergeyevna Prozorova',
-						errors: {},
+						differentiator: '',
+						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Maria Sergeyevna Kulygina',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Irina Sergeyevna Prozorova',
+						differentiator: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -420,6 +449,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
+				differentiator: null,
 				characters: [
 					{
 						model: 'character',
@@ -454,7 +484,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'Three Sisters'
+					name: 'Three Sisters',
+					differentiator: null
 				}
 			];
 
@@ -477,11 +508,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
+				differentiator: '',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: '',
+						differentiator: '',
 						errors: {}
 					}
 				]
@@ -502,7 +535,10 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			const expectedResponseBody = {
 				model: 'playtext',
-				name: 'Three Sisters'
+				name: 'Three Sisters',
+				differentiator: '',
+				errors: {},
+				characters: []
 			};
 
 			expect(response).to.have.status(200);
