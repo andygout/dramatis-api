@@ -44,19 +44,21 @@ describe('Production instance', () => {
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					},
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: []
@@ -87,19 +89,21 @@ describe('Production instance', () => {
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too long'
+							'Value is too long'
 						]
 					},
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: []
@@ -136,9 +140,10 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
 						errors: {
 							name: [
-								'Name is too long'
+								'Value is too long'
 							]
 						}
 					},
@@ -146,6 +151,56 @@ describe('Production instance', () => {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('theatre differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					theatre: {
+						name: 'National Theatre',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: 'National Theatre',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
+							]
+						}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: []
@@ -182,15 +237,66 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
 						errors: {
 							name: [
-								'Name is too long'
+								'Value is too long'
+							]
+						}
+					},
+					cast: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('playtext differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					playtext: {
+						name: 'Hamlet',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: 'Hamlet',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
 							]
 						}
 					},
@@ -231,12 +337,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -244,9 +352,10 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
 							errors: {
 								name: [
-									'Name is too long'
+									'Value is too long'
 								]
 							},
 							roles: []
@@ -260,7 +369,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('duplicate cast member name values', () => {
+		context('cast member differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -269,14 +378,7 @@ describe('Production instance', () => {
 					cast: [
 						{
 							name: 'Rory Kinnear',
-							roles: []
-						},
-						{
-							name: 'David Calder',
-							roles: []
-						},
-						{
-							name: 'Rory Kinnear',
+							differentiator: ABOVE_MAX_LENGTH_STRING,
 							roles: []
 						}
 					]
@@ -296,12 +398,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -309,9 +413,114 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								differentiator: [
+									'Value is too long'
+								]
+							},
+							roles: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate combinations of cast member name and differentiator values', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							differentiator: '',
+							roles: []
+						},
+						{
+							name: 'Clare Higgins',
+							differentiator: '1',
+							roles: []
+						},
+						{
+							name: 'Ruth Negga',
+							differentiator: '',
+							roles: []
+						},
+						{
+							name: 'Giles Terera',
+							differentiator: '1',
+							roles: []
+						},
+						{
+							name: 'David Calder',
+							differentiator: '',
+							roles: []
+						},
+						{
+							name: 'Rory Kinnear',
+							differentiator: '',
+							roles: []
+						},
+						{
+							name: 'Clare Higgins',
+							differentiator: '1',
+							roles: []
+						},
+						{
+							name: 'Ruth Negga',
+							differentiator: '1',
+							roles: []
+						},
+						{
+							name: 'Giles Terera',
+							differentiator: '2',
+							roles: []
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {
 								name: [
-									'Name has been duplicated in this group'
+									'Name and differentiator combination has been duplicated in this group'
+								],
+								differentiator: [
+									'Name and differentiator combination has been duplicated in this group'
 								]
 							},
 							roles: []
@@ -319,7 +528,39 @@ describe('Production instance', () => {
 						{
 							model: 'person',
 							uuid: undefined,
+							name: 'Clare Higgins',
+							differentiator: '1',
+							errors: {
+								name: [
+									'Name and differentiator combination has been duplicated in this group'
+								],
+								differentiator: [
+									'Name and differentiator combination has been duplicated in this group'
+								]
+							},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Ruth Negga',
+							differentiator: '',
+							errors: {},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Giles Terera',
+							differentiator: '1',
+							errors: {},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
 							name: 'David Calder',
+							differentiator: '',
 							errors: {},
 							roles: []
 						},
@@ -327,11 +568,46 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {
 								name: [
-									'Name has been duplicated in this group'
+									'Name and differentiator combination has been duplicated in this group'
+								],
+								differentiator: [
+									'Name and differentiator combination has been duplicated in this group'
 								]
 							},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Clare Higgins',
+							differentiator: '1',
+							errors: {
+								name: [
+									'Name and differentiator combination has been duplicated in this group'
+								],
+								differentiator: [
+									'Name and differentiator combination has been duplicated in this group'
+								]
+							},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Ruth Negga',
+							differentiator: '1',
+							errors: {},
+							roles: []
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Giles Terera',
+							differentiator: '2',
+							errors: {},
 							roles: []
 						}
 					]
@@ -375,12 +651,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -388,6 +666,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: '',
+							differentiator: '',
 							errors: {
 								name: [
 									'Name is required if cast member has named roles'
@@ -444,12 +723,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -457,6 +738,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {},
 							roles: [
 								{
@@ -465,7 +747,7 @@ describe('Production instance', () => {
 									characterName: '',
 									errors: {
 										name: [
-											'Name is too long'
+											'Value is too long'
 										]
 									}
 								}
@@ -513,12 +795,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -526,6 +810,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {},
 							roles: [
 								{
@@ -534,7 +819,7 @@ describe('Production instance', () => {
 									characterName: ABOVE_MAX_LENGTH_STRING,
 									errors: {
 										characterName: [
-											'Name is too long'
+											'Value is too long'
 										]
 									}
 								}
@@ -582,12 +867,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -595,6 +882,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {},
 							roles: [
 								{
@@ -651,12 +939,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -664,6 +954,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
+							differentiator: '',
 							errors: {},
 							roles: [
 								{
@@ -728,12 +1019,14 @@ describe('Production instance', () => {
 						model: 'theatre',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					playtext: {
 						model: 'playtext',
 						uuid: undefined,
 						name: '',
+						differentiator: '',
 						errors: {}
 					},
 					cast: [
@@ -741,6 +1034,7 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'David Calder',
+							differentiator: '',
 							errors: {},
 							roles: [
 								{

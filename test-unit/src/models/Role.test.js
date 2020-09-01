@@ -1,33 +1,9 @@
 import { expect } from 'chai';
-import { assert, createSandbox, spy } from 'sinon';
+import { spy } from 'sinon';
 
-import * as validateStringModule from '../../../src/lib/validate-string';
 import Role from '../../../src/models/Role';
 
 describe('Role model', () => {
-
-	let stubs;
-
-	const STRING_MAX_LENGTH = 1000;
-	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
-
-	const sandbox = createSandbox();
-
-	beforeEach(() => {
-
-		stubs = {
-			validateString: sandbox.stub(validateStringModule, 'validateString').returns(undefined)
-		};
-
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false }).returns('Name is too long');
-
-	});
-
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
 
 	describe('constructor method', () => {
 
@@ -92,49 +68,15 @@ describe('Role model', () => {
 
 	describe('validateCharacterName method', () => {
 
-		context('valid data', () => {
+		it('will call validateStringForProperty method', () => {
 
-			it('will not add properties to errors property', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				spy(instance, 'addPropertyError');
-				instance.validateCharacterName({ requiresCharacterName: false });
-				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(
-					instance.characterName, { isRequiredString: false })
-				).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
-				expect(instance.errors).not.to.have.property('name');
-				expect(instance.errors).to.deep.equal({});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('adds properties whose values are arrays to errors property', () => {
-
-				const instance =
-					new Role({ name: 'Hamlet, Prince of Denmark', characterName: ABOVE_MAX_LENGTH_STRING });
-				spy(instance, 'addPropertyError');
-				instance.validateCharacterName({ requiresCharacterName: false });
-				assert.callOrder(
-					stubs.validateString,
-					instance.addPropertyError
-				);
-				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(
-					instance.characterName, { isRequiredString: false })
-				).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('characterName', 'Name is too long')).to.be.true;
-				expect(instance.errors)
-					.to.have.property('characterName')
-					.that.is.an('array')
-					.that.deep.eq(['Name is too long']);
-
-			});
+			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+			spy(instance, 'validateStringForProperty');
+			instance.validateCharacterName();
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly(
+				'characterName', { isRequired: false })
+			).to.be.true;
 
 		});
 

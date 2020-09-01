@@ -37,10 +37,11 @@ describe('Person instance', () => {
 					model: 'person',
 					uuid: undefined,
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -63,10 +64,38 @@ describe('Person instance', () => {
 					model: 'person',
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too long'
+							'Value is too long'
+						]
+					}
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instance = new Person({ name: 'Helen Mirren', differentiator: ABOVE_MAX_LENGTH_STRING });
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'person',
+					uuid: undefined,
+					name: 'Helen Mirren',
+					differentiator: ABOVE_MAX_LENGTH_STRING,
+					hasErrors: true,
+					errors: {
+						differentiator: [
+							'Value is too long'
 						]
 					}
 				};
@@ -99,10 +128,14 @@ describe('Person instance', () => {
 					model: 'person',
 					uuid: undefined,
 					name: 'Helen Mirren',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};

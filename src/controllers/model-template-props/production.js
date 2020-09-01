@@ -1,10 +1,12 @@
 export default {
 	name: '',
 	theatre: {
-		name: ''
+		name: '',
+		differentiator: ''
 	},
 	playtext: {
-		name: ''
+		name: '',
+		differentiator: ''
 	},
 	cast: [
 		{

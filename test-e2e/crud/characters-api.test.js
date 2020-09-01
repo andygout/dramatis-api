@@ -21,6 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 			const expectedResponseBody = {
 				model: 'character',
 				name: '',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -65,6 +66,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				model: 'character',
 				uuid: CHARACTER_UUID,
 				name: 'Romeo',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -83,6 +85,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				model: 'character',
 				uuid: CHARACTER_UUID,
 				name: 'Romeo',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -105,6 +108,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				model: 'character',
 				uuid: CHARACTER_UUID,
 				name: 'Juliet',
+				differentiator: '',
 				errors: {}
 			};
 
@@ -123,6 +127,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				model: 'character',
 				uuid: CHARACTER_UUID,
 				name: 'Juliet',
+				differentiator: null,
 				playtexts: [],
 				productions: [],
 				variantNames: []
@@ -142,7 +147,8 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				{
 					model: 'character',
 					uuid: CHARACTER_UUID,
-					name: 'Juliet'
+					name: 'Juliet',
+					differentiator: null
 				}
 			];
 
@@ -160,7 +166,9 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			const expectedResponseBody = {
 				model: 'character',
-				name: 'Juliet'
+				name: 'Juliet',
+				differentiator: '',
+				errors: {}
 			};
 
 			expect(response).to.have.status(200);

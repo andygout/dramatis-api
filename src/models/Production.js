@@ -1,4 +1,4 @@
-import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
+import { getDuplicateIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { CastMember, Playtext, Theatre } from '.';
 
@@ -22,16 +22,20 @@ export default class Production extends Base {
 
 	runInputValidations () {
 
-		this.validateName({ requiresName: true });
+		this.validateName({ isRequired: true });
 
-		this.theatre.validateName({ requiresName: false });
+		this.theatre.validateName({ isRequired: false });
 
-		this.playtext.validateName({ requiresName: false });
+		this.theatre.validatedifferentiator();
 
-		const duplicateNameIndices = getDuplicateNameIndices(this.cast);
+		this.playtext.validateName({ isRequired: false });
+
+		this.playtext.validatedifferentiator();
+
+		const duplicateCastMemberIndices = getDuplicateIndices(this.cast);
 
 		this.cast.forEach((castMember, index) =>
-			castMember.runInputValidations({ hasDuplicateName: duplicateNameIndices.includes(index) })
+			castMember.runInputValidations({ isDuplicate: duplicateCastMemberIndices.includes(index) })
 		);
 
 	}

@@ -30,8 +30,8 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateNameIndicesModule: {
-				getDuplicateNameIndices: stub().returns([])
+			getDuplicateIndicesModule: {
+				getDuplicateIndices: stub().returns([])
 			},
 			Base: {
 				validateStringModule: {
@@ -54,7 +54,7 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
-			'../lib/get-duplicate-name-indices': stubs.getDuplicateNameIndicesModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'./Base': proxyquire('../../../src/models/Base', {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
@@ -113,22 +113,26 @@ describe('Production model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.theatre.validateName,
+				instance.theatre.validatedifferentiator,
 				instance.playtext.validateName,
-				stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices,
+				instance.playtext.validatedifferentiator,
+				stubs.getDuplicateIndicesModule.getDuplicateIndices,
 				instance.cast[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ requiresName: true })).to.be.true;
+			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.theatre.validateName.calledOnce).to.be.true;
-			expect(instance.theatre.validateName.calledWithExactly({ requiresName: false })).to.be.true;
+			expect(instance.theatre.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.theatre.validatedifferentiator.calledOnce).to.be.true;
+			expect(instance.theatre.validatedifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.playtext.validateName.calledOnce).to.be.true;
-			expect(instance.playtext.validateName.calledWithExactly({ requiresName: false })).to.be.true;
-			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateNameIndicesModule.getDuplicateNameIndices.calledWithExactly(
-				instance.cast
-			)).to.be.true;
+			expect(instance.playtext.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.playtext.validatedifferentiator.calledOnce).to.be.true;
+			expect(instance.playtext.validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(instance.cast)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.cast[0].runInputValidations.calledWithExactly({ hasDuplicateName: false })).to.be.true;
+			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 

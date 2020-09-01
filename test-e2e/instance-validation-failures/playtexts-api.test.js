@@ -43,10 +43,11 @@ describe('Instance validation failures: Playtexts API', () => {
 				const expectedResponseBody = {
 					model: 'playtext',
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					},
 					characters: []
@@ -75,10 +76,14 @@ describe('Instance validation failures: Playtexts API', () => {
 				const expectedResponseBody = {
 					model: 'playtext',
 					name: 'The Wild Duck',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					},
 					characters: []
@@ -133,10 +138,11 @@ describe('Instance validation failures: Playtexts API', () => {
 					model: 'playtext',
 					uuid: GHOSTS_PLAYTEXT_UUID,
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					},
 					characters: []
@@ -171,10 +177,14 @@ describe('Instance validation failures: Playtexts API', () => {
 					model: 'playtext',
 					uuid: GHOSTS_PLAYTEXT_UUID,
 					name: 'The Wild Duck',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					},
 					characters: []
@@ -239,6 +249,7 @@ describe('Instance validation failures: Playtexts API', () => {
 					model: 'playtext',
 					uuid: GHOSTS_PLAYTEXT_UUID,
 					name: 'Ghosts',
+					differentiator: null,
 					hasErrors: true,
 					errors: {
 						associations: [

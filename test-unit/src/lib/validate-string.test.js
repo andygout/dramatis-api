@@ -14,7 +14,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString('', { isRequiredString: true })).to.equal('Name is too short');
+				expect(validateString('', { isRequired: true })).to.equal('Value is too short');
 
 			});
 
@@ -24,7 +24,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString('', { isRequiredString: false })).to.equal(undefined);
+				expect(validateString('', { isRequired: false })).to.equal(undefined);
 
 			});
 
@@ -38,7 +38,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(MAX_LENGTH_STRING, { isRequiredString: true })).to.equal(undefined);
+				expect(validateString(MAX_LENGTH_STRING, { isRequired: true })).to.equal(undefined);
 
 			});
 
@@ -48,7 +48,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(MAX_LENGTH_STRING, { isRequiredString: false })).to.equal(undefined);
+				expect(validateString(MAX_LENGTH_STRING, { isRequired: false })).to.equal(undefined);
 
 			});
 
@@ -63,8 +63,8 @@ describe('Validate String module', () => {
 			it('adds error to and returns stringErrors array', () => {
 
 				expect(
-					validateString(ABOVE_MAX_LENGTH_STRING, { isRequiredString: true })
-				).to.equal('Name is too long');
+					validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: true })
+				).to.equal('Value is too long');
 
 			});
 
@@ -75,8 +75,8 @@ describe('Validate String module', () => {
 			it('adds error to and returns stringErrors array', () => {
 
 				expect(
-					validateString(ABOVE_MAX_LENGTH_STRING, { isRequiredString: false })
-				).to.equal('Name is too long');
+					validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: false })
+				).to.equal('Value is too long');
 
 			});
 
@@ -90,7 +90,7 @@ describe('Validate String module', () => {
 
 			it('adds error to and returns stringErrors array', () => {
 
-				expect(validateString(null, { isRequiredString: true })).to.equal('Name is too short');
+				expect(validateString(null, { isRequired: true })).to.equal('Value is too short');
 
 			});
 
@@ -100,7 +100,7 @@ describe('Validate String module', () => {
 
 			it('returns empty stringErrors array', () => {
 
-				expect(validateString(null, { isRequiredString: false })).to.equal(undefined);
+				expect(validateString(null, { isRequired: false })).to.equal(undefined);
 
 			});
 

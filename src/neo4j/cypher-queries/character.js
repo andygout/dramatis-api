@@ -58,6 +58,7 @@ const getShowQuery = () => `
 		'character' AS model,
 		character.uuid AS uuid,
 		character.name AS name,
+		character.differentiator AS differentiator,
 		playtexts,
 		variantNames,
 		COLLECT(

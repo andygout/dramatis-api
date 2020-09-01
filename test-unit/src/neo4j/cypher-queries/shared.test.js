@@ -46,7 +46,10 @@ describe('Cypher Queries Shared module', () => {
 						'production' AS model,
 						n.uuid AS uuid,
 						n.name AS name
-						, CASE WHEN t IS NULL THEN null ELSE { model: 'theatre', uuid: t.uuid, name: t.name } END AS theatre
+						, CASE WHEN t IS NULL
+							THEN null
+							ELSE { model: 'theatre', uuid: t.uuid, name: t.name, differentiator: t.differentiator }
+						END AS theatre
 
 					LIMIT 100
 				`));
@@ -76,41 +79,27 @@ describe('Cypher Queries Shared module', () => {
 
 		});
 
-		describe('getDuplicateNameCountQuery function', () => {
+		describe('getDuplicateRecordCountQuery function', () => {
 
-			context('uuid argument given is undefined (i.e. requested as part of create action)', () => {
+			it('returns requisite query', () => {
 
-				it('returns requisite query', () => {
+				const result = cypherQueriesShared.getDuplicateRecordCountQuery('theatre', undefined);
+				expect(stubs.capitalise.calledOnce).to.be.true;
+				expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+					MATCH (n:Theatre { name: $name })
+						WHERE
+							(
+								($differentiator IS NULL AND n.differentiator IS NULL) OR
+								($differentiator = n.differentiator)
+							) AND
+							(
+								($uuid IS NULL) OR
+								($uuid <> n.uuid)
+							)
 
-					const result = cypherQueriesShared.getDuplicateNameCountQuery('theatre', undefined);
-					expect(stubs.capitalise.calledOnce).to.be.true;
-					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-						MATCH (n:Theatre { name: $name })
-
-						RETURN SIGN(COUNT(n)) AS instanceCount
-					`));
-
-				});
-
-			});
-
-			context('uuid argument given is valid string (i.e. requested as part of update action)', () => {
-
-				it('returns requisite query', () => {
-
-					const result =
-						cypherQueriesShared.getDuplicateNameCountQuery('theatre', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-					expect(stubs.capitalise.calledOnce).to.be.true;
-					expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
-					expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-						MATCH (n:Theatre { name: $name })
-							WHERE n.uuid <> $uuid
-
-						RETURN SIGN(COUNT(n)) AS instanceCount
-					`));
-
-				});
+					RETURN SIGN(COUNT(n)) AS instanceCount
+				`));
 
 			});
 
@@ -125,7 +114,7 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.firstCall.calledWithExactly('theatre')).to.be.true;
 				expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
 				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-					CREATE (n:Theatre { uuid: $uuid, name: $name })
+					CREATE (n:Theatre { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 					WITH n
 
@@ -134,7 +123,8 @@ describe('Cypher Queries Shared module', () => {
 					RETURN
 						'theatre' AS model,
 						n.uuid AS uuid,
-						n.name AS name
+						n.name AS name,
+						n.differentiator AS differentiator
 				`));
 
 			});
@@ -154,7 +144,8 @@ describe('Cypher Queries Shared module', () => {
 					RETURN
 						'theatre' AS model,
 						n.uuid AS uuid,
-						n.name AS name
+						n.name AS name,
+						n.differentiator AS differentiator
 				`));
 
 			});
@@ -171,7 +162,9 @@ describe('Cypher Queries Shared module', () => {
 				expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
 				expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 					MATCH (n:Theatre { uuid: $uuid })
-						SET n.name = $name
+						SET
+							n.name = $name,
+							n.differentiator = $differentiator
 
 					WITH n
 
@@ -180,7 +173,8 @@ describe('Cypher Queries Shared module', () => {
 					RETURN
 						'theatre' AS model,
 						n.uuid AS uuid,
-						n.name AS name
+						n.name AS name,
+						n.differentiator AS differentiator
 				`));
 
 			});
@@ -220,6 +214,7 @@ describe('Cypher Queries Shared module', () => {
 							deletableInstance,
 							deletableInstance IS NOT NULL AS isDeleted,
 							deletableInstance.name AS deletableInstanceName,
+							deletableInstance.differentiator AS deletableInstancedifferentiator,
 							COLLECT(distinctAssociateLabel) AS associatedModels
 
 						DETACH DELETE deletableInstance
@@ -230,6 +225,10 @@ describe('Cypher Queries Shared module', () => {
 								THEN deletableInstanceName
 								ELSE undeletableInstance.name
 							END AS name,
+							CASE WHEN isDeleted
+								THEN deletableInstancedifferentiator
+								ELSE undeletableInstance.differentiator
+							END AS differentiator,
 							isDeleted,
 							associatedModels
 				`));
@@ -252,6 +251,7 @@ describe('Cypher Queries Shared module', () => {
 						'theatre' AS model,
 						n.uuid AS uuid,
 						n.name AS name
+						, n.differentiator AS differentiator
 
 					LIMIT 100
 				`));

@@ -24,6 +24,7 @@ const getShowQuery = () => `
 		'person' AS model,
 		person.uuid AS uuid,
 		person.name AS name,
+		person.differentiator AS differentiator,
 		COLLECT(
 			CASE WHEN production IS NULL
 				THEN null

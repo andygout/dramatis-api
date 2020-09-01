@@ -1,4 +1,4 @@
-import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
+import { getDuplicateIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { Character } from '.';
 
@@ -8,10 +8,11 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		const { uuid, characters, isAssociation } = props;
+		const { uuid, differentiator, characters, isAssociation } = props;
 
 		this.model = 'playtext';
 		this.uuid = uuid;
+		this.differentiator = differentiator?.trim() || '';
 
 		if (!isAssociation) {
 
@@ -25,15 +26,19 @@ export default class Playtext extends Base {
 
 	runInputValidations () {
 
-		this.validateName({ requiresName: true });
+		this.validateName({ isRequired: true });
 
-		const duplicateNameIndices = getDuplicateNameIndices(this.characters);
+		this.validatedifferentiator();
+
+		const duplicateCharacterIndices = getDuplicateIndices(this.characters);
 
 		this.characters.forEach((character, index) => {
 
-			character.validateName({ requiresName: false });
+			character.validateName({ isRequired: false });
 
-			character.validateNameUniquenessInGroup({ hasDuplicateName: duplicateNameIndices.includes(index) });
+			character.validatedifferentiator();
+
+			character.validateUniquenessInGroup({ isDuplicate: duplicateCharacterIndices.includes(index) });
 
 		});
 

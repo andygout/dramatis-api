@@ -43,10 +43,11 @@ describe('Instance validation failures: Theatres API', () => {
 				const expectedResponseBody = {
 					model: 'theatre',
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -74,10 +75,14 @@ describe('Instance validation failures: Theatres API', () => {
 				const expectedResponseBody = {
 					model: 'theatre',
 					name: 'Donmar Warehouse',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -131,10 +136,11 @@ describe('Instance validation failures: Theatres API', () => {
 					model: 'theatre',
 					uuid: ALMEIDA_THEATRE_UUID,
 					name: '',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name is too short'
+							'Value is too short'
 						]
 					}
 				};
@@ -168,10 +174,14 @@ describe('Instance validation failures: Theatres API', () => {
 					model: 'theatre',
 					uuid: ALMEIDA_THEATRE_UUID,
 					name: 'Donmar Warehouse',
+					differentiator: '',
 					hasErrors: true,
 					errors: {
 						name: [
-							'Name already exists'
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
 						]
 					}
 				};
@@ -235,6 +245,7 @@ describe('Instance validation failures: Theatres API', () => {
 					model: 'theatre',
 					uuid: ALMEIDA_THEATRE_UUID,
 					name: 'Almeida Theatre',
+					differentiator: null,
 					hasErrors: true,
 					errors: {
 						associations: [

@@ -6,8 +6,11 @@ export default class Character extends Base {
 
 		super(props);
 
+		const { uuid, differentiator } = props;
+
 		this.model = 'character';
-		this.uuid = props.uuid;
+		this.uuid = uuid;
+		this.differentiator = differentiator?.trim() || '';
 
 	}
 

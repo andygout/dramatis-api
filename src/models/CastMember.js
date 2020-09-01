@@ -1,4 +1,4 @@
-import { getDuplicateNameIndices } from '../lib/get-duplicate-name-indices';
+import { getDuplicateIndices } from '../lib/get-duplicate-indices';
 import Person from './Person';
 import { Role } from '.';
 
@@ -18,25 +18,27 @@ export default class CastMember extends Person {
 
 	runInputValidations (opts) {
 
-		this.validateName({ requiresName: false });
+		this.validateName({ isRequired: false });
 
-		this.validateNameUniquenessInGroup({ hasDuplicateName: opts.hasDuplicateName });
+		this.validatedifferentiator();
+
+		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
 		this.validateNamePresenceIfRoles();
 
-		const duplicateNameIndices = getDuplicateNameIndices(this.roles);
+		const duplicateRoleIndices = getDuplicateIndices(this.roles);
 
 		this.roles.forEach((role, index) => {
 
-			role.validateName({ requiresName: false });
+			role.validateName({ isRequired: false });
 
-			role.validateCharacterName({ requiresCharacterName: false });
+			role.validateCharacterName();
 
 			role.validateCharacterNameHasRoleName();
 
 			role.validateRoleNameCharacterNameDisparity();
 
-			role.validateNameUniquenessInGroup({ hasDuplicateName: duplicateNameIndices.includes(index) });
+			role.validateUniquenessInGroup({ isDuplicate: duplicateRoleIndices.includes(index) });
 
 		});
 
