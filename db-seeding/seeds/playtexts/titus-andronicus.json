@@ -1,0 +1,92 @@
+{
+	"name": "Titus Andronicus",
+	"characters": [
+		{
+			"name": "Saturninus"
+		},
+		{
+			"name": "Bassianus"
+		},
+		{
+			"name": "Titus Andronicus"
+		},
+		{
+			"name": "Marcus Andronicus"
+		},
+		{
+			"name": "Publius"
+		},
+		{
+			"name": "Lucius"
+		},
+		{
+			"name": "Quintus"
+		},
+		{
+			"name": "Martius"
+		},
+		{
+			"name": "Mutius"
+		},
+		{
+			"name": "Lavinia"
+		},
+		{
+			"name": "Young Lucius"
+		},
+		{
+			"name": "Sempronius"
+		},
+		{
+			"name": "Caius"
+		},
+		{
+			"name": "Valentine"
+		},
+		{
+			"name": "Æmilius"
+		},
+		{
+			"name": "Tamora"
+		},
+		{
+			"name": "Alarbus"
+		},
+		{
+			"name": "Demetrius",
+			"differentiator": "2"
+		},
+		{
+			"name": "Chiron"
+		},
+		{
+			"name": "Aaron"
+		},
+		{
+			"name": "Nurse"
+		},
+		{
+			"name": "Clown"
+		},
+		{
+			"name": "Messenger",
+			"differentiator": "Titus Andronicus"
+		},
+		{
+			"name": "Senators"
+		},
+		{
+			"name": "Tribunes"
+		},
+		{
+			"name": "Roman Soldiers"
+		},
+		{
+			"name": "Attendants",
+			"differentiator": "Titus Andronicus"
+		},
+		{
+			"name": "Goths"
+		}
+	]
+}

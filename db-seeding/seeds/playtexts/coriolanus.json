@@ -89,7 +89,8 @@
 			"name": "Servants of Aufidius"
 		},
 		{
-			"name": "Attendants"
+			"name": "Attendants",
+			"differentiator": "Coriolanus"
 		}
 	]
 }
