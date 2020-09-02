@@ -6,7 +6,7 @@ export default async opts => {
 
 	const params = { name, uuid };
 
-	const matchNodeQuery = `
+	const isNodeExistentQuery = `
 		MATCH (n:${label} { name: $name, uuid: $uuid })
 
 		RETURN
@@ -16,7 +16,7 @@ export default async opts => {
 			END AS exists
 	`;
 
-	const { exists } = await neo4jQuery({ query: matchNodeQuery, params });
+	const { exists } = await neo4jQuery({ query: isNodeExistentQuery, params });
 
 	return exists;
 
