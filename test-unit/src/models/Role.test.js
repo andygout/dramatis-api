@@ -92,8 +92,6 @@ describe('Role model', () => {
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterNameHasRoleName();
 				expect(instance.addPropertyError.notCalled).to.be.true;
-				expect(instance.errors).not.to.have.property('characterName');
-				expect(instance.errors).to.deep.equal({});
 
 			});
 
@@ -111,10 +109,6 @@ describe('Role model', () => {
 					'name',
 					'Role name is required when character name is present'
 				)).to.be.true;
-				expect(instance.errors)
-					.to.have.property('name')
-					.that.is.an('array')
-					.that.deep.eq(['Role name is required when character name is present']);
 
 			});
 
@@ -134,8 +128,6 @@ describe('Role model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -149,8 +141,6 @@ describe('Role model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -164,8 +154,6 @@ describe('Role model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('characterName');
-					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -185,10 +173,6 @@ describe('Role model', () => {
 					'characterName',
 					'Character name is only required if different from role name'
 				)).to.be.true;
-				expect(instance.errors)
-					.to.have.property('characterName')
-					.that.is.an('array')
-					.that.deep.eq(['Character name is only required if different from role name']);
 
 			});
 
