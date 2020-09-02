@@ -5,7 +5,7 @@ import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import createNode from '../test-helpers/neo4j/create-node';
 import createRelationship from '../test-helpers/neo4j/create-relationship';
-import matchNode from '../test-helpers/neo4j/match-node';
+import isNodeExistent from '../test-helpers/neo4j/is-node-existent';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Instance validation failures: Theatres API', () => {
@@ -148,7 +148,7 @@ describe('Instance validation failures: Theatres API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Theatre')).to.equal(2);
-				expect(await matchNode({
+				expect(await isNodeExistent({
 					label: 'Theatre',
 					name: 'Almeida Theatre',
 					uuid: ALMEIDA_THEATRE_UUID
@@ -189,7 +189,7 @@ describe('Instance validation failures: Theatres API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Theatre')).to.equal(2);
-				expect(await matchNode({
+				expect(await isNodeExistent({
 					label: 'Theatre',
 					name: 'Almeida Theatre',
 					uuid: ALMEIDA_THEATRE_UUID
