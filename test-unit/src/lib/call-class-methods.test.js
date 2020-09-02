@@ -82,7 +82,7 @@ describe('Call Class Methods module', () => {
 				expect(stubs.response.statusCode).to.equal(404);
 				expect(stubs.response._getData()).to.equal('Not Found'); // eslint-disable-line no-underscore-dangle
 				expect(stubs.sendJsonResponse.notCalled).to.be.true;
-				expect(stubs.next.called).to.be.false;
+				expect(stubs.next.notCalled).to.be.true;
 
 			});
 
