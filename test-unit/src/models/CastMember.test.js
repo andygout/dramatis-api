@@ -138,8 +138,6 @@ describe('Cast Member model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -153,9 +151,6 @@ describe('Cast Member model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.equal({});
-
 				});
 
 			});
@@ -168,8 +163,6 @@ describe('Cast Member model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
-					expect(instance.errors).not.to.have.property('name');
-					expect(instance.errors).to.deep.equal({});
 
 				});
 
@@ -189,10 +182,6 @@ describe('Cast Member model', () => {
 					'name',
 					'Name is required if cast member has named roles'
 				)).to.be.true;
-				expect(instance.errors)
-					.to.have.property('name')
-					.that.is.an('array')
-					.that.deep.eq([	'Name is required if cast member has named roles']);
 
 			});
 
