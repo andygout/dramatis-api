@@ -46,7 +46,7 @@ describe('Cypher Queries Shared module', () => {
 						'production' AS model,
 						n.uuid AS uuid,
 						n.name AS name
-						, CASE WHEN t IS NULL
+						, CASE t WHEN NULL
 							THEN null
 							ELSE { model: 'theatre', uuid: t.uuid, name: t.name, differentiator: t.differentiator }
 						END AS theatre
@@ -198,9 +198,9 @@ describe('Cypher Queries Shared module', () => {
 						-[]-(undeleteableInstanceAssociate)
 
 					UNWIND
-						CASE WHEN undeleteableInstanceAssociate IS NOT NULL
-							THEN LABELS(undeleteableInstanceAssociate)
-							ELSE [null]
+						CASE undeleteableInstanceAssociate WHEN NULL
+							THEN [null]
+							ELSE LABELS(undeleteableInstanceAssociate)
 						END AS associateLabel
 
 						WITH

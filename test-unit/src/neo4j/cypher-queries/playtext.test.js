@@ -25,12 +25,16 @@ describe('Cypher Queries Playtext module', () => {
 					WITH
 						playtext,
 						characterParam,
-						CASE WHEN existingCharacter IS NULL
-							THEN { uuid: characterParam.uuid, name: characterParam.name, differentiator: characterParam.differentiator }
+						CASE existingCharacter WHEN NULL
+							THEN {
+								uuid: characterParam.uuid,
+								name: characterParam.name,
+								differentiator: characterParam.differentiator
+							}
 							ELSE existingCharacter
 						END AS characterProps
 
-					FOREACH (item IN CASE WHEN characterParam IS NOT NULL THEN [1] ELSE [] END |
+					FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 							ON CREATE SET character.differentiator = characterProps.differentiator
 
@@ -52,7 +56,7 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.name AS name,
 					playtext.differentiator AS differentiator,
 					COLLECT(
-						CASE WHEN character IS NULL
+						CASE character WHEN NULL
 							THEN null
 							ELSE { name: character.name, differentiator: character.differentiator }
 						END
@@ -93,12 +97,12 @@ describe('Cypher Queries Playtext module', () => {
 					WITH
 						playtext,
 						characterParam,
-						CASE WHEN existingCharacter IS NULL
+						CASE existingCharacter WHEN NULL
 							THEN { uuid: characterParam.uuid, name: characterParam.name, differentiator: characterParam.differentiator }
 							ELSE existingCharacter
 						END AS characterProps
 
-					FOREACH (item IN CASE WHEN characterParam IS NOT NULL THEN [1] ELSE [] END |
+					FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 							ON CREATE SET character.differentiator = characterProps.differentiator
 
@@ -120,7 +124,7 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.name AS name,
 					playtext.differentiator AS differentiator,
 					COLLECT(
-						CASE WHEN character IS NULL
+						CASE character WHEN NULL
 							THEN null
 							ELSE { name: character.name, differentiator: character.differentiator }
 						END
