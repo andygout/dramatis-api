@@ -12,7 +12,7 @@ const getShowQuery = () => `
 		theatre.name AS name,
 		theatre.differentiator AS differentiator,
 		COLLECT(
-			CASE WHEN production IS NULL
+			CASE production WHEN NULL
 				THEN null
 				ELSE { model: 'production', uuid: production.uuid, name: production.name }
 			END

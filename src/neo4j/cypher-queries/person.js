@@ -13,7 +13,7 @@ const getShowQuery = () => `
 
 	WITH person, production, theatre,
 		COLLECT(
-			CASE WHEN role.roleName IS NULL
+			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
 				ELSE { model: 'character', uuid: character.uuid, name: role.roleName }
 			END
@@ -26,14 +26,14 @@ const getShowQuery = () => `
 		person.name AS name,
 		person.differentiator AS differentiator,
 		COLLECT(
-			CASE WHEN production IS NULL
+			CASE production WHEN NULL
 				THEN null
 				ELSE {
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
 					theatre:
-						CASE WHEN theatre IS NULL
+						CASE theatre WHEN NULL
 							THEN null
 							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
 						END,

@@ -64,9 +64,9 @@ const getDeleteQuery = model => {
 			-[]-(undeleteableInstanceAssociate)
 
 		UNWIND
-			CASE WHEN undeleteableInstanceAssociate IS NOT NULL
-				THEN LABELS(undeleteableInstanceAssociate)
-				ELSE [null]
+			CASE undeleteableInstanceAssociate WHEN NULL
+				THEN [null]
+				ELSE LABELS(undeleteableInstanceAssociate)
 			END AS associateLabel
 
 			WITH
@@ -108,7 +108,7 @@ const getListQuery = model => {
 		: '';
 
 	const theatreObject = (model === 'production')
-		? `, CASE WHEN t IS NULL
+		? `, CASE t WHEN NULL
 				THEN null
 				ELSE { model: 'theatre', uuid: t.uuid, name: t.name, differentiator: t.differentiator }
 			END AS theatre`

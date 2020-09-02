@@ -32,12 +32,16 @@ const getCreateUpdateQuery = action => {
 			WITH
 				playtext,
 				characterParam,
-				CASE WHEN existingCharacter IS NULL
-					THEN { uuid: characterParam.uuid, name: characterParam.name, differentiator: characterParam.differentiator }
+				CASE existingCharacter WHEN NULL
+					THEN {
+						uuid: characterParam.uuid,
+						name: characterParam.name,
+						differentiator: characterParam.differentiator
+					}
 					ELSE existingCharacter
 				END AS characterProps
 
-			FOREACH (item IN CASE WHEN characterParam IS NOT NULL THEN [1] ELSE [] END |
+			FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
 				MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 					ON CREATE SET character.differentiator = characterProps.differentiator
 
@@ -67,7 +71,7 @@ const getEditQuery = () => `
 		playtext.name AS name,
 		playtext.differentiator AS differentiator,
 		COLLECT(
-			CASE WHEN character IS NULL
+			CASE character WHEN NULL
 				THEN null
 				ELSE { name: character.name, differentiator: character.differentiator }
 			END
@@ -90,7 +94,7 @@ const getShowQuery = () => `
 
 	WITH playtext, production, theatre,
 		COLLECT(
-			CASE WHEN character IS NULL
+			CASE character WHEN NULL
 				THEN null
 				ELSE { model: 'character', uuid: character.uuid, name: character.name }
 			END
@@ -104,14 +108,14 @@ const getShowQuery = () => `
 		playtext.differentiator AS differentiator,
 		characters,
 		COLLECT(
-			CASE WHEN production IS NULL
+			CASE production WHEN NULL
 				THEN null
 				ELSE {
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
 					theatre:
-						CASE WHEN theatre IS NULL
+						CASE theatre WHEN NULL
 							THEN null
 							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
 						END

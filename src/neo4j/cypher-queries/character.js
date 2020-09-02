@@ -11,7 +11,7 @@ const getShowQuery = () => `
 
 	WITH character, variantNamedRole,
 		COLLECT(
-			CASE WHEN playtext IS NULL
+			CASE playtext WHEN NULL
 				THEN null
 				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name }
 			END
@@ -37,7 +37,7 @@ const getShowQuery = () => `
 
 	WITH character, playtexts, variantNames, production, theatre, person, role,
 		COLLECT(
-			CASE WHEN otherRole IS NULL
+			CASE otherRole WHEN NULL
 				THEN null
 				ELSE { model: 'character', uuid: otherCharacter.uuid, name: otherRole.roleName }
 			END
@@ -62,14 +62,14 @@ const getShowQuery = () => `
 		playtexts,
 		variantNames,
 		COLLECT(
-			CASE WHEN production IS NULL
+			CASE production WHEN NULL
 				THEN null
 				ELSE {
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
 					theatre:
-						CASE WHEN theatre IS NULL
+						CASE theatre WHEN NULL
 							THEN null
 							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
 						END,

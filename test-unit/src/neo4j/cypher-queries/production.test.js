@@ -22,12 +22,12 @@ describe('Cypher Queries Production module', () => {
 
 				WITH
 					production,
-					CASE WHEN existingTheatre IS NULL
+					CASE existingTheatre WHEN NULL
 						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
 						ELSE existingTheatre
 					END AS theatreProps
 
-				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
 						ON CREATE SET theatre.differentiator = theatreProps.differentiator
 
@@ -43,12 +43,12 @@ describe('Cypher Queries Production module', () => {
 
 				WITH
 					production,
-					CASE WHEN existingPlaytext IS NULL
+					CASE existingPlaytext WHEN NULL
 						THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
 						ELSE existingPlaytext
 					END AS playtextProps
 
-				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE $playtext.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
 						ON CREATE SET playtext.differentiator = playtextProps.differentiator
 
@@ -67,7 +67,7 @@ describe('Cypher Queries Production module', () => {
 					WITH
 						production,
 						castMemberParam,
-						CASE WHEN existingPerson IS NULL
+						CASE existingPerson WHEN NULL
 							THEN {
 								uuid: castMemberParam.uuid,
 								name: castMemberParam.name,
@@ -76,7 +76,7 @@ describe('Cypher Queries Production module', () => {
 							ELSE existingPerson
 						END AS castMemberProps
 
-					FOREACH (item IN CASE WHEN castMemberParam IS NOT NULL THEN [1] ELSE [] END |
+					FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (person:Person { uuid: castMemberProps.uuid, name: castMemberProps.name })
 							ON CREATE SET person.differentiator = castMemberProps.differentiator
 
@@ -106,11 +106,11 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production, theatre, playtext, person,
 					COLLECT(
-						CASE WHEN role.roleName IS NULL
+						CASE role.roleName WHEN NULL
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END
 							}
 						END
 					) + [{ name: '', characterName: '' }] AS roles
@@ -120,15 +120,15 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE WHEN theatre.differentiator IS NULL THEN '' ELSE theatre.differentiator END
+						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
+						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
 					} AS theatre,
 					{
-						name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END,
-						differentiator: CASE WHEN playtext.differentiator IS NULL THEN '' ELSE playtext.differentiator END
+						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
+						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
 					} AS playtext,
 					COLLECT(
-						CASE WHEN person IS NULL
+						CASE person WHEN NULL
 							THEN null
 							ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 						END
@@ -164,12 +164,12 @@ describe('Cypher Queries Production module', () => {
 
 				WITH
 					production,
-					CASE WHEN existingTheatre IS NULL
+					CASE existingTheatre WHEN NULL
 						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
 						ELSE existingTheatre
 					END AS theatreProps
 
-				FOREACH (item IN CASE WHEN $theatre.name IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
 						ON CREATE SET theatre.differentiator = theatreProps.differentiator
 
@@ -185,12 +185,12 @@ describe('Cypher Queries Production module', () => {
 
 				WITH
 					production,
-					CASE WHEN existingPlaytext IS NULL
+					CASE existingPlaytext WHEN NULL
 						THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
 						ELSE existingPlaytext
 					END AS playtextProps
 
-				FOREACH (item IN CASE WHEN $playtext.name IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE $playtext.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
 						ON CREATE SET playtext.differentiator = playtextProps.differentiator
 
@@ -209,7 +209,7 @@ describe('Cypher Queries Production module', () => {
 					WITH
 						production,
 						castMemberParam,
-						CASE WHEN existingPerson IS NULL
+						CASE existingPerson WHEN NULL
 							THEN {
 								uuid: castMemberParam.uuid,
 								name: castMemberParam.name,
@@ -218,7 +218,7 @@ describe('Cypher Queries Production module', () => {
 							ELSE existingPerson
 						END AS castMemberProps
 
-					FOREACH (item IN CASE WHEN castMemberParam IS NOT NULL THEN [1] ELSE [] END |
+					FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (person:Person { uuid: castMemberProps.uuid, name: castMemberProps.name })
 							ON CREATE SET person.differentiator = castMemberProps.differentiator
 
@@ -248,11 +248,11 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production, theatre, playtext, person,
 					COLLECT(
-						CASE WHEN role.roleName IS NULL
+						CASE role.roleName WHEN NULL
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE WHEN role.characterName IS NULL THEN '' ELSE role.characterName END
+								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END
 							}
 						END
 					) + [{ name: '', characterName: '' }] AS roles
@@ -262,15 +262,15 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE WHEN theatre.name IS NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE WHEN theatre.differentiator IS NULL THEN '' ELSE theatre.differentiator END
+						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
+						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
 					} AS theatre,
 					{
-						name: CASE WHEN playtext.name IS NULL THEN '' ELSE playtext.name END,
-						differentiator: CASE WHEN playtext.differentiator IS NULL THEN '' ELSE playtext.differentiator END
+						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
+						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
 					} AS playtext,
 					COLLECT(
-						CASE WHEN person IS NULL
+						CASE person WHEN NULL
 							THEN null
 							ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 						END
