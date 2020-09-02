@@ -2,11 +2,11 @@ import { neo4jQuery } from '../../../src/neo4j/query';
 
 export default async () => {
 
-	const purgeDatabaseQuery = `
+	const query = `
 		MATCH (n)
 		DETACH DELETE n
 	`;
 
-	await neo4jQuery({ query: purgeDatabaseQuery, params: {} }, { isOptionalResult: true });
+	await neo4jQuery({ query, params: {} }, { isOptionalResult: true });
 
 };

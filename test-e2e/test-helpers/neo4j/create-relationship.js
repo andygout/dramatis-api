@@ -12,7 +12,7 @@ export default async opts => {
 
 	const params = { sourceUuid, destinationUuid };
 
-	const createRelationshipQuery = `
+	const query = `
 		MATCH (a:${sourceLabel} { uuid: $sourceUuid })
 
 		MATCH (b:${destinationLabel} { uuid: $destinationUuid })
@@ -22,7 +22,7 @@ export default async opts => {
 		RETURN relationship
 	`;
 
-	await neo4jQuery({ query: createRelationshipQuery, params });
+	await neo4jQuery({ query, params });
 
 	return;
 

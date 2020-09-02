@@ -6,13 +6,13 @@ export default async opts => {
 
 	const params = { name, uuid };
 
-	const createNodeQuery = `
+	const query = `
 		CREATE (n:${label} { name: $name, uuid: $uuid })
 
 		RETURN n
 	`;
 
-	await neo4jQuery({ query: createNodeQuery, params });
+	await neo4jQuery({ query, params });
 
 	return;
 
