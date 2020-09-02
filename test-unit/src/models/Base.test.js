@@ -437,6 +437,7 @@ describe('Base model', () => {
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
+				spy(instance, 'constructor');
 				const result = await instance.createUpdate(stubs.sharedQueries.getCreateQuery);
 				assert.callOrder(
 					instance.runInputValidations,
@@ -466,6 +467,8 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
 					{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
 				)).to.be.true;
+				expect(instance.constructor.calledOnce).to.be.true;
+				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -475,6 +478,7 @@ describe('Base model', () => {
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
+				spy(instance, 'constructor');
 				const result = await instance.createUpdate(stubs.sharedQueries.getUpdateQuery);
 				assert.callOrder(
 					instance.runInputValidations,
@@ -504,6 +508,8 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
 					{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
 				)).to.be.true;
+				expect(instance.constructor.calledOnce).to.be.true;
+				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -520,6 +526,7 @@ describe('Base model', () => {
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
+				spy(instance, 'constructor');
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 				assert.callOrder(
 					instance.runInputValidations,
@@ -541,7 +548,14 @@ describe('Base model', () => {
 						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
 					}
 				)).to.be.true;
+				expect(instance.constructor.notCalled).to.be.true;
 				expect(result).to.deep.equal(instance);
+				expect(result).to.deep.equal({
+					model: 'theatre',
+					name: 'Foobar',
+					errors: {},
+					hasErrors: true
+				});
 
 			});
 
@@ -587,6 +601,7 @@ describe('Base model', () => {
 			it('gets edit data using model-specific query', async () => {
 
 				instance.model = 'production';
+				spy(instance, 'constructor');
 				const result = await instance.edit();
 				expect(stubs.getEditQueries[instance.model].calledOnce).to.be.true;
 				expect(stubs.getEditQueries[instance.model].calledWithExactly()).to.be.true;
@@ -595,6 +610,8 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditProductionQuery response', params: instance }
 				)).to.be.true;
+				expect(instance.constructor.calledOnce).to.be.true;
+				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -605,6 +622,7 @@ describe('Base model', () => {
 
 			it('gets edit data using shared query', async () => {
 
+				spy(instance, 'constructor');
 				const result = await instance.edit();
 				expect(stubs.sharedQueries.getEditQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getEditQuery.calledWithExactly(instance.model)).to.be.true;
@@ -613,6 +631,8 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditQuery response', params: instance }
 				)).to.be.true;
+				expect(instance.constructor.calledOnce).to.be.true;
+				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
 				expect(result instanceof Base).to.be.true;
 
 			});
@@ -678,6 +698,7 @@ describe('Base model', () => {
 						associatedModels: []
 					});
 					instance.differentiator = '';
+					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
 					const result = await instance.delete();
@@ -691,9 +712,13 @@ describe('Base model', () => {
 					expect(stubs.neo4jQuery.calledWithExactly(
 						{ query: 'getDeleteQuery response', params: instance }
 					)).to.be.true;
+					expect(instance.constructor.calledOnce).to.be.true;
+					expect(instance.constructor.calledWithExactly(
+						{ model: 'theatre', name: 'Almeida Theatre', differentiator: null }
+					)).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
-					expect(result).to.deep.equal({ name: 'Almeida Theatre', errors: {} });
+					expect(result instanceof Base).to.be.true;
 
 				});
 
@@ -710,6 +735,7 @@ describe('Base model', () => {
 						isDeleted: true,
 						associatedModels: []
 					});
+					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
 					const result = await instance.delete();
@@ -723,9 +749,13 @@ describe('Base model', () => {
 					expect(stubs.neo4jQuery.calledWithExactly(
 						{ query: 'getDeleteQuery response', params: instance }
 					)).to.be.true;
+					expect(instance.constructor.calledOnce).to.be.true;
+					expect(instance.constructor.calledWithExactly(
+						{ model: 'production', name: 'Hamlet' }
+					)).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
-					expect(result).to.deep.equal({ name: 'Hamlet', errors: {} });
+					expect(result instanceof Base).to.be.true;
 
 				});
 
@@ -747,6 +777,7 @@ describe('Base model', () => {
 						associatedModels: ['Production']
 					});
 					instance.differentiator = '';
+					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
 					const result = await instance.delete();
@@ -760,11 +791,22 @@ describe('Base model', () => {
 					expect(stubs.neo4jQuery.calledWithExactly(
 						{ query: 'getDeleteQuery response', params: instance }
 					)).to.be.true;
+					expect(instance.constructor.notCalled).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly('associations', 'Production')).to.be.true;
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
 					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 					expect(result).to.deep.equal(instance);
+					expect(result).to.deep.equal({
+						name: 'Almeida Theatre',
+						errors: {
+							associations: [
+								'Production'
+							]
+						},
+						differentiator: null,
+						hasErrors: false
+					});
 
 				});
 
@@ -781,6 +823,7 @@ describe('Base model', () => {
 						isDeleted: false,
 						associatedModels: ['Theatre']
 					});
+					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
 					const result = await instance.delete();
@@ -794,11 +837,21 @@ describe('Base model', () => {
 					expect(stubs.neo4jQuery.calledWithExactly(
 						{ query: 'getDeleteQuery response', params: instance }
 					)).to.be.true;
+					expect(instance.constructor.notCalled).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly('associations', 'Theatre')).to.be.true;
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
 					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 					expect(result).to.deep.equal(instance);
+					expect(result).to.deep.equal({
+						name: 'Hamlet',
+						errors: {
+							associations: [
+								'Theatre'
+							]
+						},
+						hasErrors: false
+					});
 
 				});
 
