@@ -834,7 +834,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('cast member role characterName property is present but name property is absent', () => {
+		context('cast member role characterName value is present but name value is absent', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -906,7 +906,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('cast member role name and characterName properties are the same', () => {
+		context('cast member role name and characterName values are the same', () => {
 
 			it('assigns appropriate error', async () => {
 
