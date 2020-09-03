@@ -54,9 +54,17 @@ async function seedInstances (pluralisedModel) {
 
 async function seedDatabase () {
 
+	console.log('Seeding Neo4j database: Commenced'); // eslint-disable-line no-console
+
 	await seedInstances('playtexts');
 
+	console.log('Seeding Neo4j database: Playtext seeds sown'); // eslint-disable-line no-console
+
 	await seedInstances('productions');
+
+	console.log('Seeding Neo4j database: Production seeds sown'); // eslint-disable-line no-console
+
+	console.log('Seeding Neo4j database: Complete'); // eslint-disable-line no-console
 
 	return;
 
