@@ -77,7 +77,8 @@
 			"name": "Osrick"
 		},
 		{
-			"name": "Messenger"
+			"name": "Messenger",
+			"differentiator": "Hamlet"
 		},
 		{
 			"name": "Priest"

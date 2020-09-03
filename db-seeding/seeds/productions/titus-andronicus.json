@@ -1,0 +1,218 @@
+{
+	"name": "Titus Andronicus",
+	"theatre": {
+		"name": "Shakespeare's Globe"
+	},
+	"playtext": {
+		"name": "Titus Andronicus"
+	},
+	"cast": [
+		{
+			"name": "Patrick Moy",
+			"roles": [
+				{
+					"name": "Saturninus"
+				}
+			]
+		},
+		{
+			"name": "Simon Wilson",
+			"roles": [
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Caius"
+				}
+			]
+		},
+		{
+			"name": "Douglas Hodge",
+			"roles": [
+				{
+					"name": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Richard O'Callaghan",
+			"roles": [
+				{
+					"name": "Marcus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Laura Rees",
+			"roles": [
+				{
+					"name": "Lavinia"
+				}
+			]
+		},
+		{
+			"name": "Davud Sturzaker",
+			"roles": [
+				{
+					"name": "Lucius"
+				}
+			]
+		},
+		{
+			"name": "Thomas Padden",
+			"roles": [
+				{
+					"name": "Martius"
+				},
+				{
+					"name": "Valentine"
+				}
+			]
+		},
+		{
+			"name": "Jake Harders",
+			"roles": [
+				{
+					"name": "Mutius"
+				},
+				{
+					"name": "Publius"
+				}
+			]
+		},
+		{
+			"name": "Eliot Giuralarocca",
+			"roles": [
+				{
+					"name": "Quintus"
+				},
+				{
+					"name": "Peasant"
+				}
+			]
+		},
+		{
+			"name": "Hugh Wyld",
+			"roles": [
+				{
+					"name": "Young Lucius"
+				}
+			]
+		},
+		{
+			"name": "Steven Williams",
+			"roles": [
+				{
+					"name": "Young Lucius"
+				}
+			]
+		},
+		{
+			"name": "Chris Emmett",
+			"roles": [
+				{
+					"name": "Plebeian"
+				},
+				{
+					"name": "Æmilius"
+				}
+			]
+		},
+		{
+			"name": "Claire Nielson",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Geraldine Alexander",
+			"roles": [
+				{
+					"name": "Tamora"
+				}
+			]
+		},
+		{
+			"name": "Ben Crystal",
+			"roles": [
+				{
+					"name": "Alarbus"
+				}
+			]
+		},
+		{
+			"name": "Richard Riddell",
+			"roles": [
+				{
+					"name": "Chiron"
+				}
+			]
+		},
+		{
+			"name": "Sam Alexander",
+			"roles": [
+				{
+					"name": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Shaun Parkes",
+			"roles": [
+				{
+					"name": "Aaron"
+				}
+			]
+		},
+		{
+			"name": "Samuel Bawden",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Christopher Chandler",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "William Hazell",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Andrew Mathys",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "James Sanderson",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Seamus Whitty",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		}
+	]
+}
