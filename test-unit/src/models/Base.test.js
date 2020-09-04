@@ -299,23 +299,32 @@ describe('Base model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
+				stubs.prepareAsParams.returns({
+					uuid: 'UUID_VALUE',
+					name: 'NAME_VALUE',
+					differentiator: 'DIFFERENTIATOR_VALUE'
+				});
 				stubs.neo4jQuery.resolves({ instanceCount: 0 });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
-					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.prepareAsParams,
+					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery
 				);
-				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: 'prepareAsParams response'
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE'
+						}
 					}
 				)).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
@@ -328,24 +337,33 @@ describe('Base model', () => {
 
 			it('will call addPropertyError method', async () => {
 
+				stubs.prepareAsParams.returns({
+					uuid: 'UUID_VALUE',
+					name: 'NAME_VALUE',
+					differentiator: 'DIFFERENTIATOR_VALUE'
+				});
 				stubs.neo4jQuery.resolves({ instanceCount: 1 });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
-					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.prepareAsParams,
+					stubs.sharedQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
-				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.prepareAsParams.calledOnce).to.be.true;
 				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: 'prepareAsParams response'
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE'
+						}
 					}
 				)).to.be.true;
 				expect(instance.addPropertyError.calledTwice).to.be.true;
@@ -427,7 +445,7 @@ describe('Base model', () => {
 			expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(instance.model)).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getExistenceQuery response', params: instance }
+				{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
 			)).to.be.true;
 
 		});
@@ -440,6 +458,13 @@ describe('Base model', () => {
 
 			it('creates', async () => {
 
+				stubs.prepareAsParams
+					.onFirstCall().returns({
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
+					})
+					.onSecondCall().returns('prepareAsParams response');
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
@@ -468,7 +493,11 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: 'prepareAsParams response'
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE'
+						}
 					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
@@ -482,6 +511,13 @@ describe('Base model', () => {
 
 			it('updates', async () => {
 
+				stubs.prepareAsParams
+					.onFirstCall().returns({
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
+					})
+					.onSecondCall().returns('prepareAsParams response');
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
@@ -510,7 +546,11 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: 'prepareAsParams response'
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE'
+						}
 					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
@@ -528,6 +568,12 @@ describe('Base model', () => {
 
 			it('returns instance without creating/updating', async () => {
 
+				stubs.prepareAsParams
+					.onFirstCall().returns({
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
+					});
 				stubs.hasErrors.returns(true);
 				const getCreateUpdateQueryStub = stub();
 				instance.model = 'theatre';
@@ -554,7 +600,11 @@ describe('Base model', () => {
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: 'prepareAsParams response'
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE'
+						}
 					}
 				)).to.be.true;
 				expect(instance.constructor.notCalled).to.be.true;
@@ -617,7 +667,7 @@ describe('Base model', () => {
 				expect(stubs.sharedQueries.getEditQuery.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getEditProductionQuery response', params: instance }
+					{ query: 'getEditProductionQuery response', params: { uuid: instance.uuid } }
 				)).to.be.true;
 				expect(instance.constructor.calledOnce).to.be.true;
 				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
@@ -638,7 +688,7 @@ describe('Base model', () => {
 				expect(stubs.getEditQueries.production.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
-					{ query: 'getEditQuery response', params: instance }
+					{ query: 'getEditQuery response', params: { uuid: instance.uuid } }
 				)).to.be.true;
 				expect(instance.constructor.calledOnce).to.be.true;
 				expect(instance.constructor.calledWithExactly(neo4jQueryMockResponse)).to.be.true;
@@ -719,7 +769,7 @@ describe('Base model', () => {
 					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledWithExactly(
-						{ query: 'getDeleteQuery response', params: instance }
+						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					)).to.be.true;
 					expect(instance.constructor.calledOnce).to.be.true;
 					expect(instance.constructor.calledWithExactly(
@@ -756,7 +806,7 @@ describe('Base model', () => {
 					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledWithExactly(
-						{ query: 'getDeleteQuery response', params: instance }
+						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					)).to.be.true;
 					expect(instance.constructor.calledOnce).to.be.true;
 					expect(instance.constructor.calledWithExactly(
@@ -798,7 +848,7 @@ describe('Base model', () => {
 					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledWithExactly(
-						{ query: 'getDeleteQuery response', params: instance }
+						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					)).to.be.true;
 					expect(instance.constructor.notCalled).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
@@ -844,7 +894,7 @@ describe('Base model', () => {
 					expect(stubs.sharedQueries.getDeleteQuery.calledWithExactly(instance.model)).to.be.true;
 					expect(stubs.neo4jQuery.calledOnce).to.be.true;
 					expect(stubs.neo4jQuery.calledWithExactly(
-						{ query: 'getDeleteQuery response', params: instance }
+						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					)).to.be.true;
 					expect(instance.constructor.notCalled).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
@@ -880,7 +930,7 @@ describe('Base model', () => {
 			expect(stubs.getShowQueries.theatre.calledWithExactly()).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getShowTheatreQuery response', params: instance }
+				{ query: 'getShowTheatreQuery response', params: { uuid: instance.uuid } }
 			)).to.be.true;
 			expect(result).to.deep.equal(neo4jQueryMockResponse);
 
