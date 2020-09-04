@@ -20,7 +20,7 @@ export const prepareAsParams = instance => {
 
 						if (isObjectWithKeys(item)) {
 
-							if (array.length > 1) item.position = index;
+							if (array.length > 1) item = { ...item, position: index };
 
 							return prepareAsParams(item);
 

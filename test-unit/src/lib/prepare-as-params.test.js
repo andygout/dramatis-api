@@ -30,10 +30,71 @@ describe('Prepare As Params module', () => {
 
 	it('returns new object with modifications but will not mutate input object', () => {
 
-		const instance = { uuid: '' };
+		stubs.isObjectWithKeys
+			.onFirstCall().returns(false)
+			.onSecondCall().returns(false)
+			.onThirdCall().returns(true)
+			.onCall(3).returns(false)
+			.onCall(4).returns(false)
+			.onCall(5).returns(true)
+			.onCall(6).returns(false)
+			.onCall(7).returns(false)
+			.onCall(8).returns(true)
+			.onCall(9).returns(false)
+			.onCall(10).returns(false)
+			.onCall(11).returns(false)
+			.onCall(12).returns(true)
+			.onCall(13).returns(false)
+			.onCall(14).returns(false)
+			.onCall(15).returns(true)
+			.onCall(16).returns(false)
+			.onCall(17).returns(false)
+			.onCall(18).returns(true)
+			.onCall(19).returns(false)
+			.onCall(20).returns(false)
+			.onCall(21).returns(false);
+		const instance = {
+			uuid: '',
+			items: [
+				{
+					name: 'Foo',
+					nestedItems: [
+						{
+							name: 'Baz'
+						},
+						{
+							name: 'Qux'
+						}
+					]
+				},
+				{
+					name: 'Bar',
+					nestedItems: [
+						{
+							name: 'Quux'
+						},
+						{
+							name: 'Quuz'
+						}
+					]
+				}
+			]
+		};
 		const result = prepareAsParams(instance);
 		expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+		expect(result.items[0].position).to.equal(0);
+		expect(result.items[0].nestedItems[0].position).to.equal(0);
+		expect(result.items[0].nestedItems[1].position).to.equal(1);
+		expect(result.items[1].position).to.equal(1);
+		expect(result.items[1].nestedItems[0].position).to.equal(0);
+		expect(result.items[1].nestedItems[1].position).to.equal(1);
 		expect(instance.uuid).to.equal('');
+		expect(instance.items[0]).not.to.have.property('position');
+		expect(instance.items[0].nestedItems[0]).not.to.have.property('position');
+		expect(instance.items[0].nestedItems[1]).not.to.have.property('position');
+		expect(instance.items[1]).not.to.have.property('position');
+		expect(instance.items[1].nestedItems[0]).not.to.have.property('position');
+		expect(instance.items[1].nestedItems[0]).not.to.have.property('position');
 
 	});
 
