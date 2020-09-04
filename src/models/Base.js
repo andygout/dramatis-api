@@ -81,9 +81,15 @@ export default class Base {
 
 		const { getDuplicateRecordCountQuery } = sharedQueries;
 
+		const preparedParams = prepareAsParams(this);
+
 		const { instanceCount } = await neo4jQuery({
 			query: getDuplicateRecordCountQuery(this.model),
-			params: prepareAsParams(this)
+			params: {
+				uuid: preparedParams.uuid,
+				name: preparedParams.name,
+				differentiator: preparedParams.differentiator
+			}
 		});
 
 		if (instanceCount > 0) {
@@ -117,7 +123,7 @@ export default class Base {
 
 		await neo4jQuery({
 			query: getExistenceQuery(this.model),
-			params: this
+			params: { uuid: this.uuid }
 		});
 
 	}
@@ -155,7 +161,7 @@ export default class Base {
 
 		const neo4jInstance = await neo4jQuery({
 			query: (getEditQueries[this.model]?.()) || getEditQuery(this.model),
-			params: this
+			params: { uuid: this.uuid }
 		});
 
 		return new this.constructor(neo4jInstance);
@@ -178,7 +184,7 @@ export default class Base {
 
 		const { model, name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
 			query: getDeleteQuery(this.model),
-			params: this
+			params: { uuid: this.uuid }
 		});
 
 		if (isDeleted) {
@@ -207,7 +213,7 @@ export default class Base {
 
 		return neo4jQuery({
 			query: getShowQueries[this.model](),
-			params: this
+			params: { uuid: this.uuid }
 		});
 
 	}
