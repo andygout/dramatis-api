@@ -304,15 +304,18 @@ describe('Base model', () => {
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.sharedQueries.getDuplicateRecordCountQuery,
+					stubs.prepareAsParams,
 					stubs.neo4jQuery
 				);
 				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+						params: 'prepareAsParams response'
 					}
 				)).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
@@ -330,16 +333,19 @@ describe('Base model', () => {
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.sharedQueries.getDuplicateRecordCountQuery,
+					stubs.prepareAsParams,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
 				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getDuplicateRecordCountQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+						params: 'prepareAsParams response'
 					}
 				)).to.be.true;
 				expect(instance.addPropertyError.calledTwice).to.be.true;
@@ -455,13 +461,14 @@ describe('Base model', () => {
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getCreateQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getCreateQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
+				expect(stubs.prepareAsParams.calledTwice).to.be.true;
+				expect(stubs.prepareAsParams.firstCall.calledWithExactly(instance)).to.be.true;
+				expect(stubs.prepareAsParams.secondCall.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+						params: 'prepareAsParams response'
 					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
@@ -496,13 +503,14 @@ describe('Base model', () => {
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(stubs.sharedQueries.getUpdateQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getUpdateQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
+				expect(stubs.prepareAsParams.calledTwice).to.be.true;
+				expect(stubs.prepareAsParams.firstCall.calledWithExactly(instance)).to.be.true;
+				expect(stubs.prepareAsParams.secondCall.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledTwice).to.be.true;
 				expect(stubs.neo4jQuery.firstCall.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+						params: 'prepareAsParams response'
 					}
 				)).to.be.true;
 				expect(stubs.neo4jQuery.secondCall.calledWithExactly(
@@ -540,12 +548,13 @@ describe('Base model', () => {
 				expect(instance.setErrorStatus.calledOnce).to.be.true;
 				expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 				expect(getCreateUpdateQueryStub.notCalled).to.be.true;
-				expect(stubs.prepareAsParams.notCalled).to.be.true;
+				expect(stubs.prepareAsParams.calledOnce).to.be.true;
+				expect(stubs.prepareAsParams.calledWithExactly(instance)).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{
 						query: 'getDuplicateRecordCountQuery response',
-						params: { uuid: null, name: instance.name, differentiator: instance.differentiator }
+						params: 'prepareAsParams response'
 					}
 				)).to.be.true;
 				expect(instance.constructor.notCalled).to.be.true;

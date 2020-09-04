@@ -10,16 +10,16 @@ describe('Roles with alternating cast', () => {
 
 	chai.use(chaiHttp);
 
-	const AUSTIN_CHARACTER_UUID = '1';
-	const LEE_CHARACTER_UUID = '2';
-	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = '3';
-	const CRUCIBLE_THEATRE_UUID = '4';
-	const NIGEL_HARMAN_PERSON_UUID = '6';
-	const JOHN_LIGHT_PERSON_UUID = '7';
-	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '8';
-	const VAUDEVILLE_THEATRE_UUID = '9';
-	const KIT_HARINGTON_PERSON_UUID = '11';
-	const JOHNNY_FLYNN_PERSON_UUID = '12';
+	const AUSTIN_CHARACTER_UUID = '4';
+	const LEE_CHARACTER_UUID = '5';
+	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = '6';
+	const CRUCIBLE_THEATRE_UUID = '7';
+	const NIGEL_HARMAN_PERSON_UUID = '9';
+	const JOHN_LIGHT_PERSON_UUID = '10';
+	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '11';
+	const VAUDEVILLE_THEATRE_UUID = '12';
+	const KIT_HARINGTON_PERSON_UUID = '14';
+	const JOHNNY_FLYNN_PERSON_UUID = '15';
 
 	let austinCharacter;
 	let leeCharacter;

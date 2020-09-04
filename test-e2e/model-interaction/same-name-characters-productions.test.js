@@ -10,14 +10,14 @@ describe('Different characters with same name production credits', () => {
 
 	chai.use(chaiHttp);
 
-	const DEMETRIUS_CHARACTER_1_UUID = '2';
-	const DEMETRIUS_CHARACTER_2_UUID = '4';
-	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = '6';
-	const NOVELLO_THEATRE_UUID = '7';
-	const OSCAR_PEARCE_PERSON_UUID = '9';
-	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '11';
-	const GLOBE_THEATRE_UUID = '12';
-	const SAM_ALEXANDER_PERSON_UUID = '15';
+	const DEMETRIUS_CHARACTER_1_UUID = '5';
+	const DEMETRIUS_CHARACTER_2_UUID = '10';
+	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = '12';
+	const NOVELLO_THEATRE_UUID = '13';
+	const OSCAR_PEARCE_PERSON_UUID = '15';
+	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '17';
+	const GLOBE_THEATRE_UUID = '18';
+	const SAM_ALEXANDER_PERSON_UUID = '21';
 
 	let demetriusCharacter1;
 	let demetriusCharacter2;
