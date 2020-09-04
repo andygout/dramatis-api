@@ -213,13 +213,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const PLAYTEXT_UUID = '0';
-		const IRINA_NIKOLAYEVNA_ARKADINA_UUID = '1';
-		const KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID = '2';
-		const BORIS_ALEXEYEVICH_TRIGORIN_UUID = '3';
-		const OLGA_SERGEYEVNA_PROZOROVA_UUID = '4';
-		const MARIA_SERGEYEVNA_KULYGINA_UUID = '5';
-		const IRINA_SERGEYEVNA_PROZOROVA_UUID = '6';
+		const PLAYTEXT_UUID = '4';
+		const IRINA_NIKOLAYEVNA_ARKADINA_UUID = '5';
+		const KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID = '6';
+		const BORIS_ALEXEYEVICH_TRIGORIN_UUID = '7';
+		const OLGA_SERGEYEVNA_PROZOROVA_UUID = '11';
+		const MARIA_SERGEYEVNA_KULYGINA_UUID = '12';
+		const IRINA_SERGEYEVNA_PROZOROVA_UUID = '13';
 
 		const sandbox = createSandbox();
 

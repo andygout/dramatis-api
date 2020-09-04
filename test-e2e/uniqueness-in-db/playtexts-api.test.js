@@ -14,16 +14,16 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		chai.use(chaiHttp);
 
-		const PLAYTEXT_1_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const PLAYTEXT_2_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const PLAYTEXT_1_UUID = '1';
+		const PLAYTEXT_2_UUID = '4';
 
 		const sandbox = createSandbox();
 
 		before(async () => {
 
-			sandbox.stub(uuid, 'v4')
-				.onFirstCall().returns(PLAYTEXT_1_UUID)
-				.onSecondCall().returns(PLAYTEXT_2_UUID);
+		let uuidCallCount = 0;
+
+		sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 

@@ -83,11 +83,7 @@ export default class Base {
 
 		const { instanceCount } = await neo4jQuery({
 			query: getDuplicateRecordCountQuery(this.model),
-			params: {
-				uuid: this.uuid || null,
-				name: this.name,
-				differentiator: this.differentiator === '' ? null : this.differentiator
-			}
+			params: prepareAsParams(this)
 		});
 
 		if (instanceCount > 0) {

@@ -10,15 +10,15 @@ describe('Cast member performing different roles in different productions of sam
 
 	chai.use(chaiHttp);
 
-	const KING_LEAR_CHARACTER_UUID = '1';
-	const FOOL_CHARACTER_UUID = '2';
-	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '3';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '4';
-	const MICHAEL_GAMBON_PERSON_UUID = '6';
-	const ANTONY_SHER_PERSON_UUID = '7';
-	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '8';
-	const BARBICAN_THEATRE_UUID = '9';
-	const GRAHAM_TURNER_PERSON_UUID = '12';
+	const KING_LEAR_CHARACTER_UUID = '4';
+	const FOOL_CHARACTER_UUID = '5';
+	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '7';
+	const MICHAEL_GAMBON_PERSON_UUID = '9';
+	const ANTONY_SHER_PERSON_UUID = '10';
+	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '11';
+	const BARBICAN_THEATRE_UUID = '12';
+	const GRAHAM_TURNER_PERSON_UUID = '15';
 
 	let kingLearCharacter;
 	let foolCharacter;
