@@ -4,9 +4,9 @@ import { capitalise, pluralise } from '../../../src/lib/strings';
 
 describe('Strings module', () => {
 
-	describe('Capitalise function', () => {
+	describe('capitalise function', () => {
 
-		context('Input string is lowercase', () => {
+		context('input string is lowercase', () => {
 
 			it('returns string with initial letter as capital', () => {
 
@@ -16,7 +16,7 @@ describe('Strings module', () => {
 
 		});
 
-		context('Input string is uppercase', () => {
+		context('input string is uppercase', () => {
 
 			it('returns string with initial letter as capital', () => {
 
@@ -28,9 +28,9 @@ describe('Strings module', () => {
 
 	});
 
-	describe('Pluralise function', () => {
+	describe('pluralise function', () => {
 
-		context('Model has regular plural noun', () => {
+		context('model has regular plural noun', () => {
 
 			it('returns singular noun with appended \'s\'', () => {
 
@@ -40,7 +40,7 @@ describe('Strings module', () => {
 
 		});
 
-		context('Model has irregular plural noun', () => {
+		context('model has irregular plural noun', () => {
 
 			it('returns specific plural noun', () => {
 
