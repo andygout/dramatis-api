@@ -56,6 +56,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -121,6 +122,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -188,6 +190,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -220,6 +223,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -282,6 +286,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'character',
 				name: 'Demetrius',
 				differentiator: '',
+				qualifier: '',
 				errors: {}
 			};
 
@@ -311,6 +316,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'character',
 				name: 'Demetrius',
 				differentiator: '1',
+				qualifier: '',
 				errors: {}
 			};
 
@@ -339,6 +345,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'character',
 				name: 'Demetrius',
 				differentiator: '',
+				qualifier: '',
 				errors: {}
 			};
 
@@ -368,6 +375,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'character',
 				name: 'Demetrius',
 				differentiator: '1',
+				qualifier: '',
 				errors: {}
 			};
 

@@ -25,6 +25,12 @@ export default class Base {
 
 	}
 
+	hasQualifierProperty () {
+
+		return Object.prototype.hasOwnProperty.call(this, 'qualifier');
+
+	}
+
 	runInputValidations () {
 
 		this.validateName({ isRequired: true });
@@ -45,6 +51,12 @@ export default class Base {
 
 	}
 
+	validateQualifier () {
+
+		this.validateStringForProperty('qualifier', { isRequired: false });
+
+	}
+
 	validateStringForProperty (property, opts) {
 
 		const stringErrorText = validateString(this[property], { isRequired: opts.isRequired });
@@ -57,15 +69,13 @@ export default class Base {
 
 		if (opts.isDuplicate) {
 
-			const thisHasdifferentiatorProperty = this.hasdifferentiatorProperty();
-
-			const uniquenessErrorMessage = thisHasdifferentiatorProperty
-				? 'Name and differentiator combination has been duplicated in this group'
-				: 'Name has been duplicated in this group';
+			const uniquenessErrorMessage = 'This item has been duplicated within the group';
 
 			this.addPropertyError('name', uniquenessErrorMessage);
 
-			if (thisHasdifferentiatorProperty) this.addPropertyError('differentiator', uniquenessErrorMessage);
+			if (this.hasdifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
+
+			if (this.hasQualifierProperty()) this.addPropertyError('qualifier', uniquenessErrorMessage);
 
 		}
 

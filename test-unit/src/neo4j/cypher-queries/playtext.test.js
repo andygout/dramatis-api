@@ -29,7 +29,8 @@ describe('Cypher Queries Playtext module', () => {
 							THEN {
 								uuid: characterParam.uuid,
 								name: characterParam.name,
-								differentiator: characterParam.differentiator
+								differentiator: characterParam.differentiator,
+								qualifier: characterParam.qualifier
 							}
 							ELSE existingCharacter
 						END AS characterProps
@@ -38,7 +39,9 @@ describe('Cypher Queries Playtext module', () => {
 						MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 							ON CREATE SET character.differentiator = characterProps.differentiator
 
-						CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
+						CREATE (playtext)-
+							[:INCLUDES_CHARACTER { position: characterParam.position, qualifier: characterParam.qualifier }]->
+							(character)
 					)
 
 				WITH DISTINCT playtext
@@ -58,7 +61,11 @@ describe('Cypher Queries Playtext module', () => {
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
-							ELSE { name: character.name, differentiator: character.differentiator }
+							ELSE {
+								name: character.name,
+								differentiator: character.differentiator,
+								qualifier: characterRel.qualifier
+							}
 						END
 					) + [{ name: '' }] AS characters
 			`));
@@ -98,7 +105,12 @@ describe('Cypher Queries Playtext module', () => {
 						playtext,
 						characterParam,
 						CASE existingCharacter WHEN NULL
-							THEN { uuid: characterParam.uuid, name: characterParam.name, differentiator: characterParam.differentiator }
+							THEN {
+								uuid: characterParam.uuid,
+								name: characterParam.name,
+								differentiator: characterParam.differentiator,
+								qualifier: characterParam.qualifier
+							}
 							ELSE existingCharacter
 						END AS characterProps
 
@@ -106,7 +118,9 @@ describe('Cypher Queries Playtext module', () => {
 						MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 							ON CREATE SET character.differentiator = characterProps.differentiator
 
-						CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
+						CREATE (playtext)-
+							[:INCLUDES_CHARACTER { position: characterParam.position, qualifier: characterParam.qualifier }]->
+							(character)
 					)
 
 				WITH DISTINCT playtext
@@ -126,7 +140,11 @@ describe('Cypher Queries Playtext module', () => {
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
-							ELSE { name: character.name, differentiator: character.differentiator }
+							ELSE {
+								name: character.name,
+								differentiator: character.differentiator,
+								qualifier: characterRel.qualifier
+							}
 						END
 					) + [{ name: '' }] AS characters
 			`));

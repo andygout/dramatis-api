@@ -29,7 +29,23 @@ export const prepareAsParams = instance => {
 						return null;
 
 					})
-					.filter(Boolean);
+					.filter(Boolean)
+					.map((item, index, array) => {
+
+						if (!Object.prototype.hasOwnProperty.call(item, 'uuid')) return item;
+
+						const itemWithWhichToShareUuid = array.find((comparisonItem, comparisonIndex) =>
+							!!comparisonItem.uuid &&
+							item.name === comparisonItem.name &&
+							item.differentiator === comparisonItem.differentiator &&
+							index > comparisonIndex
+						);
+
+						if (itemWithWhichToShareUuid) item.uuid = itemWithWhichToShareUuid.uuid;
+
+						return item;
+
+					});
 
 		} else {
 

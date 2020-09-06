@@ -28,6 +28,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -81,6 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -108,6 +110,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -139,6 +142,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -271,24 +275,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -314,17 +322,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						uuid: IRINA_NIKOLAYEVNA_ARKADINA_UUID,
-						name: 'Irina Nikolayevna Arkadina'
+						name: 'Irina Nikolayevna Arkadina',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID,
-						name: 'Konstantin Gavrilovich Treplyov'
+						name: 'Konstantin Gavrilovich Treplyov',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: BORIS_ALEXEYEVICH_TRIGORIN_UUID,
-						name: 'Boris Alexeyevich Trigorin'
+						name: 'Boris Alexeyevich Trigorin',
+						qualifier: null
 					}
 				],
 				productions: []
@@ -351,24 +362,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -411,24 +426,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: 'Olga Sergeyevna Prozorova',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Maria Sergeyevna Kulygina',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: 'Irina Sergeyevna Prozorova',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					},
 					{
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]
@@ -454,17 +473,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
-						name: 'Olga Sergeyevna Prozorova'
+						name: 'Olga Sergeyevna Prozorova',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
-						name: 'Maria Sergeyevna Kulygina'
+						name: 'Maria Sergeyevna Kulygina',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
-						name: 'Irina Sergeyevna Prozorova'
+						name: 'Irina Sergeyevna Prozorova',
+						qualifier: null
 					}
 				],
 				productions: []
@@ -515,6 +537,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: '',
 						differentiator: '',
+						qualifier: '',
 						errors: {}
 					}
 				]

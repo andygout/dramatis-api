@@ -298,6 +298,34 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		it('applies the same uuid value to items that will need to share the same database entry', () => {
+
+			stubs.uuid
+				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
+				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
+				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			const instance = {
+				cast: [
+					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
+					{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
+					{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
+					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
+					{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
+					{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+				]
+			};
+			const result = prepareAsParams(instance);
+			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(6);
+			expect(result.cast[0].uuid).to.equal(result.cast[3].uuid);
+			expect(result.cast[1].uuid).to.equal(result.cast[4].uuid);
+			expect(result.cast[2].uuid).not.to.equal(result.cast[5].uuid);
+
+		});
+
 	});
 
 	context('properties in arrays at nested level (nested in object)', () => {
@@ -394,6 +422,36 @@ describe('Prepare As Params module', () => {
 			expect(result.playtext.characters.length).to.equal(1);
 			expect(result.playtext.characters[0].name).to.equal('Laertes');
 			expect(result.playtext.characters[0]).to.not.have.property('position');
+
+		});
+
+		it('applies the same uuid value to items that will need to share the same database entry', () => {
+
+			stubs.uuid
+				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
+				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
+				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			const instance = {
+				playtext: {
+					characters: [
+						{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
+						{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
+						{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
+						{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
+						{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
+						{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+					]
+				}
+			};
+			const result = prepareAsParams(instance);
+			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(6);
+			expect(result.playtext.characters[0].uuid).to.equal(result.playtext.characters[3].uuid);
+			expect(result.playtext.characters[1].uuid).to.equal(result.playtext.characters[4].uuid);
+			expect(result.playtext.characters[2].uuid).not.to.equal(result.playtext.characters[5].uuid);
 
 		});
 
@@ -495,6 +553,38 @@ describe('Prepare As Params module', () => {
 			expect(result.cast[0].roles.length).to.equal(1);
 			expect(result.cast[0].roles[0].name).to.equal('Laertes');
 			expect(result.cast[0].roles[0]).to.not.have.property('position');
+
+		});
+
+		it('applies the same uuid value to items that will need to share the same database entry', () => {
+
+			stubs.uuid
+				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
+				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
+				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			const instance = {
+				cast: [
+					{
+						roles: [
+							{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
+							{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
+							{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
+							{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
+							{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
+							{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+						]
+					}
+				]
+			};
+			const result = prepareAsParams(instance);
+			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(6);
+			expect(result.cast[0].roles[0].uuid).to.equal(result.cast[0].roles[3].uuid);
+			expect(result.cast[0].roles[1].uuid).to.equal(result.cast[0].roles[4].uuid);
+			expect(result.cast[0].roles[2].uuid).not.to.equal(result.cast[0].roles[5].uuid);
 
 		});
 

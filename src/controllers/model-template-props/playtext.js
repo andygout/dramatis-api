@@ -3,7 +3,8 @@ export default {
 	characters: [
 		{
 			name: '',
-			differentiator: ''
+			differentiator: '',
+			qualifier: ''
 		}
 	]
 };

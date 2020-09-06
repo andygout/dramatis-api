@@ -1,15 +1,17 @@
 const getShowQuery = () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtext:Playtext)
+	OPTIONAL MATCH (character)<-[playtextRel:INCLUDES_CHARACTER]-(playtext:Playtext)
 
-	WITH character, playtext
-		ORDER BY playtext.name
+	WITH character, playtextRel, playtext
+		ORDER BY playtext.name, playtextRel.position
+
+	WITH character, playtext, COLLECT(playtextRel.qualifier) AS qualifiers
 
 	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
 		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
-	WITH character, playtext, variantNamedRole
+	WITH character, playtext, qualifiers, variantNamedRole
 		ORDER BY variantNamedRole.roleName
 
 	OPTIONAL MATCH (playtext)<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
@@ -25,25 +27,31 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH character, playtext, production, theatre, person, role, otherRole, otherCharacter,
+	WITH character, playtext, qualifiers, production, theatre, person, role, otherRole, otherCharacter,
 		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames
 		ORDER BY otherRole.rolePosition
 
-	WITH character, playtext, variantNames, production, theatre, person, role,
+	WITH character, playtext, qualifiers, variantNames, production, theatre, person, role,
 		COLLECT(
 			CASE otherRole WHEN NULL
 				THEN null
-				ELSE { model: 'character', uuid: otherCharacter.uuid, name: otherRole.roleName }
+				ELSE {
+					model: 'character',
+					uuid: otherCharacter.uuid,
+					name: otherRole.roleName,
+					qualifier: otherRole.qualifier
+				}
 			END
 		) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH character, playtext, variantNames, production, theatre,
+	WITH character, playtext, qualifiers, variantNames, production, theatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,
 			name: person.name,
 			roleName: role.roleName,
+			qualifier: role.qualifier,
 			otherRoles: otherRoles
 		}) AS performers
 		ORDER BY production.name, theatre.name
@@ -56,7 +64,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE playtext WHEN NULL
 				THEN null
-				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, qualifiers: qualifiers }
 			END
 		) AS playtexts,
 		variantNames,

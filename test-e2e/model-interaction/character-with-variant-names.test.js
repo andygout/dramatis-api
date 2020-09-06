@@ -228,11 +228,13 @@ describe('Character with variant names', () => {
 						uuid: DAVID_RINTOUL_PERSON_UUID,
 						name: 'David Rintoul',
 						roleName: 'Ghost',
+						qualifier: null,
 						otherRoles: [
 							{
 								model: 'character',
 								uuid: FIRST_PLAYER_CHARACTER_UUID,
-								name: 'Player King'
+								name: 'Player King',
+								qualifier: null
 							}
 						]
 					}
@@ -254,11 +256,13 @@ describe('Character with variant names', () => {
 						uuid: PATRICK_STEWART_PERSON_UUID,
 						name: 'Patrick Stewart',
 						roleName: 'Ghost of King Hamlet',
+						qualifier: null,
 						otherRoles: [
 							{
 								model: 'character',
 								uuid: CLAUDIUS_CHARACTER_UUID,
-								name: 'Claudius'
+								name: 'Claudius',
+								qualifier: null
 							}
 						]
 					}
@@ -280,11 +284,13 @@ describe('Character with variant names', () => {
 						uuid: PETER_EYRE_PERSON_UUID,
 						name: 'Peter Eyre',
 						roleName: 'King Hamlet',
+						qualifier: null,
 						otherRoles: [
 							{
 								model: 'character',
 								uuid: FIRST_PLAYER_CHARACTER_UUID,
-								name: 'First Player'
+								name: 'First Player',
+								qualifier: null
 							}
 						]
 					}
@@ -323,12 +329,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost'
+						name: 'Ghost',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'Player King'
+						name: 'Player King',
+						qualifier: null
 					}
 				]
 			};
@@ -356,12 +364,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: CLAUDIUS_CHARACTER_UUID,
-						name: 'Claudius'
+						name: 'Claudius',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost of King Hamlet'
+						name: 'Ghost of King Hamlet',
+						qualifier: null
 					}
 				]
 			};
@@ -389,12 +399,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'King Hamlet'
+						name: 'King Hamlet',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'First Player'
+						name: 'First Player',
+						qualifier: null
 					}
 				]
 			};
@@ -427,12 +439,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost'
+						name: 'Ghost',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'Player King'
+						name: 'Player King',
+						qualifier: null
 					}
 				]
 			};
@@ -466,12 +480,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: CLAUDIUS_CHARACTER_UUID,
-						name: 'Claudius'
+						name: 'Claudius',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost of King Hamlet'
+						name: 'Ghost of King Hamlet',
+						qualifier: null
 					}
 				]
 			};
@@ -505,12 +521,14 @@ describe('Character with variant names', () => {
 					{
 						model: 'character',
 						uuid: GHOST_CHARACTER_UUID,
-						name: 'King Hamlet'
+						name: 'King Hamlet',
+						qualifier: null
 					},
 					{
 						model: 'character',
 						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'First Player'
+						name: 'First Player',
+						qualifier: null
 					}
 				]
 			};

@@ -136,6 +136,7 @@ describe('Playtext model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateIndices,
 				instance.characters[0].validateName,
 				instance.characters[0].validatedifferentiator,
+				instance.characters[0].validateQualifier,
 				instance.characters[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -150,6 +151,8 @@ describe('Playtext model', () => {
 			expect(instance.characters[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.characters[0].validatedifferentiator.calledOnce).to.be.true;
 			expect(instance.characters[0].validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.characters[0].validateQualifier.calledOnce).to.be.true;
+			expect(instance.characters[0].validateQualifier.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.characters[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }

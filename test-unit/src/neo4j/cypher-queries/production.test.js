@@ -86,7 +86,8 @@ describe('Cypher Queries Production module', () => {
 									castMemberPosition: castMemberParam.position,
 									rolePosition: role.position,
 									roleName: role.name,
-									characterName: role.characterName
+									characterName: role.characterName,
+									qualifier: role.qualifier
 								}]-(person)
 						)
 					)
@@ -110,10 +111,11 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END
+								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
+								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END
-					) + [{ name: '', characterName: '' }] AS roles
+					) + [{ name: '', characterName: '', qualifier: '' }] AS roles
 
 				RETURN
 					'production' AS model,
@@ -132,7 +134,7 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 						END
-					) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+					) + [{ name: '', roles: [{ name: '', characterName: '', qualifier: '' }] }] AS cast
 			`));
 
 		});
@@ -228,7 +230,8 @@ describe('Cypher Queries Production module', () => {
 									castMemberPosition: castMemberParam.position,
 									rolePosition: role.position,
 									roleName: role.name,
-									characterName: role.characterName
+									characterName: role.characterName,
+									qualifier: role.qualifier
 								}]-(person)
 						)
 					)
@@ -252,10 +255,11 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END
+								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
+								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END
-					) + [{ name: '', characterName: '' }] AS roles
+					) + [{ name: '', characterName: '', qualifier: '' }] AS roles
 
 				RETURN
 					'production' AS model,
@@ -274,7 +278,7 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 						END
-					) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+					) + [{ name: '', roles: [{ name: '', characterName: '', qualifier: '' }] }] AS cast
 			`));
 
 		});

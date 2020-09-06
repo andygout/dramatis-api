@@ -166,17 +166,20 @@ describe('Character in multiple playtexts', () => {
 				{
 					model: 'playtext',
 					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
-					name: 'Henry IV: Part 1'
+					name: 'Henry IV: Part 1',
+					qualifiers: []
 				},
 				{
 					model: 'playtext',
 					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
-					name: 'Henry IV: Part 2'
+					name: 'Henry IV: Part 2',
+					qualifiers: []
 				},
 				{
 					model: 'playtext',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
-					name: 'The Merry Wives of Windsor'
+					name: 'The Merry Wives of Windsor',
+					qualifiers: []
 				}
 			];
 
@@ -204,6 +207,7 @@ describe('Character in multiple playtexts', () => {
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
+							qualifier: null,
 							otherRoles: []
 						}
 					]
@@ -223,6 +227,7 @@ describe('Character in multiple playtexts', () => {
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
+							qualifier: null,
 							otherRoles: []
 						}
 					]
@@ -242,6 +247,7 @@ describe('Character in multiple playtexts', () => {
 							uuid: RICHARD_CORDERY_PERSON_UUID,
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
+							qualifier: null,
 							otherRoles: []
 						}
 					]
@@ -263,7 +269,8 @@ describe('Character in multiple playtexts', () => {
 			const expectedCharacterSirJohnFalstaffCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff'
+				name: 'Sir John Falstaff',
+				qualifier: null
 			};
 
 			const { characters } = henryIVPart1Playtext.body;
@@ -284,7 +291,8 @@ describe('Character in multiple playtexts', () => {
 			const expectedCharacterSirJohnFalstaffCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff'
+				name: 'Sir John Falstaff',
+				qualifier: null
 			};
 
 			const { characters } = henryIVPart2Playtext.body;
@@ -305,7 +313,8 @@ describe('Character in multiple playtexts', () => {
 			const expectedCharacterSirJohnFalstaffCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff'
+				name: 'Sir John Falstaff',
+				qualifier: null
 			};
 
 			const { characters } = merryWivesOfWindsorPlaytext.body;

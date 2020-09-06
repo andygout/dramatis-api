@@ -64,6 +64,45 @@ describe('Role model', () => {
 
 		});
 
+		describe('qualifier property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = new Role({ name: 'Esme' });
+				expect(instance.qualifier).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = new Role({ name: 'Esme', qualifier: '' });
+				expect(instance.qualifier).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = new Role({ name: 'Esme', qualifier: ' ' });
+				expect(instance.qualifier).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const instance = new Role({ name: 'Esme', qualifier: 'younger' });
+				expect(instance.qualifier).to.equal('younger');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = new Role({ name: 'Esme', qualifier: ' younger ' });
+				expect(instance.qualifier).to.equal('younger');
+
+			});
+
+		});
+
 	});
 
 	describe('validateCharacterName method', () => {

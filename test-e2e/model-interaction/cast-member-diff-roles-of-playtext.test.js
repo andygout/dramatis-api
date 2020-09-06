@@ -160,6 +160,7 @@ describe('Cast member performing different roles in different productions of sam
 						uuid: MICHAEL_GAMBON_PERSON_UUID,
 						name: 'Michael Gambon',
 						roleName: 'King Lear',
+						qualifier: null,
 						otherRoles: []
 					}
 				]
@@ -180,6 +181,7 @@ describe('Cast member performing different roles in different productions of sam
 						uuid: ANTONY_SHER_PERSON_UUID,
 						name: 'Antony Sher',
 						roleName: 'King Lear',
+						qualifier: null,
 						otherRoles: []
 					}
 				]
@@ -221,6 +223,7 @@ describe('Cast member performing different roles in different productions of sam
 						uuid: ANTONY_SHER_PERSON_UUID,
 						name: 'Antony Sher',
 						roleName: 'Fool',
+						qualifier: null,
 						otherRoles: []
 					}
 				]
@@ -241,6 +244,7 @@ describe('Cast member performing different roles in different productions of sam
 						uuid: GRAHAM_TURNER_PERSON_UUID,
 						name: 'Graham Turner',
 						roleName: 'Fool',
+						qualifier: null,
 						otherRoles: []
 					}
 				]
@@ -275,7 +279,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear'
+						name: 'King Lear',
+						qualifier: null
 					}
 				]
 			};
@@ -288,7 +293,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool'
+						name: 'Fool',
+						qualifier: null
 					}
 				]
 			};
@@ -318,7 +324,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear'
+						name: 'King Lear',
+						qualifier: null
 					}
 				]
 			};
@@ -331,7 +338,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool'
+						name: 'Fool',
+						qualifier: null
 					}
 				]
 			};
@@ -366,7 +374,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear'
+						name: 'King Lear',
+						qualifier: null
 					}
 				]
 			};
@@ -400,7 +409,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool'
+						name: 'Fool',
+						qualifier: null
 					}
 				]
 			};
@@ -418,7 +428,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear'
+						name: 'King Lear',
+						qualifier: null
 					}
 				]
 			};
@@ -457,7 +468,8 @@ describe('Cast member performing different roles in different productions of sam
 					{
 						model: 'character',
 						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool'
+						name: 'Fool',
+						qualifier: null
 					}
 				]
 			};

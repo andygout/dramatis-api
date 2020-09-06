@@ -8,6 +8,7 @@ export default class Role extends Base {
 
 		this.model = 'role';
 		this.characterName = props.characterName?.trim() || '';
+		this.qualifier = props.qualifier?.trim() || '';
 
 	}
 

@@ -13,7 +13,8 @@ export default {
 			roles: [
 				{
 					name: '',
-					characterName: ''
+					characterName: '',
+					qualifier: ''
 				}
 			]
 		}

@@ -155,6 +155,7 @@ describe('Different characters with same name production credits', () => {
 						uuid: OSCAR_PEARCE_PERSON_UUID,
 						name: 'Oscar Pearce',
 						roleName: 'Demetrius',
+						qualifier: null,
 						otherRoles: []
 					}
 				]
@@ -192,6 +193,7 @@ describe('Different characters with same name production credits', () => {
 						uuid: SAM_ALEXANDER_PERSON_UUID,
 						name: 'Sam Alexander',
 						roleName: 'Demetrius',
+						qualifier: null,
 						otherRoles: []
 					}
 				]

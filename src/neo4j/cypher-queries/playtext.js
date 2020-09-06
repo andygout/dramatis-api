@@ -36,7 +36,8 @@ const getCreateUpdateQuery = action => {
 					THEN {
 						uuid: characterParam.uuid,
 						name: characterParam.name,
-						differentiator: characterParam.differentiator
+						differentiator: characterParam.differentiator,
+						qualifier: characterParam.qualifier
 					}
 					ELSE existingCharacter
 				END AS characterProps
@@ -45,7 +46,9 @@ const getCreateUpdateQuery = action => {
 				MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
 					ON CREATE SET character.differentiator = characterProps.differentiator
 
-				CREATE (playtext)-[:INCLUDES_CHARACTER { position: characterParam.position }]->(character)
+				CREATE (playtext)-
+					[:INCLUDES_CHARACTER { position: characterParam.position, qualifier: characterParam.qualifier }]->
+					(character)
 			)
 
 		WITH DISTINCT playtext
@@ -73,7 +76,11 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
-				ELSE { name: character.name, differentiator: character.differentiator }
+				ELSE {
+					name: character.name,
+					differentiator: character.differentiator,
+					qualifier: characterRel.qualifier
+				}
 			END
 		) + [{ name: '' }] AS characters
 `;
@@ -89,14 +96,19 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH playtext, character, production, theatre
+	WITH playtext, characterRel, character, production, theatre
 		ORDER BY characterRel.position
 
 	WITH playtext, production, theatre,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
-				ELSE { model: 'character', uuid: character.uuid, name: character.name }
+				ELSE {
+					model: 'character',
+					uuid: character.uuid,
+					name: character.name,
+					qualifier: characterRel.qualifier
+				}
 			END
 		) AS characters
 		ORDER BY production.name, theatre.name
