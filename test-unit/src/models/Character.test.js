@@ -12,9 +12,9 @@ describe('Character model', () => {
 
 	describe('constructor method', () => {
 
-		context('instance is subject', () => {
+		describe('qualifier property', () => {
 
-			describe('qualifier property', () => {
+			context('instance is subject', () => {
 
 				it('will not assign any value if absent from props', () => {
 
@@ -34,11 +34,7 @@ describe('Character model', () => {
 
 			});
 
-		});
-
-		context('instance is not subject, i.e. it is an association of another instance', () => {
-
-			describe('qualifier property', () => {
+			context('instance is not subject, i.e. it is an association of another instance', () => {
 
 				it('assigns empty string if absent from props', () => {
 
