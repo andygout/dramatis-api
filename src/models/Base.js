@@ -19,7 +19,7 @@ export default class Base {
 
 	}
 
-	hasdifferentiatorProperty () {
+	hasDifferentiatorProperty () {
 
 		return Object.prototype.hasOwnProperty.call(this, 'differentiator');
 
@@ -35,7 +35,7 @@ export default class Base {
 
 		this.validateName({ isRequired: true });
 
-		this.validatedifferentiator();
+		this.validateDifferentiator();
 
 	}
 
@@ -45,7 +45,7 @@ export default class Base {
 
 	}
 
-	validatedifferentiator () {
+	validateDifferentiator () {
 
 		this.validateStringForProperty('differentiator', { isRequired: false });
 
@@ -73,7 +73,7 @@ export default class Base {
 
 			this.addPropertyError('name', uniquenessErrorMessage);
 
-			if (this.hasdifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
+			if (this.hasDifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
 
 			if (this.hasQualifierProperty()) this.addPropertyError('qualifier', uniquenessErrorMessage);
 
@@ -202,14 +202,14 @@ export default class Base {
 			return new this.constructor({
 				model,
 				name,
-				...(this.hasdifferentiatorProperty() && { differentiator })
+				...(this.hasDifferentiatorProperty() && { differentiator })
 			});
 
 		}
 
 		this.name = name;
 
-		if (this.hasdifferentiatorProperty()) this.differentiator = differentiator;
+		if (this.hasDifferentiatorProperty()) this.differentiator = differentiator;
 
 		associatedModels.forEach(associatedModel => this.addPropertyError('associations', associatedModel));
 

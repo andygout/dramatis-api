@@ -106,14 +106,14 @@ describe('Base model', () => {
 
 	});
 
-	describe('hasdifferentiatorProperty method', () => {
+	describe('hasDifferentiatorProperty method', () => {
 
 		context('instance has differentiator property', () => {
 
 			it('returns true', () => {
 
 				instance.differentiator = '';
-				const result = instance.hasdifferentiatorProperty();
+				const result = instance.hasDifferentiatorProperty();
 				expect(result).to.be.true;
 
 			});
@@ -124,7 +124,7 @@ describe('Base model', () => {
 
 			it('returns false', () => {
 
-				const result = instance.hasdifferentiatorProperty();
+				const result = instance.hasDifferentiatorProperty();
 				expect(result).to.be.false;
 
 			});
@@ -165,12 +165,12 @@ describe('Base model', () => {
 		it('will call validateName method', () => {
 
 			spy(instance, 'validateName');
-			spy(instance, 'validatedifferentiator');
+			spy(instance, 'validateDifferentiator');
 			instance.runInputValidations();
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.validatedifferentiator.calledOnce).to.be.true;
-			expect(instance.validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 
 		});
 
@@ -189,12 +189,12 @@ describe('Base model', () => {
 
 	});
 
-	describe('validatedifferentiator method', () => {
+	describe('validateDifferentiator method', () => {
 
 		it('will call validateStringForProperty method', () => {
 
 			spy(instance, 'validateStringForProperty');
-			instance.validatedifferentiator();
+			instance.validateDifferentiator();
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
 			expect(instance.validateStringForProperty.calledWithExactly(
 				'differentiator', { isRequired: false })
@@ -261,12 +261,12 @@ describe('Base model', () => {
 
 			it('will not call addPropertyError method', () => {
 
-				spy(instance, 'hasdifferentiatorProperty');
+				spy(instance, 'hasDifferentiatorProperty');
 				spy(instance, 'hasQualifierProperty');
 				spy(instance, 'addPropertyError');
 				const opts = { isDuplicate: false };
 				instance.validateUniquenessInGroup(opts);
-				expect(instance.hasdifferentiatorProperty.notCalled).to.be.true;
+				expect(instance.hasDifferentiatorProperty.notCalled).to.be.true;
 				expect(instance.hasQualifierProperty.notCalled).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
@@ -280,12 +280,12 @@ describe('Base model', () => {
 
 				it('will call addPropertyError method with group context error text for name property only', () => {
 
-					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -300,13 +300,13 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and differentiator properties', () => {
 
 					instance.differentiator = '';
-					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
@@ -326,13 +326,13 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and qualifier properties', () => {
 
 					instance.qualifier = '';
-					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
@@ -353,13 +353,13 @@ describe('Base model', () => {
 
 					instance.differentiator = '';
 					instance.qualifier = '';
-					spy(instance, 'hasdifferentiatorProperty');
+					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasdifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasdifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledThrice).to.be.true;

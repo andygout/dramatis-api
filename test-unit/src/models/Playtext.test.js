@@ -128,29 +128,29 @@ describe('Playtext model', () => {
 		it('calls instance validate method and associated models\' validate methods', () => {
 
 			spy(instance, 'validateName');
-			spy(instance, 'validatedifferentiator');
+			spy(instance, 'validateDifferentiator');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
-				instance.validatedifferentiator,
+				instance.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateIndices,
 				instance.characters[0].validateName,
-				instance.characters[0].validatedifferentiator,
+				instance.characters[0].validateDifferentiator,
 				instance.characters[0].validateQualifier,
 				instance.characters[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.validatedifferentiator.calledOnce).to.be.true;
-			expect(instance.validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(
 				instance.characters
 			)).to.be.true;
 			expect(instance.characters[0].validateName.calledOnce).to.be.true;
 			expect(instance.characters[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.characters[0].validatedifferentiator.calledOnce).to.be.true;
-			expect(instance.characters[0].validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.characters[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.characters[0].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateQualifier.calledOnce).to.be.true;
 			expect(instance.characters[0].validateQualifier.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateUniquenessInGroup.calledOnce).to.be.true;

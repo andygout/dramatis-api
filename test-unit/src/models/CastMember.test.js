@@ -75,13 +75,13 @@ describe('Cast Member model', () => {
 		it('calls instance validate method and associated models\' validate methods', () => {
 
 			spy(instance, 'validateName');
-			spy(instance, 'validatedifferentiator');
+			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfRoles');
 			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(
 				instance.validateName,
-				instance.validatedifferentiator,
+				instance.validateDifferentiator,
 				instance.validateUniquenessInGroup,
 				instance.validateNamePresenceIfRoles,
 				stubs.getDuplicateIndicesModule.getDuplicateIndices,
@@ -94,8 +94,8 @@ describe('Cast Member model', () => {
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.validatedifferentiator.calledOnce).to.be.true;
-			expect(instance.validatedifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.validateNamePresenceIfRoles.calledOnce).to.be.true;
