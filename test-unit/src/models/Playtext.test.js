@@ -59,9 +59,9 @@ describe('Playtext model', () => {
 
 	describe('constructor method', () => {
 
-		context('instance is subject', () => {
+		describe('characters property', () => {
 
-			describe('characters property', () => {
+			context('instance is subject', () => {
 
 				it('assigns empty array if absent from props', () => {
 
@@ -91,11 +91,7 @@ describe('Playtext model', () => {
 
 			});
 
-		});
-
-		context('instance is not subject, i.e. it is an association of another instance', () => {
-
-			describe('characters property', () => {
+			context('instance is not subject, i.e. it is an association of another instance', () => {
 
 				it('will not assign any value if absent from props', () => {
 
