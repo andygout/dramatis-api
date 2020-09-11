@@ -28,7 +28,7 @@ export default class Playtext extends Base {
 
 		this.validateName({ isRequired: true });
 
-		this.validatedifferentiator();
+		this.validateDifferentiator();
 
 		const duplicateCharacterIndices = getDuplicateIndices(this.characters);
 
@@ -36,7 +36,7 @@ export default class Playtext extends Base {
 
 			character.validateName({ isRequired: false });
 
-			character.validatedifferentiator();
+			character.validateDifferentiator();
 
 			character.validateQualifier();
 

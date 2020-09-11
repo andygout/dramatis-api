@@ -20,7 +20,7 @@ export default class CastMember extends Person {
 
 		this.validateName({ isRequired: false });
 
-		this.validatedifferentiator();
+		this.validateDifferentiator();
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 

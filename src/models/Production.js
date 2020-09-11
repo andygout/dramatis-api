@@ -26,11 +26,11 @@ export default class Production extends Base {
 
 		this.theatre.validateName({ isRequired: false });
 
-		this.theatre.validatedifferentiator();
+		this.theatre.validateDifferentiator();
 
 		this.playtext.validateName({ isRequired: false });
 
-		this.playtext.validatedifferentiator();
+		this.playtext.validateDifferentiator();
 
 		const duplicateCastMemberIndices = getDuplicateIndices(this.cast);
 
