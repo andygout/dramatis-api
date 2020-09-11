@@ -1,0 +1,128 @@
+{
+	"name": "Rock 'n' Roll",
+	"theatre": {
+		"name": "Royal Court Theatre"
+	},
+	"playtext": {
+		"name": "Rock 'n' Roll"
+	},
+	"cast": [
+		{
+			"name": "Edward Hogg",
+			"roles": [
+				{
+					"name": "The Piper"
+				},
+				{
+					"name": "Policeman 1"
+				},
+				{
+					"name": "Stephen"
+				}
+			]
+		},
+		{
+			"name": "Alice Eve",
+			"roles": [
+				{
+					"name": "Esme",
+					"qualifier": "younger"
+				},
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Rufus Sewell",
+			"roles": [
+				{
+					"name": "Jan"
+				}
+			]
+		},
+		{
+			"name": "Brian Cox",
+			"roles": [
+				{
+					"name": "Max"
+				}
+			]
+		},
+		{
+			"name": "Sinead Cusack",
+			"roles": [
+				{
+					"name": "Eleanor"
+				},
+				{
+					"name": "Esme",
+					"qualifier": "older"
+				}
+			]
+		},
+		{
+			"name": "Miranda Colchester",
+			"roles": [
+				{
+					"name": "Gillian"
+				},
+				{
+					"name": "Magda"
+				},
+				{
+					"name": "Pupil"
+				}
+			]
+		},
+		{
+			"name": "Anthony Calf",
+			"roles": [
+				{
+					"name": "Interrogator"
+				},
+				{
+					"name": "Nigel"
+				}
+			]
+		},
+		{
+			"name": "Peter Sullivan",
+			"roles": [
+				{
+					"name": "Ferdinand"
+				}
+			]
+		},
+		{
+			"name": "Martin Chamberlain",
+			"roles": [
+				{
+					"name": "Milan"
+				},
+				{
+					"name": "Policeman 2"
+				},
+				{
+					"name": "Jaroslav"
+				}
+			]
+		},
+		{
+			"name": "Nicole Ansari",
+			"roles": [
+				{
+					"name": "Lenka"
+				}
+			]
+		},
+		{
+			"name": "Lousie Bangay",
+			"roles": [
+				{
+					"name": "Candida"
+				}
+			]
+		}
+	]
+}
