@@ -1,0 +1,56 @@
+{
+	"name": "The B File",
+	"theatre": {
+		"name": "Etcetera Theatre"
+	},
+	"playtext": {
+		"name": "The B File"
+	},
+	"cast": [
+		{
+			"name": "Jessie Burton",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#1"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#2"
+				}
+			]
+		},
+		{
+			"name": "Lucy Cudden",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#3"
+				}
+			]
+		},
+		{
+			"name": "Laura Murray",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#4"
+				}
+			]
+		},
+		{
+			"name": "Hannah Clare Radcliffe",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#5"
+				}
+			]
+		}
+	]
+}
