@@ -17,7 +17,7 @@ export default class Playtext extends Base {
 		if (!isAssociation) {
 
 			this.characters = characters
-				? characters.map(character => new Character(character))
+				? characters.map(character => new Character({ ...character, isAssociation: true }))
 				: [];
 
 		}
@@ -37,6 +37,8 @@ export default class Playtext extends Base {
 			character.validateName({ isRequired: false });
 
 			character.validatedifferentiator();
+
+			character.validateQualifier();
 
 			character.validateUniquenessInGroup({ isDuplicate: duplicateCharacterIndices.includes(index) });
 

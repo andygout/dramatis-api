@@ -91,7 +91,8 @@ const getCreateUpdateQuery = action => {
 							castMemberPosition: castMemberParam.position,
 							rolePosition: role.position,
 							roleName: role.name,
-							characterName: role.characterName
+							characterName: role.characterName,
+							qualifier: role.qualifier
 						}]-(person)
 				)
 			)
@@ -123,10 +124,11 @@ const getEditQuery = () => `
 				THEN null
 				ELSE {
 					name: role.roleName,
-					characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END
+					characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
+					qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 				}
 			END
-		) + [{ name: '', characterName: '' }] AS roles
+		) + [{ name: '', characterName: '', qualifier: '' }] AS roles
 
 	RETURN
 		'production' AS model,
@@ -145,7 +147,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 			END
-		) + [{ name: '', roles: [{ name: '', characterName: '' }] }] AS cast
+		) + [{ name: '', roles: [{ name: '', characterName: '', qualifier: '' }] }] AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -160,8 +162,10 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
 	OPTIONAL MATCH (person)-[role]->(production)-[playtextRel]->
-		(playtext)-[:INCLUDES_CHARACTER]->(character:Character)
-		WHERE role.roleName = character.name OR role.characterName = character.name
+		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+		WHERE
+			(role.roleName = character.name OR role.characterName = character.name) AND
+			((role.qualifier IS NULL AND characterRel.qualifier IS NULL) OR role.qualifier = characterRel.qualifier)
 
 	WITH production, theatre, playtext, person, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
@@ -170,7 +174,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE { model: 'character', uuid: character.uuid, name: role.roleName }
+				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
 			END
 		) AS roles
 

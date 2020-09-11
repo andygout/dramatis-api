@@ -5,8 +5,10 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Playtext)-[:INCLUDES_CHARACTER]->(character:Character)
-		WHERE role.roleName = character.name OR role.characterName = character.name
+	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+		WHERE
+			(role.roleName = character.name OR role.characterName = character.name) AND
+			((role.qualifier IS NULL AND characterRel.qualifier IS NULL) OR role.qualifier = characterRel.qualifier)
 
 	WITH person, production, theatre, role, character
 		ORDER BY role.rolePosition
@@ -15,7 +17,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE { model: 'character', uuid: character.uuid, name: role.roleName }
+				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
 			END
 		) AS roles
 		ORDER BY production.name, theatre.name

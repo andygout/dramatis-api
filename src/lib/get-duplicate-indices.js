@@ -7,6 +7,7 @@ export const getDuplicateIndices = arrayOfObjects => {
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				object.name === comparisonObject.name &&
 				object.differentiator === comparisonObject.differentiator &&
+				object.qualifier === comparisonObject.qualifier &&
 				index !== comparisonIndex
 			);
 
