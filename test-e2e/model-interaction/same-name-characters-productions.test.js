@@ -205,8 +205,7 @@ describe('Different characters with same name production credits', () => {
 				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(titusAndronicusGlobeProductionCredit)
-				.to.deep.equal(expectedTitusAndronicusGlobeProductionCredit);
+			expect(titusAndronicusGlobeProductionCredit).to.deep.equal(expectedTitusAndronicusGlobeProductionCredit);
 
 		});
 

@@ -453,8 +453,7 @@ describe('Character with variant names', () => {
 
 			const { productions } = davidRintoulPerson.body;
 
-			const productionCredit =
-				productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
+			const productionCredit = productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
 			expect(productionCredit).to.deep.equal(expectedProductionCredit);
@@ -494,8 +493,7 @@ describe('Character with variant names', () => {
 
 			const { productions } = patrickStewartPerson.body;
 
-			const productionCredit =
-				productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
+			const productionCredit = productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
 			expect(productionCredit).to.deep.equal(expectedProductionCredit);
