@@ -29,7 +29,7 @@ describe('Role model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
 				expect(instance.characterName).to.equal('');
 
 			});
