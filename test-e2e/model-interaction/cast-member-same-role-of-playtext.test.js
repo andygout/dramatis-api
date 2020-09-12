@@ -113,7 +113,7 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedMidsummerNightsDreamRoyalShakespeareProduction = {
+			const expectedMidsummerNightsDreamRoyalShakespeareProductionCredit = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -134,7 +134,7 @@ describe('Cast member performing same role in different productions of same play
 				]
 			};
 
-			const expectedMidsummerNightsDreamRoseProduction = {
+			const expectedMidsummerNightsDreamRoseProductionCredit = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -168,9 +168,10 @@ describe('Cast member performing same role in different productions of same play
 				);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedMidsummerNightsDreamRoyalShakespeareProduction)
-				.to.deep.equal(midsummerNightsDreamRoyalShakespeareProductionCredit);
-			expect(expectedMidsummerNightsDreamRoseProduction).to.deep.equal(midsummerNightsDreamRoseProductionCredit);
+			expect(midsummerNightsDreamRoyalShakespeareProductionCredit)
+				.to.deep.equal(expectedMidsummerNightsDreamRoyalShakespeareProductionCredit);
+			expect(midsummerNightsDreamRoseProductionCredit)
+				.to.deep.equal(expectedMidsummerNightsDreamRoseProductionCredit);
 
 		});
 
@@ -238,7 +239,7 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes production with her respective portrayals of Titania', () => {
 
-			const expectedmidsummerNightsDreamRoyalShakespeareProductionCredit = {
+			const expectedMidsummerNightsDreamRoyalShakespeareProductionCredit = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -257,7 +258,7 @@ describe('Cast member performing same role in different productions of same play
 				]
 			};
 
-			const expectedmidsummerNightsDreamRoseProductionCredit = {
+			const expectedMidsummerNightsDreamRoseProductionCredit = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -287,10 +288,10 @@ describe('Cast member performing same role in different productions of same play
 				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedmidsummerNightsDreamRoyalShakespeareProductionCredit)
-				.to.deep.equal(midsummerNightsDreamRoyalShakespeareProductionCredit);
-			expect(expectedmidsummerNightsDreamRoseProductionCredit)
-				.to.deep.equal(midsummerNightsDreamRoseProductionCredit);
+			expect(midsummerNightsDreamRoyalShakespeareProductionCredit)
+				.to.deep.equal(expectedMidsummerNightsDreamRoyalShakespeareProductionCredit);
+			expect(midsummerNightsDreamRoseProductionCredit)
+				.to.deep.equal(expectedMidsummerNightsDreamRoseProductionCredit);
 
 		});
 

@@ -309,9 +309,9 @@ describe('Character with variant names', () => {
 				productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(3);
-			expect(expectedHamletAlmeidaProductionCredit).to.deep.equal(hamletAlmeidaProductionCredit);
-			expect(expectedHamletNovelloProductionCredit).to.deep.equal(hamletNovelloProductionCredit);
-			expect(expectedHamletWyndhamsProductionCredit).to.deep.equal(hamletWyndhamsProductionCredit);
+			expect(hamletAlmeidaProductionCredit).to.deep.equal(expectedHamletAlmeidaProductionCredit);
+			expect(hamletNovelloProductionCredit).to.deep.equal(expectedHamletNovelloProductionCredit);
+			expect(hamletWyndhamsProductionCredit).to.deep.equal(expectedHamletWyndhamsProductionCredit);
 
 		});
 

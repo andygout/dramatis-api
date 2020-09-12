@@ -196,9 +196,9 @@ describe('Cast member performing different roles in different productions of sam
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedKingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(kingLearRoyalShakespeareProductionCredit);
-			expect(expectedKingLearBarbicanProductionCredit).to.deep.equal(kingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProductionCredit)
+				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
+			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
 
 		});
 
@@ -259,9 +259,9 @@ describe('Cast member performing different roles in different productions of sam
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedKingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(kingLearRoyalShakespeareProductionCredit);
-			expect(expectedKingLearBarbicanProductionCredit).to.deep.equal(kingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProductionCredit)
+				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
+			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
 
 		});
 
@@ -443,9 +443,9 @@ describe('Cast member performing different roles in different productions of sam
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedKingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(kingLearRoyalShakespeareProductionCredit);
-			expect(expectedKingLearBarbicanProductionCredit).to.deep.equal(kingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProductionCredit)
+				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
+			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
 
 		});
 

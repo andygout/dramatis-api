@@ -167,8 +167,8 @@ describe('Different characters with same name production credits', () => {
 				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedAMidsummerNightsDreamNovelloProductionCredit)
-				.to.deep.equal(aMidsummerNightsDreamNovelloProductionCredit);
+			expect(aMidsummerNightsDreamNovelloProductionCredit)
+				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProductionCredit);
 
 		});
 
@@ -205,8 +205,8 @@ describe('Different characters with same name production credits', () => {
 				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedTitusAndronicusGlobeProductionCredit)
-				.to.deep.equal(titusAndronicusGlobeProductionCredit);
+			expect(titusAndronicusGlobeProductionCredit)
+				.to.deep.equal(expectedTitusAndronicusGlobeProductionCredit);
 
 		});
 

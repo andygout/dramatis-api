@@ -257,8 +257,8 @@ describe('Roles with alternating cast', () => {
 				productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedTrueWestCrucibleProductionCredit).to.deep.equal(trueWestCrucibleProductionCredit);
-			expect(expectedTrueWestVaudevilleProductionCredit).to.deep.equal(trueWestVaudevilleProductionCredit);
+			expect(trueWestCrucibleProductionCredit).to.deep.equal(expectedTrueWestCrucibleProductionCredit);
+			expect(trueWestVaudevilleProductionCredit).to.deep.equal(expectedTrueWestVaudevilleProductionCredit);
 
 		});
 
@@ -363,8 +363,8 @@ describe('Roles with alternating cast', () => {
 				productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(expectedTrueWestCrucibleProductionCredit).to.deep.equal(trueWestCrucibleProductionCredit);
-			expect(expectedTrueWestVaudevilleProductionCredit).to.deep.equal(trueWestVaudevilleProductionCredit);
+			expect(trueWestCrucibleProductionCredit).to.deep.equal(expectedTrueWestCrucibleProductionCredit);
+			expect(trueWestVaudevilleProductionCredit).to.deep.equal(expectedTrueWestVaudevilleProductionCredit);
 
 		});
 

@@ -165,7 +165,7 @@ describe('Character portrayed with other roles', () => {
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedWarHorseNationalProductionCredit).to.deep.equal(warHorseNationalProductionCredit);
+			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
 
 		});
 
@@ -221,7 +221,7 @@ describe('Character portrayed with other roles', () => {
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedWarHorseNationalProductionCredit).to.deep.equal(warHorseNationalProductionCredit);
+			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
 
 		});
 
@@ -277,7 +277,7 @@ describe('Character portrayed with other roles', () => {
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedWarHorseNationalProductionCredit).to.deep.equal(warHorseNationalProductionCredit);
+			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
 
 		});
 
@@ -333,7 +333,7 @@ describe('Character portrayed with other roles', () => {
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(expectedWarHorseNationalProductionCredit).to.deep.equal(warHorseNationalProductionCredit);
+			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
 
 		});
 
