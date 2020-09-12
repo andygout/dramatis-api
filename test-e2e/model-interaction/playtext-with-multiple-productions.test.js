@@ -146,7 +146,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureNationalProduction.body;
 
-			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
 
 		});
 
@@ -164,7 +164,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureAlmeidaProduction.body;
 
-			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
 
 		});
 
@@ -182,7 +182,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureDonmarProduction.body;
 
-			expect(expectedPlaytextMeasureForMeasure).to.deep.equal(playtext);
+			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
 
 		});
 

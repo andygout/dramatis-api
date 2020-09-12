@@ -244,7 +244,8 @@ describe('Cast member with multiple production credits', () => {
 			const castMemberSusannahFellows =
 				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
+			expect(cast.length).to.equal(1);
+			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
 
 		});
 
@@ -279,7 +280,8 @@ describe('Cast member with multiple production credits', () => {
 			const castMemberSusannahFellows =
 				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
+			expect(cast.length).to.equal(1);
+			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
 
 		});
 
@@ -320,7 +322,8 @@ describe('Cast member with multiple production credits', () => {
 			const castMemberSusannahFellows =
 				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
 
-			expect(expectedCastMemberSusannahFellows).to.deep.equal(castMemberSusannahFellows);
+			expect(cast.length).to.equal(1);
+			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
 
 		});
 

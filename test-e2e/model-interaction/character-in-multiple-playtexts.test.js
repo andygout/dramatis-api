@@ -266,7 +266,7 @@ describe('Character in multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedCharacterSirJohnFalstaffCredit = {
+			const expectedSirJohnFalstaffCharacterCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 				name: 'Sir John Falstaff',
@@ -278,7 +278,8 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
-			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
+			expect(characters.length).to.equal(1);
+			expect(sirJohnFalstaffCharacterCredit).to.deep.equal(expectedSirJohnFalstaffCharacterCredit);
 
 		});
 
@@ -288,7 +289,7 @@ describe('Character in multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedCharacterSirJohnFalstaffCredit = {
+			const expectedSirJohnFalstaffCharacterCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 				name: 'Sir John Falstaff',
@@ -300,7 +301,8 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
-			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
+			expect(characters.length).to.equal(1);
+			expect(sirJohnFalstaffCharacterCredit).to.deep.equal(expectedSirJohnFalstaffCharacterCredit);
 
 		});
 
@@ -310,7 +312,7 @@ describe('Character in multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedCharacterSirJohnFalstaffCredit = {
+			const expectedSirJohnFalstaffCharacterCredit = {
 				model: 'character',
 				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 				name: 'Sir John Falstaff',
@@ -322,7 +324,8 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
-			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
+			expect(characters.length).to.equal(1);
+			expect(sirJohnFalstaffCharacterCredit).to.deep.equal(expectedSirJohnFalstaffCharacterCredit);
 
 		});
 

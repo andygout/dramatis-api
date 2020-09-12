@@ -119,7 +119,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = streetcarNamedDesireDonmarProduction.body;
 
-			expect(expectedTheatreDonmarWarehouse).to.deep.equal(theatre);
+			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
 
 		});
 
@@ -137,7 +137,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = lifeIsADreamDonmarProduction.body;
 
-			expect(expectedTheatreDonmarWarehouse).to.deep.equal(theatre);
+			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
 
 		});
 
@@ -155,7 +155,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = redDonmarProduction.body;
 
-			expect(expectedTheatreDonmarWarehouse).to.deep.equal(theatre);
+			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
 
 		});
 
