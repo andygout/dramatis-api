@@ -59,6 +59,50 @@ describe('Playtext model', () => {
 
 	describe('constructor method', () => {
 
+		describe('differentiator property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const props = { name: 'Home' };
+				const instance = createInstance(props);
+				expect(instance.differentiator).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const props = { name: 'Home', differentiator: '' };
+				const instance = createInstance(props);
+				expect(instance.differentiator).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const props = { name: 'Home', differentiator: ' ' };
+				const instance = createInstance(props);
+				expect(instance.differentiator).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const props = { name: 'Home', differentiator: '1' };
+				const instance = createInstance(props);
+				expect(instance.differentiator).to.equal('1');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const props = { name: 'Home', differentiator: ' 1 ' };
+				const instance = createInstance(props);
+				expect(instance.differentiator).to.equal('1');
+
+			});
+
+		});
+
 		describe('characters property', () => {
 
 			context('instance is subject', () => {

@@ -88,14 +88,28 @@ describe('Base model', () => {
 
 			});
 
-			it('assigns given value', () => {
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				instance = new Base({ name: '' });
+				expect(instance.name).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				instance = new Base({ name: ' ' });
+				expect(instance.name).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
 
 				instance = new Base({ name: 'Barfoo' });
 				expect(instance.name).to.equal('Barfoo');
 
 			});
 
-			it('trims given value before assigning', () => {
+			it('trims value before assigning', () => {
 
 				instance = new Base({ name: ' Barfoo ' });
 				expect(instance.name).to.equal('Barfoo');

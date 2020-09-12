@@ -7,24 +7,6 @@ describe('Role model', () => {
 
 	describe('constructor method', () => {
 
-		describe('name property', () => {
-
-			it('assigns given value', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				expect(instance.name).to.equal('Hamlet, Prince of Denmark');
-
-			});
-
-			it('trims given value before assigning', () => {
-
-				const instance = new Role({ name: ' Hamlet, Prince of Denmark ', characterName: '' });
-				expect(instance.name).to.equal('Hamlet, Prince of Denmark');
-
-			});
-
-		});
-
 		describe('characterName property', () => {
 
 			it('assigns empty string if absent from props', () => {
