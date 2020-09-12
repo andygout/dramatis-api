@@ -106,9 +106,9 @@ describe('Get Duplicate Indices module', () => {
 
 		context('array items without differentiator or qualifier', () => {
 
-			context('duplicates of a single name', () => {
+			context('single pair of duplicate items', () => {
 
-				it('returns an array of indices of duplicate name values', () => {
+				it('returns an array of indices of duplicate items', () => {
 
 					const result = getDuplicateIndices(
 						[
@@ -126,9 +126,9 @@ describe('Get Duplicate Indices module', () => {
 
 			});
 
-			context('duplicates of two different names', () => {
+			context('two pairs of duplicate items', () => {
 
-				it('returns an array of indices of duplicate name values', () => {
+				it('returns an array of indices of duplicate items', () => {
 
 					const result = getDuplicateIndices(
 						[
@@ -147,9 +147,9 @@ describe('Get Duplicate Indices module', () => {
 
 			});
 
-			context('duplicates of two different names, and a pair of duplicate empty strings', () => {
+			context('two pairs of duplicate items, and a single pair of duplicate items with empty string name values', () => {
 
-				it('returns an array of indices of duplicate name values only, ignoring the empty strings', () => {
+				it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 
 					const result = getDuplicateIndices(
 						[
@@ -174,9 +174,9 @@ describe('Get Duplicate Indices module', () => {
 
 		context('array items with differentiator', () => {
 
-			context('duplicates of a single name', () => {
+			context('single pair of duplicate items', () => {
 
-				it('returns an array of indices of duplicate name values', () => {
+				it('returns an array of indices of duplicate items', () => {
 
 					const result = getDuplicateIndices(
 						[
@@ -193,9 +193,9 @@ describe('Get Duplicate Indices module', () => {
 
 			});
 
-			context('duplicates of two different names', () => {
+			context('two pairs of duplicate items', () => {
 
-				it('returns an array of indices of duplicate name values', () => {
+				it('returns an array of indices of duplicate items', () => {
 
 					const result = getDuplicateIndices(
 						[
@@ -214,9 +214,9 @@ describe('Get Duplicate Indices module', () => {
 
 			});
 
-			context('duplicates of two different names, and a pair of duplicate empty strings', () => {
+			context('two pairs of duplicate items, and a single pair of duplicate items with empty string name values', () => {
 
-				it('returns an array of indices of duplicate name values only, ignoring the empty strings', () => {
+				it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 
 					const result = getDuplicateIndices(
 						[
