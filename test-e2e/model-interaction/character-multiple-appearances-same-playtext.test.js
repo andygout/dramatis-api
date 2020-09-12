@@ -163,6 +163,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollPlaytextCredit =
 				playtexts.find(playtext => playtext.uuid === ROCK_N_ROLL_PLAYTEXT_UUID);
 
+			expect(playtexts.length).to.equal(1);
 			expect(rockNRollPlaytextCredit).to.deep.equal(expectedRockNRollPlaytextCredit);
 
 		});
@@ -217,6 +218,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollRoyalCourtProductionCredit =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
+			expect(productions.length).to.equal(1);
 			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
 
 		});
@@ -260,6 +262,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollRoyalCourtProductionCredit =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
+			expect(productions.length).to.equal(1);
 			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
 
 		});
@@ -303,6 +306,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollRoyalCourtProductionCredit =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
+			expect(productions.length).to.equal(1);
 			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
 
 		});
@@ -403,6 +407,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const aliceEveCastMember = cast.find(castMember => castMember.uuid === ALICE_EVE_PERSON_UUID);
 			const sineadCusackCastMember = cast.find(castMember => castMember.uuid === SINEAD_CUSACK_PERSON_UUID);
 
+			expect(cast.length).to.equal(3);
 			expect(aliceEveCastMember).to.deep.equal(expectedAliceEveCastMember);
 			expect(sineadCusackCastMember).to.deep.equal(expectedSineadCusackCastMember);
 
@@ -444,6 +449,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollRoyalCourtProductionCredit =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
+			expect(productions.length).to.equal(1);
 			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
 
 		});
@@ -484,6 +490,7 @@ describe('Character with multiple appearances in the same playtext under differe
 			const rockNRollRoyalCourtProductionCredit =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
+			expect(productions.length).to.equal(1);
 			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
 
 		});

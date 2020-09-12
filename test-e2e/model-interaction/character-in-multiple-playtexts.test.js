@@ -278,6 +278,7 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
+			expect(characters.length).to.equal(1);
 			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
 
 		});
@@ -300,6 +301,7 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
+			expect(characters.length).to.equal(1);
 			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
 
 		});
@@ -322,6 +324,7 @@ describe('Character in multiple playtexts', () => {
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
 
+			expect(characters.length).to.equal(1);
 			expect(expectedCharacterSirJohnFalstaffCredit).to.deep.equal(sirJohnFalstaffCharacterCredit);
 
 		});
