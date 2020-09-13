@@ -174,6 +174,33 @@ describe('Base model', () => {
 
 	});
 
+	describe('hasGroupProperty method', () => {
+
+		context('instance has group property', () => {
+
+			it('returns true', () => {
+
+				instance.group = '';
+				const result = instance.hasGroupProperty();
+				expect(result).to.be.true;
+
+			});
+
+		});
+
+		context('instance does not have group property', () => {
+
+			it('returns false', () => {
+
+				const result = instance.hasGroupProperty();
+				expect(result).to.be.false;
+
+			});
+
+		});
+
+	});
+
 	describe('runInputValidations method', () => {
 
 		it('will call validateName method', () => {
@@ -277,11 +304,13 @@ describe('Base model', () => {
 
 				spy(instance, 'hasDifferentiatorProperty');
 				spy(instance, 'hasQualifierProperty');
+				spy(instance, 'hasGroupProperty');
 				spy(instance, 'addPropertyError');
 				const opts = { isDuplicate: false };
 				instance.validateUniquenessInGroup(opts);
 				expect(instance.hasDifferentiatorProperty.notCalled).to.be.true;
 				expect(instance.hasQualifierProperty.notCalled).to.be.true;
+				expect(instance.hasGroupProperty.notCalled).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -290,7 +319,7 @@ describe('Base model', () => {
 
 		context('invalid data', () => {
 
-			context('instance does not have differentiator or qualifier property', () => {
+			context('instance does not have differentiator, qualifier, or group property', () => {
 
 				it('will call addPropertyError method with group context error text for name property only', () => {
 
@@ -316,6 +345,7 @@ describe('Base model', () => {
 					instance.differentiator = '';
 					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
+					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
@@ -323,6 +353,8 @@ describe('Base model', () => {
 					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasGroupProperty.calledOnce).to.be.true;
+					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -342,6 +374,7 @@ describe('Base model', () => {
 					instance.qualifier = '';
 					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
+					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
@@ -349,6 +382,8 @@ describe('Base model', () => {
 					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasGroupProperty.calledOnce).to.be.true;
+					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -361,14 +396,14 @@ describe('Base model', () => {
 
 			});
 
-			context('instance has differentiator and qualifier property', () => {
+			context('instance has group property', () => {
 
-				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', () => {
+				it('will call addPropertyError method with group context error text for name and group properties', () => {
 
-					instance.differentiator = '';
-					instance.qualifier = '';
+					instance.group = '';
 					spy(instance, 'hasDifferentiatorProperty');
 					spy(instance, 'hasQualifierProperty');
+					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
@@ -376,7 +411,40 @@ describe('Base model', () => {
 					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
 					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
 					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.addPropertyError.calledThrice).to.be.true;
+					expect(instance.hasGroupProperty.calledOnce).to.be.true;
+					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.firstCall.calledWithExactly(
+						'name', 'This item has been duplicated within the group'
+					)).to.be.true;
+					expect(instance.addPropertyError.secondCall.calledWithExactly(
+						'group', 'This item has been duplicated within the group'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('instance has differentiator, qualifier, and group property', () => {
+
+				it('will call addPropertyError method with group context error text for name, differentiator, qualifier, and group properties', () => {
+
+					instance.differentiator = '';
+					instance.qualifier = '';
+					instance.group = '';
+					spy(instance, 'hasDifferentiatorProperty');
+					spy(instance, 'hasQualifierProperty');
+					spy(instance, 'hasGroupProperty');
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
+					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
+					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasGroupProperty.calledOnce).to.be.true;
+					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
+					expect(instance.addPropertyError.callCount).to.equal(4);
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
 					)).to.be.true;
@@ -385,6 +453,9 @@ describe('Base model', () => {
 					)).to.be.true;
 					expect(instance.addPropertyError.thirdCall.calledWithExactly(
 						'qualifier', 'This item has been duplicated within the group'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(3).calledWithExactly(
+						'group', 'This item has been duplicated within the group'
 					)).to.be.true;
 
 				});

@@ -67,30 +67,90 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
-		context('array items with differentiator and qualifier', () => {
+		context('array items with group', () => {
 
 			it('returns an empty array', () => {
 
 				const result = getDuplicateIndices(
 					[
-						{ name: 'Foo', differentiator: '', qualifier: '' },
-						{ name: 'Foo', differentiator: '1', qualifier: '' },
-						{ name: 'Foo', differentiator: '2', qualifier: '' },
-						{ name: 'Foo', differentiator: '', qualifier: 'younger' },
-						{ name: 'Foo', differentiator: '', qualifier: 'older' },
-						{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-						{ name: 'Foo', differentiator: '1', qualifier: 'older' },
-						{ name: 'Foo', differentiator: '2', qualifier: 'younger' },
-						{ name: 'Foo', differentiator: '2', qualifier: 'older' },
-						{ name: 'Bar', differentiator: '', qualifier: '' },
-						{ name: 'Bar', differentiator: '1', qualifier: '' },
-						{ name: 'Bar', differentiator: '2', qualifier: '' },
-						{ name: 'Bar', differentiator: '', qualifier: 'younger' },
-						{ name: 'Bar', differentiator: '', qualifier: 'older' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'older' },
-						{ name: 'Bar', differentiator: '2', qualifier: 'younger' },
-						{ name: 'Bar', differentiator: '2', qualifier: 'older' }
+						{ name: 'Alisa Kos', group: '' },
+						{ name: 'Lucija Kos', group: '' },
+						{ name: 'Aleksander King', group: '' },
+						{ name: 'Alisa Kos', group: '2011' },
+						{ name: 'Lucija Kos', group: '2011' },
+						{ name: 'Aleksander King', group: '1990' },
+						{ name: 'Alisa Kos', group: '1990' },
+						{ name: 'Lucija Kos', group: '1990' },
+						{ name: 'Aleksander King', group: '1945' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('array items with differentiator, qualifier, and group', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateIndices(
+					[
+						{ name: 'Foo', differentiator: '', qualifier: '', group: '' },
+						{ name: 'Foo', differentiator: '1', qualifier: '', group: '' },
+						{ name: 'Foo', differentiator: '2', qualifier: '', group: '' },
+						{ name: 'Foo', differentiator: '', qualifier: 'younger', group: '' },
+						{ name: 'Foo', differentiator: '', qualifier: 'older', group: '' },
+						{ name: 'Foo', differentiator: '', qualifier: '', group: 'Romans' },
+						{ name: 'Foo', differentiator: '', qualifier: '', group: 'Goths' },
+						{ name: 'Foo', differentiator: '', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Foo', differentiator: '', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Foo', differentiator: '', qualifier: 'older', group: 'Romans' },
+						{ name: 'Foo', differentiator: '', qualifier: 'older', group: 'Goths' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: '' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'older', group: '' },
+						{ name: 'Foo', differentiator: '1', qualifier: '', group: 'Romans' },
+						{ name: 'Foo', differentiator: '1', qualifier: '', group: 'Goths' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'older', group: 'Romans' },
+						{ name: 'Foo', differentiator: '1', qualifier: 'older', group: 'Goths' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'younger', group: '' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'older', group: '' },
+						{ name: 'Foo', differentiator: '2', qualifier: '', group: 'Romans' },
+						{ name: 'Foo', differentiator: '2', qualifier: '', group: 'Goths' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'older', group: 'Romans' },
+						{ name: 'Foo', differentiator: '2', qualifier: 'older', group: 'Goths' },
+						{ name: 'Bar', differentiator: '', qualifier: '', group: '' },
+						{ name: 'Bar', differentiator: '1', qualifier: '', group: '' },
+						{ name: 'Bar', differentiator: '2', qualifier: '', group: '' },
+						{ name: 'Bar', differentiator: '', qualifier: 'younger', group: '' },
+						{ name: 'Bar', differentiator: '', qualifier: 'older', group: '' },
+						{ name: 'Bar', differentiator: '', qualifier: '', group: 'Romans' },
+						{ name: 'Bar', differentiator: '', qualifier: '', group: 'Goths' },
+						{ name: 'Bar', differentiator: '', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Bar', differentiator: '', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Bar', differentiator: '', qualifier: 'older', group: 'Romans' },
+						{ name: 'Bar', differentiator: '', qualifier: 'older', group: 'Goths' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: '' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'older', group: '' },
+						{ name: 'Bar', differentiator: '1', qualifier: '', group: 'Romans' },
+						{ name: 'Bar', differentiator: '1', qualifier: '', group: 'Goths' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'older', group: 'Romans' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'older', group: 'Goths' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'younger', group: '' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'older', group: '' },
+						{ name: 'Bar', differentiator: '2', qualifier: '', group: 'Romans' },
+						{ name: 'Bar', differentiator: '2', qualifier: '', group: 'Goths' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'younger', group: 'Romans' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'younger', group: 'Goths' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'older', group: 'Romans' },
+						{ name: 'Bar', differentiator: '2', qualifier: 'older', group: 'Goths' }
 					]
 				);
 
@@ -310,7 +370,7 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
-		context('array items with differentiator and qualifier', () => {
+		context('array items with group', () => {
 
 			context('single pair of duplicate items', () => {
 
@@ -318,10 +378,79 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Baz', differentiator: '1', qualifier: 'younger' }
+							{ name: 'Alisa Kos', group: '2011' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: 'Aleksander King', group: '1990' },
+							{ name: 'Alisa Kos', group: '1990' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: 'Aleksander King', group: '1945' }
+						]
+					);
+
+					expect(result).to.deep.equal([1, 4]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Alisa Kos', group: '2011' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: 'Aleksander King', group: '' },
+							{ name: 'Alisa Kos', group: '1990' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: 'Aleksander King', group: '' }
+						]
+					);
+
+					expect(result).to.deep.equal([1, 2, 4, 5]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items, and a single pair of duplicate items with empty string name values', () => {
+
+				it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Alisa Kos', group: '2011' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: '', group: '' },
+							{ name: 'Aleksander King', group: '' },
+							{ name: 'Alisa Kos', group: '1990' },
+							{ name: 'Lucija Kos', group: '2011' },
+							{ name: '', group: '' },
+							{ name: 'Aleksander King', group: '' }
+						]
+					);
+
+					expect(result).to.deep.equal([1, 3, 5, 7]);
+
+				});
+
+			});
+
+		});
+
+		context('array items with differentiator, qualifier, and group', () => {
+
+			context('single pair of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Baz', differentiator: '1', qualifier: 'younger', group: 'Romans' }
 						]
 					);
 
@@ -337,12 +466,12 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Baz', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Qux', differentiator: '1', qualifier: 'younger' }
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Baz', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Qux', differentiator: '1', qualifier: 'younger', group: 'Romans' }
 						]
 					);
 
@@ -358,14 +487,14 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ name: '', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Baz', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Foo', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ name: '', differentiator: '1', qualifier: 'younger' },
-							{ name: 'Qux', differentiator: '1', qualifier: 'younger' }
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Baz', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Foo', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Bar', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
+							{ name: 'Qux', differentiator: '1', qualifier: 'younger', group: 'Romans' }
 						]
 					);
 
