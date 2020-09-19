@@ -1,0 +1,160 @@
+{
+	"name": "3 Winters",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "3 Winters"
+	},
+	"cast": [
+		{
+			"name": "Charlotte Beaumont",
+			"roles": [
+				{
+					"name": "Lucija Kos",
+					"qualifier": "1990"
+				}
+			]
+		},
+		{
+			"name": "Lucy Black",
+			"roles": [
+				{
+					"name": "Dunja King"
+				}
+			]
+		},
+		{
+			"name": "Susan Engel",
+			"roles": [
+				{
+					"name": "Karolina Amruš",
+					"qualifier": "1990"
+				}
+			]
+		},
+		{
+			"name": "Siobhan Finneran",
+			"roles": [
+				{
+					"name": "Maša Kos"
+				}
+			]
+		},
+		{
+			"name": "Daniel Flynn",
+			"roles": [
+				{
+					"name": "Karl Dolinar"
+				}
+			]
+		},
+		{
+			"name": "Hermoine Gulliford",
+			"roles": [
+				{
+					"name": "Karolina Amruš",
+					"qualifier": "1945"
+				}
+			]
+		},
+		{
+			"name": "Jo Herbert",
+			"roles": [
+				{
+					"name": "Rose King"
+				}
+			]
+		},
+		{
+			"name": "Alex Jordan",
+			"roles": [
+				{
+					"name": "Marko Horvat",
+					"qualifier": "1990"
+				}
+			]
+		},
+		{
+			"name": "Gerald Kyd",
+			"roles": [
+				{
+					"name": "Marinko"
+				},
+				{
+					"name": "Marko Horvat",
+					"qualifier": "2011"
+				}
+			]
+		},
+		{
+			"name": "James Laurenson",
+			"roles": [
+				{
+					"name": "Aleksander King",
+					"qualifier": "1990"
+				}
+			]
+		},
+		{
+			"name": "Jonny Magnanti",
+			"roles": [
+				{
+					"name": "Igor Maljević"
+				}
+			]
+		},
+		{
+			"name": "Jodie McNee",
+			"roles": [
+				{
+					"name": "Alisa Kos",
+					"qualifier": "2011"
+				}
+			]
+		},
+		{
+			"name": "Alex Price",
+			"roles": [
+				{
+					"name": "Aleksander King",
+					"qualifier": "1945"
+				}
+			]
+		},
+		{
+			"name": "Adrian Rawlins",
+			"roles": [
+				{
+					"name": "Vlado Kos"
+				}
+			]
+		},
+		{
+			"name": "Sophie Rundle",
+			"roles": [
+				{
+					"name": "Lucija Kos",
+					"qualifier": "2011"
+				}
+			]
+		},
+		{
+			"name": "Bebe Sanders",
+			"roles": [
+				{
+					"name": "Alisa Kos",
+					"qualifier": "1990"
+				}
+			]
+		},
+		{
+			"name": "Josie Walker",
+			"roles": [
+				{
+					"name": "Monika Zima"
+				}
+			]
+		}
+	]
+}
