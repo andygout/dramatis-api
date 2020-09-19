@@ -258,7 +258,7 @@ describe('Different characters with same name production credits', () => {
 				}
 			];
 
-			const { characters } = aMidsummerNightsDreamPlaytext.body;
+			const { characterGroups: [{ characters }] } = aMidsummerNightsDreamPlaytext.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 
@@ -286,7 +286,7 @@ describe('Different characters with same name production credits', () => {
 
 			];
 
-			const { characters } = titusAndronicusPlaytext.body;
+			const { characterGroups: [{ characters }] } = titusAndronicusPlaytext.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 

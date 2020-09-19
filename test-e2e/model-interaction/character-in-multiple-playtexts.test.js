@@ -167,19 +167,22 @@ describe('Character in multiple playtexts', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
 					name: 'Henry IV: Part 1',
-					qualifiers: []
+					qualifiers: [],
+					groups: []
 				},
 				{
 					model: 'playtext',
 					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
 					name: 'Henry IV: Part 2',
-					qualifiers: []
+					qualifiers: [],
+					groups: []
 				},
 				{
 					model: 'playtext',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
 					name: 'The Merry Wives of Windsor',
-					qualifiers: []
+					qualifiers: [],
+					groups: []
 				}
 			];
 
@@ -273,7 +276,7 @@ describe('Character in multiple playtexts', () => {
 				qualifier: null
 			};
 
-			const { characters } = henryIVPart1Playtext.body;
+			const { characterGroups: [{ characters }] } = henryIVPart1Playtext.body;
 
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
@@ -296,7 +299,7 @@ describe('Character in multiple playtexts', () => {
 				qualifier: null
 			};
 
-			const { characters } = henryIVPart2Playtext.body;
+			const { characterGroups: [{ characters }] } = henryIVPart2Playtext.body;
 
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
@@ -319,7 +322,7 @@ describe('Character in multiple playtexts', () => {
 				qualifier: null
 			};
 
-			const { characters } = merryWivesOfWindsorPlaytext.body;
+			const { characterGroups: [{ characters }] } = merryWivesOfWindsorPlaytext.body;
 
 			const sirJohnFalstaffCharacterCredit =
 				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);

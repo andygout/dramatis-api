@@ -4,7 +4,8 @@ export default {
 		{
 			name: '',
 			differentiator: '',
-			qualifier: ''
+			qualifier: '',
+			group: ''
 		}
 	]
 };

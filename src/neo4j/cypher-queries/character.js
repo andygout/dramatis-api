@@ -6,12 +6,12 @@ const getShowQuery = () => `
 	WITH character, playtextRel, playtext
 		ORDER BY playtext.name, playtextRel.position
 
-	WITH character, playtext, COLLECT(playtextRel.qualifier) AS qualifiers
+	WITH character, playtext, COLLECT(playtextRel.qualifier) AS qualifiers, COLLECT(playtextRel.group) AS groups
 
 	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
 		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
-	WITH character, playtext, qualifiers, variantNamedRole
+	WITH character, playtext, qualifiers, groups, variantNamedRole
 		ORDER BY variantNamedRole.roleName
 
 	OPTIONAL MATCH (playtext)<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
@@ -27,11 +27,11 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH character, playtext, qualifiers, production, theatre, person, role, otherRole, otherCharacter,
+	WITH character, playtext, qualifiers, groups, production, theatre, person, role, otherRole, otherCharacter,
 		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames
 		ORDER BY otherRole.rolePosition
 
-	WITH character, playtext, qualifiers, variantNames, production, theatre, person, role,
+	WITH character, playtext, qualifiers, groups, variantNames, production, theatre, person, role,
 		COLLECT(
 			CASE otherRole WHEN NULL
 				THEN null
@@ -45,7 +45,7 @@ const getShowQuery = () => `
 		) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH character, playtext, qualifiers, variantNames, production, theatre,
+	WITH character, playtext, qualifiers, groups, variantNames, production, theatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,
@@ -64,7 +64,13 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE playtext WHEN NULL
 				THEN null
-				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, qualifiers: qualifiers }
+				ELSE {
+					model: 'playtext',
+					uuid: playtext.uuid,
+					name: playtext.name,
+					qualifiers: qualifiers,
+					groups: groups
+				}
 			END
 		) AS playtexts,
 		variantNames,

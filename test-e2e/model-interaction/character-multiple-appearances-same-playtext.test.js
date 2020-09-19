@@ -155,7 +155,8 @@ describe('Character with multiple appearances in the same playtext under differe
 				qualifiers: [
 					'younger',
 					'older'
-				]
+				],
+				groups: []
 			};
 
 			const { playtexts } = esmeCharacter.body;
@@ -350,7 +351,7 @@ describe('Character with multiple appearances in the same playtext under differe
 				}
 			];
 
-			const { characters } = rockNRollPlaytext.body;
+			const { characterGroups: [{ characters }] } = rockNRollPlaytext.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 

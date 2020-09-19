@@ -31,6 +31,12 @@ export default class Base {
 
 	}
 
+	hasGroupProperty () {
+
+		return Object.prototype.hasOwnProperty.call(this, 'group');
+
+	}
+
 	runInputValidations () {
 
 		this.validateName({ isRequired: true });
@@ -76,6 +82,8 @@ export default class Base {
 			if (this.hasDifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
 
 			if (this.hasQualifierProperty()) this.addPropertyError('qualifier', uniquenessErrorMessage);
+
+			if (this.hasGroupProperty()) this.addPropertyError('group', uniquenessErrorMessage);
 
 		}
 

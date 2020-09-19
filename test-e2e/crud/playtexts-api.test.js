@@ -29,6 +29,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -83,6 +84,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -111,6 +113,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -143,6 +146,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -164,7 +168,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'The Cherry Orchard',
 				differentiator: null,
-				characters: [],
+				characterGroups: [
+					{
+						model: 'characterGroup',
+						name: null,
+						characters: []
+					}
+				],
 				productions: []
 			};
 
@@ -276,6 +286,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Irina Nikolayevna Arkadina',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -283,6 +294,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Konstantin Gavrilovich Treplyov',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -290,6 +302,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Boris Alexeyevich Trigorin',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -297,6 +310,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -318,24 +332,30 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
 				differentiator: null,
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
-						uuid: IRINA_NIKOLAYEVNA_ARKADINA_UUID,
-						name: 'Irina Nikolayevna Arkadina',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID,
-						name: 'Konstantin Gavrilovich Treplyov',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: BORIS_ALEXEYEVICH_TRIGORIN_UUID,
-						name: 'Boris Alexeyevich Trigorin',
-						qualifier: null
+						model: 'characterGroup',
+						name: null,
+						characters: [
+							{
+								model: 'character',
+								uuid: IRINA_NIKOLAYEVNA_ARKADINA_UUID,
+								name: 'Irina Nikolayevna Arkadina',
+								qualifier: null
+							},
+							{
+								model: 'character',
+								uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID,
+								name: 'Konstantin Gavrilovich Treplyov',
+								qualifier: null
+							},
+							{
+								model: 'character',
+								uuid: BORIS_ALEXEYEVICH_TRIGORIN_UUID,
+								name: 'Boris Alexeyevich Trigorin',
+								qualifier: null
+							}
+						]
 					}
 				],
 				productions: []
@@ -363,6 +383,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Irina Nikolayevna Arkadina',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -370,6 +391,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Konstantin Gavrilovich Treplyov',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -377,6 +399,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Boris Alexeyevich Trigorin',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					},
 					{
@@ -384,6 +407,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -404,13 +428,16 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					name: 'Three Sisters',
 					characters: [
 						{
-							name: 'Olga Sergeyevna Prozorova'
+							name: 'Olga Sergeyevna Prozorova',
+							group: 'The Prozorovs'
 						},
 						{
-							name: 'Maria Sergeyevna Kulygina'
+							name: 'Maria Sergeyevna Kulygina',
+							group: 'The Prozorovs'
 						},
 						{
-							name: 'Irina Sergeyevna Prozorova'
+							name: 'Irina Sergeyevna Prozorova',
+							group: 'The Prozorovs'
 						}
 					]
 				});
@@ -427,6 +454,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Olga Sergeyevna Prozorova',
 						differentiator: '',
 						qualifier: '',
+						group: 'The Prozorovs',
 						errors: {}
 					},
 					{
@@ -434,6 +462,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Maria Sergeyevna Kulygina',
 						differentiator: '',
 						qualifier: '',
+						group: 'The Prozorovs',
 						errors: {}
 					},
 					{
@@ -441,6 +470,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: 'Irina Sergeyevna Prozorova',
 						differentiator: '',
 						qualifier: '',
+						group: 'The Prozorovs',
 						errors: {}
 					},
 					{
@@ -448,6 +478,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]
@@ -469,24 +500,30 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
 				differentiator: null,
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
-						uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
-						name: 'Olga Sergeyevna Prozorova',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
-						name: 'Maria Sergeyevna Kulygina',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
-						name: 'Irina Sergeyevna Prozorova',
-						qualifier: null
+						model: 'characterGroup',
+						name: 'The Prozorovs',
+						characters: [
+							{
+								model: 'character',
+								uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
+								name: 'Olga Sergeyevna Prozorova',
+								qualifier: null
+							},
+							{
+								model: 'character',
+								uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
+								name: 'Maria Sergeyevna Kulygina',
+								qualifier: null
+							},
+							{
+								model: 'character',
+								uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
+								name: 'Irina Sergeyevna Prozorova',
+								qualifier: null
+							}
+						]
 					}
 				],
 				productions: []
@@ -538,6 +575,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						name: '',
 						differentiator: '',
 						qualifier: '',
+						group: '',
 						errors: {}
 					}
 				]

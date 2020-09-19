@@ -37,7 +37,8 @@ const getCreateUpdateQuery = action => {
 						uuid: characterParam.uuid,
 						name: characterParam.name,
 						differentiator: characterParam.differentiator,
-						qualifier: characterParam.qualifier
+						qualifier: characterParam.qualifier,
+						group: characterParam.group
 					}
 					ELSE existingCharacter
 				END AS characterProps
@@ -47,8 +48,11 @@ const getCreateUpdateQuery = action => {
 					ON CREATE SET character.differentiator = characterProps.differentiator
 
 				CREATE (playtext)-
-					[:INCLUDES_CHARACTER { position: characterParam.position, qualifier: characterParam.qualifier }]->
-					(character)
+					[:INCLUDES_CHARACTER {
+						position: characterParam.position,
+						qualifier: characterParam.qualifier,
+						group: characterParam.group
+					}]->(character)
 			)
 
 		WITH DISTINCT playtext
@@ -79,7 +83,8 @@ const getEditQuery = () => `
 				ELSE {
 					name: character.name,
 					differentiator: character.differentiator,
-					qualifier: characterRel.qualifier
+					qualifier: characterRel.qualifier,
+					group: characterRel.group
 				}
 			END
 		) + [{ name: '' }] AS characters
@@ -99,7 +104,7 @@ const getShowQuery = () => `
 	WITH playtext, characterRel, character, production, theatre
 		ORDER BY characterRel.position
 
-	WITH playtext, production, theatre,
+	WITH playtext, characterRel.group AS characterGroup, production, theatre,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -113,12 +118,21 @@ const getShowQuery = () => `
 		) AS characters
 		ORDER BY production.name, theatre.name
 
+	WITH playtext, production, theatre,
+		COLLECT(
+			{
+				model: 'characterGroup',
+				name: characterGroup,
+				characters: characters
+			}
+		) AS characterGroups
+
 	RETURN
 		'playtext' AS model,
 		playtext.uuid AS uuid,
 		playtext.name AS name,
 		playtext.differentiator AS differentiator,
-		characters,
+		characterGroups,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
