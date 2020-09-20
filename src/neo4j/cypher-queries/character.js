@@ -61,7 +61,7 @@ const getShowQuery = () => `
 		character.uuid AS uuid,
 		character.name AS name,
 		character.differentiator AS differentiator,
-		COLLECT(
+		COLLECT(DISTINCT(
 			CASE playtext WHEN NULL
 				THEN null
 				ELSE {
@@ -72,7 +72,7 @@ const getShowQuery = () => `
 					groups: groups
 				}
 			END
-		) AS playtexts,
+		)) AS playtexts,
 		variantNames,
 		COLLECT(
 			CASE production WHEN NULL
