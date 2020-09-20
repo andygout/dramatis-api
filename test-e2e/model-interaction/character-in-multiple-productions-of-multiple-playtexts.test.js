@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Character in multiple playtexts', () => {
+describe('Character in multiple productions of multiple playtexts', () => {
 
 	chai.use(chaiHttp);
 
@@ -17,12 +17,18 @@ describe('Character in multiple playtexts', () => {
 	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '12';
 	const NATIONAL_THEATRE_UUID = '13';
 	const MICHAEL_GAMBON_PERSON_UUID = '15';
-	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '16';
-	const GLOBE_THEATRE_UUID = '17';
-	const ROGER_ALLAM_PERSON_UUID = '19';
-	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '20';
-	const SWAN_THEATRE_UUID = '21';
-	const RICHARD_CORDERY_PERSON_UUID = '23';
+	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '16';
+	const THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID = '20';
+	const HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID = '24';
+	const GLOBE_THEATRE_UUID = '25';
+	const ROGER_ALLAM_PERSON_UUID = '27';
+	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '28';
+	const THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID = '32';
+	const HENRY_IV_PART_1_SWAN_PRODUCTION_UUID = '36';
+	const SWAN_THEATRE_UUID = '37';
+	const RICHARD_CORDERY_PERSON_UUID = '39';
+	const HENRY_IV_PART_2_SWAN_PRODUCTION_UUID = '40';
+	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '44';
 
 	let sirJohnFalstaffCharacter;
 	let henryIVPart1Playtext;
@@ -99,6 +105,72 @@ describe('Character in multiple playtexts', () => {
 			.send({
 				name: 'Henry IV: Part 2',
 				theatre: {
+					name: 'National Theatre'
+				},
+				playtext: {
+					name: 'Henry IV: Part 2'
+				},
+				cast: [
+					{
+						name: 'Michael Gambon',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Merry Wives of Windsor',
+				theatre: {
+					name: 'National Theatre'
+				},
+				playtext: {
+					name: 'The Merry Wives of Windsor'
+				},
+				cast: [
+					{
+						name: 'Michael Gambon',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Henry IV: Part 1',
+				theatre: {
+					name: 'Globe Theatre'
+				},
+				playtext: {
+					name: 'Henry IV: Part 1'
+				},
+				cast: [
+					{
+						name: 'Roger Allam',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Henry IV: Part 2',
+				theatre: {
 					name: 'Globe Theatre'
 				},
 				playtext: {
@@ -107,6 +179,72 @@ describe('Character in multiple playtexts', () => {
 				cast: [
 					{
 						name: 'Roger Allam',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Merry Wives of Windsor',
+				theatre: {
+					name: 'Globe Theatre'
+				},
+				playtext: {
+					name: 'The Merry Wives of Windsor'
+				},
+				cast: [
+					{
+						name: 'Roger Allam',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Henry IV: Part 1',
+				theatre: {
+					name: 'Swan Theatre'
+				},
+				playtext: {
+					name: 'Henry IV: Part 1'
+				},
+				cast: [
+					{
+						name: 'Richard Cordery',
+						roles: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Henry IV: Part 2',
+				theatre: {
+					name: 'Swan Theatre'
+				},
+				playtext: {
+					name: 'Henry IV: Part 2'
+				},
+				cast: [
+					{
+						name: 'Richard Cordery',
 						roles: [
 							{
 								name: 'Sir John Falstaff'
@@ -197,6 +335,26 @@ describe('Character in multiple playtexts', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
+					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					theatre: {
+						model: 'theatre',
+						uuid: GLOBE_THEATRE_UUID,
+						name: 'Globe Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV: Part 1',
 					theatre: {
@@ -217,6 +375,26 @@ describe('Character in multiple playtexts', () => {
 				},
 				{
 					model: 'production',
+					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					theatre: {
+						model: 'theatre',
+						uuid: SWAN_THEATRE_UUID,
+						name: 'Swan Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RICHARD_CORDERY_PERSON_UUID,
+							name: 'Richard Cordery',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
 					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
 					name: 'Henry IV: Part 2',
 					theatre: {
@@ -229,6 +407,86 @@ describe('Character in multiple playtexts', () => {
 							model: 'person',
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					theatre: {
+						model: 'theatre',
+						uuid: SWAN_THEATRE_UUID,
+						name: 'Swan Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RICHARD_CORDERY_PERSON_UUID,
+							name: 'Richard Cordery',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
+					name: 'The Merry Wives of Windsor',
+					theatre: {
+						model: 'theatre',
+						uuid: GLOBE_THEATRE_UUID,
+						name: 'Globe Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID,
+					name: 'The Merry Wives of Windsor',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
