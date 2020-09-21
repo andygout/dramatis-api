@@ -46,7 +46,8 @@
 			"name": "James Laurenson",
 			"roles": [
 				{
-					"name": "Ghost of the late King"
+					"name": "Ghost of the late King",
+					"characterName": "King Hamlet"
 				},
 				{
 					"name": "Player King"
@@ -184,7 +185,8 @@
 			"name": "Nick Sampson",
 			"roles": [
 				{
-					"name": "Osric"
+					"name": "Osric",
+					"characterName": "Osrick"
 				}
 			]
 		},
