@@ -213,7 +213,7 @@ describe('Character with variant names', () => {
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedHamletAlmeidaProductionCredit = {
+			const expectedHamletAlmeidaProduction = {
 				model: 'production',
 				uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -241,7 +241,7 @@ describe('Character with variant names', () => {
 				]
 			};
 
-			const expectedHamletNovelloProductionCredit = {
+			const expectedHamletNovelloProduction = {
 				model: 'production',
 				uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -269,7 +269,7 @@ describe('Character with variant names', () => {
 				]
 			};
 
-			const expectedHamletWyndhamsProductionCredit = {
+			const expectedHamletWyndhamsProduction = {
 				model: 'production',
 				uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -299,19 +299,19 @@ describe('Character with variant names', () => {
 
 			const { productions } = ghostCharacter.body;
 
-			const hamletAlmeidaProductionCredit =
+			const hamletAlmeidaProduction =
 				productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
 
-			const hamletNovelloProductionCredit =
+			const hamletNovelloProduction =
 				productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
 
-			const hamletWyndhamsProductionCredit =
+			const hamletWyndhamsProduction =
 				productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(3);
-			expect(hamletAlmeidaProductionCredit).to.deep.equal(expectedHamletAlmeidaProductionCredit);
-			expect(hamletNovelloProductionCredit).to.deep.equal(expectedHamletNovelloProductionCredit);
-			expect(hamletWyndhamsProductionCredit).to.deep.equal(expectedHamletWyndhamsProductionCredit);
+			expect(hamletAlmeidaProduction).to.deep.equal(expectedHamletAlmeidaProduction);
+			expect(hamletNovelloProduction).to.deep.equal(expectedHamletNovelloProduction);
+			expect(hamletWyndhamsProduction).to.deep.equal(expectedHamletWyndhamsProduction);
 
 		});
 
@@ -426,7 +426,7 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (Ghost)', () => {
 
-			const expectedProductionCredit = {
+			const expectedProduction = {
 				model: 'production',
 				uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -453,10 +453,10 @@ describe('Character with variant names', () => {
 
 			const { productions } = davidRintoulPerson.body;
 
-			const productionCredit = productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
+			const production = productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(productionCredit).to.deep.equal(expectedProductionCredit);
+			expect(production).to.deep.equal(expectedProduction);
 
 		});
 
@@ -466,7 +466,7 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under same name as in playtext (Ghost of King Hamlet)', () => {
 
-			const expectedProductionCredit = {
+			const expectedProduction = {
 				model: 'production',
 				uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -493,10 +493,10 @@ describe('Character with variant names', () => {
 
 			const { productions } = patrickStewartPerson.body;
 
-			const productionCredit = productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
+			const production = productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(productionCredit).to.deep.equal(expectedProductionCredit);
+			expect(production).to.deep.equal(expectedProduction);
 
 		});
 
@@ -506,7 +506,7 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (King Hamlet)', () => {
 
-			const expectedProductionCredit = {
+			const expectedProduction = {
 				model: 'production',
 				uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 				name: 'Hamlet',
@@ -533,11 +533,10 @@ describe('Character with variant names', () => {
 
 			const { productions } = peterEyrePerson.body;
 
-			const productionCredit =
-				productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
+			const production = productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(productionCredit).to.deep.equal(expectedProductionCredit);
+			expect(production).to.deep.equal(expectedProduction);
 
 		});
 

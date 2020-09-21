@@ -145,7 +145,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedKingLearRoyalShakespeareProductionCredit = {
+			const expectedKingLearRoyalShakespeareProduction = {
 				model: 'production',
 				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -166,7 +166,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			};
 
-			const expectedKingLearBarbicanProductionCredit = {
+			const expectedKingLearBarbicanProduction = {
 				model: 'production',
 				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -189,16 +189,15 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = kingLearCharacter.body;
 
-			const kingLearRoyalShakespeareProductionCredit =
+			const kingLearRoyalShakespeareProduction =
 				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
 
-			const kingLearBarbicanProductionCredit =
+			const kingLearBarbicanProduction =
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
-			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
+			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
 
 		});
 
@@ -208,7 +207,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedKingLearRoyalShakespeareProductionCredit = {
+			const expectedKingLearRoyalShakespeareProduction = {
 				model: 'production',
 				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -229,7 +228,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			};
 
-			const expectedKingLearBarbicanProductionCredit = {
+			const expectedKingLearBarbicanProduction = {
 				model: 'production',
 				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -252,16 +251,15 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = foolCharacter.body;
 
-			const kingLearRoyalShakespeareProductionCredit =
+			const kingLearRoyalShakespeareProduction =
 				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
 
-			const kingLearBarbicanProductionCredit =
+			const kingLearBarbicanProduction =
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
-			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
+			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
 
 		});
 
@@ -361,7 +359,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of King Lear', () => {
 
-			const expectedProductionCredit = {
+			const expectedProduction = {
 				model: 'production',
 				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -382,11 +380,11 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = michaelGambonPerson.body;
 
-			const productionCredit =
+			const production =
 				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(productionCredit).to.deep.equal(expectedProductionCredit);
+			expect(production).to.deep.equal(expectedProduction);
 
 		});
 
@@ -396,7 +394,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his respective portrayals of King Lear and the Fool', () => {
 
-			const expectedKingLearRoyalShakespeareProductionCredit = {
+			const expectedKingLearRoyalShakespeareProduction = {
 				model: 'production',
 				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -415,7 +413,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			};
 
-			const expectedKingLearBarbicanProductionCredit = {
+			const expectedKingLearBarbicanProduction = {
 				model: 'production',
 				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -436,16 +434,15 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = antonySherPerson.body;
 
-			const kingLearRoyalShakespeareProductionCredit =
+			const kingLearRoyalShakespeareProduction =
 				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
 
-			const kingLearBarbicanProductionCredit =
+			const kingLearBarbicanProduction =
 				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProductionCredit)
-				.to.deep.equal(expectedKingLearRoyalShakespeareProductionCredit);
-			expect(kingLearBarbicanProductionCredit).to.deep.equal(expectedKingLearBarbicanProductionCredit);
+			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
+			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
 
 		});
 
@@ -455,7 +452,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of the Fool', () => {
 
-			const expectedProductionCredit = {
+			const expectedProduction = {
 				model: 'production',
 				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 				name: 'King Lear',
@@ -476,11 +473,10 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = grahamTurnerPerson.body;
 
-			const productionCredit =
-				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
+			const production = productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(productionCredit).to.deep.equal(expectedProductionCredit);
+			expect(production).to.deep.equal(expectedProduction);
 
 		});
 

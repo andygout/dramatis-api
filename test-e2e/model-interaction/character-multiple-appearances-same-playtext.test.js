@@ -148,7 +148,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes playtexts in which character appears, including the qualifiers used', () => {
 
-			const expectedRockNRollPlaytextCredit = {
+			const expectedRockNRollPlaytext = {
 				model: 'playtext',
 				uuid: ROCK_N_ROLL_PLAYTEXT_UUID,
 				name: 'Rock \'n\' Roll',
@@ -161,17 +161,16 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { playtexts } = esmeCharacter.body;
 
-			const rockNRollPlaytextCredit =
-				playtexts.find(playtext => playtext.uuid === ROCK_N_ROLL_PLAYTEXT_UUID);
+			const rockNRollPlaytext = playtexts.find(playtext => playtext.uuid === ROCK_N_ROLL_PLAYTEXT_UUID);
 
 			expect(playtexts.length).to.equal(1);
-			expect(rockNRollPlaytextCredit).to.deep.equal(expectedRockNRollPlaytextCredit);
+			expect(rockNRollPlaytext).to.deep.equal(expectedRockNRollPlaytext);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and under which qualifier', () => {
 
-			const expectedRockNRollRoyalCourtProductionCredit = {
+			const expectedRockNRollRoyalCourtProduction = {
 				model: 'production',
 				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 				name: 'Rock \'n\' Roll',
@@ -216,11 +215,11 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { productions } = esmeCharacter.body;
 
-			const rockNRollRoyalCourtProductionCredit =
+			const rockNRollRoyalCourtProduction =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
+			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
 
 		});
 
@@ -230,7 +229,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
 
-			const expectedRockNRollRoyalCourtProductionCredit = {
+			const expectedRockNRollRoyalCourtProduction = {
 				model: 'production',
 				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 				name: 'Rock \'n\' Roll',
@@ -260,11 +259,11 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { productions } = aliceCharacter.body;
 
-			const rockNRollRoyalCourtProductionCredit =
+			const rockNRollRoyalCourtProduction =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
+			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
 
 		});
 
@@ -274,7 +273,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
 
-			const expectedRockNRollRoyalCourtProductionCredit = {
+			const expectedRockNRollRoyalCourtProduction = {
 				model: 'production',
 				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 				name: 'Rock \'n\' Roll',
@@ -304,11 +303,11 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { productions } = eleanorCharacter.body;
 
-			const rockNRollRoyalCourtProductionCredit =
+			const rockNRollRoyalCourtProduction =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
+			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
 
 		});
 
@@ -420,7 +419,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. younger)', () => {
 
-			const expectedRockNRollRoyalCourtProductionCredit = {
+			const expectedRockNRollRoyalCourtProduction = {
 				model: 'production',
 				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 				name: 'Rock \'n\' Roll',
@@ -447,11 +446,11 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { productions } = aliceEvePerson.body;
 
-			const rockNRollRoyalCourtProductionCredit =
+			const rockNRollRoyalCourtProduction =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
+			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
 
 		});
 
@@ -461,7 +460,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. older)', () => {
 
-			const expectedRockNRollRoyalCourtProductionCredit = {
+			const expectedRockNRollRoyalCourtProduction = {
 				model: 'production',
 				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 				name: 'Rock \'n\' Roll',
@@ -488,11 +487,11 @@ describe('Character with multiple appearances in the same playtext under differe
 
 			const { productions } = sineadCusackPerson.body;
 
-			const rockNRollRoyalCourtProductionCredit =
+			const rockNRollRoyalCourtProduction =
 				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProductionCredit).to.deep.equal(expectedRockNRollRoyalCourtProductionCredit);
+			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
 
 		});
 
