@@ -31,12 +31,12 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateIndices(
 					[
-						{ name: 'Lucia', differentiator: '1' },
-						{ name: 'Dunya', differentiator: '' },
-						{ name: 'Karolina', differentiator: '' },
-						{ name: 'Karl', differentiator: '' },
-						{ name: 'Karolina', differentiator: '1' },
-						{ name: 'Lucia', differentiator: '2' }
+						{ name: 'Cinna', differentiator: '1' },
+						{ name: 'Julius Caesar', differentiator: '' },
+						{ name: 'Mark Antony', differentiator: '' },
+						{ name: 'Soothsayer', differentiator: '' },
+						{ name: 'Mark Antony', differentiator: '1' },
+						{ name: 'Cinna', differentiator: '2' }
 					]
 				);
 
@@ -240,10 +240,10 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Lucia', differentiator: '1' },
-							{ name: 'Dunya', differentiator: '' },
-							{ name: 'Karl', differentiator: '' },
-							{ name: 'Lucia', differentiator: '1' }
+							{ name: 'Cinna', differentiator: '1' },
+							{ name: 'Julius Caesar', differentiator: '' },
+							{ name: 'Soothsayer', differentiator: '' },
+							{ name: 'Cinna', differentiator: '1' }
 						]
 					);
 
@@ -259,12 +259,12 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Lucia', differentiator: '1' },
-							{ name: 'Dunya', differentiator: '' },
-							{ name: 'Karolina', differentiator: '' },
-							{ name: 'Karl', differentiator: '' },
-							{ name: 'Karolina', differentiator: '' },
-							{ name: 'Lucia', differentiator: '1' }
+							{ name: 'Cinna', differentiator: '1' },
+							{ name: 'Julius Caesar', differentiator: '' },
+							{ name: 'Mark Antony', differentiator: '' },
+							{ name: 'Soothsayer', differentiator: '' },
+							{ name: 'Mark Antony', differentiator: '' },
+							{ name: 'Cinna', differentiator: '1' }
 						]
 					);
 
@@ -280,14 +280,14 @@ describe('Get Duplicate Indices module', () => {
 
 					const result = getDuplicateIndices(
 						[
-							{ name: 'Lucia', differentiator: '1' },
+							{ name: 'Cinna', differentiator: '1' },
 							{ name: '', differentiator: '' },
-							{ name: 'Dunya', differentiator: '' },
-							{ name: 'Karolina', differentiator: '' },
+							{ name: 'Julius Caesar', differentiator: '' },
+							{ name: 'Mark Antony', differentiator: '' },
 							{ name: '', differentiator: '' },
-							{ name: 'Karl', differentiator: '' },
-							{ name: 'Karolina', differentiator: '' },
-							{ name: 'Lucia', differentiator: '1' }
+							{ name: 'Soothsayer', differentiator: '' },
+							{ name: 'Mark Antony', differentiator: '' },
+							{ name: 'Cinna', differentiator: '1' }
 						]
 					);
 
