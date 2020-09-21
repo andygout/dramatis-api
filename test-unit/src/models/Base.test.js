@@ -324,11 +324,17 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name property only', () => {
 
 					spy(instance, 'hasDifferentiatorProperty');
+					spy(instance, 'hasQualifierProperty');
+					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
 					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
 					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
+					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
+					expect(instance.hasGroupProperty.calledOnce).to.be.true;
+					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
