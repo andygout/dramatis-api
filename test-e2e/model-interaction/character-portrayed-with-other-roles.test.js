@@ -119,7 +119,7 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProductionCredit = {
+			const expectedWarHorseNationalProduction = {
 				model: 'production',
 				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 				name: 'War Horse',
@@ -161,11 +161,11 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = joeysMotherCharacter.body;
 
-			const warHorseNationalProductionCredit =
+			const warHorseNationalProduction =
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
+			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
 
 		});
 
@@ -175,7 +175,7 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProductionCredit = {
+			const expectedWarHorseNationalProduction = {
 				model: 'production',
 				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 				name: 'War Horse',
@@ -217,11 +217,11 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = drSchweykCharacter.body;
 
-			const warHorseNationalProductionCredit =
+			const warHorseNationalProduction =
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
+			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
 
 		});
 
@@ -231,7 +231,7 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProductionCredit = {
+			const expectedWarHorseNationalProduction = {
 				model: 'production',
 				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 				name: 'War Horse',
@@ -273,11 +273,11 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = cocoCharacter.body;
 
-			const warHorseNationalProductionCredit =
+			const warHorseNationalProduction =
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
+			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
 
 		});
 
@@ -287,7 +287,7 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProductionCredit = {
+			const expectedWarHorseNationalProduction = {
 				model: 'production',
 				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 				name: 'War Horse',
@@ -329,11 +329,11 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = geordieCharacter.body;
 
-			const warHorseNationalProductionCredit =
+			const warHorseNationalProduction =
 				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProductionCredit).to.deep.equal(expectedWarHorseNationalProductionCredit);
+			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
 
 		});
 

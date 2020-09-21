@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Different characters with same name production credits', () => {
+describe('Different characters with the same name', () => {
 
 	chai.use(chaiHttp);
 
@@ -20,7 +20,7 @@ describe('Different characters with same name production credits', () => {
 	const NOVELLO_THEATRE_UUID = '13';
 	const OSCAR_PEARCE_PERSON_UUID = '15';
 	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '17';
-	const GLOBE_THEATRE_UUID = '18';
+	const SHAKESPEARES_GLOBE_THEATRE_UUID = '18';
 	const SAM_ALEXANDER_PERSON_UUID = '21';
 
 	let demetriusCharacter1;
@@ -168,7 +168,7 @@ describe('Different characters with same name production credits', () => {
 
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
 
-			const expectedAMidsummerNightsDreamNovelloProductionCredit = {
+			const expectedAMidsummerNightsDreamNovelloProduction = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -191,12 +191,12 @@ describe('Different characters with same name production credits', () => {
 
 			const { productions } = demetriusCharacter1.body;
 
-			const aMidsummerNightsDreamNovelloProductionCredit =
+			const aMidsummerNightsDreamNovelloProduction =
 				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(aMidsummerNightsDreamNovelloProductionCredit)
-				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProductionCredit);
+			expect(aMidsummerNightsDreamNovelloProduction)
+				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProduction);
 
 		});
 
@@ -206,13 +206,13 @@ describe('Different characters with same name production credits', () => {
 
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
 
-			const expectedTitusAndronicusGlobeProductionCredit = {
+			const expectedTitusAndronicusGlobeProduction = {
 				model: 'production',
 				uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 				name: 'Titus Andronicus',
 				theatre: {
 					model: 'theatre',
-					uuid: GLOBE_THEATRE_UUID,
+					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
 					name: 'Shakespeare\'s Globe'
 				},
 				performers: [
@@ -229,11 +229,11 @@ describe('Different characters with same name production credits', () => {
 
 			const { productions } = demetriusCharacter2.body;
 
-			const titusAndronicusGlobeProductionCredit =
+			const titusAndronicusGlobeProduction =
 				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(titusAndronicusGlobeProductionCredit).to.deep.equal(expectedTitusAndronicusGlobeProductionCredit);
+			expect(titusAndronicusGlobeProduction).to.deep.equal(expectedTitusAndronicusGlobeProduction);
 
 		});
 
@@ -356,7 +356,7 @@ describe('Different characters with same name production credits', () => {
 
 		it('includes in their production credits their portrayal of Demetrius (#1) (i.e. and not Demetrius (#2))', () => {
 
-			const expectedAMidsummerNightsDreamNovelloProductionCredit = {
+			const expectedAMidsummerNightsDreamNovelloProduction = {
 				model: 'production',
 				uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 				name: 'A Midsummer Night\'s Dream',
@@ -377,12 +377,12 @@ describe('Different characters with same name production credits', () => {
 
 			const { productions } = oscarPearcePerson.body;
 
-			const aMidsummerNightsDreamNovelloProductionCredit =
+			const aMidsummerNightsDreamNovelloProduction =
 				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(aMidsummerNightsDreamNovelloProductionCredit)
-				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProductionCredit);
+			expect(aMidsummerNightsDreamNovelloProduction)
+				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProduction);
 
 		});
 
@@ -392,13 +392,13 @@ describe('Different characters with same name production credits', () => {
 
 		it('includes in their production credits their portrayal of Demetrius (#2) (i.e. and not Demetrius (#1))', () => {
 
-			const expectedTitusAndronicusGlobeProductionCredit = {
+			const expectedTitusAndronicusGlobeProduction = {
 				model: 'production',
 				uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 				name: 'Titus Andronicus',
 				theatre: {
 					model: 'theatre',
-					uuid: GLOBE_THEATRE_UUID,
+					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
 					name: 'Shakespeare\'s Globe'
 				},
 				roles: [
@@ -413,12 +413,11 @@ describe('Different characters with same name production credits', () => {
 
 			const { productions } = samAlexanderPerson.body;
 
-			const titusAndronicusGlobeProductionCredit =
+			const titusAndronicusGlobeProduction =
 				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
 
 			expect(productions.length).to.equal(1);
-			expect(titusAndronicusGlobeProductionCredit)
-				.to.deep.equal(expectedTitusAndronicusGlobeProductionCredit);
+			expect(titusAndronicusGlobeProduction).to.deep.equal(expectedTitusAndronicusGlobeProduction);
 
 		});
 
