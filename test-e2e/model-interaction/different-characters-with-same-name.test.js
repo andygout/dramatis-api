@@ -20,7 +20,7 @@ describe('Different characters with the same name', () => {
 	const NOVELLO_THEATRE_UUID = '13';
 	const OSCAR_PEARCE_PERSON_UUID = '15';
 	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '17';
-	const GLOBE_THEATRE_UUID = '18';
+	const SHAKESPEARES_GLOBE_THEATRE_UUID = '18';
 	const SAM_ALEXANDER_PERSON_UUID = '21';
 
 	let demetriusCharacter1;
@@ -212,7 +212,7 @@ describe('Different characters with the same name', () => {
 				name: 'Titus Andronicus',
 				theatre: {
 					model: 'theatre',
-					uuid: GLOBE_THEATRE_UUID,
+					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
 					name: 'Shakespeare\'s Globe'
 				},
 				performers: [
@@ -398,7 +398,7 @@ describe('Different characters with the same name', () => {
 				name: 'Titus Andronicus',
 				theatre: {
 					model: 'theatre',
-					uuid: GLOBE_THEATRE_UUID,
+					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
 					name: 'Shakespeare\'s Globe'
 				},
 				roles: [

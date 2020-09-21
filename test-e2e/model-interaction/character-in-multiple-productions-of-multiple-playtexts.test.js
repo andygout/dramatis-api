@@ -20,7 +20,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '16';
 	const THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID = '20';
 	const HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID = '24';
-	const GLOBE_THEATRE_UUID = '25';
+	const SHAKESPEARES_GLOBE_THEATRE_UUID = '25';
 	const ROGER_ALLAM_PERSON_UUID = '27';
 	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '28';
 	const THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID = '32';
@@ -149,7 +149,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.send({
 				name: 'Henry IV: Part 1',
 				theatre: {
-					name: 'Globe Theatre'
+					name: 'Shakespeare\'s Globe'
 				},
 				playtext: {
 					name: 'Henry IV: Part 1'
@@ -171,7 +171,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.send({
 				name: 'Henry IV: Part 2',
 				theatre: {
-					name: 'Globe Theatre'
+					name: 'Shakespeare\'s Globe'
 				},
 				playtext: {
 					name: 'Henry IV: Part 2'
@@ -193,7 +193,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.send({
 				name: 'The Merry Wives of Windsor',
 				theatre: {
-					name: 'Globe Theatre'
+					name: 'Shakespeare\'s Globe'
 				},
 				playtext: {
 					name: 'The Merry Wives of Windsor'
@@ -335,26 +335,6 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
-					theatre: {
-						model: 'theatre',
-						uuid: GLOBE_THEATRE_UUID,
-						name: 'Globe Theatre'
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: ROGER_ALLAM_PERSON_UUID,
-							name: 'Roger Allam',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV: Part 1',
 					theatre: {
@@ -367,6 +347,26 @@ describe('Character in multiple productions of multiple playtexts', () => {
 							model: 'person',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
@@ -395,26 +395,6 @@ describe('Character in multiple productions of multiple playtexts', () => {
 				},
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
-					theatre: {
-						model: 'theatre',
-						uuid: GLOBE_THEATRE_UUID,
-						name: 'Globe Theatre'
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: ROGER_ALLAM_PERSON_UUID,
-							name: 'Roger Allam',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV: Part 2',
 					theatre: {
@@ -427,6 +407,26 @@ describe('Character in multiple productions of multiple playtexts', () => {
 							model: 'person',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
@@ -455,26 +455,6 @@ describe('Character in multiple productions of multiple playtexts', () => {
 				},
 				{
 					model: 'production',
-					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
-					name: 'The Merry Wives of Windsor',
-					theatre: {
-						model: 'theatre',
-						uuid: GLOBE_THEATRE_UUID,
-						name: 'Globe Theatre'
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: ROGER_ALLAM_PERSON_UUID,
-							name: 'Roger Allam',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
 					theatre: {
@@ -487,6 +467,26 @@ describe('Character in multiple productions of multiple playtexts', () => {
 							model: 'person',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
+					name: 'The Merry Wives of Windsor',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
