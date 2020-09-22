@@ -19,8 +19,10 @@ describe('Different characters with the same name', () => {
 	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = '12';
 	const NOVELLO_THEATRE_UUID = '13';
 	const OSCAR_PEARCE_PERSON_UUID = '15';
+	const TRYSTAN_GRAVELLE_PERSON_UUID = '16';
 	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '17';
 	const SHAKESPEARES_GLOBE_THEATRE_UUID = '18';
+	const RICHARD_RIDDELL_PERSON_UUID = '20';
 	const SAM_ALEXANDER_PERSON_UUID = '21';
 
 	let demetriusCharacter1;
@@ -168,35 +170,32 @@ describe('Different characters with the same name', () => {
 
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
 
-			const expectedAMidsummerNightsDreamNovelloProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: NOVELLO_THEATRE_UUID,
-					name: 'Novello Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: OSCAR_PEARCE_PERSON_UUID,
-						name: 'Oscar Pearce',
-						roleName: 'Demetrius',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: NOVELLO_THEATRE_UUID,
+						name: 'Novello Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: OSCAR_PEARCE_PERSON_UUID,
+							name: 'Oscar Pearce',
+							roleName: 'Demetrius',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = demetriusCharacter1.body;
 
-			const aMidsummerNightsDreamNovelloProduction =
-				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(aMidsummerNightsDreamNovelloProduction)
-				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -206,34 +205,32 @@ describe('Different characters with the same name', () => {
 
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
 
-			const expectedTitusAndronicusGlobeProduction = {
-				model: 'production',
-				uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
-				name: 'Titus Andronicus',
-				theatre: {
-					model: 'theatre',
-					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-					name: 'Shakespeare\'s Globe'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: SAM_ALEXANDER_PERSON_UUID,
-						name: 'Sam Alexander',
-						roleName: 'Demetrius',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
+					name: 'Titus Andronicus',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: SAM_ALEXANDER_PERSON_UUID,
+							name: 'Sam Alexander',
+							roleName: 'Demetrius',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = demetriusCharacter2.body;
 
-			const titusAndronicusGlobeProduction =
-				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(titusAndronicusGlobeProduction).to.deep.equal(expectedTitusAndronicusGlobeProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -298,26 +295,38 @@ describe('Different characters with the same name', () => {
 
 		it('includes cast with Oscar Pearce as Demetrius (#1)', () => {
 
-			const expectedCastMember = {
-				model: 'person',
-				uuid: OSCAR_PEARCE_PERSON_UUID,
-				name: 'Oscar Pearce',
-				roles: [
-					{
-						model: 'character',
-						uuid: DEMETRIUS_CHARACTER_1_UUID,
-						name: 'Demetrius',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: OSCAR_PEARCE_PERSON_UUID,
+					name: 'Oscar Pearce',
+					roles: [
+						{
+							model: 'character',
+							uuid: DEMETRIUS_CHARACTER_1_UUID,
+							name: 'Demetrius',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: TRYSTAN_GRAVELLE_PERSON_UUID,
+					name: 'Trystan Gravelle',
+					roles: [
+						{
+							model: 'character',
+							uuid: LYSANDER_CHARACTER_UUID,
+							name: 'Lysander',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = aMidsummerNightsDreamNovelloProduction.body;
 
-			const castMember = cast.find(castMember => castMember.uuid === OSCAR_PEARCE_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMember).to.deep.equal(expectedCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -327,26 +336,38 @@ describe('Different characters with the same name', () => {
 
 		it('includes cast with Sam Alexander as Demetrius (#2)', () => {
 
-			const expectedCastMember = {
-				model: 'person',
-				uuid: SAM_ALEXANDER_PERSON_UUID,
-				name: 'Sam Alexander',
-				roles: [
-					{
-						model: 'character',
-						uuid: DEMETRIUS_CHARACTER_2_UUID,
-						name: 'Demetrius',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: RICHARD_RIDDELL_PERSON_UUID,
+					name: 'Richard Riddell',
+					roles: [
+						{
+							model: 'character',
+							uuid: CHIRON_CHARACTER_UUID,
+							name: 'Chiron',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: SAM_ALEXANDER_PERSON_UUID,
+					name: 'Sam Alexander',
+					roles: [
+						{
+							model: 'character',
+							uuid: DEMETRIUS_CHARACTER_2_UUID,
+							name: 'Demetrius',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = titusAndronicusGlobeProduction.body;
 
-			const castMember = cast.find(castMember => castMember.uuid === SAM_ALEXANDER_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMember).to.deep.equal(expectedCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -356,33 +377,30 @@ describe('Different characters with the same name', () => {
 
 		it('includes in their production credits their portrayal of Demetrius (#1) (i.e. and not Demetrius (#2))', () => {
 
-			const expectedAMidsummerNightsDreamNovelloProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: NOVELLO_THEATRE_UUID,
-					name: 'Novello Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: DEMETRIUS_CHARACTER_1_UUID,
-						name: 'Demetrius',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: NOVELLO_THEATRE_UUID,
+						name: 'Novello Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: DEMETRIUS_CHARACTER_1_UUID,
+							name: 'Demetrius',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = oscarPearcePerson.body;
 
-			const aMidsummerNightsDreamNovelloProduction =
-				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(aMidsummerNightsDreamNovelloProduction)
-				.to.deep.equal(expectedAMidsummerNightsDreamNovelloProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -392,32 +410,30 @@ describe('Different characters with the same name', () => {
 
 		it('includes in their production credits their portrayal of Demetrius (#2) (i.e. and not Demetrius (#1))', () => {
 
-			const expectedTitusAndronicusGlobeProduction = {
-				model: 'production',
-				uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
-				name: 'Titus Andronicus',
-				theatre: {
-					model: 'theatre',
-					uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-					name: 'Shakespeare\'s Globe'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: DEMETRIUS_CHARACTER_2_UUID,
-						name: 'Demetrius',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
+					name: 'Titus Andronicus',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: DEMETRIUS_CHARACTER_2_UUID,
+							name: 'Demetrius',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = samAlexanderPerson.body;
 
-			const titusAndronicusGlobeProduction =
-				productions.find(production => production.uuid === TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(titusAndronicusGlobeProduction).to.deep.equal(expectedTitusAndronicusGlobeProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

@@ -111,7 +111,7 @@ describe('Theatre with multiple productions', () => {
 
 		it('attributes theatre as Donmar Warehouse', () => {
 
-			const expectedTheatreDonmarWarehouse = {
+			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
 				name: 'Donmar Warehouse'
@@ -119,7 +119,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = streetcarNamedDesireDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
+			expect(theatre).to.deep.equal(expectedTheatre);
 
 		});
 
@@ -129,7 +129,7 @@ describe('Theatre with multiple productions', () => {
 
 		it('attributes theatre as Donmar Warehouse', () => {
 
-			const expectedTheatreDonmarWarehouse = {
+			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
 				name: 'Donmar Warehouse'
@@ -137,7 +137,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = lifeIsADreamDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
+			expect(theatre).to.deep.equal(expectedTheatre);
 
 		});
 
@@ -147,7 +147,7 @@ describe('Theatre with multiple productions', () => {
 
 		it('attributes theatre as Donmar Warehouse', () => {
 
-			const expectedTheatreDonmarWarehouse = {
+			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
 				name: 'Donmar Warehouse'
@@ -155,7 +155,7 @@ describe('Theatre with multiple productions', () => {
 
 			const { theatre } = redDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatreDonmarWarehouse);
+			expect(theatre).to.deep.equal(expectedTheatre);
 
 		});
 

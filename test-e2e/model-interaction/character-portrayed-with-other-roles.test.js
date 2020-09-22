@@ -119,53 +119,51 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProduction = {
-				model: 'production',
-				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
-				name: 'War Horse',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: STEPHEN_HARPER_PERSON_UUID,
-						name: 'Stephen Harper',
-						roleName: 'Joey\'s mother',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: DR_SCHWEYK_CHARACTER_UUID,
-								name: 'Dr Schweyk',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: COCO_CHARACTER_UUID,
-								name: 'Coco',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: GEORDIE_CHARACTER_UUID,
-								name: 'Geordie',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
+					name: 'War Horse',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: STEPHEN_HARPER_PERSON_UUID,
+							name: 'Stephen Harper',
+							roleName: 'Joey\'s mother',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: DR_SCHWEYK_CHARACTER_UUID,
+									name: 'Dr Schweyk',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: COCO_CHARACTER_UUID,
+									name: 'Coco',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: GEORDIE_CHARACTER_UUID,
+									name: 'Geordie',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = joeysMotherCharacter.body;
 
-			const warHorseNationalProduction =
-				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -175,53 +173,51 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProduction = {
-				model: 'production',
-				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
-				name: 'War Horse',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: STEPHEN_HARPER_PERSON_UUID,
-						name: 'Stephen Harper',
-						roleName: 'Dr Schweyk',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: JOEYS_MOTHER_CHARACTER_UUID,
-								name: 'Joey\'s mother',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: COCO_CHARACTER_UUID,
-								name: 'Coco',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: GEORDIE_CHARACTER_UUID,
-								name: 'Geordie',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
+					name: 'War Horse',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: STEPHEN_HARPER_PERSON_UUID,
+							name: 'Stephen Harper',
+							roleName: 'Dr Schweyk',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: JOEYS_MOTHER_CHARACTER_UUID,
+									name: 'Joey\'s mother',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: COCO_CHARACTER_UUID,
+									name: 'Coco',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: GEORDIE_CHARACTER_UUID,
+									name: 'Geordie',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = drSchweykCharacter.body;
 
-			const warHorseNationalProduction =
-				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -231,53 +227,51 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProduction = {
-				model: 'production',
-				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
-				name: 'War Horse',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: STEPHEN_HARPER_PERSON_UUID,
-						name: 'Stephen Harper',
-						roleName: 'Coco',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: JOEYS_MOTHER_CHARACTER_UUID,
-								name: 'Joey\'s mother',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: DR_SCHWEYK_CHARACTER_UUID,
-								name: 'Dr Schweyk',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: GEORDIE_CHARACTER_UUID,
-								name: 'Geordie',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
+					name: 'War Horse',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: STEPHEN_HARPER_PERSON_UUID,
+							name: 'Stephen Harper',
+							roleName: 'Coco',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: JOEYS_MOTHER_CHARACTER_UUID,
+									name: 'Joey\'s mother',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: DR_SCHWEYK_CHARACTER_UUID,
+									name: 'Dr Schweyk',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: GEORDIE_CHARACTER_UUID,
+									name: 'Geordie',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = cocoCharacter.body;
 
-			const warHorseNationalProduction =
-				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -287,53 +281,51 @@ describe('Character portrayed with other roles', () => {
 
 		it('includes performers who portrayed them and the other roles they also played', () => {
 
-			const expectedWarHorseNationalProduction = {
-				model: 'production',
-				uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
-				name: 'War Horse',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: STEPHEN_HARPER_PERSON_UUID,
-						name: 'Stephen Harper',
-						roleName: 'Geordie',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: JOEYS_MOTHER_CHARACTER_UUID,
-								name: 'Joey\'s mother',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: DR_SCHWEYK_CHARACTER_UUID,
-								name: 'Dr Schweyk',
-								qualifier: null
-							},
-							{
-								model: 'character',
-								uuid: COCO_CHARACTER_UUID,
-								name: 'Coco',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
+					name: 'War Horse',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: STEPHEN_HARPER_PERSON_UUID,
+							name: 'Stephen Harper',
+							roleName: 'Geordie',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: JOEYS_MOTHER_CHARACTER_UUID,
+									name: 'Joey\'s mother',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: DR_SCHWEYK_CHARACTER_UUID,
+									name: 'Dr Schweyk',
+									qualifier: null
+								},
+								{
+									model: 'character',
+									uuid: COCO_CHARACTER_UUID,
+									name: 'Coco',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = geordieCharacter.body;
 
-			const warHorseNationalProduction =
-				productions.find(production => production.uuid === WAR_HORSE_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(warHorseNationalProduction).to.deep.equal(expectedWarHorseNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

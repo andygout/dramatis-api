@@ -138,7 +138,7 @@ describe('Playtext with multiple productions', () => {
 
 		it('attributes playtext as Measure for Measure', () => {
 
-			const expectedPlaytextMeasureForMeasure = {
+			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
 				name: 'Measure for Measure'
@@ -146,7 +146,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureNationalProduction.body;
 
-			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
+			expect(playtext).to.deep.equal(expectedPlaytext);
 
 		});
 
@@ -156,7 +156,7 @@ describe('Playtext with multiple productions', () => {
 
 		it('attributes playtext as Measure for Measure', () => {
 
-			const expectedPlaytextMeasureForMeasure = {
+			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
 				name: 'Measure for Measure'
@@ -164,7 +164,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureAlmeidaProduction.body;
 
-			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
+			expect(playtext).to.deep.equal(expectedPlaytext);
 
 		});
 
@@ -174,7 +174,7 @@ describe('Playtext with multiple productions', () => {
 
 		it('attributes playtext as Measure for Measure', () => {
 
-			const expectedPlaytextMeasureForMeasure = {
+			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
 				name: 'Measure for Measure'
@@ -182,7 +182,7 @@ describe('Playtext with multiple productions', () => {
 
 			const { playtext } = measureForMeasureDonmarProduction.body;
 
-			expect(playtext).to.deep.equal(expectedPlaytextMeasureForMeasure);
+			expect(playtext).to.deep.equal(expectedPlaytext);
 
 		});
 

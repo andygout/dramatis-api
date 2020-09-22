@@ -145,59 +145,52 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedKingLearRoyalShakespeareProduction = {
-				model: 'production',
-				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ANTONY_SHER_PERSON_UUID,
+							name: 'Antony Sher',
+							roleName: 'King Lear',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: MICHAEL_GAMBON_PERSON_UUID,
-						name: 'Michael Gambon',
-						roleName: 'King Lear',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
-
-			const expectedKingLearBarbicanProduction = {
-				model: 'production',
-				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: BARBICAN_THEATRE_UUID,
-					name: 'Barbican'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: ANTONY_SHER_PERSON_UUID,
-						name: 'Antony Sher',
-						roleName: 'King Lear',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
+							roleName: 'King Lear',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = kingLearCharacter.body;
 
-			const kingLearRoyalShakespeareProduction =
-				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			const kingLearBarbicanProduction =
-				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
-			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -207,59 +200,52 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedKingLearRoyalShakespeareProduction = {
-				model: 'production',
-				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: GRAHAM_TURNER_PERSON_UUID,
+							name: 'Graham Turner',
+							roleName: 'Fool',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: ANTONY_SHER_PERSON_UUID,
-						name: 'Antony Sher',
-						roleName: 'Fool',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
-
-			const expectedKingLearBarbicanProduction = {
-				model: 'production',
-				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: BARBICAN_THEATRE_UUID,
-					name: 'Barbican'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: GRAHAM_TURNER_PERSON_UUID,
-						name: 'Graham Turner',
-						roleName: 'Fool',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ANTONY_SHER_PERSON_UUID,
+							name: 'Antony Sher',
+							roleName: 'Fool',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = foolCharacter.body;
 
-			const kingLearRoyalShakespeareProduction =
-				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			const kingLearBarbicanProduction =
-				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
-			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -269,42 +255,38 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes cast with Michael Gambon as King Lear and Antony Sher as Fool', () => {
 
-			const expectedCastMemberMichaelGambon = {
-				model: 'person',
-				uuid: MICHAEL_GAMBON_PERSON_UUID,
-				name: 'Michael Gambon',
-				roles: [
-					{
-						model: 'character',
-						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedCastMemberAntonySher = {
-				model: 'person',
-				uuid: ANTONY_SHER_PERSON_UUID,
-				name: 'Antony Sher',
-				roles: [
-					{
-						model: 'character',
-						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: MICHAEL_GAMBON_PERSON_UUID,
+					name: 'Michael Gambon',
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_LEAR_CHARACTER_UUID,
+							name: 'King Lear',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: ANTONY_SHER_PERSON_UUID,
+					name: 'Antony Sher',
+					roles: [
+						{
+							model: 'character',
+							uuid: FOOL_CHARACTER_UUID,
+							name: 'Fool',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = kingLearRoyalShakespeareProduction.body;
 
-			const castMemberMichaelGambon = cast.find(castMember => castMember.uuid === MICHAEL_GAMBON_PERSON_UUID);
-			const castMemberAntonySher = cast.find(castMember => castMember.uuid === ANTONY_SHER_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMemberMichaelGambon).to.deep.equal(expectedCastMemberMichaelGambon);
-			expect(castMemberAntonySher).to.deep.equal(expectedCastMemberAntonySher);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -314,42 +296,38 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes cast with Antony Sher as King Lear and Graham Turner as Fool', () => {
 
-			const expectedCastMemberAntonySher = {
-				model: 'person',
-				uuid: ANTONY_SHER_PERSON_UUID,
-				name: 'Antony Sher',
-				roles: [
-					{
-						model: 'character',
-						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedCastMemberGrahamTurner = {
-				model: 'person',
-				uuid: GRAHAM_TURNER_PERSON_UUID,
-				name: 'Graham Turner',
-				roles: [
-					{
-						model: 'character',
-						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: ANTONY_SHER_PERSON_UUID,
+					name: 'Antony Sher',
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_LEAR_CHARACTER_UUID,
+							name: 'King Lear',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: GRAHAM_TURNER_PERSON_UUID,
+					name: 'Graham Turner',
+					roles: [
+						{
+							model: 'character',
+							uuid: FOOL_CHARACTER_UUID,
+							name: 'Fool',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = kingLearBarbicanProduction.body;
 
-			const castMemberAntonySher = cast.find(castMember => castMember.uuid === ANTONY_SHER_PERSON_UUID);
-			const castMemberGrahamTurner = cast.find(castMember => castMember.uuid === GRAHAM_TURNER_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMemberAntonySher).to.deep.equal(expectedCastMemberAntonySher);
-			expect(castMemberGrahamTurner).to.deep.equal(expectedCastMemberGrahamTurner);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -359,32 +337,30 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of King Lear', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_LEAR_CHARACTER_UUID,
+							name: 'King Lear',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = michaelGambonPerson.body;
 
-			const production =
-				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -394,55 +370,48 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his respective portrayals of King Lear and the Fool', () => {
 
-			const expectedKingLearRoyalShakespeareProduction = {
-				model: 'production',
-				uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_LEAR_CHARACTER_UUID,
+							name: 'King Lear',
+							qualifier: null
+						}
+					]
 				},
-				roles: [
-					{
-						model: 'character',
-						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedKingLearBarbicanProduction = {
-				model: 'production',
-				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: BARBICAN_THEATRE_UUID,
-					name: 'Barbican'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: KING_LEAR_CHARACTER_UUID,
-						name: 'King Lear',
-						qualifier: null
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: FOOL_CHARACTER_UUID,
+							name: 'Fool',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = antonySherPerson.body;
 
-			const kingLearRoyalShakespeareProduction =
-				productions.find(production => production.uuid === KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			const kingLearBarbicanProduction =
-				productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(kingLearRoyalShakespeareProduction).to.deep.equal(expectedKingLearRoyalShakespeareProduction);
-			expect(kingLearBarbicanProduction).to.deep.equal(expectedKingLearBarbicanProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -452,31 +421,30 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of the Fool', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
-				name: 'King Lear',
-				theatre: {
-					model: 'theatre',
-					uuid: BARBICAN_THEATRE_UUID,
-					name: 'Barbican'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: FOOL_CHARACTER_UUID,
-						name: 'Fool',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
+					name: 'King Lear',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: FOOL_CHARACTER_UUID,
+							name: 'Fool',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = grahamTurnerPerson.body;
 
-			const production = productions.find(production => production.uuid === KING_LEAR_BARBICAN_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

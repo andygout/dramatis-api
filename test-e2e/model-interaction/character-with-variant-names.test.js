@@ -10,17 +10,21 @@ describe('Character with variant names', () => {
 
 	chai.use(chaiHttp);
 
+	const HAMLET_CHARACTER_UUID = '6';
 	const CLAUDIUS_CHARACTER_UUID = '7';
 	const GHOST_CHARACTER_UUID = '8';
 	const FIRST_PLAYER_CHARACTER_UUID = '9';
 	const HAMLET_ALMEIDA_PRODUCTION_UUID = '10';
 	const ALMEIDA_THEATRE_UUID = '11';
+	const ANDREW_SCOTT_PERSON_UUID = '13';
 	const DAVID_RINTOUL_PERSON_UUID = '14';
 	const HAMLET_NOVELLO_PRODUCTION_UUID = '15';
 	const NOVELLO_THEATRE_UUID = '16';
+	const DAVID_TENNANT_PERSON_UUID = '18';
 	const PATRICK_STEWART_PERSON_UUID = '19';
 	const HAMLET_WYNDHAMS_PRODUCTION_UUID = '20';
 	const WYNDHAMS_THEATRE_UUID = '21';
+	const JUDE_LAW_PERSON_UUID = '23';
 	const PETER_EYRE_PERSON_UUID = '24';
 
 	let ghostCharacter;
@@ -213,105 +217,93 @@ describe('Character with variant names', () => {
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedHamletAlmeidaProduction = {
-				model: 'production',
-				uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
-					name: 'Almeida Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: ALMEIDA_THEATRE_UUID,
+						name: 'Almeida Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: DAVID_RINTOUL_PERSON_UUID,
+							name: 'David Rintoul',
+							roleName: 'Ghost',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: FIRST_PLAYER_CHARACTER_UUID,
+									name: 'Player King',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: DAVID_RINTOUL_PERSON_UUID,
-						name: 'David Rintoul',
-						roleName: 'Ghost',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: FIRST_PLAYER_CHARACTER_UUID,
-								name: 'Player King',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
-
-			const expectedHamletNovelloProduction = {
-				model: 'production',
-				uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: NOVELLO_THEATRE_UUID,
-					name: 'Novello Theatre'
+				{
+					model: 'production',
+					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: NOVELLO_THEATRE_UUID,
+						name: 'Novello Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: PATRICK_STEWART_PERSON_UUID,
+							name: 'Patrick Stewart',
+							roleName: 'Ghost of King Hamlet',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: CLAUDIUS_CHARACTER_UUID,
+									name: 'Claudius',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: PATRICK_STEWART_PERSON_UUID,
-						name: 'Patrick Stewart',
-						roleName: 'Ghost of King Hamlet',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: CLAUDIUS_CHARACTER_UUID,
-								name: 'Claudius',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
-
-			const expectedHamletWyndhamsProduction = {
-				model: 'production',
-				uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: WYNDHAMS_THEATRE_UUID,
-					name: 'Wyndham\'s Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: PETER_EYRE_PERSON_UUID,
-						name: 'Peter Eyre',
-						roleName: 'King Hamlet',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: FIRST_PLAYER_CHARACTER_UUID,
-								name: 'First Player',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: PETER_EYRE_PERSON_UUID,
+							name: 'Peter Eyre',
+							roleName: 'King Hamlet',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: FIRST_PLAYER_CHARACTER_UUID,
+									name: 'First Player',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = ghostCharacter.body;
 
-			const hamletAlmeidaProduction =
-				productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
-
-			const hamletNovelloProduction =
-				productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
-
-			const hamletWyndhamsProduction =
-				productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(3);
-			expect(hamletAlmeidaProduction).to.deep.equal(expectedHamletAlmeidaProduction);
-			expect(hamletNovelloProduction).to.deep.equal(expectedHamletNovelloProduction);
-			expect(hamletWyndhamsProduction).to.deep.equal(expectedHamletWyndhamsProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -321,32 +313,44 @@ describe('Character with variant names', () => {
 
 		it('includes cast with David Rintoul as Ghost of King Hamlet under a variant name (Ghost)', () => {
 
-			const expectedCastMember = {
-				model: 'person',
-				uuid: DAVID_RINTOUL_PERSON_UUID,
-				name: 'David Rintoul',
-				roles: [
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'Player King',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: ANDREW_SCOTT_PERSON_UUID,
+					name: 'Andrew Scott',
+					roles: [
+						{
+							model: 'character',
+							uuid: HAMLET_CHARACTER_UUID,
+							name: 'Hamlet',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: DAVID_RINTOUL_PERSON_UUID,
+					name: 'David Rintoul',
+					roles: [
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'Ghost',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: FIRST_PLAYER_CHARACTER_UUID,
+							name: 'Player King',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = hamletAlmeidaProduction.body;
 
-			const castMember = cast.find(castMember => castMember.uuid === DAVID_RINTOUL_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMember).to.deep.equal(expectedCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -356,32 +360,44 @@ describe('Character with variant names', () => {
 
 		it('includes cast with Patrick Stewart as Ghost of King Hamlet under same name as in playtext (Ghost of King Hamlet)', () => {
 
-			const expectedCastMember = {
-				model: 'person',
-				uuid: PATRICK_STEWART_PERSON_UUID,
-				name: 'Patrick Stewart',
-				roles: [
-					{
-						model: 'character',
-						uuid: CLAUDIUS_CHARACTER_UUID,
-						name: 'Claudius',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost of King Hamlet',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: DAVID_TENNANT_PERSON_UUID,
+					name: 'David Tennant',
+					roles: [
+						{
+							model: 'character',
+							uuid: HAMLET_CHARACTER_UUID,
+							name: 'Hamlet',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: PATRICK_STEWART_PERSON_UUID,
+					name: 'Patrick Stewart',
+					roles: [
+						{
+							model: 'character',
+							uuid: CLAUDIUS_CHARACTER_UUID,
+							name: 'Claudius',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'Ghost of King Hamlet',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = hamletNovelloProduction.body;
 
-			const castMember = cast.find(castMember => castMember.uuid === PATRICK_STEWART_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMember).to.deep.equal(expectedCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -391,32 +407,44 @@ describe('Character with variant names', () => {
 
 		it('includes cast with Peter Eyre as Ghost of King Hamlet under a variant name (King Hamlet)', () => {
 
-			const expectedCastMember = {
-				model: 'person',
-				uuid: PETER_EYRE_PERSON_UUID,
-				name: 'Peter Eyre',
-				roles: [
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'King Hamlet',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'First Player',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: JUDE_LAW_PERSON_UUID,
+					name: 'Jude Law',
+					roles: [
+						{
+							model: 'character',
+							uuid: HAMLET_CHARACTER_UUID,
+							name: 'Hamlet',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: PETER_EYRE_PERSON_UUID,
+					name: 'Peter Eyre',
+					roles: [
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'King Hamlet',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: FIRST_PLAYER_CHARACTER_UUID,
+							name: 'First Player',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = hamletWyndhamsProduction.body;
 
-			const castMember = cast.find(castMember => castMember.uuid === PETER_EYRE_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMember).to.deep.equal(expectedCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -426,37 +454,36 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (Ghost)', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
-					name: 'Almeida Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: ALMEIDA_THEATRE_UUID,
+						name: 'Almeida Theatre'
 					},
-					{
-						model: 'character',
-						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'Player King',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'Ghost',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: FIRST_PLAYER_CHARACTER_UUID,
+							name: 'Player King',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = davidRintoulPerson.body;
 
-			const production = productions.find(production => production.uuid === HAMLET_ALMEIDA_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -466,37 +493,36 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under same name as in playtext (Ghost of King Hamlet)', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: NOVELLO_THEATRE_UUID,
-					name: 'Novello Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: CLAUDIUS_CHARACTER_UUID,
-						name: 'Claudius',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: NOVELLO_THEATRE_UUID,
+						name: 'Novello Theatre'
 					},
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'Ghost of King Hamlet',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: CLAUDIUS_CHARACTER_UUID,
+							name: 'Claudius',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'Ghost of King Hamlet',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = patrickStewartPerson.body;
 
-			const production = productions.find(production => production.uuid === HAMLET_NOVELLO_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -506,37 +532,36 @@ describe('Character with variant names', () => {
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (King Hamlet)', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
-				name: 'Hamlet',
-				theatre: {
-					model: 'theatre',
-					uuid: WYNDHAMS_THEATRE_UUID,
-					name: 'Wyndham\'s Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: GHOST_CHARACTER_UUID,
-						name: 'King Hamlet',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre'
 					},
-					{
-						model: 'character',
-						uuid: FIRST_PLAYER_CHARACTER_UUID,
-						name: 'First Player',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: GHOST_CHARACTER_UUID,
+							name: 'King Hamlet',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: FIRST_PLAYER_CHARACTER_UUID,
+							name: 'First Player',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = peterEyrePerson.body;
 
-			const production = productions.find(production => production.uuid === HAMLET_WYNDHAMS_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

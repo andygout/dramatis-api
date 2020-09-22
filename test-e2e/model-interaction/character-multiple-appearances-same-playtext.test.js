@@ -18,6 +18,7 @@ describe('Character with multiple appearances in the same playtext under differe
 	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = '12';
 	const ROYAL_COURT_THEATRE_UUID = '13';
 	const ALICE_EVE_PERSON_UUID = '15';
+	const BRIAN_COX_PERSON_UUID = '16';
 	const SINEAD_CUSACK_PERSON_UUID = '17';
 
 	let esmeCharacter;
@@ -148,78 +149,75 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes playtexts in which character appears, including the qualifiers used', () => {
 
-			const expectedRockNRollPlaytext = {
-				model: 'playtext',
-				uuid: ROCK_N_ROLL_PLAYTEXT_UUID,
-				name: 'Rock \'n\' Roll',
-				qualifiers: [
-					'younger',
-					'older'
-				],
-				groups: []
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: ROCK_N_ROLL_PLAYTEXT_UUID,
+					name: 'Rock \'n\' Roll',
+					qualifiers: [
+						'younger',
+						'older'
+					],
+					groups: []
+				}
+			];
 
 			const { playtexts } = esmeCharacter.body;
 
-			const rockNRollPlaytext = playtexts.find(playtext => playtext.uuid === ROCK_N_ROLL_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(1);
-			expect(rockNRollPlaytext).to.deep.equal(expectedRockNRollPlaytext);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and under which qualifier', () => {
 
-			const expectedRockNRollRoyalCourtProduction = {
-				model: 'production',
-				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
-				name: 'Rock \'n\' Roll',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_COURT_THEATRE_UUID,
-					name: 'Royal Court Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: ALICE_EVE_PERSON_UUID,
-						name: 'Alice Eve',
-						roleName: 'Esme',
-						qualifier: 'younger',
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: ALICE_CHARACTER_UUID,
-								name: 'Alice',
-								qualifier: null
-							}
-						]
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
+					name: 'Rock \'n\' Roll',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_COURT_THEATRE_UUID,
+						name: 'Royal Court Theatre'
 					},
-					{
-						model: 'person',
-						uuid: SINEAD_CUSACK_PERSON_UUID,
-						name: 'Sinead Cusack',
-						roleName: 'Esme',
-						qualifier: 'older',
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: ELEANOR_CHARACTER_UUID,
-								name: 'Eleanor',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+					performers: [
+						{
+							model: 'person',
+							uuid: ALICE_EVE_PERSON_UUID,
+							name: 'Alice Eve',
+							roleName: 'Esme',
+							qualifier: 'younger',
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: ALICE_CHARACTER_UUID,
+									name: 'Alice',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: SINEAD_CUSACK_PERSON_UUID,
+							name: 'Sinead Cusack',
+							roleName: 'Esme',
+							qualifier: 'older',
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: ELEANOR_CHARACTER_UUID,
+									name: 'Eleanor',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = esmeCharacter.body;
 
-			const rockNRollRoyalCourtProduction =
-				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -229,41 +227,39 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
 
-			const expectedRockNRollRoyalCourtProduction = {
-				model: 'production',
-				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
-				name: 'Rock \'n\' Roll',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_COURT_THEATRE_UUID,
-					name: 'Royal Court Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: ALICE_EVE_PERSON_UUID,
-						name: 'Alice Eve',
-						roleName: 'Alice',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: ESME_CHARACTER_UUID,
-								name: 'Esme',
-								qualifier: 'younger'
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
+					name: 'Rock \'n\' Roll',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_COURT_THEATRE_UUID,
+						name: 'Royal Court Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ALICE_EVE_PERSON_UUID,
+							name: 'Alice Eve',
+							roleName: 'Alice',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: ESME_CHARACTER_UUID,
+									name: 'Esme',
+									qualifier: 'younger'
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = aliceCharacter.body;
 
-			const rockNRollRoyalCourtProduction =
-				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -273,41 +269,39 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
 
-			const expectedRockNRollRoyalCourtProduction = {
-				model: 'production',
-				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
-				name: 'Rock \'n\' Roll',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_COURT_THEATRE_UUID,
-					name: 'Royal Court Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: SINEAD_CUSACK_PERSON_UUID,
-						name: 'Sinead Cusack',
-						roleName: 'Eleanor',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: ESME_CHARACTER_UUID,
-								name: 'Esme',
-								qualifier: 'older'
-							}
-						]
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
+					name: 'Rock \'n\' Roll',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_COURT_THEATRE_UUID,
+						name: 'Royal Court Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: SINEAD_CUSACK_PERSON_UUID,
+							name: 'Sinead Cusack',
+							roleName: 'Eleanor',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: ESME_CHARACTER_UUID,
+									name: 'Esme',
+									qualifier: 'older'
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = eleanorCharacter.body;
 
-			const rockNRollRoyalCourtProduction =
-				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -362,54 +356,63 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes the portrayers of Esme in its cast with their corresponding qualifiers', () => {
 
-			const expectedAliceEveCastMember = {
-				model: 'person',
-				uuid: ALICE_EVE_PERSON_UUID,
-				name: 'Alice Eve',
-				roles: [
-					{
-						model: 'character',
-						uuid: ESME_CHARACTER_UUID,
-						name: 'Esme',
-						qualifier: 'younger'
-					},
-					{
-						model: 'character',
-						uuid: ALICE_CHARACTER_UUID,
-						name: 'Alice',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedSineadCusackCastMember = {
-				model: 'person',
-				uuid: SINEAD_CUSACK_PERSON_UUID,
-				name: 'Sinead Cusack',
-				roles: [
-					{
-						model: 'character',
-						uuid: ELEANOR_CHARACTER_UUID,
-						name: 'Eleanor',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: ESME_CHARACTER_UUID,
-						name: 'Esme',
-						qualifier: 'older'
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: ALICE_EVE_PERSON_UUID,
+					name: 'Alice Eve',
+					roles: [
+						{
+							model: 'character',
+							uuid: ESME_CHARACTER_UUID,
+							name: 'Esme',
+							qualifier: 'younger'
+						},
+						{
+							model: 'character',
+							uuid: ALICE_CHARACTER_UUID,
+							name: 'Alice',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: BRIAN_COX_PERSON_UUID,
+					name: 'Brian Cox',
+					roles: [
+						{
+							model: 'character',
+							uuid: MAX_CHARACTER_UUID,
+							name: 'Max',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: SINEAD_CUSACK_PERSON_UUID,
+					name: 'Sinead Cusack',
+					roles: [
+						{
+							model: 'character',
+							uuid: ELEANOR_CHARACTER_UUID,
+							name: 'Eleanor',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: ESME_CHARACTER_UUID,
+							name: 'Esme',
+							qualifier: 'older'
+						}
+					]
+				}
+			];
 
 			const { cast } = rockNRollRoyalCourtProduction.body;
 
-			const aliceEveCastMember = cast.find(castMember => castMember.uuid === ALICE_EVE_PERSON_UUID);
-			const sineadCusackCastMember = cast.find(castMember => castMember.uuid === SINEAD_CUSACK_PERSON_UUID);
-
-			expect(cast.length).to.equal(3);
-			expect(aliceEveCastMember).to.deep.equal(expectedAliceEveCastMember);
-			expect(sineadCusackCastMember).to.deep.equal(expectedSineadCusackCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -419,38 +422,36 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. younger)', () => {
 
-			const expectedRockNRollRoyalCourtProduction = {
-				model: 'production',
-				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
-				name: 'Rock \'n\' Roll',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_COURT_THEATRE_UUID,
-					name: 'Royal Court Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ESME_CHARACTER_UUID,
-						name: 'Esme',
-						qualifier: 'younger'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
+					name: 'Rock \'n\' Roll',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_COURT_THEATRE_UUID,
+						name: 'Royal Court Theatre'
 					},
-					{
-						model: 'character',
-						uuid: ALICE_CHARACTER_UUID,
-						name: 'Alice',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: ESME_CHARACTER_UUID,
+							name: 'Esme',
+							qualifier: 'younger'
+						},
+						{
+							model: 'character',
+							uuid: ALICE_CHARACTER_UUID,
+							name: 'Alice',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = aliceEvePerson.body;
 
-			const rockNRollRoyalCourtProduction =
-				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -460,38 +461,36 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. older)', () => {
 
-			const expectedRockNRollRoyalCourtProduction = {
-				model: 'production',
-				uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
-				name: 'Rock \'n\' Roll',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_COURT_THEATRE_UUID,
-					name: 'Royal Court Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ELEANOR_CHARACTER_UUID,
-						name: 'Eleanor',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
+					name: 'Rock \'n\' Roll',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_COURT_THEATRE_UUID,
+						name: 'Royal Court Theatre'
 					},
-					{
-						model: 'character',
-						uuid: ESME_CHARACTER_UUID,
-						name: 'Esme',
-						qualifier: 'older'
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: ELEANOR_CHARACTER_UUID,
+							name: 'Eleanor',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: ESME_CHARACTER_UUID,
+							name: 'Esme',
+							qualifier: 'older'
+						}
+					]
+				}
+			];
 
 			const { productions } = sineadCusackPerson.body;
 
-			const rockNRollRoyalCourtProduction =
-				productions.find(production => production.uuid === ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(rockNRollRoyalCourtProduction).to.deep.equal(expectedRockNRollRoyalCourtProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

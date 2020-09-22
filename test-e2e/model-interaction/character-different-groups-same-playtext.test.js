@@ -197,64 +197,61 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes playtexts in which character appears, including the groups applied', () => {
 
-			const expectedThreeWintersPlaytext = {
-				model: 'playtext',
-				uuid: THREE_WINTERS_PLAYTEXT_UUID,
-				name: '3 Winters',
-				qualifiers: [],
-				groups: [
-					'2011',
-					'1990'
-				]
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: THREE_WINTERS_PLAYTEXT_UUID,
+					name: '3 Winters',
+					qualifiers: [],
+					groups: [
+						'2011',
+						'1990'
+					]
+				}
+			];
 
 			const { playtexts } = alisaKosCharacter.body;
 
-			const threeWintersPlaytext = playtexts.find(playtext => playtext.uuid === THREE_WINTERS_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(1);
-			expect(threeWintersPlaytext).to.deep.equal(expectedThreeWintersPlaytext);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and in which group', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: JODIE_MCNEE_PERSON_UUID,
-						name: 'Jodie McNee',
-						roleName: 'Alisa Kos',
-						qualifier: '2011',
-						otherRoles: []
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
 					},
-					{
-						model: 'person',
-						uuid: BEBE_SANDERS_PERSON_UUID,
-						name: 'Bebe Sanders',
-						roleName: 'Alisa Kos',
-						qualifier: '1990',
-						otherRoles: []
-					}
-				]
-			};
+					performers: [
+						{
+							model: 'person',
+							uuid: JODIE_MCNEE_PERSON_UUID,
+							name: 'Jodie McNee',
+							roleName: 'Alisa Kos',
+							qualifier: '2011',
+							otherRoles: []
+						},
+						{
+							model: 'person',
+							uuid: BEBE_SANDERS_PERSON_UUID,
+							name: 'Bebe Sanders',
+							roleName: 'Alisa Kos',
+							qualifier: '1990',
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = alisaKosCharacter.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -264,56 +261,53 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes playtexts in which character appears, including the groups applied', () => {
 
-			const expectedThreeWintersPlaytext = {
-				model: 'playtext',
-				uuid: THREE_WINTERS_PLAYTEXT_UUID,
-				name: '3 Winters',
-				qualifiers: [],
-				groups: [
-					'2011',
-					'1990'
-				]
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: THREE_WINTERS_PLAYTEXT_UUID,
+					name: '3 Winters',
+					qualifiers: [],
+					groups: [
+						'2011',
+						'1990'
+					]
+				}
+			];
 
 			const { playtexts } = mašaKosCharacter.body;
 
-			const threeWintersPlaytext = playtexts.find(playtext => playtext.uuid === THREE_WINTERS_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(1);
-			expect(threeWintersPlaytext).to.deep.equal(expectedThreeWintersPlaytext);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and excluding group as not applied', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: SIOBHAN_FINNERAN_PERSON_UUID,
-						name: 'Siobhan Finneran',
-						roleName: 'Maša Kos',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: SIOBHAN_FINNERAN_PERSON_UUID,
+							name: 'Siobhan Finneran',
+							roleName: 'Maša Kos',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = mašaKosCharacter.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -323,64 +317,61 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes playtexts in which character appears, including the groups applied', () => {
 
-			const expectedThreeWintersPlaytext = {
-				model: 'playtext',
-				uuid: THREE_WINTERS_PLAYTEXT_UUID,
-				name: '3 Winters',
-				qualifiers: [],
-				groups: [
-					'1990',
-					'1945'
-				]
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: THREE_WINTERS_PLAYTEXT_UUID,
+					name: '3 Winters',
+					qualifiers: [],
+					groups: [
+						'1990',
+						'1945'
+					]
+				}
+			];
 
 			const { playtexts } = aleksanderKingCharacter.body;
 
-			const threeWintersPlaytext = playtexts.find(playtext => playtext.uuid === THREE_WINTERS_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(1);
-			expect(threeWintersPlaytext).to.deep.equal(expectedThreeWintersPlaytext);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and in which group', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: JAMES_LAURENSON_PERSON_UUID,
-						name: 'James Laurenson',
-						roleName: 'Aleksander King',
-						qualifier: '1990',
-						otherRoles: []
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
 					},
-					{
-						model: 'person',
-						uuid: ALEX_PRICE_PERSON_UUID,
-						name: 'Alex Price',
-						roleName: 'Aleksander King',
-						qualifier: '1945',
-						otherRoles: []
-					}
-				]
-			};
+					performers: [
+						{
+							model: 'person',
+							uuid: JAMES_LAURENSON_PERSON_UUID,
+							name: 'James Laurenson',
+							roleName: 'Aleksander King',
+							qualifier: '1990',
+							otherRoles: []
+						},
+						{
+							model: 'person',
+							uuid: ALEX_PRICE_PERSON_UUID,
+							name: 'Alex Price',
+							roleName: 'Aleksander King',
+							qualifier: '1945',
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = aleksanderKingCharacter.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -390,55 +381,52 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes playtexts in which character appears, including the groups applied', () => {
 
-			const expectedThreeWintersPlaytext = {
-				model: 'playtext',
-				uuid: THREE_WINTERS_PLAYTEXT_UUID,
-				name: '3 Winters',
-				qualifiers: [],
-				groups: [
-					'1945'
-				]
-			};
+			const expectedPlaytexts = [
+				{
+					model: 'playtext',
+					uuid: THREE_WINTERS_PLAYTEXT_UUID,
+					name: '3 Winters',
+					qualifiers: [],
+					groups: [
+						'1945'
+					]
+				}
+			];
 
 			const { playtexts } = roseKingCharacter.body;
 
-			const threeWintersPlaytext = playtexts.find(playtext => playtext.uuid === THREE_WINTERS_PLAYTEXT_UUID);
-
-			expect(playtexts.length).to.equal(1);
-			expect(threeWintersPlaytext).to.deep.equal(expectedThreeWintersPlaytext);
+			expect(playtexts).to.deep.equal(expectedPlaytexts);
 
 		});
 
 		it('includes productions in which character is portrayed, including by which performer and excluding group as not applied', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: JO_HERBERT_PERSON_UUID,
-						name: 'Jo Herbert',
-						roleName: 'Rose King',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: JO_HERBERT_PERSON_UUID,
+							name: 'Jo Herbert',
+							roleName: 'Rose King',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = roseKingCharacter.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -523,106 +511,90 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes the portrayers of the characters in its cast with their corresponding qualifiers', () => {
 
-			const expectedSiobhanFinneranCastMember = {
-				model: 'person',
-				uuid: SIOBHAN_FINNERAN_PERSON_UUID,
-				name: 'Siobhan Finneran',
-				roles: [
-					{
-						model: 'character',
-						uuid: MAŠA_KOS_CHARACTER_UUID,
-						name: 'Maša Kos',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedJoHerbertCastMember = {
-				model: 'person',
-				uuid: JO_HERBERT_PERSON_UUID,
-				name: 'Jo Herbert',
-				roles: [
-					{
-						model: 'character',
-						uuid: ROSE_KING_CHARACTER_UUID,
-						name: 'Rose King',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedJamesLaurensonCastMember = {
-				model: 'person',
-				uuid: JAMES_LAURENSON_PERSON_UUID,
-				name: 'James Laurenson',
-				roles: [
-					{
-						model: 'character',
-						uuid: ALEKSANDER_KING_CHARACTER_UUID,
-						name: 'Aleksander King',
-						qualifier: '1990'
-					}
-				]
-			};
-
-			const expectedJodieMcNeeCastMember = {
-				model: 'person',
-				uuid: JODIE_MCNEE_PERSON_UUID,
-				name: 'Jodie McNee',
-				roles: [
-					{
-						model: 'character',
-						uuid: ALISA_KOS_CHARACTER_UUID,
-						name: 'Alisa Kos',
-						qualifier: '2011'
-					}
-				]
-			};
-
-			const expectedAlexPriceCastMember = {
-				model: 'person',
-				uuid: ALEX_PRICE_PERSON_UUID,
-				name: 'Alex Price',
-				roles: [
-					{
-						model: 'character',
-						uuid: ALEKSANDER_KING_CHARACTER_UUID,
-						name: 'Aleksander King',
-						qualifier: '1945'
-					}
-				]
-			};
-
-			const expectedBebeSandersCastMember = {
-				model: 'person',
-				uuid: BEBE_SANDERS_PERSON_UUID,
-				name: 'Bebe Sanders',
-				roles: [
-					{
-						model: 'character',
-						uuid: ALISA_KOS_CHARACTER_UUID,
-						name: 'Alisa Kos',
-						qualifier: '1990'
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: SIOBHAN_FINNERAN_PERSON_UUID,
+					name: 'Siobhan Finneran',
+					roles: [
+						{
+							model: 'character',
+							uuid: MAŠA_KOS_CHARACTER_UUID,
+							name: 'Maša Kos',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: JO_HERBERT_PERSON_UUID,
+					name: 'Jo Herbert',
+					roles: [
+						{
+							model: 'character',
+							uuid: ROSE_KING_CHARACTER_UUID,
+							name: 'Rose King',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: JAMES_LAURENSON_PERSON_UUID,
+					name: 'James Laurenson',
+					roles: [
+						{
+							model: 'character',
+							uuid: ALEKSANDER_KING_CHARACTER_UUID,
+							name: 'Aleksander King',
+							qualifier: '1990'
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: JODIE_MCNEE_PERSON_UUID,
+					name: 'Jodie McNee',
+					roles: [
+						{
+							model: 'character',
+							uuid: ALISA_KOS_CHARACTER_UUID,
+							name: 'Alisa Kos',
+							qualifier: '2011'
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: ALEX_PRICE_PERSON_UUID,
+					name: 'Alex Price',
+					roles: [
+						{
+							model: 'character',
+							uuid: ALEKSANDER_KING_CHARACTER_UUID,
+							name: 'Aleksander King',
+							qualifier: '1945'
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: BEBE_SANDERS_PERSON_UUID,
+					name: 'Bebe Sanders',
+					roles: [
+						{
+							model: 'character',
+							uuid: ALISA_KOS_CHARACTER_UUID,
+							name: 'Alisa Kos',
+							qualifier: '1990'
+						}
+					]
+				}
+			];
 
 			const { cast } = threeWintersNationalProduction.body;
 
-			const siobhanFinneranCastMember = cast.find(castMember => castMember.uuid === SIOBHAN_FINNERAN_PERSON_UUID);
-			const joHerbertCastMember = cast.find(castMember => castMember.uuid === JO_HERBERT_PERSON_UUID);
-			const jamesLaurensonCastMember = cast.find(castMember => castMember.uuid === JAMES_LAURENSON_PERSON_UUID);
-			const jodieMcNeeCastMember = cast.find(castMember => castMember.uuid === JODIE_MCNEE_PERSON_UUID);
-			const alexPriceCastMember = cast.find(castMember => castMember.uuid === ALEX_PRICE_PERSON_UUID);
-			const bebeSandersCastMember = cast.find(castMember => castMember.uuid === BEBE_SANDERS_PERSON_UUID);
-
-			expect(cast.length).to.equal(6);
-			expect(siobhanFinneranCastMember).to.deep.equal(expectedSiobhanFinneranCastMember);
-			expect(joHerbertCastMember).to.deep.equal(expectedJoHerbertCastMember);
-			expect(jamesLaurensonCastMember).to.deep.equal(expectedJamesLaurensonCastMember);
-			expect(jodieMcNeeCastMember).to.deep.equal(expectedJodieMcNeeCastMember);
-			expect(alexPriceCastMember).to.deep.equal(expectedAlexPriceCastMember);
-			expect(bebeSandersCastMember).to.deep.equal(expectedBebeSandersCastMember);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -632,32 +604,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Maša Kos without a qualifier as not required', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: MAŠA_KOS_CHARACTER_UUID,
-						name: 'Maša Kos',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: MAŠA_KOS_CHARACTER_UUID,
+							name: 'Maša Kos',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = siobhanFinneranPerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -667,32 +637,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Rose King without a qualifier as not required', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ROSE_KING_CHARACTER_UUID,
-						name: 'Rose King',
-						qualifier: null
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: ROSE_KING_CHARACTER_UUID,
+							name: 'Rose King',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = joHerbertPerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -702,32 +670,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1990)', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ALEKSANDER_KING_CHARACTER_UUID,
-						name: 'Aleksander King',
-						qualifier: '1990'
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: ALEKSANDER_KING_CHARACTER_UUID,
+							name: 'Aleksander King',
+							qualifier: '1990'
+						}
+					]
+				}
+			];
 
 			const { productions } = jamesLaurensonPerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -737,32 +703,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 2011)', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ALISA_KOS_CHARACTER_UUID,
-						name: 'Alisa Kos',
-						qualifier: '2011'
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: ALISA_KOS_CHARACTER_UUID,
+							name: 'Alisa Kos',
+							qualifier: '2011'
+						}
+					]
+				}
+			];
 
 			const { productions } = jodieMcNeePerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -772,32 +736,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1945)', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ALEKSANDER_KING_CHARACTER_UUID,
-						name: 'Aleksander King',
-						qualifier: '1945'
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: ALEKSANDER_KING_CHARACTER_UUID,
+							name: 'Aleksander King',
+							qualifier: '1945'
+						}
+					]
+				}
+			];
 
 			const { productions } = alexPricePerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -807,32 +769,30 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 1990)', () => {
 
-			const expectedThreeWintersNationalProduction = {
-				model: 'production',
-				uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
-				name: '3 Winters',
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: ALISA_KOS_CHARACTER_UUID,
-						name: 'Alisa Kos',
-						qualifier: '1990'
-					}
-				]
-			};
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
+					name: '3 Winters',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: ALISA_KOS_CHARACTER_UUID,
+							name: 'Alisa Kos',
+							qualifier: '1990'
+						}
+					]
+				}
+			];
 
 			const { productions } = bebeSandersPerson.body;
 
-			const threeWintersNationalProduction =
-				productions.find(production => production.uuid === THREE_WINTERS_NATIONAL_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(threeWintersNationalProduction).to.deep.equal(expectedThreeWintersNationalProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
