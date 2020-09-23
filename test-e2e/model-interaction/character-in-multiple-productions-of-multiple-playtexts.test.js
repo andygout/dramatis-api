@@ -527,20 +527,18 @@ describe('Character in multiple productions of multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedSirJohnFalstaffCharacter = {
-				model: 'character',
-				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff',
-				qualifier: null
-			};
+			const expectedCharacters = [
+				{
+					model: 'character',
+					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
+					name: 'Sir John Falstaff',
+					qualifier: null
+				}
+			];
 
 			const { characterGroups: [{ characters }] } = henryIVPart1Playtext.body;
 
-			const sirJohnFalstaffCharacter =
-				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
-
-			expect(characters.length).to.equal(1);
-			expect(sirJohnFalstaffCharacter).to.deep.equal(expectedSirJohnFalstaffCharacter);
+			expect(characters).to.deep.equal(expectedCharacters);
 
 		});
 
@@ -550,20 +548,18 @@ describe('Character in multiple productions of multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedSirJohnFalstaffCharacter = {
-				model: 'character',
-				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff',
-				qualifier: null
-			};
+			const expectedCharacters = [
+				{
+					model: 'character',
+					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
+					name: 'Sir John Falstaff',
+					qualifier: null
+				}
+			];
 
 			const { characterGroups: [{ characters }] } = henryIVPart2Playtext.body;
 
-			const sirJohnFalstaffCharacter =
-				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
-
-			expect(characters.length).to.equal(1);
-			expect(sirJohnFalstaffCharacter).to.deep.equal(expectedSirJohnFalstaffCharacter);
+			expect(characters).to.deep.equal(expectedCharacters);
 
 		});
 
@@ -573,20 +569,18 @@ describe('Character in multiple productions of multiple playtexts', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
-			const expectedSirJohnFalstaffCharacter = {
-				model: 'character',
-				uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
-				name: 'Sir John Falstaff',
-				qualifier: null
-			};
+			const expectedCharacters = [
+				{
+					model: 'character',
+					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
+					name: 'Sir John Falstaff',
+					qualifier: null
+				}
+			];
 
 			const { characterGroups: [{ characters }] } = merryWivesOfWindsorPlaytext.body;
 
-			const sirJohnFalstaffCharacter =
-				characters.find(character => character.uuid === SIR_JOHN_FALSTAFF_CHARACTER_UUID);
-
-			expect(characters.length).to.equal(1);
-			expect(sirJohnFalstaffCharacter).to.deep.equal(expectedSirJohnFalstaffCharacter);
+			expect(characters).to.deep.equal(expectedCharacters);
 
 		});
 

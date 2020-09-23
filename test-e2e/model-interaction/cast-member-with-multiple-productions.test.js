@@ -219,33 +219,31 @@ describe('Cast member with multiple production credits', () => {
 
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberSusannahFellows = {
-				model: 'person',
-				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
-				name: 'Susannah Fellows',
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Chorus',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Trojan slave',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+					name: 'Susannah Fellows',
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Chorus',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Trojan slave',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = theGreeksAldwychProduction.body;
 
-			const castMemberSusannahFellows =
-				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
-
-			expect(cast.length).to.equal(1);
-			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -255,33 +253,31 @@ describe('Cast member with multiple production credits', () => {
 
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberSusannahFellows = {
-				model: 'person',
-				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
-				name: 'Susannah Fellows',
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Alaura Kingsley',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Carla Haywood',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+					name: 'Susannah Fellows',
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Alaura Kingsley',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Carla Haywood',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = cityOfAngelsPrinceOfWalesProduction.body;
 
-			const castMemberSusannahFellows =
-				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
-
-			expect(cast.length).to.equal(1);
-			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -291,39 +287,37 @@ describe('Cast member with multiple production credits', () => {
 
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
 
-			const expectedCastMemberSusannahFellows = {
-				model: 'person',
-				uuid: SUSANNAH_FELLOWS_PERSON_UUID,
-				name: 'Susannah Fellows',
-				roles: [
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Congresswoman',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Sheryl Sloman',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: null,
-						name: 'Irene Gant',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
+					name: 'Susannah Fellows',
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Congresswoman',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Sheryl Sloman',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Irene Gant',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = enronChichesterFestivalProduction.body;
 
-			const castMemberSusannahFellows =
-				cast.find(castMember => castMember.uuid === SUSANNAH_FELLOWS_PERSON_UUID);
-
-			expect(cast.length).to.equal(1);
-			expect(castMemberSusannahFellows).to.deep.equal(expectedCastMemberSusannahFellows);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 

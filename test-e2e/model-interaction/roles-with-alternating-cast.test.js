@@ -162,103 +162,96 @@ describe('Roles with alternating cast', () => {
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedTrueWestCrucibleProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: CRUCIBLE_THEATRE_UUID,
-					name: 'Crucible Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: NIGEL_HARMAN_PERSON_UUID,
-						name: 'Nigel Harman',
-						roleName: 'Austin',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: LEE_CHARACTER_UUID,
-								name: 'Lee',
-								qualifier: null
-							}
-						]
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre'
 					},
-					{
-						model: 'person',
-						uuid: JOHN_LIGHT_PERSON_UUID,
-						name: 'John Light',
-						roleName: 'Austin',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: LEE_CHARACTER_UUID,
-								name: 'Lee',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
-
-			const expectedTrueWestVaudevilleProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: VAUDEVILLE_THEATRE_UUID,
-					name: 'Vaudeville Theatre'
+					performers: [
+						{
+							model: 'person',
+							uuid: NIGEL_HARMAN_PERSON_UUID,
+							name: 'Nigel Harman',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHN_LIGHT_PERSON_UUID,
+							name: 'John Light',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: KIT_HARINGTON_PERSON_UUID,
-						name: 'Kit Harington',
-						roleName: 'Austin',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: LEE_CHARACTER_UUID,
-								name: 'Lee',
-								qualifier: null
-							}
-						]
+				{
+					model: 'production',
+					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: VAUDEVILLE_THEATRE_UUID,
+						name: 'Vaudeville Theatre'
 					},
-					{
-						model: 'person',
-						uuid: JOHNNY_FLYNN_PERSON_UUID,
-						name: 'Johnny Flynn',
-						roleName: 'Austin',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: LEE_CHARACTER_UUID,
-								name: 'Lee',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+					performers: [
+						{
+							model: 'person',
+							uuid: KIT_HARINGTON_PERSON_UUID,
+							name: 'Kit Harington',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHNNY_FLYNN_PERSON_UUID,
+							name: 'Johnny Flynn',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = austinCharacter.body;
 
-			const trueWestCrucibleProduction =
-				productions.find(production => production.uuid === TRUE_WEST_CRUCIBLE_PRODUCTION_UUID);
-
-			const trueWestVaudevilleProduction =
-				productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(trueWestCrucibleProduction).to.deep.equal(expectedTrueWestCrucibleProduction);
-			expect(trueWestVaudevilleProduction).to.deep.equal(expectedTrueWestVaudevilleProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -268,103 +261,96 @@ describe('Roles with alternating cast', () => {
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedTrueWestCrucibleProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: CRUCIBLE_THEATRE_UUID,
-					name: 'Crucible Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: NIGEL_HARMAN_PERSON_UUID,
-						name: 'Nigel Harman',
-						roleName: 'Lee',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: AUSTIN_CHARACTER_UUID,
-								name: 'Austin',
-								qualifier: null
-							}
-						]
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre'
 					},
-					{
-						model: 'person',
-						uuid: JOHN_LIGHT_PERSON_UUID,
-						name: 'John Light',
-						roleName: 'Lee',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: AUSTIN_CHARACTER_UUID,
-								name: 'Austin',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
-
-			const expectedTrueWestVaudevilleProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: VAUDEVILLE_THEATRE_UUID,
-					name: 'Vaudeville Theatre'
+					performers: [
+						{
+							model: 'person',
+							uuid: NIGEL_HARMAN_PERSON_UUID,
+							name: 'Nigel Harman',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHN_LIGHT_PERSON_UUID,
+							name: 'John Light',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: KIT_HARINGTON_PERSON_UUID,
-						name: 'Kit Harington',
-						roleName: 'Lee',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: AUSTIN_CHARACTER_UUID,
-								name: 'Austin',
-								qualifier: null
-							}
-						]
+				{
+					model: 'production',
+					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: VAUDEVILLE_THEATRE_UUID,
+						name: 'Vaudeville Theatre'
 					},
-					{
-						model: 'person',
-						uuid: JOHNNY_FLYNN_PERSON_UUID,
-						name: 'Johnny Flynn',
-						roleName: 'Lee',
-						qualifier: null,
-						otherRoles: [
-							{
-								model: 'character',
-								uuid: AUSTIN_CHARACTER_UUID,
-								name: 'Austin',
-								qualifier: null
-							}
-						]
-					}
-				]
-			};
+					performers: [
+						{
+							model: 'person',
+							uuid: KIT_HARINGTON_PERSON_UUID,
+							name: 'Kit Harington',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHNNY_FLYNN_PERSON_UUID,
+							name: 'Johnny Flynn',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						}
+					]
+				}
+			];
 
 			const { productions } = leeCharacter.body;
 
-			const trueWestCrucibleProduction =
-				productions.find(production => production.uuid === TRUE_WEST_CRUCIBLE_PRODUCTION_UUID);
-
-			const trueWestVaudevilleProduction =
-				productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(trueWestCrucibleProduction).to.deep.equal(expectedTrueWestCrucibleProduction);
-			expect(trueWestVaudevilleProduction).to.deep.equal(expectedTrueWestVaudevilleProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -374,54 +360,50 @@ describe('Roles with alternating cast', () => {
 
 		it('includes cast with Nigel Harman as Austin and Lee, and John Light as Lee and Austin', () => {
 
-			const expectedCastMemberNigelHarman = {
-				model: 'person',
-				uuid: NIGEL_HARMAN_PERSON_UUID,
-				name: 'Nigel Harman',
-				roles: [
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedCastMemberJohnLight = {
-				model: 'person',
-				uuid: JOHN_LIGHT_PERSON_UUID,
-				name: 'John Light',
-				roles: [
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: NIGEL_HARMAN_PERSON_UUID,
+					name: 'Nigel Harman',
+					roles: [
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: JOHN_LIGHT_PERSON_UUID,
+					name: 'John Light',
+					roles: [
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = trueWestCrucibleProduction.body;
 
-			const castMemberNigelHarman = cast.find(castMember => castMember.uuid === NIGEL_HARMAN_PERSON_UUID);
-			const castMemberJohnLight = cast.find(castMember => castMember.uuid === JOHN_LIGHT_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMemberNigelHarman).to.deep.equal(expectedCastMemberNigelHarman);
-			expect(castMemberJohnLight).to.deep.equal(expectedCastMemberJohnLight);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -431,54 +413,50 @@ describe('Roles with alternating cast', () => {
 
 		it('includes cast with Kit Harington as Austin and Lee, and Johnny Flynn as Lee and Austin', () => {
 
-			const expectedCastMemberKitHarington = {
-				model: 'person',
-				uuid: KIT_HARINGTON_PERSON_UUID,
-				name: 'Kit Harington',
-				roles: [
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedCastMemberJohnnyFlynn = {
-				model: 'person',
-				uuid: JOHNNY_FLYNN_PERSON_UUID,
-				name: 'Johnny Flynn',
-				roles: [
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					},
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: KIT_HARINGTON_PERSON_UUID,
+					name: 'Kit Harington',
+					roles: [
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: JOHNNY_FLYNN_PERSON_UUID,
+					name: 'Johnny Flynn',
+					roles: [
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = trueWestVaudevilleProduction.body;
 
-			const castMemberKitHarington = cast.find(castMember => castMember.uuid === KIT_HARINGTON_PERSON_UUID);
-			const castMemberJohnnyFlynn = cast.find(castMember => castMember.uuid === JOHNNY_FLYNN_PERSON_UUID);
-
-			expect(cast.length).to.equal(2);
-			expect(castMemberKitHarington).to.deep.equal(expectedCastMemberKitHarington);
-			expect(castMemberJohnnyFlynn).to.deep.equal(expectedCastMemberJohnnyFlynn);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -488,37 +466,36 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Austin and Lee', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: CRUCIBLE_THEATRE_UUID,
-					name: 'Crucible Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre'
 					},
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = nigelHarmanPerson.body;
 
-			const production = productions.find(production => production.uuid === TRUE_WEST_CRUCIBLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -528,37 +505,36 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Lee and Austin', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: CRUCIBLE_THEATRE_UUID,
-					name: 'Crucible Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre'
 					},
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = johnLightPerson.body;
 
-			const production = productions.find(production => production.uuid === TRUE_WEST_CRUCIBLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -568,37 +544,36 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Austin and Lee', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: VAUDEVILLE_THEATRE_UUID,
-					name: 'Vaudeville Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: VAUDEVILLE_THEATRE_UUID,
+						name: 'Vaudeville Theatre'
 					},
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = kitHaringtonPerson.body;
 
-			const production = productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -608,37 +583,36 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Lee and Austin', () => {
 
-			const expectedProduction = {
-				model: 'production',
-				uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
-				name: 'True West',
-				theatre: {
-					model: 'theatre',
-					uuid: VAUDEVILLE_THEATRE_UUID,
-					name: 'Vaudeville Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: LEE_CHARACTER_UUID,
-						name: 'Lee',
-						qualifier: null
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
+					name: 'True West',
+					theatre: {
+						model: 'theatre',
+						uuid: VAUDEVILLE_THEATRE_UUID,
+						name: 'Vaudeville Theatre'
 					},
-					{
-						model: 'character',
-						uuid: AUSTIN_CHARACTER_UUID,
-						name: 'Austin',
-						qualifier: null
-					}
-				]
-			};
+					roles: [
+						{
+							model: 'character',
+							uuid: LEE_CHARACTER_UUID,
+							name: 'Lee',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: AUSTIN_CHARACTER_UUID,
+							name: 'Austin',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = johnnyFlynnPerson.body;
 
-			const production = productions.find(production => production.uuid === TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(1);
-			expect(production).to.deep.equal(expectedProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

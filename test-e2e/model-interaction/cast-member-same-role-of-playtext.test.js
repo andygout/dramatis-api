@@ -113,60 +113,52 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
 
-			const expectedAMidsummerNightsDreamRoyalShakespeareProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: ROSE_THEATRE_UUID,
+						name: 'Rose Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: JUDI_DENCH_PERSON_UUID,
+							name: 'Judi Dench',
+							roleName: 'Titania, Faerie Queene',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
 				},
-				performers: [
-					{
-						model: 'person',
-						uuid: JUDI_DENCH_PERSON_UUID,
-						name: 'Judi Dench',
-						roleName: 'Titania',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
-
-			const expectedAMidsummerNightsDreamRoseProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: ROSE_THEATRE_UUID,
-					name: 'Rose Theatre'
-				},
-				performers: [
-					{
-						model: 'person',
-						uuid: JUDI_DENCH_PERSON_UUID,
-						name: 'Judi Dench',
-						roleName: 'Titania, Faerie Queene',
-						qualifier: null,
-						otherRoles: []
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: JUDI_DENCH_PERSON_UUID,
+							name: 'Judi Dench',
+							roleName: 'Titania',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
 
 			const { productions } = titaniaCharacter.body;
 
-			const aMidsummerNightsDreamRoyalShakespeareProduction =
-				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID);
-
-			const aMidsummerNightsDreamRoseProduction =
-				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(aMidsummerNightsDreamRoyalShakespeareProduction)
-				.to.deep.equal(expectedAMidsummerNightsDreamRoyalShakespeareProduction);
-			expect(aMidsummerNightsDreamRoseProduction).to.deep.equal(expectedAMidsummerNightsDreamRoseProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
@@ -176,26 +168,25 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes cast with Judi Dench as Titania, Queen of the Fairies under a variant name (Titania)', () => {
 
-			const expectedCastMemberJudiDench = {
-				model: 'person',
-				uuid: JUDI_DENCH_PERSON_UUID,
-				name: 'Judi Dench',
-				roles: [
-					{
-						model: 'character',
-						uuid: TITANIA_CHARACTER_UUID,
-						name: 'Titania',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: JUDI_DENCH_PERSON_UUID,
+					name: 'Judi Dench',
+					roles: [
+						{
+							model: 'character',
+							uuid: TITANIA_CHARACTER_UUID,
+							name: 'Titania',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = aMidsummerNightsDreamRoyalShakespeareProduction.body;
 
-			const castMemberJudiDench = cast.find(castMember => castMember.uuid === JUDI_DENCH_PERSON_UUID);
-
-			expect(cast.length).to.equal(1);
-			expect(castMemberJudiDench).to.deep.equal(expectedCastMemberJudiDench);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -205,26 +196,25 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes cast with Judi Dench as Titania, Queen of the Fairies under a variant name (Titania, Faerie Queene)', () => {
 
-			const expectedCastMemberJudiDench = {
-				model: 'person',
-				uuid: JUDI_DENCH_PERSON_UUID,
-				name: 'Judi Dench',
-				roles: [
-					{
-						model: 'character',
-						uuid: TITANIA_CHARACTER_UUID,
-						name: 'Titania, Faerie Queene',
-						qualifier: null
-					}
-				]
-			};
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: JUDI_DENCH_PERSON_UUID,
+					name: 'Judi Dench',
+					roles: [
+						{
+							model: 'character',
+							uuid: TITANIA_CHARACTER_UUID,
+							name: 'Titania, Faerie Queene',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { cast } = aMidsummerNightsDreamRoseProduction.body;
 
-			const castMemberJudiDench = cast.find(castMember => castMember.uuid === JUDI_DENCH_PERSON_UUID);
-
-			expect(cast.length).to.equal(1);
-			expect(castMemberJudiDench).to.deep.equal(expectedCastMemberJudiDench);
+			expect(cast).to.deep.equal(expectedCast);
 
 		});
 
@@ -234,58 +224,48 @@ describe('Cast member performing same role in different productions of same play
 
 		it('includes production with her respective portrayals of Titania', () => {
 
-			const expectedAMidsummerNightsDreamRoyalShakespeareProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-					name: 'Royal Shakespeare Theatre'
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: ROSE_THEATRE_UUID,
+						name: 'Rose Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: TITANIA_CHARACTER_UUID,
+							name: 'Titania, Faerie Queene',
+							qualifier: null
+						}
+					]
 				},
-				roles: [
-					{
-						model: 'character',
-						uuid: TITANIA_CHARACTER_UUID,
-						name: 'Titania',
-						qualifier: null
-					}
-				]
-			};
-
-			const expectedAMidsummerNightsDreamRoseProduction = {
-				model: 'production',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
-				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					model: 'theatre',
-					uuid: ROSE_THEATRE_UUID,
-					name: 'Rose Theatre'
-				},
-				roles: [
-					{
-						model: 'character',
-						uuid: TITANIA_CHARACTER_UUID,
-						name: 'Titania, Faerie Queene',
-						qualifier: null
-					}
-				]
-			};
+				{
+					model: 'production',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'A Midsummer Night\'s Dream',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: TITANIA_CHARACTER_UUID,
+							name: 'Titania',
+							qualifier: null
+						}
+					]
+				}
+			];
 
 			const { productions } = judiDenchPerson.body;
 
-			const aMidsummerNightsDreamRoyalShakespeareProduction =
-				productions.find(production =>
-					production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID
-				);
-
-			const aMidsummerNightsDreamRoseProduction =
-				productions.find(production => production.uuid === A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID);
-
-			expect(productions.length).to.equal(2);
-			expect(aMidsummerNightsDreamRoyalShakespeareProduction)
-				.to.deep.equal(expectedAMidsummerNightsDreamRoyalShakespeareProduction);
-			expect(aMidsummerNightsDreamRoseProduction).to.deep.equal(expectedAMidsummerNightsDreamRoseProduction);
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 
