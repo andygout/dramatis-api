@@ -14,6 +14,7 @@ export default {
 				{
 					name: '',
 					characterName: '',
+					characterDifferentiator: '',
 					qualifier: ''
 				}
 			]

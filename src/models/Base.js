@@ -25,6 +25,12 @@ export default class Base {
 
 	}
 
+	hasCharacterDifferentiatorProperty () {
+
+		return Object.prototype.hasOwnProperty.call(this, 'characterDifferentiator');
+
+	}
+
 	hasQualifierProperty () {
 
 		return Object.prototype.hasOwnProperty.call(this, 'qualifier');
@@ -80,6 +86,9 @@ export default class Base {
 			this.addPropertyError('name', uniquenessErrorMessage);
 
 			if (this.hasDifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
+
+			if (this.hasCharacterDifferentiatorProperty())
+				this.addPropertyError('characterDifferentiator', uniquenessErrorMessage);
 
 			if (this.hasQualifierProperty()) this.addPropertyError('qualifier', uniquenessErrorMessage);
 

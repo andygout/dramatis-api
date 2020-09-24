@@ -46,6 +46,45 @@ describe('Role model', () => {
 
 		});
 
+		describe('characterDifferentiator property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = new Role({ name: 'Cinna' });
+				expect(instance.characterDifferentiator).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = new Role({ name: 'Cinna', characterDifferentiator: '' });
+				expect(instance.characterDifferentiator).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = new Role({ name: 'Cinna', characterDifferentiator: ' ' });
+				expect(instance.characterDifferentiator).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
+				expect(instance.characterDifferentiator).to.equal('1');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = new Role({ name: 'Cinna', characterDifferentiator: ' 1 ' });
+				expect(instance.characterDifferentiator).to.equal('1');
+
+			});
+
+		});
+
 		describe('qualifier property', () => {
 
 			it('assigns empty string if absent from props', () => {
@@ -97,6 +136,22 @@ describe('Role model', () => {
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
 			expect(instance.validateStringForProperty.calledWithExactly(
 				'characterName', { isRequired: false })
+			).to.be.true;
+
+		});
+
+	});
+
+	describe('validateCharacterDifferentiator method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+			spy(instance, 'validateStringForProperty');
+			instance.validateCharacterDifferentiator();
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly(
+				'characterDifferentiator', { isRequired: false })
 			).to.be.true;
 
 		});

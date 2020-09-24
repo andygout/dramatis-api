@@ -46,6 +46,27 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
+		context('array items with characterDifferentiator', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateIndices(
+					[
+						{ name: 'Cinna', characterDifferentiator: '1' },
+						{ name: 'Citizen', characterDifferentiator: '' },
+						{ name: 'Volumnius', characterDifferentiator: '' },
+						{ name: 'Soothsayer', characterDifferentiator: '' },
+						{ name: 'Volumnius', characterDifferentiator: '1' },
+						{ name: 'Cinna', characterDifferentiator: '2' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
 		context('array items with qualifier', () => {
 
 			it('returns an empty array', () => {
@@ -91,7 +112,40 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
-		context('array items with differentiator, qualifier, and group', () => {
+		context('array items with characterDifferentiator and qualifier (e.g. production cast roles)', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateIndices(
+					[
+						{ name: 'Foo', characterDifferentiator: '', qualifier: '' },
+						{ name: 'Foo', characterDifferentiator: '1', qualifier: '' },
+						{ name: 'Foo', characterDifferentiator: '2', qualifier: '' },
+						{ name: 'Foo', characterDifferentiator: '', qualifier: 'younger' },
+						{ name: 'Foo', characterDifferentiator: '', qualifier: 'older' },
+						{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+						{ name: 'Foo', characterDifferentiator: '1', qualifier: 'older' },
+						{ name: 'Foo', characterDifferentiator: '2', qualifier: 'younger' },
+						{ name: 'Foo', characterDifferentiator: '2', qualifier: 'older' },
+						{ name: 'Bar', characterDifferentiator: '', qualifier: '' },
+						{ name: 'Bar', characterDifferentiator: '1', qualifier: '' },
+						{ name: 'Bar', characterDifferentiator: '2', qualifier: '' },
+						{ name: 'Bar', characterDifferentiator: '', qualifier: 'younger' },
+						{ name: 'Bar', characterDifferentiator: '', qualifier: 'older' },
+						{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+						{ name: 'Bar', characterDifferentiator: '1', qualifier: 'older' },
+						{ name: 'Bar', characterDifferentiator: '2', qualifier: 'younger' },
+						{ name: 'Bar', characterDifferentiator: '2', qualifier: 'older' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('array items with differentiator, qualifier, and group (e.g. playtext characters)', () => {
 
 			it('returns an empty array', () => {
 
@@ -299,6 +353,73 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
+		context('array items with characterDifferentiator', () => {
+
+			context('single pair of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Cinna', characterDifferentiator: '1' },
+							{ name: 'Citizen', characterDifferentiator: '' },
+							{ name: 'Soothsayer', characterDifferentiator: '' },
+							{ name: 'Cinna', characterDifferentiator: '1' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 3]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Cinna', characterDifferentiator: '1' },
+							{ name: 'Citizen', characterDifferentiator: '' },
+							{ name: 'Volumnius', characterDifferentiator: '' },
+							{ name: 'Soothsayer', characterDifferentiator: '' },
+							{ name: 'Volumnius', characterDifferentiator: '' },
+							{ name: 'Cinna', characterDifferentiator: '1' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 2, 4, 5]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items, and a single pair of duplicate items with empty string name values', () => {
+
+				it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Cinna', characterDifferentiator: '1' },
+							{ name: '', characterDifferentiator: '' },
+							{ name: 'Citizen', characterDifferentiator: '' },
+							{ name: 'Volumnius', characterDifferentiator: '' },
+							{ name: '', characterDifferentiator: '' },
+							{ name: 'Soothsayer', characterDifferentiator: '' },
+							{ name: 'Volumnius', characterDifferentiator: '' },
+							{ name: 'Cinna', characterDifferentiator: '1' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 3, 6, 7]);
+
+				});
+
+			});
+
+		});
+
 		context('array items with qualifier', () => {
 
 			context('single pair of duplicate items', () => {
@@ -439,7 +560,74 @@ describe('Get Duplicate Indices module', () => {
 
 		});
 
-		context('array items with differentiator, qualifier, and group', () => {
+		context('array items with characterDifferentiator and qualifier (e.g. production cast roles)', () => {
+
+			context('single pair of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Baz', characterDifferentiator: '1', qualifier: 'younger' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 2]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items', () => {
+
+				it('returns an array of indices of duplicate items', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Baz', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Qux', characterDifferentiator: '1', qualifier: 'younger' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 1, 3, 4]);
+
+				});
+
+			});
+
+			context('two pairs of duplicate items, and a single pair of duplicate items with empty string name values', () => {
+
+				it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+					const result = getDuplicateIndices(
+						[
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: '', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Baz', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Foo', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Bar', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: '', characterDifferentiator: '1', qualifier: 'younger' },
+							{ name: 'Qux', characterDifferentiator: '1', qualifier: 'younger' }
+						]
+					);
+
+					expect(result).to.deep.equal([0, 1, 4, 5]);
+
+				});
+
+			});
+
+		});
+
+		context('array items with differentiator, qualifier, and group (e.g. playtext characters)', () => {
 
 			context('single pair of duplicate items', () => {
 

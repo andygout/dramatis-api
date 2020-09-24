@@ -341,6 +341,7 @@ describe('Uniqueness in database: Productions API', () => {
 						model: 'role',
 						name: '',
 						characterName: '',
+						characterDifferentiator: '',
 						qualifier: '',
 						errors: {}
 					}
@@ -379,6 +380,7 @@ describe('Uniqueness in database: Productions API', () => {
 						model: 'role',
 						name: '',
 						characterName: '',
+						characterDifferentiator: '',
 						qualifier: '',
 						errors: {}
 					}
@@ -416,6 +418,7 @@ describe('Uniqueness in database: Productions API', () => {
 						model: 'role',
 						name: '',
 						characterName: '',
+						characterDifferentiator: '',
 						qualifier: '',
 						errors: {}
 					}
@@ -454,6 +457,7 @@ describe('Uniqueness in database: Productions API', () => {
 						model: 'role',
 						name: '',
 						characterName: '',
+						characterDifferentiator: '',
 						qualifier: '',
 						errors: {}
 					}

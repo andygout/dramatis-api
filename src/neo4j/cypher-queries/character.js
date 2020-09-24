@@ -15,7 +15,9 @@ const getShowQuery = () => `
 		ORDER BY variantNamedRole.roleName
 
 	OPTIONAL MATCH (playtext)<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
-		WHERE character.name = role.roleName OR character.name = role.characterName
+		WHERE
+			(character.name = role.roleName OR character.name = role.characterName) AND
+			(role.characterDifferentiator IS NULL OR character.differentiator = role.characterDifferentiator)
 
 	OPTIONAL MATCH (production)<-[otherRole:PERFORMS_IN]-(person)
 		WHERE otherRole.roleName <> character.name
@@ -23,7 +25,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (person)-[otherRole]->(production)-[productionRel]->
 		(playtext)-[:INCLUDES_CHARACTER]->(otherCharacter:Character)
-		WHERE otherRole.roleName = otherCharacter.name OR otherRole.characterName = otherCharacter.name
+		WHERE
+			(otherCharacter.name = otherRole.roleName OR otherCharacter.name = otherRole.characterName) AND
+			(otherRole.characterDifferentiator IS NULL OR otherCharacter.differentiator = otherRole.characterDifferentiator)
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
