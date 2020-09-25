@@ -14,10 +14,12 @@
 			"name": "Marcus Andronicus"
 		},
 		{
-			"name": "Publius"
+			"name": "Publius",
+			"differentiator": "1"
 		},
 		{
-			"name": "Lucius"
+			"name": "Lucius",
+			"differentiator": "1"
 		},
 		{
 			"name": "Quintus"
@@ -73,7 +75,8 @@
 			"differentiator": "Titus Andronicus"
 		},
 		{
-			"name": "Senators"
+			"name": "Senators",
+			"differentiator": "Titus Andronicus"
 		},
 		{
 			"name": "Tribunes"

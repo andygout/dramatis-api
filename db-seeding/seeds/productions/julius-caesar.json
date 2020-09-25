@@ -1,0 +1,290 @@
+{
+	"name": "Julius Caesar",
+	"theatre": {
+		"name": "Barbican"
+	},
+	"playtext": {
+		"name": "Julius Caesar"
+	},
+	"cast": [
+		{
+			"name": "David Collings",
+			"roles": [
+				{
+					"name": "Flavius"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "Anthony Mark Barrow",
+			"roles": [
+				{
+					"name": "Carpenter"
+				},
+				{
+					"name": "Strato"
+				}
+			]
+		},
+		{
+			"name": "Daniel Weyman",
+			"roles": [
+				{
+					"name": "Marullus"
+				},
+				{
+					"name": "Lucilius"
+				}
+			]
+		},
+		{
+			"name": "Jim Hooper",
+			"roles": [
+				{
+					"name": "Cobbler"
+				},
+				{
+					"name": "Clitus"
+				}
+			]
+		},
+		{
+			"name": "John Shrapnel",
+			"roles": [
+				{
+					"name": "Julius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Struan Rodger",
+			"roles": [
+				{
+					"name": "Casca"
+				}
+			]
+		},
+		{
+			"name": "Ralph Fiennes",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Tim Potter",
+			"roles": [
+				{
+					"name": "Soothsayer"
+				},
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Anton Lesser",
+			"roles": [
+				{
+					"name": "Marcus Brutus"
+				}
+			]
+		},
+		{
+			"name": "Simon Russell Beale",
+			"roles": [
+				{
+					"name": "Caius Cassius"
+				}
+			]
+		},
+		{
+			"name": "Clifford Rose",
+			"roles": [
+				{
+					"name": "Cicero"
+				}
+			]
+		},
+		{
+			"name": "Paul Shearer",
+			"roles": [
+				{
+					"name": "Cinna",
+					"characterDifferentiator": "1"
+				},
+				{
+					"name": "Second Poet",
+					"characterName": "Poet"
+				},
+				{
+					"name": "Volumnius"
+				}
+			]
+		},
+		{
+			"name": "James Anthony Pearson",
+			"roles": [
+				{
+					"name": "Lucius"
+				}
+			]
+		},
+		{
+			"name": "John Kane",
+			"roles": [
+				{
+					"name": "Decius Brutus"
+				}
+			]
+		},
+		{
+			"name": "Michael Gardiner",
+			"roles": [
+				{
+					"name": "Metellus Cimber"
+				},
+				{
+					"name": "Dardanius"
+				}
+			]
+		},
+		{
+			"name": "Chris Jarman",
+			"roles": [
+				{
+					"name": "Trebonius"
+				},
+				{
+					"name": "Titinius"
+				}
+			]
+		},
+		{
+			"name": "Fiona Shaw",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Sean Baker",
+			"roles": [
+				{
+					"name": "Caius Ligarius"
+				}
+			]
+		},
+		{
+			"name": "Robert Demeger",
+			"roles": [
+				{
+					"name": "Servant to Julius Caesar"
+				},
+				{
+					"name": "Messala"
+				}
+			]
+		},
+		{
+			"name": "Ginny Holder",
+			"roles": [
+				{
+					"name": "Calphurnia"
+				}
+			]
+		},
+		{
+			"name": "Jimmy Gardner",
+			"roles": [
+				{
+					"name": "Publius"
+				}
+			]
+		},
+		{
+			"name": "John Rogan",
+			"roles": [
+				{
+					"name": "Artemidorus"
+				}
+			]
+		},
+		{
+			"name": "David Glover",
+			"roles": [
+				{
+					"name": "Popilius Lena"
+				}
+			]
+		},
+		{
+			"name": "Alex McIntosh",
+			"roles": [
+				{
+					"name": "Servant to Mark Antony"
+				},
+				{
+					"name": "Varro"
+				}
+			]
+		},
+		{
+			"name": "Rohan Siva",
+			"roles": [
+				{
+					"name": "Servant to Octavius Caesar"
+				},
+				{
+					"name": "Pindarus"
+				}
+			]
+		},
+		{
+			"name": "Joseph Kennedy",
+			"roles": [
+				{
+					"name": "Citizen",
+					"characterName": "Plebeians"
+				},
+				{
+					"name": "Young Cato"
+				}
+			]
+		},
+		{
+			"name": "Celia Meiras",
+			"roles": [
+				{
+					"name": "Citizen",
+					"characterName": "Plebeians"
+				},
+				{
+					"name": "Messenger"
+				}
+			]
+		},
+		{
+			"name": "Leo Wringer",
+			"roles": [
+				{
+					"name": "Cinna",
+					"characterDifferentiator": "2"
+				}
+			]
+		},
+		{
+			"name": "Oliver Kieran-Jones",
+			"roles": [
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		}
+	]
+}
