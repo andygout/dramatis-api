@@ -45,6 +45,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -120,6 +121,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -167,6 +169,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -218,6 +221,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -419,6 +423,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Hamlet',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -426,6 +431,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -441,6 +447,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -448,6 +455,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Player King',
 								characterName: 'First Player',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -455,6 +463,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -470,6 +479,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Lucianus',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -478,12 +488,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'English Ambassador',
 								qualifier: '',
 								characterName: '',
+								characterDifferentiator: '',
 								errors: {}
 							},
 							{
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -499,6 +511,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -514,6 +527,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -650,6 +664,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Hamlet',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -657,6 +672,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -672,6 +688,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -679,6 +696,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Player King',
 								characterName: 'First Player',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -686,6 +704,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -701,6 +720,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Lucianus',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -709,12 +729,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'English Ambassador',
 								qualifier: '',
 								characterName: '',
+								characterDifferentiator: '',
 								errors: {}
 							},
 							{
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -730,6 +752,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -745,6 +768,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -839,6 +863,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Richard, Duke of Gloucester',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -846,6 +871,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -861,6 +887,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Brakenbury',
 								characterName: 'Sir Robert Brakenbury',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -868,6 +895,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Richmond',
 								characterName: 'Henry, Earl of Richmond',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -875,6 +903,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -890,6 +919,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Ratcliffe',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -897,6 +927,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: 'Lord Mayor',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							},
@@ -904,6 +935,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -919,6 +951,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -934,6 +967,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}
@@ -1099,6 +1133,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'role',
 								name: '',
 								characterName: '',
+								characterDifferentiator: '',
 								qualifier: '',
 								errors: {}
 							}

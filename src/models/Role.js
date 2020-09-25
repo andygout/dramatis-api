@@ -6,15 +6,24 @@ export default class Role extends Base {
 
 		super(props);
 
+		const { characterName, characterDifferentiator, qualifier } = props;
+
 		this.model = 'role';
-		this.characterName = props.characterName?.trim() || '';
-		this.qualifier = props.qualifier?.trim() || '';
+		this.characterName = characterName?.trim() || '';
+		this.characterDifferentiator = characterDifferentiator?.trim() || '';
+		this.qualifier = qualifier?.trim() || '';
 
 	}
 
 	validateCharacterName () {
 
 		this.validateStringForProperty('characterName', { isRequired: false });
+
+	}
+
+	validateCharacterDifferentiator () {
+
+		this.validateStringForProperty('characterDifferentiator', { isRequired: false });
 
 	}
 

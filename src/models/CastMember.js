@@ -34,6 +34,8 @@ export default class CastMember extends Person {
 
 			role.validateCharacterName();
 
+			role.validateCharacterDifferentiator();
+
 			role.validateQualifier();
 
 			role.validateCharacterNameHasRoleName();

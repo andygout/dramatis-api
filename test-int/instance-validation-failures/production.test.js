@@ -677,6 +677,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Hamlet',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {}
 								}
@@ -746,6 +747,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: ABOVE_MAX_LENGTH_STRING,
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										name: [
@@ -819,9 +821,85 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Hamlet',
 									characterName: ABOVE_MAX_LENGTH_STRING,
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										characterName: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('cast member role characterDifferentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							roles: [
+								{
+									name: 'Hamlet',
+									characterName: '',
+									characterDifferentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					playtext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Rory Kinnear',
+							differentiator: '',
+							errors: {},
+							roles: [
+								{
+									model: 'role',
+									name: 'Hamlet',
+									characterName: '',
+									characterDifferentiator: ABOVE_MAX_LENGTH_STRING,
+									qualifier: '',
+									errors: {
+										characterDifferentiator: [
 											'Value is too long'
 										]
 									}
@@ -892,6 +970,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Hamlet',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: ABOVE_MAX_LENGTH_STRING,
 									errors: {
 										qualifier: [
@@ -965,6 +1044,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: '',
 									characterName: 'Hamlet',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										name: [
@@ -1038,6 +1118,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Hamlet',
 									characterName: 'Hamlet',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										characterName: [
@@ -1056,7 +1137,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('duplicate combinations of cast member role name and qualifier values', () => {
+		context('duplicate combinations of cast member role name, qualifier, and characterDifferentiator values', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -1069,16 +1150,19 @@ describe('Production instance', () => {
 								{
 									name: 'Polonius',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: ''
 								},
 								{
 									name: 'Gravedigger',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: ''
 								},
 								{
 									name: 'Polonius',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: ''
 								}
 							]
@@ -1122,9 +1206,13 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Polonius',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										name: [
+											'This item has been duplicated within the group'
+										],
+										characterDifferentiator: [
 											'This item has been duplicated within the group'
 										],
 										qualifier: [
@@ -1136,6 +1224,7 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Gravedigger',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {}
 								},
@@ -1143,9 +1232,13 @@ describe('Production instance', () => {
 									model: 'role',
 									name: 'Polonius',
 									characterName: '',
+									characterDifferentiator: '',
 									qualifier: '',
 									errors: {
 										name: [
+											'This item has been duplicated within the group'
+										],
+										characterDifferentiator: [
 											'This item has been duplicated within the group'
 										],
 										qualifier: [

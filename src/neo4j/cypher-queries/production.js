@@ -92,6 +92,7 @@ const getCreateUpdateQuery = action => {
 							rolePosition: role.position,
 							roleName: role.name,
 							characterName: role.characterName,
+							characterDifferentiator: role.characterDifferentiator,
 							qualifier: role.qualifier
 						}]-(person)
 				)
@@ -125,10 +126,11 @@ const getEditQuery = () => `
 				ELSE {
 					name: role.roleName,
 					characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
+					characterDifferentiator: CASE role.characterDifferentiator WHEN NULL THEN '' ELSE role.characterDifferentiator END,
 					qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 				}
 			END
-		) + [{ name: '', characterName: '', qualifier: '' }] AS roles
+		) + [{ name: '', characterName: '', characterDifferentiator: '', qualifier: '' }] AS roles
 
 	RETURN
 		'production' AS model,
@@ -147,7 +149,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 			END
-		) + [{ name: '', roles: [{ name: '', characterName: '', qualifier: '' }] }] AS cast
+		) + [{ name: '', roles: [{ name: '', characterName: '', characterDifferentiator: '', qualifier: '' }] }] AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -163,7 +165,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (person)-[role]->(production)-[playtextRel]->
 		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-		WHERE role.roleName = character.name OR role.characterName = character.name
+		WHERE
+			(role.roleName = character.name OR role.characterName = character.name) AND
+			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
 	WITH DISTINCT production, theatre, playtext, person, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
