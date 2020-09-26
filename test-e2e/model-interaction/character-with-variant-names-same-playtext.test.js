@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Character with variant names', () => {
+describe('Character with variant names from productions of the same playtext', () => {
 
 	chai.use(chaiHttp);
 
