@@ -8,10 +8,12 @@ const getShowQuery = () => `
 
 	WITH character, playtext, COLLECT(playtextRel.qualifier) AS qualifiers, COLLECT(playtextRel.group) AS groups
 
-	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
+	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(:Playtext)
+		<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
 		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
-	OPTIONAL MATCH (playtext)<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
+	OPTIONAL MATCH (character)<-[:INCLUDES_CHARACTER]-(playtextForProduction:Playtext)
+		<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
 		WHERE
 			(character.name = role.roleName OR character.name = role.characterName) AND
 			(role.characterDifferentiator IS NULL OR character.differentiator = role.characterDifferentiator)
@@ -21,14 +23,25 @@ const getShowQuery = () => `
 		AND (NOT EXISTS(otherRole.characterName) OR otherRole.characterName <> character.name)
 
 	OPTIONAL MATCH (person)-[otherRole]->(production)-[productionRel]->
-		(playtext)-[:INCLUDES_CHARACTER]->(otherCharacter:Character)
+		(playtextForProduction)-[:INCLUDES_CHARACTER]->(otherCharacter:Character)
 		WHERE
 			(otherCharacter.name = otherRole.roleName OR otherCharacter.name = otherRole.characterName) AND
 			(otherRole.characterDifferentiator IS NULL OR otherCharacter.differentiator = otherRole.characterDifferentiator)
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH character, playtext, qualifiers, groups, production, theatre, person, role, otherRole, otherCharacter, variantNamedRole
+	WITH
+		character,
+		playtext,
+		qualifiers,
+		groups,
+		production,
+		theatre,
+		person,
+		role,
+		otherRole,
+		otherCharacter,
+		variantNamedRole
 		ORDER BY otherRole.rolePosition
 
 	WITH character, playtext, qualifiers, groups, variantNamedRole, production, theatre, person, role,
@@ -56,25 +69,8 @@ const getShowQuery = () => `
 		}) AS performers
 		ORDER BY production.name, theatre.name
 
-	RETURN
-		'character' AS model,
-		character.uuid AS uuid,
-		character.name AS name,
-		character.differentiator AS differentiator,
-		COLLECT(DISTINCT(
-			CASE playtext WHEN NULL
-				THEN null
-				ELSE {
-					model: 'playtext',
-					uuid: playtext.uuid,
-					name: playtext.name,
-					qualifiers: qualifiers,
-					groups: groups
-				}
-			END
-		)) AS playtexts,
-		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames,
-		COLLECT(DISTINCT(
+	WITH character, playtext, qualifiers, groups, variantNamedRole,
+		COLLECT(
 			CASE production WHEN NULL
 				THEN null
 				ELSE {
@@ -89,7 +85,32 @@ const getShowQuery = () => `
 					performers: performers
 				}
 			END
-		)) AS productions
+		) AS productions
+		ORDER BY variantNamedRole.roleName
+
+	WITH character, playtext, qualifiers, groups, productions,
+		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames
+		ORDER BY playtext.name
+
+	RETURN
+		'character' AS model,
+		character.uuid AS uuid,
+		character.name AS name,
+		character.differentiator AS differentiator,
+		COLLECT(
+			CASE playtext WHEN NULL
+				THEN null
+				ELSE {
+					model: 'playtext',
+					uuid: playtext.uuid,
+					name: playtext.name,
+					qualifiers: qualifiers,
+					groups: groups
+				}
+			END
+		) AS playtexts,
+		variantNames,
+		productions
 `;
 
 export {

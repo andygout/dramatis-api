@@ -15,26 +15,33 @@ describe('Character with variant names from productions of different playtexts',
 	const CLAUDIUS_CHARACTER_UUID = '5';
 	const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PLAYTEXT_UUID = '9';
 	const FORTINBRAS_PLAYTEXT_UUID = '15';
-	const HAMLET_NATIONAL_PRODUCTION_UUID = '18';
-	const NATIONAL_THEATRE_UUID = '19';
-	const RORY_KINNEAR_PERSON_UUID = '21';
-	const PATRICK_MALAHIDE_PERSON_UUID = '22';
-	const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID = '23';
-	const THEATRE_ROYAL_HAYMARKET_THEATRE_UUID = '24';
-	const JACK_HAWKINS_PERSON_UUID = '26';
-	const JAMES_SIMMONS_PERSON_UUID = '27';
-	const FORTINBRAS_LA_JOLLA_PRODUCTION_UUID = '28';
-	const LA_JOLLA_PLAYHOUSE_THEATRE_UUID = '29';
-	const DON_REILLY_PERSON_UUID = '31';
-	const JONATHAN_FREEMAN_PERSON_UUID = '32';
+	const HAMLETMACHINE_PLAYTEXT_UUID = '21';
+	const HAMLET_NATIONAL_PRODUCTION_UUID = '24';
+	const NATIONAL_THEATRE_UUID = '25';
+	const RORY_KINNEAR_PERSON_UUID = '27';
+	const PATRICK_MALAHIDE_PERSON_UUID = '28';
+	const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID = '29';
+	const THEATRE_ROYAL_HAYMARKET_THEATRE_UUID = '30';
+	const JACK_HAWKINS_PERSON_UUID = '32';
+	const JAMES_SIMMONS_PERSON_UUID = '33';
+	const FORTINBRAS_LA_JOLLA_PRODUCTION_UUID = '34';
+	const LA_JOLLA_PLAYHOUSE_THEATRE_UUID = '35';
+	const DON_REILLY_PERSON_UUID = '37';
+	const JONATHAN_FREEMAN_PERSON_UUID = '38';
+	const HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID = '39';
+	const TEATRO_SAN_NICOLÒ_THEATRE_UUID = '40';
+	const GABRIELE_CICIRELLO_PERSON_UUID = '42';
+	const RENATO_CIVELLO_PERSON_UUID = '43';
 
 	let hamletCharacter;
 	let hamletNationalProduction;
 	let rosencrantzAndGuildensternAreDeadHaymarketProduction;
 	let fortinbrasLaJollaProduction;
+	let hamletmachineTetroSanNicolòProduction;
 	let roryKinnearPerson;
 	let jackHawkinsPerson;
 	let donReillyPerson;
+	let gabrieleCicirelloPerson;
 
 	const sandbox = createSandbox();
 
@@ -78,6 +85,20 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/playtexts')
 			.send({
 				name: 'Fortinbras',
+				characters: [
+					{
+						name: 'Hamlet'
+					},
+					{
+						name: 'Claudius'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/playtexts')
+			.send({
+				name: 'Hamletmachine',
 				characters: [
 					{
 						name: 'Hamlet'
@@ -184,6 +205,38 @@ describe('Character with variant names from productions of different playtexts',
 				]
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Hamletmachine',
+				theatre: {
+					name: 'Teatro San Nicolò'
+				},
+				playtext: {
+					name: 'Hamletmachine'
+				},
+				cast: [
+					{
+						name: 'Gabriele Cicirello',
+						roles: [
+							{
+								name: 'Hamlet, Prince of Denmark',
+								characterName: 'Hamlet'
+							}
+						]
+					},
+					{
+						name: 'Renato Civello',
+						roles: [
+							{
+								name: 'Claudius, King of Denmark',
+								characterName: 'Claudius'
+							}
+						]
+					}
+				]
+			});
+
 		hamletCharacter = await chai.request(app)
 			.get(`/characters/${HAMLET_CHARACTER_UUID}`);
 
@@ -196,6 +249,9 @@ describe('Character with variant names from productions of different playtexts',
 		fortinbrasLaJollaProduction = await chai.request(app)
 			.get(`/productions/${FORTINBRAS_LA_JOLLA_PRODUCTION_UUID}`);
 
+		hamletmachineTetroSanNicolòProduction = await chai.request(app)
+			.get(`/productions/${HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID}`);
+
 		roryKinnearPerson = await chai.request(app)
 			.get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
 
@@ -204,6 +260,9 @@ describe('Character with variant names from productions of different playtexts',
 
 		donReillyPerson = await chai.request(app)
 			.get(`/people/${DON_REILLY_PERSON_UUID}`);
+
+		gabrieleCicirelloPerson = await chai.request(app)
+			.get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
 
 	});
 
@@ -234,6 +293,13 @@ describe('Character with variant names from productions of different playtexts',
 				},
 				{
 					model: 'playtext',
+					uuid: HAMLETMACHINE_PLAYTEXT_UUID,
+					name: 'Hamletmachine',
+					qualifiers: [],
+					groups: []
+				},
+				{
+					model: 'playtext',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PLAYTEXT_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					qualifiers: [],
@@ -247,12 +313,12 @@ describe('Character with variant names from productions of different playtexts',
 
 		});
 
-		it('includes variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
+		it('includes distinct variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
 
 			const expectedVariantNames = [
-				'Spirit of Hamlet',
 				'Hamlet, Prince of Denmark',
-				'Prince Hamlet'
+				'Prince Hamlet',
+				'Spirit of Hamlet'
 			];
 
 			const { variantNames } = hamletCharacter.body;
@@ -298,6 +364,26 @@ describe('Character with variant names from productions of different playtexts',
 							model: 'person',
 							uuid: RORY_KINNEAR_PERSON_UUID,
 							name: 'Rory Kinnear',
+							roleName: 'Hamlet, Prince of Denmark',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
+					name: 'Hamletmachine',
+					theatre: {
+						model: 'theatre',
+						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
+						name: 'Teatro San Nicolò'
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: GABRIELE_CICIRELLO_PERSON_UUID,
+							name: 'Gabriele Cicirello',
 							roleName: 'Hamlet, Prince of Denmark',
 							qualifier: null,
 							otherRoles: []
@@ -457,6 +543,47 @@ describe('Character with variant names from productions of different playtexts',
 
 	});
 
+	describe('Hamletmachine at Teatro San Nicolò (production)', () => {
+
+		it('includes cast with Gabriele Cicirello as Hamlet and Renato Civello as Claudius under variant names', () => {
+
+			const expectedCast = [
+				{
+					model: 'person',
+					uuid: GABRIELE_CICIRELLO_PERSON_UUID,
+					name: 'Gabriele Cicirello',
+					roles: [
+						{
+							model: 'character',
+							uuid: HAMLET_CHARACTER_UUID,
+							name: 'Hamlet, Prince of Denmark',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'person',
+					uuid: RENATO_CIVELLO_PERSON_UUID,
+					name: 'Renato Civello',
+					roles: [
+						{
+							model: 'character',
+							uuid: CLAUDIUS_CHARACTER_UUID,
+							name: 'Claudius, King of Denmark',
+							qualifier: null
+						}
+					]
+				}
+			];
+
+			const { cast } = hamletmachineTetroSanNicolòProduction.body;
+
+			expect(cast).to.deep.equal(expectedCast);
+
+		});
+
+	});
+
 	describe('Rory Kinnear (person)', () => {
 
 		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
@@ -549,6 +676,39 @@ describe('Character with variant names from productions of different playtexts',
 			];
 
 			const { productions } = donReillyPerson.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Gabriele Cicirello (person)', () => {
+
+		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
+					name: 'Hamletmachine',
+					theatre: {
+						model: 'theatre',
+						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
+						name: 'Teatro San Nicolò'
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: HAMLET_CHARACTER_UUID,
+							name: 'Hamlet, Prince of Denmark',
+							qualifier: null
+						}
+					]
+				}
+			];
+
+			const { productions } = gabrieleCicirelloPerson.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
