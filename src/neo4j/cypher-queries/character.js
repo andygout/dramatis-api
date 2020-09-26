@@ -11,9 +11,6 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(:Production)<-[variantNamedRole:PERFORMS_IN]-(:Person)
 		WHERE character.name <> variantNamedRole.roleName AND character.name = variantNamedRole.characterName
 
-	WITH character, playtext, qualifiers, groups, variantNamedRole
-		ORDER BY variantNamedRole.roleName
-
 	OPTIONAL MATCH (playtext)<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
 		WHERE
 			(character.name = role.roleName OR character.name = role.characterName) AND
@@ -31,12 +28,11 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH character, playtext, qualifiers, groups, production, theatre, person, role, otherRole, otherCharacter,
-		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames
+	WITH character, playtext, qualifiers, groups, production, theatre, person, role, otherRole, otherCharacter, variantNamedRole
 		ORDER BY otherRole.rolePosition
 
-	WITH character, playtext, qualifiers, groups, variantNames, production, theatre, person, role,
-		COLLECT(
+	WITH character, playtext, qualifiers, groups, variantNamedRole, production, theatre, person, role,
+		COLLECT(DISTINCT(
 			CASE otherRole WHEN NULL
 				THEN null
 				ELSE {
@@ -46,10 +42,10 @@ const getShowQuery = () => `
 					qualifier: otherRole.qualifier
 				}
 			END
-		) AS otherRoles
+		)) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH character, playtext, qualifiers, groups, variantNames, production, theatre,
+	WITH character, playtext, qualifiers, groups, variantNamedRole, production, theatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,
@@ -77,8 +73,8 @@ const getShowQuery = () => `
 				}
 			END
 		)) AS playtexts,
-		variantNames,
-		COLLECT(
+		COLLECT(DISTINCT(variantNamedRole.roleName)) AS variantNames,
+		COLLECT(DISTINCT(
 			CASE production WHEN NULL
 				THEN null
 				ELSE {
@@ -93,7 +89,7 @@ const getShowQuery = () => `
 					performers: performers
 				}
 			END
-		) AS productions
+		)) AS productions
 `;
 
 export {
