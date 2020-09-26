@@ -23,7 +23,8 @@
 			"name": "Player King"
 		},
 		{
-			"name": "Claudius"
+			"name": "Claudius",
+			"differentiator": "1"
 		},
 		{
 			"name": "Voltemand"

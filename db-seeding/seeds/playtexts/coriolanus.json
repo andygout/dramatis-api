@@ -77,7 +77,8 @@
 			"name": "Lictors"
 		},
 		{
-			"name": "Soldiers"
+			"name": "Soldiers",
+			"differentiator": "Coriolanus"
 		},
 		{
 			"name": "Messengers"

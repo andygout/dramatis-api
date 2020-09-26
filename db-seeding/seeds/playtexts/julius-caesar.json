@@ -1,0 +1,194 @@
+{
+	"name": "Julius Caesar",
+	"characters": [
+		{
+			"name": "Julius Caesar",
+			"group": ""
+		},
+		{
+			"name": "Octavius Caesar",
+			"group": "Triumvirs after Caesar's death"
+		},
+		{
+			"name": "Mark Antony",
+			"group": "Triumvirs after Caesar's death"
+		},
+		{
+			"name": "Lepidus",
+			"group": "Triumvirs after Caesar's death"
+		},
+		{
+			"name": "Marcus Brutus",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Caius Cassius",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Casca",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Decius Brutus",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Cinna",
+			"differentiator": "1",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Metellus Cimber",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Trebonius",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Caius Ligarius",
+			"group": "Conspirators against Caesar"
+		},
+		{
+			"name": "Flavius",
+			"group": "Tribunes"
+		},
+		{
+			"name": "Marullus",
+			"group": "Tribunes"
+		},
+		{
+			"name": "Cicero",
+			"group": "Roman Senate Senators"
+		},
+		{
+			"name": "Publius",
+			"differentiator": "2",
+			"group": "Roman Senate Senators"
+		},
+		{
+			"name": "Popilius Lena",
+			"group": "Roman Senate Senators"
+		},
+		{
+			"name": "Calphurnia",
+			"group": "Citizens"
+		},
+		{
+			"name": "Portia",
+			"group": "Citizens"
+		},
+		{
+			"name": "Soothsayer",
+			"group": "Citizens"
+		},
+		{
+			"name": "Artemidorus",
+			"group": "Citizens"
+		},
+		{
+			"name": "Cinna",
+			"differentiator": "2",
+			"group": "Citizens"
+		},
+		{
+			"name": "Cobbler",
+			"group": "Citizens"
+		},
+		{
+			"name": "Carpenter",
+			"group": "Citizens"
+		},
+		{
+			"name": "Poet",
+			"group": "Citizens"
+		},
+		{
+			"name": "Lucius",
+			"differentiator": "2",
+			"group": "Citizens"
+		},
+		{
+			"name": "Volumnius",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Titinius",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Young Cato",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Messala",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Varro",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Clitus",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Claudius",
+			"differentiator": "2",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Dardanius",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Strato",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Lucilius",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Pindarus",
+			"group": "Loyal to Brutus and Cassius"
+		},
+		{
+			"name": "Servant to Julius Caesar",
+			"group": "Other"
+		},
+		{
+			"name": "Servant to Mark Antony",
+			"group": "Other"
+		},
+		{
+			"name": "Servant to Octavius Caesar",
+			"group": "Other"
+		},
+		{
+			"name": "Messenger",
+			"differentiator": "Julius Caesar",
+			"group": "Other"
+		},
+		{
+			"name": "Senators",
+			"differentiator": "Julius Caesar",
+			"group": "Other"
+		},
+		{
+			"name": "Soldiers",
+			"differentiator": "Julius Caesar",
+			"group": "Other"
+		},
+		{
+			"name": "Plebeians",
+			"group": "Other"
+		},
+		{
+			"name": "Attendants",
+			"differentiator": "Julius Caesar",
+			"group": "Other"
+		}
+	]
+}
