@@ -48,16 +48,16 @@ describe('Character with variant names from productions of the same playtext', (
 		await chai.request(app)
 			.post('/playtexts')
 			.send({
-				name: 'The Tragedy of Hamlet, Prince of Denmark',
+				name: 'Hamlet',
 				characters: [
 					{
-						name: 'Hamlet, Prince of Denmark'
+						name: 'Hamlet'
 					},
 					{
-						name: 'Claudius, King of Denmark'
+						name: 'Claudius'
 					},
 					{
-						name: 'Ghost of King Hamlet'
+						name: 'Ghost'
 					},
 					{
 						name: 'First Player'
@@ -73,15 +73,15 @@ describe('Character with variant names from productions of the same playtext', (
 					name: 'Almeida Theatre'
 				},
 				playtext: {
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
+					name: 'Hamlet'
 				},
 				cast: [
 					{
 						name: 'Andrew Scott',
 						roles: [
 							{
-								name: 'Hamlet',
-								characterName: 'Hamlet, Prince of Denmark'
+								name: 'Hamlet, Prince of Denmark',
+								characterName: 'Hamlet'
 							}
 						]
 					},
@@ -89,8 +89,8 @@ describe('Character with variant names from productions of the same playtext', (
 						name: 'David Rintoul',
 						roles: [
 							{
-								name: 'Ghost',
-								characterName: 'Ghost of King Hamlet'
+								name: 'Ghost of King Hamlet',
+								characterName: 'Ghost'
 							},
 							{
 								name: 'Player King',
@@ -109,15 +109,15 @@ describe('Character with variant names from productions of the same playtext', (
 					name: 'Novello Theatre'
 				},
 				playtext: {
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
+					name: 'Hamlet'
 				},
 				cast: [
 					{
 						name: 'David Tennant',
 						roles: [
 							{
-								name: 'Hamlet',
-								characterName: 'Hamlet, Prince of Denmark'
+								name: 'Hamlet, Prince of Denmark',
+								characterName: 'Hamlet'
 							}
 						]
 					},
@@ -125,11 +125,11 @@ describe('Character with variant names from productions of the same playtext', (
 						name: 'Patrick Stewart',
 						roles: [
 							{
-								name: 'Claudius',
-								characterName: 'Claudius, King of Denmark'
+								name: 'Claudius, King of Denmark',
+								characterName: 'Claudius'
 							},
 							{
-								name: 'Ghost of King Hamlet'
+								name: 'Ghost'
 							}
 						]
 					}
@@ -144,15 +144,15 @@ describe('Character with variant names from productions of the same playtext', (
 					name: 'Wyndham\'s Theatre'
 				},
 				playtext: {
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
+					name: 'Hamlet'
 				},
 				cast: [
 					{
 						name: 'Jude Law',
 						roles: [
 							{
-								name: 'Hamlet',
-								characterName: 'Hamlet, Prince of Denmark'
+								name: 'Hamlet, Prince of Denmark',
+								characterName: 'Hamlet'
 							}
 						]
 					},
@@ -161,7 +161,7 @@ describe('Character with variant names from productions of the same playtext', (
 						roles: [
 							{
 								name: 'King Hamlet',
-								characterName: 'Ghost of King Hamlet'
+								characterName: 'Ghost'
 							},
 							{
 								name: 'First Player'
@@ -205,7 +205,7 @@ describe('Character with variant names from productions of the same playtext', (
 		it('includes variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
 
 			const expectedVariantNames = [
-				'Ghost',
+				'Ghost of King Hamlet',
 				'King Hamlet'
 			];
 
@@ -232,7 +232,7 @@ describe('Character with variant names from productions of the same playtext', (
 							model: 'person',
 							uuid: DAVID_RINTOUL_PERSON_UUID,
 							name: 'David Rintoul',
-							roleName: 'Ghost',
+							roleName: 'Ghost of King Hamlet',
 							qualifier: null,
 							otherRoles: [
 								{
@@ -259,13 +259,13 @@ describe('Character with variant names from productions of the same playtext', (
 							model: 'person',
 							uuid: PATRICK_STEWART_PERSON_UUID,
 							name: 'Patrick Stewart',
-							roleName: 'Ghost of King Hamlet',
+							roleName: 'Ghost',
 							qualifier: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: CLAUDIUS_CHARACTER_UUID,
-									name: 'Claudius',
+									name: 'Claudius, King of Denmark',
 									qualifier: null
 								}
 							]
@@ -322,7 +322,7 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
-							name: 'Hamlet',
+							name: 'Hamlet, Prince of Denmark',
 							qualifier: null
 						}
 					]
@@ -335,7 +335,7 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: GHOST_CHARACTER_UUID,
-							name: 'Ghost',
+							name: 'Ghost of King Hamlet',
 							qualifier: null
 						},
 						{
@@ -369,7 +369,7 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
-							name: 'Hamlet',
+							name: 'Hamlet, Prince of Denmark',
 							qualifier: null
 						}
 					]
@@ -382,13 +382,13 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
-							name: 'Claudius',
+							name: 'Claudius, King of Denmark',
 							qualifier: null
 						},
 						{
 							model: 'character',
 							uuid: GHOST_CHARACTER_UUID,
-							name: 'Ghost of King Hamlet',
+							name: 'Ghost',
 							qualifier: null
 						}
 					]
@@ -416,7 +416,7 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
-							name: 'Hamlet',
+							name: 'Hamlet, Prince of Denmark',
 							qualifier: null
 						}
 					]
@@ -468,7 +468,7 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: GHOST_CHARACTER_UUID,
-							name: 'Ghost',
+							name: 'Ghost of King Hamlet',
 							qualifier: null
 						},
 						{
@@ -507,13 +507,13 @@ describe('Character with variant names from productions of the same playtext', (
 						{
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
-							name: 'Claudius',
+							name: 'Claudius, King of Denmark',
 							qualifier: null
 						},
 						{
 							model: 'character',
 							uuid: GHOST_CHARACTER_UUID,
-							name: 'Ghost of King Hamlet',
+							name: 'Ghost',
 							qualifier: null
 						}
 					]
