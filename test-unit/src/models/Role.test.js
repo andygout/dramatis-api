@@ -130,7 +130,7 @@ describe('Role model', () => {
 
 		it('will call validateStringForProperty method', () => {
 
-			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterName();
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
@@ -146,7 +146,7 @@ describe('Role model', () => {
 
 		it('will call validateStringForProperty method', () => {
 
-			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
+			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterDifferentiator();
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
@@ -209,7 +209,7 @@ describe('Role model', () => {
 
 			});
 
-			context('role name a different character name', () => {
+			context('role name and different character name', () => {
 
 				it('will not add properties to errors property', () => {
 
