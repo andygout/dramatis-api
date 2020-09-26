@@ -205,8 +205,8 @@ describe('Character with variant names from productions of the same playtext', (
 		it('includes variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
 
 			const expectedVariantNames = [
-				'King Hamlet',
-				'Ghost'
+				'Ghost',
+				'King Hamlet'
 			];
 
 			const { variantNames } = ghostCharacter.body;
