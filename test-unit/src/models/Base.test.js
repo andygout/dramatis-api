@@ -147,87 +147,6 @@ describe('Base model', () => {
 
 	});
 
-	describe('hasCharacterDifferentiatorProperty method', () => {
-
-		context('instance has differentiator property', () => {
-
-			it('returns true', () => {
-
-				instance.characterDifferentiator = '';
-				const result = instance.hasCharacterDifferentiatorProperty();
-				expect(result).to.be.true;
-
-			});
-
-		});
-
-		context('instance does not have differentiator property', () => {
-
-			it('returns false', () => {
-
-				const result = instance.hasCharacterDifferentiatorProperty();
-				expect(result).to.be.false;
-
-			});
-
-		});
-
-	});
-
-	describe('hasQualifierProperty method', () => {
-
-		context('instance has qualifier property', () => {
-
-			it('returns true', () => {
-
-				instance.qualifier = '';
-				const result = instance.hasQualifierProperty();
-				expect(result).to.be.true;
-
-			});
-
-		});
-
-		context('instance does not have qualifier property', () => {
-
-			it('returns false', () => {
-
-				const result = instance.hasQualifierProperty();
-				expect(result).to.be.false;
-
-			});
-
-		});
-
-	});
-
-	describe('hasGroupProperty method', () => {
-
-		context('instance has group property', () => {
-
-			it('returns true', () => {
-
-				instance.group = '';
-				const result = instance.hasGroupProperty();
-				expect(result).to.be.true;
-
-			});
-
-		});
-
-		context('instance does not have group property', () => {
-
-			it('returns false', () => {
-
-				const result = instance.hasGroupProperty();
-				expect(result).to.be.false;
-
-			});
-
-		});
-
-	});
-
 	describe('runInputValidations method', () => {
 
 		it('will call validateName method', () => {
@@ -329,17 +248,9 @@ describe('Base model', () => {
 
 			it('will not call addPropertyError method', () => {
 
-				spy(instance, 'hasDifferentiatorProperty');
-				spy(instance, 'hasCharacterDifferentiatorProperty');
-				spy(instance, 'hasQualifierProperty');
-				spy(instance, 'hasGroupProperty');
 				spy(instance, 'addPropertyError');
 				const opts = { isDuplicate: false };
 				instance.validateUniquenessInGroup(opts);
-				expect(instance.hasDifferentiatorProperty.notCalled).to.be.true;
-				expect(instance.hasCharacterDifferentiatorProperty.notCalled).to.be.true;
-				expect(instance.hasQualifierProperty.notCalled).to.be.true;
-				expect(instance.hasGroupProperty.notCalled).to.be.true;
 				expect(instance.addPropertyError.notCalled).to.be.true;
 
 			});
@@ -352,21 +263,9 @@ describe('Base model', () => {
 
 				it('will call addPropertyError method with group context error text for name property only', () => {
 
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -381,21 +280,9 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and differentiator properties', () => {
 
 					instance.differentiator = '';
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -413,21 +300,9 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and differentiator properties', () => {
 
 					instance.characterDifferentiator = '';
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -445,21 +320,9 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and qualifier properties', () => {
 
 					instance.qualifier = '';
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -477,21 +340,9 @@ describe('Base model', () => {
 				it('will call addPropertyError method with group context error text for name and group properties', () => {
 
 					instance.group = '';
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.calledTwice).to.be.true;
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
@@ -512,21 +363,9 @@ describe('Base model', () => {
 					instance.characterDifferentiator = '';
 					instance.qualifier = '';
 					instance.group = '';
-					spy(instance, 'hasDifferentiatorProperty');
-					spy(instance, 'hasCharacterDifferentiatorProperty');
-					spy(instance, 'hasQualifierProperty');
-					spy(instance, 'hasGroupProperty');
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.hasDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledOnce).to.be.true;
-					expect(instance.hasCharacterDifferentiatorProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasQualifierProperty.calledOnce).to.be.true;
-					expect(instance.hasQualifierProperty.calledWithExactly()).to.be.true;
-					expect(instance.hasGroupProperty.calledOnce).to.be.true;
-					expect(instance.hasGroupProperty.calledWithExactly()).to.be.true;
 					expect(instance.addPropertyError.callCount).to.equal(5);
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'

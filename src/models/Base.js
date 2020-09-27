@@ -25,24 +25,6 @@ export default class Base {
 
 	}
 
-	hasCharacterDifferentiatorProperty () {
-
-		return Object.prototype.hasOwnProperty.call(this, 'characterDifferentiator');
-
-	}
-
-	hasQualifierProperty () {
-
-		return Object.prototype.hasOwnProperty.call(this, 'qualifier');
-
-	}
-
-	hasGroupProperty () {
-
-		return Object.prototype.hasOwnProperty.call(this, 'group');
-
-	}
-
 	runInputValidations () {
 
 		this.validateName({ isRequired: true });
@@ -83,16 +65,20 @@ export default class Base {
 
 			const uniquenessErrorMessage = 'This item has been duplicated within the group';
 
-			this.addPropertyError('name', uniquenessErrorMessage);
+			const properties = [
+				'name',
+				'differentiator',
+				'characterDifferentiator',
+				'qualifier',
+				'group'
+			];
 
-			if (this.hasDifferentiatorProperty()) this.addPropertyError('differentiator', uniquenessErrorMessage);
+			properties.forEach(property => {
 
-			if (this.hasCharacterDifferentiatorProperty())
-				this.addPropertyError('characterDifferentiator', uniquenessErrorMessage);
+				if (Object.prototype.hasOwnProperty.call(this, property))
+					this.addPropertyError(property, uniquenessErrorMessage);
 
-			if (this.hasQualifierProperty()) this.addPropertyError('qualifier', uniquenessErrorMessage);
-
-			if (this.hasGroupProperty()) this.addPropertyError('group', uniquenessErrorMessage);
+			});
 
 		}
 
