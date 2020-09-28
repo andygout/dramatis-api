@@ -130,7 +130,8 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				differentiator: null,
 				playtexts: [],
 				productions: [],
-				variantNames: []
+				variantNamedDepictions: [],
+				variantNamedPortrayals: []
 			};
 
 			expect(response).to.have.status(200);

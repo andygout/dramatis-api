@@ -43,6 +43,7 @@ describe('Cypher Queries Playtext module', () => {
 						CREATE (playtext)-
 							[:INCLUDES_CHARACTER {
 								position: characterParam.position,
+								displayName: characterParam.displayName,
 								qualifier: characterParam.qualifier,
 								group: characterParam.group
 							}]->(character)
@@ -67,6 +68,7 @@ describe('Cypher Queries Playtext module', () => {
 							THEN null
 							ELSE {
 								name: character.name,
+								displayName: characterRel.displayName,
 								differentiator: character.differentiator,
 								qualifier: characterRel.qualifier,
 								group: characterRel.group
@@ -127,6 +129,7 @@ describe('Cypher Queries Playtext module', () => {
 						CREATE (playtext)-
 							[:INCLUDES_CHARACTER {
 								position: characterParam.position,
+								displayName: characterParam.displayName,
 								qualifier: characterParam.qualifier,
 								group: characterParam.group
 							}]->(character)
@@ -151,6 +154,7 @@ describe('Cypher Queries Playtext module', () => {
 							THEN null
 							ELSE {
 								name: character.name,
+								displayName: characterRel.displayName,
 								differentiator: character.differentiator,
 								qualifier: characterRel.qualifier,
 								group: characterRel.group

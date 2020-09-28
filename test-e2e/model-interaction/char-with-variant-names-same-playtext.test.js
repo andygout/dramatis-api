@@ -202,16 +202,16 @@ describe('Character with variant names from productions of the same playtext', (
 
 	describe('Ghost (character)', () => {
 
-		it('includes variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
+		it('includes variant named portrayals (i.e. portrayals in productions with names different to that in playtext)', () => {
 
-			const expectedVariantNames = [
+			const expectedVariantNamedPortrayals = [
 				'Ghost of King Hamlet',
 				'King Hamlet'
 			];
 
-			const { variantNames } = ghostCharacter.body;
+			const { variantNamedPortrayals } = ghostCharacter.body;
 
-			expect(variantNames).to.deep.equal(expectedVariantNames);
+			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
 
 		});
 

@@ -50,6 +50,7 @@ const getCreateUpdateQuery = action => {
 				CREATE (playtext)-
 					[:INCLUDES_CHARACTER {
 						position: characterParam.position,
+						displayName: characterParam.displayName,
 						qualifier: characterParam.qualifier,
 						group: characterParam.group
 					}]->(character)
@@ -82,6 +83,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE {
 					name: character.name,
+					displayName: characterRel.displayName,
 					differentiator: character.differentiator,
 					qualifier: characterRel.qualifier,
 					group: characterRel.group
@@ -111,7 +113,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'character',
 					uuid: character.uuid,
-					name: character.name,
+					name: COALESCE(characterRel.displayName, character.name),
 					qualifier: characterRel.qualifier
 				}
 			END

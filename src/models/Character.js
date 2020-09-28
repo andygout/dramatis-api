@@ -6,7 +6,7 @@ export default class Character extends Base {
 
 		super(props);
 
-		const { uuid, differentiator, qualifier, group, isAssociation } = props;
+		const { uuid, differentiator, displayName, qualifier, group, isAssociation } = props;
 
 		this.model = 'character';
 		this.uuid = uuid;
@@ -14,6 +14,7 @@ export default class Character extends Base {
 
 		if (isAssociation) {
 
+			this.displayName = displayName?.trim() || '';
 			this.qualifier = qualifier?.trim() || '';
 			this.group = group?.trim() || '';
 

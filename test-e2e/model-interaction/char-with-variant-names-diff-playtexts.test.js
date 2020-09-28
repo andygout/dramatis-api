@@ -281,6 +281,7 @@ describe('Character with variant names from productions of different playtexts',
 					model: 'playtext',
 					uuid: FORTINBRAS_PLAYTEXT_UUID,
 					name: 'Fortinbras',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: []
 				},
@@ -288,6 +289,7 @@ describe('Character with variant names from productions of different playtexts',
 					model: 'playtext',
 					uuid: HAMLET_PLAYTEXT_UUID,
 					name: 'Hamlet',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: []
 				},
@@ -295,6 +297,7 @@ describe('Character with variant names from productions of different playtexts',
 					model: 'playtext',
 					uuid: HAMLETMACHINE_PLAYTEXT_UUID,
 					name: 'Hamletmachine',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: []
 				},
@@ -302,6 +305,7 @@ describe('Character with variant names from productions of different playtexts',
 					model: 'playtext',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PLAYTEXT_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: []
 				}
@@ -313,17 +317,17 @@ describe('Character with variant names from productions of different playtexts',
 
 		});
 
-		it('includes distinct variant names (i.e. portrayals in productions with names different to that in playtext)', () => {
+		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in playtext)', () => {
 
-			const expectedVariantNames = [
+			const expectedVariantNamedPortrayals = [
 				'Hamlet, Prince of Denmark',
 				'Prince Hamlet',
 				'Spirit of Hamlet'
 			];
 
-			const { variantNames } = hamletCharacter.body;
+			const { variantNamedPortrayals } = hamletCharacter.body;
 
-			expect(variantNames).to.deep.equal(expectedVariantNames);
+			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
 
 		});
 
