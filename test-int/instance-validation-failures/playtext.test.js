@@ -157,6 +157,55 @@ describe('Playtext instance', () => {
 
 		});
 
+		context('character displayName value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					characters: [
+						{
+							name: 'Johannes Rosmer',
+							displayName: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					characters: [
+						{
+							model: 'character',
+							uuid: undefined,
+							name: 'Johannes Rosmer',
+							displayName: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
+							qualifier: '',
+							group: '',
+							errors: {
+								displayName: [
+									'Value is too long'
+								]
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('character differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {

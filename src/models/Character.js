@@ -22,6 +22,12 @@ export default class Character extends Base {
 
 	}
 
+	validateDisplayName () {
+
+		this.validateStringForProperty('displayName', { isRequired: false });
+
+	}
+
 	validateGroup () {
 
 		this.validateStringForProperty('group', { isRequired: false });

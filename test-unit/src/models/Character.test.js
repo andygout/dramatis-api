@@ -46,6 +46,67 @@ describe('Character model', () => {
 
 		});
 
+		describe('displayName property', () => {
+
+			context('instance is subject', () => {
+
+				it('will not assign any value if absent from props', () => {
+
+					const instance = new Character({ name: 'King Henry V' });
+					expect(instance).not.to.have.property('displayName');
+
+				});
+
+				it('will not assign any value if included in props', () => {
+
+					const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal' });
+					expect(instance).not.to.have.property('displayName');
+
+				});
+
+			});
+
+			context('instance is not subject, i.e. it is an association of another instance', () => {
+
+				it('assigns empty string if absent from props', () => {
+
+					const instance = new Character({ name: 'King Henry V', isAssociation: true });
+					expect(instance.displayName).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is empty string', () => {
+
+					const instance = new Character({ name: 'King Henry V', displayName: '', isAssociation: true });
+					expect(instance.displayName).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+					const instance = new Character({ name: 'King Henry V', displayName: ' ', isAssociation: true });
+					expect(instance.displayName).to.equal('');
+
+				});
+
+				it('assigns value if included in props and value is string with length', () => {
+
+					const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal', isAssociation: true });
+					expect(instance.displayName).to.equal('Prince Hal');
+
+				});
+
+				it('trims value before assigning', () => {
+
+					const instance = new Character({ name: 'King Henry V', displayName: ' Prince Hal ', isAssociation: true });
+					expect(instance.displayName).to.equal('Prince Hal');
+
+				});
+
+			});
+
+		});
+
 		describe('qualifier property', () => {
 
 			context('instance is subject', () => {
@@ -165,6 +226,22 @@ describe('Character model', () => {
 				});
 
 			});
+
+		});
+
+	});
+
+	describe('validateDisplayName method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal', isAssociation: true });
+			spy(instance, 'validateStringForProperty');
+			instance.validateDisplayName();
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly(
+				'displayName', { isRequired: false }
+			)).to.be.true;
 
 		});
 
