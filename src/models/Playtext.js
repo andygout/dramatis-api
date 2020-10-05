@@ -36,6 +36,8 @@ export default class Playtext extends Base {
 
 			character.validateName({ isRequired: false });
 
+			character.validateDisplayName();
+
 			character.validateDifferentiator();
 
 			character.validateQualifier();
