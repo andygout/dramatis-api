@@ -166,7 +166,10 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (person)-[role]->(production)-[playtextRel]->
 		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
-			(role.roleName = character.name OR role.characterName = character.name) AND
+			(
+				role.roleName IN [character.name, characterRel.displayName] OR
+				role.characterName IN [character.name, characterRel.displayName]
+			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
 	WITH DISTINCT production, theatre, playtext, person, role, character

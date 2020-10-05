@@ -27,6 +27,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -82,6 +83,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -111,6 +113,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -144,6 +147,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -284,6 +288,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -292,6 +297,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -300,6 +306,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -308,6 +315,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -381,6 +389,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Irina Nikolayevna Arkadina',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -389,6 +398,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Konstantin Gavrilovich Treplyov',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -397,6 +407,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Boris Alexeyevich Trigorin',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -405,6 +416,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -452,6 +464,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Olga Sergeyevna Prozorova',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -460,6 +473,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Maria Sergeyevna Kulygina',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -468,6 +482,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: 'Irina Sergeyevna Prozorova',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -476,6 +491,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -573,6 +589,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',

@@ -202,6 +202,7 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: [
 						'2011',
@@ -266,6 +267,7 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: [
 						'2011',
@@ -322,6 +324,7 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: [
 						'1990',
@@ -386,6 +389,7 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
+					characterDisplayName: null,
 					qualifiers: [],
 					groups: [
 						'1945'

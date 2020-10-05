@@ -55,6 +55,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -122,6 +123,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -191,6 +193,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -225,6 +228,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
+						displayName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -289,6 +293,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius1 = {
 				model: 'character',
 				name: 'Demetrius',
+				displayName: '',
 				differentiator: '',
 				qualifier: '',
 				group: '',
@@ -320,6 +325,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius2 = {
 				model: 'character',
 				name: 'Demetrius',
+				displayName: '',
 				differentiator: '1',
 				qualifier: '',
 				group: '',
@@ -350,6 +356,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius1 = {
 				model: 'character',
 				name: 'Demetrius',
+				displayName: '',
 				differentiator: '',
 				qualifier: '',
 				group: '',
@@ -381,6 +388,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius2 = {
 				model: 'character',
 				name: 'Demetrius',
+				displayName: '',
 				differentiator: '1',
 				qualifier: '',
 				group: '',
