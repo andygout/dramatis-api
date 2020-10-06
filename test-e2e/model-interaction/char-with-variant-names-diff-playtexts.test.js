@@ -281,33 +281,49 @@ describe('Character with variant names from productions of different playtexts',
 					model: 'playtext',
 					uuid: FORTINBRAS_PLAYTEXT_UUID,
 					name: 'Fortinbras',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'playtext',
 					uuid: HAMLET_PLAYTEXT_UUID,
 					name: 'Hamlet',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'playtext',
 					uuid: HAMLETMACHINE_PLAYTEXT_UUID,
 					name: 'Hamletmachine',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'playtext',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PLAYTEXT_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
 				}
 			];
 

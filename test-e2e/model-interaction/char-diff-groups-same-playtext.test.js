@@ -202,11 +202,17 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: [
-						'2011',
-						'1990'
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: '2011'
+						},
+						{
+							displayName: null,
+							qualifier: null,
+							group: '1990'
+						}
 					]
 				}
 			];
@@ -267,11 +273,17 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: [
-						'2011',
-						'1990'
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: '2011'
+						},
+						{
+							displayName: null,
+							qualifier: null,
+							group: '1990'
+						}
 					]
 				}
 			];
@@ -324,11 +336,17 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: [
-						'1990',
-						'1945'
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: '1990'
+						},
+						{
+							displayName: null,
+							qualifier: null,
+							group: '1945'
+						}
 					]
 				}
 			];
@@ -389,10 +407,12 @@ describe('Character with multiple appearances in the same playtext in different 
 					model: 'playtext',
 					uuid: THREE_WINTERS_PLAYTEXT_UUID,
 					name: '3 Winters',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: [
-						'1945'
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: '1945'
+						}
 					]
 				}
 			];
