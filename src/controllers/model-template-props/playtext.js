@@ -3,7 +3,7 @@ export default {
 	characters: [
 		{
 			name: '',
-			displayName: '',
+			underlyingName: '',
 			differentiator: '',
 			qualifier: '',
 			group: ''

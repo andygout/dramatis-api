@@ -46,21 +46,21 @@ describe('Character model', () => {
 
 		});
 
-		describe('displayName property', () => {
+		describe('underlyingName property', () => {
 
 			context('instance is subject', () => {
 
 				it('will not assign any value if absent from props', () => {
 
-					const instance = new Character({ name: 'King Henry V' });
-					expect(instance).not.to.have.property('displayName');
+					const instance = new Character({ name: 'Prince Hal' });
+					expect(instance).not.to.have.property('underlyingName');
 
 				});
 
 				it('will not assign any value if included in props', () => {
 
-					const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal' });
-					expect(instance).not.to.have.property('displayName');
+					const instance = new Character({ name: 'Prince Hal', underlyingName: 'King Henry V' });
+					expect(instance).not.to.have.property('underlyingName');
 
 				});
 
@@ -70,36 +70,36 @@ describe('Character model', () => {
 
 				it('assigns empty string if absent from props', () => {
 
-					const instance = new Character({ name: 'King Henry V', isAssociation: true });
-					expect(instance.displayName).to.equal('');
+					const instance = new Character({ name: 'Prince Hal', isAssociation: true });
+					expect(instance.underlyingName).to.equal('');
 
 				});
 
 				it('assigns empty string if included in props but value is empty string', () => {
 
-					const instance = new Character({ name: 'King Henry V', displayName: '', isAssociation: true });
-					expect(instance.displayName).to.equal('');
+					const instance = new Character({ name: 'Prince Hal', underlyingName: '', isAssociation: true });
+					expect(instance.underlyingName).to.equal('');
 
 				});
 
 				it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-					const instance = new Character({ name: 'King Henry V', displayName: ' ', isAssociation: true });
-					expect(instance.displayName).to.equal('');
+					const instance = new Character({ name: 'Prince Hal', underlyingName: ' ', isAssociation: true });
+					expect(instance.underlyingName).to.equal('');
 
 				});
 
 				it('assigns value if included in props and value is string with length', () => {
 
-					const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal', isAssociation: true });
-					expect(instance.displayName).to.equal('Prince Hal');
+					const instance = new Character({ name: 'Prince Hal', underlyingName: 'King Henry V', isAssociation: true });
+					expect(instance.underlyingName).to.equal('King Henry V');
 
 				});
 
 				it('trims value before assigning', () => {
 
-					const instance = new Character({ name: 'King Henry V', displayName: ' Prince Hal ', isAssociation: true });
-					expect(instance.displayName).to.equal('Prince Hal');
+					const instance = new Character({ name: 'Prince Hal', underlyingName: ' King Henry V ', isAssociation: true });
+					expect(instance.underlyingName).to.equal('King Henry V');
 
 				});
 
@@ -231,16 +231,16 @@ describe('Character model', () => {
 
 	});
 
-	describe('validateDisplayName method', () => {
+	describe('validateUnderlyingName method', () => {
 
 		it('will call validateStringForProperty method', () => {
 
-			const instance = new Character({ name: 'King Henry V', displayName: 'Prince Hal', isAssociation: true });
+			const instance = new Character({ name: 'Prince Hal', underlyingName: 'King Henry V', isAssociation: true });
 			spy(instance, 'validateStringForProperty');
-			instance.validateDisplayName();
+			instance.validateUnderlyingName();
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
 			expect(instance.validateStringForProperty.calledWithExactly(
-				'displayName', { isRequired: false }
+				'underlyingName', { isRequired: false }
 			)).to.be.true;
 
 		});

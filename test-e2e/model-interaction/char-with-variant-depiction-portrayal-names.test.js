@@ -68,8 +68,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				name: 'Henry IV, Part 1',
 				characters: [
 					{
-						name: 'King Henry V',
-						displayName: 'Henry, Prince of Wales'
+						name: 'Henry, Prince of Wales',
+						underlyingName: 'King Henry V'
 					},
 					{
 						name: 'Sir John Falstaff'
@@ -86,8 +86,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				name: 'Henry IV, Part 2',
 				characters: [
 					{
-						name: 'King Henry V',
-						displayName: 'Prince Hal'
+						name: 'Prince Hal',
+						underlyingName: 'King Henry V'
 					},
 					{
 						name: 'Sir John Falstaff'

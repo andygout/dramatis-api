@@ -55,7 +55,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
-						displayName: '',
+						underlyingName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -123,7 +123,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
-						displayName: '',
+						underlyingName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -193,7 +193,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
-						displayName: '',
+						underlyingName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -228,7 +228,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'character',
 						name: '',
-						displayName: '',
+						underlyingName: '',
 						differentiator: '',
 						qualifier: '',
 						group: '',
@@ -293,7 +293,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius1 = {
 				model: 'character',
 				name: 'Demetrius',
-				displayName: '',
+				underlyingName: '',
 				differentiator: '',
 				qualifier: '',
 				group: '',
@@ -325,7 +325,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius2 = {
 				model: 'character',
 				name: 'Demetrius',
-				displayName: '',
+				underlyingName: '',
 				differentiator: '1',
 				qualifier: '',
 				group: '',
@@ -356,7 +356,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius1 = {
 				model: 'character',
 				name: 'Demetrius',
-				displayName: '',
+				underlyingName: '',
 				differentiator: '',
 				qualifier: '',
 				group: '',
@@ -388,7 +388,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 			const expectedCharacterDemetrius2 = {
 				model: 'character',
 				name: 'Demetrius',
-				displayName: '',
+				underlyingName: '',
 				differentiator: '1',
 				qualifier: '',
 				group: '',

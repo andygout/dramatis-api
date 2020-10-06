@@ -24,7 +24,9 @@ const getCreateUpdateQuery = action => {
 
 		UNWIND (CASE $characters WHEN [] THEN [null] ELSE $characters END) AS characterParam
 
-			OPTIONAL MATCH (existingCharacter:Character { name: characterParam.name })
+			OPTIONAL MATCH (existingCharacter:Character {
+				name: COALESCE(characterParam.underlyingName, characterParam.name)
+			})
 				WHERE
 					(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
 					(characterParam.differentiator = existingCharacter.differentiator)
@@ -35,7 +37,7 @@ const getCreateUpdateQuery = action => {
 				CASE existingCharacter WHEN NULL
 					THEN {
 						uuid: characterParam.uuid,
-						name: characterParam.name,
+						name: COALESCE(characterParam.underlyingName, characterParam.name),
 						differentiator: characterParam.differentiator,
 						qualifier: characterParam.qualifier,
 						group: characterParam.group
@@ -50,7 +52,7 @@ const getCreateUpdateQuery = action => {
 				CREATE (playtext)-
 					[:INCLUDES_CHARACTER {
 						position: characterParam.position,
-						displayName: characterParam.displayName,
+						displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
 						qualifier: characterParam.qualifier,
 						group: characterParam.group
 					}]->(character)
@@ -82,8 +84,8 @@ const getEditQuery = () => `
 			CASE character WHEN NULL
 				THEN null
 				ELSE {
-					name: character.name,
-					displayName: characterRel.displayName,
+					name: COALESCE(characterRel.displayName, character.name),
+					underlyingName: CASE characterRel.displayName WHEN NULL THEN null ELSE character.name END,
 					differentiator: character.differentiator,
 					qualifier: characterRel.qualifier,
 					group: characterRel.group
