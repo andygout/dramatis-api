@@ -1,0 +1,284 @@
+{
+	"name": "Henry V",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Henry V"
+	},
+	"cast": [
+		{
+			"name": "Penny Downie",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Adrian Lester",
+			"roles": [
+				{
+					"name": "Henry the Fifth",
+					"characterName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Tom McKay",
+			"roles": [
+				{
+					"name": "Duke of Gloucester"
+				},
+				{
+					"name": "Henry, Lord Scrope of Masham",
+					"characterName": "Lord Henry Scroop"
+				}
+			]
+		},
+		{
+			"name": "Tim Treloar",
+			"roles": [
+				{
+					"name": "Duke of Bedford"
+				},
+				{
+					"name": "John Bates"
+				}
+			]
+		},
+		{
+			"name": "Peter Blythe",
+			"roles": [
+				{
+					"name": "Duke of Exeter"
+				}
+			]
+		},
+		{
+			"name": "Robert Horwell",
+			"roles": [
+				{
+					"name": "Duke of York"
+				},
+				{
+					"name": "Nym"
+				},
+				{
+					"name": "Alexander Court"
+				}
+			]
+		},
+		{
+			"name": "Faz Singhateh",
+			"roles": [
+				{
+					"name": "Earl of Westmorland"
+				}
+			]
+		},
+		{
+			"name": "Tony Devlin",
+			"roles": [
+				{
+					"name": "Earl of Warwick"
+				},
+				{
+					"name": "Captain Macmorris"
+				}
+			]
+		},
+		{
+			"name": "William Gaunt",
+			"roles": [
+				{
+					"name": "Archbishop of Canterbury"
+				},
+				{
+					"name": "Duke of Burgundy"
+				}
+			]
+		},
+		{
+			"name": "David Weston",
+			"roles": [
+				{
+					"name": "Bishop of Ely"
+				},
+				{
+					"name": "Sir Thomas Erpingham"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Richard, Earl of Cambridge"
+				},
+				{
+					"name": "Duke of Orléans"
+				}
+			]
+		},
+		{
+			"name": "Mark Springer",
+			"roles": [
+				{
+					"name": "Sir Thomas Grey"
+				},
+				{
+					"name": "Duke of Bourbon"
+				}
+			]
+		},
+		{
+			"name": "Jude Akuwudike",
+			"roles": [
+				{
+					"name": "Pistol"
+				}
+			]
+		},
+		{
+			"name": "David Kennedy",
+			"roles": [
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Michael Williams"
+				}
+			]
+		},
+		{
+			"name": "Russell Tovey",
+			"roles": [
+				{
+					"name": "Boy"
+				}
+			]
+		},
+		{
+			"name": "Cecilia Noble",
+			"roles": [
+				{
+					"name": "Hostess"
+				},
+				{
+					"name": "Isabel",
+					"characterName": "Queen Isabel"
+				}
+			]
+		},
+		{
+			"name": "Desmond Barritt",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Rupert Wickham",
+			"roles": [
+				{
+					"name": "Captain Gower"
+				},
+				{
+					"name": "French Ambassador to England",
+					"characterName": "French Ambassadors"
+				}
+			]
+		},
+		{
+			"name": "Robert Blythe",
+			"roles": [
+				{
+					"name": "Captain Llewellyn",
+					"characterName": "Captain Fluellen"
+				}
+			]
+		},
+		{
+			"name": "Rohan Siva",
+			"roles": [
+				{
+					"name": "Captain Jamy"
+				},
+				{
+					"name": "Montjoy"
+				}
+			]
+		},
+		{
+			"name": "Ian Hogg",
+			"roles": [
+				{
+					"name": "Charles the Sixth",
+					"characterName": "King of France"
+				}
+			]
+		},
+		{
+			"name": "Adam Levy",
+			"roles": [
+				{
+					"name": "Louis",
+					"characterName": "Louis, Duke of Guyenne and Dauphin of France"
+				}
+			]
+		},
+		{
+			"name": "Felicité Du Jeu",
+			"roles": [
+				{
+					"name": "Catherine",
+					"characterName": "Katherine"
+				}
+			]
+		},
+		{
+			"name": "Marian McLoughlin",
+			"roles": [
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Constable of France",
+					"characterName": "Charles Delabreth, Constable of France"
+				}
+			]
+		},
+		{
+			"name": "John Normington",
+			"roles": [
+				{
+					"name": "Governor of Harfleur"
+				}
+			]
+		},
+		{
+			"name": "Jamie Harding",
+			"roles": [
+				{
+					"name": "Monsieur le Fer"
+				}
+			]
+		},
+		{
+			"name": "Helen Anderson-Lee",
+			"roles": [
+				{
+					"name": "Attendant",
+					"characterName": "Attendants"
+				}
+			]
+		}
+	]
+}

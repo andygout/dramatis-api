@@ -1,0 +1,206 @@
+{
+	"name": "Henry V",
+	"characters": [
+		{
+			"name": "Chorus",
+			"group": "The English"
+		},
+		{
+			"name": "King Henry V",
+			"group": "The English"
+		},
+		{
+			"name": "Duke of Gloucester",
+			"group": "The English"
+		},
+		{
+			"name": "Duke of Bedford",
+			"group": "The English"
+		},
+		{
+			"name": "Duke of Clarence",
+			"group": "The English"
+		},
+		{
+			"name": "Duke of Exeter",
+			"group": "The English"
+		},
+		{
+			"name": "Duke of York",
+			"group": "The English"
+		},
+		{
+			"name": "Earl of Salisbury",
+			"group": "The English"
+		},
+		{
+			"name": "Earl of Westmorland",
+			"underlyingName": "Ralph Neville, Earl of Westmorland",
+			"group": "The English"
+		},
+		{
+			"name": "Earl of Warwick",
+			"group": "The English"
+		},
+		{
+			"name": "Sir Thomas Erpingham",
+			"group": "The English"
+		},
+		{
+			"name": "Captain Gower",
+			"group": "The English"
+		},
+		{
+			"name": "Captain Fluellen",
+			"group": "The English"
+		},
+		{
+			"name": "Captain Macmorris",
+			"group": "The English"
+		},
+		{
+			"name": "Captain Jamy",
+			"group": "The English"
+		},
+		{
+			"name": "John Bates",
+			"group": "The English"
+		},
+		{
+			"name": "Alexander Court",
+			"group": "The English"
+		},
+		{
+			"name": "Michael Williams",
+			"group": "The English"
+		},
+		{
+			"name": "Herald",
+			"group": "The English"
+		},
+		{
+			"name": "Pistol",
+			"group": "The English"
+		},
+		{
+			"name": "Nym",
+			"group": "The English"
+		},
+		{
+			"name": "Bardolph",
+			"group": "The English"
+		},
+		{
+			"name": "Boy",
+			"group": "The English"
+		},
+		{
+			"name": "Hostess",
+			"underlyingName": "Mistress Quickly",
+			"group": "The English"
+		},
+		{
+			"name": "Archbishop of Canterbury",
+			"group": "The English"
+		},
+		{
+			"name": "Bishop of Ely",
+			"group": "The English"
+		},
+		{
+			"name": "Richard, Earl of Cambridge",
+			"group": "The English (traitors)"
+		},
+		{
+			"name": "Lord Henry Scroop",
+			"group": "The English (traitors)"
+		},
+		{
+			"name": "Sir Thomas Grey",
+			"group": "The English (traitors)"
+		},
+		{
+			"name": "King of France",
+			"group": "The French"
+		},
+		{
+			"name": "Queen Isabel",
+			"group": "The French"
+		},
+		{
+			"name": "Louis, Duke of Guyenne and Dauphin of France",
+			"group": "The French"
+		},
+		{
+			"name": "Katherine",
+			"group": "The French"
+		},
+		{
+			"name": "Alice",
+			"group": "The French"
+		},
+		{
+			"name": "Charles Delabreth, Constable of France",
+			"group": "The French"
+		},
+		{
+			"name": "Duke of Bourbon",
+			"group": "The French"
+		},
+		{
+			"name": "Duke of Orléans",
+			"group": "The French"
+		},
+		{
+			"name": "Duke of Berry",
+			"group": "The French"
+		},
+		{
+			"name": "Duke of Burgundy",
+			"group": "The French"
+		},
+		{
+			"name": "Lord Rambures",
+			"group": "The French"
+		},
+		{
+			"name": "Lord Grandpré",
+			"group": "The French"
+		},
+		{
+			"name": "Monsieur le Fer",
+			"group": "The French"
+		},
+		{
+			"name": "Montjoy",
+			"group": "The French"
+		},
+		{
+			"name": "Governor of Harfleur",
+			"group": "The French"
+		},
+		{
+			"name": "French Ambassadors",
+			"group": "The French"
+		},
+		{
+			"name": "Soldiers",
+			"differentiator": "Henry V",
+			"group": "Other"
+		},
+		{
+			"name": "Servants",
+			"group": "Other"
+		},
+		{
+			"name": "Attendants",
+			"differentiator": "Henry V",
+			"group": "Other"
+		},
+		{
+			"name": "Lords",
+			"differentiator": "Henry V",
+			"group": "Other"
+		}
+	]
+}

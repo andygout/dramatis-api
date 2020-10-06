@@ -1,0 +1,259 @@
+{
+	"name": "Henry IV, Part 1",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Henry IV, Part 1"
+	},
+	"cast": [
+		{
+			"name": "David Bradley",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Matthew Macfadyen",
+			"roles": [
+				{
+					"name": "Henry, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Samuel Roukin",
+			"roles": [
+				{
+					"name": "Prince John of Lancaster",
+					"characterName": "Lord John of Lancaster"
+				}
+			]
+		},
+		{
+			"name": "Thomas Arnold",
+			"roles": [
+				{
+					"name": "Humphrey"
+				},
+				{
+					"name": "Sir Michael"
+				},
+				{
+					"name": "Gadshill"
+				}
+			]
+		},
+		{
+			"name": "Rupert Ward-Lewis",
+			"roles": [
+				{
+					"name": "Thomas",
+					"characterName": "Thomas Percy, Earl of Worcester"
+				},
+				{
+					"name": "Earl of Douglas",
+					"characterName": "Archibald, Earl of Douglas"
+				}
+			]
+		},
+		{
+			"name": "Elliot Levey",
+			"roles": [
+				{
+					"name": "Earl of Westmorland",
+					"characterName": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Carrier",
+					"characterName": "Carriers"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Sir Walter Blunt"
+				},
+				{
+					"name": "Chamberlain at the Inn",
+					"characterName": "Chamberlain"
+				}
+			]
+		},
+		{
+			"name": "Jeffery Kissoon",
+			"roles": [
+				{
+					"name": "Henry Percy",
+					"characterName": "Henry Percy, Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "David Harewood",
+			"roles": [
+				{
+					"name": "Harry Percy"
+				}
+			]
+		},
+		{
+			"name": "Ian Gelder",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "Michelle Dockery",
+			"roles": [
+				{
+					"name": "Servant to the Percys",
+					"characterName": "Servant to Hotspur"
+				}
+			]
+		},
+		{
+			"name": "Alistair Petrie",
+			"roles": [
+				{
+					"name": "Edmund Mortimer",
+					"characterName": "Edmund, Lord Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Robert Blythe",
+			"roles": [
+				{
+					"name": "Owen Glendower"
+				},
+				{
+					"name": "Vintner"
+				}
+			]
+		},
+		{
+			"name": "Eve Myles",
+			"roles": [
+				{
+					"name": "Lady Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Harry Peacock",
+			"roles": [
+				{
+					"name": "Sir Richard Vernon",
+					"characterName": "Sir Richard Vernon, 8th Baron of Shipbrook"
+				},
+				{
+					"name": "Carrier",
+					"characterName": "Carriers"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Richard Scroop",
+					"characterName": "Richard Scroop, Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Tom Marshall",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		},
+		{
+			"name": "Danny Worters",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		},
+		{
+			"name": "Michael Gambon",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Adrian Scarborough",
+			"roles": [
+				{
+					"name": "Ned Poins"
+				}
+			]
+		},
+		{
+			"name": "Susan Brown",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Roger Sloman",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Andrew Westfield",
+			"roles": [
+				{
+					"name": "Peto"
+				}
+			]
+		},
+		{
+			"name": "Darren Hart",
+			"roles": [
+				{
+					"name": "Francis"
+				}
+			]
+		},
+		{
+			"name": "Robert Lister",
+			"roles": [
+				{
+					"name": "Sheriff"
+				},
+				{
+					"name": "Traveller",
+					"characterName": "Travellers"
+				}
+			]
+		},
+		{
+			"name": "Penelope McGhie",
+			"roles": [
+				{
+					"name": "Traveller",
+					"characterName": "Travellers"
+				}
+			]
+		}
+	]
+}

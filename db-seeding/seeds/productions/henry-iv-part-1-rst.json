@@ -1,0 +1,210 @@
+{
+	"name": "Henry IV, Part 1",
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"playtext": {
+		"name": "Henry IV, Part 1"
+	},
+	"cast": [
+		{
+			"name": "Elliot Barnes-Worrell",
+			"roles": [
+				{
+					"name": "Prince John",
+					"characterName": "Lord John of Lancaster"
+				},
+				{
+					"name": "Francis"
+				}
+			]
+		},
+		{
+			"name": "Martin Bassindale",
+			"roles": [
+				{
+					"name": "Peto"
+				}
+			]
+		},
+		{
+			"name": "Jasper Britton",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Anthony Byrne",
+			"roles": [
+				{
+					"name": "Worcester",
+					"characterName": "Thomas Percy, Earl of Worcester"
+				}
+			]
+		},
+		{
+			"name": "Sean Chapman",
+			"roles": [
+				{
+					"name": "Earl of Douglas",
+					"characterName": "Archibald, Earl of Douglas"
+				},
+				{
+					"name": "Northumberland",
+					"characterName": "Henry Percy, Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Paola Doinisotti",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Gerard-Martin",
+			"roles": [
+				{
+					"name": "Carrier",
+					"characterName": "Carriers"
+				}
+			]
+		},
+		{
+			"name": "Robert Gilbert",
+			"roles": [
+				{
+					"name": "Mortimer",
+					"characterName": "Edmund, Lord Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Jonny Glynn",
+			"roles": [
+				{
+					"name": "Gadshill"
+				}
+			]
+		},
+		{
+			"name": "Nia Gwynne",
+			"roles": [
+				{
+					"name": "Lady Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Alex Hassell",
+			"roles": [
+				{
+					"name": "Prince Hal",
+					"characterName": "Henry, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Jim Hooper",
+			"roles": [
+				{
+					"name": "Sir Richard Vernon",
+					"characterName": "Sir Richard Vernon, 8th Baron of Shipbrook"
+				}
+			]
+		},
+		{
+			"name": "Youssef Kerkour",
+			"roles": [
+				{
+					"name": "Westmorland",
+					"characterName": "Ralph Neville, Earl of Westmorland"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Kirby",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "Sam Marks",
+			"roles": [
+				{
+					"name": "Poins",
+					"characterName": "Ned Poins"
+				}
+			]
+		},
+		{
+			"name": "Keith Osborn",
+			"roles": [
+				{
+					"name": "Scroop",
+					"characterName": "Richard Scroop, Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Leigh Quinn",
+			"roles": [
+				{
+					"name": "Traveller",
+					"characterName": "Travellers"
+				}
+			]
+		},
+		{
+			"name": "Joshua Richards",
+			"roles": [
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Glendower",
+					"characterName": "Owen Glendower"
+				}
+			]
+		},
+		{
+			"name": "Antony Sher",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Simon Thorp",
+			"roles": [
+				{
+					"name": "Sir Walter Blunt"
+				}
+			]
+		},
+		{
+			"name": "Trevor White",
+			"roles": [
+				{
+					"name": "Hotspur",
+					"characterName": "Harry Percy"
+				}
+			]
+		},
+		{
+			"name": "Simon Yadoo",
+			"roles": [
+				{
+					"name": "Chamberlain"
+				}
+			]
+		}
+	]
+}

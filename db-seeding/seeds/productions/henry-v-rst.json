@@ -1,0 +1,256 @@
+{
+	"name": "Henry V",
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"playtext": {
+		"name": "Henry V"
+	},
+	"cast": [
+		{
+			"name": "Daniel Abbott",
+			"roles": [
+				{
+					"name": "Gloucester",
+					"characterName": "Duke of Gloucester"
+				},
+				{
+					"name": "Monsieur le Fer"
+				}
+			]
+		},
+		{
+			"name": "Martin Bassindale",
+			"roles": [
+				{
+					"name": "Boy"
+				}
+			]
+		},
+		{
+			"name": "Anthony Byrne",
+			"roles": [
+				{
+					"name": "Pistol"
+				}
+			]
+		},
+		{
+			"name": "Sean Chapman",
+			"roles": [
+				{
+					"name": "Exeter",
+					"characterName": "Duke of Exeter"
+				}
+			]
+		},
+		{
+			"name": "Oliver Ford Davies",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Gerard-Martin",
+			"roles": [
+				{
+					"name": "Orléans",
+					"characterName": "Duke of Orléans"
+				},
+				{
+					"name": "Bishop of Ely"
+				}
+			]
+		},
+		{
+			"name": "Robert Gilbert",
+			"roles": [
+				{
+					"name": "Dauphin",
+					"characterName": "Louis, Duke of Guyenne and Dauphin of France"
+				}
+			]
+		},
+		{
+			"name": "Alex Hassell",
+			"roles": [
+				{
+					"name": "Henry V",
+					"characterName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Jim Hooper",
+			"roles": [
+				{
+					"name": "Canterbury",
+					"characterName": "Archbishop of Canterbury"
+				},
+				{
+					"name": "Erpingham",
+					"characterName": "Sir Thomas Erpingham"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Kirby",
+			"roles": [
+				{
+					"name": "Katherine"
+				}
+			]
+		},
+		{
+			"name": "Jane Lapotaire",
+			"roles": [
+				{
+					"name": "Queen Isabel"
+				}
+			]
+		},
+		{
+			"name": "Sam Marks",
+			"roles": [
+				{
+					"name": "Constable of France",
+					"characterName": "Charles Delabreth, Constable of France"
+				}
+			]
+		},
+		{
+			"name": "Dale Mathurin",
+			"roles": [
+				{
+					"name": "Bates",
+					"characterName": "John Bates"
+				},
+				{
+					"name": "Bedford",
+					"characterName": "Duke of Bedford"
+				}
+			]
+		},
+		{
+			"name": "Chris Middleton",
+			"roles": [
+				{
+					"name": "Nym"
+				},
+				{
+					"name": "Warwick",
+					"characterName": "Earl of Warwick"
+				},
+				{
+					"name": "Governor of Harfleur"
+				}
+			]
+		},
+		{
+			"name": "Evelyn Miller",
+			"roles": [
+				{
+					"name": "Rambures",
+					"characterName": "Lord Rambures"
+				},
+				{
+					"name": "Lady-in-Waiting"
+				}
+			]
+		},
+		{
+			"name": "Keith Osborn",
+			"roles": [
+				{
+					"name": "Montjoy"
+				},
+				{
+					"name": "Scroop",
+					"characterName": "Lord Henry Scroop"
+				}
+			]
+		},
+		{
+			"name": "Sarah Parks",
+			"roles": [
+				{
+					"name": "Mistress Quickly",
+					"characterName": "Hostess"
+				}
+			]
+		},
+		{
+			"name": "Leigh Quinn",
+			"roles": [
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Joshua Richards",
+			"roles": [
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Fluellen",
+					"characterName": "Captain Fluellen"
+				}
+			]
+		},
+		{
+			"name": "Simon Thorp",
+			"roles": [
+				{
+					"name": "King of France"
+				}
+			]
+		},
+		{
+			"name": "Obioma Ugoala",
+			"roles": [
+				{
+					"name": "Grey",
+					"characterName": "Sir Thomas Grey"
+				},
+				{
+					"name": "Gower",
+					"characterName": "Captain Gower"
+				}
+			]
+		},
+		{
+			"name": "Andrew Westfield",
+			"roles": [
+				{
+					"name": "Westmorland",
+					"characterName": "Earl of Westmorland"
+				},
+				{
+					"name": "Macmorris",
+					"characterName": "Captain Macmorris"
+				}
+			]
+		},
+		{
+			"name": "Simon Yadoo",
+			"roles": [
+				{
+					"name": "Cambridge",
+					"characterName": "Richard, Earl of Cambridge"
+				},
+				{
+					"name": "Williams",
+					"characterName": "Michael Williams"
+				},
+				{
+					"name": "Jamy",
+					"characterName": "Captain Jamy"
+				}
+			]
+		}
+	]
+}
