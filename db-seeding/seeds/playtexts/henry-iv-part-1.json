@@ -1,0 +1,140 @@
+{
+	"name": "Henry IV, Part 1",
+	"characters": [
+		{
+			"name": "King Henry IV",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Henry, Prince of Wales",
+			"underlyingName": "King Henry V",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Lord John of Lancaster",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Ralph Neville, Earl of Westmorland",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Sir Walter Blunt",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Sir John Falstaff",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Ned Poins",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Bardolph",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Peto",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Mistress Quickly",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Francis",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Vintner",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Gadshill",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Carriers",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Ostler",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Henry Percy, Earl of Northumberland",
+			"group": "Rebels"
+		},
+		{
+			"name": "Thomas Percy, Earl of Worcester",
+			"group": "Rebels"
+		},
+		{
+			"name": "Harry Percy",
+			"group": "Rebels"
+		},
+		{
+			"name": "Edmund, Lord Mortimer",
+			"group": "Rebels"
+		},
+		{
+			"name": "Owen Glendower",
+			"group": "Rebels"
+		},
+		{
+			"name": "Archibald, Earl of Douglas",
+			"group": "Rebels"
+		},
+		{
+			"name": "Sir Richard Vernon, 8th Baron of Shipbrook",
+			"group": "Rebels"
+		},
+		{
+			"name": "Richard Scroop, Archbishop of York",
+			"group": "Rebels"
+		},
+		{
+			"name": "Sir Michael",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lady Percy",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lady Mortimer",
+			"group": "Rebels"
+		},
+		{
+			"name": "Chamberlain"
+		},
+		{
+			"name": "Sheriff"
+		},
+		{
+			"name": "Travellers"
+		},
+		{
+			"name": "Servant to Hotspur"
+		},
+		{
+			"name": "Lords",
+			"differentiator": "Henry IV, Part 1"
+		},
+		{
+			"name": "Officers"
+		},
+		{
+			"name": "Drawers"
+		},
+		{
+			"name": "Messengers",
+			"differentiator": "Henry IV, Part 1"
+		},
+		{
+			"name": "Attendants",
+			"differentiator": "Henry IV, Part 1"
+		}
+	]
+}

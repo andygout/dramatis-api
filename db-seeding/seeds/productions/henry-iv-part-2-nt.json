@@ -1,0 +1,263 @@
+{
+	"name": "Henry IV, Part 2",
+	"theatre": {
+		"name": "National Theatre"
+	},
+	"playtext": {
+		"name": "Henry IV, Part 2"
+	},
+	"cast": [
+		{
+			"name": "David Bradley",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Matthew Macfadyen",
+			"roles": [
+				{
+					"name": "Henry, Prince of Wales",
+					"characterName": "Prince Henry"
+				}
+			]
+		},
+		{
+			"name": "Samuel Roukin",
+			"roles": [
+				{
+					"name": "Prince John of Lancaster"
+				},
+				{
+					"name": "Snare"
+				}
+			]
+		},
+		{
+			"name": "Thomas Arnold",
+			"roles": [
+				{
+					"name": "Humphrey",
+					"characterName": "Humphrey, Duke of Gloucester"
+				},
+				{
+					"name": "Lord Mowbray"
+				}
+			]
+		},
+		{
+			"name": "Rupert Ward-Lewis",
+			"roles": [
+				{
+					"name": "Thomas",
+					"characterName": "Thomas, Duke of Clarence"
+				},
+				{
+					"name": "Lord Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Robert Blythe",
+			"roles": [
+				{
+					"name": "Earl of Warwick"
+				},
+				{
+					"name": "Gower"
+				}
+			]
+		},
+		{
+			"name": "Tom Marshall",
+			"roles": [
+				{
+					"name": "Earl of Surrey"
+				}
+			]
+		},
+		{
+			"name": "Elliot Levey",
+			"roles": [
+				{
+					"name": "Earl of Westmorland"
+				},
+				{
+					"name": "Francis Feeble"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Lord Chief Justice"
+				}
+			]
+		},
+		{
+			"name": "Jeffery Kissoon",
+			"roles": [
+				{
+					"name": "Henry Percy",
+					"characterName": "Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Richard Scroop",
+					"characterName": "Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Penelope McGhie",
+			"roles": [
+				{
+					"name": "Lady Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Naomi Frederick",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "Robert Lister",
+			"roles": [
+				{
+					"name": "Lord Hastings"
+				},
+				{
+					"name": "Beadle"
+				}
+			]
+		},
+		{
+			"name": "Harry Peacock",
+			"roles": [
+				{
+					"name": "Sir John Coleville"
+				},
+				{
+					"name": "Fang"
+				},
+				{
+					"name": "Peter Bullcalf"
+				}
+			]
+		},
+		{
+			"name": "Andrew Westfield",
+			"roles": [
+				{
+					"name": "Travers"
+				},
+				{
+					"name": "Peto"
+				}
+			]
+		},
+		{
+			"name": "Ian Gelder",
+			"roles": [
+				{
+					"name": "Morton"
+				},
+				{
+					"name": "Davy"
+				}
+			]
+		},
+		{
+			"name": "Michael Gambon",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Danny Worters",
+			"roles": [
+				{
+					"name": "Falstaff's Page"
+				}
+			]
+		},
+		{
+			"name": "Susan Brown",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Roger Sloman",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Adrian Scarborough",
+			"roles": [
+				{
+					"name": "Ned Poins"
+				},
+				{
+					"name": "Justice Silence"
+				}
+			]
+		},
+		{
+			"name": "Eve Myles",
+			"roles": [
+				{
+					"name": "Doll Tearsheet"
+				}
+			]
+		},
+		{
+			"name": "Alistair Petrie",
+			"roles": [
+				{
+					"name": "Pistol"
+				},
+				{
+					"name": "Ralph Mouldy"
+				}
+			]
+		},
+		{
+			"name": "Darren Hart",
+			"roles": [
+				{
+					"name": "Francis"
+				},
+				{
+					"name": "Thomas Wart"
+				}
+			]
+		},
+		{
+			"name": "John Wood",
+			"roles": [
+				{
+					"name": "Justice Shallow"
+				}
+			]
+		}
+	]
+}

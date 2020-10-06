@@ -1,0 +1,202 @@
+{
+	"name": "Henry IV, Part 2",
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"playtext": {
+		"name": "Henry IV, Part 2"
+	},
+	"cast": [
+		{
+			"name": "Elliot Barnes-Worrell",
+			"roles": [
+				{
+					"name": "Prince John",
+					"characterName": "Prince John of Lancaster"
+				},
+				{
+					"name": "Francis"
+				}
+			]
+		},
+		{
+			"name": "Martin Bassindale",
+			"roles": [
+				{
+					"name": "Peto"
+				}
+			]
+		},
+		{
+			"name": "Jasper Britton",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Anthony Byrne",
+			"roles": [
+				{
+					"name": "Pistol"
+				}
+			]
+		},
+		{
+			"name": "Sean Chapman",
+			"roles": [
+				{
+					"name": "Northumberland",
+					"characterName": "Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Paola Doinisotti",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Gerard-Martin",
+			"roles": [
+				{
+					"name": "Hastings",
+					"characterName": "Lord Hastings"
+				}
+			]
+		},
+		{
+			"name": "Robert Gilbert",
+			"roles": [
+				{
+					"name": "Coleville",
+					"characterName": "Sir John Coleville"
+				}
+			]
+		},
+		{
+			"name": "Jonny Glynn",
+			"roles": [
+				{
+					"name": "Warwick",
+					"characterName": "Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Nia Gwynne",
+			"roles": [
+				{
+					"name": "Doll Tearsheet"
+				}
+			]
+		},
+		{
+			"name": "Alex Hassell",
+			"roles": [
+				{
+					"name": "Prince Hal",
+					"characterName": "Prince Henry"
+				}
+			]
+		},
+		{
+			"name": "Jim Hooper",
+			"roles": [
+				{
+					"name": "Silence",
+					"characterName": "Justice Silence"
+				}
+			]
+		},
+		{
+			"name": "Youssef Kerkour",
+			"roles": [
+				{
+					"name": "Westmorland",
+					"characterName": "Earl of Westmorland"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Kirby",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "Sam Marks",
+			"roles": [
+				{
+					"name": "Poins",
+					"characterName": "Ned Poins"
+				}
+			]
+		},
+		{
+			"name": "Keith Osborn",
+			"roles": [
+				{
+					"name": "Scroop",
+					"characterName": "Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Leigh Quinn",
+			"roles": [
+				{
+					"name": "Wart",
+					"characterName": "Thomas Wart"
+				}
+			]
+		},
+		{
+			"name": "Joshua Richards",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Antony Sher",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Simon Thorp",
+			"roles": [
+				{
+					"name": "Lord Chief Justice"
+				}
+			]
+		},
+		{
+			"name": "Trevor White",
+			"roles": [
+				{
+					"name": "Mowbray",
+					"characterName": "Lord Mowbray"
+				}
+			]
+		},
+		{
+			"name": "Simon Yadoo",
+			"roles": [
+				{
+					"name": "Lord Bardolph"
+				}
+			]
+		}
+	]
+}

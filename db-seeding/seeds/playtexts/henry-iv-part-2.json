@@ -1,0 +1,205 @@
+{
+	"name": "Henry IV, Part 2",
+	"characters": [
+		{
+			"name": "King Henry IV",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Prince Henry",
+			"underlyingName": "King Henry V",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Prince John of Lancaster",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Humphrey, Duke of Gloucester",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Thomas, Duke of Clarence",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Earl of Warwick",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Earl of Surrey",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Earl of Westmorland",
+			"underlyingName": "Ralph Neville, Earl of Westmorland",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Harcourt",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Sir John Blunt",
+			"group": "Of the King's party"
+		},
+		{
+			"name": "Archbishop of York",
+			"underlyingName": "Richard Scroop, Archbishop of York",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lord Bardolph",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lord Mowbray",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lord Hastings",
+			"group": "Rebels"
+		},
+		{
+			"name": "Sir John Coleville",
+			"group": "Rebels"
+		},
+		{
+			"name": "Earl of Northumberland",
+			"underlyingName": "Henry Percy, Earl of Northumberland",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lady Northumberland",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lady Percy",
+			"group": "Rebels"
+		},
+		{
+			"name": "Travers",
+			"group": "Rebels"
+		},
+		{
+			"name": "Morton",
+			"group": "Rebels"
+		},
+		{
+			"name": "Lord Chief Justice",
+			"group": "Court"
+		},
+		{
+			"name": "Servant",
+			"group": "Court"
+		},
+		{
+			"name": "Gower",
+			"group": "Court"
+		},
+		{
+			"name": "Beadle",
+			"group": "Court"
+		},
+		{
+			"name": "Two Grooms",
+			"group": "Court"
+		},
+		{
+			"name": "Sir John Falstaff",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Falstaff's Page",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Bardolph",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Pistol",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Ned Poins",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Peto",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Mistress Quickly",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Doll Tearsheet",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Francis",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "William",
+			"group": "Eastcheap"
+		},
+		{
+			"name": "Ralph Mouldy",
+			"group": "Recruits"
+		},
+		{
+			"name": "Simon Shadow",
+			"group": "Recruits"
+		},
+		{
+			"name": "Thomas Wart",
+			"group": "Recruits"
+		},
+		{
+			"name": "Francis Feeble",
+			"group": "Recruits"
+		},
+		{
+			"name": "Peter Bullcalf",
+			"group": "Recruits"
+		},
+		{
+			"name": "Rumour"
+		},
+		{
+			"name": "Epilogue"
+		},
+		{
+			"name": "Justice Shallow"
+		},
+		{
+			"name": "Justice Silence"
+		},
+		{
+			"name": "Davy"
+		},
+		{
+			"name": "Snare"
+		},
+		{
+			"name": "Fang"
+		},
+		{
+			"name": "Messengers",
+			"differentiator": "Henry IV, Part 2"
+		},
+		{
+			"name": "Musicians"
+		},
+		{
+			"name": "Soldiers",
+			"differentiator": "Henry IV, Part 2"
+		},
+		{
+			"name": "Attendants",
+			"differentiator": "Henry IV, Part 2"
+		}
+	]
+}
