@@ -384,25 +384,37 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
 					name: 'Henry IV, Part 1',
-					characterDisplayName: 'Henry, Prince of Wales',
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: 'Henry, Prince of Wales',
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'playtext',
 					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
 					name: 'Henry IV, Part 2',
-					characterDisplayName: 'Prince Hal',
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: 'Prince Hal',
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'playtext',
 					uuid: HENRY_V_PLAYTEXT_UUID,
 					name: 'Henry V',
-					characterDisplayName: null,
-					qualifiers: [],
-					groups: []
+					depictions: [
+						{
+							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
 				}
 			];
 
