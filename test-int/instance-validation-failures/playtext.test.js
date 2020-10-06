@@ -138,7 +138,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
@@ -157,7 +157,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		context('character displayName value exceeds maximum limit', () => {
+		context('character underlyingName value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -166,7 +166,7 @@ describe('Playtext instance', () => {
 					characters: [
 						{
 							name: 'Johannes Rosmer',
-							displayName: ABOVE_MAX_LENGTH_STRING
+							underlyingName: ABOVE_MAX_LENGTH_STRING
 						}
 					]
 				};
@@ -187,12 +187,12 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: ABOVE_MAX_LENGTH_STRING,
+							underlyingName: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							qualifier: '',
 							group: '',
 							errors: {
-								displayName: [
+								underlyingName: [
 									'Value is too long'
 								]
 							}
@@ -236,7 +236,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: '',
+							underlyingName: '',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
 							qualifier: '',
 							group: '',
@@ -285,7 +285,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: ABOVE_MAX_LENGTH_STRING,
 							group: '',
@@ -334,7 +334,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: ABOVE_MAX_LENGTH_STRING,
@@ -433,7 +433,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
@@ -456,7 +456,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Rebecca West',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '1',
 							qualifier: '',
 							group: '',
@@ -479,7 +479,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Professor Kroll',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
@@ -489,7 +489,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Ulrik Brendel',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '1',
 							qualifier: '',
 							group: '',
@@ -499,7 +499,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Peder Mortensgaard',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
@@ -509,7 +509,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Johannes Rosmer',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
@@ -532,7 +532,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Rebecca West',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '1',
 							qualifier: '',
 							group: '',
@@ -555,7 +555,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Professor Kroll',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '1',
 							qualifier: '',
 							group: '',
@@ -565,7 +565,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Ulrik Brendel',
-							displayName: '',
+							underlyingName: '',
 							differentiator: '2',
 							qualifier: '',
 							group: '',
@@ -667,7 +667,7 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
-							displayName: '',
+							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
 							group: '',
