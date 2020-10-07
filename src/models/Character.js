@@ -10,11 +10,15 @@ export default class Character extends Base {
 
 		this.model = 'character';
 		this.uuid = uuid;
+
+		// Property assignment order in contructor dictates order of fields in CMS form
+		// where `underlyingName` is desired directly after `name`.
+		if (isAssociation) this.underlyingName = underlyingName?.trim() || '';
+
 		this.differentiator = differentiator?.trim() || '';
 
 		if (isAssociation) {
 
-			this.underlyingName = underlyingName?.trim() || '';
 			this.qualifier = qualifier?.trim() || '';
 			this.group = group?.trim() || '';
 
