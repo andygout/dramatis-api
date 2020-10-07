@@ -25,7 +25,7 @@ describe('Character with variant depiction and portrayal names', () => {
 	const ANTONY_SHER_PERSON_UUID = '28';
 	const HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '29';
 	const HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '34';
-	const SIMON_THORPE_PERSON_UUID = '38';
+	const SIMON_THORP_PERSON_UUID = '38';
 	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '39';
 	const NATIONAL_THEATRE_UUID = '40';
 	const MATTHEW_MACFADYEN_PERSON_UUID = '42';
@@ -207,7 +207,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						]
 					},
 					{
-						name: 'Simon Thorpe',
+						name: 'Simon Thorp',
 						roles: [
 							{
 								name: 'King of France'
@@ -1058,8 +1058,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				},
 				{
 					model: 'person',
-					uuid: SIMON_THORPE_PERSON_UUID,
-					name: 'Simon Thorpe',
+					uuid: SIMON_THORP_PERSON_UUID,
+					name: 'Simon Thorp',
 					roles: [
 						{
 							model: 'character',
