@@ -440,15 +440,18 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					name: 'Three Sisters',
 					characters: [
 						{
-							name: 'Olga Sergeyevna Prozorova',
+							name: 'Olga',
+							underlyingName: 'Olga Sergeyevna Prozorova',
 							group: 'The Prozorovs'
 						},
 						{
-							name: 'Maria Sergeyevna Kulygina',
+							name: 'Maria',
+							underlyingName: 'Maria Sergeyevna Kulygina',
 							group: 'The Prozorovs'
 						},
 						{
-							name: 'Irina Sergeyevna Prozorova',
+							name: 'Irina',
+							underlyingName: 'Irina Sergeyevna Prozorova',
 							group: 'The Prozorovs'
 						}
 					]
@@ -463,8 +466,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				characters: [
 					{
 						model: 'character',
-						name: 'Olga Sergeyevna Prozorova',
-						underlyingName: '',
+						name: 'Olga',
+						underlyingName: 'Olga Sergeyevna Prozorova',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -472,8 +475,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'character',
-						name: 'Maria Sergeyevna Kulygina',
-						underlyingName: '',
+						name: 'Maria',
+						underlyingName: 'Maria Sergeyevna Kulygina',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -481,8 +484,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'character',
-						name: 'Irina Sergeyevna Prozorova',
-						underlyingName: '',
+						name: 'Irina',
+						underlyingName: 'Irina Sergeyevna Prozorova',
 						differentiator: '',
 						qualifier: '',
 						group: 'The Prozorovs',
@@ -524,19 +527,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							{
 								model: 'character',
 								uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
-								name: 'Olga Sergeyevna Prozorova',
+								name: 'Olga',
 								qualifier: null
 							},
 							{
 								model: 'character',
 								uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
-								name: 'Maria Sergeyevna Kulygina',
+								name: 'Maria',
 								qualifier: null
 							},
 							{
 								model: 'character',
 								uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
-								name: 'Irina Sergeyevna Prozorova',
+								name: 'Irina',
 								qualifier: null
 							}
 						]
