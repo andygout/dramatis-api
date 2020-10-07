@@ -2,79 +2,103 @@
 	"name": "A Midsummer Night's Dream",
 	"characters": [
 		{
-			"name": "Theseus"
+			"name": "Theseus",
+			"group": "The Athenians"
 		},
 		{
-			"name": "Hippolyta"
+			"name": "Hippolyta",
+			"group": "The Athenians"
 		},
 		{
-			"name": "Egeus"
+			"name": "Egeus",
+			"group": "The Athenians"
 		},
 		{
-			"name": "Hermia"
+			"name": "Philostrate",
+			"group": "The Athenians"
 		},
 		{
-			"name": "Lysander"
+			"name": "Hermia",
+			"group": "The Lovers"
+		},
+		{
+			"name": "Lysander",
+			"group": "The Lovers"
 		},
 		{
 			"name": "Demetrius",
-			"differentiator": "1"
+			"differentiator": "1",
+			"group": "The Lovers"
 		},
 		{
-			"name": "Helena"
+			"name": "Helena",
+			"group": "The Lovers"
 		},
 		{
-			"name": "Philostrate"
+			"name": "Oberon",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Oberon"
+			"name": "Titania",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Titania"
+			"name": "Puck",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Puck"
+			"name": "Peaseblossom",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Peaseblossom"
+			"name": "Cobweb",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Cobweb"
+			"name": "Moth",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Moth"
+			"name": "Mustardseed",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Mustardseed"
+			"name": "Fairies",
+			"group": "The Fairies"
 		},
 		{
-			"name": "Peter Quince"
+			"name": "Peter Quince",
+			"group": "The Mechanicals"
 		},
 		{
-			"name": "Nick Bottom"
+			"name": "Nick Bottom",
+			"group": "The Mechanicals"
 		},
 		{
-			"name": "Francis Flute"
+			"name": "Francis Flute",
+			"group": "The Mechanicals"
 		},
 		{
-			"name": "Tom Snout"
+			"name": "Tom Snout",
+			"group": "The Mechanicals"
 		},
 		{
-			"name": "Snug"
+			"name": "Snug",
+			"group": "The Mechanicals"
 		},
 		{
-			"name": "Robin Starveling"
-		},
-		{
-			"name": "Fairies"
+			"name": "Robin Starveling",
+			"group": "The Mechanicals"
 		},
 		{
 			"name": "Lords",
-			"differentiator": "A Midsummer Night's Dream"
+			"differentiator": "A Midsummer Night's Dream",
+			"group": "The Athenians"
 		},
 		{
 			"name": "Attendants",
-			"differentiator": "A Midsummer Night's Dream"
+			"differentiator": "A Midsummer Night's Dream",
+			"group": "The Athenians"
 		}
 	]
 }

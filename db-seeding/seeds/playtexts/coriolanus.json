@@ -2,70 +2,91 @@
 	"name": "Coriolanus",
 	"characters": [
 		{
-			"name": "Caius Martius Coriolanus"
+			"name": "Caius Martius Coriolanus",
+			"group": "Romans"
 		},
 		{
-			"name": "Titus Lartius"
+			"name": "Titus Lartius",
+			"group": "Romans"
 		},
 		{
-			"name": "Cominius"
+			"name": "Cominius",
+			"group": "Romans"
 		},
 		{
-			"name": "Menenius Agrippa"
+			"name": "Menenius Agrippa",
+			"group": "Romans"
 		},
 		{
-			"name": "Sicinius Velutus"
+			"name": "Sicinius Velutus",
+			"group": "Romans"
 		},
 		{
-			"name": "Junius Brutus"
+			"name": "Junius Brutus",
+			"group": "Romans"
 		},
 		{
-			"name": "Roman Citizens"
+			"name": "Roman Citizens",
+			"group": "Romans"
 		},
 		{
-			"name": "Roman Herald"
+			"name": "Roman Herald",
+			"group": "Romans"
 		},
 		{
-			"name": "Nicanor"
+			"name": "Nicanor",
+			"group": "Volscians"
 		},
 		{
-			"name": "Volumnia"
+			"name": "Volumnia",
+			"group": "Romans"
 		},
 		{
-			"name": "Virgilia"
+			"name": "Virgilia",
+			"group": "Romans"
 		},
 		{
-			"name": "Young Martius"
+			"name": "Young Martius",
+			"group": "Romans"
 		},
 		{
-			"name": "Valeria"
+			"name": "Valeria",
+			"group": "Romans"
 		},
 		{
 			"name": "Gentlewoman"
 		},
 		{
-			"name": "Tullus Aufidius"
+			"name": "Tullus Aufidius",
+			"group": "Volscians"
 		},
 		{
-			"name": "Lieutenant"
+			"name": "Lieutenant",
+			"group": "Volscians"
 		},
 		{
-			"name": "Conspirators"
+			"name": "Conspirators",
+			"group": "Volscians"
 		},
 		{
-			"name": "Adrian"
+			"name": "Adrian",
+			"group": "Volscians"
 		},
 		{
-			"name": "A Citizen of Antium"
+			"name": "A Citizen of Antium",
+			"group": "Volscians"
 		},
 		{
-			"name": "Volscian Guards"
+			"name": "Volscian Guards",
+			"group": "Volscians"
 		},
 		{
-			"name": "Roman Senators"
+			"name": "Roman Senators",
+			"group": "Romans"
 		},
 		{
-			"name": "Volscian Senators"
+			"name": "Volscian Senators",
+			"group": "Volscians"
 		},
 		{
 			"name": "Patricians"
@@ -85,10 +106,12 @@
 			"differentiator": "Coriolanus"
 		},
 		{
-			"name": "Volscian Citizens"
+			"name": "Volscian Citizens",
+			"group": "Volscians"
 		},
 		{
-			"name": "Servants of Aufidius"
+			"name": "Servants of Aufidius",
+			"group": "Volscians"
 		},
 		{
 			"name": "Attendants",

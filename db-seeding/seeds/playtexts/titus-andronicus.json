@@ -2,94 +2,122 @@
 	"name": "Titus Andronicus",
 	"characters": [
 		{
-			"name": "Saturninus"
+			"name": "Saturninus",
+			"group": "Romans"
 		},
 		{
-			"name": "Bassianus"
+			"name": "Bassianus",
+			"group": "Romans"
 		},
 		{
-			"name": "Titus Andronicus"
+			"name": "Titus Andronicus",
+			"group": "Romans"
 		},
 		{
-			"name": "Marcus Andronicus"
+			"name": "Marcus Andronicus",
+			"group": "Romans"
 		},
 		{
 			"name": "Publius",
-			"differentiator": "1"
+			"differentiator": "1",
+			"group": "Romans"
 		},
 		{
 			"name": "Lucius",
-			"differentiator": "1"
+			"differentiator": "1",
+			"group": "Romans"
 		},
 		{
-			"name": "Quintus"
+			"name": "Quintus",
+			"group": "Romans"
 		},
 		{
-			"name": "Martius"
+			"name": "Martius",
+			"group": "Romans"
 		},
 		{
-			"name": "Mutius"
+			"name": "Mutius",
+			"group": "Romans"
 		},
 		{
-			"name": "Lavinia"
+			"name": "Lavinia",
+			"group": "Romans"
 		},
 		{
-			"name": "Young Lucius"
+			"name": "Young Lucius",
+			"group": "Romans"
 		},
 		{
-			"name": "Sempronius"
+			"name": "Sempronius",
+			"group": "Romans"
 		},
 		{
-			"name": "Caius"
+			"name": "Caius",
+			"group": "Romans"
 		},
 		{
-			"name": "Valentine"
+			"name": "Valentine",
+			"group": "Romans"
 		},
 		{
-			"name": "Æmilius"
+			"name": "Æmilius",
+			"group": "Romans"
 		},
 		{
-			"name": "Tamora"
+			"name": "Tamora",
+			"group": "Goths"
 		},
 		{
-			"name": "Alarbus"
+			"name": "Alarbus",
+			"group": "Goths"
 		},
 		{
 			"name": "Demetrius",
-			"differentiator": "2"
+			"differentiator": "2",
+			"group": "Goths"
 		},
 		{
-			"name": "Chiron"
+			"name": "Chiron",
+			"group": "Goths"
 		},
 		{
-			"name": "Aaron"
+			"name": "Aaron",
+			"group": "Goths"
 		},
 		{
-			"name": "Nurse"
+			"name": "Nurse",
+			"group": "Romans"
 		},
 		{
-			"name": "Clown"
+			"name": "Clown",
+			"group": "Romans"
 		},
 		{
 			"name": "Messenger",
-			"differentiator": "Titus Andronicus"
+			"differentiator": "Titus Andronicus",
+			"group": "Romans"
 		},
 		{
 			"name": "Senators",
-			"differentiator": "Titus Andronicus"
+			"differentiator": "Titus Andronicus",
+			"group": "Romans"
 		},
 		{
-			"name": "Tribunes"
+			"name": "Tribunes",
+			"group": "Romans"
 		},
 		{
-			"name": "Roman Soldiers"
+			"name": "Roman Soldiers",
+			"group": "Romans"
 		},
 		{
 			"name": "Attendants",
-			"differentiator": "Titus Andronicus"
+			"differentiator": "Titus Andronicus",
+			"group": "Romans"
 		},
 		{
-			"name": "Goths"
+			"name": "Goths",
+			"group": "Goths"
 		}
 	]
 }
