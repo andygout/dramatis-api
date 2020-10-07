@@ -114,7 +114,7 @@ describe('Character model', () => {
 				it('will not assign any value if absent from props', () => {
 
 					const instance = new Character({ name: 'Esme' });
-					expect(instance).not.to.have.property('characters');
+					expect(instance).not.to.have.property('qualifier');
 
 				});
 
@@ -175,7 +175,7 @@ describe('Character model', () => {
 				it('will not assign any value if absent from props', () => {
 
 					const instance = new Character({ name: 'Tamora' });
-					expect(instance).not.to.have.property('characters');
+					expect(instance).not.to.have.property('group');
 
 				});
 
