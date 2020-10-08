@@ -261,4 +261,102 @@ describe('Character model', () => {
 
 	});
 
+	describe('validateUnderlyingNameHasCharacterName method', () => {
+
+		context('valid data', () => {
+
+			it('will not add properties to errors property', () => {
+
+				const instance = new Character({ name: 'Prince Hal', underlyingName: 'King Henry V', isAssociation: true });
+				spy(instance, 'addPropertyError');
+				instance.validateUnderlyingNameHasCharacterName();
+				expect(instance.addPropertyError.notCalled).to.be.true;
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties whose values are arrays to errors property', () => {
+
+				const instance = new Character({ name: '', underlyingName: 'King Henry V', isAssociation: true });
+				spy(instance, 'addPropertyError');
+				instance.validateUnderlyingNameHasCharacterName();
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'name',
+					'Character name is required when underlying name is present'
+				)).to.be.true;
+
+			});
+
+		});
+
+	});
+
+	describe('validateCharacterNameUnderlyingNameDisparity method', () => {
+
+		context('valid data', () => {
+
+			context('role name without a character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Character({ name: 'Prince Hal', underlyingName: '', isAssociation: true });
+					spy(instance, 'addPropertyError');
+					instance.validateCharacterNameUnderlyingNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('role name and different character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Character({ name: 'Prince Hal', underlyingName: 'King Henry V', isAssociation: true });
+					spy(instance, 'addPropertyError');
+					instance.validateCharacterNameUnderlyingNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('no role name and no character name', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Character({ name: '', underlyingName: '', isAssociation: true });
+					spy(instance, 'addPropertyError');
+					instance.validateCharacterNameUnderlyingNameDisparity();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties whose values are arrays to errors property', () => {
+
+				const instance = new Character({ name: 'King Henry V', underlyingName: 'King Henry V', isAssociation: true });
+				spy(instance, 'addPropertyError');
+				instance.validateCharacterNameUnderlyingNameDisparity();
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'underlyingName',
+					'Underlying name is only required if different from character name'
+				)).to.be.true;
+
+			});
+
+		});
+
+	});
+
 });

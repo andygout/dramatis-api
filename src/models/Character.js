@@ -38,4 +38,24 @@ export default class Character extends Base {
 
 	}
 
+	validateUnderlyingNameHasCharacterName () {
+
+		if (!!this.underlyingName && !this.name) {
+
+			this.addPropertyError('name', 'Character name is required when underlying name is present');
+
+		}
+
+	}
+
+	validateCharacterNameUnderlyingNameDisparity () {
+
+		if (!!this.underlyingName && this.name === this.underlyingName) {
+
+			this.addPropertyError('underlyingName', 'Underlying name is only required if different from character name');
+
+		}
+
+	}
+
 }

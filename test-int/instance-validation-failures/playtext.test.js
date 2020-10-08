@@ -353,6 +353,104 @@ describe('Playtext instance', () => {
 
 		});
 
+		context('character underlyingName value is present but name value is absent', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					characters: [
+						{
+							name: '',
+							underlyingName: 'Johannes Rosmer'
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					characters: [
+						{
+							model: 'character',
+							uuid: undefined,
+							name: '',
+							underlyingName: 'Johannes Rosmer',
+							differentiator: '',
+							qualifier: '',
+							group: '',
+							errors: {
+								name: [
+									'Character name is required when underlying name is present'
+								]
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('character name and underlyingName values are the same', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					characters: [
+						{
+							name: 'Johannes Rosmer',
+							underlyingName: 'Johannes Rosmer'
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					characters: [
+						{
+							model: 'character',
+							uuid: undefined,
+							name: 'Johannes Rosmer',
+							underlyingName: 'Johannes Rosmer',
+							differentiator: '',
+							qualifier: '',
+							group: '',
+							errors: {
+								underlyingName: [
+									'Underlying name is only required if different from character name'
+								]
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('duplicate characters', () => {
 
 			it('assigns appropriate error', async () => {
