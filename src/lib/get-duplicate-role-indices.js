@@ -1,16 +1,16 @@
 const isDuplicateName = (object, comparisonObject) => {
 
-	const objectcharacterName =
+	const objectCharacterName =
 		object.characterName.length
 			? object.characterName
 			: object.name;
 
-	const comparisonObjectcharacterName =
+	const comparisonObjectCharacterName =
 		comparisonObject.characterName.length
 			? comparisonObject.characterName
 			: comparisonObject.name;
 
-	return object.name === comparisonObject.name || objectcharacterName === comparisonObjectcharacterName;
+	return object.name === comparisonObject.name || objectCharacterName === comparisonObjectCharacterName;
 
 };
 
