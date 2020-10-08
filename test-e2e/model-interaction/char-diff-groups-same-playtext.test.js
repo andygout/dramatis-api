@@ -16,7 +16,7 @@ describe('Character with multiple appearances in the same playtext in different 
 	const ALEKSANDER_KING_CHARACTER_UUID = '12';
 	const ROSE_KING_CHARACTER_UUID = '14';
 	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '16';
-	const NATIONAL_THEATRE_UUID = '17';
+	const NATIONAL_THEATRE_UUID = '18';
 	const SIOBHAN_FINNERAN_PERSON_UUID = '19';
 	const JO_HERBERT_PERSON_UUID = '20';
 	const JAMES_LAURENSON_PERSON_UUID = '21';
