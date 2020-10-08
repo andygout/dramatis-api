@@ -1,4 +1,4 @@
-import { getDuplicateIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateCharacterIndices } from '../lib/get-duplicate-character-indices';
 import Base from './Base';
 import { Character } from '.';
 
@@ -30,7 +30,7 @@ export default class Playtext extends Base {
 
 		this.validateDifferentiator();
 
-		const duplicateCharacterIndices = getDuplicateIndices(this.characters);
+		const duplicateCharacterIndices = getDuplicateCharacterIndices(this.characters);
 
 		this.characters.forEach((character, index) => {
 

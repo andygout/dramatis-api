@@ -275,6 +275,46 @@ describe('Base model', () => {
 
 			});
 
+			context('instance has underlyingName property', () => {
+
+				it('will call addPropertyError method with group context error text for name and underlyingName properties', () => {
+
+					instance.underlyingName = '';
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.firstCall.calledWithExactly(
+						'name', 'This item has been duplicated within the group'
+					)).to.be.true;
+					expect(instance.addPropertyError.secondCall.calledWithExactly(
+						'underlyingName', 'This item has been duplicated within the group'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('instance has characterName property', () => {
+
+				it('will call addPropertyError method with group context error text for name and characterName properties', () => {
+
+					instance.characterName = '';
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.firstCall.calledWithExactly(
+						'name', 'This item has been duplicated within the group'
+					)).to.be.true;
+					expect(instance.addPropertyError.secondCall.calledWithExactly(
+						'characterName', 'This item has been duplicated within the group'
+					)).to.be.true;
+
+				});
+
+			});
+
 			context('instance has differentiator property', () => {
 
 				it('will call addPropertyError method with group context error text for name and differentiator properties', () => {

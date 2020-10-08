@@ -30,8 +30,8 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateIndicesModule: {
-				getDuplicateIndices: stub().returns([])
+			getDuplicatePersonIndicesModule: {
+				getDuplicatePersonIndices: stub().returns([])
 			},
 			Base: {
 				validateStringModule: {
@@ -54,7 +54,7 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/get-duplicate-person-indices': stubs.getDuplicatePersonIndicesModule,
 			'./Base': proxyquire('../../../src/models/Base', {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
@@ -116,7 +116,7 @@ describe('Production model', () => {
 				instance.theatre.validateDifferentiator,
 				instance.playtext.validateName,
 				instance.playtext.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateIndices,
+				stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices,
 				instance.cast[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -129,8 +129,10 @@ describe('Production model', () => {
 			expect(instance.playtext.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.playtext.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.playtext.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(instance.cast)).to.be.true;
+			expect(stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices.calledWithExactly(
+				instance.cast
+			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 

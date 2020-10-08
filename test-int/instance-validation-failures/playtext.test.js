@@ -353,7 +353,7 @@ describe('Playtext instance', () => {
 
 		});
 
-		context('duplicate combinations of character name, differentiator, qualifier, and group values', () => {
+		context('duplicate characters', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -361,58 +361,13 @@ describe('Playtext instance', () => {
 					name: 'Rosmersholm',
 					characters: [
 						{
-							name: 'Johannes Rosmer',
-							differentiator: '',
-							qualifier: '',
-							group: ''
+							name: 'Johannes Rosmer'
 						},
 						{
-							name: 'Rebecca West',
-							differentiator: '1',
-							qualifier: '',
-							group: ''
+							name: 'Rebecca West'
 						},
 						{
-							name: 'Professor Kroll',
-							differentiator: '',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Ulrik Brendel',
-							differentiator: '1',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Peder Mortensgaard',
-							differentiator: '',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Johannes Rosmer',
-							differentiator: '',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Rebecca West',
-							differentiator: '1',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Professor Kroll',
-							differentiator: '1',
-							qualifier: '',
-							group: ''
-						},
-						{
-							name: 'Ulrik Brendel',
-							differentiator: '2',
-							qualifier: '',
-							group: ''
+							name: 'Johannes Rosmer'
 						}
 					]
 				};
@@ -441,6 +396,9 @@ describe('Playtext instance', () => {
 								name: [
 									'This item has been duplicated within the group'
 								],
+								underlyingName: [
+									'This item has been duplicated within the group'
+								],
 								differentiator: [
 									'This item has been duplicated within the group'
 								],
@@ -456,49 +414,6 @@ describe('Playtext instance', () => {
 							model: 'character',
 							uuid: undefined,
 							name: 'Rebecca West',
-							underlyingName: '',
-							differentiator: '1',
-							qualifier: '',
-							group: '',
-							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								],
-								qualifier: [
-									'This item has been duplicated within the group'
-								],
-								group: [
-									'This item has been duplicated within the group'
-								]
-							}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Professor Kroll',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Ulrik Brendel',
-							underlyingName: '',
-							differentiator: '1',
-							qualifier: '',
-							group: '',
-							errors: {}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Peder Mortensgaard',
 							underlyingName: '',
 							differentiator: '',
 							qualifier: '',
@@ -517,27 +432,7 @@ describe('Playtext instance', () => {
 								name: [
 									'This item has been duplicated within the group'
 								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								],
-								qualifier: [
-									'This item has been duplicated within the group'
-								],
-								group: [
-									'This item has been duplicated within the group'
-								]
-							}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Rebecca West',
-							underlyingName: '',
-							differentiator: '1',
-							qualifier: '',
-							group: '',
-							errors: {
-								name: [
+								underlyingName: [
 									'This item has been duplicated within the group'
 								],
 								differentiator: [
@@ -550,26 +445,6 @@ describe('Playtext instance', () => {
 									'This item has been duplicated within the group'
 								]
 							}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Professor Kroll',
-							underlyingName: '',
-							differentiator: '1',
-							qualifier: '',
-							group: '',
-							errors: {}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Ulrik Brendel',
-							underlyingName: '',
-							differentiator: '2',
-							qualifier: '',
-							group: '',
-							errors: {}
 						}
 					]
 				};
