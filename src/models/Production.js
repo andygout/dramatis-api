@@ -12,8 +12,8 @@ export default class Production extends Base {
 
 		this.model = 'production';
 		this.uuid = uuid;
-		this.theatre = new Theatre(theatre);
 		this.playtext = new Playtext({ ...playtext, isAssociation: true });
+		this.theatre = new Theatre(theatre);
 		this.cast = cast
 			? cast.map(castMember => new CastMember(castMember))
 			: [];

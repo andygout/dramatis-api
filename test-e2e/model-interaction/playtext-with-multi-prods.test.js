@@ -11,12 +11,12 @@ describe('Playtext with multiple productions', () => {
 	chai.use(chaiHttp);
 
 	const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
-	const NATIONAL_THEATRE_UUID = '1';
-	const MEASURE_FOR_MEASURE_PLAYTEXT_UUID = '2';
+	const MEASURE_FOR_MEASURE_PLAYTEXT_UUID = '1';
+	const NATIONAL_THEATRE_UUID = '2';
 	const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '3';
-	const ALMEIDA_THEATRE_UUID = '4';
+	const ALMEIDA_THEATRE_UUID = '5';
 	const MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID = '6';
-	const DONMAR_WAREHOUSE_THEATRE_UUID = '7';
+	const DONMAR_WAREHOUSE_THEATRE_UUID = '8';
 
 	let measureForMeasurePlaytext;
 	let measureForMeasureNationalProduction;

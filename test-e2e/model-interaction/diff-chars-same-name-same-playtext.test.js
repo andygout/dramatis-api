@@ -15,7 +15,7 @@ describe('Different characters with the same name from the same playtext', () =>
 	const VOLUMNIUS_CHARACTER_UUID = '6';
 	const CINNA_CHARACTER_2_UUID = '7';
 	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '8';
-	const BARBICAN_THEATRE_UUID = '9';
+	const BARBICAN_THEATRE_UUID = '10';
 	const PAUL_SHEARER_PERSON_UUID = '11';
 	const LEO_WRINGER_PERSON_UUID = '12';
 

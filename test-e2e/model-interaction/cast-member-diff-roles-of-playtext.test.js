@@ -13,11 +13,11 @@ describe('Cast member performing different roles in different productions of sam
 	const KING_LEAR_CHARACTER_UUID = '4';
 	const FOOL_CHARACTER_UUID = '5';
 	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '7';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '8';
 	const MICHAEL_GAMBON_PERSON_UUID = '9';
 	const ANTONY_SHER_PERSON_UUID = '10';
 	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '11';
-	const BARBICAN_THEATRE_UUID = '12';
+	const BARBICAN_THEATRE_UUID = '13';
 	const GRAHAM_TURNER_PERSON_UUID = '15';
 
 	let kingLearCharacter;

@@ -11,7 +11,7 @@ describe('Theatre with multiple productions', () => {
 	chai.use(chaiHttp);
 
 	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
-	const DONMAR_WAREHOUSE_THEATRE_UUID = '1';
+	const DONMAR_WAREHOUSE_THEATRE_UUID = '2';
 	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '3';
 	const RED_DONMAR_PRODUCTION_UUID = '6';
 

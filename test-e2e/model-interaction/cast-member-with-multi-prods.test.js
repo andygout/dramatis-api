@@ -11,12 +11,12 @@ describe('Cast member with multiple production credits', () => {
 	chai.use(chaiHttp);
 
 	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = '0';
-	const ALDWYCH_THEATRE_UUID = '1';
+	const ALDWYCH_THEATRE_UUID = '2';
 	const SUSANNAH_FELLOWS_PERSON_UUID = '3';
 	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = '4';
-	const PRINCE_OF_WALES_THEATRE_UUID = '5';
+	const PRINCE_OF_WALES_THEATRE_UUID = '6';
 	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = '8';
-	const CHICHESTER_FESTIVAL_THEATRE_UUID = '9';
+	const CHICHESTER_FESTIVAL_THEATRE_UUID = '10';
 
 	let susannahFellowsPerson;
 	let theGreeksAldwychProduction;
