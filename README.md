@@ -51,7 +51,7 @@ or
 
 ## To run end-to-end tests
 - Download and run the [Docker Desktop app](https://www.docker.com/products/docker-desktop).
-- Stop any Neo4j databases running on the Desktop app.
+- Stop any Neo4j databases running on the Neo4j Desktop app if they share the same port number as that used by the Docker-served Neo4j instance.
 - Start the Docker-served resources by running `$ npm run e2e-test-resources` and wait until they are ready.
 - In a separate CLI tab run `$ npm run e2e-test`.
 - The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`.
