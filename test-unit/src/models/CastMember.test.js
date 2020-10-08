@@ -88,7 +88,6 @@ describe('Cast Member model', () => {
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
 				instance.roles[0].validateQualifier,
-				instance.roles[0].validateCharacterNameHasRoleName,
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateUniquenessInGroup
 			);
@@ -110,8 +109,6 @@ describe('Cast Member model', () => {
 			expect(instance.roles[0].validateCharacterName.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateQualifier.calledOnce).to.be.true;
 			expect(instance.roles[0].validateQualifier.calledWithExactly()).to.be.true;
-			expect(instance.roles[0].validateCharacterNameHasRoleName.calledOnce).to.be.true;
-			expect(instance.roles[0].validateCharacterNameHasRoleName.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledOnce).to.be.true;
 			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateUniquenessInGroup.calledOnce).to.be.true;

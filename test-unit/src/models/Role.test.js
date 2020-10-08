@@ -158,40 +158,6 @@ describe('Role model', () => {
 
 	});
 
-	describe('validateCharacterNameHasRoleName method', () => {
-
-		context('valid data', () => {
-
-			it('will not add properties to errors property', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
-				spy(instance, 'addPropertyError');
-				instance.validateCharacterNameHasRoleName();
-				expect(instance.addPropertyError.notCalled).to.be.true;
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('adds properties whose values are arrays to errors property', () => {
-
-				const instance = new Role({ name: '', characterName: 'Hamlet' });
-				spy(instance, 'addPropertyError');
-				instance.validateCharacterNameHasRoleName();
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'name',
-					'Role name is required when character name is present'
-				)).to.be.true;
-
-			});
-
-		});
-
-	});
-
 	describe('validateRoleNameCharacterNameDisparity method', () => {
 
 		context('valid data', () => {
