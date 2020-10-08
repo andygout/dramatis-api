@@ -64,14 +64,14 @@ Using theatre model as an example.
 
 ### POST `/theatres`
 - **Create** theatre.
-- Requires body, e.g.: `{ "name": "National Theatre" }`.
+- Requires body, e.g. `{ "name": "National Theatre" }`.
 
 ### GET `/theatres/:uuid/edit`
 - Get data required to **edit** specific theatre.
 
 ### PUT `/theatres/:uuid`
 - **Update** specific theatre.
-- Requires body, e.g.: `{ "name": "Almeida Theatre" }`.
+- Requires body, e.g. `{ "name": "Almeida Theatre" }`.
 
 ### DELETE `/theatres/:uuid`
 - **Delete** specific theatre.
