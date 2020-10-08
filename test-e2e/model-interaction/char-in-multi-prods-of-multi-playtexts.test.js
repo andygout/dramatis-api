@@ -298,7 +298,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 
 	describe('Sir John Falstaff (character)', () => {
 
-		it('includes playtexts in which character appears', () => {
+		it('includes playtexts in which character is depicted', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -345,7 +345,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 
 		});
 
-		it('includes productions of playtexts in which character appears (including cast member who portrayed them)', () => {
+		it('includes productions of playtexts in which character is portrayed (including cast member who portrayed them)', () => {
 
 			const expectedProductions = [
 				{

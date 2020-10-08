@@ -274,7 +274,7 @@ describe('Character with variant names from productions of different playtexts',
 
 	describe('Hamlet (character)', () => {
 
-		it('includes playtexts in which character is included', () => {
+		it('includes playtexts in which character is depicted', () => {
 
 			const expectedPlaytexts = [
 				{

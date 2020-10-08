@@ -195,7 +195,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Alisa Kos (character)', () => {
 
-		it('includes playtexts in which character appears, including the groups applied', () => {
+		it('includes playtexts in which character is depicted, including the groups applied', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -223,7 +223,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		});
 
-		it('includes productions in which character is portrayed, including by which performer and in which group', () => {
+		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
 
 			const expectedProductions = [
 				{
@@ -266,7 +266,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Maša Kos (character)', () => {
 
-		it('includes playtexts in which character appears, including the groups applied', () => {
+		it('includes playtexts in which character is depicted, including the groups applied', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -294,7 +294,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		});
 
-		it('includes productions in which character is portrayed, including by which performer and excluding group as not applied', () => {
+		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
 
 			const expectedProductions = [
 				{
@@ -329,7 +329,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Aleksander King (character)', () => {
 
-		it('includes playtexts in which character appears, including the groups applied', () => {
+		it('includes playtexts in which character is depicted, including the groups applied', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -357,7 +357,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		});
 
-		it('includes productions in which character is portrayed, including by which performer and in which group', () => {
+		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
 
 			const expectedProductions = [
 				{
@@ -400,7 +400,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Rose King (character)', () => {
 
-		it('includes playtexts in which character appears, including the groups applied', () => {
+		it('includes playtexts in which character is depicted, including the groups applied', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -423,7 +423,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 		});
 
-		it('includes productions in which character is portrayed, including by which performer and excluding group as not applied', () => {
+		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
 
 			const expectedProductions = [
 				{
@@ -458,7 +458,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('3 Winters (playtext)', () => {
 
-		it('includes its characters in their respective groups', () => {
+		it('includes characters in their respective groups', () => {
 
 			const expectedCharacterGroups = [
 				{
@@ -626,7 +626,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Siobhan Finneran (person)', () => {
 
-		it('includes in their production credits their portrayal of Maša Kos without a qualifier as not required', () => {
+		it('includes in their production credits their portrayal of Maša Kos without a qualifier (as it is not required)', () => {
 
 			const expectedProductions = [
 				{
@@ -659,7 +659,7 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	describe('Jo Herbert (person)', () => {
 
-		it('includes in their production credits their portrayal of Rose King without a qualifier as not required', () => {
+		it('includes in their production credits their portrayal of Rose King without a qualifier (as it is not required)', () => {
 
 			const expectedProductions = [
 				{

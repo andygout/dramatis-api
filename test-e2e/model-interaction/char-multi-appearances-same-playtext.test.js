@@ -147,7 +147,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 	describe('Esme (character)', () => {
 
-		it('includes playtexts in which character appears, including the qualifiers used', () => {
+		it('includes playtexts in which character is depicted, including the qualifiers used', () => {
 
 			const expectedPlaytexts = [
 				{
@@ -175,7 +175,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 		});
 
-		it('includes productions in which character is portrayed, including by which performer and under which qualifier', () => {
+		it('includes productions in which character was portrayed, including by which performer and under which qualifier', () => {
 
 			const expectedProductions = [
 				{
@@ -232,7 +232,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 	describe('Alice (character)', () => {
 
-		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
+		it('includes productions in which character was portrayed, including performer\'s other roles with qualifiers', () => {
 
 			const expectedProductions = [
 				{
@@ -274,7 +274,7 @@ describe('Character with multiple appearances in the same playtext under differe
 
 	describe('Eleanor (character)', () => {
 
-		it('includes productions in which character is portrayed, including performer\'s other roles with qualifiers', () => {
+		it('includes productions in which character was portrayed, including performer\'s other roles with qualifiers', () => {
 
 			const expectedProductions = [
 				{
