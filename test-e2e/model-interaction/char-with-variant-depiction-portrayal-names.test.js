@@ -377,7 +377,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('King Henry V (character)', () => {
 
-		it('includes playtexts in which character is included', () => {
+		it('includes playtexts in which character is depicted', () => {
 
 			const expectedPlaytexts = [
 				{
