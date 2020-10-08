@@ -1,4 +1,4 @@
-import { getDuplicateIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateRoleIndices } from '../lib/get-duplicate-role-indices';
 import Person from './Person';
 import { Role } from '.';
 
@@ -26,7 +26,7 @@ export default class CastMember extends Person {
 
 		this.validateNamePresenceIfRoles();
 
-		const duplicateRoleIndices = getDuplicateIndices(this.roles);
+		const duplicateRoleIndices = getDuplicateRoleIndices(this.roles);
 
 		this.roles.forEach((role, index) => {
 

@@ -1,4 +1,4 @@
-import { getDuplicateIndices } from '../lib/get-duplicate-indices';
+import { getDuplicatePersonIndices } from '../lib/get-duplicate-person-indices';
 import Base from './Base';
 import { CastMember, Playtext, Theatre } from '.';
 
@@ -32,7 +32,7 @@ export default class Production extends Base {
 
 		this.playtext.validateDifferentiator();
 
-		const duplicateCastMemberIndices = getDuplicateIndices(this.cast);
+		const duplicateCastMemberIndices = getDuplicatePersonIndices(this.cast);
 
 		this.cast.forEach((castMember, index) =>
 			castMember.runInputValidations({ isDuplicate: duplicateCastMemberIndices.includes(index) })

@@ -23,8 +23,8 @@ describe('Playtext model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateIndicesModule: {
-				getDuplicateIndices: stub().returns([])
+			getDuplicateCharacterIndicesModule: {
+				getDuplicateCharacterIndices: stub().returns([])
 			},
 			Base: {
 				validateStringModule: {
@@ -42,7 +42,7 @@ describe('Playtext model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
 			'./Base': proxyquire('../../../src/models/Base', {
 				'../lib/validate-string': stubs.Base.validateStringModule
 			}),
@@ -173,7 +173,7 @@ describe('Playtext model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateIndices,
+				stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
 				instance.characters[0].validateUnderlyingName,
 				instance.characters[0].validateDifferentiator,
@@ -185,8 +185,8 @@ describe('Playtext model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(
+			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledWithExactly(
 				instance.characters
 			)).to.be.true;
 			expect(instance.characters[0].validateName.calledOnce).to.be.true;

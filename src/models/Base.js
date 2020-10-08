@@ -67,6 +67,8 @@ export default class Base {
 
 			const properties = [
 				'name',
+				'underlyingName',
+				'characterName',
 				'differentiator',
 				'characterDifferentiator',
 				'qualifier',

@@ -430,7 +430,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('duplicate combinations of cast member name and differentiator values', () => {
+		context('duplicate cast members', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -438,49 +438,13 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					cast: [
 						{
-							name: 'Rory Kinnear',
-							differentiator: '',
-							roles: []
+							name: 'Rory Kinnear'
 						},
 						{
-							name: 'Clare Higgins',
-							differentiator: '1',
-							roles: []
+							name: 'Clare Higgins'
 						},
 						{
-							name: 'Ruth Negga',
-							differentiator: '',
-							roles: []
-						},
-						{
-							name: 'Giles Terera',
-							differentiator: '1',
-							roles: []
-						},
-						{
-							name: 'David Calder',
-							differentiator: '',
-							roles: []
-						},
-						{
-							name: 'Rory Kinnear',
-							differentiator: '',
-							roles: []
-						},
-						{
-							name: 'Clare Higgins',
-							differentiator: '1',
-							roles: []
-						},
-						{
-							name: 'Ruth Negga',
-							differentiator: '1',
-							roles: []
-						},
-						{
-							name: 'Giles Terera',
-							differentiator: '2',
-							roles: []
+							name: 'Rory Kinnear'
 						}
 					]
 				};
@@ -529,37 +493,6 @@ describe('Production instance', () => {
 							model: 'person',
 							uuid: undefined,
 							name: 'Clare Higgins',
-							differentiator: '1',
-							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
-							},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'Ruth Negga',
-							differentiator: '',
-							errors: {},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'Giles Terera',
-							differentiator: '1',
-							errors: {},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'David Calder',
 							differentiator: '',
 							errors: {},
 							roles: []
@@ -577,37 +510,6 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'Clare Higgins',
-							differentiator: '1',
-							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
-							},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'Ruth Negga',
-							differentiator: '1',
-							errors: {},
-							roles: []
-						},
-						{
-							model: 'person',
-							uuid: undefined,
-							name: 'Giles Terera',
-							differentiator: '2',
-							errors: {},
 							roles: []
 						}
 					]
@@ -1137,7 +1039,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('duplicate combinations of cast member role name, qualifier, and characterDifferentiator values', () => {
+		context('duplicate cast member roles', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -1148,22 +1050,13 @@ describe('Production instance', () => {
 							name: 'David Calder',
 							roles: [
 								{
-									name: 'Polonius',
-									characterName: '',
-									characterDifferentiator: '',
-									qualifier: ''
+									name: 'Polonius'
 								},
 								{
-									name: 'Gravedigger',
-									characterName: '',
-									characterDifferentiator: '',
-									qualifier: ''
+									name: 'Gravedigger'
 								},
 								{
-									name: 'Polonius',
-									characterName: '',
-									characterDifferentiator: '',
-									qualifier: ''
+									name: 'Polonius'
 								}
 							]
 						}
@@ -1212,6 +1105,9 @@ describe('Production instance', () => {
 										name: [
 											'This item has been duplicated within the group'
 										],
+										characterName: [
+											'This item has been duplicated within the group'
+										],
 										characterDifferentiator: [
 											'This item has been duplicated within the group'
 										],
@@ -1236,6 +1132,9 @@ describe('Production instance', () => {
 									qualifier: '',
 									errors: {
 										name: [
+											'This item has been duplicated within the group'
+										],
+										characterName: [
 											'This item has been duplicated within the group'
 										],
 										characterDifferentiator: [

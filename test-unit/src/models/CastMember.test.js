@@ -18,8 +18,8 @@ describe('Cast Member model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateIndicesModule: {
-				getDuplicateIndices: stub().returns([])
+			getDuplicateRoleIndicesModule: {
+				getDuplicateRoleIndices: stub().returns([])
 			},
 			models: {
 				Role: RoleStub
@@ -32,7 +32,7 @@ describe('Cast Member model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/CastMember', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/get-duplicate-role-indices': stubs.getDuplicateRoleIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -84,7 +84,7 @@ describe('Cast Member model', () => {
 				instance.validateDifferentiator,
 				instance.validateUniquenessInGroup,
 				instance.validateNamePresenceIfRoles,
-				stubs.getDuplicateIndicesModule.getDuplicateIndices,
+				stubs.getDuplicateRoleIndicesModule.getDuplicateRoleIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
 				instance.roles[0].validateQualifier,
@@ -100,8 +100,10 @@ describe('Cast Member model', () => {
 			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.validateNamePresenceIfRoles.calledOnce).to.be.true;
 			expect(instance.validateNamePresenceIfRoles.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateIndices.calledWithExactly(instance.roles)).to.be.true;
+			expect(stubs.getDuplicateRoleIndicesModule.getDuplicateRoleIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateRoleIndicesModule.getDuplicateRoleIndices.calledWithExactly(
+				instance.roles
+			)).to.be.true;
 			expect(instance.roles[0].validateName.calledOnce).to.be.true;
 			expect(instance.roles[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.roles[0].validateCharacterName.calledOnce).to.be.true;
