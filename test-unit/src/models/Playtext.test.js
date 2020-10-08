@@ -179,7 +179,6 @@ describe('Playtext model', () => {
 				instance.characters[0].validateDifferentiator,
 				instance.characters[0].validateQualifier,
 				instance.characters[0].validateGroup,
-				instance.characters[0].validateUnderlyingNameHasCharacterName,
 				instance.characters[0].validateCharacterNameUnderlyingNameDisparity,
 				instance.characters[0].validateUniquenessInGroup
 			);
@@ -201,8 +200,6 @@ describe('Playtext model', () => {
 			expect(instance.characters[0].validateQualifier.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateGroup.calledOnce).to.be.true;
 			expect(instance.characters[0].validateGroup.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateUnderlyingNameHasCharacterName.calledOnce).to.be.true;
-			expect(instance.characters[0].validateUnderlyingNameHasCharacterName.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateCharacterNameUnderlyingNameDisparity.calledOnce).to.be.true;
 			expect(instance.characters[0].validateCharacterNameUnderlyingNameDisparity.calledWithExactly()).to.be.true;
 			expect(instance.characters[0].validateUniquenessInGroup.calledOnce).to.be.true;

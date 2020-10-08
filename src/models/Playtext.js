@@ -44,8 +44,6 @@ export default class Playtext extends Base {
 
 			character.validateGroup();
 
-			character.validateUnderlyingNameHasCharacterName();
-
 			character.validateCharacterNameUnderlyingNameDisparity();
 
 			character.validateUniquenessInGroup({ isDuplicate: duplicateCharacterIndices.includes(index) });

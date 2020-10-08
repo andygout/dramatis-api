@@ -38,8 +38,6 @@ export default class CastMember extends Person {
 
 			role.validateQualifier();
 
-			role.validateCharacterNameHasRoleName();
-
 			role.validateRoleNameCharacterNameDisparity();
 
 			role.validateUniquenessInGroup({ isDuplicate: duplicateRoleIndices.includes(index) });
