@@ -132,7 +132,8 @@ describe('Different characters with the same name from the same playtext', () =>
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -174,7 +175,8 @@ describe('Different characters with the same name from the same playtext', () =>
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -209,7 +211,8 @@ describe('Different characters with the same name from the same playtext', () =>
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -331,7 +334,8 @@ describe('Different characters with the same name from the same playtext', () =>
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -370,7 +374,8 @@ describe('Different characters with the same name from the same playtext', () =>
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					roles: [
 						{

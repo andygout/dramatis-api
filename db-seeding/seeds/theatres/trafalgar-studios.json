@@ -1,0 +1,11 @@
+{
+	"name": "Trafalgar Studios",
+	"subTheatres": [
+		{
+			"name": "Studio 1"
+		},
+		{
+			"name": "Studio 2"
+		}
+	]
+}

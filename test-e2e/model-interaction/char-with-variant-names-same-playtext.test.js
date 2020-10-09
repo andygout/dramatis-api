@@ -225,7 +225,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre'
+						name: 'Almeida Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -252,7 +253,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
-						name: 'Novello Theatre'
+						name: 'Novello Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -279,7 +281,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre'
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -462,7 +465,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre'
+						name: 'Almeida Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -501,7 +505,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
-						name: 'Novello Theatre'
+						name: 'Novello Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -540,7 +545,8 @@ describe('Character with variant names from productions of the same playtext', (
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre'
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

@@ -1,14 +1,14 @@
 import { expect } from 'chai';
 
-import { getDuplicatePersonIndices } from '../../../src/lib/get-duplicate-person-indices';
+import { getDuplicateBaseInstanceIndices } from '../../../src/lib/get-duplicate-base-instance-indices';
 
-describe('Get Duplicate Person Indices module', () => {
+describe('Get Duplicate Base Instance Indices module', () => {
 
 	context('duplicates do not exist', () => {
 
 		it('returns an empty array', () => {
 
-			const result = getDuplicatePersonIndices(
+			const result = getDuplicateBaseInstanceIndices(
 				[
 					{ name: 'Foo', differentiator: '1' },
 					{ name: 'Bar', differentiator: '' },
@@ -29,7 +29,7 @@ describe('Get Duplicate Person Indices module', () => {
 
 		it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 
-			const result = getDuplicatePersonIndices(
+			const result = getDuplicateBaseInstanceIndices(
 				[
 					{ name: 'Foo', differentiator: '1' },
 					{ name: '', differentiator: '' },

@@ -355,7 +355,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -375,7 +376,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe'
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -395,7 +397,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,
-						name: 'Swan Theatre'
+						name: 'Swan Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -415,7 +418,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -435,7 +439,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe'
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -455,7 +460,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,
-						name: 'Swan Theatre'
+						name: 'Swan Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -475,7 +481,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -495,7 +502,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe'
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -515,7 +523,8 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,
-						name: 'Swan Theatre'
+						name: 'Swan Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{

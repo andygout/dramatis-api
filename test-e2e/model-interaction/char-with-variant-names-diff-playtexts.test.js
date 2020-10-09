@@ -357,7 +357,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
-						name: 'La Jolla Playhouse'
+						name: 'La Jolla Playhouse',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -377,7 +378,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -397,7 +399,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
-						name: 'Teatro San Nicolò'
+						name: 'Teatro San Nicolò',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -417,7 +420,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
-						name: 'Theatre Royal Haymarket'
+						name: 'Theatre Royal Haymarket',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -616,7 +620,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -649,7 +654,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
-						name: 'Theatre Royal Haymarket'
+						name: 'Theatre Royal Haymarket',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -682,7 +688,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
-						name: 'La Jolla Playhouse'
+						name: 'La Jolla Playhouse',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -715,7 +722,8 @@ describe('Character with variant names from productions of different playtexts',
 					theatre: {
 						model: 'theatre',
 						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
-						name: 'Teatro San Nicolò'
+						name: 'Teatro San Nicolò',
+						surTheatre: null
 					},
 					roles: [
 						{

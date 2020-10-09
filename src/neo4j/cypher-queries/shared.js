@@ -101,39 +101,17 @@ const getDeleteQuery = model => {
 
 };
 
-const getListQuery = model => {
+const getListQuery = model => `
+	MATCH (n:${capitalise(model)})
 
-	const theatreRelationship = (model === 'production')
-		? 'OPTIONAL MATCH (n)-[:PLAYS_AT]->(t:Theatre)'
-		: '';
+	RETURN
+		'${model}' AS model,
+		n.uuid AS uuid,
+		n.name AS name,
+		n.differentiator AS differentiator
 
-	const theatreObject = (model === 'production')
-		? `, CASE t WHEN NULL
-				THEN null
-				ELSE { model: 'theatre', uuid: t.uuid, name: t.name, differentiator: t.differentiator }
-			END AS theatre`
-		: '';
-
-	const differentiator = (model !== 'production')
-		? ', n.differentiator AS differentiator'
-		: '';
-
-	return `
-		MATCH (n:${capitalise(model)})
-
-		${theatreRelationship}
-
-		RETURN
-			'${model}' AS model,
-			n.uuid AS uuid,
-			n.name AS name
-			${differentiator}
-			${theatreObject}
-
-		LIMIT 100
-	`;
-
-};
+	LIMIT 100
+`;
 
 export {
 	getExistenceQuery,

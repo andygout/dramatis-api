@@ -153,7 +153,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -173,7 +174,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -208,7 +210,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -228,7 +231,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -345,7 +349,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -378,7 +383,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -396,7 +402,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -429,7 +436,8 @@ describe('Cast member performing different roles in different productions of sam
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
-						name: 'Barbican'
+						name: 'Barbican',
+						surTheatre: null
 					},
 					roles: [
 						{

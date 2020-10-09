@@ -159,6 +159,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
 	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
@@ -172,10 +174,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, playtext, person, role, character
+	WITH DISTINCT production, theatre, surTheatre, playtext, person, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, playtext, person,
+	WITH production, theatre, surTheatre, playtext, person,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -189,7 +191,19 @@ const getShowQuery = () => `
 		production.name AS name,
 		CASE theatre WHEN NULL
 			THEN null
-			ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
+			ELSE {
+				model: 'theatre',
+				uuid: theatre.uuid,
+				name: theatre.name,
+				surTheatre: CASE surTheatre WHEN NULL
+					THEN null
+					ELSE {
+						model: 'theatre',
+						uuid: surTheatre.uuid,
+						name: surTheatre.name
+					}
+				END
+			}
 		END AS theatre,
 		CASE playtext WHEN NULL
 			THEN null
@@ -203,9 +217,38 @@ const getShowQuery = () => `
 		) AS cast
 `;
 
+const getListQuery = () => `
+	MATCH (production:Production)
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		CASE theatre WHEN NULL
+			THEN null
+			ELSE {
+				model: 'theatre',
+				uuid: theatre.uuid,
+				name: theatre.name,
+				differentiator: theatre.differentiator,
+				surTheatre: CASE surTheatre WHEN NULL
+					THEN null
+					ELSE { model: 'theatre', uuid: surTheatre.uuid, name: surTheatre.name }
+				END
+			}
+		END AS theatre
+
+	LIMIT 100
+`;
+
 export {
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
-	getShowQuery
+	getShowQuery,
+	getListQuery
 };

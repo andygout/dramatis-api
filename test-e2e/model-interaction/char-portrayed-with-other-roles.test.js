@@ -127,7 +127,8 @@ describe('Character portrayed with other roles', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -181,7 +182,8 @@ describe('Character portrayed with other roles', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -235,7 +237,8 @@ describe('Character portrayed with other roles', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -289,7 +292,8 @@ describe('Character portrayed with other roles', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{

@@ -101,7 +101,8 @@ describe('Playtext with multiple productions', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre'
+						name: 'Almeida Theatre',
+						surTheatre: null
 					}
 				},
 				{
@@ -111,7 +112,8 @@ describe('Playtext with multiple productions', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-						name: 'Donmar Warehouse'
+						name: 'Donmar Warehouse',
+						surTheatre: null
 					}
 				},
 				{
@@ -121,7 +123,8 @@ describe('Playtext with multiple productions', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					}
 				}
 			];

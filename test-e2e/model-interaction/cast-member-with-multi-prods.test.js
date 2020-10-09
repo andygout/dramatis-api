@@ -134,7 +134,8 @@ describe('Cast member with multiple production credits', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: PRINCE_OF_WALES_THEATRE_UUID,
-						name: 'Prince of Wales Theatre'
+						name: 'Prince of Wales Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -158,7 +159,8 @@ describe('Cast member with multiple production credits', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: CHICHESTER_FESTIVAL_THEATRE_UUID,
-						name: 'Chichester Festival Theatre'
+						name: 'Chichester Festival Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -188,7 +190,8 @@ describe('Cast member with multiple production credits', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ALDWYCH_THEATRE_UUID,
-						name: 'Aldwych Theatre'
+						name: 'Aldwych Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

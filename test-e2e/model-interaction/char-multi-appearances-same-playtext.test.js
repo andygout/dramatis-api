@@ -185,7 +185,8 @@ describe('Character with multiple appearances in the same playtext under differe
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
-						name: 'Royal Court Theatre'
+						name: 'Royal Court Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -242,7 +243,8 @@ describe('Character with multiple appearances in the same playtext under differe
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
-						name: 'Royal Court Theatre'
+						name: 'Royal Court Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -284,7 +286,8 @@ describe('Character with multiple appearances in the same playtext under differe
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
-						name: 'Royal Court Theatre'
+						name: 'Royal Court Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -437,7 +440,8 @@ describe('Character with multiple appearances in the same playtext under differe
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
-						name: 'Royal Court Theatre'
+						name: 'Royal Court Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -476,7 +480,8 @@ describe('Character with multiple appearances in the same playtext under differe
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
-						name: 'Royal Court Theatre'
+						name: 'Royal Court Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

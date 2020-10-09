@@ -1,0 +1,11 @@
+{
+	"name": "Royal Court Theatre",
+	"subTheatres": [
+		{
+			"name": "Jerwood Theatre Downstairs"
+		},
+		{
+			"name": "Jerwood Theatre Upstairs"
+		}
+	]
+}
