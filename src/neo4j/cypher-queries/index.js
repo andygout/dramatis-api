@@ -10,26 +10,34 @@ import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
 	getUpdateQuery as getProductionUpdateQuery,
-	getShowQuery as getProductionShowQuery
+	getShowQuery as getProductionShowQuery,
+	getListQuery as getProductionListQuery
 } from './production';
 import * as sharedQueries from './shared';
 import {
-	getShowQuery as getTheatreShowQuery
+	getCreateQuery as getTheatreCreateQuery,
+	getEditQuery as getTheatreEditQuery,
+	getUpdateQuery as getTheatreUpdateQuery,
+	getShowQuery as getTheatreShowQuery,
+	getListQuery as getTheatreListQuery
 } from './theatre';
 
 const getCreateQueries = {
 	playtext: getPlaytextCreateQuery,
-	production: getProductionCreateQuery
+	production: getProductionCreateQuery,
+	theatre: getTheatreCreateQuery
 };
 
 const getEditQueries = {
 	playtext: getPlaytextEditQuery,
-	production: getProductionEditQuery
+	production: getProductionEditQuery,
+	theatre: getTheatreEditQuery
 };
 
 const getUpdateQueries = {
 	playtext: getPlaytextUpdateQuery,
-	production: getProductionUpdateQuery
+	production: getProductionUpdateQuery,
+	theatre: getTheatreUpdateQuery
 };
 
 const getShowQueries = {
@@ -40,10 +48,16 @@ const getShowQueries = {
 	theatre: getTheatreShowQuery
 };
 
+const getListQueries = {
+	production: getProductionListQuery,
+	theatre: getTheatreListQuery,
+};
+
 export {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
 	getShowQueries,
+	getListQueries,
 	sharedQueries
 };

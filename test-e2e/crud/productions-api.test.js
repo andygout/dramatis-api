@@ -554,7 +554,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					uuid: NATIONAL_THEATRE_UUID,
-					name: 'National Theatre'
+					name: 'National Theatre',
+					surTheatre: null
 				},
 				playtext: {
 					model: 'playtext',
@@ -994,7 +995,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				theatre: {
 					model: 'theatre',
 					uuid: ALMEIDA_THEATRE_UUID,
-					name: 'Almeida Theatre'
+					name: 'Almeida Theatre',
+					surTheatre: null
 				},
 				playtext: {
 					model: 'playtext',
@@ -1085,7 +1087,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
 						name: 'Almeida Theatre',
-						differentiator: null
+						differentiator: null,
+						surTheatre: null
 					}
 				}
 			];

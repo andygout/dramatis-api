@@ -1,0 +1,513 @@
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
+import { createSandbox } from 'sinon';
+import { v4 as uuid } from 'uuid';
+
+import app from '../../src/app';
+import purgeDatabase from '../test-helpers/neo4j/purge-database';
+
+describe('Theatre with sub-theatres', () => {
+
+	chai.use(chaiHttp);
+
+	const NATIONAL_THEATRE_UUID = '2';
+	const OLIVIER_THEATRE_UUID = '3';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID = '6';
+	const MOTHER_COURAGE_CHARACTER_UUID = '7';
+	const RICHARD_II_PLAYTEXT_UUID = '10';
+	const KING_RICHARD_II_CHARACTER_UUID = '11';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '12';
+	const FIONA_SHAW_PERSON_UUID = '15';
+	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '16';
+
+	let nationalTheatre;
+	let olivierTheatre;
+	let motherCourageCharacter;
+	let kingRichardIICharacter;
+	let motherCourageAndHerChildrenPlaytext;
+	let richardIIPlaytext;
+	let motherCourageAndHerChildrenOlivierProduction;
+	let richardIINationalProduction;
+	let fionaShawPerson;
+
+	const sandbox = createSandbox();
+
+	before(async () => {
+
+		let uuidCallCount = 0;
+
+		sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/theatres')
+			.send({
+				name: 'National Theatre',
+				subTheatres: [
+					{
+						name: 'Olivier Theatre'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/playtexts')
+			.send({
+				name: 'Mother Courage and Her Children',
+				characters: [
+					{
+						name: 'Mother Courage'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/playtexts')
+			.send({
+				name: 'Richard II',
+				characters: [
+					{
+						name: 'King Richard II'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Mother Courage and Her Children',
+				theatre: {
+					name: 'Olivier Theatre'
+				},
+				playtext: {
+					name: 'Mother Courage and Her Children'
+				},
+				cast: [
+					{
+						name: 'Fiona Shaw',
+						roles: [
+							{
+								name: 'Mother Courage'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Richard II',
+				theatre: {
+					name: 'National Theatre'
+				},
+				playtext: {
+					name: 'Richard II'
+				},
+				cast: [
+					{
+						name: 'Fiona Shaw',
+						roles: [
+							{
+								name: 'King Richard II'
+							}
+						]
+					}
+				]
+			});
+
+		nationalTheatre = await chai.request(app)
+			.get(`/theatres/${NATIONAL_THEATRE_UUID}`);
+
+		olivierTheatre = await chai.request(app)
+			.get(`/theatres/${OLIVIER_THEATRE_UUID}`);
+
+		motherCourageCharacter = await chai.request(app)
+			.get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
+
+		kingRichardIICharacter = await chai.request(app)
+			.get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
+
+		motherCourageAndHerChildrenPlaytext = await chai.request(app)
+			.get(`/playtexts/${MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID}`);
+
+		richardIIPlaytext = await chai.request(app)
+			.get(`/playtexts/${RICHARD_II_PLAYTEXT_UUID}`);
+
+		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
+			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
+
+		richardIINationalProduction = await chai.request(app)
+			.get(`/productions/${RICHARD_II_NATIONAL_PRODUCTION_UUID}`);
+
+		fionaShawPerson = await chai.request(app)
+			.get(`/people/${FIONA_SHAW_PERSON_UUID}`);
+
+	});
+
+	after(() => {
+
+		sandbox.restore();
+
+	});
+
+	describe('National Theatre (theatre)', () => {
+
+		it('includes Olivier Theatre in its sub-theatres', () => {
+
+			const expectedSubTheatres = [
+				{
+					model: 'theatre',
+					uuid: OLIVIER_THEATRE_UUID,
+					name: 'Olivier Theatre'
+				}
+			];
+
+			const { subTheatres } = nationalTheatre.body;
+
+			expect(subTheatres).to.deep.equal(expectedSubTheatres);
+
+		});
+
+		it('includes productions at this theatre and, where applicable, the specific sub-theatre', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					subTheatre: {
+						model: 'theatre',
+						name: 'Olivier Theatre',
+						uuid: OLIVIER_THEATRE_UUID
+					}
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
+					name: 'Richard II',
+					subTheatre: null
+				}
+			];
+
+			const { productions } = nationalTheatre.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Olivier Theatre (theatre)', () => {
+
+		it('includes National Theatre as its sur-theatre', () => {
+
+			const expectedSurTheatre = {
+				model: 'theatre',
+				uuid: NATIONAL_THEATRE_UUID,
+				name: 'National Theatre'
+			};
+
+			const { surTheatre } = olivierTheatre.body;
+
+			expect(surTheatre).to.deep.equal(expectedSurTheatre);
+
+		});
+
+		it('includes productions at this theatre', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					subTheatre: null
+				}
+			];
+
+			const { productions } = olivierTheatre.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Mother Courage (character)', () => {
+
+		it('includes productions in which character was portrayed, including the theatre and its sur-theatre', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: FIONA_SHAW_PERSON_UUID,
+							name: 'Fiona Shaw',
+							roleName: 'Mother Courage',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
+
+			const { productions } = motherCourageCharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('King Richard II (character)', () => {
+
+		it('includes productions in which character was portrayed, including the theatre (but with no sur-theatre as does not apply)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: FIONA_SHAW_PERSON_UUID,
+							name: 'Fiona Shaw',
+							roleName: 'King Richard II',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				}
+			];
+
+			const { productions } = kingRichardIICharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Mother Courage and Her Children (playtext)', () => {
+
+		it('includes productions of playtext, including the theatre and its sur-theatre', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					}
+				}
+			];
+
+			const { productions } = motherCourageAndHerChildrenPlaytext.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Richard II (playtext)', () => {
+
+		it('includes productions of playtext, including the theatre (but with no sur-theatre as does not apply)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					}
+				}
+			];
+
+			const { productions } = richardIIPlaytext.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Mother Courage and Her Children at Olivier Theatre (production)', () => {
+
+		it('includes the theatre and its sur-theatre', () => {
+
+			const expectedTheatre = {
+				model: 'theatre',
+				uuid: OLIVIER_THEATRE_UUID,
+				name: 'Olivier Theatre',
+				surTheatre: {
+					model: 'theatre',
+					uuid: NATIONAL_THEATRE_UUID,
+					name: 'National Theatre'
+				}
+			};
+
+			const { theatre } = motherCourageAndHerChildrenOlivierProduction.body;
+
+			expect(theatre).to.deep.equal(expectedTheatre);
+
+		});
+
+	});
+
+	describe('Richard II at National Theatre (production)', () => {
+
+		it('includes the theatre (but with no sur-theatre as does not apply)', () => {
+
+			const expectedTheatre = {
+				model: 'theatre',
+				uuid: NATIONAL_THEATRE_UUID,
+				name: 'National Theatre',
+				surTheatre: null
+			};
+
+			const { theatre } = richardIINationalProduction.body;
+
+			expect(theatre).to.deep.equal(expectedTheatre);
+
+		});
+
+	});
+
+	describe('Fiona Shaw (person)', () => {
+
+		it('includes in their production credits the theatre and, where applicable, its sur-theatre', () => {
+
+			const expectedProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: MOTHER_COURAGE_CHARACTER_UUID,
+							name: 'Mother Courage',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_RICHARD_II_CHARACTER_UUID,
+							name: 'King Richard II',
+							qualifier: null
+						}
+					]
+				}
+			];
+
+			const { productions } = fionaShawPerson.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('productions list', () => {
+
+		it('displays theatre and (if applicable) sur-theatre', async () => {
+
+			const response = await chai.request(app)
+				.get('/productions');
+
+			const expectedResponseBody = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						differentiator: null,
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					}
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						differentiator: null,
+						surTheatre: null
+					}
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+
+		});
+
+	});
+
+});

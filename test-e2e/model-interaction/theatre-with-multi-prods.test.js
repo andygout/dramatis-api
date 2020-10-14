@@ -85,17 +85,20 @@ describe('Theatre with multiple productions', () => {
 				{
 					model: 'production',
 					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
-					name: 'A Streetcar Named Desire'
+					name: 'A Streetcar Named Desire',
+					subTheatre: null
 				},
 				{
 					model: 'production',
 					uuid: LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID,
-					name: 'Life is a Dream'
+					name: 'Life is a Dream',
+					subTheatre: null
 				},
 				{
 					model: 'production',
 					uuid: RED_DONMAR_PRODUCTION_UUID,
-					name: 'Red'
+					name: 'Red',
+					subTheatre: null
 				}
 			];
 
@@ -114,7 +117,8 @@ describe('Theatre with multiple productions', () => {
 			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-				name: 'Donmar Warehouse'
+				name: 'Donmar Warehouse',
+				surTheatre: null
 			};
 
 			const { theatre } = streetcarNamedDesireDonmarProduction.body;
@@ -132,7 +136,8 @@ describe('Theatre with multiple productions', () => {
 			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-				name: 'Donmar Warehouse'
+				name: 'Donmar Warehouse',
+				surTheatre: null
 			};
 
 			const { theatre } = lifeIsADreamDonmarProduction.body;
@@ -150,7 +155,8 @@ describe('Theatre with multiple productions', () => {
 			const expectedTheatre = {
 				model: 'theatre',
 				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-				name: 'Donmar Warehouse'
+				name: 'Donmar Warehouse',
+				surTheatre: null
 			};
 
 			const { theatre } = redDonmarProduction.body;

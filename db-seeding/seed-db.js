@@ -56,6 +56,10 @@ async function seedDatabase () {
 
 	console.log('Seeding Neo4j database: Commenced'); // eslint-disable-line no-console
 
+	await seedInstances('theatres');
+
+	console.log('Seeding Neo4j database: Theatre seeds sown'); // eslint-disable-line no-console
+
 	await seedInstances('playtexts');
 
 	console.log('Seeding Neo4j database: Playtext seeds sown'); // eslint-disable-line no-console

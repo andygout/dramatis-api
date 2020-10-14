@@ -1,0 +1,14 @@
+{
+	"name": "National Theatre",
+	"subTheatres": [
+		{
+			"name": "Olivier Theatre"
+		},
+		{
+			"name": "Lyttelton Theatre"
+		},
+		{
+			"name": "Dorfman Theatre"
+		}
+	]
+}

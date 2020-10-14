@@ -1,0 +1,11 @@
+{
+	"name": "Shakespeare's Globe",
+	"subTheatres": [
+		{
+			"name": "Globe Theatre"
+		},
+		{
+			"name": "Sam Wanamaker Playhouse"
+		}
+	]
+}

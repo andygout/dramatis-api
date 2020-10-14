@@ -233,7 +233,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -304,7 +305,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -367,7 +369,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -433,7 +436,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -636,7 +640,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -669,7 +674,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -702,7 +708,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -735,7 +742,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -768,7 +776,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -801,7 +810,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

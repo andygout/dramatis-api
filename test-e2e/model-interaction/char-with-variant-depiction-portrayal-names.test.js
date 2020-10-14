@@ -467,7 +467,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -494,7 +495,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -521,7 +523,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -548,7 +551,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -575,7 +579,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -602,7 +607,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -644,7 +650,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -671,7 +678,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -713,7 +721,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -740,7 +749,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -782,7 +792,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -809,7 +820,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -1232,7 +1244,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -1256,7 +1269,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -1280,7 +1294,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -1319,7 +1334,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -1343,7 +1359,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -1382,7 +1399,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre'
+						name: 'National Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

@@ -105,10 +105,12 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	WITH playtext, characterRel, character, production, theatre
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
+	WITH playtext, characterRel, character, production, theatre, surTheatre
 		ORDER BY characterRel.position
 
-	WITH playtext, characterRel.group AS characterGroup, production, theatre,
+	WITH playtext, characterRel.group AS characterGroup, production, theatre, surTheatre,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -122,7 +124,7 @@ const getShowQuery = () => `
 		) AS characters
 		ORDER BY production.name, theatre.name
 
-	WITH playtext, production, theatre,
+	WITH playtext, production, theatre, surTheatre,
 		COLLECT(
 			{
 				model: 'characterGroup',
@@ -144,11 +146,22 @@ const getShowQuery = () => `
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
-					theatre:
-						CASE theatre WHEN NULL
-							THEN null
-							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
-						END
+					theatre: CASE theatre WHEN NULL
+						THEN null
+						ELSE {
+							model: 'theatre',
+							uuid: theatre.uuid,
+							name: theatre.name,
+							surTheatre: CASE surTheatre WHEN NULL
+								THEN null
+								ELSE {
+									model: 'theatre',
+									uuid: surTheatre.uuid,
+									name: surTheatre.name
+								}
+							END
+						}
+					END
 				}
 			END
 		) AS productions

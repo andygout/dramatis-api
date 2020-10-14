@@ -55,6 +55,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
 	WITH
 		character,
 		playtext,
@@ -62,6 +64,7 @@ const getShowQuery = () => `
 		variantNamedDepiction,
 		production,
 		theatre,
+		surTheatre,
 		person,
 		role,
 		otherRole,
@@ -77,6 +80,7 @@ const getShowQuery = () => `
 		variantNamedPortrayal,
 		production,
 		theatre,
+		surTheatre,
 		person,
 		role,
 		COLLECT(DISTINCT(
@@ -100,6 +104,7 @@ const getShowQuery = () => `
 		variantNamedPortrayal,
 		production,
 		theatre,
+		surTheatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,
@@ -118,11 +123,22 @@ const getShowQuery = () => `
 					model: 'production',
 					uuid: production.uuid,
 					name: production.name,
-					theatre:
-						CASE theatre WHEN NULL
-							THEN null
-							ELSE { model: 'theatre', uuid: theatre.uuid, name: theatre.name }
-						END,
+					theatre: CASE theatre WHEN NULL
+						THEN null
+						ELSE {
+							model: 'theatre',
+							uuid: theatre.uuid,
+							name: theatre.name,
+							surTheatre: CASE surTheatre WHEN NULL
+								THEN null
+								ELSE {
+									model: 'theatre',
+									uuid: surTheatre.uuid,
+									name: surTheatre.name
+								}
+							END
+						}
+					END,
 					performers: performers
 				}
 			END

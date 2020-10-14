@@ -30,8 +30,8 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicatePersonIndicesModule: {
-				getDuplicatePersonIndices: stub().returns([])
+			getDuplicateBaseInstanceIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
 			Base: {
 				validateStringModule: {
@@ -54,7 +54,7 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
-			'../lib/get-duplicate-person-indices': stubs.getDuplicatePersonIndicesModule,
+			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
 			'./Base': proxyquire('../../../src/models/Base', {
 				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
@@ -116,7 +116,7 @@ describe('Production model', () => {
 				instance.theatre.validateDifferentiator,
 				instance.playtext.validateName,
 				instance.playtext.validateDifferentiator,
-				stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices,
+				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -129,8 +129,8 @@ describe('Production model', () => {
 			expect(instance.playtext.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.playtext.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.playtext.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicatePersonIndicesModule.getDuplicatePersonIndices.calledWithExactly(
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
 				instance.cast
 			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;

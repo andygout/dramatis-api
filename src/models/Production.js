@@ -1,4 +1,4 @@
-import { getDuplicatePersonIndices } from '../lib/get-duplicate-person-indices';
+import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-base-instance-indices';
 import Base from './Base';
 import { CastMember, Playtext, Theatre } from '.';
 
@@ -13,7 +13,7 @@ export default class Production extends Base {
 		this.model = 'production';
 		this.uuid = uuid;
 		this.playtext = new Playtext({ ...playtext, isAssociation: true });
-		this.theatre = new Theatre(theatre);
+		this.theatre = new Theatre({ ...theatre, isAssociation: true });
 		this.cast = cast
 			? cast.map(castMember => new CastMember(castMember))
 			: [];
@@ -32,7 +32,7 @@ export default class Production extends Base {
 
 		this.playtext.validateDifferentiator();
 
-		const duplicateCastMemberIndices = getDuplicatePersonIndices(this.cast);
+		const duplicateCastMemberIndices = getDuplicateBaseInstanceIndices(this.cast);
 
 		this.cast.forEach((castMember, index) =>
 			castMember.runInputValidations({ isDuplicate: duplicateCastMemberIndices.includes(index) })

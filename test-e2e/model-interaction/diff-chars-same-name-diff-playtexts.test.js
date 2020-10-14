@@ -178,7 +178,8 @@ describe('Different characters with the same name from different playtexts', () 
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
-						name: 'Novello Theatre'
+						name: 'Novello Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -213,7 +214,8 @@ describe('Different characters with the same name from different playtexts', () 
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe'
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -385,7 +387,8 @@ describe('Different characters with the same name from different playtexts', () 
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
-						name: 'Novello Theatre'
+						name: 'Novello Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -418,7 +421,8 @@ describe('Different characters with the same name from different playtexts', () 
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe'
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
 					},
 					roles: [
 						{

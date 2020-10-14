@@ -47,7 +47,15 @@ describe('Uniqueness in database: Theatres API', () => {
 			uuid: THEATRE_1_UUID,
 			name: 'New Theatre',
 			differentiator: '',
-			errors: {}
+			errors: {},
+			subTheatres: [
+				{
+					model: 'theatre',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		expect(response).to.have.status(200);
@@ -78,7 +86,8 @@ describe('Uniqueness in database: Theatres API', () => {
 				differentiator: [
 					'Name and differentiator combination already exists'
 				]
-			}
+			},
+			subTheatres: []
 		};
 
 		expect(response).to.have.status(200);
@@ -103,7 +112,15 @@ describe('Uniqueness in database: Theatres API', () => {
 			uuid: THEATRE_2_UUID,
 			name: 'New Theatre',
 			differentiator: '1',
-			errors: {}
+			errors: {},
+			subTheatres: [
+				{
+					model: 'theatre',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		expect(response).to.have.status(200);
@@ -136,7 +153,8 @@ describe('Uniqueness in database: Theatres API', () => {
 				differentiator: [
 					'Name and differentiator combination already exists'
 				]
-			}
+			},
+			subTheatres: []
 		};
 
 		expect(response).to.have.status(200);
@@ -161,7 +179,15 @@ describe('Uniqueness in database: Theatres API', () => {
 			uuid: THEATRE_1_UUID,
 			name: 'New Theatre',
 			differentiator: '2',
-			errors: {}
+			errors: {},
+			subTheatres: [
+				{
+					model: 'theatre',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		expect(response).to.have.status(200);
@@ -185,7 +211,15 @@ describe('Uniqueness in database: Theatres API', () => {
 			uuid: THEATRE_2_UUID,
 			name: 'New Theatre',
 			differentiator: '',
-			errors: {}
+			errors: {},
+			subTheatres: [
+				{
+					model: 'theatre',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		expect(response).to.have.status(200);

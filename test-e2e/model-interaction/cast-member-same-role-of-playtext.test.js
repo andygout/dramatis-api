@@ -121,7 +121,8 @@ describe('Cast member performing same role in different productions of same play
 					theatre: {
 						model: 'theatre',
 						uuid: ROSE_THEATRE_UUID,
-						name: 'Rose Theatre'
+						name: 'Rose Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -141,7 +142,8 @@ describe('Cast member performing same role in different productions of same play
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -232,7 +234,8 @@ describe('Cast member performing same role in different productions of same play
 					theatre: {
 						model: 'theatre',
 						uuid: ROSE_THEATRE_UUID,
-						name: 'Rose Theatre'
+						name: 'Rose Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -250,7 +253,8 @@ describe('Cast member performing same role in different productions of same play
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre'
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{

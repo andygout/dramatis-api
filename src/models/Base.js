@@ -6,6 +6,7 @@ import {
 	getEditQueries,
 	getUpdateQueries,
 	getShowQueries,
+	getListQueries,
 	sharedQueries
 } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
@@ -239,7 +240,7 @@ export default class Base {
 
 		return neo4jQuery(
 			{
-				query: getListQuery(model)
+				query: (getListQueries[model]?.()) || getListQuery(model)
 			},
 			{
 				isOptionalResult: true,

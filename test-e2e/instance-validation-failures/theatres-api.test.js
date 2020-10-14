@@ -49,7 +49,8 @@ describe('Instance validation failures: Theatres API', () => {
 						name: [
 							'Value is too short'
 						]
-					}
+					},
+					subTheatres: []
 				};
 
 				expect(response).to.have.status(200);
@@ -84,7 +85,8 @@ describe('Instance validation failures: Theatres API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
-					}
+					},
+					subTheatres: []
 				};
 
 				expect(response).to.have.status(200);
@@ -142,7 +144,8 @@ describe('Instance validation failures: Theatres API', () => {
 						name: [
 							'Value is too short'
 						]
-					}
+					},
+					subTheatres: []
 				};
 
 				expect(response).to.have.status(200);
@@ -183,7 +186,8 @@ describe('Instance validation failures: Theatres API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
-					}
+					},
+					subTheatres: []
 				};
 
 				expect(response).to.have.status(200);
@@ -251,7 +255,8 @@ describe('Instance validation failures: Theatres API', () => {
 						associations: [
 							'Production'
 						]
-					}
+					},
+					subTheatres: []
 				};
 
 				expect(response).to.have.status(200);

@@ -1,4 +1,4 @@
-export const getDuplicatePersonIndices = arrayOfObjects => {
+export const getDuplicateBaseInstanceIndices = arrayOfObjects => {
 
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 

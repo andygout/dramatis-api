@@ -170,7 +170,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre'
+						name: 'Crucible Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -212,7 +213,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
-						name: 'Vaudeville Theatre'
+						name: 'Vaudeville Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -269,7 +271,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre'
+						name: 'Crucible Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -311,7 +314,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
-						name: 'Vaudeville Theatre'
+						name: 'Vaudeville Theatre',
+						surTheatre: null
 					},
 					performers: [
 						{
@@ -474,7 +478,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre'
+						name: 'Crucible Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -513,7 +518,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre'
+						name: 'Crucible Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -552,7 +558,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
-						name: 'Vaudeville Theatre'
+						name: 'Vaudeville Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
@@ -591,7 +598,8 @@ describe('Roles with alternating cast', () => {
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
-						name: 'Vaudeville Theatre'
+						name: 'Vaudeville Theatre',
+						surTheatre: null
 					},
 					roles: [
 						{
