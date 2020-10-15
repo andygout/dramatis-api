@@ -156,7 +156,6 @@ const getListQuery = () => `
 		'theatre' AS model,
 		theatre.uuid AS uuid,
 		theatre.name AS name,
-		theatre.differentiator AS differentiator,
 		COLLECT(
 			CASE subTheatre WHEN NULL
 				THEN null

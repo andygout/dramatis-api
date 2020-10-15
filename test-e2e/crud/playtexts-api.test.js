@@ -196,8 +196,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'The Cherry Orchard',
-					differentiator: null
+					name: 'The Cherry Orchard'
 				}
 			];
 
@@ -562,8 +561,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'Three Sisters',
-					differentiator: null
+					name: 'Three Sisters'
 				}
 			];
 

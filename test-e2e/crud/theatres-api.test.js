@@ -180,7 +180,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 					model: 'theatre',
 					uuid: THEATRE_UUID,
 					name: 'Almeida Theatre',
-					differentiator: null,
 					subTheatres: []
 				}
 			];
@@ -474,7 +473,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 					model: 'theatre',
 					uuid: THEATRE_UUID,
 					name: 'Royal Court Theatre',
-					differentiator: null,
 					subTheatres: [
 						{
 							model: 'theatre',
@@ -492,21 +490,18 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 					model: 'theatre',
 					uuid: OLIVIER_THEATRE_UUID,
 					name: 'Olivier Theatre',
-					differentiator: null,
 					subTheatres: []
 				},
 				{
 					model: 'theatre',
 					uuid: LYTTELTON_THEATRE_UUID,
 					name: 'Lyttelton Theatre',
-					differentiator: null,
 					subTheatres: []
 				},
 				{
 					model: 'theatre',
 					uuid: DORFMAN_THEATRE_UUID,
 					name: 'Dorfman Theatre',
-					differentiator: null,
 					subTheatres: []
 				}
 			];

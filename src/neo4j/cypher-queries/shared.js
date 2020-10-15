@@ -107,8 +107,7 @@ const getListQuery = model => `
 	RETURN
 		'${model}' AS model,
 		n.uuid AS uuid,
-		n.name AS name,
-		n.differentiator AS differentiator
+		n.name AS name
 
 	LIMIT 100
 `;

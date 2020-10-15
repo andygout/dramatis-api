@@ -481,7 +481,6 @@ describe('Theatre with sub-theatres', () => {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
 						name: 'Olivier Theatre',
-						differentiator: null,
 						surTheatre: {
 							model: 'theatre',
 							uuid: NATIONAL_THEATRE_UUID,
@@ -497,7 +496,6 @@ describe('Theatre with sub-theatres', () => {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
 						name: 'National Theatre',
-						differentiator: null,
 						surTheatre: null
 					}
 				}
