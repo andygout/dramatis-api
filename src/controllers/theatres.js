@@ -1,12 +1,12 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
-import { theatre as theatreTemplateProps } from './model-template-props';
+import { theatre as theatreSeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { Theatre } from '../models';
 
 const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Theatre(theatreTemplateProps));
+	sendJsonResponse(response, new Theatre(theatreSeedProps));
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Theatre(request.body), 'create');
