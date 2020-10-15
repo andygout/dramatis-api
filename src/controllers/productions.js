@@ -1,12 +1,12 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
-import { production as productionTemplateProps } from './model-template-props';
+import { production as productionSeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { Production } from '../models';
 
 const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Production(productionTemplateProps));
+	sendJsonResponse(response, new Production(productionSeedProps));
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Production(request.body), 'create');

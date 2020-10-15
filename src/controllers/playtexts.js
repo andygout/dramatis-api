@@ -1,12 +1,12 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
-import { playtext as playtextTemplateProps } from './model-template-props';
+import { playtext as playtextSeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { Playtext } from '../models';
 
 const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Playtext(playtextTemplateProps));
+	sendJsonResponse(response, new Playtext(playtextSeedProps));
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Playtext(request.body), 'create');
