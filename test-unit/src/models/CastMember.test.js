@@ -7,7 +7,6 @@ import { Role } from '../../../src/models';
 describe('Cast Member model', () => {
 
 	let stubs;
-	let instance;
 
 	const RoleStub = function () {
 
@@ -26,8 +25,6 @@ describe('Cast Member model', () => {
 			}
 		};
 
-		instance = createInstance();
-
 	});
 
 	const createSubject = () =>
@@ -36,7 +33,7 @@ describe('Cast Member model', () => {
 			'.': stubs.models
 		}).default;
 
-	const createInstance = (props = { name: 'Ian McKellen', roles: [{ name: 'King Lear' }] }) => {
+	const createInstance = props => {
 
 		const CastMember = createSubject();
 
@@ -58,7 +55,7 @@ describe('Cast Member model', () => {
 						{ name: ' ' }
 					]
 				};
-				instance = createInstance(props);
+				const instance = createInstance(props);
 				expect(instance.roles.length).to.equal(3);
 				expect(instance.roles[0] instanceof Role).to.be.true;
 				expect(instance.roles[1] instanceof Role).to.be.true;
@@ -74,6 +71,15 @@ describe('Cast Member model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
+			const props = {
+				name: 'Ian McKellen',
+				roles: [
+					{
+						name: 'King Lear'
+					}
+				]
+			};
+			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateUniquenessInGroup');
@@ -136,7 +142,7 @@ describe('Cast Member model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					instance = createInstance({ name: '', roles: [{ name: '' }] });
+					const instance = createInstance({ name: '', roles: [{ name: '' }] });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
@@ -149,7 +155,7 @@ describe('Cast Member model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					instance = createInstance({ name: 'Ian McKellen', roles: [{ name: '' }] });
+					const instance = createInstance({ name: 'Ian McKellen', roles: [{ name: '' }] });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
@@ -161,7 +167,7 @@ describe('Cast Member model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					instance = createInstance({ name: 'Ian McKellen', roles: [{ name: 'King Lear' }] });
+					const instance = createInstance({ name: 'Ian McKellen', roles: [{ name: 'King Lear' }] });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfRoles();
 					expect(instance.addPropertyError.notCalled).to.be.true;
@@ -176,7 +182,7 @@ describe('Cast Member model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				instance = createInstance({ name: '', roles: [{ name: 'King Lear' }] });
+				const instance = createInstance({ name: '', roles: [{ name: 'King Lear' }] });
 				spy(instance, 'addPropertyError');
 				instance.validateNamePresenceIfRoles();
 				expect(instance.addPropertyError.calledOnce).to.be.true;

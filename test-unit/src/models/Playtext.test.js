@@ -7,12 +7,6 @@ import { Character } from '../../../src/models';
 describe('Playtext model', () => {
 
 	let stubs;
-	let instance;
-
-	const DEFAULT_INSTANCE_PROPS = {
-		name: 'The Tragedy of Hamlet, Prince of Denmark',
-		characters: [{ name: 'Hamlet' }]
-	};
 
 	const CharacterStub = function () {
 
@@ -26,30 +20,20 @@ describe('Playtext model', () => {
 			getDuplicateCharacterIndicesModule: {
 				getDuplicateCharacterIndices: stub().returns([])
 			},
-			Base: {
-				validateStringModule: {
-					validateString: stub()
-				}
-			},
 			models: {
 				Character: CharacterStub
 			}
 		};
-
-		instance = createInstance();
 
 	});
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
 			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
-			'./Base': proxyquire('../../../src/models/Base', {
-				'../lib/validate-string': stubs.Base.validateStringModule
-			}),
 			'.': stubs.models
 		}).default;
 
-	const createInstance = (props = DEFAULT_INSTANCE_PROPS) => {
+	const createInstance = props => {
 
 		const Playtext = createSubject();
 
@@ -63,40 +47,35 @@ describe('Playtext model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const props = { name: 'Home' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Home' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				const props = { name: 'Home', differentiator: '' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Home', differentiator: '' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				const props = { name: 'Home', differentiator: ' ' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Home', differentiator: ' ' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				const props = { name: 'Home', differentiator: '1' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Home', differentiator: '1' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const props = { name: 'Home', differentiator: ' 1 ' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Home', differentiator: ' 1 ' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
@@ -109,8 +88,7 @@ describe('Playtext model', () => {
 
 				it('assigns empty array if absent from props', () => {
 
-					const props = { name: 'The Tragedy of Hamlet, Prince of Denmark' };
-					const instance = createInstance(props);
+					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
 					expect(instance.characters).to.deep.equal([]);
 
 				});
@@ -120,9 +98,15 @@ describe('Playtext model', () => {
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
 						characters: [
-							{ name: 'Hamlet' },
-							{ name: '' },
-							{ name: ' ' }
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: ''
+							},
+							{
+								name: ' '
+							}
 						]
 					};
 					const instance = createInstance(props);
@@ -139,7 +123,10 @@ describe('Playtext model', () => {
 
 				it('will not assign any value if absent from props', () => {
 
-					const props = { name: 'The Tragedy of Hamlet, Prince of Denmark', isAssociation: true };
+					const props = {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						isAssociation: true
+					};
 					const instance = createInstance(props);
 					expect(instance).not.to.have.property('characters');
 
@@ -149,7 +136,11 @@ describe('Playtext model', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						characters: [{ name: 'Hamlet' }],
+						characters: [
+							{
+								name: 'Hamlet'
+							}
+						],
 						isAssociation: true
 					};
 					const instance = createInstance(props);
@@ -167,6 +158,15 @@ describe('Playtext model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
+			const props = {
+				name: 'The Tragedy of Hamlet, Prince of Denmark',
+				characters: [
+					{
+						name: 'Hamlet'
+					}
+				]
+			};
+			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			instance.runInputValidations();

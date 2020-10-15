@@ -7,7 +7,6 @@ import { CastMember, Playtext, Theatre } from '../../../src/models';
 describe('Production model', () => {
 
 	let stubs;
-	let instance;
 
 	const CastMemberStub = function () {
 
@@ -34,9 +33,6 @@ describe('Production model', () => {
 				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
 			Base: {
-				validateStringModule: {
-					validateString: stub()
-				},
 				neo4jQueryModule: {
 					neo4jQuery: stub()
 				}
@@ -48,21 +44,18 @@ describe('Production model', () => {
 			}
 		};
 
-		instance = createInstance();
-
 	});
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
 			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
 			'./Base': proxyquire('../../../src/models/Base', {
-				'../lib/validate-string': stubs.Base.validateStringModule,
 				'../neo4j/query': stubs.Base.neo4jQueryModule
 			}),
 			'.': stubs.models
 		}).default;
 
-	const createInstance = (props = { name: 'Hamlet', cast: [{ name: 'Patrick Stewart' }] }) => {
+	const createInstance = props => {
 
 		const Production = createSubject();
 
@@ -76,8 +69,7 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', () => {
 
-				const props = { name: 'Hamlet' };
-				const instance = createInstance(props);
+				const instance = createInstance({ name: 'Hamlet' });
 				expect(instance.cast).to.deep.equal([]);
 
 			});
@@ -108,6 +100,15 @@ describe('Production model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
+			const props = {
+				name: 'Hamlet',
+				cast: [
+					{
+						name: 'Patrick Stewart'
+					}
+				]
+			};
+			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			instance.runInputValidations();
 			assert.callOrder(
@@ -144,6 +145,7 @@ describe('Production model', () => {
 
 		it('does nothing, i.e. it overrides the Base model runDatabaseValidations() method with an empty function', () => {
 
+			const instance = createInstance({ name: 'Hamlet' });
 			instance.runDatabaseValidations();
 			expect(stubs.Base.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
 
