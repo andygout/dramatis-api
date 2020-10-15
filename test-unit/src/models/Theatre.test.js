@@ -1,41 +1,29 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
-import { assert, spy, stub } from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
+
+import * as getDuplicateBaseInstanceIndicesModule from '../../../src/lib/get-duplicate-base-instance-indices';
+import Theatre from '../../../src/models/Theatre';
 
 describe('Theatre model', () => {
 
 	let stubs;
 
+	const sandbox = createSandbox();
+
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateBaseInstanceIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])
-			},
-			Base: {
-				validateStringModule: {
-					validateString: stub()
-				}
-			}
+			getDuplicateBaseInstanceIndices:
+				sandbox.stub(getDuplicateBaseInstanceIndicesModule, 'getDuplicateBaseInstanceIndices').returns([])
 		};
 
 	});
 
-	const createSubject = () =>
-		proxyquire('../../../src/models/Theatre', {
-			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
-			'./Base': proxyquire('../../../src/models/Base', {
-				'../lib/validate-string': stubs.Base.validateStringModule
-			})
-		}).default;
+	afterEach(() => {
 
-	const createInstance = props => {
+		sandbox.restore();
 
-		const Theatre = createSubject();
-
-		return new Theatre(props);
-
-	};
+	});
 
 	describe('constructor method', () => {
 
@@ -43,35 +31,35 @@ describe('Theatre model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const instance = createInstance({ name: 'New Theatre' });
+				const instance = new Theatre({ name: 'New Theatre' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				const instance = createInstance({ name: 'New Theatre', differentiator: '' });
+				const instance = new Theatre({ name: 'New Theatre', differentiator: '' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				const instance = createInstance({ name: 'New Theatre', differentiator: ' ' });
+				const instance = new Theatre({ name: 'New Theatre', differentiator: ' ' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				const instance = createInstance({ name: 'New Theatre', differentiator: '1' });
+				const instance = new Theatre({ name: 'New Theatre', differentiator: '1' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const instance = createInstance({ name: 'New Theatre', differentiator: ' 1 ' });
+				const instance = new Theatre({ name: 'New Theatre', differentiator: ' 1 ' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
@@ -84,7 +72,7 @@ describe('Theatre model', () => {
 
 				it('assigns empty array if absent from props', () => {
 
-					const instance = createInstance({ name: 'National Theatre' });
+					const instance = new Theatre({ name: 'National Theatre' });
 					expect(instance.subTheatres).to.deep.equal([]);
 
 				});
@@ -94,12 +82,18 @@ describe('Theatre model', () => {
 					const props = {
 						name: 'National Theatre',
 						subTheatres: [
-							{ name: 'Olivier Theatre' },
-							{ name: '' },
-							{ name: ' ' }
+							{
+								name: 'Olivier Theatre'
+							},
+							{
+								name: ''
+							},
+							{
+								name: ' '
+							}
 						]
 					};
-					const instance = createInstance(props);
+					const instance = new Theatre(props);
 					expect(instance.subTheatres.length).to.equal(3);
 					expect(instance.subTheatres[0].constructor.name).to.equal('Theatre');
 					expect(instance.subTheatres[1].constructor.name).to.equal('Theatre');
@@ -113,7 +107,7 @@ describe('Theatre model', () => {
 
 				it('will not assign any value if absent from props', () => {
 
-					const instance = createInstance({ name: 'National Theatre', isAssociation: true });
+					const instance = new Theatre({ name: 'National Theatre', isAssociation: true });
 					expect(instance).not.to.have.property('subTheatres');
 
 				});
@@ -122,10 +116,14 @@ describe('Theatre model', () => {
 
 					const props = {
 						name: 'National Theatre',
-						subTheatres: [{ name: 'Olivier Theatre' }],
+						subTheatres: [
+							{
+								name: 'Olivier Theatre'
+							}
+						],
 						isAssociation: true
 					};
-					const instance = createInstance(props);
+					const instance = new Theatre(props);
 					expect(instance).not.to.have.property('subTheatres');
 
 				});
@@ -150,7 +148,7 @@ describe('Theatre model', () => {
 					}
 				]
 			};
-			const instance = createInstance(props);
+			const instance = new Theatre(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			spy(instance.subTheatres[0], 'validateName');
@@ -161,7 +159,7 @@ describe('Theatre model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateBaseInstanceIndices,
 				instance.subTheatres[0].validateName,
 				instance.subTheatres[0].validateDifferentiator,
 				instance.subTheatres[0].validateNotSubTheatreOfSelf,
@@ -171,8 +169,8 @@ describe('Theatre model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			expect(stubs.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndices.calledWithExactly(
 				instance.subTheatres
 			)).to.be.true;
 			expect(instance.subTheatres[0].validateName.calledOnce).to.be.true;
@@ -200,7 +198,7 @@ describe('Theatre model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					const instance = createInstance({ name: 'National Theatre', differentiator: '' });
+					const instance = new Theatre({ name: 'National Theatre', differentiator: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateNotSubTheatreOfSelf('', '');
 					expect(instance.addPropertyError.notCalled).to.be.true;
@@ -213,7 +211,7 @@ describe('Theatre model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					const instance = createInstance({ name: 'Olivier Theatre', differentiator: '' });
+					const instance = new Theatre({ name: 'Olivier Theatre', differentiator: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateNotSubTheatreOfSelf('National Theatre', '');
 					expect(instance.addPropertyError.notCalled).to.be.true;
@@ -228,7 +226,7 @@ describe('Theatre model', () => {
 
 			it('adds properties whose values are arrays to errors property', () => {
 
-				const instance = createInstance({ name: 'National Theatre', differentiator: '' });
+				const instance = new Theatre({ name: 'National Theatre', differentiator: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateNotSubTheatreOfSelf('National Theatre', '');
 				expect(instance.addPropertyError.calledTwice).to.be.true;
