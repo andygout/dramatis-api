@@ -145,8 +145,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				{
 					model: 'person',
 					uuid: PERSON_UUID,
-					name: 'Patrick Stewart',
-					differentiator: null
+					name: 'Patrick Stewart'
 				}
 			];
 

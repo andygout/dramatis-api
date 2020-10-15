@@ -1087,7 +1087,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
 						name: 'Almeida Theatre',
-						differentiator: null,
 						surTheatre: null
 					}
 				}
