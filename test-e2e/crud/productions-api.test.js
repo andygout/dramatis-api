@@ -351,46 +351,66 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.send({
 					name: 'Hamlet',
 					playtext: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark'
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						differentiator: '1'
 					},
 					theatre: {
-						name: 'National Theatre'
+						name: 'National Theatre',
+						differentiator: '1'
 					},
 					cast: [
 						{
 							name: 'Rory Kinnear',
+							differentiator: '1',
 							roles: [
 								{
-									name: 'Hamlet'
+									name: 'Hamlet',
+									characterName: 'Hamlet, Prince of Denmark',
+									characterDifferentiator: '1',
+									qualifier: 'foo'
 								}
 							]
 						},
 						{
 							name: 'James Laurenson',
+							differentiator: '1',
 							roles: [
 								{
 									name: 'Ghost',
-									characterName: 'Ghost of King Hamlet'
+									characterName: 'Ghost of King Hamlet',
+									characterDifferentiator: '1',
+									qualifier: 'bar'
 								},
 								{
-									name: 'Player King',
-									characterName: 'First Player'
+									name: 'First Player',
+									characterName: 'Player King',
+									characterDifferentiator: '1',
+									qualifier: 'baz'
 								}
 							]
 						},
 						{
 							name: 'Michael Sheldon',
+							differentiator: '1',
 							roles: [
 								{
-									name: 'Lucianus'
+									name: 'Third Player',
+									characterName: 'Lucianus',
+									characterDifferentiator: '1',
+									qualifier: 'qux'
 								},
 								{
-									name: 'English Ambassador'
+									name: 'Ambassador of the English',
+									characterName: 'English Ambassador',
+									characterDifferentiator: '1',
+									qualifier: 'quux'
 								}
 							]
 						},
 						{
-							name: 'Leo Staar'
+							name: 'Leo Staar',
+							differentiator: '1',
+							roles: []
 						}
 					]
 				});
@@ -403,28 +423,28 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				theatre: {
 					model: 'theatre',
 					name: 'National Theatre',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: 'Rory Kinnear',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Hamlet',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterName: 'Hamlet, Prince of Denmark',
+								characterDifferentiator: '1',
+								qualifier: 'foo',
 								errors: {}
 							},
 							{
@@ -440,23 +460,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'James Laurenson',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterDifferentiator: '1',
+								qualifier: 'bar',
 								errors: {}
 							},
 							{
 								model: 'role',
-								name: 'Player King',
-								characterName: 'First Player',
-								characterDifferentiator: '',
-								qualifier: '',
+								name: 'First Player',
+								characterName: 'Player King',
+								characterDifferentiator: '1',
+								qualifier: 'baz',
 								errors: {}
 							},
 							{
@@ -472,23 +492,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Michael Sheldon',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
-								name: 'Lucianus',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								name: 'Third Player',
+								characterName: 'Lucianus',
+								characterDifferentiator: '1',
+								qualifier: 'qux',
 								errors: {}
 							},
 							{
 								model: 'role',
-								name: 'English Ambassador',
-								qualifier: '',
-								characterName: '',
-								characterDifferentiator: '',
+								name: 'Ambassador of the English',
+								characterName: 'English Ambassador',
+								characterDifferentiator: '1',
+								qualifier: 'quux',
 								errors: {}
 							},
 							{
@@ -504,7 +524,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Leo Staar',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
@@ -572,7 +592,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'character',
 								uuid: null,
 								name: 'Hamlet',
-								qualifier: null
+								qualifier: 'foo'
 							}
 						]
 					},
@@ -585,13 +605,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'character',
 								uuid: null,
 								name: 'Ghost',
-								qualifier: null
+								qualifier: 'bar'
 							},
 							{
 								model: 'character',
 								uuid: null,
-								name: 'Player King',
-								qualifier: null
+								name: 'First Player',
+								qualifier: 'baz'
 							}
 						]
 					},
@@ -603,14 +623,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							{
 								model: 'character',
 								uuid: null,
-								name: 'Lucianus',
-								qualifier: null
+								name: 'Third Player',
+								qualifier: 'qux'
 							},
 							{
 								model: 'character',
 								uuid: null,
-								name: 'English Ambassador',
-								qualifier: null
+								name: 'Ambassador of the English',
+								qualifier: 'quux'
 							}
 						]
 					},
@@ -645,28 +665,28 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				theatre: {
 					model: 'theatre',
 					name: 'National Theatre',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: 'Rory Kinnear',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Hamlet',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterName: 'Hamlet, Prince of Denmark',
+								characterDifferentiator: '1',
+								qualifier: 'foo',
 								errors: {}
 							},
 							{
@@ -682,23 +702,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'James Laurenson',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterDifferentiator: '1',
+								qualifier: 'bar',
 								errors: {}
 							},
 							{
 								model: 'role',
-								name: 'Player King',
-								characterName: 'First Player',
-								characterDifferentiator: '',
-								qualifier: '',
+								name: 'First Player',
+								characterName: 'Player King',
+								characterDifferentiator: '1',
+								qualifier: 'baz',
 								errors: {}
 							},
 							{
@@ -714,23 +734,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Michael Sheldon',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
-								name: 'Lucianus',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								name: 'Third Player',
+								characterName: 'Lucianus',
+								characterDifferentiator: '1',
+								qualifier: 'qux',
 								errors: {}
 							},
 							{
 								model: 'role',
-								name: 'English Ambassador',
-								qualifier: '',
-								characterName: '',
-								characterDifferentiator: '',
+								name: 'Ambassador of the English',
+								characterName: 'English Ambassador',
+								characterDifferentiator: '1',
+								qualifier: 'quux',
 								errors: {}
 							},
 							{
@@ -746,7 +766,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Leo Staar',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
@@ -792,46 +812,65 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.send({
 					name: 'Richard III',
 					playtext: {
-						name: 'The Tragedy of King Richard III'
+						name: 'The Tragedy of King Richard III',
+						differentiator: '1'
 					},
 					theatre: {
-						name: 'Almeida Theatre'
+						name: 'Almeida Theatre',
+						differentiator: '1'
 					},
 					cast: [
 						{
 							name: 'Ralph Fiennes',
+							differentiator: '1',
 							roles: [
 								{
-									name: 'Richard, Duke of Gloucester'
+									name: 'Richard, Duke of Gloucester',
+									characterName: 'King Richard III',
+									characterDifferentiator: '1',
+									qualifier: 'foo'
 								}
 							]
 						},
 						{
 							name: 'Tom Canton',
+							differentiator: '1',
 							roles: [
 								{
 									name: 'Brakenbury',
-									characterName: 'Sir Robert Brakenbury'
+									characterName: 'Sir Robert Brakenbury',
+									characterDifferentiator: '1',
+									qualifier: 'bar'
 								},
 								{
 									name: 'Richmond',
-									characterName: 'Henry, Earl of Richmond'
+									characterName: 'Henry, Earl of Richmond',
+									characterDifferentiator: '1',
+									qualifier: 'baz'
 								}
 							]
 						},
 						{
 							name: 'Mark Hadfield',
+							differentiator: '1',
 							roles: [
 								{
-									name: 'Ratcliffe'
+									name: 'Ratcliffe',
+									characterName: 'Sir Richard Ratcliffe',
+									characterDifferentiator: '1',
+									qualifier: 'qux'
 								},
 								{
-									name: 'Lord Mayor'
+									name: 'Lord Mayor',
+									characterName: 'Lord Mayor of London',
+									characterDifferentiator: '1',
+									qualifier: 'quux'
 								}
 							]
 						},
 						{
-							name: 'Josh Collins'
+							name: 'Josh Collins',
+							differentiator: '1'
 						}
 					]
 				});
@@ -844,28 +883,28 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of King Richard III',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				theatre: {
 					model: 'theatre',
 					name: 'Almeida Theatre',
-					differentiator: '',
+					differentiator: '1',
 					errors: {}
 				},
 				cast: [
 					{
 						model: 'person',
 						name: 'Ralph Fiennes',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Richard, Duke of Gloucester',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterName: 'King Richard III',
+								characterDifferentiator: '1',
+								qualifier: 'foo',
 								errors: {}
 							},
 							{
@@ -881,23 +920,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Tom Canton',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Brakenbury',
 								characterName: 'Sir Robert Brakenbury',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterDifferentiator: '1',
+								qualifier: 'bar',
 								errors: {}
 							},
 							{
 								model: 'role',
 								name: 'Richmond',
 								characterName: 'Henry, Earl of Richmond',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterDifferentiator: '1',
+								qualifier: 'baz',
 								errors: {}
 							},
 							{
@@ -913,23 +952,23 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Mark Hadfield',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
 								model: 'role',
 								name: 'Ratcliffe',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterName: 'Sir Richard Ratcliffe',
+								characterDifferentiator: '1',
+								qualifier: 'qux',
 								errors: {}
 							},
 							{
 								model: 'role',
 								name: 'Lord Mayor',
-								characterName: '',
-								characterDifferentiator: '',
-								qualifier: '',
+								characterName: 'Lord Mayor of London',
+								characterDifferentiator: '1',
+								qualifier: 'quux',
 								errors: {}
 							},
 							{
@@ -945,7 +984,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'person',
 						name: 'Josh Collins',
-						differentiator: '',
+						differentiator: '1',
 						errors: {},
 						roles: [
 							{
@@ -1013,7 +1052,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'character',
 								uuid: null,
 								name: 'Richard, Duke of Gloucester',
-								qualifier: null
+								qualifier: 'foo'
 							}
 						]
 					},
@@ -1026,13 +1065,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'character',
 								uuid: null,
 								name: 'Brakenbury',
-								qualifier: null
+								qualifier: 'bar'
 							},
 							{
 								model: 'character',
 								uuid: null,
 								name: 'Richmond',
-								qualifier: null
+								qualifier: 'baz'
 							}
 						]
 					},
@@ -1045,13 +1084,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'character',
 								uuid: null,
 								name: 'Ratcliffe',
-								qualifier: null
+								qualifier: 'qux'
 							},
 							{
 								model: 'character',
 								uuid: null,
 								name: 'Lord Mayor',
-								qualifier: null
+								qualifier: 'quux'
 							}
 						]
 					},
