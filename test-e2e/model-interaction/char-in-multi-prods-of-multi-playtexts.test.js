@@ -82,11 +82,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 1',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Henry IV: Part 1'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -104,11 +104,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Henry IV: Part 2'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -126,11 +126,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'The Merry Wives of Windsor'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -148,11 +148,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 1',
-				theatre: {
-					name: 'Shakespeare\'s Globe'
-				},
 				playtext: {
 					name: 'Henry IV: Part 1'
+				},
+				theatre: {
+					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
 					{
@@ -170,11 +170,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
-				theatre: {
-					name: 'Shakespeare\'s Globe'
-				},
 				playtext: {
 					name: 'Henry IV: Part 2'
+				},
+				theatre: {
+					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
 					{
@@ -192,11 +192,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
-				theatre: {
-					name: 'Shakespeare\'s Globe'
-				},
 				playtext: {
 					name: 'The Merry Wives of Windsor'
+				},
+				theatre: {
+					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
 					{
@@ -236,11 +236,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
-				theatre: {
-					name: 'Swan Theatre'
-				},
 				playtext: {
 					name: 'Henry IV: Part 2'
+				},
+				theatre: {
+					name: 'Swan Theatre'
 				},
 				cast: [
 					{
@@ -258,11 +258,11 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
-				theatre: {
-					name: 'Swan Theatre'
-				},
 				playtext: {
 					name: 'The Merry Wives of Windsor'
+				},
+				theatre: {
+					name: 'Swan Theatre'
 				},
 				cast: [
 					{

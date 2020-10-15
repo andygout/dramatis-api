@@ -113,11 +113,11 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Hamlet'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -145,11 +145,11 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/productions')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
-				theatre: {
-					name: 'Theatre Royal Haymarket'
-				},
 				playtext: {
 					name: 'Rosencrantz and Guildenstern Are Dead'
+				},
+				theatre: {
+					name: 'Theatre Royal Haymarket'
 				},
 				cast: [
 					{
@@ -177,11 +177,11 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/productions')
 			.send({
 				name: 'Fortinbras',
-				theatre: {
-					name: 'La Jolla Playhouse'
-				},
 				playtext: {
 					name: 'Fortinbras'
+				},
+				theatre: {
+					name: 'La Jolla Playhouse'
 				},
 				cast: [
 					{
@@ -209,11 +209,11 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/productions')
 			.send({
 				name: 'Hamletmachine',
-				theatre: {
-					name: 'Teatro San Nicolò'
-				},
 				playtext: {
 					name: 'Hamletmachine'
+				},
+				theatre: {
+					name: 'Teatro San Nicolò'
 				},
 				cast: [
 					{

@@ -56,11 +56,11 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/productions')
 			.send({
 				name: 'King Lear',
-				theatre: {
-					name: 'Royal Shakespeare Theatre'
-				},
 				playtext: {
 					name: 'The Tragedy of King Lear'
+				},
+				theatre: {
+					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
 					{
@@ -86,11 +86,11 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/productions')
 			.send({
 				name: 'King Lear',
-				theatre: {
-					name: 'Barbican'
-				},
 				playtext: {
 					name: 'The Tragedy of King Lear'
+				},
+				theatre: {
+					name: 'Barbican'
 				},
 				cast: [
 					{

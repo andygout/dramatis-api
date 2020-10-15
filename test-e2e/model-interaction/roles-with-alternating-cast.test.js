@@ -58,11 +58,11 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
-				theatre: {
-					name: 'Crucible Theatre'
-				},
 				playtext: {
 					name: 'True West'
+				},
+				theatre: {
+					name: 'Crucible Theatre'
 				},
 				cast: [
 					{
@@ -94,11 +94,11 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
-				theatre: {
-					name: 'Vaudeville Theatre'
-				},
 				playtext: {
 					name: 'True West'
+				},
+				theatre: {
+					name: 'Vaudeville Theatre'
 				},
 				cast: [
 					{

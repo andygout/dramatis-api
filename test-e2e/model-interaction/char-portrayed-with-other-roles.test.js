@@ -60,11 +60,11 @@ describe('Character portrayed with other roles', () => {
 			.post('/productions')
 			.send({
 				name: 'War Horse',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'War Horse'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{

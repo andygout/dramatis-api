@@ -77,11 +77,11 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
-				theatre: {
-					name: 'Olivier Theatre'
-				},
 				playtext: {
 					name: 'Mother Courage and Her Children'
+				},
+				theatre: {
+					name: 'Olivier Theatre'
 				},
 				cast: [
 					{
@@ -99,11 +99,11 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Richard II',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Richard II'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{

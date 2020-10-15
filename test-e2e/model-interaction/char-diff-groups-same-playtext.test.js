@@ -87,11 +87,11 @@ describe('Character with multiple appearances in the same playtext in different 
 			.post('/productions')
 			.send({
 				name: '3 Winters',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: '3 Winters'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{

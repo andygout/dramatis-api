@@ -41,14 +41,14 @@ describe('Instance validation failures: Productions API', () => {
 							'Value is too short'
 						]
 					},
-					theatre: {
-						model: 'theatre',
+					playtext: {
+						model: 'playtext',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					theatre: {
+						model: 'theatre',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -104,14 +104,14 @@ describe('Instance validation failures: Productions API', () => {
 							'Value is too short'
 						]
 					},
-					theatre: {
-						model: 'theatre',
+					playtext: {
+						model: 'playtext',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					theatre: {
+						model: 'theatre',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -200,14 +200,14 @@ describe('Instance validation failures: Productions API', () => {
 							'Theatre'
 						]
 					},
-					theatre: {
-						model: 'theatre',
+					playtext: {
+						model: 'playtext',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					theatre: {
+						model: 'theatre',
 						name: '',
 						differentiator: '',
 						errors: {}

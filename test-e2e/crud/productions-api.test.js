@@ -22,14 +22,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				name: '',
 				errors: {},
-				theatre: {
-					model: 'theatre',
+				playtext: {
+					model: 'playtext',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
-				playtext: {
-					model: 'playtext',
+				theatre: {
+					model: 'theatre',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -98,14 +98,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
 				errors: {},
-				theatre: {
-					model: 'theatre',
+				playtext: {
+					model: 'playtext',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
-				playtext: {
-					model: 'playtext',
+				theatre: {
+					model: 'theatre',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -146,14 +146,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
 				errors: {},
-				theatre: {
-					model: 'theatre',
+				playtext: {
+					model: 'playtext',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
-				playtext: {
-					model: 'playtext',
+				theatre: {
+					model: 'theatre',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -198,14 +198,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
 				errors: {},
-				theatre: {
-					model: 'theatre',
+				playtext: {
+					model: 'playtext',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
-				playtext: {
-					model: 'playtext',
+				theatre: {
+					model: 'theatre',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -245,8 +245,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
-				theatre: null,
 				playtext: null,
+				theatre: null,
 				cast: []
 			};
 
@@ -285,16 +285,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				name: 'The Tempest',
 				errors: {},
-				theatre: {
-					differentiator: '',
-					errors: {},
-					model: 'theatre',
-					name: ''
-				},
 				playtext: {
 					differentiator: '',
 					errors: {},
 					model: 'playtext',
+					name: ''
+				},
+				theatre: {
+					differentiator: '',
+					errors: {},
+					model: 'theatre',
 					name: ''
 				},
 				cast: []
@@ -350,11 +350,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre'
-					},
 					playtext: {
 						name: 'The Tragedy of Hamlet, Prince of Denmark'
+					},
+					theatre: {
+						name: 'National Theatre'
 					},
 					cast: [
 						{
@@ -400,15 +400,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
 				errors: {},
-				theatre: {
-					model: 'theatre',
-					name: 'National Theatre',
-					differentiator: '',
-					errors: {}
-				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					differentiator: '',
+					errors: {}
+				},
+				theatre: {
+					model: 'theatre',
+					name: 'National Theatre',
 					differentiator: '',
 					errors: {}
 				},
@@ -551,16 +551,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				playtext: {
+					model: 'playtext',
+					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID,
+					name: 'The Tragedy of Hamlet, Prince of Denmark'
+				},
 				theatre: {
 					model: 'theatre',
 					uuid: NATIONAL_THEATRE_UUID,
 					name: 'National Theatre',
 					surTheatre: null
-				},
-				playtext: {
-					model: 'playtext',
-					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID,
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
 				},
 				cast: [
 					{
@@ -642,15 +642,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
 				errors: {},
-				theatre: {
-					model: 'theatre',
-					name: 'National Theatre',
-					differentiator: '',
-					errors: {}
-				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					differentiator: '',
+					errors: {}
+				},
+				theatre: {
+					model: 'theatre',
+					name: 'National Theatre',
 					differentiator: '',
 					errors: {}
 				},
@@ -791,11 +791,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
-					theatre: {
-						name: 'Almeida Theatre'
-					},
 					playtext: {
 						name: 'The Tragedy of King Richard III'
+					},
+					theatre: {
+						name: 'Almeida Theatre'
 					},
 					cast: [
 						{
@@ -841,15 +841,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
 				errors: {},
-				theatre: {
-					model: 'theatre',
-					name: 'Almeida Theatre',
-					differentiator: '',
-					errors: {}
-				},
 				playtext: {
 					model: 'playtext',
 					name: 'The Tragedy of King Richard III',
+					differentiator: '',
+					errors: {}
+				},
+				theatre: {
+					model: 'theatre',
+					name: 'Almeida Theatre',
 					differentiator: '',
 					errors: {}
 				},
@@ -992,16 +992,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				playtext: {
+					model: 'playtext',
+					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_UUID,
+					name: 'The Tragedy of King Richard III'
+				},
 				theatre: {
 					model: 'theatre',
 					uuid: ALMEIDA_THEATRE_UUID,
 					name: 'Almeida Theatre',
 					surTheatre: null
-				},
-				playtext: {
-					model: 'playtext',
-					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_UUID,
-					name: 'The Tragedy of King Richard III'
 				},
 				cast: [
 					{
@@ -1112,14 +1112,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
 				errors: {},
-				theatre: {
-					model: 'theatre',
+				playtext: {
+					model: 'playtext',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
-				playtext: {
-					model: 'playtext',
+				theatre: {
+					model: 'theatre',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1161,16 +1161,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				name: 'Richard III',
 				errors: {},
-				theatre: {
-					differentiator: '',
-					errors: {},
-					model: 'theatre',
-					name: ''
-				},
 				playtext: {
 					differentiator: '',
 					errors: {},
 					model: 'playtext',
+					name: ''
+				},
+				theatre: {
+					differentiator: '',
+					errors: {},
+					model: 'theatre',
 					name: ''
 				},
 				cast: []
