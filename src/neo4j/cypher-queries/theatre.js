@@ -78,7 +78,7 @@ const getEditQuery = () => `
 					differentiator: subTheatre.differentiator
 				}
 			END
-		) + [{ name: '', differentiator: '' }] AS subTheatres
+		) + [{}] AS subTheatres
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');

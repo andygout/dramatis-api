@@ -91,7 +91,7 @@ const getEditQuery = () => `
 					group: characterRel.group
 				}
 			END
-		) + [{ name: '' }] AS characters
+		) + [{}] AS characters
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');

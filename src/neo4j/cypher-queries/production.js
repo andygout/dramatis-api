@@ -149,7 +149,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
 			END
-		) + [{ name: '', roles: [{ name: '', characterName: '', characterDifferentiator: '', qualifier: '' }] }] AS cast
+		) + [{ roles: [{}] }] AS cast
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
