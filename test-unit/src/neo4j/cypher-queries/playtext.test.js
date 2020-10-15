@@ -76,7 +76,7 @@ describe('Cypher Queries Playtext module', () => {
 								group: characterRel.group
 							}
 						END
-					) + [{ name: '' }] AS characters
+					) + [{}] AS characters
 			`));
 
 		});
@@ -164,7 +164,7 @@ describe('Cypher Queries Playtext module', () => {
 								group: characterRel.group
 							}
 						END
-					) + [{ name: '' }] AS characters
+					) + [{}] AS characters
 			`));
 
 		});
