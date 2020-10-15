@@ -69,11 +69,11 @@ describe('Character with variant names from productions of the same playtext', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
-				theatre: {
-					name: 'Almeida Theatre'
-				},
 				playtext: {
 					name: 'Hamlet'
+				},
+				theatre: {
+					name: 'Almeida Theatre'
 				},
 				cast: [
 					{
@@ -105,11 +105,11 @@ describe('Character with variant names from productions of the same playtext', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
-				theatre: {
-					name: 'Novello Theatre'
-				},
 				playtext: {
 					name: 'Hamlet'
+				},
+				theatre: {
+					name: 'Novello Theatre'
 				},
 				cast: [
 					{
@@ -140,11 +140,11 @@ describe('Character with variant names from productions of the same playtext', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
-				theatre: {
-					name: 'Wyndham\'s Theatre'
-				},
 				playtext: {
 					name: 'Hamlet'
+				},
+				theatre: {
+					name: 'Wyndham\'s Theatre'
 				},
 				cast: [
 					{

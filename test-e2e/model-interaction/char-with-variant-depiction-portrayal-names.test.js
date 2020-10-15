@@ -119,11 +119,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				theatre: {
-					name: 'Royal Shakespeare Theatre'
-				},
 				playtext: {
 					name: 'Henry IV, Part 1'
+				},
+				theatre: {
+					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
 					{
@@ -153,11 +153,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
-				theatre: {
-					name: 'Royal Shakespeare Theatre'
-				},
 				playtext: {
 					name: 'Henry IV, Part 2'
+				},
+				theatre: {
+					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
 					{
@@ -187,11 +187,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
-				theatre: {
-					name: 'Royal Shakespeare Theatre'
-				},
 				playtext: {
 					name: 'Henry V'
+				},
+				theatre: {
+					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
 					{
@@ -221,11 +221,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Henry IV, Part 1'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -255,11 +255,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Henry IV, Part 2'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{
@@ -289,11 +289,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
-				theatre: {
-					name: 'National Theatre'
-				},
 				playtext: {
 					name: 'Henry V'
+				},
+				theatre: {
+					name: 'National Theatre'
 				},
 				cast: [
 					{

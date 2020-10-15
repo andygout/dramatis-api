@@ -60,11 +60,11 @@ describe('Different characters with the same name from the same playtext', () =>
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
-				theatre: {
-					name: 'Barbican'
-				},
 				playtext: {
 					name: 'Julius Caesar'
+				},
+				theatre: {
+					name: 'Barbican'
 				},
 				cast: [
 					{

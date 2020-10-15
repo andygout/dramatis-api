@@ -71,11 +71,11 @@ describe('Character with multiple appearances in the same playtext under differe
 			.post('/productions')
 			.send({
 				name: 'Rock \'n\' Roll',
-				theatre: {
-					name: 'Royal Court Theatre'
-				},
 				playtext: {
 					name: 'Rock \'n\' Roll'
+				},
+				theatre: {
+					name: 'Royal Court Theatre'
 				},
 				cast: [
 					{

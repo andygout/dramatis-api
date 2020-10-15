@@ -78,11 +78,11 @@ describe('Different characters with the same name from different playtexts', () 
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					name: 'Novello Theatre'
-				},
 				playtext: {
 					name: 'A Midsummer Night\'s Dream'
+				},
+				theatre: {
+					name: 'Novello Theatre'
 				},
 				cast: [
 					{
@@ -108,11 +108,11 @@ describe('Different characters with the same name from different playtexts', () 
 			.post('/productions')
 			.send({
 				name: 'Titus Andronicus',
-				theatre: {
-					name: 'Shakespeare\'s Globe'
-				},
 				playtext: {
 					name: 'Titus Andronicus'
+				},
+				theatre: {
+					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
 					{

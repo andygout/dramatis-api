@@ -47,11 +47,11 @@ describe('Cast member performing same role in different productions of same play
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					name: 'Royal Shakespeare Theatre'
-				},
 				playtext: {
 					name: 'A Midsummer Night\'s Dream'
+				},
+				theatre: {
+					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
 					{
@@ -70,11 +70,11 @@ describe('Cast member performing same role in different productions of same play
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				theatre: {
-					name: 'Rose Theatre'
-				},
 				playtext: {
 					name: 'A Midsummer Night\'s Dream'
+				},
+				theatre: {
+					name: 'Rose Theatre'
 				},
 				cast: [
 					{

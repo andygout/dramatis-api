@@ -37,11 +37,11 @@ describe('Playtext with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Measure for Measure',
+				playtext: {
+					name: 'Measure for Measure'
+				},
 				theatre: {
 					name: 'National Theatre'
-				},
-				playtext: {
-					name: 'Measure for Measure'
 				}
 			});
 
@@ -49,11 +49,11 @@ describe('Playtext with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Measure for Measure',
+				playtext: {
+					name: 'Measure for Measure'
+				},
 				theatre: {
 					name: 'Almeida Theatre'
-				},
-				playtext: {
-					name: 'Measure for Measure'
 				}
 			});
 
@@ -61,11 +61,11 @@ describe('Playtext with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Measure for Measure',
-				theatre: {
-					name: 'Donmar Warehouse'
-				},
 				playtext: {
 					name: 'Measure for Measure'
+				},
+				theatre: {
+					name: 'Donmar Warehouse'
 				}
 			});
 
