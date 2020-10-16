@@ -478,6 +478,24 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 			const expectedResponseBody = [
 				{
 					model: 'theatre',
+					uuid: DORFMAN_THEATRE_UUID,
+					name: 'Dorfman Theatre',
+					subTheatres: []
+				},
+				{
+					model: 'theatre',
+					uuid: LYTTELTON_THEATRE_UUID,
+					name: 'Lyttelton Theatre',
+					subTheatres: []
+				},
+				{
+					model: 'theatre',
+					uuid: OLIVIER_THEATRE_UUID,
+					name: 'Olivier Theatre',
+					subTheatres: []
+				},
+				{
+					model: 'theatre',
 					uuid: THEATRE_UUID,
 					name: 'Royal Court Theatre',
 					subTheatres: [
@@ -492,24 +510,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 							name: 'Jerwood Theatre Upstairs'
 						}
 					]
-				},
-				{
-					model: 'theatre',
-					uuid: OLIVIER_THEATRE_UUID,
-					name: 'Olivier Theatre',
-					subTheatres: []
-				},
-				{
-					model: 'theatre',
-					uuid: LYTTELTON_THEATRE_UUID,
-					name: 'Lyttelton Theatre',
-					subTheatres: []
-				},
-				{
-					model: 'theatre',
-					uuid: DORFMAN_THEATRE_UUID,
-					name: 'Dorfman Theatre',
-					subTheatres: []
 				}
 			];
 
