@@ -109,6 +109,8 @@ const getListQuery = model => `
 		n.uuid AS uuid,
 		n.name AS name
 
+	ORDER BY n.name
+
 	LIMIT 100
 `;
 

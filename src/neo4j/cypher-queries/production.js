@@ -241,6 +241,8 @@ const getListQuery = () => `
 			}
 		END AS theatre
 
+	ORDER BY production.name
+
 	LIMIT 100
 `;
 

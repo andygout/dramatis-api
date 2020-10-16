@@ -167,6 +167,8 @@ const getListQuery = () => `
 			END
 		) AS subTheatres
 
+	ORDER BY theatre.name
+
 	LIMIT 100
 `;
 

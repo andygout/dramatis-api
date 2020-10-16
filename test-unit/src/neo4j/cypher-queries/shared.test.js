@@ -218,6 +218,8 @@ describe('Cypher Queries Shared module', () => {
 					n.uuid AS uuid,
 					n.name AS name
 
+				ORDER BY n.name
+
 				LIMIT 100
 			`));
 
