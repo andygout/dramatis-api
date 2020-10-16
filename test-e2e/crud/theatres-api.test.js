@@ -247,15 +247,19 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				.post('/theatres')
 				.send({
 					name: 'National Theatre',
+					differentiator: '1',
 					subTheatres: [
 						{
-							name: 'Olivier Theatre'
+							name: 'Olivier Theatre',
+							differentiator: '1'
 						},
 						{
-							name: 'Lyttelton Theatre'
+							name: 'Lyttelton Theatre',
+							differentiator: '1'
 						},
 						{
-							name: 'Dorfman Theatre'
+							name: 'Dorfman Theatre',
+							differentiator: '1'
 						}
 					]
 				});
@@ -264,25 +268,25 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'National Theatre',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				subTheatres: [
 					{
 						model: 'theatre',
 						name: 'Olivier Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
 						model: 'theatre',
 						name: 'Lyttelton Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
 						model: 'theatre',
 						name: 'Dorfman Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
@@ -309,7 +313,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'National Theatre',
-				differentiator: null,
+				differentiator: '1',
 				surTheatre: null,
 				subTheatres: [
 					{
@@ -345,25 +349,25 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'National Theatre',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				subTheatres: [
 					{
 						model: 'theatre',
 						name: 'Olivier Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
 						model: 'theatre',
 						name: 'Lyttelton Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
 						model: 'theatre',
 						name: 'Dorfman Theatre',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
@@ -388,12 +392,15 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				.put(`/theatres/${THEATRE_UUID}`)
 				.send({
 					name: 'Royal Court Theatre',
+					differentiator: '1',
 					subTheatres: [
 						{
-							name: 'Jerwood Theatre Downstairs'
+							name: 'Jerwood Theatre Downstairs',
+							differentiator: '1'
 						},
 						{
-							name: 'Jerwood Theatre Upstairs'
+							name: 'Jerwood Theatre Upstairs',
+							differentiator: '1'
 						}
 					]
 				});
@@ -402,19 +409,19 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'Royal Court Theatre',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				subTheatres: [
 					{
 						model: 'theatre',
 						name: 'Jerwood Theatre Downstairs',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
 						model: 'theatre',
 						name: 'Jerwood Theatre Upstairs',
-						differentiator: '',
+						differentiator: '1',
 						errors: {}
 					},
 					{
@@ -441,7 +448,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'Royal Court Theatre',
-				differentiator: null,
+				differentiator: '1',
 				surTheatre: null,
 				subTheatres: [
 					{
@@ -518,14 +525,15 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 			const response = await chai.request(app)
 				.put(`/theatres/${THEATRE_UUID}`)
 				.send({
-					name: 'Royal Court Theatre'
+					name: 'Royal Court Theatre',
+					differentiator: '1'
 				});
 
 			const expectedResponseBody = {
 				model: 'theatre',
 				uuid: THEATRE_UUID,
 				name: 'Royal Court Theatre',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				subTheatres: [
 					{
@@ -553,7 +561,7 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 			const expectedResponseBody = {
 				model: 'theatre',
 				name: 'Royal Court Theatre',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				subTheatres: []
 			};

@@ -264,15 +264,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.post('/playtexts')
 				.send({
 					name: 'The Seagull',
+					differentiator: '1',
 					characters: [
 						{
-							name: 'Irina Nikolayevna Arkadina'
+							name: 'Irina',
+							underlyingName: 'Irina Nikolayevna Arkadina',
+							differentiator: '1',
+							qualifier: 'foo',
+							group: 'The Guests'
 						},
 						{
-							name: 'Konstantin Gavrilovich Treplyov'
+							name: 'Konstantin',
+							underlyingName: 'Konstantin Gavrilovich Treplyov',
+							differentiator: '1',
+							qualifier: 'bar',
+							group: 'The Guests'
 						},
 						{
-							name: 'Boris Alexeyevich Trigorin'
+							name: 'Boris',
+							underlyingName: 'Boris Alexeyevich Trigorin',
+							differentiator: '1',
+							qualifier: 'baz',
+							group: 'The Guests'
 						}
 					]
 				});
@@ -281,34 +294,34 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
-						name: 'Irina Nikolayevna Arkadina',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Irina',
+						underlyingName: 'Irina Nikolayevna Arkadina',
+						differentiator: '1',
+						qualifier: 'foo',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Konstantin Gavrilovich Treplyov',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Konstantin',
+						underlyingName: 'Konstantin Gavrilovich Treplyov',
+						differentiator: '1',
+						qualifier: 'bar',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Boris Alexeyevich Trigorin',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Boris',
+						underlyingName: 'Boris Alexeyevich Trigorin',
+						differentiator: '1',
+						qualifier: 'baz',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
@@ -338,29 +351,29 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
-				differentiator: null,
+				differentiator: '1',
 				characterGroups: [
 					{
 						model: 'characterGroup',
-						name: null,
+						name: 'The Guests',
 						characters: [
 							{
 								model: 'character',
 								uuid: IRINA_NIKOLAYEVNA_ARKADINA_UUID,
-								name: 'Irina Nikolayevna Arkadina',
-								qualifier: null
+								name: 'Irina',
+								qualifier: 'foo'
 							},
 							{
 								model: 'character',
 								uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID,
-								name: 'Konstantin Gavrilovich Treplyov',
-								qualifier: null
+								name: 'Konstantin',
+								qualifier: 'bar'
 							},
 							{
 								model: 'character',
 								uuid: BORIS_ALEXEYEVICH_TRIGORIN_UUID,
-								name: 'Boris Alexeyevich Trigorin',
-								qualifier: null
+								name: 'Boris',
+								qualifier: 'baz'
 							}
 						]
 					}
@@ -382,34 +395,34 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
-						name: 'Irina Nikolayevna Arkadina',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Irina',
+						underlyingName: 'Irina Nikolayevna Arkadina',
+						differentiator: '1',
+						qualifier: 'foo',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Konstantin Gavrilovich Treplyov',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Konstantin',
+						underlyingName: 'Konstantin Gavrilovich Treplyov',
+						differentiator: '1',
+						qualifier: 'bar',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Boris Alexeyevich Trigorin',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
+						name: 'Boris',
+						underlyingName: 'Boris Alexeyevich Trigorin',
+						differentiator: '1',
+						qualifier: 'baz',
+						group: 'The Guests',
 						errors: {}
 					},
 					{
@@ -437,20 +450,27 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.put(`/playtexts/${PLAYTEXT_UUID}`)
 				.send({
 					name: 'Three Sisters',
+					differentiator: '1',
 					characters: [
 						{
 							name: 'Olga',
 							underlyingName: 'Olga Sergeyevna Prozorova',
+							differentiator: '1',
+							qualifier: 'foo',
 							group: 'The Prozorovs'
 						},
 						{
 							name: 'Maria',
 							underlyingName: 'Maria Sergeyevna Kulygina',
+							differentiator: '1',
+							qualifier: 'bar',
 							group: 'The Prozorovs'
 						},
 						{
 							name: 'Irina',
 							underlyingName: 'Irina Sergeyevna Prozorova',
+							differentiator: '1',
+							qualifier: 'baz',
 							group: 'The Prozorovs'
 						}
 					]
@@ -460,15 +480,15 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				characters: [
 					{
 						model: 'character',
 						name: 'Olga',
 						underlyingName: 'Olga Sergeyevna Prozorova',
-						differentiator: '',
-						qualifier: '',
+						differentiator: '1',
+						qualifier: 'foo',
 						group: 'The Prozorovs',
 						errors: {}
 					},
@@ -476,8 +496,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: 'Maria',
 						underlyingName: 'Maria Sergeyevna Kulygina',
-						differentiator: '',
-						qualifier: '',
+						differentiator: '1',
+						qualifier: 'bar',
 						group: 'The Prozorovs',
 						errors: {}
 					},
@@ -485,8 +505,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'character',
 						name: 'Irina',
 						underlyingName: 'Irina Sergeyevna Prozorova',
-						differentiator: '',
-						qualifier: '',
+						differentiator: '1',
+						qualifier: 'baz',
 						group: 'The Prozorovs',
 						errors: {}
 					},
@@ -517,7 +537,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
-				differentiator: null,
+				differentiator: '1',
 				characterGroups: [
 					{
 						model: 'characterGroup',
@@ -527,19 +547,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 								model: 'character',
 								uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
 								name: 'Olga',
-								qualifier: null
+								qualifier: 'foo'
 							},
 							{
 								model: 'character',
 								uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
 								name: 'Maria',
-								qualifier: null
+								qualifier: 'bar'
 							},
 							{
 								model: 'character',
 								uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
 								name: 'Irina',
-								qualifier: null
+								qualifier: 'baz'
 							}
 						]
 					}
@@ -577,14 +597,15 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const response = await chai.request(app)
 				.put(`/playtexts/${PLAYTEXT_UUID}`)
 				.send({
-					name: 'Three Sisters'
+					name: 'Three Sisters',
+					differentiator: '1'
 				});
 
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				characters: [
 					{
@@ -615,7 +636,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				name: 'Three Sisters',
-				differentiator: '',
+				differentiator: '1',
 				errors: {},
 				characters: []
 			};
