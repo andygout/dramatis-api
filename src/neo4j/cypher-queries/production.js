@@ -163,9 +163,11 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
+	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	OPTIONAL MATCH (person)-[role]->(production)-[playtextRel]->
+	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
+
+	OPTIONAL MATCH (performer)-[role]->(production)-[playtextRel]->
 		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(
@@ -174,16 +176,25 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, surTheatre, playtext, person, role, character
+	WITH DISTINCT production, theatre, surTheatre, playtext, writerRel, writer, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, surTheatre, playtext, person,
+	WITH production, theatre, surTheatre, playtext, writerRel, writer, performer,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
 				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
 			END
 		) AS roles
+		ORDER BY writerRel.position
+
+	WITH production, theatre, surTheatre, playtext, performer, roles,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
+			END
+		) AS writers
 
 	RETURN
 		'production' AS model,
@@ -207,12 +218,12 @@ const getShowQuery = () => `
 		END AS theatre,
 		CASE playtext WHEN NULL
 			THEN null
-			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name }
+			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writers: writers }
 		END AS playtext,
 		COLLECT(
-			CASE person WHEN NULL
+			CASE performer WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: person.uuid, name: person.name, roles: roles }
+				ELSE { model: 'person', uuid: performer.uuid, name: performer.name, roles: roles }
 			END
 		) AS cast
 `;

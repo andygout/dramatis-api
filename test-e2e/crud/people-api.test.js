@@ -128,6 +128,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart',
 				differentiator: null,
+				playtexts: [],
 				productions: []
 			};
 

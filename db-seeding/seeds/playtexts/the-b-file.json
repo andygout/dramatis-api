@@ -1,5 +1,10 @@
 {
 	"name": "The B File",
+	"writers": [
+		{
+			"name": "Deborah Levy"
+		}
+	],
 	"characters": [
 		{
 			"name": "Beatrice",

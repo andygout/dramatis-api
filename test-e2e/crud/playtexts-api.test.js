@@ -23,6 +23,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: '',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -79,6 +87,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -109,6 +125,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -143,6 +167,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -179,6 +211,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						characters: []
 					}
 				],
+				writers: [],
 				productions: []
 			};
 
@@ -196,7 +229,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'The Cherry Orchard'
+					name: 'The Cherry Orchard',
+					writers: []
 				}
 			];
 
@@ -217,6 +251,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				errors: {},
+				writers: [],
 				characters: []
 			};
 
@@ -230,13 +265,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const PLAYTEXT_UUID = '4';
-		const IRINA_NIKOLAYEVNA_ARKADINA_UUID = '5';
-		const KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID = '6';
-		const BORIS_ALEXEYEVICH_TRIGORIN_UUID = '7';
-		const OLGA_SERGEYEVNA_PROZOROVA_UUID = '11';
-		const MARIA_SERGEYEVNA_KULYGINA_UUID = '12';
-		const IRINA_SERGEYEVNA_PROZOROVA_UUID = '13';
+		const PLAYTEXT_UUID = '5';
+		const ANTON_CHEKHOV_PERSON_UUID = '6';
+		const IRINA_NIKOLAYEVNA_ARKADINA_CHARACTER_UUID = '7';
+		const KONSTANTIN_GAVRILOVICH_TREPLYOV_CHARACTER_UUID = '8';
+		const BORIS_ALEXEYEVICH_TRIGORIN_CHARACTER_UUID = '9';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '15';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '16';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '17';
 
 		const sandbox = createSandbox();
 
@@ -265,6 +301,12 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.send({
 					name: 'The Seagull',
 					differentiator: '1',
+					writers: [
+						{
+							name: 'Anton Chekhov',
+							differentiator: '1'
+						}
+					],
 					characters: [
 						{
 							name: 'Irina',
@@ -296,6 +338,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Seagull',
 				differentiator: '1',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: 'Anton Chekhov',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -352,6 +408,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'The Seagull',
 				differentiator: '1',
+				writers: [
+					{
+						model: 'person',
+						uuid: ANTON_CHEKHOV_PERSON_UUID,
+						name: 'Anton Chekhov'
+					}
+				],
 				characterGroups: [
 					{
 						model: 'characterGroup',
@@ -359,19 +422,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						characters: [
 							{
 								model: 'character',
-								uuid: IRINA_NIKOLAYEVNA_ARKADINA_UUID,
+								uuid: IRINA_NIKOLAYEVNA_ARKADINA_CHARACTER_UUID,
 								name: 'Irina',
 								qualifier: 'foo'
 							},
 							{
 								model: 'character',
-								uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_UUID,
+								uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_CHARACTER_UUID,
 								name: 'Konstantin',
 								qualifier: 'bar'
 							},
 							{
 								model: 'character',
-								uuid: BORIS_ALEXEYEVICH_TRIGORIN_UUID,
+								uuid: BORIS_ALEXEYEVICH_TRIGORIN_CHARACTER_UUID,
 								name: 'Boris',
 								qualifier: 'baz'
 							}
@@ -397,6 +460,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Seagull',
 				differentiator: '1',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: 'Anton Chekhov',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -451,6 +528,12 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.send({
 					name: 'Three Sisters',
 					differentiator: '1',
+					writers: [
+						{
+							name: 'Anton Chekhov',
+							differentiator: '1'
+						}
+					],
 					characters: [
 						{
 							name: 'Olga',
@@ -482,6 +565,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: 'Anton Chekhov',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -538,6 +635,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
 				differentiator: '1',
+				writers: [
+					{
+						model: 'person',
+						uuid: ANTON_CHEKHOV_PERSON_UUID,
+						name: 'Anton Chekhov'
+					}
+				],
 				characterGroups: [
 					{
 						model: 'characterGroup',
@@ -545,19 +649,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						characters: [
 							{
 								model: 'character',
-								uuid: OLGA_SERGEYEVNA_PROZOROVA_UUID,
+								uuid: OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID,
 								name: 'Olga',
 								qualifier: 'foo'
 							},
 							{
 								model: 'character',
-								uuid: MARIA_SERGEYEVNA_KULYGINA_UUID,
+								uuid: MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID,
 								name: 'Maria',
 								qualifier: 'bar'
 							},
 							{
 								model: 'character',
-								uuid: IRINA_SERGEYEVNA_PROZOROVA_UUID,
+								uuid: IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID,
 								name: 'Irina',
 								qualifier: 'baz'
 							}
@@ -581,7 +685,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				{
 					model: 'playtext',
 					uuid: PLAYTEXT_UUID,
-					name: 'Three Sisters'
+					name: 'Three Sisters',
+					writers: [
+						{
+							model: 'person',
+							uuid: ANTON_CHEKHOV_PERSON_UUID,
+							name: 'Anton Chekhov'
+						}
+					]
 				}
 			];
 
@@ -607,6 +718,14 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -638,6 +757,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
+				writers: [],
 				characters: []
 			};
 

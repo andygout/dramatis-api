@@ -1,5 +1,10 @@
 {
 	"name": "Rope",
+	"writers": [
+		{
+			"name": "Patrick Hamilton"
+		}
+	],
 	"characters": [
 		{
 			"name": "Sabot"

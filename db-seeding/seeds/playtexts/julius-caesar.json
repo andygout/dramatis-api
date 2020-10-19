@@ -1,5 +1,10 @@
 {
 	"name": "Julius Caesar",
+	"writers": [
+		{
+			"name": "William Shakespeare"
+		}
+	],
 	"characters": [
 		{
 			"name": "Julius Caesar",

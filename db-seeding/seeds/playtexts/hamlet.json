@@ -1,5 +1,10 @@
 {
 	"name": "Hamlet",
+	"writers": [
+		{
+			"name": "William Shakespeare"
+		}
+	],
 	"characters": [
 		{
 			"name": "Barnardo"

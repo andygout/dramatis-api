@@ -1,6 +1,22 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
+	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(playtext:Playtext)
+
+	OPTIONAL MATCH (playtext)-[coWriterRel:WRITTEN_BY]->(coWriter:Person)
+		WHERE coWriter.uuid <> person.uuid
+
+	WITH person, playtext, coWriter
+		ORDER BY coWriterRel.position
+
+	WITH person, playtext,
+		COLLECT(
+			CASE coWriter WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: coWriter.uuid, name: coWriter.name }
+			END
+		) AS coWriters
+
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
@@ -15,10 +31,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, production, theatre, surTheatre, role, character
+	WITH DISTINCT person, playtext, coWriters, production, theatre, surTheatre, role, character
 		ORDER BY role.rolePosition
 
-	WITH person, production, theatre, surTheatre,
+	WITH person, playtext, coWriters, production, theatre, surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -27,11 +43,7 @@ const getShowQuery = () => `
 		) AS roles
 		ORDER BY production.name, theatre.name
 
-	RETURN
-		'person' AS model,
-		person.uuid AS uuid,
-		person.name AS name,
-		person.differentiator AS differentiator,
+	WITH person, playtext, coWriters,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
@@ -59,6 +71,20 @@ const getShowQuery = () => `
 				}
 			END
 		) AS productions
+		ORDER BY playtext.name
+
+	RETURN
+		'person' AS model,
+		person.uuid AS uuid,
+		person.name AS name,
+		person.differentiator AS differentiator,
+		COLLECT(
+			CASE playtext WHEN NULL
+				THEN null
+				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, coWriters: coWriters }
+			END
+		) AS playtexts,
+		productions
 `;
 
 export {

@@ -305,6 +305,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
 					name: 'Henry IV: Part 1',
+					writers: [],
 					depictions: [
 						{
 							displayName: null,
@@ -317,6 +318,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
 					name: 'Henry IV: Part 2',
+					writers: [],
 					depictions: [
 						{
 							displayName: null,
@@ -329,6 +331,7 @@ describe('Character in multiple productions of multiple playtexts', () => {
 					model: 'playtext',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
 					name: 'The Merry Wives of Windsor',
+					writers: [],
 					depictions: [
 						{
 							displayName: null,

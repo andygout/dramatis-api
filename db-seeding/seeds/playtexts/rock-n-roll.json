@@ -1,5 +1,10 @@
 {
 	"name": "Rock 'n' Roll",
+	"writers": [
+		{
+			"name": "Tom Stoppard"
+		}
+	],
 	"characters": [
 		{
 			"name": "The Piper"

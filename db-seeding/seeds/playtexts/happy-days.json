@@ -1,5 +1,10 @@
 {
 	"name": "Happy Days",
+	"writers": [
+		{
+			"name": "Samuel Beckett"
+		}
+	],
 	"characters": [
 		{
 			"name": "Winnie"

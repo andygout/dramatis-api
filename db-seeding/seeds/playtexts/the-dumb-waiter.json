@@ -1,5 +1,10 @@
 {
 	"name": "The Dumb Waiter",
+	"writers": [
+		{
+			"name": "Harold Pinter"
+		}
+	],
 	"characters": [
 		{
 			"name": "Ben"

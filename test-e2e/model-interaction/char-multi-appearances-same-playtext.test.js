@@ -154,6 +154,7 @@ describe('Character with multiple appearances in the same playtext under differe
 					model: 'playtext',
 					uuid: ROCK_N_ROLL_PLAYTEXT_UUID,
 					name: 'Rock \'n\' Roll',
+					writers: [],
 					depictions: [
 						{
 							displayName: null,

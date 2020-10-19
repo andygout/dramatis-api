@@ -44,6 +44,7 @@ describe('Playtext instance', () => {
 							'Value is too short'
 						]
 					},
+					writers: [],
 					characters: []
 				};
 
@@ -72,6 +73,7 @@ describe('Playtext instance', () => {
 							'Value is too long'
 						]
 					},
+					writers: [],
 					characters: []
 				};
 
@@ -100,6 +102,166 @@ describe('Playtext instance', () => {
 							'Value is too long'
 						]
 					},
+					writers: [],
+					characters: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('writer name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writers: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writers: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					characters: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('writer differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writers: [
+						{
+							name: 'Henrik Ibsen',
+							differentiator: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writers: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Henrik Ibsen',
+							differentiator: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								differentiator: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					characters: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate writers', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writers: [
+						{
+							name: 'Henrik Ibsen'
+						},
+						{
+							name: 'Henrik Ibsen'
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writers: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Henrik Ibsen',
+							differentiator: '',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								],
+								differentiator: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Henrik Ibsen',
+							differentiator: '',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								],
+								differentiator: [
+									'This item has been duplicated within the group'
+								]
+							}
+						}
+					],
 					characters: []
 				};
 
@@ -133,6 +295,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -182,6 +345,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -231,6 +395,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -280,6 +445,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -329,6 +495,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -378,6 +545,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -432,6 +600,7 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
@@ -536,6 +705,7 @@ describe('Playtext instance', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
+					writers: [],
 					characters: []
 				};
 
@@ -586,6 +756,7 @@ describe('Playtext instance', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
+					writers: [],
 					characters: [
 						{
 							model: 'character',
