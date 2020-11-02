@@ -574,7 +574,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				playtext: {
 					model: 'playtext',
 					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID,
-					name: 'The Tragedy of Hamlet, Prince of Denmark'
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					writers: []
 				},
 				theatre: {
 					model: 'theatre',
@@ -1034,7 +1035,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				playtext: {
 					model: 'playtext',
 					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_UUID,
-					name: 'The Tragedy of King Richard III'
+					name: 'The Tragedy of King Richard III',
+					writers: []
 				},
 				theatre: {
 					model: 'theatre',

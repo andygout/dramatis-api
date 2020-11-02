@@ -51,6 +51,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -93,6 +101,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
+				writers: [],
 				characters: []
 			};
 
@@ -119,6 +128,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '1',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -163,6 +180,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
+				writers: [],
 				characters: []
 			};
 
@@ -189,6 +207,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '2',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -224,6 +250,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
+				writers: [
+					{
+						model: 'person',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characters: [
 					{
 						model: 'character',
@@ -240,6 +274,152 @@ describe('Uniqueness in database: Playtexts API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Playtext writer uniqueness in database', () => {
+
+		chai.use(chaiHttp);
+
+		const DOT_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Playtext',
+				name: 'Dot',
+				uuid: DOT_PLAYTEXT_UUID
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates playtext and creates writer that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
+				.send({
+					name: 'Dot',
+					writers: [
+						{
+							name: 'Kate Ryan'
+						}
+					]
+				});
+
+			const expectedPersonKateRyan1 = {
+				model: 'person',
+				name: 'Kate Ryan',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+		});
+
+		it('updates playtext and creates writer that has same name as existing writer but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
+				.send({
+					name: 'Dot',
+					writers: [
+						{
+							name: 'Kate Ryan',
+							differentiator: '1'
+						}
+					]
+				});
+
+			const expectedPersonKateRyan2 = {
+				model: 'person',
+				name: 'Kate Ryan',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates playtext and uses existing writer that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
+				.send({
+					name: 'Dot',
+					writers: [
+						{
+							name: 'Kate Ryan'
+						}
+					]
+				});
+
+			const expectedPersonKateRyan1 = {
+				model: 'person',
+				name: 'Kate Ryan',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates playtext and uses existing writer that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
+				.send({
+					name: 'Dot',
+					writers: [
+						{
+							name: 'Kate Ryan',
+							differentiator: '1'
+						}
+					]
+				});
+
+			const expectedPersonKateRyan2 = {
+				model: 'person',
+				name: 'Kate Ryan',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
 

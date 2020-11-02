@@ -1,5 +1,10 @@
 {
 	"name": "Coriolanus",
+	"writers": [
+		{
+			"name": "William Shakespeare"
+		}
+	],
 	"characters": [
 		{
 			"name": "Caius Martius Coriolanus",

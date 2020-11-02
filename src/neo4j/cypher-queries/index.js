@@ -4,7 +4,8 @@ import {
 	getCreateQuery as getPlaytextCreateQuery,
 	getEditQuery as getPlaytextEditQuery,
 	getUpdateQuery as getPlaytextUpdateQuery,
-	getShowQuery as getPlaytextShowQuery
+	getShowQuery as getPlaytextShowQuery,
+	getListQuery as getPlaytextListQuery
 } from './playtext';
 import {
 	getCreateQuery as getProductionCreateQuery,
@@ -49,6 +50,7 @@ const getShowQueries = {
 };
 
 const getListQueries = {
+	playtext: getPlaytextListQuery,
 	production: getProductionListQuery,
 	theatre: getTheatreListQuery,
 };

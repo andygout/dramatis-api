@@ -1,5 +1,10 @@
 {
 	"name": "A Midsummer Night's Dream",
+	"writers": [
+		{
+			"name": "William Shakespeare"
+		}
+	],
 	"characters": [
 		{
 			"name": "Theseus",

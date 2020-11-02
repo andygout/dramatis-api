@@ -1,5 +1,10 @@
 {
 	"name": "Titus Andronicus",
+	"writers": [
+		{
+			"name": "William Shakespeare"
+		}
+	],
 	"characters": [
 		{
 			"name": "Saturninus",

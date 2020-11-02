@@ -3,12 +3,24 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (character)<-[playtextRel:INCLUDES_CHARACTER]-(playtext:Playtext)
 
-	WITH character, playtextRel, playtext
-		ORDER BY playtext.name, playtextRel.position
+	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+
+	WITH character, playtextRel, playtext, writer
+		ORDER BY writerRel.position
+
+	WITH character, playtextRel, playtext,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
+			END
+		) AS writers
+		ORDER BY playtextRel.position
 
 	WITH
 		character,
 		playtext,
+		writers,
 		COLLECT({
 			displayName: playtextRel.displayName,
 			qualifier: playtextRel.qualifier,
@@ -60,6 +72,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		playtext,
+		writers,
 		depictions,
 		variantNamedDepiction,
 		production,
@@ -75,6 +88,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		playtext,
+		writers,
 		depictions,
 		variantNamedDepiction,
 		variantNamedPortrayal,
@@ -99,6 +113,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		playtext,
+		writers,
 		depictions,
 		variantNamedDepiction,
 		variantNamedPortrayal,
@@ -115,7 +130,7 @@ const getShowQuery = () => `
 		}) AS performers
 		ORDER BY production.name, theatre.name
 
-	WITH character, playtext, depictions, variantNamedDepiction, variantNamedPortrayal,
+	WITH character, playtext, writers, depictions, variantNamedDepiction, variantNamedPortrayal,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
@@ -145,11 +160,11 @@ const getShowQuery = () => `
 		) AS productions
 		ORDER BY variantNamedPortrayal.roleName
 
-	WITH character, playtext, depictions, variantNamedDepiction, productions,
+	WITH character, playtext, writers, depictions, variantNamedDepiction, productions,
 		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 		ORDER BY variantNamedDepiction.displayName
 
-	WITH character, playtext, depictions, variantNamedPortrayals, productions,
+	WITH character, playtext, writers, depictions, variantNamedPortrayals, productions,
 		COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 		ORDER BY playtext.name
 
@@ -166,6 +181,7 @@ const getShowQuery = () => `
 					model: 'playtext',
 					uuid: playtext.uuid,
 					name: playtext.name,
+					writers: writers,
 					depictions: depictions
 				}
 			END

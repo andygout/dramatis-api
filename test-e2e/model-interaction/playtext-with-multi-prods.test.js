@@ -144,7 +144,8 @@ describe('Playtext with multiple productions', () => {
 			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure'
+				name: 'Measure for Measure',
+				writers: []
 			};
 
 			const { playtext } = measureForMeasureNationalProduction.body;
@@ -162,7 +163,8 @@ describe('Playtext with multiple productions', () => {
 			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure'
+				name: 'Measure for Measure',
+				writers: []
 			};
 
 			const { playtext } = measureForMeasureAlmeidaProduction.body;
@@ -180,7 +182,8 @@ describe('Playtext with multiple productions', () => {
 			const expectedPlaytext = {
 				model: 'playtext',
 				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure'
+				name: 'Measure for Measure',
+				writers: []
 			};
 
 			const { playtext } = measureForMeasureDonmarProduction.body;
