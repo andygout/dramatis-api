@@ -19,21 +19,22 @@ describe('Character with variant depiction and portrayal names', () => {
 	const HENRY_V_PLAYTEXT_UUID = '20';
 	const KING_OF_FRANCE_CHARACTER_UUID = '22';
 	const SOLDIER_CHARACTER_UUID = '23';
-	const HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '24';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '26';
-	const ALEX_HASSELL_PERSON_UUID = '27';
-	const ANTONY_SHER_PERSON_UUID = '28';
-	const HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '29';
-	const HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '34';
-	const SIMON_THORP_PERSON_UUID = '38';
-	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '39';
-	const NATIONAL_THEATRE_UUID = '41';
-	const MATTHEW_MACFADYEN_PERSON_UUID = '42';
-	const MICHAEL_GAMBON_PERSON_UUID = '43';
-	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '44';
-	const HENRY_V_NATIONAL_PRODUCTION_UUID = '49';
-	const ADRIAN_LESTER_PERSON_UUID = '52';
-	const IAN_HOGG_PERSON_UUID = '53';
+	const THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID = '26';
+	const HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '28';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '30';
+	const ALEX_HASSELL_PERSON_UUID = '31';
+	const ANTONY_SHER_PERSON_UUID = '32';
+	const HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '33';
+	const HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '38';
+	const SIMON_THORP_PERSON_UUID = '42';
+	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '43';
+	const NATIONAL_THEATRE_UUID = '45';
+	const MATTHEW_MACFADYEN_PERSON_UUID = '46';
+	const MICHAEL_GAMBON_PERSON_UUID = '47';
+	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '48';
+	const HENRY_V_NATIONAL_PRODUCTION_UUID = '53';
+	const ADRIAN_LESTER_PERSON_UUID = '56';
+	const IAN_HOGG_PERSON_UUID = '57';
 
 	let kingHenryVCharacter;
 	let messengerCharacter;
@@ -111,6 +112,20 @@ describe('Character with variant depiction and portrayal names', () => {
 					},
 					{
 						name: 'Soldier'
+					}
+				]
+			});
+
+		// Prince Hall does not appear in The Merry Wives of Windsor;
+		// it is a contrivance to test distinct variant named depictions.
+		await chai.request(app)
+			.post('/playtexts')
+			.send({
+				name: 'The Merry Wives of Windsor',
+				characters: [
+					{
+						name: 'Prince Hal',
+						underlyingName: 'King Henry V'
 					}
 				]
 			});
@@ -414,6 +429,19 @@ describe('Character with variant depiction and portrayal names', () => {
 					depictions: [
 						{
 							displayName: null,
+							qualifier: null,
+							group: null
+						}
+					]
+				},
+				{
+					model: 'playtext',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
+					name: 'The Merry Wives of Windsor',
+					writers: [],
+					depictions: [
+						{
+							displayName: 'Prince Hal',
 							qualifier: null,
 							group: null
 						}
