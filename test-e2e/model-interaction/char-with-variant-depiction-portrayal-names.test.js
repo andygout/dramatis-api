@@ -116,7 +116,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		// Prince Hall does not appear in The Merry Wives of Windsor;
+		// Prince Hal does not appear in The Merry Wives of Windsor;
 		// it is a contrivance to test distinct variant named depictions.
 		await chai.request(app)
 			.post('/playtexts')
@@ -468,7 +468,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		});
 
-		// Even though 'Prince Hall' already appears in the variant depiction names (i.e. variant names from playtexts),
+		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from playtexts),
 		// it still appears here because the corresponding portrayal was of the character from a playtext (Henry IV, Part 1)
 		// in which neither the underlying nor display name matches the role name used for the portrayal.
 		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in playtext)', () => {
