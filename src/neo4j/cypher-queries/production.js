@@ -20,27 +20,6 @@ const getCreateUpdateQuery = action => {
 
 		WITH production
 
-		OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
-			WHERE
-				($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-				($theatre.differentiator = existingTheatre.differentiator)
-
-		WITH
-			production,
-			CASE existingTheatre WHEN NULL
-				THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
-				ELSE existingTheatre
-			END AS theatreProps
-
-		FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
-			MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
-				ON CREATE SET theatre.differentiator = theatreProps.differentiator
-
-			CREATE (production)-[:PLAYS_AT]->(theatre)
-		)
-
-		WITH production
-
 		OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
 			WHERE
 				($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
@@ -58,6 +37,27 @@ const getCreateUpdateQuery = action => {
 				ON CREATE SET playtext.differentiator = playtextProps.differentiator
 
 			CREATE (production)-[:PRODUCTION_OF]->(playtext)
+		)
+
+		WITH production
+
+		OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
+			WHERE
+				($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
+				($theatre.differentiator = existingTheatre.differentiator)
+
+		WITH
+			production,
+			CASE existingTheatre WHEN NULL
+				THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
+				ELSE existingTheatre
+			END AS theatreProps
+
+		FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
+			MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
+				ON CREATE SET theatre.differentiator = theatreProps.differentiator
+
+			CREATE (production)-[:PLAYS_AT]->(theatre)
 		)
 
 		WITH production
@@ -110,16 +110,16 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-	WITH production, theatre, playtext, role, person
+	WITH production, playtext, theatre, role, person
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, playtext, person,
+	WITH production, playtext, theatre, person,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN null
@@ -137,13 +137,13 @@ const getEditQuery = () => `
 		production.uuid AS uuid,
 		production.name AS name,
 		{
-			name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
-			differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
-		} AS theatre,
-		{
 			name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
 			differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
 		} AS playtext,
+		{
+			name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
+			differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
+		} AS theatre,
 		COLLECT(
 			CASE person WHEN NULL
 				THEN null
@@ -157,24 +157,24 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getShowQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
-
 	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
 
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH production, theatre, surTheatre, playtext, writer
+	WITH production, playtext, writer
 		ORDER BY writerRel.position
 
-	WITH production, theatre, surTheatre, playtext,
+	WITH production, playtext,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
 				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
 			END
 		) AS writers
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
 
@@ -187,10 +187,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, surTheatre, playtext, writers, performer, role, character
+	WITH DISTINCT production, playtext, writers, theatre, surTheatre, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, surTheatre, playtext, writers, performer,
+	WITH production, playtext, writers, theatre, surTheatre, performer,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -202,6 +202,10 @@ const getShowQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
+		CASE playtext WHEN NULL
+			THEN null
+			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writers: writers }
+		END AS playtext,
 		CASE theatre WHEN NULL
 			THEN null
 			ELSE {
@@ -218,10 +222,6 @@ const getShowQuery = () => `
 				END
 			}
 		END AS theatre,
-		CASE playtext WHEN NULL
-			THEN null
-			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writers: writers }
-		END AS playtext,
 		COLLECT(
 			CASE performer WHEN NULL
 				THEN null

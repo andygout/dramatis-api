@@ -15,27 +15,6 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
-					WHERE
-						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-						($theatre.differentiator = existingTheatre.differentiator)
-
-				WITH
-					production,
-					CASE existingTheatre WHEN NULL
-						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
-						ELSE existingTheatre
-					END AS theatreProps
-
-				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
-					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
-						ON CREATE SET theatre.differentiator = theatreProps.differentiator
-
-					CREATE (production)-[:PLAYS_AT]->(theatre)
-				)
-
-				WITH production
-
 				OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
 					WHERE
 						($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
@@ -53,6 +32,27 @@ describe('Cypher Queries Production module', () => {
 						ON CREATE SET playtext.differentiator = playtextProps.differentiator
 
 					CREATE (production)-[:PRODUCTION_OF]->(playtext)
+				)
+
+				WITH production
+
+				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
+					WHERE
+						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
+						($theatre.differentiator = existingTheatre.differentiator)
+
+				WITH
+					production,
+					CASE existingTheatre WHEN NULL
+						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
+						ELSE existingTheatre
+					END AS theatreProps
+
+				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
+					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
+						ON CREATE SET theatre.differentiator = theatreProps.differentiator
+
+					CREATE (production)-[:PLAYS_AT]->(theatre)
 				)
 
 				WITH production
@@ -97,16 +97,16 @@ describe('Cypher Queries Production module', () => {
 
 				MATCH (production:Production { uuid: $uuid })
 
-				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+
+				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, theatre, playtext, role, person
+				WITH production, playtext, theatre, role, person
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, theatre, playtext, person,
+				WITH production, playtext, theatre, person,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -124,13 +124,13 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
-					} AS theatre,
-					{
 						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
 						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
 					} AS playtext,
+					{
+						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
+						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
+					} AS theatre,
 					COLLECT(
 						CASE person WHEN NULL
 							THEN null
@@ -161,27 +161,6 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
-					WHERE
-						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-						($theatre.differentiator = existingTheatre.differentiator)
-
-				WITH
-					production,
-					CASE existingTheatre WHEN NULL
-						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
-						ELSE existingTheatre
-					END AS theatreProps
-
-				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
-					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
-						ON CREATE SET theatre.differentiator = theatreProps.differentiator
-
-					CREATE (production)-[:PLAYS_AT]->(theatre)
-				)
-
-				WITH production
-
 				OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
 					WHERE
 						($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
@@ -199,6 +178,27 @@ describe('Cypher Queries Production module', () => {
 						ON CREATE SET playtext.differentiator = playtextProps.differentiator
 
 					CREATE (production)-[:PRODUCTION_OF]->(playtext)
+				)
+
+				WITH production
+
+				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
+					WHERE
+						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
+						($theatre.differentiator = existingTheatre.differentiator)
+
+				WITH
+					production,
+					CASE existingTheatre WHEN NULL
+						THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
+						ELSE existingTheatre
+					END AS theatreProps
+
+				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
+					MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
+						ON CREATE SET theatre.differentiator = theatreProps.differentiator
+
+					CREATE (production)-[:PLAYS_AT]->(theatre)
 				)
 
 				WITH production
@@ -243,16 +243,16 @@ describe('Cypher Queries Production module', () => {
 
 				MATCH (production:Production { uuid: $uuid })
 
-				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
 				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+
+				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, theatre, playtext, role, person
+				WITH production, playtext, theatre, role, person
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, theatre, playtext, person,
+				WITH production, playtext, theatre, person,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -270,13 +270,13 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
-					} AS theatre,
-					{
 						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
 						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
 					} AS playtext,
+					{
+						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
+						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
+					} AS theatre,
 					COLLECT(
 						CASE person WHEN NULL
 							THEN null
