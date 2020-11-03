@@ -254,7 +254,7 @@ const getListQuery = () => `
 			}
 		END AS theatre
 
-	ORDER BY production.name
+	ORDER BY production.name, theatre.name
 
 	LIMIT 100
 `;

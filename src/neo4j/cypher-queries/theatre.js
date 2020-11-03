@@ -111,7 +111,7 @@ const getShowQuery = () => `
 		subTheatreForProduction,
 		LENGTH(path) AS theatreToProductionPathLength,
 		production
-		ORDER BY production.name
+		ORDER BY production.name, theatre.name
 
 	RETURN
 		'theatre' AS model,
