@@ -26,9 +26,29 @@ const getShowQuery = () => `
 			qualifier: playtextRel.qualifier,
 			group: playtextRel.group
 		}) AS depictions
+		ORDER BY playtext.name
+
+	WITH character,
+		COLLECT(
+			CASE playtext WHEN NULL
+				THEN null
+				ELSE {
+					model: 'playtext',
+					uuid: playtext.uuid,
+					name: playtext.name,
+					writers: writers,
+					depictions: depictions
+				}
+			END
+		) AS playtexts
 
 	OPTIONAL MATCH (character)<-[variantNamedDepiction:INCLUDES_CHARACTER]-(:Playtext)
 		WHERE variantNamedDepiction.displayName IS NOT NULL
+
+	WITH character, playtexts, variantNamedDepiction
+		ORDER BY variantNamedDepiction.displayName
+
+	WITH character, playtexts, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 
 	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:INCLUDES_CHARACTER]-(:Playtext)
 		<-[:PRODUCTION_OF]-(:Production)<-[variantNamedPortrayal:PERFORMS_IN]-(:Person)
@@ -39,6 +59,12 @@ const getShowQuery = () => `
 				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.roleName OR
 				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
 			)
+
+	WITH character, playtexts, variantNamedDepictions, variantNamedPortrayal
+		ORDER BY variantNamedPortrayal.roleName
+
+	WITH character, variantNamedDepictions, playtexts,
+		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 
 	OPTIONAL MATCH (character)<-[characterDepiction:INCLUDES_CHARACTER]-(playtextForProduction:Playtext)
 		<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
@@ -71,27 +97,23 @@ const getShowQuery = () => `
 
 	WITH
 		character,
-		playtext,
-		writers,
-		depictions,
-		variantNamedDepiction,
+		variantNamedDepictions,
+		playtexts,
+		variantNamedPortrayals,
 		production,
 		theatre,
 		surTheatre,
 		person,
 		role,
 		otherRole,
-		otherCharacter,
-		variantNamedPortrayal
+		otherCharacter
 		ORDER BY otherRole.rolePosition
 
 	WITH
 		character,
-		playtext,
-		writers,
-		depictions,
-		variantNamedDepiction,
-		variantNamedPortrayal,
+		variantNamedDepictions,
+		playtexts,
+		variantNamedPortrayals,
 		production,
 		theatre,
 		surTheatre,
@@ -112,11 +134,9 @@ const getShowQuery = () => `
 
 	WITH
 		character,
-		playtext,
-		writers,
-		depictions,
-		variantNamedDepiction,
-		variantNamedPortrayal,
+		variantNamedDepictions,
+		playtexts,
+		variantNamedPortrayals,
 		production,
 		theatre,
 		surTheatre,
@@ -130,7 +150,14 @@ const getShowQuery = () => `
 		}) AS performers
 		ORDER BY production.name, theatre.name
 
-	WITH character, playtext, writers, depictions, variantNamedDepiction, variantNamedPortrayal,
+	RETURN
+		'character' AS model,
+		character.uuid AS uuid,
+		character.name AS name,
+		character.differentiator AS differentiator,
+		variantNamedDepictions,
+		playtexts,
+		variantNamedPortrayals,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
@@ -158,36 +185,6 @@ const getShowQuery = () => `
 				}
 			END
 		) AS productions
-		ORDER BY variantNamedPortrayal.roleName
-
-	WITH character, playtext, writers, depictions, variantNamedDepiction, productions,
-		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
-		ORDER BY variantNamedDepiction.displayName
-
-	WITH character, playtext, writers, depictions, variantNamedPortrayals, productions,
-		COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
-		ORDER BY playtext.name
-
-	RETURN
-		'character' AS model,
-		character.uuid AS uuid,
-		character.name AS name,
-		character.differentiator AS differentiator,
-		variantNamedDepictions,
-		COLLECT(
-			CASE playtext WHEN NULL
-				THEN null
-				ELSE {
-					model: 'playtext',
-					uuid: playtext.uuid,
-					name: playtext.name,
-					writers: writers,
-					depictions: depictions
-				}
-			END
-		) AS playtexts,
-		variantNamedPortrayals,
-		productions
 `;
 
 export {
