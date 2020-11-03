@@ -165,6 +165,17 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
+	WITH production, theatre, surTheatre, playtext, writer
+		ORDER BY writerRel.position
+
+	WITH production, theatre, surTheatre, playtext,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
+			END
+		) AS writers
+
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
 
 	OPTIONAL MATCH (performer)-[role]->(production)-[playtextRel]->
@@ -176,25 +187,16 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, surTheatre, playtext, writerRel, writer, performer, role, character
+	WITH DISTINCT production, theatre, surTheatre, playtext, writers, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, surTheatre, playtext, writerRel, writer, performer,
+	WITH production, theatre, surTheatre, playtext, writers, performer,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
 				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
 			END
 		) AS roles
-		ORDER BY writerRel.position
-
-	WITH production, theatre, surTheatre, playtext, performer, roles,
-		COLLECT(
-			CASE writer WHEN NULL
-				THEN null
-				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
-			END
-		) AS writers
 
 	RETURN
 		'production' AS model,

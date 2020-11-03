@@ -16,6 +16,15 @@ const getShowQuery = () => `
 				ELSE { model: 'person', uuid: coWriter.uuid, name: coWriter.name }
 			END
 		) AS coWriters
+		ORDER BY playtext.name
+
+	WITH person,
+		COLLECT(
+			CASE playtext WHEN NULL
+				THEN null
+				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, coWriters: coWriters }
+			END
+		) AS playtexts
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 
@@ -31,10 +40,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, playtext, coWriters, production, theatre, surTheatre, role, character
+	WITH DISTINCT person, playtexts, production, theatre, surTheatre, role, character
 		ORDER BY role.rolePosition
 
-	WITH person, playtext, coWriters, production, theatre, surTheatre,
+	WITH person, playtexts, production, theatre, surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -43,7 +52,12 @@ const getShowQuery = () => `
 		) AS roles
 		ORDER BY production.name, theatre.name
 
-	WITH person, playtext, coWriters,
+	RETURN
+		'person' AS model,
+		person.uuid AS uuid,
+		person.name AS name,
+		person.differentiator AS differentiator,
+		playtexts,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
@@ -71,20 +85,6 @@ const getShowQuery = () => `
 				}
 			END
 		) AS productions
-		ORDER BY playtext.name
-
-	RETURN
-		'person' AS model,
-		person.uuid AS uuid,
-		person.name AS name,
-		person.differentiator AS differentiator,
-		COLLECT(
-			CASE playtext WHEN NULL
-				THEN null
-				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, coWriters: coWriters }
-			END
-		) AS playtexts,
-		productions
 `;
 
 export {

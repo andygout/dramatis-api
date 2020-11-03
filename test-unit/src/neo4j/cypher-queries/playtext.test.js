@@ -87,14 +87,33 @@ describe('Cypher Queries Playtext module', () => {
 
 				MATCH (playtext:Playtext { uuid: $uuid })
 
-				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-				WITH playtext, writerRel, writer, characterRel, character
+				WITH playtext, writer
+					ORDER BY writerRel.position
+
+				WITH playtext,
+					COLLECT(
+						CASE writer WHEN NULL
+							THEN null
+							ELSE {
+								name: writer.name,
+								differentiator: writer.differentiator
+							}
+						END
+					) + [{}] AS writers
+
+				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+
+				WITH playtext, writers, characterRel, character
 					ORDER BY characterRel.position
 
-				WITH playtext, writer, writerRel,
+				RETURN
+					'playtext' AS model,
+					playtext.uuid AS uuid,
+					playtext.name AS name,
+					playtext.differentiator AS differentiator,
+					writers,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -107,23 +126,6 @@ describe('Cypher Queries Playtext module', () => {
 							}
 						END
 					) + [{}] AS characters
-					ORDER BY writerRel.position
-
-				RETURN
-					'playtext' AS model,
-					playtext.uuid AS uuid,
-					playtext.name AS name,
-					playtext.differentiator AS differentiator,
-					COLLECT(
-						CASE writer WHEN NULL
-							THEN null
-							ELSE {
-								name: writer.name,
-								differentiator: writer.differentiator
-							}
-						END
-					) + [{}] AS writers,
-					characters
 			`));
 
 		});
@@ -228,14 +230,33 @@ describe('Cypher Queries Playtext module', () => {
 
 				MATCH (playtext:Playtext { uuid: $uuid })
 
-				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-				WITH playtext, writerRel, writer, characterRel, character
+				WITH playtext, writer
+					ORDER BY writerRel.position
+
+				WITH playtext,
+					COLLECT(
+						CASE writer WHEN NULL
+							THEN null
+							ELSE {
+								name: writer.name,
+								differentiator: writer.differentiator
+							}
+						END
+					) + [{}] AS writers
+
+				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+
+				WITH playtext, writers, characterRel, character
 					ORDER BY characterRel.position
 
-				WITH playtext, writer, writerRel,
+				RETURN
+					'playtext' AS model,
+					playtext.uuid AS uuid,
+					playtext.name AS name,
+					playtext.differentiator AS differentiator,
+					writers,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -248,23 +269,6 @@ describe('Cypher Queries Playtext module', () => {
 							}
 						END
 					) + [{}] AS characters
-					ORDER BY writerRel.position
-
-				RETURN
-					'playtext' AS model,
-					playtext.uuid AS uuid,
-					playtext.name AS name,
-					playtext.differentiator AS differentiator,
-					COLLECT(
-						CASE writer WHEN NULL
-							THEN null
-							ELSE {
-								name: writer.name,
-								differentiator: writer.differentiator
-							}
-						END
-					) + [{}] AS writers,
-					characters
 			`));
 
 		});

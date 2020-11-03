@@ -108,14 +108,33 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
-	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH playtext, writerRel, writer, characterRel, character
+	WITH playtext, writer
+		ORDER BY writerRel.position
+
+	WITH playtext,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE {
+					name: writer.name,
+					differentiator: writer.differentiator
+				}
+			END
+		) + [{}] AS writers
+
+	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+
+	WITH playtext, writers, characterRel, character
 		ORDER BY characterRel.position
 
-	WITH playtext, writer, writerRel,
+	RETURN
+		'playtext' AS model,
+		playtext.uuid AS uuid,
+		playtext.name AS name,
+		playtext.differentiator AS differentiator,
+		writers,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -128,23 +147,6 @@ const getEditQuery = () => `
 				}
 			END
 		) + [{}] AS characters
-		ORDER BY writerRel.position
-
-	RETURN
-		'playtext' AS model,
-		playtext.uuid AS uuid,
-		playtext.name AS name,
-		playtext.differentiator AS differentiator,
-		COLLECT(
-			CASE writer WHEN NULL
-				THEN null
-				ELSE {
-					name: writer.name,
-					differentiator: writer.differentiator
-				}
-			END
-		) + [{}] AS writers,
-		characters
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -154,27 +156,23 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-
-	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)
-
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
-
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
-
-	WITH playtext, writer, characterRel, character, production, theatre, surTheatre
+	WITH playtext, writer
 		ORDER BY writerRel.position
 
-	WITH playtext, characterRel, character, production, theatre, surTheatre,
+	WITH playtext,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
 				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
 			END
 		) AS writers
+
+	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+
+	WITH playtext, writers, characterRel, character
 		ORDER BY characterRel.position
 
-	WITH playtext, writers, characterRel.group AS characterGroup, production, theatre, surTheatre,
+	WITH playtext, writers, characterRel.group AS characterGroup,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -186,9 +184,8 @@ const getShowQuery = () => `
 				}
 			END
 		) AS characters
-		ORDER BY production.name, theatre.name
 
-	WITH playtext, writers, production, theatre, surTheatre,
+	WITH playtext, writers,
 		COLLECT(
 			{
 				model: 'characterGroup',
@@ -196,6 +193,15 @@ const getShowQuery = () => `
 				characters: characters
 			}
 		) AS characterGroups
+
+	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
+	WITH playtext, writers, characterGroups, production, theatre, surTheatre
+		ORDER BY production.name, theatre.name
 
 	RETURN
 		'playtext' AS model,
