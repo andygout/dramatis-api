@@ -1,10 +1,10 @@
 {
 	"name": "Happy Days",
-	"theatre": {
-		"name": "Lyttelton Theatre"
-	},
 	"playtext": {
 		"name": "Happy Days"
+	},
+	"theatre": {
+		"name": "Lyttelton Theatre"
 	},
 	"cast": [
 		{

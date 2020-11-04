@@ -1,10 +1,10 @@
 {
 	"name": "Henry IV, Part 1",
-	"theatre": {
-		"name": "Royal Shakespeare Theatre"
-	},
 	"playtext": {
 		"name": "Henry IV, Part 1"
+	},
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
 	},
 	"cast": [
 		{

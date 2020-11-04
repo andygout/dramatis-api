@@ -1,10 +1,10 @@
 {
 	"name": "3 Winters",
-	"theatre": {
-		"name": "Lyttelton Theatre"
-	},
 	"playtext": {
 		"name": "3 Winters"
+	},
+	"theatre": {
+		"name": "Lyttelton Theatre"
 	},
 	"cast": [
 		{

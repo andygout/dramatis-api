@@ -1,10 +1,10 @@
 {
 	"name": "Rope",
-	"theatre": {
-		"name": "Almeida Theatre"
-	},
 	"playtext": {
 		"name": "Rope"
+	},
+	"theatre": {
+		"name": "Almeida Theatre"
 	},
 	"cast": [
 		{

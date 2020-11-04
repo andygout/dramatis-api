@@ -1,10 +1,10 @@
 {
 	"name": "A Midsummer Night's Dream",
-	"theatre": {
-		"name": "Novello Theatre"
-	},
 	"playtext": {
 		"name": "A Midsummer Night's Dream"
+	},
+	"theatre": {
+		"name": "Novello Theatre"
 	},
 	"cast": [
 		{

@@ -1,10 +1,10 @@
 {
 	"name": "Coriolanus",
-	"theatre": {
-		"name": "Barbican"
-	},
 	"playtext": {
 		"name": "Coriolanus"
+	},
+	"theatre": {
+		"name": "Barbican"
 	},
 	"cast": [
 		{

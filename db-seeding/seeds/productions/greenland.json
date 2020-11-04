@@ -1,10 +1,10 @@
 {
 	"name": "Greenland",
-	"theatre": {
-		"name": "Lyttelton Theatre"
-	},
 	"playtext": {
 		"name": "Greenland"
+	},
+	"theatre": {
+		"name": "Lyttelton Theatre"
 	},
 	"cast": [
 		{

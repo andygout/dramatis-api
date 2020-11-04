@@ -1,10 +1,10 @@
 {
 	"name": "Julius Caesar",
-	"theatre": {
-		"name": "Barbican"
-	},
 	"playtext": {
 		"name": "Julius Caesar"
+	},
+	"theatre": {
+		"name": "Barbican"
 	},
 	"cast": [
 		{
