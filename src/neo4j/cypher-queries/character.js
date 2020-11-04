@@ -21,11 +21,16 @@ const getShowQuery = () => `
 		character,
 		playtext,
 		writers,
-		COLLECT({
-			displayName: playtextRel.displayName,
-			qualifier: playtextRel.qualifier,
-			group: playtextRel.group
-		}) AS depictions
+		COLLECT(
+			CASE WHEN playtextRel.displayName IS NULL AND playtextRel.qualifier IS NULL AND playtextRel.group IS NULL
+				THEN null
+				ELSE {
+					displayName: playtextRel.displayName,
+					qualifier: playtextRel.qualifier,
+					group: playtextRel.group
+				}
+			END
+		) AS depictions
 		ORDER BY playtext.name
 
 	WITH character,
