@@ -204,13 +204,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'The Cherry Orchard',
 				differentiator: null,
-				characterGroups: [
-					{
-						model: 'characterGroup',
-						name: null,
-						characters: []
-					}
-				],
+				characterGroups: [],
 				writers: [],
 				productions: []
 			};
