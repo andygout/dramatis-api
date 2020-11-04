@@ -187,11 +187,14 @@ const getShowQuery = () => `
 
 	WITH playtext, writers,
 		COLLECT(
-			{
-				model: 'characterGroup',
-				name: characterGroup,
-				characters: characters
-			}
+			CASE SIZE(characters) WHEN 0
+				THEN null
+				ELSE {
+					model: 'characterGroup',
+					name: characterGroup,
+					characters: characters
+				}
+			END
 		) AS characterGroups
 
 	OPTIONAL MATCH (playtext)<-[:PRODUCTION_OF]-(production:Production)
