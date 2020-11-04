@@ -1,10 +1,10 @@
 {
 	"name": "Rock 'n' Roll",
-	"theatre": {
-		"name": "Jerwood Theatre Downstairs"
-	},
 	"playtext": {
 		"name": "Rock 'n' Roll"
+	},
+	"theatre": {
+		"name": "Jerwood Theatre Downstairs"
 	},
 	"cast": [
 		{

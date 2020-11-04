@@ -1,10 +1,10 @@
 {
 	"name": "Henry IV, Part 2",
-	"theatre": {
-		"name": "Olivier Theatre"
-	},
 	"playtext": {
 		"name": "Henry IV, Part 2"
+	},
+	"theatre": {
+		"name": "Olivier Theatre"
 	},
 	"cast": [
 		{

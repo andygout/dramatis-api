@@ -1,10 +1,10 @@
 {
 	"name": "The Dumb Waiter",
-	"theatre": {
-		"name": "Studio 1"
-	},
 	"playtext": {
 		"name": "The Dumb Waiter"
+	},
+	"theatre": {
+		"name": "Studio 1"
 	},
 	"cast": [
 		{

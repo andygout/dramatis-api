@@ -1,10 +1,10 @@
 {
 	"name": "Titus Andronicus",
-	"theatre": {
-		"name": "Globe Theatre"
-	},
 	"playtext": {
 		"name": "Titus Andronicus"
+	},
+	"theatre": {
+		"name": "Globe Theatre"
 	},
 	"cast": [
 		{

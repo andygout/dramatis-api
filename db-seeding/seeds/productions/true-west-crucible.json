@@ -1,10 +1,10 @@
 {
 	"name": "True West",
-	"theatre": {
-		"name": "Crucible Theatre"
-	},
 	"playtext": {
 		"name": "True West"
+	},
+	"theatre": {
+		"name": "Crucible Theatre"
 	},
 	"cast": [
 		{

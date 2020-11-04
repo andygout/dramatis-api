@@ -1,10 +1,10 @@
 {
 	"name": "Hamlet",
-	"theatre": {
-		"name": "Olivier Theatre"
-	},
 	"playtext": {
 		"name": "Hamlet"
+	},
+	"theatre": {
+		"name": "Olivier Theatre"
 	},
 	"cast": [
 		{

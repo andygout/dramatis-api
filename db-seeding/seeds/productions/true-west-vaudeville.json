@@ -1,10 +1,10 @@
 {
 	"name": "True West",
-	"theatre": {
-		"name": "Vaudeville Theatre"
-	},
 	"playtext": {
 		"name": "True West"
+	},
+	"theatre": {
+		"name": "Vaudeville Theatre"
 	},
 	"cast": [
 		{

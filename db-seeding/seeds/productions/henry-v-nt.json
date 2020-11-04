@@ -1,10 +1,10 @@
 {
 	"name": "Henry V",
-	"theatre": {
-		"name": "Olivier Theatre"
-	},
 	"playtext": {
 		"name": "Henry V"
+	},
+	"theatre": {
+		"name": "Olivier Theatre"
 	},
 	"cast": [
 		{

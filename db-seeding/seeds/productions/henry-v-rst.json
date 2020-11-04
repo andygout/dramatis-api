@@ -1,10 +1,10 @@
 {
 	"name": "Henry V",
-	"theatre": {
-		"name": "Royal Shakespeare Theatre"
-	},
 	"playtext": {
 		"name": "Henry V"
+	},
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
 	},
 	"cast": [
 		{

@@ -1,10 +1,10 @@
 {
 	"name": "The B File",
-	"theatre": {
-		"name": "Etcetera Theatre"
-	},
 	"playtext": {
 		"name": "The B File"
+	},
+	"theatre": {
+		"name": "Etcetera Theatre"
 	},
 	"cast": [
 		{
