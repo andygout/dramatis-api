@@ -214,25 +214,6 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 		});
 
-		it('lists all playtexts', async () => {
-
-			const response = await chai.request(app)
-				.get('/playtexts');
-
-			const expectedResponseBody = [
-				{
-					model: 'playtext',
-					uuid: PLAYTEXT_UUID,
-					name: 'The Cherry Orchard',
-					writers: []
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('deletes playtext', async () => {
 
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
@@ -709,36 +690,6 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 		});
 
-		it('lists all playtexts', async () => {
-
-			const response = await chai.request(app)
-				.get('/playtexts');
-
-			const expectedResponseBody = [
-				{
-					model: 'playtext',
-					uuid: PLAYTEXT_UUID,
-					name: 'Three Sisters',
-					writers: [
-						{
-							model: 'person',
-							uuid: ANTON_CHEKHOV_PERSON_UUID,
-							name: 'Anton Chekhov'
-						},
-						{
-							model: 'person',
-							uuid: MAXIM_GORKY_PERSON_UUID,
-							name: 'Maxim Gorky'
-						}
-					]
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('updates playtext to remove all associations prior to deletion', async () => {
 
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
@@ -802,6 +753,81 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Playtext')).to.equal(0);
+
+		});
+
+	});
+
+	describe('GET list endpoint', () => {
+
+		const UNCLE_VANYA_PLAYTEXT_UUID = '1';
+		const THE_CHERRY_ORCHARD_PLAYTEXT_UUID = '3';
+		const THREE_SISTERS_PLAYTEXT_UUID = '5';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await chai.request(app)
+				.post('/playtexts')
+				.send({
+					name: 'Uncle Vanya'
+				});
+
+			await chai.request(app)
+				.post('/playtexts')
+				.send({
+					name: 'The Cherry Orchard'
+				});
+
+			await chai.request(app)
+				.post('/playtexts')
+				.send({
+					name: 'Three Sisters'
+				});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('lists all playtexts ordered by name', async () => {
+
+			const response = await chai.request(app)
+				.get('/playtexts');
+
+			const expectedResponseBody = [
+				{
+					model: 'playtext',
+					uuid: THE_CHERRY_ORCHARD_PLAYTEXT_UUID,
+					name: 'The Cherry Orchard',
+					writers: []
+				},
+				{
+					model: 'playtext',
+					uuid: THREE_SISTERS_PLAYTEXT_UUID,
+					name: 'Three Sisters',
+					writers: []
+				},
+				{
+					model: 'playtext',
+					uuid: UNCLE_VANYA_PLAYTEXT_UUID,
+					name: 'Uncle Vanya',
+					writers: []
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 

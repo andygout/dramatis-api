@@ -139,24 +139,6 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		});
 
-		it('lists all characters', async () => {
-
-			const response = await chai.request(app)
-				.get('/characters');
-
-			const expectedResponseBody = [
-				{
-					model: 'character',
-					uuid: CHARACTER_UUID,
-					name: 'Juliet'
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('deletes character', async () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(1);
@@ -174,6 +156,78 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Character')).to.equal(0);
+
+		});
+
+	});
+
+	describe('GET list endpoint', () => {
+
+		const ROMEO_CHARACTER_UUID = '1';
+		const JULIET_CHARACTER_UUID = '3';
+		const NURSE_CHARACTER_UUID = '5';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await chai.request(app)
+				.post('/characters')
+				.send({
+					name: 'Romeo'
+				});
+
+			await chai.request(app)
+				.post('/characters')
+				.send({
+					name: 'Juliet'
+				});
+
+			await chai.request(app)
+				.post('/characters')
+				.send({
+					name: 'Nurse'
+				});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('lists all characters ordered by name', async () => {
+
+			const response = await chai.request(app)
+				.get('/characters');
+
+			const expectedResponseBody = [
+				{
+					model: 'character',
+					uuid: JULIET_CHARACTER_UUID,
+					name: 'Juliet'
+				},
+				{
+					model: 'character',
+					uuid: NURSE_CHARACTER_UUID,
+					name: 'Nurse'
+				},
+				{
+					model: 'character',
+					uuid: ROMEO_CHARACTER_UUID,
+					name: 'Romeo'
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 

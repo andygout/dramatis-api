@@ -10,15 +10,17 @@ describe('Theatre with sub-theatres', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_UUID = '2';
-	const OLIVIER_THEATRE_UUID = '3';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID = '6';
-	const MOTHER_COURAGE_CHARACTER_UUID = '7';
-	const RICHARD_II_PLAYTEXT_UUID = '10';
-	const KING_RICHARD_II_CHARACTER_UUID = '11';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '12';
-	const FIONA_SHAW_PERSON_UUID = '15';
-	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '16';
+	const NATIONAL_THEATRE_UUID = '4';
+	const OLIVIER_THEATRE_UUID = '5';
+	const LYTTELTON_THEATRE_UUID = '6';
+	const DORFMAN_THEATRE_UUID = '7';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID = '10';
+	const MOTHER_COURAGE_CHARACTER_UUID = '11';
+	const RICHARD_II_PLAYTEXT_UUID = '14';
+	const KING_RICHARD_II_CHARACTER_UUID = '15';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '16';
+	const FIONA_SHAW_PERSON_UUID = '19';
+	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '20';
 
 	let nationalTheatre;
 	let olivierTheatre;
@@ -47,6 +49,12 @@ describe('Theatre with sub-theatres', () => {
 				subTheatres: [
 					{
 						name: 'Olivier Theatre'
+					},
+					{
+						name: 'Lyttelton Theatre'
+					},
+					{
+						name: 'Dorfman Theatre'
 					}
 				]
 			});
@@ -154,13 +162,23 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('National Theatre (theatre)', () => {
 
-		it('includes Olivier Theatre in its sub-theatres', () => {
+		it('includes its sub-theatres', () => {
 
 			const expectedSubTheatres = [
 				{
 					model: 'theatre',
 					uuid: OLIVIER_THEATRE_UUID,
 					name: 'Olivier Theatre'
+				},
+				{
+					model: 'theatre',
+					uuid: LYTTELTON_THEATRE_UUID,
+					name: 'Lyttelton Theatre'
+				},
+				{
+					model: 'theatre',
+					uuid: DORFMAN_THEATRE_UUID,
+					name: 'Dorfman Theatre'
 				}
 			];
 
@@ -460,6 +478,45 @@ describe('Theatre with sub-theatres', () => {
 			const { productions } = fionaShawPerson.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('theatres list', () => {
+
+		it('includes theatre and corresponding sub-theatres', async () => {
+
+			const response = await chai.request(app)
+				.get('/theatres');
+
+			const expectedResponseBody = [
+				{
+					model: 'theatre',
+					uuid: NATIONAL_THEATRE_UUID,
+					name: 'National Theatre',
+					subTheatres: [
+						{
+							model: 'theatre',
+							uuid: OLIVIER_THEATRE_UUID,
+							name: 'Olivier Theatre'
+						},
+						{
+							model: 'theatre',
+							uuid: LYTTELTON_THEATRE_UUID,
+							name: 'Lyttelton Theatre'
+						},
+						{
+							model: 'theatre',
+							uuid: DORFMAN_THEATRE_UUID,
+							name: 'Dorfman Theatre'
+						}
+					]
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 

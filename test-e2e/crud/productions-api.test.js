@@ -255,25 +255,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
-		it('lists all productions', async () => {
-
-			const response = await chai.request(app)
-				.get('/productions');
-
-			const expectedResponseBody = [
-				{
-					model: 'production',
-					uuid: PRODUCTION_UUID,
-					name: 'The Tempest',
-					theatre: null
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('deletes production', async () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(1);
@@ -1114,30 +1095,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
-		it('lists all productions', async () => {
-
-			const response = await chai.request(app)
-				.get('/productions');
-
-			const expectedResponseBody = [
-				{
-					model: 'production',
-					uuid: PRODUCTION_UUID,
-					name: 'Richard III',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre',
-						surTheatre: null
-					}
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('updates production to remove all associations prior to deletion', async () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(1);
@@ -1220,6 +1177,128 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(0);
+
+		});
+
+	});
+
+	describe('GET list endpoint', () => {
+
+		const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
+		const NATIONAL_THEATRE_UUID = '2';
+		const HAMLET_NATIONAL_PRODUCTION_UUID = '3';
+		const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '6';
+		const ALMEIDA_THEATRE_UUID = '8';
+		const HAMLET_ALMEIDA_PRODUCTION_UUID = '9';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await chai.request(app)
+				.post('/productions')
+				.send({
+					name: 'Measure for Measure',
+					theatre: {
+						name: 'National Theatre'
+					}
+				});
+
+			await chai.request(app)
+				.post('/productions')
+				.send({
+					name: 'Hamlet',
+					theatre: {
+						name: 'National Theatre'
+					}
+				});
+
+			await chai.request(app)
+				.post('/productions')
+				.send({
+					name: 'Measure for Measure',
+					theatre: {
+						name: 'Almeida Theatre'
+					}
+				});
+
+			await chai.request(app)
+				.post('/productions')
+				.send({
+					name: 'Hamlet',
+					theatre: {
+						name: 'Almeida Theatre'
+					}
+				});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('lists all productions ordered by name then theatre name', async () => {
+
+			const response = await chai.request(app)
+				.get('/productions');
+
+			const expectedResponseBody = [
+				{
+					model: 'production',
+					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: ALMEIDA_THEATRE_UUID,
+						name: 'Almeida Theatre',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
+					name: 'Hamlet',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
+					name: 'Measure for Measure',
+					theatre: {
+						model: 'theatre',
+						uuid: ALMEIDA_THEATRE_UUID,
+						name: 'Almeida Theatre',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
+					name: 'Measure for Measure',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					}
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 
