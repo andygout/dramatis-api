@@ -312,13 +312,7 @@ describe('Writer of multiple playtexts', () => {
 							name: 'Moira Buffini'
 						}
 					],
-					depictions: [
-						{
-							displayName: null,
-							qualifier: null,
-							group: null
-						}
-					]
+					depictions: []
 				}
 			];
 
@@ -361,13 +355,7 @@ describe('Writer of multiple playtexts', () => {
 							name: 'Jack Thorne'
 						}
 					],
-					depictions: [
-						{
-							displayName: null,
-							qualifier: null,
-							group: null
-						}
-					]
+					depictions: []
 				}
 			];
 

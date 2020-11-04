@@ -426,13 +426,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					uuid: HENRY_V_PLAYTEXT_UUID,
 					name: 'Henry V',
 					writers: [],
-					depictions: [
-						{
-							displayName: null,
-							qualifier: null,
-							group: null
-						}
-					]
+					depictions: []
 				},
 				{
 					model: 'playtext',
