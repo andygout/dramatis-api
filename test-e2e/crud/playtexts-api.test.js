@@ -265,14 +265,17 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const PLAYTEXT_UUID = '5';
-		const ANTON_CHEKHOV_PERSON_UUID = '6';
-		const IRINA_NIKOLAYEVNA_ARKADINA_CHARACTER_UUID = '7';
-		const KONSTANTIN_GAVRILOVICH_TREPLYOV_CHARACTER_UUID = '8';
-		const BORIS_ALEXEYEVICH_TRIGORIN_CHARACTER_UUID = '9';
-		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '15';
-		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '16';
-		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '17';
+		const PLAYTEXT_UUID = '6';
+		const WILLIAM_SHAKESPEARE_PERSON_UUID = '7';
+		const JOHN_FLETCHER_PERSON_UUID = '8';
+		const OBERON_CHARACTER_UUID = '9';
+		const TITANIA_CHARACTER_UUID = '10';
+		const PUCK_CHARACTER_UUID = '11';
+		const ANTON_CHEKHOV_PERSON_UUID = '17';
+		const MAXIM_GORKY_PERSON_UUID = '18';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '19';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '20';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '21';
 
 		const sandbox = createSandbox();
 
@@ -299,35 +302,39 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const response = await chai.request(app)
 				.post('/playtexts')
 				.send({
-					name: 'The Seagull',
+					name: 'A Midsummer Night\'s Dream',
 					differentiator: '1',
 					writers: [
 						{
-							name: 'Anton Chekhov',
+							name: 'William Shakespeare',
+							differentiator: '1'
+						},
+						{
+							name: 'John Fletcher', // Contrivance for purpose of test.
 							differentiator: '1'
 						}
 					],
 					characters: [
 						{
-							name: 'Irina',
-							underlyingName: 'Irina Nikolayevna Arkadina',
+							name: 'Oberon',
+							underlyingName: 'Oberon, King of the Fairies',
 							differentiator: '1',
 							qualifier: 'foo',
-							group: 'The Guests'
+							group: 'The Fairies'
 						},
 						{
-							name: 'Konstantin',
-							underlyingName: 'Konstantin Gavrilovich Treplyov',
+							name: 'Titania',
+							underlyingName: 'Titania, Queen of the Fairies',
 							differentiator: '1',
 							qualifier: 'bar',
-							group: 'The Guests'
+							group: 'The Fairies'
 						},
 						{
-							name: 'Boris',
-							underlyingName: 'Boris Alexeyevich Trigorin',
+							name: 'Puck',
+							underlyingName: 'Robin \'Puck\' Goodfellow',
 							differentiator: '1',
 							qualifier: 'baz',
-							group: 'The Guests'
+							group: 'The Fairies'
 						}
 					]
 				});
@@ -335,13 +342,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'The Seagull',
+				name: 'A Midsummer Night\'s Dream',
 				differentiator: '1',
 				errors: {},
 				writers: [
 					{
 						model: 'person',
-						name: 'Anton Chekhov',
+						name: 'William Shakespeare',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: 'John Fletcher',
 						differentiator: '1',
 						errors: {}
 					},
@@ -355,29 +368,29 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				characters: [
 					{
 						model: 'character',
-						name: 'Irina',
-						underlyingName: 'Irina Nikolayevna Arkadina',
+						name: 'Oberon',
+						underlyingName: 'Oberon, King of the Fairies',
 						differentiator: '1',
 						qualifier: 'foo',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Konstantin',
-						underlyingName: 'Konstantin Gavrilovich Treplyov',
+						name: 'Titania',
+						underlyingName: 'Titania, Queen of the Fairies',
 						differentiator: '1',
 						qualifier: 'bar',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Boris',
-						underlyingName: 'Boris Alexeyevich Trigorin',
+						name: 'Puck',
+						underlyingName: 'Robin \'Puck\' Goodfellow',
 						differentiator: '1',
 						qualifier: 'baz',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
@@ -406,36 +419,41 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'The Seagull',
+				name: 'A Midsummer Night\'s Dream',
 				differentiator: '1',
 				writers: [
 					{
 						model: 'person',
-						uuid: ANTON_CHEKHOV_PERSON_UUID,
-						name: 'Anton Chekhov'
+						uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+						name: 'William Shakespeare'
+					},
+					{
+						model: 'person',
+						uuid: JOHN_FLETCHER_PERSON_UUID,
+						name: 'John Fletcher'
 					}
 				],
 				characterGroups: [
 					{
 						model: 'characterGroup',
-						name: 'The Guests',
+						name: 'The Fairies',
 						characters: [
 							{
 								model: 'character',
-								uuid: IRINA_NIKOLAYEVNA_ARKADINA_CHARACTER_UUID,
-								name: 'Irina',
+								uuid: OBERON_CHARACTER_UUID,
+								name: 'Oberon',
 								qualifier: 'foo'
 							},
 							{
 								model: 'character',
-								uuid: KONSTANTIN_GAVRILOVICH_TREPLYOV_CHARACTER_UUID,
-								name: 'Konstantin',
+								uuid: TITANIA_CHARACTER_UUID,
+								name: 'Titania',
 								qualifier: 'bar'
 							},
 							{
 								model: 'character',
-								uuid: BORIS_ALEXEYEVICH_TRIGORIN_CHARACTER_UUID,
-								name: 'Boris',
+								uuid: PUCK_CHARACTER_UUID,
+								name: 'Puck',
 								qualifier: 'baz'
 							}
 						]
@@ -457,13 +475,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'The Seagull',
+				name: 'A Midsummer Night\'s Dream',
 				differentiator: '1',
 				errors: {},
 				writers: [
 					{
 						model: 'person',
-						name: 'Anton Chekhov',
+						name: 'William Shakespeare',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: 'John Fletcher',
 						differentiator: '1',
 						errors: {}
 					},
@@ -477,29 +501,29 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				characters: [
 					{
 						model: 'character',
-						name: 'Irina',
-						underlyingName: 'Irina Nikolayevna Arkadina',
+						name: 'Oberon',
+						underlyingName: 'Oberon, King of the Fairies',
 						differentiator: '1',
 						qualifier: 'foo',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Konstantin',
-						underlyingName: 'Konstantin Gavrilovich Treplyov',
+						name: 'Titania',
+						underlyingName: 'Titania, Queen of the Fairies',
 						differentiator: '1',
 						qualifier: 'bar',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Boris',
-						underlyingName: 'Boris Alexeyevich Trigorin',
+						name: 'Puck',
+						underlyingName: 'Robin \'Puck\' Goodfellow',
 						differentiator: '1',
 						qualifier: 'baz',
-						group: 'The Guests',
+						group: 'The Fairies',
 						errors: {}
 					},
 					{
@@ -531,6 +555,10 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					writers: [
 						{
 							name: 'Anton Chekhov',
+							differentiator: '1'
+						},
+						{
+							name: 'Maxim Gorky', // Contrivance for purpose of test.
 							differentiator: '1'
 						}
 					],
@@ -569,6 +597,12 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'person',
 						name: 'Anton Chekhov',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'person',
+						name: 'Maxim Gorky',
 						differentiator: '1',
 						errors: {}
 					},
@@ -640,6 +674,11 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						uuid: ANTON_CHEKHOV_PERSON_UUID,
 						name: 'Anton Chekhov'
+					},
+					{
+						model: 'person',
+						uuid: MAXIM_GORKY_PERSON_UUID,
+						name: 'Maxim Gorky'
 					}
 				],
 				characterGroups: [
@@ -691,6 +730,11 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							model: 'person',
 							uuid: ANTON_CHEKHOV_PERSON_UUID,
 							name: 'Anton Chekhov'
+						},
+						{
+							model: 'person',
+							uuid: MAXIM_GORKY_PERSON_UUID,
+							name: 'Maxim Gorky'
 						}
 					]
 				}
