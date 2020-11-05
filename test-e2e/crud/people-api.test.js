@@ -137,24 +137,6 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		});
 
-		it('lists all people', async () => {
-
-			const response = await chai.request(app)
-				.get('/people');
-
-			const expectedResponseBody = [
-				{
-					model: 'person',
-					uuid: PERSON_UUID,
-					name: 'Patrick Stewart'
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('deletes person', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
@@ -172,6 +154,78 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+		});
+
+	});
+
+	describe('GET list endpoint', () => {
+
+		const IAN_MCKELLEN_PERSON_UUID = '1';
+		const PATRICK_STEWART_PERSON_UUID = '3';
+		const MATTHEW_KELLY_PERSON_UUID = '5';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await chai.request(app)
+				.post('/people')
+				.send({
+					name: 'Ian McKellen'
+				});
+
+			await chai.request(app)
+				.post('/people')
+				.send({
+					name: 'Patrick Stewart'
+				});
+
+			await chai.request(app)
+				.post('/people')
+				.send({
+					name: 'Matthew Kelly'
+				});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('lists all people ordered by name', async () => {
+
+			const response = await chai.request(app)
+				.get('/people');
+
+			const expectedResponseBody = [
+				{
+					model: 'person',
+					uuid: IAN_MCKELLEN_PERSON_UUID,
+					name: 'Ian McKellen'
+				},
+				{
+					model: 'person',
+					uuid: MATTHEW_KELLY_PERSON_UUID,
+					name: 'Matthew Kelly'
+				},
+				{
+					model: 'person',
+					uuid: PATRICK_STEWART_PERSON_UUID,
+					name: 'Patrick Stewart'
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 

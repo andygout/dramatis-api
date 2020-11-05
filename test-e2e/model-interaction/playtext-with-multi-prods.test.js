@@ -10,18 +10,18 @@ describe('Playtext with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
-	const MEASURE_FOR_MEASURE_PLAYTEXT_UUID = '1';
-	const NATIONAL_THEATRE_UUID = '2';
-	const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '3';
-	const ALMEIDA_THEATRE_UUID = '5';
-	const MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID = '6';
-	const DONMAR_WAREHOUSE_THEATRE_UUID = '8';
+	const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = '0';
+	const TWELFTH_NIGHT_PLAYTEXT_UUID = '1';
+	const SHAKESPEARES_GLOBE_THEATRE_UUID = '2';
+	const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = '3';
+	const DONMAR_WAREHOUSE_THEATRE_UUID = '5';
+	const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = '6';
+	const NATIONAL_THEATRE_UUID = '8';
 
-	let measureForMeasurePlaytext;
-	let measureForMeasureNationalProduction;
-	let measureForMeasureAlmeidaProduction;
-	let measureForMeasureDonmarProduction;
+	let twelfthNightPlaytext;
+	let twelfthNightGlobeProduction;
+	let twelfthNightDonmarProduction;
+	let twelfthNightNationalProduction;
 
 	const sandbox = createSandbox();
 
@@ -36,50 +36,50 @@ describe('Playtext with multiple productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Measure for Measure',
+				name: 'Twelfth Night',
 				playtext: {
-					name: 'Measure for Measure'
+					name: 'Twelfth Night'
 				},
 				theatre: {
-					name: 'National Theatre'
+					name: 'Shakespeare\'s Globe'
 				}
 			});
 
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Measure for Measure',
+				name: 'Twelfth Night, or What You Will',
 				playtext: {
-					name: 'Measure for Measure'
-				},
-				theatre: {
-					name: 'Almeida Theatre'
-				}
-			});
-
-		await chai.request(app)
-			.post('/productions')
-			.send({
-				name: 'Measure for Measure',
-				playtext: {
-					name: 'Measure for Measure'
+					name: 'Twelfth Night'
 				},
 				theatre: {
 					name: 'Donmar Warehouse'
 				}
 			});
 
-		measureForMeasurePlaytext = await chai.request(app)
-			.get(`/playtexts/${MEASURE_FOR_MEASURE_PLAYTEXT_UUID}`);
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Twelfth Night',
+				playtext: {
+					name: 'Twelfth Night'
+				},
+				theatre: {
+					name: 'National Theatre'
+				}
+			});
 
-		measureForMeasureNationalProduction = await chai.request(app)
-			.get(`/productions/${MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID}`);
+		twelfthNightPlaytext = await chai.request(app)
+			.get(`/playtexts/${TWELFTH_NIGHT_PLAYTEXT_UUID}`);
 
-		measureForMeasureAlmeidaProduction = await chai.request(app)
-			.get(`/productions/${MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID}`);
+		twelfthNightGlobeProduction = await chai.request(app)
+			.get(`/productions/${TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID}`);
 
-		measureForMeasureDonmarProduction = await chai.request(app)
-			.get(`/productions/${MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID}`);
+		twelfthNightDonmarProduction = await chai.request(app)
+			.get(`/productions/${TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID}`);
+
+		twelfthNightNationalProduction = await chai.request(app)
+			.get(`/productions/${TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID}`);
 
 	});
 
@@ -89,47 +89,47 @@ describe('Playtext with multiple productions', () => {
 
 	});
 
-	describe('Measure for Measure (playtext)', () => {
+	describe('Twelfth Night (playtext)', () => {
 
-		it('includes productions of playtext', () => {
+		it('includes productions of playtext ordered by production name then theatre name', () => {
 
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
-					name: 'Measure for Measure',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
-						name: 'Almeida Theatre',
-						surTheatre: null
-					}
-				},
-				{
-					model: 'production',
-					uuid: MEASURE_FOR_MEASURE_DONMAR_PRODUCTION_UUID,
-					name: 'Measure for Measure',
-					theatre: {
-						model: 'theatre',
-						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
-						name: 'Donmar Warehouse',
-						surTheatre: null
-					}
-				},
-				{
-					model: 'production',
-					uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
-					name: 'Measure for Measure',
+					uuid: TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID,
+					name: 'Twelfth Night',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
 						name: 'National Theatre',
 						surTheatre: null
 					}
+				},
+				{
+					model: 'production',
+					uuid: TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID,
+					name: 'Twelfth Night',
+					theatre: {
+						model: 'theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID,
+					name: 'Twelfth Night, or What You Will',
+					theatre: {
+						model: 'theatre',
+						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+						name: 'Donmar Warehouse',
+						surTheatre: null
+					}
 				}
 			];
 
-			const { productions } = measureForMeasurePlaytext.body;
+			const { productions } = twelfthNightPlaytext.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
@@ -137,18 +137,18 @@ describe('Playtext with multiple productions', () => {
 
 	});
 
-	describe('Measure for Measure at National Theatre (production)', () => {
+	describe('Twelfth Night at Shakespeare\'s Globe (production)', () => {
 
-		it('attributes playtext as Measure for Measure', () => {
+		it('attributes playtext as Twelfth Night', () => {
 
 			const expectedPlaytext = {
 				model: 'playtext',
-				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure',
+				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
+				name: 'Twelfth Night',
 				writers: []
 			};
 
-			const { playtext } = measureForMeasureNationalProduction.body;
+			const { playtext } = twelfthNightGlobeProduction.body;
 
 			expect(playtext).to.deep.equal(expectedPlaytext);
 
@@ -156,18 +156,18 @@ describe('Playtext with multiple productions', () => {
 
 	});
 
-	describe('Measure for Measure at Almeida Theatre (production)', () => {
+	describe('Twelfth Night at Donmar Warehouse (production)', () => {
 
-		it('attributes playtext as Measure for Measure', () => {
+		it('attributes playtext as Twelfth Night', () => {
 
 			const expectedPlaytext = {
 				model: 'playtext',
-				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure',
+				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
+				name: 'Twelfth Night',
 				writers: []
 			};
 
-			const { playtext } = measureForMeasureAlmeidaProduction.body;
+			const { playtext } = twelfthNightDonmarProduction.body;
 
 			expect(playtext).to.deep.equal(expectedPlaytext);
 
@@ -175,18 +175,18 @@ describe('Playtext with multiple productions', () => {
 
 	});
 
-	describe('Measure for Measure at Donmar Warehouse (production)', () => {
+	describe('Twelfth Night at National Theatre (production)', () => {
 
-		it('attributes playtext as Measure for Measure', () => {
+		it('attributes playtext as Twelfth Night', () => {
 
 			const expectedPlaytext = {
 				model: 'playtext',
-				uuid: MEASURE_FOR_MEASURE_PLAYTEXT_UUID,
-				name: 'Measure for Measure',
+				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
+				name: 'Twelfth Night',
 				writers: []
 			};
 
-			const { playtext } = measureForMeasureDonmarProduction.body;
+			const { playtext } = twelfthNightNationalProduction.body;
 
 			expect(playtext).to.deep.equal(expectedPlaytext);
 

@@ -170,25 +170,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 
 		});
 
-		it('lists all theatres', async () => {
-
-			const response = await chai.request(app)
-				.get('/theatres');
-
-			const expectedResponseBody = [
-				{
-					model: 'theatre',
-					uuid: THEATRE_UUID,
-					name: 'Almeida Theatre',
-					subTheatres: []
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('deletes theatre', async () => {
 
 			expect(await countNodesWithLabel('Theatre')).to.equal(1);
@@ -470,54 +451,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 
 		});
 
-		it('lists all theatres', async () => {
-
-			const response = await chai.request(app)
-				.get('/theatres');
-
-			const expectedResponseBody = [
-				{
-					model: 'theatre',
-					uuid: DORFMAN_THEATRE_UUID,
-					name: 'Dorfman Theatre',
-					subTheatres: []
-				},
-				{
-					model: 'theatre',
-					uuid: LYTTELTON_THEATRE_UUID,
-					name: 'Lyttelton Theatre',
-					subTheatres: []
-				},
-				{
-					model: 'theatre',
-					uuid: OLIVIER_THEATRE_UUID,
-					name: 'Olivier Theatre',
-					subTheatres: []
-				},
-				{
-					model: 'theatre',
-					uuid: THEATRE_UUID,
-					name: 'Royal Court Theatre',
-					subTheatres: [
-						{
-							model: 'theatre',
-							uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-							name: 'Jerwood Theatre Downstairs'
-						},
-						{
-							model: 'theatre',
-							uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
-							name: 'Jerwood Theatre Upstairs'
-						}
-					]
-				}
-			];
-
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-
-		});
-
 		it('updates theatre to remove all associations prior to deletion', async () => {
 
 			expect(await countNodesWithLabel('Theatre')).to.equal(6);
@@ -569,6 +502,81 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Theatre')).to.equal(5);
+
+		});
+
+	});
+
+	describe('GET list endpoint', () => {
+
+		const DONMAR_WAREHOUSE_THEATRE_UUID = '1';
+		const NATIONAL_THEATRE_UUID = '3';
+		const ALMEIDA_THEATRE_UUID = '5';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await chai.request(app)
+				.post('/theatres')
+				.send({
+					name: 'Donmar Warehouse'
+				});
+
+			await chai.request(app)
+				.post('/theatres')
+				.send({
+					name: 'National Theatre'
+				});
+
+			await chai.request(app)
+				.post('/theatres')
+				.send({
+					name: 'Almeida Theatre'
+				});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('lists all theatres ordered by name', async () => {
+
+			const response = await chai.request(app)
+				.get('/theatres');
+
+			const expectedResponseBody = [
+				{
+					model: 'theatre',
+					uuid: ALMEIDA_THEATRE_UUID,
+					name: 'Almeida Theatre',
+					subTheatres: []
+				},
+				{
+					model: 'theatre',
+					uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+					name: 'Donmar Warehouse',
+					subTheatres: []
+				},
+				{
+					model: 'theatre',
+					uuid: NATIONAL_THEATRE_UUID,
+					name: 'National Theatre',
+					subTheatres: []
+				}
+			];
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
 
 		});
 
