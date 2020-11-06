@@ -30,9 +30,7 @@ const getCreateUpdateQuery = action => {
 
 		UNWIND (CASE $writers WHEN [] THEN [null] ELSE $writers END) AS writerParam
 
-			OPTIONAL MATCH (existingWriter:Person {
-				name: COALESCE(writerParam.underlyingName, writerParam.name)
-			})
+			OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
 				WHERE
 					(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 					(writerParam.differentiator = existingWriter.differentiator)
@@ -43,10 +41,8 @@ const getCreateUpdateQuery = action => {
 				CASE existingWriter WHEN NULL
 					THEN {
 						uuid: writerParam.uuid,
-						name: COALESCE(writerParam.underlyingName, writerParam.name),
-						differentiator: writerParam.differentiator,
-						qualifier: writerParam.qualifier,
-						group: writerParam.group
+						name: writerParam.name,
+						differentiator: writerParam.differentiator
 					}
 					ELSE existingWriter
 				END AS writerProps
