@@ -399,7 +399,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
 					name: 'Henry IV, Part 1',
-					writers: [],
+					writerGroups: [],
 					depictions: [
 						{
 							displayName: 'Henry, Prince of Wales',
@@ -412,7 +412,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'playtext',
 					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
 					name: 'Henry IV, Part 2',
-					writers: [],
+					writerGroups: [],
 					depictions: [
 						{
 							displayName: 'Prince Hal',
@@ -425,14 +425,14 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'playtext',
 					uuid: HENRY_V_PLAYTEXT_UUID,
 					name: 'Henry V',
-					writers: [],
+					writerGroups: [],
 					depictions: []
 				},
 				{
 					model: 'playtext',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
 					name: 'The Merry Wives of Windsor',
-					writers: [],
+					writerGroups: [],
 					depictions: [
 						{
 							displayName: 'Prince Hal',

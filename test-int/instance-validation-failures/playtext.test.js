@@ -142,6 +142,7 @@ describe('Playtext instance', () => {
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
+							group: '',
 							errors: {
 								name: [
 									'Value is too long'
@@ -189,8 +190,57 @@ describe('Playtext instance', () => {
 							uuid: undefined,
 							name: 'Henrik Ibsen',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
+							group: '',
 							errors: {
 								differentiator: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					characters: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('writer group value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writers: [
+						{
+							name: 'Henrik Ibsen',
+							group: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writers: [
+						{
+							model: 'person',
+							uuid: undefined,
+							name: 'Henrik Ibsen',
+							differentiator: '',
+							group: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								group: [
 									'Value is too long'
 								]
 							}
@@ -238,11 +288,15 @@ describe('Playtext instance', () => {
 							uuid: undefined,
 							name: 'Henrik Ibsen',
 							differentiator: '',
+							group: '',
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
 								],
 								differentiator: [
+									'This item has been duplicated within the group'
+								],
+								group: [
 									'This item has been duplicated within the group'
 								]
 							}
@@ -252,11 +306,15 @@ describe('Playtext instance', () => {
 							uuid: undefined,
 							name: 'Henrik Ibsen',
 							differentiator: '',
+							group: '',
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
 								],
 								differentiator: [
+									'This item has been duplicated within the group'
+								],
+								group: [
 									'This item has been duplicated within the group'
 								]
 							}

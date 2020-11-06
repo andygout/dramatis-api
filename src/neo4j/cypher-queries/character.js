@@ -5,22 +5,30 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH character, playtextRel, playtext, writer
+	WITH character, playtextRel, playtext, writerRel, writer
 		ORDER BY writerRel.position
 
-	WITH character, playtextRel, playtext,
+	WITH character, playtextRel, playtext, writerRel.group AS writerGroup,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
 				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
 			END
 		) AS writers
+
+	WITH character, playtextRel, playtext,
+		COLLECT(
+			CASE SIZE(writers) WHEN 0
+				THEN null
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
+			END
+		) AS writerGroups
 		ORDER BY playtextRel.position
 
 	WITH
 		character,
 		playtext,
-		writers,
+		writerGroups,
 		COLLECT(
 			CASE WHEN playtextRel.displayName IS NULL AND playtextRel.qualifier IS NULL AND playtextRel.group IS NULL
 				THEN null
@@ -41,7 +49,7 @@ const getShowQuery = () => `
 					model: 'playtext',
 					uuid: playtext.uuid,
 					name: playtext.name,
-					writers: writers,
+					writerGroups: writerGroups,
 					depictions: depictions
 				}
 			END

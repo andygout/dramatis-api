@@ -1,28 +1,39 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(playtext:Playtext)
+	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(playtext:Playtext)
 
-	OPTIONAL MATCH (playtext)-[coWriterRel:WRITTEN_BY]->(coWriter:Person)
-		WHERE coWriter.uuid <> person.uuid
+	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH person, playtext, coWriter
-		ORDER BY coWriterRel.position
+	WITH person, playtext, writerRel, writer
+		ORDER BY writerRel.position
+
+	WITH person, playtext, writerRel.group AS writerGroup,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE {
+					model: 'person',
+					uuid: CASE WHEN writer.uuid = person.uuid THEN null ELSE writer.uuid END,
+					name: writer.name
+				}
+			END
+		) AS writers
 
 	WITH person, playtext,
 		COLLECT(
-			CASE coWriter WHEN NULL
+			CASE SIZE(writers) WHEN 0
 				THEN null
-				ELSE { model: 'person', uuid: coWriter.uuid, name: coWriter.name }
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
 			END
-		) AS coWriters
+		) AS writerGroups
 		ORDER BY playtext.name
 
 	WITH person,
 		COLLECT(
 			CASE playtext WHEN NULL
 				THEN null
-				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, coWriters: coWriters }
+				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
 			END
 		) AS playtexts
 

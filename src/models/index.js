@@ -5,6 +5,7 @@ import Playtext from './Playtext';
 import Production from './Production';
 import Role from './Role';
 import Theatre from './Theatre';
+import Writer from './Writer';
 
 export {
 	CastMember,
@@ -13,5 +14,6 @@ export {
 	Playtext,
 	Production,
 	Role,
-	Theatre
+	Theatre,
+	Writer
 };

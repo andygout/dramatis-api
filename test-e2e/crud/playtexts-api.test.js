@@ -28,6 +28,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -92,6 +93,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -130,6 +132,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -172,6 +175,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -204,8 +208,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'The Cherry Orchard',
 				differentiator: null,
+				writerGroups: [],
 				characterGroups: [],
-				writers: [],
 				productions: []
 			};
 
@@ -241,13 +245,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 	describe('CRUD with full range of attributes assigned values', () => {
 
 		const PLAYTEXT_UUID = '6';
-		const WILLIAM_SHAKESPEARE_PERSON_UUID = '7';
-		const JOHN_FLETCHER_PERSON_UUID = '8';
-		const OBERON_CHARACTER_UUID = '9';
-		const TITANIA_CHARACTER_UUID = '10';
-		const PUCK_CHARACTER_UUID = '11';
+		const HENRIK_IBSEN_PERSON_UUID = '7';
+		const DAVID_ELDRIDGE_PERSON_UUID = '8';
+		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '9';
+		const GUNHILD_BORKMAN_CHARACTER_UUID = '10';
+		const ERHART_BORKMAN_CHARACTER_UUID = '11';
 		const ANTON_CHEKHOV_PERSON_UUID = '17';
-		const MAXIM_GORKY_PERSON_UUID = '18';
+		const BENEDICT_ANDREWS_PERSON_UUID = '18';
 		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '19';
 		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '20';
 		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '21';
@@ -277,39 +281,41 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const response = await chai.request(app)
 				.post('/playtexts')
 				.send({
-					name: 'A Midsummer Night\'s Dream',
+					name: 'John Gabriel Borkman',
 					differentiator: '1',
 					writers: [
 						{
-							name: 'William Shakespeare',
-							differentiator: '1'
+							name: 'Henrik Ibsen',
+							differentiator: '1',
+							group: ''
 						},
 						{
-							name: 'John Fletcher', // Contrivance for purpose of test.
-							differentiator: '1'
+							name: 'David Eldridge',
+							differentiator: '1',
+							group: 'in a version by'
 						}
 					],
 					characters: [
 						{
-							name: 'Oberon',
-							underlyingName: 'Oberon, King of the Fairies',
+							name: 'John Gabriel Borkman',
+							underlyingName: 'Mr John Gabriel Borkman',
 							differentiator: '1',
 							qualifier: 'foo',
-							group: 'The Fairies'
+							group: 'The Borkmans'
 						},
 						{
-							name: 'Titania',
-							underlyingName: 'Titania, Queen of the Fairies',
+							name: 'Gunhild Borkman',
+							underlyingName: 'Mrs Gunhild Borkman',
 							differentiator: '1',
 							qualifier: 'bar',
-							group: 'The Fairies'
+							group: 'The Borkmans'
 						},
 						{
-							name: 'Puck',
-							underlyingName: 'Robin \'Puck\' Goodfellow',
+							name: 'Erhart Borkman',
+							underlyingName: 'Mr Erhart Borkman',
 							differentiator: '1',
 							qualifier: 'baz',
-							group: 'The Fairies'
+							group: 'The Borkmans'
 						}
 					]
 				});
@@ -317,55 +323,58 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'A Midsummer Night\'s Dream',
+				name: 'John Gabriel Borkman',
 				differentiator: '1',
 				errors: {},
 				writers: [
 					{
 						model: 'person',
-						name: 'William Shakespeare',
+						name: 'Henrik Ibsen',
 						differentiator: '1',
+						group: '',
 						errors: {}
 					},
 					{
 						model: 'person',
-						name: 'John Fletcher',
+						name: 'David Eldridge',
 						differentiator: '1',
+						group: 'in a version by',
 						errors: {}
 					},
 					{
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
 				characters: [
 					{
 						model: 'character',
-						name: 'Oberon',
-						underlyingName: 'Oberon, King of the Fairies',
+						name: 'John Gabriel Borkman',
+						underlyingName: 'Mr John Gabriel Borkman',
 						differentiator: '1',
 						qualifier: 'foo',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Titania',
-						underlyingName: 'Titania, Queen of the Fairies',
+						name: 'Gunhild Borkman',
+						underlyingName: 'Mrs Gunhild Borkman',
 						differentiator: '1',
 						qualifier: 'bar',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Puck',
-						underlyingName: 'Robin \'Puck\' Goodfellow',
+						name: 'Erhart Borkman',
+						underlyingName: 'Mr Erhart Borkman',
 						differentiator: '1',
 						qualifier: 'baz',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
@@ -394,41 +403,53 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'A Midsummer Night\'s Dream',
+				name: 'John Gabriel Borkman',
 				differentiator: '1',
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
-						uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-						name: 'William Shakespeare'
+						model: 'writerGroup',
+						name: 'by',
+						writers: [
+							{
+								model: 'person',
+								uuid: HENRIK_IBSEN_PERSON_UUID,
+								name: 'Henrik Ibsen'
+							}
+						]
 					},
 					{
-						model: 'person',
-						uuid: JOHN_FLETCHER_PERSON_UUID,
-						name: 'John Fletcher'
+						model: 'writerGroup',
+						name: 'in a version by',
+						writers: [
+							{
+								model: 'person',
+								uuid: DAVID_ELDRIDGE_PERSON_UUID,
+								name: 'David Eldridge'
+							}
+						]
 					}
 				],
 				characterGroups: [
 					{
 						model: 'characterGroup',
-						name: 'The Fairies',
+						name: 'The Borkmans',
 						characters: [
 							{
 								model: 'character',
-								uuid: OBERON_CHARACTER_UUID,
-								name: 'Oberon',
+								uuid: JOHN_GABRIEL_BORKMAN_CHARACTER_UUID,
+								name: 'John Gabriel Borkman',
 								qualifier: 'foo'
 							},
 							{
 								model: 'character',
-								uuid: TITANIA_CHARACTER_UUID,
-								name: 'Titania',
+								uuid: GUNHILD_BORKMAN_CHARACTER_UUID,
+								name: 'Gunhild Borkman',
 								qualifier: 'bar'
 							},
 							{
 								model: 'character',
-								uuid: PUCK_CHARACTER_UUID,
-								name: 'Puck',
+								uuid: ERHART_BORKMAN_CHARACTER_UUID,
+								name: 'Erhart Borkman',
 								qualifier: 'baz'
 							}
 						]
@@ -450,55 +471,58 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 			const expectedResponseBody = {
 				model: 'playtext',
 				uuid: PLAYTEXT_UUID,
-				name: 'A Midsummer Night\'s Dream',
+				name: 'John Gabriel Borkman',
 				differentiator: '1',
 				errors: {},
 				writers: [
 					{
 						model: 'person',
-						name: 'William Shakespeare',
+						name: 'Henrik Ibsen',
 						differentiator: '1',
+						group: '',
 						errors: {}
 					},
 					{
 						model: 'person',
-						name: 'John Fletcher',
+						name: 'David Eldridge',
 						differentiator: '1',
+						group: 'in a version by',
 						errors: {}
 					},
 					{
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
 				characters: [
 					{
 						model: 'character',
-						name: 'Oberon',
-						underlyingName: 'Oberon, King of the Fairies',
+						name: 'John Gabriel Borkman',
+						underlyingName: 'Mr John Gabriel Borkman',
 						differentiator: '1',
 						qualifier: 'foo',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Titania',
-						underlyingName: 'Titania, Queen of the Fairies',
+						name: 'Gunhild Borkman',
+						underlyingName: 'Mrs Gunhild Borkman',
 						differentiator: '1',
 						qualifier: 'bar',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
 						model: 'character',
-						name: 'Puck',
-						underlyingName: 'Robin \'Puck\' Goodfellow',
+						name: 'Erhart Borkman',
+						underlyingName: 'Mr Erhart Borkman',
 						differentiator: '1',
 						qualifier: 'baz',
-						group: 'The Fairies',
+						group: 'The Borkmans',
 						errors: {}
 					},
 					{
@@ -530,11 +554,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					writers: [
 						{
 							name: 'Anton Chekhov',
-							differentiator: '1'
+							differentiator: '1',
+							group: ''
 						},
 						{
-							name: 'Maxim Gorky', // Contrivance for purpose of test.
-							differentiator: '1'
+							name: 'Benedict Andrews',
+							differentiator: '1',
+							group: 'in an adaptation by'
 						}
 					],
 					characters: [
@@ -573,18 +599,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: 'Anton Chekhov',
 						differentiator: '1',
+						group: '',
 						errors: {}
 					},
 					{
 						model: 'person',
-						name: 'Maxim Gorky',
+						name: 'Benedict Andrews',
 						differentiator: '1',
+						group: 'in an adaptation by',
 						errors: {}
 					},
 					{
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -644,16 +673,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				uuid: PLAYTEXT_UUID,
 				name: 'Three Sisters',
 				differentiator: '1',
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
-						uuid: ANTON_CHEKHOV_PERSON_UUID,
-						name: 'Anton Chekhov'
+						model: 'writerGroup',
+						name: 'by',
+						writers: [
+							{
+								model: 'person',
+								uuid: ANTON_CHEKHOV_PERSON_UUID,
+								name: 'Anton Chekhov'
+							}
+						]
 					},
 					{
-						model: 'person',
-						uuid: MAXIM_GORKY_PERSON_UUID,
-						name: 'Maxim Gorky'
+						model: 'writerGroup',
+						name: 'in an adaptation by',
+						writers: [
+							{
+								model: 'person',
+								uuid: BENEDICT_ANDREWS_PERSON_UUID,
+								name: 'Benedict Andrews'
+							}
+						]
 					}
 				],
 				characterGroups: [
@@ -712,6 +753,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -810,19 +852,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					model: 'playtext',
 					uuid: THE_CHERRY_ORCHARD_PLAYTEXT_UUID,
 					name: 'The Cherry Orchard',
-					writers: []
+					writerGroups: []
 				},
 				{
 					model: 'playtext',
 					uuid: THREE_SISTERS_PLAYTEXT_UUID,
 					name: 'Three Sisters',
-					writers: []
+					writerGroups: []
 				},
 				{
 					model: 'playtext',
 					uuid: UNCLE_VANYA_PLAYTEXT_UUID,
 					name: 'Uncle Vanya',
-					writers: []
+					writerGroups: []
 				}
 			];
 

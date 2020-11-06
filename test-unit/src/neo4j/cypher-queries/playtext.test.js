@@ -29,7 +29,8 @@ describe('Cypher Queries Playtext module', () => {
 							THEN {
 								uuid: writerParam.uuid,
 								name: writerParam.name,
-								differentiator: writerParam.differentiator
+								differentiator: writerParam.differentiator,
+								group: writerParam.group
 							}
 							ELSE existingWriter
 						END AS writerProps
@@ -38,7 +39,7 @@ describe('Cypher Queries Playtext module', () => {
 						MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
 							ON CREATE SET writer.differentiator = writerProps.differentiator
 
-						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position }]->(writer)
+						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position, group: writerParam.group }]->(writer)
 					)
 
 				WITH DISTINCT playtext
@@ -85,17 +86,14 @@ describe('Cypher Queries Playtext module', () => {
 
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-				WITH playtext, writer
+				WITH playtext, writerRel, writer
 					ORDER BY writerRel.position
 
 				WITH playtext,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE {
-								name: writer.name,
-								differentiator: writer.differentiator
-							}
+							ELSE { name: writer.name, differentiator: writer.differentiator, group: writerRel.group }
 						END
 					) + [{}] AS writers
 
@@ -168,7 +166,8 @@ describe('Cypher Queries Playtext module', () => {
 							THEN {
 								uuid: writerParam.uuid,
 								name: writerParam.name,
-								differentiator: writerParam.differentiator
+								differentiator: writerParam.differentiator,
+								group: writerParam.group
 							}
 							ELSE existingWriter
 						END AS writerProps
@@ -177,7 +176,7 @@ describe('Cypher Queries Playtext module', () => {
 						MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
 							ON CREATE SET writer.differentiator = writerProps.differentiator
 
-						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position }]->(writer)
+						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position, group: writerParam.group }]->(writer)
 					)
 
 				WITH DISTINCT playtext
@@ -224,17 +223,14 @@ describe('Cypher Queries Playtext module', () => {
 
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-				WITH playtext, writer
+				WITH playtext, writerRel, writer
 					ORDER BY writerRel.position
 
 				WITH playtext,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE {
-								name: writer.name,
-								differentiator: writer.differentiator
-							}
+							ELSE { name: writer.name, differentiator: writer.differentiator, group: writerRel.group }
 						END
 					) + [{}] AS writers
 

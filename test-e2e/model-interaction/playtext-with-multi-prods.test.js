@@ -145,7 +145,7 @@ describe('Playtext with multiple productions', () => {
 				model: 'playtext',
 				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
 				name: 'Twelfth Night',
-				writers: []
+				writerGroups: []
 			};
 
 			const { playtext } = twelfthNightGlobeProduction.body;
@@ -164,7 +164,7 @@ describe('Playtext with multiple productions', () => {
 				model: 'playtext',
 				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
 				name: 'Twelfth Night',
-				writers: []
+				writerGroups: []
 			};
 
 			const { playtext } = twelfthNightDonmarProduction.body;
@@ -183,7 +183,7 @@ describe('Playtext with multiple productions', () => {
 				model: 'playtext',
 				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
 				name: 'Twelfth Night',
-				writers: []
+				writerGroups: []
 			};
 
 			const { playtext } = twelfthNightNationalProduction.body;
