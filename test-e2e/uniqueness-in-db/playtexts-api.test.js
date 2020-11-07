@@ -56,6 +56,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -133,6 +134,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -212,6 +214,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -255,6 +258,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						model: 'person',
 						name: '',
 						differentiator: '',
+						group: '',
 						errors: {}
 					}
 				],
@@ -328,6 +332,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '',
+				group: '',
 				errors: {}
 			};
 
@@ -357,6 +362,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '1',
+				group: '',
 				errors: {}
 			};
 
@@ -385,6 +391,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '',
+				group: '',
 				errors: {}
 			};
 
@@ -414,6 +421,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '1',
+				group: '',
 				errors: {}
 			};
 

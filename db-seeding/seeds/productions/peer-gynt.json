@@ -1,0 +1,117 @@
+{
+	"name": "Peer Gynt",
+	"playtext": {
+		"name": "Peer Gynt"
+	},
+	"theatre": {
+		"name": "The Pit"
+	},
+	"cast": [
+		{
+			"name": "Björn Hlynur Haraldsson",
+			"roles": [
+				{
+					"name": "Peer Gynt"
+				}
+			]
+		},
+		{
+			"name": "Brynhildur Guðjónsdóttir",
+			"roles": [
+				{
+					"name": "Solveig"
+				}
+			]
+		},
+		{
+			"name": "Edda Arnljótsdóttir",
+			"roles": [
+				{
+					"name": "Kari"
+				},
+				{
+					"name": "Herd Girl",
+					"characterName": "Herd Girls"
+				},
+				{
+					"name": "Trumpeterstraale"
+				}
+			]
+		},
+		{
+			"name": "Guðrún Snaefriður Gísladóttir",
+			"roles": [
+				{
+					"name": "Woman in Green"
+				},
+				{
+					"name": "Herd Girl",
+					"characterName": "Herd Girls"
+				},
+				{
+					"name": "Professor Begriffenfeldt"
+				}
+			]
+		},
+		{
+			"name": "Ingvar E Sirgurðsson",
+			"roles": [
+				{
+					"name": "Button Moulder"
+				},
+				{
+					"name": "Great Between (Baygen)"
+				},
+				{
+					"name": "Child"
+				},
+				{
+					"name": "Monsieur Ballon"
+				}
+			]
+		},
+		{
+			"name": "Ólafía Hrönn Jónsdóttir",
+			"roles": [
+				{
+					"name": "Aase"
+				},
+				{
+					"name": "Herd Girl",
+					"characterName": "Herd Girls"
+				}
+			]
+		},
+		{
+			"name": "Ólafur Egill Egilsson",
+			"roles": [
+				{
+					"name": "Groom"
+				},
+				{
+					"name": "Von Eberkopf"
+				},
+				{
+					"name": "Pen"
+				},
+				{
+					"name": "Scrawny Person"
+				}
+			]
+		},
+		{
+			"name": "Ólafur Darri Ólafsson",
+			"roles": [
+				{
+					"name": "Solveig's Father"
+				},
+				{
+					"name": "Old Man of Dovre"
+				},
+				{
+					"name": "Master Cotton"
+				}
+			]
+		}
+	]
+}

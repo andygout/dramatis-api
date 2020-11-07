@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Character, Person } from '../../../src/models';
+import { Character, Writer } from '../../../src/models';
 
 describe('Playtext model', () => {
 
@@ -14,23 +14,23 @@ describe('Playtext model', () => {
 
 	};
 
-	const PersonStub = function () {
+	const WriterStub = function () {
 
-		return createStubInstance(Person);
+		return createStubInstance(Writer);
 
 	};
 
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateBaseInstanceIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])			},
+			getDuplicateWriterIndicesModule: {
+				getDuplicateWriterIndices: stub().returns([])			},
 			getDuplicateCharacterIndicesModule: {
 				getDuplicateCharacterIndices: stub().returns([])
 			},
 			models: {
 				Character: CharacterStub,
-				Person: PersonStub
+				Writer: WriterStub
 			}
 		};
 
@@ -38,7 +38,7 @@ describe('Playtext model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
-			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
+			'../lib/get-duplicate-writer-indices': stubs.getDuplicateWriterIndicesModule,
 			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
 			'.': stubs.models
 		}).default;
@@ -121,9 +121,9 @@ describe('Playtext model', () => {
 					};
 					const instance = createInstance(props);
 					expect(instance.writers.length).to.equal(3);
-					expect(instance.writers[0] instanceof Person).to.be.true;
-					expect(instance.writers[1] instanceof Person).to.be.true;
-					expect(instance.writers[2] instanceof Person).to.be.true;
+					expect(instance.writers[0] instanceof Writer).to.be.true;
+					expect(instance.writers[1] instanceof Writer).to.be.true;
+					expect(instance.writers[2] instanceof Writer).to.be.true;
 
 				});
 
@@ -258,9 +258,10 @@ describe('Playtext model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices,
 				instance.writers[0].validateName,
 				instance.writers[0].validateDifferentiator,
+				instance.writers[0].validateGroup,
 				instance.writers[0].validateUniquenessInGroup,
 				stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
@@ -275,14 +276,16 @@ describe('Playtext model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			expect(stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices.calledWithExactly(
 				instance.writers
 			)).to.be.true;
 			expect(instance.writers[0].validateName.calledOnce).to.be.true;
 			expect(instance.writers[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.writers[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.writers[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.writers[0].validateGroup.calledOnce).to.be.true;
+			expect(instance.writers[0].validateGroup.calledWithExactly()).to.be.true;
 			expect(instance.writers[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.writers[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;

@@ -1,7 +1,7 @@
-import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-base-instance-indices';
+import { getDuplicateWriterIndices } from '../lib/get-duplicate-writer-indices';
 import { getDuplicateCharacterIndices } from '../lib/get-duplicate-character-indices';
 import Base from './Base';
-import { Character, Person } from '.';
+import { Character, Writer } from '.';
 
 export default class Playtext extends Base {
 
@@ -18,7 +18,7 @@ export default class Playtext extends Base {
 		if (!isAssociation) {
 
 			this.writers = writers
-				? writers.map(writer => new Person({ ...writer, isAssociation: true }))
+				? writers.map(writer => new Writer(writer))
 				: [];
 
 			this.characters = characters
@@ -35,13 +35,15 @@ export default class Playtext extends Base {
 
 		this.validateDifferentiator();
 
-		const duplicateBaseInstanceIndices = getDuplicateBaseInstanceIndices(this.writers);
+		const duplicateBaseInstanceIndices = getDuplicateWriterIndices(this.writers);
 
 		this.writers.forEach((writer, index) => {
 
 			writer.validateName({ isRequired: false });
 
 			writer.validateDifferentiator();
+
+			writer.validateGroup();
 
 			writer.validateUniquenessInGroup({ isDuplicate: duplicateBaseInstanceIndices.includes(index) });
 

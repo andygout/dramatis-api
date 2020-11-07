@@ -161,16 +161,24 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH production, playtext, writer
+	WITH production, playtext, writerRel, writer
 		ORDER BY writerRel.position
 
-	WITH production, playtext,
+	WITH production, playtext, writerRel.group AS writerGroup,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
 				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
 			END
 		) AS writers
+
+	WITH production, playtext,
+		COLLECT(
+			CASE SIZE(writers) WHEN 0
+				THEN null
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
+			END
+		) AS writerGroups
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
@@ -187,10 +195,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, playtext, writers, theatre, surTheatre, performer, role, character
+	WITH DISTINCT production, playtext, writerGroups, theatre, surTheatre, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, playtext, writers, theatre, surTheatre, performer,
+	WITH production, playtext, writerGroups, theatre, surTheatre, performer,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -204,7 +212,7 @@ const getShowQuery = () => `
 		production.name AS name,
 		CASE playtext WHEN NULL
 			THEN null
-			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writers: writers }
+			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
 		END AS playtext,
 		CASE theatre WHEN NULL
 			THEN null

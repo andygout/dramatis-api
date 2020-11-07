@@ -1,0 +1,11 @@
+{
+	"name": "Barbican Centre",
+	"subTheatres": [
+		{
+			"name": "Barbican Theatre"
+		},
+		{
+			"name": "The Pit"
+		}
+	]
+}
