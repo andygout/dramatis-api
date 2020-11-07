@@ -524,7 +524,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('productions list', () => {
 
-		it('displays theatre and (if applicable) sur-theatre', async () => {
+		it('includes theatre and (if applicable) corresponding sur-theatre', async () => {
 
 			const response = await chai.request(app)
 				.get('/productions');
