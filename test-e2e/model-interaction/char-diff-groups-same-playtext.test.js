@@ -470,8 +470,8 @@ describe('Character with multiple appearances in the same playtext in different 
 
 			const expectedCharacterGroups = [
 				{
-					name: '2011',
 					model: 'characterGroup',
+					name: '2011',
 					characters: [
 						{
 							model: 'character',
@@ -488,8 +488,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					]
 				},
 				{
-					name: '1990',
 					model: 'characterGroup',
+					name: '1990',
 					characters: [
 						{
 							model: 'character',
@@ -512,8 +512,8 @@ describe('Character with multiple appearances in the same playtext in different 
 					]
 				},
 				{
-					name: '1945',
 					model: 'characterGroup',
+					name: '1945',
 					characters: [
 						{
 							model: 'character',
