@@ -39,22 +39,32 @@ describe('Playtext with multiple writer groups', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Peer Gynt',
-				writers: [
+				writerGroups: [
 					{
-						name: 'Henrik Ibsen',
-						group: ''
+						writers: [
+							{
+								name: 'Henrik Ibsen'
+							}
+						]
 					},
 					{
-						name: 'Gerry Bamman',
-						group: 'translated by'
+						name: 'translated by',
+						writers: [
+							{
+								name: 'Gerry Bamman'
+							},
+							{
+								name: 'Irene B Berman'
+							}
+						]
 					},
 					{
-						name: 'Irene B Berman',
-						group: 'translated by'
-					},
-					{
-						name: 'Baltasar Kormákur',
-						group: 'adapted by'
+						name: 'adapted by',
+						writers: [
+							{
+								name: 'Baltasar Kormákur'
+							}
+						]
 					}
 				],
 				characters: [
@@ -68,14 +78,21 @@ describe('Playtext with multiple writer groups', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Ghosts',
-				writers: [
+				writerGroups: [
 					{
-						name: 'Henrik Ibsen',
-						group: ''
+						writers: [
+							{
+								name: 'Henrik Ibsen'
+							}
+						]
 					},
 					{
-						name: 'Amelia Bullmore',
-						group: 'in a version by'
+						name: 'version by',
+						writers: [
+							{
+								name: 'Amelia Bullmore'
+							}
+						]
 					}
 				]
 			});
@@ -188,7 +205,7 @@ describe('Playtext with multiple writer groups', () => {
 						},
 						{
 							model: 'writerGroup',
-							name: 'in a version by',
+							name: 'version by',
 							writers: [
 								{
 									model: 'person',
@@ -399,7 +416,7 @@ describe('Playtext with multiple writer groups', () => {
 						},
 						{
 							model: 'writerGroup',
-							name: 'in a version by',
+							name: 'version by',
 							writers: [
 								{
 									model: 'person',

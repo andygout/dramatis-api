@@ -6,7 +6,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
 	WITH person, playtext, writerRel, writer
-		ORDER BY writerRel.position
+		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
 	WITH person, playtext, writerRel.group AS writerGroup,
 		COLLECT(

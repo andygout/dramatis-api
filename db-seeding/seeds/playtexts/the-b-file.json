@@ -1,8 +1,12 @@
 {
 	"name": "The B File",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Deborah Levy"
+			"writers": [
+				{
+					"name": "Deborah Levy"
+				}
+			]
 		}
 	],
 	"characters": [

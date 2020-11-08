@@ -1,8 +1,12 @@
 {
 	"name": "Coriolanus",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "William Shakespeare"
+			"writers": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
 		}
 	],
 	"characters": [

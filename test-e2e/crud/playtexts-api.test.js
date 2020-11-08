@@ -23,13 +23,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: '',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -88,13 +94,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -127,13 +139,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -170,13 +188,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -230,7 +254,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				errors: {},
-				writers: [],
+				writerGroups: [],
 				characters: []
 			};
 
@@ -283,16 +307,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.send({
 					name: 'John Gabriel Borkman',
 					differentiator: '1',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Henrik Ibsen',
-							differentiator: '1',
-							group: ''
+							model: 'writerGroup',
+							name: '',
+							errors: {},
+							writers: [
+								{
+									name: 'Henrik Ibsen',
+									differentiator: '1'
+								}
+							]
 						},
 						{
-							name: 'David Eldridge',
-							differentiator: '1',
-							group: 'in a version by'
+							model: 'writerGroup',
+							name: 'version by',
+							errors: {},
+							writers: [
+								{
+									name: 'David Eldridge',
+									differentiator: '1',
+								}
+							]
 						}
 					],
 					characters: [
@@ -326,27 +362,57 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'John Gabriel Borkman',
 				differentiator: '1',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
-						name: 'Henrik Ibsen',
-						differentiator: '1',
-						group: '',
-						errors: {}
-					},
-					{
-						model: 'person',
-						name: 'David Eldridge',
-						differentiator: '1',
-						group: 'in a version by',
-						errors: {}
-					},
-					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'Henrik Ibsen',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'version by',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'David Eldridge',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: '',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -419,7 +485,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'writerGroup',
-						name: 'in a version by',
+						name: 'version by',
 						writers: [
 							{
 								model: 'person',
@@ -474,27 +540,57 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'John Gabriel Borkman',
 				differentiator: '1',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
-						name: 'Henrik Ibsen',
-						differentiator: '1',
-						group: '',
-						errors: {}
-					},
-					{
-						model: 'person',
-						name: 'David Eldridge',
-						differentiator: '1',
-						group: 'in a version by',
-						errors: {}
-					},
-					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'Henrik Ibsen',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'version by',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'David Eldridge',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: '',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -551,16 +647,28 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				.send({
 					name: 'Three Sisters',
 					differentiator: '1',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Anton Chekhov',
-							differentiator: '1',
-							group: ''
+							model: 'writerGroup',
+							name: '',
+							errors: {},
+							writers: [
+								{
+									name: 'Anton Chekhov',
+									differentiator: '1'
+								}
+							]
 						},
 						{
-							name: 'Benedict Andrews',
-							differentiator: '1',
-							group: 'in an adaptation by'
+							model: 'writerGroup',
+							name: 'adaptation by',
+							errors: {},
+							writers: [
+								{
+									name: 'Benedict Andrews',
+									differentiator: '1',
+								}
+							]
 						}
 					],
 					characters: [
@@ -594,27 +702,57 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
-						name: 'Anton Chekhov',
-						differentiator: '1',
-						group: '',
-						errors: {}
-					},
-					{
-						model: 'person',
-						name: 'Benedict Andrews',
-						differentiator: '1',
-						group: 'in an adaptation by',
-						errors: {}
-					},
-					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'Anton Chekhov',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'adaptation by',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: 'Benedict Andrews',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: '',
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -687,7 +825,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'writerGroup',
-						name: 'in an adaptation by',
+						name: 'adaptation by',
 						writers: [
 							{
 								model: 'person',
@@ -748,13 +886,19 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -788,7 +932,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				name: 'Three Sisters',
 				differentiator: '1',
 				errors: {},
-				writers: [],
+				writerGroups: [],
 				characters: []
 			};
 

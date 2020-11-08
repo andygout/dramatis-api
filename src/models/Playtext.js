@@ -1,7 +1,7 @@
-import { getDuplicateWriterIndices } from '../lib/get-duplicate-writer-indices';
+import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-base-instance-indices';
 import { getDuplicateCharacterIndices } from '../lib/get-duplicate-character-indices';
 import Base from './Base';
-import { Character, Writer } from '.';
+import { Character, WriterGroup } from '.';
 
 export default class Playtext extends Base {
 
@@ -9,7 +9,7 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		const { uuid, differentiator, writers, characters, isAssociation } = props;
+		const { uuid, differentiator, writerGroups, characters, isAssociation } = props;
 
 		this.model = 'playtext';
 		this.uuid = uuid;
@@ -17,8 +17,8 @@ export default class Playtext extends Base {
 
 		if (!isAssociation) {
 
-			this.writers = writers
-				? writers.map(writer => new Writer(writer))
+			this.writerGroups = writerGroups
+				? writerGroups.map(writerGroup => new WriterGroup(writerGroup))
 				: [];
 
 			this.characters = characters
@@ -35,19 +35,11 @@ export default class Playtext extends Base {
 
 		this.validateDifferentiator();
 
-		const duplicateBaseInstanceIndices = getDuplicateWriterIndices(this.writers);
+		const duplicateWriterGroupIndices = getDuplicateBaseInstanceIndices(this.writerGroups);
 
-		this.writers.forEach((writer, index) => {
-
-			writer.validateName({ isRequired: false });
-
-			writer.validateDifferentiator();
-
-			writer.validateGroup();
-
-			writer.validateUniquenessInGroup({ isDuplicate: duplicateBaseInstanceIndices.includes(index) });
-
-		});
+		this.writerGroups.forEach((writerGroup, index) =>
+			writerGroup.runInputValidations({ isDuplicate: duplicateWriterGroupIndices.includes(index) })
+		);
 
 		const duplicateCharacterIndices = getDuplicateCharacterIndices(this.characters);
 

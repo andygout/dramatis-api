@@ -286,15 +286,62 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('filters out objects in array that have a name attribute which is an empty string', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 
-			const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] };
-			const result = prepareAsParams(instance);
-			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.cast.length).to.equal(1);
-			expect(result.cast[0].name).to.equal('Ian McKellen');
-			expect(result.cast[0]).to.not.have.property('position');
+			it('filters out objects that have a name attribute which is an empty string', () => {
+
+				const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] };
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.cast.length).to.equal(1);
+				expect(result.cast[0].name).to.equal('Ian McKellen');
+				expect(result.cast[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+
+			it('does not filter out objects that have a name attribute which is an empty string', () => {
+
+				const instance = {
+					writerGroups: [
+						{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
+						{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(result.writerGroups.length).to.equal(2);
+				expect(result.writerGroups[0].name).to.be.null;
+				expect(result.writerGroups[0]).to.have.property('position');
+				expect(result.writerGroups[0].position).to.equal(0);
+				expect(result.writerGroups[1].name).to.equal('version by');
+				expect(result.writerGroups[1]).to.have.property('position');
+				expect(result.writerGroups[1].position).to.equal(1);
+
+			});
+
+			it('filters out objects that do not have any non-empty string name writers', () => {
+
+				const instance = {
+					writerGroups: [
+						{ name: '', writers: [{ name: '' }] },
+						{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
+						{ name: 'translation by', writers: [{ name: '' }] }
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.writerGroups.length).to.equal(1);
+				expect(result.writerGroups[0].name).to.equal('version by');
+				expect(result.writerGroups[0]).to.not.have.property('position');
+
+			});
 
 		});
 
@@ -413,15 +460,66 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('filters out objects in array that have a name attribute which is an empty string', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 
-			const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
-			const result = prepareAsParams(instance);
-			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters.length).to.equal(1);
-			expect(result.playtext.characters[0].name).to.equal('Laertes');
-			expect(result.playtext.characters[0]).to.not.have.property('position');
+			it('filters out objects that have a name attribute which is an empty string', () => {
+
+				const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtext.characters.length).to.equal(1);
+				expect(result.playtext.characters[0].name).to.equal('Laertes');
+				expect(result.playtext.characters[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+
+			it('does not filter out objects that have a name attribute which is an empty string', () => {
+
+				const instance = {
+					playtext: {
+						writerGroups: [
+							{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
+							{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(result.playtext.writerGroups.length).to.equal(2);
+				expect(result.playtext.writerGroups[0].name).to.be.null;
+				expect(result.playtext.writerGroups[0]).to.have.property('position');
+				expect(result.playtext.writerGroups[0].position).to.equal(0);
+				expect(result.playtext.writerGroups[1].name).to.equal('version by');
+				expect(result.playtext.writerGroups[1]).to.have.property('position');
+				expect(result.playtext.writerGroups[1].position).to.equal(1);
+
+			});
+
+			it('filters out objects that do not have any non-empty string name writers', () => {
+
+				const instance = {
+					playtext: {
+						writerGroups: [
+							{ name: '', writers: [{ name: '' }] },
+							{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
+							{ name: 'translation by', writers: [{ name: '' }] }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtext.writerGroups.length).to.equal(1);
+				expect(result.playtext.writerGroups[0].name).to.equal('version by');
+				expect(result.playtext.writerGroups[0]).to.not.have.property('position');
+
+			});
 
 		});
 
@@ -544,15 +642,70 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		it('filters out objects in array that have a name attribute which is an empty string', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 
-			const instance = { cast: [{ roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] }] };
-			const result = prepareAsParams(instance);
-			expect(stubs.uuid.calledOnce).to.be.true;
-			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.cast[0].roles.length).to.equal(1);
-			expect(result.cast[0].roles[0].name).to.equal('Laertes');
-			expect(result.cast[0].roles[0]).to.not.have.property('position');
+			it('filters out objects that have a name attribute which is an empty string', () => {
+
+				const instance = { cast: [{ roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] }] };
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.cast[0].roles.length).to.equal(1);
+				expect(result.cast[0].roles[0].name).to.equal('Laertes');
+				expect(result.cast[0].roles[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+
+			it('does not filter out objects that have a name attribute which is an empty string', () => {
+
+				const instance = {
+					playtexts: [
+						{
+							writerGroups: [
+								{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
+								{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(result.playtexts[0].writerGroups.length).to.equal(2);
+				expect(result.playtexts[0].writerGroups[0].name).to.be.null;
+				expect(result.playtexts[0].writerGroups[0]).to.have.property('position');
+				expect(result.playtexts[0].writerGroups[0].position).to.equal(0);
+				expect(result.playtexts[0].writerGroups[1].name).to.equal('version by');
+				expect(result.playtexts[0].writerGroups[1]).to.have.property('position');
+				expect(result.playtexts[0].writerGroups[1].position).to.equal(1);
+
+			});
+
+			it('filters out objects that do not have any non-empty string name writers', () => {
+
+				const instance = {
+					playtexts: [
+						{
+							writerGroups: [
+								{ name: '', writers: [{ name: '' }] },
+								{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
+								{ name: 'translation by', writers: [{ name: '' }] }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtexts[0].writerGroups.length).to.equal(1);
+				expect(result.playtexts[0].writerGroups[0].name).to.equal('version by');
+				expect(result.playtexts[0].writerGroups[0]).to.not.have.property('position');
+
+			});
 
 		});
 

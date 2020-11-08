@@ -1,8 +1,12 @@
 {
 	"name": "The Dumb Waiter",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Harold Pinter"
+			"writers": [
+				{
+					"name": "Harold Pinter"
+				}
+			]
 		}
 	],
 	"characters": [

@@ -1,8 +1,12 @@
 {
 	"name": "3 Winters",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Tena Štivičić"
+			"writers": [
+				{
+					"name": "Tena Štivičić"
+				}
+			]
 		}
 	],
 	"characters": [

@@ -1,6 +1,10 @@
 export default {
-	writers: [
-		{}
+	writerGroups: [
+		{
+			writers: [
+				{}
+			]
+		}
 	],
 	characters: [
 		{}

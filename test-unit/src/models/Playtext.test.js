@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Character, Writer } from '../../../src/models';
+import { Character, WriterGroup } from '../../../src/models';
 
 describe('Playtext model', () => {
 
@@ -14,23 +14,24 @@ describe('Playtext model', () => {
 
 	};
 
-	const WriterStub = function () {
+	const WriterGroupStub = function () {
 
-		return createStubInstance(Writer);
+		return createStubInstance(WriterGroup);
 
 	};
 
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateWriterIndicesModule: {
-				getDuplicateWriterIndices: stub().returns([])			},
+			getDuplicateBaseInstanceIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([])
+			},
 			getDuplicateCharacterIndicesModule: {
 				getDuplicateCharacterIndices: stub().returns([])
 			},
 			models: {
 				Character: CharacterStub,
-				Writer: WriterStub
+				WriterGroup: WriterGroupStub
 			}
 		};
 
@@ -38,7 +39,7 @@ describe('Playtext model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
-			'../lib/get-duplicate-writer-indices': stubs.getDuplicateWriterIndicesModule,
+			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
 			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
 			'.': stubs.models
 		}).default;
@@ -92,24 +93,24 @@ describe('Playtext model', () => {
 
 		});
 
-		describe('writers property', () => {
+		describe('writerGroups property', () => {
 
 			context('instance is subject', () => {
 
 				it('assigns empty array if absent from props', () => {
 
 					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.writers).to.deep.equal([]);
+					expect(instance.writerGroups).to.deep.equal([]);
 
 				});
 
-				it('assigns array of writers if included in props, retaining those with empty or whitespace-only string names', () => {
+				it('assigns array of writerGroups if included in props, retaining those with empty or whitespace-only string names', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writers: [
+						writerGroups: [
 							{
-								name: 'William Shakespeare'
+								name: 'version by'
 							},
 							{
 								name: ''
@@ -120,10 +121,10 @@ describe('Playtext model', () => {
 						]
 					};
 					const instance = createInstance(props);
-					expect(instance.writers.length).to.equal(3);
-					expect(instance.writers[0] instanceof Writer).to.be.true;
-					expect(instance.writers[1] instanceof Writer).to.be.true;
-					expect(instance.writers[2] instanceof Writer).to.be.true;
+					expect(instance.writerGroups.length).to.equal(3);
+					expect(instance.writerGroups[0] instanceof WriterGroup).to.be.true;
+					expect(instance.writerGroups[1] instanceof WriterGroup).to.be.true;
+					expect(instance.writerGroups[2] instanceof WriterGroup).to.be.true;
 
 				});
 
@@ -138,7 +139,7 @@ describe('Playtext model', () => {
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writers');
+					expect(instance).not.to.have.property('writerGroups');
 
 				});
 
@@ -146,15 +147,15 @@ describe('Playtext model', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writers: [
+						writerGroups: [
 							{
-								name: 'William Shakespeare'
+								name: 'version by'
 							}
 						],
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writers');
+					expect(instance).not.to.have.property('writerGroups');
 
 				});
 
@@ -240,9 +241,9 @@ describe('Playtext model', () => {
 
 			const props = {
 				name: 'The Tragedy of Hamlet, Prince of Denmark',
-				writers: [
+				writerGroups: [
 					{
-						name: 'William Shakespeare'
+						name: 'version by'
 					}
 				],
 				characters: [
@@ -258,11 +259,8 @@ describe('Playtext model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices,
-				instance.writers[0].validateName,
-				instance.writers[0].validateDifferentiator,
-				instance.writers[0].validateGroup,
-				instance.writers[0].validateUniquenessInGroup,
+				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.writerGroups[0].runInputValidations,
 				stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
 				instance.characters[0].validateUnderlyingName,
@@ -276,18 +274,12 @@ describe('Playtext model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateWriterIndicesModule.getDuplicateWriterIndices.calledWithExactly(
-				instance.writers
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+				instance.writerGroups
 			)).to.be.true;
-			expect(instance.writers[0].validateName.calledOnce).to.be.true;
-			expect(instance.writers[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.writers[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.writers[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writers[0].validateGroup.calledOnce).to.be.true;
-			expect(instance.writers[0].validateGroup.calledWithExactly()).to.be.true;
-			expect(instance.writers[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.writers[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(instance.writerGroups[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.writerGroups[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledWithExactly(
 				instance.characters

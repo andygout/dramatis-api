@@ -1,8 +1,12 @@
 {
 	"name": "Rope",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Patrick Hamilton"
+			"writers": [
+				{
+					"name": "Patrick Hamilton"
+				}
+			]
 		}
 	],
 	"characters": [
