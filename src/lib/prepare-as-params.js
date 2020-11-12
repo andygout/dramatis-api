@@ -3,73 +3,92 @@ import { v4 as uuid } from 'uuid';
 
 import { isObjectWithKeys } from './is-object-with-keys';
 
+const CHARACTER_GROUPS = 'characterGroups';
 const WRITER_GROUPS = 'writerGroups';
-const EMPTY_NAME_EXCEPTION_KEYS = [WRITER_GROUPS];
+
+const EMPTY_NAME_EXCEPTION_KEYS = [
+	CHARACTER_GROUPS,
+	WRITER_GROUPS
+];
 
 export const prepareAsParams = instance => {
 
-	return Object.keys(instance).reduce((accumulator, key) => {
+	const recordedInstances = [];
 
-		if (isObjectWithKeys(instance[key])) {
+	const applyModifications = instance => {
 
-			accumulator[key] = prepareAsParams(instance[key]);
+		return Object.keys(instance).reduce((accumulator, key) => {
 
-		} else if (Array.isArray(instance[key])) {
+			if (isObjectWithKeys(instance[key])) {
 
-			accumulator[key] =
-				instance[key]
-					.filter(item =>
-						!Object.prototype.hasOwnProperty.call(item, 'name')
-						|| !!item.name.length
-						|| EMPTY_NAME_EXCEPTION_KEYS.includes(key)
-					)
-					.filter(item => key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name))
-					.map((item, index, array) => {
+				accumulator[key] = applyModifications(instance[key]);
 
-						if (isObjectWithKeys(item)) {
+			} else if (Array.isArray(instance[key])) {
 
-							if (array.length > 1) item = { ...item, position: index };
+				accumulator[key] =
+					instance[key]
+						.filter(item =>
+							!Object.prototype.hasOwnProperty.call(item, 'name')
+							|| !!item.name.length
+							|| EMPTY_NAME_EXCEPTION_KEYS.includes(key)
+						)
+						.filter(item => key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name))
+						.filter(item => key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name))
+						.map((item, index, array) => {
 
-							return prepareAsParams(item);
+							if (isObjectWithKeys(item)) {
 
-						}
+								if (array.length > 1) item = { ...item, position: index };
 
-						return null;
+								return applyModifications(item);
 
-					})
-					.filter(Boolean)
-					.map((item, index, array) => {
+							}
 
-						if (!Object.prototype.hasOwnProperty.call(item, 'uuid')) return item;
+							return null;
 
-						const itemWithWhichToShareUuid = array.find((comparisonItem, comparisonIndex) =>
-							!!comparisonItem.uuid &&
-							item.name === comparisonItem.name &&
-							item.differentiator === comparisonItem.differentiator &&
-							index > comparisonIndex
-						);
+						})
+						.filter(Boolean);
 
-						if (itemWithWhichToShareUuid) item.uuid = itemWithWhichToShareUuid.uuid;
+			} else {
 
-						return item;
+				const requiresUuidValue =
+					key === 'uuid' &&
+					(instance[key] === undefined || !instance[key].length);
 
-					});
+				if (requiresUuidValue) {
 
-		} else {
+					const instanceWithShareableUuid = recordedInstances.find(recordedInstance =>
+						instance.model === recordedInstance.model &&
+						instance.name === recordedInstance.name &&
+						instance.differentiator === recordedInstance.differentiator
+					);
 
-			const requiresUuidValue =
-				key === 'uuid' &&
-				(instance[key] === undefined || !instance[key].length);
+					accumulator[key] = instanceWithShareableUuid?.uuid || uuid();
 
-			if (requiresUuidValue) accumulator[key] = uuid();
-			else if (typeof instance[key] === 'number') accumulator[key] = neo4j.int(instance[key]);
-			else if (instance[key] === '') accumulator[key] = null;
-			else accumulator[key] = instance[key];
+					if (!instanceWithShareableUuid) {
 
-		}
+						recordedInstances.push({
+							model: instance.model,
+							uuid: accumulator[key],
+							name: instance.name,
+							differentiator: instance.differentiator
+						});
 
-		return accumulator;
+					}
 
-	}, {});
+				}
+				else if (typeof instance[key] === 'number') accumulator[key] = neo4j.int(instance[key]);
+				else if (instance[key] === '') accumulator[key] = null;
+				else accumulator[key] = instance[key];
+
+			}
+
+			return accumulator;
+
+		}, {});
+
+	};
+
+	return applyModifications(instance);
 
 };

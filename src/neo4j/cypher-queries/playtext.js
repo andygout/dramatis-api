@@ -65,41 +65,45 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT playtext
 
-		UNWIND (CASE $characters WHEN [] THEN [null] ELSE $characters END) AS characterParam
+		UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroupParam
 
-			OPTIONAL MATCH (existingCharacter:Character {
-				name: COALESCE(characterParam.underlyingName, characterParam.name)
-			})
-				WHERE
-					(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
-					(characterParam.differentiator = existingCharacter.differentiator)
+			UNWIND (CASE characterGroupParam.characters WHEN [] THEN [null] ELSE characterGroupParam.characters END) AS characterParam
 
-			WITH
-				playtext,
-				characterParam,
-				CASE existingCharacter WHEN NULL
-					THEN {
-						uuid: characterParam.uuid,
-						name: COALESCE(characterParam.underlyingName, characterParam.name),
-						differentiator: characterParam.differentiator,
-						qualifier: characterParam.qualifier,
-						group: characterParam.group
-					}
-					ELSE existingCharacter
-				END AS characterProps
+				OPTIONAL MATCH (existingCharacter:Character {
+					name: COALESCE(characterParam.underlyingName, characterParam.name)
+				})
+					WHERE
+						(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
+						(characterParam.differentiator = existingCharacter.differentiator)
 
-			FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
-				MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
-					ON CREATE SET character.differentiator = characterProps.differentiator
+				WITH
+					playtext,
+					characterGroupParam,
+					characterParam,
+					CASE existingCharacter WHEN NULL
+						THEN {
+							uuid: characterParam.uuid,
+							name: COALESCE(characterParam.underlyingName, characterParam.name),
+							differentiator: characterParam.differentiator,
+							qualifier: characterParam.qualifier,
+							group: characterGroupParam.name
+						}
+						ELSE existingCharacter
+					END AS characterProps
 
-				CREATE (playtext)-
-					[:INCLUDES_CHARACTER {
-						position: characterParam.position,
-						displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
-						qualifier: characterParam.qualifier,
-						group: characterParam.group
-					}]->(character)
-			)
+				FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
+						ON CREATE SET character.differentiator = characterProps.differentiator
+
+					CREATE (playtext)-
+						[:INCLUDES_CHARACTER {
+							groupPosition: characterGroupParam.position,
+							characterPosition: characterParam.position,
+							displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
+							qualifier: characterParam.qualifier,
+							group: characterGroupParam.name
+						}]->(character)
+				)
 
 		WITH DISTINCT playtext
 
@@ -137,14 +141,9 @@ const getEditQuery = () => `
 	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
 	WITH playtext, writerGroups, characterRel, character
-		ORDER BY characterRel.position
+		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	RETURN
-		'playtext' AS model,
-		playtext.uuid AS uuid,
-		playtext.name AS name,
-		playtext.differentiator AS differentiator,
-		writerGroups,
+	WITH playtext, writerGroups, characterRel.group AS characterGroup,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -157,6 +156,19 @@ const getEditQuery = () => `
 				}
 			END
 		) + [{}] AS characters
+
+	RETURN
+		'playtext' AS model,
+		playtext.uuid AS uuid,
+		playtext.name AS name,
+		playtext.differentiator AS differentiator,
+		writerGroups,
+		COLLECT(
+			CASE WHEN characterGroup IS NULL AND SIZE(characters) = 1
+				THEN null
+				ELSE { model: 'characterGroup', name: characterGroup, characters: characters }
+			END
+		) + [{ characters: [{}] }] AS characterGroups
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -188,7 +200,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
 	WITH playtext, writerGroups, characterRel, character
-		ORDER BY characterRel.position
+		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
 	WITH playtext, writerGroups, characterRel.group AS characterGroup,
 		COLLECT(

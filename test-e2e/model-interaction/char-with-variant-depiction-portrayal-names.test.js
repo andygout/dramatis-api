@@ -67,16 +67,20 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Henry IV, Part 1',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Henry, Prince of Wales',
-						underlyingName: 'King Henry V'
-					},
-					{
-						name: 'Sir John Falstaff'
-					},
-					{
-						name: 'Messenger'
+						characters: [
+							{
+								name: 'Henry, Prince of Wales',
+								underlyingName: 'King Henry V'
+							},
+							{
+								name: 'Sir John Falstaff'
+							},
+							{
+								name: 'Messenger'
+							}
+						]
 					}
 				]
 			});
@@ -85,16 +89,20 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Henry IV, Part 2',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Prince Hal',
-						underlyingName: 'King Henry V'
-					},
-					{
-						name: 'Sir John Falstaff'
-					},
-					{
-						name: 'Attendant'
+						characters: [
+							{
+								name: 'Prince Hal',
+								underlyingName: 'King Henry V'
+							},
+							{
+								name: 'Sir John Falstaff'
+							},
+							{
+								name: 'Attendant'
+							}
+						]
 					}
 				]
 			});
@@ -103,15 +111,19 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Henry V',
-				characters: [
+				characterGroups: [
 					{
-						name: 'King Henry V'
-					},
-					{
-						name: 'King of France'
-					},
-					{
-						name: 'Soldier'
+						characters: [
+							{
+								name: 'King Henry V'
+							},
+							{
+								name: 'King of France'
+							},
+							{
+								name: 'Soldier'
+							}
+						]
 					}
 				]
 			});
@@ -122,10 +134,14 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/playtexts')
 			.send({
 				name: 'The Merry Wives of Windsor',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Prince Hal',
-						underlyingName: 'King Henry V'
+						characters: [
+							{
+								name: 'Prince Hal',
+								underlyingName: 'King Henry V'
+							}
+						]
 					}
 				]
 			});

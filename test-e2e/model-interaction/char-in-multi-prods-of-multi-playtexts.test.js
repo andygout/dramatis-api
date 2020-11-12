@@ -49,9 +49,13 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Henry IV: Part 1',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Sir John Falstaff'
+						characters: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
 					}
 				]
 			});
@@ -60,9 +64,13 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Henry IV: Part 2',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Sir John Falstaff'
+						characters: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
 					}
 				]
 			});
@@ -71,9 +79,13 @@ describe('Character in multiple productions of multiple playtexts', () => {
 			.post('/playtexts')
 			.send({
 				name: 'The Merry Wives of Windsor',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Sir John Falstaff'
+						characters: [
+							{
+								name: 'Sir John Falstaff'
+							}
+						]
 					}
 				]
 			});

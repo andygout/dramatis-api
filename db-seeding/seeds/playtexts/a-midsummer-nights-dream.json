@@ -9,105 +9,101 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Theseus",
-			"group": "The Athenians"
+			"name": "The Athenians",
+			"characters": [
+				{
+					"name": "Theseus"
+				},
+				{
+					"name": "Hippolyta"
+				},
+				{
+					"name": "Egeus"
+				},
+				{
+					"name": "Philostrate"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "A Midsummer Night's Dream"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "A Midsummer Night's Dream"
+				}
+			]
 		},
 		{
-			"name": "Hippolyta",
-			"group": "The Athenians"
+			"name": "The Lovers",
+			"characters": [
+				{
+					"name": "Hermia"
+				},
+				{
+					"name": "Lysander"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Helena"
+				}
+			]
 		},
 		{
-			"name": "Egeus",
-			"group": "The Athenians"
+			"name": "The Fairies",
+			"characters": [
+				{
+					"name": "Oberon"
+				},
+				{
+					"name": "Titania"
+				},
+				{
+					"name": "Puck"
+				},
+				{
+					"name": "Peaseblossom"
+				},
+				{
+					"name": "Cobweb"
+				},
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Mustardseed"
+				},
+				{
+					"name": "Fairies"
+				}
+			]
 		},
 		{
-			"name": "Philostrate",
-			"group": "The Athenians"
-		},
-		{
-			"name": "Hermia",
-			"group": "The Lovers"
-		},
-		{
-			"name": "Lysander",
-			"group": "The Lovers"
-		},
-		{
-			"name": "Demetrius",
-			"differentiator": "1",
-			"group": "The Lovers"
-		},
-		{
-			"name": "Helena",
-			"group": "The Lovers"
-		},
-		{
-			"name": "Oberon",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Titania",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Puck",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Peaseblossom",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Cobweb",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Moth",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Mustardseed",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Fairies",
-			"group": "The Fairies"
-		},
-		{
-			"name": "Peter Quince",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Nick Bottom",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Francis Flute",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Tom Snout",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Snug",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Robin Starveling",
-			"group": "The Mechanicals"
-		},
-		{
-			"name": "Lords",
-			"differentiator": "A Midsummer Night's Dream",
-			"group": "The Athenians"
-		},
-		{
-			"name": "Attendants",
-			"differentiator": "A Midsummer Night's Dream",
-			"group": "The Athenians"
+			"name": "The Mechanicals",
+			"characters": [
+				{
+					"name": "Peter Quince"
+				},
+				{
+					"name": "Nick Bottom"
+				},
+				{
+					"name": "Francis Flute"
+				},
+				{
+					"name": "Tom Snout"
+				},
+				{
+					"name": "Snug"
+				},
+				{
+					"name": "Robin Starveling"
+				}
+			]
 		}
 	]
 }

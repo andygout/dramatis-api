@@ -51,7 +51,7 @@ describe('Instance validation failures: Playtexts API', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(response).to.have.status(200);
@@ -88,7 +88,7 @@ describe('Instance validation failures: Playtexts API', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(response).to.have.status(200);
@@ -148,7 +148,7 @@ describe('Instance validation failures: Playtexts API', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(response).to.have.status(200);
@@ -191,7 +191,7 @@ describe('Instance validation failures: Playtexts API', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(response).to.have.status(200);
@@ -261,7 +261,7 @@ describe('Instance validation failures: Playtexts API', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(response).to.have.status(200);

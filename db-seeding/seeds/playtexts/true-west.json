@@ -9,12 +9,16 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Austin"
-		},
-		{
-			"name": "Lee"
+			"characters": [
+				{
+					"name": "Austin"
+				},
+				{
+					"name": "Lee"
+				}
+			]
 		}
 	]
 }

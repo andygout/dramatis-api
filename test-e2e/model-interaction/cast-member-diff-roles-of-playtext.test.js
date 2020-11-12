@@ -42,12 +42,16 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/playtexts')
 			.send({
 				name: 'The Tragedy of King Lear',
-				characters: [
+				characterGroups: [
 					{
-						name: 'King Lear'
-					},
-					{
-						name: 'Fool'
+						characters: [
+							{
+								name: 'King Lear'
+							},
+							{
+								name: 'Fool'
+							}
+						]
 					}
 				]
 			});

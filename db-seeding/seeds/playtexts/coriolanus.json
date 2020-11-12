@@ -9,122 +9,114 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Caius Martius Coriolanus",
-			"group": "Romans"
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Caius Martius Coriolanus"
+				},
+				{
+					"name": "Titus Lartius"
+				},
+				{
+					"name": "Cominius"
+				},
+				{
+					"name": "Menenius Agrippa"
+				},
+				{
+					"name": "Sicinius Velutus"
+				},
+				{
+					"name": "Junius Brutus"
+				},
+				{
+					"name": "Roman Citizens"
+				},
+				{
+					"name": "Roman Herald"
+				},
+				{
+					"name": "Volumnia"
+				},
+				{
+					"name": "Virgilia"
+				},
+				{
+					"name": "Young Martius"
+				},
+				{
+					"name": "Valeria"
+				},
+				{
+					"name": "Roman Senators"
+				}
+			]
 		},
 		{
-			"name": "Titus Lartius",
-			"group": "Romans"
+			"name": "Volscians",
+			"characters": [
+				{
+					"name": "Nicanor"
+				},
+				{
+					"name": "Tullus Aufidius"
+				},
+				{
+					"name": "Lieutenant"
+				},
+				{
+					"name": "Conspirators"
+				},
+				{
+					"name": "Adrian"
+				},
+				{
+					"name": "A Citizen of Antium"
+				},
+				{
+					"name": "Volscian Guards"
+				},
+				{
+					"name": "Volscian Senators"
+				},
+
+				{
+					"name": "Volscian Citizens"
+				},
+				{
+					"name": "Servants of Aufidius"
+				}
+			]
 		},
 		{
-			"name": "Cominius",
-			"group": "Romans"
-		},
-		{
-			"name": "Menenius Agrippa",
-			"group": "Romans"
-		},
-		{
-			"name": "Sicinius Velutus",
-			"group": "Romans"
-		},
-		{
-			"name": "Junius Brutus",
-			"group": "Romans"
-		},
-		{
-			"name": "Roman Citizens",
-			"group": "Romans"
-		},
-		{
-			"name": "Roman Herald",
-			"group": "Romans"
-		},
-		{
-			"name": "Nicanor",
-			"group": "Volscians"
-		},
-		{
-			"name": "Volumnia",
-			"group": "Romans"
-		},
-		{
-			"name": "Virgilia",
-			"group": "Romans"
-		},
-		{
-			"name": "Young Martius",
-			"group": "Romans"
-		},
-		{
-			"name": "Valeria",
-			"group": "Romans"
-		},
-		{
-			"name": "Gentlewoman"
-		},
-		{
-			"name": "Tullus Aufidius",
-			"group": "Volscians"
-		},
-		{
-			"name": "Lieutenant",
-			"group": "Volscians"
-		},
-		{
-			"name": "Conspirators",
-			"group": "Volscians"
-		},
-		{
-			"name": "Adrian",
-			"group": "Volscians"
-		},
-		{
-			"name": "A Citizen of Antium",
-			"group": "Volscians"
-		},
-		{
-			"name": "Volscian Guards",
-			"group": "Volscians"
-		},
-		{
-			"name": "Roman Senators",
-			"group": "Romans"
-		},
-		{
-			"name": "Volscian Senators",
-			"group": "Volscians"
-		},
-		{
-			"name": "Patricians"
-		},
-		{
-			"name": "Aediles"
-		},
-		{
-			"name": "Lictors"
-		},
-		{
-			"name": "Soldiers",
-			"differentiator": "Coriolanus"
-		},
-		{
-			"name": "Messengers",
-			"differentiator": "Coriolanus"
-		},
-		{
-			"name": "Volscian Citizens",
-			"group": "Volscians"
-		},
-		{
-			"name": "Servants of Aufidius",
-			"group": "Volscians"
-		},
-		{
-			"name": "Attendants",
-			"differentiator": "Coriolanus"
+			"characters": [
+				{
+					"name": "Gentlewoman"
+				},
+				{
+					"name": "Patricians"
+				},
+				{
+					"name": "Aediles"
+				},
+				{
+					"name": "Lictors"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Coriolanus"
+				}
+			]
 		}
 	]
 }

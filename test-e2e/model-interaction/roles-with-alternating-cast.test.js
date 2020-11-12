@@ -44,12 +44,16 @@ describe('Roles with alternating cast', () => {
 			.post('/playtexts')
 			.send({
 				name: 'True West',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Austin'
-					},
-					{
-						name: 'Lee'
+						characters: [
+							{
+								name: 'Austin'
+							},
+							{
+								name: 'Lee'
+							}
+						]
 					}
 				]
 			});

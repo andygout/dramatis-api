@@ -66,15 +66,21 @@ describe('Uniqueness in database: Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -109,7 +115,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				},
 				writerGroups: [],
-				characters: []
+				characterGroups: []
 			};
 
 			expect(response).to.have.status(200);
@@ -150,15 +156,21 @@ describe('Uniqueness in database: Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -195,7 +207,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				},
 				writerGroups: [],
-				characters: []
+				characterGroups: []
 			};
 
 			expect(response).to.have.status(200);
@@ -236,15 +248,21 @@ describe('Uniqueness in database: Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -286,15 +304,21 @@ describe('Uniqueness in database: Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -507,9 +531,13 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${TITUS_ANDRONICUS_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Demetrius'
+							characters: [
+								{
+									name: 'Demetrius'
+								}
+							]
 						}
 					]
 				});
@@ -520,12 +548,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				underlyingName: '',
 				differentiator: '',
 				qualifier: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.characters[0]).to.deep.equal(expectedCharacterDemetrius1);
+			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
 		});
@@ -538,10 +565,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${TITUS_ANDRONICUS_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Demetrius',
-							differentiator: '1'
+							characters: [
+								{
+									name: 'Demetrius',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -552,12 +583,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				underlyingName: '',
 				differentiator: '1',
 				qualifier: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.characters[0]).to.deep.equal(expectedCharacterDemetrius2);
+			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);
 			expect(await countNodesWithLabel('Character')).to.equal(2);
 
 		});
@@ -570,9 +600,13 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${TITUS_ANDRONICUS_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Demetrius'
+							characters: [
+								{
+									name: 'Demetrius'
+								}
+							]
 						}
 					]
 				});
@@ -583,12 +617,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				underlyingName: '',
 				differentiator: '',
 				qualifier: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.characters[0]).to.deep.equal(expectedCharacterDemetrius1);
+			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
 			expect(await countNodesWithLabel('Character')).to.equal(2);
 
 		});
@@ -601,10 +634,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${TITUS_ANDRONICUS_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Demetrius',
-							differentiator: '1'
+							characters: [
+								{
+									name: 'Demetrius',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -615,12 +652,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				underlyingName: '',
 				differentiator: '1',
 				qualifier: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.characters[0]).to.deep.equal(expectedCharacterDemetrius2);
+			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);
 			expect(await countNodesWithLabel('Character')).to.equal(2);
 
 		});

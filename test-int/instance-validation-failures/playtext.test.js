@@ -45,7 +45,7 @@ describe('Playtext instance', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -74,7 +74,7 @@ describe('Playtext instance', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -103,7 +103,7 @@ describe('Playtext instance', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -148,7 +148,7 @@ describe('Playtext instance', () => {
 							writers: []
 						}
 					],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -206,7 +206,7 @@ describe('Playtext instance', () => {
 							writers: []
 						}
 					],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -263,7 +263,7 @@ describe('Playtext instance', () => {
 							]
 						}
 					],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -321,7 +321,7 @@ describe('Playtext instance', () => {
 							]
 						}
 					],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -398,7 +398,7 @@ describe('Playtext instance', () => {
 							]
 						}
 					],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -407,13 +407,13 @@ describe('Playtext instance', () => {
 
 		});
 
-		context('character name value exceeds maximum limit', () => {
+		context('characterGroup name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
@@ -432,20 +432,133 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
+							model: 'characterGroup',
 							name: ABOVE_MAX_LENGTH_STRING,
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
 							errors: {
 								name: [
 									'Value is too long'
 								]
-							}
+							},
+							characters: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate characterGroups', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					characterGroups: [
+						{
+							name: 'Rosmersholm residents'
+						},
+						{
+							name: 'Rosmersholm residents'
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writerGroups: [],
+					characterGroups: [
+						{
+							model: 'characterGroup',
+							name: 'Rosmersholm residents',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							characters: []
+						},
+						{
+							model: 'characterGroup',
+							name: 'Rosmersholm residents',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							characters: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('character name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					characterGroups: [
+						{
+							characters: [
+								{
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					writerGroups: [],
+					characterGroups: [
+						{
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									underlyingName: '',
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -462,10 +575,14 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Johannes Rosmer',
-							underlyingName: ABOVE_MAX_LENGTH_STRING
+							characters: [
+								{
+									name: 'Johannes Rosmer',
+									underlyingName: ABOVE_MAX_LENGTH_STRING
+								}
+							]
 						}
 					]
 				};
@@ -482,20 +599,26 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: ABOVE_MAX_LENGTH_STRING,
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {
-								underlyingName: [
-									'Value is too long'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										underlyingName: [
+											'Value is too long'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -512,10 +635,14 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Johannes Rosmer',
-							differentiator: ABOVE_MAX_LENGTH_STRING
+							characters: [
+								{
+									name: 'Johannes Rosmer',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
 						}
 					]
 				};
@@ -532,20 +659,26 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: '',
-							differentiator: ABOVE_MAX_LENGTH_STRING,
-							qualifier: '',
-							group: '',
-							errors: {
-								differentiator: [
-									'Value is too long'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: '',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									qualifier: '',
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -562,10 +695,14 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Johannes Rosmer',
-							qualifier: ABOVE_MAX_LENGTH_STRING
+							characters: [
+								{
+									name: 'Johannes Rosmer',
+									qualifier: ABOVE_MAX_LENGTH_STRING
+								}
+							]
 						}
 					]
 				};
@@ -582,70 +719,26 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: ABOVE_MAX_LENGTH_STRING,
-							group: '',
-							errors: {
-								qualifier: [
-									'Value is too long'
-								]
-							}
-						}
-					]
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-		context('character group value exceeds maximum limit', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'Rosmersholm',
-					characters: [
-						{
-							name: 'Johannes Rosmer',
-							group: ABOVE_MAX_LENGTH_STRING
-						}
-					]
-				};
-
-				const instance = new Playtext(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					model: 'playtext',
-					uuid: undefined,
-					name: 'Rosmersholm',
-					differentiator: '',
-					hasErrors: true,
-					errors: {},
-					writerGroups: [],
-					characters: [
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: ABOVE_MAX_LENGTH_STRING,
-							errors: {
-								group: [
-									'Value is too long'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: '',
+									differentiator: '',
+									qualifier: ABOVE_MAX_LENGTH_STRING,
+									errors: {
+										qualifier: [
+											'Value is too long'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -662,10 +755,14 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Johannes Rosmer',
-							underlyingName: 'Johannes Rosmer'
+							characters: [
+								{
+									name: 'Johannes Rosmer',
+									underlyingName: 'Johannes Rosmer'
+								}
+							]
 						}
 					]
 				};
@@ -682,20 +779,26 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: 'Johannes Rosmer',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {
-								underlyingName: [
-									'Underlying name is only required if different from character name'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: 'Johannes Rosmer',
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										underlyingName: [
+											'Underlying name is only required if different from character name'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -712,15 +815,19 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: 'Johannes Rosmer'
-						},
-						{
-							name: 'Rebecca West'
-						},
-						{
-							name: 'Johannes Rosmer'
+							characters: [
+								{
+									name: 'Johannes Rosmer'
+								},
+								{
+									name: 'Rebecca West'
+								},
+								{
+									name: 'Johannes Rosmer'
+								}
+							]
 						}
 					]
 				};
@@ -737,68 +844,66 @@ describe('Playtext instance', () => {
 					hasErrors: true,
 					errors: {},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								underlyingName: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								],
-								qualifier: [
-									'This item has been duplicated within the group'
-								],
-								group: [
-									'This item has been duplicated within the group'
-								]
-							}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Rebecca West',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {}
-						},
-						{
-							model: 'character',
-							uuid: undefined,
-							name: 'Johannes Rosmer',
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								underlyingName: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								],
-								qualifier: [
-									'This item has been duplicated within the group'
-								],
-								group: [
-									'This item has been duplicated within the group'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: '',
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										underlyingName: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										],
+										qualifier: [
+											'This item has been duplicated within the group'
+										]
+									}
+								},
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Rebecca West',
+									underlyingName: '',
+									differentiator: '',
+									qualifier: '',
+									errors: {}
+								},
+								{
+									model: 'character',
+									uuid: undefined,
+									name: 'Johannes Rosmer',
+									underlyingName: '',
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										underlyingName: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										],
+										qualifier: [
+											'This item has been duplicated within the group'
+										]
+									}
+								}
+							]
 						}
 					]
 				};
@@ -842,7 +947,7 @@ describe('Playtext instance', () => {
 						]
 					},
 					writerGroups: [],
-					characters: []
+					characterGroups: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -867,9 +972,13 @@ describe('Playtext instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					characters: [
+					characterGroups: [
 						{
-							name: ABOVE_MAX_LENGTH_STRING
+							characters: [
+								{
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
 						}
 					]
 				};
@@ -893,20 +1002,26 @@ describe('Playtext instance', () => {
 						]
 					},
 					writerGroups: [],
-					characters: [
+					characterGroups: [
 						{
-							model: 'character',
-							uuid: undefined,
-							name: ABOVE_MAX_LENGTH_STRING,
-							underlyingName: '',
-							differentiator: '',
-							qualifier: '',
-							group: '',
-							errors: {
-								name: [
-									'Value is too long'
-								]
-							}
+							model: 'characterGroup',
+							name: '',
+							errors: {},
+							characters: [
+								{
+									model: 'character',
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									underlyingName: '',
+									differentiator: '',
+									qualifier: '',
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
 						}
 					]
 				};

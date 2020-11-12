@@ -9,26 +9,30 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Beatrice",
-			"qualifier": "#1"
-		},
-		{
-			"name": "Beatrice",
-			"qualifier": "#2"
-		},
-		{
-			"name": "Beatrice",
-			"qualifier": "#3"
-		},
-		{
-			"name": "Beatrice",
-			"qualifier": "#4"
-		},
-		{
-			"name": "Beatrice",
-			"qualifier": "#5"
+			"characters": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#1"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#2"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#3"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#4"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#5"
+				}
+			]
 		}
 	]
 }

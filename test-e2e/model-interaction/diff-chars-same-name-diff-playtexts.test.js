@@ -48,13 +48,17 @@ describe('Different characters with the same name from different playtexts', () 
 			.post('/playtexts')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Lysander'
-					},
-					{
-						name: 'Demetrius',
-						differentiator: '1'
+						characters: [
+							{
+								name: 'Lysander'
+							},
+							{
+								name: 'Demetrius',
+								differentiator: '1'
+							}
+						]
 					}
 				]
 			});
@@ -63,13 +67,17 @@ describe('Different characters with the same name from different playtexts', () 
 			.post('/playtexts')
 			.send({
 				name: 'Titus Andronicus',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Demetrius',
-						differentiator: '2'
-					},
-					{
-						name: 'Chiron'
+						characters: [
+							{
+								name: 'Demetrius',
+								differentiator: '2'
+							},
+							{
+								name: 'Chiron'
+							}
+						]
 					}
 				]
 			});
