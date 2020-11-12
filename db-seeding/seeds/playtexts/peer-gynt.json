@@ -1,20 +1,31 @@
 {
 	"name": "Peer Gynt",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Henrik Ibsen"
+			"writers": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
 		},
 		{
-			"name": "Gerry Bamman",
-			"group": "translated by"
+			"name": "translated by",
+			"writers": [
+				{
+					"name": "Gerry Bamman"
+				},
+				{
+					"name": "Irene B Berman"
+				}
+			]
 		},
 		{
-			"name": "Irene B Berman",
-			"group": "translated by"
-		},
-		{
-			"name": "Baltasar Kormákur",
-			"group": "adapted by"
+			"name": "adapted by",
+			"writers": [
+				{
+					"name": "Baltasar Kormákur"
+				}
+			]
 		}
 	],
 	"characters": [

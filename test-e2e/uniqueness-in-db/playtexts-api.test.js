@@ -51,13 +51,19 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -102,7 +108,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
-				writers: [],
+				writerGroups: [],
 				characters: []
 			};
 
@@ -129,13 +135,19 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '1',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -182,7 +194,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
-				writers: [],
+				writerGroups: [],
 				characters: []
 			};
 
@@ -209,13 +221,19 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '2',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -253,13 +271,19 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
-				writers: [
+				writerGroups: [
 					{
-						model: 'person',
+						model: 'writerGroup',
 						name: '',
-						differentiator: '',
-						group: '',
-						errors: {}
+						errors: {},
+						writers: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
 					}
 				],
 				characters: [
@@ -321,9 +345,13 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Dot',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Kate Ryan'
+							writers: [
+								{
+									name: 'Kate Ryan'
+								}
+							]
 						}
 					]
 				});
@@ -332,12 +360,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -350,10 +377,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Dot',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Kate Ryan',
-							differentiator: '1'
+							writers: [
+								{
+									name: 'Kate Ryan',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -362,12 +393,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '1',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -380,9 +410,13 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Dot',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Kate Ryan'
+							writers: [
+								{
+									name: 'Kate Ryan'
+								}
+							]
 						}
 					]
 				});
@@ -391,12 +425,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -409,10 +442,14 @@ describe('Uniqueness in database: Playtexts API', () => {
 				.put(`/playtexts/${DOT_PLAYTEXT_UUID}`)
 				.send({
 					name: 'Dot',
-					writers: [
+					writerGroups: [
 						{
-							name: 'Kate Ryan',
-							differentiator: '1'
+							writers: [
+								{
+									name: 'Kate Ryan',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -421,12 +458,11 @@ describe('Uniqueness in database: Playtexts API', () => {
 				model: 'person',
 				name: 'Kate Ryan',
 				differentiator: '1',
-				group: '',
 				errors: {}
 			};
 
 			expect(response).to.have.status(200);
-			expect(response.body.writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});

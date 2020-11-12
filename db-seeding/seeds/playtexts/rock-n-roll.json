@@ -1,8 +1,12 @@
 {
 	"name": "Rock 'n' Roll",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Tom Stoppard"
+			"writers": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
 		}
 	],
 	"characters": [

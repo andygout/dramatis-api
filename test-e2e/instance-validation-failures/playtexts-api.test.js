@@ -50,7 +50,7 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Value is too short'
 						]
 					},
-					writers: [],
+					writerGroups: [],
 					characters: []
 				};
 
@@ -87,7 +87,7 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					writers: [],
+					writerGroups: [],
 					characters: []
 				};
 
@@ -147,7 +147,7 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Value is too short'
 						]
 					},
-					writers: [],
+					writerGroups: [],
 					characters: []
 				};
 
@@ -190,7 +190,7 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					writers: [],
+					writerGroups: [],
 					characters: []
 				};
 
@@ -260,7 +260,7 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Production'
 						]
 					},
-					writers: [],
+					writerGroups: [],
 					characters: []
 				};
 

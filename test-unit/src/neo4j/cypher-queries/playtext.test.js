@@ -15,32 +15,40 @@ describe('Cypher Queries Playtext module', () => {
 
 				WITH playtext
 
-				UNWIND (CASE $writers WHEN [] THEN [null] ELSE $writers END) AS writerParam
+				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroupParam
 
-					OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
-						WHERE
-							(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-							(writerParam.differentiator = existingWriter.differentiator)
+					UNWIND (CASE writerGroupParam.writers WHEN [] THEN [null] ELSE writerGroupParam.writers END) AS writerParam
 
-					WITH
-						playtext,
-						writerParam,
-						CASE existingWriter WHEN NULL
-							THEN {
-								uuid: writerParam.uuid,
-								name: writerParam.name,
-								differentiator: writerParam.differentiator,
-								group: writerParam.group
-							}
-							ELSE existingWriter
-						END AS writerProps
+						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+							WHERE
+								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
+								(writerParam.differentiator = existingWriter.differentiator)
 
-					FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
-						MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
-							ON CREATE SET writer.differentiator = writerProps.differentiator
+						WITH
+							playtext,
+							writerGroupParam,
+							writerParam,
+							CASE existingWriter WHEN NULL
+								THEN {
+									uuid: writerParam.uuid,
+									name: writerParam.name,
+									differentiator: writerParam.differentiator,
+									group: writerGroupParam.name
+								}
+								ELSE existingWriter
+							END AS writerProps
 
-						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position, group: writerParam.group }]->(writer)
-					)
+						FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
+								ON CREATE SET writer.differentiator = writerProps.differentiator
+
+							CREATE (playtext)-
+								[:WRITTEN_BY {
+									groupPosition: writerGroupParam.position,
+									writerPosition: writerParam.position,
+									group: writerGroupParam.name
+								}]->(writer)
+						)
 
 				WITH DISTINCT playtext
 
@@ -87,19 +95,27 @@ describe('Cypher Queries Playtext module', () => {
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
 				WITH playtext, writerRel, writer
-					ORDER BY writerRel.position
+					ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-				WITH playtext,
+				WITH playtext, writerRel.group AS writerGroup,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE { name: writer.name, differentiator: writer.differentiator, group: writerRel.group }
+							ELSE { model: 'person', name: writer.name, differentiator: writer.differentiator }
 						END
 					) + [{}] AS writers
 
+				WITH playtext,
+					COLLECT(
+						CASE WHEN writerGroup IS NULL AND SIZE(writers) = 1
+							THEN null
+							ELSE { model: 'writerGroup', name: writerGroup, writers: writers }
+						END
+					) + [{ writers: [{}] }] AS writerGroups
+
 				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-				WITH playtext, writers, characterRel, character
+				WITH playtext, writerGroups, characterRel, character
 					ORDER BY characterRel.position
 
 				RETURN
@@ -107,7 +123,7 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.uuid AS uuid,
 					playtext.name AS name,
 					playtext.differentiator AS differentiator,
-					writers,
+					writerGroups,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -152,32 +168,40 @@ describe('Cypher Queries Playtext module', () => {
 
 				WITH playtext
 
-				UNWIND (CASE $writers WHEN [] THEN [null] ELSE $writers END) AS writerParam
+				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroupParam
 
-					OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
-						WHERE
-							(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-							(writerParam.differentiator = existingWriter.differentiator)
+					UNWIND (CASE writerGroupParam.writers WHEN [] THEN [null] ELSE writerGroupParam.writers END) AS writerParam
 
-					WITH
-						playtext,
-						writerParam,
-						CASE existingWriter WHEN NULL
-							THEN {
-								uuid: writerParam.uuid,
-								name: writerParam.name,
-								differentiator: writerParam.differentiator,
-								group: writerParam.group
-							}
-							ELSE existingWriter
-						END AS writerProps
+						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+							WHERE
+								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
+								(writerParam.differentiator = existingWriter.differentiator)
 
-					FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
-						MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
-							ON CREATE SET writer.differentiator = writerProps.differentiator
+						WITH
+							playtext,
+							writerGroupParam,
+							writerParam,
+							CASE existingWriter WHEN NULL
+								THEN {
+									uuid: writerParam.uuid,
+									name: writerParam.name,
+									differentiator: writerParam.differentiator,
+									group: writerGroupParam.name
+								}
+								ELSE existingWriter
+							END AS writerProps
 
-						CREATE (playtext)-[:WRITTEN_BY { position: writerParam.position, group: writerParam.group }]->(writer)
-					)
+						FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
+								ON CREATE SET writer.differentiator = writerProps.differentiator
+
+							CREATE (playtext)-
+								[:WRITTEN_BY {
+									groupPosition: writerGroupParam.position,
+									writerPosition: writerParam.position,
+									group: writerGroupParam.name
+								}]->(writer)
+						)
 
 				WITH DISTINCT playtext
 
@@ -224,19 +248,27 @@ describe('Cypher Queries Playtext module', () => {
 				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
 				WITH playtext, writerRel, writer
-					ORDER BY writerRel.position
+					ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-				WITH playtext,
+				WITH playtext, writerRel.group AS writerGroup,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE { name: writer.name, differentiator: writer.differentiator, group: writerRel.group }
+							ELSE { model: 'person', name: writer.name, differentiator: writer.differentiator }
 						END
 					) + [{}] AS writers
 
+				WITH playtext,
+					COLLECT(
+						CASE WHEN writerGroup IS NULL AND SIZE(writers) = 1
+							THEN null
+							ELSE { model: 'writerGroup', name: writerGroup, writers: writers }
+						END
+					) + [{ writers: [{}] }] AS writerGroups
+
 				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-				WITH playtext, writers, characterRel, character
+				WITH playtext, writerGroups, characterRel, character
 					ORDER BY characterRel.position
 
 				RETURN
@@ -244,7 +276,7 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.uuid AS uuid,
 					playtext.name AS name,
 					playtext.differentiator AS differentiator,
-					writers,
+					writerGroups,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null

@@ -3,6 +3,9 @@ import { v4 as uuid } from 'uuid';
 
 import { isObjectWithKeys } from './is-object-with-keys';
 
+const WRITER_GROUPS = 'writerGroups';
+const EMPTY_NAME_EXCEPTION_KEYS = [WRITER_GROUPS];
+
 export const prepareAsParams = instance => {
 
 	return Object.keys(instance).reduce((accumulator, key) => {
@@ -15,7 +18,12 @@ export const prepareAsParams = instance => {
 
 			accumulator[key] =
 				instance[key]
-					.filter(item => !Object.prototype.hasOwnProperty.call(item, 'name') || !!item.name.length)
+					.filter(item =>
+						!Object.prototype.hasOwnProperty.call(item, 'name')
+						|| !!item.name.length
+						|| EMPTY_NAME_EXCEPTION_KEYS.includes(key)
+					)
+					.filter(item => key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name))
 					.map((item, index, array) => {
 
 						if (isObjectWithKeys(item)) {

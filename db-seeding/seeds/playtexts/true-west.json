@@ -1,8 +1,12 @@
 {
 	"name": "True West",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Sam Shepard"
+			"writers": [
+				{
+					"name": "Sam Shepard"
+				}
+			]
 		}
 	],
 	"characters": [

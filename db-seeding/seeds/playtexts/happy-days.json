@@ -1,8 +1,12 @@
 {
 	"name": "Happy Days",
-	"writers": [
+	"writerGroups": [
 		{
-			"name": "Samuel Beckett"
+			"writers": [
+				{
+					"name": "Samuel Beckett"
+				}
+			]
 		}
 	],
 	"characters": [
