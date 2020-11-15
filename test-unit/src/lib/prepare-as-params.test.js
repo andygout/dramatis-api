@@ -255,7 +255,7 @@ describe('Prepare As Params module', () => {
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
 				const instance = { cast: [{ uuid: '' }] };
 				const result = prepareAsParams(instance);
@@ -436,7 +436,7 @@ describe('Prepare As Params module', () => {
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
 				const instance = { playtext: { characters: [{ uuid: '' }] } };
 				const result = prepareAsParams(instance);
@@ -620,7 +620,7 @@ describe('Prepare As Params module', () => {
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
 				const instance = { cast: [{ roles: [{ uuid: '' }] }] };
 				const result = prepareAsParams(instance);
