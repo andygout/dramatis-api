@@ -52,7 +52,7 @@ const getShowQueries = {
 const getListQueries = {
 	playtext: getPlaytextListQuery,
 	production: getProductionListQuery,
-	theatre: getTheatreListQuery,
+	theatre: getTheatreListQuery
 };
 
 export {

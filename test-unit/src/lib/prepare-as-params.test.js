@@ -378,7 +378,7 @@ describe('Prepare As Params module', () => {
 					{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
 					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
 					{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-					{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+					{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
 				]
 			};
 			const result = prepareAsParams(instance);
@@ -571,7 +571,7 @@ describe('Prepare As Params module', () => {
 						{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
 						{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
 						{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-						{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+						{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
 					]
 				}
 			};
@@ -775,7 +775,7 @@ describe('Prepare As Params module', () => {
 							{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
 							{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
 							{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-							{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' },
+							{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
 						]
 					}
 				]
