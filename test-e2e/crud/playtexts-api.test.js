@@ -543,6 +543,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'characterGroup',
 						name: 'The Borkmans',
+						position: null,
 						characters: [
 							{
 								model: 'character',
@@ -921,6 +922,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'characterGroup',
 						name: 'The Prozorovs',
+						position: null,
 						characters: [
 							{
 								model: 'character',

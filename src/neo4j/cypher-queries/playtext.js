@@ -202,7 +202,11 @@ const getShowQuery = () => `
 	WITH playtext, writerGroups, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	WITH playtext, writerGroups, characterRel.group AS characterGroup,
+	WITH
+		playtext,
+		writerGroups,
+		characterRel.group AS characterGroup,
+		characterRel.groupPosition AS characterGroupPosition,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -222,6 +226,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'characterGroup',
 					name: characterGroup,
+					position: characterGroupPosition,
 					characters: characters
 				}
 			END
