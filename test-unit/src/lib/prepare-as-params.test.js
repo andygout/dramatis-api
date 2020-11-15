@@ -255,7 +255,7 @@ describe('Prepare As Params module', () => {
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
 				const instance = { cast: [{ uuid: '' }] };
 				const result = prepareAsParams(instance);
@@ -308,31 +308,21 @@ describe('Prepare As Params module', () => {
 
 				const instance = {
 					writerGroups: [
-						{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-						{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+						{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 					],
 					characterGroups: [
-						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 						{ name: '', characters: [{ name: 'Malene' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.writerGroups.length).to.equal(1);
 				expect(result.writerGroups[0].name).to.be.null;
-				expect(result.writerGroups[0]).to.have.property('position');
-				expect(result.writerGroups[0].position).to.equal(0);
-				expect(result.writerGroups[1].name).to.equal('version by');
-				expect(result.writerGroups[1]).to.have.property('position');
-				expect(result.writerGroups[1].position).to.equal(1);
-				expect(result.characterGroups.length).to.equal(2);
-				expect(result.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.characterGroups[0]).to.have.property('position');
-				expect(result.characterGroups[0].position).to.equal(0);
-				expect(result.characterGroups[1].name).to.be.null;
-				expect(result.characterGroups[1]).to.have.property('position');
-				expect(result.characterGroups[1].position).to.equal(1);
+				expect(result.writerGroups[0]).to.not.have.property('position');
+				expect(result.characterGroups.length).to.equal(1);
+				expect(result.characterGroups[0].name).to.be.null;
+				expect(result.characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -372,21 +362,21 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
-				cast: [
-					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
-					{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
-					{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
-					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
-					{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-					{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
+				characters: [
+					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
+					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
+					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
+					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
+					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
 				]
 			};
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.cast[0].uuid).to.equal(result.cast[3].uuid);
-			expect(result.cast[1].uuid).to.equal(result.cast[4].uuid);
-			expect(result.cast[2].uuid).not.to.equal(result.cast[5].uuid);
+			expect(result.characters[0].uuid).to.equal(result.characters[3].uuid);
+			expect(result.characters[1].uuid).to.equal(result.characters[4].uuid);
+			expect(result.characters[2].uuid).not.to.equal(result.characters[5].uuid);
 
 		});
 
@@ -396,63 +386,63 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			const instance = { playtext: { characters: [{ uuid: '' }] } };
+			const instance = { production: { cast: [{ uuid: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
 		it('assigns value to uuid property if undefined', () => {
 
-			const instance = { playtext: { characters: [{ uuid: undefined }] } };
+			const instance = { production: { cast: [{ uuid: undefined }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			const instance = { playtext: { characters: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
+			const instance = { production: { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(result.production.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
 
-			const instance = { playtext: { characters: [{ foo: 'bar' }] } };
+			const instance = { production: { cast: [{ foo: 'bar' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters[0].foo).to.equal('bar');
+			expect(result.production.cast[0].foo).to.equal('bar');
 
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
-			const instance = { playtext: { characters: [{ foo: '' }] } };
+			const instance = { production: { cast: [{ foo: '' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.playtext.characters[0].foo).to.equal(null);
+			expect(result.production.cast[0].foo).to.equal(null);
 
 		});
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
-				const instance = { playtext: { characters: [{ uuid: '' }] } };
+				const instance = { production: { cast: [{ uuid: '' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.playtext.characters[0]).to.not.have.property('position');
+				expect(result.production.cast[0]).to.not.have.property('position');
 
 			});
 
@@ -462,16 +452,16 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', () => {
 
-				const instance = { playtext: { characters: [{ uuid: '' }, { uuid: '' }] } };
+				const instance = { production: { cast: [{ uuid: '' }, { uuid: '' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
 				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
-				expect(result.playtext.characters[0]).to.have.property('position');
-				expect(result.playtext.characters[0].position).to.equal(0);
-				expect(result.playtext.characters[1]).to.have.property('position');
-				expect(result.playtext.characters[1].position).to.equal(1);
+				expect(result.production.cast[0]).to.have.property('position');
+				expect(result.production.cast[0].position).to.equal(0);
+				expect(result.production.cast[1]).to.have.property('position');
+				expect(result.production.cast[1].position).to.equal(1);
 
 			});
 
@@ -481,13 +471,13 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', () => {
 
-				const instance = { playtext: { characters: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] } };
+				const instance = { production: { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.playtext.characters.length).to.equal(1);
-				expect(result.playtext.characters[0].name).to.equal('Laertes');
-				expect(result.playtext.characters[0]).to.not.have.property('position');
+				expect(result.production.cast.length).to.equal(1);
+				expect(result.production.cast[0].name).to.equal('Ian McKellen');
+				expect(result.production.cast[0]).to.not.have.property('position');
 
 			});
 
@@ -500,32 +490,22 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					playtext: {
 						writerGroups: [
-							{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-							{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+							{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 						],
 						characterGroups: [
-							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 							{ name: '', characters: [{ name: 'Malene' }] }
 						]
 					}
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.playtext.writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtext.writerGroups.length).to.equal(1);
 				expect(result.playtext.writerGroups[0].name).to.be.null;
-				expect(result.playtext.writerGroups[0]).to.have.property('position');
-				expect(result.playtext.writerGroups[0].position).to.equal(0);
-				expect(result.playtext.writerGroups[1].name).to.equal('version by');
-				expect(result.playtext.writerGroups[1]).to.have.property('position');
-				expect(result.playtext.writerGroups[1].position).to.equal(1);
-				expect(result.playtext.characterGroups.length).to.equal(2);
-				expect(result.playtext.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.playtext.characterGroups[0]).to.have.property('position');
-				expect(result.playtext.characterGroups[0].position).to.equal(0);
-				expect(result.playtext.characterGroups[1].name).to.be.null;
-				expect(result.playtext.characterGroups[1]).to.have.property('position');
-				expect(result.playtext.characterGroups[1].position).to.equal(1);
+				expect(result.playtext.writerGroups[0]).to.not.have.property('position');
+				expect(result.playtext.characterGroups.length).to.equal(1);
+				expect(result.playtext.characterGroups[0].name).to.be.null;
+				expect(result.playtext.characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -564,23 +544,23 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
-				playtext: {
-					characters: [
-						{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
-						{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
-						{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
-						{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
-						{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-						{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
+				production: {
+					cast: [
+						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
+						{ model: 'person', uuid: '', name: 'Baz', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
+						{ model: 'person', uuid: '', name: 'Baz', differentiator: '1' }
 					]
 				}
 			};
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.playtext.characters[0].uuid).to.equal(result.playtext.characters[3].uuid);
-			expect(result.playtext.characters[1].uuid).to.equal(result.playtext.characters[4].uuid);
-			expect(result.playtext.characters[2].uuid).not.to.equal(result.playtext.characters[5].uuid);
+			expect(result.production.cast[0].uuid).to.equal(result.production.cast[3].uuid);
+			expect(result.production.cast[1].uuid).to.equal(result.production.cast[4].uuid);
+			expect(result.production.cast[2].uuid).not.to.equal(result.production.cast[5].uuid);
 
 		});
 
@@ -640,7 +620,7 @@ describe('Prepare As Params module', () => {
 
 		context('array contains a single item', () => {
 
-			it('does not add a position property', () => {
+			it('will not add position property', () => {
 
 				const instance = { cast: [{ roles: [{ uuid: '' }] }] };
 				const result = prepareAsParams(instance);
@@ -697,11 +677,9 @@ describe('Prepare As Params module', () => {
 					playtexts: [
 						{
 							writerGroups: [
-								{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-								{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+								{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 							],
 							characterGroups: [
-								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 								{ name: '', characters: [{ name: 'Malene' }] }
 							]
 						}
@@ -709,21 +687,13 @@ describe('Prepare As Params module', () => {
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.playtexts[0].writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtexts[0].writerGroups.length).to.equal(1);
 				expect(result.playtexts[0].writerGroups[0].name).to.be.null;
-				expect(result.playtexts[0].writerGroups[0]).to.have.property('position');
-				expect(result.playtexts[0].writerGroups[0].position).to.equal(0);
-				expect(result.playtexts[0].writerGroups[1].name).to.equal('version by');
-				expect(result.playtexts[0].writerGroups[1]).to.have.property('position');
-				expect(result.playtexts[0].writerGroups[1].position).to.equal(1);
-				expect(result.playtexts[0].characterGroups.length).to.equal(2);
-				expect(result.playtexts[0].characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.playtexts[0].characterGroups[0]).to.have.property('position');
-				expect(result.playtexts[0].characterGroups[0].position).to.equal(0);
-				expect(result.playtexts[0].characterGroups[1].name).to.be.null;
-				expect(result.playtexts[0].characterGroups[1]).to.have.property('position');
-				expect(result.playtexts[0].characterGroups[1].position).to.equal(1);
+				expect(result.playtexts[0].writerGroups[0]).to.not.have.property('position');
+				expect(result.playtexts[0].characterGroups.length).to.equal(1);
+				expect(result.playtexts[0].characterGroups[0].name).to.be.null;
+				expect(result.playtexts[0].characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -767,15 +737,15 @@ describe('Prepare As Params module', () => {
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
-				cast: [
+				characterGroups: [
 					{
-						roles: [
-							{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
-							{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'younger' },
-							{ uuid: '', name: 'Baz', differentiator: '', qualifier: '' },
-							{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'older' },
-							{ uuid: '', name: 'Bar', differentiator: '1', qualifier: 'older' },
-							{ uuid: '', name: 'Baz', differentiator: '1', qualifier: '' }
+						characters: [
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
 						]
 					}
 				]
@@ -783,9 +753,11 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.cast[0].roles[0].uuid).to.equal(result.cast[0].roles[3].uuid);
-			expect(result.cast[0].roles[1].uuid).to.equal(result.cast[0].roles[4].uuid);
-			expect(result.cast[0].roles[2].uuid).not.to.equal(result.cast[0].roles[5].uuid);
+			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[3].uuid);
+			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[4].uuid);
+			expect(result.characterGroups[0].characters[2].uuid).not.to.equal(
+				result.characterGroups[0].characters[5].uuid
+			);
 
 		});
 

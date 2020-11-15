@@ -50,9 +50,15 @@ describe('Cast Member model', () => {
 				const props = {
 					name: 'Ian McKellen',
 					roles: [
-						{ name: 'King Lear' },
-						{ name: '' },
-						{ name: ' ' }
+						{
+							name: 'King Lear'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
 					]
 				};
 				const instance = createInstance(props);

@@ -333,9 +333,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					differentiator: '1',
 					writerGroups: [
 						{
-							model: 'writerGroup',
 							name: '',
-							errors: {},
 							writers: [
 								{
 									name: 'Henrik Ibsen',
@@ -344,9 +342,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							]
 						},
 						{
-							model: 'writerGroup',
 							name: 'version by',
-							errors: {},
 							writers: [
 								{
 									name: 'David Eldridge',
@@ -712,9 +708,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					differentiator: '1',
 					writerGroups: [
 						{
-							model: 'writerGroup',
 							name: '',
-							errors: {},
 							writers: [
 								{
 									name: 'Anton Chekhov',
@@ -723,9 +717,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							]
 						},
 						{
-							model: 'writerGroup',
 							name: 'adaptation by',
-							errors: {},
 							writers: [
 								{
 									name: 'Benedict Andrews',

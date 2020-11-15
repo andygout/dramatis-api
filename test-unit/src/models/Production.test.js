@@ -79,9 +79,15 @@ describe('Production model', () => {
 				const props = {
 					name: 'Hamlet',
 					cast: [
-						{ name: 'Patrick Stewart' },
-						{ name: '' },
-						{ name: ' ' }
+						{
+							name: 'Patrick Stewart'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
 					]
 				};
 				const instance = createInstance(props);
