@@ -363,12 +363,12 @@ describe('Prepare As Params module', () => {
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
 				characters: [
-					{ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
-					{ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
-					{ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
-					{ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
-					{ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
-					{ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
+					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
+					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
+					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
+					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
 				]
 			};
 			const result = prepareAsParams(instance);
@@ -546,12 +546,12 @@ describe('Prepare As Params module', () => {
 			const instance = {
 				production: {
 					cast: [
-						{ uuid: '', name: 'Foo', differentiator: '' },
-						{ uuid: '', name: 'Bar', differentiator: '1' },
-						{ uuid: '', name: 'Baz', differentiator: '' },
-						{ uuid: '', name: 'Foo', differentiator: '' },
-						{ uuid: '', name: 'Bar', differentiator: '1' },
-						{ uuid: '', name: 'Baz', differentiator: '1' }
+						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
+						{ model: 'person', uuid: '', name: 'Baz', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
+						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
+						{ model: 'person', uuid: '', name: 'Baz', differentiator: '1' }
 					]
 				}
 			};
@@ -740,12 +740,12 @@ describe('Prepare As Params module', () => {
 				characterGroups: [
 					{
 						characters: [
-							{ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
-							{ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
-							{ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
-							{ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
-							{ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
-							{ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
 						]
 					}
 				]
