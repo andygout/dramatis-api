@@ -308,31 +308,21 @@ describe('Prepare As Params module', () => {
 
 				const instance = {
 					writerGroups: [
-						{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-						{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+						{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 					],
 					characterGroups: [
-						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 						{ name: '', characters: [{ name: 'Malene' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.writerGroups.length).to.equal(1);
 				expect(result.writerGroups[0].name).to.be.null;
-				expect(result.writerGroups[0]).to.have.property('position');
-				expect(result.writerGroups[0].position).to.equal(0);
-				expect(result.writerGroups[1].name).to.equal('version by');
-				expect(result.writerGroups[1]).to.have.property('position');
-				expect(result.writerGroups[1].position).to.equal(1);
-				expect(result.characterGroups.length).to.equal(2);
-				expect(result.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.characterGroups[0]).to.have.property('position');
-				expect(result.characterGroups[0].position).to.equal(0);
-				expect(result.characterGroups[1].name).to.be.null;
-				expect(result.characterGroups[1]).to.have.property('position');
-				expect(result.characterGroups[1].position).to.equal(1);
+				expect(result.writerGroups[0]).to.not.have.property('position');
+				expect(result.characterGroups.length).to.equal(1);
+				expect(result.characterGroups[0].name).to.be.null;
+				expect(result.characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -500,32 +490,22 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					playtext: {
 						writerGroups: [
-							{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-							{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+							{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 						],
 						characterGroups: [
-							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 							{ name: '', characters: [{ name: 'Malene' }] }
 						]
 					}
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.playtext.writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtext.writerGroups.length).to.equal(1);
 				expect(result.playtext.writerGroups[0].name).to.be.null;
-				expect(result.playtext.writerGroups[0]).to.have.property('position');
-				expect(result.playtext.writerGroups[0].position).to.equal(0);
-				expect(result.playtext.writerGroups[1].name).to.equal('version by');
-				expect(result.playtext.writerGroups[1]).to.have.property('position');
-				expect(result.playtext.writerGroups[1].position).to.equal(1);
-				expect(result.playtext.characterGroups.length).to.equal(2);
-				expect(result.playtext.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.playtext.characterGroups[0]).to.have.property('position');
-				expect(result.playtext.characterGroups[0].position).to.equal(0);
-				expect(result.playtext.characterGroups[1].name).to.be.null;
-				expect(result.playtext.characterGroups[1]).to.have.property('position');
-				expect(result.playtext.characterGroups[1].position).to.equal(1);
+				expect(result.playtext.writerGroups[0]).to.not.have.property('position');
+				expect(result.playtext.characterGroups.length).to.equal(1);
+				expect(result.playtext.characterGroups[0].name).to.be.null;
+				expect(result.playtext.characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -697,11 +677,9 @@ describe('Prepare As Params module', () => {
 					playtexts: [
 						{
 							writerGroups: [
-								{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
-								{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+								{ name: '', writers: [{ name: 'Henrik Ibsen' }] }
 							],
 							characterGroups: [
-								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 								{ name: '', characters: [{ name: 'Malene' }] }
 							]
 						}
@@ -709,21 +687,13 @@ describe('Prepare As Params module', () => {
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.callCount).to.equal(4);
-				expect(result.playtexts[0].writerGroups.length).to.equal(2);
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.playtexts[0].writerGroups.length).to.equal(1);
 				expect(result.playtexts[0].writerGroups[0].name).to.be.null;
-				expect(result.playtexts[0].writerGroups[0]).to.have.property('position');
-				expect(result.playtexts[0].writerGroups[0].position).to.equal(0);
-				expect(result.playtexts[0].writerGroups[1].name).to.equal('version by');
-				expect(result.playtexts[0].writerGroups[1]).to.have.property('position');
-				expect(result.playtexts[0].writerGroups[1].position).to.equal(1);
-				expect(result.playtexts[0].characterGroups.length).to.equal(2);
-				expect(result.playtexts[0].characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.playtexts[0].characterGroups[0]).to.have.property('position');
-				expect(result.playtexts[0].characterGroups[0].position).to.equal(0);
-				expect(result.playtexts[0].characterGroups[1].name).to.be.null;
-				expect(result.playtexts[0].characterGroups[1]).to.have.property('position');
-				expect(result.playtexts[0].characterGroups[1].position).to.equal(1);
+				expect(result.playtexts[0].writerGroups[0]).to.not.have.property('position');
+				expect(result.playtexts[0].characterGroups.length).to.equal(1);
+				expect(result.playtexts[0].characterGroups[0].name).to.be.null;
+				expect(result.playtexts[0].characterGroups[0]).to.not.have.property('position');
 
 			});
 
