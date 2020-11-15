@@ -57,9 +57,15 @@ describe('WriterGroup model', () => {
 				const props = {
 					name: 'version by',
 					writers: [
-						{ name: 'David Eldridge' },
-						{ name: '' },
-						{ name: ' ' }
+						{
+							name: 'David Eldridge'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
 					]
 				};
 				const instance = createInstance(props);
