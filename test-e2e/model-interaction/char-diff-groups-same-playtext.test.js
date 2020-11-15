@@ -480,6 +480,10 @@ describe('Character with multiple appearances in the same playtext in different 
 				{
 					model: 'characterGroup',
 					name: '2011',
+					position: {
+						high: 0,
+						low: 0
+					},
 					characters: [
 						{
 							model: 'character',
@@ -498,6 +502,10 @@ describe('Character with multiple appearances in the same playtext in different 
 				{
 					model: 'characterGroup',
 					name: '1990',
+					position: {
+						high: 0,
+						low: 1
+					},
 					characters: [
 						{
 							model: 'character',
@@ -522,6 +530,10 @@ describe('Character with multiple appearances in the same playtext in different 
 				{
 					model: 'characterGroup',
 					name: '1945',
+					position: {
+						high: 0,
+						low: 2
+					},
 					characters: [
 						{
 							model: 'character',
