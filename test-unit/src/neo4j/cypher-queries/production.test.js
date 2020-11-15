@@ -117,7 +117,7 @@ describe('Cypher Queries Production module', () => {
 								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END
-					) + [{ name: '', characterName: '', characterDifferentiator: '', qualifier: '' }] AS roles
+					) + [{}] AS roles
 
 				RETURN
 					'production' AS model,
@@ -263,7 +263,7 @@ describe('Cypher Queries Production module', () => {
 								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END
-					) + [{ name: '', characterName: '', characterDifferentiator: '', qualifier: '' }] AS roles
+					) + [{}] AS roles
 
 				RETURN
 					'production' AS model,
