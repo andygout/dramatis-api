@@ -289,7 +289,7 @@ describe('Different characters with the same name from different playtexts', () 
 					uuid: CHIRON_CHARACTER_UUID,
 					name: 'Chiron',
 					qualifier: null
-				},
+				}
 
 			];
 

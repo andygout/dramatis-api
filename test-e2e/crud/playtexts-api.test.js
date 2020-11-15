@@ -350,7 +350,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							writers: [
 								{
 									name: 'David Eldridge',
-									differentiator: '1',
+									differentiator: '1'
 								}
 							]
 						}
@@ -729,7 +729,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							writers: [
 								{
 									name: 'Benedict Andrews',
-									differentiator: '1',
+									differentiator: '1'
 								}
 							]
 						}
