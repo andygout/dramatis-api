@@ -38,15 +38,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -109,15 +115,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -154,15 +166,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -203,15 +221,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -255,7 +279,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				differentiator: '',
 				errors: {},
 				writerGroups: [],
-				characters: []
+				characterGroups: []
 			};
 
 			expect(response).to.have.status(200);
@@ -331,27 +355,29 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							]
 						}
 					],
-					characters: [
+					characterGroups: [
 						{
-							name: 'John Gabriel Borkman',
-							underlyingName: 'Mr John Gabriel Borkman',
-							differentiator: '1',
-							qualifier: 'foo',
-							group: 'The Borkmans'
-						},
-						{
-							name: 'Gunhild Borkman',
-							underlyingName: 'Mrs Gunhild Borkman',
-							differentiator: '1',
-							qualifier: 'bar',
-							group: 'The Borkmans'
-						},
-						{
-							name: 'Erhart Borkman',
-							underlyingName: 'Mr Erhart Borkman',
-							differentiator: '1',
-							qualifier: 'baz',
-							group: 'The Borkmans'
+							name: 'The Borkmans',
+							characters: [
+								{
+									name: 'John Gabriel Borkman',
+									underlyingName: 'Mr John Gabriel Borkman',
+									differentiator: '1',
+									qualifier: 'foo'
+								},
+								{
+									name: 'Gunhild Borkman',
+									underlyingName: 'Mrs Gunhild Borkman',
+									differentiator: '1',
+									qualifier: 'bar'
+								},
+								{
+									name: 'Erhart Borkman',
+									underlyingName: 'Mr Erhart Borkman',
+									differentiator: '1',
+									qualifier: 'baz'
+								}
+							]
 						}
 					]
 				});
@@ -415,42 +441,60 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
-						name: 'John Gabriel Borkman',
-						underlyingName: 'Mr John Gabriel Borkman',
-						differentiator: '1',
-						qualifier: 'foo',
-						group: 'The Borkmans',
-						errors: {}
+						model: 'characterGroup',
+						name: 'The Borkmans',
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: 'John Gabriel Borkman',
+								underlyingName: 'Mr John Gabriel Borkman',
+								differentiator: '1',
+								qualifier: 'foo',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Gunhild Borkman',
+								underlyingName: 'Mrs Gunhild Borkman',
+								differentiator: '1',
+								qualifier: 'bar',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Erhart Borkman',
+								underlyingName: 'Mr Erhart Borkman',
+								differentiator: '1',
+								qualifier: 'baz',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					},
 					{
-						model: 'character',
-						name: 'Gunhild Borkman',
-						underlyingName: 'Mrs Gunhild Borkman',
-						differentiator: '1',
-						qualifier: 'bar',
-						group: 'The Borkmans',
-						errors: {}
-					},
-					{
-						model: 'character',
-						name: 'Erhart Borkman',
-						underlyingName: 'Mr Erhart Borkman',
-						differentiator: '1',
-						qualifier: 'baz',
-						group: 'The Borkmans',
-						errors: {}
-					},
-					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -593,42 +637,60 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
-						name: 'John Gabriel Borkman',
-						underlyingName: 'Mr John Gabriel Borkman',
-						differentiator: '1',
-						qualifier: 'foo',
-						group: 'The Borkmans',
-						errors: {}
+						model: 'characterGroup',
+						name: 'The Borkmans',
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: 'John Gabriel Borkman',
+								underlyingName: 'Mr John Gabriel Borkman',
+								differentiator: '1',
+								qualifier: 'foo',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Gunhild Borkman',
+								underlyingName: 'Mrs Gunhild Borkman',
+								differentiator: '1',
+								qualifier: 'bar',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Erhart Borkman',
+								underlyingName: 'Mr Erhart Borkman',
+								differentiator: '1',
+								qualifier: 'baz',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					},
 					{
-						model: 'character',
-						name: 'Gunhild Borkman',
-						underlyingName: 'Mrs Gunhild Borkman',
-						differentiator: '1',
-						qualifier: 'bar',
-						group: 'The Borkmans',
-						errors: {}
-					},
-					{
-						model: 'character',
-						name: 'Erhart Borkman',
-						underlyingName: 'Mr Erhart Borkman',
-						differentiator: '1',
-						qualifier: 'baz',
-						group: 'The Borkmans',
-						errors: {}
-					},
-					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -671,27 +733,29 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							]
 						}
 					],
-					characters: [
+					characterGroups: [
 						{
-							name: 'Olga',
-							underlyingName: 'Olga Sergeyevna Prozorova',
-							differentiator: '1',
-							qualifier: 'foo',
-							group: 'The Prozorovs'
-						},
-						{
-							name: 'Maria',
-							underlyingName: 'Maria Sergeyevna Kulygina',
-							differentiator: '1',
-							qualifier: 'bar',
-							group: 'The Prozorovs'
-						},
-						{
-							name: 'Irina',
-							underlyingName: 'Irina Sergeyevna Prozorova',
-							differentiator: '1',
-							qualifier: 'baz',
-							group: 'The Prozorovs'
+							name: 'The Prozorovs',
+							characters: [
+								{
+									name: 'Olga',
+									underlyingName: 'Olga Sergeyevna Prozorova',
+									differentiator: '1',
+									qualifier: 'foo'
+								},
+								{
+									name: 'Maria',
+									underlyingName: 'Maria Sergeyevna Kulygina',
+									differentiator: '1',
+									qualifier: 'bar'
+								},
+								{
+									name: 'Irina',
+									underlyingName: 'Irina Sergeyevna Prozorova',
+									differentiator: '1',
+									qualifier: 'baz'
+								}
+							]
 						}
 					]
 				});
@@ -755,42 +819,60 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
-						name: 'Olga',
-						underlyingName: 'Olga Sergeyevna Prozorova',
-						differentiator: '1',
-						qualifier: 'foo',
-						group: 'The Prozorovs',
-						errors: {}
+						model: 'characterGroup',
+						name: 'The Prozorovs',
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: 'Olga',
+								underlyingName: 'Olga Sergeyevna Prozorova',
+								differentiator: '1',
+								qualifier: 'foo',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Maria',
+								underlyingName: 'Maria Sergeyevna Kulygina',
+								differentiator: '1',
+								qualifier: 'bar',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: 'Irina',
+								underlyingName: 'Irina Sergeyevna Prozorova',
+								differentiator: '1',
+								qualifier: 'baz',
+								errors: {}
+							},
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					},
 					{
-						model: 'character',
-						name: 'Maria',
-						underlyingName: 'Maria Sergeyevna Kulygina',
-						differentiator: '1',
-						qualifier: 'bar',
-						group: 'The Prozorovs',
-						errors: {}
-					},
-					{
-						model: 'character',
-						name: 'Irina',
-						underlyingName: 'Irina Sergeyevna Prozorova',
-						differentiator: '1',
-						qualifier: 'baz',
-						group: 'The Prozorovs',
-						errors: {}
-					},
-					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -901,15 +983,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						model: 'character',
+						model: 'characterGroup',
 						name: '',
-						underlyingName: '',
-						differentiator: '',
-						qualifier: '',
-						group: '',
-						errors: {}
+						errors: {},
+						characters: [
+							{
+								model: 'character',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
 					}
 				]
 			};
@@ -933,7 +1021,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				differentiator: '1',
 				errors: {},
 				writerGroups: [],
-				characters: []
+				characterGroups: []
 			};
 
 			expect(response).to.have.status(200);

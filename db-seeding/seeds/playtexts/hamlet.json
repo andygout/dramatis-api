@@ -9,89 +9,93 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Barnardo"
-		},
-		{
-			"name": "Francisco"
-		},
-		{
-			"name": "Captain in Fortinbras' Army"
-		},
-		{
-			"name": "Horatio"
-		},
-		{
-			"name": "Marcellus"
-		},
-		{
-			"name": "King Hamlet"
-		},
-		{
-			"name": "Player King"
-		},
-		{
-			"name": "Claudius",
-			"differentiator": "1"
-		},
-		{
-			"name": "Voltemand"
-		},
-		{
-			"name": "Cornelius"
-		},
-		{
-			"name": "Laertes"
-		},
-		{
-			"name": "Polonius"
-		},
-		{
-			"name": "Gravedigger"
-		},
-		{
-			"name": "Hamlet"
-		},
-		{
-			"name": "Gertrude"
-		},
-		{
-			"name": "Ophelia"
-		},
-		{
-			"name": "Reynaldo"
-		},
-		{
-			"name": "Rosencrantz"
-		},
-		{
-			"name": "Guildenstern"
-		},
-		{
-			"name": "Player Queen"
-		},
-		{
-			"name": "Lucianus"
-		},
-		{
-			"name": "English Ambassador"
-		},
-		{
-			"name": "Musician"
-		},
-		{
-			"name": "Fortinbras"
-		},
-		{
-			"name": "Osrick"
-		},
-		{
-			"name": "Messenger",
-			"differentiator": "Hamlet"
-		},
-		{
-			"name": "Priest"
+			"characters": [
+				{
+					"name": "Barnardo"
+				},
+				{
+					"name": "Francisco"
+				},
+				{
+					"name": "Captain in Fortinbras' Army"
+				},
+				{
+					"name": "Horatio"
+				},
+				{
+					"name": "Marcellus"
+				},
+				{
+					"name": "King Hamlet"
+				},
+				{
+					"name": "Player King"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Voltemand"
+				},
+				{
+					"name": "Cornelius"
+				},
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Gravedigger"
+				},
+				{
+					"name": "Hamlet"
+				},
+				{
+					"name": "Gertrude"
+				},
+				{
+					"name": "Ophelia"
+				},
+				{
+					"name": "Reynaldo"
+				},
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "Player Queen"
+				},
+				{
+					"name": "Lucianus"
+				},
+				{
+					"name": "English Ambassador"
+				},
+				{
+					"name": "Musician"
+				},
+				{
+					"name": "Fortinbras"
+				},
+				{
+					"name": "Osrick"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Priest"
+				}
+			]
 		}
 	]
 }

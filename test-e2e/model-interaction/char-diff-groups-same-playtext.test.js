@@ -10,19 +10,19 @@ describe('Character with multiple appearances in the same playtext in different 
 
 	chai.use(chaiHttp);
 
-	const THREE_WINTERS_PLAYTEXT_UUID = '8';
-	const ALISA_KOS_CHARACTER_UUID = '9';
-	const MAŠA_KOS_CHARACTER_UUID = '10';
-	const ALEKSANDER_KING_CHARACTER_UUID = '12';
-	const ROSE_KING_CHARACTER_UUID = '14';
-	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '16';
-	const NATIONAL_THEATRE_UUID = '18';
-	const SIOBHAN_FINNERAN_PERSON_UUID = '19';
-	const JO_HERBERT_PERSON_UUID = '20';
-	const JAMES_LAURENSON_PERSON_UUID = '21';
-	const JODIE_MCNEE_PERSON_UUID = '22';
-	const ALEX_PRICE_PERSON_UUID = '23';
-	const BEBE_SANDERS_PERSON_UUID = '24';
+	const THREE_WINTERS_PLAYTEXT_UUID = '5';
+	const ALISA_KOS_CHARACTER_UUID = '6';
+	const MAŠA_KOS_CHARACTER_UUID = '7';
+	const ALEKSANDER_KING_CHARACTER_UUID = '8';
+	const ROSE_KING_CHARACTER_UUID = '9';
+	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '10';
+	const NATIONAL_THEATRE_UUID = '12';
+	const SIOBHAN_FINNERAN_PERSON_UUID = '13';
+	const JO_HERBERT_PERSON_UUID = '14';
+	const JAMES_LAURENSON_PERSON_UUID = '15';
+	const JODIE_MCNEE_PERSON_UUID = '16';
+	const ALEX_PRICE_PERSON_UUID = '17';
+	const BEBE_SANDERS_PERSON_UUID = '18';
 
 	let alisaKosCharacter;
 	let mašaKosCharacter;
@@ -51,34 +51,42 @@ describe('Character with multiple appearances in the same playtext in different 
 			.post('/playtexts')
 			.send({
 				name: '3 Winters',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Alisa Kos',
-						group: '2011'
+						name: '2011',
+						characters: [
+							{
+								name: 'Alisa Kos'
+							},
+							{
+								name: 'Maša Kos'
+							}
+						]
 					},
 					{
-						name: 'Maša Kos',
-						group: '2011'
+						name: '1990',
+						characters: [
+							{
+								name: 'Maša Kos'
+							},
+							{
+								name: 'Aleksander King'
+							},
+							{
+								name: 'Alisa Kos'
+							}
+						]
 					},
 					{
-						name: 'Maša Kos',
-						group: '1990'
-					},
-					{
-						name: 'Aleksander King',
-						group: '1990'
-					},
-					{
-						name: 'Alisa Kos',
-						group: '1990'
-					},
-					{
-						name: 'Rose King',
-						group: '1945'
-					},
-					{
-						name: 'Aleksander King',
-						group: '1945'
+						name: '1945',
+						characters: [
+							{
+								name: 'Rose King'
+							},
+							{
+								name: 'Aleksander King'
+							}
+						]
 					}
 				]
 			});

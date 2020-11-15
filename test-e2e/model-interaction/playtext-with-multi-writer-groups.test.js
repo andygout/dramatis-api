@@ -67,9 +67,13 @@ describe('Playtext with multiple writer groups', () => {
 						]
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						name: 'Peer Gynt'
+						characters: [
+							{
+								name: 'Peer Gynt'
+							}
+						]
 					}
 				]
 			});

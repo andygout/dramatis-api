@@ -2,15 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Character, WriterGroup } from '../../../src/models';
+import { CharacterGroup, WriterGroup } from '../../../src/models';
 
 describe('Playtext model', () => {
 
 	let stubs;
 
-	const CharacterStub = function () {
+	const CharacterGroupStub = function () {
 
-		return createStubInstance(Character);
+		return createStubInstance(CharacterGroup);
 
 	};
 
@@ -26,11 +26,8 @@ describe('Playtext model', () => {
 			getDuplicateBaseInstanceIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
-			getDuplicateCharacterIndicesModule: {
-				getDuplicateCharacterIndices: stub().returns([])
-			},
 			models: {
-				Character: CharacterStub,
+				CharacterGroup: CharacterGroupStub,
 				WriterGroup: WriterGroupStub
 			}
 		};
@@ -40,7 +37,6 @@ describe('Playtext model', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
 			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
-			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -163,24 +159,24 @@ describe('Playtext model', () => {
 
 		});
 
-		describe('characters property', () => {
+		describe('characterGroups property', () => {
 
 			context('instance is subject', () => {
 
 				it('assigns empty array if absent from props', () => {
 
 					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.characters).to.deep.equal([]);
+					expect(instance.characterGroups).to.deep.equal([]);
 
 				});
 
-				it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
+				it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						characters: [
+						characterGroups: [
 							{
-								name: 'Hamlet'
+								name: 'Court of Elsinore'
 							},
 							{
 								name: ''
@@ -191,10 +187,10 @@ describe('Playtext model', () => {
 						]
 					};
 					const instance = createInstance(props);
-					expect(instance.characters.length).to.equal(3);
-					expect(instance.characters[0] instanceof Character).to.be.true;
-					expect(instance.characters[1] instanceof Character).to.be.true;
-					expect(instance.characters[2] instanceof Character).to.be.true;
+					expect(instance.characterGroups.length).to.equal(3);
+					expect(instance.characterGroups[0] instanceof CharacterGroup).to.be.true;
+					expect(instance.characterGroups[1] instanceof CharacterGroup).to.be.true;
+					expect(instance.characterGroups[2] instanceof CharacterGroup).to.be.true;
 
 				});
 
@@ -209,7 +205,7 @@ describe('Playtext model', () => {
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('characters');
+					expect(instance).not.to.have.property('characterGroups');
 
 				});
 
@@ -217,15 +213,15 @@ describe('Playtext model', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						characters: [
+						characterGroups: [
 							{
-								name: 'Hamlet'
+								name: 'Court of Elsinore'
 							}
 						],
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('characters');
+					expect(instance).not.to.have.property('characterGroups');
 
 				});
 
@@ -246,9 +242,9 @@ describe('Playtext model', () => {
 						name: 'version by'
 					}
 				],
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
+						name: 'Court of Elsinore'
 					}
 				]
 			};
@@ -261,43 +257,24 @@ describe('Playtext model', () => {
 				instance.validateDifferentiator,
 				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.writerGroups[0].runInputValidations,
-				stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices,
-				instance.characters[0].validateName,
-				instance.characters[0].validateUnderlyingName,
-				instance.characters[0].validateDifferentiator,
-				instance.characters[0].validateQualifier,
-				instance.characters[0].validateGroup,
-				instance.characters[0].validateCharacterNameUnderlyingNameDisparity,
-				instance.characters[0].validateUniquenessInGroup
+				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.characterGroups[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
-				instance.writerGroups
-			)).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices
+				.firstCall.calledWithExactly(instance.writerGroups)
+			).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices
+				.secondCall.calledWithExactly(
+			instance.characterGroups)).to.be.true;
 			expect(instance.writerGroups[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.writerGroups[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledWithExactly(
-				instance.characters
-			)).to.be.true;
-			expect(instance.characters[0].validateName.calledOnce).to.be.true;
-			expect(instance.characters[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.characters[0].validateUnderlyingName.calledOnce).to.be.true;
-			expect(instance.characters[0].validateUnderlyingName.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.characters[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateQualifier.calledOnce).to.be.true;
-			expect(instance.characters[0].validateQualifier.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateGroup.calledOnce).to.be.true;
-			expect(instance.characters[0].validateGroup.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateCharacterNameUnderlyingNameDisparity.calledOnce).to.be.true;
-			expect(instance.characters[0].validateCharacterNameUnderlyingNameDisparity.calledWithExactly()).to.be.true;
-			expect(instance.characters[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.characters[0].validateUniquenessInGroup.calledWithExactly(
+			expect(instance.characterGroups[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.characterGroups[0].runInputValidations.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
 

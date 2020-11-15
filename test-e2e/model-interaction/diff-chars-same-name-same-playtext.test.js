@@ -41,17 +41,21 @@ describe('Different characters with the same name from the same playtext', () =>
 			.post('/playtexts')
 			.send({
 				name: 'Julius Caesar',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Cinna',
-						differentiator: '1'
-					},
-					{
-						name: 'Volumnius'
-					},
-					{
-						name: 'Cinna',
-						differentiator: '2'
+						characters: [
+							{
+								name: 'Cinna',
+								differentiator: '1'
+							},
+							{
+								name: 'Volumnius'
+							},
+							{
+								name: 'Cinna',
+								differentiator: '2'
+							}
+						]
 					}
 				]
 			});

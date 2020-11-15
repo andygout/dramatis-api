@@ -9,195 +9,189 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Julius Caesar",
-			"group": ""
+			"characters": [
+				{
+					"name": "Julius Caesar"
+				}
+			]
 		},
 		{
-			"name": "Octavius Caesar",
-			"group": "Triumvirs after Caesar's death"
+			"name": "Triumvirs after Caesar's death",
+			"characters": [
+				{
+					"name": "Octavius Caesar"
+				},
+				{
+					"name": "Mark Antony"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
 		},
 		{
-			"name": "Mark Antony",
-			"group": "Triumvirs after Caesar's death"
+			"name": "Conspirators against Caesar",
+			"characters": [
+				{
+					"name": "Marcus Brutus"
+				},
+				{
+					"name": "Caius Cassius"
+				},
+				{
+					"name": "Casca"
+				},
+				{
+					"name": "Decius Brutus"
+				},
+				{
+					"name": "Cinna",
+					"differentiator": "1"
+				},
+				{
+					"name": "Metellus Cimber"
+				},
+				{
+					"name": "Trebonius"
+				},
+				{
+					"name": "Caius Ligarius"
+				}
+			]
 		},
 		{
-			"name": "Lepidus",
-			"group": "Triumvirs after Caesar's death"
+			"name": "Tribunes",
+			"characters": [
+				{
+					"name": "Flavius"
+				},
+				{
+					"name": "Marullus"
+				}
+			]
 		},
 		{
-			"name": "Marcus Brutus",
-			"group": "Conspirators against Caesar"
+			"name": "Roman Senate Senators",
+			"characters": [
+				{
+					"name": "Cicero"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Popilius Lena"
+				}
+			]
 		},
 		{
-			"name": "Caius Cassius",
-			"group": "Conspirators against Caesar"
+			"name": "Citizens",
+			"characters": [
+				{
+					"name": "Calphurnia"
+				},
+				{
+					"name": "Portia"
+				},
+				{
+					"name": "Soothsayer"
+				},
+				{
+					"name": "Artemidorus"
+				},
+				{
+					"name": "Cinna",
+					"differentiator": "2"
+				},
+				{
+					"name": "Cobbler"
+				},
+				{
+					"name": "Carpenter"
+				},
+				{
+					"name": "Poet"
+				},
+				{
+					"name": "Lucius",
+					"differentiator": "2"
+				}
+			]
 		},
 		{
-			"name": "Casca",
-			"group": "Conspirators against Caesar"
+			"name": "Loyal to Brutus and Cassius",
+			"characters": [
+				{
+					"name": "Volumnius"
+				},
+				{
+					"name": "Titinius"
+				},
+				{
+					"name": "Young Cato"
+				},
+				{
+					"name": "Messala"
+				},
+				{
+					"name": "Varro"
+				},
+				{
+					"name": "Clitus"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Dardanius"
+				},
+				{
+					"name": "Strato"
+				},
+				{
+					"name": "Lucilius"
+				},
+				{
+					"name": "Pindarus"
+				}
+			]
 		},
 		{
-			"name": "Decius Brutus",
-			"group": "Conspirators against Caesar"
-		},
-		{
-			"name": "Cinna",
-			"differentiator": "1",
-			"group": "Conspirators against Caesar"
-		},
-		{
-			"name": "Metellus Cimber",
-			"group": "Conspirators against Caesar"
-		},
-		{
-			"name": "Trebonius",
-			"group": "Conspirators against Caesar"
-		},
-		{
-			"name": "Caius Ligarius",
-			"group": "Conspirators against Caesar"
-		},
-		{
-			"name": "Flavius",
-			"group": "Tribunes"
-		},
-		{
-			"name": "Marullus",
-			"group": "Tribunes"
-		},
-		{
-			"name": "Cicero",
-			"group": "Roman Senate Senators"
-		},
-		{
-			"name": "Publius",
-			"differentiator": "2",
-			"group": "Roman Senate Senators"
-		},
-		{
-			"name": "Popilius Lena",
-			"group": "Roman Senate Senators"
-		},
-		{
-			"name": "Calphurnia",
-			"group": "Citizens"
-		},
-		{
-			"name": "Portia",
-			"group": "Citizens"
-		},
-		{
-			"name": "Soothsayer",
-			"group": "Citizens"
-		},
-		{
-			"name": "Artemidorus",
-			"group": "Citizens"
-		},
-		{
-			"name": "Cinna",
-			"differentiator": "2",
-			"group": "Citizens"
-		},
-		{
-			"name": "Cobbler",
-			"group": "Citizens"
-		},
-		{
-			"name": "Carpenter",
-			"group": "Citizens"
-		},
-		{
-			"name": "Poet",
-			"group": "Citizens"
-		},
-		{
-			"name": "Lucius",
-			"differentiator": "2",
-			"group": "Citizens"
-		},
-		{
-			"name": "Volumnius",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Titinius",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Young Cato",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Messala",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Varro",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Clitus",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Claudius",
-			"differentiator": "2",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Dardanius",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Strato",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Lucilius",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Pindarus",
-			"group": "Loyal to Brutus and Cassius"
-		},
-		{
-			"name": "Servant to Julius Caesar",
-			"group": "Other"
-		},
-		{
-			"name": "Servant to Mark Antony",
-			"group": "Other"
-		},
-		{
-			"name": "Servant to Octavius Caesar",
-			"group": "Other"
-		},
-		{
-			"name": "Messenger",
-			"differentiator": "Julius Caesar",
-			"group": "Other"
-		},
-		{
-			"name": "Senators",
-			"differentiator": "Julius Caesar",
-			"group": "Other"
-		},
-		{
-			"name": "Soldiers",
-			"differentiator": "Julius Caesar",
-			"group": "Other"
-		},
-		{
-			"name": "Plebeians",
-			"group": "Other"
-		},
-		{
-			"name": "Attendants",
-			"differentiator": "Julius Caesar",
-			"group": "Other"
+			"name": "Other",
+			"characters": [
+				{
+					"name": "Servant to Julius Caesar"
+				},
+				{
+					"name": "Servant to Mark Antony"
+				},
+				{
+					"name": "Servant to Octavius Caesar"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Plebeians"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Julius Caesar"
+				}
+			]
 		}
 	]
 }

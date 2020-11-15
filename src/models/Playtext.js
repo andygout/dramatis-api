@@ -1,7 +1,6 @@
 import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-base-instance-indices';
-import { getDuplicateCharacterIndices } from '../lib/get-duplicate-character-indices';
 import Base from './Base';
-import { Character, WriterGroup } from '.';
+import { CharacterGroup, WriterGroup } from '.';
 
 export default class Playtext extends Base {
 
@@ -9,7 +8,7 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		const { uuid, differentiator, writerGroups, characters, isAssociation } = props;
+		const { uuid, differentiator, writerGroups, characterGroups, isAssociation } = props;
 
 		this.model = 'playtext';
 		this.uuid = uuid;
@@ -21,8 +20,8 @@ export default class Playtext extends Base {
 				? writerGroups.map(writerGroup => new WriterGroup(writerGroup))
 				: [];
 
-			this.characters = characters
-				? characters.map(character => new Character({ ...character, isAssociation: true }))
+			this.characterGroups = characterGroups
+				? characterGroups.map(characterGroup => new CharacterGroup(characterGroup))
 				: [];
 
 		}
@@ -41,25 +40,11 @@ export default class Playtext extends Base {
 			writerGroup.runInputValidations({ isDuplicate: duplicateWriterGroupIndices.includes(index) })
 		);
 
-		const duplicateCharacterIndices = getDuplicateCharacterIndices(this.characters);
+		const duplicateCharacterGroupIndices = getDuplicateBaseInstanceIndices(this.characterGroups);
 
-		this.characters.forEach((character, index) => {
-
-			character.validateName({ isRequired: false });
-
-			character.validateUnderlyingName();
-
-			character.validateDifferentiator();
-
-			character.validateQualifier();
-
-			character.validateGroup();
-
-			character.validateCharacterNameUnderlyingNameDisparity();
-
-			character.validateUniquenessInGroup({ isDuplicate: duplicateCharacterIndices.includes(index) });
-
-		});
+		this.characterGroups.forEach((characterGroup, index) =>
+			characterGroup.runInputValidations({ isDuplicate: duplicateCharacterGroupIndices.includes(index) })
+		);
 
 	}
 

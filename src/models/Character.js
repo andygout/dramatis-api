@@ -6,7 +6,7 @@ export default class Character extends Base {
 
 		super(props);
 
-		const { uuid, differentiator, underlyingName, qualifier, group, isAssociation } = props;
+		const { uuid, differentiator, underlyingName, qualifier, isAssociation } = props;
 
 		this.model = 'character';
 		this.uuid = uuid;
@@ -17,24 +17,13 @@ export default class Character extends Base {
 
 		this.differentiator = differentiator?.trim() || '';
 
-		if (isAssociation) {
-
-			this.qualifier = qualifier?.trim() || '';
-			this.group = group?.trim() || '';
-
-		}
+		if (isAssociation) this.qualifier = qualifier?.trim() || '';
 
 	}
 
 	validateUnderlyingName () {
 
 		this.validateStringForProperty('underlyingName', { isRequired: false });
-
-	}
-
-	validateGroup () {
-
-		this.validateStringForProperty('group', { isRequired: false });
 
 	}
 

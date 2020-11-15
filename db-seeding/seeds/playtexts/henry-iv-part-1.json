@@ -9,141 +9,134 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "King Henry IV",
-			"group": "Of the King's party"
+			"name": "Of the King's party",
+			"characters": [
+				{
+					"name": "King Henry IV"
+				},
+				{
+					"name": "Henry, Prince of Wales",
+					"underlyingName": "King Henry V"
+				},
+				{
+					"name": "Lord John of Lancaster"
+				},
+				{
+					"name": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Sir Walter Blunt"
+				}
+			]
 		},
 		{
-			"name": "Henry, Prince of Wales",
-			"underlyingName": "King Henry V",
-			"group": "Of the King's party"
+			"name": "Eastcheap",
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Ned Poins"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Peto"
+				},
+				{
+					"name": "Mistress Quickly"
+				},
+				{
+					"name": "Francis"
+				},
+				{
+					"name": "Vintner"
+				},
+				{
+					"name": "Gadshill"
+				},
+				{
+					"name": "Carriers"
+				},
+				{
+					"name": "Ostler"
+				}
+			]
 		},
 		{
-			"name": "Lord John of Lancaster",
-			"group": "Of the King's party"
+			"name": "Rebels",
+			"characters": [
+				{
+					"name": "Henry Percy, Earl of Northumberland"
+				},
+				{
+					"name": "Thomas Percy, Earl of Worcester"
+				},
+				{
+					"name": "Harry Percy"
+				},
+				{
+					"name": "Edmund, Lord Mortimer"
+				},
+				{
+					"name": "Owen Glendower"
+				},
+				{
+					"name": "Archibald, Earl of Douglas"
+				},
+				{
+					"name": "Sir Richard Vernon, 8th Baron of Shipbrook"
+				},
+				{
+					"name": "Richard Scroop, Archbishop of York"
+				},
+				{
+					"name": "Sir Michael"
+				},
+				{
+					"name": "Lady Percy"
+				},
+				{
+					"name": "Lady Mortimer"
+				}
+			]
 		},
 		{
-			"name": "Ralph Neville, Earl of Westmorland",
-			"group": "Of the King's party"
-		},
-		{
-			"name": "Sir Walter Blunt",
-			"group": "Of the King's party"
-		},
-		{
-			"name": "Sir John Falstaff",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Ned Poins",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Bardolph",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Peto",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Mistress Quickly",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Francis",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Vintner",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Gadshill",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Carriers",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Ostler",
-			"group": "Eastcheap"
-		},
-		{
-			"name": "Henry Percy, Earl of Northumberland",
-			"group": "Rebels"
-		},
-		{
-			"name": "Thomas Percy, Earl of Worcester",
-			"group": "Rebels"
-		},
-		{
-			"name": "Harry Percy",
-			"group": "Rebels"
-		},
-		{
-			"name": "Edmund, Lord Mortimer",
-			"group": "Rebels"
-		},
-		{
-			"name": "Owen Glendower",
-			"group": "Rebels"
-		},
-		{
-			"name": "Archibald, Earl of Douglas",
-			"group": "Rebels"
-		},
-		{
-			"name": "Sir Richard Vernon, 8th Baron of Shipbrook",
-			"group": "Rebels"
-		},
-		{
-			"name": "Richard Scroop, Archbishop of York",
-			"group": "Rebels"
-		},
-		{
-			"name": "Sir Michael",
-			"group": "Rebels"
-		},
-		{
-			"name": "Lady Percy",
-			"group": "Rebels"
-		},
-		{
-			"name": "Lady Mortimer",
-			"group": "Rebels"
-		},
-		{
-			"name": "Chamberlain"
-		},
-		{
-			"name": "Sheriff"
-		},
-		{
-			"name": "Travellers"
-		},
-		{
-			"name": "Servant to Hotspur"
-		},
-		{
-			"name": "Lords",
-			"differentiator": "Henry IV, Part 1"
-		},
-		{
-			"name": "Officers"
-		},
-		{
-			"name": "Drawers"
-		},
-		{
-			"name": "Messengers",
-			"differentiator": "Henry IV, Part 1"
-		},
-		{
-			"name": "Attendants",
-			"differentiator": "Henry IV, Part 1"
+			"characters": [
+				{
+					"name": "Chamberlain"
+				},
+				{
+					"name": "Sheriff"
+				},
+				{
+					"name": "Travellers"
+				},
+				{
+					"name": "Servant to Hotspur"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Henry IV, Part 1"
+				},
+				{
+					"name": "Officers"
+				},
+				{
+					"name": "Drawers"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Henry IV, Part 1"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry IV, Part 1"
+				}
+			]
 		}
 	]
 }

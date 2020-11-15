@@ -9,124 +9,106 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Saturninus",
-			"group": "Romans"
-		},
-		{
-			"name": "Bassianus",
-			"group": "Romans"
-		},
-		{
-			"name": "Titus Andronicus",
-			"group": "Romans"
-		},
-		{
-			"name": "Marcus Andronicus",
-			"group": "Romans"
-		},
-		{
-			"name": "Publius",
-			"differentiator": "1",
-			"group": "Romans"
-		},
-		{
-			"name": "Lucius",
-			"differentiator": "1",
-			"group": "Romans"
-		},
-		{
-			"name": "Quintus",
-			"group": "Romans"
-		},
-		{
-			"name": "Martius",
-			"group": "Romans"
-		},
-		{
-			"name": "Mutius",
-			"group": "Romans"
-		},
-		{
-			"name": "Lavinia",
-			"group": "Romans"
-		},
-		{
-			"name": "Young Lucius",
-			"group": "Romans"
-		},
-		{
-			"name": "Sempronius",
-			"group": "Romans"
-		},
-		{
-			"name": "Caius",
-			"group": "Romans"
-		},
-		{
-			"name": "Valentine",
-			"group": "Romans"
-		},
-		{
-			"name": "Æmilius",
-			"group": "Romans"
-		},
-		{
-			"name": "Tamora",
-			"group": "Goths"
-		},
-		{
-			"name": "Alarbus",
-			"group": "Goths"
-		},
-		{
-			"name": "Demetrius",
-			"differentiator": "2",
-			"group": "Goths"
-		},
-		{
-			"name": "Chiron",
-			"group": "Goths"
-		},
-		{
-			"name": "Aaron",
-			"group": "Goths"
-		},
-		{
-			"name": "Nurse",
-			"group": "Romans"
-		},
-		{
-			"name": "Clown",
-			"group": "Romans"
-		},
-		{
-			"name": "Messenger",
-			"differentiator": "Titus Andronicus",
-			"group": "Romans"
-		},
-		{
-			"name": "Senators",
-			"differentiator": "Titus Andronicus",
-			"group": "Romans"
-		},
-		{
-			"name": "Tribunes",
-			"group": "Romans"
-		},
-		{
-			"name": "Roman Soldiers",
-			"group": "Romans"
-		},
-		{
-			"name": "Attendants",
-			"differentiator": "Titus Andronicus",
-			"group": "Romans"
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Saturninus"
+				},
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Titus Andronicus"
+				},
+				{
+					"name": "Marcus Andronicus"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Lucius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Quintus"
+				},
+				{
+					"name": "Martius"
+				},
+				{
+					"name": "Mutius"
+				},
+				{
+					"name": "Lavinia"
+				},
+				{
+					"name": "Young Lucius"
+				},
+				{
+					"name": "Sempronius"
+				},
+				{
+					"name": "Caius"
+				},
+				{
+					"name": "Valentine"
+				},
+				{
+					"name": "Æmilius"
+				},
+				{
+					"name": "Nurse"
+				},
+				{
+					"name": "Clown"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Tribunes"
+				},
+				{
+					"name": "Roman Soldiers"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Titus Andronicus"
+				}
+			]
 		},
 		{
 			"name": "Goths",
-			"group": "Goths"
+			"characters": [
+				{
+					"name": "Tamora"
+				},
+				{
+					"name": "Alarbus"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Chiron"
+				},
+				{
+					"name": "Aaron"
+				},
+				{
+					"name": "Goths"
+				}
+			]
 		}
 	]
 }

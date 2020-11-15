@@ -273,7 +273,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ uuid: '' }, { uuid: '' }] };
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledTwice).to.be.true;
+				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
 				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
@@ -302,7 +302,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writerGroups, characterGroups) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -310,11 +310,15 @@ describe('Prepare As Params module', () => {
 					writerGroups: [
 						{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
 						{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+					],
+					characterGroups: [
+						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+						{ name: '', characters: [{ name: 'Malene' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.writerGroups.length).to.equal(2);
 				expect(result.writerGroups[0].name).to.be.null;
 				expect(result.writerGroups[0]).to.have.property('position');
@@ -322,16 +326,28 @@ describe('Prepare As Params module', () => {
 				expect(result.writerGroups[1].name).to.equal('version by');
 				expect(result.writerGroups[1]).to.have.property('position');
 				expect(result.writerGroups[1].position).to.equal(1);
+				expect(result.characterGroups.length).to.equal(2);
+				expect(result.characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.characterGroups[0]).to.have.property('position');
+				expect(result.characterGroups[0].position).to.equal(0);
+				expect(result.characterGroups[1].name).to.be.null;
+				expect(result.characterGroups[1]).to.have.property('position');
+				expect(result.characterGroups[1].position).to.equal(1);
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writers', () => {
+			it('filters out objects that do not have any non-empty string name writers/characters', () => {
 
 				const instance = {
 					writerGroups: [
 						{ name: '', writers: [{ name: '' }] },
 						{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
 						{ name: 'translation by', writers: [{ name: '' }] }
+					],
+					characterGroups: [
+						{ name: '', characters: [{ name: '' }] },
+						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+						{ name: 'The Foldals', characters: [{ name: '' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -340,6 +356,9 @@ describe('Prepare As Params module', () => {
 				expect(result.writerGroups.length).to.equal(1);
 				expect(result.writerGroups[0].name).to.equal('version by');
 				expect(result.writerGroups[0]).to.not.have.property('position');
+				expect(result.characterGroups.length).to.equal(1);
+				expect(result.characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.characterGroups[0]).to.not.have.property('position');
 
 			});
 
@@ -351,9 +370,7 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
 				cast: [
 					{ uuid: '', name: 'Foo', differentiator: '', qualifier: 'younger' },
@@ -365,7 +382,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
 			expect(result.cast[0].uuid).to.equal(result.cast[3].uuid);
 			expect(result.cast[1].uuid).to.equal(result.cast[4].uuid);
@@ -447,7 +464,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { playtext: { characters: [{ uuid: '' }, { uuid: '' }] } };
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledTwice).to.be.true;
+				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
 				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
@@ -476,7 +493,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writerGroups, characterGroups) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -485,12 +502,16 @@ describe('Prepare As Params module', () => {
 						writerGroups: [
 							{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
 							{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+						],
+						characterGroups: [
+							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+							{ name: '', characters: [{ name: 'Malene' }] }
 						]
 					}
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.playtext.writerGroups.length).to.equal(2);
 				expect(result.playtext.writerGroups[0].name).to.be.null;
 				expect(result.playtext.writerGroups[0]).to.have.property('position');
@@ -498,10 +519,17 @@ describe('Prepare As Params module', () => {
 				expect(result.playtext.writerGroups[1].name).to.equal('version by');
 				expect(result.playtext.writerGroups[1]).to.have.property('position');
 				expect(result.playtext.writerGroups[1].position).to.equal(1);
+				expect(result.playtext.characterGroups.length).to.equal(2);
+				expect(result.playtext.characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.playtext.characterGroups[0]).to.have.property('position');
+				expect(result.playtext.characterGroups[0].position).to.equal(0);
+				expect(result.playtext.characterGroups[1].name).to.be.null;
+				expect(result.playtext.characterGroups[1]).to.have.property('position');
+				expect(result.playtext.characterGroups[1].position).to.equal(1);
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writers', () => {
+			it('filters out objects that do not have any non-empty string name writers/characters', () => {
 
 				const instance = {
 					playtext: {
@@ -509,6 +537,11 @@ describe('Prepare As Params module', () => {
 							{ name: '', writers: [{ name: '' }] },
 							{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
 							{ name: 'translation by', writers: [{ name: '' }] }
+						],
+						characterGroups: [
+							{ name: '', characters: [{ name: '' }] },
+							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+							{ name: 'The Foldals', characters: [{ name: '' }] }
 						]
 					}
 				};
@@ -529,9 +562,7 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
 				playtext: {
 					characters: [
@@ -545,7 +576,7 @@ describe('Prepare As Params module', () => {
 				}
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
 			expect(result.playtext.characters[0].uuid).to.equal(result.playtext.characters[3].uuid);
 			expect(result.playtext.characters[1].uuid).to.equal(result.playtext.characters[4].uuid);
@@ -628,7 +659,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ roles: [{ uuid: '' }, { uuid: '' }] }] };
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledTwice).to.be.true;
+				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect((stubs.neo4jInt.getCall(0)).calledWithExactly(0)).to.be.true;
 				expect((stubs.neo4jInt.getCall(1)).calledWithExactly(1)).to.be.true;
@@ -658,7 +689,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in writerGroups array where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writerGroups, characterGroups) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -668,13 +699,17 @@ describe('Prepare As Params module', () => {
 							writerGroups: [
 								{ name: '', writers: [{ name: 'Henrik Ibsen' }] },
 								{ name: 'version by', writers: [{ name: 'David Eldridge' }] }
+							],
+							characterGroups: [
+								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+								{ name: '', characters: [{ name: 'Malene' }] }
 							]
 						}
 					]
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.notCalled).to.be.true;
-				expect(stubs.neo4jInt.calledTwice).to.be.true;
+				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.playtexts[0].writerGroups.length).to.equal(2);
 				expect(result.playtexts[0].writerGroups[0].name).to.be.null;
 				expect(result.playtexts[0].writerGroups[0]).to.have.property('position');
@@ -682,10 +717,17 @@ describe('Prepare As Params module', () => {
 				expect(result.playtexts[0].writerGroups[1].name).to.equal('version by');
 				expect(result.playtexts[0].writerGroups[1]).to.have.property('position');
 				expect(result.playtexts[0].writerGroups[1].position).to.equal(1);
+				expect(result.playtexts[0].characterGroups.length).to.equal(2);
+				expect(result.playtexts[0].characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.playtexts[0].characterGroups[0]).to.have.property('position');
+				expect(result.playtexts[0].characterGroups[0].position).to.equal(0);
+				expect(result.playtexts[0].characterGroups[1].name).to.be.null;
+				expect(result.playtexts[0].characterGroups[1]).to.have.property('position');
+				expect(result.playtexts[0].characterGroups[1].position).to.equal(1);
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writers', () => {
+			it('filters out objects that do not have any non-empty string name writers/characters', () => {
 
 				const instance = {
 					playtexts: [
@@ -694,6 +736,11 @@ describe('Prepare As Params module', () => {
 								{ name: '', writers: [{ name: '' }] },
 								{ name: 'version by', writers: [{ name: 'David Eldridge' }] },
 								{ name: 'translation by', writers: [{ name: '' }] }
+							],
+							characterGroups: [
+								{ name: '', characters: [{ name: '' }] },
+								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
+								{ name: 'The Foldals', characters: [{ name: '' }] }
 							]
 						}
 					]
@@ -704,20 +751,21 @@ describe('Prepare As Params module', () => {
 				expect(result.playtexts[0].writerGroups.length).to.equal(1);
 				expect(result.playtexts[0].writerGroups[0].name).to.equal('version by');
 				expect(result.playtexts[0].writerGroups[0]).to.not.have.property('position');
+				expect(result.playtexts[0].characterGroups.length).to.equal(1);
+				expect(result.playtexts[0].characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.playtexts[0].characterGroups[0]).to.not.have.property('position');
 
 			});
 
 		});
 
-		it('applies the same uuid value to items that will need to share the same database entry', () => {
+		it('applies the same uuid value to items in the same array that will need to share the same database entry', () => {
 
 			stubs.uuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
 				cast: [
 					{
@@ -733,11 +781,49 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.uuid.callCount).to.equal(6);
+			expect(stubs.uuid.callCount).to.equal(4);
 			expect(stubs.neo4jInt.callCount).to.equal(6);
 			expect(result.cast[0].roles[0].uuid).to.equal(result.cast[0].roles[3].uuid);
 			expect(result.cast[0].roles[1].uuid).to.equal(result.cast[0].roles[4].uuid);
 			expect(result.cast[0].roles[2].uuid).not.to.equal(result.cast[0].roles[5].uuid);
+
+		});
+
+		it('applies the same uuid value to items in different arrays that will need to share the same database entry', () => {
+
+			stubs.uuid
+				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
+				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
+				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
+			const instance = {
+				characterGroups: [
+					{
+						model: 'characterGroup',
+						name: 'Montagues',
+						characters: [
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }
+						]
+					},
+					{
+						model: 'characterGroup',
+						name: 'Capulets',
+						characters: [
+							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' },
+							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+						]
+					}
+				]
+			};
+			const result = prepareAsParams(instance);
+			expect(stubs.uuid.callCount).to.equal(4);
+			expect(stubs.neo4jInt.callCount).to.equal(8);
+			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[1].characters[0].uuid);
+			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[1].characters[1].uuid);
+			expect(result.characterGroups[0].characters[2].uuid).not.to.equal(result.characterGroups[1].characters[2].uuid);
 
 		});
 

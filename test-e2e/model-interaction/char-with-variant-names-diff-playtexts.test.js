@@ -57,12 +57,16 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/playtexts')
 			.send({
 				name: 'Hamlet',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
-					},
-					{
-						name: 'Claudius'
+						characters: [
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: 'Claudius'
+							}
+						]
 					}
 				]
 			});
@@ -71,12 +75,16 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/playtexts')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
-					},
-					{
-						name: 'Claudius'
+						characters: [
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: 'Claudius'
+							}
+						]
 					}
 				]
 			});
@@ -85,12 +93,16 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/playtexts')
 			.send({
 				name: 'Fortinbras',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
-					},
-					{
-						name: 'Claudius'
+						characters: [
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: 'Claudius'
+							}
+						]
 					}
 				]
 			});
@@ -99,12 +111,16 @@ describe('Character with variant names from productions of different playtexts',
 			.post('/playtexts')
 			.send({
 				name: 'Hamletmachine',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
-					},
-					{
-						name: 'Claudius'
+						characters: [
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: 'Claudius'
+							}
+						]
 					}
 				]
 			});

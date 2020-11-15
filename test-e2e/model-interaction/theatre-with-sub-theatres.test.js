@@ -63,9 +63,13 @@ describe('Theatre with sub-theatres', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Mother Courage and Her Children',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Mother Courage'
+						characters: [
+							{
+								name: 'Mother Courage'
+							}
+						]
 					}
 				]
 			});
@@ -74,9 +78,13 @@ describe('Theatre with sub-theatres', () => {
 			.post('/playtexts')
 			.send({
 				name: 'Richard II',
-				characters: [
+				characterGroups: [
 					{
-						name: 'King Richard II'
+						characters: [
+							{
+								name: 'King Richard II'
+							}
+						]
 					}
 				]
 			});

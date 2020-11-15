@@ -9,12 +9,16 @@
 			]
 		}
 	],
-	"characters": [
+	"characterGroups": [
 		{
-			"name": "Ben"
-		},
-		{
-			"name": "Gus"
+			"characters": [
+				{
+					"name": "Ben"
+				},
+				{
+					"name": "Gus"
+				}
+			]
 		}
 	]
 }

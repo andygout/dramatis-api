@@ -6,7 +6,11 @@ export default {
 			]
 		}
 	],
-	characters: [
-		{}
-	]
+	characterGroups: [
+		{
+			characters: [
+				{}
+			]
+		}
+	],
 };

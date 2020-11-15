@@ -10,60 +10,24 @@ describe('Get Duplicate Character Indices module', () => {
 
 			const result = getDuplicateCharacterIndices(
 				[
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: '', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: '', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'older', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: '', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: '', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'older', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'older', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'younger', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'older', group: '' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: '', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: '', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'older', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'older', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: '', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: '', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'younger', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'older', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: '', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: '', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'older', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'older', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: '', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: '', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'younger', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'older', group: '' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: '', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: '', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'younger', group: 'Goths' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'older', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'older', group: 'Goths' }
+					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
+					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: '' },
+					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: '' },
+					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
+					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
+					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'older' },
+					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'younger' },
+					{ name: 'Foo', underlyingName: '', differentiator: '2', qualifier: 'older' },
+					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' },
+					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: '' },
+					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: '' },
+					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'younger' },
+					{ name: 'Bar', underlyingName: '', differentiator: '', qualifier: 'older' },
+					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
+					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'younger' },
+					{ name: 'Bar', underlyingName: '', differentiator: '2', qualifier: 'older' }
 				]
 			);
 
@@ -79,14 +43,14 @@ describe('Get Duplicate Character Indices module', () => {
 
 			const result = getDuplicateCharacterIndices(
 				[
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: '', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Baz', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: '', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' },
-					{ name: 'Qux', underlyingName: '', differentiator: '1', qualifier: 'younger', group: 'Romans' }
+					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: '', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Baz', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: '', underlyingName: '', differentiator: '1', qualifier: 'younger' },
+					{ name: 'Qux', underlyingName: '', differentiator: '1', qualifier: 'younger' }
 				]
 			);
 
@@ -98,8 +62,8 @@ describe('Get Duplicate Character Indices module', () => {
 
 			const result = getDuplicateCharacterIndices(
 				[
-					{ name: 'Foo', underlyingName: 'Bar', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Foo', underlyingName: 'Baz', differentiator: '', qualifier: '', group: '' }
+					{ name: 'Foo', underlyingName: 'Bar', differentiator: '', qualifier: '' },
+					{ name: 'Foo', underlyingName: 'Baz', differentiator: '', qualifier: '' }
 				]
 			);
 
@@ -111,11 +75,11 @@ describe('Get Duplicate Character Indices module', () => {
 
 			const result = getDuplicateCharacterIndices(
 				[
-					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Bar', underlyingName: 'Foo', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Baz', underlyingName: '', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Qux', underlyingName: 'Quux', differentiator: '', qualifier: '', group: '' },
-					{ name: 'Quuz', underlyingName: 'Quux', differentiator: '', qualifier: '', group: '' }
+					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
+					{ name: 'Bar', underlyingName: 'Foo', differentiator: '', qualifier: '' },
+					{ name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
+					{ name: 'Qux', underlyingName: 'Quux', differentiator: '', qualifier: '' },
+					{ name: 'Quuz', underlyingName: 'Quux', differentiator: '', qualifier: '' }
 				]
 			);
 

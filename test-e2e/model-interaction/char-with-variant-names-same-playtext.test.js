@@ -49,18 +49,22 @@ describe('Character with variant names from productions of the same playtext', (
 			.post('/playtexts')
 			.send({
 				name: 'Hamlet',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Hamlet'
-					},
-					{
-						name: 'Claudius'
-					},
-					{
-						name: 'Ghost'
-					},
-					{
-						name: 'First Player'
+						characters: [
+							{
+								name: 'Hamlet'
+							},
+							{
+								name: 'Claudius'
+							},
+							{
+								name: 'Ghost'
+							},
+							{
+								name: 'First Player'
+							}
+						]
 					}
 				]
 			});

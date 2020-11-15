@@ -37,21 +37,25 @@ describe('Character portrayed with other roles', () => {
 			.post('/playtexts')
 			.send({
 				name: 'War Horse',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Major Nicholls'
-					},
-					{
-						name: 'Joey\'s mother'
-					},
-					{
-						name: 'Dr Schweyk'
-					},
-					{
-						name: 'Coco'
-					},
-					{
-						name: 'Geordie'
+						characters: [
+							{
+								name: 'Major Nicholls'
+							},
+							{
+								name: 'Joey\'s mother'
+							},
+							{
+								name: 'Dr Schweyk'
+							},
+							{
+								name: 'Coco'
+							},
+							{
+								name: 'Geordie'
+							}
+						]
 					}
 				]
 			});

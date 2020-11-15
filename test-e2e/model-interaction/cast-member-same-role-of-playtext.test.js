@@ -36,9 +36,13 @@ describe('Cast member performing same role in different productions of same play
 			.post('/playtexts')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				characters: [
+				characterGroups: [
 					{
-						name: 'Titania, Queen of the Fairies'
+						characters: [
+							{
+								name: 'Titania, Queen of the Fairies'
+							}
+						]
 					}
 				]
 			});

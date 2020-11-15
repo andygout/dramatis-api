@@ -23,7 +23,7 @@ const getShowQuery = () => `
 				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
 			END
 		) AS writerGroups
-		ORDER BY playtextRel.position
+		ORDER BY playtextRel.groupPosition, playtextRel.characterPosition
 
 	WITH
 		character,

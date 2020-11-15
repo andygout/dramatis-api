@@ -24,7 +24,6 @@ export const getDuplicateCharacterIndices = arrayOfObjects => {
 				isDuplicateName(object, comparisonObject) &&
 				object.differentiator === comparisonObject.differentiator &&
 				object.qualifier === comparisonObject.qualifier &&
-				object.group === comparisonObject.group &&
 				index !== comparisonIndex
 			);
 
