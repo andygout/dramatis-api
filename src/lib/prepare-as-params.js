@@ -15,6 +15,31 @@ export const prepareAsParams = instance => {
 
 	const recordedInstances = [];
 
+	const filterBasedOnNameProperty = key => item =>
+		!Object.prototype.hasOwnProperty.call(item, 'name')
+		|| !!item.name.length
+		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
+
+	const filterOutWriterGroupsWithNoNamedWriters = key => item =>
+		key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name);
+
+	const filterOutCharacterGroupsWithNoNamedCharacters = key => item =>
+		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);
+
+	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
+
+		if (isObjectWithKeys(item)) {
+
+			if (array.length > 1) item = { ...item, position: index };
+
+			return applyModifications(item);
+
+		}
+
+		return null;
+
+	};
+
 	const applyModifications = instance => {
 
 		return Object.keys(instance).reduce((accumulator, key) => {
@@ -27,26 +52,10 @@ export const prepareAsParams = instance => {
 
 				accumulator[key] =
 					instance[key]
-						.filter(item =>
-							!Object.prototype.hasOwnProperty.call(item, 'name')
-							|| !!item.name.length
-							|| EMPTY_NAME_EXCEPTION_KEYS.includes(key)
-						)
-						.filter(item => key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name))
-						.filter(item => key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name))
-						.map((item, index, array) => {
-
-							if (isObjectWithKeys(item)) {
-
-								if (array.length > 1) item = { ...item, position: index };
-
-								return applyModifications(item);
-
-							}
-
-							return null;
-
-						})
+						.filter(filterBasedOnNameProperty(key))
+						.filter(filterOutWriterGroupsWithNoNamedWriters(key))
+						.filter(filterOutCharacterGroupsWithNoNamedCharacters(key))
+						.map(applyPositionPropertyAndRecurseObject)
 						.filter(Boolean);
 
 			} else {
