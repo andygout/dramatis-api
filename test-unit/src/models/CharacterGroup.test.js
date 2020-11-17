@@ -17,7 +17,7 @@ describe('CharacterGroup model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateCharacterIndicesModule: {
+			getDuplicateIndicesModule: {
 				getDuplicateCharacterIndices: stub().returns([])
 			},
 			models: {
@@ -29,7 +29,7 @@ describe('CharacterGroup model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/CharacterGroup', {
-			'../lib/get-duplicate-character-indices': stubs.getDuplicateCharacterIndicesModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -99,7 +99,7 @@ describe('CharacterGroup model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
 				instance.characters[0].validateUnderlyingName,
 				instance.characters[0].validateDifferentiator,
@@ -109,8 +109,8 @@ describe('CharacterGroup model', () => {
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateCharacterIndicesModule.getDuplicateCharacterIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices.calledWithExactly(
 				instance.characters
 			)).to.be.true;
 			expect(instance.characters[0].validateName.calledOnce).to.be.true;

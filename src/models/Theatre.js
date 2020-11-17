@@ -1,4 +1,4 @@
-import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-base-instance-indices';
+import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 
 export default class Theatre extends Base {

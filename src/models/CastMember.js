@@ -1,4 +1,4 @@
-import { getDuplicateRoleIndices } from '../lib/get-duplicate-role-indices';
+import { getDuplicateRoleIndices } from '../lib/get-duplicate-indices';
 import Person from './Person';
 import { Role } from '.';
 

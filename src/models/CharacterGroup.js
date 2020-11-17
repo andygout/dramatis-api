@@ -1,4 +1,4 @@
-import { getDuplicateCharacterIndices } from '../lib/get-duplicate-character-indices';
+import { getDuplicateCharacterIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { Character } from '.';
 
