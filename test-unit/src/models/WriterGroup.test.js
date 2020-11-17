@@ -17,7 +17,7 @@ describe('WriterGroup model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateBaseInstanceIndicesModule: {
+			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
 			models: {
@@ -29,7 +29,7 @@ describe('WriterGroup model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/WriterGroup', {
-			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -99,15 +99,15 @@ describe('WriterGroup model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.writers[0].validateName,
 				instance.writers[0].validateDifferentiator,
 				instance.writers[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
 				instance.writers
 			)).to.be.true;
 			expect(instance.writers[0].validateName.calledOnce).to.be.true;

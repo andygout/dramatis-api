@@ -23,7 +23,7 @@ describe('Playtext model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateBaseInstanceIndicesModule: {
+			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
 			models: {
@@ -36,7 +36,7 @@ describe('Playtext model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Playtext', {
-			'../lib/get-duplicate-base-instance-indices': stubs.getDuplicateBaseInstanceIndicesModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -255,20 +255,20 @@ describe('Playtext model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.writerGroups[0].runInputValidations,
-				stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.characterGroups[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
 				.firstCall.calledWithExactly(instance.writerGroups)
 			).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndicesModule.getDuplicateBaseInstanceIndices
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
 				.secondCall.calledWithExactly(
 			instance.characterGroups)).to.be.true;
 			expect(instance.writerGroups[0].runInputValidations.calledOnce).to.be.true;

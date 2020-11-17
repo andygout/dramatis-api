@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
-import * as getDuplicateBaseInstanceIndicesModule from '../../../src/lib/get-duplicate-base-instance-indices';
+import * as getDuplicateIndicesModule from '../../../src/lib/get-duplicate-indices';
 import Theatre from '../../../src/models/Theatre';
 
 describe('Theatre model', () => {
@@ -14,7 +14,7 @@ describe('Theatre model', () => {
 
 		stubs = {
 			getDuplicateBaseInstanceIndices:
-				sandbox.stub(getDuplicateBaseInstanceIndicesModule, 'getDuplicateBaseInstanceIndices').returns([])
+				sandbox.stub(getDuplicateIndicesModule, 'getDuplicateBaseInstanceIndices').returns([])
 		};
 
 	});
