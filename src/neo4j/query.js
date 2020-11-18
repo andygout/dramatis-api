@@ -1,4 +1,4 @@
-import convertRecordsToObjects from './convert-records-to-objects';
+import { convertNeo4jRecordsToObjects } from './convert-neo4j-records-to-objects';
 import { getDriver } from './get-driver';
 
 const driver = getDriver();
@@ -16,12 +16,12 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 	session.close();
 
-	const results = convertRecordsToObjects(response);
+	const resultObjects = convertNeo4jRecordsToObjects(response);
 
-	if (!results.length && !isOptionalResult) throw new Error('Not Found');
+	if (!resultObjects.length && !isOptionalResult) throw new Error('Not Found');
 
 	return isArrayResult
-		? results
-		: results[0];
+		? resultObjects
+		: resultObjects[0];
 
 };
