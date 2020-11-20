@@ -44,14 +44,16 @@ export const prepareAsParams = instance => {
 
 		return Object.keys(instance).reduce((accumulator, key) => {
 
-			if (isObjectWithKeys(instance[key])) {
+			const value = instance[key];
 
-				accumulator[key] = applyModifications(instance[key]);
+			if (isObjectWithKeys(value)) {
 
-			} else if (Array.isArray(instance[key])) {
+				accumulator[key] = applyModifications(value);
+
+			} else if (Array.isArray(value)) {
 
 				accumulator[key] =
-					instance[key]
+					value
 						.filter(filterBasedOnNameProperty(key))
 						.filter(filterOutWriterGroupsWithNoNamedWriters(key))
 						.filter(filterOutCharacterGroupsWithNoNamedCharacters(key))
@@ -62,7 +64,7 @@ export const prepareAsParams = instance => {
 
 				const requiresUuidValue =
 					key === 'uuid' &&
-					(instance[key] === undefined || !instance[key].length);
+					(value === undefined || !value.length);
 
 				if (requiresUuidValue) {
 
@@ -86,9 +88,9 @@ export const prepareAsParams = instance => {
 					}
 
 				}
-				else if (typeof instance[key] === 'number') accumulator[key] = neo4j.int(instance[key]);
-				else if (instance[key] === '') accumulator[key] = null;
-				else accumulator[key] = instance[key];
+				else if (typeof value === 'number') accumulator[key] = neo4j.int(value);
+				else if (value === '') accumulator[key] = null;
+				else accumulator[key] = value;
 
 			}
 
