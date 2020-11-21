@@ -69,7 +69,6 @@ const getShowQuery = () => `
 			character.name <> variantNamedPortrayal.roleName AND
 			(
 				character.name = variantNamedPortrayal.characterName OR
-				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.roleName OR
 				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
 			)
 
