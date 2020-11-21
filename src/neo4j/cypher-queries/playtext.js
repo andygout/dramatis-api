@@ -45,8 +45,7 @@ const getCreateUpdateQuery = action => {
 						THEN {
 							uuid: writerParam.uuid,
 							name: writerParam.name,
-							differentiator: writerParam.differentiator,
-							group: writerGroupParam.name
+							differentiator: writerParam.differentiator
 						}
 						ELSE existingWriter
 					END AS writerProps
@@ -84,9 +83,7 @@ const getCreateUpdateQuery = action => {
 						THEN {
 							uuid: characterParam.uuid,
 							name: COALESCE(characterParam.underlyingName, characterParam.name),
-							differentiator: characterParam.differentiator,
-							qualifier: characterParam.qualifier,
-							group: characterGroupParam.name
+							differentiator: characterParam.differentiator
 						}
 						ELSE existingCharacter
 					END AS characterProps
