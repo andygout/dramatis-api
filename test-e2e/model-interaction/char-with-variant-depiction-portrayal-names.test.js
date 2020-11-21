@@ -1088,7 +1088,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry V at Royal Shakespeare Theatre (production)', () => {
 
-		it('includes cast with Alex Hassell as Henry, King of England using the uuid value of King Henry V', () => {
+		it('includes cast with Alex Hassell as Henry V, King of England using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
@@ -1135,7 +1135,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry IV, Part 1 at National Theatre (production)', () => {
 
-		it('includes cast with Matthew Macfadyen as Harry using the uuid value of King Henry V', () => {
+		it('includes cast with Matthew Macfadyen as Prince Hal using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
@@ -1182,7 +1182,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry IV, Part 2 at National Theatre (production)', () => {
 
-		it('includes cast with Matthew Macfadyen as Hal using the uuid value of King Henry V', () => {
+		it('includes cast with Matthew Macfadyen as Hal, Prince of England using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
@@ -1229,7 +1229,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry V at National Theatre (production)', () => {
 
-		it('includes cast with Adrian Lester as Henry, King of England using the uuid value of King Henry V', () => {
+		it('includes cast with Adrian Lester as Henry V and using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
