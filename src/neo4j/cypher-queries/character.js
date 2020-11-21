@@ -72,7 +72,7 @@ const getShowQuery = () => `
 				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
 			)
 
-	WITH character, playtexts, variantNamedDepictions, variantNamedPortrayal
+	WITH character, variantNamedDepictions, playtexts, variantNamedPortrayal
 		ORDER BY variantNamedPortrayal.roleName
 
 	WITH character, variantNamedDepictions, playtexts,
