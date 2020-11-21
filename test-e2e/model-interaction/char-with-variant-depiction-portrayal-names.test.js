@@ -161,8 +161,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Alex Hassell',
 						roles: [
 							{
-								name: 'Harry',
-								characterName: 'Henry, Prince of Wales'
+								name: 'Henry, Prince of Wales'
 							},
 							{
 								name: 'Messenger'
@@ -481,12 +480,14 @@ describe('Character with variant depiction and portrayal names', () => {
 		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from playtexts),
 		// it still appears here because the corresponding portrayal was of the character from a playtext (Henry IV, Part 1)
 		// in which neither the underlying nor display name matches the role name used for the portrayal.
+		// 'Henry, Prince of Wales' does not appear in this list because the portrayal
+		// was in a production of the playtext that used this name as the display name for King Henry V,
+		// and so this name instead only appears under variant depiction names.
 		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in playtext)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Hal',
 				'Hal, Prince of England',
-				'Harry',
 				'Henry V',
 				'Henry V, King of England',
 				'Prince Hal'
@@ -544,7 +545,7 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'person',
 							uuid: ALEX_HASSELL_PERSON_UUID,
 							name: 'Alex Hassell',
-							roleName: 'Harry',
+							roleName: 'Henry, Prince of Wales',
 							qualifier: null,
 							otherRoles: [
 								{
@@ -733,7 +734,7 @@ describe('Character with variant depiction and portrayal names', () => {
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
-									name: 'Harry',
+									name: 'Henry, Prince of Wales',
 									qualifier: null
 								}
 							]
@@ -993,7 +994,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry IV, Part 1 at Royal Shakespeare Theatre (production)', () => {
 
-		it('includes cast with Alex Hassell as Harry using the uuid value of King Henry V', () => {
+		it('includes cast with Alex Hassell as Henry, Prince of Wales using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
@@ -1004,7 +1005,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Harry',
+							name: 'Henry, Prince of Wales',
 							qualifier: null
 						},
 						{
@@ -1275,7 +1276,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Alex Hassell (person)', () => {
 
-		it('includes productions of their portrayals of King Henry V under variant names (Harry; Hal; Henry V, King of England) but using its uuid value', () => {
+		it('includes productions of their portrayals of King Henry V under variant names (Henry, Prince of Wales; Hal; Henry V, King of England) but using its uuid value', () => {
 
 			const expectedProductions = [
 				{
@@ -1292,7 +1293,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Harry',
+							name: 'Henry, Prince of Wales',
 							qualifier: null
 						},
 						{
