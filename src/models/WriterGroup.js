@@ -8,9 +8,10 @@ export default class WriterGroup extends Base {
 
 		super(props);
 
-		const { writers } = props;
+		const { isOriginalVersionWriter, writers } = props;
 
 		this.model = 'writerGroup';
+		this.isOriginalVersionWriter = Boolean(isOriginalVersionWriter) || null;
 		this.writers = writers
 			? writers.map(writer => new Person(writer))
 			: [];

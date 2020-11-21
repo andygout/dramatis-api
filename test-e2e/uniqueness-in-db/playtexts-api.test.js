@@ -55,6 +55,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -145,6 +146,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -237,6 +239,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -293,6 +296,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{

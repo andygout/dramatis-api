@@ -1,0 +1,106 @@
+{
+	"name": "The Seagull",
+	"playtext": {
+		"name": "The Seagull",
+		"differentiator": "2"
+	},
+	"theatre": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "David Beames",
+			"roles": [
+				{
+					"name": "Dorn",
+					"characterName": "Yevgeny"
+				}
+			]
+		},
+		{
+			"name": "Pearl Chanda",
+			"roles": [
+				{
+					"name": "Nina"
+				}
+			]
+		},
+		{
+			"name": "Alexander Cobb",
+			"roles": [
+				{
+					"name": "Konstantin"
+				}
+			]
+		},
+		{
+			"name": "Abigail Cruttenden",
+			"roles": [
+				{
+					"name": "Arkadina",
+					"characterName": "Irina"
+				}
+			]
+		},
+		{
+			"name": "Catherine Cusack",
+			"roles": [
+				{
+					"name": "Polina"
+				}
+			]
+		},
+		{
+			"name": "Rudi Dharmalingam",
+			"roles": [
+				{
+					"name": "Medvedenko",
+					"characterName": "Semyon"
+				}
+			]
+		},
+		{
+			"name": "John Elkington",
+			"roles": [
+				{
+					"name": "Shamrayev",
+					"characterName": "Ilya"
+				}
+			]
+		},
+		{
+			"name": "Eddie Eyre",
+			"roles": [
+				{
+					"name": "Yakov"
+				}
+			]
+		},
+		{
+			"name": "Colin Haigh",
+			"roles": [
+				{
+					"name": "Sorin",
+					"characterName": "Petr"
+				}
+			]
+		},
+		{
+			"name": "Jenny Rainsford",
+			"roles": [
+				{
+					"name": "Masha"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Trigorin",
+					"characterName": "Boris"
+				}
+			]
+		}
+	]
+}

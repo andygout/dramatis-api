@@ -2,6 +2,7 @@
 	"name": "Peer Gynt",
 	"writerGroups": [
 		{
+			"isOriginalVersionWriter": true,
 			"writers": [
 				{
 					"name": "Henrik Ibsen"

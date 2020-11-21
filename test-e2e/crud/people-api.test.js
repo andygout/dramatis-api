@@ -129,6 +129,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				name: 'Patrick Stewart',
 				differentiator: null,
 				playtexts: [],
+				subsequentVersionPlaytexts: [],
 				productions: []
 			};
 

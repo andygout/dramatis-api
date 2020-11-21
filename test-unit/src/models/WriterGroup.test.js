@@ -43,6 +43,39 @@ describe('WriterGroup model', () => {
 
 	describe('constructor method', () => {
 
+		describe('isOriginalVersionWriter property', () => {
+
+			it('assigns null if absent from props', () => {
+
+				const instance = createInstance({ name: 'version by' });
+				expect(instance.isOriginalVersionWriter).to.equal(null);
+
+			});
+
+			it('assigns true if included in props and result of Boolean() evaluates to true', () => {
+
+				const props = {
+					name: 'version by',
+					isOriginalVersionWriter: true
+				};
+				const instance = createInstance(props);
+				expect(instance.isOriginalVersionWriter).to.equal(true);
+
+			});
+
+			it('assigns null if included in props and result of Boolean() evaluates to false', () => {
+
+				const props = {
+					name: 'version by',
+					isOriginalVersionWriter: false
+				};
+				const instance = createInstance(props);
+				expect(instance.isOriginalVersionWriter).to.equal(null);
+
+			});
+
+		});
+
 		describe('writers property', () => {
 
 			it('assigns empty array if absent from props', () => {

@@ -27,6 +27,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -104,6 +105,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -155,6 +157,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -210,6 +213,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -388,6 +392,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -407,6 +412,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: 'version by',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -426,6 +432,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -585,6 +592,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -604,6 +612,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: 'version by',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -623,6 +632,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -763,6 +773,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -782,6 +793,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: 'adaptation by',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -801,6 +813,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{
@@ -966,6 +979,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					{
 						model: 'writerGroup',
 						name: '',
+						isOriginalVersionWriter: null,
 						errors: {},
 						writers: [
 							{

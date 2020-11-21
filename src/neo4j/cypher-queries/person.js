@@ -1,14 +1,14 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(playtext:Playtext)
+	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(playtext:Playtext)
 
-	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+	OPTIONAL MATCH (playtext)-[allWriterRel:WRITTEN_BY]->(writer:Person)
 
-	WITH person, playtext, writerRel, writer
-		ORDER BY writerRel.groupPosition, writerRel.writerPosition
+	WITH person, writerRel, playtext, allWriterRel, writer
+		ORDER BY allWriterRel.groupPosition, allWriterRel.writerPosition
 
-	WITH person, playtext, writerRel.group AS writerGroup,
+	WITH person, writerRel, playtext, allWriterRel.group AS writerGroup,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -20,7 +20,7 @@ const getShowQuery = () => `
 			END
 		) AS writers
 
-	WITH person, playtext,
+	WITH person, writerRel, playtext,
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
@@ -33,9 +33,26 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE playtext WHEN NULL
 				THEN null
-				ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
+				ELSE {
+					model: 'playtext',
+					uuid: playtext.uuid,
+					name: playtext.name,
+					writerGroups: writerGroups,
+					isOriginalVersionWriter: writerRel.isOriginalVersionWriter
+				}
 			END
 		) AS playtexts
+
+	WITH
+		person,
+		[
+			playtext IN playtexts WHERE playtext.isOriginalVersionWriter IS NULL |
+			{ model: playtext.model, uuid: playtext.uuid, name: playtext.name, writerGroups: playtext.writerGroups }
+		] AS playtexts,
+		[
+			playtext IN playtexts WHERE playtext.isOriginalVersionWriter = true |
+			{ model: playtext.model, uuid: playtext.uuid, name: playtext.name, writerGroups: playtext.writerGroups }
+		] AS subsequentVersionPlaytexts
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 
@@ -51,10 +68,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, playtexts, production, theatre, surTheatre, role, character
+	WITH DISTINCT person, playtexts, subsequentVersionPlaytexts, production, theatre, surTheatre, role, character
 		ORDER BY role.rolePosition
 
-	WITH person, playtexts, production, theatre, surTheatre,
+	WITH person, playtexts, subsequentVersionPlaytexts, production, theatre, surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -69,6 +86,7 @@ const getShowQuery = () => `
 		person.name AS name,
 		person.differentiator AS differentiator,
 		playtexts,
+		subsequentVersionPlaytexts,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
