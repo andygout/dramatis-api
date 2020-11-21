@@ -228,7 +228,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Alex Hassell',
 						roles: [
 							{
-								name: 'Henry V, King of England',
+								name: 'Henry V',
 								characterName: 'King Henry V'
 							},
 							{
@@ -489,7 +489,6 @@ describe('Character with variant depiction and portrayal names', () => {
 				'Hal',
 				'Hal, Prince of England',
 				'Henry V',
-				'Henry V, King of England',
 				'Prince Hal'
 			];
 
@@ -657,7 +656,7 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'person',
 							uuid: ALEX_HASSELL_PERSON_UUID,
 							name: 'Alex Hassell',
-							roleName: 'Henry V, King of England',
+							roleName: 'Henry V',
 							qualifier: null,
 							otherRoles: [
 								{
@@ -876,7 +875,7 @@ describe('Character with variant depiction and portrayal names', () => {
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
-									name: 'Henry V, King of England',
+									name: 'Henry V',
 									qualifier: null
 								}
 							]
@@ -1088,7 +1087,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Henry V at Royal Shakespeare Theatre (production)', () => {
 
-		it('includes cast with Alex Hassell as Henry V, King of England using the uuid value of King Henry V', () => {
+		it('includes cast with Alex Hassell as Henry V using the uuid value of King Henry V', () => {
 
 			const expectedCast = [
 				{
@@ -1099,7 +1098,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Henry V, King of England',
+							name: 'Henry V',
 							qualifier: null
 						},
 						{
@@ -1276,7 +1275,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Alex Hassell (person)', () => {
 
-		it('includes productions of their portrayals of King Henry V under variant names (Henry, Prince of Wales; Hal; Henry V, King of England) but using its uuid value', () => {
+		it('includes productions of their portrayals of King Henry V under variant names (Henry, Prince of Wales; Hal; Henry V) but using its uuid value', () => {
 
 			const expectedProductions = [
 				{
@@ -1343,7 +1342,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Henry V, King of England',
+							name: 'Henry V',
 							qualifier: null
 						},
 						{
