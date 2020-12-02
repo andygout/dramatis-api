@@ -140,6 +140,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: ABOVE_MAX_LENGTH_STRING,
+							isOriginalVersionWriter: null,
 							errors: {
 								name: [
 									'Value is too long'
@@ -188,6 +189,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: 'version by',
+							isOriginalVersionWriter: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -198,6 +200,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: 'version by',
+							isOriginalVersionWriter: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -247,6 +250,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: '',
+							isOriginalVersionWriter: null,
 							errors: {},
 							writers: [
 								{
@@ -305,6 +309,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: '',
+							isOriginalVersionWriter: null,
 							errors: {},
 							writers: [
 								{
@@ -365,6 +370,7 @@ describe('Playtext instance', () => {
 						{
 							model: 'writerGroup',
 							name: '',
+							isOriginalVersionWriter: null,
 							errors: {},
 							writers: [
 								{
