@@ -5,7 +5,7 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (theatre:Theatre { uuid: $uuid })
 
-			OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]-(:Theatre)
+			OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]->(:Theatre)
 
 			DELETE relationship
 
