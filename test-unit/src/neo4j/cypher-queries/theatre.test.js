@@ -78,7 +78,7 @@ describe('Cypher Queries Theatre module', () => {
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (theatre:Theatre { uuid: $uuid })
 
-				OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]-(:Theatre)
+				OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]->(:Theatre)
 
 				DELETE relationship
 
