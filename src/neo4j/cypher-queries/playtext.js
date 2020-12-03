@@ -120,7 +120,7 @@ const getEditQuery = () => `
 	WITH playtext, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH playtext, writerRel.group AS writerGroup, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+	WITH playtext, writerRel.group AS writerGroupName, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -130,11 +130,11 @@ const getEditQuery = () => `
 
 	WITH playtext,
 		COLLECT(
-			CASE WHEN writerGroup IS NULL AND SIZE(writers) = 1
+			CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
 				THEN null
 				ELSE {
 					model: 'writerGroup',
-					name: writerGroup,
+					name: writerGroupName,
 					isOriginalVersionWriter: isOriginalVersionWriter,
 					writers: writers
 				}
@@ -146,7 +146,7 @@ const getEditQuery = () => `
 	WITH playtext, writerGroups, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	WITH playtext, writerGroups, characterRel.group AS characterGroup,
+	WITH playtext, writerGroups, characterRel.group AS characterGroupName,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -167,9 +167,9 @@ const getEditQuery = () => `
 		playtext.differentiator AS differentiator,
 		writerGroups,
 		COLLECT(
-			CASE WHEN characterGroup IS NULL AND SIZE(characters) = 1
+			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null
-				ELSE { model: 'characterGroup', name: characterGroup, characters: characters }
+				ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
 			END
 		) + [{ characters: [{}] }] AS characterGroups
 `;
@@ -184,7 +184,7 @@ const getShowQuery = () => `
 	WITH playtext, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH playtext, writerRel.group AS writerGroup,
+	WITH playtext, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -196,7 +196,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
 
@@ -208,7 +208,7 @@ const getShowQuery = () => `
 	WITH
 		playtext,
 		writerGroups,
-		characterRel.group AS characterGroup,
+		characterRel.group AS characterGroupName,
 		characterRel.groupPosition AS characterGroupPosition,
 		COLLECT(
 			CASE character WHEN NULL
@@ -228,7 +228,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE {
 					model: 'characterGroup',
-					name: characterGroup,
+					name: characterGroupName,
 					position: characterGroupPosition,
 					characters: characters
 				}
@@ -287,7 +287,7 @@ const getListQuery = () => `
 	WITH playtext, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH playtext, writerRel.group AS writerGroup,
+	WITH playtext, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -302,7 +302,7 @@ const getListQuery = () => `
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
 

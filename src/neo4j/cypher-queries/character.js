@@ -8,7 +8,7 @@ const getShowQuery = () => `
 	WITH character, playtextRel, playtext, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH character, playtextRel, playtext, writerRel.group AS writerGroup,
+	WITH character, playtextRel, playtext, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -20,7 +20,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroup, 'by'), writers: writers }
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
 		ORDER BY playtextRel.groupPosition, playtextRel.characterPosition
