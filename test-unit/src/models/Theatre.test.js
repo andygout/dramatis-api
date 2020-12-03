@@ -153,7 +153,7 @@ describe('Theatre model', () => {
 			spy(instance, 'validateDifferentiator');
 			spy(instance.subTheatres[0], 'validateName');
 			spy(instance.subTheatres[0], 'validateDifferentiator');
-			spy(instance.subTheatres[0], 'validateNotSubTheatreOfSelf');
+			spy(instance.subTheatres[0], 'validateNoAssociationWithSelf');
 			spy(instance.subTheatres[0], 'validateUniquenessInGroup');
 			instance.runInputValidations();
 			assert.callOrder(
@@ -162,7 +162,7 @@ describe('Theatre model', () => {
 				stubs.getDuplicateBaseInstanceIndices,
 				instance.subTheatres[0].validateName,
 				instance.subTheatres[0].validateDifferentiator,
-				instance.subTheatres[0].validateNotSubTheatreOfSelf,
+				instance.subTheatres[0].validateNoAssociationWithSelf,
 				instance.subTheatres[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -177,69 +177,14 @@ describe('Theatre model', () => {
 			expect(instance.subTheatres[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.subTheatres[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.subTheatres[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.subTheatres[0].validateNotSubTheatreOfSelf.calledOnce).to.be.true;
-			expect(instance.subTheatres[0].validateNotSubTheatreOfSelf.calledWithExactly(
+			expect(instance.subTheatres[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.subTheatres[0].validateNoAssociationWithSelf.calledWithExactly(
 				'National Theatre', ''
 			)).to.be.true;
 			expect(instance.subTheatres[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.subTheatres[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
-
-		});
-
-	});
-
-	describe('validateNotSubTheatreOfSelf method', () => {
-
-		context('valid data', () => {
-
-			context('sur-theatre instance has name value of empty string', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = new Theatre({ name: 'National Theatre', differentiator: '' });
-					spy(instance, 'addPropertyError');
-					instance.validateNotSubTheatreOfSelf('', '');
-					expect(instance.addPropertyError.notCalled).to.be.true;
-
-				});
-
-			});
-
-			context('sur-theatre name and differentiator combination different to instance name and differentiator combination', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = new Theatre({ name: 'Olivier Theatre', differentiator: '' });
-					spy(instance, 'addPropertyError');
-					instance.validateNotSubTheatreOfSelf('National Theatre', '');
-					expect(instance.addPropertyError.notCalled).to.be.true;
-
-				});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('adds properties whose values are arrays to errors property', () => {
-
-				const instance = new Theatre({ name: 'National Theatre', differentiator: '' });
-				spy(instance, 'addPropertyError');
-				instance.validateNotSubTheatreOfSelf('National Theatre', '');
-				expect(instance.addPropertyError.calledTwice).to.be.true;
-				expect(instance.addPropertyError.firstCall.calledWithExactly(
-					'name',
-					'Theatre cannot assign iself as one of its sub-theatres'
-				)).to.be.true;
-				expect(instance.addPropertyError.secondCall.calledWithExactly(
-					'differentiator',
-					'Theatre cannot assign iself as one of its sub-theatres'
-				)).to.be.true;
-
-			});
 
 		});
 

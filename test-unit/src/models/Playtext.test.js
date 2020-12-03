@@ -251,10 +251,14 @@ describe('Playtext model', () => {
 			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
+			spy(instance.originalVersionPlaytext, 'validateName');
+			spy(instance.originalVersionPlaytext, 'validateDifferentiator');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
+				instance.originalVersionPlaytext.validateName,
+				instance.originalVersionPlaytext.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.writerGroups[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
@@ -264,6 +268,10 @@ describe('Playtext model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.originalVersionPlaytext.validateName.calledOnce).to.be.true;
+			expect(instance.originalVersionPlaytext.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.originalVersionPlaytext.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.originalVersionPlaytext.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
 				.firstCall.calledWithExactly(instance.writerGroups)
