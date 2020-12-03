@@ -128,8 +128,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		// Prince Hal does not appear in The Merry Wives of Windsor;
-		// it is a contrivance to test distinct variant named depictions.
+		// Contrivance for purposes of testing distinct variant named depictions.
 		await chai.request(app)
 			.post('/playtexts')
 			.send({
