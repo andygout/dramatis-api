@@ -99,7 +99,7 @@ describe('Cypher Queries Playtext module', () => {
 				WITH playtext, writerRel, writer
 					ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-				WITH playtext, writerRel.group AS writerGroup, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+				WITH playtext, writerRel.group AS writerGroupName, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
@@ -109,11 +109,11 @@ describe('Cypher Queries Playtext module', () => {
 
 				WITH playtext,
 					COLLECT(
-						CASE WHEN writerGroup IS NULL AND SIZE(writers) = 1
+						CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
 							THEN null
 							ELSE {
 								model: 'writerGroup',
-								name: writerGroup,
+								name: writerGroupName,
 								isOriginalVersionWriter: isOriginalVersionWriter,
 								writers: writers
 							}
@@ -125,7 +125,7 @@ describe('Cypher Queries Playtext module', () => {
 				WITH playtext, writerGroups, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-				WITH playtext, writerGroups, characterRel.group AS characterGroup,
+				WITH playtext, writerGroups, characterRel.group AS characterGroupName,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -146,9 +146,9 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.differentiator AS differentiator,
 					writerGroups,
 					COLLECT(
-						CASE WHEN characterGroup IS NULL AND SIZE(characters) = 1
+						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
-							ELSE { model: 'characterGroup', name: characterGroup, characters: characters }
+							ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
 						END
 					) + [{ characters: [{}] }] AS characterGroups
 			`));
@@ -267,7 +267,7 @@ describe('Cypher Queries Playtext module', () => {
 				WITH playtext, writerRel, writer
 					ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-				WITH playtext, writerRel.group AS writerGroup, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+				WITH playtext, writerRel.group AS writerGroupName, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
@@ -277,11 +277,11 @@ describe('Cypher Queries Playtext module', () => {
 
 				WITH playtext,
 					COLLECT(
-						CASE WHEN writerGroup IS NULL AND SIZE(writers) = 1
+						CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
 							THEN null
 							ELSE {
 								model: 'writerGroup',
-								name: writerGroup,
+								name: writerGroupName,
 								isOriginalVersionWriter: isOriginalVersionWriter,
 								writers: writers
 							}
@@ -293,7 +293,7 @@ describe('Cypher Queries Playtext module', () => {
 				WITH playtext, writerGroups, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-				WITH playtext, writerGroups, characterRel.group AS characterGroup,
+				WITH playtext, writerGroups, characterRel.group AS characterGroupName,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -314,9 +314,9 @@ describe('Cypher Queries Playtext module', () => {
 					playtext.differentiator AS differentiator,
 					writerGroups,
 					COLLECT(
-						CASE WHEN characterGroup IS NULL AND SIZE(characters) = 1
+						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
-							ELSE { model: 'characterGroup', name: characterGroup, characters: characters }
+							ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
 						END
 					) + [{ characters: [{}] }] AS characterGroups
 			`));
