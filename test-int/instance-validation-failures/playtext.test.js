@@ -44,6 +44,13 @@ describe('Playtext instance', () => {
 							'Value is too short'
 						]
 					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: []
 				};
@@ -73,6 +80,13 @@ describe('Playtext instance', () => {
 							'Value is too long'
 						]
 					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: []
 				};
@@ -101,6 +115,146 @@ describe('Playtext instance', () => {
 						differentiator: [
 							'Value is too long'
 						]
+					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writerGroups: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('original version playtext name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					originalVersionPlaytext: {
+						name: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					},
+					writerGroups: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('original version playtext differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					originalVersionPlaytext: {
+						name: 'Rosmersholm',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: 'Rosmersholm',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
+							]
+						}
+					},
+					writerGroups: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('playtext instance assigns itself as the original version playtext', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					originalVersionPlaytext: {
+						name: 'Rosmersholm'
+					}
+				};
+
+				const instance = new Playtext(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'playtext',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: 'Rosmersholm',
+						differentiator: '',
+						errors: {
+							name: [
+								'Instance cannot form association with itself'
+							],
+							differentiator: [
+								'Instance cannot form association with itself'
+							]
+						}
 					},
 					writerGroups: [],
 					characterGroups: []
@@ -136,6 +290,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [
 						{
 							model: 'writerGroup',
@@ -185,6 +346,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [
 						{
 							model: 'writerGroup',
@@ -246,6 +414,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [
 						{
 							model: 'writerGroup',
@@ -305,6 +480,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [
 						{
 							model: 'writerGroup',
@@ -366,6 +548,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [
 						{
 							model: 'writerGroup',
@@ -437,6 +626,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -485,6 +681,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -544,6 +747,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -604,6 +814,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -664,6 +881,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -724,6 +948,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -784,6 +1015,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -849,6 +1087,13 @@ describe('Playtext instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: [
 						{
@@ -952,6 +1197,13 @@ describe('Playtext instance', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: []
 				};
@@ -1006,6 +1258,13 @@ describe('Playtext instance', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
+					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					writerGroups: [],
 					characterGroups: [

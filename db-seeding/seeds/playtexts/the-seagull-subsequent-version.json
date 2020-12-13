@@ -1,6 +1,10 @@
 {
 	"name": "The Seagull",
 	"differentiator": "2",
+	"originalVersionPlaytext": {
+		"name": "The Seagull",
+		"differentiator": "1"
+	},
 	"writerGroups": [
 		{
 			"isOriginalVersionWriter": true,

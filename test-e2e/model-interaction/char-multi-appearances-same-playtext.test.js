@@ -10,16 +10,16 @@ describe('Character with multiple appearances in the same playtext under differe
 
 	chai.use(chaiHttp);
 
-	const ROCK_N_ROLL_PLAYTEXT_UUID = '5';
-	const ESME_CHARACTER_UUID = '6';
-	const MAX_CHARACTER_UUID = '7';
-	const ELEANOR_CHARACTER_UUID = '8';
-	const ALICE_CHARACTER_UUID = '9';
-	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = '10';
-	const ROYAL_COURT_THEATRE_UUID = '12';
-	const ALICE_EVE_PERSON_UUID = '13';
-	const BRIAN_COX_PERSON_UUID = '14';
-	const SINEAD_CUSACK_PERSON_UUID = '15';
+	const ROCK_N_ROLL_PLAYTEXT_UUID = '6';
+	const ESME_CHARACTER_UUID = '8';
+	const MAX_CHARACTER_UUID = '9';
+	const ELEANOR_CHARACTER_UUID = '10';
+	const ALICE_CHARACTER_UUID = '11';
+	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = '12';
+	const ROYAL_COURT_THEATRE_UUID = '14';
+	const ALICE_EVE_PERSON_UUID = '15';
+	const BRIAN_COX_PERSON_UUID = '16';
+	const SINEAD_CUSACK_PERSON_UUID = '17';
 
 	let esmeCharacter;
 	let aliceCharacter;

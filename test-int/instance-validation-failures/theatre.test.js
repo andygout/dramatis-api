@@ -232,10 +232,10 @@ describe('Theatre instance', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Theatre cannot assign iself as one of its sub-theatres'
+									'Instance cannot form association with itself'
 								],
 								differentiator: [
-									'Theatre cannot assign iself as one of its sub-theatres'
+									'Instance cannot form association with itself'
 								]
 							}
 						}

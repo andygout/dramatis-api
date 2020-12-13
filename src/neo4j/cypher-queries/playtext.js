@@ -5,6 +5,12 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (playtext:Playtext { uuid: $uuid })
 
+			OPTIONAL MATCH (playtext)-[originalVersionPlaytextRel:SUBSEQUENT_VERSION_OF]->(:Playtext)
+
+			DELETE originalVersionPlaytextRel
+
+			WITH DISTINCT playtext
+
 			OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(:Person)
 
 			DELETE writerRel
@@ -25,6 +31,34 @@ const getCreateUpdateQuery = action => {
 
 	return `
 		${createUpdateQueryOpeningMap[action]}
+
+		WITH playtext
+
+		OPTIONAL MATCH (existingOriginalVersionPlaytext:Playtext { name: $originalVersionPlaytext.name })
+			WHERE
+				($originalVersionPlaytext.differentiator IS NULL AND existingOriginalVersionPlaytext.differentiator IS NULL) OR
+				($originalVersionPlaytext.differentiator = existingOriginalVersionPlaytext.differentiator)
+
+		WITH
+			playtext,
+			CASE existingOriginalVersionPlaytext WHEN NULL
+				THEN {
+					uuid: $originalVersionPlaytext.uuid,
+					name: $originalVersionPlaytext.name,
+					differentiator: $originalVersionPlaytext.differentiator
+				}
+				ELSE existingOriginalVersionPlaytext
+			END AS originalVersionPlaytextProps
+
+		FOREACH (item IN CASE $originalVersionPlaytext.name WHEN NULL THEN [] ELSE [1] END |
+			MERGE (originalVersionPlaytext:Playtext {
+				uuid: originalVersionPlaytextProps.uuid,
+				name: originalVersionPlaytextProps.name
+			})
+				ON CREATE SET originalVersionPlaytext.differentiator = originalVersionPlaytextProps.differentiator
+
+			CREATE (playtext)-[:SUBSEQUENT_VERSION_OF]->(originalVersionPlaytext)
+		)
 
 		WITH playtext
 
@@ -115,12 +149,18 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
+	OPTIONAL MATCH (playtext)-[:SUBSEQUENT_VERSION_OF]->(originalVersionPlaytext:Playtext)
+
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH playtext, writerRel, writer
+	WITH playtext, originalVersionPlaytext, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH playtext, writerRel.group AS writerGroupName, writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		writerRel.group AS writerGroupName,
+		writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -128,7 +168,7 @@ const getEditQuery = () => `
 			END
 		) + [{}] AS writers
 
-	WITH playtext,
+	WITH playtext, originalVersionPlaytext,
 		COLLECT(
 			CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
 				THEN null
@@ -143,10 +183,10 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-	WITH playtext, writerGroups, characterRel, character
+	WITH playtext, originalVersionPlaytext, writerGroups, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	WITH playtext, writerGroups, characterRel.group AS characterGroupName,
+	WITH playtext, originalVersionPlaytext, writerGroups, characterRel.group AS characterGroupName,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -165,6 +205,10 @@ const getEditQuery = () => `
 		playtext.uuid AS uuid,
 		playtext.name AS name,
 		playtext.differentiator AS differentiator,
+		{
+			name: CASE originalVersionPlaytext.name WHEN NULL THEN '' ELSE originalVersionPlaytext.name END,
+			differentiator: CASE originalVersionPlaytext.differentiator WHEN NULL THEN '' ELSE originalVersionPlaytext.differentiator END
+		} AS originalVersionPlaytext,
 		writerGroups,
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
@@ -179,12 +223,125 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getShowQuery = () => `
 	MATCH (playtext:Playtext { uuid: $uuid })
 
+	OPTIONAL MATCH (playtext)-[:SUBSEQUENT_VERSION_OF]->(originalVersionPlaytext:Playtext)
+
+	OPTIONAL MATCH (originalVersionPlaytext)-[originalVersionPlaytextWriterRel:WRITTEN_BY]->
+		(originalVersionPlaytextWriter:Person)
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		originalVersionPlaytextWriterRel,
+		originalVersionPlaytextWriter
+		ORDER BY originalVersionPlaytextWriterRel.groupPosition, originalVersionPlaytextWriterRel.writerPosition
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		originalVersionPlaytextWriterRel.group AS originalVersionPlaytextWriterGroupName,
+		COLLECT(
+			CASE originalVersionPlaytextWriter WHEN NULL
+				THEN null
+				ELSE {
+					model: 'person',
+					uuid: originalVersionPlaytextWriter.uuid,
+					name: originalVersionPlaytextWriter.name
+				}
+			END
+		) AS originalVersionPlaytextWriters
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		COLLECT(
+			CASE SIZE(originalVersionPlaytextWriters) WHEN 0
+				THEN null
+				ELSE {
+					model: 'writerGroup',
+					name: COALESCE(originalVersionPlaytextWriterGroupName, 'by'),
+					writers: originalVersionPlaytextWriters
+				}
+			END
+		) AS originalVersionPlaytextWriterGroups
+
+	WITH
+		playtext,
+		CASE originalVersionPlaytext WHEN NULL
+			THEN null
+			ELSE {
+				model: 'playtext',
+				uuid: originalVersionPlaytext.uuid,
+				name: originalVersionPlaytext.name,
+				writerGroups: originalVersionPlaytextWriterGroups
+			}
+		END AS originalVersionPlaytext
+
+	OPTIONAL MATCH (playtext)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionPlaytext:Playtext)
+
+	OPTIONAL MATCH (subsequentVersionPlaytext)-[subsequentVersionPlaytextWriterRel:WRITTEN_BY]->
+		(subsequentVersionPlaytextWriter:Person)
+		WHERE subsequentVersionPlaytextWriterRel.isOriginalVersionWriter IS NULL
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		subsequentVersionPlaytext,
+		subsequentVersionPlaytextWriterRel,
+		subsequentVersionPlaytextWriter
+		ORDER BY subsequentVersionPlaytextWriterRel.groupPosition, subsequentVersionPlaytextWriterRel.writerPosition
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		subsequentVersionPlaytext,
+		subsequentVersionPlaytextWriterRel.group AS subsequentVersionPlaytextWriterGroupName,
+		COLLECT(
+			CASE subsequentVersionPlaytextWriter WHEN NULL
+				THEN null
+				ELSE {
+					model: 'person',
+					uuid: subsequentVersionPlaytextWriter.uuid,
+					name: subsequentVersionPlaytextWriter.name
+				}
+			END
+		) AS subsequentVersionPlaytextWriters
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		subsequentVersionPlaytext,
+		COLLECT(
+			CASE SIZE(subsequentVersionPlaytextWriters) WHEN 0
+				THEN null
+				ELSE {
+					model: 'writerGroup',
+					name: COALESCE(subsequentVersionPlaytextWriterGroupName, 'by'),
+					writers: subsequentVersionPlaytextWriters
+				}
+			END
+		) AS subsequentVersionPlaytextWriterGroups
+
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		COLLECT(
+			CASE subsequentVersionPlaytext WHEN NULL
+				THEN null
+				ELSE {
+					model: 'playtext',
+					uuid: subsequentVersionPlaytext.uuid,
+					name: subsequentVersionPlaytext.name,
+					writerGroups: subsequentVersionPlaytextWriterGroups
+				}
+			END
+		) AS subsequentVersionPlaytexts
+
 	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
 
-	WITH playtext, writerRel, writer
+	WITH playtext, originalVersionPlaytext, subsequentVersionPlaytexts, writerRel, writer
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH playtext, writerRel.group AS writerGroupName,
+	WITH playtext, originalVersionPlaytext, subsequentVersionPlaytexts, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -192,7 +349,7 @@ const getShowQuery = () => `
 			END
 		) AS writers
 
-	WITH playtext,
+	WITH playtext, originalVersionPlaytext, subsequentVersionPlaytexts,
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
@@ -202,11 +359,13 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-	WITH playtext, writerGroups, characterRel, character
+	WITH playtext, originalVersionPlaytext, subsequentVersionPlaytexts, writerGroups, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
 	WITH
 		playtext,
+		originalVersionPlaytext,
+		subsequentVersionPlaytexts,
 		writerGroups,
 		characterRel.group AS characterGroupName,
 		characterRel.groupPosition AS characterGroupPosition,
@@ -222,7 +381,7 @@ const getShowQuery = () => `
 			END
 		) AS characters
 
-	WITH playtext, writerGroups,
+	WITH playtext, originalVersionPlaytext, subsequentVersionPlaytexts, writerGroups,
 		COLLECT(
 			CASE SIZE(characters) WHEN 0
 				THEN null
@@ -241,7 +400,15 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-	WITH playtext, writerGroups, characterGroups, production, theatre, surTheatre
+	WITH
+		playtext,
+		originalVersionPlaytext,
+		subsequentVersionPlaytexts,
+		writerGroups,
+		characterGroups,
+		production,
+		theatre,
+		surTheatre
 		ORDER BY production.name, theatre.name
 
 	RETURN
@@ -249,6 +416,8 @@ const getShowQuery = () => `
 		playtext.uuid AS uuid,
 		playtext.name AS name,
 		playtext.differentiator AS differentiator,
+		originalVersionPlaytext,
+		subsequentVersionPlaytexts,
 		writerGroups,
 		characterGroups,
 		COLLECT(

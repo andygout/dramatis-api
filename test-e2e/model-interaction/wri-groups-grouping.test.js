@@ -10,10 +10,10 @@ describe('Nameless writer groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const PLAYTEXT_UUID = '4';
-	const PERSON_1_UUID = '5';
-	const PERSON_2_UUID = '6';
-	const PERSON_3_UUID = '7';
+	const PLAYTEXT_UUID = '5';
+	const PERSON_1_UUID = '7';
+	const PERSON_2_UUID = '8';
+	const PERSON_3_UUID = '9';
 
 	let playtext;
 

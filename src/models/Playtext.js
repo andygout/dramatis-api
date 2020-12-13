@@ -8,13 +8,15 @@ export default class Playtext extends Base {
 
 		super(props);
 
-		const { uuid, differentiator, writerGroups, characterGroups, isAssociation } = props;
+		const { uuid, differentiator, originalVersionPlaytext, writerGroups, characterGroups, isAssociation } = props;
 
 		this.model = 'playtext';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
 		if (!isAssociation) {
+
+			this.originalVersionPlaytext = new Playtext({ ...originalVersionPlaytext, isAssociation: true });
 
 			this.writerGroups = writerGroups
 				? writerGroups.map(writerGroup => new WriterGroup(writerGroup))
@@ -33,6 +35,12 @@ export default class Playtext extends Base {
 		this.validateName({ isRequired: true });
 
 		this.validateDifferentiator();
+
+		this.originalVersionPlaytext.validateName({ isRequired: false });
+
+		this.originalVersionPlaytext.validateDifferentiator();
+
+		this.originalVersionPlaytext.validateNoAssociationWithSelf(this.name, this.differentiator);
 
 		const duplicateWriterGroupIndices = getDuplicateBaseInstanceIndices(this.writerGroups);
 

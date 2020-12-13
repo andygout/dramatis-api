@@ -87,6 +87,22 @@ export default class Base {
 
 	}
 
+	validateNoAssociationWithSelf (associationName, associationDifferentiator) {
+
+		const hasAssociationWithSelf =
+			!!associationName.length &&
+			this.name === associationName &&
+			this.differentiator === associationDifferentiator;
+
+		if (hasAssociationWithSelf) {
+
+			this.addPropertyError('name', 'Instance cannot form association with itself');
+			this.addPropertyError('differentiator', 'Instance cannot form association with itself');
+
+		}
+
+	}
+
 	async runDatabaseValidations () {
 
 		await this.validateUniquenessInDatabase();

@@ -431,6 +431,64 @@ describe('Base model', () => {
 
 	});
 
+	describe('validateNoAssociationWithSelf method', () => {
+
+		context('valid data', () => {
+
+			context('association has name value of empty string', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Base({ name: 'National Theatre' });
+					instance.differentiator = '';
+					spy(instance, 'addPropertyError');
+					instance.validateNoAssociationWithSelf('', '');
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('association name and differentiator combination different to instance name and differentiator combination', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Base({ name: 'Olivier Theatre' });
+					instance.differentiator = '';
+					spy(instance, 'addPropertyError');
+					instance.validateNoAssociationWithSelf('National Theatre', '');
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties whose values are arrays to errors property', () => {
+
+				const instance = new Base({ name: 'National Theatre' });
+				instance.differentiator = '';
+				spy(instance, 'addPropertyError');
+				instance.validateNoAssociationWithSelf('National Theatre', '');
+				expect(instance.addPropertyError.calledTwice).to.be.true;
+				expect(instance.addPropertyError.firstCall.calledWithExactly(
+					'name',
+					'Instance cannot form association with itself'
+				)).to.be.true;
+				expect(instance.addPropertyError.secondCall.calledWithExactly(
+					'differentiator',
+					'Instance cannot form association with itself'
+				)).to.be.true;
+
+			});
+
+		});
+
+	});
+
 	describe('runDatabaseValidations method', () => {
 
 		it('will call validateUniquenessInDatabase method', () => {

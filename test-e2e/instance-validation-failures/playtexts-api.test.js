@@ -50,6 +50,12 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Value is too short'
 						]
 					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: []
 				};
@@ -86,6 +92,12 @@ describe('Instance validation failures: Playtexts API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
+					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					writerGroups: [],
 					characterGroups: []
@@ -147,6 +159,12 @@ describe('Instance validation failures: Playtexts API', () => {
 							'Value is too short'
 						]
 					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					writerGroups: [],
 					characterGroups: []
 				};
@@ -189,6 +207,12 @@ describe('Instance validation failures: Playtexts API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
+					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					writerGroups: [],
 					characterGroups: []
@@ -259,6 +283,12 @@ describe('Instance validation failures: Playtexts API', () => {
 						associations: [
 							'Production'
 						]
+					},
+					originalVersionPlaytext: {
+						model: 'playtext',
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					writerGroups: [],
 					characterGroups: []

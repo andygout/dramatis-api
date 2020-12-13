@@ -14,8 +14,8 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		chai.use(chaiHttp);
 
-		const PLAYTEXT_1_UUID = '1';
-		const PLAYTEXT_2_UUID = '4';
+		const PLAYTEXT_1_UUID = '2';
+		const PLAYTEXT_2_UUID = '8';
 
 		const sandbox = createSandbox();
 
@@ -51,6 +51,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -115,6 +121,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [],
 				characterGroups: []
 			};
@@ -142,6 +154,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '1',
 				errors: {},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -208,6 +226,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [],
 				characterGroups: []
 			};
@@ -235,6 +259,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '2',
 				errors: {},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -292,6 +322,12 @@ describe('Uniqueness in database: Playtexts API', () => {
 				name: 'Home',
 				differentiator: '',
 				errors: {},
+				originalVersionPlaytext: {
+					model: 'playtext',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -330,6 +366,148 @@ describe('Uniqueness in database: Playtexts API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Playtext original version playtext uniqueness in database', () => {
+
+		chai.use(chaiHttp);
+
+		const THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const sandbox = createSandbox();
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Playtext',
+				name: 'The Seagull',
+				uuid: THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates playtext and creates original version playtext that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Seagull',
+					differentiator: '2',
+					originalVersionPlaytext: {
+						name: 'The Seagull'
+					}
+				});
+
+			const expectedOriginalVersionPlaytextTheSeagull1 = {
+				model: 'playtext',
+				name: 'The Seagull',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull1);
+			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+		});
+
+		it('updates playtext and creates original version playtext that has same name as existing original version playtext but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Seagull',
+					differentiator: '2',
+					originalVersionPlaytext: {
+						name: 'The Seagull',
+						differentiator: '1'
+					}
+				});
+
+			const expectedOriginalVersionPlaytextTheSeagull2 = {
+				model: 'playtext',
+				name: 'The Seagull',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+		});
+
+		it('updates playtext and uses existing original version playtext that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Seagull',
+					differentiator: '2',
+					originalVersionPlaytext: {
+						name: 'The Seagull'
+					}
+				});
+
+			const expectedOriginalVersionPlaytextTheSeagull1 = {
+				model: 'playtext',
+				name: 'The Seagull',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull1);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+		});
+
+		it('updates playtext and uses existing original version playtext that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Seagull',
+					differentiator: '2',
+					originalVersionPlaytext: {
+						name: 'The Seagull',
+						differentiator: '1'
+					}
+				});
+
+			const expectedOriginalVersionPlaytextTheSeagull2 = {
+				model: 'playtext',
+				name: 'The Seagull',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
 
 		});
 
