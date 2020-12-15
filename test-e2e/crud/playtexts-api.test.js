@@ -11,6 +11,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 	chai.use(chaiHttp);
 
+	const sandbox = createSandbox();
+
 	describe('GET new endpoint', () => {
 
 		it('responds with data required to prepare new playtext', async () => {
@@ -74,8 +76,6 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 	describe('CRUD with minimum range of attributes assigned values', () => {
 
 		const PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -341,8 +341,6 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '23';
 		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '24';
 		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '25';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -1131,8 +1129,6 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 		const UNCLE_VANYA_PLAYTEXT_UUID = '2';
 		const THE_CHERRY_ORCHARD_PLAYTEXT_UUID = '6';
 		const THREE_SISTERS_PLAYTEXT_UUID = '10';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

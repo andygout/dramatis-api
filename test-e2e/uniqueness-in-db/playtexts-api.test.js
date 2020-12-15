@@ -10,14 +10,14 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Uniqueness in database: Playtexts API', () => {
 
-	describe('Playtext uniqueness in database', () => {
+	chai.use(chaiHttp);
 
-		chai.use(chaiHttp);
+	const sandbox = createSandbox();
+
+	describe('Playtext uniqueness in database', () => {
 
 		const PLAYTEXT_1_UUID = '2';
 		const PLAYTEXT_2_UUID = '8';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -373,11 +373,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 	describe('Playtext original version playtext uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -515,11 +511,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 	describe('Playtext writer uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const DOT_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -677,11 +669,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 	describe('Playtext character uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const TITUS_ANDRONICUS_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

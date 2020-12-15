@@ -10,14 +10,14 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Uniqueness in database: Theatres API', () => {
 
-	describe('Theatre uniqueness in database', () => {
+	chai.use(chaiHttp);
 
-		chai.use(chaiHttp);
+	const sandbox = createSandbox();
+
+	describe('Theatre uniqueness in database', () => {
 
 		const THEATRE_1_UUID = '1';
 		const THEATRE_2_UUID = '4';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -235,11 +235,7 @@ describe('Uniqueness in database: Theatres API', () => {
 
 	describe('Theatre sub-theatre uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const SHEFFIELD_THEATRES_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

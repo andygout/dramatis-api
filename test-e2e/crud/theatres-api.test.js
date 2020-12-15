@@ -11,6 +11,8 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 
 	chai.use(chaiHttp);
 
+	const sandbox = createSandbox();
+
 	describe('GET new endpoint', () => {
 
 		it('responds with data required to prepare new theatre', async () => {
@@ -43,8 +45,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 	describe('CRUD with minimum range of attributes assigned values', () => {
 
 		const THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -201,8 +201,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 		const DORFMAN_THEATRE_UUID = '7';
 		const JERWOOD_THEATRE_DOWNSTAIRS_UUID = '10';
 		const JERWOOD_THEATRE_UPSTAIRS_UUID = '11';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -512,8 +510,6 @@ describe('CRUD (Create, Read, Update, Delete): Theatres API', () => {
 		const DONMAR_WAREHOUSE_THEATRE_UUID = '1';
 		const NATIONAL_THEATRE_UUID = '3';
 		const ALMEIDA_THEATRE_UUID = '5';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
