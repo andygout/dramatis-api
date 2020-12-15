@@ -200,7 +200,7 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('theatre instance includes itself as a sub-theatre', () => {
+		context('theatre instance assigns itself as a sub-theatre', () => {
 
 			it('assigns appropriate error', async () => {
 

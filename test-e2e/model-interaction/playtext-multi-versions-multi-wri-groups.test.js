@@ -10,7 +10,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 
 	chai.use(chaiHttp);
 
-	const PEER_GYNT_ORIGINAL_PLAYTEXT_UUID = '4';
+	const PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID = '4';
 	const HENRIK_IBSEN_PERSON_UUID = '6';
 	const PEER_GYNT_CHARACTER_UUID = '7';
 	const PEER_GYNT_SUBSEQUENT_VERSION_1_PLAYTEXT_UUID = '13';
@@ -19,7 +19,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 	const GERRY_BAMMAN_PERSON_UUID = '28';
 	const IRENE_B_BERMAN_PERSON_UUID = '29';
 	const BALTASAR_KORMÁKUR_PERSON_UUID = '30';
-	const GHOSTS_ORIGINAL_PLAYTEXT_UUID = '35';
+	const GHOSTS_ORIGINAL_VERSION_PLAYTEXT_UUID = '35';
 	const GHOSTS_SUBSEQUENT_VERSION_PLAYTEXT_UUID = '44';
 	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = '50';
 
@@ -219,7 +219,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 			});
 
 		peerGyntOriginalPlaytext = await chai.request(app)
-			.get(`/playtexts/${PEER_GYNT_ORIGINAL_PLAYTEXT_UUID}`);
+			.get(`/playtexts/${PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID}`);
 
 		peerGyntSubsequentVersion2Playtext = await chai.request(app)
 			.get(`/playtexts/${PEER_GYNT_SUBSEQUENT_VERSION_2_PLAYTEXT_UUID}`);
@@ -339,7 +339,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 
 			const expectedOriginalVersionPlaytext = {
 				model: 'playtext',
-				uuid: PEER_GYNT_ORIGINAL_PLAYTEXT_UUID,
+				uuid: PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID,
 				name: 'Peer Gynt',
 				writerGroups: [
 					{
@@ -420,7 +420,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 			const expectedPlaytexts = [
 				{
 					model: 'playtext',
-					uuid: GHOSTS_ORIGINAL_PLAYTEXT_UUID,
+					uuid: GHOSTS_ORIGINAL_VERSION_PLAYTEXT_UUID,
 					name: 'Ghosts',
 					writerGroups: [
 						{
@@ -438,7 +438,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 				},
 				{
 					model: 'playtext',
-					uuid: PEER_GYNT_ORIGINAL_PLAYTEXT_UUID,
+					uuid: PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID,
 					name: 'Peer Gynt',
 					writerGroups: [
 						{
@@ -840,7 +840,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 				},
 				{
 					model: 'playtext',
-					uuid: PEER_GYNT_ORIGINAL_PLAYTEXT_UUID,
+					uuid: PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID,
 					name: 'Peer Gynt',
 					writerGroups: [
 						{
@@ -877,7 +877,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 			const expectedResponseBody = [
 				{
 					model: 'playtext',
-					uuid: GHOSTS_ORIGINAL_PLAYTEXT_UUID,
+					uuid: GHOSTS_ORIGINAL_VERSION_PLAYTEXT_UUID,
 					name: 'Ghosts',
 					writerGroups: [
 						{
@@ -940,7 +940,7 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 				},
 				{
 					model: 'playtext',
-					uuid: PEER_GYNT_ORIGINAL_PLAYTEXT_UUID,
+					uuid: PEER_GYNT_ORIGINAL_VERSION_PLAYTEXT_UUID,
 					name: 'Peer Gynt',
 					writerGroups: [
 						{

@@ -10,151 +10,13 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Uniqueness in database: Productions API', () => {
 
-	describe('Production theatre uniqueness in database', () => {
+	chai.use(chaiHttp);
 
-		chai.use(chaiHttp);
-
-		const DIAL_M_FOR_MURDER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
-
-		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
-
-			await purgeDatabase();
-
-			await createNode({
-				label: 'Production',
-				name: 'Dial M for Murder',
-				uuid: DIAL_M_FOR_MURDER_PRODUCTION_UUID
-			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
-		it('updates production and creates theatre that does not have a differentiator', async () => {
-
-			expect(await countNodesWithLabel('Theatre')).to.equal(0);
-
-			const response = await chai.request(app)
-				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
-				.send({
-					name: 'Dial M for Murder',
-					theatre: {
-						name: 'New Theatre'
-					}
-				});
-
-			const expectedTheatreNewTheatre1 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '',
-				errors: {}
-			};
-
-			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
-
-		});
-
-		it('updates production and creates theatre that has same name as existing theatre but uses a differentiator', async () => {
-
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
-
-			const response = await chai.request(app)
-				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
-				.send({
-					name: 'Dial M for Murder',
-					theatre: {
-						name: 'New Theatre',
-						differentiator: '1'
-					}
-				});
-
-			const expectedTheatreNewTheatre2 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '1',
-				errors: {}
-			};
-
-			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
-
-		});
-
-		it('updates production and uses existing theatre that does not have a differentiator', async () => {
-
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
-
-			const response = await chai.request(app)
-				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
-				.send({
-					name: 'Dial M for Murder',
-					theatre: {
-						name: 'New Theatre'
-					}
-				});
-
-			const expectedTheatreNewTheatre1 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '',
-				errors: {}
-			};
-
-			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
-
-		});
-
-		it('updates production and uses existing theatre that has a differentiator', async () => {
-
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
-
-			const response = await chai.request(app)
-				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
-				.send({
-					name: 'Dial M for Murder',
-					theatre: {
-						name: 'New Theatre',
-						differentiator: '1'
-					}
-				});
-
-			const expectedTheatreNewTheatre2 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '1',
-				errors: {}
-			};
-
-			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
-
-		});
-
-	});
+	const sandbox = createSandbox();
 
 	describe('Production playtext uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const HOME_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -286,13 +148,143 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
+	describe('Production theatre uniqueness in database', () => {
+
+		const DIAL_M_FOR_MURDER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				name: 'Dial M for Murder',
+				uuid: DIAL_M_FOR_MURDER_PRODUCTION_UUID
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates theatre that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Theatre')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Dial M for Murder',
+					theatre: {
+						name: 'New Theatre'
+					}
+				});
+
+			const expectedTheatreNewTheatre1 = {
+				model: 'theatre',
+				name: 'New Theatre',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+
+		});
+
+		it('updates production and creates theatre that has same name as existing theatre but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Dial M for Murder',
+					theatre: {
+						name: 'New Theatre',
+						differentiator: '1'
+					}
+				});
+
+			const expectedTheatreNewTheatre2 = {
+				model: 'theatre',
+				name: 'New Theatre',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
+			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing theatre that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Dial M for Murder',
+					theatre: {
+						name: 'New Theatre'
+					}
+				});
+
+			const expectedTheatreNewTheatre1 = {
+				model: 'theatre',
+				name: 'New Theatre',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
+			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing theatre that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Dial M for Murder',
+					theatre: {
+						name: 'New Theatre',
+						differentiator: '1'
+					}
+				});
+
+			const expectedTheatreNewTheatre2 = {
+				model: 'theatre',
+				name: 'New Theatre',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
+			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+
+		});
+
+	});
+
 	describe('Production cast member uniqueness in database', () => {
 
-		chai.use(chaiHttp);
-
 		const ARISTOCRATS_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

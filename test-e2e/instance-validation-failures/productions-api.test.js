@@ -12,13 +12,13 @@ describe('Instance validation failures: Productions API', () => {
 
 	chai.use(chaiHttp);
 
-	before(async () => {
-
-		await purgeDatabase();
-
-	});
-
 	describe('attempt to create instance', () => {
+
+		before(async () => {
+
+			await purgeDatabase();
+
+		});
 
 		context('instance has input validation errors', () => {
 

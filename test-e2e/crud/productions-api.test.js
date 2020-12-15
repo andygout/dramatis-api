@@ -11,6 +11,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 	chai.use(chaiHttp);
 
+	const sandbox = createSandbox();
+
 	describe('GET new endpoint', () => {
 
 		it('responds with data required to prepare new production', async () => {
@@ -64,8 +66,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('CRUD with minimum range of attributes assigned values', () => {
 
 		const PRODUCTION_UUID = '0';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -304,8 +304,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const TOM_CANTON_UUID = '10';
 		const MARK_HADFIELD_UUID = '11';
 		const JOSH_COLLINS_UUID = '12';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -1190,8 +1188,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '6';
 		const ALMEIDA_THEATRE_UUID = '8';
 		const HAMLET_ALMEIDA_PRODUCTION_UUID = '9';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

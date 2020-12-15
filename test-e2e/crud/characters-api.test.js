@@ -11,6 +11,8 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 	chai.use(chaiHttp);
 
+	const sandbox = createSandbox();
+
 	describe('GET new endpoint', () => {
 
 		it('responds with data required to prepare new character', async () => {
@@ -35,8 +37,6 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 	describe('CRUD', () => {
 
 		const CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -166,8 +166,6 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 		const ROMEO_CHARACTER_UUID = '1';
 		const JULIET_CHARACTER_UUID = '3';
 		const NURSE_CHARACTER_UUID = '5';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 

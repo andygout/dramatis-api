@@ -11,6 +11,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 	chai.use(chaiHttp);
 
+	const sandbox = createSandbox();
+
 	describe('GET new endpoint', () => {
 
 		it('responds with data required to prepare new person', async () => {
@@ -35,8 +37,6 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 	describe('CRUD', () => {
 
 		const PERSON_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
@@ -165,8 +165,6 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 		const IAN_MCKELLEN_PERSON_UUID = '1';
 		const PATRICK_STEWART_PERSON_UUID = '3';
 		const MATTHEW_KELLY_PERSON_UUID = '5';
-
-		const sandbox = createSandbox();
 
 		before(async () => {
 
