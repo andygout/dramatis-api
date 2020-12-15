@@ -157,63 +157,11 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getShowQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
-
-	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
-
-	WITH production, playtext, writerRel, writer
-		ORDER BY writerRel.groupPosition, writerRel.writerPosition
-
-	WITH production, playtext, writerRel.group AS writerGroupName,
-		COLLECT(
-			CASE writer WHEN NULL
-				THEN null
-				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
-			END
-		) AS writers
-
-	WITH production, playtext,
-		COLLECT(
-			CASE SIZE(writers) WHEN 0
-				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
-			END
-		) AS writerGroups
-
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
-
-	OPTIONAL MATCH (performer)-[role]->(production)-[playtextRel]->
-		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
-		WHERE
-			(
-				role.roleName IN [character.name, characterRel.displayName] OR
-				role.characterName IN [character.name, characterRel.displayName]
-			) AND
-			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
-
-	WITH DISTINCT production, playtext, writerGroups, theatre, surTheatre, performer, role, character
-		ORDER BY role.castMemberPosition, role.rolePosition
-
-	WITH production, playtext, writerGroups, theatre, surTheatre, performer,
-		COLLECT(
-			CASE role.roleName WHEN NULL
-				THEN { name: 'Performer' }
-				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
-			END
-		) AS roles
-
-	RETURN
-		'production' AS model,
-		production.uuid AS uuid,
-		production.name AS name,
-		CASE playtext WHEN NULL
-			THEN null
-			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
-		END AS playtext,
+	WITH production,
 		CASE theatre WHEN NULL
 			THEN null
 			ELSE {
@@ -229,7 +177,63 @@ const getShowQuery = () => `
 					}
 				END
 			}
-		END AS theatre,
+		END AS theatre
+
+	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
+
+	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+
+	WITH production, theatre, playtext, writerRel, writer
+		ORDER BY writerRel.groupPosition, writerRel.writerPosition
+
+	WITH production, theatre, playtext, writerRel.group AS writerGroupName,
+		COLLECT(
+			CASE writer WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
+			END
+		) AS writers
+
+	WITH production, theatre, playtext,
+		COLLECT(
+			CASE SIZE(writers) WHEN 0
+				THEN null
+				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
+			END
+		) AS writerGroups
+
+	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
+
+	OPTIONAL MATCH (performer)-[role]->(production)-[playtextRel]->
+		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+		WHERE
+			(
+				role.roleName IN [character.name, characterRel.displayName] OR
+				role.characterName IN [character.name, characterRel.displayName]
+			) AND
+			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
+
+	WITH DISTINCT production, theatre, playtext, writerGroups, performer, role, character
+		ORDER BY role.castMemberPosition, role.rolePosition
+
+	WITH production, theatre, performer,
+		CASE playtext WHEN NULL
+			THEN null
+			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
+		END AS playtext,
+		COLLECT(
+			CASE role.roleName WHEN NULL
+				THEN { name: 'Performer' }
+				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
+			END
+		) AS roles
+
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		playtext,
+		theatre,
 		COLLECT(
 			CASE performer WHEN NULL
 				THEN null
