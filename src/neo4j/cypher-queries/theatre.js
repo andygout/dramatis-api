@@ -88,6 +88,12 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (surTheatre:Theatre)-[:INCLUDES_SUB_THEATRE]->(theatre)
 
+	WITH theatre,
+		CASE surTheatre WHEN NULL
+			THEN null
+			ELSE { model: 'theatre', uuid: surTheatre.uuid, name: surTheatre.name }
+		END AS surTheatre
+
 	OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
 
 	WITH theatre, surTheatre, subTheatre
@@ -118,10 +124,7 @@ const getShowQuery = () => `
 		theatre.uuid AS uuid,
 		theatre.name AS name,
 		theatre.differentiator AS differentiator,
-		CASE surTheatre WHEN NULL
-			THEN null
-			ELSE { model: 'theatre', uuid: surTheatre.uuid, name: surTheatre.name }
-		END AS surTheatre,
+		surTheatre,
 		subTheatres,
 		COLLECT(
 			CASE production WHEN NULL
