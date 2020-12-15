@@ -464,6 +464,9 @@ const getListQuery = () => `
 			END
 		) AS writers
 
+	WITH playtext, writerGroupName, writers
+		ORDER BY playtext.name, playtext.differentiator
+
 	RETURN
 		'playtext' AS model,
 		playtext.uuid AS uuid,
@@ -474,8 +477,6 @@ const getListQuery = () => `
 				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
-
-	ORDER BY playtext.name
 
 	LIMIT 100
 `;
