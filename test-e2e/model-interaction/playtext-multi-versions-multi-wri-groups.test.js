@@ -958,6 +958,35 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 				},
 				{
 					model: 'playtext',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_PLAYTEXT_UUID,
+					name: 'Peer Gynt',
+					writerGroups: [
+						{
+							model: 'writerGroup',
+							name: 'by',
+							writers: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								}
+							]
+						},
+						{
+							model: 'writerGroup',
+							name: 'version by',
+							writers: [
+								{
+									model: 'person',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'playtext',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_PLAYTEXT_UUID,
 					name: 'Peer Gynt',
 					writerGroups: [
@@ -996,35 +1025,6 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'playtext',
-					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_PLAYTEXT_UUID,
-					name: 'Peer Gynt',
-					writerGroups: [
-						{
-							model: 'writerGroup',
-							name: 'by',
-							writers: [
-								{
-									model: 'person',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								}
-							]
-						},
-						{
-							model: 'writerGroup',
-							name: 'version by',
-							writers: [
-								{
-									model: 'person',
-									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
 								}
 							]
 						}
