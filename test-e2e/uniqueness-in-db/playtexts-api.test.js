@@ -509,7 +509,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 	});
 
-	describe('Playtext writer uniqueness in database', () => {
+	describe('Playtext writer (person) uniqueness in database', () => {
 
 		const DOT_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
@@ -535,7 +535,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		});
 
-		it('updates playtext and creates writer that does not have a differentiator', async () => {
+		it('updates playtext and creates writer (person) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
@@ -567,7 +567,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		});
 
-		it('updates playtext and creates writer that has same name as existing writer but uses a differentiator', async () => {
+		it('updates playtext and creates writer (person) that has same name as existing writer but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
@@ -600,7 +600,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		});
 
-		it('updates playtext and uses existing writer that does not have a differentiator', async () => {
+		it('updates playtext and uses existing writer (person) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
@@ -632,7 +632,7 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		});
 
-		it('updates playtext and uses existing writer that has a differentiator', async () => {
+		it('updates playtext and uses existing writer (person) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
@@ -662,6 +662,172 @@ describe('Uniqueness in database: Playtexts API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Playtext writer (source material playtext) uniqueness in database', () => {
+
+		const THE_INDIAN_BOY_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Playtext',
+				name: 'The Indian Boy',
+				uuid: THE_INDIAN_BOY_PLAYTEXT_UUID
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates playtext and creates writer (source material playtext) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_INDIAN_BOY_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Indian Boy',
+					writerGroups: [
+						{
+							name: 'inspired by',
+							writers: [
+								{
+									name: 'A Midsummer Night\'s Dream',
+									model: 'playtext'
+								}
+							]
+						}
+					]
+				});
+
+			const expectedPlaytextAMidsummerNightsDream1 = {
+				model: 'playtext',
+				name: 'A Midsummer Night\'s Dream',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream1);
+			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+		});
+
+		it('updates playtext and creates writer (source material playtext) that has same name as existing writer (source material playtext) but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_INDIAN_BOY_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Indian Boy',
+					writerGroups: [
+						{
+							name: 'inspired by',
+							writers: [
+								{
+									name: 'A Midsummer Night\'s Dream',
+									differentiator: '1',
+									model: 'playtext'
+								}
+							]
+						}
+					]
+				});
+
+			const expectedPlaytextAMidsummerNightsDream2 = {
+				model: 'playtext',
+				name: 'A Midsummer Night\'s Dream',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+		});
+
+		it('updates playtext and uses existing writer (source material playtext) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_INDIAN_BOY_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Indian Boy',
+					writerGroups: [
+						{
+							name: 'inspired by',
+							writers: [
+								{
+									name: 'A Midsummer Night\'s Dream',
+									model: 'playtext'
+								}
+							]
+						}
+					]
+				});
+
+			const expectedPlaytextAMidsummerNightsDream1 = {
+				model: 'playtext',
+				name: 'A Midsummer Night\'s Dream',
+				differentiator: '',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream1);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+		});
+
+		it('updates playtext and uses existing writer (source material playtext) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/playtexts/${THE_INDIAN_BOY_PLAYTEXT_UUID}`)
+				.send({
+					name: 'The Indian Boy',
+					writerGroups: [
+						{
+							name: 'inspired by',
+							writers: [
+								{
+									name: 'A Midsummer Night\'s Dream',
+									differentiator: '1',
+									model: 'playtext'
+								}
+							]
+						}
+					]
+				});
+
+			const expectedPlaytextAMidsummerNightsDream2 = {
+				model: 'playtext',
+				name: 'A Midsummer Night\'s Dream',
+				differentiator: '1',
+				errors: {}
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
 
 		});
 

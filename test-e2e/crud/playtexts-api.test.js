@@ -286,9 +286,11 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 				differentiator: null,
 				originalVersionPlaytext: null,
 				subsequentVersionPlaytexts: [],
+				sourcingPlaytexts: [],
 				writerGroups: [],
 				characterGroups: [],
-				productions: []
+				productions: [],
+				sourcingPlaytextProductions: []
 			};
 
 			expect(response).to.have.status(200);
@@ -328,19 +330,21 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const PLAYTEXT_UUID = '7';
-		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_PLAYTEXT_UUID = '8';
-		const HENRIK_IBSEN_PERSON_UUID = '9';
-		const DAVID_ELDRIDGE_PERSON_UUID = '10';
-		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '11';
-		const GUNHILD_BORKMAN_CHARACTER_UUID = '12';
-		const ERHART_BORKMAN_CHARACTER_UUID = '13';
-		const THREE_SISTERS_ORIGINAL_VERSION_PLAYTEXT_UUID = '20';
-		const ANTON_CHEKHOV_PERSON_UUID = '21';
-		const BENEDICT_ANDREWS_PERSON_UUID = '22';
-		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '23';
-		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '24';
-		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '25';
+		const PLAYTEXT_UUID = '8';
+		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_PLAYTEXT_UUID = '9';
+		const HENRIK_IBSEN_PERSON_UUID = '10';
+		const DAVID_ELDRIDGE_PERSON_UUID = '11';
+		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_PLAYTEXT_UUID = '12';
+		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '13';
+		const GUNHILD_BORKMAN_CHARACTER_UUID = '14';
+		const ERHART_BORKMAN_CHARACTER_UUID = '15';
+		const THREE_SISTERS_ORIGINAL_VERSION_PLAYTEXT_UUID = '23';
+		const ANTON_CHEKHOV_PERSON_UUID = '24';
+		const BENEDICT_ANDREWS_PERSON_UUID = '25';
+		const THREE_SISTERS_SOURCE_MATERIAL_PLAYTEXT_UUID = '26';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '27';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '28';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '29';
 
 		before(async () => {
 
@@ -387,6 +391,17 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 								{
 									name: 'David Eldridge',
 									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'based on',
+							writers: [
+								{
+									name: 'John Gabriel Borkman',
+									differentiator: '3',
+									model: 'playtext'
 								}
 							]
 						}
@@ -473,6 +488,26 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'writerGroup',
+						name: 'based on',
+						isOriginalVersionWriter: null,
+						errors: {},
+						writers: [
+							{
+								model: 'playtext',
+								name: 'John Gabriel Borkman',
+								differentiator: '3',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
 						name: '',
 						isOriginalVersionWriter: null,
 						errors: {},
@@ -546,7 +581,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
 
 		});
 
@@ -567,6 +602,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					writerGroups: []
 				},
 				subsequentVersionPlaytexts: [],
+				sourcingPlaytexts: [],
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -575,7 +611,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
-								name: 'Henrik Ibsen'
+								name: 'Henrik Ibsen',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					},
@@ -586,7 +623,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							{
 								model: 'person',
 								uuid: DAVID_ELDRIDGE_PERSON_UUID,
-								name: 'David Eldridge'
+								name: 'David Eldridge',
+								sourceMaterialWriterGroups: []
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'based on',
+						writers: [
+							{
+								model: 'playtext',
+								uuid: JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_PLAYTEXT_UUID,
+								name: 'John Gabriel Borkman',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					}
@@ -618,7 +668,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				productions: []
+				productions: [],
+				sourcingPlaytextProductions: []
 			};
 
 			expect(response).to.have.status(200);
@@ -674,6 +725,26 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 								model: 'person',
 								name: 'David Eldridge',
 								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'based on',
+						isOriginalVersionWriter: null,
+						errors: {},
+						writers: [
+							{
+								model: 'playtext',
+								name: 'John Gabriel Borkman',
+								differentiator: '3',
 								errors: {}
 							},
 							{
@@ -764,7 +835,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 		it('updates playtext', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(3);
 
 			const response = await chai.request(app)
 				.put(`/playtexts/${PLAYTEXT_UUID}`)
@@ -791,6 +862,17 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 								{
 									name: 'Benedict Andrews',
 									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'based on',
+							writers: [
+								{
+									name: 'Three Sisters',
+									differentiator: '3',
+									model: 'playtext'
 								}
 							]
 						}
@@ -877,6 +959,26 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					},
 					{
 						model: 'writerGroup',
+						name: 'based on',
+						isOriginalVersionWriter: null,
+						errors: {},
+						writers: [
+							{
+								model: 'playtext',
+								name: 'Three Sisters',
+								differentiator: '3',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
 						name: '',
 						isOriginalVersionWriter: null,
 						errors: {},
@@ -950,7 +1052,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+			expect(await countNodesWithLabel('Playtext')).to.equal(5);
 
 		});
 
@@ -971,6 +1073,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 					writerGroups: []
 				},
 				subsequentVersionPlaytexts: [],
+				sourcingPlaytexts: [],
 				writerGroups: [
 					{
 						model: 'writerGroup',
@@ -979,7 +1082,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							{
 								model: 'person',
 								uuid: ANTON_CHEKHOV_PERSON_UUID,
-								name: 'Anton Chekhov'
+								name: 'Anton Chekhov',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					},
@@ -990,7 +1094,20 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 							{
 								model: 'person',
 								uuid: BENEDICT_ANDREWS_PERSON_UUID,
-								name: 'Benedict Andrews'
+								name: 'Benedict Andrews',
+								sourceMaterialWriterGroups: []
+							}
+						]
+					},
+					{
+						model: 'writerGroup',
+						name: 'based on',
+						writers: [
+							{
+								model: 'playtext',
+								uuid: THREE_SISTERS_SOURCE_MATERIAL_PLAYTEXT_UUID,
+								name: 'Three Sisters',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					}
@@ -1022,7 +1139,8 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 						]
 					}
 				],
-				productions: []
+				productions: [],
+				sourcingPlaytextProductions: []
 			};
 
 			expect(response).to.have.status(200);
@@ -1032,7 +1150,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 		it('updates playtext to remove all associations prior to deletion', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+			expect(await countNodesWithLabel('Playtext')).to.equal(5);
 
 			const response = await chai.request(app)
 				.put(`/playtexts/${PLAYTEXT_UUID}`)
@@ -1090,13 +1208,13 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+			expect(await countNodesWithLabel('Playtext')).to.equal(5);
 
 		});
 
 		it('deletes playtext', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(3);
+			expect(await countNodesWithLabel('Playtext')).to.equal(5);
 
 			const response = await chai.request(app)
 				.delete(`/playtexts/${PLAYTEXT_UUID}`);
@@ -1118,7 +1236,7 @@ describe('CRUD (Create, Read, Update, Delete): Playtexts API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(await countNodesWithLabel('Playtext')).to.equal(4);
 
 		});
 

@@ -319,7 +319,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
-							name: 'Henrik Ibsen'
+							name: 'Henrik Ibsen',
+							sourceMaterialWriterGroups: []
 						}
 					]
 				}
@@ -372,7 +373,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
-							name: 'Henrik Ibsen'
+							name: 'Henrik Ibsen',
+							sourceMaterialWriterGroups: []
 						}
 					]
 				},
@@ -383,12 +385,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 						{
 							model: 'person',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
-							name: 'Gerry Bamman'
+							name: 'Gerry Bamman',
+							sourceMaterialWriterGroups: []
 						},
 						{
 							model: 'person',
 							uuid: IRENE_B_BERMAN_PERSON_UUID,
-							name: 'Irene B Berman'
+							name: 'Irene B Berman',
+							sourceMaterialWriterGroups: []
 						}
 					]
 				},
@@ -399,7 +403,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 						{
 							model: 'person',
 							uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-							name: 'Baltasar Kormákur'
+							name: 'Baltasar Kormákur',
+							sourceMaterialWriterGroups: []
 						}
 					]
 				}
@@ -430,7 +435,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -448,7 +454,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -477,7 +484,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -488,12 +496,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -504,7 +514,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -522,7 +533,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -533,12 +545,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -549,7 +563,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -567,7 +582,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -578,7 +594,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
+									name: 'Frank McGuinness',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -611,7 +628,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -622,12 +640,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -638,7 +658,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -656,7 +677,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -667,12 +689,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -683,7 +707,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -715,7 +740,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
-								name: 'Henrik Ibsen'
+								name: 'Henrik Ibsen',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					},
@@ -726,12 +752,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 							{
 								model: 'person',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
-								name: 'Gerry Bamman'
+								name: 'Gerry Bamman',
+								sourceMaterialWriterGroups: []
 							},
 							{
 								model: 'person',
 								uuid: IRENE_B_BERMAN_PERSON_UUID,
-								name: 'Irene B Berman'
+								name: 'Irene B Berman',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					},
@@ -742,7 +770,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 							{
 								model: 'person',
 								uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-								name: 'Baltasar Kormákur'
+								name: 'Baltasar Kormákur',
+								sourceMaterialWriterGroups: []
 							}
 						]
 					}
@@ -774,7 +803,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -785,12 +815,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -801,7 +833,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -820,7 +853,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -831,7 +865,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
+									name: 'Frank McGuinness',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -850,7 +885,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -887,7 +923,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -905,7 +942,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -916,12 +954,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -932,7 +972,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -950,7 +991,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -968,7 +1010,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -979,7 +1022,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
+									name: 'Frank McGuinness',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}
@@ -997,7 +1041,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
+									name: 'Henrik Ibsen',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -1008,12 +1053,14 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									name: 'Gerry Bamman',
+									sourceMaterialWriterGroups: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
+									name: 'Irene B Berman',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						},
@@ -1024,7 +1071,8 @@ describe('Playtexts with multiple versions and multiple writer groups', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									name: 'Baltasar Kormákur',
+									sourceMaterialWriterGroups: []
 								}
 							]
 						}

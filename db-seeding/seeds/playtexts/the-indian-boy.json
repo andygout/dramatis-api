@@ -1,0 +1,55 @@
+{
+	"name": "The Indian Boy",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Rona Munro"
+				}
+			]
+		},
+		{
+			"name": "inspired by",
+			"writers": [
+				{
+					"name": "A Midsummer Night's Dream",
+					"model": "playtext"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bricks"
+				},
+				{
+					"name": "Chippy"
+				},
+				{
+					"name": "The Indian Boy"
+				},
+				{
+					"name": "Julius"
+				},
+				{
+					"name": "June"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "The Indian Boy"
+				},
+				{
+					"name": "Peter"
+				},
+				{
+					"name": "Sara"
+				},
+				{
+					"name": "Sparks"
+				}
+			]
+		}
+	]
+}

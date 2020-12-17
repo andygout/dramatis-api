@@ -3,7 +3,8 @@ import { expect } from 'chai';
 import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
-	getDuplicateRoleIndices
+	getDuplicateRoleIndices,
+	getDuplicateWriterIndices
 } from '../../../src/lib/get-duplicate-indices';
 
 describe('Get Duplicate Indices module', () => {
@@ -227,6 +228,60 @@ describe('Get Duplicate Indices module', () => {
 				);
 
 				expect(result).to.deep.equal([0, 1, 3, 4]);
+
+			});
+
+		});
+
+	});
+
+	describe('getDuplicateWriterIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateWriterIndices(
+					[
+						{ name: 'Foo', differentiator: '', model: '' },
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Foo', differentiator: '2', model: '' },
+						{ name: 'Foo', differentiator: '', model: 'playtext' },
+						{ name: 'Foo', differentiator: '1', model: 'playtext' },
+						{ name: 'Foo', differentiator: '2', model: 'playtext' },
+						{ name: 'Bar', differentiator: '', model: '' },
+						{ name: 'Bar', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '2', model: '' },
+						{ name: 'Bar', differentiator: '', model: 'playtext' },
+						{ name: 'Bar', differentiator: '1', model: 'playtext' },
+						{ name: 'Bar', differentiator: '2', model: 'playtext' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+				const result = getDuplicateWriterIndices(
+					[
+						{ name: 'Foo', differentiator: '1', qualifier: '' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'playtext' },
+						{ name: '', differentiator: '1', qualifier: '' },
+						{ name: 'Baz', differentiator: '1', qualifier: '' },
+						{ name: 'Foo', differentiator: '1', qualifier: '' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'playtext' },
+						{ name: '', differentiator: '1', qualifier: '' },
+						{ name: 'Qux', differentiator: '1', qualifier: '' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 1, 4, 5]);
 
 			});
 
