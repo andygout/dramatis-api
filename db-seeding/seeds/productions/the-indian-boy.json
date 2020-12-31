@@ -1,0 +1,83 @@
+{
+	"name": "The Indian Boy",
+	"playtext": {
+		"name": "The Indian Boy"
+	},
+	"theatre": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"cast": [
+		{
+			"name": "David Kennedy",
+			"roles": [
+				{
+					"name": "Bricks"
+				}
+			]
+		},
+		{
+			"name": "Roderick Smith",
+			"roles": [
+				{
+					"name": "Chippy"
+				}
+			]
+		},
+		{
+			"name": "Rhik Samadder",
+			"roles": [
+				{
+					"name": "The Indian Boy"
+				}
+			]
+		},
+		{
+			"name": "Colin Salmon",
+			"roles": [
+				{
+					"name": "Julius"
+				}
+			]
+		},
+		{
+			"name": "Holly Aird",
+			"roles": [
+				{
+					"name": "June"
+				}
+			]
+		},
+		{
+			"name": "Clare Cathcart",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Christopher Fulford",
+			"roles": [
+				{
+					"name": "Peter"
+				}
+			]
+		},
+		{
+			"name": "Ashley Madekwe",
+			"roles": [
+				{
+					"name": "Sara"
+				}
+			]
+		},
+		{
+			"name": "Ryan Gage",
+			"roles": [
+				{
+					"name": "Sparks"
+				}
+			]
+		}
+	]
+}

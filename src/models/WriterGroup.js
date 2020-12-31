@@ -1,6 +1,6 @@
-import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateWriterIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Person } from '.';
+import { Person, Playtext } from '.';
 
 export default class WriterGroup extends Base {
 
@@ -13,7 +13,11 @@ export default class WriterGroup extends Base {
 		this.model = 'writerGroup';
 		this.isOriginalVersionWriter = Boolean(isOriginalVersionWriter) || null;
 		this.writers = writers
-			? writers.map(writer => new Person(writer))
+			? writers.map(writer => {
+				return writer.model === 'playtext'
+					? new Playtext({ ...writer, isAssociation: true })
+					: new Person(writer);
+			})
 			: [];
 
 	}
@@ -24,7 +28,7 @@ export default class WriterGroup extends Base {
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
-		const duplicateWriterIndices = getDuplicateBaseInstanceIndices(this.writers);
+		const duplicateWriterIndices = getDuplicateWriterIndices(this.writers);
 
 		this.writers.forEach((writer, index) => {
 

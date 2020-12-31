@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Person } from '../../../src/models';
+import { Person, Playtext } from '../../../src/models';
 
 describe('WriterGroup model', () => {
 
@@ -18,7 +18,7 @@ describe('WriterGroup model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])
+				getDuplicateWriterIndices: stub().returns([])
 			},
 			models: {
 				Person: PersonStub
@@ -85,7 +85,7 @@ describe('WriterGroup model', () => {
 
 			});
 
-			it('assigns array of writers if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of writers and playtexts if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'version by',
@@ -94,18 +94,33 @@ describe('WriterGroup model', () => {
 							name: 'David Eldridge'
 						},
 						{
+							name: 'A Midsummer Night\'s Dream',
+							model: 'playtext'
+						},
+						{
 							name: ''
 						},
 						{
+							name: '',
+							model: 'playtext'
+						},
+						{
 							name: ' '
+						},
+						{
+							name: ' ',
+							model: 'playtext'
 						}
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.writers.length).to.equal(3);
+				expect(instance.writers.length).to.equal(6);
 				expect(instance.writers[0] instanceof Person).to.be.true;
-				expect(instance.writers[1] instanceof Person).to.be.true;
+				expect(instance.writers[1] instanceof Playtext).to.be.true;
 				expect(instance.writers[2] instanceof Person).to.be.true;
+				expect(instance.writers[3] instanceof Playtext).to.be.true;
+				expect(instance.writers[4] instanceof Person).to.be.true;
+				expect(instance.writers[5] instanceof Playtext).to.be.true;
 
 			});
 
@@ -132,15 +147,15 @@ describe('WriterGroup model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateWriterIndices,
 				instance.writers[0].validateName,
 				instance.writers[0].validateDifferentiator,
 				instance.writers[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateWriterIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateWriterIndices.calledWithExactly(
 				instance.writers
 			)).to.be.true;
 			expect(instance.writers[0].validateName.calledOnce).to.be.true;

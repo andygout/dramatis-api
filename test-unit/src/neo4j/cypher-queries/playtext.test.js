@@ -47,8 +47,9 @@ describe('Cypher Queries Playtext module', () => {
 
 					UNWIND (CASE writerGroupParam.writers WHEN [] THEN [null] ELSE writerGroupParam.writers END) AS writerParam
 
-						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+						OPTIONAL MATCH (existingWriter { name: writerParam.name })
 							WHERE
+								(existingWriter:Person OR existingWriter:Playtext) AND
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
@@ -65,7 +66,7 @@ describe('Cypher Queries Playtext module', () => {
 								ELSE existingWriter
 							END AS writerProps
 
-						FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
+						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
 							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
 								ON CREATE SET writer.differentiator = writerProps.differentiator
 
@@ -76,6 +77,18 @@ describe('Cypher Queries Playtext module', () => {
 									group: writerGroupParam.name,
 									isOriginalVersionWriter: writerGroupParam.isOriginalVersionWriter
 								}]->(writer)
+						)
+
+						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'playtext' THEN [1] ELSE [] END |
+							MERGE (sourceMaterial:Playtext { uuid: writerProps.uuid, name: writerProps.name })
+								ON CREATE SET sourceMaterial.differentiator = writerProps.differentiator
+
+							CREATE (playtext)-
+								[:USES_SOURCE_MATERIAL {
+									groupPosition: writerGroupParam.position,
+									writerPosition: writerParam.position,
+									group: writerGroupParam.name
+								}]->(sourceMaterial)
 						)
 
 				WITH DISTINCT playtext
@@ -124,7 +137,8 @@ describe('Cypher Queries Playtext module', () => {
 
 				OPTIONAL MATCH (playtext)-[:SUBSEQUENT_VERSION_OF]->(originalVersionPlaytext:Playtext)
 
-				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+					WHERE writer:Person OR writer:Playtext
 
 				WITH playtext, originalVersionPlaytext, writerRel, writer
 					ORDER BY writerRel.groupPosition, writerRel.writerPosition
@@ -137,7 +151,7 @@ describe('Cypher Queries Playtext module', () => {
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE { model: 'person', name: writer.name, differentiator: writer.differentiator }
+							ELSE { model: TOLOWER(HEAD(LABELS(writer))), name: writer.name, differentiator: writer.differentiator }
 						END
 					) + [{}] AS writers
 
@@ -215,6 +229,12 @@ describe('Cypher Queries Playtext module', () => {
 
 				WITH DISTINCT playtext
 
+				OPTIONAL MATCH (playtext)-[sourceMaterialRel:USES_SOURCE_MATERIAL]->(:Playtext)
+
+				DELETE sourceMaterialRel
+
+				WITH DISTINCT playtext
+
 				OPTIONAL MATCH (playtext)-[characterRel:INCLUDES_CHARACTER]->(:Character)
 
 				DELETE characterRel
@@ -259,8 +279,9 @@ describe('Cypher Queries Playtext module', () => {
 
 					UNWIND (CASE writerGroupParam.writers WHEN [] THEN [null] ELSE writerGroupParam.writers END) AS writerParam
 
-						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+						OPTIONAL MATCH (existingWriter { name: writerParam.name })
 							WHERE
+								(existingWriter:Person OR existingWriter:Playtext) AND
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
@@ -277,7 +298,7 @@ describe('Cypher Queries Playtext module', () => {
 								ELSE existingWriter
 							END AS writerProps
 
-						FOREACH (item IN CASE writerParam WHEN NULL THEN [] ELSE [1] END |
+						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
 							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
 								ON CREATE SET writer.differentiator = writerProps.differentiator
 
@@ -288,6 +309,18 @@ describe('Cypher Queries Playtext module', () => {
 									group: writerGroupParam.name,
 									isOriginalVersionWriter: writerGroupParam.isOriginalVersionWriter
 								}]->(writer)
+						)
+
+						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'playtext' THEN [1] ELSE [] END |
+							MERGE (sourceMaterial:Playtext { uuid: writerProps.uuid, name: writerProps.name })
+								ON CREATE SET sourceMaterial.differentiator = writerProps.differentiator
+
+							CREATE (playtext)-
+								[:USES_SOURCE_MATERIAL {
+									groupPosition: writerGroupParam.position,
+									writerPosition: writerParam.position,
+									group: writerGroupParam.name
+								}]->(sourceMaterial)
 						)
 
 				WITH DISTINCT playtext
@@ -336,7 +369,8 @@ describe('Cypher Queries Playtext module', () => {
 
 				OPTIONAL MATCH (playtext)-[:SUBSEQUENT_VERSION_OF]->(originalVersionPlaytext:Playtext)
 
-				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+				OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+					WHERE writer:Person OR writer:Playtext
 
 				WITH playtext, originalVersionPlaytext, writerRel, writer
 					ORDER BY writerRel.groupPosition, writerRel.writerPosition
@@ -349,7 +383,7 @@ describe('Cypher Queries Playtext module', () => {
 					COLLECT(
 						CASE writer WHEN NULL
 							THEN null
-							ELSE { model: 'person', name: writer.name, differentiator: writer.differentiator }
+							ELSE { model: TOLOWER(HEAD(LABELS(writer))), name: writer.name, differentiator: writer.differentiator }
 						END
 					) + [{}] AS writers
 

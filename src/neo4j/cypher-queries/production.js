@@ -181,16 +181,51 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
 
-	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY]->(writer:Person)
+	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+		WHERE writer:Person OR writer:Playtext
 
-	WITH production, theatre, playtext, writerRel, writer
+	OPTIONAL MATCH (writer:Playtext)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+
+	WITH production, theatre, playtext, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
+		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
+
+	WITH
+		production,
+		theatre,
+		playtext,
+		writerRel,
+		writer,
+		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
+		COLLECT(
+			CASE sourceMaterialWriter WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: sourceMaterialWriter.uuid, name: sourceMaterialWriter.name }
+			END
+		) AS sourceMaterialWriters
+
+	WITH production, theatre, playtext, writerRel, writer,
+		COLLECT(
+			CASE SIZE(sourceMaterialWriters) WHEN 0
+				THEN null
+				ELSE {
+					model: 'writerGroup',
+					name: COALESCE(sourceMaterialWriterGroupName, 'by'),
+					writers: sourceMaterialWriters
+				}
+			END
+		) AS sourceMaterialWriterGroups
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
 	WITH production, theatre, playtext, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: writer.uuid, name: writer.name }
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(writer))),
+					uuid: writer.uuid,
+					name: writer.name,
+					sourceMaterialWriterGroups: sourceMaterialWriterGroups
+				}
 			END
 		) AS writers
 
