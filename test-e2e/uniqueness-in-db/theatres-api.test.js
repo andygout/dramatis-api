@@ -237,6 +237,20 @@ describe('Uniqueness in database: Theatres API', () => {
 
 		const SHEFFIELD_THEATRES_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
+		const expectedSubTheatreStudioTheatre1 = {
+			model: 'theatre',
+			name: 'Studio Theatre',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedSubTheatreStudioTheatre2 = {
+			model: 'theatre',
+			name: 'Studio Theatre',
+			differentiator: '1',
+			errors: {}
+		};
+
 		before(async () => {
 
 			let uuidCallCount = 0;
@@ -274,13 +288,6 @@ describe('Uniqueness in database: Theatres API', () => {
 					]
 				});
 
-			const expectedSubTheatreStudioTheatre1 = {
-				model: 'theatre',
-				name: 'Studio Theatre',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre1);
 			expect(await countNodesWithLabel('Theatre')).to.equal(2);
@@ -303,13 +310,6 @@ describe('Uniqueness in database: Theatres API', () => {
 					]
 				});
 
-			const expectedSubTheatreStudioTheatre2 = {
-				model: 'theatre',
-				name: 'Studio Theatre',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre2);
 			expect(await countNodesWithLabel('Theatre')).to.equal(3);
@@ -330,13 +330,6 @@ describe('Uniqueness in database: Theatres API', () => {
 						}
 					]
 				});
-
-			const expectedSubTheatreStudioTheatre1 = {
-				model: 'theatre',
-				name: 'Studio Theatre',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre1);
@@ -359,13 +352,6 @@ describe('Uniqueness in database: Theatres API', () => {
 						}
 					]
 				});
-
-			const expectedSubTheatreStudioTheatre2 = {
-				model: 'theatre',
-				name: 'Studio Theatre',
-				differentiator: '1',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre2);
