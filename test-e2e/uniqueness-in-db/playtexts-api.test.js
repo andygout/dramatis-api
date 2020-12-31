@@ -375,6 +375,20 @@ describe('Uniqueness in database: Playtexts API', () => {
 
 		const THE_SEAGULL_SUBSEQUENT_VERSION_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
+		const expectedOriginalVersionPlaytextTheSeagull1 = {
+			model: 'playtext',
+			name: 'The Seagull',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedOriginalVersionPlaytextTheSeagull2 = {
+			model: 'playtext',
+			name: 'The Seagull',
+			differentiator: '1',
+			errors: {}
+		};
+
 		before(async () => {
 
 			let uuidCallCount = 0;
@@ -411,13 +425,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					}
 				});
 
-			const expectedOriginalVersionPlaytextTheSeagull1 = {
-				model: 'playtext',
-				name: 'The Seagull',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull1);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
@@ -439,13 +446,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					}
 				});
 
-			const expectedOriginalVersionPlaytextTheSeagull2 = {
-				model: 'playtext',
-				name: 'The Seagull',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(3);
@@ -465,13 +465,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 						name: 'The Seagull'
 					}
 				});
-
-			const expectedOriginalVersionPlaytextTheSeagull1 = {
-				model: 'playtext',
-				name: 'The Seagull',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull1);
@@ -494,13 +487,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					}
 				});
 
-			const expectedOriginalVersionPlaytextTheSeagull2 = {
-				model: 'playtext',
-				name: 'The Seagull',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.originalVersionPlaytext).to.deep.equal(expectedOriginalVersionPlaytextTheSeagull2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(3);
@@ -512,6 +498,20 @@ describe('Uniqueness in database: Playtexts API', () => {
 	describe('Playtext writer (person) uniqueness in database', () => {
 
 		const DOT_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPersonKateRyan1 = {
+			model: 'person',
+			name: 'Kate Ryan',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPersonKateRyan2 = {
+			model: 'person',
+			name: 'Kate Ryan',
+			differentiator: '1',
+			errors: {}
+		};
 
 		before(async () => {
 
@@ -554,13 +554,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPersonKateRyan1 = {
-				model: 'person',
-				name: 'Kate Ryan',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
@@ -587,13 +580,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPersonKateRyan2 = {
-				model: 'person',
-				name: 'Kate Ryan',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
@@ -618,13 +604,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 						}
 					]
 				});
-
-			const expectedPersonKateRyan1 = {
-				model: 'person',
-				name: 'Kate Ryan',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
@@ -652,13 +631,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPersonKateRyan2 = {
-				model: 'person',
-				name: 'Kate Ryan',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
@@ -670,6 +642,20 @@ describe('Uniqueness in database: Playtexts API', () => {
 	describe('Playtext writer (source material playtext) uniqueness in database', () => {
 
 		const THE_INDIAN_BOY_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPlaytextAMidsummerNightsDream1 = {
+			model: 'playtext',
+			name: 'A Midsummer Night\'s Dream',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPlaytextAMidsummerNightsDream2 = {
+			model: 'playtext',
+			name: 'A Midsummer Night\'s Dream',
+			differentiator: '1',
+			errors: {}
+		};
 
 		before(async () => {
 
@@ -714,13 +700,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPlaytextAMidsummerNightsDream1 = {
-				model: 'playtext',
-				name: 'A Midsummer Night\'s Dream',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream1);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
@@ -749,13 +728,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPlaytextAMidsummerNightsDream2 = {
-				model: 'playtext',
-				name: 'A Midsummer Night\'s Dream',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(3);
@@ -782,13 +754,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 						}
 					]
 				});
-
-			const expectedPlaytextAMidsummerNightsDream1 = {
-				model: 'playtext',
-				name: 'A Midsummer Night\'s Dream',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream1);
@@ -818,13 +783,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedPlaytextAMidsummerNightsDream2 = {
-				model: 'playtext',
-				name: 'A Midsummer Night\'s Dream',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPlaytextAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(3);
@@ -836,6 +794,24 @@ describe('Uniqueness in database: Playtexts API', () => {
 	describe('Playtext character uniqueness in database', () => {
 
 		const TITUS_ANDRONICUS_PLAYTEXT_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedCharacterDemetrius1 = {
+			model: 'character',
+			name: 'Demetrius',
+			underlyingName: '',
+			differentiator: '',
+			qualifier: '',
+			errors: {}
+		};
+
+		const expectedCharacterDemetrius2 = {
+			model: 'character',
+			name: 'Demetrius',
+			underlyingName: '',
+			differentiator: '1',
+			qualifier: '',
+			errors: {}
+		};
 
 		before(async () => {
 
@@ -878,15 +854,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedCharacterDemetrius1 = {
-				model: 'character',
-				name: 'Demetrius',
-				underlyingName: '',
-				differentiator: '',
-				qualifier: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
 			expect(await countNodesWithLabel('Character')).to.equal(1);
@@ -913,15 +880,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 					]
 				});
 
-			const expectedCharacterDemetrius2 = {
-				model: 'character',
-				name: 'Demetrius',
-				underlyingName: '',
-				differentiator: '1',
-				qualifier: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);
 			expect(await countNodesWithLabel('Character')).to.equal(2);
@@ -946,15 +904,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 						}
 					]
 				});
-
-			const expectedCharacterDemetrius1 = {
-				model: 'character',
-				name: 'Demetrius',
-				underlyingName: '',
-				differentiator: '',
-				qualifier: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
@@ -981,15 +930,6 @@ describe('Uniqueness in database: Playtexts API', () => {
 						}
 					]
 				});
-
-			const expectedCharacterDemetrius2 = {
-				model: 'character',
-				name: 'Demetrius',
-				underlyingName: '',
-				differentiator: '1',
-				qualifier: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);

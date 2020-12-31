@@ -18,6 +18,20 @@ describe('Uniqueness in database: Productions API', () => {
 
 		const HOME_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
+		const expectedPlaytextHome1 = {
+			model: 'playtext',
+			name: 'Home',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPlaytextHome2 = {
+			model: 'playtext',
+			name: 'Home',
+			differentiator: '1',
+			errors: {}
+		};
+
 		before(async () => {
 
 			let uuidCallCount = 0;
@@ -53,13 +67,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedPlaytextHome1 = {
-				model: 'playtext',
-				name: 'Home',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome1);
 			expect(await countNodesWithLabel('Playtext')).to.equal(1);
@@ -80,13 +87,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedPlaytextHome2 = {
-				model: 'playtext',
-				name: 'Home',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
@@ -105,13 +105,6 @@ describe('Uniqueness in database: Productions API', () => {
 						name: 'Home'
 					}
 				});
-
-			const expectedPlaytextHome1 = {
-				model: 'playtext',
-				name: 'Home',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome1);
@@ -133,13 +126,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedPlaytextHome2 = {
-				model: 'playtext',
-				name: 'Home',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome2);
 			expect(await countNodesWithLabel('Playtext')).to.equal(2);
@@ -151,6 +137,20 @@ describe('Uniqueness in database: Productions API', () => {
 	describe('Production theatre uniqueness in database', () => {
 
 		const DIAL_M_FOR_MURDER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedTheatreNewTheatre1 = {
+			model: 'theatre',
+			name: 'New Theatre',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedTheatreNewTheatre2 = {
+			model: 'theatre',
+			name: 'New Theatre',
+			differentiator: '1',
+			errors: {}
+		};
 
 		before(async () => {
 
@@ -187,13 +187,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedTheatreNewTheatre1 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
 			expect(await countNodesWithLabel('Theatre')).to.equal(1);
@@ -214,13 +207,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedTheatreNewTheatre2 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
 			expect(await countNodesWithLabel('Theatre')).to.equal(2);
@@ -239,13 +225,6 @@ describe('Uniqueness in database: Productions API', () => {
 						name: 'New Theatre'
 					}
 				});
-
-			const expectedTheatreNewTheatre1 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '',
-				errors: {}
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
@@ -267,13 +246,6 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			const expectedTheatreNewTheatre2 = {
-				model: 'theatre',
-				name: 'New Theatre',
-				differentiator: '1',
-				errors: {}
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
 			expect(await countNodesWithLabel('Theatre')).to.equal(2);
@@ -285,6 +257,40 @@ describe('Uniqueness in database: Productions API', () => {
 	describe('Production cast member uniqueness in database', () => {
 
 		const ARISTOCRATS_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedCastMemberPaulHiggins1 = {
+			model: 'person',
+			name: 'Paul Higgins',
+			differentiator: '',
+			errors: {},
+			roles: [
+				{
+					model: 'role',
+					name: '',
+					characterName: '',
+					characterDifferentiator: '',
+					qualifier: '',
+					errors: {}
+				}
+			]
+		};
+
+		const expectedCastMemberPaulHiggins2 = {
+			model: 'person',
+			name: 'Paul Higgins',
+			differentiator: '1',
+			errors: {},
+			roles: [
+				{
+					model: 'role',
+					name: '',
+					characterName: '',
+					characterDifferentiator: '',
+					qualifier: '',
+					errors: {}
+				}
+			]
+		};
 
 		before(async () => {
 
@@ -323,23 +329,6 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			const expectedCastMemberPaulHiggins1 = {
-				model: 'person',
-				name: 'Paul Higgins',
-				differentiator: '',
-				errors: {},
-				roles: [
-					{
-						model: 'role',
-						name: '',
-						characterName: '',
-						characterDifferentiator: '',
-						qualifier: '',
-						errors: {}
-					}
-				]
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
@@ -362,23 +351,6 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			const expectedCastMemberPaulHiggins2 = {
-				model: 'person',
-				name: 'Paul Higgins',
-				differentiator: '1',
-				errors: {},
-				roles: [
-					{
-						model: 'role',
-						name: '',
-						characterName: '',
-						characterDifferentiator: '',
-						qualifier: '',
-						errors: {}
-					}
-				]
-			};
-
 			expect(response).to.have.status(200);
 			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
@@ -399,23 +371,6 @@ describe('Uniqueness in database: Productions API', () => {
 						}
 					]
 				});
-
-			const expectedCastMemberPaulHiggins1 = {
-				model: 'person',
-				name: 'Paul Higgins',
-				differentiator: '',
-				errors: {},
-				roles: [
-					{
-						model: 'role',
-						name: '',
-						characterName: '',
-						characterDifferentiator: '',
-						qualifier: '',
-						errors: {}
-					}
-				]
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins1);
@@ -438,23 +393,6 @@ describe('Uniqueness in database: Productions API', () => {
 						}
 					]
 				});
-
-			const expectedCastMemberPaulHiggins2 = {
-				model: 'person',
-				name: 'Paul Higgins',
-				differentiator: '1',
-				errors: {},
-				roles: [
-					{
-						model: 'role',
-						name: '',
-						characterName: '',
-						characterDifferentiator: '',
-						qualifier: '',
-						errors: {}
-					}
-				]
-			};
 
 			expect(response).to.have.status(200);
 			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins2);
