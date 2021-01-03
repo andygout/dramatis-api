@@ -1,0 +1,110 @@
+{
+	"name": "A Midsummer Night's Dream",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Athenians",
+			"characters": [
+				{
+					"name": "Theseus"
+				},
+				{
+					"name": "Hippolyta"
+				},
+				{
+					"name": "Egeus"
+				},
+				{
+					"name": "Philostrate"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "A Midsummer Night's Dream"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "A Midsummer Night's Dream"
+				}
+			]
+		},
+		{
+			"name": "The Lovers",
+			"characters": [
+				{
+					"name": "Hermia"
+				},
+				{
+					"name": "Lysander"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Helena"
+				}
+			]
+		},
+		{
+			"name": "The Fairies",
+			"characters": [
+				{
+					"name": "Oberon"
+				},
+				{
+					"name": "Titania"
+				},
+				{
+					"name": "Puck"
+				},
+				{
+					"name": "Peaseblossom"
+				},
+				{
+					"name": "Cobweb"
+				},
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Mustardseed"
+				},
+				{
+					"name": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "The Mechanicals",
+			"characters": [
+				{
+					"name": "Peter Quince"
+				},
+				{
+					"name": "Nick Bottom"
+				},
+				{
+					"name": "Francis Flute"
+				},
+				{
+					"name": "Tom Snout"
+				},
+				{
+					"name": "Snug"
+				},
+				{
+					"name": "Robin Starveling"
+				}
+			]
+		}
+	]
+}

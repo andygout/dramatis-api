@@ -1,6 +1,6 @@
 # theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api)
 
-Graph database-driven API for site of theatrical productions, playtexts, and associated data.
+Graph database-driven API for site of theatrical productions, materials, and associated data.
 
 ## Setup
 - Clone this repo.

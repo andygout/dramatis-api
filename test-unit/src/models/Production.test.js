@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CastMember, Playtext, Theatre } from '../../../src/models';
+import { CastMember, Material, Theatre } from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -14,9 +14,9 @@ describe('Production model', () => {
 
 	};
 
-	const PlaytextStub = function () {
+	const MaterialStub = function () {
 
-		return createStubInstance(Playtext);
+		return createStubInstance(Material);
 
 	};
 
@@ -39,7 +39,7 @@ describe('Production model', () => {
 			},
 			models: {
 				CastMember: CastMemberStub,
-				Playtext: PlaytextStub,
+				Material: MaterialStub,
 				Theatre: TheatreStub
 			}
 		};
@@ -121,8 +121,8 @@ describe('Production model', () => {
 				instance.validateName,
 				instance.theatre.validateName,
 				instance.theatre.validateDifferentiator,
-				instance.playtext.validateName,
-				instance.playtext.validateDifferentiator,
+				instance.material.validateName,
+				instance.material.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast[0].runInputValidations
 			);
@@ -132,10 +132,10 @@ describe('Production model', () => {
 			expect(instance.theatre.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.theatre.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.theatre.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.playtext.validateName.calledOnce).to.be.true;
-			expect(instance.playtext.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.playtext.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.playtext.validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.material.validateName.calledOnce).to.be.true;
+			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.material.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
 				instance.cast

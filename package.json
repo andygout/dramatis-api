@@ -1,7 +1,7 @@
 {
   "name": "theatrebase-api",
   "version": "0.0.0",
-  "description": "Graph database-driven API for site of theatrical productions, playtexts, and associated data.",
+  "description": "Graph database-driven API for site of theatrical productions, materials, and associated data.",
   "author": "https://github.com/andygout",
   "license": "MS-RSL",
   "main": "src/app.js",

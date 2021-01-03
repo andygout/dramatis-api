@@ -1,0 +1,25 @@
+{
+	"name": "Happy Days",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Samuel Beckett"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Winnie"
+				},
+				{
+					"name": "Willie"
+				}
+			]
+		}
+	]
+}

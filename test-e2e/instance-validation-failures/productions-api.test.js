@@ -41,8 +41,8 @@ describe('Instance validation failures: Productions API', () => {
 							'Value is too short'
 						]
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -104,8 +104,8 @@ describe('Instance validation failures: Productions API', () => {
 							'Value is too short'
 						]
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -138,7 +138,7 @@ describe('Instance validation failures: Productions API', () => {
 
 		const OTHELLO_DONMAR_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const DONMAR_WAREHOUSE_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
-		const OTHELLO_PLAYTEXT_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
+		const OTHELLO_MATERIAL_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
 
@@ -157,9 +157,9 @@ describe('Instance validation failures: Productions API', () => {
 			});
 
 			await createNode({
-				label: 'Playtext',
+				label: 'Material',
 				name: 'Othello',
-				uuid: OTHELLO_PLAYTEXT_UUID
+				uuid: OTHELLO_MATERIAL_UUID
 			});
 
 			await createRelationship({
@@ -173,8 +173,8 @@ describe('Instance validation failures: Productions API', () => {
 			await createRelationship({
 				sourceLabel: 'Production',
 				sourceUuid: OTHELLO_DONMAR_PRODUCTION_UUID,
-				destinationLabel: 'Playtext',
-				destinationUuid: OTHELLO_PLAYTEXT_UUID,
+				destinationLabel: 'Material',
+				destinationUuid: OTHELLO_MATERIAL_UUID,
 				relationshipName: 'PRODUCTION_OF'
 			});
 
@@ -196,12 +196,12 @@ describe('Instance validation failures: Productions API', () => {
 					hasErrors: true,
 					errors: {
 						associations: [
-							'Playtext',
+							'Material',
 							'Theatre'
 						]
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						name: '',
 						differentiator: '',
 						errors: {}

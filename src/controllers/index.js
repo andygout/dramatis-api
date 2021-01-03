@@ -1,13 +1,13 @@
 import * as characters from './characters';
+import * as materials from './materials';
 import * as people from './people';
-import * as playtexts from './playtexts';
 import * as productions from './productions';
 import * as theatres from './theatres';
 
 export {
 	characters,
+	materials,
 	people,
-	playtexts,
 	productions,
 	theatres
 };

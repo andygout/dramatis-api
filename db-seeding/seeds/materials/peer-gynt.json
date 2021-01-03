@@ -1,0 +1,96 @@
+{
+	"name": "Peer Gynt",
+	"format": "play",
+	"writerGroups": [
+		{
+			"isOriginalVersionWriter": true,
+			"writers": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"writers": [
+				{
+					"name": "Gerry Bamman"
+				},
+				{
+					"name": "Irene B Berman"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"writers": [
+				{
+					"name": "Baltasar Kormákur"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Peer Gynt"
+				},
+				{
+					"name": "Solveig"
+				},
+				{
+					"name": "Kari"
+				},
+				{
+					"name": "Herd Girls"
+				},
+				{
+					"name": "Trumpeterstraale"
+				},
+				{
+					"name": "Woman in Green"
+				},
+				{
+					"name": "Professor Begriffenfeldt"
+				},
+				{
+					"name": "Button Moulder"
+				},
+				{
+					"name": "Great Between (Baygen)"
+				},
+				{
+					"name": "Child"
+				},
+				{
+					"name": "Monsieur Ballon"
+				},
+				{
+					"name": "Aase"
+				},
+				{
+					"name": "Groom"
+				},
+				{
+					"name": "Von Eberkopf"
+				},
+				{
+					"name": "Pen"
+				},
+				{
+					"name": "Scrawny Person"
+				},
+				{
+					"name": "Solveig's Father"
+				},
+				{
+					"name": "Old Man of Dovre"
+				},
+				{
+					"name": "Master Cotton"
+				}
+			]
+		}
+	]
+}

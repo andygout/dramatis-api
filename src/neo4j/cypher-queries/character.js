@@ -1,20 +1,20 @@
 const getShowQuery = () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	OPTIONAL MATCH (character)<-[playtextRel:INCLUDES_CHARACTER]-(playtext:Playtext)
+	OPTIONAL MATCH (character)<-[materialRel:INCLUDES_CHARACTER]-(material:Material)
 
-	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-		WHERE writer:Person OR writer:Playtext
+	OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+		WHERE writer:Person OR writer:Material
 
-	OPTIONAL MATCH (writer:Playtext)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (writer:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH character, playtextRel, playtext, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH character, materialRel, material, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
 
 	WITH
 		character,
-		playtextRel,
-		playtext,
+		materialRel,
+		material,
 		writerRel,
 		writer,
 		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
@@ -27,7 +27,7 @@ const getShowQuery = () => `
 
 
 
-	WITH character, playtextRel, playtext, writerRel, writer,
+	WITH character, materialRel, material, writerRel, writer,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -40,7 +40,7 @@ const getShowQuery = () => `
 		) AS sourceMaterialWriterGroups
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH character, playtextRel, playtext, writerRel.group AS writerGroupName,
+	WITH character, materialRel, material, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -48,59 +48,61 @@ const getShowQuery = () => `
 					model: TOLOWER(HEAD(LABELS(writer))),
 					uuid: writer.uuid,
 					name: writer.name,
+					format: writer.format,
 					sourceMaterialWriterGroups: sourceMaterialWriterGroups
 				}
 			END
 		) AS writers
 
-	WITH character, playtextRel, playtext,
+	WITH character, materialRel, material,
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
 				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
-		ORDER BY playtextRel.groupPosition, playtextRel.characterPosition
+		ORDER BY materialRel.groupPosition, materialRel.characterPosition
 
 	WITH
 		character,
-		playtext,
+		material,
 		writerGroups,
 		COLLECT(
-			CASE WHEN playtextRel.displayName IS NULL AND playtextRel.qualifier IS NULL AND playtextRel.group IS NULL
+			CASE WHEN materialRel.displayName IS NULL AND materialRel.qualifier IS NULL AND materialRel.group IS NULL
 				THEN null
 				ELSE {
-					displayName: playtextRel.displayName,
-					qualifier: playtextRel.qualifier,
-					group: playtextRel.group
+					displayName: materialRel.displayName,
+					qualifier: materialRel.qualifier,
+					group: materialRel.group
 				}
 			END
 		) AS depictions
-		ORDER BY playtext.name
+		ORDER BY material.name
 
 	WITH character,
 		COLLECT(
-			CASE playtext WHEN NULL
+			CASE material WHEN NULL
 				THEN null
 				ELSE {
-					model: 'playtext',
-					uuid: playtext.uuid,
-					name: playtext.name,
+					model: 'material',
+					uuid: material.uuid,
+					name: material.name,
+					format: material.format,
 					writerGroups: writerGroups,
 					depictions: depictions
 				}
 			END
-		) AS playtexts
+		) AS materials
 
-	OPTIONAL MATCH (character)<-[variantNamedDepiction:INCLUDES_CHARACTER]-(:Playtext)
+	OPTIONAL MATCH (character)<-[variantNamedDepiction:INCLUDES_CHARACTER]-(:Material)
 		WHERE variantNamedDepiction.displayName IS NOT NULL
 
-	WITH character, playtexts, variantNamedDepiction
+	WITH character, materials, variantNamedDepiction
 		ORDER BY variantNamedDepiction.displayName
 
-	WITH character, playtexts, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
+	WITH character, materials, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 
-	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:INCLUDES_CHARACTER]-(:Playtext)
+	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:INCLUDES_CHARACTER]-(:Material)
 		<-[:PRODUCTION_OF]-(:Production)<-[variantNamedPortrayal:PERFORMS_IN]-(:Person)
 		WHERE
 			character.name <> variantNamedPortrayal.roleName AND
@@ -109,13 +111,13 @@ const getShowQuery = () => `
 				depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
 			)
 
-	WITH character, variantNamedDepictions, playtexts, variantNamedPortrayal
+	WITH character, variantNamedDepictions, materials, variantNamedPortrayal
 		ORDER BY variantNamedPortrayal.roleName
 
-	WITH character, variantNamedDepictions, playtexts,
+	WITH character, variantNamedDepictions, materials,
 		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 
-	OPTIONAL MATCH (character)<-[characterDepiction:INCLUDES_CHARACTER]-(playtextForProduction:Playtext)
+	OPTIONAL MATCH (character)<-[characterDepiction:INCLUDES_CHARACTER]-(materialForProduction:Material)
 		<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
 		WHERE
 			(
@@ -132,7 +134,7 @@ const getShowQuery = () => `
 			((otherRole.characterName IS NULL OR characterDepiction.displayName IS NULL) OR otherRole.characterName <> characterDepiction.displayName)
 
 	OPTIONAL MATCH (person)-[otherRole]->(production)-[productionRel]->
-		(playtextForProduction)-[otherCharacterDepiction:INCLUDES_CHARACTER]->(otherCharacter:Character)
+		(materialForProduction)-[otherCharacterDepiction:INCLUDES_CHARACTER]->(otherCharacter:Character)
 		WHERE
 			(
 				otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
@@ -147,7 +149,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		variantNamedDepictions,
-		playtexts,
+		materials,
 		variantNamedPortrayals,
 		production,
 		theatre,
@@ -161,7 +163,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		variantNamedDepictions,
-		playtexts,
+		materials,
 		variantNamedPortrayals,
 		production,
 		theatre,
@@ -184,7 +186,7 @@ const getShowQuery = () => `
 	WITH
 		character,
 		variantNamedDepictions,
-		playtexts,
+		materials,
 		variantNamedPortrayals,
 		production,
 		theatre,
@@ -205,7 +207,7 @@ const getShowQuery = () => `
 		character.name AS name,
 		character.differentiator AS differentiator,
 		variantNamedDepictions,
-		playtexts,
+		materials,
 		variantNamedPortrayals,
 		COLLECT(
 			CASE production WHEN NULL

@@ -15,23 +15,23 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
+				OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 					WHERE
-						($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
-						($playtext.differentiator = existingPlaytext.differentiator)
+						($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
+						($material.differentiator = existingMaterial.differentiator)
 
 				WITH
 					production,
-					CASE existingPlaytext WHEN NULL
-						THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
-						ELSE existingPlaytext
-					END AS playtextProps
+					CASE existingMaterial WHEN NULL
+						THEN { uuid: $material.uuid, name: $material.name, differentiator: $material.differentiator }
+						ELSE existingMaterial
+					END AS materialProps
 
-				FOREACH (item IN CASE $playtext.name WHEN NULL THEN [] ELSE [1] END |
-					MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
-						ON CREATE SET playtext.differentiator = playtextProps.differentiator
+				FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
+					MERGE (material:Material { uuid: materialProps.uuid, name: materialProps.name })
+						ON CREATE SET material.differentiator = materialProps.differentiator
 
-					CREATE (production)-[:PRODUCTION_OF]->(playtext)
+					CREATE (production)-[:PRODUCTION_OF]->(material)
 				)
 
 				WITH production
@@ -97,16 +97,16 @@ describe('Cypher Queries Production module', () => {
 
 				MATCH (production:Production { uuid: $uuid })
 
-				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(material:Material)
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, playtext, theatre, role, person
+				WITH production, material, theatre, role, person
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, playtext, theatre, person,
+				WITH production, material, theatre, person,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -124,9 +124,9 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
-						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
-					} AS playtext,
+						name: CASE material.name WHEN NULL THEN '' ELSE material.name END,
+						differentiator: CASE material.differentiator WHEN NULL THEN '' ELSE material.differentiator END
+					} AS material,
 					{
 						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
 						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
@@ -161,23 +161,23 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
-				OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
+				OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 					WHERE
-						($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
-						($playtext.differentiator = existingPlaytext.differentiator)
+						($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
+						($material.differentiator = existingMaterial.differentiator)
 
 				WITH
 					production,
-					CASE existingPlaytext WHEN NULL
-						THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
-						ELSE existingPlaytext
-					END AS playtextProps
+					CASE existingMaterial WHEN NULL
+						THEN { uuid: $material.uuid, name: $material.name, differentiator: $material.differentiator }
+						ELSE existingMaterial
+					END AS materialProps
 
-				FOREACH (item IN CASE $playtext.name WHEN NULL THEN [] ELSE [1] END |
-					MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
-						ON CREATE SET playtext.differentiator = playtextProps.differentiator
+				FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
+					MERGE (material:Material { uuid: materialProps.uuid, name: materialProps.name })
+						ON CREATE SET material.differentiator = materialProps.differentiator
 
-					CREATE (production)-[:PRODUCTION_OF]->(playtext)
+					CREATE (production)-[:PRODUCTION_OF]->(material)
 				)
 
 				WITH production
@@ -243,16 +243,16 @@ describe('Cypher Queries Production module', () => {
 
 				MATCH (production:Production { uuid: $uuid })
 
-				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+				OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(material:Material)
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-				WITH production, playtext, theatre, role, person
+				WITH production, material, theatre, role, person
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, playtext, theatre, person,
+				WITH production, material, theatre, person,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -270,9 +270,9 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					{
-						name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
-						differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
-					} AS playtext,
+						name: CASE material.name WHEN NULL THEN '' ELSE material.name END,
+						differentiator: CASE material.differentiator WHEN NULL THEN '' ELSE material.differentiator END
+					} AS material,
 					{
 						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
 						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END

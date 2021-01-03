@@ -1,0 +1,81 @@
+{
+	"name": "Rock 'n' Roll",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "The Piper"
+				},
+				{
+					"name": "Esme",
+					"qualifier": "younger"
+				},
+				{
+					"name": "Jan"
+				},
+				{
+					"name": "Max"
+				},
+				{
+					"name": "Eleanor"
+				},
+				{
+					"name": "Gillian"
+				},
+				{
+					"name": "Interrogator"
+				},
+				{
+					"name": "Ferdinand"
+				},
+				{
+					"name": "Milan"
+				},
+				{
+					"name": "Magda"
+				},
+				{
+					"name": "Policeman 1"
+				},
+				{
+					"name": "Policeman 2"
+				},
+				{
+					"name": "Lenka"
+				},
+				{
+					"name": "Nigel"
+				},
+				{
+					"name": "Esme",
+					"qualifier": "older"
+				},
+				{
+					"name": "Alice"
+				},
+				{
+					"name": "Stephen"
+				},
+				{
+					"name": "Candida"
+				},
+				{
+					"name": "Deirdre"
+				},
+				{
+					"name": "Waiter"
+				}
+			]
+		}
+	]
+}

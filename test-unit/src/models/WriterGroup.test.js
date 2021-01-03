@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Person, Playtext } from '../../../src/models';
+import { Person, Material } from '../../../src/models';
 
 describe('WriterGroup model', () => {
 
@@ -85,7 +85,7 @@ describe('WriterGroup model', () => {
 
 			});
 
-			it('assigns array of writers and playtexts if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'version by',
@@ -95,32 +95,32 @@ describe('WriterGroup model', () => {
 						},
 						{
 							name: 'A Midsummer Night\'s Dream',
-							model: 'playtext'
+							model: 'material'
 						},
 						{
 							name: ''
 						},
 						{
 							name: '',
-							model: 'playtext'
+							model: 'material'
 						},
 						{
 							name: ' '
 						},
 						{
 							name: ' ',
-							model: 'playtext'
+							model: 'material'
 						}
 					]
 				};
 				const instance = createInstance(props);
 				expect(instance.writers.length).to.equal(6);
 				expect(instance.writers[0] instanceof Person).to.be.true;
-				expect(instance.writers[1] instanceof Playtext).to.be.true;
+				expect(instance.writers[1] instanceof Material).to.be.true;
 				expect(instance.writers[2] instanceof Person).to.be.true;
-				expect(instance.writers[3] instanceof Playtext).to.be.true;
+				expect(instance.writers[3] instanceof Material).to.be.true;
 				expect(instance.writers[4] instanceof Person).to.be.true;
-				expect(instance.writers[5] instanceof Playtext).to.be.true;
+				expect(instance.writers[5] instanceof Material).to.be.true;
 
 			});
 

@@ -204,7 +204,7 @@ describe('Instance validation failures: Characters API', () => {
 	describe('attempt to delete instance', () => {
 
 		const VIOLA_CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const TWELFTH_NIGHT_PLAYTEXT_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const TWELFTH_NIGHT_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
 
@@ -217,14 +217,14 @@ describe('Instance validation failures: Characters API', () => {
 			});
 
 			await createNode({
-				label: 'Playtext',
+				label: 'Material',
 				name: 'Twelfth Night',
-				uuid: TWELFTH_NIGHT_PLAYTEXT_UUID
+				uuid: TWELFTH_NIGHT_MATERIAL_UUID
 			});
 
 			await createRelationship({
-				sourceLabel: 'Playtext',
-				sourceUuid: TWELFTH_NIGHT_PLAYTEXT_UUID,
+				sourceLabel: 'Material',
+				sourceUuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				destinationLabel: 'Character',
 				destinationUuid: VIOLA_CHARACTER_UUID,
 				relationshipName: 'INCLUDES_CHARACTER'
@@ -249,7 +249,7 @@ describe('Instance validation failures: Characters API', () => {
 					hasErrors: true,
 					errors: {
 						associations: [
-							'Playtext'
+							'Material'
 						]
 					}
 				};

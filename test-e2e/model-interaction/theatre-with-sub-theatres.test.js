@@ -14,9 +14,9 @@ describe('Theatre with sub-theatres', () => {
 	const OLIVIER_THEATRE_UUID = '5';
 	const LYTTELTON_THEATRE_UUID = '6';
 	const DORFMAN_THEATRE_UUID = '7';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID = '11';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID = '11';
 	const MOTHER_COURAGE_CHARACTER_UUID = '13';
-	const RICHARD_II_PLAYTEXT_UUID = '17';
+	const RICHARD_II_MATERIAL_UUID = '17';
 	const KING_RICHARD_II_CHARACTER_UUID = '19';
 	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '20';
 	const FIONA_SHAW_PERSON_UUID = '23';
@@ -26,8 +26,8 @@ describe('Theatre with sub-theatres', () => {
 	let olivierTheatre;
 	let motherCourageCharacter;
 	let kingRichardIICharacter;
-	let motherCourageAndHerChildrenPlaytext;
-	let richardIIPlaytext;
+	let motherCourageAndHerChildrenMaterial;
+	let richardIIMaterial;
 	let motherCourageAndHerChildrenOlivierProduction;
 	let richardIINationalProduction;
 	let fionaShawPerson;
@@ -60,7 +60,7 @@ describe('Theatre with sub-theatres', () => {
 			});
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Mother Courage and Her Children',
 				characterGroups: [
@@ -75,7 +75,7 @@ describe('Theatre with sub-theatres', () => {
 			});
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Richard II',
 				characterGroups: [
@@ -93,7 +93,7 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
-				playtext: {
+				material: {
 					name: 'Mother Courage and Her Children'
 				},
 				theatre: {
@@ -115,7 +115,7 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Richard II',
-				playtext: {
+				material: {
 					name: 'Richard II'
 				},
 				theatre: {
@@ -145,11 +145,11 @@ describe('Theatre with sub-theatres', () => {
 		kingRichardIICharacter = await chai.request(app)
 			.get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
 
-		motherCourageAndHerChildrenPlaytext = await chai.request(app)
-			.get(`/playtexts/${MOTHER_COURAGE_AND_HER_CHILDREN_PLAYTEXT_UUID}`);
+		motherCourageAndHerChildrenMaterial = await chai.request(app)
+			.get(`/materials/${MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID}`);
 
-		richardIIPlaytext = await chai.request(app)
-			.get(`/playtexts/${RICHARD_II_PLAYTEXT_UUID}`);
+		richardIIMaterial = await chai.request(app)
+			.get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
 
 		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
@@ -336,9 +336,9 @@ describe('Theatre with sub-theatres', () => {
 
 	});
 
-	describe('Mother Courage and Her Children (playtext)', () => {
+	describe('Mother Courage and Her Children (material)', () => {
 
-		it('includes productions of playtext, including the theatre and its sur-theatre', () => {
+		it('includes productions of material, including the theatre and its sur-theatre', () => {
 
 			const expectedProductions = [
 				{
@@ -358,7 +358,7 @@ describe('Theatre with sub-theatres', () => {
 				}
 			];
 
-			const { productions } = motherCourageAndHerChildrenPlaytext.body;
+			const { productions } = motherCourageAndHerChildrenMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
@@ -366,9 +366,9 @@ describe('Theatre with sub-theatres', () => {
 
 	});
 
-	describe('Richard II (playtext)', () => {
+	describe('Richard II (material)', () => {
 
-		it('includes productions of playtext, including the theatre (but with no sur-theatre as does not apply)', () => {
+		it('includes productions of material, including the theatre (but with no sur-theatre as does not apply)', () => {
 
 			const expectedProductions = [
 				{
@@ -384,7 +384,7 @@ describe('Theatre with sub-theatres', () => {
 				}
 			];
 
-			const { productions } = richardIIPlaytext.body;
+			const { productions } = richardIIMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

@@ -1,0 +1,39 @@
+{
+	"name": "The B File",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Deborah Levy"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Beatrice",
+					"qualifier": "#1"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#2"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#3"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#4"
+				},
+				{
+					"name": "Beatrice",
+					"qualifier": "#5"
+				}
+			]
+		}
+	]
+}

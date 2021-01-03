@@ -1,0 +1,25 @@
+{
+	"name": "True West",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Sam Shepard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Austin"
+				},
+				{
+					"name": "Lee"
+				}
+			]
+		}
+	]
+}

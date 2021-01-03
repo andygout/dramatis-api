@@ -1,0 +1,143 @@
+{
+	"name": "Henry IV, Part 1",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Of the King's party",
+			"characters": [
+				{
+					"name": "King Henry IV"
+				},
+				{
+					"name": "Henry, Prince of Wales",
+					"underlyingName": "King Henry V"
+				},
+				{
+					"name": "Lord John of Lancaster"
+				},
+				{
+					"name": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Sir Walter Blunt"
+				}
+			]
+		},
+		{
+			"name": "Eastcheap",
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Ned Poins"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Peto"
+				},
+				{
+					"name": "Mistress Quickly"
+				},
+				{
+					"name": "Francis"
+				},
+				{
+					"name": "Vintner"
+				},
+				{
+					"name": "Gadshill"
+				},
+				{
+					"name": "Carriers"
+				},
+				{
+					"name": "Ostler"
+				}
+			]
+		},
+		{
+			"name": "Rebels",
+			"characters": [
+				{
+					"name": "Henry Percy, Earl of Northumberland"
+				},
+				{
+					"name": "Thomas Percy, Earl of Worcester"
+				},
+				{
+					"name": "Harry Percy"
+				},
+				{
+					"name": "Edmund, Lord Mortimer"
+				},
+				{
+					"name": "Owen Glendower"
+				},
+				{
+					"name": "Archibald, Earl of Douglas"
+				},
+				{
+					"name": "Sir Richard Vernon, 8th Baron of Shipbrook"
+				},
+				{
+					"name": "Richard Scroop, Archbishop of York"
+				},
+				{
+					"name": "Sir Michael"
+				},
+				{
+					"name": "Lady Percy"
+				},
+				{
+					"name": "Lady Mortimer"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Chamberlain"
+				},
+				{
+					"name": "Sheriff"
+				},
+				{
+					"name": "Travellers"
+				},
+				{
+					"name": "Servant to Hotspur"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Henry IV, Part 1"
+				},
+				{
+					"name": "Officers"
+				},
+				{
+					"name": "Drawers"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Henry IV, Part 1"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry IV, Part 1"
+				}
+			]
+		}
+	]
+}

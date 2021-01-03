@@ -14,19 +14,19 @@ describe('Uniqueness in database: Productions API', () => {
 
 	const sandbox = createSandbox();
 
-	describe('Production playtext uniqueness in database', () => {
+	describe('Production material uniqueness in database', () => {
 
 		const HOME_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-		const expectedPlaytextHome1 = {
-			model: 'playtext',
+		const expectedMaterialHome1 = {
+			model: 'material',
 			name: 'Home',
 			differentiator: '',
 			errors: {}
 		};
 
-		const expectedPlaytextHome2 = {
-			model: 'playtext',
+		const expectedMaterialHome2 = {
+			model: 'material',
 			name: 'Home',
 			differentiator: '1',
 			errors: {}
@@ -54,81 +54,81 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates production and creates playtext that does not have a differentiator', async () => {
+		it('updates production and creates material that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(0);
+			expect(await countNodesWithLabel('Material')).to.equal(0);
 
 			const response = await chai.request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
-					playtext: {
+					material: {
 						name: 'Home'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome1);
-			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+			expect(response.body.material).to.deep.equal(expectedMaterialHome1);
+			expect(await countNodesWithLabel('Material')).to.equal(1);
 
 		});
 
-		it('updates production and creates playtext that has same name as existing playtext but uses a differentiator', async () => {
+		it('updates production and creates material that has same name as existing material but uses a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(1);
+			expect(await countNodesWithLabel('Material')).to.equal(1);
 
 			const response = await chai.request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
-					playtext: {
+					material: {
 						name: 'Home',
 						differentiator: '1'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome2);
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(response.body.material).to.deep.equal(expectedMaterialHome2);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 		});
 
-		it('updates production and uses existing playtext that does not have a differentiator', async () => {
+		it('updates production and uses existing material that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 			const response = await chai.request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
-					playtext: {
+					material: {
 						name: 'Home'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome1);
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(response.body.material).to.deep.equal(expectedMaterialHome1);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 		});
 
-		it('updates production and uses existing playtext that has a differentiator', async () => {
+		it('updates production and uses existing material that has a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 			const response = await chai.request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
-					playtext: {
+					material: {
 						name: 'Home',
 						differentiator: '1'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.playtext).to.deep.equal(expectedPlaytextHome2);
-			expect(await countNodesWithLabel('Playtext')).to.equal(2);
+			expect(response.body.material).to.deep.equal(expectedMaterialHome2);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 		});
 

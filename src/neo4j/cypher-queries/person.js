@@ -1,20 +1,20 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(playtext:Playtext)
+	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
 
-	OPTIONAL MATCH (playtext)-[allWriterRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-		WHERE writer:Person OR writer:Playtext
+	OPTIONAL MATCH (material)-[allWriterRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+		WHERE writer:Person OR writer:Material
 
-	OPTIONAL MATCH (writer:Playtext)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (writer:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH person, writerRel, playtext, allWriterRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH person, writerRel, material, allWriterRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
 
 	WITH
 		person,
 		writerRel,
-		playtext,
+		material,
 		allWriterRel,
 		writer,
 		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
@@ -25,7 +25,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH person, writerRel, playtext, allWriterRel, writer,
+	WITH person, writerRel, material, allWriterRel, writer,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -38,7 +38,7 @@ const getShowQuery = () => `
 		) AS sourceMaterialWriterGroups
 		ORDER BY allWriterRel.groupPosition, allWriterRel.writerPosition
 
-	WITH person, writerRel, playtext, allWriterRel.group AS writerGroupName,
+	WITH person, writerRel, material, allWriterRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -46,110 +46,126 @@ const getShowQuery = () => `
 					model: TOLOWER(HEAD(LABELS(writer))),
 					uuid: CASE WHEN writer.uuid = person.uuid THEN null ELSE writer.uuid END,
 					name: writer.name,
+					format: writer.format,
 					sourceMaterialWriterGroups: sourceMaterialWriterGroups
 				}
 			END
 		) AS writers
 
-	WITH person, writerRel, playtext,
+	WITH person, writerRel, material,
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
 				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
 			END
 		) AS writerGroups
-		ORDER BY playtext.name
+		ORDER BY material.name
 
 	WITH person,
 		COLLECT(
-			CASE playtext WHEN NULL
+			CASE material WHEN NULL
 				THEN null
 				ELSE {
-					model: 'playtext',
-					uuid: playtext.uuid,
-					name: playtext.name,
+					model: 'material',
+					uuid: material.uuid,
+					name: material.name,
+					format: material.format,
 					writerGroups: writerGroups,
 					isOriginalVersionWriter: writerRel.isOriginalVersionWriter
 				}
 			END
-		) AS playtexts
+		) AS materials
 
 	WITH
 		person,
 		[
-			playtext IN playtexts WHERE playtext.isOriginalVersionWriter IS NULL |
-			{ model: playtext.model, uuid: playtext.uuid, name: playtext.name, writerGroups: playtext.writerGroups }
-		] AS playtexts,
+			material IN materials WHERE material.isOriginalVersionWriter IS NULL |
+			{
+				model: material.model,
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writerGroups: material.writerGroups
+			}
+		] AS materials,
 		[
-			playtext IN playtexts WHERE playtext.isOriginalVersionWriter = true |
-			{ model: playtext.model, uuid: playtext.uuid, name: playtext.name, writerGroups: playtext.writerGroups }
-		] AS subsequentVersionPlaytexts
+			material IN materials WHERE material.isOriginalVersionWriter = true |
+			{
+				model: material.model,
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writerGroups: material.writerGroups
+			}
+		] AS subsequentVersionMaterials
 
-	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Playtext)<-[:USES_SOURCE_MATERIAL]-(sourcingPlaytext:Playtext)
+	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 
-	OPTIONAL MATCH (sourcingPlaytext)-[sourcingPlaytextWriterRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->
-		(sourcingPlaytextWriter)
-		WHERE sourcingPlaytextWriter:Person OR sourcingPlaytextWriter:Playtext
-
-	WITH
-		person,
-		playtexts,
-		subsequentVersionPlaytexts,
-		sourcingPlaytext,
-		sourcingPlaytextWriterRel,
-		sourcingPlaytextWriter
-		ORDER BY sourcingPlaytextWriterRel.groupPosition, sourcingPlaytextWriterRel.writerPosition
+	OPTIONAL MATCH (sourcingMaterial)-[sourcingMaterialWriterRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->
+		(sourcingMaterialWriter)
+		WHERE sourcingMaterialWriter:Person OR sourcingMaterialWriter:Material
 
 	WITH
 		person,
-		playtexts,
-		subsequentVersionPlaytexts,
-		sourcingPlaytext,
-		sourcingPlaytextWriterRel,
-		sourcingPlaytextWriter,
-		sourcingPlaytextWriterRel.group AS sourcingPlaytextWriterGroupName,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterial,
+		sourcingMaterialWriterRel,
+		sourcingMaterialWriter
+		ORDER BY sourcingMaterialWriterRel.groupPosition, sourcingMaterialWriterRel.writerPosition
+
+	WITH
+		person,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterial,
+		sourcingMaterialWriterRel,
+		sourcingMaterialWriter,
+		sourcingMaterialWriterRel.group AS sourcingMaterialWriterGroupName,
 		COLLECT(
-			CASE sourcingPlaytextWriter WHEN NULL
+			CASE sourcingMaterialWriter WHEN NULL
 				THEN null
 				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourcingPlaytextWriter))),
-					uuid: sourcingPlaytextWriter.uuid,
-					name: sourcingPlaytextWriter.name
+					model: TOLOWER(HEAD(LABELS(sourcingMaterialWriter))),
+					uuid: sourcingMaterialWriter.uuid,
+					name: sourcingMaterialWriter.name,
+					format: sourcingMaterialWriter.format
 				}
 			END
-		) AS sourcingPlaytextWriters
+		) AS sourcingMaterialWriters
 
 	WITH
 		person,
-		playtexts,
-		subsequentVersionPlaytexts,
-		sourcingPlaytext,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterial,
 		COLLECT(
-			CASE SIZE(sourcingPlaytextWriters) WHEN 0
+			CASE SIZE(sourcingMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
 					model: 'writerGroup',
-					name: COALESCE(sourcingPlaytextWriterGroupName, 'by'),
-					writers: sourcingPlaytextWriters
+					name: COALESCE(sourcingMaterialWriterGroupName, 'by'),
+					writers: sourcingMaterialWriters
 				}
 			END
-		) AS sourcingPlaytextWriterGroups
+		) AS sourcingMaterialWriterGroups
 
 	WITH
 		person,
-		playtexts,
-		subsequentVersionPlaytexts,
+		materials,
+		subsequentVersionMaterials,
 		COLLECT(
-			CASE sourcingPlaytext WHEN NULL
+			CASE sourcingMaterial WHEN NULL
 				THEN null
 				ELSE {
-					model: 'playtext',
-					uuid: sourcingPlaytext.uuid,
-					name: sourcingPlaytext.name,
-					writerGroups: sourcingPlaytextWriterGroups
+					model: 'material',
+					uuid: sourcingMaterial.uuid,
+					name: sourcingMaterial.name,
+					format: sourcingMaterial.format,
+					writerGroups: sourcingMaterialWriterGroups
 				}
 			END
-		) AS sourcingPlaytexts
+		) AS sourcingMaterials
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 
@@ -157,7 +173,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR
@@ -167,9 +183,9 @@ const getShowQuery = () => `
 
 	WITH DISTINCT
 		person,
-		playtexts,
-		subsequentVersionPlaytexts,
-		sourcingPlaytexts,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterials,
 		production,
 		theatre,
 		surTheatre,
@@ -177,7 +193,7 @@ const getShowQuery = () => `
 		character
 		ORDER BY role.rolePosition
 
-	WITH person, playtexts, subsequentVersionPlaytexts, sourcingPlaytexts, production, theatre, surTheatre,
+	WITH person, materials, subsequentVersionMaterials, sourcingMaterials, production, theatre, surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -191,9 +207,9 @@ const getShowQuery = () => `
 		person.uuid AS uuid,
 		person.name AS name,
 		person.differentiator AS differentiator,
-		playtexts,
-		subsequentVersionPlaytexts,
-		sourcingPlaytexts,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterials,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null

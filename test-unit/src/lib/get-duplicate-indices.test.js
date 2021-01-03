@@ -246,15 +246,15 @@ describe('Get Duplicate Indices module', () => {
 						{ name: 'Foo', differentiator: '', model: '' },
 						{ name: 'Foo', differentiator: '1', model: '' },
 						{ name: 'Foo', differentiator: '2', model: '' },
-						{ name: 'Foo', differentiator: '', model: 'playtext' },
-						{ name: 'Foo', differentiator: '1', model: 'playtext' },
-						{ name: 'Foo', differentiator: '2', model: 'playtext' },
+						{ name: 'Foo', differentiator: '', model: 'material' },
+						{ name: 'Foo', differentiator: '1', model: 'material' },
+						{ name: 'Foo', differentiator: '2', model: 'material' },
 						{ name: 'Bar', differentiator: '', model: '' },
 						{ name: 'Bar', differentiator: '1', model: '' },
 						{ name: 'Bar', differentiator: '2', model: '' },
-						{ name: 'Bar', differentiator: '', model: 'playtext' },
-						{ name: 'Bar', differentiator: '1', model: 'playtext' },
-						{ name: 'Bar', differentiator: '2', model: 'playtext' }
+						{ name: 'Bar', differentiator: '', model: 'material' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: 'Bar', differentiator: '2', model: 'material' }
 					]
 				);
 
@@ -271,11 +271,11 @@ describe('Get Duplicate Indices module', () => {
 				const result = getDuplicateWriterIndices(
 					[
 						{ name: 'Foo', differentiator: '1', qualifier: '' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'playtext' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'material' },
 						{ name: '', differentiator: '1', qualifier: '' },
 						{ name: 'Baz', differentiator: '1', qualifier: '' },
 						{ name: 'Foo', differentiator: '1', qualifier: '' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'playtext' },
+						{ name: 'Bar', differentiator: '1', qualifier: 'material' },
 						{ name: '', differentiator: '1', qualifier: '' },
 						{ name: 'Qux', differentiator: '1', qualifier: '' }
 					]

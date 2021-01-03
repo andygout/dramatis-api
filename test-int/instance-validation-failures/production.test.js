@@ -54,8 +54,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -99,8 +99,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -147,8 +147,8 @@ describe('Production instance', () => {
 							]
 						}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -196,8 +196,8 @@ describe('Production instance', () => {
 							]
 						}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -212,13 +212,13 @@ describe('Production instance', () => {
 
 		});
 
-		context('playtext name value exceeds maximum limit', () => {
+		context('material name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					playtext: {
+					material: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
 				};
@@ -240,8 +240,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
@@ -260,13 +260,13 @@ describe('Production instance', () => {
 
 		});
 
-		context('playtext differentiator value exceeds maximum limit', () => {
+		context('material differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					playtext: {
+					material: {
 						name: 'Hamlet',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
@@ -289,8 +289,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: 'Hamlet',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -340,8 +340,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -401,8 +401,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -466,8 +466,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -556,8 +556,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -630,8 +630,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -704,8 +704,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -779,8 +779,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -853,8 +853,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -927,8 +927,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1006,8 +1006,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					playtext: {
-						model: 'playtext',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',

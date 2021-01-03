@@ -41,7 +41,7 @@ describe('Roles with alternating cast', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'True West',
 				characterGroups: [
@@ -62,7 +62,7 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
-				playtext: {
+				material: {
 					name: 'True West'
 				},
 				theatre: {
@@ -98,7 +98,7 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
-				playtext: {
+				material: {
 					name: 'True West'
 				},
 				theatre: {
