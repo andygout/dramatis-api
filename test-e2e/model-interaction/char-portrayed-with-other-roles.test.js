@@ -34,7 +34,7 @@ describe('Character portrayed with other roles', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'War Horse',
 				characterGroups: [
@@ -64,7 +64,7 @@ describe('Character portrayed with other roles', () => {
 			.post('/productions')
 			.send({
 				name: 'War Horse',
-				playtext: {
+				material: {
 					name: 'War Horse'
 				},
 				theatre: {

@@ -1,0 +1,43 @@
+{
+	"name": "Rope",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Patrick Hamilton"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Sabot"
+				},
+				{
+					"name": "Rupert Cadell"
+				},
+				{
+					"name": "Mrs Debenham"
+				},
+				{
+					"name": "Sir Johnstone Kentley"
+				},
+				{
+					"name": "Kenneth Raglan"
+				},
+				{
+					"name": "Wyndham Brandon"
+				},
+				{
+					"name": "Charles Granillo"
+				},
+				{
+					"name": "Leila Arden"
+				}
+			]
+		}
+	]
+}

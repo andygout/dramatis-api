@@ -4,8 +4,8 @@ import { Router } from 'express';
 
 import {
 	characters as charactersController,
+	materials as materialsController,
 	people as peopleController,
-	playtexts as playtextsController,
 	productions as productionsController,
 	theatres as theatresController
 } from './controllers';
@@ -20,6 +20,14 @@ router.delete('/characters/:uuid', charactersController.deleteRoute);
 router.get('/characters/:uuid', charactersController.showRoute);
 router.get('/characters', charactersController.listRoute);
 
+router.get('/materials/new', materialsController.newRoute);
+router.post('/materials', materialsController.createRoute);
+router.get('/materials/:uuid/edit', materialsController.editRoute);
+router.put('/materials/:uuid', materialsController.updateRoute);
+router.delete('/materials/:uuid', materialsController.deleteRoute);
+router.get('/materials/:uuid', materialsController.showRoute);
+router.get('/materials', materialsController.listRoute);
+
 router.get('/people/new', peopleController.newRoute);
 router.post('/people', peopleController.createRoute);
 router.get('/people/:uuid/edit', peopleController.editRoute);
@@ -27,14 +35,6 @@ router.put('/people/:uuid', peopleController.updateRoute);
 router.delete('/people/:uuid', peopleController.deleteRoute);
 router.get('/people/:uuid', peopleController.showRoute);
 router.get('/people', peopleController.listRoute);
-
-router.get('/playtexts/new', playtextsController.newRoute);
-router.post('/playtexts', playtextsController.createRoute);
-router.get('/playtexts/:uuid/edit', playtextsController.editRoute);
-router.put('/playtexts/:uuid', playtextsController.updateRoute);
-router.delete('/playtexts/:uuid', playtextsController.deleteRoute);
-router.get('/playtexts/:uuid', playtextsController.showRoute);
-router.get('/playtexts', playtextsController.listRoute);
 
 router.get('/productions/new', productionsController.newRoute);
 router.post('/productions', productionsController.createRoute);

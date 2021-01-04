@@ -10,12 +10,12 @@ describe('Nameless character groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const JULIUS_CAESAR_PLAYTEXT_UUID = '5';
+	const JULIUS_CAESAR_MATERIAL_UUID = '5';
 	const JULIUS_CAESAR_CHARACTER_UUID = '7';
 	const MARK_ANTONY_CHARACTER_UUID = '8';
 	const MESSENGER_CHARACTER_UUID = '9';
 
-	let juliusCaesarPlaytext;
+	let juliusCaesarMaterial;
 
 	const sandbox = createSandbox();
 
@@ -28,7 +28,7 @@ describe('Nameless character groups grouping', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
 				characterGroups: [
@@ -57,8 +57,8 @@ describe('Nameless character groups grouping', () => {
 				]
 			});
 
-		juliusCaesarPlaytext = await chai.request(app)
-			.get(`/playtexts/${JULIUS_CAESAR_PLAYTEXT_UUID}`);
+		juliusCaesarMaterial = await chai.request(app)
+			.get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 
 	});
 
@@ -68,7 +68,7 @@ describe('Nameless character groups grouping', () => {
 
 	});
 
-	describe('Julius Caesar (playtext)', () => {
+	describe('Julius Caesar (material)', () => {
 
 		it('keeps nameless character groups as distinct groups', () => {
 
@@ -114,7 +114,7 @@ describe('Nameless character groups grouping', () => {
 				}
 			];
 
-			const { characterGroups } = juliusCaesarPlaytext.body;
+			const { characterGroups } = juliusCaesarMaterial.body;
 
 			expect(characterGroups).to.deep.equal(expectedCharacterGroups);
 

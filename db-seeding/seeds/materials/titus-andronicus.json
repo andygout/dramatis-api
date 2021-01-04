@@ -1,0 +1,116 @@
+{
+	"name": "Titus Andronicus",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Saturninus"
+				},
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Titus Andronicus"
+				},
+				{
+					"name": "Marcus Andronicus"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Lucius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Quintus"
+				},
+				{
+					"name": "Martius"
+				},
+				{
+					"name": "Mutius"
+				},
+				{
+					"name": "Lavinia"
+				},
+				{
+					"name": "Young Lucius"
+				},
+				{
+					"name": "Sempronius"
+				},
+				{
+					"name": "Caius"
+				},
+				{
+					"name": "Valentine"
+				},
+				{
+					"name": "Æmilius"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Clown"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Tribunes"
+				},
+				{
+					"name": "Roman Soldiers"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Goths",
+			"characters": [
+				{
+					"name": "Tamora"
+				},
+				{
+					"name": "Alarbus"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Chiron"
+				},
+				{
+					"name": "Aaron"
+				},
+				{
+					"name": "Goths"
+				}
+			]
+		}
+	]
+}

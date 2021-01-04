@@ -4,8 +4,8 @@ import { neo4jQuery } from './query';
 
 const MODELS = [
 	'Character',
+	'Material',
 	'Person',
-	'Playtext',
 	'Production',
 	'Theatre'
 ];

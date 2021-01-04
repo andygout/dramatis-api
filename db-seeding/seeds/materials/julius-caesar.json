@@ -1,0 +1,197 @@
+{
+	"name": "Julius Caesar",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Julius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Triumvirs after Caesar's death",
+			"characters": [
+				{
+					"name": "Octavius Caesar"
+				},
+				{
+					"name": "Mark Antony"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "Conspirators against Caesar",
+			"characters": [
+				{
+					"name": "Marcus Brutus"
+				},
+				{
+					"name": "Caius Cassius"
+				},
+				{
+					"name": "Casca"
+				},
+				{
+					"name": "Decius Brutus"
+				},
+				{
+					"name": "Cinna",
+					"differentiator": "1"
+				},
+				{
+					"name": "Metellus Cimber"
+				},
+				{
+					"name": "Trebonius"
+				},
+				{
+					"name": "Caius Ligarius"
+				}
+			]
+		},
+		{
+			"name": "Tribunes",
+			"characters": [
+				{
+					"name": "Flavius"
+				},
+				{
+					"name": "Marullus"
+				}
+			]
+		},
+		{
+			"name": "Roman Senate Senators",
+			"characters": [
+				{
+					"name": "Cicero"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Popilius Lena"
+				}
+			]
+		},
+		{
+			"name": "Citizens",
+			"characters": [
+				{
+					"name": "Calphurnia"
+				},
+				{
+					"name": "Portia"
+				},
+				{
+					"name": "Soothsayer"
+				},
+				{
+					"name": "Artemidorus"
+				},
+				{
+					"name": "Cinna",
+					"differentiator": "2"
+				},
+				{
+					"name": "Cobbler"
+				},
+				{
+					"name": "Carpenter"
+				},
+				{
+					"name": "Poet"
+				},
+				{
+					"name": "Lucius",
+					"differentiator": "2"
+				}
+			]
+		},
+		{
+			"name": "Loyal to Brutus and Cassius",
+			"characters": [
+				{
+					"name": "Volumnius"
+				},
+				{
+					"name": "Titinius"
+				},
+				{
+					"name": "Young Cato"
+				},
+				{
+					"name": "Messala"
+				},
+				{
+					"name": "Varro"
+				},
+				{
+					"name": "Clitus"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "2"
+				},
+				{
+					"name": "Dardanius"
+				},
+				{
+					"name": "Strato"
+				},
+				{
+					"name": "Lucilius"
+				},
+				{
+					"name": "Pindarus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Servant to Julius Caesar"
+				},
+				{
+					"name": "Servant to Mark Antony"
+				},
+				{
+					"name": "Servant to Octavius Caesar"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Plebeians"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Julius Caesar"
+				}
+			]
+		}
+	]
+}

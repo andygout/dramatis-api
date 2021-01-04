@@ -1,6 +1,6 @@
 import { getDuplicateWriterIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Person, Playtext } from '.';
+import { Person, Material } from '.';
 
 export default class WriterGroup extends Base {
 
@@ -14,8 +14,8 @@ export default class WriterGroup extends Base {
 		this.isOriginalVersionWriter = Boolean(isOriginalVersionWriter) || null;
 		this.writers = writers
 			? writers.map(writer => {
-				return writer.model === 'playtext'
-					? new Playtext({ ...writer, isAssociation: true })
+				return writer.model === 'material'
+					? new Material({ ...writer, isAssociation: true })
 					: new Person(writer);
 			})
 			: [];

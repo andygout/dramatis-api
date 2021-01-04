@@ -20,23 +20,23 @@ const getCreateUpdateQuery = action => {
 
 		WITH production
 
-		OPTIONAL MATCH (existingPlaytext:Playtext { name: $playtext.name })
+		OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 			WHERE
-				($playtext.differentiator IS NULL AND existingPlaytext.differentiator IS NULL) OR
-				($playtext.differentiator = existingPlaytext.differentiator)
+				($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
+				($material.differentiator = existingMaterial.differentiator)
 
 		WITH
 			production,
-			CASE existingPlaytext WHEN NULL
-				THEN { uuid: $playtext.uuid, name: $playtext.name, differentiator: $playtext.differentiator }
-				ELSE existingPlaytext
-			END AS playtextProps
+			CASE existingMaterial WHEN NULL
+				THEN { uuid: $material.uuid, name: $material.name, differentiator: $material.differentiator }
+				ELSE existingMaterial
+			END AS materialProps
 
-		FOREACH (item IN CASE $playtext.name WHEN NULL THEN [] ELSE [1] END |
-			MERGE (playtext:Playtext { uuid: playtextProps.uuid, name: playtextProps.name })
-				ON CREATE SET playtext.differentiator = playtextProps.differentiator
+		FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
+			MERGE (material:Material { uuid: materialProps.uuid, name: materialProps.name })
+				ON CREATE SET material.differentiator = materialProps.differentiator
 
-			CREATE (production)-[:PRODUCTION_OF]->(playtext)
+			CREATE (production)-[:PRODUCTION_OF]->(material)
 		)
 
 		WITH production
@@ -110,16 +110,16 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(playtext:Playtext)
+	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(material:Material)
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
 
-	WITH production, playtext, theatre, role, person
+	WITH production, material, theatre, role, person
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, playtext, theatre, person,
+	WITH production, material, theatre, person,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN null
@@ -137,9 +137,9 @@ const getEditQuery = () => `
 		production.uuid AS uuid,
 		production.name AS name,
 		{
-			name: CASE playtext.name WHEN NULL THEN '' ELSE playtext.name END,
-			differentiator: CASE playtext.differentiator WHEN NULL THEN '' ELSE playtext.differentiator END
-		} AS playtext,
+			name: CASE material.name WHEN NULL THEN '' ELSE material.name END,
+			differentiator: CASE material.differentiator WHEN NULL THEN '' ELSE material.differentiator END
+		} AS material,
 		{
 			name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
 			differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
@@ -179,20 +179,20 @@ const getShowQuery = () => `
 			}
 		END AS theatre
 
-	OPTIONAL MATCH (production)-[playtextRel:PRODUCTION_OF]->(playtext:Playtext)
+	OPTIONAL MATCH (production)-[materialRel:PRODUCTION_OF]->(material:Material)
 
-	OPTIONAL MATCH (playtext)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-		WHERE writer:Person OR writer:Playtext
+	OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
+		WHERE writer:Person OR writer:Material
 
-	OPTIONAL MATCH (writer:Playtext)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (writer:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH production, theatre, playtext, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH production, theatre, material, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
 
 	WITH
 		production,
 		theatre,
-		playtext,
+		material,
 		writerRel,
 		writer,
 		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
@@ -203,7 +203,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH production, theatre, playtext, writerRel, writer,
+	WITH production, theatre, material, writerRel, writer,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -216,7 +216,7 @@ const getShowQuery = () => `
 		) AS sourceMaterialWriterGroups
 		ORDER BY writerRel.groupPosition, writerRel.writerPosition
 
-	WITH production, theatre, playtext, writerRel.group AS writerGroupName,
+	WITH production, theatre, material, writerRel.group AS writerGroupName,
 		COLLECT(
 			CASE writer WHEN NULL
 				THEN null
@@ -224,12 +224,13 @@ const getShowQuery = () => `
 					model: TOLOWER(HEAD(LABELS(writer))),
 					uuid: writer.uuid,
 					name: writer.name,
+					format: writer.format,
 					sourceMaterialWriterGroups: sourceMaterialWriterGroups
 				}
 			END
 		) AS writers
 
-	WITH production, theatre, playtext,
+	WITH production, theatre, material,
 		COLLECT(
 			CASE SIZE(writers) WHEN 0
 				THEN null
@@ -239,8 +240,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
 
-	OPTIONAL MATCH (performer)-[role]->(production)-[playtextRel]->
-		(playtext)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (performer)-[role]->(production)-[materialRel]->
+		(material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR
@@ -248,14 +249,20 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, playtext, writerGroups, performer, role, character
+	WITH DISTINCT production, theatre, material, writerGroups, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, theatre, performer,
-		CASE playtext WHEN NULL
+		CASE material WHEN NULL
 			THEN null
-			ELSE { model: 'playtext', uuid: playtext.uuid, name: playtext.name, writerGroups: writerGroups }
-		END AS playtext,
+			ELSE {
+				model: 'material',
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writerGroups: writerGroups
+			}
+		END AS material,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -267,7 +274,7 @@ const getShowQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
-		playtext,
+		material,
 		theatre,
 		COLLECT(
 			CASE performer WHEN NULL

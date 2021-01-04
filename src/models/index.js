@@ -1,8 +1,8 @@
 import CastMember from './CastMember';
 import Character from './Character';
 import CharacterGroup from './CharacterGroup';
+import Material from './Material';
 import Person from './Person';
-import Playtext from './Playtext';
 import Production from './Production';
 import Role from './Role';
 import Theatre from './Theatre';
@@ -12,8 +12,8 @@ export {
 	CastMember,
 	Character,
 	CharacterGroup,
+	Material,
 	Person,
-	Playtext,
 	Production,
 	Role,
 	Theatre,

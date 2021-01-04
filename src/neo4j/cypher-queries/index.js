@@ -1,12 +1,12 @@
 import { getShowQuery as getCharacterShowQuery } from './character';
-import { getShowQuery as getPersonShowQuery } from './person';
 import {
-	getCreateQuery as getPlaytextCreateQuery,
-	getEditQuery as getPlaytextEditQuery,
-	getUpdateQuery as getPlaytextUpdateQuery,
-	getShowQuery as getPlaytextShowQuery,
-	getListQuery as getPlaytextListQuery
-} from './playtext';
+	getCreateQuery as getMaterialCreateQuery,
+	getEditQuery as getMaterialEditQuery,
+	getUpdateQuery as getMaterialUpdateQuery,
+	getShowQuery as getMaterialShowQuery,
+	getListQuery as getMaterialListQuery
+} from './material';
+import { getShowQuery as getPersonShowQuery } from './person';
 import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
@@ -24,19 +24,19 @@ import {
 } from './theatre';
 
 const getCreateQueries = {
-	playtext: getPlaytextCreateQuery,
+	material: getMaterialCreateQuery,
 	production: getProductionCreateQuery,
 	theatre: getTheatreCreateQuery
 };
 
 const getEditQueries = {
-	playtext: getPlaytextEditQuery,
+	material: getMaterialEditQuery,
 	production: getProductionEditQuery,
 	theatre: getTheatreEditQuery
 };
 
 const getUpdateQueries = {
-	playtext: getPlaytextUpdateQuery,
+	material: getMaterialUpdateQuery,
 	production: getProductionUpdateQuery,
 	theatre: getTheatreUpdateQuery
 };
@@ -44,13 +44,13 @@ const getUpdateQueries = {
 const getShowQueries = {
 	character: getCharacterShowQuery,
 	person: getPersonShowQuery,
-	playtext: getPlaytextShowQuery,
+	material: getMaterialShowQuery,
 	production: getProductionShowQuery,
 	theatre: getTheatreShowQuery
 };
 
 const getListQueries = {
-	playtext: getPlaytextListQuery,
+	material: getMaterialListQuery,
 	production: getProductionListQuery,
 	theatre: getTheatreListQuery
 };

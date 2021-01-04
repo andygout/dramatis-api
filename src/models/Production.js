@@ -1,6 +1,6 @@
 import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { CastMember, Playtext, Theatre } from '.';
+import { CastMember, Material, Theatre } from '.';
 
 export default class Production extends Base {
 
@@ -8,11 +8,11 @@ export default class Production extends Base {
 
 		super(props);
 
-		const { uuid, theatre, playtext, cast } = props;
+		const { uuid, theatre, material, cast } = props;
 
 		this.model = 'production';
 		this.uuid = uuid;
-		this.playtext = new Playtext({ ...playtext, isAssociation: true });
+		this.material = new Material({ ...material, isAssociation: true });
 		this.theatre = new Theatre({ ...theatre, isAssociation: true });
 		this.cast = cast
 			? cast.map(castMember => new CastMember(castMember))
@@ -28,9 +28,9 @@ export default class Production extends Base {
 
 		this.theatre.validateDifferentiator();
 
-		this.playtext.validateName({ isRequired: false });
+		this.material.validateName({ isRequired: false });
 
-		this.playtext.validateDifferentiator();
+		this.material.validateDifferentiator();
 
 		const duplicateCastMemberIndices = getDuplicateBaseInstanceIndices(this.cast);
 

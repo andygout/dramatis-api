@@ -10,12 +10,12 @@ describe('Nameless writer groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const PLAYTEXT_UUID = '5';
+	const MATERIAL_UUID = '5';
 	const PERSON_1_UUID = '7';
 	const PERSON_2_UUID = '8';
 	const PERSON_3_UUID = '9';
 
-	let playtext;
+	let material;
 
 	const sandbox = createSandbox();
 
@@ -28,9 +28,10 @@ describe('Nameless writer groups grouping', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
-				name: 'Playtext name',
+				name: 'Material name',
+				format: 'play',
 				writerGroups: [
 					{
 						writers: [
@@ -57,8 +58,8 @@ describe('Nameless writer groups grouping', () => {
 				]
 			});
 
-		playtext = await chai.request(app)
-			.get(`/playtexts/${PLAYTEXT_UUID}`);
+		material = await chai.request(app)
+			.get(`/materials/${MATERIAL_UUID}`);
 
 	});
 
@@ -68,7 +69,7 @@ describe('Nameless writer groups grouping', () => {
 
 	});
 
-	describe('Playtext', () => {
+	describe('Material', () => {
 
 		it('combines nameless writer groups into a single combined group (with a name of \'by\')', () => {
 
@@ -81,12 +82,14 @@ describe('Nameless writer groups grouping', () => {
 							model: 'person',
 							uuid: PERSON_1_UUID,
 							name: 'Person #1',
+							format: null,
 							sourceMaterialWriterGroups: []
 						},
 						{
 							model: 'person',
 							uuid: PERSON_3_UUID,
 							name: 'Person #3',
+							format: null,
 							sourceMaterialWriterGroups: []
 						}
 					]
@@ -99,13 +102,14 @@ describe('Nameless writer groups grouping', () => {
 							model: 'person',
 							uuid: PERSON_2_UUID,
 							name: 'Person #2',
+							format: null,
 							sourceMaterialWriterGroups: []
 						}
 					]
 				}
 			];
 
-			const { writerGroups } = playtext.body;
+			const { writerGroups } = material.body;
 
 			expect(writerGroups).to.deep.equal(expectedWriterGroups);
 

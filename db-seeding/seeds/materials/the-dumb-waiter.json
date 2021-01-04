@@ -1,0 +1,25 @@
+{
+	"name": "The Dumb Waiter",
+	"format": "play",
+	"writerGroups": [
+		{
+			"writers": [
+				{
+					"name": "Harold Pinter"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ben"
+				},
+				{
+					"name": "Gus"
+				}
+			]
+		}
+	]
+}

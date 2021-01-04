@@ -1,9 +1,9 @@
-import playtext from './playtext';
+import material from './material';
 import production from './production';
 import theatre from './theatre';
 
 export {
-	playtext,
+	material,
 	production,
 	theatre
 };

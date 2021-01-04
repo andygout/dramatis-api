@@ -10,16 +10,16 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	chai.use(chaiHttp);
 
-	const HENRY_IV_PART_1_PLAYTEXT_UUID = '5';
+	const HENRY_IV_PART_1_MATERIAL_UUID = '5';
 	const KING_HENRY_V_CHARACTER_UUID = '7';
 	const SIR_JOHN_FALSTAFF_CHARACTER_UUID = '8';
 	const MESSENGER_CHARACTER_UUID = '9';
-	const HENRY_IV_PART_2_PLAYTEXT_UUID = '15';
+	const HENRY_IV_PART_2_MATERIAL_UUID = '15';
 	const ATTENDANT_CHARACTER_UUID = '19';
-	const HENRY_V_PLAYTEXT_UUID = '25';
+	const HENRY_V_MATERIAL_UUID = '25';
 	const KING_OF_FRANCE_CHARACTER_UUID = '28';
 	const SOLDIER_CHARACTER_UUID = '29';
-	const THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID = '33';
+	const THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID = '33';
 	const HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '36';
 	const ROYAL_SHAKESPEARE_THEATRE_UUID = '38';
 	const ALEX_HASSELL_PERSON_UUID = '39';
@@ -40,9 +40,9 @@ describe('Character with variant depiction and portrayal names', () => {
 	let messengerCharacter;
 	let attendantCharacter;
 	let soldierCharacter;
-	let henryIVPart1Playtext;
-	let henryIVPart2Playtext;
-	let henryVPlaytext;
+	let henryIVPart1Material;
+	let henryIVPart2Material;
+	let henryVMaterial;
 	let henryIVPart1RoyalShakespeareProduction;
 	let henryIVPart2RoyalShakespeareProduction;
 	let henryVRoyalShakespeareProduction;
@@ -64,9 +64,10 @@ describe('Character with variant depiction and portrayal names', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
+				format: 'play',
 				characterGroups: [
 					{
 						characters: [
@@ -86,9 +87,10 @@ describe('Character with variant depiction and portrayal names', () => {
 			});
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
+				format: 'play',
 				characterGroups: [
 					{
 						characters: [
@@ -108,9 +110,10 @@ describe('Character with variant depiction and portrayal names', () => {
 			});
 
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'Henry V',
+				format: 'play',
 				characterGroups: [
 					{
 						characters: [
@@ -130,9 +133,10 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		// Contrivance for purposes of testing distinct variant named depictions.
 		await chai.request(app)
-			.post('/playtexts')
+			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
+				format: 'play',
 				characterGroups: [
 					{
 						characters: [
@@ -149,7 +153,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				playtext: {
+				material: {
 					name: 'Henry IV, Part 1'
 				},
 				theatre: {
@@ -182,7 +186,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
-				playtext: {
+				material: {
 					name: 'Henry IV, Part 2'
 				},
 				theatre: {
@@ -216,7 +220,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
-				playtext: {
+				material: {
 					name: 'Henry V'
 				},
 				theatre: {
@@ -250,7 +254,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				playtext: {
+				material: {
 					name: 'Henry IV, Part 1'
 				},
 				theatre: {
@@ -284,7 +288,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
-				playtext: {
+				material: {
 					name: 'Henry IV, Part 2'
 				},
 				theatre: {
@@ -318,7 +322,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
-				playtext: {
+				material: {
 					name: 'Henry V'
 				},
 				theatre: {
@@ -360,14 +364,14 @@ describe('Character with variant depiction and portrayal names', () => {
 		soldierCharacter = await chai.request(app)
 			.get(`/characters/${SOLDIER_CHARACTER_UUID}`);
 
-		henryIVPart1Playtext = await chai.request(app)
-			.get(`/playtexts/${HENRY_IV_PART_1_PLAYTEXT_UUID}`);
+		henryIVPart1Material = await chai.request(app)
+			.get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Playtext = await chai.request(app)
-			.get(`/playtexts/${HENRY_IV_PART_2_PLAYTEXT_UUID}`);
+		henryIVPart2Material = await chai.request(app)
+			.get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		henryVPlaytext = await chai.request(app)
-			.get(`/playtexts/${HENRY_V_PLAYTEXT_UUID}`);
+		henryVMaterial = await chai.request(app)
+			.get(`/materials/${HENRY_V_MATERIAL_UUID}`);
 
 		henryIVPart1RoyalShakespeareProduction = await chai.request(app)
 			.get(`/productions/${HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
@@ -406,13 +410,14 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('King Henry V (character)', () => {
 
-		it('includes playtexts in which character is depicted', () => {
+		it('includes materials in which character is depicted', () => {
 
-			const expectedPlaytexts = [
+			const expectedMaterials = [
 				{
-					model: 'playtext',
-					uuid: HENRY_IV_PART_1_PLAYTEXT_UUID,
+					model: 'material',
+					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
 					name: 'Henry IV, Part 1',
+					format: 'play',
 					writerGroups: [],
 					depictions: [
 						{
@@ -423,9 +428,10 @@ describe('Character with variant depiction and portrayal names', () => {
 					]
 				},
 				{
-					model: 'playtext',
-					uuid: HENRY_IV_PART_2_PLAYTEXT_UUID,
+					model: 'material',
+					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
 					name: 'Henry IV, Part 2',
+					format: 'play',
 					writerGroups: [],
 					depictions: [
 						{
@@ -436,16 +442,18 @@ describe('Character with variant depiction and portrayal names', () => {
 					]
 				},
 				{
-					model: 'playtext',
-					uuid: HENRY_V_PLAYTEXT_UUID,
+					model: 'material',
+					uuid: HENRY_V_MATERIAL_UUID,
 					name: 'Henry V',
+					format: 'play',
 					writerGroups: [],
 					depictions: []
 				},
 				{
-					model: 'playtext',
-					uuid: THE_MERRY_WIVES_OF_WINDSOR_PLAYTEXT_UUID,
+					model: 'material',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
 					name: 'The Merry Wives of Windsor',
+					format: 'play',
 					writerGroups: [],
 					depictions: [
 						{
@@ -457,13 +465,13 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { playtexts } = kingHenryVCharacter.body;
+			const { materials } = kingHenryVCharacter.body;
 
-			expect(playtexts).to.deep.equal(expectedPlaytexts);
+			expect(materials).to.deep.equal(expectedMaterials);
 
 		});
 
-		it('includes distinct variant named depictions (i.e. depictions in playtexts with names different to the underlying character name)', () => {
+		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
 
 			const expectedVariantNamedDepictions = [
 				'Henry, Prince of Wales',
@@ -476,13 +484,13 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		});
 
-		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from playtexts),
-		// it still appears here because the corresponding portrayal was of the character from a playtext (Henry IV, Part 1)
+		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from materials),
+		// it still appears here because the corresponding portrayal was of the character from a material (Henry IV, Part 1)
 		// in which neither the underlying nor display name matches the role name used for the portrayal.
 		// 'Henry, Prince of Wales' does not appear in this list because the portrayal
-		// was in a production of the playtext that used this name as the display name for King Henry V,
+		// was in a production of the material that used this name as the display name for King Henry V,
 		// and so this name instead only appears under variant depiction names.
-		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in playtext)', () => {
+		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Hal',
@@ -891,7 +899,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	});
 
-	describe('Henry IV, Part 1 (playtext)', () => {
+	describe('Henry IV, Part 1 (material)', () => {
 
 		it('includes Henry, Prince of Wales in its characters using the uuid value of King Henry V', () => {
 
@@ -916,7 +924,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart1Playtext.body;
+			const { characterGroups: [{ characters }] } = henryIVPart1Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 
@@ -924,7 +932,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	});
 
-	describe('Henry IV, Part 2 (playtext)', () => {
+	describe('Henry IV, Part 2 (material)', () => {
 
 		it('includes Prince Hal in its characters using the uuid value of King Henry V', () => {
 
@@ -949,7 +957,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart2Playtext.body;
+			const { characterGroups: [{ characters }] } = henryIVPart2Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 
@@ -957,7 +965,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	});
 
-	describe('Henry V (playtext)', () => {
+	describe('Henry V (material)', () => {
 
 		it('includes Henry V in its characters using the uuid value of King Henry V', () => {
 
@@ -982,7 +990,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryVPlaytext.body;
+			const { characterGroups: [{ characters }] } = henryVMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
 

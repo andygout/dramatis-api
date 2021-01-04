@@ -33,7 +33,7 @@ describe('Convert Neo4j Records To Objects module', () => {
 						'writerGroups'
 					],
 					_fields: [
-						'playtext',
+						'material',
 						'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						'3 Winters',
 						null,
@@ -57,7 +57,7 @@ describe('Convert Neo4j Records To Objects module', () => {
 
 		const expectedResult = [
 			{
-				model: 'playtext',
+				model: 'material',
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: '3 Winters',
 				differentiator: null,
