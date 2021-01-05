@@ -49,7 +49,7 @@ describe('Cypher Queries Material module', () => {
 
 						OPTIONAL MATCH (existingWriter { name: writerParam.name })
 							WHERE
-								(existingWriter:Person OR existingWriter:Material) AND
+								(writerParam.model IN [label IN LABELS(existingWriter) | TOLOWER(label)]) AND
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
@@ -283,7 +283,7 @@ describe('Cypher Queries Material module', () => {
 
 						OPTIONAL MATCH (existingWriter { name: writerParam.name })
 							WHERE
-								(existingWriter:Person OR existingWriter:Material) AND
+								(writerParam.model IN [label IN LABELS(existingWriter) | TOLOWER(label)]) AND
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
