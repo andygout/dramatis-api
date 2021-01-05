@@ -73,11 +73,14 @@ const getCreateUpdateQuery = action => {
 
 		UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroupParam
 
-			UNWIND (CASE writerGroupParam.writers WHEN [] THEN [null] ELSE writerGroupParam.writers END) AS writerParam
+			UNWIND
+				CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'person']) WHEN 0
+					THEN [null]
+					ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'person']
+				END AS writerParam
 
-				OPTIONAL MATCH (existingWriter { name: writerParam.name })
+				OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
 					WHERE
-						(writerParam.model IN [label IN LABELS(existingWriter) | TOLOWER(label)]) AND
 						(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 						(writerParam.differentiator = existingWriter.differentiator)
 
@@ -107,14 +110,40 @@ const getCreateUpdateQuery = action => {
 						}]->(writer)
 				)
 
-				FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'material' THEN [1] ELSE [] END |
-					MERGE (sourceMaterial:Material { uuid: writerProps.uuid, name: writerProps.name })
-						ON CREATE SET sourceMaterial.differentiator = writerProps.differentiator
+			WITH DISTINCT material, writerGroupParam
+
+			UNWIND
+				CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'material']) WHEN 0
+					THEN [null]
+					ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'material']
+				END AS sourceMaterialParam
+
+				OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
+					WHERE
+						(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
+						(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
+
+				WITH
+					material,
+					writerGroupParam,
+					sourceMaterialParam,
+					CASE existingSourceMaterial WHEN NULL
+						THEN {
+							uuid: sourceMaterialParam.uuid,
+							name: sourceMaterialParam.name,
+							differentiator: sourceMaterialParam.differentiator
+						}
+						ELSE existingSourceMaterial
+					END AS sourceMaterialProps
+
+				FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL AND sourceMaterialParam.model = 'material' THEN [1] ELSE [] END |
+					MERGE (sourceMaterial:Material { uuid: sourceMaterialProps.uuid, name: sourceMaterialProps.name })
+						ON CREATE SET sourceMaterial.differentiator = sourceMaterialProps.differentiator
 
 					CREATE (material)-
 						[:USES_SOURCE_MATERIAL {
 							groupPosition: writerGroupParam.position,
-							writerPosition: writerParam.position,
+							writerPosition: sourceMaterialParam.position,
 							group: writerGroupParam.name
 						}]->(sourceMaterial)
 				)
