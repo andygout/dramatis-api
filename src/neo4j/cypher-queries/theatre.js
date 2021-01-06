@@ -29,21 +29,12 @@ const getCreateUpdateQuery = action => {
 					(subTheatreParam.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
 					(subTheatreParam.differentiator = existingTheatre.differentiator)
 
-			WITH
-				theatre,
-				subTheatreParam,
-				CASE existingTheatre WHEN NULL
-					THEN {
-						uuid: subTheatreParam.uuid,
-						name: subTheatreParam.name,
-						differentiator: subTheatreParam.differentiator
-					}
-					ELSE existingTheatre
-				END AS subTheatreProps
-
 			FOREACH (item IN CASE subTheatreParam WHEN NULL THEN [] ELSE [1] END |
-				MERGE (subTheatre:Theatre { uuid: subTheatreProps.uuid, name: subTheatreProps.name })
-					ON CREATE SET subTheatre.differentiator = subTheatreProps.differentiator
+				MERGE (subTheatre:Theatre {
+					uuid: COALESCE(existingTheatre.uuid, subTheatreParam.uuid),
+					name: subTheatreParam.name
+				})
+					ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
 
 				CREATE (theatre)-[:INCLUDES_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
 			)

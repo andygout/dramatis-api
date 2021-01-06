@@ -20,35 +20,24 @@ describe('Cypher Queries Material module', () => {
 						($originalVersionMaterial.differentiator IS NULL AND existingOriginalVersionMaterial.differentiator IS NULL) OR
 						($originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator)
 
-				WITH
-					material,
-					CASE existingOriginalVersionMaterial WHEN NULL
-						THEN {
-							uuid: $originalVersionMaterial.uuid,
-							name: $originalVersionMaterial.name,
-							differentiator: $originalVersionMaterial.differentiator
-						}
-						ELSE existingOriginalVersionMaterial
-					END AS originalVersionMaterialProps
-
 				FOREACH (item IN CASE $originalVersionMaterial.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (originalVersionMaterial:Material {
-						uuid: originalVersionMaterialProps.uuid,
-						name: originalVersionMaterialProps.name
+						uuid: COALESCE(existingOriginalVersionMaterial.uuid, $originalVersionMaterial.uuid),
+						name: $originalVersionMaterial.name
 					})
-						ON CREATE SET originalVersionMaterial.differentiator = originalVersionMaterialProps.differentiator
+						ON CREATE SET originalVersionMaterial.differentiator = $originalVersionMaterial.differentiator
 
 					CREATE (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial)
 				)
 
 				WITH material
 
-				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroupParam
+				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroup
 
 					UNWIND
-						CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'person']) WHEN 0
+						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'person']
+							ELSE [writer IN writerGroup.writers WHERE writer.model = 'person']
 						END AS writerParam
 
 						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
@@ -56,38 +45,28 @@ describe('Cypher Queries Material module', () => {
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
-						WITH
-							material,
-							writerGroupParam,
-							writerParam,
-							CASE existingWriter WHEN NULL
-								THEN {
-									uuid: writerParam.uuid,
-									name: writerParam.name,
-									differentiator: writerParam.differentiator
-								}
-								ELSE existingWriter
-							END AS writerProps
-
 						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
-							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
-								ON CREATE SET writer.differentiator = writerProps.differentiator
+							MERGE (writer:Person {
+								uuid: COALESCE(existingWriter.uuid, writerParam.uuid),
+								name: writerParam.name
+							})
+								ON CREATE SET writer.differentiator = writerParam.differentiator
 
 							CREATE (material)-
 								[:WRITTEN_BY {
-									groupPosition: writerGroupParam.position,
+									groupPosition: writerGroup.position,
 									writerPosition: writerParam.position,
-									group: writerGroupParam.name,
-									isOriginalVersionWriter: writerGroupParam.isOriginalVersionWriter
+									group: writerGroup.name,
+									isOriginalVersionWriter: writerGroup.isOriginalVersionWriter
 								}]->(writer)
 						)
 
-					WITH DISTINCT material, writerGroupParam
+					WITH DISTINCT material, writerGroup
 
 					UNWIND
-						CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'material']) WHEN 0
+						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'material']
+							ELSE [writer IN writerGroup.writers WHERE writer.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -95,36 +74,26 @@ describe('Cypher Queries Material module', () => {
 								(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
 								(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
 
-						WITH
-							material,
-							writerGroupParam,
-							sourceMaterialParam,
-							CASE existingSourceMaterial WHEN NULL
-								THEN {
-									uuid: sourceMaterialParam.uuid,
-									name: sourceMaterialParam.name,
-									differentiator: sourceMaterialParam.differentiator
-								}
-								ELSE existingSourceMaterial
-							END AS sourceMaterialProps
-
 						FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL AND sourceMaterialParam.model = 'material' THEN [1] ELSE [] END |
-							MERGE (sourceMaterial:Material { uuid: sourceMaterialProps.uuid, name: sourceMaterialProps.name })
-								ON CREATE SET sourceMaterial.differentiator = sourceMaterialProps.differentiator
+							MERGE (sourceMaterial:Material {
+								uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
+								name: sourceMaterialParam.name
+							})
+								ON CREATE SET sourceMaterial.differentiator = sourceMaterialParam.differentiator
 
 							CREATE (material)-
 								[:USES_SOURCE_MATERIAL {
-									groupPosition: writerGroupParam.position,
+									groupPosition: writerGroup.position,
 									writerPosition: sourceMaterialParam.position,
-									group: writerGroupParam.name
+									group: writerGroup.name
 								}]->(sourceMaterial)
 						)
 
 				WITH DISTINCT material
 
-				UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroupParam
+				UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroup
 
-					UNWIND (CASE characterGroupParam.characters WHEN [] THEN [null] ELSE characterGroupParam.characters END) AS characterParam
+					UNWIND (CASE characterGroup.characters WHEN [] THEN [null] ELSE characterGroup.characters END) AS characterParam
 
 						OPTIONAL MATCH (existingCharacter:Character {
 							name: COALESCE(characterParam.underlyingName, characterParam.name)
@@ -133,30 +102,20 @@ describe('Cypher Queries Material module', () => {
 								(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
 								(characterParam.differentiator = existingCharacter.differentiator)
 
-						WITH
-							material,
-							characterGroupParam,
-							characterParam,
-							CASE existingCharacter WHEN NULL
-								THEN {
-									uuid: characterParam.uuid,
-									name: COALESCE(characterParam.underlyingName, characterParam.name),
-									differentiator: characterParam.differentiator
-								}
-								ELSE existingCharacter
-							END AS characterProps
-
 						FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
-							MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
-								ON CREATE SET character.differentiator = characterProps.differentiator
+							MERGE (character:Character {
+								uuid: COALESCE(existingCharacter.uuid, characterParam.uuid),
+								name: COALESCE(characterParam.underlyingName, characterParam.name)
+							})
+								ON CREATE SET character.differentiator = characterParam.differentiator
 
 							CREATE (material)-
 								[:INCLUDES_CHARACTER {
-									groupPosition: characterGroupParam.position,
+									groupPosition: characterGroup.position,
 									characterPosition: characterParam.position,
 									displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
 									qualifier: characterParam.qualifier,
-									group: characterGroupParam.name
+									group: characterGroup.name
 								}]->(character)
 						)
 
@@ -283,35 +242,24 @@ describe('Cypher Queries Material module', () => {
 						($originalVersionMaterial.differentiator IS NULL AND existingOriginalVersionMaterial.differentiator IS NULL) OR
 						($originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator)
 
-				WITH
-					material,
-					CASE existingOriginalVersionMaterial WHEN NULL
-						THEN {
-							uuid: $originalVersionMaterial.uuid,
-							name: $originalVersionMaterial.name,
-							differentiator: $originalVersionMaterial.differentiator
-						}
-						ELSE existingOriginalVersionMaterial
-					END AS originalVersionMaterialProps
-
 				FOREACH (item IN CASE $originalVersionMaterial.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (originalVersionMaterial:Material {
-						uuid: originalVersionMaterialProps.uuid,
-						name: originalVersionMaterialProps.name
+						uuid: COALESCE(existingOriginalVersionMaterial.uuid, $originalVersionMaterial.uuid),
+						name: $originalVersionMaterial.name
 					})
-						ON CREATE SET originalVersionMaterial.differentiator = originalVersionMaterialProps.differentiator
+						ON CREATE SET originalVersionMaterial.differentiator = $originalVersionMaterial.differentiator
 
 					CREATE (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial)
 				)
 
 				WITH material
 
-				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroupParam
+				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroup
 
 					UNWIND
-						CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'person']) WHEN 0
+						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'person']
+							ELSE [writer IN writerGroup.writers WHERE writer.model = 'person']
 						END AS writerParam
 
 						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
@@ -319,38 +267,28 @@ describe('Cypher Queries Material module', () => {
 								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writerParam.differentiator = existingWriter.differentiator)
 
-						WITH
-							material,
-							writerGroupParam,
-							writerParam,
-							CASE existingWriter WHEN NULL
-								THEN {
-									uuid: writerParam.uuid,
-									name: writerParam.name,
-									differentiator: writerParam.differentiator
-								}
-								ELSE existingWriter
-							END AS writerProps
-
 						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
-							MERGE (writer:Person { uuid: writerProps.uuid, name: writerProps.name })
-								ON CREATE SET writer.differentiator = writerProps.differentiator
+							MERGE (writer:Person {
+								uuid: COALESCE(existingWriter.uuid, writerParam.uuid),
+								name: writerParam.name
+							})
+								ON CREATE SET writer.differentiator = writerParam.differentiator
 
 							CREATE (material)-
 								[:WRITTEN_BY {
-									groupPosition: writerGroupParam.position,
+									groupPosition: writerGroup.position,
 									writerPosition: writerParam.position,
-									group: writerGroupParam.name,
-									isOriginalVersionWriter: writerGroupParam.isOriginalVersionWriter
+									group: writerGroup.name,
+									isOriginalVersionWriter: writerGroup.isOriginalVersionWriter
 								}]->(writer)
 						)
 
-					WITH DISTINCT material, writerGroupParam
+					WITH DISTINCT material, writerGroup
 
 					UNWIND
-						CASE SIZE([writer IN writerGroupParam.writers WHERE writer.model = 'material']) WHEN 0
+						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroupParam.writers WHERE writer.model = 'material']
+							ELSE [writer IN writerGroup.writers WHERE writer.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -358,36 +296,26 @@ describe('Cypher Queries Material module', () => {
 								(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
 								(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
 
-						WITH
-							material,
-							writerGroupParam,
-							sourceMaterialParam,
-							CASE existingSourceMaterial WHEN NULL
-								THEN {
-									uuid: sourceMaterialParam.uuid,
-									name: sourceMaterialParam.name,
-									differentiator: sourceMaterialParam.differentiator
-								}
-								ELSE existingSourceMaterial
-							END AS sourceMaterialProps
-
 						FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL AND sourceMaterialParam.model = 'material' THEN [1] ELSE [] END |
-							MERGE (sourceMaterial:Material { uuid: sourceMaterialProps.uuid, name: sourceMaterialProps.name })
-								ON CREATE SET sourceMaterial.differentiator = sourceMaterialProps.differentiator
+							MERGE (sourceMaterial:Material {
+								uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
+								name: sourceMaterialParam.name
+							})
+								ON CREATE SET sourceMaterial.differentiator = sourceMaterialParam.differentiator
 
 							CREATE (material)-
 								[:USES_SOURCE_MATERIAL {
-									groupPosition: writerGroupParam.position,
+									groupPosition: writerGroup.position,
 									writerPosition: sourceMaterialParam.position,
-									group: writerGroupParam.name
+									group: writerGroup.name
 								}]->(sourceMaterial)
 						)
 
 				WITH DISTINCT material
 
-				UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroupParam
+				UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroup
 
-					UNWIND (CASE characterGroupParam.characters WHEN [] THEN [null] ELSE characterGroupParam.characters END) AS characterParam
+					UNWIND (CASE characterGroup.characters WHEN [] THEN [null] ELSE characterGroup.characters END) AS characterParam
 
 						OPTIONAL MATCH (existingCharacter:Character {
 							name: COALESCE(characterParam.underlyingName, characterParam.name)
@@ -396,30 +324,20 @@ describe('Cypher Queries Material module', () => {
 								(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
 								(characterParam.differentiator = existingCharacter.differentiator)
 
-						WITH
-							material,
-							characterGroupParam,
-							characterParam,
-							CASE existingCharacter WHEN NULL
-								THEN {
-									uuid: characterParam.uuid,
-									name: COALESCE(characterParam.underlyingName, characterParam.name),
-									differentiator: characterParam.differentiator
-								}
-								ELSE existingCharacter
-							END AS characterProps
-
 						FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
-							MERGE (character:Character { uuid: characterProps.uuid, name: characterProps.name })
-								ON CREATE SET character.differentiator = characterProps.differentiator
+							MERGE (character:Character {
+								uuid: COALESCE(existingCharacter.uuid, characterParam.uuid),
+								name: COALESCE(characterParam.underlyingName, characterParam.name)
+							})
+								ON CREATE SET character.differentiator = characterParam.differentiator
 
 							CREATE (material)-
 								[:INCLUDES_CHARACTER {
-									groupPosition: characterGroupParam.position,
+									groupPosition: characterGroup.position,
 									characterPosition: characterParam.position,
 									displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
 									qualifier: characterParam.qualifier,
-									group: characterGroupParam.name
+									group: characterGroup.name
 								}]->(character)
 						)
 
