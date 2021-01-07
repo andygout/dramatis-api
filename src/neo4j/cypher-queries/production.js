@@ -25,16 +25,12 @@ const getCreateUpdateQuery = action => {
 				($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
 				($material.differentiator = existingMaterial.differentiator)
 
-		WITH
-			production,
-			CASE existingMaterial WHEN NULL
-				THEN { uuid: $material.uuid, name: $material.name, differentiator: $material.differentiator }
-				ELSE existingMaterial
-			END AS materialProps
-
 		FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
-			MERGE (material:Material { uuid: materialProps.uuid, name: materialProps.name })
-				ON CREATE SET material.differentiator = materialProps.differentiator
+			MERGE (material:Material {
+				uuid: COALESCE(existingMaterial.uuid, $material.uuid),
+				name: $material.name
+			})
+				ON CREATE SET material.differentiator = $material.differentiator
 
 			CREATE (production)-[:PRODUCTION_OF]->(material)
 		)
@@ -46,16 +42,12 @@ const getCreateUpdateQuery = action => {
 				($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
 				($theatre.differentiator = existingTheatre.differentiator)
 
-		WITH
-			production,
-			CASE existingTheatre WHEN NULL
-				THEN { uuid: $theatre.uuid, name: $theatre.name, differentiator: $theatre.differentiator }
-				ELSE existingTheatre
-			END AS theatreProps
-
 		FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
-			MERGE (theatre:Theatre { uuid: theatreProps.uuid, name: theatreProps.name })
-				ON CREATE SET theatre.differentiator = theatreProps.differentiator
+			MERGE (theatre:Theatre {
+				uuid: COALESCE(existingTheatre.uuid, $theatre.uuid),
+				name: $theatre.name
+			})
+				ON CREATE SET theatre.differentiator = $theatre.differentiator
 
 			CREATE (production)-[:PLAYS_AT]->(theatre)
 		)
@@ -69,21 +61,12 @@ const getCreateUpdateQuery = action => {
 					(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
 					(castMemberParam.differentiator = existingPerson.differentiator)
 
-			WITH
-				production,
-				castMemberParam,
-				CASE existingPerson WHEN NULL
-					THEN {
-						uuid: castMemberParam.uuid,
-						name: castMemberParam.name,
-						differentiator: castMemberParam.differentiator
-					}
-					ELSE existingPerson
-				END AS castMemberProps
-
 			FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
-				MERGE (person:Person { uuid: castMemberProps.uuid, name: castMemberProps.name })
-					ON CREATE SET person.differentiator = castMemberProps.differentiator
+				MERGE (castMember:Person {
+					uuid: COALESCE(existingPerson.uuid, castMemberParam.uuid),
+					name: castMemberParam.name
+				})
+					ON CREATE SET castMember.differentiator = castMemberParam.differentiator
 
 				FOREACH (role IN CASE castMemberParam.roles WHEN [] THEN [{}] ELSE castMemberParam.roles END |
 					CREATE (production)
@@ -94,7 +77,7 @@ const getCreateUpdateQuery = action => {
 							characterName: role.characterName,
 							characterDifferentiator: role.characterDifferentiator,
 							qualifier: role.qualifier
-						}]-(person)
+						}]-(castMember)
 				)
 			)
 
