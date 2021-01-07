@@ -406,9 +406,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							name: 'based on',
 							writers: [
 								{
+									model: 'material',
 									name: 'John Gabriel Borkman',
-									differentiator: '3',
-									model: 'material'
+									differentiator: '3'
 								}
 							]
 						}
@@ -885,9 +885,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							name: 'based on',
 							writers: [
 								{
+									model: 'material',
 									name: 'Three Sisters',
-									differentiator: '3',
-									model: 'material'
+									differentiator: '3'
 								}
 							]
 						}

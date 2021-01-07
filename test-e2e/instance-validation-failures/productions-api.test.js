@@ -76,8 +76,8 @@ describe('Instance validation failures: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				name: 'Macbeth',
-				uuid: MACBETH_PRODUCTION_UUID
+				uuid: MACBETH_PRODUCTION_UUID,
+				name: 'Macbeth'
 			});
 
 		});
@@ -146,20 +146,20 @@ describe('Instance validation failures: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				name: 'Othello',
-				uuid: OTHELLO_DONMAR_PRODUCTION_UUID
+				uuid: OTHELLO_DONMAR_PRODUCTION_UUID,
+				name: 'Othello'
 			});
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Donmar Warehouse',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID
+				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				name: 'Donmar Warehouse'
 			});
 
 			await createNode({
 				label: 'Material',
-				name: 'Othello',
-				uuid: OTHELLO_MATERIAL_UUID
+				uuid: OTHELLO_MATERIAL_UUID,
+				name: 'Othello'
 			});
 
 			await createRelationship({

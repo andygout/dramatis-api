@@ -14,7 +14,7 @@ describe('Instance validation failures: Characters API', () => {
 
 	describe('attempt to create instance', () => {
 
-		const ORSINO_CHARACTER_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const ORSINO_CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
@@ -22,8 +22,8 @@ describe('Instance validation failures: Characters API', () => {
 
 			await createNode({
 				label: 'Character',
-				name: 'Orsino',
-				uuid: ORSINO_CHARACTER_UUID
+				uuid: ORSINO_CHARACTER_UUID,
+				name: 'Orsino'
 			});
 
 		});
@@ -108,14 +108,14 @@ describe('Instance validation failures: Characters API', () => {
 
 			await createNode({
 				label: 'Character',
-				name: 'Viola',
-				uuid: VIOLA_CHARACTER_UUID
+				uuid: VIOLA_CHARACTER_UUID,
+				name: 'Viola'
 			});
 
 			await createNode({
 				label: 'Character',
-				name: 'Orsino',
-				uuid: ORSINO_CHARACTER_UUID
+				uuid: ORSINO_CHARACTER_UUID,
+				name: 'Orsino'
 			});
 
 		});
@@ -212,14 +212,14 @@ describe('Instance validation failures: Characters API', () => {
 
 			await createNode({
 				label: 'Character',
-				name: 'Viola',
-				uuid: VIOLA_CHARACTER_UUID
+				uuid: VIOLA_CHARACTER_UUID,
+				name: 'Viola'
 			});
 
 			await createNode({
 				label: 'Material',
-				name: 'Twelfth Night',
-				uuid: TWELFTH_NIGHT_MATERIAL_UUID
+				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
+				name: 'Twelfth Night'
 			});
 
 			await createRelationship({

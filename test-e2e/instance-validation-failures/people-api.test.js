@@ -14,7 +14,7 @@ describe('Instance validation failures: People API', () => {
 
 	describe('attempt to create instance', () => {
 
-		const MAGGIE_SMITH_PERSON_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const MAGGIE_SMITH_PERSON_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
@@ -22,8 +22,8 @@ describe('Instance validation failures: People API', () => {
 
 			await createNode({
 				label: 'Person',
-				name: 'Maggie Smith',
-				uuid: MAGGIE_SMITH_PERSON_UUID
+				uuid: MAGGIE_SMITH_PERSON_UUID,
+				name: 'Maggie Smith'
 			});
 
 		});
@@ -108,14 +108,14 @@ describe('Instance validation failures: People API', () => {
 
 			await createNode({
 				label: 'Person',
-				name: 'Judi Dench',
-				uuid: JUDI_DENCH_PERSON_UUID
+				uuid: JUDI_DENCH_PERSON_UUID,
+				name: 'Judi Dench'
 			});
 
 			await createNode({
 				label: 'Person',
-				name: 'Maggie Smith',
-				uuid: MAGGIE_SMITH_PERSON_UUID
+				uuid: MAGGIE_SMITH_PERSON_UUID,
+				name: 'Maggie Smith'
 			});
 
 		});
@@ -212,14 +212,14 @@ describe('Instance validation failures: People API', () => {
 
 			await createNode({
 				label: 'Person',
-				name: 'Judi Dench',
-				uuid: JUDI_DENCH_PERSON_UUID
+				uuid: JUDI_DENCH_PERSON_UUID,
+				name: 'Judi Dench'
 			});
 
 			await createNode({
 				label: 'Production',
-				name: 'A Midsummer Night\'s Dream',
-				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID
+				uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+				name: 'A Midsummer Night\'s Dream'
 			});
 
 			await createRelationship({

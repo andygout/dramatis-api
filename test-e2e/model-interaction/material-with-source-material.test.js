@@ -68,8 +68,8 @@ describe('Materials with source material', () => {
 						name: 'inspired by',
 						writers: [
 							{
-								name: 'A Midsummer Night\'s Dream',
-								model: 'material'
+								model: 'material',
+								name: 'A Midsummer Night\'s Dream'
 							}
 						]
 					}

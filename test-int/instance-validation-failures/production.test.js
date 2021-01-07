@@ -47,15 +47,15 @@ describe('Production instance', () => {
 							'Value is too short'
 						]
 					},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -92,13 +92,6 @@ describe('Production instance', () => {
 							'Value is too long'
 						]
 					},
-					theatre: {
-						model: 'theatre',
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
 					material: {
 						model: 'material',
 						uuid: undefined,
@@ -106,98 +99,8 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					cast: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-		context('theatre name value exceeds maximum limit', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'Hamlet',
-					theatre: {
-						name: ABOVE_MAX_LENGTH_STRING
-					}
-				};
-
-				const instance = new Production(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					model: 'production',
-					uuid: undefined,
-					name: 'Hamlet',
-					hasErrors: true,
-					errors: {},
 					theatre: {
 						model: 'theatre',
-						uuid: undefined,
-						name: ABOVE_MAX_LENGTH_STRING,
-						differentiator: '',
-						errors: {
-							name: [
-								'Value is too long'
-							]
-						}
-					},
-					material: {
-						model: 'material',
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					cast: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-		context('theatre differentiator value exceeds maximum limit', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'Hamlet',
-					theatre: {
-						name: 'National Theatre',
-						differentiator: ABOVE_MAX_LENGTH_STRING
-					}
-				};
-
-				const instance = new Production(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					model: 'production',
-					uuid: undefined,
-					name: 'Hamlet',
-					hasErrors: true,
-					errors: {},
-					theatre: {
-						model: 'theatre',
-						uuid: undefined,
-						name: 'National Theatre',
-						differentiator: ABOVE_MAX_LENGTH_STRING,
-						errors: {
-							differentiator: [
-								'Value is too long'
-							]
-						}
-					},
-					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -233,13 +136,6 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
 					material: {
 						model: 'material',
 						uuid: undefined,
@@ -250,6 +146,13 @@ describe('Production instance', () => {
 								'Value is too long'
 							]
 						}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					cast: []
 				};
@@ -282,6 +185,17 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
+					material: {
+						model: 'material',
+						uuid: undefined,
+						name: 'Hamlet',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
+							]
+						}
+					},
 					theatre: {
 						model: 'theatre',
 						uuid: undefined,
@@ -289,10 +203,96 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					cast: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('theatre name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					theatre: {
+						name: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
 					material: {
 						model: 'material',
 						uuid: undefined,
-						name: 'Hamlet',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					},
+					cast: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('theatre differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					theatre: {
+						name: 'National Theatre',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
 							differentiator: [
@@ -333,15 +333,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -394,15 +394,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -459,15 +459,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -549,15 +549,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -623,15 +623,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -697,15 +697,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -772,15 +772,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -846,15 +846,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -920,15 +920,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -999,15 +999,15 @@ describe('Production instance', () => {
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
-					theatre: {
-						model: 'theatre',
+					material: {
+						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
-					material: {
-						model: 'material',
+					theatre: {
+						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',

@@ -267,16 +267,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'The Tempest',
 				errors: {},
 				material: {
-					differentiator: '',
-					errors: {},
 					model: 'material',
-					name: ''
+					name: '',
+					differentiator: '',
+					errors: {}
 				},
 				theatre: {
-					differentiator: '',
-					errors: {},
 					model: 'theatre',
-					name: ''
+					name: '',
+					differentiator: '',
+					errors: {}
 				},
 				cast: []
 			};
@@ -1160,16 +1160,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'Richard III',
 				errors: {},
 				material: {
-					differentiator: '',
-					errors: {},
 					model: 'material',
-					name: ''
+					name: '',
+					differentiator: '',
+					errors: {}
 				},
 				theatre: {
-					differentiator: '',
-					errors: {},
 					model: 'theatre',
-					name: ''
+					name: '',
+					differentiator: '',
+					errors: {}
 				},
 				cast: []
 			};

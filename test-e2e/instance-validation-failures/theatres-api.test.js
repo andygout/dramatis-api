@@ -14,7 +14,7 @@ describe('Instance validation failures: Theatres API', () => {
 
 	describe('attempt to create instance', () => {
 
-		const DONMAR_WAREHOUSE_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const DONMAR_WAREHOUSE_THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
@@ -22,8 +22,8 @@ describe('Instance validation failures: Theatres API', () => {
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Donmar Warehouse',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID
+				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				name: 'Donmar Warehouse'
 			});
 
 		});
@@ -110,14 +110,14 @@ describe('Instance validation failures: Theatres API', () => {
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Almeida Theatre',
-				uuid: ALMEIDA_THEATRE_UUID
+				uuid: ALMEIDA_THEATRE_UUID,
+				name: 'Almeida Theatre'
 			});
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Donmar Warehouse',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID
+				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				name: 'Donmar Warehouse'
 			});
 
 		});
@@ -216,14 +216,14 @@ describe('Instance validation failures: Theatres API', () => {
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Almeida Theatre',
-				uuid: ALMEIDA_THEATRE_UUID
+				uuid: ALMEIDA_THEATRE_UUID,
+				name: 'Almeida Theatre'
 			});
 
 			await createNode({
 				label: 'Production',
-				name: 'The Merchant of Venice',
-				uuid: THE_MERCHANT_OF_VENICE_ALMEIDA_PRODUCTION_UUID
+				uuid: THE_MERCHANT_OF_VENICE_ALMEIDA_PRODUCTION_UUID,
+				name: 'The Merchant of Venice'
 			});
 
 			await createRelationship({

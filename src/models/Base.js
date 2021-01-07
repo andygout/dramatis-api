@@ -192,7 +192,7 @@ export default class Base {
 		const { getEditQuery } = sharedQueries;
 
 		const neo4jInstance = await neo4jQuery({
-			query: (getEditQueries[this.model]?.()) || getEditQuery(this.model),
+			query: getEditQueries[this.model]?.() || getEditQuery(this.model),
 			params: { uuid: this.uuid }
 		});
 
@@ -256,7 +256,7 @@ export default class Base {
 
 		return neo4jQuery(
 			{
-				query: (getListQueries[model]?.()) || getListQuery(model)
+				query: getListQueries[model]?.() || getListQuery(model)
 			},
 			{
 				isOptionalResult: true,

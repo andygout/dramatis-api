@@ -2,12 +2,12 @@ import { neo4jQuery } from '../../../src/neo4j/query';
 
 export default async opts => {
 
-	const { label, name, uuid } = opts;
+	const { label, uuid, name } = opts;
 
-	const params = { name, uuid };
+	const params = { uuid, name };
 
 	const query = `
-		CREATE (n:${label} { name: $name, uuid: $uuid })
+		CREATE (n:${label} { uuid: $uuid, name: $name })
 
 		RETURN n
 	`;
