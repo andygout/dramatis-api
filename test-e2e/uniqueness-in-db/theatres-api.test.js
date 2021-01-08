@@ -261,8 +261,8 @@ describe('Uniqueness in database: Theatres API', () => {
 
 			await createNode({
 				label: 'Theatre',
-				name: 'Sheffield Theatres',
-				uuid: SHEFFIELD_THEATRES_UUID
+				uuid: SHEFFIELD_THEATRES_UUID,
+				name: 'Sheffield Theatres'
 			});
 
 		});

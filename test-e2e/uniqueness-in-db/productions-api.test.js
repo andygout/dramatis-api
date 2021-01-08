@@ -42,8 +42,8 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				name: 'Home',
-				uuid: HOME_PRODUCTION_UUID
+				uuid: HOME_PRODUCTION_UUID,
+				name: 'Home'
 			});
 
 		});
@@ -162,8 +162,8 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				name: 'Dial M for Murder',
-				uuid: DIAL_M_FOR_MURDER_PRODUCTION_UUID
+				uuid: DIAL_M_FOR_MURDER_PRODUCTION_UUID,
+				name: 'Dial M for Murder'
 			});
 
 		});
@@ -302,8 +302,8 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				name: 'Aristocrats',
-				uuid: ARISTOCRATS_PRODUCTION_UUID
+				uuid: ARISTOCRATS_PRODUCTION_UUID,
+				name: 'Aristocrats'
 			});
 
 		});

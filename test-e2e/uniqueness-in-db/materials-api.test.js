@@ -405,8 +405,8 @@ describe('Uniqueness in database: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'The Seagull',
-				uuid: THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID
+				uuid: THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID,
+				name: 'The Seagull'
 			});
 
 		});
@@ -529,8 +529,8 @@ describe('Uniqueness in database: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'Dot',
-				uuid: DOT_MATERIAL_UUID
+				uuid: DOT_MATERIAL_UUID,
+				name: 'Dot'
 			});
 
 		});
@@ -645,7 +645,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 	});
 
-	describe('Material writer (source material material) uniqueness in database', () => {
+	describe('Material writer (source material) uniqueness in database', () => {
 
 		const THE_INDIAN_BOY_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
@@ -673,8 +673,8 @@ describe('Uniqueness in database: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'The Indian Boy',
-				uuid: THE_INDIAN_BOY_MATERIAL_UUID
+				uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+				name: 'The Indian Boy'
 			});
 
 		});
@@ -685,7 +685,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (source material material) that does not have a differentiator', async () => {
+		it('updates material and creates writer (source material) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
@@ -698,8 +698,8 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							writers: [
 								{
-									name: 'A Midsummer Night\'s Dream',
-									model: 'material'
+									model: 'material',
+									name: 'A Midsummer Night\'s Dream'
 								}
 							]
 						}
@@ -712,7 +712,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (source material material) that has same name as existing writer (source material material) but uses a differentiator', async () => {
+		it('updates material and creates writer (source material) that has same name as existing writer (source material) but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
@@ -725,9 +725,9 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							writers: [
 								{
+									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
-									differentiator: '1',
-									model: 'material'
+									differentiator: '1'
 								}
 							]
 						}
@@ -740,7 +740,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (source material material) that does not have a differentiator', async () => {
+		it('updates material and uses existing writer (source material) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
@@ -753,8 +753,8 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							writers: [
 								{
-									name: 'A Midsummer Night\'s Dream',
-									model: 'material'
+									model: 'material',
+									name: 'A Midsummer Night\'s Dream'
 								}
 							]
 						}
@@ -767,7 +767,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (source material material) that has a differentiator', async () => {
+		it('updates material and uses existing writer (source material) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
@@ -780,9 +780,9 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							writers: [
 								{
+									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
-									differentiator: '1',
-									model: 'material'
+									differentiator: '1'
 								}
 							]
 						}
@@ -829,8 +829,8 @@ describe('Uniqueness in database: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'Titus Andronicus',
-				uuid: TITUS_ANDRONICUS_MATERIAL_UUID
+				uuid: TITUS_ANDRONICUS_MATERIAL_UUID,
+				name: 'Titus Andronicus'
 			});
 
 		});

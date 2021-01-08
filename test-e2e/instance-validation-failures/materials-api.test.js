@@ -14,7 +14,7 @@ describe('Instance validation failures: Materials API', () => {
 
 	describe('attempt to create instance', () => {
 
-		const THE_WILD_DUCK_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const THE_WILD_DUCK_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
@@ -22,8 +22,8 @@ describe('Instance validation failures: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'The Wild Duck',
-				uuid: THE_WILD_DUCK_MATERIAL_UUID
+				uuid: THE_WILD_DUCK_MATERIAL_UUID,
+				name: 'The Wild Duck'
 			});
 
 		});
@@ -126,14 +126,14 @@ describe('Instance validation failures: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'Ghosts',
-				uuid: GHOSTS_MATERIAL_UUID
+				uuid: GHOSTS_MATERIAL_UUID,
+				name: 'Ghosts'
 			});
 
 			await createNode({
 				label: 'Material',
-				name: 'The Wild Duck',
-				uuid: THE_WILD_DUCK_MATERIAL_UUID
+				uuid: THE_WILD_DUCK_MATERIAL_UUID,
+				name: 'The Wild Duck'
 			});
 
 		});
@@ -248,14 +248,14 @@ describe('Instance validation failures: Materials API', () => {
 
 			await createNode({
 				label: 'Material',
-				name: 'Ghosts',
-				uuid: GHOSTS_MATERIAL_UUID
+				uuid: GHOSTS_MATERIAL_UUID,
+				name: 'Ghosts'
 			});
 
 			await createNode({
 				label: 'Production',
-				name: 'Ghosts',
-				uuid: GHOSTS_ALMEIDA_PRODUCTION_UUID
+				uuid: GHOSTS_ALMEIDA_PRODUCTION_UUID,
+				name: 'Ghosts'
 			});
 
 			await createRelationship({
