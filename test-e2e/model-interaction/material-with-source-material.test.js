@@ -40,9 +40,9 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'A Midsummer Night\'s Dream',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'William Shakespeare'
 							}
@@ -56,9 +56,9 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Indian Boy',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'Rona Munro'
 							}
@@ -66,7 +66,7 @@ describe('Materials with source material', () => {
 					},
 					{
 						name: 'inspired by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								name: 'A Midsummer Night\'s Dream'
@@ -125,36 +125,36 @@ describe('Materials with source material', () => {
 
 	describe('The Indian Boy (material)', () => {
 
-		it('includes writers of this material and its source material in their respective groups', () => {
+		it('includes writers of this material and its source material grouped by their respective credits', () => {
 
-			const expectedWriterGroups = [
+			const expectedWritingCredits = [
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: RONA_MUNRO_PERSON_UUID,
 							name: 'Rona Munro',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				},
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'inspired by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'material',
 							uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 							name: 'A Midsummer Night\'s Dream',
 							format: 'play',
-							sourceMaterialWriterGroups: [
+							sourceMaterialWritingCredits: [
 								{
-									model: 'writerGroup',
+									model: 'writingCredit',
 									name: 'by',
-									writers: [
+									writingEntities: [
 										{
 											model: 'person',
 											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -168,9 +168,9 @@ describe('Materials with source material', () => {
 				}
 			];
 
-			const { writerGroups } = theIndianBoyMaterial.body;
+			const { writingCredits } = theIndianBoyMaterial.body;
 
-			expect(writerGroups).to.deep.equal(expectedWriterGroups);
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
 
 		});
 
@@ -186,11 +186,11 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -200,9 +200,9 @@ describe('Materials with source material', () => {
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									uuid: null,
@@ -255,34 +255,34 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Rona Munro',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWriterGroups: [
+									sourceMaterialWritingCredits: [
 										{
-											model: 'writerGroup',
+											model: 'writingCredit',
 											name: 'by',
-											writers: [
+											writingEntities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -316,11 +316,11 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -330,9 +330,9 @@ describe('Materials with source material', () => {
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -362,34 +362,34 @@ describe('Materials with source material', () => {
 				uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 				name: 'The Indian Boy',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: RONA_MUNRO_PERSON_UUID,
 								name: 'Rona Munro',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'inspired by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 								name: 'A Midsummer Night\'s Dream',
 								format: 'play',
-								sourceMaterialWriterGroups: [
+								sourceMaterialWritingCredits: [
 									{
-										model: 'writerGroup',
+										model: 'writingCredit',
 										name: 'by',
-										writers: [
+										writingEntities: [
 											{
 												model: 'person',
 												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -422,34 +422,34 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWriterGroups: [
+									sourceMaterialWritingCredits: [
 										{
-											model: 'writerGroup',
+											model: 'writingCredit',
 											name: 'by',
-											writers: [
+											writingEntities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -487,17 +487,17 @@ describe('Materials with source material', () => {
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -508,34 +508,34 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWriterGroups: [
+									sourceMaterialWritingCredits: [
 										{
-											model: 'writerGroup',
+											model: 'writingCredit',
 											name: 'by',
-											writers: [
+											writingEntities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,

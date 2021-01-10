@@ -302,7 +302,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: FORTINBRAS_MATERIAL_UUID,
 					name: 'Fortinbras',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				},
 				{
@@ -310,7 +310,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: HAMLET_MATERIAL_UUID,
 					name: 'Hamlet',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				},
 				{
@@ -318,7 +318,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: HAMLETMACHINE_MATERIAL_UUID,
 					name: 'Hamletmachine',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				},
 				{
@@ -326,7 +326,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_MATERIAL_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				}
 			];

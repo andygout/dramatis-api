@@ -321,7 +321,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
 					name: 'Henry IV: Part 1',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				},
 				{
@@ -329,7 +329,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
 					name: 'Henry IV: Part 2',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				},
 				{
@@ -337,7 +337,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: []
 				}
 			];

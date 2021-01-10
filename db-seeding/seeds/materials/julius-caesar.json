@@ -1,9 +1,9 @@
 {
 	"name": "Julius Caesar",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "William Shakespeare"
 				}

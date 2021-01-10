@@ -1,7 +1,7 @@
 export default {
-	writerGroups: [
+	writingCredits: [
 		{
-			writers: [
+			writingEntities: [
 				{}
 			]
 		}

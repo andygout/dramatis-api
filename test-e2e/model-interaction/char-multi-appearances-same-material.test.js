@@ -160,7 +160,7 @@ describe('Character with multiple appearances in the same material under differe
 					uuid: ROCK_N_ROLL_MATERIAL_UUID,
 					name: 'Rock \'n\' Roll',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: [
 						{
 							displayName: null,

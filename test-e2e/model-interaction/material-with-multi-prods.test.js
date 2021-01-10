@@ -153,7 +153,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
-				writerGroups: []
+				writingCredits: []
 			};
 
 			const { material } = twelfthNightGlobeProduction.body;
@@ -173,7 +173,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
-				writerGroups: []
+				writingCredits: []
 			};
 
 			const { material } = twelfthNightDonmarProduction.body;
@@ -193,7 +193,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
-				writerGroups: []
+				writingCredits: []
 			};
 
 			const { material } = twelfthNightNationalProduction.body;

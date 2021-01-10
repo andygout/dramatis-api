@@ -1,9 +1,9 @@
 {
 	"name": "Titus Andronicus",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "William Shakespeare"
 				}

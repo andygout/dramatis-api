@@ -1,9 +1,9 @@
 {
 	"name": "Coriolanus",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "William Shakespeare"
 				}

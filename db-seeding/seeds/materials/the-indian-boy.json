@@ -1,9 +1,9 @@
 {
 	"name": "The Indian Boy",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Rona Munro"
 				}
@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "inspired by",
-			"writers": [
+			"writingEntities": [
 				{
 					"model": "material",
 					"name": "A Midsummer Night's Dream"

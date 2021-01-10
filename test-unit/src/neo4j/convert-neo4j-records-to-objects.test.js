@@ -30,7 +30,7 @@ describe('Convert Neo4j Records To Objects module', () => {
 						'uuid',
 						'name',
 						'differentiator',
-						'writerGroups'
+						'writingCredits'
 					],
 					_fields: [
 						'material',
@@ -40,8 +40,8 @@ describe('Convert Neo4j Records To Objects module', () => {
 						[
 							{
 								name: 'by',
-								model: 'writerGroup',
-								writers: [
+								model: 'writingCredit',
+								writingEntities: [
 									{
 										name: 'Tena Štivičić',
 										model: 'person',
@@ -61,11 +61,11 @@ describe('Convert Neo4j Records To Objects module', () => {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: '3 Winters',
 				differentiator: null,
-				writerGroups: [
+				writingCredits: [
 					{
 						name: 'by',
-						model: 'writerGroup',
-						writers: [
+						model: 'writingCredit',
+						writingEntities: [
 							{
 								name: 'Tena Štivičić',
 								model: 'person',

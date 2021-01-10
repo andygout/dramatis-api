@@ -1,10 +1,10 @@
 {
 	"name": "Peer Gynt",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"isOriginalVersionWriter": true,
-			"writers": [
+			"isOriginalVersionCredit": true,
+			"writingEntities": [
 				{
 					"name": "Henrik Ibsen"
 				}
@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "translated by",
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Gerry Bamman"
 				},
@@ -23,7 +23,7 @@
 		},
 		{
 			"name": "adapted by",
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Baltasar Kormákur"
 				}

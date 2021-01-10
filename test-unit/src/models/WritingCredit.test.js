@@ -4,7 +4,7 @@ import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Person, Material } from '../../../src/models';
 
-describe('WriterGroup model', () => {
+describe('WritingCredit model', () => {
 
 	let stubs;
 
@@ -18,7 +18,7 @@ describe('WriterGroup model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateWriterIndices: stub().returns([])
+				getDuplicateWritingEntityIndices: stub().returns([])
 			},
 			models: {
 				Person: PersonStub
@@ -28,60 +28,60 @@ describe('WriterGroup model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/WriterGroup', {
+		proxyquire('../../../src/models/WritingCredit', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
 	const createInstance = props => {
 
-		const WriterGroup = createSubject();
+		const WritingCredit = createSubject();
 
-		return new WriterGroup(props);
+		return new WritingCredit(props);
 
 	};
 
 	describe('constructor method', () => {
 
-		describe('isOriginalVersionWriter property', () => {
+		describe('isOriginalVersionCredit property', () => {
 
 			it('assigns null if absent from props', () => {
 
 				const instance = createInstance({ name: 'version by' });
-				expect(instance.isOriginalVersionWriter).to.equal(null);
+				expect(instance.isOriginalVersionCredit).to.equal(null);
 
 			});
 
-			it('assigns true if included in props and result of Boolean() evaluates to true', () => {
+			it('assigns true if included in props and evaluates to true', () => {
 
 				const props = {
 					name: 'version by',
-					isOriginalVersionWriter: true
+					isOriginalVersionCredit: true
 				};
 				const instance = createInstance(props);
-				expect(instance.isOriginalVersionWriter).to.equal(true);
+				expect(instance.isOriginalVersionCredit).to.equal(true);
 
 			});
 
-			it('assigns null if included in props and result of Boolean() evaluates to false', () => {
+			it('assigns null if included in props and evaluates to false', () => {
 
 				const props = {
 					name: 'version by',
-					isOriginalVersionWriter: false
+					isOriginalVersionCredit: false
 				};
 				const instance = createInstance(props);
-				expect(instance.isOriginalVersionWriter).to.equal(null);
+				expect(instance.isOriginalVersionCredit).to.equal(null);
 
 			});
 
 		});
 
-		describe('writers property', () => {
+		describe('writingEntities property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
 				const instance = createInstance({ name: 'version by' });
-				expect(instance.writers).to.deep.equal([]);
+				expect(instance.writingEntities).to.deep.equal([]);
 
 			});
 
@@ -89,7 +89,7 @@ describe('WriterGroup model', () => {
 
 				const props = {
 					name: 'version by',
-					writers: [
+					writingEntities: [
 						{
 							name: 'David Eldridge'
 						},
@@ -114,13 +114,13 @@ describe('WriterGroup model', () => {
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.writers.length).to.equal(6);
-				expect(instance.writers[0] instanceof Person).to.be.true;
-				expect(instance.writers[1] instanceof Material).to.be.true;
-				expect(instance.writers[2] instanceof Person).to.be.true;
-				expect(instance.writers[3] instanceof Material).to.be.true;
-				expect(instance.writers[4] instanceof Person).to.be.true;
-				expect(instance.writers[5] instanceof Material).to.be.true;
+				expect(instance.writingEntities.length).to.equal(6);
+				expect(instance.writingEntities[0] instanceof Person).to.be.true;
+				expect(instance.writingEntities[1] instanceof Material).to.be.true;
+				expect(instance.writingEntities[2] instanceof Person).to.be.true;
+				expect(instance.writingEntities[3] instanceof Material).to.be.true;
+				expect(instance.writingEntities[4] instanceof Person).to.be.true;
+				expect(instance.writingEntities[5] instanceof Material).to.be.true;
 
 			});
 
@@ -134,7 +134,7 @@ describe('WriterGroup model', () => {
 
 			const props = {
 				name: 'version by',
-				writers: [
+				writingEntities: [
 					{
 						name: 'David Eldridge'
 					}
@@ -147,23 +147,25 @@ describe('WriterGroup model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicateIndicesModule.getDuplicateWriterIndices,
-				instance.writers[0].validateName,
-				instance.writers[0].validateDifferentiator,
-				instance.writers[0].validateUniquenessInGroup
+				stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices,
+				instance.writingEntities[0].validateName,
+				instance.writingEntities[0].validateDifferentiator,
+				instance.writingEntities[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateWriterIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateWriterIndices.calledWithExactly(
-				instance.writers
+			expect(stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices.calledWithExactly(
+				instance.writingEntities
 			)).to.be.true;
-			expect(instance.writers[0].validateName.calledOnce).to.be.true;
-			expect(instance.writers[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.writers[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.writers[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writers[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.writers[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(instance.writingEntities[0].validateName.calledOnce).to.be.true;
+			expect(instance.writingEntities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.writingEntities[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.writingEntities[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.writingEntities[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.writingEntities[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false }
+			)).to.be.true;
 
 		});
 

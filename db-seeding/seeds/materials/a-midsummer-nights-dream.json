@@ -1,9 +1,9 @@
 {
 	"name": "A Midsummer Night's Dream",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "William Shakespeare"
 				}

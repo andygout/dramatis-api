@@ -1,9 +1,9 @@
 {
 	"name": "True West",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Sam Shepard"
 				}

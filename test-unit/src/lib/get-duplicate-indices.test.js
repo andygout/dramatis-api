@@ -4,7 +4,7 @@ import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
 	getDuplicateRoleIndices,
-	getDuplicateWriterIndices
+	getDuplicateWritingEntityIndices
 } from '../../../src/lib/get-duplicate-indices';
 
 describe('Get Duplicate Indices module', () => {
@@ -235,13 +235,13 @@ describe('Get Duplicate Indices module', () => {
 
 	});
 
-	describe('getDuplicateWriterIndices function', () => {
+	describe('getDuplicateWritingEntityIndices function', () => {
 
 		context('duplicates do not exist', () => {
 
 			it('returns an empty array', () => {
 
-				const result = getDuplicateWriterIndices(
+				const result = getDuplicateWritingEntityIndices(
 					[
 						{ name: 'Foo', differentiator: '', model: '' },
 						{ name: 'Foo', differentiator: '1', model: '' },
@@ -268,7 +268,7 @@ describe('Get Duplicate Indices module', () => {
 
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 
-				const result = getDuplicateWriterIndices(
+				const result = getDuplicateWritingEntityIndices(
 					[
 						{ name: 'Foo', differentiator: '1', qualifier: '' },
 						{ name: 'Bar', differentiator: '1', qualifier: 'material' },

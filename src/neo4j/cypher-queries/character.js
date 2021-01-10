@@ -3,21 +3,28 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (character)<-[materialRel:INCLUDES_CHARACTER]-(material:Material)
 
-	OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-		WHERE writer:Person OR writer:Material
+	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
+		WHERE writingEntity:Person OR writingEntity:Material
 
-	OPTIONAL MATCH (writer:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
-
-	WITH character, materialRel, material, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
+	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
 	WITH
 		character,
 		materialRel,
 		material,
-		writerRel,
-		writer,
-		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
+		writingEntityRel,
+		writingEntity,
+		sourceMaterialWriterRel,
+		sourceMaterialWriter
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
+
+	WITH
+		character,
+		materialRel,
+		material,
+		writingEntityRel,
+		writingEntity,
+		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
@@ -25,48 +32,50 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-
-
-	WITH character, materialRel, material, writerRel, writer,
+	WITH character, materialRel, material, writingEntityRel, writingEntity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writerGroup',
-					name: COALESCE(sourceMaterialWriterGroupName, 'by'),
-					writers: sourceMaterialWriters
+					model: 'writingCredit',
+					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
+					writingEntities: sourceMaterialWriters
 				}
 			END
-		) AS sourceMaterialWriterGroups
-		ORDER BY writerRel.groupPosition, writerRel.writerPosition
+		) AS sourceMaterialWritingCredits
+		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
-	WITH character, materialRel, material, writerRel.group AS writerGroupName,
+	WITH character, materialRel, material, writingEntityRel.credit AS writingCreditName,
 		COLLECT(
-			CASE writer WHEN NULL
+			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
-					model: TOLOWER(HEAD(LABELS(writer))),
-					uuid: writer.uuid,
-					name: writer.name,
-					format: writer.format,
-					sourceMaterialWriterGroups: sourceMaterialWriterGroups
+					model: TOLOWER(HEAD(LABELS(writingEntity))),
+					uuid: writingEntity.uuid,
+					name: writingEntity.name,
+					format: writingEntity.format,
+					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writers
+		) AS writingEntities
 
 	WITH character, materialRel, material,
 		COLLECT(
-			CASE SIZE(writers) WHEN 0
+			CASE SIZE(writingEntities) WHEN 0
 				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
+				ELSE {
+					model: 'writingCredit',
+					name: COALESCE(writingCreditName, 'by'),
+					writingEntities: writingEntities
+				}
 			END
-		) AS writerGroups
+		) AS writingCredits
 		ORDER BY materialRel.groupPosition, materialRel.characterPosition
 
 	WITH
 		character,
 		material,
-		writerGroups,
+		writingCredits,
 		COLLECT(
 			CASE WHEN materialRel.displayName IS NULL AND materialRel.qualifier IS NULL AND materialRel.group IS NULL
 				THEN null
@@ -88,7 +97,7 @@ const getShowQuery = () => `
 					uuid: material.uuid,
 					name: material.name,
 					format: material.format,
-					writerGroups: writerGroups,
+					writingCredits: writingCredits,
 					depictions: depictions
 				}
 			END

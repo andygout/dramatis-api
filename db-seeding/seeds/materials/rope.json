@@ -1,9 +1,9 @@
 {
 	"name": "Rope",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Patrick Hamilton"
 				}

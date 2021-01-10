@@ -52,7 +52,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -89,7 +89,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -126,7 +126,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -163,7 +163,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -207,7 +207,7 @@ describe('Material instance', () => {
 							]
 						}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -252,7 +252,7 @@ describe('Material instance', () => {
 							]
 						}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -299,7 +299,7 @@ describe('Material instance', () => {
 							]
 						}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -309,13 +309,13 @@ describe('Material instance', () => {
 
 		});
 
-		context('writerGroup name value exceeds maximum limit', () => {
+		context('writingCredit name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
@@ -341,17 +341,17 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: ABOVE_MAX_LENGTH_STRING,
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {
 								name: [
 									'Value is too long'
 								]
 							},
-							writers: []
+							writingEntities: []
 						}
 					],
 					characterGroups: []
@@ -363,13 +363,13 @@ describe('Material instance', () => {
 
 		});
 
-		context('duplicate writerGroups', () => {
+		context('duplicate writingCredits', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: 'version by'
 						},
@@ -398,28 +398,28 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
 								]
 							},
-							writers: []
+							writingEntities: []
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
 								]
 							},
-							writers: []
+							writingEntities: []
 						}
 					],
 					characterGroups: []
@@ -437,9 +437,9 @@ describe('Material instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: ABOVE_MAX_LENGTH_STRING
 								}
@@ -467,13 +467,13 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: '',
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {},
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: undefined,
@@ -503,9 +503,9 @@ describe('Material instance', () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Henrik Ibsen',
 									differentiator: ABOVE_MAX_LENGTH_STRING
@@ -534,13 +534,13 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: '',
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {},
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: undefined,
@@ -564,15 +564,15 @@ describe('Material instance', () => {
 
 		});
 
-		context('duplicate writers', () => {
+		context('duplicate writingEntities', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Henrik Ibsen'
 								},
@@ -603,13 +603,13 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: '',
-							isOriginalVersionWriter: null,
+							isOriginalVersionCredit: null,
 							errors: {},
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: undefined,
@@ -682,7 +682,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -738,7 +738,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -805,7 +805,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -873,7 +873,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -941,7 +941,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -1009,7 +1009,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -1077,7 +1077,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -1150,7 +1150,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
@@ -1261,7 +1261,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -1324,7 +1324,7 @@ describe('Material instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: [
 						{
 							model: 'characterGroup',
