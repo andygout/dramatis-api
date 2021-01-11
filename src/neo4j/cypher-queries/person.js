@@ -138,11 +138,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingEntities
 
-	WITH
-		person,
-		materials,
-		subsequentVersionMaterials,
-		sourcingMaterial,
+	WITH person, materials, subsequentVersionMaterials, sourcingMaterial,
 		COLLECT(
 			CASE SIZE(sourcingMaterialWritingEntities) WHEN 0
 				THEN null
@@ -154,10 +150,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingCredits
 
-	WITH
-		person,
-		materials,
-		subsequentVersionMaterials,
+	WITH person, materials, subsequentVersionMaterials,
 		COLLECT(
 			CASE sourcingMaterial WHEN NULL
 				THEN null
