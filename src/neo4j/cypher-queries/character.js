@@ -72,10 +72,7 @@ const getShowQuery = () => `
 		) AS writingCredits
 		ORDER BY materialRel.groupPosition, materialRel.characterPosition
 
-	WITH
-		character,
-		material,
-		writingCredits,
+	WITH character, material, writingCredits,
 		COLLECT(
 			CASE WHEN materialRel.displayName IS NULL AND materialRel.qualifier IS NULL AND materialRel.group IS NULL
 				THEN null
@@ -192,14 +189,7 @@ const getShowQuery = () => `
 		)) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH
-		character,
-		variantNamedDepictions,
-		materials,
-		variantNamedPortrayals,
-		production,
-		theatre,
-		surTheatre,
+	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, theatre, surTheatre,
 		COLLECT({
 			model: 'person',
 			uuid: person.uuid,

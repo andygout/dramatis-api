@@ -244,11 +244,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (originalVersionMaterial)-[originalVersionMaterialWriterRel:WRITTEN_BY]->
 		(originalVersionMaterialWriter:Person)
 
-	WITH
-		material,
-		originalVersionMaterial,
-		originalVersionMaterialWriterRel,
-		originalVersionMaterialWriter
+	WITH material, originalVersionMaterial, originalVersionMaterialWriterRel, originalVersionMaterialWriter
 		ORDER BY originalVersionMaterialWriterRel.creditPosition, originalVersionMaterialWriterRel.entityPosition
 
 	WITH
@@ -266,9 +262,7 @@ const getShowQuery = () => `
 			END
 		) AS originalVersionMaterialWriters
 
-	WITH
-		material,
-		originalVersionMaterial,
+	WITH material, originalVersionMaterial,
 		COLLECT(
 			CASE SIZE(originalVersionMaterialWriters) WHEN 0
 				THEN null
@@ -280,8 +274,7 @@ const getShowQuery = () => `
 			END
 		) AS originalVersionMaterialWritingCredits
 
-	WITH
-		material,
+	WITH material,
 		CASE originalVersionMaterial WHEN NULL
 			THEN null
 			ELSE {
@@ -323,10 +316,7 @@ const getShowQuery = () => `
 			END
 		) AS subsequentVersionMaterialWriters
 
-	WITH
-		material,
-		originalVersionMaterial,
-		subsequentVersionMaterial,
+	WITH material, originalVersionMaterial, subsequentVersionMaterial,
 		COLLECT(
 			CASE SIZE(subsequentVersionMaterialWriters) WHEN 0
 				THEN null
@@ -338,9 +328,7 @@ const getShowQuery = () => `
 			END
 		) AS subsequentVersionMaterialWritingCredits
 
-	WITH
-		material,
-		originalVersionMaterial,
+	WITH material, originalVersionMaterial,
 		COLLECT(
 			CASE subsequentVersionMaterial WHEN NULL
 				THEN null
@@ -390,11 +378,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingEntities
 
-	WITH
-		material,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterial,
+	WITH material, originalVersionMaterial, subsequentVersionMaterials, sourcingMaterial,
 		COLLECT(
 			CASE SIZE(sourcingMaterialWritingEntities) WHEN 0
 				THEN null
@@ -406,10 +390,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingCredits
 
-	WITH
-		material,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
+	WITH material, originalVersionMaterial, subsequentVersionMaterials,
 		COLLECT(
 			CASE sourcingMaterial WHEN NULL
 				THEN null
