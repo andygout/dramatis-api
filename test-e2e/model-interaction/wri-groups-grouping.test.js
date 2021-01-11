@@ -32,9 +32,9 @@ describe('Nameless writer groups grouping', () => {
 			.send({
 				name: 'Material name',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'Person #1'
 							}
@@ -42,14 +42,14 @@ describe('Nameless writer groups grouping', () => {
 					},
 					{
 						name: 'version by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Person #2'
 							}
 						]
 					},
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'Person #3'
 							}
@@ -73,45 +73,45 @@ describe('Nameless writer groups grouping', () => {
 
 		it('combines nameless writer groups into a single combined group (with a name of \'by\')', () => {
 
-			const expectedWriterGroups = [
+			const expectedWritingCredits = [
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: PERSON_1_UUID,
 							name: 'Person #1',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						},
 						{
 							model: 'person',
 							uuid: PERSON_3_UUID,
 							name: 'Person #3',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				},
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'version by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: PERSON_2_UUID,
 							name: 'Person #2',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				}
 			];
 
-			const { writerGroups } = material.body;
+			const { writingCredits } = material.body;
 
-			expect(writerGroups).to.deep.equal(expectedWriterGroups);
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
 
 		});
 

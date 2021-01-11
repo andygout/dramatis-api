@@ -2,9 +2,9 @@
 	"name": "The Seagull",
 	"differentiator": "1",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Anton Chekhov"
 				}

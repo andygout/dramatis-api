@@ -6,7 +6,7 @@ import Person from './Person';
 import Production from './Production';
 import Role from './Role';
 import Theatre from './Theatre';
-import WriterGroup from './WriterGroup';
+import WritingCredit from './WritingCredit';
 
 export {
 	CastMember,
@@ -17,5 +17,5 @@ export {
 	Production,
 	Role,
 	Theatre,
-	WriterGroup
+	WritingCredit
 };

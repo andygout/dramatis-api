@@ -4,11 +4,11 @@ import { v4 as uuid } from 'uuid';
 import { isObjectWithKeys } from './is-object-with-keys';
 
 const CHARACTER_GROUPS = 'characterGroups';
-const WRITER_GROUPS = 'writerGroups';
+const WRITING_CREDITS = 'writingCredits';
 
 const EMPTY_NAME_EXCEPTION_KEYS = [
 	CHARACTER_GROUPS,
-	WRITER_GROUPS
+	WRITING_CREDITS
 ];
 
 export const prepareAsParams = instance => {
@@ -20,8 +20,8 @@ export const prepareAsParams = instance => {
 		|| !!item.name.length
 		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
 
-	const filterOutWriterGroupsWithNoNamedWriters = key => item =>
-		key !== WRITER_GROUPS || item.writers.some(writer => !!writer.name);
+	const filterOutWritingCreditsWithNoNamedEntities = key => item =>
+		key !== WRITING_CREDITS || item.writingEntities.some(entity => !!entity.name);
 
 	const filterOutCharacterGroupsWithNoNamedCharacters = key => item =>
 		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);
@@ -55,7 +55,7 @@ export const prepareAsParams = instance => {
 				accumulator[key] =
 					value
 						.filter(filterBasedOnNameProperty(key))
-						.filter(filterOutWriterGroupsWithNoNamedWriters(key))
+						.filter(filterOutWritingCreditsWithNoNamedEntities(key))
 						.filter(filterOutCharacterGroupsWithNoNamedCharacters(key))
 						.map(applyPositionPropertyAndRecurseObject)
 						.filter(Boolean);

@@ -212,7 +212,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: [
 						{
 							displayName: null,
@@ -286,7 +286,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: [
 						{
 							displayName: null,
@@ -352,7 +352,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: [
 						{
 							displayName: null,
@@ -426,7 +426,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
-					writerGroups: [],
+					writingCredits: [],
 					depictions: [
 						{
 							displayName: null,

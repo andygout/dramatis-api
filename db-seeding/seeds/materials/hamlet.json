@@ -1,9 +1,9 @@
 {
 	"name": "Hamlet",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "William Shakespeare"
 				}

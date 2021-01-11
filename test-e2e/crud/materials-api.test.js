@@ -32,13 +32,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -115,13 +115,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -174,13 +174,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -237,13 +237,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -292,7 +292,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				originalVersionMaterial: null,
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
-				writerGroups: [],
+				writingCredits: [],
 				characterGroups: [],
 				productions: [],
 				sourcingMaterialProductions: []
@@ -322,7 +322,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [],
+				writingCredits: [],
 				characterGroups: []
 			};
 
@@ -382,10 +382,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'John Gabriel Borkman',
 						differentiator: '1'
 					},
-					writerGroups: [
+					writingCredits: [
 						{
 							name: '',
-							writers: [
+							writingEntities: [
 								{
 									name: 'Henrik Ibsen',
 									differentiator: '1'
@@ -394,7 +394,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						},
 						{
 							name: 'version by',
-							writers: [
+							writingEntities: [
 								{
 									name: 'David Eldridge',
 									differentiator: '1'
@@ -404,7 +404,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'based on',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'John Gabriel Borkman',
@@ -453,13 +453,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'Henrik Ibsen',
@@ -475,11 +475,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'version by',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'David Eldridge',
@@ -495,11 +495,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								name: 'John Gabriel Borkman',
@@ -515,11 +515,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -609,47 +609,47 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					uuid: JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'John Gabriel Borkman',
 					format: null,
-					writerGroups: []
+					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'version by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: DAVID_ELDRIDGE_PERSON_UUID,
 								name: 'David Eldridge',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'based on',
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								uuid: JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'John Gabriel Borkman',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					}
@@ -708,13 +708,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'Henrik Ibsen',
@@ -730,11 +730,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'version by',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'David Eldridge',
@@ -750,11 +750,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								name: 'John Gabriel Borkman',
@@ -770,11 +770,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -861,10 +861,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'Three Sisters',
 						differentiator: '1'
 					},
-					writerGroups: [
+					writingCredits: [
 						{
 							name: '',
-							writers: [
+							writingEntities: [
 								{
 									name: 'Anton Chekhov',
 									differentiator: '1'
@@ -873,7 +873,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						},
 						{
 							name: 'adaptation by',
-							writers: [
+							writingEntities: [
 								{
 									name: 'Benedict Andrews',
 									differentiator: '1'
@@ -883,7 +883,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'based on',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'Three Sisters',
@@ -932,13 +932,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'Anton Chekhov',
@@ -954,11 +954,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'adaptation by',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: 'Benedict Andrews',
@@ -974,11 +974,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								name: 'Three Sisters',
@@ -994,11 +994,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -1088,47 +1088,47 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					uuid: THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Three Sisters',
 					format: null,
-					writerGroups: []
+					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: ANTON_CHEKHOV_PERSON_UUID,
 								name: 'Anton Chekhov',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'adaptation by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: BENEDICT_ANDREWS_PERSON_UUID,
 								name: 'Benedict Andrews',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'based on',
-						writers: [
+						writingEntities: [
 							{
 								model: 'material',
 								uuid: THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'Three Sisters',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					}
@@ -1193,13 +1193,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -1253,7 +1253,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [],
+				writingCredits: [],
 				characterGroups: []
 			};
 
@@ -1319,21 +1319,21 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					uuid: THE_CHERRY_ORCHARD_MATERIAL_UUID,
 					name: 'The Cherry Orchard',
 					format: 'play',
-					writerGroups: []
+					writingCredits: []
 				},
 				{
 					model: 'material',
 					uuid: THREE_SISTERS_MATERIAL_UUID,
 					name: 'Three Sisters',
 					format: 'play',
-					writerGroups: []
+					writingCredits: []
 				},
 				{
 					model: 'material',
 					uuid: UNCLE_VANYA_MATERIAL_UUID,
 					name: 'Uncle Vanya',
 					format: 'play',
-					writerGroups: []
+					writingCredits: []
 				}
 			];
 

@@ -92,7 +92,7 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 
 };
 
-const getDuplicateWriterIndices = arrayOfObjects => {
+const getDuplicateWritingEntityIndices = arrayOfObjects => {
 
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
@@ -117,5 +117,5 @@ export {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
 	getDuplicateRoleIndices,
-	getDuplicateWriterIndices
+	getDuplicateWritingEntityIndices
 };

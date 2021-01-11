@@ -1,9 +1,9 @@
 {
 	"name": "The Dumb Waiter",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Harold Pinter"
 				}

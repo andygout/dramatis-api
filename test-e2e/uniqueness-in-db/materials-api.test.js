@@ -58,13 +58,13 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -129,7 +129,7 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [],
+				writingCredits: [],
 				characterGroups: []
 			};
 
@@ -163,13 +163,13 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -236,7 +236,7 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [],
+				writingCredits: [],
 				characterGroups: []
 			};
 
@@ -270,13 +270,13 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -334,13 +334,13 @@ describe('Uniqueness in database: Materials API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: '',
-						isOriginalVersionWriter: null,
+						isOriginalVersionCredit: null,
 						errors: {},
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -549,9 +549,9 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Kate Ryan'
 								}
@@ -561,7 +561,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -574,9 +574,9 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Kate Ryan',
 									differentiator: '1'
@@ -587,7 +587,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -600,9 +600,9 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Kate Ryan'
 								}
@@ -612,7 +612,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -625,9 +625,9 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
-					writerGroups: [
+					writingCredits: [
 						{
-							writers: [
+							writingEntities: [
 								{
 									name: 'Kate Ryan',
 									differentiator: '1'
@@ -638,7 +638,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -693,10 +693,10 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream'
@@ -707,7 +707,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 		});
@@ -720,10 +720,10 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
@@ -735,7 +735,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});
@@ -748,10 +748,10 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream'
@@ -762,7 +762,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});
@@ -775,10 +775,10 @@ describe('Uniqueness in database: Materials API', () => {
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
-					writerGroups: [
+					writingCredits: [
 						{
 							name: 'inspired by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
@@ -790,7 +790,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writerGroups[0].writers[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});

@@ -164,21 +164,21 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[materialRel:PRODUCTION_OF]->(material:Material)
 
-	OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-		WHERE writer:Person OR writer:Material
+	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
+		WHERE writingEntity:Person OR writingEntity:Material
 
-	OPTIONAL MATCH (writer:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH production, theatre, material, writerRel, writer, sourceMaterialWriterRel, sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.groupPosition, sourceMaterialWriter.writerPosition
+	WITH production, theatre, material, writingEntityRel, writingEntity, sourceMaterialWriterRel, sourceMaterialWriter
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
 
 	WITH
 		production,
 		theatre,
 		material,
-		writerRel,
-		writer,
-		sourceMaterialWriterRel.group AS sourceMaterialWriterGroupName,
+		writingEntityRel,
+		writingEntity,
+		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
@@ -186,40 +186,44 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH production, theatre, material, writerRel, writer,
+	WITH production, theatre, material, writingEntityRel, writingEntity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writerGroup',
-					name: COALESCE(sourceMaterialWriterGroupName, 'by'),
-					writers: sourceMaterialWriters
+					model: 'writingCredit',
+					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
+					writingEntities: sourceMaterialWriters
 				}
 			END
-		) AS sourceMaterialWriterGroups
-		ORDER BY writerRel.groupPosition, writerRel.writerPosition
+		) AS sourceMaterialWritingCredits
+		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
-	WITH production, theatre, material, writerRel.group AS writerGroupName,
+	WITH production, theatre, material, writingEntityRel.credit AS writingCreditName,
 		COLLECT(
-			CASE writer WHEN NULL
+			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
-					model: TOLOWER(HEAD(LABELS(writer))),
-					uuid: writer.uuid,
-					name: writer.name,
-					format: writer.format,
-					sourceMaterialWriterGroups: sourceMaterialWriterGroups
+					model: TOLOWER(HEAD(LABELS(writingEntity))),
+					uuid: writingEntity.uuid,
+					name: writingEntity.name,
+					format: writingEntity.format,
+					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writers
+		) AS writingEntities
 
 	WITH production, theatre, material,
 		COLLECT(
-			CASE SIZE(writers) WHEN 0
+			CASE SIZE(writingEntities) WHEN 0
 				THEN null
-				ELSE { model: 'writerGroup', name: COALESCE(writerGroupName, 'by'), writers: writers }
+				ELSE {
+					model: 'writingCredit',
+					name: COALESCE(writingCreditName, 'by'),
+					writingEntities: writingEntities
+				}
 			END
-		) AS writerGroups
+		) AS writingCredits
 
 	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
 
@@ -232,7 +236,7 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, material, writerGroups, performer, role, character
+	WITH DISTINCT production, theatre, material, writingCredits, performer, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, theatre, performer,
@@ -243,7 +247,7 @@ const getShowQuery = () => `
 				uuid: material.uuid,
 				name: material.name,
 				format: material.format,
-				writerGroups: writerGroups
+				writingCredits: writingCredits
 			}
 		END AS material,
 		COLLECT(

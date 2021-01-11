@@ -32,41 +32,41 @@ describe('Cypher Queries Material module', () => {
 
 				WITH material
 
-				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroup
+				UNWIND (CASE $writingCredits WHEN [] THEN [{ writingEntities: [] }] ELSE $writingCredits END) AS writingCredit
 
 					UNWIND
-						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'person']) WHEN 0
+						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroup.writers WHERE writer.model = 'person']
-						END AS writerParam
+							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
+						END AS writingEntityParam
 
-						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+						OPTIONAL MATCH (existingWriter:Person { name: writingEntityParam.name })
 							WHERE
-								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-								(writerParam.differentiator = existingWriter.differentiator)
+								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
+								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
-							MERGE (writer:Person {
-								uuid: COALESCE(existingWriter.uuid, writerParam.uuid),
-								name: writerParam.name
+						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'person' THEN [1] ELSE [] END |
+							MERGE (entity:Person {
+								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
+								name: writingEntityParam.name
 							})
-								ON CREATE SET writer.differentiator = writerParam.differentiator
+								ON CREATE SET entity.differentiator = writingEntityParam.differentiator
 
 							CREATE (material)-
 								[:WRITTEN_BY {
-									groupPosition: writerGroup.position,
-									writerPosition: writerParam.position,
-									group: writerGroup.name,
-									isOriginalVersionWriter: writerGroup.isOriginalVersionWriter
-								}]->(writer)
+									creditPosition: writingCredit.position,
+									entityPosition: writingEntityParam.position,
+									credit: writingCredit.name,
+									isOriginalVersionCredit: writingCredit.isOriginalVersionCredit
+								}]->(entity)
 						)
 
-					WITH DISTINCT material, writerGroup
+					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'material']) WHEN 0
+						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroup.writers WHERE writer.model = 'material']
+							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -83,9 +83,9 @@ describe('Cypher Queries Material module', () => {
 
 							CREATE (material)-
 								[:USES_SOURCE_MATERIAL {
-									groupPosition: writerGroup.position,
-									writerPosition: sourceMaterialParam.position,
-									group: writerGroup.name
+									creditPosition: writingCredit.position,
+									entityPosition: sourceMaterialParam.position,
+									credit: writingCredit.name
 								}]->(sourceMaterial)
 						)
 
@@ -125,43 +125,47 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-					WHERE writer:Person OR writer:Material
+				OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
+					WHERE writingEntity:Person OR writingEntity:Material
 
-				WITH material, originalVersionMaterial, writerRel, writer
-					ORDER BY writerRel.groupPosition, writerRel.writerPosition
+				WITH material, originalVersionMaterial, writingEntityRel, writingEntity
+					ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
 				WITH
 					material,
 					originalVersionMaterial,
-					writerRel.group AS writerGroupName,
-					writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+					writingEntityRel.credit AS writingCreditName,
+					writingEntityRel.isOriginalVersionCredit AS isOriginalVersionCredit,
 					COLLECT(
-						CASE writer WHEN NULL
+						CASE writingEntity WHEN NULL
 							THEN null
-							ELSE { model: TOLOWER(HEAD(LABELS(writer))), name: writer.name, differentiator: writer.differentiator }
+							ELSE {
+								model: TOLOWER(HEAD(LABELS(writingEntity))),
+								name: writingEntity.name,
+								differentiator: writingEntity.differentiator
+							}
 						END
-					) + [{}] AS writers
+					) + [{}] AS writingEntities
 
 				WITH material, originalVersionMaterial,
 					COLLECT(
-						CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
+						CASE WHEN writingCreditName IS NULL AND SIZE(writingEntities) = 1
 							THEN null
 							ELSE {
-								model: 'writerGroup',
-								name: writerGroupName,
-								isOriginalVersionWriter: isOriginalVersionWriter,
-								writers: writers
+								model: 'writingCredit',
+								name: writingCreditName,
+								isOriginalVersionCredit: isOriginalVersionCredit,
+								writingEntities: writingEntities
 							}
 						END
-					) + [{ writers: [{}] }] AS writerGroups
+					) + [{ writingEntities: [{}] }] AS writingCredits
 
 				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-				WITH material, originalVersionMaterial, writerGroups, characterRel, character
+				WITH material, originalVersionMaterial, writingCredits, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-				WITH material, originalVersionMaterial, writerGroups, characterRel.group AS characterGroupName,
+				WITH material, originalVersionMaterial, writingCredits, characterRel.group AS characterGroupName,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -185,7 +189,7 @@ describe('Cypher Queries Material module', () => {
 						name: CASE originalVersionMaterial.name WHEN NULL THEN '' ELSE originalVersionMaterial.name END,
 						differentiator: CASE originalVersionMaterial.differentiator WHEN NULL THEN '' ELSE originalVersionMaterial.differentiator END
 					} AS originalVersionMaterial,
-					writerGroups,
+					writingCredits,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
@@ -218,9 +222,9 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[sourceMaterialRel:USES_SOURCE_MATERIAL]->(:Material)
+				OPTIONAL MATCH (material)-[sourceMaterialCreditRel:USES_SOURCE_MATERIAL]->(:Material)
 
-				DELETE sourceMaterialRel
+				DELETE sourceMaterialCreditRel
 
 				WITH DISTINCT material
 
@@ -254,41 +258,41 @@ describe('Cypher Queries Material module', () => {
 
 				WITH material
 
-				UNWIND (CASE $writerGroups WHEN [] THEN [{ writers: [] }] ELSE $writerGroups END) AS writerGroup
+				UNWIND (CASE $writingCredits WHEN [] THEN [{ writingEntities: [] }] ELSE $writingCredits END) AS writingCredit
 
 					UNWIND
-						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'person']) WHEN 0
+						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroup.writers WHERE writer.model = 'person']
-						END AS writerParam
+							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
+						END AS writingEntityParam
 
-						OPTIONAL MATCH (existingWriter:Person { name: writerParam.name })
+						OPTIONAL MATCH (existingWriter:Person { name: writingEntityParam.name })
 							WHERE
-								(writerParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-								(writerParam.differentiator = existingWriter.differentiator)
+								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
+								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writerParam IS NOT NULL AND writerParam.model = 'person' THEN [1] ELSE [] END |
-							MERGE (writer:Person {
-								uuid: COALESCE(existingWriter.uuid, writerParam.uuid),
-								name: writerParam.name
+						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'person' THEN [1] ELSE [] END |
+							MERGE (entity:Person {
+								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
+								name: writingEntityParam.name
 							})
-								ON CREATE SET writer.differentiator = writerParam.differentiator
+								ON CREATE SET entity.differentiator = writingEntityParam.differentiator
 
 							CREATE (material)-
 								[:WRITTEN_BY {
-									groupPosition: writerGroup.position,
-									writerPosition: writerParam.position,
-									group: writerGroup.name,
-									isOriginalVersionWriter: writerGroup.isOriginalVersionWriter
-								}]->(writer)
+									creditPosition: writingCredit.position,
+									entityPosition: writingEntityParam.position,
+									credit: writingCredit.name,
+									isOriginalVersionCredit: writingCredit.isOriginalVersionCredit
+								}]->(entity)
 						)
 
-					WITH DISTINCT material, writerGroup
+					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([writer IN writerGroup.writers WHERE writer.model = 'material']) WHEN 0
+						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [writer IN writerGroup.writers WHERE writer.model = 'material']
+							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -305,9 +309,9 @@ describe('Cypher Queries Material module', () => {
 
 							CREATE (material)-
 								[:USES_SOURCE_MATERIAL {
-									groupPosition: writerGroup.position,
-									writerPosition: sourceMaterialParam.position,
-									group: writerGroup.name
+									creditPosition: writingCredit.position,
+									entityPosition: sourceMaterialParam.position,
+									credit: writingCredit.name
 								}]->(sourceMaterial)
 						)
 
@@ -347,43 +351,47 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writer)
-					WHERE writer:Person OR writer:Material
+				OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
+					WHERE writingEntity:Person OR writingEntity:Material
 
-				WITH material, originalVersionMaterial, writerRel, writer
-					ORDER BY writerRel.groupPosition, writerRel.writerPosition
+				WITH material, originalVersionMaterial, writingEntityRel, writingEntity
+					ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
 				WITH
 					material,
 					originalVersionMaterial,
-					writerRel.group AS writerGroupName,
-					writerRel.isOriginalVersionWriter AS isOriginalVersionWriter,
+					writingEntityRel.credit AS writingCreditName,
+					writingEntityRel.isOriginalVersionCredit AS isOriginalVersionCredit,
 					COLLECT(
-						CASE writer WHEN NULL
+						CASE writingEntity WHEN NULL
 							THEN null
-							ELSE { model: TOLOWER(HEAD(LABELS(writer))), name: writer.name, differentiator: writer.differentiator }
+							ELSE {
+								model: TOLOWER(HEAD(LABELS(writingEntity))),
+								name: writingEntity.name,
+								differentiator: writingEntity.differentiator
+							}
 						END
-					) + [{}] AS writers
+					) + [{}] AS writingEntities
 
 				WITH material, originalVersionMaterial,
 					COLLECT(
-						CASE WHEN writerGroupName IS NULL AND SIZE(writers) = 1
+						CASE WHEN writingCreditName IS NULL AND SIZE(writingEntities) = 1
 							THEN null
 							ELSE {
-								model: 'writerGroup',
-								name: writerGroupName,
-								isOriginalVersionWriter: isOriginalVersionWriter,
-								writers: writers
+								model: 'writingCredit',
+								name: writingCreditName,
+								isOriginalVersionCredit: isOriginalVersionCredit,
+								writingEntities: writingEntities
 							}
 						END
-					) + [{ writers: [{}] }] AS writerGroups
+					) + [{ writingEntities: [{}] }] AS writingCredits
 
 				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
-				WITH material, originalVersionMaterial, writerGroups, characterRel, character
+				WITH material, originalVersionMaterial, writingCredits, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-				WITH material, originalVersionMaterial, writerGroups, characterRel.group AS characterGroupName,
+				WITH material, originalVersionMaterial, writingCredits, characterRel.group AS characterGroupName,
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
@@ -407,7 +415,7 @@ describe('Cypher Queries Material module', () => {
 						name: CASE originalVersionMaterial.name WHEN NULL THEN '' ELSE originalVersionMaterial.name END,
 						differentiator: CASE originalVersionMaterial.differentiator WHEN NULL THEN '' ELSE originalVersionMaterial.differentiator END
 					} AS originalVersionMaterial,
-					writerGroups,
+					writingCredits,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null

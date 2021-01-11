@@ -57,7 +57,7 @@ describe('Instance validation failures: Materials API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -101,7 +101,7 @@ describe('Instance validation failures: Materials API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -168,7 +168,7 @@ describe('Instance validation failures: Materials API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -218,7 +218,7 @@ describe('Instance validation failures: Materials API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 
@@ -295,7 +295,7 @@ describe('Instance validation failures: Materials API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					writerGroups: [],
+					writingCredits: [],
 					characterGroups: []
 				};
 

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterGroup, WriterGroup } from '../../../src/models';
+import { CharacterGroup, WritingCredit } from '../../../src/models';
 
 describe('Material model', () => {
 
@@ -14,9 +14,9 @@ describe('Material model', () => {
 
 	};
 
-	const WriterGroupStub = function () {
+	const WritingCreditStub = function () {
 
-		return createStubInstance(WriterGroup);
+		return createStubInstance(WritingCredit);
 
 	};
 
@@ -28,7 +28,7 @@ describe('Material model', () => {
 			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
-				WriterGroup: WriterGroupStub
+				WritingCredit: WritingCreditStub
 			}
 		};
 
@@ -165,22 +165,22 @@ describe('Material model', () => {
 
 		});
 
-		describe('writerGroups property', () => {
+		describe('writingCredits property', () => {
 
 			context('instance is subject', () => {
 
 				it('assigns empty array if absent from props', () => {
 
 					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.writerGroups).to.deep.equal([]);
+					expect(instance.writingCredits).to.deep.equal([]);
 
 				});
 
-				it('assigns array of writerGroups if included in props, retaining those with empty or whitespace-only string names', () => {
+				it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writerGroups: [
+						writingCredits: [
 							{
 								name: 'version by'
 							},
@@ -193,10 +193,10 @@ describe('Material model', () => {
 						]
 					};
 					const instance = createInstance(props);
-					expect(instance.writerGroups.length).to.equal(3);
-					expect(instance.writerGroups[0] instanceof WriterGroup).to.be.true;
-					expect(instance.writerGroups[1] instanceof WriterGroup).to.be.true;
-					expect(instance.writerGroups[2] instanceof WriterGroup).to.be.true;
+					expect(instance.writingCredits.length).to.equal(3);
+					expect(instance.writingCredits[0] instanceof WritingCredit).to.be.true;
+					expect(instance.writingCredits[1] instanceof WritingCredit).to.be.true;
+					expect(instance.writingCredits[2] instanceof WritingCredit).to.be.true;
 
 				});
 
@@ -211,7 +211,7 @@ describe('Material model', () => {
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writerGroups');
+					expect(instance).not.to.have.property('writingCredits');
 
 				});
 
@@ -219,7 +219,7 @@ describe('Material model', () => {
 
 					const props = {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writerGroups: [
+						writingCredits: [
 							{
 								name: 'version by'
 							}
@@ -227,7 +227,7 @@ describe('Material model', () => {
 						isAssociation: true
 					};
 					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writerGroups');
+					expect(instance).not.to.have.property('writingCredits');
 
 				});
 
@@ -313,7 +313,7 @@ describe('Material model', () => {
 
 			const props = {
 				name: 'The Tragedy of Hamlet, Prince of Denmark',
-				writerGroups: [
+				writingCredits: [
 					{
 						name: 'version by'
 					}
@@ -338,7 +338,7 @@ describe('Material model', () => {
 				instance.originalVersionMaterial.validateName,
 				instance.originalVersionMaterial.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
-				instance.writerGroups[0].runInputValidations,
+				instance.writingCredits[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.characterGroups[0].runInputValidations
 			);
@@ -354,13 +354,13 @@ describe('Material model', () => {
 			expect(instance.originalVersionMaterial.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
-				.firstCall.calledWithExactly(instance.writerGroups)
+				.firstCall.calledWithExactly(instance.writingCredits)
 			).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
 				.secondCall.calledWithExactly(
 			instance.characterGroups)).to.be.true;
-			expect(instance.writerGroups[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.writerGroups[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(instance.writingCredits[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.writingCredits[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledWithExactly(
 				{ isDuplicate: false }

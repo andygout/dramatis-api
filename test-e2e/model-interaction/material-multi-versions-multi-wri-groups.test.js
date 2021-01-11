@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Materials with multiple versions and multiple writer groups', () => {
+describe('Materials with multiple versions and multiple writer credits', () => {
 
 	chai.use(chaiHttp);
 
@@ -46,9 +46,9 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 				name: 'Peer Gynt',
 				differentiator: '1',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
 							}
@@ -76,10 +76,10 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					name: 'Peer Gynt',
 					differentiator: '1'
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						isOriginalVersionWriter: true,
-						writers: [
+						isOriginalVersionCredit: true,
+						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
 							}
@@ -87,7 +87,7 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					},
 					{
 						name: 'version by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Frank McGuinness'
 							}
@@ -115,10 +115,10 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					name: 'Peer Gynt',
 					differentiator: '1'
 				},
-				writerGroups: [
+				writingCredits: [
 					{
-						isOriginalVersionWriter: true,
-						writers: [
+						isOriginalVersionCredit: true,
+						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
 							}
@@ -126,7 +126,7 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					},
 					{
 						name: 'translated by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Gerry Bamman'
 							},
@@ -137,7 +137,7 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					},
 					{
 						name: 'adapted by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Baltasar Kormákur'
 							}
@@ -161,9 +161,9 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 				name: 'Ghosts',
 				differentiator: '1',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						writers: [
+						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
 							}
@@ -179,10 +179,10 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 				name: 'Ghosts',
 				differentiator: '2',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						isOriginalVersionWriter: true,
-						writers: [
+						isOriginalVersionCredit: true,
+						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
 							}
@@ -190,7 +190,7 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					},
 					{
 						name: 'translated by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Gerry Bamman'
 							},
@@ -201,7 +201,7 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					},
 					{
 						name: 'adapted by',
-						writers: [
+						writingEntities: [
 							{
 								name: 'Baltasar Kormákur'
 							}
@@ -259,11 +259,11 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -277,9 +277,9 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -294,11 +294,11 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -316,27 +316,27 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 
 		});
 
-		it('includes writers of this material in their respective groups', () => {
+		it('includes writers of this material grouped by their respective credits', () => {
 
-			const expectedWriterGroups = [
+			const expectedWritingCredits = [
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				}
 			];
 
-			const { writerGroups } = peerGyntOriginalMaterial.body;
+			const { writingCredits } = peerGyntOriginalMaterial.body;
 
-			expect(writerGroups).to.deep.equal(expectedWriterGroups);
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
 
 		});
 
@@ -351,11 +351,11 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 				uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -372,60 +372,60 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 
 		});
 
-		it('includes writers of this material in their respective groups', () => {
+		it('includes writers of this material grouped by their respective credits', () => {
 
-			const expectedWriterGroups = [
+			const expectedWritingCredits = [
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				},
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'translated by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
 							name: 'Gerry Bamman',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						},
 						{
 							model: 'person',
 							uuid: IRENE_B_BERMAN_PERSON_UUID,
 							name: 'Irene B Berman',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				},
 				{
-					model: 'writerGroup',
+					model: 'writingCredit',
 					name: 'adapted by',
-					writers: [
+					writingEntities: [
 						{
 							model: 'person',
 							uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 							name: 'Baltasar Kormákur',
 							format: null,
-							sourceMaterialWriterGroups: []
+							sourceMaterialWritingCredits: []
 						}
 					]
 				}
 			];
 
-			const { writerGroups } = peerGyntSubsequentVersion2Material.body;
+			const { writingCredits } = peerGyntSubsequentVersion2Material.body;
 
-			expect(writerGroups).to.deep.equal(expectedWriterGroups);
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
 
 		});
 
@@ -441,17 +441,17 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -462,17 +462,17 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -494,50 +494,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -548,50 +548,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -602,30 +602,30 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -651,50 +651,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -705,50 +705,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: null,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -773,50 +773,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 				uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
-				writerGroups: [
+				writingCredits: [
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'translated by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
 								name: 'Gerry Bamman',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							},
 							{
 								model: 'person',
 								uuid: IRENE_B_BERMAN_PERSON_UUID,
 								name: 'Irene B Berman',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					},
 					{
-						model: 'writerGroup',
+						model: 'writingCredit',
 						name: 'adapted by',
-						writers: [
+						writingEntities: [
 							{
 								model: 'person',
 								uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 								name: 'Baltasar Kormákur',
 								format: null,
-								sourceMaterialWriterGroups: []
+								sourceMaterialWritingCredits: []
 							}
 						]
 					}
@@ -841,50 +841,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -896,30 +896,30 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -931,17 +931,17 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -971,17 +971,17 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -992,50 +992,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -1046,17 +1046,17 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -1067,30 +1067,30 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'version by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}
@@ -1101,50 +1101,50 @@ describe('Materials with multiple versions and multiple writer groups', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
-					writerGroups: [
+					writingCredits: [
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'translated by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						},
 						{
-							model: 'writerGroup',
+							model: 'writingCredit',
 							name: 'adapted by',
-							writers: [
+							writingEntities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur',
 									format: null,
-									sourceMaterialWriterGroups: []
+									sourceMaterialWritingCredits: []
 								}
 							]
 						}

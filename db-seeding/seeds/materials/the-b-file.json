@@ -1,9 +1,9 @@
 {
 	"name": "The B File",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Deborah Levy"
 				}

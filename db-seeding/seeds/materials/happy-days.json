@@ -1,9 +1,9 @@
 {
 	"name": "Happy Days",
 	"format": "play",
-	"writerGroups": [
+	"writingCredits": [
 		{
-			"writers": [
+			"writingEntities": [
 				{
 					"name": "Samuel Beckett"
 				}
