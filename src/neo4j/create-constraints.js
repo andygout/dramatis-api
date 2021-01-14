@@ -21,7 +21,7 @@ const createConstraint = async model => {
 			{ isOptionalResult: true }
 		);
 
-		console.log(`Neo4j database: Constraint created for ${model}`); // eslint-disable-line no-console
+		console.log(`Neo4j database: Constraint on uuid property created for ${model}`); // eslint-disable-line no-console
 
 	} catch (error) {
 
@@ -42,9 +42,9 @@ export default async () => {
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
-		const modelsWithConstraints = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
+		const modelsWithConstraint = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
 
-		const modelsToConstrain = MODELS.filter(model => !modelsWithConstraints.includes(model));
+		const modelsToConstrain = MODELS.filter(model => !modelsWithConstraint.includes(model));
 
 		console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
 
