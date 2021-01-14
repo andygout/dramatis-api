@@ -8,6 +8,12 @@ describe('WritingCredit model', () => {
 
 	let stubs;
 
+	const MaterialStub = function () {
+
+		return createStubInstance(Material);
+
+	};
+
 	const PersonStub = function () {
 
 		return createStubInstance(Person);
@@ -21,6 +27,7 @@ describe('WritingCredit model', () => {
 				getDuplicateWritingEntityIndices: stub().returns([])
 			},
 			models: {
+				Material: MaterialStub,
 				Person: PersonStub
 			}
 		};
@@ -137,13 +144,22 @@ describe('WritingCredit model', () => {
 				writingEntities: [
 					{
 						name: 'David Eldridge'
+					},
+					{
+						model: 'material',
+						name: 'A Midsummer Night\'s Dream'
 					}
 				]
 			};
 			const instance = createInstance(props);
+			instance.writingEntities[1].model = 'material';
+			instance.writingEntities[1].name = 'A Midsummer Night\'s Dream';
+			instance.writingEntities[1].differentiator = '1';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
-			instance.runInputValidations({ isDuplicate: false });
+			instance.runInputValidations(
+				{ isDuplicate: false, subject: { name: 'The Indian Boy', differentiator: '1' } }
+			);
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
@@ -162,8 +178,21 @@ describe('WritingCredit model', () => {
 			expect(instance.writingEntities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.writingEntities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.writingEntities[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.writingEntities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.writingEntities[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.writingEntities[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false }
+			)).to.be.true;
+			expect(instance.writingEntities[1].validateName.calledOnce).to.be.true;
+			expect(instance.writingEntities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.writingEntities[1].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.writingEntities[1].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.writingEntities[1].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.writingEntities[1].validateNoAssociationWithSelf.calledWithExactly(
+				'The Indian Boy', '1'
+			)).to.be.true;
+			expect(instance.writingEntities[1].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.writingEntities[1].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
 

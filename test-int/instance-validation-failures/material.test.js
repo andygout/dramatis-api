@@ -650,6 +650,76 @@ describe('Material instance', () => {
 
 		});
 
+		context('material instance assigns itself as source material', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'material',
+									name: 'Rosmersholm'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'material',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					format: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: '',
+							isOriginalVersionCredit: null,
+							errors: {},
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: undefined,
+									name: 'Rosmersholm',
+									differentiator: '',
+									errors: {
+										name: [
+											'Instance cannot form association with itself'
+										],
+										differentiator: [
+											'Instance cannot form association with itself'
+										]
+									}
+								}
+							]
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
 		context('characterGroup name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {

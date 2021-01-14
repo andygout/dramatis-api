@@ -57,7 +57,10 @@ export default class Material extends Base {
 		const duplicateWritingCreditIndices = getDuplicateBaseInstanceIndices(this.writingCredits);
 
 		this.writingCredits.forEach((writingCredit, index) =>
-			writingCredit.runInputValidations({ isDuplicate: duplicateWritingCreditIndices.includes(index) })
+			writingCredit.runInputValidations({
+				isDuplicate: duplicateWritingCreditIndices.includes(index),
+				subject: { name: this.name, differentiator: this.differentiator }
+			})
 		);
 
 		const duplicateCharacterGroupIndices = getDuplicateBaseInstanceIndices(this.characterGroups);
