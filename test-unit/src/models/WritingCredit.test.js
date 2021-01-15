@@ -101,22 +101,22 @@ describe('WritingCredit model', () => {
 							name: 'David Eldridge'
 						},
 						{
-							name: 'A Midsummer Night\'s Dream',
-							model: 'material'
+							model: 'material',
+							name: 'A Midsummer Night\'s Dream'
 						},
 						{
 							name: ''
 						},
 						{
-							name: '',
-							model: 'material'
+							model: 'material',
+							name: ''
 						},
 						{
 							name: ' '
 						},
 						{
-							name: ' ',
-							model: 'material'
+							model: 'material',
+							name: ' '
 						}
 					]
 				};
