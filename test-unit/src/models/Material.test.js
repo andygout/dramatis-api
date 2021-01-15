@@ -313,6 +313,7 @@ describe('Material model', () => {
 
 			const props = {
 				name: 'The Tragedy of Hamlet, Prince of Denmark',
+				differentiator: '1',
 				writingCredits: [
 					{
 						name: 'version by'
@@ -360,7 +361,15 @@ describe('Material model', () => {
 				.secondCall.calledWithExactly(
 			instance.characterGroups)).to.be.true;
 			expect(instance.writingCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.writingCredits[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(instance.writingCredits[0].runInputValidations.calledWithExactly(
+				{
+					isDuplicate: false,
+					subject: {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						differentiator: '1'
+					}
+				}
+			)).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledWithExactly(
 				{ isDuplicate: false }
