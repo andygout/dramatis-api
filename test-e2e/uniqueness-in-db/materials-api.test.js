@@ -62,7 +62,7 @@ describe('Uniqueness in database: Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -167,7 +167,7 @@ describe('Uniqueness in database: Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -274,7 +274,7 @@ describe('Uniqueness in database: Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -338,7 +338,7 @@ describe('Uniqueness in database: Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{

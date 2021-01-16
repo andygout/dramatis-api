@@ -50,34 +50,35 @@ describe('WritingCredit model', () => {
 
 	describe('constructor method', () => {
 
-		describe('isOriginalVersionCredit property', () => {
+		describe('creditType property', () => {
 
 			it('assigns null if absent from props', () => {
 
-				const instance = createInstance({ name: 'version by' });
-				expect(instance.isOriginalVersionCredit).to.equal(null);
+				const instance = createInstance({ name: '' });
+				expect(instance.creditType).to.equal(null);
 
 			});
 
-			it('assigns true if included in props and evaluates to true', () => {
+			it('assigns null if included in props but value is not an accepted credit type', () => {
 
-				const props = {
-					name: 'version by',
-					isOriginalVersionCredit: true
-				};
-				const instance = createInstance(props);
-				expect(instance.isOriginalVersionCredit).to.equal(true);
+				const instance = createInstance({ name: '', creditType: 'foobar' });
+				expect(instance.creditType).to.equal(null);
 
 			});
 
-			it('assigns null if included in props and evaluates to false', () => {
+			it('assigns value if included in props and value is an accepted credit type', () => {
 
-				const props = {
-					name: 'version by',
-					isOriginalVersionCredit: false
-				};
-				const instance = createInstance(props);
-				expect(instance.isOriginalVersionCredit).to.equal(null);
+				const creditTypes = [
+					'ORIGINAL_VERSION',
+					'NON_SPECIFIC_SOURCE_MATERIAL'
+				];
+
+				creditTypes.forEach(creditType => {
+
+					const instance = createInstance({ name: '', creditType });
+					expect(instance.creditType).to.equal(creditType);
+
+				});
 
 			});
 

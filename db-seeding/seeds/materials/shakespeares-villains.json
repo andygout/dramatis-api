@@ -1,0 +1,43 @@
+{
+	"name": "Shakespeare's Villains",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Steven Berkoff"
+				}
+			]
+		},
+		{
+			"name": "based on works by",
+			"creditType": "NON_SPECIFIC_SOURCE_MATERIAL",
+			"writingEntities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Iago"
+				},
+				{
+					"name": "Macbeth"
+				},
+				{
+					"name": "Lady Macbeth"
+				},
+				{
+					"name": "Shylock"
+				},
+				{
+					"name": "Richard III"
+				}
+			]
+		}
+	]
+}

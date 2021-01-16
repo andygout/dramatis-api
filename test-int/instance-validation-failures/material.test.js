@@ -345,7 +345,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: ABOVE_MAX_LENGTH_STRING,
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {
 								name: [
 									'Value is too long'
@@ -402,7 +402,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -413,7 +413,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -471,7 +471,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: '',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
@@ -538,7 +538,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: '',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
@@ -607,7 +607,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: '',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
@@ -691,7 +691,7 @@ describe('Material instance', () => {
 						{
 							model: 'writingCredit',
 							name: '',
-							isOriginalVersionCredit: null,
+							creditType: null,
 							errors: {},
 							writingEntities: [
 								{

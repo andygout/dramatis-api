@@ -15,15 +15,23 @@ describe('Materials with source material', () => {
 	const THE_INDIAN_BOY_MATERIAL_UUID = '11';
 	const RONA_MUNRO_PERSON_UUID = '13';
 	const THE_INDIAN_BOY_CHARACTER_UUID = '15';
-	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '16';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '18';
+	const SHAKESPEARES_VILLAINS_MATERIAL_UUID = '21';
+	const STEVEN_BERKOFF_PERSON_UUID = '23';
+	const IAGO_CHARACTER_UUID = '25';
+	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '26';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '28';
+	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '29';
 
 	let theIndianBoyMaterial;
 	let aMidsummerNightsDreamMaterial;
+	let shakespearesVillainsMaterial;
 	let ronaMunroPerson;
 	let williamShakespearePerson;
+	let stevenBerkoffPerson;
 	let theIndianBoyRoyalShakespeareTheatreProduction;
+	let shakespearesVillainsTheatreRoyalHaymarketProduction;
 	let theIndianBoyCharacter;
+	let iagoCharacter;
 
 	const sandbox = createSandbox();
 
@@ -86,6 +94,40 @@ describe('Materials with source material', () => {
 			});
 
 		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Shakespeare\'s Villains',
+				format: 'play',
+				writingCredits: [
+					{
+						writingEntities: [
+							{
+								name: 'Steven Berkoff'
+							}
+						]
+					},
+					{
+						name: 'based on works by',
+						creditType: 'NON_SPECIFIC_SOURCE_MATERIAL',
+						writingEntities: [
+							{
+								name: 'William Shakespeare'
+							}
+						]
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Iago'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
 			.post('/productions')
 			.send({
 				name: 'The Indian Boy',
@@ -97,11 +139,26 @@ describe('Materials with source material', () => {
 				}
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Shakespeare\'s Villains',
+				material: {
+					name: 'Shakespeare\'s Villains'
+				},
+				theatre: {
+					name: 'Theatre Royal Haymarket'
+				}
+			});
+
 		theIndianBoyMaterial = await chai.request(app)
 			.get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
 
 		aMidsummerNightsDreamMaterial = await chai.request(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
+
+		shakespearesVillainsMaterial = await chai.request(app)
+			.get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
 
 		ronaMunroPerson = await chai.request(app)
 			.get(`/people/${RONA_MUNRO_PERSON_UUID}`);
@@ -109,11 +166,20 @@ describe('Materials with source material', () => {
 		williamShakespearePerson = await chai.request(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
+		stevenBerkoffPerson = await chai.request(app)
+			.get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
+
 		theIndianBoyRoyalShakespeareTheatreProduction = await chai.request(app)
 			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
 
+		shakespearesVillainsTheatreRoyalHaymarketProduction = await chai.request(app)
+			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
+
 		theIndianBoyCharacter = await chai.request(app)
 			.get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
+
+		iagoCharacter = await chai.request(app)
+			.get(`/characters/${IAGO_CHARACTER_UUID}`);
 
 	});
 
@@ -245,6 +311,47 @@ describe('Materials with source material', () => {
 
 	});
 
+	describe('Shakespeare\'s Villains (material)', () => {
+
+		it('includes writers of this material and its source material grouped by their respective credits', () => {
+
+			const expectedWritingCredits = [
+				{
+					model: 'writingCredit',
+					name: 'by',
+					writingEntities: [
+						{
+							model: 'person',
+							uuid: STEVEN_BERKOFF_PERSON_UUID,
+							name: 'Steven Berkoff',
+							format: null,
+							sourceMaterialWritingCredits: []
+						}
+					]
+				},
+				{
+					model: 'writingCredit',
+					name: 'based on works by',
+					writingEntities: [
+						{
+							model: 'person',
+							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+							name: 'William Shakespeare',
+							format: null,
+							sourceMaterialWritingCredits: []
+						}
+					]
+				}
+			];
+
+			const { writingCredits } = shakespearesVillainsMaterial.body;
+
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+
+		});
+
+	});
+
 	describe('Rona Munro (person)', () => {
 
 		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
@@ -308,9 +415,43 @@ describe('Materials with source material', () => {
 
 	describe('William Shakespeare (person)', () => {
 
-		it('includes materials that used their work as source material, with corresponding writers', () => {
+		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
 
 			const expectedSourcingMaterials = [
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'William Shakespeare',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'material',
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
@@ -348,6 +489,55 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = williamShakespearePerson.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+	});
+
+	describe('Steven Berkoff (person)', () => {
+
+		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Steven Berkoff',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = stevenBerkoffPerson.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
 
 		});
 
@@ -405,6 +595,53 @@ describe('Materials with source material', () => {
 			};
 
 			const { material } = theIndianBoyRoyalShakespeareTheatreProduction.body;
+
+			expect(material).to.deep.equal(expectedMaterial);
+
+		});
+
+	});
+
+	describe('Shakespeare\'s Villains at Theatre Royal Haymarket (production)', () => {
+
+		it('includes in its material data the writers of the material and its source material', () => {
+
+			const expectedMaterial = {
+				model: 'material',
+				uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+				name: 'Shakespeare\'s Villains',
+				format: 'play',
+				writingCredits: [
+					{
+						model: 'writingCredit',
+						name: 'by',
+						writingEntities: [
+							{
+								model: 'person',
+								uuid: STEVEN_BERKOFF_PERSON_UUID,
+								name: 'Steven Berkoff',
+								format: null,
+								sourceMaterialWritingCredits: []
+							}
+						]
+					},
+					{
+						model: 'writingCredit',
+						name: 'based on works by',
+						writingEntities: [
+							{
+								model: 'person',
+								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+								name: 'William Shakespeare',
+								format: null,
+								sourceMaterialWritingCredits: []
+							}
+						]
+					}
+				]
+			};
+
+			const { material } = shakespearesVillainsTheatreRoyalHaymarketProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
 
@@ -474,6 +711,56 @@ describe('Materials with source material', () => {
 
 	});
 
+	describe('Iago (character)', () => {
+
+		it('includes in its material data the writers of the material and its source material', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						}
+					],
+					depictions: []
+				}
+			];
+
+			const { materials } = iagoCharacter.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
 	describe('materials list', () => {
 
 		it('includes writers of the materials and their corresponding source material', async () => {
@@ -491,6 +778,40 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff',
+									format: null,
+									sourceMaterialWritingCredits: []
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
 							writingEntities: [
 								{
 									model: 'person',
