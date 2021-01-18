@@ -75,7 +75,7 @@ const getShowQuery = () => `
 					name: material.name,
 					format: material.format,
 					writingCredits: writingCredits,
-					isOriginalVersionCredit: writerRel.isOriginalVersionCredit
+					creditType: writerRel.creditType
 				}
 			END
 		) AS materials
@@ -83,7 +83,7 @@ const getShowQuery = () => `
 	WITH
 		person,
 		[
-			material IN materials WHERE material.isOriginalVersionCredit IS NULL |
+			material IN materials WHERE material.creditType IS NULL |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -93,7 +93,7 @@ const getShowQuery = () => `
 			}
 		] AS materials,
 		[
-			material IN materials WHERE material.isOriginalVersionCredit = true |
+			material IN materials WHERE material.creditType = 'ORIGINAL_VERSION' |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -101,7 +101,17 @@ const getShowQuery = () => `
 				format: material.format,
 				writingCredits: material.writingCredits
 			}
-		] AS subsequentVersionMaterials
+		] AS subsequentVersionMaterials,
+		[
+			material IN materials WHERE material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
+			{
+				model: material.model,
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writingCredits: material.writingCredits
+			}
+		] AS sourcingMaterialsFromNonSpecificMaterials
 
 	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 
@@ -113,6 +123,7 @@ const getShowQuery = () => `
 		person,
 		materials,
 		subsequentVersionMaterials,
+		sourcingMaterialsFromNonSpecificMaterials,
 		sourcingMaterial,
 		sourcingMaterialWritingEntityRel,
 		sourcingMaterialWritingEntity
@@ -122,6 +133,7 @@ const getShowQuery = () => `
 		person,
 		materials,
 		subsequentVersionMaterials,
+		sourcingMaterialsFromNonSpecificMaterials,
 		sourcingMaterial,
 		sourcingMaterialWritingEntityRel,
 		sourcingMaterialWritingEntity,
@@ -138,7 +150,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingEntities
 
-	WITH person, materials, subsequentVersionMaterials, sourcingMaterial,
+	WITH person, materials, subsequentVersionMaterials, sourcingMaterialsFromNonSpecificMaterials, sourcingMaterial,
 		COLLECT(
 			CASE SIZE(sourcingMaterialWritingEntities) WHEN 0
 				THEN null
@@ -150,7 +162,7 @@ const getShowQuery = () => `
 			END
 		) AS sourcingMaterialWritingCredits
 
-	WITH person, materials, subsequentVersionMaterials,
+	WITH person, materials, subsequentVersionMaterials, sourcingMaterialsFromNonSpecificMaterials,
 		COLLECT(
 			CASE sourcingMaterial WHEN NULL
 				THEN null
@@ -162,7 +174,20 @@ const getShowQuery = () => `
 					writingCredits: sourcingMaterialWritingCredits
 				}
 			END
-		) AS sourcingMaterials
+		) AS sourcingMaterialsFromSpecificMaterials
+
+	WITH
+		person,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterialsFromNonSpecificMaterials + sourcingMaterialsFromSpecificMaterials AS sourcingMaterials
+
+	UNWIND (CASE sourcingMaterials WHEN [] THEN [null] ELSE sourcingMaterials END) AS sourcingMaterial
+
+		WITH person, materials, subsequentVersionMaterials, sourcingMaterial
+			ORDER BY sourcingMaterial.name
+
+	WITH DISTINCT person, materials, subsequentVersionMaterials, COLLECT(sourcingMaterial) AS sourcingMaterials
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 

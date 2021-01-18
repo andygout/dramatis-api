@@ -36,7 +36,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -119,7 +119,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -178,7 +178,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -241,7 +241,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -457,7 +457,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -477,7 +477,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'version by',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -497,7 +497,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -517,7 +517,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -712,7 +712,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -732,7 +732,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'version by',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -752,7 +752,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -772,7 +772,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -936,7 +936,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -956,7 +956,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'adaptation by',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -976,7 +976,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: 'based on',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -996,7 +996,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{
@@ -1197,7 +1197,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					{
 						model: 'writingCredit',
 						name: '',
-						isOriginalVersionCredit: null,
+						creditType: null,
 						errors: {},
 						writingEntities: [
 							{

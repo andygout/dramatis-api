@@ -1,6 +1,7 @@
 import { getDuplicateWritingEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { Person, Material } from '.';
+import { CREDIT_TYPES } from '../utils/constants';
 
 export default class WritingCredit extends Base {
 
@@ -8,10 +9,11 @@ export default class WritingCredit extends Base {
 
 		super(props);
 
-		const { isOriginalVersionCredit, writingEntities } = props;
+		const { creditType, writingEntities } = props;
 
 		this.model = 'writingCredit';
-		this.isOriginalVersionCredit = !!isOriginalVersionCredit || null;
+		this.creditType = CREDIT_TYPES[creditType] || null;
+
 		this.writingEntities = writingEntities
 			? writingEntities.map(writingEntity => {
 				return writingEntity.model === 'material'

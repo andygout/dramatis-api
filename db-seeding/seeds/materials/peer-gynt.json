@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"isOriginalVersionCredit": true,
+			"creditType": "ORIGINAL_VERSION",
 			"writingEntities": [
 				{
 					"name": "Henrik Ibsen"

@@ -85,7 +85,7 @@ const getCreateUpdateQuery = action => {
 							creditPosition: writingCredit.position,
 							entityPosition: writingEntityParam.position,
 							credit: writingCredit.name,
-							isOriginalVersionCredit: writingCredit.isOriginalVersionCredit
+							creditType: writingCredit.creditType
 						}]->(entity)
 				)
 
@@ -171,7 +171,7 @@ const getEditQuery = () => `
 		material,
 		originalVersionMaterial,
 		writingEntityRel.credit AS writingCreditName,
-		writingEntityRel.isOriginalVersionCredit AS isOriginalVersionCredit,
+		writingEntityRel.creditType AS writingCreditType,
 		COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
@@ -190,7 +190,7 @@ const getEditQuery = () => `
 				ELSE {
 					model: 'writingCredit',
 					name: writingCreditName,
-					isOriginalVersionCredit: isOriginalVersionCredit,
+					creditType: writingCreditType,
 					writingEntities: writingEntities
 				}
 			END
@@ -290,7 +290,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (subsequentVersionMaterial)-[subsequentVersionMaterialWriterRel:WRITTEN_BY]->
 		(subsequentVersionMaterialWriter:Person)
-		WHERE subsequentVersionMaterialWriterRel.isOriginalVersionCredit IS NULL
+		WHERE
+			(subsequentVersionMaterialWriterRel.creditType IS NULL) OR
+			(subsequentVersionMaterialWriterRel.creditType <> 'ORIGINAL_VERSION')
 
 	WITH
 		material,

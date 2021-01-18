@@ -57,7 +57,7 @@ describe('Cypher Queries Material module', () => {
 									creditPosition: writingCredit.position,
 									entityPosition: writingEntityParam.position,
 									credit: writingCredit.name,
-									isOriginalVersionCredit: writingCredit.isOriginalVersionCredit
+									creditType: writingCredit.creditType
 								}]->(entity)
 						)
 
@@ -135,7 +135,7 @@ describe('Cypher Queries Material module', () => {
 					material,
 					originalVersionMaterial,
 					writingEntityRel.credit AS writingCreditName,
-					writingEntityRel.isOriginalVersionCredit AS isOriginalVersionCredit,
+					writingEntityRel.creditType AS writingCreditType,
 					COLLECT(
 						CASE writingEntity WHEN NULL
 							THEN null
@@ -154,7 +154,7 @@ describe('Cypher Queries Material module', () => {
 							ELSE {
 								model: 'writingCredit',
 								name: writingCreditName,
-								isOriginalVersionCredit: isOriginalVersionCredit,
+								creditType: writingCreditType,
 								writingEntities: writingEntities
 							}
 						END
@@ -283,7 +283,7 @@ describe('Cypher Queries Material module', () => {
 									creditPosition: writingCredit.position,
 									entityPosition: writingEntityParam.position,
 									credit: writingCredit.name,
-									isOriginalVersionCredit: writingCredit.isOriginalVersionCredit
+									creditType: writingCredit.creditType
 								}]->(entity)
 						)
 
@@ -361,7 +361,7 @@ describe('Cypher Queries Material module', () => {
 					material,
 					originalVersionMaterial,
 					writingEntityRel.credit AS writingCreditName,
-					writingEntityRel.isOriginalVersionCredit AS isOriginalVersionCredit,
+					writingEntityRel.creditType AS writingCreditType,
 					COLLECT(
 						CASE writingEntity WHEN NULL
 							THEN null
@@ -380,7 +380,7 @@ describe('Cypher Queries Material module', () => {
 							ELSE {
 								model: 'writingCredit',
 								name: writingCreditName,
-								isOriginalVersionCredit: isOriginalVersionCredit,
+								creditType: writingCreditType,
 								writingEntities: writingEntities
 							}
 						END
