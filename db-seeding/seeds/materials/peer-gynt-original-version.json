@@ -1,0 +1,182 @@
+{
+	"name": "Peer Gynt",
+	"differentiator": "1",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Åse"
+				},
+				{
+					"name": "Peer Gynt"
+				},
+				{
+					"name": "Two old women with corn-sacks"
+				},
+				{
+					"name": "Aslak"
+				},
+				{
+					"name": "Wedding guest"
+				},
+				{
+					"name": "A master cook"
+				},
+				{
+					"name": "A fiddler"
+				},
+				{
+					"name": "A man and his wife"
+				},
+				{
+					"name": "Solveig"
+				},
+				{
+					"name": "Helga"
+				},
+				{
+					"name": "Solveig and Helga's daughters"
+				},
+				{
+					"name": "The farmer at Hægstad"
+				},
+				{
+					"name": "Ingrid"
+				},
+				{
+					"name": "The bridegroom"
+				},
+				{
+					"name": "The bridegroom's parents"
+				},
+				{
+					"name": "Three alpine dairymaids"
+				},
+				{
+					"name": "A green-clad woman"
+				},
+				{
+					"name": "The Old Man of the Mountains"
+				},
+				{
+					"name": "Troll-courtiers"
+				},
+				{
+					"name": "Troll-maidens"
+				},
+				{
+					"name": "Troll-urchins"
+				},
+				{
+					"name": "A couple of witches"
+				},
+				{
+					"name": "Brownies"
+				},
+				{
+					"name": "Nixies"
+				},
+				{
+					"name": "Gnomes"
+				},
+				{
+					"name": "An ugly brat"
+				},
+				{
+					"name": "The Bøyg"
+				},
+				{
+					"name": "Kari"
+				},
+				{
+					"name": "Master Cotton"
+				},
+				{
+					"name": "Monsieur Ballon"
+				},
+				{
+					"name": "Herr von Eberkopf"
+				},
+				{
+					"name": "Herr Trumpeterstrale"
+				},
+				{
+					"name": "Gentlemen on their travels"
+				},
+				{
+					"name": "A thief"
+				},
+				{
+					"name": "A receiver"
+				},
+				{
+					"name": "Anitra"
+				},
+				{
+					"name": "Arabs"
+				},
+				{
+					"name": "Female slaves"
+				},
+				{
+					"name": "Dancing girls"
+				},
+				{
+					"name": "The Memnon statue"
+				},
+				{
+					"name": "The Sphinx at Giza"
+				},
+				{
+					"name": "Dr Begriffenfeldt"
+				},
+				{
+					"name": "Huhu"
+				},
+				{
+					"name": "Hussein"
+				},
+				{
+					"name": "A fellow with a royal mother"
+				},
+				{
+					"name": "Several madmen"
+				},
+				{
+					"name": "Madmen's keepers"
+				},
+				{
+					"name": "A Norwegian skipper"
+				},
+				{
+					"name": "Norwegian skipper's crew"
+				},
+				{
+					"name": "A strange passenger"
+				},
+				{
+					"name": "A funeral party"
+				},
+				{
+					"name": "A parish-officer"
+				},
+				{
+					"name": "A button-molder"
+				},
+				{
+					"name": "The Lean One"
+				}
+			]
+		}
+	]
+}

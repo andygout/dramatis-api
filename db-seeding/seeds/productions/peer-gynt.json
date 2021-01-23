@@ -1,7 +1,8 @@
 {
 	"name": "Peer Gynt",
 	"material": {
-		"name": "Peer Gynt"
+		"name": "Peer Gynt",
+		"differentiator": "2"
 	},
 	"theatre": {
 		"name": "The Pit"

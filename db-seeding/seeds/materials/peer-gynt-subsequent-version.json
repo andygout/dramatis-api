@@ -1,6 +1,11 @@
 {
 	"name": "Peer Gynt",
+	"differentiator": "2",
 	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Peer Gynt",
+		"differentiator": "1"
+	},
 	"writingCredits": [
 		{
 			"creditType": "ORIGINAL_VERSION",
@@ -43,37 +48,47 @@
 					"name": "Kari"
 				},
 				{
-					"name": "Herd Girls"
+					"name": "Herd Girls",
+					"underlyingName": "Three alpine dairymaids"
 				},
 				{
-					"name": "Trumpeterstraale"
+					"name": "Trumpeterstraale",
+					"underlyingName": "Herr Trumpeterstrale"
 				},
 				{
-					"name": "Woman in Green"
+					"name": "Woman in Green",
+					"underlyingName": "A green-clad woman"
 				},
 				{
-					"name": "Professor Begriffenfeldt"
+					"name": "Professor Begriffenfeldt",
+					"underlyingName": "Dr Begriffenfeldt"
 				},
 				{
-					"name": "Button Moulder"
+					"name": "Button Moulder",
+					"underlyingName": "A button-molder"
 				},
 				{
-					"name": "Great Between (Baygen)"
+					"name": "Great Between (Baygen)",
+					"underlyingName": "The Bøyg"
 				},
 				{
-					"name": "Child"
+					"name": "Child",
+					"underlyingName": "An ugly brat"
 				},
 				{
 					"name": "Monsieur Ballon"
 				},
 				{
-					"name": "Aase"
+					"name": "Aase",
+					"underlyingName": "Åse"
 				},
 				{
-					"name": "Groom"
+					"name": "Groom",
+					"underlyingName": "The bridegroom"
 				},
 				{
-					"name": "Von Eberkopf"
+					"name": "Von Eberkopf",
+					"underlyingName": "Herr von Eberkopf"
 				},
 				{
 					"name": "Pen"

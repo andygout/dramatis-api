@@ -3,18 +3,29 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
 
+	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(:Material)-[originalVersionCredit:WRITTEN_BY]->(person)
+
 	OPTIONAL MATCH (material)-[allWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
 		WHERE writingEntity:Person OR writingEntity:Material
 
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH person, writerRel, material, allWritingEntityRel, writingEntity, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH
+		person,
+		writerRel,
+		material,
+		originalVersionCredit,
+		allWritingEntityRel,
+		writingEntity,
+		sourceMaterialWriterRel,
+		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
 
 	WITH
 		person,
 		writerRel,
 		material,
+		originalVersionCredit,
 		allWritingEntityRel,
 		writingEntity,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
@@ -25,7 +36,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH person, writerRel, material, allWritingEntityRel, writingEntity,
+	WITH person, writerRel, material, originalVersionCredit, allWritingEntityRel, writingEntity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -38,7 +49,7 @@ const getShowQuery = () => `
 		) AS sourceMaterialWritingCredits
 		ORDER BY allWritingEntityRel.creditPosition, allWritingEntityRel.entityPosition
 
-	WITH person, writerRel, material, allWritingEntityRel.credit AS writingCreditName,
+	WITH person, writerRel, material, originalVersionCredit, allWritingEntityRel.credit AS writingCreditName,
 		COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
@@ -52,7 +63,7 @@ const getShowQuery = () => `
 			END
 		) AS writingEntities
 
-	WITH person, writerRel, material,
+	WITH person, writerRel, material, originalVersionCredit,
 		COLLECT(
 			CASE SIZE(writingEntities) WHEN 0
 				THEN null
@@ -75,7 +86,8 @@ const getShowQuery = () => `
 					name: material.name,
 					format: material.format,
 					writingCredits: writingCredits,
-					creditType: writerRel.creditType
+					creditType: writerRel.creditType,
+					originalVersionCredit: originalVersionCredit
 				}
 			END
 		) AS materials
@@ -83,7 +95,7 @@ const getShowQuery = () => `
 	WITH
 		person,
 		[
-			material IN materials WHERE material.creditType IS NULL |
+			material IN materials WHERE material.creditType IS NULL AND material.originalVersionCredit IS NULL |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -93,7 +105,7 @@ const getShowQuery = () => `
 			}
 		] AS materials,
 		[
-			material IN materials WHERE material.creditType = 'ORIGINAL_VERSION' |
+			material IN materials WHERE material.originalVersionCredit IS NOT NULL |
 			{
 				model: material.model,
 				uuid: material.uuid,
