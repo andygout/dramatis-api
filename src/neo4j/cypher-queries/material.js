@@ -291,8 +291,8 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (subsequentVersionMaterial)-[subsequentVersionMaterialWriterRel:WRITTEN_BY]->
 		(subsequentVersionMaterialWriter:Person)
 		WHERE
-			(subsequentVersionMaterialWriterRel.creditType IS NULL) OR
-			(subsequentVersionMaterialWriterRel.creditType <> 'ORIGINAL_VERSION')
+			subsequentVersionMaterialWriterRel.creditType IS NULL AND
+			NOT (material)-[:WRITTEN_BY]->(subsequentVersionMaterialWriter)
 
 	WITH
 		material,

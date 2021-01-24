@@ -78,7 +78,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				writingCredits: [
 					{
-						creditType: 'ORIGINAL_VERSION',
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
@@ -117,7 +116,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				writingCredits: [
 					{
-						creditType: 'ORIGINAL_VERSION',
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
@@ -179,9 +177,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Ghosts',
 				differentiator: '2',
 				format: 'play',
+				originalVersionMaterial: {
+					name: 'Ghosts',
+					differentiator: '1'
+				},
 				writingCredits: [
 					{
-						creditType: 'ORIGINAL_VERSION',
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'

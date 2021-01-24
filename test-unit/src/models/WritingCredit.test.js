@@ -68,17 +68,8 @@ describe('WritingCredit model', () => {
 
 			it('assigns value if included in props and value is an accepted credit type', () => {
 
-				const creditTypes = [
-					'ORIGINAL_VERSION',
-					'NON_SPECIFIC_SOURCE_MATERIAL'
-				];
-
-				creditTypes.forEach(creditType => {
-
-					const instance = createInstance({ name: '', creditType });
-					expect(instance.creditType).to.equal(creditType);
-
-				});
+				const instance = createInstance({ name: '', creditType: 'NON_SPECIFIC_SOURCE_MATERIAL' });
+				expect(instance.creditType).to.equal('NON_SPECIFIC_SOURCE_MATERIAL');
 
 			});
 
