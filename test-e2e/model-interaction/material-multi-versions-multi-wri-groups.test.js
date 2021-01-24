@@ -327,9 +327,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
-							name: 'Henrik Ibsen',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Henrik Ibsen'
 						}
 					]
 				}
@@ -383,9 +381,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
-							name: 'Henrik Ibsen',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Henrik Ibsen'
 						}
 					]
 				},
@@ -396,16 +392,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'person',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
-							name: 'Gerry Bamman',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Gerry Bamman'
 						},
 						{
 							model: 'person',
 							uuid: IRENE_B_BERMAN_PERSON_UUID,
-							name: 'Irene B Berman',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Irene B Berman'
 						}
 					]
 				},
@@ -416,9 +408,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'person',
 							uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-							name: 'Baltasar Kormákur',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Baltasar Kormákur'
 						}
 					]
 				}
@@ -450,9 +440,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						}
@@ -471,9 +459,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						}
@@ -503,9 +489,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -516,16 +500,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -536,9 +516,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -557,9 +535,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -570,16 +546,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -590,9 +562,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -611,9 +581,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -624,9 +592,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Frank McGuinness'
 								}
 							]
 						}
@@ -660,9 +626,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -673,16 +637,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -693,9 +653,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -714,9 +672,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -727,16 +683,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -747,9 +699,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -782,9 +732,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
-								name: 'Henrik Ibsen',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Henrik Ibsen'
 							}
 						]
 					},
@@ -795,16 +743,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								model: 'person',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
-								name: 'Gerry Bamman',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Gerry Bamman'
 							},
 							{
 								model: 'person',
 								uuid: IRENE_B_BERMAN_PERSON_UUID,
-								name: 'Irene B Berman',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Irene B Berman'
 							}
 						]
 					},
@@ -815,9 +759,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								model: 'person',
 								uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-								name: 'Baltasar Kormákur',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Baltasar Kormákur'
 							}
 						]
 					}
@@ -850,9 +792,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -863,16 +803,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -883,9 +819,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -905,9 +839,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -918,9 +850,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Frank McGuinness'
 								}
 							]
 						}
@@ -940,9 +870,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						}
@@ -980,9 +908,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						}
@@ -1001,9 +927,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -1014,16 +938,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -1034,9 +954,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}
@@ -1055,9 +973,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						}
@@ -1076,9 +992,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -1089,9 +1003,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Frank McGuinness'
 								}
 							]
 						}
@@ -1110,9 +1022,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Henrik Ibsen'
 								}
 							]
 						},
@@ -1123,16 +1033,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Gerry Bamman'
 								},
 								{
 									model: 'person',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Irene B Berman'
 								}
 							]
 						},
@@ -1143,9 +1049,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Baltasar Kormákur'
 								}
 							]
 						}

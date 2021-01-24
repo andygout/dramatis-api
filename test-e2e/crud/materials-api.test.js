@@ -621,9 +621,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
-								name: 'Henrik Ibsen',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Henrik Ibsen'
 							}
 						]
 					},
@@ -634,9 +632,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								uuid: DAVID_ELDRIDGE_PERSON_UUID,
-								name: 'David Eldridge',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'David Eldridge'
 							}
 						]
 					},
@@ -1100,9 +1096,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								uuid: ANTON_CHEKHOV_PERSON_UUID,
-								name: 'Anton Chekhov',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Anton Chekhov'
 							}
 						]
 					},
@@ -1113,9 +1107,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								uuid: BENEDICT_ANDREWS_PERSON_UUID,
-								name: 'Benedict Andrews',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Benedict Andrews'
 							}
 						]
 					},

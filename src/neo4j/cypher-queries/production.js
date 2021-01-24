@@ -200,7 +200,7 @@ const getShowQuery = () => `
 		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
 	WITH production, theatre, material, writingEntityRel.credit AS writingCreditName,
-		COLLECT(
+		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -211,7 +211,10 @@ const getShowQuery = () => `
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writingEntities
+		) | CASE writingEntity.model WHEN 'material'
+			THEN writingEntity
+			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+		END] AS writingEntities
 
 	WITH production, theatre, material,
 		COLLECT(

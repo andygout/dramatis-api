@@ -201,9 +201,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'person',
 							uuid: RONA_MUNRO_PERSON_UUID,
-							name: 'Rona Munro',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Rona Munro'
 						}
 					]
 				},
@@ -260,8 +258,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro',
-									format: null
+									name: 'Rona Munro'
 								}
 							]
 						},
@@ -323,9 +320,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'person',
 							uuid: STEVEN_BERKOFF_PERSON_UUID,
-							name: 'Steven Berkoff',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Steven Berkoff'
 						}
 					]
 				},
@@ -336,9 +331,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'person',
 							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-							name: 'William Shakespeare',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'William Shakespeare'
 						}
 					]
 				}
@@ -370,9 +363,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Rona Munro',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Rona Munro'
 								}
 							]
 						},
@@ -431,9 +422,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
-									name: 'Steven Berkoff',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Steven Berkoff'
 								}
 							]
 						},
@@ -444,9 +433,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'William Shakespeare',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'William Shakespeare'
 								}
 							]
 						}
@@ -465,8 +452,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro',
-									format: null
+									name: 'Rona Munro'
 								}
 							]
 						},
@@ -512,9 +498,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: null,
-									name: 'Steven Berkoff',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Steven Berkoff'
 								}
 							]
 						},
@@ -525,9 +509,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'William Shakespeare'
 								}
 							]
 						}
@@ -560,9 +542,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'person',
 								uuid: RONA_MUNRO_PERSON_UUID,
-								name: 'Rona Munro',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Rona Munro'
 							}
 						]
 					},
@@ -619,9 +599,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'person',
 								uuid: STEVEN_BERKOFF_PERSON_UUID,
-								name: 'Steven Berkoff',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'Steven Berkoff'
 							}
 						]
 					},
@@ -632,9 +610,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'person',
 								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-								name: 'William Shakespeare',
-								format: null,
-								sourceMaterialWritingCredits: []
+								name: 'William Shakespeare'
 							}
 						]
 					}
@@ -667,9 +643,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Rona Munro'
 								}
 							]
 						},
@@ -729,9 +703,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
-									name: 'Steven Berkoff',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Steven Berkoff'
 								}
 							]
 						},
@@ -742,9 +714,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'William Shakespeare'
 								}
 							]
 						}
@@ -782,9 +752,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'William Shakespeare'
 								}
 							]
 						}
@@ -803,9 +771,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
-									name: 'Steven Berkoff',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Steven Berkoff'
 								}
 							]
 						},
@@ -816,9 +782,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'William Shakespeare'
 								}
 							]
 						}
@@ -837,9 +801,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro',
-									format: null,
-									sourceMaterialWritingCredits: []
+									name: 'Rona Munro'
 								}
 							]
 						},
