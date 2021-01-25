@@ -1,4 +1,5 @@
 import { getShowQuery as getCharacterShowQuery } from './character';
+import { getShowQuery as getCompanyShowQuery } from './company';
 import {
 	getCreateQuery as getMaterialCreateQuery,
 	getEditQuery as getMaterialEditQuery,
@@ -43,6 +44,7 @@ const getUpdateQueries = {
 
 const getShowQueries = {
 	character: getCharacterShowQuery,
+	company: getCompanyShowQuery,
 	person: getPersonShowQuery,
 	material: getMaterialShowQuery,
 	production: getProductionShowQuery,

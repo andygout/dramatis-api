@@ -1,6 +1,7 @@
 import CastMember from './CastMember';
 import Character from './Character';
 import CharacterGroup from './CharacterGroup';
+import Company from './Company';
 import Material from './Material';
 import Person from './Person';
 import Production from './Production';
@@ -12,6 +13,7 @@ export {
 	CastMember,
 	Character,
 	CharacterGroup,
+	Company,
 	Material,
 	Person,
 	Production,
