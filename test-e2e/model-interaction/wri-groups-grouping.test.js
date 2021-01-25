@@ -81,16 +81,12 @@ describe('Nameless writer groups grouping', () => {
 						{
 							model: 'person',
 							uuid: PERSON_1_UUID,
-							name: 'Person #1',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Person #1'
 						},
 						{
 							model: 'person',
 							uuid: PERSON_3_UUID,
-							name: 'Person #3',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Person #3'
 						}
 					]
 				},
@@ -101,9 +97,7 @@ describe('Nameless writer groups grouping', () => {
 						{
 							model: 'person',
 							uuid: PERSON_2_UUID,
-							name: 'Person #2',
-							format: null,
-							sourceMaterialWritingCredits: []
+							name: 'Person #2'
 						}
 					]
 				}

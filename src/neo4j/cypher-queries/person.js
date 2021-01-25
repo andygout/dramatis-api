@@ -50,7 +50,7 @@ const getShowQuery = () => `
 		ORDER BY allWritingEntityRel.creditPosition, allWritingEntityRel.entityPosition
 
 	WITH person, writerRel, material, originalVersionCredit, allWritingEntityRel.credit AS writingCreditName,
-		COLLECT(
+		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -61,7 +61,10 @@ const getShowQuery = () => `
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writingEntities
+		) | CASE writingEntity.model WHEN 'material'
+			THEN writingEntity
+			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+		END] AS writingEntities
 
 	WITH person, writerRel, material, originalVersionCredit,
 		COLLECT(
@@ -150,7 +153,7 @@ const getShowQuery = () => `
 		sourcingMaterialWritingEntityRel,
 		sourcingMaterialWritingEntity,
 		sourcingMaterialWritingEntityRel.credit AS sourcingMaterialWritingCreditName,
-		COLLECT(
+		[sourcingMaterialWritingEntity IN COLLECT(
 			CASE sourcingMaterialWritingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -160,7 +163,14 @@ const getShowQuery = () => `
 					format: sourcingMaterialWritingEntity.format
 				}
 			END
-		) AS sourcingMaterialWritingEntities
+		) | CASE sourcingMaterialWritingEntity.model WHEN 'material'
+			THEN sourcingMaterialWritingEntity
+			ELSE {
+				model: sourcingMaterialWritingEntity.model,
+				uuid: sourcingMaterialWritingEntity.uuid,
+				name: sourcingMaterialWritingEntity.name
+			}
+		END] AS sourcingMaterialWritingEntities
 
 	WITH person, materials, subsequentVersionMaterials, sourcingMaterialsFromNonSpecificMaterials, sourcingMaterial,
 		COLLECT(

@@ -365,7 +365,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterials,
 		sourcingMaterial,
 		sourcingMaterialWritingEntityRel.credit AS sourcingMaterialWritingCreditName,
-		COLLECT(
+		[sourcingMaterialWritingEntity IN COLLECT(
 			CASE sourcingMaterialWritingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -378,7 +378,14 @@ const getShowQuery = () => `
 					format: sourcingMaterialWritingEntity.format
 				}
 			END
-		) AS sourcingMaterialWritingEntities
+		) | CASE sourcingMaterialWritingEntity.model WHEN 'material'
+			THEN sourcingMaterialWritingEntity
+			ELSE {
+				model: sourcingMaterialWritingEntity.model,
+				uuid: sourcingMaterialWritingEntity.uuid,
+				name: sourcingMaterialWritingEntity.name
+			}
+		END] AS sourcingMaterialWritingEntities
 
 	WITH material, originalVersionMaterial, subsequentVersionMaterials, sourcingMaterial,
 		COLLECT(
@@ -462,7 +469,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterials,
 		sourcingMaterials,
 		writingEntityRel.credit AS writingCreditName,
-		COLLECT(
+		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -473,7 +480,10 @@ const getShowQuery = () => `
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writingEntities
+		) | CASE writingEntity.model WHEN 'material'
+			THEN writingEntity
+			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+		END] AS writingEntities
 
 	WITH material, originalVersionMaterial, subsequentVersionMaterials, sourcingMaterials,
 		COLLECT(
@@ -678,7 +688,7 @@ const getListQuery = () => `
 		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
 
 	WITH material, writingEntityRel.credit AS writingCreditName,
-		COLLECT(
+		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -689,7 +699,10 @@ const getListQuery = () => `
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) AS writingEntities
+		) | CASE writingEntity.model WHEN 'material'
+			THEN writingEntity
+			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+		END] AS writingEntities
 
 	WITH material, writingCreditName, writingEntities
 		ORDER BY material.name, material.differentiator
