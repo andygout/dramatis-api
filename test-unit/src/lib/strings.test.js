@@ -44,7 +44,16 @@ describe('Strings module', () => {
 
 			it('returns specific plural noun', () => {
 
-				expect(pluralise('person')).to.equal('people');
+				const nouns = [
+					{ singular: 'person', plural: 'people' },
+					{ singular: 'company', plural: 'companies' }
+				];
+
+				nouns.forEach(noun => {
+
+					expect(pluralise(noun.singular)).to.equal(noun.plural);
+
+				});
 
 			});
 

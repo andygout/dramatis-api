@@ -4,6 +4,7 @@ import { Router } from 'express';
 
 import {
 	characters as charactersController,
+	companies as companiesController,
 	materials as materialsController,
 	people as peopleController,
 	productions as productionsController,
@@ -19,6 +20,14 @@ router.put('/characters/:uuid', charactersController.updateRoute);
 router.delete('/characters/:uuid', charactersController.deleteRoute);
 router.get('/characters/:uuid', charactersController.showRoute);
 router.get('/characters', charactersController.listRoute);
+
+router.get('/companies/new', companiesController.newRoute);
+router.post('/companies', companiesController.createRoute);
+router.get('/companies/:uuid/edit', companiesController.editRoute);
+router.put('/companies/:uuid', companiesController.updateRoute);
+router.delete('/companies/:uuid', companiesController.deleteRoute);
+router.get('/companies/:uuid', companiesController.showRoute);
+router.get('/companies', companiesController.listRoute);
 
 router.get('/materials/new', materialsController.newRoute);
 router.post('/materials', materialsController.createRoute);
