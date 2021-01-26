@@ -1,0 +1,129 @@
+{
+	"name": "The Dark Philosophers",
+	"format": "play",
+	"writingCredits": [
+		{
+			"name": "adapted by",
+			"writingEntities": [
+				{
+					"name": "Carl Grose"
+				},
+				{
+					"model": "company",
+					"name": "Told by an Idiot"
+				}
+			]
+		},
+		{
+			"name": "based on the life and stories of",
+			"creditType": "NON_SPECIFIC_SOURCE_MATERIAL",
+			"writingEntities": [
+				{
+					"name": "Gwyn Thomas"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Gwyn Thomas"
+				},
+				{
+					"name": "Young Gwyn"
+				},
+				{
+					"name": "Gwyn's father"
+				}
+			]
+		},
+		{
+			"name": "The People of the Terraces",
+			"characters": [
+				{
+					"name": "Lewis"
+				},
+				{
+					"name": "No Doubt"
+				},
+				{
+					"name": "Ben",
+					"differentiator": "The Dark Philosophers"
+				},
+				{
+					"name": "The Macnaffy element"
+				},
+				{
+					"name": "Mr Wilson"
+				},
+				{
+					"name": "Mrs Wilson"
+				},
+				{
+					"name": "Hannah"
+				},
+				{
+					"name": "Danny"
+				},
+				{
+					"name": "Naboth"
+				},
+				{
+					"name": "Eli"
+				},
+				{
+					"name": "Colenso"
+				},
+				{
+					"name": "Emrys"
+				},
+				{
+					"name": "Simeon"
+				},
+				{
+					"name": "Clarisse"
+				},
+				{
+					"name": "Vera"
+				},
+				{
+					"name": "Bess"
+				},
+				{
+					"name": "Elsa"
+				},
+				{
+					"name": "Eleanor",
+					"differentiator": "The Dark Philosophers"
+				},
+				{
+					"name": "Oscar"
+				},
+				{
+					"name": "Meg"
+				}
+			]
+		},
+		{
+			"name": "Others",
+			"characters": [
+				{
+					"name": "TV studio runner"
+				},
+				{
+					"name": "Michael Parkinson"
+				},
+				{
+					"name": "Billy Connelly"
+				},
+				{
+					"name": "Dolly Parton"
+				},
+				{
+					"name": "Oxford students"
+				}
+			]
+		}
+	]
+}

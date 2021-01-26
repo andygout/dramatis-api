@@ -1,0 +1,35 @@
+{
+	"name": "The Dark Philosophers",
+	"material": {
+		"name": "The Dark Philosophers"
+	},
+	"theatre": {
+		"name": "The Riverfront"
+	},
+	"cast": [
+		{
+			"name": "David Charles"
+		},
+		{
+			"name": "Nia Davies"
+		},
+		{
+			"name": "Nia Gwynne"
+		},
+		{
+			"name": "Ryan Hacker"
+		},
+		{
+			"name": "Daniel Hawksford"
+		},
+		{
+			"name": "Bettrys Jones"
+		},
+		{
+			"name": "Matthew Owen"
+		},
+		{
+			"name": "Glyn Pritchard"
+		}
+	]
+}

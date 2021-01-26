@@ -127,7 +127,10 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				model: 'company',
 				uuid: COMPANY_UUID,
 				name: 'Royal Shakespeare Company',
-				differentiator: null
+				differentiator: null,
+				materials: [],
+				subsequentVersionMaterials: [],
+				sourcingMaterials: []
 			};
 
 			expect(response).to.have.status(200);

@@ -1,0 +1,86 @@
+{
+	"name": "The Girl on the Train",
+	"material": {
+		"name": "The Girl on the Train",
+		"differentiator": "3"
+	},
+	"theatre": {
+		"name": "Duke of York's Theatre"
+	},
+	"cast": [
+		{
+			"name": "Samantha Womack",
+			"roles": [
+				{
+					"name": "Rachel Watson"
+				}
+			]
+		},
+		{
+			"name": "Alex Ferns",
+			"roles": [
+				{
+					"name": "Detective Inspector Gaskill",
+					"characterName": "D.I. Gaskill"
+				}
+			]
+		},
+		{
+			"name": "Marc Elliott",
+			"roles": [
+				{
+					"name": "Dr Kamal Abdic",
+					"characterName": "Kamal Abdic"
+				}
+			]
+		},
+		{
+			"name": "Philip McGinley",
+			"roles": [
+				{
+					"name": "Scott Hipwell"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Oswald",
+			"roles": [
+				{
+					"name": "Megan Hipwell"
+				}
+			]
+		},
+		{
+			"name": "Adam Jackson-Smith",
+			"roles": [
+				{
+					"name": "Tom Watson"
+				}
+			]
+		},
+		{
+			"name": "Lowenna Melrose",
+			"roles": [
+				{
+					"name": "Anna Watson"
+				}
+			]
+		},
+		{
+			"name": "Matt Concannon",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Phillipa Flynn",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		}
+	]
+}

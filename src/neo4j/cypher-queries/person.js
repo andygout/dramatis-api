@@ -6,7 +6,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(:Material)-[originalVersionCredit:WRITTEN_BY]->(person)
 
 	OPTIONAL MATCH (material)-[allWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Material
+		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
@@ -32,7 +32,11 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: sourceMaterialWriter.uuid, name: sourceMaterialWriter.name }
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+					uuid: sourceMaterialWriter.uuid,
+					name: sourceMaterialWriter.name
+				}
 			END
 		) AS sourceMaterialWriters
 
@@ -132,7 +136,10 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (sourcingMaterial)-[sourcingMaterialWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->
 		(sourcingMaterialWritingEntity)
-		WHERE sourcingMaterialWritingEntity:Person OR sourcingMaterialWritingEntity:Material
+		WHERE
+			sourcingMaterialWritingEntity:Person OR
+			sourcingMaterialWritingEntity:Company OR
+			sourcingMaterialWritingEntity:Material
 
 	WITH
 		person,

@@ -1,0 +1,60 @@
+{
+	"name": "The Girl on the Train",
+	"differentiator": "3",
+	"format": "play",
+	"writingCredits": [
+		{
+			"name": "based on",
+			"writingEntities": [
+				{
+					"model": "material",
+					"name": "The Girl on the Train",
+					"differentiator": "1"
+				},
+				{
+					"model": "material",
+					"name": "The Girl on the Train",
+					"differentiator": "2"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"writingEntities": [
+				{
+					"name": "Rachel Wagstaff"
+				},
+				{
+					"name": "Duncan Abel"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Rachel Watson"
+				},
+				{
+					"name": "D.I. Gaskill"
+				},
+				{
+					"name": "Anna Watson"
+				},
+				{
+					"name": "Megan Hipwell"
+				},
+				{
+					"name": "Tom Watson"
+				},
+				{
+					"name": "Scott Hipwell"
+				},
+				{
+					"name": "Kamal Abdic"
+				}
+			]
+		}
+	]
+}

@@ -10,17 +10,20 @@ describe('Materials with source material', () => {
 
 	chai.use(chaiHttp);
 
-	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = '3';
-	const WILLIAM_SHAKESPEARE_PERSON_UUID = '5';
-	const THE_INDIAN_BOY_MATERIAL_UUID = '11';
-	const RONA_MUNRO_PERSON_UUID = '13';
-	const THE_INDIAN_BOY_CHARACTER_UUID = '15';
-	const SHAKESPEARES_VILLAINS_MATERIAL_UUID = '21';
-	const STEVEN_BERKOFF_PERSON_UUID = '23';
-	const IAGO_CHARACTER_UUID = '25';
-	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '26';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '28';
-	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '29';
+	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = '4';
+	const WILLIAM_SHAKESPEARE_PERSON_UUID = '6';
+	const THE_KINGS_MEN_COMPANY_UUID = '7';
+	const THE_INDIAN_BOY_MATERIAL_UUID = '14';
+	const RONA_MUNRO_PERSON_UUID = '16';
+	const ROYAL_SHAKESPEARE_COMPANY_UUID = '17';
+	const THE_INDIAN_BOY_CHARACTER_UUID = '19';
+	const SHAKESPEARES_VILLAINS_MATERIAL_UUID = '27';
+	const STEVEN_BERKOFF_PERSON_UUID = '29';
+	const EAST_PRODUCTIONS_COMPANY_UUID = '30';
+	const IAGO_CHARACTER_UUID = '33';
+	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '34';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '36';
+	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '37';
 
 	let theIndianBoyMaterial;
 	let aMidsummerNightsDreamMaterial;
@@ -28,6 +31,9 @@ describe('Materials with source material', () => {
 	let ronaMunroPerson;
 	let williamShakespearePerson;
 	let stevenBerkoffPerson;
+	let theKingsMenCompany;
+	let royalShakespeareCompany;
+	let eastProductionsCompany;
 	let theIndianBoyRoyalShakespeareTheatreProduction;
 	let shakespearesVillainsTheatreRoyalHaymarketProduction;
 	let theIndianBoyCharacter;
@@ -53,6 +59,11 @@ describe('Materials with source material', () => {
 						writingEntities: [
 							{
 								name: 'William Shakespeare'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'The King\'s Men'
 							}
 						]
 					}
@@ -69,6 +80,11 @@ describe('Materials with source material', () => {
 						writingEntities: [
 							{
 								name: 'Rona Munro'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Royal Shakespeare Company'
 							}
 						]
 					},
@@ -103,6 +119,11 @@ describe('Materials with source material', () => {
 						writingEntities: [
 							{
 								name: 'Steven Berkoff'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'East Productions'
 							}
 						]
 					},
@@ -112,6 +133,11 @@ describe('Materials with source material', () => {
 						writingEntities: [
 							{
 								name: 'William Shakespeare'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'The King\'s Men'
 							}
 						]
 					}
@@ -169,6 +195,15 @@ describe('Materials with source material', () => {
 		stevenBerkoffPerson = await chai.request(app)
 			.get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
 
+		theKingsMenCompany = await chai.request(app)
+			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
+
+		royalShakespeareCompany = await chai.request(app)
+			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
+
+		eastProductionsCompany = await chai.request(app)
+			.get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
+
 		theIndianBoyRoyalShakespeareTheatreProduction = await chai.request(app)
 			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
 
@@ -202,6 +237,11 @@ describe('Materials with source material', () => {
 							model: 'person',
 							uuid: RONA_MUNRO_PERSON_UUID,
 							name: 'Rona Munro'
+						},
+						{
+							model: 'company',
+							uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+							name: 'Royal Shakespeare Company'
 						}
 					]
 				},
@@ -223,6 +263,11 @@ describe('Materials with source material', () => {
 											model: 'person',
 											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 											name: 'William Shakespeare'
+										},
+										{
+											model: 'company',
+											uuid: THE_KINGS_MEN_COMPANY_UUID,
+											name: 'The King\'s Men'
 										}
 									]
 								}
@@ -259,6 +304,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
 								}
 							]
 						},
@@ -321,6 +371,11 @@ describe('Materials with source material', () => {
 							model: 'person',
 							uuid: STEVEN_BERKOFF_PERSON_UUID,
 							name: 'Steven Berkoff'
+						},
+						{
+							model: 'company',
+							uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+							name: 'East Productions'
 						}
 					]
 				},
@@ -332,6 +387,11 @@ describe('Materials with source material', () => {
 							model: 'person',
 							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 							name: 'William Shakespeare'
+						},
+						{
+							model: 'company',
+							uuid: THE_KINGS_MEN_COMPANY_UUID,
+							name: 'The King\'s Men'
 						}
 					]
 				}
@@ -364,6 +424,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
 								}
 							]
 						},
@@ -385,6 +450,11 @@ describe('Materials with source material', () => {
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
 												}
 											]
 										}
@@ -423,6 +493,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
 									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
 								}
 							]
 						},
@@ -434,6 +509,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: null,
 									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
@@ -453,6 +533,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
 								}
 							]
 						},
@@ -499,6 +584,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
 								}
 							]
 						},
@@ -510,6 +600,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
@@ -518,6 +613,221 @@ describe('Materials with source material', () => {
 			];
 
 			const { materials } = stevenBerkoffPerson.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
+	describe('The King\'s Men (company)', () => {
+
+		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
+
+			const expectedSourcingMaterials = [
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'inspired by',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterials } = theKingsMenCompany.body;
+
+			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+	});
+
+	describe('Royal Shakespeare Company (company)', () => {
+
+		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'inspired by',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = royalShakespeareCompany.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
+	describe('East Productions (company)', () => {
+
+		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on works by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = eastProductionsCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
 
@@ -543,6 +853,11 @@ describe('Materials with source material', () => {
 								model: 'person',
 								uuid: RONA_MUNRO_PERSON_UUID,
 								name: 'Rona Munro'
+							},
+							{
+								model: 'company',
+								uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+								name: 'Royal Shakespeare Company'
 							}
 						]
 					},
@@ -564,6 +879,11 @@ describe('Materials with source material', () => {
 												model: 'person',
 												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 												name: 'William Shakespeare'
+											},
+											{
+												model: 'company',
+												uuid: THE_KINGS_MEN_COMPANY_UUID,
+												name: 'The King\'s Men'
 											}
 										]
 									}
@@ -600,6 +920,11 @@ describe('Materials with source material', () => {
 								model: 'person',
 								uuid: STEVEN_BERKOFF_PERSON_UUID,
 								name: 'Steven Berkoff'
+							},
+							{
+								model: 'company',
+								uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+								name: 'East Productions'
 							}
 						]
 					},
@@ -611,6 +936,11 @@ describe('Materials with source material', () => {
 								model: 'person',
 								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 								name: 'William Shakespeare'
+							},
+							{
+								model: 'company',
+								uuid: THE_KINGS_MEN_COMPANY_UUID,
+								name: 'The King\'s Men'
 							}
 						]
 					}
@@ -644,6 +974,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
 								}
 							]
 						},
@@ -665,6 +1000,11 @@ describe('Materials with source material', () => {
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
 												}
 											]
 										}
@@ -704,6 +1044,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
 									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
 								}
 							]
 						},
@@ -715,6 +1060,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
@@ -753,6 +1103,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
@@ -772,6 +1127,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
 									name: 'Steven Berkoff'
+								},
+								{
+									model: 'company',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
 								}
 							]
 						},
@@ -783,6 +1143,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
@@ -802,6 +1167,11 @@ describe('Materials with source material', () => {
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
 								}
 							]
 						},
@@ -823,6 +1193,11 @@ describe('Materials with source material', () => {
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
 												}
 											]
 										}

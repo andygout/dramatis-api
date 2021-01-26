@@ -13,7 +13,8 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(:Person)
+			OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(writingEntity)
+				WHERE writingEntity:Person OR writingEntity:Company
 
 			DELETE writerRel
 
@@ -75,6 +76,35 @@ const getCreateUpdateQuery = action => {
 
 				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'person' THEN [1] ELSE [] END |
 					MERGE (entity:Person {
+						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
+						name: writingEntityParam.name
+					})
+						ON CREATE SET entity.differentiator = writingEntityParam.differentiator
+
+					CREATE (material)-
+						[:WRITTEN_BY {
+							creditPosition: writingCredit.position,
+							entityPosition: writingEntityParam.position,
+							credit: writingCredit.name,
+							creditType: writingCredit.creditType
+						}]->(entity)
+				)
+
+			WITH DISTINCT material, writingCredit
+
+			UNWIND
+				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'company']) WHEN 0
+					THEN [null]
+					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'company']
+				END AS writingEntityParam
+
+				OPTIONAL MATCH (existingWriter:Company { name: writingEntityParam.name })
+					WHERE
+						(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
+						(writingEntityParam.differentiator = existingWriter.differentiator)
+
+				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'company' THEN [1] ELSE [] END |
+					MERGE (entity:Company {
 						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 						name: writingEntityParam.name
 					})
@@ -162,7 +192,7 @@ const getEditQuery = () => `
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
 	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Material
+		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
 	WITH material, originalVersionMaterial, writingEntityRel, writingEntity
 		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
@@ -242,7 +272,8 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
 	OPTIONAL MATCH (originalVersionMaterial)-[originalVersionMaterialWriterRel:WRITTEN_BY]->
-		(originalVersionMaterialWriter:Person)
+		(originalVersionMaterialWriter)
+		WHERE originalVersionMaterialWriter:Person OR originalVersionMaterialWriter:Company
 
 	WITH material, originalVersionMaterial, originalVersionMaterialWriterRel, originalVersionMaterialWriter
 		ORDER BY originalVersionMaterialWriterRel.creditPosition, originalVersionMaterialWriterRel.entityPosition
@@ -255,7 +286,7 @@ const getShowQuery = () => `
 			CASE originalVersionMaterialWriter WHEN NULL
 				THEN null
 				ELSE {
-					model: 'person',
+					model: TOLOWER(HEAD(LABELS(originalVersionMaterialWriter))),
 					uuid: originalVersionMaterialWriter.uuid,
 					name: originalVersionMaterialWriter.name
 				}
@@ -289,8 +320,9 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
 
 	OPTIONAL MATCH (subsequentVersionMaterial)-[subsequentVersionMaterialWriterRel:WRITTEN_BY]->
-		(subsequentVersionMaterialWriter:Person)
+		(subsequentVersionMaterialWriter)
 		WHERE
+			(subsequentVersionMaterialWriter:Person OR subsequentVersionMaterialWriter:Company) AND
 			subsequentVersionMaterialWriterRel.creditType IS NULL AND
 			NOT (material)-[:WRITTEN_BY]->(subsequentVersionMaterialWriter)
 
@@ -311,7 +343,7 @@ const getShowQuery = () => `
 			CASE subsequentVersionMaterialWriter WHEN NULL
 				THEN null
 				ELSE {
-					model: 'person',
+					model: TOLOWER(HEAD(LABELS(subsequentVersionMaterialWriter))),
 					uuid: subsequentVersionMaterialWriter.uuid,
 					name: subsequentVersionMaterialWriter.name
 				}
@@ -348,7 +380,10 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (sourcingMaterial)-[sourcingMaterialWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->
 		(sourcingMaterialWritingEntity)
-		WHERE sourcingMaterialWritingEntity:Person OR sourcingMaterialWritingEntity:Material
+		WHERE
+			sourcingMaterialWritingEntity:Person OR
+			sourcingMaterialWritingEntity:Company OR
+			sourcingMaterialWritingEntity:Material
 
 	WITH
 		material,
@@ -414,7 +449,7 @@ const getShowQuery = () => `
 		) AS sourcingMaterials
 
 	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Material
+		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
@@ -440,7 +475,11 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: sourceMaterialWriter.uuid, name: sourceMaterialWriter.name }
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+					uuid: sourceMaterialWriter.uuid,
+					name: sourceMaterialWriter.name
+				}
 			END
 		) AS sourceMaterialWriters
 
@@ -659,7 +698,7 @@ const getListQuery = () => `
 	MATCH (material:Material)
 
 	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Material
+		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
@@ -670,7 +709,11 @@ const getListQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: sourceMaterialWriter.uuid, name: sourceMaterialWriter.name }
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+					uuid: sourceMaterialWriter.uuid,
+					name: sourceMaterialWriter.name
+				}
 			END
 		) AS sourceMaterialWriters
 
