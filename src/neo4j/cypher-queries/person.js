@@ -150,8 +150,6 @@ const getShowQuery = () => `
 		subsequentVersionMaterials,
 		sourcingMaterialsFromNonSpecificMaterials,
 		sourcingMaterial,
-		sourcingMaterialWritingEntityRel,
-		sourcingMaterialWritingEntity,
 		sourcingMaterialWritingEntityRel.credit AS sourcingMaterialWritingCreditName,
 		[sourcingMaterialWritingEntity IN COLLECT(
 			CASE sourcingMaterialWritingEntity WHEN NULL
