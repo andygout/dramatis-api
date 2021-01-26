@@ -19,7 +19,7 @@ const getShowQuery = () => `
 		writingEntity,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
 		person,
