@@ -170,7 +170,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
 	WITH production, theatre, material, writingEntityRel, writingEntity, sourceMaterialWriterRel, sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
 		production,

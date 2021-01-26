@@ -427,7 +427,7 @@ const getShowQuery = () => `
 		writingEntity,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
 		material,
@@ -664,7 +664,7 @@ const getListQuery = () => `
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
 	WITH material, writingEntityRel, writingEntity, sourceMaterialWriterRel, sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriter.entityPosition
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH material, writingEntityRel, writingEntity, sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
