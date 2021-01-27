@@ -270,14 +270,14 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateWritingEntityIndices(
 					[
-						{ name: 'Foo', differentiator: '1', qualifier: '' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'material' },
-						{ name: '', differentiator: '1', qualifier: '' },
-						{ name: 'Baz', differentiator: '1', qualifier: '' },
-						{ name: 'Foo', differentiator: '1', qualifier: '' },
-						{ name: 'Bar', differentiator: '1', qualifier: 'material' },
-						{ name: '', differentiator: '1', qualifier: '' },
-						{ name: 'Qux', differentiator: '1', qualifier: '' }
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: '', differentiator: '1', model: '' },
+						{ name: 'Baz', differentiator: '1', model: '' },
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: '', differentiator: '1', model: '' },
+						{ name: 'Qux', differentiator: '1', model: '' }
 					]
 				);
 
