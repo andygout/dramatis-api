@@ -1,6 +1,6 @@
 import { getDuplicateWritingEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Person, Material } from '.';
+import { Company, Person, Material } from '.';
 import { CREDIT_TYPES } from '../utils/constants';
 
 export default class WritingCredit extends Base {
@@ -16,9 +16,14 @@ export default class WritingCredit extends Base {
 
 		this.writingEntities = writingEntities
 			? writingEntities.map(writingEntity => {
-				return writingEntity.model === 'material'
-					? new Material({ ...writingEntity, isAssociation: true })
-					: new Person(writingEntity);
+				switch (writingEntity.model) {
+					case 'company':
+						return new Company(writingEntity);
+					case 'material':
+						return new Material({ ...writingEntity, isAssociation: true });
+					default:
+						return new Person(writingEntity);
+				}
 			})
 			: [];
 

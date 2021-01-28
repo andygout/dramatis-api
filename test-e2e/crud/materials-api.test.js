@@ -336,21 +336,23 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const MATERIAL_UUID = '8';
-		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID = '9';
-		const HENRIK_IBSEN_PERSON_UUID = '10';
-		const DAVID_ELDRIDGE_PERSON_UUID = '11';
-		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID = '12';
-		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '13';
-		const GUNHILD_BORKMAN_CHARACTER_UUID = '14';
-		const ERHART_BORKMAN_CHARACTER_UUID = '15';
-		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '23';
-		const ANTON_CHEKHOV_PERSON_UUID = '24';
-		const BENEDICT_ANDREWS_PERSON_UUID = '25';
-		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '26';
-		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '27';
-		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '28';
-		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '29';
+		const MATERIAL_UUID = '9';
+		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID = '10';
+		const HENRIK_IBSEN_PERSON_UUID = '11';
+		const IBSEN_THEATRE_COMPANY_UUID = '12';
+		const DAVID_ELDRIDGE_PERSON_UUID = '13';
+		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID = '14';
+		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '15';
+		const GUNHILD_BORKMAN_CHARACTER_UUID = '16';
+		const ERHART_BORKMAN_CHARACTER_UUID = '17';
+		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '26';
+		const ANTON_CHEKHOV_PERSON_UUID = '27';
+		const CHEKHOV_THEATRE_COMPANY_UUID = '28';
+		const BENEDICT_ANDREWS_PERSON_UUID = '29';
+		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '30';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '31';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '32';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '33';
 
 		before(async () => {
 
@@ -388,6 +390,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							writingEntities: [
 								{
 									name: 'Henrik Ibsen',
+									differentiator: '1'
+								},
+								// Contrivance for purposes of test.
+								{
+									model: 'company',
+									name: 'Ibsen Theatre Company',
 									differentiator: '1'
 								}
 							]
@@ -463,6 +471,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								name: 'Henrik Ibsen',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
@@ -622,6 +636,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
+							},
+							{
+								model: 'company',
+								uuid: IBSEN_THEATRE_COMPANY_UUID,
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
@@ -714,6 +733,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								name: 'Henrik Ibsen',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
@@ -864,6 +889,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								{
 									name: 'Anton Chekhov',
 									differentiator: '1'
+								},
+								// Contrivance for purposes of test.
+								{
+									model: 'company',
+									name: 'Chekhov Theatre Company',
+									differentiator: '1'
 								}
 							]
 						},
@@ -938,6 +969,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							{
 								model: 'person',
 								name: 'Anton Chekhov',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'company',
+								name: 'Chekhov Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
@@ -1097,6 +1134,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								model: 'person',
 								uuid: ANTON_CHEKHOV_PERSON_UUID,
 								name: 'Anton Chekhov'
+							},
+							{
+								model: 'company',
+								uuid: CHEKHOV_THEATRE_COMPANY_UUID,
+								name: 'Chekhov Theatre Company'
 							}
 						]
 					},

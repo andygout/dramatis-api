@@ -10,23 +10,27 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	chai.use(chaiHttp);
 
-	const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = '4';
-	const HENRIK_IBSEN_PERSON_UUID = '6';
-	const PEER_GYNT_CHARACTER_UUID = '7';
-	const PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID = '13';
-	const FRANK_MCGUINNESS_PERSON_UUID = '16';
-	const PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID = '25';
-	const GERRY_BAMMAN_PERSON_UUID = '28';
-	const IRENE_B_BERMAN_PERSON_UUID = '29';
-	const BALTASAR_KORMÁKUR_PERSON_UUID = '30';
-	const GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID = '35';
-	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = '44';
-	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = '50';
+	const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = '5';
+	const HENRIK_IBSEN_PERSON_UUID = '7';
+	const IBSEN_THEATRE_COMPANY_UUID = '8';
+	const PEER_GYNT_CHARACTER_UUID = '9';
+	const PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID = '16';
+	const FRANK_MCGUINNESS_PERSON_UUID = '20';
+	const PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID = '31';
+	const GERRY_BAMMAN_PERSON_UUID = '35';
+	const BAMMAN_THEATRE_COMPANY_UUID = '36';
+	const IRENE_B_BERMAN_PERSON_UUID = '37';
+	const BALTASAR_KORMÁKUR_PERSON_UUID = '38';
+	const GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID = '44';
+	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = '56';
+	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = '64';
 
 	let peerGyntOriginalMaterial;
 	let peerGyntSubsequentVersion2Material;
 	let henrikIbsenPerson;
 	let gerryBammanPerson;
+	let ibsenTheatreCompany;
+	let bammanTheatreCompany;
 	let peerGyntCharacter;
 	let peerGyntBarbicanProduction;
 
@@ -51,6 +55,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					}
@@ -81,6 +90,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
@@ -119,6 +133,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
@@ -127,6 +146,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Gerry Bamman'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Bamman Theatre Company'
 							},
 							{
 								name: 'Irene B Berman'
@@ -164,6 +188,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					}
@@ -186,6 +215,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Henrik Ibsen'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
@@ -194,6 +228,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						writingEntities: [
 							{
 								name: 'Gerry Bamman'
+							},
+							// Contrivance for purposes of test.
+							{
+								model: 'company',
+								name: 'Bamman Theatre Company'
 							},
 							{
 								name: 'Irene B Berman'
@@ -236,6 +275,12 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 		gerryBammanPerson = await chai.request(app)
 			.get(`/people/${GERRY_BAMMAN_PERSON_UUID}`);
 
+		ibsenTheatreCompany = await chai.request(app)
+			.get(`/companies/${IBSEN_THEATRE_COMPANY_UUID}`);
+
+		bammanTheatreCompany = await chai.request(app)
+			.get(`/companies/${BAMMAN_THEATRE_COMPANY_UUID}`);
+
 		peerGyntCharacter = await chai.request(app)
 			.get(`/characters/${PEER_GYNT_CHARACTER_UUID}`);
 
@@ -269,6 +314,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -328,6 +378,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen'
+						},
+						{
+							model: 'company',
+							uuid: IBSEN_THEATRE_COMPANY_UUID,
+							name: 'Ibsen Theatre Company'
 						}
 					]
 				}
@@ -359,6 +414,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
+							},
+							{
+								model: 'company',
+								uuid: IBSEN_THEATRE_COMPANY_UUID,
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					}
@@ -382,6 +442,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen'
+						},
+						{
+							model: 'company',
+							uuid: IBSEN_THEATRE_COMPANY_UUID,
+							name: 'Ibsen Theatre Company'
 						}
 					]
 				},
@@ -393,6 +458,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							model: 'person',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
 							name: 'Gerry Bamman'
+						},
+						{
+							model: 'company',
+							uuid: BAMMAN_THEATRE_COMPANY_UUID,
+							name: 'Bamman Theatre Company'
 						},
 						{
 							model: 'person',
@@ -441,6 +511,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}
@@ -460,6 +535,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}
@@ -490,6 +570,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -501,6 +586,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -536,6 +626,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -547,6 +642,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -582,6 +682,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -627,6 +732,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -638,6 +748,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -673,6 +788,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -684,6 +804,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: null,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -715,6 +840,354 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	});
 
+	describe('Ibsen Theatre Company (company)', () => {
+
+		it('includes materials they have written (in which their uuid is nullified)', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Ghosts',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = ibsenTheatreCompany.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+		it('includes subsequent versions of materials they originally wrote (in which their uuid is nullified), with corresponding writers', () => {
+
+			const expectedSubsequentVersionMaterials = [
+				{
+					model: 'material',
+					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Ghosts',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'translated by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'person',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'adapted by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'translated by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'person',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'adapted by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'version by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { subsequentVersionMaterials } = ibsenTheatreCompany.body;
+
+			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+	});
+
+	describe('Bamman Theatre Company (company)', () => {
+
+		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Ghosts',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'translated by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'person',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'adapted by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'translated by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'person',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'adapted by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = bammanTheatreCompany.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
 	describe('Peer Gynt at Barbican (production)', () => {
 
 		it('includes in its material data the writers of the material', () => {
@@ -733,6 +1206,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
+							},
+							{
+								model: 'company',
+								uuid: IBSEN_THEATRE_COMPANY_UUID,
+								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
@@ -744,6 +1222,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								model: 'person',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
 								name: 'Gerry Bamman'
+							},
+							{
+								model: 'company',
+								uuid: BAMMAN_THEATRE_COMPANY_UUID,
+								name: 'Bamman Theatre Company'
 							},
 							{
 								model: 'person',
@@ -793,6 +1276,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -804,6 +1292,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -840,6 +1333,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -871,6 +1369,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}
@@ -909,6 +1412,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}
@@ -928,6 +1436,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -939,6 +1452,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',
@@ -974,6 +1492,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}
@@ -993,6 +1516,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -1023,6 +1551,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
@@ -1034,6 +1567,11 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
 								},
 								{
 									model: 'person',

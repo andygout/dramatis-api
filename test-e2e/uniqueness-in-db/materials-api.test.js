@@ -645,6 +645,154 @@ describe('Uniqueness in database: Materials API', () => {
 
 	});
 
+	describe('Material writer (company) uniqueness in database', () => {
+
+		const UNTITLED_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedCompanyGateTheatreCompany1 = {
+			model: 'company',
+			name: 'Gate Theatre Company',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedCompanyGateTheatreCompany2 = {
+			model: 'company',
+			name: 'Gate Theatre Company',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Material',
+				uuid: UNTITLED_MATERIAL_UUID,
+				name: 'Untitled'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates material and creates writer (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
+				.send({
+					name: 'Untitled',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: 'Gate Theatre Company'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+		});
+
+		it('updates material and creates writer (company) that has same name as existing writer but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
+				.send({
+					name: 'Untitled',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: 'Gate Theatre Company',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing writer (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
+				.send({
+					name: 'Untitled',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: 'Gate Theatre Company'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing writer (company) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
+				.send({
+					name: 'Untitled',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: 'Gate Theatre Company',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+	});
+
 	describe('Material writer (source material) uniqueness in database', () => {
 
 		const THE_INDIAN_BOY_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';

@@ -431,7 +431,7 @@ describe('Material instance', () => {
 
 		});
 
-		context('writer name value exceeds maximum limit', () => {
+		context('writing entity (person) name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -497,7 +497,7 @@ describe('Material instance', () => {
 
 		});
 
-		context('writer differentiator value exceeds maximum limit', () => {
+		context('writing entity (person) differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -545,6 +545,141 @@ describe('Material instance', () => {
 									model: 'person',
 									uuid: undefined,
 									name: 'Henrik Ibsen',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('writing entity (company) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'material',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					format: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: '',
+							creditType: null,
+							errors: {},
+							writingEntities: [
+								{
+									model: 'company',
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('writing entity (company) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Rosmersholm',
+					writingCredits: [
+						{
+							writingEntities: [
+								{
+									model: 'company',
+									name: 'Ibsen Theatre Company',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'material',
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					format: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: '',
+							creditType: null,
+							errors: {},
+							writingEntities: [
+								{
+									model: 'company',
+									uuid: undefined,
+									name: 'Ibsen Theatre Company',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
 										differentiator: [

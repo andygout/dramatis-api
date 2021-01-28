@@ -246,12 +246,18 @@ describe('Get Duplicate Indices module', () => {
 						{ name: 'Foo', differentiator: '', model: '' },
 						{ name: 'Foo', differentiator: '1', model: '' },
 						{ name: 'Foo', differentiator: '2', model: '' },
+						{ name: 'Foo', differentiator: '', model: 'company' },
+						{ name: 'Foo', differentiator: '1', model: 'company' },
+						{ name: 'Foo', differentiator: '2', model: 'company' },
 						{ name: 'Foo', differentiator: '', model: 'material' },
 						{ name: 'Foo', differentiator: '1', model: 'material' },
 						{ name: 'Foo', differentiator: '2', model: 'material' },
 						{ name: 'Bar', differentiator: '', model: '' },
 						{ name: 'Bar', differentiator: '1', model: '' },
 						{ name: 'Bar', differentiator: '2', model: '' },
+						{ name: 'Bar', differentiator: '', model: 'company' },
+						{ name: 'Bar', differentiator: '1', model: 'company' },
+						{ name: 'Bar', differentiator: '2', model: 'company' },
 						{ name: 'Bar', differentiator: '', model: 'material' },
 						{ name: 'Bar', differentiator: '1', model: 'material' },
 						{ name: 'Bar', differentiator: '2', model: 'material' }
@@ -272,6 +278,7 @@ describe('Get Duplicate Indices module', () => {
 					[
 						{ name: 'Foo', differentiator: '1', model: '' },
 						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: 'Bar', differentiator: '1', model: 'company' },
 						{ name: '', differentiator: '1', model: '' },
 						{ name: 'Baz', differentiator: '1', model: '' },
 						{ name: 'Foo', differentiator: '1', model: '' },
@@ -281,7 +288,7 @@ describe('Get Duplicate Indices module', () => {
 					]
 				);
 
-				expect(result).to.deep.equal([0, 1, 4, 5]);
+				expect(result).to.deep.equal([0, 1, 5, 6]);
 
 			});
 

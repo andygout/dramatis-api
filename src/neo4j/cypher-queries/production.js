@@ -165,7 +165,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (production)-[materialRel:PRODUCTION_OF]->(material:Material)
 
 	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Material
+		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
 	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
@@ -182,7 +182,11 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: sourceMaterialWriter.uuid, name: sourceMaterialWriter.name }
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+					uuid: sourceMaterialWriter.uuid,
+					name: sourceMaterialWriter.name
+				}
 			END
 		) AS sourceMaterialWriters
 
