@@ -11,8 +11,8 @@ describe('Uniqueness in database: People API', () => {
 
 	chai.use(chaiHttp);
 
-	const PEOPLE_1_UUID = '1';
-	const PEOPLE_2_UUID = '4';
+	const PERSON_1_UUID = '1';
+	const PERSON_2_UUID = '4';
 
 	const sandbox = createSandbox();
 
@@ -44,7 +44,7 @@ describe('Uniqueness in database: People API', () => {
 
 		const expectedResponseBody = {
 			model: 'person',
-			uuid: PEOPLE_1_UUID,
+			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {}
@@ -100,7 +100,7 @@ describe('Uniqueness in database: People API', () => {
 
 		const expectedResponseBody = {
 			model: 'person',
-			uuid: PEOPLE_2_UUID,
+			uuid: PERSON_2_UUID,
 			name: 'Paul Higgins',
 			differentiator: '1',
 			errors: {}
@@ -117,7 +117,7 @@ describe('Uniqueness in database: People API', () => {
 		expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		const response = await chai.request(app)
-			.put(`/people/${PEOPLE_1_UUID}`)
+			.put(`/people/${PERSON_1_UUID}`)
 			.send({
 				name: 'Paul Higgins',
 				differentiator: '1'
@@ -125,7 +125,7 @@ describe('Uniqueness in database: People API', () => {
 
 		const expectedResponseBody = {
 			model: 'person',
-			uuid: PEOPLE_1_UUID,
+			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '1',
 			hasErrors: true,
@@ -150,7 +150,7 @@ describe('Uniqueness in database: People API', () => {
 		expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		const response = await chai.request(app)
-			.put(`/people/${PEOPLE_1_UUID}`)
+			.put(`/people/${PERSON_1_UUID}`)
 			.send({
 				name: 'Paul Higgins',
 				differentiator: '2'
@@ -158,7 +158,7 @@ describe('Uniqueness in database: People API', () => {
 
 		const expectedResponseBody = {
 			model: 'person',
-			uuid: PEOPLE_1_UUID,
+			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '2',
 			errors: {}
@@ -175,14 +175,14 @@ describe('Uniqueness in database: People API', () => {
 		expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		const response = await chai.request(app)
-			.put(`/people/${PEOPLE_2_UUID}`)
+			.put(`/people/${PERSON_2_UUID}`)
 			.send({
 				name: 'Paul Higgins'
 			});
 
 		const expectedResponseBody = {
 			model: 'person',
-			uuid: PEOPLE_2_UUID,
+			uuid: PERSON_2_UUID,
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {}
