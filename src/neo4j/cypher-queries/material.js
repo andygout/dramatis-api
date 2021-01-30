@@ -74,7 +74,7 @@ const getCreateUpdateQuery = action => {
 						(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 						(writingEntityParam.differentiator = existingWriter.differentiator)
 
-				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'person' THEN [1] ELSE [] END |
+				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (entity:Person {
 						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 						name: writingEntityParam.name
@@ -103,7 +103,7 @@ const getCreateUpdateQuery = action => {
 						(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 						(writingEntityParam.differentiator = existingWriter.differentiator)
 
-				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL AND writingEntityParam.model = 'company' THEN [1] ELSE [] END |
+				FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (entity:Company {
 						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 						name: writingEntityParam.name
@@ -132,7 +132,7 @@ const getCreateUpdateQuery = action => {
 						(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
 						(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
 
-				FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL AND sourceMaterialParam.model = 'material' THEN [1] ELSE [] END |
+				FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL THEN [1] ELSE [] END |
 					MERGE (sourceMaterial:Material {
 						uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
 						name: sourceMaterialParam.name
