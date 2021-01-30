@@ -501,7 +501,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 	});
 
-	describe('Material writer (person) uniqueness in database', () => {
+	describe('Material writing entity (person) uniqueness in database', () => {
 
 		const DOT_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
@@ -541,7 +541,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (person) that does not have a differentiator', async () => {
+		it('updates material and creates writing entity (person) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
@@ -566,7 +566,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (person) that has same name as existing writer but uses a differentiator', async () => {
+		it('updates material and creates writing entity (person) that has same name as existing writing entity but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
@@ -592,7 +592,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (person) that does not have a differentiator', async () => {
+		it('updates material and uses existing writing entity (person) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
@@ -617,7 +617,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (person) that has a differentiator', async () => {
+		it('updates material and uses existing writing entity (person) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
@@ -645,7 +645,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 	});
 
-	describe('Material writer (company) uniqueness in database', () => {
+	describe('Material writing entity (company) uniqueness in database', () => {
 
 		const UNTITLED_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
@@ -685,7 +685,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (company) that does not have a differentiator', async () => {
+		it('updates material and creates writing entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
@@ -711,7 +711,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (company) that has same name as existing writer but uses a differentiator', async () => {
+		it('updates material and creates writing entity (company) that has same name as existing writing entity but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
@@ -738,7 +738,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (company) that does not have a differentiator', async () => {
+		it('updates material and uses existing writing entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
@@ -764,7 +764,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (company) that has a differentiator', async () => {
+		it('updates material and uses existing writing entity (company) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
@@ -793,7 +793,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 	});
 
-	describe('Material writer (source material) uniqueness in database', () => {
+	describe('Material writing entity (source material) uniqueness in database', () => {
 
 		const THE_INDIAN_BOY_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
@@ -833,7 +833,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (source material) that does not have a differentiator', async () => {
+		it('updates material and creates writing entity (source material) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
@@ -860,7 +860,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and creates writer (source material) that has same name as existing writer (source material) but uses a differentiator', async () => {
+		it('updates material and creates writing entity (source material) that has same name as existing writing entity (source material) but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
@@ -888,7 +888,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (source material) that does not have a differentiator', async () => {
+		it('updates material and uses existing writing entity (source material) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
@@ -915,7 +915,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		it('updates material and uses existing writer (source material) that has a differentiator', async () => {
+		it('updates material and uses existing writing entity (source material) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
