@@ -1,0 +1,154 @@
+{
+	"name": "Peer Gynt",
+	"differentiator": "2",
+	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Peer Gynt",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"writingEntities": [
+				{
+					"name": "Frank McGuiness"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ase",
+					"underlyingName": "Åse"
+				},
+				{
+					"name": "Peer Gynt"
+				},
+				{
+					"name": "Kari"
+				},
+				{
+					"name": "Aslak"
+				},
+				{
+					"name": "Bridegroom",
+					"underlyingName": "The bridegroom"
+				},
+				{
+					"name": "Solveig's Father"
+				},
+				{
+					"name": "Bridegroom's Mother",
+					"underlyingName": "The bridegroom's parents"
+				},
+				{
+					"name": "Solveig"
+				},
+				{
+					"name": "Ingrid"
+				},
+				{
+					"name": "Helga"
+				},
+				{
+					"name": "Mountain Girls",
+					"underlyingName": "Three alpine dairymaids"
+				},
+				{
+					"name": "Green Woman",
+					"underlyingName": "A green-clad woman"
+				},
+				{
+					"name": "Troll King",
+					"underlyingName": "The Old Man of the Mountains"
+				},
+				{
+					"name": "Voice of the Great Boyg",
+					"underlyingName": "The Bøyg"
+				},
+				{
+					"name": "Brat",
+					"underlyingName": "An ugly brat"
+				},
+				{
+					"name": "Trumpeterstrale",
+					"underlyingName": "Herr Trumpeterstrale"
+				},
+				{
+					"name": "Cotton",
+					"underlyingName": "Master Cotton"
+				},
+				{
+					"name": "Ballon",
+					"underlyingName": "Monsieur Ballon"
+				},
+				{
+					"name": "Von Eberkopf",
+					"underlyingName": "Herr von Eberkopf"
+				},
+				{
+					"name": "Anitra"
+				},
+				{
+					"name": "Begriffenfeldt",
+					"underlyingName": "Dr Begriffenfeldt"
+				},
+				{
+					"name": "Huhu"
+				},
+				{
+					"name": "Fellah"
+				},
+				{
+					"name": "Hussain",
+					"underlyingName": "Hussein"
+				},
+				{
+					"name": "Captain",
+					"underlyingName": "A Norwegian skipper"
+				},
+				{
+					"name": "Lookout"
+				},
+				{
+					"name": "Ship's Mate",
+					"underlyingName": "Norwegian skipper's crew"
+				},
+				{
+					"name": "Bosun"
+				},
+				{
+					"name": "Cook",
+					"underlyingName": "A master cook"
+				},
+				{
+					"name": "Strange Traveller",
+					"underlyingName": "A strange passenger"
+				},
+				{
+					"name": "Seaman"
+				},
+				{
+					"name": "Priest"
+				},
+				{
+					"name": "Button Moulder",
+					"underlyingName": "A button-molder"
+				},
+				{
+					"name": "Thin Man",
+					"underlyingName": "The Lean One"
+				}
+			]
+		}
+	]
+}
