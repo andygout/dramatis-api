@@ -1,0 +1,294 @@
+{
+	"name": "Peer Gynt",
+	"material": {
+		"name": "Peer Gynt",
+		"differentiator": "2"
+	},
+	"theatre": {
+		"name": "Olivier Theatre"
+	},
+	"cast": [
+		{
+			"name": "Sorcha Cusack",
+			"roles": [
+				{
+					"name": "Ase"
+				}
+			]
+		},
+		{
+			"name": "Chiwetel Ejiofor",
+			"roles": [
+				{
+					"name": "Peer Gynt"
+				}
+			]
+		},
+		{
+			"name": "Annie Farr",
+			"roles": [
+				{
+					"name": "Kari"
+				}
+			]
+		},
+		{
+			"name": "Andy Williams",
+			"roles": [
+				{
+					"name": "Aslak"
+				}
+			]
+		},
+		{
+			"name": "Anthony Taylor",
+			"roles": [
+				{
+					"name": "Bridegroom"
+				}
+			]
+		},
+		{
+			"name": "John O'Toole",
+			"roles": [
+				{
+					"name": "Solveig's Father"
+				},
+				{
+					"name": "Captain"
+				}
+			]
+		},
+		{
+			"name": "Marcella Riordan",
+			"roles": [
+				{
+					"name": "Bridegroom's Mother"
+				}
+			]
+		},
+		{
+			"name": "Olwen Fouéré",
+			"roles": [
+				{
+					"name": "Solveig"
+				}
+			]
+		},
+		{
+			"name": "Melanie MacHugh",
+			"roles": [
+				{
+					"name": "Ingrid"
+				}
+			]
+		},
+		{
+			"name": "Valerie Spelman",
+			"roles": [
+				{
+					"name": "Helga"
+				}
+			]
+		},
+		{
+			"name": "Ciara Adams",
+			"roles": [
+				{
+					"name": "Mountain Girl",
+					"characterName": "Mountain Girls"
+				}
+			]
+		},
+		{
+			"name": "Brigid Duffy",
+			"roles": [
+				{
+					"name": "Mountain Girl",
+					"characterName": "Mountain Girls"
+				}
+			]
+		},
+		{
+			"name": "Viviana Verveen",
+			"roles": [
+				{
+					"name": "Mountain Girl",
+					"characterName": "Mountain Girls"
+				}
+			]
+		},
+		{
+			"name": "Susan Aderin",
+			"roles": [
+				{
+					"name": "Green Woman"
+				}
+			]
+		},
+		{
+			"name": "Lloyd Hutchinson",
+			"roles": [
+				{
+					"name": "Troll King"
+				}
+			]
+		},
+		{
+			"name": "Jason Rose",
+			"roles": [
+				{
+					"name": "Voice of the Great Boyg"
+				}
+			]
+		},
+		{
+			"name": "Adrian Sarple",
+			"roles": [
+				{
+					"name": "Brat"
+				}
+			]
+		},
+		{
+			"name": "Patrick O'Kane",
+			"roles": [
+				{
+					"name": "Peer Gynt"
+				}
+			]
+		},
+		{
+			"name": "Ruairi Conaghan",
+			"roles": [
+				{
+					"name": "Trumpeterstrale"
+				},
+				{
+					"name": "Fellah"
+				}
+			]
+		},
+		{
+			"name": "Benny Young",
+			"roles": [
+				{
+					"name": "Cotton"
+				},
+				{
+					"name": "Priest"
+				}
+			]
+		},
+		{
+			"name": "Stephen Hogan",
+			"roles": [
+				{
+					"name": "Ballon"
+				},
+				{
+					"name": "Begriffenfeldt"
+				}
+			]
+		},
+		{
+			"name": "Paul Hickey",
+			"roles": [
+				{
+					"name": "Von Eberkopf"
+				},
+				{
+					"name": "Strange Traveller"
+				}
+			]
+		},
+		{
+			"name": "Amanda Symonds",
+			"roles": [
+				{
+					"name": "Anitra"
+				}
+			]
+		},
+		{
+			"name": "Anthony Renshaw",
+			"roles": [
+				{
+					"name": "Huhu"
+				}
+			]
+		},
+		{
+			"name": "Jeff Diamond",
+			"roles": [
+				{
+					"name": "Hussain"
+				}
+			]
+		},
+		{
+			"name": "Joseph Marcell",
+			"roles": [
+				{
+					"name": "Peer Gynt"
+				}
+			]
+		},
+		{
+			"name": "Victor Power",
+			"roles": [
+				{
+					"name": "Lookout"
+				}
+			]
+		},
+		{
+			"name": "Craig Conway",
+			"roles": [
+				{
+					"name": "Ship's Mate"
+				}
+			]
+		},
+		{
+			"name": "Christopher John Hall",
+			"roles": [
+				{
+					"name": "Bosun"
+				}
+			]
+		},
+		{
+			"name": "Kolade Agboke",
+			"roles": [
+				{
+					"name": "Cook"
+				}
+			]
+		},
+		{
+			"name": "Adam Jones",
+			"roles": [
+				{
+					"name": "Seaman"
+				}
+			]
+		},
+		{
+			"name": "Ronald Pickup",
+			"roles": [
+				{
+					"name": "Button Moulder"
+				}
+			]
+		},
+		{
+			"name": "John Rogan",
+			"roles": [
+				{
+					"name": "Thin Man"
+				}
+			]
+		}
+	]
+}
