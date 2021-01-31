@@ -405,7 +405,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE {
 					model: TOLOWER(HEAD(LABELS(sourcingMaterialWritingEntity))),
-					uuid: CASE WHEN sourcingMaterialWritingEntity.uuid = material.uuid
+					uuid: CASE sourcingMaterialWritingEntity.uuid WHEN material.uuid
 						THEN null
 						ELSE sourcingMaterialWritingEntity.uuid
 					END,
