@@ -59,7 +59,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE {
 					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					uuid: CASE WHEN writingEntity.uuid = person.uuid THEN null ELSE writingEntity.uuid END,
+					uuid: CASE writingEntity.uuid WHEN person.uuid THEN null ELSE writingEntity.uuid END,
 					name: writingEntity.name,
 					format: writingEntity.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
