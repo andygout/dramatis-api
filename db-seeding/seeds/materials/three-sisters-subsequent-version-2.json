@@ -1,0 +1,85 @@
+{
+	"name": "Three Sisters",
+	"differentiator": "3",
+	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Three Sisters",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Inua Ellams"
+				}
+			]
+		},
+		{
+			"name": "after",
+			"writingEntities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Abosede",
+					"underlyingName": "Natalia Ivanovna"
+				},
+				{
+					"name": "Chidi"
+				},
+				{
+					"name": "Igwe",
+					"underlyingName": "Staff Captain Vassily Vasilyevich Solyony"
+				},
+				{
+					"name": "Eze",
+					"underlyingName": "Ivan Romanovich Chebutykin"
+				},
+				{
+					"name": "Oka Mbem"
+				},
+				{
+					"name": "Dimgba",
+					"underlyingName": "Andrei Sergeyevich Prozorov"
+				},
+				{
+					"name": "Nmeri Ora",
+					"underlyingName": "Baron Nikolaj Lvovich Tuzenbach"
+				},
+				{
+					"name": "Nma",
+					"underlyingName": "Anfisa"
+				},
+				{
+					"name": "Lolo",
+					"underlyingName": "Olga Sergeyevna Prozorova"
+				},
+				{
+					"name": "Ikemba",
+					"underlyingName": "Aleksandr Ignatyevich Vershinin"
+				},
+				{
+					"name": "Udo",
+					"underlyingName": "Irina Sergeyevna Prozorova"
+				},
+				{
+					"name": "Onyinyechukwu",
+					"underlyingName": "Fyodor Ilyich Kulygin"
+				},
+				{
+					"name": "Nne Chukwu",
+					"underlyingName": "Maria Sergeyevna Kulygina"
+				},
+				{
+					"name": "Oyiridiya"
+				}
+			]
+		}
+	]
+}

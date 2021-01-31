@@ -1,0 +1,35 @@
+{
+	"name": "After Miss Julie",
+	"material": {
+		"name": "After Miss Julie"
+	},
+	"theatre": {
+		"name": "Donmar Warehouse"
+	},
+	"cast": [
+		{
+			"name": "Kelly Reilly",
+			"roles": [
+				{
+					"name": "Miss Julie"
+				}
+			]
+		},
+		{
+			"name": "Richard Coyle",
+			"roles": [
+				{
+					"name": "John"
+				}
+			]
+		},
+		{
+			"name": "Helen Baxendale",
+			"roles": [
+				{
+					"name": "Christine"
+				}
+			]
+		}
+	]
+}

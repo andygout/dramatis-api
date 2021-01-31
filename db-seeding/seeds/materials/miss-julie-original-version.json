@@ -1,0 +1,28 @@
+{
+	"name": "Miss Julie",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "August Strindberg"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Miss Julie"
+				},
+				{
+					"name": "Jean"
+				},
+				{
+					"name": "Christine"
+				}
+			]
+		}
+	]
+}

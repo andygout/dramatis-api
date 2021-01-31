@@ -1,0 +1,44 @@
+{
+	"name": "Julie",
+	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Miss Julie"
+	},
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Polly Stenham"
+				}
+			]
+		},
+		{
+			"name": "after",
+			"writingEntities": [
+				{
+					"name": "August Strindberg"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Julie",
+					"underlyingName": "Miss Julie"
+				},
+				{
+					"name": "Jean"
+				},
+				{
+					"name": "Kristina",
+					"underlyingName": "Christine"
+				},
+				{
+					"name": "Partygoers"
+				}
+			]
+		}
+	]
+}

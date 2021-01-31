@@ -1,0 +1,99 @@
+{
+	"name": "Mrs Affleck",
+	"material": {
+		"name": "Mrs Affleck"
+	},
+	"theatre": {
+		"name": "Cottesloe Theatre"
+	},
+	"cast": [
+		{
+			"name": "Claire Skinner",
+			"roles": [
+				{
+					"name": "Rita Affleck"
+				}
+			]
+		},
+		{
+			"name": "Omar Brown",
+			"roles": [
+				{
+					"name": "George Constantine"
+				}
+			]
+		},
+		{
+			"name": "René Gray",
+			"roles": [
+				{
+					"name": "George Constantine"
+				}
+			]
+		},
+		{
+			"name": "Naomi Frederick",
+			"roles": [
+				{
+					"name": "Audrey Affleck"
+				}
+			]
+		},
+		{
+			"name": "Alfie Field",
+			"roles": [
+				{
+					"name": "Oliver Affleck"
+				}
+			]
+		},
+		{
+			"name": "Wesley Nelson",
+			"roles": [
+				{
+					"name": "Oliver Affleck"
+				}
+			]
+		},
+		{
+			"name": "Angus Wright",
+			"roles": [
+				{
+					"name": "Alfred Affleck"
+				}
+			]
+		},
+		{
+			"name": "Josef Altin",
+			"roles": [
+				{
+					"name": "Flea"
+				}
+			]
+		},
+		{
+			"name": "Phil Cheadle",
+			"roles": [
+				{
+					"name": "Jonathan Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Cassie Atkinson",
+			"roles": [
+				{
+					"name": "Waitress"
+				}
+			]
+		},
+		{
+			"name": "Sarah Niles",
+			"roles": [
+				{
+					"name": "Sophia Constantine"
+				}
+			]
+		}
+	]
+}

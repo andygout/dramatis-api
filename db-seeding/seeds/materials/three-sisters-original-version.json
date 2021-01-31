@@ -1,0 +1,72 @@
+{
+	"name": "Three Sisters",
+	"differentiator": "1",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Prozorovs",
+			"characters": [
+				{
+					"name": "Olga Sergeyevna Prozorova"
+				},
+				{
+					"name": "Maria Sergeyevna Kulygina"
+				},
+				{
+					"name": "Irina Sergeyevna Prozorova"
+				},
+				{
+					"name": "Andrei Sergeyevich Prozorov"
+				},
+				{
+					"name": "Natalia Ivanovna"
+				},
+				{
+					"name": "Fyodor Ilyich Kulygin"
+				}
+			]
+		},
+		{
+			"name": "The Soldiers",
+			"characters": [
+				{
+					"name": "Aleksandr Ignatyevich Vershinin"
+				},
+				{
+					"name": "Baron Nikolaj Lvovich Tuzenbach"
+				},
+				{
+					"name": "Staff Captain Vassily Vasilyevich Solyony"
+				},
+				{
+					"name": "Ivan Romanovich Chebutykin"
+				},
+				{
+					"name": "Aleksej Petrovich Fedotik"
+				},
+				{
+					"name": "Vladimir Karlovich Rode"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Ferapont"
+				},
+				{
+					"name": "Anfisa"
+				}
+			]
+		}
+	]
+}

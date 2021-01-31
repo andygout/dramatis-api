@@ -1,0 +1,14 @@
+{
+	"name": "Young Vic",
+	"subTheatres": [
+		{
+			"name": "Main House"
+		},
+		{
+			"name": "The Maria"
+		},
+		{
+			"name": "The Clare"
+		}
+	]
+}

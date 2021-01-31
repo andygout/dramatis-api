@@ -1,0 +1,40 @@
+{
+	"name": "After Miss Julie",
+	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Miss Julie"
+	},
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Patrick Marber"
+				}
+			]
+		},
+		{
+			"name": "after",
+			"writingEntities": [
+				{
+					"name": "August Strindberg"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Miss Julie"
+				},
+				{
+					"name": "John",
+					"underlyingName": "Jean"
+				},
+				{
+					"name": "Christine"
+				}
+			]
+		}
+	]
+}

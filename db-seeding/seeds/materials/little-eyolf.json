@@ -1,0 +1,37 @@
+{
+	"name": "Little Eyolf",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alfred Allmers"
+				},
+				{
+					"name": "Rita Allmers"
+				},
+				{
+					"name": "Eyolf"
+				},
+				{
+					"name": "Asta Allmers"
+				},
+				{
+					"name": "Borghejm"
+				},
+				{
+					"name": "The Rat-Wife"
+				}
+			]
+		}
+	]
+}

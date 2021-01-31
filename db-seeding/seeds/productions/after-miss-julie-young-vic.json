@@ -1,0 +1,35 @@
+{
+	"name": "After Miss Julie",
+	"material": {
+		"name": "After Miss Julie"
+	},
+	"theatre": {
+		"name": "The Maria"
+	},
+	"cast": [
+		{
+			"name": "Natalie Dormer",
+			"roles": [
+				{
+					"name": "Miss Julie"
+				}
+			]
+		},
+		{
+			"name": "Kieran Bew",
+			"roles": [
+				{
+					"name": "John"
+				}
+			]
+		},
+		{
+			"name": "Polly Frame",
+			"roles": [
+				{
+					"name": "Christine"
+				}
+			]
+		}
+	]
+}
