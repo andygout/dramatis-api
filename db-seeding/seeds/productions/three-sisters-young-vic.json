@@ -1,0 +1,132 @@
+{
+	"name": "Three Sisters",
+	"material": {
+		"name": "Three Sisters",
+		"differentiator": "2"
+	},
+	"theatre": {
+		"name": "Main House"
+	},
+	"cast": [
+		{
+			"name": "Natasha Barclay",
+			"roles": [
+				{
+					"name": "Natasha"
+				}
+			]
+		},
+		{
+			"name": "Orion Ben",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Harry Dickman",
+			"roles": [
+				{
+					"name": "Ferapont"
+				}
+			]
+		},
+		{
+			"name": "Michael Feast",
+			"roles": [
+				{
+					"name": "Chebutykin"
+				}
+			]
+		},
+		{
+			"name": "Mariah Gale",
+			"roles": [
+				{
+					"name": "Olga"
+				}
+			]
+		},
+		{
+			"name": "Gruffudd Glyn",
+			"roles": [
+				{
+					"name": "Fedotik"
+				}
+			]
+		},
+		{
+			"name": "Gala Gordon",
+			"roles": [
+				{
+					"name": "Irina"
+				}
+			]
+		},
+		{
+			"name": "William Houston",
+			"roles": [
+				{
+					"name": "Vershinin"
+				}
+			]
+		},
+		{
+			"name": "Vanessa Kirby",
+			"roles": [
+				{
+					"name": "Masha"
+				}
+			]
+		},
+		{
+			"name": "Danny Kirrane",
+			"roles": [
+				{
+					"name": "Andrey"
+				}
+			]
+		},
+		{
+			"name": "Richard Pryal",
+			"roles": [
+				{
+					"name": "Rodé"
+				}
+			]
+		},
+		{
+			"name": "Ann Queensberry",
+			"roles": [
+				{
+					"name": "Anfisa"
+				}
+			]
+		},
+		{
+			"name": "Paul Rattray",
+			"roles": [
+				{
+					"name": "Solyony"
+				}
+			]
+		},
+		{
+			"name": "Adrian Schiller",
+			"roles": [
+				{
+					"name": "Kulygin"
+				}
+			]
+		},
+		{
+			"name": "Sam Troughton",
+			"roles": [
+				{
+					"name": "Tuzenbach"
+				}
+			]
+		}
+	]
+}

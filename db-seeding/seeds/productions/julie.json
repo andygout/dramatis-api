@@ -1,0 +1,134 @@
+{
+	"name": "Julie",
+	"material": {
+		"name": "Julie"
+	},
+	"theatre": {
+		"name": "Lyttelton Theatre"
+	},
+	"cast": [
+		{
+			"name": "Vanessa Kirby",
+			"roles": [
+				{
+					"name": "Julie"
+				}
+			]
+		},
+		{
+			"name": "Eric Kofi Abrefa",
+			"roles": [
+				{
+					"name": "Jean"
+				}
+			]
+		},
+		{
+			"name": "Thalissa Teixeira",
+			"roles": [
+				{
+					"name": "Kristina"
+				}
+			]
+		},
+		{
+			"name": "Temitope Ajose-Cutting",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "El Anthony",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Thomasin Gülgeç",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Francesca Knight",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Dak Mashava",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Michela Meazza",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Beatriz Meireles",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Ashley Morgan-Davies",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Omogbehin",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Yuyu Rau",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		},
+		{
+			"name": "Petra Söör",
+			"roles": [
+				{
+					"name": "Partygoer",
+					"characterName": "Partygoers"
+				}
+			]
+		}
+	]
+}

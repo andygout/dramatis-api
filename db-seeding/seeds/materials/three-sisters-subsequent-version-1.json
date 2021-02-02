@@ -1,0 +1,90 @@
+{
+	"name": "Three Sisters",
+	"differentiator": "2",
+	"format": "play",
+	"originalVersionMaterial": {
+		"name": "Three Sisters",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"writingEntities": [
+				{
+					"name": "Benedict Andrews"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Natasha",
+					"underlyingName": "Natalia Ivanovna"
+				},
+				{
+					"name": "Maid",
+					"differentiator": "Three Sisters"
+				},
+				{
+					"name": "Ferapont"
+				},
+				{
+					"name": "Chebutykin",
+					"underlyingName": "Ivan Romanovich Chebutykin"
+				},
+				{
+					"name": "Olga",
+					"underlyingName": "Olga Sergeyevna Prozorova"
+				},
+				{
+					"name": "Fedotik",
+					"underlyingName": "Aleksej Petrovich Fedotik"
+				},
+				{
+					"name": "Irina",
+					"underlyingName": "Irina Sergeyevna Prozorova"
+				},
+				{
+					"name": "Vershinin",
+					"underlyingName": "Aleksandr Ignatyevich Vershinin"
+				},
+				{
+					"name": "Masha",
+					"underlyingName": "Maria Sergeyevna Kulygina"
+				},
+				{
+					"name": "Andrey",
+					"underlyingName": "Andrei Sergeyevich Prozorov"
+				},
+				{
+					"name": "Rodé",
+					"underlyingName": "Vladimir Karlovich Rode"
+				},
+				{
+					"name": "Anfisa"
+				},
+				{
+					"name": "Solyony",
+					"underlyingName": "Staff Captain Vassily Vasilyevich Solyony"
+				},
+				{
+					"name": "Kulygin",
+					"underlyingName": "Fyodor Ilyich Kulygin"
+				},
+				{
+					"name": "Tuzenbach",
+					"underlyingName": "Baron Nikolaj Lvovich Tuzenbach"
+				}
+			]
+		}
+	]
+}

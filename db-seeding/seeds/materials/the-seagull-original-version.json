@@ -51,7 +51,8 @@
 					"name": "Cook"
 				},
 				{
-					"name": "Maid"
+					"name": "Maid",
+					"differentiator": "The Seagull"
 				}
 			]
 		}

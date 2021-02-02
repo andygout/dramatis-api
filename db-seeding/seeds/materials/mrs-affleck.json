@@ -1,0 +1,67 @@
+{
+	"name": "Mrs Affleck",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Samuel Adamson"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"writingEntities": [
+				{
+					"model": "material",
+					"name": "Little Eyolf"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Rita Affleck",
+					"underlyingName": "Rita Allmers"
+				},
+				{
+					"name": "George Constantine",
+					"underlyingName": "Eyolf"
+				},
+				{
+					"name": "Alfred Affleck",
+					"underlyingName": "Alfred Allmers"
+				},
+				{
+					"name": "Oliver Affleck"
+				},
+				{
+					"name": "Audrey Affleck",
+					"underlyingName": "Asta Allmers"
+				},
+				{
+					"name": "Flea",
+					"underlyingName": "The Rat-Wife"
+				},
+				{
+					"name": "Jonathan Mortimer",
+					"underlyingName": "Borghejm"
+				},
+				{
+					"name": "Sophia Constantine"
+				},
+				{
+					"name": "Waitress"
+				},
+				{
+					"name": "Tea-House Patrons"
+				},
+				{
+					"name": "Passers-By"
+				}
+			]
+		}
+	]
+}

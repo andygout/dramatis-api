@@ -1,0 +1,124 @@
+{
+	"name": "Three Sisters",
+	"material": {
+		"name": "Three Sisters",
+		"differentiator": "3"
+	},
+	"theatre": {
+		"name": "Lyttelton Theatre"
+	},
+	"cast": [
+		{
+			"name": "Ronke Adékoluejo",
+			"roles": [
+				{
+					"name": "Abosede"
+				}
+			]
+		},
+		{
+			"name": "Adedji Adetayo",
+			"roles": [
+				{
+					"name": "Chidi"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Ajayi",
+			"roles": [
+				{
+					"name": "Igwe"
+				}
+			]
+		},
+		{
+			"name": "Jude Akuwudike",
+			"roles": [
+				{
+					"name": "Eze"
+				}
+			]
+		},
+		{
+			"name": "Amarachi Attamah",
+			"roles": [
+				{
+					"name": "Oka Mbem"
+				}
+			]
+		},
+		{
+			"name": "Tobi Bamtefa",
+			"roles": [
+				{
+					"name": "Dimgba"
+				}
+			]
+		},
+		{
+			"name": "Peter Bankolé",
+			"roles": [
+				{
+					"name": "Nmeri Ora"
+				}
+			]
+		},
+		{
+			"name": "Anni Domingo",
+			"roles": [
+				{
+					"name": "Nma"
+				}
+			]
+		},
+		{
+			"name": "Sarah Niles",
+			"roles": [
+				{
+					"name": "Lolo"
+				}
+			]
+		},
+		{
+			"name": "Ken Nwosu",
+			"roles": [
+				{
+					"name": "Ikemba"
+				}
+			]
+		},
+		{
+			"name": "Rachael Ofori",
+			"roles": [
+				{
+					"name": "Udo"
+				}
+			]
+		},
+		{
+			"name": "Sule Rimi",
+			"roles": [
+				{
+					"name": "Onyinyechukwu"
+				}
+			]
+		},
+		{
+			"name": "Natalie Simpson",
+			"roles": [
+				{
+					"name": "Nne Chukwu"
+				}
+			]
+		},
+		{
+			"name": "Diana Yekinni",
+			"roles": [
+				{
+					"name": "Oyiridiya"
+				}
+			]
+		}
+	]
+}
