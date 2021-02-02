@@ -614,6 +614,41 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				{
 					model: 'material',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'version by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
@@ -663,41 +698,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
-					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
-					name: 'Peer Gynt',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							writingEntities: [
-								{
-									model: 'person',
-									uuid: null,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'company',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'version by',
-							writingEntities: [
-								{
-									model: 'person',
-									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
 								}
 							]
 						}
@@ -962,6 +962,41 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				{
 					model: 'material',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'version by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
@@ -1011,41 +1046,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
-					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
-					name: 'Peer Gynt',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							writingEntities: [
-								{
-									model: 'person',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'company',
-									uuid: null,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'version by',
-							writingEntities: [
-								{
-									model: 'person',
-									uuid: FRANK_MCGUINNESS_PERSON_UUID,
-									name: 'Frank McGuinness'
 								}
 							]
 						}
