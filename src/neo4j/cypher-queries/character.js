@@ -81,7 +81,7 @@ const getShowQuery = () => `
 
 	WITH character, material, writingCredits,
 		COLLECT(
-			CASE WHEN materialRel.displayName IS NULL AND materialRel.qualifier IS NULL AND materialRel.group IS NULL
+			CASE WHEN ALL(x IN ['displayName', 'qualifier', 'group'] WHERE materialRel[x] IS NULL)
 				THEN null
 				ELSE {
 					displayName: materialRel.displayName,

@@ -125,10 +125,10 @@ const getShowQuery = () => `
 		person,
 		[
 			material IN materials WHERE ALL(x IN [
-				material.originalVersionCredit,
-				material.sourceMaterialCredit,
-				material.creditType
-			] WHERE x IS NULL) |
+				'originalVersionCredit',
+				'sourceMaterialCredit',
+				'creditType'
+			] WHERE material[x] IS NULL) |
 			{
 				model: material.model,
 				uuid: material.uuid,
