@@ -1,108 +1,134 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
+	OPTIONAL MATCH (person)<-[:WRITTEN_BY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
 
-	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(:Material)-[originalVersionCredit:WRITTEN_BY]->(person)
+	WITH person, COLLECT(material) AS materials
 
-	OPTIONAL MATCH (material)-[allWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+	UNWIND (CASE materials WHEN [] THEN [null] ELSE materials END) AS material
 
-	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+		OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
 
-	WITH
-		person,
-		writerRel,
-		material,
-		originalVersionCredit,
-		allWritingEntityRel,
-		writingEntity,
-		sourceMaterialWriterRel,
-		sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
+		OPTIONAL MATCH (person)<-[originalVersionCredit:WRITTEN_BY]-(:Material)<-[:SUBSEQUENT_VERSION_OF]-(material)
 
-	WITH
-		person,
-		writerRel,
-		material,
-		originalVersionCredit,
-		allWritingEntityRel,
-		writingEntity,
-		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
-		COLLECT(
-			CASE sourceMaterialWriter WHEN NULL
-				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
-					uuid: sourceMaterialWriter.uuid,
-					name: sourceMaterialWriter.name
-				}
-			END
-		) AS sourceMaterialWriters
+		OPTIONAL MATCH (person)<-[sourceMaterialCredit:WRITTEN_BY]-(:Material)<-[:USES_SOURCE_MATERIAL]-(material)
 
-	WITH person, writerRel, material, originalVersionCredit, allWritingEntityRel, writingEntity,
-		COLLECT(
-			CASE SIZE(sourceMaterialWriters) WHEN 0
-				THEN null
-				ELSE {
-					model: 'writingCredit',
-					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
-					writingEntities: sourceMaterialWriters
-				}
-			END
-		) AS sourceMaterialWritingCredits
-		ORDER BY allWritingEntityRel.creditPosition, allWritingEntityRel.entityPosition
+		OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
+			WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
 
-	WITH person, writerRel, material, originalVersionCredit, allWritingEntityRel.credit AS writingCreditName,
-		[writingEntity IN COLLECT(
-			CASE writingEntity WHEN NULL
-				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					uuid: CASE writingEntity.uuid WHEN person.uuid THEN null ELSE writingEntity.uuid END,
-					name: writingEntity.name,
-					format: writingEntity.format,
-					sourceMaterialWritingCredits: sourceMaterialWritingCredits
-				}
-			END
-		) | CASE writingEntity.model WHEN 'material'
-			THEN writingEntity
-			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
-		END] AS writingEntities
+		OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH person, writerRel, material, originalVersionCredit,
-		COLLECT(
-			CASE SIZE(writingEntities) WHEN 0
-				THEN null
-				ELSE {
-					model: 'writingCredit',
-					name: COALESCE(writingCreditName, 'by'),
-					writingEntities: writingEntities
-				}
-			END
-		) AS writingCredits
-		ORDER BY material.name
+		WITH
+			person,
+			writerRel,
+			material,
+			originalVersionCredit,
+			sourceMaterialCredit,
+			writingEntityRel,
+			writingEntity,
+			sourceMaterialWriterRel,
+			sourceMaterialWriter
+			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
-	WITH person,
-		COLLECT(
-			CASE material WHEN NULL
-				THEN null
-				ELSE {
-					model: 'material',
-					uuid: material.uuid,
-					name: material.name,
-					format: material.format,
-					writingCredits: writingCredits,
-					creditType: writerRel.creditType,
-					originalVersionCredit: originalVersionCredit
-				}
-			END
-		) AS materials
+		WITH
+			person,
+			writerRel,
+			material,
+			originalVersionCredit,
+			sourceMaterialCredit,
+			writingEntityRel,
+			writingEntity,
+			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
+			COLLECT(
+				CASE sourceMaterialWriter WHEN NULL
+					THEN null
+					ELSE {
+						model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+						uuid: CASE sourceMaterialWriter.uuid WHEN person.uuid
+							THEN null
+							ELSE sourceMaterialWriter.uuid
+						END,
+						name: sourceMaterialWriter.name
+					}
+				END
+			) AS sourceMaterialWriters
+
+		WITH person, writerRel, material, originalVersionCredit, sourceMaterialCredit, writingEntityRel, writingEntity,
+			COLLECT(
+				CASE SIZE(sourceMaterialWriters) WHEN 0
+					THEN null
+					ELSE {
+						model: 'writingCredit',
+						name: COALESCE(sourceMaterialWritingCreditName, 'by'),
+						writingEntities: sourceMaterialWriters
+					}
+				END
+			) AS sourceMaterialWritingCredits
+			ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+
+		WITH
+			person,
+			writerRel,
+			material,
+			originalVersionCredit,
+			sourceMaterialCredit,
+			writingEntityRel.credit AS writingCreditName,
+			[writingEntity IN COLLECT(
+				CASE writingEntity WHEN NULL
+					THEN null
+					ELSE {
+						model: TOLOWER(HEAD(LABELS(writingEntity))),
+						uuid: CASE writingEntity.uuid WHEN person.uuid THEN null ELSE writingEntity.uuid END,
+						name: writingEntity.name,
+						format: writingEntity.format,
+						sourceMaterialWritingCredits: sourceMaterialWritingCredits
+					}
+				END
+			) | CASE writingEntity.model WHEN 'material'
+				THEN writingEntity
+				ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+			END] AS writingEntities
+
+		WITH person, writerRel, material, originalVersionCredit, sourceMaterialCredit,
+			COLLECT(
+				CASE SIZE(writingEntities) WHEN 0
+					THEN null
+					ELSE {
+						model: 'writingCredit',
+						name: COALESCE(writingCreditName, 'by'),
+						writingEntities: writingEntities
+					}
+				END
+			) AS writingCredits
+			ORDER BY material.name
+
+		WITH person,
+			COLLECT(
+				CASE material WHEN NULL
+					THEN null
+					ELSE {
+						model: 'material',
+						uuid: material.uuid,
+						name: material.name,
+						format: material.format,
+						writingCredits: writingCredits,
+						creditType: writerRel.creditType,
+						originalVersionCredit: originalVersionCredit,
+						sourceMaterialCredit: sourceMaterialCredit
+					}
+				END
+			) AS materials
+
+		WITH DISTINCT person, materials
 
 	WITH
 		person,
 		[
-			material IN materials WHERE material.creditType IS NULL AND material.originalVersionCredit IS NULL |
+			material IN materials WHERE ALL(x IN [
+				material.originalVersionCredit,
+				material.sourceMaterialCredit,
+				material.creditType
+			] WHERE x IS NULL) |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -122,7 +148,9 @@ const getShowQuery = () => `
 			}
 		] AS subsequentVersionMaterials,
 		[
-			material IN materials WHERE material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
+			material IN materials WHERE
+				material.sourceMaterialCredit IS NOT NULL OR
+				material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -130,91 +158,7 @@ const getShowQuery = () => `
 				format: material.format,
 				writingCredits: material.writingCredits
 			}
-		] AS sourcingMaterialsFromNonSpecificMaterials
-
-	OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
-
-	OPTIONAL MATCH (sourcingMaterial)-[sourcingMaterialWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->
-		(sourcingMaterialWritingEntity)
-		WHERE
-			sourcingMaterialWritingEntity:Person OR
-			sourcingMaterialWritingEntity:Company OR
-			sourcingMaterialWritingEntity:Material
-
-	WITH
-		person,
-		materials,
-		subsequentVersionMaterials,
-		sourcingMaterialsFromNonSpecificMaterials,
-		sourcingMaterial,
-		sourcingMaterialWritingEntityRel,
-		sourcingMaterialWritingEntity
-		ORDER BY sourcingMaterialWritingEntityRel.creditPosition, sourcingMaterialWritingEntityRel.entityPosition
-
-	WITH
-		person,
-		materials,
-		subsequentVersionMaterials,
-		sourcingMaterialsFromNonSpecificMaterials,
-		sourcingMaterial,
-		sourcingMaterialWritingEntityRel.credit AS sourcingMaterialWritingCreditName,
-		[sourcingMaterialWritingEntity IN COLLECT(
-			CASE sourcingMaterialWritingEntity WHEN NULL
-				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourcingMaterialWritingEntity))),
-					uuid: sourcingMaterialWritingEntity.uuid,
-					name: sourcingMaterialWritingEntity.name,
-					format: sourcingMaterialWritingEntity.format
-				}
-			END
-		) | CASE sourcingMaterialWritingEntity.model WHEN 'material'
-			THEN sourcingMaterialWritingEntity
-			ELSE {
-				model: sourcingMaterialWritingEntity.model,
-				uuid: sourcingMaterialWritingEntity.uuid,
-				name: sourcingMaterialWritingEntity.name
-			}
-		END] AS sourcingMaterialWritingEntities
-
-	WITH person, materials, subsequentVersionMaterials, sourcingMaterialsFromNonSpecificMaterials, sourcingMaterial,
-		COLLECT(
-			CASE SIZE(sourcingMaterialWritingEntities) WHEN 0
-				THEN null
-				ELSE {
-					model: 'writingCredit',
-					name: COALESCE(sourcingMaterialWritingCreditName, 'by'),
-					writingEntities: sourcingMaterialWritingEntities
-				}
-			END
-		) AS sourcingMaterialWritingCredits
-
-	WITH person, materials, subsequentVersionMaterials, sourcingMaterialsFromNonSpecificMaterials,
-		COLLECT(
-			CASE sourcingMaterial WHEN NULL
-				THEN null
-				ELSE {
-					model: 'material',
-					uuid: sourcingMaterial.uuid,
-					name: sourcingMaterial.name,
-					format: sourcingMaterial.format,
-					writingCredits: sourcingMaterialWritingCredits
-				}
-			END
-		) AS sourcingMaterialsFromSpecificMaterials
-
-	WITH
-		person,
-		materials,
-		subsequentVersionMaterials,
-		sourcingMaterialsFromNonSpecificMaterials + sourcingMaterialsFromSpecificMaterials AS sourcingMaterials
-
-	UNWIND (CASE sourcingMaterials WHEN [] THEN [null] ELSE sourcingMaterials END) AS sourcingMaterial
-
-		WITH person, materials, subsequentVersionMaterials, sourcingMaterial
-			ORDER BY sourcingMaterial.name
-
-	WITH DISTINCT person, materials, subsequentVersionMaterials, COLLECT(sourcingMaterial) AS sourcingMaterials
+		] AS sourcingMaterials
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 

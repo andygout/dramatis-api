@@ -549,7 +549,25 @@ describe('Materials with source material', () => {
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
-									format: 'play'
+									format: 'play',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: null,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -695,7 +713,25 @@ describe('Materials with source material', () => {
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
-									format: 'play'
+									format: 'play',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: null,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
