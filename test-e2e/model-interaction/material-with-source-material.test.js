@@ -320,7 +320,25 @@ describe('Materials with source material', () => {
 									model: 'material',
 									uuid: null,
 									name: 'A Midsummer Night\'s Dream',
-									format: 'play'
+									format: 'play',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
