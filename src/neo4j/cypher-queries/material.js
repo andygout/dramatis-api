@@ -403,8 +403,6 @@ const getShowQuery = () => `
 				END
 			) AS relatedMaterials
 
-		WITH DISTINCT material, relatedMaterials
-
 		WITH
 			material,
 			HEAD([
