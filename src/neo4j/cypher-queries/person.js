@@ -119,8 +119,6 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-		WITH DISTINCT person, materials
-
 	WITH
 		person,
 		[

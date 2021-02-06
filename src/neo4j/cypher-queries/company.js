@@ -119,10 +119,11 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-		WITH DISTINCT company, materials
-
-	WITH
-		company,
+	RETURN
+		'company' AS model,
+		company.uuid AS uuid,
+		company.name AS name,
+		company.differentiator AS differentiator,
 		[
 			material IN materials WHERE ALL(x IN [
 				'originalVersionCredit',
@@ -159,15 +160,6 @@ const getShowQuery = () => `
 				writingCredits: material.writingCredits
 			}
 		] AS sourcingMaterials
-
-	RETURN
-		'company' AS model,
-		company.uuid AS uuid,
-		company.name AS name,
-		company.differentiator AS differentiator,
-		materials,
-		subsequentVersionMaterials,
-		sourcingMaterials
 `;
 
 export {
