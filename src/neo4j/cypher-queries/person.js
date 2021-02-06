@@ -9,9 +9,9 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
 
-		OPTIONAL MATCH (person)<-[originalVersionCredit:WRITTEN_BY]-(:Material)<-[:SUBSEQUENT_VERSION_OF]-(material)
+		OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]-(material)
 
-		OPTIONAL MATCH (person)<-[sourceMaterialCredit:WRITTEN_BY]-(:Material)<-[:USES_SOURCE_MATERIAL]-(material)
+		OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[sourcingMaterialRel:USES_SOURCE_MATERIAL]-(material)
 
 		OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
 			WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
@@ -22,8 +22,8 @@ const getShowQuery = () => `
 			person,
 			writerRel,
 			material,
-			originalVersionCredit,
-			sourceMaterialCredit,
+			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
+			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
 			writingEntityRel,
 			writingEntity,
 			sourceMaterialWriterRel,
@@ -34,8 +34,8 @@ const getShowQuery = () => `
 			person,
 			writerRel,
 			material,
-			originalVersionCredit,
-			sourceMaterialCredit,
+			isSubsequentVersion,
+			isSourcingMaterial,
 			writingEntityRel,
 			writingEntity,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
@@ -53,7 +53,7 @@ const getShowQuery = () => `
 				END
 			) AS sourceMaterialWriters
 
-		WITH person, writerRel, material, originalVersionCredit, sourceMaterialCredit, writingEntityRel, writingEntity,
+		WITH person, writerRel, material, isSubsequentVersion, isSourcingMaterial, writingEntityRel, writingEntity,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
@@ -70,8 +70,8 @@ const getShowQuery = () => `
 			person,
 			writerRel,
 			material,
-			originalVersionCredit,
-			sourceMaterialCredit,
+			isSubsequentVersion,
+			isSourcingMaterial,
 			writingEntityRel.credit AS writingCreditName,
 			[writingEntity IN COLLECT(
 				CASE writingEntity WHEN NULL
@@ -89,7 +89,7 @@ const getShowQuery = () => `
 				ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
 			END] AS writingEntities
 
-		WITH person, writerRel, material, originalVersionCredit, sourceMaterialCredit,
+		WITH person, writerRel, material, isSubsequentVersion, isSourcingMaterial,
 			COLLECT(
 				CASE SIZE(writingEntities) WHEN 0
 					THEN null
@@ -113,8 +113,9 @@ const getShowQuery = () => `
 						format: material.format,
 						writingCredits: writingCredits,
 						creditType: writerRel.creditType,
-						originalVersionCredit: originalVersionCredit,
-						sourceMaterialCredit: sourceMaterialCredit
+						hasDirectCredit: CASE writerRel WHEN NULL THEN false ELSE true END,
+						isSubsequentVersion: isSubsequentVersion,
+						isSourcingMaterial: isSourcingMaterial
 					}
 				END
 			) AS materials
@@ -122,11 +123,10 @@ const getShowQuery = () => `
 	WITH
 		person,
 		[
-			material IN materials WHERE ALL(x IN [
-				'originalVersionCredit',
-				'sourceMaterialCredit',
-				'creditType'
-			] WHERE material[x] IS NULL) |
+			material IN materials WHERE
+				material.hasDirectCredit AND
+				NOT material.isSubsequentVersion AND
+				material.creditType IS NULL |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -136,7 +136,7 @@ const getShowQuery = () => `
 			}
 		] AS materials,
 		[
-			material IN materials WHERE material.originalVersionCredit IS NOT NULL |
+			material IN materials WHERE material.isSubsequentVersion |
 			{
 				model: material.model,
 				uuid: material.uuid,
@@ -147,7 +147,7 @@ const getShowQuery = () => `
 		] AS subsequentVersionMaterials,
 		[
 			material IN materials WHERE
-				material.sourceMaterialCredit IS NOT NULL OR
+				material.isSourcingMaterial OR
 				material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
 			{
 				model: material.model,

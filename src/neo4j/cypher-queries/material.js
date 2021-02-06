@@ -295,12 +295,12 @@ const getShowQuery = () => `
 		WITH
 			material,
 			relatedMaterial,
-			originalVersionRel,
-			subsequentVersionRel,
-			sourcingMaterialRel,
+			CASE originalVersionRel WHEN NULL THEN false ELSE true END AS isOriginalVersion,
+			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
+			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
 			writingEntityRel,
 			writingEntity,
-			originalVersionWritingEntityRel,
+			CASE originalVersionWritingEntityRel WHEN NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel,
 			sourceMaterialWriter
 			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -308,12 +308,12 @@ const getShowQuery = () => `
 		WITH
 			material,
 			relatedMaterial,
-			originalVersionRel,
-			subsequentVersionRel,
-			sourcingMaterialRel,
+			isOriginalVersion,
+			isSubsequentVersion,
+			isSourcingMaterial,
 			writingEntityRel,
 			writingEntity,
-			originalVersionWritingEntityRel,
+			isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
 				CASE WHEN sourceMaterialWriter IS NULL
@@ -332,12 +332,12 @@ const getShowQuery = () => `
 		WITH
 			material,
 			relatedMaterial,
-			originalVersionRel,
-			subsequentVersionRel,
-			sourcingMaterialRel,
+			isOriginalVersion,
+			isSubsequentVersion,
+			isSourcingMaterial,
 			writingEntityRel,
 			writingEntity,
-			originalVersionWritingEntityRel,
+			isOriginalVersionWritingEntity,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
@@ -353,12 +353,12 @@ const getShowQuery = () => `
 		WITH
 			material,
 			relatedMaterial,
-			originalVersionRel,
-			subsequentVersionRel,
-			sourcingMaterialRel,
+			isOriginalVersion,
+			isSubsequentVersion,
+			isSourcingMaterial,
 			writingEntityRel.credit AS writingCreditName,
 			[writingEntity IN COLLECT(
-				CASE WHEN writingEntity IS NULL OR (subsequentVersionRel IS NOT NULL AND originalVersionWritingEntityRel IS NOT NULL)
+				CASE WHEN writingEntity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 					THEN null
 					ELSE {
 						model: TOLOWER(HEAD(LABELS(writingEntity))),
@@ -373,7 +373,7 @@ const getShowQuery = () => `
 				ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
 			END] AS writingEntities
 
-		WITH material, relatedMaterial, originalVersionRel, subsequentVersionRel, sourcingMaterialRel,
+		WITH material, relatedMaterial, isOriginalVersion, isSubsequentVersion, isSourcingMaterial,
 			COLLECT(
 				CASE SIZE(writingEntities) WHEN 0
 					THEN null
@@ -396,9 +396,9 @@ const getShowQuery = () => `
 						name: relatedMaterial.name,
 						format: relatedMaterial.format,
 						writingCredits: writingCredits,
-						originalVersionRel: originalVersionRel,
-						subsequentVersionRel: subsequentVersionRel,
-						sourcingMaterialRel: sourcingMaterialRel
+						isOriginalVersion: isOriginalVersion,
+						isSubsequentVersion: isSubsequentVersion,
+						isSourcingMaterial: isSourcingMaterial
 					}
 				END
 			) AS relatedMaterials
@@ -410,7 +410,7 @@ const getShowQuery = () => `
 					WHERE relatedMaterial.uuid = material.uuid | relatedMaterial.writingCredits
 			]) AS writingCredits,
 			HEAD([
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.originalVersionRel IS NOT NULL |
+				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
 				{
 					model: relatedMaterial.model,
 					uuid: relatedMaterial.uuid,
@@ -420,7 +420,7 @@ const getShowQuery = () => `
 				}
 			]) AS originalVersionMaterial,
 			[
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.subsequentVersionRel IS NOT NULL |
+				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
 				{
 					model: relatedMaterial.model,
 					uuid: relatedMaterial.uuid,
@@ -430,7 +430,7 @@ const getShowQuery = () => `
 				}
 			] AS subsequentVersionMaterials,
 			[
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.sourcingMaterialRel IS NOT NULL |
+				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
 				{
 					model: relatedMaterial.model,
 					uuid: relatedMaterial.uuid,
@@ -502,7 +502,7 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-		OPTIONAL MATCH (material)<-[sourceMaterialCredit:USES_SOURCE_MATERIAL]-(:Material)<-[:PRODUCTION_OF]-(production)
+		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
 
 		WITH
 			material,
@@ -514,7 +514,7 @@ const getShowQuery = () => `
 			production,
 			theatre,
 			surTheatre,
-			sourceMaterialCredit
+			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
 			ORDER BY production.name, theatre.name
 
 		WITH
@@ -531,7 +531,7 @@ const getShowQuery = () => `
 						model: 'production',
 						uuid: production.uuid,
 						name: production.name,
-						sourceMaterialCredit: sourceMaterialCredit,
+						usesSourcingMaterial: usesSourcingMaterial,
 						theatre: CASE theatre WHEN NULL
 							THEN null
 							ELSE {
@@ -564,11 +564,11 @@ const getShowQuery = () => `
 		sourcingMaterials,
 		characterGroups,
 		[
-			production IN productions WHERE production.sourceMaterialCredit IS NULL |
+			production IN productions WHERE NOT production.usesSourcingMaterial |
 			{ model: production.model, uuid: production.uuid, name: production.name, theatre: production.theatre }
 		] AS productions,
 		[
-			production IN productions WHERE production.sourceMaterialCredit IS NOT NULL |
+			production IN productions WHERE production.usesSourcingMaterial |
 			{ model: production.model, uuid: production.uuid, name: production.name, theatre: production.theatre }
 		] AS sourcingMaterialProductions
 	`;
