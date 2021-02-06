@@ -487,9 +487,7 @@ const getShowQuery = () => `
 			END
 		) AS characterGroups
 
-	OPTIONAL MATCH (material)<-[:PRODUCTION_OF]-(production:Production)
-
-	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[:PRODUCTION_OF]-(sourcingMaterialProduction:Production)
+	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL|PRODUCTION_OF*1..2]-(production:Production)
 
 	WITH
 		material,
@@ -498,7 +496,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterials,
 		sourcingMaterials,
 		characterGroups,
-		COLLECT(production) + COLLECT(sourcingMaterialProduction) AS productions
+		COLLECT(production) AS productions
 
 	UNWIND (CASE productions WHEN [] THEN [null] ELSE productions END) AS production
 
