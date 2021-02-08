@@ -131,6 +131,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				materials: [],
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
+				rightsGrantorMaterials: [],
 				productions: []
 			};
 

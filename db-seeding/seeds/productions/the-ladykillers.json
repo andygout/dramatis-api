@@ -1,0 +1,78 @@
+{
+	"name": "The Ladykillers",
+	"material": {
+		"name": "The Ladykillers",
+		"differentiator": "2"
+	},
+	"theatre": {
+		"name": "Gielgud Theatre"
+	},
+	"cast": [
+		{
+			"name": "Harry Peacock",
+			"roles": [
+				{
+					"name": "Constable Macdonald"
+				}
+			]
+		},
+		{
+			"name": "Marcia Warren",
+			"roles": [
+				{
+					"name": "Mrs Louisa Wilberforce",
+					"characterName": "Mrs Wilberforce"
+				}
+			]
+		},
+		{
+			"name": "Peter Capaldi",
+			"roles": [
+				{
+					"name": "Professor Marcus"
+				}
+			]
+		},
+		{
+			"name": "James Fleet",
+			"roles": [
+				{
+					"name": "Major Courtney"
+				}
+			]
+		},
+		{
+			"name": "Stephen Wight",
+			"roles": [
+				{
+					"name": "Harry Robinson"
+				}
+			]
+		},
+		{
+			"name": "Clive Rowe",
+			"roles": [
+				{
+					"name": "One-Round"
+				}
+			]
+		},
+		{
+			"name": "Ben Miller",
+			"roles": [
+				{
+					"name": "Louis Harvey"
+				}
+			]
+		},
+		{
+			"name": "Beverley Walding",
+			"roles": [
+				{
+					"name": "Mrs Jane Tromleyton",
+					"characterName": "Mrs Tromleyton"
+				}
+			]
+		}
+	]
+}
