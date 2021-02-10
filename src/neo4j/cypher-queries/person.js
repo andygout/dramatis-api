@@ -156,7 +156,17 @@ const getShowQuery = () => `
 				format: material.format,
 				writingCredits: material.writingCredits
 			}
-		] AS sourcingMaterials
+		] AS sourcingMaterials,
+		[
+			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
+			{
+				model: material.model,
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writingCredits: material.writingCredits
+			}
+		] AS rightsGrantorMaterials
 
 	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
 
@@ -177,6 +187,7 @@ const getShowQuery = () => `
 		materials,
 		subsequentVersionMaterials,
 		sourcingMaterials,
+		rightsGrantorMaterials,
 		production,
 		theatre,
 		surTheatre,
@@ -184,7 +195,15 @@ const getShowQuery = () => `
 		character
 		ORDER BY role.rolePosition
 
-	WITH person, materials, subsequentVersionMaterials, sourcingMaterials, production, theatre, surTheatre,
+	WITH
+		person,
+		materials,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		rightsGrantorMaterials,
+		production,
+		theatre,
+		surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -201,6 +220,7 @@ const getShowQuery = () => `
 		materials,
 		subsequentVersionMaterials,
 		sourcingMaterials,
+		rightsGrantorMaterials,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null

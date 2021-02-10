@@ -1,0 +1,64 @@
+{
+	"name": "The Ladykillers",
+	"differentiator": "2",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Graham Linehan"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"writingEntities": [
+				{
+					"model": "material",
+					"name": "The Ladykillers",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "by special arrangement with",
+			"creditType": "RIGHTS_GRANTOR",
+			"writingEntities": [
+				{
+					"model": "company",
+					"name": "StudioCanal"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Mrs Wilberforce"
+				},
+				{
+					"name": "Constable Macdonald"
+				},
+				{
+					"name": "Professor Marcus"
+				},
+				{
+					"name": "Louis Harvey"
+				},
+				{
+					"name": "Major Courtney"
+				},
+				{
+					"name": "Harry Robinson"
+				},
+				{
+					"name": "One-Round"
+				},
+				{
+					"name": "Mrs Tromleyton"
+				}
+			]
+		}
+	]
+}

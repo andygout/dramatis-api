@@ -159,7 +159,17 @@ const getShowQuery = () => `
 				format: material.format,
 				writingCredits: material.writingCredits
 			}
-		] AS sourcingMaterials
+		] AS sourcingMaterials,
+		[
+			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
+			{
+				model: material.model,
+				uuid: material.uuid,
+				name: material.name,
+				format: material.format,
+				writingCredits: material.writingCredits
+			}
+		] AS rightsGrantorMaterials
 `;
 
 export {
