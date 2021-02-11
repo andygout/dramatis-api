@@ -23,5 +23,39 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Harry Burton"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Simon Mills"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		}
 	]
 }

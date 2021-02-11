@@ -55,6 +55,46 @@ const getDuplicateCharacterIndices = arrayOfObjects => {
 
 };
 
+const getDuplicateEntityIndices = arrayOfObjects => {
+
+	return arrayOfObjects.reduce((accumulator, object, index) => {
+
+		const isDuplicate =
+			!!object.name.length &&
+			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				object.name === comparisonObject.name &&
+				object.differentiator === comparisonObject.differentiator &&
+				object.model === comparisonObject.model &&
+				index !== comparisonIndex
+			);
+
+		if (isDuplicate) accumulator.push(index);
+
+		return accumulator;
+
+	}, []);
+
+};
+
+const getDuplicateNameIndices = arrayOfObjects => {
+
+	return arrayOfObjects.reduce((accumulator, object, index) => {
+
+		const isDuplicate =
+			!!object.name.length &&
+			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				object.name === comparisonObject.name &&
+				index !== comparisonIndex
+			);
+
+		if (isDuplicate) accumulator.push(index);
+
+		return accumulator;
+
+	}, []);
+
+};
+
 const isDuplicateRoleName = (object, comparisonObject) => {
 
 	const objectCharacterName =
@@ -92,30 +132,10 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 
 };
 
-const getDuplicateWritingEntityIndices = arrayOfObjects => {
-
-	return arrayOfObjects.reduce((accumulator, object, index) => {
-
-		const isDuplicate =
-			!!object.name.length &&
-			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				object.name === comparisonObject.name &&
-				object.differentiator === comparisonObject.differentiator &&
-				object.model === comparisonObject.model &&
-				index !== comparisonIndex
-			);
-
-		if (isDuplicate) accumulator.push(index);
-
-		return accumulator;
-
-	}, []);
-
-};
-
 export {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
-	getDuplicateRoleIndices,
-	getDuplicateWritingEntityIndices
+	getDuplicateEntityIndices,
+	getDuplicateNameIndices,
+	getDuplicateRoleIndices
 };

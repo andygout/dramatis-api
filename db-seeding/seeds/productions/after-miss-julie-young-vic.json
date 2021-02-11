@@ -31,5 +31,63 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Natalie Abrahami"
+				}
+			]
+		},
+		{
+			"name": "Design",
+			"creativeEntities": [
+				{
+					"name": "Patrick Burnier"
+				}
+			]
+		},
+		{
+			"name": "Light",
+			"creativeEntities": [
+				{
+					"name": "Oliver Fenwick"
+				}
+			]
+		},
+		{
+			"name": "Music Direction",
+			"creativeEntities": [
+				{
+					"name": "Phil Bateman"
+				}
+			]
+		},
+		{
+			"name": "Voice",
+			"creativeEntities": [
+				{
+					"name": "Emma Woodvine"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"creativeEntities": [
+				{
+					"name": "Ann Yee"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"creativeEntities": [
+				{
+					"name": "Julia Horan"
+				}
+			]
+		}
 	]
 }

@@ -290,5 +290,71 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Conall Morrison"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Francis O'Connor"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Joan O'Clery"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Conor Linehan"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"creativeEntities": [
+				{
+					"name": "Steve Edis"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		}
 	]
 }

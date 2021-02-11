@@ -30,7 +30,7 @@ describe('WritingCredit model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateWritingEntityIndices: stub().returns([])
+				getDuplicateEntityIndices: stub().returns([])
 			},
 			models: {
 				Company: CompanyStub,
@@ -190,7 +190,7 @@ describe('WritingCredit model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
 				instance.writingEntities[0].validateName,
 				instance.writingEntities[0].validateDifferentiator,
 				instance.writingEntities[0].validateUniquenessInGroup,
@@ -204,8 +204,8 @@ describe('WritingCredit model', () => {
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateWritingEntityIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledWithExactly(
 				instance.writingEntities
 			)).to.be.true;
 			expect(instance.writingEntities[0].validateName.calledOnce).to.be.true;

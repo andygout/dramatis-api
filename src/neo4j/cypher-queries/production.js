@@ -5,6 +5,8 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (production:Production { uuid: $uuid })
 
+			WITH production
+
 			OPTIONAL MATCH (production)-[relationship]-()
 
 			DELETE relationship
@@ -83,6 +85,64 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
+		UNWIND (CASE $creativeCredits WHEN [] THEN [{ creativeEntities: [] }] ELSE $creativeCredits END) AS creativeCredit
+
+			UNWIND
+				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
+					THEN [null]
+					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']
+				END AS creativeEntityParam
+
+				OPTIONAL MATCH (existingCreative:Person { name: creativeEntityParam.name })
+					WHERE
+						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
+						(creativeEntityParam.differentiator = existingCreative.differentiator)
+
+				FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+					MERGE (entity:Person {
+						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
+						name: creativeEntityParam.name
+					})
+						ON CREATE SET entity.differentiator = creativeEntityParam.differentiator
+
+					CREATE (production)-
+						[:HAS_CREATIVE_TEAM_MEMBER {
+							creditPosition: creativeCredit.position,
+							entityPosition: creativeEntityParam.position,
+							credit: creativeCredit.name
+						}]->(entity)
+				)
+
+			WITH DISTINCT production, creativeCredit
+
+			UNWIND
+				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']) WHEN 0
+					THEN [null]
+					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']
+				END AS creativeEntityParam
+
+				OPTIONAL MATCH (existingCreative:Company { name: creativeEntityParam.name })
+					WHERE
+						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
+						(creativeEntityParam.differentiator = existingCreative.differentiator)
+
+				FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+					MERGE (entity:Company {
+						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
+						name: creativeEntityParam.name
+					})
+						ON CREATE SET entity.differentiator = creativeEntityParam.differentiator
+
+					CREATE (production)-
+						[:HAS_CREATIVE_TEAM_MEMBER {
+							creditPosition: creativeCredit.position,
+							entityPosition: creativeEntityParam.position,
+							credit: creativeCredit.name
+						}]->(entity)
+				)
+
+		WITH DISTINCT production
+
 		${getEditQuery()}
 	`;
 
@@ -97,12 +157,12 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(person:Person)
+	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
 
-	WITH production, material, theatre, role, person
+	WITH production, material, theatre, role, castMember
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, material, theatre, person,
+	WITH production, material, theatre, castMember,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN null
@@ -114,6 +174,39 @@ const getEditQuery = () => `
 				}
 			END
 		) + [{}] AS roles
+
+	WITH production, material, theatre,
+		COLLECT(
+			CASE castMember WHEN NULL
+				THEN null
+				ELSE { name: castMember.name, differentiator: castMember.differentiator, roles: roles }
+			END
+		) + [{ roles: [{}] }] AS cast
+
+	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+		WHERE creativeEntity:Person OR creativeEntity:Company
+
+	WITH production, material, theatre, cast, creativeEntityRel, creativeEntity
+		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
+
+	WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
+		[creativeEntity IN COLLECT(
+			CASE creativeEntity WHEN NULL
+				THEN null
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(creativeEntity))),
+					name: creativeEntity.name,
+					differentiator: creativeEntity.differentiator
+				}
+			END
+		) | CASE creativeEntity.model WHEN 'company'
+			THEN creativeEntity
+			ELSE {
+				model: creativeEntity.model,
+				name: creativeEntity.name,
+				differentiator: creativeEntity.differentiator
+			}
+		END] + [{}] AS creativeEntities
 
 	RETURN
 		'production' AS model,
@@ -127,12 +220,17 @@ const getEditQuery = () => `
 			name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
 			differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
 		} AS theatre,
+		cast,
 		COLLECT(
-			CASE person WHEN NULL
+			CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 				THEN null
-				ELSE { name: person.name, differentiator: person.differentiator, roles: roles }
+				ELSE {
+					model: 'creativeCredit',
+					name: creativeCreditName,
+					creativeEntities: creativeEntities
+				}
 			END
-		) + [{ roles: [{}] }] AS cast
+		) + [{ creativeEntities: [{}] }] AS creativeCredits
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -232,9 +330,9 @@ const getShowQuery = () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(performer:Person)
+	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
 
-	OPTIONAL MATCH (performer)-[role]->(production)-[materialRel]->
+	OPTIONAL MATCH (castMember)-[role]->(production)-[materialRel]->
 		(material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(
@@ -243,10 +341,10 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, theatre, material, writingCredits, performer, role, character
+	WITH DISTINCT production, theatre, material, writingCredits, castMember, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, theatre, performer,
+	WITH production, theatre, castMember,
 		CASE material WHEN NULL
 			THEN null
 			ELSE {
@@ -264,18 +362,52 @@ const getShowQuery = () => `
 			END
 		) AS roles
 
+	WITH production, material, theatre,
+		COLLECT(
+			CASE castMember WHEN NULL
+				THEN null
+				ELSE { model: 'person', uuid: castMember.uuid, name: castMember.name, roles: roles }
+			END
+		) AS cast
+
+	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+		WHERE creativeEntity:Person OR creativeEntity:Company
+
+	WITH production, material, theatre, cast, creativeEntityRel, creativeEntity
+		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
+
+	WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
+		[creativeEntity IN COLLECT(
+			CASE WHEN creativeEntity IS NULL
+				THEN null
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(creativeEntity))),
+					uuid: CASE creativeEntity.uuid WHEN material.uuid THEN null ELSE creativeEntity.uuid END,
+					name: creativeEntity.name
+				}
+			END
+		) | CASE creativeEntity.model WHEN 'company'
+			THEN creativeEntity
+			ELSE { model: creativeEntity.model, uuid: creativeEntity.uuid, name: creativeEntity.name }
+		END] AS creativeEntities
+
 	RETURN
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
 		material,
 		theatre,
+		cast,
 		COLLECT(
-			CASE performer WHEN NULL
+			CASE SIZE(creativeEntities) WHEN 0
 				THEN null
-				ELSE { model: 'person', uuid: performer.uuid, name: performer.name, roles: roles }
+				ELSE {
+					model: 'creativeCredit',
+					name: creativeCreditName,
+					creativeEntities: creativeEntities
+				}
 			END
-		) AS cast
+		) AS creativeCredits
 `;
 
 const getListQuery = () => `

@@ -103,6 +103,16 @@ export default class Base {
 
 	}
 
+	validateNamePresenceIfNamedChildren (children) {
+
+		if (this.name === '' && children.some(child => !!child.name)) {
+
+			this.addPropertyError('name', 'Name is required if named children exist');
+
+		}
+
+	}
+
 	async runDatabaseValidations () {
 
 		await this.validateUniquenessInDatabase();

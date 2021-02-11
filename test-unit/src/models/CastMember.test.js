@@ -4,7 +4,7 @@ import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Role } from '../../../src/models';
 
-describe('Cast Member model', () => {
+describe('CastMember model', () => {
 
 	let stubs;
 
@@ -89,13 +89,13 @@ describe('Cast Member model', () => {
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateUniquenessInGroup');
-			spy(instance, 'validateNamePresenceIfRoles');
+			spy(instance, 'validateNamePresenceIfNamedChildren');
 			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
 				instance.validateUniquenessInGroup,
-				instance.validateNamePresenceIfRoles,
+				instance.validateNamePresenceIfNamedChildren,
 				stubs.getDuplicateIndicesModule.getDuplicateRoleIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
@@ -109,8 +109,8 @@ describe('Cast Member model', () => {
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.validateNamePresenceIfRoles.calledOnce).to.be.true;
-			expect(instance.validateNamePresenceIfRoles.calledWithExactly()).to.be.true;
+			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
+			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly(instance.roles)).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices.calledWithExactly(
 				instance.roles
@@ -125,79 +125,6 @@ describe('Cast Member model', () => {
 			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledWithExactly()).to.be.true;
 			expect(instance.roles[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.roles[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-
-		});
-
-	});
-
-	describe('validateNamePresenceIfRoles method', () => {
-
-		beforeEach(() => {
-
-			stubs.models.Role = function (props) {
-
-				this.name = props.name;
-
-			};
-
-		});
-
-		context('valid data', () => {
-
-			context('cast member does not have name nor any roles with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = createInstance({ name: '', roles: [{ name: '' }] });
-					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfRoles();
-					expect(instance.addPropertyError.notCalled).to.be.true;
-
-				});
-
-			});
-
-			context('cast member has a name and no roles with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = createInstance({ name: 'Ian McKellen', roles: [{ name: '' }] });
-					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfRoles();
-					expect(instance.addPropertyError.notCalled).to.be.true;
-				});
-
-			});
-
-			context('cast member has a name and roles with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = createInstance({ name: 'Ian McKellen', roles: [{ name: 'King Lear' }] });
-					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfRoles();
-					expect(instance.addPropertyError.notCalled).to.be.true;
-
-				});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('adds properties whose values are arrays to errors property', () => {
-
-				const instance = createInstance({ name: '', roles: [{ name: 'King Lear' }] });
-				spy(instance, 'addPropertyError');
-				instance.validateNamePresenceIfRoles();
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'name',
-					'Name is required if cast member has named roles'
-				)).to.be.true;
-
-			});
 
 		});
 

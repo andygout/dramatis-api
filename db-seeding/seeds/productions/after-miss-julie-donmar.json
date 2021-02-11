@@ -31,5 +31,31 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Bunny Christie"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		}
 	]
 }

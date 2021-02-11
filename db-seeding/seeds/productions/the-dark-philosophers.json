@@ -31,5 +31,55 @@
 		{
 			"name": "Glyn Pritchard"
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Paul Hunter"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Angela Davies"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Ceri James"
+				}
+			]
+		},
+		{
+			"name": "Music Composed and Directed by",
+			"creativeEntities": [
+				{
+					"name": "Iain Johnstone"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Laura Coates"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Sam Jones"
+				}
+			]
+		}
 	]
 }

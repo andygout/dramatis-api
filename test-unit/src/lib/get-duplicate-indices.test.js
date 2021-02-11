@@ -3,8 +3,9 @@ import { expect } from 'chai';
 import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
-	getDuplicateRoleIndices,
-	getDuplicateWritingEntityIndices
+	getDuplicateEntityIndices,
+	getDuplicateNameIndices,
+	getDuplicateRoleIndices
 } from '../../../src/lib/get-duplicate-indices';
 
 describe('Get Duplicate Indices module', () => {
@@ -146,6 +147,107 @@ describe('Get Duplicate Indices module', () => {
 
 	});
 
+	describe('getDuplicateEntityIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateEntityIndices(
+					[
+						{ name: 'Foo', differentiator: '', model: '' },
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Foo', differentiator: '2', model: '' },
+						{ name: 'Foo', differentiator: '', model: 'company' },
+						{ name: 'Foo', differentiator: '1', model: 'company' },
+						{ name: 'Foo', differentiator: '2', model: 'company' },
+						{ name: 'Foo', differentiator: '', model: 'material' },
+						{ name: 'Foo', differentiator: '1', model: 'material' },
+						{ name: 'Foo', differentiator: '2', model: 'material' },
+						{ name: 'Bar', differentiator: '', model: '' },
+						{ name: 'Bar', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '2', model: '' },
+						{ name: 'Bar', differentiator: '', model: 'company' },
+						{ name: 'Bar', differentiator: '1', model: 'company' },
+						{ name: 'Bar', differentiator: '2', model: 'company' },
+						{ name: 'Bar', differentiator: '', model: 'material' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: 'Bar', differentiator: '2', model: 'material' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+				const result = getDuplicateEntityIndices(
+					[
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: 'Bar', differentiator: '1', model: 'company' },
+						{ name: '', differentiator: '1', model: '' },
+						{ name: 'Baz', differentiator: '1', model: '' },
+						{ name: 'Foo', differentiator: '1', model: '' },
+						{ name: 'Bar', differentiator: '1', model: 'material' },
+						{ name: '', differentiator: '1', model: '' },
+						{ name: 'Qux', differentiator: '1', model: '' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 1, 5, 6]);
+
+			});
+
+		});
+
+	});
+
+	describe('getDuplicateNameIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateNameIndices(
+					[
+						{ name: 'Foo' },
+						{ name: 'Bar' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
+
+				const result = getDuplicateNameIndices(
+					[
+						{ name: 'Foo' },
+						{ name: 'Bar' },
+						{ name: '' },
+						{ name: 'Foo' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 3]);
+
+			});
+
+		});
+
+	});
+
 	describe('getDuplicateRoleIndices function', () => {
 
 		context('duplicates do not exist', () => {
@@ -228,67 +330,6 @@ describe('Get Duplicate Indices module', () => {
 				);
 
 				expect(result).to.deep.equal([0, 1, 3, 4]);
-
-			});
-
-		});
-
-	});
-
-	describe('getDuplicateWritingEntityIndices function', () => {
-
-		context('duplicates do not exist', () => {
-
-			it('returns an empty array', () => {
-
-				const result = getDuplicateWritingEntityIndices(
-					[
-						{ name: 'Foo', differentiator: '', model: '' },
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Foo', differentiator: '2', model: '' },
-						{ name: 'Foo', differentiator: '', model: 'company' },
-						{ name: 'Foo', differentiator: '1', model: 'company' },
-						{ name: 'Foo', differentiator: '2', model: 'company' },
-						{ name: 'Foo', differentiator: '', model: 'material' },
-						{ name: 'Foo', differentiator: '1', model: 'material' },
-						{ name: 'Foo', differentiator: '2', model: 'material' },
-						{ name: 'Bar', differentiator: '', model: '' },
-						{ name: 'Bar', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '2', model: '' },
-						{ name: 'Bar', differentiator: '', model: 'company' },
-						{ name: 'Bar', differentiator: '1', model: 'company' },
-						{ name: 'Bar', differentiator: '2', model: 'company' },
-						{ name: 'Bar', differentiator: '', model: 'material' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: 'Bar', differentiator: '2', model: 'material' }
-					]
-				);
-
-				expect(result).to.deep.equal([]);
-
-			});
-
-		});
-
-		context('duplicates exist', () => {
-
-			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
-
-				const result = getDuplicateWritingEntityIndices(
-					[
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: 'Bar', differentiator: '1', model: 'company' },
-						{ name: '', differentiator: '1', model: '' },
-						{ name: 'Baz', differentiator: '1', model: '' },
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: '', differentiator: '1', model: '' },
-						{ name: 'Qux', differentiator: '1', model: '' }
-					]
-				);
-
-				expect(result).to.deep.equal([0, 1, 5, 6]);
 
 			});
 

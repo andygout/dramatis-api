@@ -206,5 +206,71 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Nicholas Hytner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Vicki Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Jon Clark"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Kate Waters"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Alex Baranowsky"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"creativeEntities": [
+				{
+					"name": "Fin Walker"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Jeanette Nelson"
+				}
+			]
+		}
 	]
 }

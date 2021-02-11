@@ -280,5 +280,55 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Nicholas Hytner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Tim Hatley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Mark Henderson"
+				}
+			]
+		},
+		{
+			"name": "Paul Groothuis",
+			"creativeEntities": [
+				{
+					"name": "Sound Designer"
+				}
+			]
+		},
+		{
+			"name": "Simon Webb",
+			"creativeEntities": [
+				{
+					"name": "Music"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
 	]
 }

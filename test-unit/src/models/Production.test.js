@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CastMember, Material, Theatre } from '../../../src/models';
+import { CastMember, CreativeCredit, Material, Theatre } from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -11,6 +11,12 @@ describe('Production model', () => {
 	const CastMemberStub = function () {
 
 		return createStubInstance(CastMember);
+
+	};
+
+	const CreativeCreditStub = function () {
+
+		return createStubInstance(CreativeCredit);
 
 	};
 
@@ -30,7 +36,7 @@ describe('Production model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])
+				getDuplicateNameIndices: stub().returns([])
 			},
 			Base: {
 				neo4jQueryModule: {
@@ -39,6 +45,7 @@ describe('Production model', () => {
 			},
 			models: {
 				CastMember: CastMemberStub,
+				CreativeCredit: CreativeCreditStub,
 				Material: MaterialStub,
 				Theatre: TheatreStub
 			}
@@ -100,6 +107,76 @@ describe('Production model', () => {
 
 		});
 
+		describe('creativeCredits property', () => {
+
+			context('instance is subject', () => {
+
+				it('assigns empty array if absent from props', () => {
+
+					const instance = createInstance({ name: 'Hamlet' });
+					expect(instance.creativeCredits).to.deep.equal([]);
+
+				});
+
+				it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', () => {
+
+					const props = {
+						name: 'Hamlet',
+						creativeCredits: [
+							{
+								name: 'Sound Designer'
+							},
+							{
+								name: ''
+							},
+							{
+								name: ' '
+							}
+						]
+					};
+					const instance = createInstance(props);
+					expect(instance.creativeCredits.length).to.equal(3);
+					expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
+					expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
+					expect(instance.creativeCredits[2] instanceof CreativeCredit).to.be.true;
+
+				});
+
+			});
+
+			context('instance is not subject, i.e. it is an association of another instance', () => {
+
+				it('will not assign any value if absent from props', () => {
+
+					const props = {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						isAssociation: true
+					};
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('writingCredits');
+
+				});
+
+				it('will not assign any value if included in props', () => {
+
+					const props = {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						writingCredits: [
+							{
+								name: 'version by'
+							}
+						],
+						isAssociation: true
+					};
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('writingCredits');
+
+				});
+
+			});
+
+		});
+
 	});
 
 	describe('runInputValidations method', () => {
@@ -112,6 +189,11 @@ describe('Production model', () => {
 					{
 						name: 'Patrick Stewart'
 					}
+				],
+				creativeCredits: [
+					{
+						name: 'Sound Designer'
+					}
 				]
 			};
 			const instance = createInstance(props);
@@ -123,8 +205,9 @@ describe('Production model', () => {
 				instance.theatre.validateDifferentiator,
 				instance.material.validateName,
 				instance.material.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
-				instance.cast[0].runInputValidations
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
+				instance.cast[0].runInputValidations,
+				instance.creativeCredits[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
@@ -136,12 +219,19 @@ describe('Production model', () => {
 			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.material.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledTwice).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
 				instance.cast
 			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1).calledWithExactly(
+				instance.creativeCredits
+			)).to.be.true;
+			expect(instance.creativeCredits[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.creativeCredits[0].runInputValidations.calledWithExactly(
+				{ isDuplicate: false }
+			)).to.be.true;
 
 		});
 

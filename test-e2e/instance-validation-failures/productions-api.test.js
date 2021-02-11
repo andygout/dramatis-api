@@ -53,7 +53,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					cast: []
+					cast: [],
+					creativeCredits: []
 				};
 
 				expect(response).to.have.status(200);
@@ -116,7 +117,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					cast: []
+					cast: [],
+					creativeCredits: []
 				};
 
 				expect(response).to.have.status(200);
@@ -212,7 +214,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					cast: []
+					cast: [],
+					creativeCredits: []
 				};
 
 				expect(response).to.have.status(200);

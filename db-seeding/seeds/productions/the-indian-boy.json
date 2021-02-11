@@ -79,5 +79,63 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Rebecca Gatward"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Liz Cooke"
+				}
+			]
+		},
+		{
+			"name": "Light Designer",
+			"creativeEntities": [
+				{
+					"name": "Alastair West"
+				}
+			]
+		},
+		{
+			"name": "Sound Score",
+			"creativeEntities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Video Design",
+			"creativeEntities": [
+				{
+					"name": "Gary Vernon"
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"creativeEntities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Fight Arranger",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
 	]
 }

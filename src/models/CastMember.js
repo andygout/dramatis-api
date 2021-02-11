@@ -24,7 +24,7 @@ export default class CastMember extends Person {
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
-		this.validateNamePresenceIfRoles();
+		this.validateNamePresenceIfNamedChildren(this.roles);
 
 		const duplicateRoleIndices = getDuplicateRoleIndices(this.roles);
 
@@ -43,16 +43,6 @@ export default class CastMember extends Person {
 			role.validateUniquenessInGroup({ isDuplicate: duplicateRoleIndices.includes(index) });
 
 		});
-
-	}
-
-	validateNamePresenceIfRoles () {
-
-		if (this.name === '' && this.roles.some(role => !!role.name)) {
-
-			this.addPropertyError('name', 'Name is required if cast member has named roles');
-
-		}
 
 	}
 

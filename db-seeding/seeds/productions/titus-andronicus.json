@@ -214,5 +214,66 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Lucy Bailey"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "William Dudley"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"creativeEntities": [
+				{
+					"name": "Siân Williams"
+				},
+				{
+					"name": "Glynn MacDonald"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Django Bates"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"creativeEntities": [
+				{
+					"name": "Adrian Woodward"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"creativeEntities": [
+				{
+					"name": "Richard Hartley"
+				}
+			]
+		}
 	]
 }

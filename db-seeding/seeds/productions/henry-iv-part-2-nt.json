@@ -259,5 +259,69 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Nicholas Hytner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Mark Thompson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Max Ringham"
+				},
+				{
+					"name": "Ben Ringham"
+				},
+				{
+					"name": "Andrew Rutland"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"creativeEntities": [
+				{
+					"name": "Steve Bentley-Klein"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
 	]
 }

@@ -120,6 +120,44 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
+	OPTIONAL MATCH (company)<-[creativeRel:HAS_CREATIVE_TEAM_MEMBER]-(production:Production)
+
+	OPTIONAL MATCH (production)-[coCreativeRel:HAS_CREATIVE_TEAM_MEMBER]->(coCreativeEntity)
+		WHERE
+			(coCreativeEntity:Person OR coCreativeEntity:Company) AND
+			(creativeRel.creditPosition IS NULL OR creativeRel.creditPosition = coCreativeRel.creditPosition) AND
+			coCreativeEntity.uuid <> company.uuid
+
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+
+	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+
+	WITH company, materials, creativeRel, coCreativeEntity, production, theatre, surTheatre
+		ORDER BY coCreativeRel.entityPosition
+
+	WITH company, materials, creativeRel, production, theatre, surTheatre,
+		COLLECT(
+			CASE coCreativeEntity WHEN NULL
+				THEN null
+				ELSE {
+					model: TOLOWER(HEAD(LABELS(coCreativeEntity))),
+					uuid: coCreativeEntity.uuid,
+					name: coCreativeEntity.name
+				}
+			END
+		) AS coCreditedEntities
+
+	WITH company, materials, creativeRel, coCreditedEntities, production, theatre, surTheatre
+		ORDER BY creativeRel.creditPosition
+
+	WITH company, materials, production, theatre, surTheatre,
+		COLLECT({
+			model: 'creativeCredit',
+			name: creativeRel.credit,
+			coCreditedEntities: coCreditedEntities
+		}) AS creativeCredits
+		ORDER BY production.name, theatre.name
+
 	RETURN
 		'company' AS model,
 		company.uuid AS uuid,
@@ -169,7 +207,34 @@ const getShowQuery = () => `
 				format: material.format,
 				writingCredits: material.writingCredits
 			}
-		] AS rightsGrantorMaterials
+		] AS rightsGrantorMaterials,
+		COLLECT(
+			CASE production WHEN NULL
+				THEN null
+				ELSE {
+					model: 'production',
+					uuid: production.uuid,
+					name: production.name,
+					theatre: CASE theatre WHEN NULL
+						THEN null
+						ELSE {
+							model: 'theatre',
+							uuid: theatre.uuid,
+							name: theatre.name,
+							surTheatre: CASE surTheatre WHEN NULL
+								THEN null
+								ELSE {
+									model: 'theatre',
+									uuid: surTheatre.uuid,
+									name: surTheatre.name
+								}
+							END
+						}
+					END,
+					creativeCredits: creativeCredits
+				}
+			END
+		) AS creativeProductions
 `;
 
 export {

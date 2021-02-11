@@ -206,5 +206,90 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Stephen Brimson Lewis"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Martin Slavin"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Paul Englishby"
+				}
+			]
+		},
+		{
+			"name": "Musical Directors",
+			"creativeEntities": [
+				{
+					"name": "Bruce O'Neil"
+				},
+				{
+					"name": "Gareth Ellis"
+				}
+			]
+		},
+		{
+			"name": "Movement Director",
+			"creativeEntities": [
+				{
+					"name": "Michael Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"creativeEntities": [
+				{
+					"name": "Owen Horsley"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Helena Palmer"
+				}
+			]
+		}
 	]
 }

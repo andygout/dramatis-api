@@ -128,5 +128,74 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Benedict Andrews"
+				}
+			]
+		},
+		{
+			"name": "Design",
+			"creativeEntities": [
+				{
+					"name": "Johannes Schütz"
+				}
+			]
+		},
+		{
+			"name": "Costumes",
+			"creativeEntities": [
+				{
+					"name": "Victoria Behr"
+				}
+			]
+		},
+		{
+			"name": "Light",
+			"creativeEntities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"creativeEntities": [
+				{
+					"name": "Paul Arditti"
+				}
+			]
+		},
+		{
+			"name": "Music Direction & Arrangement",
+			"creativeEntities": [
+				{
+					"name": "Phil Bateman"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"creativeEntities": [
+				{
+					"name": "Natalie Abrahami"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"creativeEntities": [
+				{
+					"name": "Maggie Lunn"
+				},
+				{
+					"name": "Camilla Evans"
+				}
+			]
+		}
 	]
 }

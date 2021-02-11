@@ -23,5 +23,63 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Deborah Warner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Tom Pye"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Luca Costigliolo"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Jean Kalman"
+				}
+			]
+		},
+		{
+			"name": "Sound Score",
+			"creativeEntities": [
+				{
+					"name": "Mel Mercier"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Alastair Coomer"
+				}
+			]
+		}
 	]
 }

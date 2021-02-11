@@ -124,5 +124,47 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Trevor Nunn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Robert Jones"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Emma Ryott"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Howard Harrison"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Ian Dickinson"
+				}
+			]
+		}
 	]
 }
