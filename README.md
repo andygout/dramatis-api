@@ -1,4 +1,4 @@
-# theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api)
+# theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api/tree/main.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api/tree/main)
 
 Graph database-driven API for site of theatrical productions, materials, and associated data.
 
