@@ -286,5 +286,74 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Deborah Warner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Tom Pye"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Chloe Oblensky"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Jean Kalman"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"creativeEntities": [
+				{
+					"name": "Joyce Henderson"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Mel Mercier"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"creativeEntities": [
+				{
+					"name": "William Oldroyd"
+				},
+				{
+					"name": "Douglas Rintoul"
+				}
+			]
+		}
 	]
 }

@@ -29,5 +29,23 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Matthew Dunster"
+				}
+			]
+		},
+		{
+			"name": "Set / Costume Design",
+			"creativeEntities": [
+				{
+					"name": "Jon Bausor"
+				}
+			]
+		}
 	]
 }

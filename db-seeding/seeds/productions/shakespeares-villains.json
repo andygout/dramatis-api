@@ -27,5 +27,18 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Co-directors",
+			"creativeEntities": [
+				{
+					"name": "Steven Berkoff"
+				},
+				{
+					"name": "Marc Sinden"
+				}
+			]
+		}
 	]
 }

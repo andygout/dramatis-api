@@ -95,5 +95,71 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Marianne Elliott"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Bunny Christie"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Music & Musical Direction",
+			"creativeEntities": [
+				{
+					"name": "Stephen Warbeck"
+				}
+			]
+		},
+		{
+			"name": "Magic",
+			"creativeEntities": [
+				{
+					"name": "Paul Kieve"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Alastair Coomer"
+				}
+			]
+		},
+		{
+			"name": "Casting Director (children)",
+			"creativeEntities": [
+				{
+					"name": "Jessica Ronane"
+				}
+			]
+		}
 	]
 }

@@ -5,5 +5,12 @@ export default {
 				{}
 			]
 		}
+	],
+	creativeCredits: [
+		{
+			creativeEntities: [
+				{}
+			]
+		}
 	]
 };

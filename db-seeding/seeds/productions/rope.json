@@ -71,5 +71,71 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Roger Michell"
+				}
+			]
+		},
+		{
+			"name": "Design",
+			"creativeEntities": [
+				{
+					"name": "Mark Thompson"
+				}
+			]
+		},
+		{
+			"name": "Lighting",
+			"creativeEntities": [
+				{
+					"name": "Rich Fisher"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"creativeEntities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"creativeEntities": [
+				{
+					"name": "Lisa Makin"
+				}
+			]
+		},
+		{
+			"name": "Voice & Dialect Coach",
+			"creativeEntities": [
+				{
+					"name": "Penny Dyer"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"creativeEntities": [
+				{
+					"name": "Lotte Wakeham"
+				}
+			]
+		}
 	]
 }

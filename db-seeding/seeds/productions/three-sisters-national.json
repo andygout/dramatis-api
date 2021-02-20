@@ -120,5 +120,80 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Nadia Fall"
+				}
+			]
+		},
+		{
+			"name": "Set and Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Katrina Lindsay"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Donato Wharton"
+				}
+			]
+		},
+		{
+			"name": "Movement Director",
+			"creativeEntities": [
+				{
+					"name": "Jack Murphy"
+				}
+			]
+		},
+		{
+			"name": "Fight Directors",
+			"creativeEntities": [
+				{
+					"model": "company",
+					"name": "RC-Annie Ltd"
+				}
+			]
+		},
+		{
+			"name": "Composer",
+			"creativeEntities": [
+				{
+					"name": "Femi Temowo"
+				}
+			]
+		},
+		{
+			"name": "Music Director",
+			"creativeEntities": [
+				{
+					"name": "Michael Henry"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "Moji Elufowoju"
+				}
+			]
+		}
 	]
 }

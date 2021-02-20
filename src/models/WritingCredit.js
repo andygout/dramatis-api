@@ -1,4 +1,4 @@
-import { getDuplicateWritingEntityIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { Company, Person, Material } from '.';
 import { CREDIT_TYPES } from '../utils/constants';
@@ -35,7 +35,7 @@ export default class WritingCredit extends Base {
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
-		const duplicateWriterIndices = getDuplicateWritingEntityIndices(this.writingEntities);
+		const duplicateWritingEntityIndices = getDuplicateEntityIndices(this.writingEntities);
 
 		this.writingEntities.forEach((writingEntity, index) => {
 
@@ -49,7 +49,7 @@ export default class WritingCredit extends Base {
 
 			}
 
-			writingEntity.validateUniquenessInGroup({ isDuplicate: duplicateWriterIndices.includes(index) });
+			writingEntity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
 
 		});
 

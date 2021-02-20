@@ -489,6 +489,69 @@ describe('Base model', () => {
 
 	});
 
+	describe('validateNamePresenceIfNamedChildren method', () => {
+
+		context('valid data', () => {
+
+			context('instance does not have name nor any children with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Base({ name: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('instance has a name and no children with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Base({ name: 'Foo' });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
+					expect(instance.addPropertyError.notCalled).to.be.true;
+				});
+
+			});
+
+			context('instance has a name and children with names', () => {
+
+				it('will not add properties to errors property', () => {
+
+					const instance = new Base({ name: 'Foo' });
+					spy(instance, 'addPropertyError');
+					instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			it('adds properties to errors property', () => {
+
+				const instance = new Base({ name: '' });
+				spy(instance, 'addPropertyError');
+				instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'name',
+					'Name is required if named children exist'
+				)).to.be.true;
+
+			});
+
+		});
+
+	});
+
 	describe('runDatabaseValidations method', () => {
 
 		it('will call validateUniquenessInDatabase method', () => {

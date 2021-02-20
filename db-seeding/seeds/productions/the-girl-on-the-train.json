@@ -82,5 +82,58 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Anthony Banks"
+				}
+			]
+		},
+		{
+			"name": "Set & Costume Design",
+			"creativeEntities": [
+				{
+					"name": "James Cotterill"
+				}
+			]
+		},
+		{
+			"name": "Lighting Design",
+			"creativeEntities": [
+				{
+					"name": "Jack Knowles"
+				}
+			]
+		},
+		{
+			"name": "Composition & Sound",
+			"creativeEntities": [
+				{
+					"name": "Ben Ringham"
+				},
+				{
+					"name": "Max Ringham"
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"creativeEntities": [
+				{
+					"name": "Andrzej Goulding"
+				}
+			]
+		},
+		{
+			"name": "Fights",
+			"creativeEntities": [
+				{
+					"name": "Alison de Burgh"
+				}
+			]
+		}
 	]
 }

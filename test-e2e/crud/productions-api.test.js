@@ -53,6 +53,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -127,6 +142,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -171,6 +201,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
+								errors: {}
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
 								errors: {}
 							}
 						]
@@ -227,6 +272,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -247,7 +307,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'The Tempest',
 				material: null,
 				theatre: null,
-				cast: []
+				cast: [],
+				creativeCredits: []
 			};
 
 			expect(response).to.have.status(200);
@@ -278,7 +339,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				cast: []
+				cast: [],
+				creativeCredits: []
 			};
 
 			expect(response).to.have.status(200);
@@ -298,12 +360,22 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const JAMES_LAURENSON_UUID = '4';
 		const MICHAEL_SHELDON_UUID = '5';
 		const LEO_STAAR_UUID = '6';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_UUID = '7';
-		const ALMEIDA_THEATRE_UUID = '8';
-		const RALPH_FIENNES_UUID = '9';
-		const TOM_CANTON_UUID = '10';
-		const MARK_HADFIELD_UUID = '11';
-		const JOSH_COLLINS_UUID = '12';
+		const NICHOLAS_HYTNER_UUID = '7';
+		const HANDSPRING_PUPPET_COMPANY_UUID = '8';
+		const BEN_RINGHAM_UUID = '9';
+		const MAX_RINGHAM_UUID = '10';
+		const FIFTY_NINE_PRODUCTIONS_UUID = '11';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_UUID = '12';
+		const ALMEIDA_THEATRE_UUID = '13';
+		const RALPH_FIENNES_UUID = '14';
+		const TOM_CANTON_UUID = '15';
+		const MARK_HADFIELD_UUID = '16';
+		const JOSH_COLLINS_UUID = '17';
+		const RUPERT_GOOLD_UUID = '18';
+		const RC_ANNIE_LTD_UUID = '19';
+		const HILDEGARD_BECHTLER_UUID = '20';
+		const CHLOE_LAMFORD_UUID = '21';
+		const AUTOGRAPH_UUID = '22';
 
 		before(async () => {
 
@@ -390,6 +462,52 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Leo Staar',
 							differentiator: '1',
 							roles: []
+						}
+					],
+					creativeCredits: [
+						{
+							name: 'Director',
+							creativeEntities: [
+								{
+									name: 'Nicholas Hytner',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Designers',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Handspring Puppet Company',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Sound Designers',
+							creativeEntities: [
+								{
+									name: 'Ben Ringham',
+									differentiator: '1'
+								},
+								{
+									name: 'Max Ringham',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Lighting Designers',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: '59 Productions',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -532,6 +650,103 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: 'Director',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Nicholas Hytner',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'Handspring Puppet Company',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Sound Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Ben Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Max Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Lighting Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -622,6 +837,57 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						roles: [
 							{
 								name: 'Performer'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: 'Director',
+						creativeEntities: [
+							{
+								model: 'person',
+								uuid: NICHOLAS_HYTNER_UUID,
+								name: 'Nicholas Hytner'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Designers',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: HANDSPRING_PUPPET_COMPANY_UUID,
+								name: 'Handspring Puppet Company'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Sound Designers',
+						creativeEntities: [
+							{
+								model: 'person',
+								uuid: BEN_RINGHAM_UUID,
+								name: 'Ben Ringham'
+							},
+							{
+								model: 'person',
+								uuid: MAX_RINGHAM_UUID,
+								name: 'Max Ringham'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Lighting Designers',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_UUID,
+								name: '59 Productions'
 							}
 						]
 					}
@@ -776,6 +1042,103 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: 'Director',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Nicholas Hytner',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'Handspring Puppet Company',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Sound Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Ben Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Max Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Lighting Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -852,6 +1215,53 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						{
 							name: 'Josh Collins',
 							differentiator: '1'
+						}
+					],
+					creativeCredits: [
+						{
+							name: 'Director',
+							creativeEntities: [
+								{
+									name: 'Rupert Goold',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Fight Directors',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'RC-Annie',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Designers',
+							creativeEntities: [
+								{
+									name: 'Hildegard Bechtler',
+									differentiator: '1'
+								},
+								// Contrivance for purposes of test.
+								{
+									name: 'Chloe Lamford',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Sound Designer',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									differentiator: '1'
+								}
+							]
 						}
 					]
 				});
@@ -994,6 +1404,103 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: 'Director',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Rupert Goold',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Fight Directors',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'RC-Annie',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: 'Hildegard Bechtler',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Chloe Lamford',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Sound Designer',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'Autograph',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -1087,6 +1594,57 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: 'Director',
+						creativeEntities: [
+							{
+								model: 'person',
+								uuid: RUPERT_GOOLD_UUID,
+								name: 'Rupert Goold'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Fight Directors',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: RC_ANNIE_LTD_UUID,
+								name: 'RC-Annie'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Designers',
+						creativeEntities: [
+							{
+								model: 'person',
+								uuid: HILDEGARD_BECHTLER_UUID,
+								name: 'Hildegard Bechtler'
+							},
+							{
+								model: 'person',
+								uuid: CHLOE_LAMFORD_UUID,
+								name: 'Chloe Lamford'
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Sound Designer',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: AUTOGRAPH_UUID,
+								name: 'Autograph'
+							}
+						]
+					}
 				]
 			};
 
@@ -1139,6 +1697,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				creativeCredits: [
+					{
+						model: 'creativeCredit',
+						name: '',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -1171,7 +1744,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				cast: []
+				cast: [],
+				creativeCredits: []
 			};
 
 			expect(response).to.have.status(200);

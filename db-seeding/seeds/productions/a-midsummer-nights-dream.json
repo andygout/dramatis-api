@@ -192,5 +192,88 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Stephen Brimson Lewis"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Martin Slavin"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"creativeEntities": [
+				{
+					"name": "Michael Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Paul Englishby"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"creativeEntities": [
+				{
+					"name": "Julian Winn"
+				}
+			]
+		},
+		{
+			"name": "Directors of Puppetry",
+			"creativeEntities": [
+				{
+					"model": "company",
+					"name": "Little Angel Theatre"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"creativeEntities": [
+				{
+					"name": "Phillip Breen"
+				}
+			]
+		}
 	]
 }

@@ -156,5 +156,96 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Howard Davies"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Tim Hatley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Dominic Muldowney"
+				}
+			]
+		},
+		{
+			"name": "Projection Designer",
+			"creativeEntities": [
+				{
+					"model": "company",
+					"name": "Cineluma"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Mike Walker"
+				}
+			]
+		},
+		{
+			"name": "Movement Director",
+			"creativeEntities": [
+				{
+					"name": "Jack Murphy"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "Melanie Hillyard"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Kate Godfrey"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Juliet Horsley"
+				}
+			]
+		}
 	]
 }

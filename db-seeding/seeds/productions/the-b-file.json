@@ -52,5 +52,15 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Luke Kernaghan"
+				}
+			]
+		}
 	]
 }

@@ -130,5 +130,79 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Tom Scutt"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Guy Hoare"
+				}
+			]
+		},
+		{
+			"name": "Movement Director",
+			"creativeEntities": [
+				{
+					"name": "Ann Yee"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"creativeEntities": [
+				{
+					"name": "Stuart Earl"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"creativeEntities": [
+				{
+					"name": "Mogzi Bromley-Morgans"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Owain Gwynn"
+				}
+			]
+		},
+		{
+			"name": "Illusions",
+			"creativeEntities": [
+				{
+					"name": "Chris Fisher"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Jeanette Nelson"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "Jo Tyabji"
+				}
+			]
+		}
 	]
 }

@@ -114,5 +114,50 @@
 				}
 			]
 		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Baltasar Kormákur"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Gretar Reynisson"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"creativeEntities": [
+				{
+					"name": "Helga I Stefánsdottir"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Páll Ragnarsson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designers",
+			"creativeEntities": [
+				{
+					"name": "Sigurður Bjóla"
+				},
+				{
+					"name": "Ester Ásgeirsdóttir"
+				}
+			]
+		}
 	]
 }
