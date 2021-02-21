@@ -382,7 +382,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE {
 					model: TOLOWER(HEAD(LABELS(creativeEntity))),
-					uuid: CASE creativeEntity.uuid WHEN material.uuid THEN null ELSE creativeEntity.uuid END,
+					uuid: creativeEntity.uuid,
 					name: creativeEntity.name
 				}
 			END
