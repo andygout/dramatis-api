@@ -175,7 +175,7 @@ describe('Cypher Queries Production module', () => {
 					ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
 				WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
-					[creativeEntity IN COLLECT(
+					COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
 							ELSE {
@@ -184,14 +184,7 @@ describe('Cypher Queries Production module', () => {
 								differentiator: creativeEntity.differentiator
 							}
 						END
-					) | CASE creativeEntity.model WHEN 'company'
-						THEN creativeEntity
-						ELSE {
-							model: creativeEntity.model,
-							name: creativeEntity.name,
-							differentiator: creativeEntity.differentiator
-						}
-					END] + [{}] AS creativeEntities
+					) + [{}] AS creativeEntities
 
 				RETURN
 					'production' AS model,
@@ -402,7 +395,7 @@ describe('Cypher Queries Production module', () => {
 					ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
 				WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
-					[creativeEntity IN COLLECT(
+					COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
 							ELSE {
@@ -411,14 +404,7 @@ describe('Cypher Queries Production module', () => {
 								differentiator: creativeEntity.differentiator
 							}
 						END
-					) | CASE creativeEntity.model WHEN 'company'
-						THEN creativeEntity
-						ELSE {
-							model: creativeEntity.model,
-							name: creativeEntity.name,
-							differentiator: creativeEntity.differentiator
-						}
-					END] + [{}] AS creativeEntities
+					) + [{}] AS creativeEntities
 
 				RETURN
 					'production' AS model,

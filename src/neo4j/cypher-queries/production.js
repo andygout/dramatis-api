@@ -190,7 +190,7 @@ const getEditQuery = () => `
 		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
 	WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
-		[creativeEntity IN COLLECT(
+		COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
 				ELSE {
@@ -199,14 +199,7 @@ const getEditQuery = () => `
 					differentiator: creativeEntity.differentiator
 				}
 			END
-		) | CASE creativeEntity.model WHEN 'company'
-			THEN creativeEntity
-			ELSE {
-				model: creativeEntity.model,
-				name: creativeEntity.name,
-				differentiator: creativeEntity.differentiator
-			}
-		END] + [{}] AS creativeEntities
+		) + [{}] AS creativeEntities
 
 	RETURN
 		'production' AS model,
@@ -377,7 +370,7 @@ const getShowQuery = () => `
 		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
 	WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
-		[creativeEntity IN COLLECT(
+		COLLECT(
 			CASE WHEN creativeEntity IS NULL
 				THEN null
 				ELSE {
@@ -386,10 +379,7 @@ const getShowQuery = () => `
 					name: creativeEntity.name
 				}
 			END
-		) | CASE creativeEntity.model WHEN 'company'
-			THEN creativeEntity
-			ELSE { model: creativeEntity.model, uuid: creativeEntity.uuid, name: creativeEntity.name }
-		END] AS creativeEntities
+		) AS creativeEntities
 
 	RETURN
 		'production' AS model,
