@@ -168,11 +168,7 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE writingEntity WHEN NULL
 							THEN null
-							ELSE {
-								model: TOLOWER(HEAD(LABELS(writingEntity))),
-								name: writingEntity.name,
-								differentiator: writingEntity.differentiator
-							}
+							ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
 						END
 					) + [{}] AS writingEntities
 
@@ -198,10 +194,10 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
-							ELSE {
+							ELSE character {
 								name: COALESCE(characterRel.displayName, character.name),
 								underlyingName: CASE characterRel.displayName WHEN NULL THEN null ELSE character.name END,
-								differentiator: character.differentiator,
+								.differentiator,
 								qualifier: characterRel.qualifier,
 								group: characterRel.group
 							}
@@ -424,11 +420,7 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE writingEntity WHEN NULL
 							THEN null
-							ELSE {
-								model: TOLOWER(HEAD(LABELS(writingEntity))),
-								name: writingEntity.name,
-								differentiator: writingEntity.differentiator
-							}
+							ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
 						END
 					) + [{}] AS writingEntities
 
@@ -454,10 +446,10 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE character WHEN NULL
 							THEN null
-							ELSE {
+							ELSE character {
 								name: COALESCE(characterRel.displayName, character.name),
 								underlyingName: CASE characterRel.displayName WHEN NULL THEN null ELSE character.name END,
-								differentiator: character.differentiator,
+								.differentiator,
 								qualifier: characterRel.qualifier,
 								group: characterRel.group
 							}

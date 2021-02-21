@@ -49,10 +49,7 @@ describe('Cypher Queries Theatre module', () => {
 					COLLECT(
 						CASE subTheatre WHEN NULL
 							THEN null
-							ELSE {
-								name: subTheatre.name,
-								differentiator: subTheatre.differentiator
-							}
+							ELSE subTheatre { .name, .differentiator }
 						END
 					) + [{}] AS subTheatres
 			`));
@@ -115,10 +112,7 @@ describe('Cypher Queries Theatre module', () => {
 					COLLECT(
 						CASE subTheatre WHEN NULL
 							THEN null
-							ELSE {
-								name: subTheatre.name,
-								differentiator: subTheatre.differentiator
-							}
+							ELSE subTheatre { .name, .differentiator }
 						END
 					) + [{}] AS subTheatres
 			`));

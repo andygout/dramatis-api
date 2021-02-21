@@ -64,10 +64,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE subTheatre WHEN NULL
 				THEN null
-				ELSE {
-					name: subTheatre.name,
-					differentiator: subTheatre.differentiator
-				}
+				ELSE subTheatre { .name, .differentiator }
 			END
 		) + [{}] AS subTheatres
 `;
@@ -82,7 +79,7 @@ const getShowQuery = () => `
 	WITH theatre,
 		CASE surTheatre WHEN NULL
 			THEN null
-			ELSE { model: 'theatre', uuid: surTheatre.uuid, name: surTheatre.name }
+			ELSE surTheatre { model: 'theatre', .uuid, .name }
 		END AS surTheatre
 
 	OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
@@ -94,7 +91,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE subTheatre WHEN NULL
 				THEN null
-				ELSE { model: 'theatre', uuid: subTheatre.uuid, name: subTheatre.name }
+				ELSE subTheatre { model: 'theatre', .uuid, .name }
 			END
 		) AS subTheatres
 
@@ -120,16 +117,12 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
-				ELSE {
+				ELSE production {
 					model: 'production',
-					uuid: production.uuid,
-					name: production.name,
+					.uuid,
+					.name,
 					subTheatre: CASE theatreToProductionPathLength WHEN 2
-						THEN {
-							model: 'theatre',
-							uuid: subTheatreForProduction.uuid,
-							name: subTheatreForProduction.name
-						}
+						THEN subTheatreForProduction { model: 'theatre', .uuid, .name }
 						ELSE null
 					END
 				}
@@ -153,11 +146,7 @@ const getListQuery = () => `
 		COLLECT(
 			CASE subTheatre WHEN NULL
 				THEN null
-				ELSE {
-					model: 'theatre',
-					uuid: subTheatre.uuid,
-					name: subTheatre.name
-				}
+				ELSE subTheatre { model: 'theatre', .uuid, .name }
 			END
 		) AS subTheatres
 
