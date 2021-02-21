@@ -165,6 +165,70 @@ describe('Material model', () => {
 
 		});
 
+		describe('originalVersionMaterial property', () => {
+
+			context('instance is subject', () => {
+
+				it('assigns instance if absent from props', () => {
+
+					const instance = createInstance({
+						name: 'The Seagull',
+						differentiator: '2'
+					});
+					expect(instance.originalVersionMaterial.constructor.name).to.equal('Material');
+
+				});
+
+				it('assigns instance if included in props', () => {
+
+					const instance = createInstance({
+						name: 'The Seagull',
+						differentiator: '2',
+						originalVersionMaterial: {
+							name: 'The Seagull',
+							differentiator: '1'
+						}
+					});
+					expect(instance.originalVersionMaterial.constructor.name).to.equal('Material');
+
+				});
+
+			});
+
+			context('instance is not subject, i.e. it is an association of another instance', () => {
+
+				it('will not assign any value if absent from props', () => {
+
+					const props = {
+						name: 'The Seagull',
+						differentiator: '2',
+						isAssociation: true
+					};
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('originalVersionMaterial');
+
+				});
+
+				it('will not assign any value if included in props', () => {
+
+					const props = {
+						name: 'The Seagull',
+						differentiator: '2',
+						originalVersionMaterial: {
+							name: 'The Seagull',
+							differentiator: '1'
+						},
+						isAssociation: true
+					};
+					const instance = createInstance(props);
+					expect(instance).not.to.have.property('originalVersionMaterial');
+
+				});
+
+			});
+
+		});
+
 		describe('writingCredits property', () => {
 
 			context('instance is subject', () => {
