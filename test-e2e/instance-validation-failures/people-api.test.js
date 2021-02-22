@@ -223,11 +223,11 @@ describe('Instance validation failures: People API', () => {
 			});
 
 			await createRelationship({
-				sourceLabel: 'Person',
-				sourceUuid: JUDI_DENCH_PERSON_UUID,
-				destinationLabel: 'Production',
-				destinationUuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
-				relationshipName: 'PERFORMS_IN'
+				sourceLabel: 'Production',
+				sourceUuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
+				destinationLabel: 'Person',
+				destinationUuid: JUDI_DENCH_PERSON_UUID,
+				relationshipName: 'HAS_CAST_MEMBER'
 			});
 
 		});

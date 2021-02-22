@@ -120,7 +120,7 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(castMemberProduction:Production)
+	OPTIONAL MATCH (person)<-[role:HAS_CAST_MEMBER]-(castMemberProduction:Production)
 
 	OPTIONAL MATCH (castMemberProduction)-[:PLAYS_AT]->(theatre:Theatre)
 
