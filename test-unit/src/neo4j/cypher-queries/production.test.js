@@ -164,7 +164,7 @@ describe('Cypher Queries Production module', () => {
 					COLLECT(
 						CASE castMember WHEN NULL
 							THEN null
-							ELSE { name: castMember.name, differentiator: castMember.differentiator, roles: roles }
+							ELSE castMember { .name, .differentiator, roles: roles }
 						END
 					) + [{ roles: [{}] }] AS cast
 
@@ -178,11 +178,7 @@ describe('Cypher Queries Production module', () => {
 					COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
-							ELSE {
-								model: TOLOWER(HEAD(LABELS(creativeEntity))),
-								name: creativeEntity.name,
-								differentiator: creativeEntity.differentiator
-							}
+							ELSE creativeEntity { model: TOLOWER(HEAD(LABELS(creativeEntity))), .name, .differentiator }
 						END
 					) + [{}] AS creativeEntities
 
@@ -384,7 +380,7 @@ describe('Cypher Queries Production module', () => {
 					COLLECT(
 						CASE castMember WHEN NULL
 							THEN null
-							ELSE { name: castMember.name, differentiator: castMember.differentiator, roles: roles }
+							ELSE castMember { .name, .differentiator, roles: roles }
 						END
 					) + [{ roles: [{}] }] AS cast
 
@@ -398,11 +394,7 @@ describe('Cypher Queries Production module', () => {
 					COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
-							ELSE {
-								model: TOLOWER(HEAD(LABELS(creativeEntity))),
-								name: creativeEntity.name,
-								differentiator: creativeEntity.differentiator
-							}
+							ELSE creativeEntity { model: TOLOWER(HEAD(LABELS(creativeEntity))), .name, .differentiator }
 						END
 					) + [{}] AS creativeEntities
 

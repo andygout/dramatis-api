@@ -179,7 +179,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE castMember WHEN NULL
 				THEN null
-				ELSE { name: castMember.name, differentiator: castMember.differentiator, roles: roles }
+				ELSE castMember { .name, .differentiator, roles: roles }
 			END
 		) + [{ roles: [{}] }] AS cast
 
@@ -193,11 +193,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(creativeEntity))),
-					name: creativeEntity.name,
-					differentiator: creativeEntity.differentiator
-				}
+				ELSE creativeEntity { model: TOLOWER(HEAD(LABELS(creativeEntity))), .name, .differentiator }
 			END
 		) + [{}] AS creativeEntities
 
@@ -238,17 +234,13 @@ const getShowQuery = () => `
 	WITH production,
 		CASE theatre WHEN NULL
 			THEN null
-			ELSE {
+			ELSE theatre {
 				model: 'theatre',
-				uuid: theatre.uuid,
-				name: theatre.name,
+				.uuid,
+				.name,
 				surTheatre: CASE surTheatre WHEN NULL
 					THEN null
-					ELSE {
-						model: 'theatre',
-						uuid: surTheatre.uuid,
-						name: surTheatre.name
-					}
+					ELSE surTheatre { model: 'theatre', .uuid, .name }
 				END
 			}
 		END AS theatre
@@ -273,11 +265,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
-					uuid: sourceMaterialWriter.uuid,
-					name: sourceMaterialWriter.name
-				}
+				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -298,17 +286,17 @@ const getShowQuery = () => `
 		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
-				ELSE {
+				ELSE writingEntity {
 					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					uuid: writingEntity.uuid,
-					name: writingEntity.name,
-					format: writingEntity.format,
+					.uuid,
+					.name,
+					.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
 		) | CASE writingEntity.model WHEN 'material'
 			THEN writingEntity
-			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+			ELSE writingEntity { .model, .uuid, .name }
 		END] AS writingEntities
 
 	WITH production, theatre, material,
@@ -340,18 +328,12 @@ const getShowQuery = () => `
 	WITH production, theatre, castMember,
 		CASE material WHEN NULL
 			THEN null
-			ELSE {
-				model: 'material',
-				uuid: material.uuid,
-				name: material.name,
-				format: material.format,
-				writingCredits: writingCredits
-			}
+			ELSE material { model: 'material', .uuid, .name, .format, writingCredits: writingCredits }
 		END AS material,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
+				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
 			END
 		) AS roles
 
@@ -359,7 +341,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE castMember WHEN NULL
 				THEN null
-				ELSE { model: 'person', uuid: castMember.uuid, name: castMember.name, roles: roles }
+				ELSE castMember { model: 'person', .uuid, .name, roles: roles }
 			END
 		) AS cast
 
@@ -373,11 +355,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE WHEN creativeEntity IS NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(creativeEntity))),
-					uuid: creativeEntity.uuid,
-					name: creativeEntity.name
-				}
+				ELSE creativeEntity { model: TOLOWER(HEAD(LABELS(creativeEntity))), .uuid, .name }
 			END
 		) AS creativeEntities
 
@@ -413,13 +391,13 @@ const getListQuery = () => `
 		production.name AS name,
 		CASE theatre WHEN NULL
 			THEN null
-			ELSE {
+			ELSE theatre {
 				model: 'theatre',
-				uuid: theatre.uuid,
-				name: theatre.name,
+				.uuid,
+				.name,
 				surTheatre: CASE surTheatre WHEN NULL
 					THEN null
-					ELSE { model: 'theatre', uuid: surTheatre.uuid, name: surTheatre.name }
+					ELSE surTheatre { model: 'theatre', .uuid, .name }
 				END
 			}
 		END AS theatre

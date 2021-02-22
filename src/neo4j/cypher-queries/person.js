@@ -42,13 +42,13 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE sourceMaterialWriter WHEN NULL
 					THEN null
-					ELSE {
+					ELSE sourceMaterialWriter {
 						model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
 						uuid: CASE sourceMaterialWriter.uuid WHEN person.uuid
 							THEN null
 							ELSE sourceMaterialWriter.uuid
 						END,
-						name: sourceMaterialWriter.name
+						.name
 					}
 				END
 			) AS sourceMaterialWriters
@@ -76,17 +76,17 @@ const getShowQuery = () => `
 			[writingEntity IN COLLECT(
 				CASE writingEntity WHEN NULL
 					THEN null
-					ELSE {
+					ELSE writingEntity {
 						model: TOLOWER(HEAD(LABELS(writingEntity))),
 						uuid: CASE writingEntity.uuid WHEN person.uuid THEN null ELSE writingEntity.uuid END,
-						name: writingEntity.name,
-						format: writingEntity.format,
+						.name,
+						.format,
 						sourceMaterialWritingCredits: sourceMaterialWritingCredits
 					}
 				END
 			) | CASE writingEntity.model WHEN 'material'
 				THEN writingEntity
-				ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+				ELSE writingEntity { .model, .uuid, .name }
 			END] AS writingEntities
 
 		WITH person, writerRel, material, isSubsequentVersion, isSourcingMaterial,
@@ -106,11 +106,11 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE material WHEN NULL
 					THEN null
-					ELSE {
+					ELSE material {
 						model: 'material',
-						uuid: material.uuid,
-						name: material.name,
-						format: material.format,
+						.uuid,
+						.name,
+						.format,
 						writingCredits: writingCredits,
 						creditType: writerRel.creditType,
 						hasDirectCredit: CASE writerRel WHEN NULL THEN false ELSE true END,
@@ -141,7 +141,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE { model: 'character', uuid: character.uuid, name: role.roleName, qualifier: role.qualifier }
+				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
 			END
 		) AS roles
 		ORDER BY production.name, theatre.name
@@ -150,23 +150,19 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
-				ELSE {
+				ELSE production {
 					model: 'production',
-					uuid: production.uuid,
-					name: production.name,
+					.uuid,
+					.name,
 					theatre: CASE theatre WHEN NULL
 						THEN null
-						ELSE {
+						ELSE theatre {
 							model: 'theatre',
-							uuid: theatre.uuid,
-							name: theatre.name,
+							.uuid,
+							.name,
 							surTheatre: CASE surTheatre WHEN NULL
 								THEN null
-								ELSE {
-									model: 'theatre',
-									uuid: surTheatre.uuid,
-									name: surTheatre.name
-								}
+								ELSE surTheatre { model: 'theatre', .uuid, .name }
 							END
 						}
 					END,
@@ -197,11 +193,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE coCreativeEntity WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(coCreativeEntity))),
-					uuid: coCreativeEntity.uuid,
-					name: coCreativeEntity.name
-				}
+				ELSE coCreativeEntity { model: TOLOWER(HEAD(LABELS(coCreativeEntity))), .uuid, .name }
 			END
 		) AS coCreditedEntities
 
@@ -226,67 +218,39 @@ const getShowQuery = () => `
 				material.hasDirectCredit AND
 				NOT material.isSubsequentVersion AND
 				material.creditType IS NULL |
-			{
-				model: material.model,
-				uuid: material.uuid,
-				name: material.name,
-				format: material.format,
-				writingCredits: material.writingCredits
-			}
+			material { .model, .uuid, .name, .format, .writingCredits }
 		] AS materials,
 		[
 			material IN materials WHERE material.isSubsequentVersion |
-			{
-				model: material.model,
-				uuid: material.uuid,
-				name: material.name,
-				format: material.format,
-				writingCredits: material.writingCredits
-			}
+			material { .model, .uuid, .name, .format, .writingCredits }
 		] AS subsequentVersionMaterials,
 		[
 			material IN materials WHERE
 				material.isSourcingMaterial OR
 				material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
-			{
-				model: material.model,
-				uuid: material.uuid,
-				name: material.name,
-				format: material.format,
-				writingCredits: material.writingCredits
-			}
+			material { .model, .uuid, .name, .format, .writingCredits }
 		] AS sourcingMaterials,
 		[
 			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
-			{
-				model: material.model,
-				uuid: material.uuid,
-				name: material.name,
-				format: material.format,
-				writingCredits: material.writingCredits
-			}
+			material { .model, .uuid, .name, .format, .writingCredits }
 		] AS rightsGrantorMaterials,
 		productions,
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
-				ELSE {
+				ELSE production {
 					model: 'production',
-					uuid: production.uuid,
-					name: production.name,
+					.uuid,
+					.name,
 					theatre: CASE theatre WHEN NULL
 						THEN null
-						ELSE {
+						ELSE theatre {
 							model: 'theatre',
-							uuid: theatre.uuid,
-							name: theatre.name,
+							.uuid,
+							.name,
 							surTheatre: CASE surTheatre WHEN NULL
 								THEN null
-								ELSE {
-									model: 'theatre',
-									uuid: surTheatre.uuid,
-									name: surTheatre.name
-								}
+								ELSE surTheatre { model: 'theatre', .uuid, .name }
 							END
 						}
 					END,

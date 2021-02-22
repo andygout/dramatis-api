@@ -205,11 +205,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					name: writingEntity.name,
-					differentiator: writingEntity.differentiator
-				}
+				ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
 			END
 		) + [{}] AS writingEntities
 
@@ -235,10 +231,10 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
-				ELSE {
+				ELSE character {
 					name: COALESCE(characterRel.displayName, character.name),
 					underlyingName: CASE characterRel.displayName WHEN NULL THEN null ELSE character.name END,
-					differentiator: character.differentiator,
+					.differentiator,
 					qualifier: characterRel.qualifier,
 					group: characterRel.group
 				}
@@ -318,13 +314,13 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE WHEN sourceMaterialWriter IS NULL
 					THEN null
-					ELSE {
+					ELSE sourceMaterialWriter {
 						model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
 						uuid: CASE sourceMaterialWriter.uuid WHEN material.uuid
 							THEN null
 							ELSE sourceMaterialWriter.uuid
 						END,
-						name: sourceMaterialWriter.name
+						.name
 					}
 				END
 			) AS sourceMaterialWriters
@@ -360,17 +356,17 @@ const getShowQuery = () => `
 			[writingEntity IN COLLECT(
 				CASE WHEN writingEntity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 					THEN null
-					ELSE {
+					ELSE writingEntity {
 						model: TOLOWER(HEAD(LABELS(writingEntity))),
 						uuid: CASE writingEntity.uuid WHEN material.uuid THEN null ELSE writingEntity.uuid END,
-						name: writingEntity.name,
-						format: writingEntity.format,
+						.name,
+						.format,
 						sourceMaterialWritingCredits: sourceMaterialWritingCredits
 					}
 				END
 			) | CASE writingEntity.model WHEN 'material'
 				THEN writingEntity
-				ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+				ELSE writingEntity { .model, .uuid, .name }
 			END] AS writingEntities
 
 		WITH material, relatedMaterial, isOriginalVersion, isSubsequentVersion, isSourcingMaterial,
@@ -390,11 +386,11 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE relatedMaterial WHEN NULL
 					THEN null
-					ELSE {
+					ELSE relatedMaterial {
 						model: 'material',
-						uuid: relatedMaterial.uuid,
-						name: relatedMaterial.name,
-						format: relatedMaterial.format,
+						.uuid,
+						.name,
+						.format,
 						writingCredits: writingCredits,
 						isOriginalVersion: isOriginalVersion,
 						isSubsequentVersion: isSubsequentVersion,
@@ -411,33 +407,15 @@ const getShowQuery = () => `
 			]) AS writingCredits,
 			HEAD([
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
-				{
-					model: relatedMaterial.model,
-					uuid: relatedMaterial.uuid,
-					name: relatedMaterial.name,
-					format: relatedMaterial.format,
-					writingCredits: relatedMaterial.writingCredits
-				}
+				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
 			]) AS originalVersionMaterial,
 			[
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
-				{
-					model: relatedMaterial.model,
-					uuid: relatedMaterial.uuid,
-					name: relatedMaterial.name,
-					format: relatedMaterial.format,
-					writingCredits: relatedMaterial.writingCredits
-				}
+				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
 			] AS subsequentVersionMaterials,
 			[
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
-				{
-					model: relatedMaterial.model,
-					uuid: relatedMaterial.uuid,
-					name: relatedMaterial.name,
-					format: relatedMaterial.format,
-					writingCredits: relatedMaterial.writingCredits
-				}
+				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
 			] AS sourcingMaterials
 
 	OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
@@ -463,9 +441,9 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
-				ELSE {
+				ELSE character {
 					model: 'character',
-					uuid: character.uuid,
+					.uuid,
 					name: COALESCE(characterRel.displayName, character.name),
 					qualifier: characterRel.qualifier
 				}
@@ -527,24 +505,20 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE production WHEN NULL
 					THEN null
-					ELSE {
+					ELSE production {
 						model: 'production',
-						uuid: production.uuid,
-						name: production.name,
+						.uuid,
+						.name,
 						usesSourcingMaterial: usesSourcingMaterial,
 						theatre: CASE theatre WHEN NULL
 							THEN null
-							ELSE {
+							ELSE theatre {
 								model: 'theatre',
-								uuid: theatre.uuid,
-								name: theatre.name,
+								.uuid,
+								.name,
 								surTheatre: CASE surTheatre WHEN NULL
 									THEN null
-									ELSE {
-										model: 'theatre',
-										uuid: surTheatre.uuid,
-										name: surTheatre.name
-									}
+									ELSE surTheatre { model: 'theatre', .uuid, .name }
 								END
 							}
 						END
@@ -565,11 +539,11 @@ const getShowQuery = () => `
 		characterGroups,
 		[
 			production IN productions WHERE NOT production.usesSourcingMaterial |
-			{ model: production.model, uuid: production.uuid, name: production.name, theatre: production.theatre }
+			production { .model, .uuid, .name, .theatre }
 		] AS productions,
 		[
 			production IN productions WHERE production.usesSourcingMaterial |
-			{ model: production.model, uuid: production.uuid, name: production.name, theatre: production.theatre }
+			production { .model, .uuid, .name, .theatre }
 		] AS sourcingMaterialProductions
 	`;
 
@@ -588,11 +562,7 @@ const getListQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
-					uuid: sourceMaterialWriter.uuid,
-					name: sourceMaterialWriter.name
-				}
+				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -613,17 +583,17 @@ const getListQuery = () => `
 		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
-				ELSE {
+				ELSE writingEntity {
 					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					uuid: writingEntity.uuid,
-					name: writingEntity.name,
-					format: writingEntity.format,
+					.uuid,
+					.name,
+					.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
 		) | CASE writingEntity.model WHEN 'material'
 			THEN writingEntity
-			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+			ELSE writingEntity { .model, .uuid, .name }
 		END] AS writingEntities
 
 	WITH material, writingCreditName, writingEntities

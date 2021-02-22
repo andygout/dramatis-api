@@ -28,11 +28,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE {
-					model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
-					uuid: sourceMaterialWriter.uuid,
-					name: sourceMaterialWriter.name
-				}
+				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -53,17 +49,17 @@ const getShowQuery = () => `
 		[writingEntity IN COLLECT(
 			CASE writingEntity WHEN NULL
 				THEN null
-				ELSE {
+				ELSE writingEntity {
 					model: TOLOWER(HEAD(LABELS(writingEntity))),
-					uuid: writingEntity.uuid,
-					name: writingEntity.name,
-					format: writingEntity.format,
+					.uuid,
+					.name,
+					.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
 		) | CASE writingEntity.model WHEN 'material'
 			THEN writingEntity
-			ELSE { model: writingEntity.model, uuid: writingEntity.uuid, name: writingEntity.name }
+			ELSE writingEntity { .model, .uuid, .name }
 		END] AS writingEntities
 
 	WITH character, materialRel, material,
@@ -83,11 +79,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE WHEN ALL(x IN ['displayName', 'qualifier', 'group'] WHERE materialRel[x] IS NULL)
 				THEN null
-				ELSE {
-					displayName: materialRel.displayName,
-					qualifier: materialRel.qualifier,
-					group: materialRel.group
-				}
+				ELSE materialRel { .displayName, .qualifier, .group }
 			END
 		) AS depictions
 		ORDER BY material.name
@@ -96,11 +88,11 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE material WHEN NULL
 				THEN null
-				ELSE {
+				ELSE material {
 					model: 'material',
-					uuid: material.uuid,
-					name: material.name,
-					format: material.format,
+					.uuid,
+					.name,
+					.format,
 					writingCredits: writingCredits,
 					depictions: depictions
 				}
@@ -197,10 +189,10 @@ const getShowQuery = () => `
 		ORDER BY role.castMemberPosition
 
 	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, theatre, surTheatre,
-		COLLECT({
+		COLLECT(person {
 			model: 'person',
-			uuid: person.uuid,
-			name: person.name,
+			.uuid,
+			.name,
 			roleName: role.roleName,
 			qualifier: role.qualifier,
 			otherRoles: otherRoles
@@ -218,23 +210,19 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE production WHEN NULL
 				THEN null
-				ELSE {
+				ELSE production {
 					model: 'production',
-					uuid: production.uuid,
-					name: production.name,
+					.uuid,
+					.name,
 					theatre: CASE theatre WHEN NULL
 						THEN null
-						ELSE {
+						ELSE theatre {
 							model: 'theatre',
-							uuid: theatre.uuid,
-							name: theatre.name,
+							.uuid,
+							.name,
 							surTheatre: CASE surTheatre WHEN NULL
 								THEN null
-								ELSE {
-									model: 'theatre',
-									uuid: surTheatre.uuid,
-									name: surTheatre.name
-								}
+								ELSE surTheatre { model: 'theatre', .uuid, .name }
 							END
 						}
 					END,
