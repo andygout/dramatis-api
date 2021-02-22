@@ -43,13 +43,13 @@ export default class WritingCredit extends Base {
 
 			writingEntity.validateDifferentiator();
 
+			writingEntity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
+
 			if (writingEntity.model === 'material') {
 
 				writingEntity.validateNoAssociationWithSelf(opts.subject.name, opts.subject.differentiator);
 
 			}
-
-			writingEntity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
 
 		});
 

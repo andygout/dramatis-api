@@ -199,8 +199,8 @@ describe('WritingCredit model', () => {
 				instance.writingEntities[1].validateUniquenessInGroup,
 				instance.writingEntities[2].validateName,
 				instance.writingEntities[2].validateDifferentiator,
-				instance.writingEntities[2].validateNoAssociationWithSelf,
-				instance.writingEntities[2].validateUniquenessInGroup
+				instance.writingEntities[2].validateUniquenessInGroup,
+				instance.writingEntities[2].validateNoAssociationWithSelf
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
@@ -212,31 +212,31 @@ describe('WritingCredit model', () => {
 			expect(instance.writingEntities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.writingEntities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.writingEntities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.writingEntities[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.writingEntities[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
+			expect(instance.writingEntities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.writingEntities[1].validateName.calledOnce).to.be.true;
 			expect(instance.writingEntities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.writingEntities[1].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.writingEntities[1].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.writingEntities[1].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.writingEntities[1].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
+			expect(instance.writingEntities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.writingEntities[2].validateName.calledOnce).to.be.true;
 			expect(instance.writingEntities[2].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.writingEntities[2].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.writingEntities[2].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledWithExactly(
-				'The Indian Boy', '1'
-			)).to.be.true;
 			expect(instance.writingEntities[2].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.writingEntities[2].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
+			)).to.be.true;
+			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledWithExactly(
+				'The Indian Boy', '1'
 			)).to.be.true;
 
 		});
