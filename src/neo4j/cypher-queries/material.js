@@ -67,27 +67,27 @@ const getCreateUpdateQuery = action => {
 				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
 					THEN [null]
 					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
-				END AS writingEntityParam
+				END AS writingPersonParam
 
-				OPTIONAL MATCH (existingWriter:Person { name: writingEntityParam.name })
+				OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
 					WHERE
-						(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-						(writingEntityParam.differentiator = existingWriter.differentiator)
+						(writingPersonParam.differentiator IS NULL AND existingWritingPerson.differentiator IS NULL) OR
+						(writingPersonParam.differentiator = existingWritingPerson.differentiator)
 
-				FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
-					MERGE (entity:Person {
-						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
-						name: writingEntityParam.name
+				FOREACH (item IN CASE writingPersonParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (writingPerson:Person {
+						uuid: COALESCE(existingWritingPerson.uuid, writingPersonParam.uuid),
+						name: writingPersonParam.name
 					})
-						ON CREATE SET entity.differentiator = writingEntityParam.differentiator
+						ON CREATE SET writingPerson.differentiator = writingPersonParam.differentiator
 
 					CREATE (material)-
 						[:WRITTEN_BY {
 							creditPosition: writingCredit.position,
-							entityPosition: writingEntityParam.position,
+							entityPosition: writingPersonParam.position,
 							credit: writingCredit.name,
 							creditType: writingCredit.creditType
-						}]->(entity)
+						}]->(writingPerson)
 				)
 
 			WITH DISTINCT material, writingCredit
@@ -96,27 +96,27 @@ const getCreateUpdateQuery = action => {
 				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'company']) WHEN 0
 					THEN [null]
 					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'company']
-				END AS writingEntityParam
+				END AS writingCompanyParam
 
-				OPTIONAL MATCH (existingWriter:Company { name: writingEntityParam.name })
+				OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
 					WHERE
-						(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
-						(writingEntityParam.differentiator = existingWriter.differentiator)
+						(writingCompanyParam.differentiator IS NULL AND existingWritingCompany.differentiator IS NULL) OR
+						(writingCompanyParam.differentiator = existingWritingCompany.differentiator)
 
-				FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
-					MERGE (entity:Company {
-						uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
-						name: writingEntityParam.name
+				FOREACH (item IN CASE writingCompanyParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (writingCompany:Company {
+						uuid: COALESCE(existingWritingCompany.uuid, writingCompanyParam.uuid),
+						name: writingCompanyParam.name
 					})
-						ON CREATE SET entity.differentiator = writingEntityParam.differentiator
+						ON CREATE SET writingCompany.differentiator = writingCompanyParam.differentiator
 
 					CREATE (material)-
 						[:WRITTEN_BY {
 							creditPosition: writingCredit.position,
-							entityPosition: writingEntityParam.position,
+							entityPosition: writingCompanyParam.position,
 							credit: writingCredit.name,
 							creditType: writingCredit.creditType
-						}]->(entity)
+						}]->(writingCompany)
 				)
 
 			WITH DISTINCT material, writingCredit
