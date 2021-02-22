@@ -33,7 +33,7 @@ const createIndex = async model => {
 
 export default async () => {
 
-	const callDbIndexesQuery = 'CALL db.indexes()';
+	const callDbIndexesQuery = 'SHOW INDEXES';
 
 	try {
 

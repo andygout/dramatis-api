@@ -34,7 +34,7 @@ const createConstraint = async model => {
 
 export default async () => {
 
-	const callDbConstraintsQuery = 'CALL db.constraints()';
+	const callDbConstraintsQuery = 'SHOW CONSTRAINTS';
 
 	try {
 
@@ -43,7 +43,7 @@ export default async () => {
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
-		const modelsWithConstraint = constraints.map(constraint => constraint.description.match(/:(.*) \)/)[1]);
+		const modelsWithConstraint = constraints.map(constraint => constraint.labelsOrTypes[0]);
 
 		const modelsToConstrain = MODELS.filter(model => !modelsWithConstraint.includes(model));
 
