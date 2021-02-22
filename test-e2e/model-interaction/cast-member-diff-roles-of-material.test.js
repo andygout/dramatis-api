@@ -345,7 +345,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of King Lear', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
@@ -367,9 +367,9 @@ describe('Cast member performing different roles in different productions of sam
 				}
 			];
 
-			const { productions } = michaelGambonPerson.body;
+			const { castMemberProductions } = michaelGambonPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -379,7 +379,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his respective portrayals of King Lear and the Fool', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
@@ -420,9 +420,9 @@ describe('Cast member performing different roles in different productions of sam
 				}
 			];
 
-			const { productions } = antonySherPerson.body;
+			const { castMemberProductions } = antonySherPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -432,7 +432,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		it('includes production with his portrayal of the Fool', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
@@ -454,9 +454,9 @@ describe('Cast member performing different roles in different productions of sam
 				}
 			];
 
-			const { productions } = grahamTurnerPerson.body;
+			const { castMemberProductions } = grahamTurnerPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

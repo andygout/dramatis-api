@@ -330,7 +330,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		it('includes in their production credits their portrayal of Cinna (#1) (i.e. and not Cinna (#2))', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
@@ -358,9 +358,9 @@ describe('Different characters with the same name from the same material', () =>
 				}
 			];
 
-			const { productions } = paulShearerPerson.body;
+			const { castMemberProductions } = paulShearerPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -370,7 +370,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		it('includes in their production credits their portrayal of Cinna (#2) (i.e. and not Cinna (#1))', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
@@ -392,9 +392,9 @@ describe('Different characters with the same name from the same material', () =>
 				}
 			];
 
-			const { productions } = leoWringerPerson.body;
+			const { castMemberProductions } = leoWringerPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

@@ -1284,7 +1284,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		it('includes productions of their portrayals of King Henry V under variant names (Henry, Prince of Wales; Hal; Henry V) but using its uuid value', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
@@ -1362,9 +1362,9 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { productions } = alexHassellPerson.body;
+			const { castMemberProductions } = alexHassellPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -1374,7 +1374,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		it('includes productions of their portrayals of King Henry V under variant names (Prince Hal; Hal, Prince of England) but using its uuid value', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
@@ -1427,9 +1427,9 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { productions } = matthewMacfadyenPerson.body;
+			const { castMemberProductions } = matthewMacfadyenPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -1439,7 +1439,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		it('includes productions of their portrayals of King Henry V under variant names (Henry V) but using its uuid value', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
@@ -1467,9 +1467,9 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { productions } = adrianLesterPerson.body;
+			const { castMemberProductions } = adrianLesterPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

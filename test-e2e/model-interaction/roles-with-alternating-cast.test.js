@@ -474,7 +474,7 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Austin and Lee', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
@@ -502,9 +502,9 @@ describe('Roles with alternating cast', () => {
 				}
 			];
 
-			const { productions } = nigelHarmanPerson.body;
+			const { castMemberProductions } = nigelHarmanPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -514,7 +514,7 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Lee and Austin', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
@@ -542,9 +542,9 @@ describe('Roles with alternating cast', () => {
 				}
 			];
 
-			const { productions } = johnLightPerson.body;
+			const { castMemberProductions } = johnLightPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -554,7 +554,7 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Austin and Lee', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
@@ -582,9 +582,9 @@ describe('Roles with alternating cast', () => {
 				}
 			];
 
-			const { productions } = kitHaringtonPerson.body;
+			const { castMemberProductions } = kitHaringtonPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -594,7 +594,7 @@ describe('Roles with alternating cast', () => {
 
 		it('includes production with his portrayals of Lee and Austin', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
@@ -622,9 +622,9 @@ describe('Roles with alternating cast', () => {
 				}
 			];
 
-			const { productions } = johnnyFlynnPerson.body;
+			const { castMemberProductions } = johnnyFlynnPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

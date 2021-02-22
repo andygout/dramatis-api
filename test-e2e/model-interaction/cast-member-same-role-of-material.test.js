@@ -230,7 +230,7 @@ describe('Cast member performing same role in different productions of same mate
 
 		it('includes production with her respective portrayals of Titania', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
@@ -271,9 +271,9 @@ describe('Cast member performing same role in different productions of same mate
 				}
 			];
 
-			const { productions } = judiDenchPerson.body;
+			const { castMemberProductions } = judiDenchPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

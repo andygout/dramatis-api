@@ -387,7 +387,7 @@ describe('Different characters with the same name from different materials', () 
 
 		it('includes in their production credits their portrayal of Demetrius (#1) (i.e. and not Demetrius (#2))', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
@@ -409,9 +409,9 @@ describe('Different characters with the same name from different materials', () 
 				}
 			];
 
-			const { productions } = oscarPearcePerson.body;
+			const { castMemberProductions } = oscarPearcePerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -421,7 +421,7 @@ describe('Different characters with the same name from different materials', () 
 
 		it('includes in their production credits their portrayal of Demetrius (#2) (i.e. and not Demetrius (#1))', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
@@ -443,9 +443,9 @@ describe('Different characters with the same name from different materials', () 
 				}
 			];
 
-			const { productions } = samAlexanderPerson.body;
+			const { castMemberProductions } = samAlexanderPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
