@@ -354,28 +354,28 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('CRUD with full range of attributes assigned values', () => {
 
 		const PRODUCTION_UUID = '0';
-		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID = '1';
+		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = '1';
 		const NATIONAL_THEATRE_UUID = '2';
-		const RORY_KINNEAR_UUID = '3';
-		const JAMES_LAURENSON_UUID = '4';
-		const MICHAEL_SHELDON_UUID = '5';
-		const LEO_STAAR_UUID = '6';
-		const NICHOLAS_HYTNER_UUID = '7';
+		const RORY_KINNEAR_PERSON_UUID = '3';
+		const JAMES_LAURENSON_PERSON_UUID = '4';
+		const MICHAEL_SHELDON_PERSON_UUID = '5';
+		const LEO_STAAR_PERSON_UUID = '6';
+		const NICHOLAS_HYTNER_PERSON_UUID = '7';
 		const HANDSPRING_PUPPET_COMPANY_UUID = '8';
-		const BEN_RINGHAM_UUID = '9';
-		const MAX_RINGHAM_UUID = '10';
-		const FIFTY_NINE_PRODUCTIONS_UUID = '11';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_UUID = '12';
+		const BEN_RINGHAM_PERSON_UUID = '9';
+		const MAX_RINGHAM_PERSON_UUID = '10';
+		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '11';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '12';
 		const ALMEIDA_THEATRE_UUID = '13';
-		const RALPH_FIENNES_UUID = '14';
-		const TOM_CANTON_UUID = '15';
-		const MARK_HADFIELD_UUID = '16';
-		const JOSH_COLLINS_UUID = '17';
-		const RUPERT_GOOLD_UUID = '18';
-		const RC_ANNIE_LTD_UUID = '19';
-		const HILDEGARD_BECHTLER_UUID = '20';
-		const CHLOE_LAMFORD_UUID = '21';
-		const AUTOGRAPH_UUID = '22';
+		const RALPH_FIENNES_PERSON_UUID = '14';
+		const TOM_CANTON_PERSON_UUID = '15';
+		const MARK_HADFIELD_PERSON_UUID = '16';
+		const JOSH_COLLINS_PERSON_UUID = '17';
+		const RUPERT_GOOLD_PERSON_UUID = '18';
+		const RC_ANNIE_LTD_COMPANY_UUID = '19';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '20';
+		const CHLOE_LAMFORD_PERSON_UUID = '21';
+		const AUTOGRAPH_COMPANY_UUID = '22';
 
 		before(async () => {
 
@@ -767,7 +767,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'Hamlet',
 				material: {
 					model: 'material',
-					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_UUID,
+					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID,
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					format: null,
 					writingCredits: []
@@ -781,7 +781,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				cast: [
 					{
 						model: 'person',
-						uuid: RORY_KINNEAR_UUID,
+						uuid: RORY_KINNEAR_PERSON_UUID,
 						name: 'Rory Kinnear',
 						roles: [
 							{
@@ -794,7 +794,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: JAMES_LAURENSON_UUID,
+						uuid: JAMES_LAURENSON_PERSON_UUID,
 						name: 'James Laurenson',
 						roles: [
 							{
@@ -813,7 +813,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: MICHAEL_SHELDON_UUID,
+						uuid: MICHAEL_SHELDON_PERSON_UUID,
 						name: 'Michael Sheldon',
 						roles: [
 							{
@@ -832,7 +832,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: LEO_STAAR_UUID,
+						uuid: LEO_STAAR_PERSON_UUID,
 						name: 'Leo Staar',
 						roles: [
 							{
@@ -848,7 +848,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'person',
-								uuid: NICHOLAS_HYTNER_UUID,
+								uuid: NICHOLAS_HYTNER_PERSON_UUID,
 								name: 'Nicholas Hytner'
 							}
 						]
@@ -870,12 +870,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'person',
-								uuid: BEN_RINGHAM_UUID,
+								uuid: BEN_RINGHAM_PERSON_UUID,
 								name: 'Ben Ringham'
 							},
 							{
 								model: 'person',
-								uuid: MAX_RINGHAM_UUID,
+								uuid: MAX_RINGHAM_PERSON_UUID,
 								name: 'Max Ringham'
 							}
 						]
@@ -886,7 +886,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'company',
-								uuid: FIFTY_NINE_PRODUCTIONS_UUID,
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions'
 							}
 						]
@@ -1521,7 +1521,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'Richard III',
 				material: {
 					model: 'material',
-					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_UUID,
+					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID,
 					name: 'The Tragedy of King Richard III',
 					format: null,
 					writingCredits: []
@@ -1535,7 +1535,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				cast: [
 					{
 						model: 'person',
-						uuid: RALPH_FIENNES_UUID,
+						uuid: RALPH_FIENNES_PERSON_UUID,
 						name: 'Ralph Fiennes',
 						roles: [
 							{
@@ -1548,7 +1548,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: TOM_CANTON_UUID,
+						uuid: TOM_CANTON_PERSON_UUID,
 						name: 'Tom Canton',
 						roles: [
 							{
@@ -1567,7 +1567,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: MARK_HADFIELD_UUID,
+						uuid: MARK_HADFIELD_PERSON_UUID,
 						name: 'Mark Hadfield',
 						roles: [
 							{
@@ -1586,7 +1586,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'person',
-						uuid: JOSH_COLLINS_UUID,
+						uuid: JOSH_COLLINS_PERSON_UUID,
 						name: 'Josh Collins',
 						roles: [
 							{
@@ -1602,7 +1602,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'person',
-								uuid: RUPERT_GOOLD_UUID,
+								uuid: RUPERT_GOOLD_PERSON_UUID,
 								name: 'Rupert Goold'
 							}
 						]
@@ -1613,7 +1613,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'company',
-								uuid: RC_ANNIE_LTD_UUID,
+								uuid: RC_ANNIE_LTD_COMPANY_UUID,
 								name: 'RC-Annie'
 							}
 						]
@@ -1624,12 +1624,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'person',
-								uuid: HILDEGARD_BECHTLER_UUID,
+								uuid: HILDEGARD_BECHTLER_PERSON_UUID,
 								name: 'Hildegard Bechtler'
 							},
 							{
 								model: 'person',
-								uuid: CHLOE_LAMFORD_UUID,
+								uuid: CHLOE_LAMFORD_PERSON_UUID,
 								name: 'Chloe Lamford'
 							}
 						]
@@ -1640,7 +1640,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						creativeEntities: [
 							{
 								model: 'company',
-								uuid: AUTOGRAPH_UUID,
+								uuid: AUTOGRAPH_COMPANY_UUID,
 								name: 'Autograph'
 							}
 						]
