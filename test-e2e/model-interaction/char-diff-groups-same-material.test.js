@@ -652,7 +652,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Maša Kos without a qualifier (as it is not required)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -674,9 +674,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = siobhanFinneranPerson.body;
+			const { castMemberProductions } = siobhanFinneranPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -686,7 +686,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Rose King without a qualifier (as it is not required)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -708,9 +708,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = joHerbertPerson.body;
+			const { castMemberProductions } = joHerbertPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -720,7 +720,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1990)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -742,9 +742,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = jamesLaurensonPerson.body;
+			const { castMemberProductions } = jamesLaurensonPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -754,7 +754,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 2011)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -776,9 +776,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = jodieMcNeePerson.body;
+			const { castMemberProductions } = jodieMcNeePerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -788,7 +788,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1945)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -810,9 +810,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = alexPricePerson.body;
+			const { castMemberProductions } = alexPricePerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -822,7 +822,7 @@ describe('Character with multiple appearances in the same material in different 
 
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 1990)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
@@ -844,9 +844,9 @@ describe('Character with multiple appearances in the same material in different 
 				}
 			];
 
-			const { productions } = bebeSandersPerson.body;
+			const { castMemberProductions } = bebeSandersPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

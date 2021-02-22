@@ -461,7 +461,7 @@ describe('Character with variant names from productions of the same material', (
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (Ghost)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
@@ -489,9 +489,9 @@ describe('Character with variant names from productions of the same material', (
 				}
 			];
 
-			const { productions } = davidRintoulPerson.body;
+			const { castMemberProductions } = davidRintoulPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -501,7 +501,7 @@ describe('Character with variant names from productions of the same material', (
 
 		it('includes production with his portrayal of Ghost of King Hamlet under same name as in material (Ghost of King Hamlet)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
@@ -529,9 +529,9 @@ describe('Character with variant names from productions of the same material', (
 				}
 			];
 
-			const { productions } = patrickStewartPerson.body;
+			const { castMemberProductions } = patrickStewartPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -541,7 +541,7 @@ describe('Character with variant names from productions of the same material', (
 
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (King Hamlet)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
@@ -569,9 +569,9 @@ describe('Character with variant names from productions of the same material', (
 				}
 			];
 
-			const { productions } = peterEyrePerson.body;
+			const { castMemberProductions } = peterEyrePerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

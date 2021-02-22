@@ -120,13 +120,14 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(production:Production)
+	OPTIONAL MATCH (person)-[role:PERFORMS_IN]->(castMemberProduction:Production)
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (castMemberProduction)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (castMemberProduction)-[:PRODUCTION_OF]->
+		(:Material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR
@@ -134,23 +135,23 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, materials, production, theatre, surTheatre, role, character
+	WITH DISTINCT person, materials, castMemberProduction, theatre, surTheatre, role, character
 		ORDER BY role.rolePosition
 
-	WITH person, materials, production, theatre, surTheatre,
+	WITH person, materials, castMemberProduction, theatre, surTheatre,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
 				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
 			END
 		) AS roles
-		ORDER BY production.name, theatre.name
+		ORDER BY castMemberProduction.name, theatre.name
 
 	WITH person, materials,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE castMemberProduction WHEN NULL
 				THEN null
-				ELSE production {
+				ELSE castMemberProduction {
 					model: 'production',
 					.uuid,
 					.name,
@@ -169,27 +170,35 @@ const getShowQuery = () => `
 					roles: roles
 				}
 			END
-		) AS productions
+		) AS castMemberProductions
 
-	OPTIONAL MATCH (entity)<-[creativeRel:HAS_CREATIVE_TEAM_MEMBER]-(production:Production)
+	OPTIONAL MATCH (entity)<-[creativeRel:HAS_CREATIVE_TEAM_MEMBER]-(creativeProduction:Production)
 		WHERE
 			(entity:Person AND entity.uuid = person.uuid) OR
-			(person)<-[:HAS_CREDITED_MEMBER { productionUuid: production.uuid }]-(entity:Company)
+			(person)<-[:HAS_CREDITED_MEMBER { productionUuid: creativeProduction.uuid }]-(entity:Company)
 
-	OPTIONAL MATCH (production)-[coCreativeRel:HAS_CREATIVE_TEAM_MEMBER]->(coCreativeEntity)
+	OPTIONAL MATCH (creativeProduction)-[coCreativeRel:HAS_CREATIVE_TEAM_MEMBER]->(coCreativeEntity)
 		WHERE
 			(coCreativeEntity:Person OR coCreativeEntity:Company) AND
 			(creativeRel.creditPosition IS NULL OR creativeRel.creditPosition = coCreativeRel.creditPosition) AND
 			coCreativeEntity.uuid <> entity.uuid
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (creativeProduction)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
 
-	WITH person, materials, productions, creativeRel, coCreativeEntity, production, theatre, surTheatre
+	WITH
+		person,
+		materials,
+		castMemberProductions,
+		creativeRel,
+		coCreativeEntity,
+		creativeProduction,
+		theatre,
+		surTheatre
 		ORDER BY coCreativeRel.entityPosition
 
-	WITH person, materials, productions, creativeRel, production, theatre, surTheatre,
+	WITH person, materials, castMemberProductions, creativeRel, creativeProduction, theatre, surTheatre,
 		COLLECT(
 			CASE coCreativeEntity WHEN NULL
 				THEN null
@@ -197,16 +206,24 @@ const getShowQuery = () => `
 			END
 		) AS coCreditedEntities
 
-	WITH person, materials, productions, creativeRel, coCreditedEntities, production, theatre, surTheatre
+	WITH
+		person,
+		materials,
+		castMemberProductions,
+		creativeRel,
+		coCreditedEntities,
+		creativeProduction,
+		theatre,
+		surTheatre
 		ORDER BY creativeRel.creditPosition
 
-	WITH person, materials, productions, production, theatre, surTheatre,
+	WITH person, materials, castMemberProductions, creativeProduction, theatre, surTheatre,
 		COLLECT({
 			model: 'creativeCredit',
 			name: creativeRel.credit,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY creativeProduction.name, theatre.name
 
 	RETURN
 		'person' AS model,
@@ -234,11 +251,11 @@ const getShowQuery = () => `
 			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
 			material { .model, .uuid, .name, .format, .writingCredits }
 		] AS rightsGrantorMaterials,
-		productions,
+		castMemberProductions,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE creativeProduction WHEN NULL
 				THEN null
-				ELSE production {
+				ELSE creativeProduction {
 					model: 'production',
 					.uuid,
 					.name,

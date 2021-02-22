@@ -126,7 +126,7 @@ describe('Cast member with multiple production credits', () => {
 
 		it('includes productions in which cast member performed (including characters they portrayed)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
@@ -210,9 +210,9 @@ describe('Cast member with multiple production credits', () => {
 				}
 			];
 
-			const { productions } = susannahFellowsPerson.body;
+			const { castMemberProductions } = susannahFellowsPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

@@ -438,7 +438,7 @@ describe('Theatre with sub-theatres', () => {
 
 		it('includes in their production credits the theatre and, where applicable, its sur-theatre', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
@@ -483,9 +483,9 @@ describe('Theatre with sub-theatres', () => {
 				}
 			];
 
-			const { productions } = fionaShawPerson.body;
+			const { castMemberProductions } = fionaShawPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

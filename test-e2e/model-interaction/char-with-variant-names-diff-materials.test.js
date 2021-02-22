@@ -616,7 +616,7 @@ describe('Character with variant names from productions of different materials',
 
 		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
@@ -638,9 +638,9 @@ describe('Character with variant names from productions of different materials',
 				}
 			];
 
-			const { productions } = roryKinnearPerson.body;
+			const { castMemberProductions } = roryKinnearPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -650,7 +650,7 @@ describe('Character with variant names from productions of different materials',
 
 		it('includes production with their portrayal of Hamlet under a variant name (Prince Hamlet)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID,
@@ -672,9 +672,9 @@ describe('Character with variant names from productions of different materials',
 				}
 			];
 
-			const { productions } = jackHawkinsPerson.body;
+			const { castMemberProductions } = jackHawkinsPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -684,7 +684,7 @@ describe('Character with variant names from productions of different materials',
 
 		it('includes production with their portrayal of Hamlet under a variant name (Spirit of Hamlet)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
@@ -706,9 +706,9 @@ describe('Character with variant names from productions of different materials',
 				}
 			];
 
-			const { productions } = donReillyPerson.body;
+			const { castMemberProductions } = donReillyPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -718,7 +718,7 @@ describe('Character with variant names from productions of different materials',
 
 		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
@@ -740,9 +740,9 @@ describe('Character with variant names from productions of different materials',
 				}
 			];
 
-			const { productions } = gabrieleCicirelloPerson.body;
+			const { castMemberProductions } = gabrieleCicirelloPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 

@@ -439,7 +439,7 @@ describe('Character with multiple appearances in the same material under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. younger)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
@@ -467,9 +467,9 @@ describe('Character with multiple appearances in the same material under differe
 				}
 			];
 
-			const { productions } = aliceEvePerson.body;
+			const { castMemberProductions } = aliceEvePerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
@@ -479,7 +479,7 @@ describe('Character with multiple appearances in the same material under differe
 
 		it('includes in their production credits their portrayal of Esme with its corresponding qualifier (i.e. older)', () => {
 
-			const expectedProductions = [
+			const expectedCastMemberProductions = [
 				{
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
@@ -507,9 +507,9 @@ describe('Character with multiple appearances in the same material under differe
 				}
 			];
 
-			const { productions } = sineadCusackPerson.body;
+			const { castMemberProductions } = sineadCusackPerson.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
 		});
 
