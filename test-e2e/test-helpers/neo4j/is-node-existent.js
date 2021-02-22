@@ -10,7 +10,7 @@ export default async opts => {
 		MATCH (n:${label} { name: $name, uuid: $uuid })
 
 		RETURN
-			CASE WHEN COUNT(n) = 1
+			CASE COUNT(n) WHEN 1
 				THEN true
 				ELSE false
 			END AS exists

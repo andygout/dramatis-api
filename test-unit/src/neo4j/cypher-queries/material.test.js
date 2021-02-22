@@ -45,7 +45,7 @@ describe('Cypher Queries Material module', () => {
 								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Person {
 								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 								name: writingEntityParam.name
@@ -74,7 +74,7 @@ describe('Cypher Queries Material module', () => {
 								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Company {
 								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 								name: writingEntityParam.name
@@ -103,7 +103,7 @@ describe('Cypher Queries Material module', () => {
 								(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
 								(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
 
-						FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE sourceMaterialParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (sourceMaterial:Material {
 								uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
 								name: sourceMaterialParam.name
@@ -297,7 +297,7 @@ describe('Cypher Queries Material module', () => {
 								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Person {
 								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 								name: writingEntityParam.name
@@ -326,7 +326,7 @@ describe('Cypher Queries Material module', () => {
 								(writingEntityParam.differentiator IS NULL AND existingWriter.differentiator IS NULL) OR
 								(writingEntityParam.differentiator = existingWriter.differentiator)
 
-						FOREACH (item IN CASE WHEN writingEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE writingEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Company {
 								uuid: COALESCE(existingWriter.uuid, writingEntityParam.uuid),
 								name: writingEntityParam.name
@@ -355,7 +355,7 @@ describe('Cypher Queries Material module', () => {
 								(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
 								(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
 
-						FOREACH (item IN CASE WHEN sourceMaterialParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE sourceMaterialParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (sourceMaterial:Material {
 								uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
 								name: sourceMaterialParam.name

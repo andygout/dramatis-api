@@ -98,7 +98,7 @@ const getCreateUpdateQuery = action => {
 						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 						(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-				FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (entity:Person {
 						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 						name: creativeEntityParam.name
@@ -126,7 +126,7 @@ const getCreateUpdateQuery = action => {
 						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 						(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-				FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+				FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (entity:Company {
 						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 						name: creativeEntityParam.name
@@ -353,7 +353,7 @@ const getShowQuery = () => `
 
 	WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
 		COLLECT(
-			CASE WHEN creativeEntity IS NULL
+			CASE creativeEntity WHEN NULL
 				THEN null
 				ELSE creativeEntity { model: TOLOWER(HEAD(LABELS(creativeEntity))), .uuid, .name }
 			END

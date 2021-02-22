@@ -91,7 +91,7 @@ describe('Cypher Queries Production module', () => {
 								(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 								(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-						FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Person {
 								uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 								name: creativeEntityParam.name
@@ -119,7 +119,7 @@ describe('Cypher Queries Production module', () => {
 								(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 								(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-						FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Company {
 								uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 								name: creativeEntityParam.name
@@ -307,7 +307,7 @@ describe('Cypher Queries Production module', () => {
 								(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 								(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-						FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Person {
 								uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 								name: creativeEntityParam.name
@@ -335,7 +335,7 @@ describe('Cypher Queries Production module', () => {
 								(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
 								(creativeEntityParam.differentiator = existingCreative.differentiator)
 
-						FOREACH (item IN CASE WHEN creativeEntityParam IS NOT NULL THEN [1] ELSE [] END |
+						FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (entity:Company {
 								uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
 								name: creativeEntityParam.name
