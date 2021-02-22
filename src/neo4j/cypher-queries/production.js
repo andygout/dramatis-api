@@ -91,26 +91,26 @@ const getCreateUpdateQuery = action => {
 				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
 					THEN [null]
 					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']
-				END AS creativeEntityParam
+				END AS creativePersonParam
 
-				OPTIONAL MATCH (existingCreative:Person { name: creativeEntityParam.name })
+				OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
 					WHERE
-						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
-						(creativeEntityParam.differentiator = existingCreative.differentiator)
+						(creativePersonParam.differentiator IS NULL AND existingCreativePerson.differentiator IS NULL) OR
+						(creativePersonParam.differentiator = existingCreativePerson.differentiator)
 
-				FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
-					MERGE (entity:Person {
-						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
-						name: creativeEntityParam.name
+				FOREACH (item IN CASE creativePersonParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (creativePerson:Person {
+						uuid: COALESCE(existingCreativePerson.uuid, creativePersonParam.uuid),
+						name: creativePersonParam.name
 					})
-						ON CREATE SET entity.differentiator = creativeEntityParam.differentiator
+						ON CREATE SET creativePerson.differentiator = creativePersonParam.differentiator
 
 					CREATE (production)-
 						[:HAS_CREATIVE_TEAM_MEMBER {
 							creditPosition: creativeCredit.position,
-							entityPosition: creativeEntityParam.position,
+							entityPosition: creativePersonParam.position,
 							credit: creativeCredit.name
-						}]->(entity)
+						}]->(creativePerson)
 				)
 
 			WITH DISTINCT production, creativeCredit
@@ -119,26 +119,26 @@ const getCreateUpdateQuery = action => {
 				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']) WHEN 0
 					THEN [null]
 					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']
-				END AS creativeEntityParam
+				END AS creativeCompanyParam
 
-				OPTIONAL MATCH (existingCreative:Company { name: creativeEntityParam.name })
+				OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
 					WHERE
-						(creativeEntityParam.differentiator IS NULL AND existingCreative.differentiator IS NULL) OR
-						(creativeEntityParam.differentiator = existingCreative.differentiator)
+						(creativeCompanyParam.differentiator IS NULL AND existingCreativeCompany.differentiator IS NULL) OR
+						(creativeCompanyParam.differentiator = existingCreativeCompany.differentiator)
 
-				FOREACH (item IN CASE creativeEntityParam WHEN NULL THEN [] ELSE [1] END |
-					MERGE (entity:Company {
-						uuid: COALESCE(existingCreative.uuid, creativeEntityParam.uuid),
-						name: creativeEntityParam.name
+				FOREACH (item IN CASE creativeCompanyParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (creativeCompany:Company {
+						uuid: COALESCE(existingCreativeCompany.uuid, creativeCompanyParam.uuid),
+						name: creativeCompanyParam.name
 					})
-						ON CREATE SET entity.differentiator = creativeEntityParam.differentiator
+						ON CREATE SET creativeCompany.differentiator = creativeCompanyParam.differentiator
 
 					CREATE (production)-
 						[:HAS_CREATIVE_TEAM_MEMBER {
 							creditPosition: creativeCredit.position,
-							entityPosition: creativeEntityParam.position,
+							entityPosition: creativeCompanyParam.position,
 							credit: creativeCredit.name
-						}]->(entity)
+						}]->(creativeCompany)
 				)
 
 		WITH DISTINCT production
