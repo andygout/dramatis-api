@@ -404,7 +404,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 	describe('Production creative entity (person) uniqueness in database', () => {
 
-		const GIRL_NO_7_THEATRE_503_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonPaulHiggins1 = {
 			model: 'person',
@@ -430,7 +430,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				uuid: GIRL_NO_7_THEATRE_503_PRODUCTION_UUID,
+				uuid: GIRL_NO_7_PRODUCTION_UUID,
 				name: 'Girl No 7'
 			});
 
@@ -447,7 +447,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/productions/${GIRL_NO_7_THEATRE_503_PRODUCTION_UUID}`)
+				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
 					creativeCredits: [
@@ -473,7 +473,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/productions/${GIRL_NO_7_THEATRE_503_PRODUCTION_UUID}`)
+				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
 					creativeCredits: [
@@ -500,7 +500,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${GIRL_NO_7_THEATRE_503_PRODUCTION_UUID}`)
+				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
 					creativeCredits: [
@@ -526,7 +526,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${GIRL_NO_7_THEATRE_503_PRODUCTION_UUID}`)
+				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
 					creativeCredits: [
@@ -552,7 +552,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 	describe('Production creative entity (company) uniqueness in database', () => {
 
-		const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCompanyAutograph1 = {
 			model: 'company',
@@ -578,7 +578,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID,
 				name: 'Mother Courage and Her Children'
 			});
 
@@ -595,7 +595,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -622,7 +622,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -650,7 +650,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -677,7 +677,7 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
