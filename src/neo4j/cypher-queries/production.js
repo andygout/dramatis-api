@@ -72,14 +72,14 @@ const getCreateUpdateQuery = action => {
 
 				FOREACH (role IN CASE castMemberParam.roles WHEN [] THEN [{}] ELSE castMemberParam.roles END |
 					CREATE (production)
-						<-[:PERFORMS_IN {
+						-[:HAS_CAST_MEMBER {
 							castMemberPosition: castMemberParam.position,
 							rolePosition: role.position,
 							roleName: role.name,
 							characterName: role.characterName,
 							characterDifferentiator: role.characterDifferentiator,
 							qualifier: role.qualifier
-						}]-(castMember)
+						}]->(castMember)
 				)
 			)
 
@@ -157,7 +157,7 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
+	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
 	WITH production, material, theatre, role, castMember
 		ORDER BY role.castMemberPosition, role.rolePosition
@@ -311,9 +311,9 @@ const getShowQuery = () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
+	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
-	OPTIONAL MATCH (castMember)-[role]->(production)-[materialRel]->
+	OPTIONAL MATCH (castMember)<-[role]-(production)-[materialRel]->
 		(material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 		WHERE
 			(

@@ -65,14 +65,14 @@ describe('Cypher Queries Production module', () => {
 
 						FOREACH (role IN CASE castMemberParam.roles WHEN [] THEN [{}] ELSE castMemberParam.roles END |
 							CREATE (production)
-								<-[:PERFORMS_IN {
+								-[:HAS_CAST_MEMBER {
 									castMemberPosition: castMemberParam.position,
 									rolePosition: role.position,
 									roleName: role.name,
 									characterName: role.characterName,
 									characterDifferentiator: role.characterDifferentiator,
 									qualifier: role.qualifier
-								}]-(castMember)
+								}]->(castMember)
 						)
 					)
 
@@ -142,7 +142,7 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
+				OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
 				WITH production, material, theatre, role, castMember
 					ORDER BY role.castMemberPosition, role.rolePosition
@@ -281,14 +281,14 @@ describe('Cypher Queries Production module', () => {
 
 						FOREACH (role IN CASE castMemberParam.roles WHEN [] THEN [{}] ELSE castMemberParam.roles END |
 							CREATE (production)
-								<-[:PERFORMS_IN {
+								-[:HAS_CAST_MEMBER {
 									castMemberPosition: castMemberParam.position,
 									rolePosition: role.position,
 									roleName: role.name,
 									characterName: role.characterName,
 									characterDifferentiator: role.characterDifferentiator,
 									qualifier: role.qualifier
-								}]-(castMember)
+								}]->(castMember)
 						)
 					)
 
@@ -358,7 +358,7 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-				OPTIONAL MATCH (production)<-[role:PERFORMS_IN]-(castMember:Person)
+				OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
 				WITH production, material, theatre, role, castMember
 					ORDER BY role.castMemberPosition, role.rolePosition

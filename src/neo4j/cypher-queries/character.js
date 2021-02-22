@@ -108,7 +108,7 @@ const getShowQuery = () => `
 	WITH character, materials, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 
 	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:INCLUDES_CHARACTER]-(:Material)
-		<-[:PRODUCTION_OF]-(:Production)<-[variantNamedPortrayal:PERFORMS_IN]-(:Person)
+		<-[:PRODUCTION_OF]-(:Production)-[variantNamedPortrayal:HAS_CAST_MEMBER]->(:Person)
 		WHERE
 			character.name <> variantNamedPortrayal.roleName AND
 			(
@@ -123,7 +123,7 @@ const getShowQuery = () => `
 		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 
 	OPTIONAL MATCH (character)<-[characterDepiction:INCLUDES_CHARACTER]-(materialForProduction:Material)
-		<-[productionRel:PRODUCTION_OF]-(production:Production)<-[role:PERFORMS_IN]-(person:Person)
+		<-[productionRel:PRODUCTION_OF]-(production:Production)-[role:HAS_CAST_MEMBER]->(person:Person)
 		WHERE
 			(
 				character.name IN [role.roleName, role.characterName] OR
@@ -131,14 +131,14 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR character.differentiator = role.characterDifferentiator)
 
-	OPTIONAL MATCH (production)<-[otherRole:PERFORMS_IN]-(person)
+	OPTIONAL MATCH (production)-[otherRole:HAS_CAST_MEMBER]->(person)
 		WHERE
 			otherRole.roleName <> character.name AND
 			(otherRole.characterName IS NULL OR otherRole.characterName <> character.name) AND
 			(characterDepiction.displayName IS NULL OR otherRole.roleName <> characterDepiction.displayName) AND
 			((otherRole.characterName IS NULL OR characterDepiction.displayName IS NULL) OR otherRole.characterName <> characterDepiction.displayName)
 
-	OPTIONAL MATCH (person)-[otherRole]->(production)-[productionRel]->
+	OPTIONAL MATCH (person)<-[otherRole]-(production)-[productionRel]->
 		(materialForProduction)-[otherCharacterDepiction:INCLUDES_CHARACTER]->(otherCharacter:Character)
 		WHERE
 			(
