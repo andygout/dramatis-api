@@ -255,7 +255,15 @@
 			"creativeEntities": [
 				{
 					"model": "company",
-					"name": "Little Angel Theatre"
+					"name": "Little Angel Theatre",
+					"creditedMembers": [
+						{
+							"name": "Steve Tiplady"
+						},
+						{
+							"name": "Rachel Leonard"
+						}
+					]
 				}
 			]
 		},

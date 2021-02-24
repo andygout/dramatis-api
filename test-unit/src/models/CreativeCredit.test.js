@@ -23,8 +23,9 @@ describe('CreativeCredit model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateIndicesModule: {
-				getDuplicateEntityIndices: stub().returns([])
+			getDuplicatesInfoModule: {
+				getDuplicateEntities: stub().returns('getDuplicateEntities response'),
+				isEntityInArray: stub().returns(false)
 			},
 			models: {
 				Company: CompanyStub,
@@ -36,7 +37,7 @@ describe('CreativeCredit model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/CreativeCredit', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/get-duplicate-entity-info': stubs.getDuplicatesInfoModule,
 			'.': stubs.models
 		}).default;
 
@@ -114,7 +115,12 @@ describe('CreativeCredit model', () => {
 					},
 					{
 						model: 'company',
-						name: 'Autograph'
+						name: 'Autograph',
+						creditedMembers: [
+							{
+								name: 'Andrew Bruce'
+							}
+						]
 					}
 				]
 			};
@@ -123,6 +129,9 @@ describe('CreativeCredit model', () => {
 			instance.creativeEntities[0].name = 'Paul Arditti';
 			instance.creativeEntities[1].model = 'company';
 			instance.creativeEntities[1].name = 'Autograph';
+			instance.creativeEntities[1].creditedMembers = [createStubInstance(Person)];
+			instance.creativeEntities[1].creditedMembers[0].model = 'person';
+			instance.creativeEntities[1].creditedMembers[0].name = 'Andrew Bruce';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfNamedChildren');
@@ -131,13 +140,20 @@ describe('CreativeCredit model', () => {
 				instance.validateName,
 				instance.validateUniquenessInGroup,
 				instance.validateNamePresenceIfNamedChildren,
-				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
+				stubs.getDuplicatesInfoModule.getDuplicateEntities,
 				instance.creativeEntities[0].validateName,
 				instance.creativeEntities[0].validateDifferentiator,
+				stubs.getDuplicatesInfoModule.isEntityInArray,
 				instance.creativeEntities[0].validateUniquenessInGroup,
 				instance.creativeEntities[1].validateName,
 				instance.creativeEntities[1].validateDifferentiator,
-				instance.creativeEntities[1].validateUniquenessInGroup
+				stubs.getDuplicatesInfoModule.isEntityInArray,
+				instance.creativeEntities[1].validateUniquenessInGroup,
+				instance.creativeEntities[1].validateNamePresenceIfNamedChildren,
+				instance.creativeEntities[1].creditedMembers[0].validateName,
+				instance.creativeEntities[1].creditedMembers[0].validateDifferentiator,
+				stubs.getDuplicatesInfoModule.isEntityInArray,
+				instance.creativeEntities[1].creditedMembers[0].validateUniquenessInGroup
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
@@ -147,14 +163,18 @@ describe('CreativeCredit model', () => {
 			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly(
 				instance.creativeEntities
 			)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledWithExactly(
+			expect(stubs.getDuplicatesInfoModule.getDuplicateEntities.calledOnce).to.be.true;
+			expect(stubs.getDuplicatesInfoModule.getDuplicateEntities.calledWithExactly(
 				instance.creativeEntities
 			)).to.be.true;
 			expect(instance.creativeEntities[0].validateName.calledOnce).to.be.true;
 			expect(instance.creativeEntities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.creativeEntities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.creativeEntities[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledThrice).to.be.true;
+			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(0).calledWithExactly(
+				instance.creativeEntities[0], 'getDuplicateEntities response'
+			)).to.be.true;
 			expect(instance.creativeEntities[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.creativeEntities[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
@@ -163,8 +183,29 @@ describe('CreativeCredit model', () => {
 			expect(instance.creativeEntities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.creativeEntities[1].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.creativeEntities[1].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(1).calledWithExactly(
+				instance.creativeEntities[1], 'getDuplicateEntities response'
+			)).to.be.true;
 			expect(instance.creativeEntities[1].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.creativeEntities[1].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false }
+			)).to.be.true;
+			expect(instance.creativeEntities[1].validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
+			expect(instance.creativeEntities[1].validateNamePresenceIfNamedChildren.calledWithExactly(
+				instance.creativeEntities[1].creditedMembers
+			)).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateName.calledOnce).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateName.calledWithExactly(
+				{ isRequired: false }
+			)).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateDifferentiator.calledWithExactly())
+				.to.be.true;
+			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(2).calledWithExactly(
+				instance.creativeEntities[1].creditedMembers[0], 'getDuplicateEntities response'
+			)).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.creativeEntities[1].creditedMembers[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
 

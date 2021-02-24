@@ -1496,6 +1496,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
+									creditedMembers: [],
 									errors: {
 										name: [
 											'Value is too long'
@@ -1569,6 +1570,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
+									creditedMembers: [],
 									errors: {
 										differentiator: [
 											'Value is too long'
@@ -1586,7 +1588,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('duplicate creative credit entities', () => {
+		context('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -1597,10 +1599,30 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							creativeEntities: [
 								{
-									name: 'Paul Groothuis'
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce'
+										},
+										{
+											name: 'Nick Lidster'
+										}
+									]
 								},
 								{
-									name: 'Paul Groothuis'
+									model: 'company',
+									name: '59 Productions'
+								},
+								{
+									name: 'Andrew Bruce'
+								},
+								{
+									model: 'company',
+									name: 'Autograph'
+								},
+								{
+									name: 'Gregory Clarke'
 								}
 							]
 						}
@@ -1639,9 +1661,54 @@ describe('Production instance', () => {
 							errors: {},
 							creativeEntities: [
 								{
+									model: 'company',
+									uuid: undefined,
+									name: 'Autograph',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									},
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: undefined,
+											name: 'Andrew Bruce',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											model: 'person',
+											uuid: undefined,
+											name: 'Nick Lidster',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: undefined,
+									name: '59 Productions',
+									differentiator: '',
+									errors: {},
+									creditedMembers: []
+								},
+								{
 									model: 'person',
 									uuid: undefined,
-									name: 'Paul Groothuis',
+									name: 'Andrew Bruce',
 									differentiator: '',
 									errors: {
 										name: [
@@ -1653,9 +1720,9 @@ describe('Production instance', () => {
 									}
 								},
 								{
-									model: 'person',
+									model: 'company',
 									uuid: undefined,
-									name: 'Paul Groothuis',
+									name: 'Autograph',
 									differentiator: '',
 									errors: {
 										name: [
@@ -1664,7 +1731,275 @@ describe('Production instance', () => {
 										differentiator: [
 											'This item has been duplicated within the group'
 										]
-									}
+									},
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: undefined,
+									name: 'Gregory Clarke',
+									differentiator: '',
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('creative credit entity without name has named credited members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					creativeCredits: [
+						{
+							name: 'Sound Design',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: '',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: ''
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Sound Design',
+							errors: {},
+							creativeEntities: [
+								{
+									model: 'company',
+									uuid: undefined,
+									name: '',
+									differentiator: '',
+									errors: {
+										name: [
+											'Name is required if named children exist'
+										]
+									},
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: undefined,
+											name: 'Andrew Bruce',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('creative credit entity (company) credited member name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					creativeCredits: [
+						{
+							name: 'Sound Design',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Sound Design',
+							errors: {},
+							creativeEntities: [
+								{
+									model: 'company',
+									uuid: undefined,
+									name: 'Autograph',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					creativeCredits: [
+						{
+							name: 'Sound Design',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					model: 'production',
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'material',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						model: 'theatre',
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Sound Design',
+							errors: {},
+							creativeEntities: [
+								{
+									model: 'company',
+									uuid: undefined,
+									name: 'Autograph',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: undefined,
+											name: 'Andrew Bruce',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									]
 								}
 							]
 						}

@@ -195,7 +195,12 @@
 			"creativeEntities": [
 				{
 					"model": "company",
-					"name": "Cineluma"
+					"name": "Cineluma",
+					"creditedMembers": [
+						{
+							"name": "Jon Driscoll"
+						}
+					]
 				}
 			]
 		},
