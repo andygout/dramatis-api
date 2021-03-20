@@ -365,17 +365,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const BEN_RINGHAM_PERSON_UUID = '9';
 		const MAX_RINGHAM_PERSON_UUID = '10';
 		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '11';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '12';
-		const ALMEIDA_THEATRE_UUID = '13';
-		const RALPH_FIENNES_PERSON_UUID = '14';
-		const TOM_CANTON_PERSON_UUID = '15';
-		const MARK_HADFIELD_PERSON_UUID = '16';
-		const JOSH_COLLINS_PERSON_UUID = '17';
-		const RUPERT_GOOLD_PERSON_UUID = '18';
-		const RC_ANNIE_LTD_COMPANY_UUID = '19';
-		const HILDEGARD_BECHTLER_PERSON_UUID = '20';
-		const CHLOE_LAMFORD_PERSON_UUID = '21';
-		const AUTOGRAPH_COMPANY_UUID = '22';
+		const LEO_WARNER_UUID = '12';
+		const MARK_GRIMMER_UUID = '13';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '14';
+		const ALMEIDA_THEATRE_UUID = '15';
+		const RALPH_FIENNES_PERSON_UUID = '16';
+		const TOM_CANTON_PERSON_UUID = '17';
+		const MARK_HADFIELD_PERSON_UUID = '18';
+		const JOSH_COLLINS_PERSON_UUID = '19';
+		const RUPERT_GOOLD_PERSON_UUID = '20';
+		const RC_ANNIE_LTD_COMPANY_UUID = '21';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '22';
+		const CHLOE_LAMFORD_PERSON_UUID = '23';
+		const AUTOGRAPH_COMPANY_UUID = '24';
+		const ANDREW_BRUCE_UUID = '25';
+		const NICK_LIDSTER_UUID = '26';
 
 		before(async () => {
 
@@ -505,7 +509,34 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								{
 									model: 'company',
 									name: '59 Productions',
-									differentiator: '1'
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Leo Warner',
+											differentiator: '1'
+										},
+										{
+											name: 'Mark Grimmer',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Video Designers',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: '59 Productions',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Leo Warner',
+											differentiator: '1'
+										}
+									]
 								}
 							]
 						}
@@ -680,7 +711,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'company',
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
-								errors: {}
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -724,7 +763,60 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'company',
 								name: '59 Productions',
 								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Mark Grimmer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
 								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Video Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -860,7 +952,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							{
 								model: 'company',
 								uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-								name: 'Handspring Puppet Company'
+								name: 'Handspring Puppet Company',
+								creditedMembers: []
 							}
 						]
 					},
@@ -887,7 +980,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							{
 								model: 'company',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
-								name: '59 Productions'
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: LEO_WARNER_UUID,
+										name: 'Leo Warner'
+									},
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_UUID,
+										name: 'Mark Grimmer'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Video Designers',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: LEO_WARNER_UUID,
+										name: 'Leo Warner'
+									}
+								]
 							}
 						]
 					}
@@ -1072,7 +1195,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'company',
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
-								errors: {}
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -1116,7 +1247,60 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'company',
 								name: '59 Productions',
 								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Mark Grimmer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
 								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Video Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -1254,12 +1438,39 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Sound Designer',
+							name: 'Sound Designers',
 							creativeEntities: [
 								{
 									model: 'company',
 									name: 'Autograph',
-									differentiator: '1'
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: '1'
+										},
+										{
+											name: 'Nick Lidster',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Video Designers',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: '1'
+										}
+									]
 								}
 							]
 						}
@@ -1434,7 +1645,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'company',
 								name: 'RC-Annie',
 								differentiator: '1',
-								errors: {}
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -1471,14 +1690,67 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'creativeCredit',
-						name: 'Sound Designer',
+						name: 'Sound Designers',
 						errors: {},
 						creativeEntities: [
 							{
 								model: 'company',
 								name: 'Autograph',
 								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Andrew Bruce',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Nick Lidster',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
 								errors: {}
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Video Designers',
+						errors: {},
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'Autograph',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Andrew Bruce',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
 							},
 							{
 								model: 'person',
@@ -1614,7 +1886,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							{
 								model: 'company',
 								uuid: RC_ANNIE_LTD_COMPANY_UUID,
-								name: 'RC-Annie'
+								name: 'RC-Annie',
+								creditedMembers: []
 							}
 						]
 					},
@@ -1636,12 +1909,42 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'creativeCredit',
-						name: 'Sound Designer',
+						name: 'Sound Designers',
 						creativeEntities: [
 							{
 								model: 'company',
 								uuid: AUTOGRAPH_COMPANY_UUID,
-								name: 'Autograph'
+								name: 'Autograph',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: ANDREW_BRUCE_UUID,
+										name: 'Andrew Bruce'
+									},
+									{
+										model: 'person',
+										uuid: NICK_LIDSTER_UUID,
+										name: 'Nick Lidster'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'creativeCredit',
+						name: 'Video Designers',
+						creativeEntities: [
+							{
+								model: 'company',
+								uuid: AUTOGRAPH_COMPANY_UUID,
+								name: 'Autograph',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: ANDREW_BRUCE_UUID,
+										name: 'Andrew Bruce'
+									}
+								]
 							}
 						]
 					}

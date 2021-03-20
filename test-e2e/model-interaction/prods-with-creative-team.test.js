@@ -10,28 +10,44 @@ describe('Productions with creative team', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_UUID = '3';
-	const OLIVIER_THEATRE_UUID = '4';
-	const LYTTELTON_THEATRE_UUID = '5';
-	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '6';
-	const BARBICAN_THEATRE_UUID = '8';
-	const DEBORAH_WARNER_PERSON_UUID = '9';
-	const AUTOGRAPH_COMPANY_UUID = '10';
-	const JO_LAKIN_PERSON_UUID = '11';
-	const HANDSPRING_PUPPET_COMPANY_UUID = '12';
-	const NICK_BARNES_PERSON_UUID = '13';
-	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = '14';
-	const CHRIS_BARLOW_PERSON_UUID = '21';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '22';
-	const SUE_BUCKMASTER_PERSON_UUID = '28';
+	const NATIONAL_THEATRE_UUID = '4';
+	const OLIVIER_THEATRE_UUID = '5';
+	const LYTTELTON_THEATRE_UUID = '6';
+	const COTTESLOE_THEATRE_UUID = '7';
+	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '8';
+	const BARBICAN_THEATRE_UUID = '10';
+	const DEBORAH_WARNER_PERSON_UUID = '11';
+	const AUTOGRAPH_COMPANY_UUID = '12';
+	const MESMER_COMPANY_UUID = '13';
+	const DICK_STRAKER_PERSON_UUID = '14';
+	const IAN_WILLIAM_GALLOWAY_PERSON_UUID = '15';
+	const JOHN_O_CONNELL_PERSON_UUID = '16';
+	const AKHILA_KIRSHNAN_PERSON_UUID = '17';
+	const CINELUMA_COMPANY_UUID = '18';
+	const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '19';
+	const LEO_WARNER_PERSON_UUID = '20';
+	const MARK_GRIMMER_PERSON_UUID = '21';
+	const LYSANDER_ASHTON_PERSON_UUID = '22';
+	const NINA_DUNN_PERSON_UUID = '23';
+	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = '24';
+	const BARBORA_ŠENOLTOVÁ_PERSON_UUID = '34';
+	const RICHARD_SLANEY_PERSON_UUID = '38';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '40';
+	const DANIEL_DENTON_PERSON_UUID = '49';
+	const ANNA_JAMESON_PERSON_UUID = '52';
+	const RICHARD_II_COTTESLOE_PRODUCTION_UUID = '56';
 
 	let juliusCaesarBarbicanProduction;
 	let happyDaysLytteltonProduction;
 	let motherCourageAndHerChildrenOlivierProduction;
+	let richardIICottesloeProduction;
 	let deborahWarnerPerson;
-	let joLakinPerson;
+	let ninaDunnPerson;
+	let leoWarnerPerson;
+	let annaJamesonPerson;
 	let autographCompany;
-	let handspringPuppetCompany;
+	let mesmerCompany;
+	let fiftyNineProductionsCompany;
 
 	const sandbox = createSandbox();
 
@@ -53,6 +69,9 @@ describe('Productions with creative team', () => {
 					},
 					{
 						name: 'Lyttelton Theatre'
+					},
+					{
+						name: 'Cottesloe Theatre'
 					}
 				]
 			});
@@ -73,6 +92,16 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
+					// Contrivance for purposes of testing company with multiple creative credits for same production.
+					{
+						name: 'Designer',
+						creativeEntities: [
+							{
+								model: 'company',
+								name: 'Autograph'
+							}
+						]
+					},
 					{
 						name: 'Sound Designer',
 						creativeEntities: [
@@ -84,17 +113,47 @@ describe('Productions with creative team', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Puppet Designers',
+						name: 'Video Designers',
 						creativeEntities: [
 							{
-								name: 'Jo Lakin'
+								model: 'company',
+								name: 'Mesmer',
+								creditedMembers: [
+									{
+										name: 'Dick Straker'
+									},
+									{
+										name: 'Ian William Galloway'
+									},
+									{
+										name: 'John O\'Connell'
+									}
+								]
+							},
+							{
+								name: 'Akhila Krishnan'
 							},
 							{
 								model: 'company',
-								name: 'Handspring Puppet Company'
+								name: 'Cineluma'
 							},
 							{
-								name: 'Nick Barnes'
+								model: 'company',
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Leo Warner'
+									},
+									{
+										name: 'Mark Grimmer'
+									},
+									{
+										name: 'Lysander Ashton'
+									}
+								]
+							},
+							{
+								name: 'Nina Dunn'
 							}
 						]
 					}
@@ -122,7 +181,7 @@ describe('Productions with creative team', () => {
 						name: 'Design',
 						creativeEntities: [
 							{
-								name: 'Jo Lakin'
+								name: 'Nina Dunn'
 							}
 						]
 					},
@@ -138,17 +197,47 @@ describe('Productions with creative team', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Puppet Design',
+						name: 'Video Design',
 						creativeEntities: [
 							{
 								model: 'company',
-								name: 'Handspring Puppet Company'
+								name: 'Cineluma'
 							},
 							{
-								name: 'Jo Lakin'
+								name: 'Akhila Krishnan'
 							},
 							{
-								name: 'Chris Barlow'
+								model: 'company',
+								name: 'Mesmer',
+								creditedMembers: [
+									{
+										name: 'Dick Straker'
+									},
+									{
+										name: 'Barbora Šenoltová'
+									},
+									{
+										name: 'Ian William Galloway'
+									}
+								]
+							},
+							{
+								name: 'Nina Dunn'
+							},
+							{
+								model: 'company',
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Leo Warner'
+									},
+									{
+										name: 'Richard Slaney'
+									},
+									{
+										name: 'Mark Grimmer'
+									}
+								]
 							}
 						]
 					}
@@ -171,19 +260,24 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company with multiple creative credits for same production.
+					// Contrivance for purposes of testing company and credited member with multiple creative credits for same production.
 					{
-						name: 'Designed by',
+						name: 'Design by',
 						creativeEntities: [
 							{
 								model: 'company',
-								name: 'Handspring Puppet Company'
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Leo Warner'
+									}
+								]
 							}
 						]
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Sound designed by',
+						name: 'Sound Design by',
 						creativeEntities: [
 							{
 								model: 'company',
@@ -193,17 +287,104 @@ describe('Productions with creative team', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Puppets designed by',
+						name: 'Video Design by',
 						creativeEntities: [
 							{
-								name: 'Sue Buckmaster'
+								name: 'Nina Dunn'
 							},
 							{
 								model: 'company',
-								name: 'Handspring Puppet Company'
+								name: 'Mesmer',
+								creditedMembers: [
+									{
+										name: 'Daniel Denton'
+									},
+									{
+										name: 'Dick Straker'
+									},
+									{
+										name: 'Ian William Galloway'
+									}
+								]
 							},
 							{
-								name: 'Jo Lakin'
+								model: 'company',
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Anna Jameson'
+									},
+									{
+										name: 'Leo Warner'
+									},
+									{
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							{
+								model: 'company',
+								name: 'Cineluma'
+							},
+							{
+								name: 'Akhila Krishnan'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Richard II',
+				theatre: {
+					name: 'Cottesloe Theatre'
+				},
+				creativeCredits: [
+					// Contrivance for purposes of test.
+					{
+						name: 'Video Design by',
+						creativeEntities: [
+							{
+								name: 'Nina Dunn'
+							},
+							{
+								model: 'company',
+								name: 'Mesmer',
+								creditedMembers: [
+									{
+										name: 'Daniel Denton'
+									},
+									{
+										name: 'Dick Straker'
+									},
+									{
+										name: 'Ian William Galloway'
+									}
+								]
+							},
+							{
+								model: 'company',
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Lysander Ashton'
+									},
+									{
+										name: 'Leo Warner'
+									},
+									{
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							{
+								model: 'company',
+								name: 'Cineluma'
+							},
+							{
+								name: 'Akhila Krishnan'
 							}
 						]
 					}
@@ -219,17 +400,29 @@ describe('Productions with creative team', () => {
 		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
 
+		richardIICottesloeProduction = await chai.request(app)
+			.get(`/productions/${RICHARD_II_COTTESLOE_PRODUCTION_UUID}`);
+
 		deborahWarnerPerson = await chai.request(app)
 			.get(`/people/${DEBORAH_WARNER_PERSON_UUID}`);
 
-		joLakinPerson = await chai.request(app)
-			.get(`/people/${JO_LAKIN_PERSON_UUID}`);
+		ninaDunnPerson = await chai.request(app)
+			.get(`/people/${NINA_DUNN_PERSON_UUID}`);
+
+		leoWarnerPerson = await chai.request(app)
+			.get(`/people/${LEO_WARNER_PERSON_UUID}`);
+
+		annaJamesonPerson = await chai.request(app)
+			.get(`/people/${ANNA_JAMESON_PERSON_UUID}`);
 
 		autographCompany = await chai.request(app)
 			.get(`/companies/${AUTOGRAPH_COMPANY_UUID}`);
 
-		handspringPuppetCompany = await chai.request(app)
-			.get(`/companies/${HANDSPRING_PUPPET_COMPANY_UUID}`);
+		mesmerCompany = await chai.request(app)
+			.get(`/companies/${MESMER_COMPANY_UUID}`);
+
+		fiftyNineProductionsCompany = await chai.request(app)
+			.get(`/companies/${FIFTY_NINE_PRODUCTIONS_COMPANY_UUID}`);
 
 	});
 
@@ -257,33 +450,91 @@ describe('Productions with creative team', () => {
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Sound Designer',
+					name: 'Designer',
 					creativeEntities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
-							name: 'Autograph'
+							name: 'Autograph',
+							creditedMembers: []
 						}
 					]
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Puppet Designers',
+					name: 'Sound Designer',
 					creativeEntities: [
 						{
+							model: 'company',
+							uuid: AUTOGRAPH_COMPANY_UUID,
+							name: 'Autograph',
+							creditedMembers: []
+						}
+					]
+				},
+				{
+					model: 'creativeCredit',
+					name: 'Video Designers',
+					creativeEntities: [
+						{
+							model: 'company',
+							uuid: MESMER_COMPANY_UUID,
+							name: 'Mesmer',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								},
+								{
+									model: 'person',
+									uuid: JOHN_O_CONNELL_PERSON_UUID,
+									name: 'John O\'Connell'
+								}
+							]
+						},
+						{
 							model: 'person',
-							uuid: JO_LAKIN_PERSON_UUID,
-							name: 'Jo Lakin'
+							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							name: 'Akhila Krishnan'
 						},
 						{
 							model: 'company',
-							uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-							name: 'Handspring Puppet Company'
+							uuid: CINELUMA_COMPANY_UUID,
+							name: 'Cineluma',
+							creditedMembers: []
+						},
+						{
+							model: 'company',
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								},
+								{
+									model: 'person',
+									uuid: LYSANDER_ASHTON_PERSON_UUID,
+									name: 'Lysander Ashton'
+								}
+							]
 						},
 						{
 							model: 'person',
-							uuid: NICK_BARNES_PERSON_UUID,
-							name: 'Nick Barnes'
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
 						}
 					]
 				}
@@ -319,8 +570,8 @@ describe('Productions with creative team', () => {
 					creativeEntities: [
 						{
 							model: 'person',
-							uuid: JO_LAKIN_PERSON_UUID,
-							name: 'Jo Lakin'
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
 						}
 					]
 				},
@@ -331,28 +582,74 @@ describe('Productions with creative team', () => {
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
-							name: 'Autograph'
+							name: 'Autograph',
+							creditedMembers: []
 						}
 					]
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Puppet Design',
+					name: 'Video Design',
 					creativeEntities: [
 						{
 							model: 'company',
-							uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-							name: 'Handspring Puppet Company'
+							uuid: CINELUMA_COMPANY_UUID,
+							name: 'Cineluma',
+							creditedMembers: []
 						},
 						{
 							model: 'person',
-							uuid: JO_LAKIN_PERSON_UUID,
-							name: 'Jo Lakin'
+							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							name: 'Akhila Krishnan'
+						},
+						{
+							model: 'company',
+							uuid: MESMER_COMPANY_UUID,
+							name: 'Mesmer',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+									name: 'Barbora Šenoltová'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							]
 						},
 						{
 							model: 'person',
-							uuid: CHRIS_BARLOW_PERSON_UUID,
-							name: 'Chris Barlow'
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
+						},
+						{
+							model: 'company',
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: RICHARD_SLANEY_PERSON_UUID,
+									name: 'Richard Slaney'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							]
 						}
 					]
 				}
@@ -384,50 +681,184 @@ describe('Productions with creative team', () => {
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Designed by',
+					name: 'Design by',
 					creativeEntities: [
 						{
 							model: 'company',
-							uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-							name: 'Handspring Puppet Company'
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								}
+							]
 						}
 					]
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Sound designed by',
+					name: 'Sound Design by',
 					creativeEntities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
-							name: 'Autograph'
+							name: 'Autograph',
+							creditedMembers: []
 						}
 					]
 				},
 				{
 					model: 'creativeCredit',
-					name: 'Puppets designed by',
+					name: 'Video Design by',
 					creativeEntities: [
 						{
 							model: 'person',
-							uuid: SUE_BUCKMASTER_PERSON_UUID,
-							name: 'Sue Buckmaster'
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
 						},
 						{
 							model: 'company',
-							uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-							name: 'Handspring Puppet Company'
+							uuid: MESMER_COMPANY_UUID,
+							name: 'Mesmer',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DANIEL_DENTON_PERSON_UUID,
+									name: 'Daniel Denton'
+								},
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							]
+						},
+						{
+							model: 'company',
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: ANNA_JAMESON_PERSON_UUID,
+									name: 'Anna Jameson'
+								},
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							]
+						},
+						{
+							model: 'company',
+							uuid: CINELUMA_COMPANY_UUID,
+							name: 'Cineluma',
+							creditedMembers: []
 						},
 						{
 							model: 'person',
-							uuid: JO_LAKIN_PERSON_UUID,
-							name: 'Jo Lakin'
+							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							name: 'Akhila Krishnan'
 						}
 					]
 				}
 			];
 
 			const { creativeCredits } = motherCourageAndHerChildrenOlivierProduction.body;
+
+			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
+
+		});
+
+	});
+
+	describe('Richard II at Cottesloe Theatre (production)', () => {
+
+		it('includes creative team credits', () => {
+
+			const expectedCreativeCredits = [
+				{
+					model: 'creativeCredit',
+					name: 'Video Design by',
+					creativeEntities: [
+						{
+							model: 'person',
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
+						},
+						{
+							model: 'company',
+							uuid: MESMER_COMPANY_UUID,
+							name: 'Mesmer',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DANIEL_DENTON_PERSON_UUID,
+									name: 'Daniel Denton'
+								},
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							]
+						},
+						{
+							model: 'company',
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LYSANDER_ASHTON_PERSON_UUID,
+									name: 'Lysander Ashton'
+								},
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							]
+						},
+						{
+							model: 'company',
+							uuid: CINELUMA_COMPANY_UUID,
+							name: 'Cineluma',
+							creditedMembers: []
+						},
+						{
+							model: 'person',
+							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							name: 'Akhila Krishnan'
+						}
+					]
+				}
+			];
+
+			const { creativeCredits } = richardIICottesloeProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
 
@@ -458,6 +889,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'creativeCredit',
 							name: 'Direction',
+							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						}
 					]
@@ -476,6 +908,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'creativeCredit',
 							name: 'Director',
+							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						}
 					]
@@ -498,6 +931,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'creativeCredit',
 							name: 'Directed by',
+							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						}
 					]
@@ -512,7 +946,7 @@ describe('Productions with creative team', () => {
 
 	});
 
-	describe('Jo Lakin (person)', () => {
+	describe('Nina Dunn (person)', () => {
 
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
 
@@ -535,21 +969,68 @@ describe('Productions with creative team', () => {
 						{
 							model: 'creativeCredit',
 							name: 'Design',
+							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						},
 						{
 							model: 'creativeCredit',
-							name: 'Puppet Design',
+							name: 'Video Design',
+							creditedEmployerCompany: null,
 							coCreditedEntities: [
 								{
 									model: 'company',
-									uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-									name: 'Handspring Puppet Company'
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
 								},
 								{
 									model: 'person',
-									uuid: CHRIS_BARLOW_PERSON_UUID,
-									name: 'Chris Barlow'
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+											name: 'Barbora Šenoltová'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: RICHARD_SLANEY_PERSON_UUID,
+											name: 'Richard Slaney'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
 								}
 							]
 						}
@@ -568,17 +1049,63 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Puppet Designers',
+							name: 'Video Designers',
+							creditedEmployerCompany: null,
 							coCreditedEntities: [
 								{
 									model: 'company',
-									uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-									name: 'Handspring Puppet Company'
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										},
+										{
+											model: 'person',
+											uuid: JOHN_O_CONNELL_PERSON_UUID,
+											name: 'John O\'Connell'
+										}
+									]
 								},
 								{
 									model: 'person',
-									uuid: NICK_BARNES_PERSON_UUID,
-									name: 'Nick Barnes'
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										},
+										{
+											model: 'person',
+											uuid: LYSANDER_ASHTON_PERSON_UUID,
+											name: 'Lysander Ashton'
+										}
+									]
 								}
 							]
 						}
@@ -601,17 +1128,142 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Puppets designed by',
+							name: 'Video Design by',
+							creditedEmployerCompany: null,
 							coCreditedEntities: [
 								{
-									model: 'person',
-									uuid: SUE_BUCKMASTER_PERSON_UUID,
-									name: 'Sue Buckmaster'
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
 								},
 								{
 									model: 'company',
-									uuid: HANDSPRING_PUPPET_COMPANY_UUID,
-									name: 'Handspring Puppet Company'
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ANNA_JAMESON_PERSON_UUID,
+											name: 'Anna Jameson'
+										},
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: COTTESLOE_THEATRE_UUID,
+						name: 'Cottesloe Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedEmployerCompany: null,
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LYSANDER_ASHTON_PERSON_UUID,
+											name: 'Lysander Ashton'
+										},
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
 								}
 							]
 						}
@@ -619,7 +1271,434 @@ describe('Productions with creative team', () => {
 				}
 			];
 
-			const { creativeProductions } = joLakinPerson.body;
+			const { creativeProductions } = ninaDunnPerson.body;
+
+			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+
+		});
+
+	});
+
+	describe('Leo Warner (person)', () => {
+
+		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
+
+			const expectedCreativeProductions = [
+				{
+					model: 'production',
+					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
+					name: 'Happy Days',
+					theatre: {
+						model: 'theatre',
+						uuid: LYTTELTON_THEATRE_UUID,
+						name: 'Lyttelton Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: RICHARD_SLANEY_PERSON_UUID,
+										name: 'Richard Slaney'
+									},
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_PERSON_UUID,
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+											name: 'Barbora Šenoltová'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
+					name: 'Julius Caesar',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican Theatre',
+						surTheatre: null
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Designers',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_PERSON_UUID,
+										name: 'Mark Grimmer'
+									},
+									{
+										model: 'person',
+										uuid: LYSANDER_ASHTON_PERSON_UUID,
+										name: 'Lysander Ashton'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										},
+										{
+											model: 'person',
+											uuid: JOHN_O_CONNELL_PERSON_UUID,
+											name: 'John O\'Connell'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Design by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: []
+							},
+							coCreditedEntities: []
+						},
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: ANNA_JAMESON_PERSON_UUID,
+										name: 'Anna Jameson'
+									},
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_PERSON_UUID,
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: COTTESLOE_THEATRE_UUID,
+						name: 'Cottesloe Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: LYSANDER_ASHTON_PERSON_UUID,
+										name: 'Lysander Ashton'
+									},
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_PERSON_UUID,
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { creativeProductions } = leoWarnerPerson.body;
+
+			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+
+		});
+
+	});
+
+	describe('Anna Jameson (person)', () => {
+
+		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
+
+			const expectedCreativeProductions = [
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+								name: '59 Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: LEO_WARNER_PERSON_UUID,
+										name: 'Leo Warner'
+									},
+									{
+										model: 'person',
+										uuid: MARK_GRIMMER_PERSON_UUID,
+										name: 'Mark Grimmer'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { creativeProductions } = annaJamesonPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -650,6 +1729,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'creativeCredit',
 							name: 'Sound Design',
+							creditedMembers: [],
 							coCreditedEntities: []
 						}
 					]
@@ -667,7 +1747,14 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
+							name: 'Designer',
+							creditedMembers: [],
+							coCreditedEntities: []
+						},
+						{
+							model: 'creativeCredit',
 							name: 'Sound Designer',
+							creditedMembers: [],
 							coCreditedEntities: []
 						}
 					]
@@ -689,7 +1776,8 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Sound designed by',
+							name: 'Sound Design by',
+							creditedMembers: [],
 							coCreditedEntities: []
 						}
 					]
@@ -704,7 +1792,330 @@ describe('Productions with creative team', () => {
 
 	});
 
-	describe('Handspring Puppet Company (company)', () => {
+	describe('Mesmer (company)', () => {
+
+		it('includes productions for which they have a creative team credit', () => {
+
+			const expectedCreativeProductions = [
+				{
+					model: 'production',
+					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
+					name: 'Happy Days',
+					theatre: {
+						model: 'theatre',
+						uuid: LYTTELTON_THEATRE_UUID,
+						name: 'Lyttelton Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+									name: 'Barbora Šenoltová'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: RICHARD_SLANEY_PERSON_UUID,
+											name: 'Richard Slaney'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
+					name: 'Julius Caesar',
+					theatre: {
+						model: 'theatre',
+						uuid: BARBICAN_THEATRE_UUID,
+						name: 'Barbican Theatre',
+						surTheatre: null
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Designers',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								},
+								{
+									model: 'person',
+									uuid: JOHN_O_CONNELL_PERSON_UUID,
+									name: 'John O\'Connell'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										},
+										{
+											model: 'person',
+											uuid: LYSANDER_ASHTON_PERSON_UUID,
+											name: 'Lysander Ashton'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+					name: 'Mother Courage and Her Children',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DANIEL_DENTON_PERSON_UUID,
+									name: 'Daniel Denton'
+								},
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ANNA_JAMESON_PERSON_UUID,
+											name: 'Anna Jameson'
+										},
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: COTTESLOE_THEATRE_UUID,
+						name: 'Cottesloe Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DANIEL_DENTON_PERSON_UUID,
+									name: 'Daniel Denton'
+								},
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+									name: '59 Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: LYSANDER_ASHTON_PERSON_UUID,
+											name: 'Lysander Ashton'
+										},
+										{
+											model: 'person',
+											uuid: LEO_WARNER_PERSON_UUID,
+											name: 'Leo Warner'
+										},
+										{
+											model: 'person',
+											uuid: MARK_GRIMMER_PERSON_UUID,
+											name: 'Mark Grimmer'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { creativeProductions } = mesmerCompany.body;
+
+			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+
+		});
+
+	});
+
+	describe('59 Productions (company)', () => {
 
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
 
@@ -726,17 +2137,62 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Puppet Design',
-							coCreditedEntities: [
+							name: 'Video Design',
+							creditedMembers: [
 								{
 									model: 'person',
-									uuid: JO_LAKIN_PERSON_UUID,
-									name: 'Jo Lakin'
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
 								},
 								{
 									model: 'person',
-									uuid: CHRIS_BARLOW_PERSON_UUID,
-									name: 'Chris Barlow'
+									uuid: RICHARD_SLANEY_PERSON_UUID,
+									name: 'Richard Slaney'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+											name: 'Barbora Šenoltová'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
 								}
 							]
 						}
@@ -755,17 +2211,62 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Puppet Designers',
-							coCreditedEntities: [
+							name: 'Video Designers',
+							creditedMembers: [
 								{
 									model: 'person',
-									uuid: JO_LAKIN_PERSON_UUID,
-									name: 'Jo Lakin'
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
 								},
 								{
 									model: 'person',
-									uuid: NICK_BARNES_PERSON_UUID,
-									name: 'Nick Barnes'
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								},
+								{
+									model: 'person',
+									uuid: LYSANDER_ASHTON_PERSON_UUID,
+									name: 'Lysander Ashton'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										},
+										{
+											model: 'person',
+											uuid: JOHN_O_CONNELL_PERSON_UUID,
+											name: 'John O\'Connell'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
 								}
 							]
 						}
@@ -788,22 +2289,152 @@ describe('Productions with creative team', () => {
 					creativeCredits: [
 						{
 							model: 'creativeCredit',
-							name: 'Designed by',
+							name: 'Design by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								}
+							],
 							coCreditedEntities: []
 						},
 						{
 							model: 'creativeCredit',
-							name: 'Puppets designed by',
-							coCreditedEntities: [
+							name: 'Video Design by',
+							creditedMembers: [
 								{
 									model: 'person',
-									uuid: SUE_BUCKMASTER_PERSON_UUID,
-									name: 'Sue Buckmaster'
+									uuid: ANNA_JAMESON_PERSON_UUID,
+									name: 'Anna Jameson'
 								},
 								{
 									model: 'person',
-									uuid: JO_LAKIN_PERSON_UUID,
-									name: 'Jo Lakin'
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
+					name: 'Richard II',
+					theatre: {
+						model: 'theatre',
+						uuid: COTTESLOE_THEATRE_UUID,
+						name: 'Cottesloe Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'creativeCredit',
+							name: 'Video Design by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LYSANDER_ASHTON_PERSON_UUID,
+									name: 'Lysander Ashton'
+								},
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: NINA_DUNN_PERSON_UUID,
+									name: 'Nina Dunn'
+								},
+								{
+									model: 'company',
+									uuid: MESMER_COMPANY_UUID,
+									name: 'Mesmer',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: DANIEL_DENTON_PERSON_UUID,
+											name: 'Daniel Denton'
+										},
+										{
+											model: 'person',
+											uuid: DICK_STRAKER_PERSON_UUID,
+											name: 'Dick Straker'
+										},
+										{
+											model: 'person',
+											uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+											name: 'Ian William Galloway'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: CINELUMA_COMPANY_UUID,
+									name: 'Cineluma',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									name: 'Akhila Krishnan'
 								}
 							]
 						}
@@ -811,7 +2442,7 @@ describe('Productions with creative team', () => {
 				}
 			];
 
-			const { creativeProductions } = handspringPuppetCompany.body;
+			const { creativeProductions } = fiftyNineProductionsCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 

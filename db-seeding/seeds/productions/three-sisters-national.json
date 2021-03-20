@@ -167,7 +167,15 @@
 			"creativeEntities": [
 				{
 					"model": "company",
-					"name": "RC-Annie Ltd"
+					"name": "RC-Annie Ltd",
+					"creditedMembers": [
+						{
+							"name": "Rachel Bown-Williams"
+						},
+						{
+							"name": "Ruth Cooper-Brown"
+						}
+					]
 				}
 			]
 		},

@@ -1,4 +1,4 @@
-import { getDuplicateEntityIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
 import Base from './Base';
 import { Company, Person } from '.';
 
@@ -33,15 +33,35 @@ export default class CreativeCredit extends Base {
 
 		this.validateNamePresenceIfNamedChildren(this.creativeEntities);
 
-		const duplicateCreativeEntityIndices = getDuplicateEntityIndices(this.creativeEntities);
+		const duplicateCreativeEntities = getDuplicateEntities(this.creativeEntities);
 
-		this.creativeEntities.forEach((creativeEntity, index) => {
+		this.creativeEntities.forEach(creativeEntity => {
 
 			creativeEntity.validateName({ isRequired: false });
 
 			creativeEntity.validateDifferentiator();
 
-			creativeEntity.validateUniquenessInGroup({ isDuplicate: duplicateCreativeEntityIndices.includes(index) });
+			creativeEntity.validateUniquenessInGroup({
+				isDuplicate: isEntityInArray(creativeEntity, duplicateCreativeEntities)
+			});
+
+			if (creativeEntity.model === 'company') {
+
+				creativeEntity.validateNamePresenceIfNamedChildren(creativeEntity.creditedMembers);
+
+				creativeEntity.creditedMembers.forEach(creditedMember => {
+
+					creditedMember.validateName({ isRequired: false });
+
+					creditedMember.validateDifferentiator();
+
+					creditedMember.validateUniquenessInGroup(
+						{ isDuplicate: isEntityInArray(creditedMember, duplicateCreativeEntities) }
+					);
+
+				});
+
+			}
 
 		});
 

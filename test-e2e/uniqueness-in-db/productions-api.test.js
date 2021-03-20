@@ -558,14 +558,30 @@ describe('Uniqueness in database: Productions API', () => {
 			model: 'company',
 			name: 'Autograph',
 			differentiator: '',
-			errors: {}
+			errors: {},
+			creditedMembers: [
+				{
+					model: 'person',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		const expectedCompanyGateTheatreCompany2 = {
 			model: 'company',
 			name: 'Autograph',
 			differentiator: '1',
-			errors: {}
+			errors: {},
+			creditedMembers: [
+				{
+					model: 'person',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
 		};
 
 		before(async () => {
@@ -697,6 +713,178 @@ describe('Uniqueness in database: Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Production creative entity (company) credited member (person) uniqueness in database', () => {
+
+		const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPersonAndrewBruce1 = {
+			model: 'person',
+			name: 'Andrew Bruce',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPersonAndrewBruce2 = {
+			model: 'person',
+			name: 'Andrew Bruce',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+				name: 'Mother Courage and Her Children'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates material and creates creative entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mother Courage and Her Children',
+					creativeCredits: [
+						{
+							name: 'Sound Designer',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+		});
+
+		it('updates material and creates creative entity (company) that has same name as existing creative entity but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mother Courage and Her Children',
+					creativeCredits: [
+						{
+							name: 'Sound Designer',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing creative entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mother Courage and Her Children',
+					creativeCredits: [
+						{
+							name: 'Sound Designer',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing creative entity (company) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mother Courage and Her Children',
+					creativeCredits: [
+						{
+							name: 'Sound Designer',
+							creativeEntities: [
+								{
+									model: 'company',
+									name: 'Autograph',
+									creditedMembers: [
+										{
+											name: 'Andrew Bruce',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
 
