@@ -100,7 +100,7 @@ const getShowQuery = () => `
 		) AS materials
 
 	OPTIONAL MATCH (character)<-[variantNamedDepiction:INCLUDES_CHARACTER]-(:Material)
-		WHERE variantNamedDepiction.displayName IS NOT NULL
+		WHERE EXISTS(variantNamedDepiction.displayName)
 
 	WITH character, materials, variantNamedDepiction
 		ORDER BY variantNamedDepiction.displayName
