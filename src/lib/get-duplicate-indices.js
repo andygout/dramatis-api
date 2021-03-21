@@ -5,9 +5,9 @@ const getDuplicateBaseInstanceIndices = arrayOfObjects => {
 		const isDuplicate =
 			!!object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				index !== comparisonIndex &&
 				object.name === comparisonObject.name &&
-				object.differentiator === comparisonObject.differentiator &&
-				index !== comparisonIndex
+				object.differentiator === comparisonObject.differentiator
 			);
 
 		if (isDuplicate) accumulator.push(index);
@@ -41,10 +41,10 @@ const getDuplicateCharacterIndices = arrayOfObjects => {
 		const isDuplicate =
 			!!object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				index !== comparisonIndex &&
 				isDuplicateCharacterName(object, comparisonObject) &&
 				object.differentiator === comparisonObject.differentiator &&
-				object.qualifier === comparisonObject.qualifier &&
-				index !== comparisonIndex
+				object.qualifier === comparisonObject.qualifier
 			);
 
 		if (isDuplicate) accumulator.push(index);
@@ -62,10 +62,10 @@ const getDuplicateEntityIndices = arrayOfObjects => {
 		const isDuplicate =
 			!!object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				object.name === comparisonObject.name &&
-				object.differentiator === comparisonObject.differentiator &&
+				index !== comparisonIndex &&
 				object.model === comparisonObject.model &&
-				index !== comparisonIndex
+				object.name === comparisonObject.name &&
+				object.differentiator === comparisonObject.differentiator
 			);
 
 		if (isDuplicate) accumulator.push(index);
@@ -83,8 +83,8 @@ const getDuplicateNameIndices = arrayOfObjects => {
 		const isDuplicate =
 			!!object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				object.name === comparisonObject.name &&
-				index !== comparisonIndex
+				index !== comparisonIndex &&
+				object.name === comparisonObject.name
 			);
 
 		if (isDuplicate) accumulator.push(index);
@@ -118,10 +118,10 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 		const isDuplicate =
 			!!object.name.length &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				index !== comparisonIndex &&
 				isDuplicateRoleName(object, comparisonObject) &&
 				object.characterDifferentiator === comparisonObject.characterDifferentiator &&
-				object.qualifier === comparisonObject.qualifier &&
-				index !== comparisonIndex
+				object.qualifier === comparisonObject.qualifier
 			);
 
 		if (isDuplicate) accumulator.push(index);
