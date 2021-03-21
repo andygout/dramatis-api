@@ -1,4 +1,4 @@
-import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { CharacterGroup, WritingCredit } from '.';
 
@@ -54,7 +54,7 @@ export default class Material extends Base {
 
 		this.originalVersionMaterial.validateNoAssociationWithSelf(this.name, this.differentiator);
 
-		const duplicateWritingCreditIndices = getDuplicateBaseInstanceIndices(this.writingCredits);
+		const duplicateWritingCreditIndices = getDuplicateNameIndices(this.writingCredits);
 
 		this.writingCredits.forEach((writingCredit, index) =>
 			writingCredit.runInputValidations({
@@ -63,7 +63,7 @@ export default class Material extends Base {
 			})
 		);
 
-		const duplicateCharacterGroupIndices = getDuplicateBaseInstanceIndices(this.characterGroups);
+		const duplicateCharacterGroupIndices = getDuplicateNameIndices(this.characterGroups);
 
 		this.characterGroups.forEach((characterGroup, index) =>
 			characterGroup.runInputValidations({ isDuplicate: duplicateCharacterGroupIndices.includes(index) })

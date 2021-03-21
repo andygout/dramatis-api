@@ -24,7 +24,7 @@ describe('Material model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])
+				getDuplicateNameIndices: stub().returns([])
 			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
@@ -402,9 +402,9 @@ describe('Material model', () => {
 				instance.validateFormat,
 				instance.originalVersionMaterial.validateName,
 				instance.originalVersionMaterial.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.writingCredits[0].runInputValidations,
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.characterGroups[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -417,11 +417,11 @@ describe('Material model', () => {
 			expect(instance.originalVersionMaterial.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.originalVersionMaterial.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.originalVersionMaterial.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledTwice).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledTwice).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices
 				.firstCall.calledWithExactly(instance.writingCredits)
 			).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices
 				.secondCall.calledWithExactly(
 			instance.characterGroups)).to.be.true;
 			expect(instance.writingCredits[0].runInputValidations.calledOnce).to.be.true;

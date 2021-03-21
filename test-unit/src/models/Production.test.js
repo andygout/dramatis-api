@@ -36,6 +36,7 @@ describe('Production model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([])
 			},
 			Base: {
@@ -205,8 +206,9 @@ describe('Production model', () => {
 				instance.theatre.validateDifferentiator,
 				instance.material.validateName,
 				instance.material.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast[0].runInputValidations,
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.creativeCredits[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
@@ -219,13 +221,14 @@ describe('Production model', () => {
 			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.material.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledTwice).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.getCall(0).calledWithExactly(
 				instance.cast
 			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1).calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledWithExactly(
 				instance.creativeCredits
 			)).to.be.true;
 			expect(instance.creativeCredits[0].runInputValidations.calledOnce).to.be.true;
