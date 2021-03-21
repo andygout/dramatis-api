@@ -136,7 +136,10 @@ const getShowQuery = () => `
 			otherRole.roleName <> character.name AND
 			(otherRole.characterName IS NULL OR otherRole.characterName <> character.name) AND
 			(characterDepiction.displayName IS NULL OR otherRole.roleName <> characterDepiction.displayName) AND
-			((otherRole.characterName IS NULL OR characterDepiction.displayName IS NULL) OR otherRole.characterName <> characterDepiction.displayName)
+			(
+				(otherRole.characterName IS NULL OR characterDepiction.displayName IS NULL) OR
+				otherRole.characterName <> characterDepiction.displayName
+			)
 
 	OPTIONAL MATCH (person)<-[otherRole]-(production)-[productionRel]->
 		(materialForProduction)-[otherCharacterDepiction:INCLUDES_CHARACTER]->(otherCharacter:Character)
@@ -145,7 +148,10 @@ const getShowQuery = () => `
 				otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
 				otherCharacterDepiction.displayName IN [otherRole.roleName, otherRole.characterName]
 			) AND
-			(otherRole.characterDifferentiator IS NULL OR otherCharacter.differentiator = otherRole.characterDifferentiator)
+			(
+				otherRole.characterDifferentiator IS NULL OR
+				otherCharacter.differentiator = otherRole.characterDifferentiator
+			)
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 

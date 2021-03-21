@@ -176,7 +176,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (creativeProduction)-[companyCreativeRel:HAS_CREATIVE_TEAM_MEMBER]->
 		(creativeEmployerCompany:Company { uuid: personCreativeRel.creditedCompanyUuid })
-		WHERE personCreativeRel.creditPosition IS NULL OR personCreativeRel.creditPosition = companyCreativeRel.creditPosition
+		WHERE
+			personCreativeRel.creditPosition IS NULL OR
+			personCreativeRel.creditPosition = companyCreativeRel.creditPosition
 
 	UNWIND (CASE WHEN companyCreativeRel IS NOT NULL AND EXISTS(companyCreativeRel.creditedMemberUuids)
 		THEN [uuid IN companyCreativeRel.creditedMemberUuids]
@@ -187,7 +189,10 @@ const getShowQuery = () => `
 			(coCreditedMember:Person { uuid: coCreditedMemberUuid })
 			WHERE
 				coCreditedMember.uuid <> person.uuid AND
-				(companyCreativeRel.creditPosition IS NULL OR companyCreativeRel.creditPosition = coCreditedMemberRel.creditPosition)
+				(
+					companyCreativeRel.creditPosition IS NULL OR
+					companyCreativeRel.creditPosition = coCreditedMemberRel.creditPosition
+				)
 
 		WITH
 			person,
@@ -227,7 +232,10 @@ const getShowQuery = () => `
 		WHERE
 			(coCreativeEntity:Person OR coCreativeEntity:Company) AND
 			coCreativeEntityRel.creditedCompanyUuid IS NULL AND
-			(entityCreativeRel.creditPosition IS NULL OR entityCreativeRel.creditPosition = coCreativeEntityRel.creditPosition) AND
+			(
+				entityCreativeRel.creditPosition IS NULL OR
+				entityCreativeRel.creditPosition = coCreativeEntityRel.creditPosition
+			) AND
 			coCreativeEntity.uuid <> entity.uuid
 
 	UNWIND (CASE WHEN coCreativeEntityRel IS NOT NULL AND EXISTS(coCreativeEntityRel.creditedMemberUuids)
