@@ -1,4 +1,4 @@
-import { getDuplicateNameIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { CastMember, CreativeCredit, Material, Theatre } from '.';
 
@@ -35,7 +35,7 @@ export default class Production extends Base {
 
 		this.material.validateDifferentiator();
 
-		const duplicateCastMemberIndices = getDuplicateNameIndices(this.cast);
+		const duplicateCastMemberIndices = getDuplicateBaseInstanceIndices(this.cast);
 
 		this.cast.forEach((castMember, index) =>
 			castMember.runInputValidations({ isDuplicate: duplicateCastMemberIndices.includes(index) })
