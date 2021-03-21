@@ -155,24 +155,24 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateEntityIndices(
 					[
-						{ name: 'Foo', differentiator: '', model: '' },
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Foo', differentiator: '2', model: '' },
-						{ name: 'Foo', differentiator: '', model: 'company' },
-						{ name: 'Foo', differentiator: '1', model: 'company' },
-						{ name: 'Foo', differentiator: '2', model: 'company' },
-						{ name: 'Foo', differentiator: '', model: 'material' },
-						{ name: 'Foo', differentiator: '1', model: 'material' },
-						{ name: 'Foo', differentiator: '2', model: 'material' },
-						{ name: 'Bar', differentiator: '', model: '' },
-						{ name: 'Bar', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '2', model: '' },
-						{ name: 'Bar', differentiator: '', model: 'company' },
-						{ name: 'Bar', differentiator: '1', model: 'company' },
-						{ name: 'Bar', differentiator: '2', model: 'company' },
-						{ name: 'Bar', differentiator: '', model: 'material' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: 'Bar', differentiator: '2', model: 'material' }
+						{ model: '', name: 'Foo', differentiator: '' },
+						{ model: '', name: 'Foo', differentiator: '1' },
+						{ model: '', name: 'Foo', differentiator: '2' },
+						{ model: 'company', name: 'Foo', differentiator: '' },
+						{ model: 'company', name: 'Foo', differentiator: '1' },
+						{ model: 'company', name: 'Foo', differentiator: '2' },
+						{ model: 'material', name: 'Foo', differentiator: '' },
+						{ model: 'material', name: 'Foo', differentiator: '1' },
+						{ model: 'material', name: 'Foo', differentiator: '2' },
+						{ model: '', name: 'Bar', differentiator: '' },
+						{ model: '', name: 'Bar', differentiator: '1' },
+						{ model: '', name: 'Bar', differentiator: '2' },
+						{ model: 'company', name: 'Bar', differentiator: '' },
+						{ model: 'company', name: 'Bar', differentiator: '1' },
+						{ model: 'company', name: 'Bar', differentiator: '2' },
+						{ model: 'material', name: 'Bar', differentiator: '' },
+						{ model: 'material', name: 'Bar', differentiator: '1' },
+						{ model: 'material', name: 'Bar', differentiator: '2' }
 					]
 				);
 
@@ -188,15 +188,15 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateEntityIndices(
 					[
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: 'Bar', differentiator: '1', model: 'company' },
-						{ name: '', differentiator: '1', model: '' },
-						{ name: 'Baz', differentiator: '1', model: '' },
-						{ name: 'Foo', differentiator: '1', model: '' },
-						{ name: 'Bar', differentiator: '1', model: 'material' },
-						{ name: '', differentiator: '1', model: '' },
-						{ name: 'Qux', differentiator: '1', model: '' }
+						{ model: '', name: 'Foo', differentiator: '1' },
+						{ model: 'material', name: 'Bar', differentiator: '1' },
+						{ model: 'company', name: 'Bar', differentiator: '1' },
+						{ model: '', name: '', differentiator: '1' },
+						{ model: '', name: 'Baz', differentiator: '1' },
+						{ model: '', name: 'Foo', differentiator: '1' },
+						{ model: 'material', name: 'Bar', differentiator: '1' },
+						{ model: '', name: '', differentiator: '1' },
+						{ model: '', name: 'Qux', differentiator: '1' }
 					]
 				);
 
