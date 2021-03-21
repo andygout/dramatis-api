@@ -207,12 +207,9 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
-								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL
-									THEN ''
-									ELSE role.characterDifferentiator
-								END,
-								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
+								characterName: COALESCE(role.characterName, ''),
+								characterDifferentiator: COALESCE(role.characterDifferentiator, ''),
+								qualifier: COALESCE(role.qualifier, '')
 							}
 						END
 					) + [{}] AS roles
@@ -240,10 +237,7 @@ describe('Cypher Queries Production module', () => {
 
 				UNWIND (CASE creativeEntities WHEN [] THEN [null] ELSE creativeEntities END) AS creativeEntity
 
-					UNWIND (CASE creativeEntity.creditedMemberUuids WHEN NULL
-						THEN [null]
-						ELSE creativeEntity.creditedMemberUuids
-					END) AS creditedMemberUuid
+					UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
 						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
@@ -275,14 +269,8 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
-					{
-						name: CASE material.name WHEN NULL THEN '' ELSE material.name END,
-						differentiator: CASE material.differentiator WHEN NULL THEN '' ELSE material.differentiator END
-					} AS material,
-					{
-						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
-					} AS theatre,
+					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
+					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
 					cast,
 					COLLECT(
 						CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
@@ -512,12 +500,9 @@ describe('Cypher Queries Production module', () => {
 							THEN null
 							ELSE {
 								name: role.roleName,
-								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
-								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL
-									THEN ''
-									ELSE role.characterDifferentiator
-								END,
-								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
+								characterName: COALESCE(role.characterName, ''),
+								characterDifferentiator: COALESCE(role.characterDifferentiator, ''),
+								qualifier: COALESCE(role.qualifier, '')
 							}
 						END
 					) + [{}] AS roles
@@ -545,10 +530,7 @@ describe('Cypher Queries Production module', () => {
 
 				UNWIND (CASE creativeEntities WHEN [] THEN [null] ELSE creativeEntities END) AS creativeEntity
 
-					UNWIND (CASE creativeEntity.creditedMemberUuids WHEN NULL
-						THEN [null]
-						ELSE creativeEntity.creditedMemberUuids
-					END) AS creditedMemberUuid
+					UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
 						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
@@ -580,14 +562,8 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
-					{
-						name: CASE material.name WHEN NULL THEN '' ELSE material.name END,
-						differentiator: CASE material.differentiator WHEN NULL THEN '' ELSE material.differentiator END
-					} AS material,
-					{
-						name: CASE theatre.name WHEN NULL THEN '' ELSE theatre.name END,
-						differentiator: CASE theatre.differentiator WHEN NULL THEN '' ELSE theatre.differentiator END
-					} AS theatre,
+					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
+					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
 					cast,
 					COLLECT(
 						CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
