@@ -25,7 +25,7 @@ const getCreateUpdateQuery = action => {
 		OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 			WHERE
 				($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
-				($material.differentiator = existingMaterial.differentiator)
+				$material.differentiator = existingMaterial.differentiator
 
 		FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
 			MERGE (material:Material {
@@ -42,7 +42,7 @@ const getCreateUpdateQuery = action => {
 		OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
 			WHERE
 				($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-				($theatre.differentiator = existingTheatre.differentiator)
+				$theatre.differentiator = existingTheatre.differentiator
 
 		FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
 			MERGE (theatre:Theatre {
@@ -61,7 +61,7 @@ const getCreateUpdateQuery = action => {
 			OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
 				WHERE
 					(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-					(castMemberParam.differentiator = existingPerson.differentiator)
+					castMemberParam.differentiator = existingPerson.differentiator
 
 			FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
 				MERGE (castMember:Person {
@@ -85,7 +85,10 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
-		UNWIND (CASE $creativeCredits WHEN [] THEN [{ creativeEntities: [] }] ELSE $creativeCredits END) AS creativeCredit
+		UNWIND (CASE $creativeCredits WHEN []
+			THEN [{ creativeEntities: [] }]
+			ELSE $creativeCredits
+		END) AS creativeCredit
 
 			UNWIND
 				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
@@ -95,8 +98,11 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
 					WHERE
-						(creativePersonParam.differentiator IS NULL AND existingCreativePerson.differentiator IS NULL) OR
-						(creativePersonParam.differentiator = existingCreativePerson.differentiator)
+						(
+							creativePersonParam.differentiator IS NULL AND
+							existingCreativePerson.differentiator IS NULL
+						) OR
+						creativePersonParam.differentiator = existingCreativePerson.differentiator
 
 				FOREACH (item IN CASE creativePersonParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (creativePerson:Person {
@@ -123,8 +129,11 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
 					WHERE
-						(creativeCompanyParam.differentiator IS NULL AND existingCreativeCompany.differentiator IS NULL) OR
-						(creativeCompanyParam.differentiator = existingCreativeCompany.differentiator)
+						(
+							creativeCompanyParam.differentiator IS NULL AND
+							existingCreativeCompany.differentiator IS NULL
+						) OR
+						creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
 
 				FOREACH (item IN CASE creativeCompanyParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (creativeCompany:Company {
@@ -152,7 +161,7 @@ const getCreateUpdateQuery = action => {
 					OPTIONAL MATCH (creditedCompany:Company { name: creativeCompanyParam.name })
 						WHERE
 							(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
-							(creativeCompanyParam.differentiator = creditedCompany.differentiator)
+							creativeCompanyParam.differentiator = creditedCompany.differentiator
 
 					OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
 						WHERE
@@ -162,7 +171,7 @@ const getCreateUpdateQuery = action => {
 					OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
 						WHERE
 							(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-							(creditedMemberParam.differentiator = existingPerson.differentiator)
+							creditedMemberParam.differentiator = existingPerson.differentiator
 
 					FOREACH (item IN CASE WHEN SIZE(creativeCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
 						SET creativeCompanyRel.creditedMemberUuids = []
@@ -214,7 +223,10 @@ const getEditQuery = () => `
 				ELSE {
 					name: role.roleName,
 					characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
-					characterDifferentiator: CASE role.characterDifferentiator WHEN NULL THEN '' ELSE role.characterDifferentiator END,
+					characterDifferentiator: CASE role.characterDifferentiator WHEN NULL
+						THEN ''
+						ELSE role.characterDifferentiator
+					END,
 					qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 				}
 			END
@@ -444,7 +456,9 @@ const getShowQuery = () => `
 
 			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
 				(creditedMember:Person { uuid: creditedMemberUuid })
-				WHERE creativeEntityRel.creditPosition IS NULL OR creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
+				WHERE
+					creativeEntityRel.creditPosition IS NULL OR
+					creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
 
 			WITH production, material, theatre, cast, creativeEntityRel, creativeEntity, creditedMember
 				ORDER BY creditedMemberRel.memberPosition

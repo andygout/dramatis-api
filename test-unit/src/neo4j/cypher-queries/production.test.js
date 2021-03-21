@@ -18,7 +18,7 @@ describe('Cypher Queries Production module', () => {
 				OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 					WHERE
 						($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
-						($material.differentiator = existingMaterial.differentiator)
+						$material.differentiator = existingMaterial.differentiator
 
 				FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (material:Material {
@@ -35,7 +35,7 @@ describe('Cypher Queries Production module', () => {
 				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
 					WHERE
 						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-						($theatre.differentiator = existingTheatre.differentiator)
+						$theatre.differentiator = existingTheatre.differentiator
 
 				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (theatre:Theatre {
@@ -54,7 +54,7 @@ describe('Cypher Queries Production module', () => {
 					OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
 						WHERE
 							(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-							(castMemberParam.differentiator = existingPerson.differentiator)
+							castMemberParam.differentiator = existingPerson.differentiator
 
 					FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (castMember:Person {
@@ -78,7 +78,10 @@ describe('Cypher Queries Production module', () => {
 
 				WITH DISTINCT production
 
-				UNWIND (CASE $creativeCredits WHEN [] THEN [{ creativeEntities: [] }] ELSE $creativeCredits END) AS creativeCredit
+				UNWIND (CASE $creativeCredits WHEN []
+					THEN [{ creativeEntities: [] }]
+					ELSE $creativeCredits
+				END) AS creativeCredit
 
 					UNWIND
 						CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
@@ -88,8 +91,11 @@ describe('Cypher Queries Production module', () => {
 
 						OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
 							WHERE
-								(creativePersonParam.differentiator IS NULL AND existingCreativePerson.differentiator IS NULL) OR
-								(creativePersonParam.differentiator = existingCreativePerson.differentiator)
+								(
+									creativePersonParam.differentiator IS NULL AND
+									existingCreativePerson.differentiator IS NULL
+								) OR
+								creativePersonParam.differentiator = existingCreativePerson.differentiator
 
 						FOREACH (item IN CASE creativePersonParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (creativePerson:Person {
@@ -116,8 +122,11 @@ describe('Cypher Queries Production module', () => {
 
 						OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
 							WHERE
-								(creativeCompanyParam.differentiator IS NULL AND existingCreativeCompany.differentiator IS NULL) OR
-								(creativeCompanyParam.differentiator = existingCreativeCompany.differentiator)
+								(
+									creativeCompanyParam.differentiator IS NULL AND
+									existingCreativeCompany.differentiator IS NULL
+								) OR
+								creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
 
 						FOREACH (item IN CASE creativeCompanyParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (creativeCompany:Company {
@@ -145,7 +154,7 @@ describe('Cypher Queries Production module', () => {
 							OPTIONAL MATCH (creditedCompany:Company { name: creativeCompanyParam.name })
 								WHERE
 									(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
-									(creativeCompanyParam.differentiator = creditedCompany.differentiator)
+									creativeCompanyParam.differentiator = creditedCompany.differentiator
 
 							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
 								WHERE
@@ -155,7 +164,7 @@ describe('Cypher Queries Production module', () => {
 							OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
 								WHERE
 									(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-									(creditedMemberParam.differentiator = existingPerson.differentiator)
+									creditedMemberParam.differentiator = existingPerson.differentiator
 
 							FOREACH (item IN CASE WHEN SIZE(creativeCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
 								SET creativeCompanyRel.creditedMemberUuids = []
@@ -199,7 +208,10 @@ describe('Cypher Queries Production module', () => {
 							ELSE {
 								name: role.roleName,
 								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
-								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL THEN '' ELSE role.characterDifferentiator END,
+								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL
+									THEN ''
+									ELSE role.characterDifferentiator
+								END,
 								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END
@@ -311,7 +323,7 @@ describe('Cypher Queries Production module', () => {
 				OPTIONAL MATCH (existingMaterial:Material { name: $material.name })
 					WHERE
 						($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
-						($material.differentiator = existingMaterial.differentiator)
+						$material.differentiator = existingMaterial.differentiator
 
 				FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (material:Material {
@@ -328,7 +340,7 @@ describe('Cypher Queries Production module', () => {
 				OPTIONAL MATCH (existingTheatre:Theatre { name: $theatre.name })
 					WHERE
 						($theatre.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-						($theatre.differentiator = existingTheatre.differentiator)
+						$theatre.differentiator = existingTheatre.differentiator
 
 				FOREACH (item IN CASE $theatre.name WHEN NULL THEN [] ELSE [1] END |
 					MERGE (theatre:Theatre {
@@ -347,7 +359,7 @@ describe('Cypher Queries Production module', () => {
 					OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
 						WHERE
 							(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-							(castMemberParam.differentiator = existingPerson.differentiator)
+							castMemberParam.differentiator = existingPerson.differentiator
 
 					FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
 						MERGE (castMember:Person {
@@ -371,7 +383,10 @@ describe('Cypher Queries Production module', () => {
 
 				WITH DISTINCT production
 
-				UNWIND (CASE $creativeCredits WHEN [] THEN [{ creativeEntities: [] }] ELSE $creativeCredits END) AS creativeCredit
+				UNWIND (CASE $creativeCredits WHEN []
+					THEN [{ creativeEntities: [] }]
+					ELSE $creativeCredits
+				END) AS creativeCredit
 
 					UNWIND
 						CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
@@ -381,8 +396,11 @@ describe('Cypher Queries Production module', () => {
 
 						OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
 							WHERE
-								(creativePersonParam.differentiator IS NULL AND existingCreativePerson.differentiator IS NULL) OR
-								(creativePersonParam.differentiator = existingCreativePerson.differentiator)
+								(
+									creativePersonParam.differentiator IS NULL AND
+									existingCreativePerson.differentiator IS NULL
+								) OR
+								creativePersonParam.differentiator = existingCreativePerson.differentiator
 
 						FOREACH (item IN CASE creativePersonParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (creativePerson:Person {
@@ -409,8 +427,11 @@ describe('Cypher Queries Production module', () => {
 
 						OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
 							WHERE
-								(creativeCompanyParam.differentiator IS NULL AND existingCreativeCompany.differentiator IS NULL) OR
-								(creativeCompanyParam.differentiator = existingCreativeCompany.differentiator)
+								(
+									creativeCompanyParam.differentiator IS NULL AND
+									existingCreativeCompany.differentiator IS NULL
+								) OR
+								creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
 
 						FOREACH (item IN CASE creativeCompanyParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (creativeCompany:Company {
@@ -438,7 +459,7 @@ describe('Cypher Queries Production module', () => {
 							OPTIONAL MATCH (creditedCompany:Company { name: creativeCompanyParam.name })
 								WHERE
 									(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
-									(creativeCompanyParam.differentiator = creditedCompany.differentiator)
+									creativeCompanyParam.differentiator = creditedCompany.differentiator
 
 							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
 								WHERE
@@ -448,7 +469,7 @@ describe('Cypher Queries Production module', () => {
 							OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
 								WHERE
 									(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
-									(creditedMemberParam.differentiator = existingPerson.differentiator)
+									creditedMemberParam.differentiator = existingPerson.differentiator
 
 							FOREACH (item IN CASE WHEN SIZE(creativeCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
 								SET creativeCompanyRel.creditedMemberUuids = []
@@ -492,7 +513,10 @@ describe('Cypher Queries Production module', () => {
 							ELSE {
 								name: role.roleName,
 								characterName: CASE role.characterName WHEN NULL THEN '' ELSE role.characterName END,
-								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL THEN '' ELSE role.characterDifferentiator END,
+								characterDifferentiator: CASE role.characterDifferentiator WHEN NULL
+									THEN ''
+									ELSE role.characterDifferentiator
+								END,
 								qualifier: CASE role.qualifier WHEN NULL THEN '' ELSE role.qualifier END
 							}
 						END

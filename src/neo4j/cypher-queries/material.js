@@ -46,8 +46,11 @@ const getCreateUpdateQuery = action => {
 
 		OPTIONAL MATCH (existingOriginalVersionMaterial:Material { name: $originalVersionMaterial.name })
 			WHERE
-				($originalVersionMaterial.differentiator IS NULL AND existingOriginalVersionMaterial.differentiator IS NULL) OR
-				($originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator)
+				(
+					$originalVersionMaterial.differentiator IS NULL AND
+					existingOriginalVersionMaterial.differentiator IS NULL
+				) OR
+				$originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator
 
 		FOREACH (item IN CASE $originalVersionMaterial.name WHEN NULL THEN [] ELSE [1] END |
 			MERGE (originalVersionMaterial:Material {
@@ -72,7 +75,7 @@ const getCreateUpdateQuery = action => {
 				OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
 					WHERE
 						(writingPersonParam.differentiator IS NULL AND existingWritingPerson.differentiator IS NULL) OR
-						(writingPersonParam.differentiator = existingWritingPerson.differentiator)
+						writingPersonParam.differentiator = existingWritingPerson.differentiator
 
 				FOREACH (item IN CASE writingPersonParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (writingPerson:Person {
@@ -100,8 +103,11 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
 					WHERE
-						(writingCompanyParam.differentiator IS NULL AND existingWritingCompany.differentiator IS NULL) OR
-						(writingCompanyParam.differentiator = existingWritingCompany.differentiator)
+						(
+							writingCompanyParam.differentiator IS NULL AND
+							existingWritingCompany.differentiator IS NULL
+						) OR
+						writingCompanyParam.differentiator = existingWritingCompany.differentiator
 
 				FOREACH (item IN CASE writingCompanyParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (writingCompany:Company {
@@ -129,8 +135,11 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
 					WHERE
-						(sourceMaterialParam.differentiator IS NULL AND existingSourceMaterial.differentiator IS NULL) OR
-						(sourceMaterialParam.differentiator = existingSourceMaterial.differentiator)
+						(
+							sourceMaterialParam.differentiator IS NULL AND
+							existingSourceMaterial.differentiator IS NULL
+						) OR
+						sourceMaterialParam.differentiator = existingSourceMaterial.differentiator
 
 				FOREACH (item IN CASE sourceMaterialParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (sourceMaterial:Material {
@@ -151,14 +160,17 @@ const getCreateUpdateQuery = action => {
 
 		UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroup
 
-			UNWIND (CASE characterGroup.characters WHEN [] THEN [null] ELSE characterGroup.characters END) AS characterParam
+			UNWIND (CASE characterGroup.characters WHEN []
+				THEN [null]
+				ELSE characterGroup.characters
+			END) AS characterParam
 
 				OPTIONAL MATCH (existingCharacter:Character {
 					name: COALESCE(characterParam.underlyingName, characterParam.name)
 				})
 					WHERE
 						(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
-						(characterParam.differentiator = existingCharacter.differentiator)
+						characterParam.differentiator = existingCharacter.differentiator
 
 				FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
 					MERGE (character:Character {
@@ -171,7 +183,10 @@ const getCreateUpdateQuery = action => {
 						[:INCLUDES_CHARACTER {
 							groupPosition: characterGroup.position,
 							characterPosition: characterParam.position,
-							displayName: CASE characterParam.underlyingName WHEN NULL THEN null ELSE characterParam.name END,
+							displayName: CASE characterParam.underlyingName WHEN NULL
+								THEN null
+								ELSE characterParam.name
+							END,
 							qualifier: characterParam.qualifier,
 							group: characterGroup.name
 						}]->(character)
@@ -249,7 +264,10 @@ const getEditQuery = () => `
 		material.format AS format,
 		{
 			name: CASE originalVersionMaterial.name WHEN NULL THEN '' ELSE originalVersionMaterial.name END,
-			differentiator: CASE originalVersionMaterial.differentiator WHEN NULL THEN '' ELSE originalVersionMaterial.differentiator END
+			differentiator: CASE originalVersionMaterial.differentiator WHEN NULL
+				THEN ''
+				ELSE originalVersionMaterial.differentiator
+			END
 		} AS originalVersionMaterial,
 		writingCredits,
 		COLLECT(

@@ -57,11 +57,11 @@ describe('Cypher Queries Shared module', () => {
 					WHERE
 						(
 							($differentiator IS NULL AND n.differentiator IS NULL) OR
-							($differentiator = n.differentiator)
+							$differentiator = n.differentiator
 						) AND
 						(
-							($uuid IS NULL) OR
-							($uuid <> n.uuid)
+							$uuid IS NULL OR
+							$uuid <> n.uuid
 						)
 
 				RETURN SIGN(COUNT(n)) AS instanceCount

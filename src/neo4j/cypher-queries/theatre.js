@@ -27,7 +27,7 @@ const getCreateUpdateQuery = action => {
 			OPTIONAL MATCH (existingTheatre:Theatre { name: subTheatreParam.name })
 				WHERE
 					(subTheatreParam.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-					(subTheatreParam.differentiator = existingTheatre.differentiator)
+					subTheatreParam.differentiator = existingTheatre.differentiator
 
 			FOREACH (item IN CASE subTheatreParam WHEN NULL THEN [] ELSE [1] END |
 				MERGE (subTheatre:Theatre {
