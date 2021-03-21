@@ -226,11 +226,8 @@ describe('Cypher Queries Material module', () => {
 					material.differentiator AS differentiator,
 					material.format AS format,
 					{
-						name: CASE originalVersionMaterial.name WHEN NULL THEN '' ELSE originalVersionMaterial.name END,
-						differentiator: CASE originalVersionMaterial.differentiator WHEN NULL
-							THEN ''
-							ELSE originalVersionMaterial.differentiator
-						END
+						name: COALESCE(originalVersionMaterial.name, ''),
+						differentiator: COALESCE(originalVersionMaterial.differentiator, '')
 					} AS originalVersionMaterial,
 					writingCredits,
 					COLLECT(
@@ -496,11 +493,8 @@ describe('Cypher Queries Material module', () => {
 					material.differentiator AS differentiator,
 					material.format AS format,
 					{
-						name: CASE originalVersionMaterial.name WHEN NULL THEN '' ELSE originalVersionMaterial.name END,
-						differentiator: CASE originalVersionMaterial.differentiator WHEN NULL
-							THEN ''
-							ELSE originalVersionMaterial.differentiator
-						END
+						name: COALESCE(originalVersionMaterial.name, ''),
+						differentiator: COALESCE(originalVersionMaterial.differentiator, '')
 					} AS originalVersionMaterial,
 					writingCredits,
 					COLLECT(
