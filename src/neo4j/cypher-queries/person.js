@@ -247,7 +247,7 @@ const getShowQuery = () => `
 			(coCreativeCompanyCreditedMember:Person { uuid: coCreativeCompanyCreditedMemberUuid })
 			WHERE
 				coCreativeEntityRel.creditPosition IS NULL OR
-				coCreativeCompanyCreditedMemberRel.creditPosition = coCreativeEntityRel.creditPosition
+				coCreativeEntityRel.creditPosition = coCreativeCompanyCreditedMemberRel.creditPosition
 
 		WITH
 			person,
