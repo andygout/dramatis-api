@@ -15,15 +15,15 @@ export const prepareAsParams = instance => {
 
 	const recordedInstances = [];
 
-	const filterBasedOnNameProperty = key => item =>
+	const hasNameOrIsExempt = key => item =>
 		!Object.prototype.hasOwnProperty.call(item, 'name')
 		|| !!item.name.length
 		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
 
-	const filterOutWritingCreditsWithNoNamedEntities = key => item =>
+	const isNotWritingCreditWithoutNamedEntity = key => item =>
 		key !== WRITING_CREDITS || item.writingEntities.some(entity => !!entity.name);
 
-	const filterOutCharacterGroupsWithNoNamedCharacters = key => item =>
+	const isNotCharacterGroupWithoutNamedCharacter = key => item =>
 		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
@@ -54,9 +54,9 @@ export const prepareAsParams = instance => {
 
 				accumulator[key] =
 					value
-						.filter(filterBasedOnNameProperty(key))
-						.filter(filterOutWritingCreditsWithNoNamedEntities(key))
-						.filter(filterOutCharacterGroupsWithNoNamedCharacters(key))
+						.filter(hasNameOrIsExempt(key))
+						.filter(isNotWritingCreditWithoutNamedEntity(key))
+						.filter(isNotCharacterGroupWithoutNamedCharacter(key))
 						.map(applyPositionPropertyAndRecurseObject)
 						.filter(Boolean);
 
