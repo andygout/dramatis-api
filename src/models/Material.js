@@ -18,7 +18,6 @@ export default class Material extends Base {
 			isAssociation
 		} = props;
 
-		this.model = 'material';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
@@ -37,6 +36,12 @@ export default class Material extends Base {
 				: [];
 
 		}
+
+	}
+
+	get model () {
+
+		return 'material';
 
 	}
 

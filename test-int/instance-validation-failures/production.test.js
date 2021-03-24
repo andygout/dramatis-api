@@ -38,7 +38,6 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: '',
 					hasErrors: true,
@@ -48,14 +47,12 @@ describe('Production instance', () => {
 						]
 					},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -84,7 +81,6 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
@@ -94,14 +90,12 @@ describe('Production instance', () => {
 						]
 					},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -133,13 +127,11 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
@@ -150,7 +142,6 @@ describe('Production instance', () => {
 						}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -183,13 +174,11 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: 'Hamlet',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -200,7 +189,6 @@ describe('Production instance', () => {
 						}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -232,20 +220,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
@@ -282,20 +267,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -334,20 +316,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -355,7 +334,6 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
@@ -396,20 +374,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -417,7 +392,6 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -462,20 +436,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -483,7 +454,6 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
@@ -498,7 +468,6 @@ describe('Production instance', () => {
 							roles: []
 						},
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Clare Higgins',
 							differentiator: '',
@@ -506,7 +475,6 @@ describe('Production instance', () => {
 							roles: []
 						},
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
@@ -553,20 +521,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -574,7 +539,6 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: '',
 							differentiator: '',
@@ -585,7 +549,6 @@ describe('Production instance', () => {
 							},
 							roles: [
 								{
-									model: 'role',
 									name: 'Hamlet',
 									characterName: '',
 									characterDifferentiator: '',
@@ -628,20 +591,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -649,14 +609,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: ABOVE_MAX_LENGTH_STRING,
 									characterName: '',
 									characterDifferentiator: '',
@@ -703,20 +661,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -724,14 +679,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: 'Hamlet',
 									characterName: ABOVE_MAX_LENGTH_STRING,
 									characterDifferentiator: '',
@@ -779,20 +732,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -800,14 +750,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: 'Hamlet',
 									characterName: '',
 									characterDifferentiator: ABOVE_MAX_LENGTH_STRING,
@@ -854,20 +802,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -875,14 +820,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: 'Hamlet',
 									characterName: '',
 									characterDifferentiator: '',
@@ -929,20 +872,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -950,14 +890,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: 'Hamlet',
 									characterName: 'Hamlet',
 									characterDifferentiator: '',
@@ -1009,20 +947,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1030,14 +965,12 @@ describe('Production instance', () => {
 					},
 					cast: [
 						{
-							model: 'person',
 							uuid: undefined,
 							name: 'David Calder',
 							differentiator: '',
 							errors: {},
 							roles: [
 								{
-									model: 'role',
 									name: 'Polonius',
 									characterName: '',
 									characterDifferentiator: '',
@@ -1058,7 +991,6 @@ describe('Production instance', () => {
 									}
 								},
 								{
-									model: 'role',
 									name: 'Gravedigger',
 									characterName: '',
 									characterDifferentiator: '',
@@ -1066,7 +998,6 @@ describe('Production instance', () => {
 									errors: {}
 								},
 								{
-									model: 'role',
 									name: 'Polonius',
 									characterName: '',
 									characterDifferentiator: '',
@@ -1116,20 +1047,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1138,7 +1066,6 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
 								name: [
@@ -1177,20 +1104,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1199,7 +1123,6 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {
 								name: [
@@ -1209,7 +1132,6 @@ describe('Production instance', () => {
 							creativeEntities: []
 						},
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {
 								name: [
@@ -1250,20 +1172,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1272,7 +1191,6 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: '',
 							errors: {
 								name: [
@@ -1281,7 +1199,6 @@ describe('Production instance', () => {
 							},
 							creativeEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Paul Groothuis',
 									differentiator: '',
@@ -1321,20 +1238,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1343,12 +1257,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
@@ -1393,20 +1305,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1415,12 +1324,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Paul Groothuis',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -1465,20 +1372,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1487,12 +1391,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
@@ -1539,20 +1441,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1561,12 +1460,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -1634,20 +1531,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1656,12 +1550,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: '',
@@ -1675,7 +1567,6 @@ describe('Production instance', () => {
 									},
 									creditedMembers: [
 										{
-											model: 'person',
 											uuid: undefined,
 											name: 'Andrew Bruce',
 											differentiator: '',
@@ -1689,7 +1580,6 @@ describe('Production instance', () => {
 											}
 										},
 										{
-											model: 'person',
 											uuid: undefined,
 											name: 'Nick Lidster',
 											differentiator: '',
@@ -1698,7 +1588,6 @@ describe('Production instance', () => {
 									]
 								},
 								{
-									model: 'company',
 									uuid: undefined,
 									name: '59 Productions',
 									differentiator: '',
@@ -1706,7 +1595,6 @@ describe('Production instance', () => {
 									creditedMembers: []
 								},
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Andrew Bruce',
 									differentiator: '',
@@ -1720,7 +1608,6 @@ describe('Production instance', () => {
 									}
 								},
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: '',
@@ -1735,7 +1622,6 @@ describe('Production instance', () => {
 									creditedMembers: []
 								},
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Gregory Clarke',
 									differentiator: '',
@@ -1782,20 +1668,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1804,12 +1687,10 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: '',
 									differentiator: '',
@@ -1820,7 +1701,6 @@ describe('Production instance', () => {
 									},
 									creditedMembers: [
 										{
-											model: 'person',
 											uuid: undefined,
 											name: 'Andrew Bruce',
 											differentiator: '',
@@ -1868,20 +1748,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1890,19 +1767,16 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: '',
 									errors: {},
 									creditedMembers: [
 										{
-											model: 'person',
 											uuid: undefined,
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
@@ -1955,20 +1829,17 @@ describe('Production instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'production',
 					uuid: undefined,
 					name: 'Hamlet',
 					hasErrors: true,
 					errors: {},
 					material: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					theatre: {
-						model: 'theatre',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1977,19 +1848,16 @@ describe('Production instance', () => {
 					cast: [],
 					creativeCredits: [
 						{
-							model: 'creativeCredit',
 							name: 'Sound Design',
 							errors: {},
 							creativeEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: '',
 									errors: {},
 									creditedMembers: [
 										{
-											model: 'person',
 											uuid: undefined,
 											name: 'Andrew Bruce',
 											differentiator: ABOVE_MAX_LENGTH_STRING,

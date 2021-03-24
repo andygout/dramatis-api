@@ -8,7 +8,6 @@ export default class Character extends Base {
 
 		const { uuid, differentiator, underlyingName, qualifier, isAssociation } = props;
 
-		this.model = 'character';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
@@ -18,6 +17,12 @@ export default class Character extends Base {
 			this.qualifier = qualifier?.trim() || '';
 
 		}
+
+	}
+
+	get model () {
+
+		return 'character';
 
 	}
 

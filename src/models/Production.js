@@ -10,7 +10,6 @@ export default class Production extends Base {
 
 		const { uuid, theatre, material, cast, creativeCredits } = props;
 
-		this.model = 'production';
 		this.uuid = uuid;
 		this.material = new Material({ ...material, isAssociation: true });
 		this.theatre = new Theatre({ ...theatre, isAssociation: true });
@@ -20,6 +19,12 @@ export default class Production extends Base {
 		this.creativeCredits = creativeCredits
 			? creativeCredits.map(creativeCredit => new CreativeCredit(creativeCredit))
 			: [];
+
+	}
+
+	get model () {
+
+		return 'production';
 
 	}
 

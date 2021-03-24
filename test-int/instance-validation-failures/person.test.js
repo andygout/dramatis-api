@@ -34,7 +34,6 @@ describe('Person instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'person',
 					uuid: undefined,
 					name: '',
 					differentiator: '',
@@ -61,7 +60,6 @@ describe('Person instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'person',
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
@@ -88,7 +86,6 @@ describe('Person instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'person',
 					uuid: undefined,
 					name: 'Helen Mirren',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -125,7 +122,6 @@ describe('Person instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'person',
 					uuid: undefined,
 					name: 'Helen Mirren',
 					differentiator: '',

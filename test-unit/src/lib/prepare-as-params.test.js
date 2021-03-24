@@ -4,6 +4,7 @@ import neo4j from 'neo4j-driver';
 import { v4 as uuid } from 'uuid';
 
 import { prepareAsParams } from '../../../src/lib/prepare-as-params';
+import applyModelGetter from '../../test-helpers/apply-model-getter';
 
 describe('Prepare As Params module', () => {
 
@@ -135,6 +136,14 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		it('will add model property with value from model getter method', () => {
+
+			const instance = applyModelGetter({ foo: '' });
+			const result = prepareAsParams(instance);
+			expect(result.model).to.equal('base');
+
+		});
+
 	});
 
 	context('nested level properties', () => {
@@ -196,6 +205,14 @@ describe('Prepare As Params module', () => {
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
 			expect(result.theatre).not.to.have.property('position');
+
+		});
+
+		it('will add model property with value from model getter method', () => {
+
+			const instance = { theatre: applyModelGetter({ foo: '' }) };
+			const result = prepareAsParams(instance);
+			expect(result.theatre.model).to.equal('base');
 
 		});
 
@@ -265,6 +282,14 @@ describe('Prepare As Params module', () => {
 
 			});
 
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { cast: [applyModelGetter({ foo: '' })] };
+				const result = prepareAsParams(instance);
+				expect(result.cast[0].model).to.equal('base');
+
+			});
+
 		});
 
 		context('array contains more than a single item', () => {
@@ -281,6 +306,14 @@ describe('Prepare As Params module', () => {
 				expect(result.cast[0].position).to.equal(0);
 				expect(result.cast[1]).to.have.property('position');
 				expect(result.cast[1].position).to.equal(1);
+
+			});
+
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { cast: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] };
+				const result = prepareAsParams(instance);
+				expect(result.cast[0].model).to.equal('base');
 
 			});
 
@@ -363,12 +396,12 @@ describe('Prepare As Params module', () => {
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
 			const instance = {
 				characters: [
-					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
-					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
-					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
-					{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
-					{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
-					{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+					applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+					applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' }),
+					applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+					applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' }),
+					applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
 				]
 			};
 			const result = prepareAsParams(instance);
@@ -446,6 +479,14 @@ describe('Prepare As Params module', () => {
 
 			});
 
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { production: { cast: [applyModelGetter({ foo: '' })] } };
+				const result = prepareAsParams(instance);
+				expect(result.production.cast[0].model).to.equal('base');
+
+			});
+
 		});
 
 		context('array contains more than a single item', () => {
@@ -462,6 +503,14 @@ describe('Prepare As Params module', () => {
 				expect(result.production.cast[0].position).to.equal(0);
 				expect(result.production.cast[1]).to.have.property('position');
 				expect(result.production.cast[1].position).to.equal(1);
+
+			});
+
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { production: { cast: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] } };
+				const result = prepareAsParams(instance);
+				expect(result.production.cast[0].model).to.equal('base');
 
 			});
 
@@ -546,12 +595,12 @@ describe('Prepare As Params module', () => {
 			const instance = {
 				production: {
 					cast: [
-						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
-						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
-						{ model: 'person', uuid: '', name: 'Baz', differentiator: '' },
-						{ model: 'person', uuid: '', name: 'Foo', differentiator: '' },
-						{ model: 'person', uuid: '', name: 'Bar', differentiator: '1' },
-						{ model: 'person', uuid: '', name: 'Baz', differentiator: '1' }
+						applyModelGetter({ uuid: '', name: 'Foo', differentiator: '' }),
+						applyModelGetter({ uuid: '', name: 'Bar', differentiator: '1' }),
+						applyModelGetter({ uuid: '', name: 'Baz', differentiator: '' }),
+						applyModelGetter({ uuid: '', name: 'Foo', differentiator: '' }),
+						applyModelGetter({ uuid: '', name: 'Bar', differentiator: '1' }),
+						applyModelGetter({ uuid: '', name: 'Baz', differentiator: '1' })
 					]
 				}
 			};
@@ -631,6 +680,14 @@ describe('Prepare As Params module', () => {
 
 			});
 
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { cast: [{ roles: [applyModelGetter({ foo: '' })] }] };
+				const result = prepareAsParams(instance);
+				expect(result.cast[0].roles[0].model).to.equal('base');
+
+			});
+
 		});
 
 		context('array contains more than a single item', () => {
@@ -648,6 +705,14 @@ describe('Prepare As Params module', () => {
 				expect(result.cast[0].roles[0].position).to.equal(0);
 				expect(result.cast[0].roles[1]).to.have.property('position');
 				expect(result.cast[0].roles[1].position).to.equal(1);
+
+			});
+
+			it('will add model property with value from model getter method', () => {
+
+				const instance = { cast: [{ roles: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] }] };
+				const result = prepareAsParams(instance);
+				expect(result.cast[0].roles[0].model).to.equal('base');
 
 			});
 
@@ -740,12 +805,12 @@ describe('Prepare As Params module', () => {
 				characterGroups: [
 					{
 						characters: [
-							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' },
-							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' },
-							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' },
-							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' },
-							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' },
-							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
 						]
 					}
 				]
@@ -771,21 +836,19 @@ describe('Prepare As Params module', () => {
 			const instance = {
 				characterGroups: [
 					{
-						model: 'characterGroup',
 						name: 'Montagues',
 						characters: [
-							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
-							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' },
-							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }
+							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' })
 						]
 					},
 					{
-						model: 'characterGroup',
 						name: 'Capulets',
 						characters: [
-							{ model: 'character', uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
-							{ model: 'character', uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' },
-							{ model: 'character', uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' }
+							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
 						]
 					}
 				]

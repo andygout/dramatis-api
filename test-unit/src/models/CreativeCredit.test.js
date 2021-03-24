@@ -125,12 +125,9 @@ describe('CreativeCredit model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.creativeEntities[0].model = 'person';
 			instance.creativeEntities[0].name = 'Paul Arditti';
-			instance.creativeEntities[1].model = 'company';
 			instance.creativeEntities[1].name = 'Autograph';
 			instance.creativeEntities[1].creditedMembers = [createStubInstance(Person)];
-			instance.creativeEntities[1].creditedMembers[0].model = 'person';
 			instance.creativeEntities[1].creditedMembers[0].name = 'Andrew Bruce';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');

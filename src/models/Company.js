@@ -9,7 +9,6 @@ export default class Company extends Base {
 
 		const { uuid, differentiator, creditedMembers, isProductionAssociation } = props;
 
-		this.model = 'company';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
@@ -20,6 +19,12 @@ export default class Company extends Base {
 				: [];
 
 		}
+
+	}
+
+	get model () {
+
+		return 'company';
 
 	}
 

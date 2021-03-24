@@ -9,7 +9,6 @@ export default class Theatre extends Base {
 
 		const { uuid, differentiator, subTheatres, isAssociation } = props;
 
-		this.model = 'theatre';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
@@ -20,6 +19,12 @@ export default class Theatre extends Base {
 				: [];
 
 		}
+
+	}
+
+	get model () {
+
+		return 'theatre';
 
 	}
 
