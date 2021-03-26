@@ -802,7 +802,14 @@ describe('Material instance', () => {
 									name: 'Henrik Ibsen'
 								},
 								{
+									name: 'Foo'
+								},
+								{
 									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'company',
+									name: 'Foo'
 								}
 							]
 						}
@@ -847,6 +854,12 @@ describe('Material instance', () => {
 								},
 								{
 									uuid: undefined,
+									name: 'Foo',
+									differentiator: '',
+									errors: {}
+								},
+								{
+									uuid: undefined,
 									name: 'Henrik Ibsen',
 									differentiator: '',
 									errors: {
@@ -857,6 +870,12 @@ describe('Material instance', () => {
 											'This item has been duplicated within the group'
 										]
 									}
+								},
+								{
+									uuid: undefined,
+									name: 'Foo',
+									differentiator: '',
+									errors: {}
 								}
 							]
 						}
@@ -865,6 +884,8 @@ describe('Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
+				expect(result.writingCredits[0].writingEntities[1].model).to.equal('person');
+				expect(result.writingCredits[0].writingEntities[3].model).to.equal('company');
 
 			});
 
@@ -1380,10 +1401,15 @@ describe('Material instance', () => {
 									name: 'Johannes Rosmer'
 								},
 								{
-									name: 'Rebecca West'
+									name: 'Rebecca West',
+									underlyingName: 'Becca West'
 								},
 								{
 									name: 'Johannes Rosmer'
+								},
+								{
+									name: 'Ms Rebecca West',
+									underlyingName: 'Rebecca West'
 								}
 							]
 						}
@@ -1437,7 +1463,7 @@ describe('Material instance', () => {
 								{
 									uuid: undefined,
 									name: 'Rebecca West',
-									underlyingName: '',
+									underlyingName: 'Becca West',
 									differentiator: '',
 									qualifier: '',
 									errors: {}
@@ -1462,6 +1488,14 @@ describe('Material instance', () => {
 											'This item has been duplicated within the group'
 										]
 									}
+								},
+								{
+									uuid: undefined,
+									name: 'Ms Rebecca West',
+									underlyingName: 'Rebecca West',
+									differentiator: '',
+									qualifier: '',
+									errors: {}
 								}
 							]
 						}

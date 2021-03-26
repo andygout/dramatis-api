@@ -250,10 +250,15 @@ describe('Theatre instance', () => {
 							name: 'Olivier Theatre'
 						},
 						{
-							name: 'Lyttelton Theatre'
+							name: 'Lyttelton Theatre',
+							differentiator: '1'
 						},
 						{
 							name: 'Olivier Theatre'
+						},
+						{
+							name: 'Lyttelton Theatre',
+							differentiator: '2'
 						}
 					]
 				};
@@ -285,7 +290,7 @@ describe('Theatre instance', () => {
 						{
 							uuid: undefined,
 							name: 'Lyttelton Theatre',
-							differentiator: '',
+							differentiator: '1',
 							errors: {}
 						},
 						{
@@ -300,6 +305,12 @@ describe('Theatre instance', () => {
 									'This item has been duplicated within the group'
 								]
 							}
+						},
+						{
+							uuid: undefined,
+							name: 'Lyttelton Theatre',
+							differentiator: '2',
+							errors: {}
 						}
 					]
 				};
