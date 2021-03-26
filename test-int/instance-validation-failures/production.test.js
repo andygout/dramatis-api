@@ -423,10 +423,15 @@ describe('Production instance', () => {
 							name: 'Rory Kinnear'
 						},
 						{
-							name: 'Clare Higgins'
+							name: 'Clare Higgins',
+							differentiator: '1'
 						},
 						{
 							name: 'Rory Kinnear'
+						},
+						{
+							name: 'Clare Higgins',
+							differentiator: '2'
 						}
 					]
 				};
@@ -470,7 +475,7 @@ describe('Production instance', () => {
 						{
 							uuid: undefined,
 							name: 'Clare Higgins',
-							differentiator: '',
+							differentiator: '1',
 							errors: {},
 							roles: []
 						},
@@ -486,6 +491,13 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
+							roles: []
+						},
+						{
+							uuid: undefined,
+							name: 'Clare Higgins',
+							differentiator: '2',
+							errors: {},
 							roles: []
 						}
 					],
@@ -932,10 +944,15 @@ describe('Production instance', () => {
 									name: 'Polonius'
 								},
 								{
-									name: 'Gravedigger'
+									name: 'Gravedigger',
+									characterDifferentiator: '1'
 								},
 								{
 									name: 'Polonius'
+								},
+								{
+									name: 'Gravedigger',
+									characterDifferentiator: '2'
 								}
 							]
 						}
@@ -993,7 +1010,7 @@ describe('Production instance', () => {
 								{
 									name: 'Gravedigger',
 									characterName: '',
-									characterDifferentiator: '',
+									characterDifferentiator: '1',
 									qualifier: '',
 									errors: {}
 								},
@@ -1016,6 +1033,13 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									}
+								},
+								{
+									name: 'Gravedigger',
+									characterName: '',
+									characterDifferentiator: '2',
+									qualifier: '',
+									errors: {}
 								}
 							]
 						}
@@ -1503,13 +1527,9 @@ describe('Production instance', () => {
 											name: 'Andrew Bruce'
 										},
 										{
-											name: 'Nick Lidster'
+											name: 'Foo'
 										}
 									]
-								},
-								{
-									model: 'company',
-									name: '59 Productions'
 								},
 								{
 									name: 'Andrew Bruce'
@@ -1519,7 +1539,8 @@ describe('Production instance', () => {
 									name: 'Autograph'
 								},
 								{
-									name: 'Gregory Clarke'
+									model: 'company',
+									name: 'Foo'
 								}
 							]
 						}
@@ -1581,18 +1602,11 @@ describe('Production instance', () => {
 										},
 										{
 											uuid: undefined,
-											name: 'Nick Lidster',
+											name: 'Foo',
 											differentiator: '',
 											errors: {}
 										}
 									]
-								},
-								{
-									uuid: undefined,
-									name: '59 Productions',
-									differentiator: '',
-									errors: {},
-									creditedMembers: []
 								},
 								{
 									uuid: undefined,
@@ -1623,9 +1637,10 @@ describe('Production instance', () => {
 								},
 								{
 									uuid: undefined,
-									name: 'Gregory Clarke',
+									name: 'Foo',
 									differentiator: '',
-									errors: {}
+									errors: {},
+									creditedMembers: []
 								}
 							]
 						}
@@ -1633,6 +1648,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
+				expect(result.creativeCredits[0].creativeEntities[0].creditedMembers[1].model).to.equal('person');
+				expect(result.creativeCredits[0].creativeEntities[3].model).to.equal('company');
 
 			});
 
