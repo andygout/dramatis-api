@@ -10,10 +10,15 @@ export default class CharacterGroup extends Base {
 
 		const { characters } = props;
 
-		this.model = 'characterGroup';
 		this.characters = characters
 			? characters.map(character => new Character({ ...character, isAssociation: true }))
 			: [];
+
+	}
+
+	get model () {
+
+		return 'characterGroup';
 
 	}
 

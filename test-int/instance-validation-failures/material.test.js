@@ -34,7 +34,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: '',
 					differentiator: '',
@@ -46,7 +45,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -71,7 +69,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
@@ -83,7 +80,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -108,7 +104,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -120,7 +115,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -145,7 +139,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -157,7 +150,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -189,7 +181,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -197,7 +188,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
@@ -234,7 +224,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -242,7 +231,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: 'Rosmersholm',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -278,7 +266,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -286,7 +273,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: 'Rosmersholm',
 						differentiator: '',
@@ -327,7 +313,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -335,7 +320,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -343,7 +327,6 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: ABOVE_MAX_LENGTH_STRING,
 							creditType: null,
 							errors: {
@@ -384,7 +367,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -392,7 +374,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -400,7 +381,6 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: 'version by',
 							creditType: null,
 							errors: {
@@ -411,7 +391,6 @@ describe('Material instance', () => {
 							writingEntities: []
 						},
 						{
-							model: 'writingCredit',
 							name: 'version by',
 							creditType: null,
 							errors: {
@@ -453,7 +432,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -461,7 +439,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -469,13 +446,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
@@ -520,7 +495,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -528,7 +502,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -536,13 +509,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Henrik Ibsen',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -587,7 +558,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -595,7 +565,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -603,13 +572,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
@@ -655,7 +622,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -663,7 +629,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -671,13 +636,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'company',
 									uuid: undefined,
 									name: 'Ibsen Theatre Company',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -722,7 +685,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -730,7 +692,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -738,13 +699,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'material',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
@@ -790,7 +749,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -798,7 +756,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -806,13 +763,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'material',
 									uuid: undefined,
 									name: 'Rosmersholm',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -859,7 +814,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -867,7 +821,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -875,13 +828,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Henrik Ibsen',
 									differentiator: '',
@@ -895,7 +846,6 @@ describe('Material instance', () => {
 									}
 								},
 								{
-									model: 'person',
 									uuid: undefined,
 									name: 'Henrik Ibsen',
 									differentiator: '',
@@ -943,7 +893,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -951,7 +900,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -959,13 +907,11 @@ describe('Material instance', () => {
 					},
 					writingCredits: [
 						{
-							model: 'writingCredit',
 							name: '',
 							creditType: null,
 							errors: {},
 							writingEntities: [
 								{
-									model: 'material',
 									uuid: undefined,
 									name: 'Rosmersholm',
 									differentiator: '',
@@ -1008,7 +954,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1016,7 +961,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1025,7 +969,6 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
 								name: [
@@ -1064,7 +1007,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1072,7 +1014,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1081,7 +1022,6 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: 'Rosmersholm residents',
 							errors: {
 								name: [
@@ -1091,7 +1031,6 @@ describe('Material instance', () => {
 							characters: []
 						},
 						{
-							model: 'characterGroup',
 							name: 'Rosmersholm residents',
 							errors: {
 								name: [
@@ -1131,7 +1070,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1139,7 +1077,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1148,12 +1085,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									underlyingName: '',
@@ -1199,7 +1134,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1207,7 +1141,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1216,12 +1149,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: ABOVE_MAX_LENGTH_STRING,
@@ -1267,7 +1198,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1275,7 +1205,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1284,12 +1213,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: '',
@@ -1335,7 +1262,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1343,7 +1269,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1352,12 +1277,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: '',
@@ -1403,7 +1326,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1411,7 +1333,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1420,12 +1341,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: 'Johannes Rosmer',
@@ -1476,7 +1395,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1484,7 +1402,6 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1493,12 +1410,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: '',
@@ -1520,7 +1435,6 @@ describe('Material instance', () => {
 									}
 								},
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Rebecca West',
 									underlyingName: '',
@@ -1529,7 +1443,6 @@ describe('Material instance', () => {
 									errors: {}
 								},
 								{
-									model: 'character',
 									uuid: undefined,
 									name: 'Johannes Rosmer',
 									underlyingName: '',
@@ -1580,7 +1493,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1595,7 +1507,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1643,7 +1554,6 @@ describe('Material instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'material',
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
@@ -1658,7 +1568,6 @@ describe('Material instance', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1667,12 +1576,10 @@ describe('Material instance', () => {
 					writingCredits: [],
 					characterGroups: [
 						{
-							model: 'characterGroup',
 							name: '',
 							errors: {},
 							characters: [
 								{
-									model: 'character',
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									underlyingName: '',

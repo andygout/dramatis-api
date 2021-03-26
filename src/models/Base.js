@@ -20,6 +20,12 @@ export default class Base {
 
 	}
 
+	toJSON () {
+
+		return Object.assign({}, { model: this.model }, this);
+
+	}
+
 	hasDifferentiatorProperty () {
 
 		return Object.prototype.hasOwnProperty.call(this, 'differentiator');

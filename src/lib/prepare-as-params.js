@@ -30,7 +30,7 @@ export const prepareAsParams = instance => {
 
 		if (isObjectWithKeys(item)) {
 
-			if (array.length > 1) item = { ...item, position: index };
+			if (array.length > 1) item = { ...item, model: item.model, position: index };
 
 			return applyModifications(item);
 
@@ -42,7 +42,7 @@ export const prepareAsParams = instance => {
 
 	const applyModifications = instance => {
 
-		return Object.keys(instance).reduce((accumulator, key) => {
+		return Object.keys(instance).concat(['model']).reduce((accumulator, key) => {
 
 			const value = instance[key];
 

@@ -7,6 +7,7 @@ import {
 	getDuplicateNameIndices,
 	getDuplicateRoleIndices
 } from '../../../src/lib/get-duplicate-indices';
+import applyModelGetter from '../../test-helpers/apply-model-getter';
 
 describe('Get Duplicate Indices module', () => {
 
@@ -155,24 +156,24 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateEntityIndices(
 					[
-						{ model: '', name: 'Foo', differentiator: '' },
-						{ model: '', name: 'Foo', differentiator: '1' },
-						{ model: '', name: 'Foo', differentiator: '2' },
-						{ model: 'company', name: 'Foo', differentiator: '' },
-						{ model: 'company', name: 'Foo', differentiator: '1' },
-						{ model: 'company', name: 'Foo', differentiator: '2' },
-						{ model: 'material', name: 'Foo', differentiator: '' },
-						{ model: 'material', name: 'Foo', differentiator: '1' },
-						{ model: 'material', name: 'Foo', differentiator: '2' },
-						{ model: '', name: 'Bar', differentiator: '' },
-						{ model: '', name: 'Bar', differentiator: '1' },
-						{ model: '', name: 'Bar', differentiator: '2' },
-						{ model: 'company', name: 'Bar', differentiator: '' },
-						{ model: 'company', name: 'Bar', differentiator: '1' },
-						{ model: 'company', name: 'Bar', differentiator: '2' },
-						{ model: 'material', name: 'Bar', differentiator: '' },
-						{ model: 'material', name: 'Bar', differentiator: '1' },
-						{ model: 'material', name: 'Bar', differentiator: '2' }
+						applyModelGetter({ name: 'Foo', differentiator: '' }, ''),
+						applyModelGetter({ name: 'Foo', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Foo', differentiator: '2' }, ''),
+						applyModelGetter({ name: 'Foo', differentiator: '' }, 'company'),
+						applyModelGetter({ name: 'Foo', differentiator: '1' }, 'company'),
+						applyModelGetter({ name: 'Foo', differentiator: '2' }, 'company'),
+						applyModelGetter({ name: 'Foo', differentiator: '' }, 'material'),
+						applyModelGetter({ name: 'Foo', differentiator: '1' }, 'material'),
+						applyModelGetter({ name: 'Foo', differentiator: '2' }, 'material'),
+						applyModelGetter({ name: 'Bar', differentiator: '' }, ''),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Bar', differentiator: '2' }, ''),
+						applyModelGetter({ name: 'Bar', differentiator: '' }, 'company'),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, 'company'),
+						applyModelGetter({ name: 'Bar', differentiator: '2' }, 'company'),
+						applyModelGetter({ name: 'Bar', differentiator: '' }, 'material'),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, 'material'),
+						applyModelGetter({ name: 'Bar', differentiator: '2' }, 'material')
 					]
 				);
 
@@ -188,15 +189,15 @@ describe('Get Duplicate Indices module', () => {
 
 				const result = getDuplicateEntityIndices(
 					[
-						{ model: '', name: 'Foo', differentiator: '1' },
-						{ model: 'material', name: 'Bar', differentiator: '1' },
-						{ model: 'company', name: 'Bar', differentiator: '1' },
-						{ model: '', name: '', differentiator: '1' },
-						{ model: '', name: 'Baz', differentiator: '1' },
-						{ model: '', name: 'Foo', differentiator: '1' },
-						{ model: 'material', name: 'Bar', differentiator: '1' },
-						{ model: '', name: '', differentiator: '1' },
-						{ model: '', name: 'Qux', differentiator: '1' }
+						applyModelGetter({ name: 'Foo', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, 'material'),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, 'company'),
+						applyModelGetter({ name: '', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Baz', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Foo', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Bar', differentiator: '1' }, 'material'),
+						applyModelGetter({ name: '', differentiator: '1' }, ''),
+						applyModelGetter({ name: 'Qux', differentiator: '1' }, '')
 					]
 				);
 

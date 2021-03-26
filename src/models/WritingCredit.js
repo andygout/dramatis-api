@@ -11,7 +11,6 @@ export default class WritingCredit extends Base {
 
 		const { creditType, writingEntities } = props;
 
-		this.model = 'writingCredit';
 		this.creditType = CREDIT_TYPES[creditType] || null;
 
 		this.writingEntities = writingEntities
@@ -26,6 +25,12 @@ export default class WritingCredit extends Base {
 				}
 			})
 			: [];
+
+	}
+
+	get model () {
+
+		return 'writingCredit';
 
 	}
 

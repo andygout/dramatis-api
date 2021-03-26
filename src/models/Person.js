@@ -8,9 +8,14 @@ export default class Person extends Base {
 
 		const { uuid, differentiator } = props;
 
-		this.model = 'person';
 		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
+
+	}
+
+	get model () {
+
+		return 'person';
 
 	}
 

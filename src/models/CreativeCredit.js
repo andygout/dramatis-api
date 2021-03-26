@@ -10,8 +10,6 @@ export default class CreativeCredit extends Base {
 
 		const { creativeEntities } = props;
 
-		this.model = 'creativeCredit';
-
 		this.creativeEntities = creativeEntities
 			? creativeEntities.map(creativeEntity => {
 				switch (creativeEntity.model) {
@@ -22,6 +20,12 @@ export default class CreativeCredit extends Base {
 				}
 			})
 			: [];
+
+	}
+
+	get model () {
+
+		return 'creativeCredit';
 
 	}
 

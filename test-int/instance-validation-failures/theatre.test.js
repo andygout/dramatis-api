@@ -34,7 +34,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: '',
 					differentiator: '',
@@ -62,7 +61,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
@@ -90,7 +88,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -127,7 +124,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -135,7 +131,6 @@ describe('Theatre instance', () => {
 					errors: {},
 					subTheatres: [
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
@@ -173,7 +168,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -181,7 +175,6 @@ describe('Theatre instance', () => {
 					errors: {},
 					subTheatres: [
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: 'Olivier Theatre',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -218,7 +211,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -226,7 +218,6 @@ describe('Theatre instance', () => {
 					errors: {},
 					subTheatres: [
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: 'National Theatre',
 							differentiator: '',
@@ -272,7 +263,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -280,7 +270,6 @@ describe('Theatre instance', () => {
 					errors: {},
 					subTheatres: [
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: 'Olivier Theatre',
 							differentiator: '',
@@ -294,14 +283,12 @@ describe('Theatre instance', () => {
 							}
 						},
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: 'Lyttelton Theatre',
 							differentiator: '',
 							errors: {}
 						},
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: 'Olivier Theatre',
 							differentiator: '',
@@ -342,7 +329,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -392,7 +378,6 @@ describe('Theatre instance', () => {
 				const result = await instance.create();
 
 				const expectedResponseBody = {
-					model: 'theatre',
 					uuid: undefined,
 					name: 'National Theatre',
 					differentiator: '',
@@ -407,7 +392,6 @@ describe('Theatre instance', () => {
 					},
 					subTheatres: [
 						{
-							model: 'theatre',
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
