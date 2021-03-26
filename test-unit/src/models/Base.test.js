@@ -663,7 +663,7 @@ describe('Base model', () => {
 				expect(instance.errors)
 					.to.have.property('name')
 					.that.is.an('array')
-					.that.deep.eq(['Value is too long', 'Name has been duplicated in this group']);
+					.that.deep.equal(['Value is too long', 'Name has been duplicated in this group']);
 
 			});
 
@@ -678,11 +678,11 @@ describe('Base model', () => {
 				expect(instance.errors)
 					.to.have.property('name')
 					.that.is.an('array')
-					.that.deep.eq(['Name has been duplicated in this group']);
+					.that.deep.equal(['Name has been duplicated in this group']);
 				expect(instance.errors)
 					.to.have.property('characterName')
 					.that.is.an('array')
-					.that.deep.eq(['Value is too long']);
+					.that.deep.equal(['Value is too long']);
 
 			});
 
