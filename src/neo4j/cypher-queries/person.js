@@ -20,8 +20,9 @@ const getShowQuery = () => `
 
 		WITH
 			person,
-			writerRel,
 			material,
+			writerRel.creditType AS creditType,
+			CASE writerRel WHEN NULL THEN false ELSE true END AS hasDirectCredit,
 			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
 			writingEntityRel,
@@ -32,8 +33,9 @@ const getShowQuery = () => `
 
 		WITH
 			person,
-			writerRel,
 			material,
+			creditType,
+			hasDirectCredit,
 			isSubsequentVersion,
 			isSourcingMaterial,
 			writingEntityRel,
@@ -53,7 +55,15 @@ const getShowQuery = () => `
 				END
 			) AS sourceMaterialWriters
 
-		WITH person, writerRel, material, isSubsequentVersion, isSourcingMaterial, writingEntityRel, writingEntity,
+		WITH
+			person,
+			material,
+			creditType,
+			hasDirectCredit,
+			isSubsequentVersion,
+			isSourcingMaterial,
+			writingEntityRel,
+			writingEntity,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
@@ -68,8 +78,9 @@ const getShowQuery = () => `
 
 		WITH
 			person,
-			writerRel,
 			material,
+			creditType,
+			hasDirectCredit,
 			isSubsequentVersion,
 			isSourcingMaterial,
 			writingEntityRel.credit AS writingCreditName,
@@ -89,7 +100,7 @@ const getShowQuery = () => `
 				ELSE writingEntity { .model, .uuid, .name }
 			END] AS writingEntities
 
-		WITH person, writerRel, material, isSubsequentVersion, isSourcingMaterial,
+		WITH person, material, creditType, hasDirectCredit, isSubsequentVersion, isSourcingMaterial,
 			COLLECT(
 				CASE SIZE(writingEntities) WHEN 0
 					THEN null
@@ -112,8 +123,8 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						writingCredits: writingCredits,
-						creditType: writerRel.creditType,
-						hasDirectCredit: CASE writerRel WHEN NULL THEN false ELSE true END,
+						creditType: creditType,
+						hasDirectCredit: hasDirectCredit,
 						isSubsequentVersion: isSubsequentVersion,
 						isSourcingMaterial: isSourcingMaterial
 					}
