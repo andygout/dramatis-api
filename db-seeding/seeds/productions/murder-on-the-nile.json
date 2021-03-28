@@ -1,0 +1,136 @@
+{
+	"name": "Murder on the Nile",
+	"material": {
+		"name": "Murder on the Nile"
+	},
+	"theatre": {
+		"name": "Richmond Theatre"
+	},
+	"cast": [
+		{
+			"name": "Denis Lill",
+			"roles": [
+				{
+					"name": "Canon Ambrose Pennefather"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Bryden",
+			"roles": [
+				{
+					"name": "Christina Grant"
+				}
+			]
+		},
+		{
+			"name": "Mark Wynter",
+			"roles": [
+				{
+					"name": "Dr Bessner"
+				}
+			]
+		},
+		{
+			"name": "Sydney Smith",
+			"roles": [
+				{
+					"name": "Harun",
+					"characterName": "Steward"
+				}
+			]
+		},
+		{
+			"name": "Chloe Newsome",
+			"roles": [
+				{
+					"name": "Jacqueline de Severac"
+				}
+			]
+		},
+		{
+			"name": "Susie Amy",
+			"roles": [
+				{
+					"name": "Kay Mostyn",
+					"characterName": "Kay Ridgeway-Mostyn"
+				}
+			]
+		},
+		{
+			"name": "Vanessa Morley",
+			"roles": [
+				{
+					"name": "Louise de Vallois"
+				}
+			]
+		},
+		{
+			"name": "Kate O'Mara",
+			"roles": [
+				{
+					"name": "Miss Ffoliot-ffoulkes",
+					"characterName": "Helen Ffoliot-ffoulkes"
+				}
+			]
+		},
+		{
+			"name": "Hambi Pappas",
+			"roles": [
+				{
+					"name": "Musa"
+				}
+			]
+		},
+		{
+			"name": "Ben Nealon",
+			"roles": [
+				{
+					"name": "Simon Mostyn"
+				}
+			]
+		},
+		{
+			"name": "Max Hutchinson",
+			"roles": [
+				{
+					"name": "William Smith"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"creativeEntities": [
+				{
+					"name": "Joe Harmston"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
+					"name": "Simon Scullion"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"creativeEntities": [
+				{
+					"name": "Mike Roberston"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Matthew Bugg"
+				}
+			]
+		}
+	]
+}

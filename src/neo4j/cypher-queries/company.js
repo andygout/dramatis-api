@@ -3,7 +3,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (company)<-[:WRITTEN_BY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
 
-	WITH company, COLLECT(material) AS materials
+	WITH company, COLLECT(DISTINCT(material)) AS materials
 
 	UNWIND (CASE materials WHEN [] THEN [null] ELSE materials END) AS material
 

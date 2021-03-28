@@ -24,17 +24,22 @@ describe('Materials with source material', () => {
 	const STEVEN_BERKOFF_PERSON_UUID = '39';
 	const EAST_PRODUCTIONS_COMPANY_UUID = '40';
 	const IAGO_CHARACTER_UUID = '43';
-	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = '44';
-	const NOVELLO_THEATRE_UUID = '46';
-	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = '47';
-	const HANOVER_GRAND_THEATRE_UUID = '49';
-	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '50';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '52';
-	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '53';
+	const A_MOORISH_CAPTAIN_MATERIAL_UUID = '48';
+	const OTHELLO_MATERIAL_UUID = '58';
+	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = '64';
+	const NOVELLO_THEATRE_UUID = '66';
+	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = '67';
+	const HANOVER_GRAND_THEATRE_UUID = '69';
+	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '70';
+	const ROYAL_SHAKESPEARE_THEATRE_UUID = '72';
+	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '73';
+	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = '76';
 
 	let aMidsummerNightsDreamMaterial;
 	let theIndianBoyMaterial;
 	let shakespearesVillainsMaterial;
+	let aMoorishCaptainMaterial;
+	let othelloMaterial;
 	let williamShakespearePerson;
 	let ronaMunroPerson;
 	let stevenBerkoffPerson;
@@ -43,6 +48,7 @@ describe('Materials with source material', () => {
 	let eastProductionsCompany;
 	let theIndianBoyRoyalShakespeareTheatreProduction;
 	let shakespearesVillainsTheatreRoyalHaymarketProduction;
+	let othelloDonmarWarehouseProduction;
 	let theIndianBoyCharacter;
 	let iagoCharacter;
 
@@ -190,6 +196,67 @@ describe('Materials with source material', () => {
 			});
 
 		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'A Moorish Captain',
+				format: 'tale',
+				writingCredits: [
+					{
+						writingEntities: [
+							// Contrivance for purposes of test.
+							{
+								model: 'person',
+								name: 'William Shakespeare'
+							},
+							{
+								model: 'company',
+								name: 'The King\'s Men'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Othello',
+				format: 'play',
+				writingCredits: [
+					{
+						writingEntities: [
+							{
+								model: 'person',
+								name: 'William Shakespeare'
+							},
+							{
+								model: 'company',
+								name: 'The King\'s Men'
+							}
+						]
+					},
+					{
+						name: 'based on',
+						writingEntities: [
+							{
+								model: 'material',
+								name: 'A Moorish Captain'
+							}
+						]
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Iago'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -237,6 +304,18 @@ describe('Materials with source material', () => {
 				}
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Othello',
+				material: {
+					name: 'Othello'
+				},
+				theatre: {
+					name: 'Donmar Warehouse'
+				}
+			});
+
 		aMidsummerNightsDreamMaterial = await chai.request(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
@@ -245,6 +324,12 @@ describe('Materials with source material', () => {
 
 		shakespearesVillainsMaterial = await chai.request(app)
 			.get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
+
+		aMoorishCaptainMaterial = await chai.request(app)
+			.get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
+
+		othelloMaterial = await chai.request(app)
+			.get(`/materials/${OTHELLO_MATERIAL_UUID}`);
 
 		williamShakespearePerson = await chai.request(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
@@ -269,6 +354,9 @@ describe('Materials with source material', () => {
 
 		shakespearesVillainsTheatreRoyalHaymarketProduction = await chai.request(app)
 			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
+
+		othelloDonmarWarehouseProduction = await chai.request(app)
+			.get(`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`);
 
 		theIndianBoyCharacter = await chai.request(app)
 			.get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
@@ -570,11 +658,195 @@ describe('Materials with source material', () => {
 
 	});
 
+	describe('A Moorish Captain (material)', () => {
+
+		it('includes writers of this material and its source material grouped by their respective credits', () => {
+
+			const expectedSourcingMaterials = [
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: null,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterials } = aMoorishCaptainMaterial.body;
+
+			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+	});
+
+	describe('Othello (material)', () => {
+
+		it('includes writers of this material and its source material grouped by their respective credits', () => {
+
+			const expectedWritingCredits = [
+				{
+					model: 'writingCredit',
+					name: 'by',
+					writingEntities: [
+						{
+							model: 'person',
+							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+							name: 'William Shakespeare'
+						},
+						{
+							model: 'company',
+							uuid: THE_KINGS_MEN_COMPANY_UUID,
+							name: 'The King\'s Men'
+						}
+					]
+				},
+				{
+					model: 'writingCredit',
+					name: 'based on',
+					writingEntities: [
+						{
+							model: 'material',
+							uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+							name: 'A Moorish Captain',
+							format: 'tale',
+							sourceMaterialWritingCredits: [
+								{
+									model: 'writingCredit',
+									name: 'by',
+									writingEntities: [
+										{
+											model: 'person',
+											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+											name: 'William Shakespeare'
+										},
+										{
+											model: 'company',
+											uuid: THE_KINGS_MEN_COMPANY_UUID,
+											name: 'The King\'s Men'
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { writingCredits } = othelloMaterial.body;
+
+			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+
+		});
+
+	});
+
 	describe('William Shakespeare (person)', () => {
 
 		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
 
 			const expectedSourcingMaterials = [
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: null,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'material',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
@@ -862,6 +1134,60 @@ describe('Materials with source material', () => {
 		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
 
 			const expectedSourcingMaterials = [
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: null,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'material',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
@@ -1264,6 +1590,73 @@ describe('Materials with source material', () => {
 
 	});
 
+	describe('Othello at Donmar Warehouse (production)', () => {
+
+		it('includes in its material data the writers of the material and its source material', () => {
+
+			const expectedMaterial = {
+				model: 'material',
+				uuid: OTHELLO_MATERIAL_UUID,
+				name: 'Othello',
+				format: 'play',
+				writingCredits: [
+					{
+						model: 'writingCredit',
+						name: 'by',
+						writingEntities: [
+							{
+								model: 'person',
+								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+								name: 'William Shakespeare'
+							},
+							{
+								model: 'company',
+								uuid: THE_KINGS_MEN_COMPANY_UUID,
+								name: 'The King\'s Men'
+							}
+						]
+					},
+					{
+						model: 'writingCredit',
+						name: 'based on',
+						writingEntities: [
+							{
+								model: 'material',
+								uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+								name: 'A Moorish Captain',
+								format: 'tale',
+								sourceMaterialWritingCredits: [
+									{
+										model: 'writingCredit',
+										name: 'by',
+										writingEntities: [
+											{
+												model: 'person',
+												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+												name: 'William Shakespeare'
+											},
+											{
+												model: 'company',
+												uuid: THE_KINGS_MEN_COMPANY_UUID,
+												name: 'The King\'s Men'
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			};
+
+			const { material } = othelloDonmarWarehouseProduction.body;
+
+			expect(material).to.deep.equal(expectedMaterial);
+
+		});
+
+	});
+
 	describe('The Indian Boy (character)', () => {
 
 		it('includes in its material data the writers of the material and its source material', () => {
@@ -1339,6 +1732,61 @@ describe('Materials with source material', () => {
 		it('includes in its material data the writers of the material and its source material', () => {
 
 			const expectedMaterials = [
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					depictions: []
+				},
 				{
 					model: 'material',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
@@ -1417,6 +1865,84 @@ describe('Materials with source material', () => {
 									model: 'company',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
 									name: 'The King\'s Men'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+					name: 'A Moorish Captain',
+					format: 'tale',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							writingEntities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							writingEntities: [
+								{
+									model: 'material',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									sourceMaterialWritingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											writingEntities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
