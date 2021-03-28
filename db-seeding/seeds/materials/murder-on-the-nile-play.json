@@ -1,0 +1,64 @@
+{
+	"name": "Murder on the Nile",
+	"format": "play",
+	"writingCredits": [
+		{
+			"writingEntities": [
+				{
+					"name": "Agatha Christie"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"writingEntities": [
+				{
+					"model": "material",
+					"name": "Death on the Nile"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Beadsellers"
+				},
+				{
+					"name": "Steward"
+				},
+				{
+					"name": "Helen Ffoliot-ffoulkes"
+				},
+				{
+					"name": "Christina Grant"
+				},
+				{
+					"name": "Kay Ridgeway-Mostyn"
+				},
+				{
+					"name": "Simon Mostyn"
+				},
+				{
+					"name": "Louise de Vallois"
+				},
+				{
+					"name": "Dr Bessner"
+				},
+				{
+					"name": "Canon Ambrose Pennefather"
+				},
+				{
+					"name": "Jacqueline de Severac"
+				},
+				{
+					"name": "William Smith"
+				},
+				{
+					"name": "McNaught"
+				}
+			]
+		}
+	]
+}
