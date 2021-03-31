@@ -355,6 +355,38 @@
 					"name": "Malcolm Ranson"
 				}
 			]
+		},
+		{
+			"name": "Director of Movement",
+			"creativeEntities": [
+				{
+					"name": "Malcolm Shields"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Patsy Rodenburg"
+				}
+			]
+		},
+		{
+			"name": "Assistant Voice Coach",
+			"creativeEntities": [
+				{
+					"name": "Jeannette Nelson"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "Ruth Levin"
+				}
+			]
 		}
 	]
 }

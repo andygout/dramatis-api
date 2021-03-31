@@ -136,6 +136,14 @@
 			"name": "Director",
 			"creativeEntities": [
 				{
+					"name": "Carrie Cracknell"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"creativeEntities": [
+				{
 					"name": "Tom Scutt"
 				}
 			]
@@ -145,6 +153,14 @@
 			"creativeEntities": [
 				{
 					"name": "Guy Hoare"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"creativeEntities": [
+				{
+					"name": "Christopher Shutt"
 				}
 			]
 		},
@@ -192,7 +208,7 @@
 			"name": "Company Voice Work",
 			"creativeEntities": [
 				{
-					"name": "Jeanette Nelson"
+					"name": "Jeannette Nelson"
 				}
 			]
 		},
@@ -201,6 +217,25 @@
 			"creativeEntities": [
 				{
 					"name": "Jo Tyabji"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"creativeEntities": [
+				{
+					"name": "Wendy Spon"
+				},
+				{
+					"name": "Jacob Sparrow"
+				}
+			]
+		},
+		{
+			"name": "Associate Movement Director",
+			"creativeEntities": [
+				{
+					"name": "Michela Meazza"
 				}
 			]
 		}

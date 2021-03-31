@@ -244,7 +244,7 @@
 			"name": "Music",
 			"creativeEntities": [
 				{
-					"name": "Alex Baranowsky"
+					"name": "Alex Baranowski"
 				}
 			]
 		},
@@ -268,7 +268,23 @@
 			"name": "Company Voice Work",
 			"creativeEntities": [
 				{
-					"name": "Jeanette Nelson"
+					"name": "Jeannette Nelson"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "James Bounds"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Alastair Coomer"
 				}
 			]
 		}
