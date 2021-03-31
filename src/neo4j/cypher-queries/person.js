@@ -7,7 +7,7 @@ const getShowQuery = () => `
 
 	UNWIND (CASE materials WHEN [] THEN [null] ELSE materials END) AS material
 
-		OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material:Material)
+		OPTIONAL MATCH (person)<-[writerRel:WRITTEN_BY]-(material)
 
 		OPTIONAL MATCH (person)<-[:WRITTEN_BY]-(:Material)<-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]-(material)
 
