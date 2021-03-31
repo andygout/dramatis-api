@@ -388,5 +388,109 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Annie Gosney"
+				}
+			]
+		},
+		{
+			"name": "Assistant Production Manager",
+			"crewEntities": [
+				{
+					"name": "Tom Richardson"
+				},
+				{
+					"name": "Alan Bain"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Richard Reddrop"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Michele Enright"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Paul Daintry"
+				},
+				{
+					"name": "Sally McKenna"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Set Designer",
+			"crewEntities": [
+				{
+					"name": "Gary Underwood"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Simon James"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Alistair McArthur"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Louise Dadd"
+				}
+			]
+		},
+		{
+			"name": "Dance Captain",
+			"crewEntities": [
+				{
+					"name": "Adam Jones"
+				}
+			]
+		},
+		{
+			"name": "Draughting",
+			"crewEntities": [
+				{
+					"name": "Will Bowen"
+				}
+			]
+		},
+		{
+			"name": "Rehearsal and Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Ivan Kyncl"
+				}
+			]
+		}
 	]
 }

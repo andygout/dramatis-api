@@ -252,5 +252,216 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Tariq Hussain"
+				}
+			]
+		},
+		{
+			"name": "Deputy Production Manager",
+			"crewEntities": [
+				{
+					"name": "Sarah O'Connor"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Alison Rankin"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Benjamin Donoghue"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Fran O'Donnell"
+				},
+				{
+					"name": "Fran Redvers-Jones"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Jack Galloway"
+				}
+			]
+		},
+		{
+			"name": "Costume Buyer",
+			"crewEntities": [
+				{
+					"name": "Charlotte McGarrie"
+				}
+			]
+		},
+		{
+			"name": "Prop Supervisor",
+			"crewEntities": [
+				{
+					"name": "Eleanor Smith"
+				}
+			]
+		},
+		{
+			"name": "Prop Buyer",
+			"crewEntities": [
+				{
+					"name": "Jessica Sharville"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Designer",
+			"crewEntities": [
+				{
+					"name": "Ross Edwards"
+				}
+			]
+		},
+		{
+			"name": "Lighting Supervisor",
+			"crewEntities": [
+				{
+					"name": "Laurence Clayton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Programmer",
+			"crewEntities": [
+				{
+					"name": "Nadene Wheatley"
+				}
+			]
+		},
+		{
+			"name": "Animator",
+			"crewEntities": [
+				{
+					"name": "Shaun Clark"
+				}
+			]
+		},
+		{
+			"name": "Video Production Engineer",
+			"crewEntities": [
+				{
+					"name": "Richard Moores"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"crewEntities": [
+				{
+					"name": "Ben Vernon"
+				}
+			]
+		},
+		{
+			"name": "Production Sound Engineers",
+			"crewEntities": [
+				{
+					"name": "Dominic Bilkey"
+				},
+				{
+					"name": "Dave Cotton"
+				}
+			]
+		},
+		{
+			"name": "Automation Programmer",
+			"crewEntities": [
+				{
+					"name": "Yuri Queiroz"
+				}
+			]
+		},
+		{
+			"name": "Digital Art",
+			"crewEntities": [
+				{
+					"name": "Emma Pile"
+				}
+			]
+		},
+		{
+			"name": "Rigging Supervisor",
+			"crewEntities": [
+				{
+					"name": "Barry Peavot"
+				}
+			]
+		},
+		{
+			"name": "Scenic Painting Supervisor",
+			"crewEntities": [
+				{
+					"name": "Cass Kirchner"
+				}
+			]
+		},
+		{
+			"name": "Stage Supervisor",
+			"crewEntities": [
+				{
+					"name": "Prad Pankhani"
+				}
+			]
+		},
+		{
+			"name": "Wigs, Hair and Make-up Supervisor",
+			"crewEntities": [
+				{
+					"name": "Adele Brandman"
+				}
+			]
+		},
+		{
+			"name": "Armourer / Special Effects Supervisor",
+			"crewEntities": [
+				{
+					"name": "Paul Wanklin"
+				}
+			]
+		},
+		{
+			"name": "Project Draughting",
+			"crewEntities": [
+				{
+					"name": "Jef Gage"
+				},
+				{
+					"name": "Emma Hendry"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Ellie Kurttz"
+				}
+			]
+		}
 	]
 }

@@ -239,5 +239,245 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Anna Anderson"
+				}
+			]
+		},
+		{
+			"name": "Deputy Production Manager",
+			"crewEntities": [
+				{
+					"name": "Vivienne Clavering"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Laura Draper"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Ian Andlaw"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Cheryl Firth"
+				},
+				{
+					"name": "Tom Leggat"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Lucy Martin"
+				}
+			]
+		},
+		{
+			"name": "Costume Buyer",
+			"crewEntities": [
+				{
+					"name": "Ashley Holtom"
+				}
+			]
+		},
+		{
+			"name": "Props Supervisor",
+			"crewEntities": [
+				{
+					"name": "Richard Watson"
+				}
+			]
+		},
+		{
+			"name": "Prop Buyer",
+			"crewEntities": [
+				{
+					"name": "Charlotte King"
+				}
+			]
+		},
+		{
+			"name": "Prop Making Coordinator",
+			"crewEntities": [
+				{
+					"name": "Jess Walsh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Supervisor",
+			"crewEntities": [
+				{
+					"name": "Neill Berning-Pollard"
+				}
+			]
+		},
+		{
+			"name": "Lighting Programmer",
+			"crewEntities": [
+				{
+					"name": "Laura Choules"
+				}
+			]
+		},
+		{
+			"name": "Sound Supervisor",
+			"crewEntities": [
+				{
+					"name": "Alex Twiselton"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"crewEntities": [
+				{
+					"name": "Javier Pando"
+				}
+			]
+		},
+		{
+			"name": "Wigs, Hair & Make-up Supervisor",
+			"crewEntities": [
+				{
+					"name": "Gillian Blair"
+				}
+			]
+		},
+		{
+			"name": "Wigs, Hair & Make-up Senior Assistant",
+			"crewEntities": [
+				{
+					"name": "Kim Kasim"
+				}
+			]
+		},
+		{
+			"name": "Stage Supervisor",
+			"crewEntities": [
+				{
+					"name": "Ken Pedersen"
+				}
+			]
+		},
+		{
+			"name": "Construction Supervisors",
+			"crewEntities": [
+				{
+					"name": "Paul Sheppard"
+				},
+				{
+					"name": "Joe Ashworth Martin"
+				}
+			]
+		},
+		{
+			"name": "Rigging Supervisor",
+			"crewEntities": [
+				{
+					"name": "Riche Tarr"
+				}
+			]
+		},
+		{
+			"name": "Scenic Art Supervisor",
+			"crewEntities": [
+				{
+					"name": "Alice Collie"
+				}
+			]
+		},
+		{
+			"name": "Flying Supervisor",
+			"crewEntities": [
+				{
+					"name": "Suresh Chawla"
+				}
+			]
+		},
+		{
+			"name": "Automation Supervisor",
+			"crewEntities": [
+				{
+					"name": "Richard Booth"
+				}
+			]
+		},
+		{
+			"name": "Project Producer",
+			"crewEntities": [
+				{
+					"name": "Fran Miller"
+				}
+			]
+		},
+		{
+			"name": "Digital Art",
+			"crewEntities": [
+				{
+					"name": "Daniel Radley-Bennett"
+				}
+			]
+		},
+		{
+			"name": "Project Draughting",
+			"crewEntities": [
+				{
+					"name": "Suzanne Hickinbotham"
+				}
+			]
+		},
+		{
+			"name": "Keyman",
+			"crewEntities": [
+				{
+					"name": "Martin Marden"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"crewEntities": [
+				{
+					"name": "David Allen"
+				}
+			]
+		},
+		{
+			"name": "Production Assistant",
+			"crewEntities": [
+				{
+					"name": "Serena Basra"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Richard Hubert Smith"
+				}
+			]
+		}
 	]
 }

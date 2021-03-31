@@ -193,5 +193,87 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Tariq Hussain"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Jan Suffling"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Cynthia Durberry"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Ian Connop"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Stephanie Arditti"
+				}
+			]
+		},
+		{
+			"name": "Prop Supervisor",
+			"crewEntities": [
+				{
+					"name": "Chris Lake"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Paul Knott"
+				}
+			]
+		},
+		{
+			"name": "Associate Sound Designer",
+			"crewEntities": [
+				{
+					"name": "Mike Winship"
+				}
+			]
+		},
+		{
+			"name": "Design Associate",
+			"crewEntities": [
+				{
+					"name": "Tim Blazdell"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Kevin Cummins"
+				}
+			]
+		}
 	]
 }

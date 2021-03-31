@@ -197,6 +197,118 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
+		UNWIND (CASE $crewCredits WHEN []
+			THEN [{ crewEntities: [] }]
+			ELSE $crewCredits
+		END) AS crewCredit
+
+			UNWIND
+				CASE SIZE([entity IN crewCredit.crewEntities WHERE entity.model = 'person']) WHEN 0
+					THEN [null]
+					ELSE [entity IN crewCredit.crewEntities WHERE entity.model = 'person']
+				END AS crewPersonParam
+
+				OPTIONAL MATCH (existingCrewPerson:Person { name: crewPersonParam.name })
+					WHERE
+						(
+							crewPersonParam.differentiator IS NULL AND
+							existingCrewPerson.differentiator IS NULL
+						) OR
+						crewPersonParam.differentiator = existingCrewPerson.differentiator
+
+				FOREACH (item IN CASE crewPersonParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (crewPerson:Person {
+						uuid: COALESCE(existingCrewPerson.uuid, crewPersonParam.uuid),
+						name: crewPersonParam.name
+					})
+						ON CREATE SET crewPerson.differentiator = crewPersonParam.differentiator
+
+					CREATE (production)-
+						[:HAS_CREW_MEMBER {
+							creditPosition: crewCredit.position,
+							entityPosition: crewPersonParam.position,
+							credit: crewCredit.name
+						}]->(crewPerson)
+				)
+
+			WITH DISTINCT production, crewCredit
+
+			UNWIND
+				CASE SIZE([entity IN crewCredit.crewEntities WHERE entity.model = 'company']) WHEN 0
+					THEN [null]
+					ELSE [entity IN crewCredit.crewEntities WHERE entity.model = 'company']
+				END AS crewCompanyParam
+
+				OPTIONAL MATCH (existingCrewCompany:Company { name: crewCompanyParam.name })
+					WHERE
+						(
+							crewCompanyParam.differentiator IS NULL AND
+							existingCrewCompany.differentiator IS NULL
+						) OR
+						crewCompanyParam.differentiator = existingCrewCompany.differentiator
+
+				FOREACH (item IN CASE crewCompanyParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (crewCompany:Company {
+						uuid: COALESCE(existingCrewCompany.uuid, crewCompanyParam.uuid),
+						name: crewCompanyParam.name
+					})
+						ON CREATE SET crewCompany.differentiator = crewCompanyParam.differentiator
+
+					CREATE (production)-
+						[:HAS_CREW_MEMBER {
+							creditPosition: crewCredit.position,
+							entityPosition: crewCompanyParam.position,
+							credit: crewCredit.name
+						}]->(crewCompany)
+				)
+
+				WITH production, crewCredit, crewCompanyParam
+
+				UNWIND
+					CASE WHEN crewCompanyParam IS NOT NULL AND SIZE(crewCompanyParam.creditedMembers) > 0
+						THEN crewCompanyParam.creditedMembers
+						ELSE [null]
+					END AS creditedMemberParam
+
+					OPTIONAL MATCH (creditedCompany:Company { name: crewCompanyParam.name })
+						WHERE
+							(crewCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
+							crewCompanyParam.differentiator = creditedCompany.differentiator
+
+					OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_MEMBER]-(production)
+						WHERE
+							crewCredit.position IS NULL OR
+							crewCredit.position = crewCompanyRel.creditPosition
+
+					OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
+						WHERE
+							(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
+							creditedMemberParam.differentiator = existingPerson.differentiator
+
+					FOREACH (item IN CASE WHEN SIZE(crewCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+						SET crewCompanyRel.creditedMemberUuids = []
+					)
+
+					FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+						MERGE (creditedMember:Person {
+							uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
+							name: creditedMemberParam.name
+						})
+							ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
+
+						CREATE (production)-
+							[:HAS_CREW_MEMBER {
+								creditPosition: crewCredit.position,
+								memberPosition: creditedMemberParam.position,
+								creditedCompanyUuid: creditedCompany.uuid
+							}]->(creditedMember)
+
+						SET crewCompanyRel.creditedMemberUuids =
+							crewCompanyRel.creditedMemberUuids + creditedMember.uuid
+					)
+
+		WITH DISTINCT production
+
 		${getEditQuery()}
 	`;
 
@@ -280,13 +392,7 @@ const getEditQuery = () => `
 			ELSE creativeEntity { .model, .name, .differentiator }
 		END] + [{}] AS creativeEntities
 
-	RETURN
-		'production' AS model,
-		production.uuid AS uuid,
-		production.name AS name,
-		{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
-		{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
-		cast,
+	WITH production, material, theatre, cast,
 		COLLECT(
 			CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 				THEN null
@@ -297,6 +403,68 @@ const getEditQuery = () => `
 				}
 			END
 		) + [{ creativeEntities: [{}] }] AS creativeCredits
+
+	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+		WHERE
+			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
+			crewEntity:Company
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel,
+		COLLECT(crewEntity {
+			model: TOLOWER(HEAD(LABELS(crewEntity))),
+			.name,
+			.differentiator,
+			creditedMemberUuids: crewEntityRel.creditedMemberUuids
+		}) AS crewEntities
+
+	UNWIND (CASE crewEntities WHEN [] THEN [null] ELSE crewEntities END) AS crewEntity
+
+		UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
+
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+				(creditedMember:Person { uuid: creditedMemberUuid })
+				WHERE
+					crewEntityRel.creditPosition IS NULL OR
+					crewEntityRel.creditPosition = creditedMemberRel.creditPosition
+
+			WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMember
+				ORDER BY creditedMemberRel.memberPosition
+
+			WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity,
+				COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMembers
+		ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
+		[crewEntity IN COLLECT(
+			CASE crewEntity WHEN NULL
+				THEN null
+				ELSE crewEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+			END
+		) | CASE crewEntity.model WHEN 'company'
+			THEN crewEntity
+			ELSE crewEntity { .model, .name, .differentiator }
+		END] + [{}] AS crewEntities
+
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
+		{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
+		cast,
+		creativeCredits,
+		COLLECT(
+			CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
+				THEN null
+				ELSE {
+					model: 'crewCredit',
+					name: crewCreditName,
+					crewEntities: crewEntities
+				}
+			END
+		) + [{ crewEntities: [{}] }] AS crewCredits
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -465,13 +633,7 @@ const getShowQuery = () => `
 			ELSE creativeEntity { .model, .uuid, .name }
 		END] AS creativeEntities
 
-	RETURN
-		'production' AS model,
-		production.uuid AS uuid,
-		production.name AS name,
-		material,
-		theatre,
-		cast,
+	WITH production, material, theatre, cast,
 		COLLECT(
 			CASE SIZE(creativeEntities) WHEN 0
 				THEN null
@@ -482,6 +644,68 @@ const getShowQuery = () => `
 				}
 			END
 		) AS creativeCredits
+
+	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+		WHERE
+			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
+			crewEntity:Company
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel,
+		COLLECT(crewEntity {
+			model: TOLOWER(HEAD(LABELS(crewEntity))),
+			.uuid,
+			.name,
+			creditedMemberUuids: crewEntityRel.creditedMemberUuids
+		}) AS crewEntities
+
+	UNWIND (CASE crewEntities WHEN [] THEN [null] ELSE crewEntities END) AS crewEntity
+
+		UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
+
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+				(creditedMember:Person { uuid: creditedMemberUuid })
+				WHERE
+					crewEntityRel.creditPosition IS NULL OR
+					crewEntityRel.creditPosition = creditedMemberRel.creditPosition
+
+			WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMember
+				ORDER BY creditedMemberRel.memberPosition
+
+			WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity,
+				COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMembers
+		ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
+
+	WITH production, material, theatre, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
+		[crewEntity IN COLLECT(
+			CASE crewEntity WHEN NULL
+				THEN null
+				ELSE crewEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
+			END
+		) | CASE crewEntity.model WHEN 'company'
+			THEN crewEntity
+			ELSE crewEntity { .model, .uuid, .name }
+		END] AS crewEntities
+
+	RETURN
+		'production' AS model,
+		production.uuid AS uuid,
+		production.name AS name,
+		material,
+		theatre,
+		cast,
+		creativeCredits,
+		COLLECT(
+			CASE SIZE(crewEntities) WHEN 0
+				THEN null
+				ELSE {
+					model: 'crewCredit',
+					name: crewCreditName,
+					crewEntities: crewEntities
+				}
+			END
+		) AS crewCredits
 `;
 
 const getListQuery = () => `

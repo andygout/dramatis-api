@@ -288,5 +288,120 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Igor"
+				}
+			]
+		},
+		{
+			"name": "Deputy Production Manager",
+			"crewEntities": [
+				{
+					"name": "James Manley"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Andrew Speed"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Nik Haffenden"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Sara Gunter"
+				},
+				{
+					"name": "Julia Wickham"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Lynette Mauro"
+				}
+			]
+		},
+		{
+			"name": "Prop Supervisor",
+			"crewEntities": [
+				{
+					"name": "Eleanor Constable"
+				}
+			]
+		},
+		{
+			"name": "Design Associate",
+			"crewEntities": [
+				{
+					"name": "Ben Austin"
+				}
+			]
+		},
+		{
+			"name": "Assistants to the Designer",
+			"crewEntities": [
+				{
+					"name": "Molly Einchcomb"
+				},
+				{
+					"name": "Matthew Hellyer"
+				},
+				{
+					"name": "Tom Moore"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Marc Williams"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Costume Designer",
+			"crewEntities": [
+				{
+					"name": "Hannah Bell"
+				}
+			]
+		},
+		{
+			"name": "Production Assistant",
+			"crewEntities": [
+				{
+					"name": "Jonathan Pascoe"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Johan Persson"
+				}
+			]
+		}
 	]
 }

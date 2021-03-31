@@ -81,5 +81,79 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Katrina Gilroy"
+				}
+			]
+		},
+		{
+			"name": "Assistant Production Manager",
+			"crewEntities": [
+				{
+					"name": "Richard Eustace"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "David Marsland"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Emma Cameron"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Chrissie Chandler"
+				}
+			]
+		},
+		{
+			"name": "Design Associate",
+			"crewEntities": [
+				{
+					"name": "Tim Blazdell"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Designer",
+			"crewEntities": [
+				{
+					"name": "Jo Maund"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Simon Fraulo"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Neil Libbert"
+				}
+			]
+		}
 	]
 }

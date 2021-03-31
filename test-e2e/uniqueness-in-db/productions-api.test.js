@@ -890,4 +890,492 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
+	describe('Production crew entity (person) uniqueness in database', () => {
+
+		const MRS_AFFLECK_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPersonTariqHussain1 = {
+			model: 'person',
+			name: 'Tariq Hussain',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPersonTariqHussain2 = {
+			model: 'person',
+			name: 'Tariq Hussain',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: MRS_AFFLECK_PRODUCTION_UUID,
+				name: 'Mrs Affleck'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates crew entity (person) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mrs Affleck',
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Tariq Hussain'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain1);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+		});
+
+		it('updates production and creates crew entity (person) that has same name as existing crew entity but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mrs Affleck',
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Tariq Hussain',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing crew entity (person) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mrs Affleck',
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Tariq Hussain'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain1);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing crew entity (person) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
+				.send({
+					name: 'Mrs Affleck',
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Tariq Hussain',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Production crew entity (company) uniqueness in database', () => {
+
+		const THREE_SISTERS_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedCompanyCrewDeputiesLtd1 = {
+			model: 'company',
+			name: 'Crew Deputies Ltd',
+			differentiator: '',
+			errors: {},
+			creditedMembers: [
+				{
+					model: 'person',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
+		};
+
+		const expectedCompanyCrewDeputiesLtd2 = {
+			model: 'company',
+			name: 'Crew Deputies Ltd',
+			differentiator: '1',
+			errors: {},
+			creditedMembers: [
+				{
+					model: 'person',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			]
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: THREE_SISTERS_PRODUCTION_UUID,
+				name: 'Three Sisters'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates crew entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
+				.send({
+					name: 'Three Sisters',
+					crewCredits: [
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Deputies Ltd'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+		});
+
+		it('updates production and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
+				.send({
+					name: 'Three Sisters',
+					crewCredits: [
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Deputies Ltd',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing crew entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
+				.send({
+					name: 'Three Sisters',
+					crewCredits: [
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Deputies Ltd'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing crew entity (company) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
+				.send({
+					name: 'Three Sisters',
+					crewCredits: [
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Deputies Ltd',
+									differentiator: '1'
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Production crew entity (company) credited member (person) uniqueness in database', () => {
+
+		const HAMLET_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPersonMollyEinchcomb1 = {
+			model: 'person',
+			name: 'Molly Einchcomb',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPersonMollyEinchcomb2 = {
+			model: 'person',
+			name: 'Molly Einchcomb',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: HAMLET_PRODUCTION_UUID,
+				name: 'Hamlet'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates material and creates crew entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
+				.send({
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+		});
+
+		it('updates material and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
+				.send({
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing crew entity (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
+				.send({
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates material and uses existing crew entity (company) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
+				.send({
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+	});
+
 });

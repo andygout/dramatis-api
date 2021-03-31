@@ -222,5 +222,234 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Richard Eustace"
+				}
+			]
+		},
+		{
+			"name": "Deputy Production Manager",
+			"crewEntities": [
+				{
+					"name": "Michael Ager"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Ian Farmery"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Anna Hill"
+				},
+				{
+					"name": "Emily Funnell"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Surenee Chan Somchit"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager (for NT)",
+			"crewEntities": [
+				{
+					"name": "Lauren Burns"
+				}
+			]
+		},
+		{
+			"name": "Placement Assistant Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Shaneice Brown"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Karen Large"
+				}
+			]
+		},
+		{
+			"name": "Assistant Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Sarah Holmes"
+				}
+			]
+		},
+		{
+			"name": "Prop Supervisor",
+			"crewEntities": [
+				{
+					"name": "Maggie Nottage"
+				}
+			]
+		},
+		{
+			"name": "Prop Making Coordinator",
+			"crewEntities": [
+				{
+					"name": "Michelle McLucas"
+				}
+			]
+		},
+		{
+			"name": "Prop Buyer",
+			"crewEntities": [
+				{
+					"name": "Rebecca Johnston"
+				}
+			]
+		},
+		{
+			"name": "Lighting Supervisor",
+			"crewEntities": [
+				{
+					"name": "Laurence Clayton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Programmer",
+			"crewEntities": [
+				{
+					"name": "Miguel Figueiredo"
+				}
+			]
+		},
+		{
+			"name": "Production Sound Engineer",
+			"crewEntities": [
+				{
+					"name": "Jamie McIntyre"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"crewEntities": [
+				{
+					"name": "Tom Cassidy"
+				}
+			]
+		},
+		{
+			"name": "Digital Art",
+			"crewEntities": [
+				{
+					"name": "Daniel Radley-Bennett"
+				}
+			]
+		},
+		{
+			"name": "Music Intern",
+			"crewEntities": [
+				{
+					"name": "Francesca Amewudah-Rivers"
+				}
+			]
+		},
+		{
+			"name": "Stage Supervisor",
+			"crewEntities": [
+				{
+					"name": "Ken Pedersen"
+				}
+			]
+		},
+		{
+			"name": "Rigging Supervisor",
+			"crewEntities": [
+				{
+					"name": "Riche Tarr"
+				}
+			]
+		},
+		{
+			"name": "Automation Programmer",
+			"crewEntities": [
+				{
+					"name": "Richard Booth"
+				}
+			]
+		},
+		{
+			"name": "Construction Supervisor",
+			"crewEntities": [
+				{
+					"name": "Dave Cotton"
+				}
+			]
+		},
+		{
+			"name": "Scenic Art Supervisor",
+			"crewEntities": [
+				{
+					"name": "Lindsay Tuffnell"
+				}
+			]
+		},
+		{
+			"name": "Wigs, Hair & Make-up Supervisor",
+			"crewEntities": [
+				{
+					"name": "Kim Kasim"
+				}
+			]
+		},
+		{
+			"name": "Project Draughting",
+			"crewEntities": [
+				{
+					"name": "Natalie McCormack"
+				}
+			]
+		},
+		{
+			"name": "Igbo Lyrics",
+			"crewEntities": [
+				{
+					"name": "Amarachi Attamah"
+				}
+			]
+		},
+		{
+			"name": "Igbo Language and Culture Consultant",
+			"crewEntities": [
+				{
+					"name": "Ngozi Nwaneri"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Richard Davenport"
+				}
+			]
+		}
 	]
 }
