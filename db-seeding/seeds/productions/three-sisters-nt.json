@@ -196,10 +196,29 @@
 			]
 		},
 		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Jeannette Nelson"
+				},
+				{
+					"name": "Victoria Woodward"
+				}
+			]
+		},
+		{
 			"name": "Staff Director",
 			"creativeEntities": [
 				{
 					"name": "Moji Elufowoju"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"creativeEntities": [
+				{
+					"name": "Isabella Odoffin"
 				}
 			]
 		}

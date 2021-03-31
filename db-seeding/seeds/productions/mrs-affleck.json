@@ -138,10 +138,42 @@
 			]
 		},
 		{
+			"name": "Music Director",
+			"creativeEntities": [
+				{
+					"name": "Nicholas Cooper"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"creativeEntities": [
+				{
+					"name": "Kate Waters"
+				}
+			]
+		},
+		{
 			"name": "Magic",
 			"creativeEntities": [
 				{
 					"name": "Paul Kieve"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"creativeEntities": [
+				{
+					"name": "Jeannette Nelson"
+				}
+			]
+		},
+		{
+			"name": "Staff Director",
+			"creativeEntities": [
+				{
+					"name": "Elly Green"
 				}
 			]
 		},
