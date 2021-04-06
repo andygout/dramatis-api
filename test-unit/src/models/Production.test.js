@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CastMember, CreativeCredit, Material, Theatre } from '../../../src/models';
+import { CastMember, CreativeCredit, CrewCredit, Material, Theatre } from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -17,6 +17,12 @@ describe('Production model', () => {
 	const CreativeCreditStub = function () {
 
 		return createStubInstance(CreativeCredit);
+
+	};
+
+	const CrewCreditStub = function () {
+
+		return createStubInstance(CrewCredit);
 
 	};
 
@@ -47,6 +53,7 @@ describe('Production model', () => {
 			models: {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
+				CrewCredit: CrewCreditStub,
 				Material: MaterialStub,
 				Theatre: TheatreStub
 			}
@@ -195,6 +202,11 @@ describe('Production model', () => {
 					{
 						name: 'Sound Designer'
 					}
+				],
+				crewCredits: [
+					{
+						name: 'Stage Manager'
+					}
 				]
 			};
 			const instance = createInstance(props);
@@ -209,7 +221,9 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
-				instance.creativeCredits[0].runInputValidations
+				instance.creativeCredits[0].runInputValidations,
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
+				instance.crewCredits[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
@@ -227,12 +241,19 @@ describe('Production model', () => {
 			)).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledWithExactly(
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledTwice).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
 				instance.creativeCredits
 			)).to.be.true;
 			expect(instance.creativeCredits[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.creativeCredits[0].runInputValidations.calledWithExactly(
+				{ isDuplicate: false }
+			)).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1).calledWithExactly(
+				instance.crewCredits
+			)).to.be.true;
+			expect(instance.crewCredits[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.crewCredits[0].runInputValidations.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
 

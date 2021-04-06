@@ -59,7 +59,8 @@ describe('Production instance', () => {
 						errors: {}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -102,7 +103,8 @@ describe('Production instance', () => {
 						errors: {}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -148,7 +150,8 @@ describe('Production instance', () => {
 						errors: {}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -195,7 +198,8 @@ describe('Production instance', () => {
 						errors: {}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -241,7 +245,8 @@ describe('Production instance', () => {
 						}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -288,7 +293,8 @@ describe('Production instance', () => {
 						}
 					},
 					cast: [],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -345,7 +351,8 @@ describe('Production instance', () => {
 							roles: []
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -403,7 +410,8 @@ describe('Production instance', () => {
 							roles: []
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -501,7 +509,8 @@ describe('Production instance', () => {
 							roles: []
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -570,7 +579,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -640,7 +650,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -710,7 +721,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -781,7 +793,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -851,7 +864,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -921,7 +935,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1044,7 +1059,8 @@ describe('Production instance', () => {
 							]
 						}
 					],
-					creativeCredits: []
+					creativeCredits: [],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1098,7 +1114,8 @@ describe('Production instance', () => {
 							},
 							creativeEntities: []
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1164,7 +1181,8 @@ describe('Production instance', () => {
 							},
 							creativeEntities: []
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1230,7 +1248,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1296,7 +1315,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1363,7 +1383,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1431,7 +1452,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1500,7 +1522,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1644,7 +1667,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1727,7 +1751,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1807,7 +1832,8 @@ describe('Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					crewCredits: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1877,6 +1903,862 @@ describe('Production instance', () => {
 										{
 											uuid: undefined,
 											name: 'Andrew Bruce',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							crewEntities: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate crew credit name values', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Stage Manager'
+						},
+						{
+							name: 'Stage Manager'
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							crewEntities: []
+						},
+						{
+							name: 'Stage Manager',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							crewEntities: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit without name has named crew entities', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: '',
+							crewEntities: [
+								{
+									name: 'Andrew Speed'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: '',
+							errors: {
+								name: [
+									'Name is required if named children exist'
+								]
+							},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Andrew Speed',
+									differentiator: '',
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (person) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							crewEntities: [
+								{
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (person) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							crewEntities: [
+								{
+									name: 'Andrew Speed',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Andrew Speed',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (company) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							crewEntities: [
+								{
+									model: 'company',
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Stage Manager',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									creditedMembers: [],
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (company) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									creditedMembers: [],
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Assistant Stage Managers Ltd',
+									creditedMembers: [
+										{
+											name: 'Sara Gunter'
+										},
+										{
+											name: 'Foo'
+										}
+									]
+								},
+								{
+									name: 'Sara Gunter'
+								},
+								{
+									model: 'company',
+									name: 'Assistant Stage Managers Ltd'
+								},
+								{
+									model: 'company',
+									name: 'Foo'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Sara Gunter',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											uuid: undefined,
+											name: 'Foo',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								},
+								{
+									uuid: undefined,
+									name: 'Sara Gunter',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									}
+								},
+								{
+									uuid: undefined,
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									},
+									creditedMembers: []
+								},
+								{
+									uuid: undefined,
+									name: 'Foo',
+									differentiator: '',
+									errors: {},
+									creditedMembers: []
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+				expect(result.crewCredits[0].crewEntities[0].creditedMembers[1].model).to.equal('person');
+				expect(result.crewCredits[0].crewEntities[3].model).to.equal('company');
+
+			});
+
+		});
+
+		context('crew credit entity without name has named credited members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: '',
+									creditedMembers: [
+										{
+											name: 'Sara Gunter',
+											differentiator: ''
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: '',
+									differentiator: '',
+									errors: {
+										name: [
+											'Name is required if named children exist'
+										]
+									},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Sara Gunter',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (company) credited member name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Assistant Stage Managers Ltd',
+									creditedMembers: [
+										{
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Assistant Stage Managers Ltd',
+									creditedMembers: [
+										{
+											name: 'Sara Gunter',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Assistant Stage Managers',
+							errors: {},
+							crewEntities: [
+								{
+									uuid: undefined,
+									name: 'Assistant Stage Managers Ltd',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Sara Gunter',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
 												differentiator: [

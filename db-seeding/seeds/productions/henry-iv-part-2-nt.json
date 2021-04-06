@@ -339,5 +339,101 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Sacha Milroy"
+				}
+			]
+		},
+		{
+			"name": "Assistant Production Manager",
+			"crewEntities": [
+				{
+					"name": "James Manley"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Eric Lumsden"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Tamara Albachari"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Peter Gregory"
+				},
+				{
+					"name": "Julia Wickham"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Emma Marshall"
+				}
+			]
+		},
+		{
+			"name": "Design Associate",
+			"crewEntities": [
+				{
+					"name": "Jo Maund"
+				}
+			]
+		},
+		{
+			"name": "Assistants to the Designer",
+			"crewEntities": [
+				{
+					"name": "Colin Falconer"
+				},
+				{
+					"name": "Alex Lowde"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Nick Simmons"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Laura Thomas"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"crewEntities": [
+				{
+					"name": "Catherine Ashmore"
+				}
+			]
+		}
 	]
 }

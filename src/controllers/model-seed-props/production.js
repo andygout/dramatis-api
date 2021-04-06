@@ -12,5 +12,12 @@ export default {
 				{}
 			]
 		}
+	],
+	crewCredits: [
+		{
+			crewEntities: [
+				{}
+			]
+		}
 	]
 };

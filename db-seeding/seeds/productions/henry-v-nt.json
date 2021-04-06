@@ -346,5 +346,109 @@
 				}
 			]
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"crewEntities": [
+				{
+					"name": "Diane Willmott"
+				}
+			]
+		},
+		{
+			"name": "Assistant Production Manager",
+			"crewEntities": [
+				{
+					"name": "Tim Blazdell"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Courtney Bryant"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"crewEntities": [
+				{
+					"name": "Lesley Walmsley"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"crewEntities": [
+				{
+					"name": "Tim Hughes"
+				},
+				{
+					"name": "Brewyeen Rowland"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"crewEntities": [
+				{
+					"name": "Carrie Bayliss"
+				}
+			]
+		},
+		{
+			"name": "Music Consultant",
+			"crewEntities": [
+				{
+					"name": "Martin Russell"
+				}
+			]
+		},
+		{
+			"name": "Video Realisation",
+			"crewEntities": [
+				{
+					"name": "Sven Ortel"
+				},
+				{
+					"name": "Dick Straker"
+				}
+			]
+		},
+		{
+			"name": "Video Editing",
+			"crewEntities": [
+				{
+					"name": "Richard Kenyon"
+				}
+			]
+		},
+		{
+			"name": "Military Advisor",
+			"crewEntities": [
+				{
+					"name": "Richard Smedley"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"crewEntities": [
+				{
+					"name": "Helen Ridley"
+				}
+			]
+		},
+		{
+			"name": "Rehearsal Photographer",
+			"crewEntities": [
+				{
+					"name": "Ivan Kyncl"
+				}
+			]
+		}
 	]
 }

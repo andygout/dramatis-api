@@ -133,7 +133,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				sourcingMaterials: [],
 				rightsGrantorMaterials: [],
 				castMemberProductions: [],
-				creativeProductions: []
+				creativeProductions: [],
+				crewProductions: []
 			};
 
 			expect(response).to.have.status(200);

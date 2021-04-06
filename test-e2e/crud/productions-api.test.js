@@ -68,6 +68,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -157,6 +172,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -212,6 +242,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: '',
 						errors: {},
 						creativeEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
 							{
 								model: 'person',
 								name: '',
@@ -287,6 +332,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -308,7 +368,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				material: null,
 				theatre: null,
 				cast: [],
-				creativeCredits: []
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			expect(response).to.have.status(200);
@@ -340,7 +401,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					errors: {}
 				},
 				cast: [],
-				creativeCredits: []
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			expect(response).to.have.status(200);
@@ -367,19 +429,33 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '11';
 		const LEO_WARNER_UUID = '12';
 		const MARK_GRIMMER_UUID = '13';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '14';
-		const ALMEIDA_THEATRE_UUID = '15';
-		const RALPH_FIENNES_PERSON_UUID = '16';
-		const TOM_CANTON_PERSON_UUID = '17';
-		const MARK_HADFIELD_PERSON_UUID = '18';
-		const JOSH_COLLINS_PERSON_UUID = '19';
-		const RUPERT_GOOLD_PERSON_UUID = '20';
-		const RC_ANNIE_LTD_COMPANY_UUID = '21';
-		const HILDEGARD_BECHTLER_PERSON_UUID = '22';
-		const CHLOE_LAMFORD_PERSON_UUID = '23';
-		const AUTOGRAPH_COMPANY_UUID = '24';
-		const ANDREW_BRUCE_UUID = '25';
-		const NICK_LIDSTER_UUID = '26';
+		const IGOR_PERSON_UUID = '14';
+		const CREW_DEPUTIES_LTD_COMPANY_UUID = '15';
+		const SARA_GUNTER_PERSON_UUID = '16';
+		const JULIA_WICKHAM_PERSON_UUID = '17';
+		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '18';
+		const MOLLY_EINCHCOMB_PERSON_UUID = '19';
+		const MATTHEW_HELLYER_PERSON_UUID = '20';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '21';
+		const ALMEIDA_THEATRE_UUID = '22';
+		const RALPH_FIENNES_PERSON_UUID = '23';
+		const TOM_CANTON_PERSON_UUID = '24';
+		const MARK_HADFIELD_PERSON_UUID = '25';
+		const JOSH_COLLINS_PERSON_UUID = '26';
+		const RUPERT_GOOLD_PERSON_UUID = '27';
+		const RC_ANNIE_LTD_COMPANY_UUID = '28';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '29';
+		const CHLOE_LAMFORD_PERSON_UUID = '30';
+		const AUTOGRAPH_COMPANY_UUID = '31';
+		const ANDREW_BRUCE_UUID = '32';
+		const NICK_LIDSTER_UUID = '33';
+		const ANNA_ANDERSON_PERSON_UUID = '34';
+		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '35';
+		const CHERYL_FIRTH_PERSON_UUID = '36';
+		const TOM_LEGGAT_PERSON_UUID = '37';
+		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '38';
+		const COLIN_FALCONER_PERSON_UUID = '39';
+		const ALEX_LOWDE_PERSON_UUID = '40';
 
 		before(async () => {
 
@@ -534,6 +610,79 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									creditedMembers: [
 										{
 											name: 'Leo Warner',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Igor',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Deputies Ltd',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									name: 'Sara Gunter',
+									differentiator: '1'
+								},
+								{
+									name: 'Julia Wickham',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb',
+											differentiator: '1'
+										},
+										{
+											name: 'Matthew Hellyer',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Sound Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Crew Assistants Ltd',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Molly Einchcomb',
 											differentiator: '1'
 										}
 									]
@@ -839,6 +988,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: 'Production Manager',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Igor',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Deputy Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Deputies Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Assistant Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Sara Gunter',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Julia Wickham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Matthew Hellyer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Sound Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -1009,6 +1316,88 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 										model: 'person',
 										uuid: LEO_WARNER_UUID,
 										name: 'Leo Warner'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: 'Production Manager',
+						crewEntities: [
+							{
+								model: 'person',
+								uuid: IGOR_PERSON_UUID,
+								name: 'Igor'
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Deputy Stage Managers',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
+								name: 'Crew Deputies Ltd',
+								creditedMembers: []
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Assistant Stage Managers',
+						crewEntities: [
+							{
+								model: 'person',
+								uuid: SARA_GUNTER_PERSON_UUID,
+								name: 'Sara Gunter'
+							},
+							{
+								model: 'person',
+								uuid: JULIA_WICKHAM_PERSON_UUID,
+								name: 'Julia Wickham'
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Design Assistants',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Crew Assistants Ltd',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
+										name: 'Molly Einchcomb'
+									},
+									{
+										model: 'person',
+										uuid: MATTHEW_HELLYER_PERSON_UUID,
+										name: 'Matthew Hellyer'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Sound Design Assistants',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Crew Assistants Ltd',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
+										name: 'Molly Einchcomb'
 									}
 								]
 							}
@@ -1323,6 +1712,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: 'Production Manager',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Igor',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Deputy Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Deputies Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Assistant Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Sara Gunter',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Julia Wickham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Matthew Hellyer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Sound Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -1468,6 +2015,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									creditedMembers: [
 										{
 											name: 'Andrew Bruce',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						// Contrivance for purposes of test.
+						{
+							name: 'Production Manager',
+							crewEntities: [
+								{
+									name: 'Anna Anderson',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Deputy Stage Managers',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Deputy Stage Managers Ltd',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Assistant Stage Managers',
+							crewEntities: [
+								{
+									name: 'Cheryl Firth',
+									differentiator: '1'
+								},
+								{
+									name: 'Tom Leggat',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Design Assistants Ltd',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Colin Falconer',
+											differentiator: '1'
+										},
+										{
+											name: 'Alex Lowde',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Sound Design Assistants',
+							crewEntities: [
+								{
+									model: 'company',
+									name: 'Design Assistants Ltd',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Colin Falconer',
 											differentiator: '1'
 										}
 									]
@@ -1773,6 +2394,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: 'Production Manager',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Anna Anderson',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Deputy Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Deputy Stage Managers Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Assistant Stage Managers',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: 'Cheryl Firth',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Tom Leggat',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Design Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Colin Falconer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Alex Lowde',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Sound Design Assistants',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'company',
+								name: 'Design Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Colin Falconer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -1948,6 +2727,88 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: 'Production Manager',
+						crewEntities: [
+							{
+								model: 'person',
+								uuid: ANNA_ANDERSON_PERSON_UUID,
+								name: 'Anna Anderson'
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Deputy Stage Managers',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID,
+								name: 'Deputy Stage Managers Ltd',
+								creditedMembers: []
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Assistant Stage Managers',
+						crewEntities: [
+							{
+								model: 'person',
+								uuid: CHERYL_FIRTH_PERSON_UUID,
+								name: 'Cheryl Firth'
+							},
+							{
+								model: 'person',
+								uuid: TOM_LEGGAT_PERSON_UUID,
+								name: 'Tom Leggat'
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Design Assistants',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Design Assistants Ltd',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: COLIN_FALCONER_PERSON_UUID,
+										name: 'Colin Falconer'
+									},
+									{
+										model: 'person',
+										uuid: ALEX_LOWDE_PERSON_UUID,
+										name: 'Alex Lowde'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'crewCredit',
+						name: 'Sound Design Assistants',
+						crewEntities: [
+							{
+								model: 'company',
+								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Design Assistants Ltd',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: COLIN_FALCONER_PERSON_UUID,
+										name: 'Colin Falconer'
+									}
+								]
+							}
+						]
+					}
 				]
 			};
 
@@ -2015,6 +2876,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				crewCredits: [
+					{
+						model: 'crewCredit',
+						name: '',
+						errors: {},
+						crewEntities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
 				]
 			};
 
@@ -2048,7 +2924,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					errors: {}
 				},
 				cast: [],
-				creativeCredits: []
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			expect(response).to.have.status(200);

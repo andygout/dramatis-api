@@ -1,6 +1,6 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { CastMember, CreativeCredit, Material, Theatre } from '.';
+import { CastMember, CreativeCredit, CrewCredit, Material, Theatre } from '.';
 
 export default class Production extends Base {
 
@@ -8,16 +8,24 @@ export default class Production extends Base {
 
 		super(props);
 
-		const { uuid, theatre, material, cast, creativeCredits } = props;
+		const { uuid, theatre, material, cast, creativeCredits, crewCredits } = props;
 
 		this.uuid = uuid;
+
 		this.material = new Material({ ...material, isAssociation: true });
+
 		this.theatre = new Theatre({ ...theatre, isAssociation: true });
+
 		this.cast = cast
 			? cast.map(castMember => new CastMember(castMember))
 			: [];
+
 		this.creativeCredits = creativeCredits
 			? creativeCredits.map(creativeCredit => new CreativeCredit(creativeCredit))
+			: [];
+
+		this.crewCredits = crewCredits
+			? crewCredits.map(crewCredit => new CrewCredit(crewCredit))
 			: [];
 
 	}
@@ -50,6 +58,12 @@ export default class Production extends Base {
 
 		this.creativeCredits.forEach((creativeCredit, index) =>
 			creativeCredit.runInputValidations({ isDuplicate: duplicateCreativeCreditIndices.includes(index) })
+		);
+
+		const duplicateCrewCreditIndices = getDuplicateNameIndices(this.crewCredits);
+
+		this.crewCredits.forEach((crewCredit, index) =>
+			crewCredit.runInputValidations({ isDuplicate: duplicateCrewCreditIndices.includes(index) })
 		);
 
 	}
