@@ -117,69 +117,34 @@ describe('Production model', () => {
 
 		describe('creativeCredits property', () => {
 
-			context('instance is subject', () => {
+			it('assigns empty array if absent from props', () => {
 
-				it('assigns empty array if absent from props', () => {
-
-					const instance = createInstance({ name: 'Hamlet' });
-					expect(instance.creativeCredits).to.deep.equal([]);
-
-				});
-
-				it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', () => {
-
-					const props = {
-						name: 'Hamlet',
-						creativeCredits: [
-							{
-								name: 'Sound Designer'
-							},
-							{
-								name: ''
-							},
-							{
-								name: ' '
-							}
-						]
-					};
-					const instance = createInstance(props);
-					expect(instance.creativeCredits.length).to.equal(3);
-					expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
-					expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
-					expect(instance.creativeCredits[2] instanceof CreativeCredit).to.be.true;
-
-				});
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.creativeCredits).to.deep.equal([]);
 
 			});
 
-			context('instance is not subject, i.e. it is an association of another instance', () => {
+			it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				it('will not assign any value if absent from props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writingCredits');
-
-				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writingCredits: [
-							{
-								name: 'version by'
-							}
-						],
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writingCredits');
-
-				});
+				const props = {
+					name: 'Hamlet',
+					creativeCredits: [
+						{
+							name: 'Sound Designer'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.creativeCredits.length).to.equal(3);
+				expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
+				expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
+				expect(instance.creativeCredits[2] instanceof CreativeCredit).to.be.true;
 
 			});
 
