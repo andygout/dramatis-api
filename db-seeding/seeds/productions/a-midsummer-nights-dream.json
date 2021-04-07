@@ -196,7 +196,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Gregory Doran"
 				}
@@ -204,7 +204,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Stephen Brimson Lewis"
 				}
@@ -212,7 +212,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Tim Mitchell"
 				}
@@ -220,7 +220,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Martin Slavin"
 				}
@@ -228,7 +228,7 @@
 		},
 		{
 			"name": "Choreography",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Michael Ashcroft"
 				}
@@ -236,7 +236,7 @@
 		},
 		{
 			"name": "Music",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Englishby"
 				}
@@ -244,7 +244,7 @@
 		},
 		{
 			"name": "Musical Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Julian Winn"
 				}
@@ -252,7 +252,7 @@
 		},
 		{
 			"name": "Directors of Puppetry",
-			"creativeEntities": [
+			"entities": [
 				{
 					"model": "company",
 					"name": "Little Angel Theatre",
@@ -269,7 +269,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Terry King"
 				}
@@ -277,7 +277,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Phillip Breen"
 				}

@@ -453,7 +453,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Higgins'
 								}
@@ -463,7 +463,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedPersonPaulHiggins1);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -479,7 +479,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Higgins',
 									differentiator: '1'
@@ -490,7 +490,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedPersonPaulHiggins2);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -506,7 +506,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Higgins'
 								}
@@ -516,7 +516,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedPersonPaulHiggins1);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -532,7 +532,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Higgins',
 									differentiator: '1'
@@ -543,7 +543,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedPersonPaulHiggins2);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -617,7 +617,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph'
@@ -628,7 +628,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph1);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
 		});
@@ -644,7 +644,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -656,7 +656,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph2);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -672,7 +672,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph'
@@ -683,7 +683,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph1);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -699,7 +699,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -711,7 +711,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph2);
+			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -769,7 +769,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -785,7 +785,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -801,7 +801,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -818,7 +818,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -834,7 +834,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -850,7 +850,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -866,7 +866,7 @@ describe('Uniqueness in database: Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Designer',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -883,7 +883,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -941,7 +941,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Tariq Hussain'
 								}
@@ -951,7 +951,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain1);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -967,7 +967,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Tariq Hussain',
 									differentiator: '1'
@@ -978,7 +978,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain2);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -994,7 +994,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Tariq Hussain'
 								}
@@ -1004,7 +1004,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain1);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1020,7 +1020,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Tariq Hussain',
 									differentiator: '1'
@@ -1031,7 +1031,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedPersonTariqHussain2);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1105,7 +1105,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Deputies Ltd'
@@ -1116,7 +1116,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
 		});
@@ -1132,7 +1132,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Deputies Ltd',
@@ -1144,7 +1144,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -1160,7 +1160,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Deputies Ltd'
@@ -1171,7 +1171,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -1187,7 +1187,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Deputies Ltd',
@@ -1199,7 +1199,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
+			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -1257,7 +1257,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -1273,7 +1273,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -1289,7 +1289,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -1306,7 +1306,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1322,7 +1322,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -1338,7 +1338,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1354,7 +1354,7 @@ describe('Uniqueness in database: Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -1371,7 +1371,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].crewEntities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});

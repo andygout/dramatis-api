@@ -99,7 +99,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Marianne Elliott"
 				}
@@ -107,7 +107,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Bunny Christie"
 				}
@@ -115,7 +115,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Neil Austin"
 				}
@@ -123,7 +123,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Christopher Shutt"
 				}
@@ -131,7 +131,7 @@
 		},
 		{
 			"name": "Music & Musical Direction",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Stephen Warbeck"
 				}
@@ -139,7 +139,7 @@
 		},
 		{
 			"name": "Music Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Nicholas Cooper"
 				}
@@ -147,7 +147,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Kate Waters"
 				}
@@ -155,7 +155,7 @@
 		},
 		{
 			"name": "Magic",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Kieve"
 				}
@@ -163,7 +163,7 @@
 		},
 		{
 			"name": "Company Voice Work",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Jeannette Nelson"
 				}
@@ -171,7 +171,7 @@
 		},
 		{
 			"name": "Staff Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Elly Green"
 				}
@@ -179,7 +179,7 @@
 		},
 		{
 			"name": "Casting Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Alastair Coomer"
 				}
@@ -187,7 +187,7 @@
 		},
 		{
 			"name": "Casting Director (children)",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Jessica Ronane"
 				}
@@ -197,7 +197,7 @@
 	"crewCredits": [
 		{
 			"name": "Production Manager",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Tariq Hussain"
 				}
@@ -205,7 +205,7 @@
 		},
 		{
 			"name": "Stage Manager",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Jan Suffling"
 				}
@@ -213,7 +213,7 @@
 		},
 		{
 			"name": "Deputy Stage Manager",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Cynthia Durberry"
 				}
@@ -221,7 +221,7 @@
 		},
 		{
 			"name": "Assistant Stage Manager",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Ian Connop"
 				}
@@ -229,7 +229,7 @@
 		},
 		{
 			"name": "Costume Supervisor",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Stephanie Arditti"
 				}
@@ -237,7 +237,7 @@
 		},
 		{
 			"name": "Prop Supervisor",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Chris Lake"
 				}
@@ -245,7 +245,7 @@
 		},
 		{
 			"name": "Assistant to the Lighting Designer",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Paul Knott"
 				}
@@ -253,7 +253,7 @@
 		},
 		{
 			"name": "Associate Sound Designer",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Mike Winship"
 				}
@@ -261,7 +261,7 @@
 		},
 		{
 			"name": "Design Associate",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Tim Blazdell"
 				}
@@ -269,7 +269,7 @@
 		},
 		{
 			"name": "Production Photographer",
-			"crewEntities": [
+			"entities": [
 				{
 					"name": "Kevin Cummins"
 				}

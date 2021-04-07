@@ -86,7 +86,7 @@ describe('Productions with creative team', () => {
 				creativeCredits: [
 					{
 						name: 'Director',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Deborah Warner'
 							}
@@ -95,7 +95,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of testing company with multiple creative credits for same production.
 					{
 						name: 'Designer',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph'
@@ -104,7 +104,7 @@ describe('Productions with creative team', () => {
 					},
 					{
 						name: 'Sound Designer',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph'
@@ -114,7 +114,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Video Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Mesmer',
@@ -170,7 +170,7 @@ describe('Productions with creative team', () => {
 				creativeCredits: [
 					{
 						name: 'Direction',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Deborah Warner'
 							}
@@ -179,7 +179,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of testing person with multiple creative credits for same production.
 					{
 						name: 'Design',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Nina Dunn'
 							}
@@ -188,7 +188,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Sound Design',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph'
@@ -198,7 +198,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Video Design',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Cineluma'
@@ -254,7 +254,7 @@ describe('Productions with creative team', () => {
 				creativeCredits: [
 					{
 						name: 'Directed by',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Deborah Warner'
 							}
@@ -263,7 +263,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of testing company and credited member with multiple creative credits for same production.
 					{
 						name: 'Design by',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: '59 Productions',
@@ -278,7 +278,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Sound Design by',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph'
@@ -288,7 +288,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Video Design by',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Nina Dunn'
 							},
@@ -345,7 +345,7 @@ describe('Productions with creative team', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Video Design by',
-						creativeEntities: [
+						entities: [
 							{
 								name: 'Nina Dunn'
 							},
@@ -440,7 +440,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Director',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: DEBORAH_WARNER_PERSON_UUID,
@@ -451,7 +451,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Designer',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
@@ -463,7 +463,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Sound Designer',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
@@ -475,7 +475,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Video Designers',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: MESMER_COMPANY_UUID,
@@ -556,7 +556,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Direction',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: DEBORAH_WARNER_PERSON_UUID,
@@ -567,7 +567,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Design',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: NINA_DUNN_PERSON_UUID,
@@ -578,7 +578,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Sound Design',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
@@ -590,7 +590,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Video Design',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: CINELUMA_COMPANY_UUID,
@@ -671,7 +671,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Directed by',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: DEBORAH_WARNER_PERSON_UUID,
@@ -682,7 +682,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Design by',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
@@ -700,7 +700,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Sound Design by',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: AUTOGRAPH_COMPANY_UUID,
@@ -712,7 +712,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Video Design by',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: NINA_DUNN_PERSON_UUID,
@@ -793,7 +793,7 @@ describe('Productions with creative team', () => {
 				{
 					model: 'creativeCredit',
 					name: 'Video Design by',
-					creativeEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: NINA_DUNN_PERSON_UUID,

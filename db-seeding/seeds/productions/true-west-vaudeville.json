@@ -33,7 +33,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Matthew Dunster"
 				}
@@ -41,7 +41,7 @@
 		},
 		{
 			"name": "Set / Costume Design",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Jon Bausor"
 				}

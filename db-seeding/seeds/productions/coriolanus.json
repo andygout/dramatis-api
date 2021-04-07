@@ -584,7 +584,7 @@
 	],	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Yukio Ninagawa"
 				}
@@ -592,7 +592,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Tsukasa Nakagoshi"
 				}
@@ -600,7 +600,7 @@
 		},
 		{
 			"name": "Costume Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Lily Komine"
 				}
@@ -608,7 +608,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Tamotsu Harada"
 				}
@@ -616,7 +616,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Masahiro Inoue"
 				}
@@ -624,7 +624,7 @@
 		},
 		{
 			"name": "Music",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Yasuhiro Kasamatsu"
 				}
@@ -632,7 +632,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Masahiro Kunii"
 				}
@@ -640,7 +640,7 @@
 		},
 		{
 			"name": "Assistant Directors",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Sonsho Inoue"
 				},

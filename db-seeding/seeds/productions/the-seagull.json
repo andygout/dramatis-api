@@ -106,7 +106,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Blanche McIntyre"
 				}
@@ -114,7 +114,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Laura Hopkins"
 				}
@@ -122,7 +122,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Guy Hoare"
 				}
@@ -130,7 +130,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Gregory Clarke"
 				}
@@ -138,7 +138,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Jack Lowe"
 				}

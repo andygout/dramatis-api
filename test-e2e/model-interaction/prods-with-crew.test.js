@@ -87,7 +87,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Production Manager',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Tariq Hussain'
 							}
@@ -96,7 +96,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of testing company with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervisor',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Stagecraft Ltd'
@@ -106,7 +106,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operator',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Stagecraft Ltd'
@@ -116,7 +116,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Stage Managers',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Deputies Ltd',
@@ -173,7 +173,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Production Management',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Tariq Hussain'
 							}
@@ -182,7 +182,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of testing person with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervision',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Cass Kirchner'
 							}
@@ -191,7 +191,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operation',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Stagecraft Ltd'
@@ -201,7 +201,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Theatrical Production Services Ltd'
@@ -258,7 +258,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Production Management by',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Tariq Hussain'
 							}
@@ -267,7 +267,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of testing company and credited member with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervision by',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Assistants Ltd',
@@ -282,7 +282,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operation by',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Stagecraft Ltd'
@@ -292,7 +292,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management by',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Cass Kirchner'
 							},
@@ -349,7 +349,7 @@ describe('Productions with crew', () => {
 					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management by',
-						crewEntities: [
+						entities: [
 							{
 								name: 'Cass Kirchner'
 							},
@@ -444,7 +444,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Production Manager',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: TARIQ_HUSSAIN_PERSON_UUID,
@@ -455,7 +455,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Rigging Supervisor',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
@@ -467,7 +467,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Sound Operator',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
@@ -479,7 +479,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Stage Managers',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
@@ -560,7 +560,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Production Management',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: TARIQ_HUSSAIN_PERSON_UUID,
@@ -571,7 +571,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Rigging Supervision',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -582,7 +582,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Sound Operation',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
@@ -594,7 +594,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Stage Management',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
@@ -675,7 +675,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Production Management by',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: TARIQ_HUSSAIN_PERSON_UUID,
@@ -686,7 +686,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Rigging Supervision by',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
@@ -704,7 +704,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Sound Operation by',
-					crewEntities: [
+					entities: [
 						{
 							model: 'company',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
@@ -716,7 +716,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Stage Management by',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -797,7 +797,7 @@ describe('Productions with crew', () => {
 				{
 					model: 'crewCredit',
 					name: 'Stage Management by',
-					crewEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: CASS_KIRCHNER_PERSON_UUID,

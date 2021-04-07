@@ -132,7 +132,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Benedict Andrews"
 				}
@@ -140,7 +140,7 @@
 		},
 		{
 			"name": "Design",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Johannes Schütz"
 				}
@@ -148,7 +148,7 @@
 		},
 		{
 			"name": "Costumes",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Victoria Behr"
 				}
@@ -156,7 +156,7 @@
 		},
 		{
 			"name": "Light",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "James Farncombe"
 				}
@@ -164,7 +164,7 @@
 		},
 		{
 			"name": "Sound",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Arditti"
 				}
@@ -172,7 +172,7 @@
 		},
 		{
 			"name": "Music Direction & Arrangement",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Phil Bateman"
 				}
@@ -180,7 +180,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Natalie Abrahami"
 				}
@@ -188,7 +188,7 @@
 		},
 		{
 			"name": "Casting",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Maggie Lunn"
 				},

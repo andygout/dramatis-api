@@ -78,7 +78,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Sean Foley"
 				}
@@ -86,7 +86,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Michael Taylor"
 				}
@@ -94,7 +94,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "James Farncombe"
 				}
@@ -102,7 +102,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Ben Ringham"
 				},
@@ -113,7 +113,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Alison de Burgh"
 				}
@@ -121,7 +121,7 @@
 		},
 		{
 			"name": "Casting Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Sarah Bird"
 				}
