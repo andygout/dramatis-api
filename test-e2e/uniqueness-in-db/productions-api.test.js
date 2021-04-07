@@ -569,7 +569,7 @@ describe('Uniqueness in database: Productions API', () => {
 			]
 		};
 
-		const expectedCompanyGateTheatreCompany2 = {
+		const expectedCompanyAutograph2 = {
 			model: 'company',
 			name: 'Autograph',
 			differentiator: '1',
@@ -656,7 +656,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -711,7 +711,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(response.body.creativeCredits[0].creativeEntities[0]).to.deep.equal(expectedCompanyAutograph2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -720,7 +720,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 	describe('Production creative entity (company) credited member (person) uniqueness in database', () => {
 
-		const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonAndrewBruce1 = {
 			model: 'person',
@@ -746,7 +746,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 			await createNode({
 				label: 'Production',
-				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
+				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID,
 				name: 'Mother Courage and Her Children'
 			});
 
@@ -758,12 +758,12 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and creates creative entity (company) that does not have a differentiator', async () => {
+		it('updates production and creates creative entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -790,12 +790,12 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and creates creative entity (company) that has same name as existing creative entity but uses a differentiator', async () => {
+		it('updates production and creates creative entity (company) that has same name as existing creative entity but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -823,12 +823,12 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and uses existing creative entity (company) that does not have a differentiator', async () => {
+		it('updates production and uses existing creative entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -855,12 +855,12 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and uses existing creative entity (company) that has a differentiator', async () => {
+		it('updates production and uses existing creative entity (company) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`)
+				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
 					creativeCredits: [
@@ -1246,7 +1246,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and creates crew entity (company) that does not have a differentiator', async () => {
+		it('updates production and creates crew entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
@@ -1278,7 +1278,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
+		it('updates production and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
@@ -1311,7 +1311,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and uses existing crew entity (company) that does not have a differentiator', async () => {
+		it('updates production and uses existing crew entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
@@ -1343,7 +1343,7 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates material and uses existing crew entity (company) that has a differentiator', async () => {
+		it('updates production and uses existing crew entity (company) that has a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 

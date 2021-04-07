@@ -427,8 +427,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const BEN_RINGHAM_PERSON_UUID = '9';
 		const MAX_RINGHAM_PERSON_UUID = '10';
 		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '11';
-		const LEO_WARNER_UUID = '12';
-		const MARK_GRIMMER_UUID = '13';
+		const LEO_WARNER_PERSON_UUID = '12';
+		const MARK_GRIMMER_PERSON_UUID = '13';
 		const IGOR_PERSON_UUID = '14';
 		const CREW_DEPUTIES_LTD_COMPANY_UUID = '15';
 		const SARA_GUNTER_PERSON_UUID = '16';
@@ -447,8 +447,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const HILDEGARD_BECHTLER_PERSON_UUID = '29';
 		const CHLOE_LAMFORD_PERSON_UUID = '30';
 		const AUTOGRAPH_COMPANY_UUID = '31';
-		const ANDREW_BRUCE_UUID = '32';
-		const NICK_LIDSTER_UUID = '33';
+		const ANDREW_BRUCE_PERSON_UUID = '32';
+		const NICK_LIDSTER_PERSON_UUID = '33';
 		const ANNA_ANDERSON_PERSON_UUID = '34';
 		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '35';
 		const CHERYL_FIRTH_PERSON_UUID = '36';
@@ -1291,12 +1291,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								creditedMembers: [
 									{
 										model: 'person',
-										uuid: LEO_WARNER_UUID,
+										uuid: LEO_WARNER_PERSON_UUID,
 										name: 'Leo Warner'
 									},
 									{
 										model: 'person',
-										uuid: MARK_GRIMMER_UUID,
+										uuid: MARK_GRIMMER_PERSON_UUID,
 										name: 'Mark Grimmer'
 									}
 								]
@@ -1314,7 +1314,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								creditedMembers: [
 									{
 										model: 'person',
-										uuid: LEO_WARNER_UUID,
+										uuid: LEO_WARNER_PERSON_UUID,
 										name: 'Leo Warner'
 									}
 								]
@@ -2697,12 +2697,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								creditedMembers: [
 									{
 										model: 'person',
-										uuid: ANDREW_BRUCE_UUID,
+										uuid: ANDREW_BRUCE_PERSON_UUID,
 										name: 'Andrew Bruce'
 									},
 									{
 										model: 'person',
-										uuid: NICK_LIDSTER_UUID,
+										uuid: NICK_LIDSTER_PERSON_UUID,
 										name: 'Nick Lidster'
 									}
 								]
@@ -2720,7 +2720,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								creditedMembers: [
 									{
 										model: 'person',
-										uuid: ANDREW_BRUCE_UUID,
+										uuid: ANDREW_BRUCE_PERSON_UUID,
 										name: 'Andrew Bruce'
 									}
 								]
