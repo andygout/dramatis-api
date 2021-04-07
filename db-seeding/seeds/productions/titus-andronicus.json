@@ -218,7 +218,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Lucy Bailey"
 				}
@@ -226,7 +226,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "William Dudley"
 				}
@@ -234,7 +234,7 @@
 		},
 		{
 			"name": "Choreography",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Siân Williams"
 				},
@@ -245,7 +245,7 @@
 		},
 		{
 			"name": "Music",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Django Bates"
 				}
@@ -253,7 +253,7 @@
 		},
 		{
 			"name": "Musical Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Adrian Woodward"
 				}
@@ -261,7 +261,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Terry King"
 				}
@@ -269,7 +269,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Richard Hartley"
 				}

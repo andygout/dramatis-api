@@ -1112,7 +1112,7 @@ describe('Production instance', () => {
 									'Value is too long'
 								]
 							},
-							creativeEntities: []
+							entities: []
 						}
 					],
 					crewCredits: []
@@ -1170,7 +1170,7 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							creativeEntities: []
+							entities: []
 						},
 						{
 							name: 'Sound Design',
@@ -1179,7 +1179,7 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							creativeEntities: []
+							entities: []
 						}
 					],
 					crewCredits: []
@@ -1200,7 +1200,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: '',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Groothuis'
 								}
@@ -1239,7 +1239,7 @@ describe('Production instance', () => {
 									'Name is required if named children exist'
 								]
 							},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Paul Groothuis',
@@ -1267,7 +1267,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									name: ABOVE_MAX_LENGTH_STRING
 								}
@@ -1302,7 +1302,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -1334,7 +1334,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Paul Groothuis',
 									differentiator: ABOVE_MAX_LENGTH_STRING
@@ -1370,7 +1370,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Paul Groothuis',
@@ -1402,7 +1402,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: ABOVE_MAX_LENGTH_STRING
@@ -1438,7 +1438,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -1471,7 +1471,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -1508,7 +1508,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Autograph',
@@ -1541,7 +1541,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -1596,7 +1596,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Autograph',
@@ -1672,8 +1672,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.creativeCredits[0].creativeEntities[0].creditedMembers[1].model).to.equal('person');
-				expect(result.creativeCredits[0].creativeEntities[3].model).to.equal('company');
+				expect(result.creativeCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
+				expect(result.creativeCredits[0].entities[3].model).to.equal('company');
 
 			});
 
@@ -1688,7 +1688,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: '',
@@ -1730,7 +1730,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: '',
@@ -1770,7 +1770,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -1811,7 +1811,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Autograph',
@@ -1851,7 +1851,7 @@ describe('Production instance', () => {
 					creativeCredits: [
 						{
 							name: 'Sound Design',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -1893,7 +1893,7 @@ describe('Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {},
-							creativeEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Autograph',
@@ -1968,7 +1968,7 @@ describe('Production instance', () => {
 									'Value is too long'
 								]
 							},
-							crewEntities: []
+							entities: []
 						}
 					]
 				};
@@ -2026,7 +2026,7 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							crewEntities: []
+							entities: []
 						},
 						{
 							name: 'Stage Manager',
@@ -2035,7 +2035,7 @@ describe('Production instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							crewEntities: []
+							entities: []
 						}
 					]
 				};
@@ -2055,7 +2055,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: '',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Andrew Speed'
 								}
@@ -2095,7 +2095,7 @@ describe('Production instance', () => {
 									'Name is required if named children exist'
 								]
 							},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Andrew Speed',
@@ -2122,7 +2122,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Stage Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: ABOVE_MAX_LENGTH_STRING
 								}
@@ -2158,7 +2158,7 @@ describe('Production instance', () => {
 						{
 							name: 'Stage Manager',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -2189,7 +2189,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Stage Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Andrew Speed',
 									differentiator: ABOVE_MAX_LENGTH_STRING
@@ -2226,7 +2226,7 @@ describe('Production instance', () => {
 						{
 							name: 'Stage Manager',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Andrew Speed',
@@ -2257,7 +2257,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Stage Manager',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: ABOVE_MAX_LENGTH_STRING
@@ -2294,7 +2294,7 @@ describe('Production instance', () => {
 						{
 							name: 'Stage Manager',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -2326,7 +2326,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Assistant Stage Managers Ltd',
@@ -2364,7 +2364,7 @@ describe('Production instance', () => {
 						{
 							name: 'Assistant Stage Managers',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Assistant Stage Managers Ltd',
@@ -2396,7 +2396,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Assistant Stage Managers Ltd',
@@ -2452,7 +2452,7 @@ describe('Production instance', () => {
 						{
 							name: 'Assistant Stage Managers',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Assistant Stage Managers Ltd',
@@ -2527,8 +2527,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].crewEntities[0].creditedMembers[1].model).to.equal('person');
-				expect(result.crewCredits[0].crewEntities[3].model).to.equal('company');
+				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
+				expect(result.crewCredits[0].entities[3].model).to.equal('company');
 
 			});
 
@@ -2543,7 +2543,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: '',
@@ -2586,7 +2586,7 @@ describe('Production instance', () => {
 						{
 							name: 'Assistant Stage Managers',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: '',
@@ -2625,7 +2625,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Assistant Stage Managers Ltd',
@@ -2667,7 +2667,7 @@ describe('Production instance', () => {
 						{
 							name: 'Assistant Stage Managers',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Assistant Stage Managers Ltd',
@@ -2706,7 +2706,7 @@ describe('Production instance', () => {
 					crewCredits: [
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Assistant Stage Managers Ltd',
@@ -2749,7 +2749,7 @@ describe('Production instance', () => {
 						{
 							name: 'Assistant Stage Managers',
 							errors: {},
-							crewEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Assistant Stage Managers Ltd',

@@ -210,7 +210,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Gregory Doran"
 				}
@@ -218,7 +218,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Stephen Brimson Lewis"
 				}
@@ -226,7 +226,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Tim Mitchell"
 				}
@@ -234,7 +234,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Martin Slavin"
 				}
@@ -242,7 +242,7 @@
 		},
 		{
 			"name": "Music",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Englishby"
 				}
@@ -250,7 +250,7 @@
 		},
 		{
 			"name": "Musical Directors",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Bruce O'Neil"
 				},
@@ -261,7 +261,7 @@
 		},
 		{
 			"name": "Movement Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Michael Ashcroft"
 				}
@@ -269,7 +269,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Terry King"
 				}
@@ -277,7 +277,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Owen Horsley"
 				}
@@ -285,7 +285,7 @@
 		},
 		{
 			"name": "Casting Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Helena Palmer"
 				}

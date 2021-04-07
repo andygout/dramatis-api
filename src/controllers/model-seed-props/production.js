@@ -8,14 +8,14 @@ export default {
 	],
 	creativeCredits: [
 		{
-			creativeEntities: [
+			entities: [
 				{}
 			]
 		}
 	],
 	crewCredits: [
 		{
-			crewEntities: [
+			entities: [
 				{}
 			]
 		}

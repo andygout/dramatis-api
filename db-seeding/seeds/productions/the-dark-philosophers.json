@@ -35,7 +35,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Hunter"
 				}
@@ -43,7 +43,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Angela Davies"
 				}
@@ -51,7 +51,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Ceri James"
 				}
@@ -59,7 +59,7 @@
 		},
 		{
 			"name": "Music Composed and Directed by",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Iain Johnstone"
 				}
@@ -67,7 +67,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Laura Coates"
 				}
@@ -75,7 +75,7 @@
 		},
 		{
 			"name": "Casting Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Sam Jones"
 				}

@@ -33,7 +33,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Miller"
 				}
@@ -41,7 +41,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Hayden Griffin"
 				}
@@ -49,7 +49,7 @@
 		},
 		{
 			"name": "Lighting Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Paul Pyant"
 				}
@@ -57,7 +57,7 @@
 		},
 		{
 			"name": "Sound Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "John Leonard"
 				}
@@ -65,7 +65,7 @@
 		},
 		{
 			"name": "Fight Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Terry King"
 				}
@@ -73,7 +73,7 @@
 		},
 		{
 			"name": "Assistant Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Dan Coleman"
 				}
@@ -81,7 +81,7 @@
 		},
 		{
 			"name": "Casting Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Nina Gold"
 				}

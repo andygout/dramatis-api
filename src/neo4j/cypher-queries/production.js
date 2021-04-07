@@ -85,15 +85,12 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
-		UNWIND (CASE $creativeCredits WHEN []
-			THEN [{ creativeEntities: [] }]
-			ELSE $creativeCredits
-		END) AS creativeCredit
+		UNWIND (CASE $creativeCredits WHEN [] THEN [{ entities: [] }] ELSE $creativeCredits END) AS creativeCredit
 
 			UNWIND
-				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'person']) WHEN 0
 					THEN [null]
-					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'person']
+					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'person']
 				END AS creativePersonParam
 
 				OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
@@ -122,9 +119,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT production, creativeCredit
 
 			UNWIND
-				CASE SIZE([entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'company']) WHEN 0
 					THEN [null]
-					ELSE [entity IN creativeCredit.creativeEntities WHERE entity.model = 'company']
+					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'company']
 				END AS creativeCompanyParam
 
 				OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
@@ -197,15 +194,12 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
-		UNWIND (CASE $crewCredits WHEN []
-			THEN [{ crewEntities: [] }]
-			ELSE $crewCredits
-		END) AS crewCredit
+		UNWIND (CASE $crewCredits WHEN [] THEN [{ entities: [] }] ELSE $crewCredits END) AS crewCredit
 
 			UNWIND
-				CASE SIZE([entity IN crewCredit.crewEntities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'person']) WHEN 0
 					THEN [null]
-					ELSE [entity IN crewCredit.crewEntities WHERE entity.model = 'person']
+					ELSE [entity IN crewCredit.entities WHERE entity.model = 'person']
 				END AS crewPersonParam
 
 				OPTIONAL MATCH (existingCrewPerson:Person { name: crewPersonParam.name })
@@ -234,9 +228,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT production, crewCredit
 
 			UNWIND
-				CASE SIZE([entity IN crewCredit.crewEntities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'company']) WHEN 0
 					THEN [null]
-					ELSE [entity IN crewCredit.crewEntities WHERE entity.model = 'company']
+					ELSE [entity IN crewCredit.entities WHERE entity.model = 'company']
 				END AS crewCompanyParam
 
 				OPTIONAL MATCH (existingCrewCompany:Company { name: crewCompanyParam.name })
@@ -399,10 +393,10 @@ const getEditQuery = () => `
 				ELSE {
 					model: 'creativeCredit',
 					name: creativeCreditName,
-					creativeEntities: creativeEntities
+					entities: creativeEntities
 				}
 			END
-		) + [{ creativeEntities: [{}] }] AS creativeCredits
+		) + [{ entities: [{}] }] AS creativeCredits
 
 	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
 		WHERE
@@ -461,10 +455,10 @@ const getEditQuery = () => `
 				ELSE {
 					model: 'crewCredit',
 					name: crewCreditName,
-					crewEntities: crewEntities
+					entities: crewEntities
 				}
 			END
-		) + [{ crewEntities: [{}] }] AS crewCredits
+		) + [{ entities: [{}] }] AS crewCredits
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery('update');
@@ -640,7 +634,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'creativeCredit',
 					name: creativeCreditName,
-					creativeEntities: creativeEntities
+					entities: creativeEntities
 				}
 			END
 		) AS creativeCredits
@@ -702,7 +696,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'crewCredit',
 					name: crewCreditName,
-					crewEntities: crewEntities
+					entities: crewEntities
 				}
 			END
 		) AS crewCredits

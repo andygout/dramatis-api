@@ -31,7 +31,7 @@
 	"creativeCredits": [
 		{
 			"name": "Co-directors",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Steven Berkoff"
 				},

@@ -83,7 +83,7 @@
 	"creativeCredits": [
 		{
 			"name": "Director",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Rebecca Gatward"
 				}
@@ -91,7 +91,7 @@
 		},
 		{
 			"name": "Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Liz Cooke"
 				}
@@ -99,7 +99,7 @@
 		},
 		{
 			"name": "Light Designer",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Alastair West"
 				}
@@ -107,7 +107,7 @@
 		},
 		{
 			"name": "Sound Score",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Matt McKenzie"
 				}
@@ -115,7 +115,7 @@
 		},
 		{
 			"name": "Video Design",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Gary Vernon"
 				}
@@ -123,7 +123,7 @@
 		},
 		{
 			"name": "Movement",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Liz Ranken"
 				}
@@ -131,7 +131,7 @@
 		},
 		{
 			"name": "Fight Arranger",
-			"creativeEntities": [
+			"entities": [
 				{
 					"name": "Terry King"
 				}

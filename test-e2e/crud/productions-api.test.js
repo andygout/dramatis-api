@@ -59,7 +59,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -74,7 +74,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -163,7 +163,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -178,7 +178,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -241,7 +241,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -256,7 +256,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -323,7 +323,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -338,7 +338,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -547,7 +547,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Nicholas Hytner',
 									differentiator: '1'
@@ -556,7 +556,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						{
 							name: 'Designers',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Handspring Puppet Company',
@@ -567,7 +567,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Sound Designers',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Ben Ringham',
 									differentiator: '1'
@@ -581,7 +581,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Lighting Designers',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: '59 Productions',
@@ -602,7 +602,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Video Designers',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: '59 Productions',
@@ -620,7 +620,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					crewCredits: [
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Igor',
 									differentiator: '1'
@@ -630,7 +630,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Deputies Ltd',
@@ -640,7 +640,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Sara Gunter',
 									differentiator: '1'
@@ -654,7 +654,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -675,7 +675,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Sound Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Crew Assistants Ltd',
@@ -836,7 +836,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Director',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Nicholas Hytner',
@@ -855,7 +855,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Handspring Puppet Company',
@@ -882,7 +882,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Sound Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Ben Ringham',
@@ -907,7 +907,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Lighting Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: '59 Productions',
@@ -946,7 +946,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Video Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: '59 Productions',
@@ -979,7 +979,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -994,7 +994,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Production Manager',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Igor',
@@ -1013,7 +1013,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Deputy Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Deputies Ltd',
@@ -1040,7 +1040,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Assistant Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Sara Gunter',
@@ -1065,7 +1065,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Assistants Ltd',
@@ -1104,7 +1104,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Sound Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Assistants Ltd',
@@ -1137,7 +1137,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -1244,7 +1244,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Director',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: NICHOLAS_HYTNER_PERSON_UUID,
@@ -1255,7 +1255,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: HANDSPRING_PUPPET_COMPANY_UUID,
@@ -1267,7 +1267,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Sound Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: BEN_RINGHAM_PERSON_UUID,
@@ -1283,7 +1283,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Lighting Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
@@ -1306,7 +1306,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Video Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
@@ -1326,7 +1326,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Production Manager',
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: IGOR_PERSON_UUID,
@@ -1337,7 +1337,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Deputy Stage Managers',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
@@ -1349,7 +1349,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Assistant Stage Managers',
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: SARA_GUNTER_PERSON_UUID,
@@ -1365,7 +1365,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Design Assistants',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
@@ -1388,7 +1388,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Sound Design Assistants',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
@@ -1560,7 +1560,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Director',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Nicholas Hytner',
@@ -1579,7 +1579,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Handspring Puppet Company',
@@ -1606,7 +1606,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Sound Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Ben Ringham',
@@ -1631,7 +1631,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Lighting Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: '59 Productions',
@@ -1670,7 +1670,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Video Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: '59 Productions',
@@ -1703,7 +1703,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -1718,7 +1718,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Production Manager',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Igor',
@@ -1737,7 +1737,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Deputy Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Deputies Ltd',
@@ -1764,7 +1764,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Assistant Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Sara Gunter',
@@ -1789,7 +1789,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Assistants Ltd',
@@ -1828,7 +1828,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Sound Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Crew Assistants Ltd',
@@ -1861,7 +1861,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -1951,7 +1951,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					creativeCredits: [
 						{
 							name: 'Director',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Rupert Goold',
 									differentiator: '1'
@@ -1961,7 +1961,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Fight Directors',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'RC-Annie',
@@ -1971,7 +1971,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						{
 							name: 'Designers',
-							creativeEntities: [
+							entities: [
 								{
 									name: 'Hildegard Bechtler',
 									differentiator: '1'
@@ -1986,7 +1986,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Sound Designers',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -2007,7 +2007,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Video Designers',
-							creativeEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Autograph',
@@ -2026,7 +2026,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Production Manager',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Anna Anderson',
 									differentiator: '1'
@@ -2036,7 +2036,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Deputy Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Deputy Stage Managers Ltd',
@@ -2046,7 +2046,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						{
 							name: 'Assistant Stage Managers',
-							crewEntities: [
+							entities: [
 								{
 									name: 'Cheryl Firth',
 									differentiator: '1'
@@ -2060,7 +2060,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Design Assistants Ltd',
@@ -2081,7 +2081,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						// Contrivance for purposes of test.
 						{
 							name: 'Sound Design Assistants',
-							crewEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Design Assistants Ltd',
@@ -2242,7 +2242,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Director',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Rupert Goold',
@@ -2261,7 +2261,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Fight Directors',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'RC-Annie',
@@ -2288,7 +2288,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Hildegard Bechtler',
@@ -2313,7 +2313,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Sound Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph',
@@ -2352,7 +2352,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: 'Video Designers',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Autograph',
@@ -2385,7 +2385,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -2400,7 +2400,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Production Manager',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Anna Anderson',
@@ -2419,7 +2419,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Deputy Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Deputy Stage Managers Ltd',
@@ -2446,7 +2446,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Assistant Stage Managers',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'Cheryl Firth',
@@ -2471,7 +2471,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Design Assistants Ltd',
@@ -2510,7 +2510,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: 'Sound Design Assistants',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'Design Assistants Ltd',
@@ -2543,7 +2543,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -2650,7 +2650,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Director',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: RUPERT_GOOLD_PERSON_UUID,
@@ -2661,7 +2661,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Fight Directors',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: RC_ANNIE_LTD_COMPANY_UUID,
@@ -2673,7 +2673,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: HILDEGARD_BECHTLER_PERSON_UUID,
@@ -2689,7 +2689,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Sound Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: AUTOGRAPH_COMPANY_UUID,
@@ -2712,7 +2712,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'creativeCredit',
 						name: 'Video Designers',
-						creativeEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: AUTOGRAPH_COMPANY_UUID,
@@ -2732,7 +2732,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Production Manager',
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: ANNA_ANDERSON_PERSON_UUID,
@@ -2743,7 +2743,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Deputy Stage Managers',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID,
@@ -2755,7 +2755,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Assistant Stage Managers',
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -2771,7 +2771,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Design Assistants',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
@@ -2794,7 +2794,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'crewCredit',
 						name: 'Sound Design Assistants',
-						crewEntities: [
+						entities: [
 							{
 								model: 'company',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
@@ -2867,7 +2867,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'creativeCredit',
 						name: '',
 						errors: {},
-						creativeEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -2882,7 +2882,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'crewCredit',
 						name: '',
 						errors: {},
-						crewEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
