@@ -185,6 +185,41 @@ describe('Production model', () => {
 
 		});
 
+		describe('crewCredits property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.crewCredits).to.deep.equal([]);
+
+			});
+
+			it('assigns array of crewCredits if included in props, retaining those with empty or whitespace-only string names', () => {
+
+				const props = {
+					name: 'Hamlet',
+					crewCredits: [
+						{
+							name: 'Stage Manager'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.crewCredits.length).to.equal(3);
+				expect(instance.crewCredits[0] instanceof CrewCredit).to.be.true;
+				expect(instance.crewCredits[1] instanceof CrewCredit).to.be.true;
+				expect(instance.crewCredits[2] instanceof CrewCredit).to.be.true;
+
+			});
+
+		});
+
 	});
 
 	describe('runInputValidations method', () => {
