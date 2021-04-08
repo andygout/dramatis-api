@@ -408,7 +408,7 @@ describe('Materials with source material', () => {
 									uuid: null,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -462,7 +462,7 @@ describe('Materials with source material', () => {
 									uuid: null,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -580,7 +580,7 @@ describe('Materials with source material', () => {
 							uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 							name: 'A Midsummer Night\'s Dream',
 							format: 'play',
-							sourceMaterialWritingCredits: [
+							writingCredits: [
 								{
 									model: 'writingCredit',
 									name: 'by',
@@ -694,7 +694,7 @@ describe('Materials with source material', () => {
 									uuid: null,
 									name: 'A Moorish Captain',
 									format: 'tale',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -757,7 +757,7 @@ describe('Materials with source material', () => {
 							uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 							name: 'A Moorish Captain',
 							format: 'tale',
-							sourceMaterialWritingCredits: [
+							writingCredits: [
 								{
 									model: 'writingCredit',
 									name: 'by',
@@ -824,7 +824,7 @@ describe('Materials with source material', () => {
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 									name: 'A Moorish Captain',
 									format: 'tale',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -918,7 +918,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -972,7 +972,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1041,7 +1041,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1165,7 +1165,7 @@ describe('Materials with source material', () => {
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 									name: 'A Moorish Captain',
 									format: 'tale',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1259,7 +1259,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1313,7 +1313,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1382,7 +1382,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1505,7 +1505,7 @@ describe('Materials with source material', () => {
 								uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 								name: 'A Midsummer Night\'s Dream',
 								format: 'play',
-								sourceMaterialWritingCredits: [
+								writingCredits: [
 									{
 										model: 'writingCredit',
 										name: 'by',
@@ -1625,7 +1625,7 @@ describe('Materials with source material', () => {
 								uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 								name: 'A Moorish Captain',
 								format: 'tale',
-								sourceMaterialWritingCredits: [
+								writingCredits: [
 									{
 										model: 'writingCredit',
 										name: 'by',
@@ -1693,7 +1693,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1763,7 +1763,7 @@ describe('Materials with source material', () => {
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 									name: 'A Moorish Captain',
 									format: 'tale',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -1925,7 +1925,7 @@ describe('Materials with source material', () => {
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 									name: 'A Moorish Captain',
 									format: 'tale',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -2019,7 +2019,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -2073,7 +2073,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',

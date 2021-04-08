@@ -133,7 +133,7 @@ describe('Materials with rights grantor credits', () => {
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
@@ -208,7 +208,7 @@ describe('Materials with rights grantor credits', () => {
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
-									sourceMaterialWritingCredits: [
+									writingCredits: [
 										{
 											model: 'writingCredit',
 											name: 'by',
