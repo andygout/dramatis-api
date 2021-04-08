@@ -92,7 +92,7 @@ const getShowQuery = () => `
 						uuid: CASE entity.uuid WHEN person.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
-						sourceMaterialWritingCredits: sourceMaterialWritingCredits
+						writingCredits: sourceMaterialWritingCredits
 					}
 				END
 			) | CASE entity.model WHEN 'material'

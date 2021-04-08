@@ -664,7 +664,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								uuid: JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'John Gabriel Borkman',
 								format: null,
-								sourceMaterialWritingCredits: []
+								writingCredits: []
 							}
 						]
 					}
@@ -1162,7 +1162,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								uuid: THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'Three Sisters',
 								format: null,
-								sourceMaterialWritingCredits: []
+								writingCredits: []
 							}
 						]
 					}

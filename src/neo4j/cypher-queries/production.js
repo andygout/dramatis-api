@@ -530,7 +530,7 @@ const getShowQuery = () => `
 					.uuid,
 					.name,
 					.format,
-					sourceMaterialWritingCredits: sourceMaterialWritingCredits
+					writingCredits: sourceMaterialWritingCredits
 				}
 			END
 		) | CASE entity.model WHEN 'material'
