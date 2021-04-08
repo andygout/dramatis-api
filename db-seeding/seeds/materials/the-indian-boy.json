@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Rona Munro"
 				}
@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "inspired by",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "material",
 					"name": "A Midsummer Night's Dream"

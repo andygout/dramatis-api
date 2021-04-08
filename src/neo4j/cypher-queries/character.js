@@ -3,17 +3,17 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (character)<-[materialRel:INCLUDES_CHARACTER]-(material:Material)
 
-	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+		WHERE entity:Person OR entity:Company OR entity:Material
 
-	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
 	WITH
 		character,
 		materialRel,
 		material,
-		writingEntityRel,
-		writingEntity,
+		entityRel,
+		entity,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -22,8 +22,8 @@ const getShowQuery = () => `
 		character,
 		materialRel,
 		material,
-		writingEntityRel,
-		writingEntity,
+		entityRel,
+		entity,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -32,44 +32,44 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH character, materialRel, material, writingEntityRel, writingEntity,
+	WITH character, materialRel, material, entityRel, entity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
 					model: 'writingCredit',
 					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
-					writingEntities: sourceMaterialWriters
+					entities: sourceMaterialWriters
 				}
 			END
 		) AS sourceMaterialWritingCredits
-		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	WITH character, materialRel, material, writingEntityRel.credit AS writingCreditName,
-		[writingEntity IN COLLECT(
-			CASE writingEntity WHEN NULL
+	WITH character, materialRel, material, entityRel.credit AS writingCreditName,
+		[entity IN COLLECT(
+			CASE entity WHEN NULL
 				THEN null
-				ELSE writingEntity {
-					model: TOLOWER(HEAD(LABELS(writingEntity))),
+				ELSE entity {
+					model: TOLOWER(HEAD(LABELS(entity))),
 					.uuid,
 					.name,
 					.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE writingEntity.model WHEN 'material'
-			THEN writingEntity
-			ELSE writingEntity { .model, .uuid, .name }
-		END] AS writingEntities
+		) | CASE entity.model WHEN 'material'
+			THEN entity
+			ELSE entity { .model, .uuid, .name }
+		END] AS entities
 
 	WITH character, materialRel, material,
 		COLLECT(
-			CASE SIZE(writingEntities) WHEN 0
+			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
 					model: 'writingCredit',
 					name: COALESCE(writingCreditName, 'by'),
-					writingEntities: writingEntities
+					entities: entities
 				}
 			END
 		) AS writingCredits

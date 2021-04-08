@@ -5,7 +5,7 @@
 	"writingCredits": [
 		{
 			"name": "based on",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "material",
 					"name": "The Girl on the Train",
@@ -20,7 +20,7 @@
 		},
 		{
 			"name": "adapted by",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Rachel Wagstaff"
 				},

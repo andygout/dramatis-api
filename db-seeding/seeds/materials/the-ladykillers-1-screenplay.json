@@ -4,7 +4,7 @@
 	"format": "motion picture screenplay",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "William Rose"
 				}

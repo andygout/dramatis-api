@@ -35,7 +35,7 @@ describe('Materials with entities credited multiple times', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Person #1'
 							},
@@ -47,7 +47,7 @@ describe('Materials with entities credited multiple times', () => {
 					},
 					{
 						name: 'additional material by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Person #1'
 							},
@@ -85,7 +85,7 @@ describe('Materials with entities credited multiple times', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: PERSON_UUID,
@@ -101,7 +101,7 @@ describe('Materials with entities credited multiple times', () => {
 				{
 					model: 'writingCredit',
 					name: 'additional material by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: PERSON_UUID,
@@ -138,7 +138,7 @@ describe('Materials with entities credited multiple times', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -154,7 +154,7 @@ describe('Materials with entities credited multiple times', () => {
 						{
 							model: 'writingCredit',
 							name: 'additional material by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -193,7 +193,7 @@ describe('Materials with entities credited multiple times', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: PERSON_UUID,
@@ -209,7 +209,7 @@ describe('Materials with entities credited multiple times', () => {
 						{
 							model: 'writingCredit',
 							name: 'additional material by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: PERSON_UUID,

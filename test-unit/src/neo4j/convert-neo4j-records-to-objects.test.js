@@ -41,7 +41,7 @@ describe('Convert Neo4j Records To Objects module', () => {
 							{
 								name: 'by',
 								model: 'writingCredit',
-								writingEntities: [
+								entities: [
 									{
 										name: 'Tena Štivičić',
 										model: 'person',
@@ -65,7 +65,7 @@ describe('Convert Neo4j Records To Objects module', () => {
 					{
 						name: 'by',
 						model: 'writingCredit',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Tena Štivičić',
 								model: 'person',

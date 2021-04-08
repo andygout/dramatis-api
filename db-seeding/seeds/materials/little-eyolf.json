@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Henrik Ibsen"
 				}

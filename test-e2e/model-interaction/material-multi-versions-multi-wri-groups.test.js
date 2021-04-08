@@ -52,7 +52,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Henrik Ibsen'
 							},
@@ -87,7 +87,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Henrik Ibsen'
 							},
@@ -100,7 +100,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					},
 					{
 						name: 'version by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Frank McGuinness'
 							}
@@ -130,7 +130,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Henrik Ibsen'
 							},
@@ -143,7 +143,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					},
 					{
 						name: 'translated by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Gerry Bamman'
 							},
@@ -159,7 +159,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					},
 					{
 						name: 'adapted by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Baltasar Kormákur'
 							}
@@ -185,7 +185,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Henrik Ibsen'
 							},
@@ -212,7 +212,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Henrik Ibsen'
 							},
@@ -225,7 +225,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					},
 					{
 						name: 'translated by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Gerry Bamman'
 							},
@@ -241,7 +241,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					},
 					{
 						name: 'adapted by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Baltasar Kormákur'
 							}
@@ -309,7 +309,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -330,7 +330,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -349,7 +349,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -373,7 +373,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -409,7 +409,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					{
 						model: 'writingCredit',
 						name: 'by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -437,7 +437,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -453,7 +453,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				{
 					model: 'writingCredit',
 					name: 'translated by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -474,7 +474,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				{
 					model: 'writingCredit',
 					name: 'adapted by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -506,7 +506,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -530,7 +530,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -565,7 +565,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -581,7 +581,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -602,7 +602,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -621,7 +621,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -637,7 +637,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -658,7 +658,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -677,7 +677,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -693,7 +693,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -727,7 +727,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -743,7 +743,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -764,7 +764,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -783,7 +783,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -799,7 +799,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -820,7 +820,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -854,7 +854,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -878,7 +878,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -913,7 +913,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -929,7 +929,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -950,7 +950,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -969,7 +969,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -985,7 +985,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1006,7 +1006,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1025,7 +1025,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1041,7 +1041,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -1075,7 +1075,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1091,7 +1091,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1112,7 +1112,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1131,7 +1131,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1147,7 +1147,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1168,7 +1168,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1201,7 +1201,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					{
 						model: 'writingCredit',
 						name: 'by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1217,7 +1217,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					{
 						model: 'writingCredit',
 						name: 'translated by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1238,7 +1238,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					{
 						model: 'writingCredit',
 						name: 'adapted by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1271,7 +1271,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1287,7 +1287,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1308,7 +1308,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1328,7 +1328,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1344,7 +1344,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -1364,7 +1364,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1407,7 +1407,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1431,7 +1431,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1447,7 +1447,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1468,7 +1468,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
@@ -1487,7 +1487,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1511,7 +1511,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1527,7 +1527,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'version by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
@@ -1546,7 +1546,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
@@ -1562,7 +1562,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'translated by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
@@ -1583,7 +1583,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'adapted by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,

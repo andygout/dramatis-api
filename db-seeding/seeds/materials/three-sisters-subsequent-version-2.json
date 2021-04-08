@@ -8,7 +8,7 @@
 	},
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Inua Ellams"
 				}
@@ -16,7 +16,7 @@
 		},
 		{
 			"name": "after",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Anton Chekhov"
 				}

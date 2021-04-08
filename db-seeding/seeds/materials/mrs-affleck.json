@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Samuel Adamson"
 				}
@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "from",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "material",
 					"name": "Little Eyolf"

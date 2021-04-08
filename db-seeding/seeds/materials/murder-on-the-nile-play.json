@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Agatha Christie"
 				}
@@ -11,7 +11,7 @@
 		},
 		{
 			"name": "based on",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "material",
 					"name": "Death on the Nile"

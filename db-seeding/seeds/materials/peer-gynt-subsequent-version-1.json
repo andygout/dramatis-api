@@ -8,7 +8,7 @@
 	},
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Henrik Ibsen"
 				}
@@ -16,7 +16,7 @@
 		},
 		{
 			"name": "version by",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Frank McGuiness"
 				}

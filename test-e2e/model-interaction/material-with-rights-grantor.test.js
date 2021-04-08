@@ -38,7 +38,7 @@ describe('Materials with rights grantor credits', () => {
 				format: 'motion picture screenplay',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'William Rose'
 							}
@@ -55,7 +55,7 @@ describe('Materials with rights grantor credits', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Graham Linehan'
 							}
@@ -63,7 +63,7 @@ describe('Materials with rights grantor credits', () => {
 					},
 					{
 						name: 'from',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								name: 'The Ladykillers',
@@ -74,7 +74,7 @@ describe('Materials with rights grantor credits', () => {
 					{
 						name: 'by special arrangement with',
 						creditType: 'RIGHTS_GRANTOR',
-						writingEntities: [
+						entities: [
 							{
 								model: 'company',
 								name: 'StudioCanal'
@@ -116,7 +116,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GRAHAM_LINEHAN_PERSON_UUID,
@@ -127,7 +127,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'from',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
@@ -137,7 +137,7 @@ describe('Materials with rights grantor credits', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_ROSE_PERSON_UUID,
@@ -152,7 +152,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by special arrangement with',
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									uuid: null,
@@ -191,7 +191,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: GRAHAM_LINEHAN_PERSON_UUID,
@@ -202,7 +202,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'from',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
@@ -212,7 +212,7 @@ describe('Materials with rights grantor credits', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_ROSE_PERSON_UUID,
@@ -227,7 +227,7 @@ describe('Materials with rights grantor credits', () => {
 						{
 							model: 'writingCredit',
 							name: 'by special arrangement with',
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									uuid: STUDIOCANAL_COMPANY_UUID,

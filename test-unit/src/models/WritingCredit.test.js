@@ -91,12 +91,12 @@ describe('WritingCredit model', () => {
 
 		});
 
-		describe('writingEntities property', () => {
+		describe('entities property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
 				const instance = createInstance({ name: 'version by' });
-				expect(instance.writingEntities).to.deep.equal([]);
+				expect(instance.entities).to.deep.equal([]);
 
 			});
 
@@ -104,7 +104,7 @@ describe('WritingCredit model', () => {
 
 				const props = {
 					name: 'version by',
-					writingEntities: [
+					entities: [
 						{
 							name: 'David Eldridge'
 						},
@@ -141,16 +141,16 @@ describe('WritingCredit model', () => {
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.writingEntities.length).to.equal(9);
-				expect(instance.writingEntities[0] instanceof Person).to.be.true;
-				expect(instance.writingEntities[1] instanceof Company).to.be.true;
-				expect(instance.writingEntities[2] instanceof Material).to.be.true;
-				expect(instance.writingEntities[3] instanceof Person).to.be.true;
-				expect(instance.writingEntities[4] instanceof Company).to.be.true;
-				expect(instance.writingEntities[5] instanceof Material).to.be.true;
-				expect(instance.writingEntities[6] instanceof Person).to.be.true;
-				expect(instance.writingEntities[7] instanceof Company).to.be.true;
-				expect(instance.writingEntities[8] instanceof Material).to.be.true;
+				expect(instance.entities.length).to.equal(9);
+				expect(instance.entities[0] instanceof Person).to.be.true;
+				expect(instance.entities[1] instanceof Company).to.be.true;
+				expect(instance.entities[2] instanceof Material).to.be.true;
+				expect(instance.entities[3] instanceof Person).to.be.true;
+				expect(instance.entities[4] instanceof Company).to.be.true;
+				expect(instance.entities[5] instanceof Material).to.be.true;
+				expect(instance.entities[6] instanceof Person).to.be.true;
+				expect(instance.entities[7] instanceof Company).to.be.true;
+				expect(instance.entities[8] instanceof Material).to.be.true;
 
 			});
 
@@ -164,7 +164,7 @@ describe('WritingCredit model', () => {
 
 			const props = {
 				name: 'version by',
-				writingEntities: [
+				entities: [
 					{
 						name: 'David Eldridge'
 					},
@@ -179,8 +179,8 @@ describe('WritingCredit model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.writingEntities[2].name = 'A Midsummer Night\'s Dream';
-			instance.writingEntities[2].differentiator = '1';
+			instance.entities[2].name = 'A Midsummer Night\'s Dream';
+			instance.entities[2].differentiator = '1';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations(
@@ -190,51 +190,51 @@ describe('WritingCredit model', () => {
 				instance.validateName,
 				instance.validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
-				instance.writingEntities[0].validateName,
-				instance.writingEntities[0].validateDifferentiator,
-				instance.writingEntities[0].validateUniquenessInGroup,
-				instance.writingEntities[1].validateName,
-				instance.writingEntities[1].validateDifferentiator,
-				instance.writingEntities[1].validateUniquenessInGroup,
-				instance.writingEntities[2].validateName,
-				instance.writingEntities[2].validateDifferentiator,
-				instance.writingEntities[2].validateUniquenessInGroup,
-				instance.writingEntities[2].validateNoAssociationWithSelf
+				instance.entities[0].validateName,
+				instance.entities[0].validateDifferentiator,
+				instance.entities[0].validateUniquenessInGroup,
+				instance.entities[1].validateName,
+				instance.entities[1].validateDifferentiator,
+				instance.entities[1].validateUniquenessInGroup,
+				instance.entities[2].validateName,
+				instance.entities[2].validateDifferentiator,
+				instance.entities[2].validateUniquenessInGroup,
+				instance.entities[2].validateNoAssociationWithSelf
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledWithExactly(
-				instance.writingEntities
+				instance.entities
 			)).to.be.true;
-			expect(instance.writingEntities[0].validateName.calledOnce).to.be.true;
-			expect(instance.writingEntities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.writingEntities[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.writingEntities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.writingEntities[0].validateUniquenessInGroup.calledWithExactly(
+			expect(instance.entities[0].validateName.calledOnce).to.be.true;
+			expect(instance.entities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
-			expect(instance.writingEntities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
-			expect(instance.writingEntities[1].validateName.calledOnce).to.be.true;
-			expect(instance.writingEntities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.writingEntities[1].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.writingEntities[1].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.writingEntities[1].validateUniquenessInGroup.calledWithExactly(
+			expect(instance.entities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
+			expect(instance.entities[1].validateName.calledOnce).to.be.true;
+			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.entities[1].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
-			expect(instance.writingEntities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
-			expect(instance.writingEntities[2].validateName.calledOnce).to.be.true;
-			expect(instance.writingEntities[2].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.writingEntities[2].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.writingEntities[2].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.writingEntities[2].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.writingEntities[2].validateUniquenessInGroup.calledWithExactly(
+			expect(instance.entities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
+			expect(instance.entities[2].validateName.calledOnce).to.be.true;
+			expect(instance.entities[2].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.entities[2].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.entities[2].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.entities[2].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.entities[2].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
-			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.writingEntities[2].validateNoAssociationWithSelf.calledWithExactly(
+			expect(instance.entities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.entities[2].validateNoAssociationWithSelf.calledWithExactly(
 				'The Indian Boy', '1'
 			)).to.be.true;
 

@@ -4,7 +4,7 @@
 	"writingCredits": [
 		{
 			"name": "adapted by",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Carl Grose"
 				},
@@ -17,7 +17,7 @@
 		{
 			"name": "based on the life and stories of",
 			"creditType": "NON_SPECIFIC_SOURCE_MATERIAL",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Gwyn Thomas"
 				}

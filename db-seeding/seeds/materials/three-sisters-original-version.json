@@ -4,7 +4,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Anton Chekhov"
 				}

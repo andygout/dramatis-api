@@ -9,19 +9,19 @@ export default class WritingCredit extends Base {
 
 		super(props);
 
-		const { creditType, writingEntities } = props;
+		const { creditType, entities } = props;
 
 		this.creditType = CREDIT_TYPES[creditType] || null;
 
-		this.writingEntities = writingEntities
-			? writingEntities.map(writingEntity => {
-				switch (writingEntity.model) {
+		this.entities = entities
+			? entities.map(entity => {
+				switch (entity.model) {
 					case 'company':
-						return new Company(writingEntity);
+						return new Company(entity);
 					case 'material':
-						return new Material({ ...writingEntity, isAssociation: true });
+						return new Material({ ...entity, isAssociation: true });
 					default:
-						return new Person(writingEntity);
+						return new Person(entity);
 				}
 			})
 			: [];
@@ -40,19 +40,19 @@ export default class WritingCredit extends Base {
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
-		const duplicateWritingEntityIndices = getDuplicateEntityIndices(this.writingEntities);
+		const duplicateWritingEntityIndices = getDuplicateEntityIndices(this.entities);
 
-		this.writingEntities.forEach((writingEntity, index) => {
+		this.entities.forEach((entity, index) => {
 
-			writingEntity.validateName({ isRequired: false });
+			entity.validateName({ isRequired: false });
 
-			writingEntity.validateDifferentiator();
+			entity.validateDifferentiator();
 
-			writingEntity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
+			entity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
 
-			if (writingEntity.model === 'material') {
+			if (entity.model === 'material') {
 
-				writingEntity.validateNoAssociationWithSelf(opts.subject.name, opts.subject.differentiator);
+				entity.validateNoAssociationWithSelf(opts.subject.name, opts.subject.differentiator);
 
 			}
 
