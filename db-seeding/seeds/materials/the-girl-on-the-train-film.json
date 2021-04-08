@@ -4,7 +4,7 @@
 	"format": "film",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "company",
 					"name": "Dreamworks"

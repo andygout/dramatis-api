@@ -34,7 +34,7 @@ describe('Nameless writer groups grouping', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Person #1'
 							}
@@ -42,14 +42,14 @@ describe('Nameless writer groups grouping', () => {
 					},
 					{
 						name: 'version by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Person #2'
 							}
 						]
 					},
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Person #3'
 							}
@@ -77,7 +77,7 @@ describe('Nameless writer groups grouping', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: PERSON_1_UUID,
@@ -93,7 +93,7 @@ describe('Nameless writer groups grouping', () => {
 				{
 					model: 'writingCredit',
 					name: 'version by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: PERSON_2_UUID,

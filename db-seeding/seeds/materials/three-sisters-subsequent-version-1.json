@@ -8,7 +8,7 @@
 	},
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Anton Chekhov"
 				}
@@ -16,7 +16,7 @@
 		},
 		{
 			"name": "version by",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Benedict Andrews"
 				}

@@ -1,7 +1,7 @@
 export default {
 	writingCredits: [
 		{
-			writingEntities: [
+			entities: [
 				{}
 			]
 		}

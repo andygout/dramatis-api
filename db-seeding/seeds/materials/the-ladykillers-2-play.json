@@ -4,7 +4,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Graham Linehan"
 				}
@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "from",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "material",
 					"name": "The Ladykillers",
@@ -23,7 +23,7 @@
 		{
 			"name": "by special arrangement with",
 			"creditType": "RIGHTS_GRANTOR",
-			"writingEntities": [
+			"entities": [
 				{
 					"model": "company",
 					"name": "StudioCanal"

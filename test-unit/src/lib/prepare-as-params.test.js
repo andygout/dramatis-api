@@ -341,7 +341,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = {
 					writingCredits: [
-						{ name: '', writingEntities: [{ name: 'Henrik Ibsen' }] }
+						{ name: '', entities: [{ name: 'Henrik Ibsen' }] }
 					],
 					characterGroups: [
 						{ name: '', characters: [{ name: 'Malene' }] }
@@ -359,13 +359,13 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writingEntities/characters', () => {
+			it('filters out objects that do not have any non-empty string name entities/characters', () => {
 
 				const instance = {
 					writingCredits: [
-						{ name: '', writingEntities: [{ name: '' }] },
-						{ name: 'version by', writingEntities: [{ name: 'David Eldridge' }] },
-						{ name: 'translation by', writingEntities: [{ name: '' }] }
+						{ name: '', entities: [{ name: '' }] },
+						{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
+						{ name: 'translation by', entities: [{ name: '' }] }
 					],
 					characterGroups: [
 						{ name: '', characters: [{ name: '' }] },
@@ -539,7 +539,7 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					material: {
 						writingCredits: [
-							{ name: '', writingEntities: [{ name: 'Henrik Ibsen' }] }
+							{ name: '', entities: [{ name: 'Henrik Ibsen' }] }
 						],
 						characterGroups: [
 							{ name: '', characters: [{ name: 'Malene' }] }
@@ -558,14 +558,14 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writingEntities/characters', () => {
+			it('filters out objects that do not have any non-empty string name entities/characters', () => {
 
 				const instance = {
 					material: {
 						writingCredits: [
-							{ name: '', writingEntities: [{ name: '' }] },
-							{ name: 'version by', writingEntities: [{ name: 'David Eldridge' }] },
-							{ name: 'translation by', writingEntities: [{ name: '' }] }
+							{ name: '', entities: [{ name: '' }] },
+							{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
+							{ name: 'translation by', entities: [{ name: '' }] }
 						],
 						characterGroups: [
 							{ name: '', characters: [{ name: '' }] },
@@ -742,7 +742,7 @@ describe('Prepare As Params module', () => {
 					materials: [
 						{
 							writingCredits: [
-								{ name: '', writingEntities: [{ name: 'Henrik Ibsen' }] }
+								{ name: '', entities: [{ name: 'Henrik Ibsen' }] }
 							],
 							characterGroups: [
 								{ name: '', characters: [{ name: 'Malene' }] }
@@ -762,15 +762,15 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name writingEntities/characters', () => {
+			it('filters out objects that do not have any non-empty string name entities/characters', () => {
 
 				const instance = {
 					materials: [
 						{
 							writingCredits: [
-								{ name: '', writingEntities: [{ name: '' }] },
-								{ name: 'version by', writingEntities: [{ name: 'David Eldridge' }] },
-								{ name: 'translation by', writingEntities: [{ name: '' }] }
+								{ name: '', entities: [{ name: '' }] },
+								{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
+								{ name: 'translation by', entities: [{ name: '' }] }
 							],
 							characterGroups: [
 								{ name: '', characters: [{ name: '' }] },

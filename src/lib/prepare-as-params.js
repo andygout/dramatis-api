@@ -21,7 +21,7 @@ export const prepareAsParams = instance => {
 		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
 
 	const isNotWritingCreditWithoutNamedEntity = key => item =>
-		key !== WRITING_CREDITS || item.writingEntities.some(entity => !!entity.name);
+		key !== WRITING_CREDITS || item.entities.some(entity => !!entity.name);
 
 	const isNotCharacterGroupWithoutNamedCharacter = key => item =>
 		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);

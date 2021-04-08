@@ -13,8 +13,8 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(writingEntity)
-				WHERE writingEntity:Person OR writingEntity:Company
+			OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(entity)
+				WHERE entity:Person OR entity:Company
 
 			DELETE writerRel
 
@@ -64,12 +64,12 @@ const getCreateUpdateQuery = action => {
 
 		WITH material
 
-		UNWIND (CASE $writingCredits WHEN [] THEN [{ writingEntities: [] }] ELSE $writingCredits END) AS writingCredit
+		UNWIND (CASE $writingCredits WHEN [] THEN [{ entities: [] }] ELSE $writingCredits END) AS writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'person']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'person']
 				END AS writingPersonParam
 
 				OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
@@ -96,9 +96,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT material, writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'company']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'company']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'company']
 				END AS writingCompanyParam
 
 				OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
@@ -128,9 +128,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT material, writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'material']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'material']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'material']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'material']
 				END AS sourceMaterialParam
 
 				OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -206,36 +206,36 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+		WHERE entity:Person OR entity:Company OR entity:Material
 
-	WITH material, originalVersionMaterial, writingEntityRel, writingEntity
-		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+	WITH material, originalVersionMaterial, entityRel, entity
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 	WITH
 		material,
 		originalVersionMaterial,
-		writingEntityRel.credit AS writingCreditName,
-		writingEntityRel.creditType AS writingCreditType,
+		entityRel.credit AS writingCreditName,
+		entityRel.creditType AS writingCreditType,
 		COLLECT(
-			CASE writingEntity WHEN NULL
+			CASE entity WHEN NULL
 				THEN null
-				ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
+				ELSE entity { model: TOLOWER(HEAD(LABELS(entity))), .name, .differentiator }
 			END
-		) + [{}] AS writingEntities
+		) + [{}] AS entities
 
 	WITH material, originalVersionMaterial,
 		COLLECT(
-			CASE WHEN writingCreditName IS NULL AND SIZE(writingEntities) = 1
+			CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 				THEN null
 				ELSE {
 					model: 'writingCredit',
 					name: writingCreditName,
 					creditType: writingCreditType,
-					writingEntities: writingEntities
+					entities: entities
 				}
 			END
-		) + [{ writingEntities: [{}] }] AS writingCredits
+		) + [{ entities: [{}] }] AS writingCredits
 
 	OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
@@ -296,12 +296,12 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (relatedMaterial)-[sourcingMaterialRel:USES_SOURCE_MATERIAL]->(material)
 
-		OPTIONAL MATCH (relatedMaterial)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-			WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+		OPTIONAL MATCH (relatedMaterial)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+			WHERE entity:Person OR entity:Company OR entity:Material
 
-		OPTIONAL MATCH (writingEntity)<-[originalVersionWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]-(material)
+		OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]-(material)
 
-		OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
 		WITH
 			material,
@@ -309,8 +309,8 @@ const getShowQuery = () => `
 			CASE originalVersionRel WHEN NULL THEN false ELSE true END AS isOriginalVersion,
 			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
-			writingEntityRel,
-			writingEntity,
+			entityRel,
+			entity,
 			CASE originalVersionWritingEntityRel WHEN NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel,
 			sourceMaterialWriter
@@ -322,8 +322,8 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
-			writingEntityRel,
-			writingEntity,
+			entityRel,
+			entity,
 			isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
@@ -346,8 +346,8 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
-			writingEntityRel,
-			writingEntity,
+			entityRel,
+			entity,
 			isOriginalVersionWritingEntity,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
@@ -355,11 +355,11 @@ const getShowQuery = () => `
 					ELSE {
 						model: 'writingCredit',
 						name: COALESCE(sourceMaterialWritingCreditName, 'by'),
-						writingEntities: sourceMaterialWriters
+						entities: sourceMaterialWriters
 					}
 				END
 			) AS sourceMaterialWritingCredits
-			ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+			ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 		WITH
 			material,
@@ -367,31 +367,31 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
-			writingEntityRel.credit AS writingCreditName,
-			[writingEntity IN COLLECT(
-				CASE WHEN writingEntity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
+			entityRel.credit AS writingCreditName,
+			[entity IN COLLECT(
+				CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 					THEN null
-					ELSE writingEntity {
-						model: TOLOWER(HEAD(LABELS(writingEntity))),
-						uuid: CASE writingEntity.uuid WHEN material.uuid THEN null ELSE writingEntity.uuid END,
+					ELSE entity {
+						model: TOLOWER(HEAD(LABELS(entity))),
+						uuid: CASE entity.uuid WHEN material.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
 						sourceMaterialWritingCredits: sourceMaterialWritingCredits
 					}
 				END
-			) | CASE writingEntity.model WHEN 'material'
-				THEN writingEntity
-				ELSE writingEntity { .model, .uuid, .name }
-			END] AS writingEntities
+			) | CASE entity.model WHEN 'material'
+				THEN entity
+				ELSE entity { .model, .uuid, .name }
+			END] AS entities
 
 		WITH material, relatedMaterial, isOriginalVersion, isSubsequentVersion, isSourcingMaterial,
 			COLLECT(
-				CASE SIZE(writingEntities) WHEN 0
+				CASE SIZE(entities) WHEN 0
 					THEN null
 					ELSE {
 						model: 'writingCredit',
 						name: COALESCE(writingCreditName, 'by'),
-						writingEntities: writingEntities
+						entities: entities
 					}
 				END
 			) AS writingCredits
@@ -565,15 +565,15 @@ const getShowQuery = () => `
 const getListQuery = () => `
 	MATCH (material:Material)
 
-	OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-		WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+		WHERE entity:Person OR entity:Company OR entity:Material
 
-	OPTIONAL MATCH (writingEntity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
 
-	WITH material, writingEntityRel, writingEntity, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
-	WITH material, writingEntityRel, writingEntity, sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
+	WITH material, entityRel, entity, sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
@@ -581,37 +581,37 @@ const getListQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH material, writingEntityRel, writingEntity,
+	WITH material, entityRel, entity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
 					model: 'writingCredit',
 					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
-					writingEntities: sourceMaterialWriters
+					entities: sourceMaterialWriters
 				}
 			END
 		) AS sourceMaterialWritingCredits
-		ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	WITH material, writingEntityRel.credit AS writingCreditName,
-		[writingEntity IN COLLECT(
-			CASE writingEntity WHEN NULL
+	WITH material, entityRel.credit AS writingCreditName,
+		[entity IN COLLECT(
+			CASE entity WHEN NULL
 				THEN null
-				ELSE writingEntity {
-					model: TOLOWER(HEAD(LABELS(writingEntity))),
+				ELSE entity {
+					model: TOLOWER(HEAD(LABELS(entity))),
 					.uuid,
 					.name,
 					.format,
 					sourceMaterialWritingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE writingEntity.model WHEN 'material'
-			THEN writingEntity
-			ELSE writingEntity { .model, .uuid, .name }
-		END] AS writingEntities
+		) | CASE entity.model WHEN 'material'
+			THEN entity
+			ELSE entity { .model, .uuid, .name }
+		END] AS entities
 
-	WITH material, writingCreditName, writingEntities
+	WITH material, writingCreditName, entities
 		ORDER BY material.name, material.differentiator
 
 	RETURN
@@ -620,12 +620,12 @@ const getListQuery = () => `
 		material.name AS name,
 		material.format AS format,
 		COLLECT(
-			CASE SIZE(writingEntities) WHEN 0
+			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
 					model: 'writingCredit',
 					name: COALESCE(writingCreditName, 'by'),
-					writingEntities: writingEntities
+					entities: entities
 				}
 			END
 		) AS writingCredits

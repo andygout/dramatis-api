@@ -3,7 +3,7 @@
 	"format": "play",
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Steven Berkoff"
 				}
@@ -12,7 +12,7 @@
 		{
 			"name": "based on works by",
 			"creditType": "NON_SPECIFIC_SOURCE_MATERIAL",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "William Shakespeare"
 				}

@@ -64,7 +64,7 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						creditType: null,
 						errors: {},
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -169,7 +169,7 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						creditType: null,
 						errors: {},
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -276,7 +276,7 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						creditType: null,
 						errors: {},
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -340,7 +340,7 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						creditType: null,
 						errors: {},
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: '',
@@ -551,7 +551,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Dot',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Kate Ryan'
 								}
@@ -561,7 +561,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -576,7 +576,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Dot',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Kate Ryan',
 									differentiator: '1'
@@ -587,7 +587,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -602,7 +602,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Dot',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Kate Ryan'
 								}
@@ -612,7 +612,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -627,7 +627,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Dot',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Kate Ryan',
 									differentiator: '1'
@@ -638,7 +638,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedPersonKateRyan2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -695,7 +695,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Untitled',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Gate Theatre Company'
@@ -706,7 +706,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
 		});
@@ -721,7 +721,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Untitled',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Gate Theatre Company',
@@ -733,7 +733,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -748,7 +748,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Untitled',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Gate Theatre Company'
@@ -759,7 +759,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -774,7 +774,7 @@ describe('Uniqueness in database: Materials API', () => {
 					name: 'Untitled',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Gate Theatre Company',
@@ -786,7 +786,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 		});
@@ -844,7 +844,7 @@ describe('Uniqueness in database: Materials API', () => {
 					writingCredits: [
 						{
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream'
@@ -855,7 +855,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
 		});
@@ -871,7 +871,7 @@ describe('Uniqueness in database: Materials API', () => {
 					writingCredits: [
 						{
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
@@ -883,7 +883,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});
@@ -899,7 +899,7 @@ describe('Uniqueness in database: Materials API', () => {
 					writingCredits: [
 						{
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream'
@@ -910,7 +910,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});
@@ -926,7 +926,7 @@ describe('Uniqueness in database: Materials API', () => {
 					writingCredits: [
 						{
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'A Midsummer Night\'s Dream',
@@ -938,7 +938,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].writingEntities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
+			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});

@@ -6,7 +6,7 @@
 	},
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Polly Stenham"
 				}
@@ -14,7 +14,7 @@
 		},
 		{
 			"name": "after",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "August Strindberg"
 				}

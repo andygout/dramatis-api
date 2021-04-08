@@ -334,7 +334,7 @@ describe('Material instance', () => {
 									'Value is too long'
 								]
 							},
-							writingEntities: []
+							entities: []
 						}
 					],
 					characterGroups: []
@@ -388,7 +388,7 @@ describe('Material instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							writingEntities: []
+							entities: []
 						},
 						{
 							name: 'version by',
@@ -398,7 +398,7 @@ describe('Material instance', () => {
 									'This item has been duplicated within the group'
 								]
 							},
-							writingEntities: []
+							entities: []
 						}
 					],
 					characterGroups: []
@@ -418,7 +418,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: ABOVE_MAX_LENGTH_STRING
 								}
@@ -449,7 +449,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -480,7 +480,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Henrik Ibsen',
 									differentiator: ABOVE_MAX_LENGTH_STRING
@@ -512,7 +512,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Henrik Ibsen',
@@ -543,7 +543,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: ABOVE_MAX_LENGTH_STRING
@@ -575,7 +575,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -606,7 +606,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'company',
 									name: 'Ibsen Theatre Company',
@@ -639,7 +639,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Ibsen Theatre Company',
@@ -670,7 +670,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: ABOVE_MAX_LENGTH_STRING
@@ -702,7 +702,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
@@ -733,7 +733,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'Rosmersholm',
@@ -766,7 +766,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Rosmersholm',
@@ -789,7 +789,7 @@ describe('Material instance', () => {
 
 		});
 
-		context('duplicate writingEntities', () => {
+		context('duplicate entities', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -797,7 +797,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									name: 'Henrik Ibsen'
 								},
@@ -838,7 +838,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Henrik Ibsen',
@@ -884,8 +884,8 @@ describe('Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.writingCredits[0].writingEntities[1].model).to.equal('person');
-				expect(result.writingCredits[0].writingEntities[3].model).to.equal('company');
+				expect(result.writingCredits[0].entities[1].model).to.equal('person');
+				expect(result.writingCredits[0].entities[3].model).to.equal('company');
 
 			});
 
@@ -899,7 +899,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									name: 'Rosmersholm'
@@ -931,7 +931,7 @@ describe('Material instance', () => {
 							name: '',
 							creditType: null,
 							errors: {},
-							writingEntities: [
+							entities: [
 								{
 									uuid: undefined,
 									name: 'Rosmersholm',

@@ -69,7 +69,7 @@ describe('Materials with source material', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'William Shakespeare'
 							},
@@ -91,7 +91,7 @@ describe('Materials with source material', () => {
 				writingCredits: [
 					{
 						name: 'book by',
-						writingEntities: [
+						entities: [
 							{
 								name: 'Diane Paulus'
 							},
@@ -102,7 +102,7 @@ describe('Materials with source material', () => {
 					},
 					{
 						name: 'based on',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								name: 'A Midsummer Night\'s Dream'
@@ -119,7 +119,7 @@ describe('Materials with source material', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Rona Munro'
 							},
@@ -132,7 +132,7 @@ describe('Materials with source material', () => {
 					},
 					{
 						name: 'inspired by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								name: 'A Midsummer Night\'s Dream'
@@ -158,7 +158,7 @@ describe('Materials with source material', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								name: 'Steven Berkoff'
 							},
@@ -172,7 +172,7 @@ describe('Materials with source material', () => {
 					{
 						name: 'based on works by',
 						creditType: 'NON_SPECIFIC_SOURCE_MATERIAL',
-						writingEntities: [
+						entities: [
 							{
 								name: 'William Shakespeare'
 							},
@@ -202,7 +202,7 @@ describe('Materials with source material', () => {
 				format: 'tale',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							// Contrivance for purposes of test.
 							{
 								model: 'person',
@@ -224,7 +224,7 @@ describe('Materials with source material', () => {
 				format: 'play',
 				writingCredits: [
 					{
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								name: 'William Shakespeare'
@@ -237,7 +237,7 @@ describe('Materials with source material', () => {
 					},
 					{
 						name: 'based on',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								name: 'A Moorish Captain'
@@ -386,7 +386,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'book by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: DIANE_PAULUS_PERSON_UUID,
@@ -402,7 +402,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: null,
@@ -412,7 +412,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -440,7 +440,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -456,7 +456,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: null,
@@ -466,7 +466,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -558,7 +558,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: RONA_MUNRO_PERSON_UUID,
@@ -574,7 +574,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'inspired by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'material',
 							uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -584,7 +584,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'writingCredit',
 									name: 'by',
-									writingEntities: [
+									entities: [
 										{
 											model: 'person',
 											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -619,7 +619,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -635,7 +635,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'based on works by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -672,7 +672,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -688,7 +688,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: null,
@@ -698,7 +698,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -735,7 +735,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'by',
-					writingEntities: [
+					entities: [
 						{
 							model: 'person',
 							uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -751,7 +751,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'writingCredit',
 					name: 'based on',
-					writingEntities: [
+					entities: [
 						{
 							model: 'material',
 							uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -761,7 +761,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'writingCredit',
 									name: 'by',
-									writingEntities: [
+									entities: [
 										{
 											model: 'person',
 											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -802,7 +802,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -818,7 +818,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -828,7 +828,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: null,
@@ -856,7 +856,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -872,7 +872,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -896,7 +896,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'book by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: DIANE_PAULUS_PERSON_UUID,
@@ -912,7 +912,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -922,7 +922,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: null,
@@ -950,7 +950,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -966,7 +966,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -976,7 +976,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: null,
@@ -1019,7 +1019,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -1035,7 +1035,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1045,7 +1045,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1088,7 +1088,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: null,
@@ -1104,7 +1104,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1143,7 +1143,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1159,7 +1159,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -1169,7 +1169,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1197,7 +1197,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -1213,7 +1213,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1237,7 +1237,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'book by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: DIANE_PAULUS_PERSON_UUID,
@@ -1253,7 +1253,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1263,7 +1263,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1291,7 +1291,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -1307,7 +1307,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1317,7 +1317,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1360,7 +1360,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -1376,7 +1376,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1386,7 +1386,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1429,7 +1429,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -1445,7 +1445,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1483,7 +1483,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: RONA_MUNRO_PERSON_UUID,
@@ -1499,7 +1499,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'inspired by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1509,7 +1509,7 @@ describe('Materials with source material', () => {
 									{
 										model: 'writingCredit',
 										name: 'by',
-										writingEntities: [
+										entities: [
 											{
 												model: 'person',
 												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1550,7 +1550,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -1566,7 +1566,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'based on works by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1603,7 +1603,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'by',
-						writingEntities: [
+						entities: [
 							{
 								model: 'person',
 								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1619,7 +1619,7 @@ describe('Materials with source material', () => {
 					{
 						model: 'writingCredit',
 						name: 'based on',
-						writingEntities: [
+						entities: [
 							{
 								model: 'material',
 								uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -1629,7 +1629,7 @@ describe('Materials with source material', () => {
 									{
 										model: 'writingCredit',
 										name: 'by',
-										writingEntities: [
+										entities: [
 											{
 												model: 'person',
 												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1671,7 +1671,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -1687,7 +1687,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -1697,7 +1697,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1741,7 +1741,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1757,7 +1757,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -1767,7 +1767,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1796,7 +1796,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -1812,7 +1812,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1855,7 +1855,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1879,7 +1879,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1903,7 +1903,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1919,7 +1919,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
@@ -1929,7 +1929,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1957,7 +1957,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: STEVEN_BERKOFF_PERSON_UUID,
@@ -1973,7 +1973,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on works by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -1997,7 +1997,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'book by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: DIANE_PAULUS_PERSON_UUID,
@@ -2013,7 +2013,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'based on',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -2023,7 +2023,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
@@ -2051,7 +2051,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'person',
 									uuid: RONA_MUNRO_PERSON_UUID,
@@ -2067,7 +2067,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'writingCredit',
 							name: 'inspired by',
-							writingEntities: [
+							entities: [
 								{
 									model: 'material',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
@@ -2077,7 +2077,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'writingCredit',
 											name: 'by',
-											writingEntities: [
+											entities: [
 												{
 													model: 'person',
 													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,

@@ -35,12 +35,12 @@ describe('Cypher Queries Material module', () => {
 
 				WITH material
 
-				UNWIND (CASE $writingCredits WHEN [] THEN [{ writingEntities: [] }] ELSE $writingCredits END) AS writingCredit
+				UNWIND (CASE $writingCredits WHEN [] THEN [{ entities: [] }] ELSE $writingCredits END) AS writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'person']
 						END AS writingPersonParam
 
 						OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
@@ -67,9 +67,9 @@ describe('Cypher Queries Material module', () => {
 					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'company']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'company']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'company']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'company']
 						END AS writingCompanyParam
 
 						OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
@@ -99,9 +99,9 @@ describe('Cypher Queries Material module', () => {
 					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'material']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'material']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -169,36 +169,36 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-					WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+				OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+					WHERE entity:Person OR entity:Company OR entity:Material
 
-				WITH material, originalVersionMaterial, writingEntityRel, writingEntity
-					ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+				WITH material, originalVersionMaterial, entityRel, entity
+					ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 				WITH
 					material,
 					originalVersionMaterial,
-					writingEntityRel.credit AS writingCreditName,
-					writingEntityRel.creditType AS writingCreditType,
+					entityRel.credit AS writingCreditName,
+					entityRel.creditType AS writingCreditType,
 					COLLECT(
-						CASE writingEntity WHEN NULL
+						CASE entity WHEN NULL
 							THEN null
-							ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
+							ELSE entity { model: TOLOWER(HEAD(LABELS(entity))), .name, .differentiator }
 						END
-					) + [{}] AS writingEntities
+					) + [{}] AS entities
 
 				WITH material, originalVersionMaterial,
 					COLLECT(
-						CASE WHEN writingCreditName IS NULL AND SIZE(writingEntities) = 1
+						CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 							THEN null
 							ELSE {
 								model: 'writingCredit',
 								name: writingCreditName,
 								creditType: writingCreditType,
-								writingEntities: writingEntities
+								entities: entities
 							}
 						END
-					) + [{ writingEntities: [{}] }] AS writingCredits
+					) + [{ entities: [{}] }] AS writingCredits
 
 				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 
@@ -256,8 +256,8 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(writingEntity)
-					WHERE writingEntity:Person OR writingEntity:Company
+				OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(entity)
+					WHERE entity:Person OR entity:Company
 
 				DELETE writerRel
 
@@ -302,12 +302,12 @@ describe('Cypher Queries Material module', () => {
 
 				WITH material
 
-				UNWIND (CASE $writingCredits WHEN [] THEN [{ writingEntities: [] }] ELSE $writingCredits END) AS writingCredit
+				UNWIND (CASE $writingCredits WHEN [] THEN [{ entities: [] }] ELSE $writingCredits END) AS writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'person']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'person']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'person']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'person']
 						END AS writingPersonParam
 
 						OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
@@ -334,9 +334,9 @@ describe('Cypher Queries Material module', () => {
 					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'company']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'company']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'company']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'company']
 						END AS writingCompanyParam
 
 						OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
@@ -366,9 +366,9 @@ describe('Cypher Queries Material module', () => {
 					WITH DISTINCT material, writingCredit
 
 					UNWIND
-						CASE SIZE([entity IN writingCredit.writingEntities WHERE entity.model = 'material']) WHEN 0
+						CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'material']) WHEN 0
 							THEN [null]
-							ELSE [entity IN writingCredit.writingEntities WHERE entity.model = 'material']
+							ELSE [entity IN writingCredit.entities WHERE entity.model = 'material']
 						END AS sourceMaterialParam
 
 						OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -436,36 +436,36 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[writingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(writingEntity)
-					WHERE writingEntity:Person OR writingEntity:Company OR writingEntity:Material
+				OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+					WHERE entity:Person OR entity:Company OR entity:Material
 
-				WITH material, originalVersionMaterial, writingEntityRel, writingEntity
-					ORDER BY writingEntityRel.creditPosition, writingEntityRel.entityPosition
+				WITH material, originalVersionMaterial, entityRel, entity
+					ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 				WITH
 					material,
 					originalVersionMaterial,
-					writingEntityRel.credit AS writingCreditName,
-					writingEntityRel.creditType AS writingCreditType,
+					entityRel.credit AS writingCreditName,
+					entityRel.creditType AS writingCreditType,
 					COLLECT(
-						CASE writingEntity WHEN NULL
+						CASE entity WHEN NULL
 							THEN null
-							ELSE writingEntity { model: TOLOWER(HEAD(LABELS(writingEntity))), .name, .differentiator }
+							ELSE entity { model: TOLOWER(HEAD(LABELS(entity))), .name, .differentiator }
 						END
-					) + [{}] AS writingEntities
+					) + [{}] AS entities
 
 				WITH material, originalVersionMaterial,
 					COLLECT(
-						CASE WHEN writingCreditName IS NULL AND SIZE(writingEntities) = 1
+						CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 							THEN null
 							ELSE {
 								model: 'writingCredit',
 								name: writingCreditName,
 								creditType: writingCreditType,
-								writingEntities: writingEntities
+								entities: entities
 							}
 						END
-					) + [{ writingEntities: [{}] }] AS writingCredits
+					) + [{ entities: [{}] }] AS writingCredits
 
 				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
 

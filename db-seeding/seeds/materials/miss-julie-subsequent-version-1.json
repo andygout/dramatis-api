@@ -6,7 +6,7 @@
 	},
 	"writingCredits": [
 		{
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "Patrick Marber"
 				}
@@ -14,7 +14,7 @@
 		},
 		{
 			"name": "after",
-			"writingEntities": [
+			"entities": [
 				{
 					"name": "August Strindberg"
 				}
