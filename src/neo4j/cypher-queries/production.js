@@ -109,7 +109,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET creativePerson.differentiator = creativePersonParam.differentiator
 
 					CREATE (production)-
-						[:HAS_CREATIVE_TEAM_MEMBER {
+						[:HAS_CREATIVE_ENTITY {
 							creditPosition: creativeCredit.position,
 							entityPosition: creativePersonParam.position,
 							credit: creativeCredit.name
@@ -140,7 +140,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET creativeCompany.differentiator = creativeCompanyParam.differentiator
 
 					CREATE (production)-
-						[:HAS_CREATIVE_TEAM_MEMBER {
+						[:HAS_CREATIVE_ENTITY {
 							creditPosition: creativeCredit.position,
 							entityPosition: creativeCompanyParam.position,
 							credit: creativeCredit.name
@@ -160,7 +160,7 @@ const getCreateUpdateQuery = action => {
 							(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 							creativeCompanyParam.differentiator = creditedCompany.differentiator
 
-					OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
+					OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_ENTITY]-(production)
 						WHERE
 							creativeCredit.position IS NULL OR
 							creativeCredit.position = creativeCompanyRel.creditPosition
@@ -182,7 +182,7 @@ const getCreateUpdateQuery = action => {
 							ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 						CREATE (production)-
-							[:HAS_CREATIVE_TEAM_MEMBER {
+							[:HAS_CREATIVE_ENTITY {
 								creditPosition: creativeCredit.position,
 								memberPosition: creditedMemberParam.position,
 								creditedCompanyUuid: creditedCompany.uuid
@@ -218,7 +218,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET crewPerson.differentiator = crewPersonParam.differentiator
 
 					CREATE (production)-
-						[:HAS_CREW_MEMBER {
+						[:HAS_CREW_ENTITY {
 							creditPosition: crewCredit.position,
 							entityPosition: crewPersonParam.position,
 							credit: crewCredit.name
@@ -249,7 +249,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET crewCompany.differentiator = crewCompanyParam.differentiator
 
 					CREATE (production)-
-						[:HAS_CREW_MEMBER {
+						[:HAS_CREW_ENTITY {
 							creditPosition: crewCredit.position,
 							entityPosition: crewCompanyParam.position,
 							credit: crewCredit.name
@@ -269,7 +269,7 @@ const getCreateUpdateQuery = action => {
 							(crewCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 							crewCompanyParam.differentiator = creditedCompany.differentiator
 
-					OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_MEMBER]-(production)
+					OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_ENTITY]-(production)
 						WHERE
 							crewCredit.position IS NULL OR
 							crewCredit.position = crewCompanyRel.creditPosition
@@ -291,7 +291,7 @@ const getCreateUpdateQuery = action => {
 							ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 						CREATE (production)-
-							[:HAS_CREW_MEMBER {
+							[:HAS_CREW_ENTITY {
 								creditPosition: crewCredit.position,
 								memberPosition: creditedMemberParam.position,
 								creditedCompanyUuid: creditedCompany.uuid
@@ -343,7 +343,7 @@ const getEditQuery = () => `
 			END
 		) + [{ roles: [{}] }] AS cast
 
-	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 		WHERE
 			(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 			creativeEntity:Company
@@ -360,7 +360,7 @@ const getEditQuery = () => `
 
 		UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 				(creditedMember:Person { uuid: creditedMemberUuid })
 				WHERE
 					creativeEntityRel.creditPosition IS NULL OR
@@ -398,7 +398,7 @@ const getEditQuery = () => `
 			END
 		) + [{ entities: [{}] }] AS creativeCredits
 
-	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
 		WHERE
 			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 			crewEntity:Company
@@ -415,7 +415,7 @@ const getEditQuery = () => `
 
 		UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_ENTITY]->
 				(creditedMember:Person { uuid: creditedMemberUuid })
 				WHERE
 					crewEntityRel.creditPosition IS NULL OR
@@ -468,7 +468,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 	WITH production,
 		CASE theatre WHEN NULL
@@ -486,10 +486,10 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[materialRel:PRODUCTION_OF]->(material:Material)
 
-	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
-	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 
 	WITH production, theatre, material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -553,7 +553,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
 	OPTIONAL MATCH (castMember)<-[role]-(production)-[materialRel]->
-		(material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+		(material)-[characterRel:HAS_CHARACTER]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR
@@ -584,7 +584,7 @@ const getShowQuery = () => `
 			END
 		) AS cast
 
-	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 		WHERE
 			(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 			creativeEntity:Company
@@ -601,7 +601,7 @@ const getShowQuery = () => `
 
 		UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 				(creditedMember:Person { uuid: creditedMemberUuid })
 				WHERE
 					creativeEntityRel.creditPosition IS NULL OR
@@ -639,7 +639,7 @@ const getShowQuery = () => `
 			END
 		) AS creativeCredits
 
-	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+	OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
 		WHERE
 			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 			crewEntity:Company
@@ -656,7 +656,7 @@ const getShowQuery = () => `
 
 		UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+			OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_ENTITY]->
 				(creditedMember:Person { uuid: creditedMemberUuid })
 				WHERE
 					crewEntityRel.creditPosition IS NULL OR
@@ -707,7 +707,7 @@ const getListQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 	RETURN
 		'production' AS model,

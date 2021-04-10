@@ -29,14 +29,14 @@ describe('Cypher Queries Theatre module', () => {
 						})
 							ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
 
-						CREATE (theatre)-[:INCLUDES_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+						CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
 					)
 
 				WITH DISTINCT theatre
 
 				MATCH (theatre:Theatre { uuid: $uuid })
 
-				OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
+				OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
 
 				WITH theatre, subTheatreRel, subTheatre
 					ORDER BY subTheatreRel.position
@@ -66,7 +66,7 @@ describe('Cypher Queries Theatre module', () => {
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (theatre:Theatre { uuid: $uuid })
 
-				OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]->(:Theatre)
+				OPTIONAL MATCH (theatre)-[relationship:HAS_SUB_THEATRE]->(:Theatre)
 
 				DELETE relationship
 
@@ -92,14 +92,14 @@ describe('Cypher Queries Theatre module', () => {
 						})
 							ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
 
-						CREATE (theatre)-[:INCLUDES_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+						CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
 					)
 
 				WITH DISTINCT theatre
 
 				MATCH (theatre:Theatre { uuid: $uuid })
 
-				OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
+				OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
 
 				WITH theatre, subTheatreRel, subTheatre
 					ORDER BY subTheatreRel.position
