@@ -7,6 +7,21 @@
 	"theatre": {
 		"name": "Nuffield Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Headlong Theatre",
+					"creditedMembers": [
+						{
+							"name": "Jeremy Herrin"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "David Beames",

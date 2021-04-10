@@ -36,6 +36,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -140,6 +155,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -218,6 +248,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -300,6 +345,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -367,6 +427,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				name: 'The Tempest',
 				material: null,
 				theatre: null,
+				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
 				crewCredits: []
@@ -400,6 +461,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
 				crewCredits: []
@@ -418,44 +480,58 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const PRODUCTION_UUID = '0';
 		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = '1';
 		const NATIONAL_THEATRE_UUID = '2';
-		const RORY_KINNEAR_PERSON_UUID = '3';
-		const JAMES_LAURENSON_PERSON_UUID = '4';
-		const MICHAEL_SHELDON_PERSON_UUID = '5';
-		const LEO_STAAR_PERSON_UUID = '6';
-		const NICHOLAS_HYTNER_PERSON_UUID = '7';
-		const HANDSPRING_PUPPET_COMPANY_UUID = '8';
-		const BEN_RINGHAM_PERSON_UUID = '9';
-		const MAX_RINGHAM_PERSON_UUID = '10';
-		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '11';
-		const LEO_WARNER_PERSON_UUID = '12';
-		const MARK_GRIMMER_PERSON_UUID = '13';
-		const IGOR_PERSON_UUID = '14';
-		const CREW_DEPUTIES_LTD_COMPANY_UUID = '15';
-		const SARA_GUNTER_PERSON_UUID = '16';
-		const JULIA_WICKHAM_PERSON_UUID = '17';
-		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '18';
-		const MOLLY_EINCHCOMB_PERSON_UUID = '19';
-		const MATTHEW_HELLYER_PERSON_UUID = '20';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '21';
-		const ALMEIDA_THEATRE_UUID = '22';
-		const RALPH_FIENNES_PERSON_UUID = '23';
-		const TOM_CANTON_PERSON_UUID = '24';
-		const MARK_HADFIELD_PERSON_UUID = '25';
-		const JOSH_COLLINS_PERSON_UUID = '26';
-		const RUPERT_GOOLD_PERSON_UUID = '27';
-		const RC_ANNIE_LTD_COMPANY_UUID = '28';
-		const HILDEGARD_BECHTLER_PERSON_UUID = '29';
-		const CHLOE_LAMFORD_PERSON_UUID = '30';
-		const AUTOGRAPH_COMPANY_UUID = '31';
-		const ANDREW_BRUCE_PERSON_UUID = '32';
-		const NICK_LIDSTER_PERSON_UUID = '33';
-		const ANNA_ANDERSON_PERSON_UUID = '34';
-		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '35';
-		const CHERYL_FIRTH_PERSON_UUID = '36';
-		const TOM_LEGGAT_PERSON_UUID = '37';
-		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '38';
-		const COLIN_FALCONER_PERSON_UUID = '39';
-		const ALEX_LOWDE_PERSON_UUID = '40';
+		const LISA_BURGER_PERSON_UUID = '3';
+		const FUEL_THEATRE_COMPANY_UUID = '4';
+		const SIMON_GODWIN_PERSON_UUID = '5';
+		const TOM_MORRIS_PERSON_UUID = '6';
+		const NATIONAL_THEATRE_COMPANY_UUID = '7';
+		const NICHOLAS_HYTNER_PERSON_UUID = '8';
+		const NICK_STARR_PERSON_UUID = '9';
+		const LONDON_THEATRE_COMPANY_UUID = '10';
+		const RORY_KINNEAR_PERSON_UUID = '11';
+		const JAMES_LAURENSON_PERSON_UUID = '12';
+		const MICHAEL_SHELDON_PERSON_UUID = '13';
+		const LEO_STAAR_PERSON_UUID = '14';
+		const HANDSPRING_PUPPET_COMPANY_UUID = '15';
+		const BEN_RINGHAM_PERSON_UUID = '16';
+		const MAX_RINGHAM_PERSON_UUID = '17';
+		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '18';
+		const LEO_WARNER_PERSON_UUID = '19';
+		const MARK_GRIMMER_PERSON_UUID = '20';
+		const IGOR_PERSON_UUID = '21';
+		const CREW_DEPUTIES_LTD_COMPANY_UUID = '22';
+		const SARA_GUNTER_PERSON_UUID = '23';
+		const JULIA_WICKHAM_PERSON_UUID = '24';
+		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '25';
+		const MOLLY_EINCHCOMB_PERSON_UUID = '26';
+		const MATTHEW_HELLYER_PERSON_UUID = '27';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '28';
+		const ALMEIDA_THEATRE_UUID = '29';
+		const DENISE_WOOD_PERSON_UUID = '30';
+		const TIATA_FAHODZI_COMPANY_UUID = '31';
+		const REBECCA_FRECKNALL_PERSON_UUID = '32';
+		const SIMEON_BLAKE_HALL_PERSON_UUID = '33';
+		const ALMEIDA_THEATRE_COMPANY_UUID = '34';
+		const RUPERT_GOOLD_PERSON_UUID = '35';
+		const ROBERT_ICKE_PERSON_UUID = '36';
+		const HEADLONG_THEATRE_COMPANY_UUID = '37';
+		const RALPH_FIENNES_PERSON_UUID = '38';
+		const TOM_CANTON_PERSON_UUID = '39';
+		const MARK_HADFIELD_PERSON_UUID = '40';
+		const JOSH_COLLINS_PERSON_UUID = '41';
+		const RC_ANNIE_LTD_COMPANY_UUID = '42';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '43';
+		const CHLOE_LAMFORD_PERSON_UUID = '44';
+		const AUTOGRAPH_COMPANY_UUID = '45';
+		const ANDREW_BRUCE_PERSON_UUID = '46';
+		const NICK_LIDSTER_PERSON_UUID = '47';
+		const ANNA_ANDERSON_PERSON_UUID = '48';
+		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '49';
+		const CHERYL_FIRTH_PERSON_UUID = '50';
+		const TOM_LEGGAT_PERSON_UUID = '51';
+		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '52';
+		const COLIN_FALCONER_PERSON_UUID = '53';
+		const ALEX_LOWDE_PERSON_UUID = '54';
 
 		before(async () => {
 
@@ -542,6 +618,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Leo Staar',
 							differentiator: '1',
 							roles: []
+						}
+					],
+					producerCredits: [
+						// Contrivance for purposes of test.
+						{
+							name: 'Executive Director',
+							entities: [
+								{
+									name: 'Lisa Burger',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Associate Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Fuel Theatre',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Associates',
+							entities: [
+								{
+									name: 'Simon Godwin',
+									differentiator: '1'
+								},
+								{
+									name: 'Tom Morris',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'National Theatre Company',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Nicholas Hytner',
+											differentiator: '1'
+										},
+										{
+											name: 'Nick Starr',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Co-Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'London Theatre Company',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Nicholas Hytner',
+											differentiator: '1'
+										}
+									]
+								}
+							]
 						}
 					],
 					creativeCredits: [
@@ -709,6 +859,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: 'Executive Director',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Lisa Burger',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associate Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'Fuel Theatre',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associates',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Simon Godwin',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Tom Morris',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'National Theatre Company',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Nick Starr',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Co-Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'London Theatre Company',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -1177,6 +1485,88 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'National Theatre',
 					surTheatre: null
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: 'Executive Director',
+						entities: [
+							{
+								model: 'person',
+								uuid: LISA_BURGER_PERSON_UUID,
+								name: 'Lisa Burger'
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associate Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: FUEL_THEATRE_COMPANY_UUID,
+								name: 'Fuel Theatre',
+								creditedMembers: []
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associates',
+						entities: [
+							{
+								model: 'person',
+								uuid: SIMON_GODWIN_PERSON_UUID,
+								name: 'Simon Godwin'
+							},
+							{
+								model: 'person',
+								uuid: TOM_MORRIS_PERSON_UUID,
+								name: 'Tom Morris'
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: NATIONAL_THEATRE_COMPANY_UUID,
+								name: 'National Theatre Company',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: NICHOLAS_HYTNER_PERSON_UUID,
+										name: 'Nicholas Hytner'
+									},
+									{
+										model: 'person',
+										uuid: NICK_STARR_PERSON_UUID,
+										name: 'Nick Starr'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Co-Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: LONDON_THEATRE_COMPANY_UUID,
+								name: 'London Theatre Company',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: NICHOLAS_HYTNER_PERSON_UUID,
+										name: 'Nicholas Hytner'
+									}
+								]
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -1433,6 +1823,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: 'Executive Director',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Lisa Burger',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associate Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'Fuel Theatre',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associates',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Simon Godwin',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Tom Morris',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'National Theatre Company',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Nick Starr',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Co-Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'London Theatre Company',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -1894,6 +2442,79 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Almeida Theatre',
 						differentiator: '1'
 					},
+					producerCredits: [
+						{
+							name: 'Executive Director',
+							entities: [
+								{
+									name: 'Denise Wood',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Associate Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Tiata Fahodzi',
+									differentiator: '1'
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Associates',
+							entities: [
+								{
+									name: 'Rebecca Frecknall',
+									differentiator: '1'
+								},
+								{
+									name: 'Simeon Blake-Hall',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Almeida Theatre Company',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Rupert Goold',
+											differentiator: '1'
+										},
+										{
+											name: 'Robert Icke',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						// Contrivance for purposes of test.
+						{
+							name: 'Co-Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Headlong Theatre',
+									differentiator: '1',
+									creditedMembers: [
+										{
+											name: 'Rupert Goold',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					],
 					cast: [
 						{
 							name: 'Ralph Fiennes',
@@ -2115,6 +2736,164 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: 'Executive Director',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Denise Wood',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associate Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'Tiata Fahodzi',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associates',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: 'Rebecca Frecknall',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: 'Simeon Blake-Hall',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'Almeida Theatre Company',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Rupert Goold',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: 'Robert Icke',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Co-Producer',
+						errors: {},
+						entities: [
+							{
+								model: 'company',
+								name: 'Headlong Theatre',
+								differentiator: '1',
+								errors: {},
+								creditedMembers: [
+									{
+										model: 'person',
+										name: 'Rupert Goold',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'person',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -2583,6 +3362,88 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Almeida Theatre',
 					surTheatre: null
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: 'Executive Director',
+						entities: [
+							{
+								model: 'person',
+								uuid: DENISE_WOOD_PERSON_UUID,
+								name: 'Denise Wood'
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associate Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: TIATA_FAHODZI_COMPANY_UUID,
+								name: 'Tiata Fahodzi',
+								creditedMembers: []
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Associates',
+						entities: [
+							{
+								model: 'person',
+								uuid: REBECCA_FRECKNALL_PERSON_UUID,
+								name: 'Rebecca Frecknall'
+							},
+							{
+								model: 'person',
+								uuid: SIMEON_BLAKE_HALL_PERSON_UUID,
+								name: 'Simeon Blake-Hall'
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: ALMEIDA_THEATRE_COMPANY_UUID,
+								name: 'Almeida Theatre Company',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: RUPERT_GOOLD_PERSON_UUID,
+										name: 'Rupert Goold'
+									},
+									{
+										model: 'person',
+										uuid: ROBERT_ICKE_PERSON_UUID,
+										name: 'Robert Icke'
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'producerCredit',
+						name: 'Co-Producer',
+						entities: [
+							{
+								model: 'company',
+								uuid: HEADLONG_THEATRE_COMPANY_UUID,
+								name: 'Headlong Theatre',
+								creditedMembers: [
+									{
+										model: 'person',
+										uuid: RUPERT_GOOLD_PERSON_UUID,
+										name: 'Rupert Goold'
+									}
+								]
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -2844,6 +3705,21 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [
+					{
+						model: 'producerCredit',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'person',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
 				cast: [
 					{
 						model: 'person',
@@ -2923,6 +3799,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
 				crewCredits: []

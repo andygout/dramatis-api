@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Olivier Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "National Theatre Company",
+					"creditedMembers": [
+						{
+							"name": "Nicholas Hytner"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "David Bradley",

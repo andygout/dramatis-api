@@ -132,6 +132,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
 				rightsGrantorMaterials: [],
+				producerProductions: [],
 				creativeProductions: [],
 				crewProductions: []
 			};

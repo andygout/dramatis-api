@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Crucible Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Sheffield Theatres",
+					"creditedMembers": [
+						{
+							"name": "Daniel Evans"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Nigel Harman",

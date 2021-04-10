@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "The Maria"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Young Vic Company",
+					"creditedMembers": [
+						{
+							"name": "David Lan"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Natalie Dormer",

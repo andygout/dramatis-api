@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Barbican Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Ninagawa Company",
+					"creditedMembers": [
+						{
+							"name": "Yukio Ninagawa"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Toshiaki Karasawa",

@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Studio 1"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Sonia Freidman Productions",
+					"creditedMembers": [
+						{
+							"name": "Sonia Freidman"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Jason Isaacs",

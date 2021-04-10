@@ -335,7 +335,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups) where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -345,6 +345,9 @@ describe('Prepare As Params module', () => {
 					],
 					characterGroups: [
 						{ name: '', characters: [{ name: 'Malene' }] }
+					],
+					producerCredits: [
+						{ name: '', entities: [{ name: 'National Theatre Company' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -356,6 +359,9 @@ describe('Prepare As Params module', () => {
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0].name).to.be.null;
 				expect(result.characterGroups[0]).to.not.have.property('position');
+				expect(result.producerCredits.length).to.equal(1);
+				expect(result.producerCredits[0].name).to.be.null;
+				expect(result.producerCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -371,6 +377,11 @@ describe('Prepare As Params module', () => {
 						{ name: '', characters: [{ name: '' }] },
 						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 						{ name: 'The Foldals', characters: [{ name: '' }] }
+					],
+					producerCredits: [
+						{ name: '', entities: [{ name: '' }] },
+						{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
+						{ name: 'originally commissioned by', entities: [{ name: '' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -382,6 +393,9 @@ describe('Prepare As Params module', () => {
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0].name).to.equal('The Borkmans');
 				expect(result.characterGroups[0]).to.not.have.property('position');
+				expect(result.producerCredits.length).to.equal(1);
+				expect(result.producerCredits[0].name).to.equal('in association with');
+				expect(result.producerCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -532,7 +546,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups) where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -543,6 +557,9 @@ describe('Prepare As Params module', () => {
 						],
 						characterGroups: [
 							{ name: '', characters: [{ name: 'Malene' }] }
+						],
+						producerCredits: [
+							{ name: '', entities: [{ name: 'National Theatre Company' }] }
 						]
 					}
 				};
@@ -555,6 +572,9 @@ describe('Prepare As Params module', () => {
 				expect(result.material.characterGroups.length).to.equal(1);
 				expect(result.material.characterGroups[0].name).to.be.null;
 				expect(result.material.characterGroups[0]).to.not.have.property('position');
+				expect(result.material.producerCredits.length).to.equal(1);
+				expect(result.material.producerCredits[0].name).to.be.null;
+				expect(result.material.producerCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -571,6 +591,11 @@ describe('Prepare As Params module', () => {
 							{ name: '', characters: [{ name: '' }] },
 							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 							{ name: 'The Foldals', characters: [{ name: '' }] }
+						],
+						producerCredits: [
+							{ name: '', entities: [{ name: '' }] },
+							{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
+							{ name: 'originally commissioned by', entities: [{ name: '' }] }
 						]
 					}
 				};
@@ -580,6 +605,9 @@ describe('Prepare As Params module', () => {
 				expect(result.material.writingCredits.length).to.equal(1);
 				expect(result.material.writingCredits[0].name).to.equal('version by');
 				expect(result.material.writingCredits[0]).to.not.have.property('position');
+				expect(result.material.producerCredits.length).to.equal(1);
+				expect(result.material.producerCredits[0].name).to.equal('in association with');
+				expect(result.material.producerCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -734,7 +762,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups) where items are permitted an empty string name value', () => {
+		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -746,6 +774,9 @@ describe('Prepare As Params module', () => {
 							],
 							characterGroups: [
 								{ name: '', characters: [{ name: 'Malene' }] }
+							],
+							producerCredits: [
+								{ name: '', entities: [{ name: 'National Theatre Company' }] }
 							]
 						}
 					]
@@ -759,6 +790,9 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].characterGroups.length).to.equal(1);
 				expect(result.materials[0].characterGroups[0].name).to.be.null;
 				expect(result.materials[0].characterGroups[0]).to.not.have.property('position');
+				expect(result.materials[0].producerCredits.length).to.equal(1);
+				expect(result.materials[0].producerCredits[0].name).to.be.null;
+				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -776,6 +810,11 @@ describe('Prepare As Params module', () => {
 								{ name: '', characters: [{ name: '' }] },
 								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
 								{ name: 'The Foldals', characters: [{ name: '' }] }
+							],
+							producerCredits: [
+								{ name: '', entities: [{ name: '' }] },
+								{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
+								{ name: 'translation by', entities: [{ name: '' }] }
 							]
 						}
 					]
@@ -789,6 +828,9 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].characterGroups.length).to.equal(1);
 				expect(result.materials[0].characterGroups[0].name).to.equal('The Borkmans');
 				expect(result.materials[0].characterGroups[0]).to.not.have.property('position');
+				expect(result.materials[0].producerCredits.length).to.equal(1);
+				expect(result.materials[0].producerCredits[0].name).to.equal('in association with');
+				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
 
 			});
 

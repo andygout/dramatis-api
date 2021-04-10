@@ -6,6 +6,19 @@
 	"theatre": {
 		"name": "Theatre Royal Haymarket"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "East Productions"
+				},
+				{
+					"name": "Marc Sinden"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Steven Berkoff",

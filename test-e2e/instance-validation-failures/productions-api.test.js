@@ -53,6 +53,7 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -118,6 +119,7 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -216,6 +218,7 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []

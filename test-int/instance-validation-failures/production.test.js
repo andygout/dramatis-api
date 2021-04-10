@@ -58,6 +58,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -102,6 +103,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -149,6 +151,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -197,6 +200,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -244,6 +248,7 @@ describe('Production instance', () => {
 							]
 						}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
@@ -292,9 +297,808 @@ describe('Production instance', () => {
 							]
 						}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					producerCredits: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							entities: []
+						}
+					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate producer credit name values', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					producerCredits: [
+						{
+							name: 'Producer'
+						},
+						{
+							name: 'Producer'
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [
+						{
+							name: 'Producer',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							entities: []
+						},
+						{
+							name: 'Producer',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							},
+							entities: []
+						}
+					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (person) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					producerCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (person) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									name: 'Paul Elliott',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: 'Paul Elliott',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (company) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: ABOVE_MAX_LENGTH_STRING,
+									differentiator: '',
+									creditedMembers: [],
+									errors: {
+										name: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (company) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Duncan C Weldon Productions',
+									differentiator: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon Productions',
+									differentiator: ABOVE_MAX_LENGTH_STRING,
+									creditedMembers: [],
+									errors: {
+										differentiator: [
+											'Value is too long'
+										]
+									}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producers',
+							entities: [
+								{
+									model: 'company',
+									name: 'Duncan C Weldon Productions',
+									creditedMembers: [
+										{
+											name: 'Duncan C Weldon'
+										},
+										{
+											name: 'Foo'
+										}
+									]
+								},
+								{
+									name: 'Duncan C Weldon'
+								},
+								{
+									model: 'company',
+									name: 'Duncan C Weldon Productions'
+								},
+								{
+									model: 'company',
+									name: 'Foo'
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producers',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon Productions',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Duncan C Weldon',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											uuid: undefined,
+											name: 'Foo',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								},
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									}
+								},
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon Productions',
+									differentiator: '',
+									errors: {
+										name: [
+											'This item has been duplicated within the group'
+										],
+										differentiator: [
+											'This item has been duplicated within the group'
+										]
+									},
+									creditedMembers: []
+								},
+								{
+									uuid: undefined,
+									name: 'Foo',
+									differentiator: '',
+									errors: {},
+									creditedMembers: []
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
+				expect(result.crewCredits[0].entities[3].model).to.equal('company');
+
+			});
+
+		});
+
+		context('producer credit entity without name has named credited members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: '',
+									creditedMembers: [
+										{
+											name: 'Duncan C Weldon',
+											differentiator: ''
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: '',
+									differentiator: '',
+									errors: {
+										name: [
+											'Name is required if named children exist'
+										]
+									},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Duncan C Weldon',
+											differentiator: '',
+											errors: {}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (company) credited member name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Duncan C Weldon Productions',
+									creditedMembers: [
+										{
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon Productions',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Waiting for Godot',
+					crewCredits: [
+						{
+							name: 'Producer',
+							entities: [
+								{
+									model: 'company',
+									name: 'Duncan C Weldon Productions',
+									creditedMembers: [
+										{
+											name: 'Duncan C Weldon',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Waiting for Godot',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [
+						{
+							name: 'Producer',
+							errors: {},
+							entities: [
+								{
+									uuid: undefined,
+									name: 'Duncan C Weldon Productions',
+									differentiator: '',
+									errors: {},
+									creditedMembers: [
+										{
+											uuid: undefined,
+											name: 'Duncan C Weldon',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -338,6 +1142,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -397,6 +1202,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -465,6 +1271,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -558,6 +1365,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -629,6 +1437,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -700,6 +1509,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -772,6 +1582,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -843,6 +1654,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -914,6 +1726,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -995,6 +1808,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [
 						{
 							uuid: undefined,
@@ -1103,6 +1917,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1161,6 +1976,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1230,6 +2046,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1297,6 +2114,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1365,6 +2183,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1433,6 +2252,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1503,6 +2323,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1591,6 +2412,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1725,6 +2547,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1806,6 +2629,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1888,6 +2712,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [
 						{
@@ -1958,6 +2783,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2016,6 +2842,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2085,6 +2912,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2152,6 +2980,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2220,6 +3049,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2288,6 +3118,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2358,6 +3189,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2446,6 +3278,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2580,6 +3413,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2661,6 +3495,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [
@@ -2743,6 +3578,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
 					crewCredits: [

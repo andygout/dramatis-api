@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Jerwood Theatre Downstairs"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Royal Court Theatre",
+					"creditedMembers": [
+						{
+							"name": "Ian Rickson"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Edward Hogg",

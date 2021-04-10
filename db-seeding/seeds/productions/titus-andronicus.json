@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Globe Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Shakespeare's Globe",
+					"creditedMembers": [
+						{
+							"name": "Dominic Dromgoole"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Patrick Moy",

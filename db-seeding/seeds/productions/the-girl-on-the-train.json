@@ -7,6 +7,22 @@
 	"theatre": {
 		"name": "Duke of York's Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"name": "Simon Friend"
+				},
+				{
+					"model": "company",
+					"name": "Amblin Entertainment"
+				},
+				{
+					"name": "Josh Andrews"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Samantha Womack",

@@ -6,6 +6,19 @@
 	"theatre": {
 		"name": "Richmond Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"name": "Bill Kenwright"
+				},
+				{
+					"model": "company",
+					"name": "Agatha Christie Theatre Company"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Denis Lill",
