@@ -13,7 +13,7 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(entity)
+			OPTIONAL MATCH (material)-[writerRel:HAS_WRITING_ENTITY]->(entity)
 				WHERE entity:Person OR entity:Company
 
 			DELETE writerRel
@@ -26,7 +26,7 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(:Character)
+			OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(:Character)
 
 			DELETE characterRel
 
@@ -85,7 +85,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET writingPerson.differentiator = writingPersonParam.differentiator
 
 					CREATE (material)-
-						[:WRITTEN_BY {
+						[:HAS_WRITING_ENTITY {
 							creditPosition: writingCredit.position,
 							entityPosition: writingPersonParam.position,
 							credit: writingCredit.name,
@@ -117,7 +117,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET writingCompany.differentiator = writingCompanyParam.differentiator
 
 					CREATE (material)-
-						[:WRITTEN_BY {
+						[:HAS_WRITING_ENTITY {
 							creditPosition: writingCredit.position,
 							entityPosition: writingCompanyParam.position,
 							credit: writingCredit.name,
@@ -180,7 +180,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET character.differentiator = characterParam.differentiator
 
 					CREATE (material)-
-						[:INCLUDES_CHARACTER {
+						[:HAS_CHARACTER {
 							groupPosition: characterGroup.position,
 							characterPosition: characterParam.position,
 							displayName: CASE characterParam.underlyingName WHEN NULL
@@ -206,7 +206,7 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	WITH material, originalVersionMaterial, entityRel, entity
@@ -237,7 +237,7 @@ const getEditQuery = () => `
 			END
 		) + [{ entities: [{}] }] AS writingCredits
 
-	OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
 
 	WITH material, originalVersionMaterial, writingCredits, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
@@ -296,12 +296,12 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (relatedMaterial)-[sourcingMaterialRel:USES_SOURCE_MATERIAL]->(material)
 
-		OPTIONAL MATCH (relatedMaterial)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+		OPTIONAL MATCH (relatedMaterial)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 			WHERE entity:Person OR entity:Company OR entity:Material
 
-		OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]-(material)
+		OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]-(material)
 
-		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 
 		WITH
 			material,
@@ -433,7 +433,7 @@ const getShowQuery = () => `
 				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
 			] AS sourcingMaterials
 
-	OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
 
 	WITH
 		material,
@@ -493,7 +493,7 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-		OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+		OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
 
@@ -565,10 +565,10 @@ const getShowQuery = () => `
 const getListQuery = () => `
 	MATCH (material:Material)
 
-	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
-	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 
 	WITH material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition

@@ -1,22 +1,24 @@
 const getShowQuery = () => `
 	MATCH (company:Company { uuid: $uuid })
 
-	OPTIONAL MATCH (company)<-[:WRITTEN_BY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
+	OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
 
 	WITH company, COLLECT(DISTINCT(material)) AS materials
 
 	UNWIND (CASE materials WHEN [] THEN [null] ELSE materials END) AS material
 
-		OPTIONAL MATCH (company)<-[writerRel:WRITTEN_BY]-(material)
+		OPTIONAL MATCH (company)<-[writerRel:HAS_WRITING_ENTITY]-(material)
 
-		OPTIONAL MATCH (company)<-[:WRITTEN_BY]-(:Material)<-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]-(material)
+		OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)
+			<-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]-(material)
 
-		OPTIONAL MATCH (company)<-[:WRITTEN_BY]-(:Material)<-[sourcingMaterialRel:USES_SOURCE_MATERIAL]-(material)
+		OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)
+			<-[sourcingMaterialRel:USES_SOURCE_MATERIAL]-(material)
 
-		OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+		OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 			WHERE entity:Person OR entity:Company OR entity:Material
 
-		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 
 		WITH
 			company,
@@ -131,14 +133,14 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-	OPTIONAL MATCH (company)<-[creativeRel:HAS_CREATIVE_TEAM_MEMBER]-(production:Production)
+	OPTIONAL MATCH (company)<-[creativeRel:HAS_CREATIVE_ENTITY]-(production:Production)
 
 	UNWIND (CASE WHEN creativeRel IS NOT NULL AND EXISTS(creativeRel.creditedMemberUuids)
 		THEN creativeRel.creditedMemberUuids
 		ELSE [null]
 	END) AS creditedMemberUuid
 
-		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 			(creditedMember:Person { uuid: creditedMemberUuid })
 			WHERE creativeRel.creditPosition IS NULL OR creativeRel.creditPosition = creditedMemberRel.creditPosition
 
@@ -148,7 +150,7 @@ const getShowQuery = () => `
 		WITH company, materials, creativeRel, production,
 			COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity)
 		WHERE
 			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
@@ -160,7 +162,7 @@ const getShowQuery = () => `
 		ELSE [null]
 	END) AS coCreditedCompanyCreditedMemberUuid
 
-		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_CREATIVE_ENTITY]->
 			(coCreditedCompanyCreditedMember:Person { uuid: coCreditedCompanyCreditedMemberUuid })
 			WHERE
 				coCreditedEntityRel.creditPosition IS NULL OR
@@ -204,7 +206,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 	WITH company, materials, production, theatre, surTheatre,
 		COLLECT({
@@ -240,14 +242,14 @@ const getShowQuery = () => `
 			END
 		) AS creativeProductions
 
-	OPTIONAL MATCH (company)<-[crewRel:HAS_CREW_MEMBER]-(production:Production)
+	OPTIONAL MATCH (company)<-[crewRel:HAS_CREW_ENTITY]-(production:Production)
 
 	UNWIND (CASE WHEN crewRel IS NOT NULL AND EXISTS(crewRel.creditedMemberUuids)
 		THEN crewRel.creditedMemberUuids
 		ELSE [null]
 	END) AS creditedMemberUuid
 
-		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_ENTITY]->
 			(creditedMember:Person { uuid: creditedMemberUuid })
 			WHERE crewRel.creditPosition IS NULL OR crewRel.creditPosition = creditedMemberRel.creditPosition
 
@@ -257,7 +259,7 @@ const getShowQuery = () => `
 		WITH company, materials, creativeProductions, crewRel, production,
 			COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_MEMBER]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity)
 		WHERE
 			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
@@ -269,7 +271,7 @@ const getShowQuery = () => `
 		ELSE [null]
 	END) AS coCreditedCompanyCreditedMemberUuid
 
-		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_CREW_MEMBER]->
+		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_CREW_ENTITY]->
 			(coCreditedCompanyCreditedMember:Person { uuid: coCreditedCompanyCreditedMemberUuid })
 			WHERE
 				coCreditedEntityRel.creditPosition IS NULL OR
@@ -322,7 +324,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 	WITH company, materials, creativeProductions, production, theatre, surTheatre,
 		COLLECT({

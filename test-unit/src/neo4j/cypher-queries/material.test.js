@@ -56,7 +56,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET writingPerson.differentiator = writingPersonParam.differentiator
 
 							CREATE (material)-
-								[:WRITTEN_BY {
+								[:HAS_WRITING_ENTITY {
 									creditPosition: writingCredit.position,
 									entityPosition: writingPersonParam.position,
 									credit: writingCredit.name,
@@ -88,7 +88,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET writingCompany.differentiator = writingCompanyParam.differentiator
 
 							CREATE (material)-
-								[:WRITTEN_BY {
+								[:HAS_WRITING_ENTITY {
 									creditPosition: writingCredit.position,
 									entityPosition: writingCompanyParam.position,
 									credit: writingCredit.name,
@@ -151,7 +151,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET character.differentiator = characterParam.differentiator
 
 							CREATE (material)-
-								[:INCLUDES_CHARACTER {
+								[:HAS_CHARACTER {
 									groupPosition: characterGroup.position,
 									characterPosition: characterParam.position,
 									displayName: CASE characterParam.underlyingName WHEN NULL
@@ -169,7 +169,7 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 					WHERE entity:Person OR entity:Company OR entity:Material
 
 				WITH material, originalVersionMaterial, entityRel, entity
@@ -200,7 +200,7 @@ describe('Cypher Queries Material module', () => {
 						END
 					) + [{ entities: [{}] }] AS writingCredits
 
-				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+				OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
 
 				WITH material, originalVersionMaterial, writingCredits, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition
@@ -256,7 +256,7 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[writerRel:WRITTEN_BY]->(entity)
+				OPTIONAL MATCH (material)-[writerRel:HAS_WRITING_ENTITY]->(entity)
 					WHERE entity:Person OR entity:Company
 
 				DELETE writerRel
@@ -269,7 +269,7 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(:Character)
+				OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(:Character)
 
 				DELETE characterRel
 
@@ -323,7 +323,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET writingPerson.differentiator = writingPersonParam.differentiator
 
 							CREATE (material)-
-								[:WRITTEN_BY {
+								[:HAS_WRITING_ENTITY {
 									creditPosition: writingCredit.position,
 									entityPosition: writingPersonParam.position,
 									credit: writingCredit.name,
@@ -355,7 +355,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET writingCompany.differentiator = writingCompanyParam.differentiator
 
 							CREATE (material)-
-								[:WRITTEN_BY {
+								[:HAS_WRITING_ENTITY {
 									creditPosition: writingCredit.position,
 									entityPosition: writingCompanyParam.position,
 									credit: writingCredit.name,
@@ -418,7 +418,7 @@ describe('Cypher Queries Material module', () => {
 								ON CREATE SET character.differentiator = characterParam.differentiator
 
 							CREATE (material)-
-								[:INCLUDES_CHARACTER {
+								[:HAS_CHARACTER {
 									groupPosition: characterGroup.position,
 									characterPosition: characterParam.position,
 									displayName: CASE characterParam.underlyingName WHEN NULL
@@ -436,7 +436,7 @@ describe('Cypher Queries Material module', () => {
 
 				OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-				OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 					WHERE entity:Person OR entity:Company OR entity:Material
 
 				WITH material, originalVersionMaterial, entityRel, entity
@@ -467,7 +467,7 @@ describe('Cypher Queries Material module', () => {
 						END
 					) + [{ entities: [{}] }] AS writingCredits
 
-				OPTIONAL MATCH (material)-[characterRel:INCLUDES_CHARACTER]->(character:Character)
+				OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
 
 				WITH material, originalVersionMaterial, writingCredits, characterRel, character
 					ORDER BY characterRel.groupPosition, characterRel.characterPosition

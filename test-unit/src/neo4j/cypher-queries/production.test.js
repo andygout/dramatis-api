@@ -102,7 +102,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET creativePerson.differentiator = creativePersonParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREATIVE_TEAM_MEMBER {
+								[:HAS_CREATIVE_ENTITY {
 									creditPosition: creativeCredit.position,
 									entityPosition: creativePersonParam.position,
 									credit: creativeCredit.name
@@ -133,7 +133,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET creativeCompany.differentiator = creativeCompanyParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREATIVE_TEAM_MEMBER {
+								[:HAS_CREATIVE_ENTITY {
 									creditPosition: creativeCredit.position,
 									entityPosition: creativeCompanyParam.position,
 									credit: creativeCredit.name
@@ -153,7 +153,7 @@ describe('Cypher Queries Production module', () => {
 									(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 									creativeCompanyParam.differentiator = creditedCompany.differentiator
 
-							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
+							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_ENTITY]-(production)
 								WHERE
 									creativeCredit.position IS NULL OR
 									creativeCredit.position = creativeCompanyRel.creditPosition
@@ -175,7 +175,7 @@ describe('Cypher Queries Production module', () => {
 									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 								CREATE (production)-
-									[:HAS_CREATIVE_TEAM_MEMBER {
+									[:HAS_CREATIVE_ENTITY {
 										creditPosition: creativeCredit.position,
 										memberPosition: creditedMemberParam.position,
 										creditedCompanyUuid: creditedCompany.uuid
@@ -211,7 +211,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET crewPerson.differentiator = crewPersonParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREW_MEMBER {
+								[:HAS_CREW_ENTITY {
 									creditPosition: crewCredit.position,
 									entityPosition: crewPersonParam.position,
 									credit: crewCredit.name
@@ -242,7 +242,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET crewCompany.differentiator = crewCompanyParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREW_MEMBER {
+								[:HAS_CREW_ENTITY {
 									creditPosition: crewCredit.position,
 									entityPosition: crewCompanyParam.position,
 									credit: crewCredit.name
@@ -262,7 +262,7 @@ describe('Cypher Queries Production module', () => {
 									(crewCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 									crewCompanyParam.differentiator = creditedCompany.differentiator
 
-							OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_MEMBER]-(production)
+							OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_ENTITY]-(production)
 								WHERE
 									crewCredit.position IS NULL OR
 									crewCredit.position = crewCompanyRel.creditPosition
@@ -284,7 +284,7 @@ describe('Cypher Queries Production module', () => {
 									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 								CREATE (production)-
-									[:HAS_CREW_MEMBER {
+									[:HAS_CREW_ENTITY {
 										creditPosition: crewCredit.position,
 										memberPosition: creditedMemberParam.position,
 										creditedCompanyUuid: creditedCompany.uuid
@@ -328,7 +328,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{ roles: [{}] }] AS cast
 
-				OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+				OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 					WHERE
 						(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 						creativeEntity:Company
@@ -345,7 +345,7 @@ describe('Cypher Queries Production module', () => {
 
 					UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
 							WHERE
 								creativeEntityRel.creditPosition IS NULL OR
@@ -383,7 +383,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{ entities: [{}] }] AS creativeCredits
 
-				OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+				OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
 					WHERE
 						(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 						crewEntity:Company
@@ -400,7 +400,7 @@ describe('Cypher Queries Production module', () => {
 
 					UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_ENTITY]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
 							WHERE
 								crewEntityRel.creditPosition IS NULL OR
@@ -557,7 +557,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET creativePerson.differentiator = creativePersonParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREATIVE_TEAM_MEMBER {
+								[:HAS_CREATIVE_ENTITY {
 									creditPosition: creativeCredit.position,
 									entityPosition: creativePersonParam.position,
 									credit: creativeCredit.name
@@ -588,7 +588,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET creativeCompany.differentiator = creativeCompanyParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREATIVE_TEAM_MEMBER {
+								[:HAS_CREATIVE_ENTITY {
 									creditPosition: creativeCredit.position,
 									entityPosition: creativeCompanyParam.position,
 									credit: creativeCredit.name
@@ -608,7 +608,7 @@ describe('Cypher Queries Production module', () => {
 									(creativeCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 									creativeCompanyParam.differentiator = creditedCompany.differentiator
 
-							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_TEAM_MEMBER]-(production)
+							OPTIONAL MATCH (creditedCompany)<-[creativeCompanyRel:HAS_CREATIVE_ENTITY]-(production)
 								WHERE
 									creativeCredit.position IS NULL OR
 									creativeCredit.position = creativeCompanyRel.creditPosition
@@ -630,7 +630,7 @@ describe('Cypher Queries Production module', () => {
 									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 								CREATE (production)-
-									[:HAS_CREATIVE_TEAM_MEMBER {
+									[:HAS_CREATIVE_ENTITY {
 										creditPosition: creativeCredit.position,
 										memberPosition: creditedMemberParam.position,
 										creditedCompanyUuid: creditedCompany.uuid
@@ -666,7 +666,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET crewPerson.differentiator = crewPersonParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREW_MEMBER {
+								[:HAS_CREW_ENTITY {
 									creditPosition: crewCredit.position,
 									entityPosition: crewPersonParam.position,
 									credit: crewCredit.name
@@ -697,7 +697,7 @@ describe('Cypher Queries Production module', () => {
 								ON CREATE SET crewCompany.differentiator = crewCompanyParam.differentiator
 
 							CREATE (production)-
-								[:HAS_CREW_MEMBER {
+								[:HAS_CREW_ENTITY {
 									creditPosition: crewCredit.position,
 									entityPosition: crewCompanyParam.position,
 									credit: crewCredit.name
@@ -717,7 +717,7 @@ describe('Cypher Queries Production module', () => {
 									(crewCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
 									crewCompanyParam.differentiator = creditedCompany.differentiator
 
-							OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_MEMBER]-(production)
+							OPTIONAL MATCH (creditedCompany)<-[crewCompanyRel:HAS_CREW_ENTITY]-(production)
 								WHERE
 									crewCredit.position IS NULL OR
 									crewCredit.position = crewCompanyRel.creditPosition
@@ -739,7 +739,7 @@ describe('Cypher Queries Production module', () => {
 									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
 
 								CREATE (production)-
-									[:HAS_CREW_MEMBER {
+									[:HAS_CREW_ENTITY {
 										creditPosition: crewCredit.position,
 										memberPosition: creditedMemberParam.position,
 										creditedCompanyUuid: creditedCompany.uuid
@@ -783,7 +783,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{ roles: [{}] }] AS cast
 
-				OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_TEAM_MEMBER]->(creativeEntity)
+				OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 					WHERE
 						(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 						creativeEntity:Company
@@ -800,7 +800,7 @@ describe('Cypher Queries Production module', () => {
 
 					UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_TEAM_MEMBER]->
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
 							WHERE
 								creativeEntityRel.creditPosition IS NULL OR
@@ -838,7 +838,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{ entities: [{}] }] AS creativeCredits
 
-				OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_MEMBER]->(crewEntity)
+				OPTIONAL MATCH (production)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
 					WHERE
 						(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 						crewEntity:Company
@@ -855,7 +855,7 @@ describe('Cypher Queries Production module', () => {
 
 					UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_MEMBER]->
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_CREW_ENTITY]->
 							(creditedMember:Person { uuid: creditedMemberUuid })
 							WHERE
 								crewEntityRel.creditPosition IS NULL OR

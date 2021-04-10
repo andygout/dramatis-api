@@ -5,7 +5,7 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (theatre:Theatre { uuid: $uuid })
 
-			OPTIONAL MATCH (theatre)-[relationship:INCLUDES_SUB_THEATRE]->(:Theatre)
+			OPTIONAL MATCH (theatre)-[relationship:HAS_SUB_THEATRE]->(:Theatre)
 
 			DELETE relationship
 
@@ -36,7 +36,7 @@ const getCreateUpdateQuery = action => {
 				})
 					ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
 
-				CREATE (theatre)-[:INCLUDES_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+				CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
 			)
 
 		WITH DISTINCT theatre
@@ -51,7 +51,7 @@ const getCreateQuery = () => getCreateUpdateQuery('create');
 const getEditQuery = () => `
 	MATCH (theatre:Theatre { uuid: $uuid })
 
-	OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
+	OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
 
 	WITH theatre, subTheatreRel, subTheatre
 		ORDER BY subTheatreRel.position
@@ -74,7 +74,7 @@ const getUpdateQuery = () => getCreateUpdateQuery('update');
 const getShowQuery = () => `
 	MATCH (theatre:Theatre { uuid: $uuid })
 
-	OPTIONAL MATCH (surTheatre:Theatre)-[:INCLUDES_SUB_THEATRE]->(theatre)
+	OPTIONAL MATCH (surTheatre:Theatre)-[:HAS_SUB_THEATRE]->(theatre)
 
 	WITH theatre,
 		CASE surTheatre WHEN NULL
@@ -82,7 +82,7 @@ const getShowQuery = () => `
 			ELSE surTheatre { model: 'theatre', .uuid, .name }
 		END AS surTheatre
 
-	OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
+	OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
 
 	WITH theatre, surTheatre, subTheatre
 		ORDER BY subTheatreRel.position
@@ -96,7 +96,7 @@ const getShowQuery = () => `
 		) AS subTheatres
 
 	OPTIONAL MATCH path=
-		(theatre)-[:INCLUDES_SUB_THEATRE*0..1]->(subTheatreForProduction:Theatre)<-[:PLAYS_AT]-(production:Production)
+		(theatre)-[:HAS_SUB_THEATRE*0..1]->(subTheatreForProduction:Theatre)<-[:PLAYS_AT]-(production:Production)
 
 	WITH
 		theatre,
@@ -132,9 +132,9 @@ const getShowQuery = () => `
 
 const getListQuery = () => `
 	MATCH (theatre:Theatre)
-		WHERE NOT (:Theatre)-[:INCLUDES_SUB_THEATRE]->(theatre)
+		WHERE NOT (:Theatre)-[:HAS_SUB_THEATRE]->(theatre)
 
-	OPTIONAL MATCH (theatre)-[subTheatreRel:INCLUDES_SUB_THEATRE]->(subTheatre:Theatre)
+	OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
 
 	WITH theatre, subTheatre
 		ORDER BY subTheatreRel.position

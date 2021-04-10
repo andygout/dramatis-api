@@ -227,7 +227,7 @@ describe('Instance validation failures: Characters API', () => {
 				sourceUuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				destinationLabel: 'Character',
 				destinationUuid: VIOLA_CHARACTER_UUID,
-				relationshipName: 'INCLUDES_CHARACTER'
+				relationshipName: 'HAS_CHARACTER'
 			});
 
 		});

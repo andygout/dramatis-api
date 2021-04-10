@@ -1,12 +1,12 @@
 const getShowQuery = () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	OPTIONAL MATCH (character)<-[materialRel:INCLUDES_CHARACTER]-(material:Material)
+	OPTIONAL MATCH (character)<-[materialRel:HAS_CHARACTER]-(material:Material)
 
-	OPTIONAL MATCH (material)-[entityRel:WRITTEN_BY|USES_SOURCE_MATERIAL]->(entity)
+	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
-	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:WRITTEN_BY]->(sourceMaterialWriter)
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 
 	WITH
 		character,
@@ -99,7 +99,7 @@ const getShowQuery = () => `
 			END
 		) AS materials
 
-	OPTIONAL MATCH (character)<-[variantNamedDepiction:INCLUDES_CHARACTER]-(:Material)
+	OPTIONAL MATCH (character)<-[variantNamedDepiction:HAS_CHARACTER]-(:Material)
 		WHERE EXISTS(variantNamedDepiction.displayName)
 
 	WITH character, materials, variantNamedDepiction
@@ -107,7 +107,7 @@ const getShowQuery = () => `
 
 	WITH character, materials, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 
-	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:INCLUDES_CHARACTER]-(:Material)
+	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:HAS_CHARACTER]-(:Material)
 		<-[:PRODUCTION_OF]-(:Production)-[variantNamedPortrayal:HAS_CAST_MEMBER]->(:Person)
 		WHERE
 			character.name <> variantNamedPortrayal.roleName AND
@@ -122,7 +122,7 @@ const getShowQuery = () => `
 	WITH character, variantNamedDepictions, materials,
 		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 
-	OPTIONAL MATCH (character)<-[characterDepiction:INCLUDES_CHARACTER]-(materialForProduction:Material)
+	OPTIONAL MATCH (character)<-[characterDepiction:HAS_CHARACTER]-(materialForProduction:Material)
 		<-[productionRel:PRODUCTION_OF]-(production:Production)-[role:HAS_CAST_MEMBER]->(person:Person)
 		WHERE
 			(
@@ -142,7 +142,7 @@ const getShowQuery = () => `
 			)
 
 	OPTIONAL MATCH (person)<-[otherRole]-(production)-[productionRel]->
-		(materialForProduction)-[otherCharacterDepiction:INCLUDES_CHARACTER]->(otherCharacter:Character)
+		(materialForProduction)-[otherCharacterDepiction:HAS_CHARACTER]->(otherCharacter:Character)
 		WHERE
 			(
 				otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
@@ -155,7 +155,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
-	OPTIONAL MATCH (theatre)<-[:INCLUDES_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
 	WITH
 		character,
