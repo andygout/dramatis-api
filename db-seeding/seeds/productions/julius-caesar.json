@@ -6,6 +6,33 @@
 	"theatre": {
 		"name": "Barbican Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Théâtre National du Chaillot"
+				},
+				{
+					"model": "company",
+					"name": "Teatro Español"
+				},
+				{
+					"model": "company",
+					"name": "Grand Théâtre de la Ville"
+				},
+				{
+					"model": "company",
+					"name": "Young Vic Company",
+					"creditedMembers": [
+						{
+							"name": "David Lan"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "David Collings",

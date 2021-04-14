@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Royal Shakespeare Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Royal Shakespeare Company",
+					"creditedMembers": [
+						{
+							"name": "Gregory Doran"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Elliot Barnes-Worrell",

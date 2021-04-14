@@ -4,10 +4,12 @@ import { v4 as uuid } from 'uuid';
 import { isObjectWithKeys } from './is-object-with-keys';
 
 const CHARACTER_GROUPS = 'characterGroups';
+const PRODUCER_CREDITS = 'producerCredits';
 const WRITING_CREDITS = 'writingCredits';
 
 const EMPTY_NAME_EXCEPTION_KEYS = [
 	CHARACTER_GROUPS,
+	PRODUCER_CREDITS,
 	WRITING_CREDITS
 ];
 
@@ -25,6 +27,9 @@ export const prepareAsParams = instance => {
 
 	const isNotCharacterGroupWithoutNamedCharacter = key => item =>
 		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);
+
+	const isNotProducerCreditWithoutNamedEntity = key => item =>
+		key !== PRODUCER_CREDITS || item.entities.some(entity => !!entity.name);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
 
@@ -57,6 +62,7 @@ export const prepareAsParams = instance => {
 						.filter(hasNameOrIsExempt(key))
 						.filter(isNotWritingCreditWithoutNamedEntity(key))
 						.filter(isNotCharacterGroupWithoutNamedCharacter(key))
+						.filter(isNotProducerCreditWithoutNamedEntity(key))
 						.map(applyPositionPropertyAndRecurseObject)
 						.filter(Boolean);
 

@@ -1,4 +1,11 @@
 export default {
+	producerCredits: [
+		{
+			entities: [
+				{}
+			]
+		}
+	],
 	cast: [
 		{
 			roles: [

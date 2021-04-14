@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Donmar Warehouse"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Donmar Warehouse",
+					"creditedMembers": [
+						{
+							"name": "Michael Grandage"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Kelly Reilly",

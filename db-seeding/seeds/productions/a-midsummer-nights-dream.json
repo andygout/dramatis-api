@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Novello Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Royal Shakespeare Company",
+					"creditedMembers": [
+						{
+							"name": "Michael Boyd"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Miles Richardson",

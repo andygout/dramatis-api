@@ -7,6 +7,54 @@
 	"theatre": {
 		"name": "Gielgud Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Fiery Angel",
+					"creditedMembers": [
+						{
+							"name": "Edward Snape"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Associate Producers",
+			"entities": [
+				{
+					"model": "company",
+					"name": "Stage Entertainment UK"
+				},
+				{
+					"model": "company",
+					"name": "Fiery Dragons"
+				},
+				{
+					"model": "company",
+					"name": "Liverpool Everyman & Playhouse",
+					"creditedMembers": [
+						{
+							"name": "Gemma Bodinetz"
+						}
+					]
+				},
+				{
+					"model": "company",
+					"name": "Olympus Theatricals"
+				},
+				{
+					"model": "company",
+					"name": "StudioCanal"
+				},
+				{
+					"name": "Jason Haigh-Ellery"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Harry Peacock",

@@ -6,6 +6,20 @@
 	"theatre": {
 		"name": "The Riverfront"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "National Theatre of Wales"
+				},
+				{
+					"model": "company",
+					"name": "Told by an Idiot"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "David Charles"

@@ -7,6 +7,15 @@
 	"theatre": {
 		"name": "The Pit"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "National Theatre of Iceland"				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Björn Hlynur Haraldsson",

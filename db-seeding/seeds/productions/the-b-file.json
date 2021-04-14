@@ -6,6 +6,25 @@
 	"theatre": {
 		"name": "Etcetera Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Kernawells Theatre Company"
+				}
+			]
+		},
+		{
+			"name": "Associate Producer",
+			"entities": [
+				{
+					"model": "company",
+					"name": "Weaver Hughes Ensemble"
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Jessie Burton",

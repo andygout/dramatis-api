@@ -6,6 +6,21 @@
 	"theatre": {
 		"name": "Almeida Theatre"
 	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "company",
+					"name": "Almeida Theatre Company",
+					"creditedMembers": [
+						{
+							"name": "Michael Attenborough"
+						}
+					]
+				}
+			]
+		}
+	],
 	"cast": [
 		{
 			"name": "Philip Arditti",

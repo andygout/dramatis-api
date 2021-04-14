@@ -49,6 +49,115 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
+				UNWIND (CASE $producerCredits WHEN [] THEN [{ entities: [] }] ELSE $producerCredits END) AS producerCredit
+
+					UNWIND
+						CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'person']) WHEN 0
+							THEN [null]
+							ELSE [entity IN producerCredit.entities WHERE entity.model = 'person']
+						END AS producerPersonParam
+
+						OPTIONAL MATCH (existingProducerPerson:Person { name: producerPersonParam.name })
+							WHERE
+								(
+									producerPersonParam.differentiator IS NULL AND
+									existingProducerPerson.differentiator IS NULL
+								) OR
+								producerPersonParam.differentiator = existingProducerPerson.differentiator
+
+						FOREACH (item IN CASE producerPersonParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (producerPerson:Person {
+								uuid: COALESCE(existingProducerPerson.uuid, producerPersonParam.uuid),
+								name: producerPersonParam.name
+							})
+								ON CREATE SET producerPerson.differentiator = producerPersonParam.differentiator
+
+							CREATE (production)-
+								[:HAS_PRODUCER_ENTITY {
+									creditPosition: producerCredit.position,
+									entityPosition: producerPersonParam.position,
+									credit: producerCredit.name
+								}]->(producerPerson)
+						)
+
+					WITH DISTINCT production, producerCredit
+
+					UNWIND
+						CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'company']) WHEN 0
+							THEN [null]
+							ELSE [entity IN producerCredit.entities WHERE entity.model = 'company']
+						END AS producerCompanyParam
+
+						OPTIONAL MATCH (existingProducerCompany:Company { name: producerCompanyParam.name })
+							WHERE
+								(
+									producerCompanyParam.differentiator IS NULL AND
+									existingProducerCompany.differentiator IS NULL
+								) OR
+								producerCompanyParam.differentiator = existingProducerCompany.differentiator
+
+						FOREACH (item IN CASE producerCompanyParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (producerCompany:Company {
+								uuid: COALESCE(existingProducerCompany.uuid, producerCompanyParam.uuid),
+								name: producerCompanyParam.name
+							})
+								ON CREATE SET producerCompany.differentiator = producerCompanyParam.differentiator
+
+							CREATE (production)-
+								[:HAS_PRODUCER_ENTITY {
+									creditPosition: producerCredit.position,
+									entityPosition: producerCompanyParam.position,
+									credit: producerCredit.name
+								}]->(producerCompany)
+						)
+
+						WITH production, producerCredit, producerCompanyParam
+
+						UNWIND
+							CASE WHEN producerCompanyParam IS NOT NULL AND SIZE(producerCompanyParam.creditedMembers) > 0
+								THEN producerCompanyParam.creditedMembers
+								ELSE [null]
+							END AS creditedMemberParam
+
+							OPTIONAL MATCH (creditedCompany:Company { name: producerCompanyParam.name })
+								WHERE
+									(producerCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
+									producerCompanyParam.differentiator = creditedCompany.differentiator
+
+							OPTIONAL MATCH (creditedCompany)<-[producerCompanyRel:HAS_PRODUCER_ENTITY]-(production)
+								WHERE
+									producerCredit.position IS NULL OR
+									producerCredit.position = producerCompanyRel.creditPosition
+
+							OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
+								WHERE
+									(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
+									creditedMemberParam.differentiator = existingPerson.differentiator
+
+							FOREACH (item IN CASE WHEN SIZE(producerCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+								SET producerCompanyRel.creditedMemberUuids = []
+							)
+
+							FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+								MERGE (creditedMember:Person {
+									uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
+									name: creditedMemberParam.name
+								})
+									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
+
+								CREATE (production)-
+									[:HAS_PRODUCER_ENTITY {
+										creditPosition: producerCredit.position,
+										memberPosition: creditedMemberParam.position,
+										creditedCompanyUuid: creditedCompany.uuid
+									}]->(creditedMember)
+
+								SET producerCompanyRel.creditedMemberUuids =
+									producerCompanyRel.creditedMemberUuids + creditedMember.uuid
+							)
+
+				WITH DISTINCT production
+
 				UNWIND (CASE $cast WHEN [] THEN [null] ELSE $cast END) AS castMemberParam
 
 					OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
@@ -302,12 +411,67 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
+				OPTIONAL MATCH (production)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
+					WHERE
+						(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
+						producerEntity:Company
+
+				WITH production, material, theatre, producerEntityRel,
+					COLLECT(producerEntity {
+						model: TOLOWER(HEAD(LABELS(producerEntity))),
+						.name,
+						.differentiator,
+						creditedMemberUuids: producerEntityRel.creditedMemberUuids
+					}) AS producerEntities
+
+				UNWIND (CASE producerEntities WHEN [] THEN [null] ELSE producerEntities END) AS producerEntity
+
+					UNWIND (COALESCE(producerEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
+
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
+							(creditedMember:Person { uuid: creditedMemberUuid })
+							WHERE
+								producerEntityRel.creditPosition IS NULL OR
+								producerEntityRel.creditPosition = creditedMemberRel.creditPosition
+
+						WITH production, material, theatre, producerEntityRel, producerEntity, creditedMember
+							ORDER BY creditedMemberRel.memberPosition
+
+						WITH production, material, theatre, producerEntityRel, producerEntity,
+							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
+
+				WITH production, material, theatre, producerEntityRel, producerEntity, creditedMembers
+					ORDER BY producerEntityRel.creditPosition, producerEntityRel.entityPosition
+
+				WITH production, material, theatre, producerEntityRel.credit AS producerCreditName,
+					[producerEntity IN COLLECT(
+						CASE producerEntity WHEN NULL
+							THEN null
+							ELSE producerEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+						END
+					) | CASE producerEntity.model WHEN 'company'
+						THEN producerEntity
+						ELSE producerEntity { .model, .name, .differentiator }
+					END] + [{}] AS producerEntities
+
+				WITH production, material, theatre,
+					COLLECT(
+						CASE WHEN producerCreditName IS NULL AND SIZE(producerEntities) = 1
+							THEN null
+							ELSE {
+								model: 'producerCredit',
+								name: producerCreditName,
+								entities: producerEntities
+							}
+						END
+					) + [{ entities: [{}] }] AS producerCredits
+
 				OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
-				WITH production, material, theatre, role, castMember
+				WITH production, material, theatre, producerCredits, role, castMember
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, material, theatre, castMember,
+				WITH production, material, theatre, producerCredits, castMember,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -320,7 +484,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{}] AS roles
 
-				WITH production, material, theatre,
+				WITH production, material, theatre, producerCredits,
 					COLLECT(
 						CASE castMember WHEN NULL
 							THEN null
@@ -333,7 +497,7 @@ describe('Cypher Queries Production module', () => {
 						(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 						creativeEntity:Company
 
-				WITH production, material, theatre, cast, creativeEntityRel,
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel,
 					COLLECT(creativeEntity {
 						model: TOLOWER(HEAD(LABELS(creativeEntity))),
 						.name,
@@ -351,16 +515,16 @@ describe('Cypher Queries Production module', () => {
 								creativeEntityRel.creditPosition IS NULL OR
 								creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-						WITH production, material, theatre, cast, creativeEntityRel, creativeEntity, creditedMember
+						WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMember
 							ORDER BY creditedMemberRel.memberPosition
 
-						WITH production, material, theatre, cast, creativeEntityRel, creativeEntity,
+						WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity,
 							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
-				WITH production, material, theatre, cast, creativeEntityRel, creativeEntity, creditedMembers
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMembers
 					ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
-				WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel.credit AS creativeCreditName,
 					[creativeEntity IN COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
@@ -371,7 +535,7 @@ describe('Cypher Queries Production module', () => {
 						ELSE creativeEntity { .model, .name, .differentiator }
 					END] + [{}] AS creativeEntities
 
-				WITH production, material, theatre, cast,
+				WITH production, material, theatre, producerCredits, cast,
 					COLLECT(
 						CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 							THEN null
@@ -388,7 +552,7 @@ describe('Cypher Queries Production module', () => {
 						(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 						crewEntity:Company
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel,
+				WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel,
 					COLLECT(crewEntity {
 						model: TOLOWER(HEAD(LABELS(crewEntity))),
 						.name,
@@ -406,16 +570,34 @@ describe('Cypher Queries Production module', () => {
 								crewEntityRel.creditPosition IS NULL OR
 								crewEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-						WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMember
+						WITH
+							production,
+							material,
+							theatre,
+							producerCredits,
+							cast,
+							creativeCredits,
+							crewEntityRel,
+							crewEntity,
+							creditedMember
 							ORDER BY creditedMemberRel.memberPosition
 
-						WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity,
+						WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel, crewEntity,
 							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMembers
+				WITH
+					production,
+					material,
+					theatre,
+					producerCredits,
+					cast,
+					creativeCredits,
+					crewEntityRel,
+					crewEntity,
+					creditedMembers
 					ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
+				WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
 					[crewEntity IN COLLECT(
 						CASE crewEntity WHEN NULL
 							THEN null
@@ -432,6 +614,7 @@ describe('Cypher Queries Production module', () => {
 					production.name AS name,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
+					producerCredits,
 					cast,
 					creativeCredits,
 					COLLECT(
@@ -504,6 +687,115 @@ describe('Cypher Queries Production module', () => {
 
 				WITH production
 
+				UNWIND (CASE $producerCredits WHEN [] THEN [{ entities: [] }] ELSE $producerCredits END) AS producerCredit
+
+					UNWIND
+						CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'person']) WHEN 0
+							THEN [null]
+							ELSE [entity IN producerCredit.entities WHERE entity.model = 'person']
+						END AS producerPersonParam
+
+						OPTIONAL MATCH (existingProducerPerson:Person { name: producerPersonParam.name })
+							WHERE
+								(
+									producerPersonParam.differentiator IS NULL AND
+									existingProducerPerson.differentiator IS NULL
+								) OR
+								producerPersonParam.differentiator = existingProducerPerson.differentiator
+
+						FOREACH (item IN CASE producerPersonParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (producerPerson:Person {
+								uuid: COALESCE(existingProducerPerson.uuid, producerPersonParam.uuid),
+								name: producerPersonParam.name
+							})
+								ON CREATE SET producerPerson.differentiator = producerPersonParam.differentiator
+
+							CREATE (production)-
+								[:HAS_PRODUCER_ENTITY {
+									creditPosition: producerCredit.position,
+									entityPosition: producerPersonParam.position,
+									credit: producerCredit.name
+								}]->(producerPerson)
+						)
+
+					WITH DISTINCT production, producerCredit
+
+					UNWIND
+						CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'company']) WHEN 0
+							THEN [null]
+							ELSE [entity IN producerCredit.entities WHERE entity.model = 'company']
+						END AS producerCompanyParam
+
+						OPTIONAL MATCH (existingProducerCompany:Company { name: producerCompanyParam.name })
+							WHERE
+								(
+									producerCompanyParam.differentiator IS NULL AND
+									existingProducerCompany.differentiator IS NULL
+								) OR
+								producerCompanyParam.differentiator = existingProducerCompany.differentiator
+
+						FOREACH (item IN CASE producerCompanyParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (producerCompany:Company {
+								uuid: COALESCE(existingProducerCompany.uuid, producerCompanyParam.uuid),
+								name: producerCompanyParam.name
+							})
+								ON CREATE SET producerCompany.differentiator = producerCompanyParam.differentiator
+
+							CREATE (production)-
+								[:HAS_PRODUCER_ENTITY {
+									creditPosition: producerCredit.position,
+									entityPosition: producerCompanyParam.position,
+									credit: producerCredit.name
+								}]->(producerCompany)
+						)
+
+						WITH production, producerCredit, producerCompanyParam
+
+						UNWIND
+							CASE WHEN producerCompanyParam IS NOT NULL AND SIZE(producerCompanyParam.creditedMembers) > 0
+								THEN producerCompanyParam.creditedMembers
+								ELSE [null]
+							END AS creditedMemberParam
+
+							OPTIONAL MATCH (creditedCompany:Company { name: producerCompanyParam.name })
+								WHERE
+									(producerCompanyParam.differentiator IS NULL AND creditedCompany.differentiator IS NULL) OR
+									producerCompanyParam.differentiator = creditedCompany.differentiator
+
+							OPTIONAL MATCH (creditedCompany)<-[producerCompanyRel:HAS_PRODUCER_ENTITY]-(production)
+								WHERE
+									producerCredit.position IS NULL OR
+									producerCredit.position = producerCompanyRel.creditPosition
+
+							OPTIONAL MATCH (existingPerson:Person { name: creditedMemberParam.name })
+								WHERE
+									(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
+									creditedMemberParam.differentiator = existingPerson.differentiator
+
+							FOREACH (item IN CASE WHEN SIZE(producerCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+								SET producerCompanyRel.creditedMemberUuids = []
+							)
+
+							FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+								MERGE (creditedMember:Person {
+									uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
+									name: creditedMemberParam.name
+								})
+									ON CREATE SET creditedMember.differentiator = creditedMemberParam.differentiator
+
+								CREATE (production)-
+									[:HAS_PRODUCER_ENTITY {
+										creditPosition: producerCredit.position,
+										memberPosition: creditedMemberParam.position,
+										creditedCompanyUuid: creditedCompany.uuid
+									}]->(creditedMember)
+
+								SET producerCompanyRel.creditedMemberUuids =
+									producerCompanyRel.creditedMemberUuids + creditedMember.uuid
+							)
+
+				WITH DISTINCT production
+
 				UNWIND (CASE $cast WHEN [] THEN [null] ELSE $cast END) AS castMemberParam
 
 					OPTIONAL MATCH (existingPerson:Person { name: castMemberParam.name })
@@ -757,12 +1049,67 @@ describe('Cypher Queries Production module', () => {
 
 				OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
+				OPTIONAL MATCH (production)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
+					WHERE
+						(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
+						producerEntity:Company
+
+				WITH production, material, theatre, producerEntityRel,
+					COLLECT(producerEntity {
+						model: TOLOWER(HEAD(LABELS(producerEntity))),
+						.name,
+						.differentiator,
+						creditedMemberUuids: producerEntityRel.creditedMemberUuids
+					}) AS producerEntities
+
+				UNWIND (CASE producerEntities WHEN [] THEN [null] ELSE producerEntities END) AS producerEntity
+
+					UNWIND (COALESCE(producerEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
+
+						OPTIONAL MATCH (production)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
+							(creditedMember:Person { uuid: creditedMemberUuid })
+							WHERE
+								producerEntityRel.creditPosition IS NULL OR
+								producerEntityRel.creditPosition = creditedMemberRel.creditPosition
+
+						WITH production, material, theatre, producerEntityRel, producerEntity, creditedMember
+							ORDER BY creditedMemberRel.memberPosition
+
+						WITH production, material, theatre, producerEntityRel, producerEntity,
+							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
+
+				WITH production, material, theatre, producerEntityRel, producerEntity, creditedMembers
+					ORDER BY producerEntityRel.creditPosition, producerEntityRel.entityPosition
+
+				WITH production, material, theatre, producerEntityRel.credit AS producerCreditName,
+					[producerEntity IN COLLECT(
+						CASE producerEntity WHEN NULL
+							THEN null
+							ELSE producerEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+						END
+					) | CASE producerEntity.model WHEN 'company'
+						THEN producerEntity
+						ELSE producerEntity { .model, .name, .differentiator }
+					END] + [{}] AS producerEntities
+
+				WITH production, material, theatre,
+					COLLECT(
+						CASE WHEN producerCreditName IS NULL AND SIZE(producerEntities) = 1
+							THEN null
+							ELSE {
+								model: 'producerCredit',
+								name: producerCreditName,
+								entities: producerEntities
+							}
+						END
+					) + [{ entities: [{}] }] AS producerCredits
+
 				OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
-				WITH production, material, theatre, role, castMember
+				WITH production, material, theatre, producerCredits, role, castMember
 					ORDER BY role.castMemberPosition, role.rolePosition
 
-				WITH production, material, theatre, castMember,
+				WITH production, material, theatre, producerCredits, castMember,
 					COLLECT(
 						CASE role.roleName WHEN NULL
 							THEN null
@@ -775,7 +1122,7 @@ describe('Cypher Queries Production module', () => {
 						END
 					) + [{}] AS roles
 
-				WITH production, material, theatre,
+				WITH production, material, theatre, producerCredits,
 					COLLECT(
 						CASE castMember WHEN NULL
 							THEN null
@@ -788,7 +1135,7 @@ describe('Cypher Queries Production module', () => {
 						(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 						creativeEntity:Company
 
-				WITH production, material, theatre, cast, creativeEntityRel,
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel,
 					COLLECT(creativeEntity {
 						model: TOLOWER(HEAD(LABELS(creativeEntity))),
 						.name,
@@ -806,16 +1153,16 @@ describe('Cypher Queries Production module', () => {
 								creativeEntityRel.creditPosition IS NULL OR
 								creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-						WITH production, material, theatre, cast, creativeEntityRel, creativeEntity, creditedMember
+						WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMember
 							ORDER BY creditedMemberRel.memberPosition
 
-						WITH production, material, theatre, cast, creativeEntityRel, creativeEntity,
+						WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity,
 							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
-				WITH production, material, theatre, cast, creativeEntityRel, creativeEntity, creditedMembers
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMembers
 					ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
-				WITH production, material, theatre, cast, creativeEntityRel.credit AS creativeCreditName,
+				WITH production, material, theatre, producerCredits, cast, creativeEntityRel.credit AS creativeCreditName,
 					[creativeEntity IN COLLECT(
 						CASE creativeEntity WHEN NULL
 							THEN null
@@ -826,7 +1173,7 @@ describe('Cypher Queries Production module', () => {
 						ELSE creativeEntity { .model, .name, .differentiator }
 					END] + [{}] AS creativeEntities
 
-				WITH production, material, theatre, cast,
+				WITH production, material, theatre, producerCredits, cast,
 					COLLECT(
 						CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 							THEN null
@@ -843,7 +1190,7 @@ describe('Cypher Queries Production module', () => {
 						(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 						crewEntity:Company
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel,
+				WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel,
 					COLLECT(crewEntity {
 						model: TOLOWER(HEAD(LABELS(crewEntity))),
 						.name,
@@ -861,16 +1208,34 @@ describe('Cypher Queries Production module', () => {
 								crewEntityRel.creditPosition IS NULL OR
 								crewEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-						WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMember
+						WITH
+							production,
+							material,
+							theatre,
+							producerCredits,
+							cast,
+							creativeCredits,
+							crewEntityRel,
+							crewEntity,
+							creditedMember
 							ORDER BY creditedMemberRel.memberPosition
 
-						WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity,
+						WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel, crewEntity,
 							COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel, crewEntity, creditedMembers
+				WITH
+					production,
+					material,
+					theatre,
+					producerCredits,
+					cast,
+					creativeCredits,
+					crewEntityRel,
+					crewEntity,
+					creditedMembers
 					ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
 
-				WITH production, material, theatre, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
+				WITH production, material, theatre, producerCredits, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
 					[crewEntity IN COLLECT(
 						CASE crewEntity WHEN NULL
 							THEN null
@@ -887,6 +1252,7 @@ describe('Cypher Queries Production module', () => {
 					production.name AS name,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
+					producerCredits,
 					cast,
 					creativeCredits,
 					COLLECT(
