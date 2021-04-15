@@ -60,7 +60,7 @@ describe('ProductionTeamCredit model', () => {
 
 			});
 
-			it('assigns array of creatives and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of entities (people, companies) if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'Assistant Stage Managers',
@@ -108,7 +108,7 @@ describe('ProductionTeamCredit model', () => {
 		it('calls instance validate method and associated models\' validate methods', () => {
 
 			const props = {
-				name: 'Assistant Stage Managers ',
+				name: 'Assistant Stage Managers',
 				entities: [
 					{
 						name: 'Sara Gunter'
