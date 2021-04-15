@@ -153,6 +153,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
+				startDate: '2014-03-18',
+				pressDate: '2014-04-16',
+				endDate: '2014-09-06',
 				material: {
 					name: 'Henry IV, Part 1'
 				},
@@ -186,6 +189,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
+				startDate: '2014-03-28',
+				pressDate: '2014-04-16',
+				endDate: '2014-09-06',
 				material: {
 					name: 'Henry IV, Part 2'
 				},
@@ -220,6 +226,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
+				startDate: '2015-09-12',
+				pressDate: '2015-09-22',
+				endDate: '2015-10-25',
 				material: {
 					name: 'Henry V'
 				},
@@ -254,6 +263,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
+				startDate: '2005-05-04',
+				pressDate: '2005-05-16',
+				endDate: '2005-08-31',
 				material: {
 					name: 'Henry IV, Part 1'
 				},
@@ -288,6 +300,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
+				startDate: '2005-04-26',
+				pressDate: '2005-05-04',
+				endDate: '2005-08-31',
 				material: {
 					name: 'Henry IV, Part 2'
 				},
@@ -322,6 +337,9 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry V',
+				startDate: '2003-05-06',
+				pressDate: '2003-05-13',
+				endDate: '2003-08-20',
 				material: {
 					name: 'Henry V'
 				},
@@ -512,6 +530,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2005-05-04',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -540,6 +560,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2014-03-18',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -568,6 +590,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -596,6 +620,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2014-03-28',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -624,6 +650,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2003-05-06',
+					endDate: '2003-08-20',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -652,6 +680,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2015-09-12',
+					endDate: '2015-10-25',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -695,6 +725,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2005-05-04',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -723,6 +755,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2014-03-18',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -766,6 +800,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -794,6 +830,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2014-03-28',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -837,6 +875,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2003-05-06',
+					endDate: '2003-08-20',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -865,6 +905,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2015-09-12',
+					endDate: '2015-10-25',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1289,6 +1331,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2014-03-18',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1314,6 +1358,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2014-03-28',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1339,6 +1385,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2015-09-12',
+					endDate: '2015-10-25',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1379,6 +1427,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
+					startDate: '2005-05-04',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -1404,6 +1454,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -1444,6 +1496,8 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry V',
+					startDate: '2003-05-06',
+					endDate: '2003-08-20',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,

@@ -35,6 +35,9 @@ describe('Instance validation failures: Productions API', () => {
 				const expectedResponseBody = {
 					model: 'production',
 					name: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -101,6 +104,9 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'production',
 					uuid: MACBETH_PRODUCTION_UUID,
 					name: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -199,6 +205,9 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'production',
 					uuid: OTHELLO_DONMAR_PRODUCTION_UUID,
 					name: 'Othello',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {
 						associations: [

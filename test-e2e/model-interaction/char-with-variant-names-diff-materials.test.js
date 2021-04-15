@@ -133,6 +133,9 @@ describe('Character with variant names from productions of different materials',
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
+				startDate: '2010-09-30',
+				pressDate: '2010-10-07',
+				endDate: '2011-01-26',
 				material: {
 					name: 'Hamlet'
 				},
@@ -165,6 +168,9 @@ describe('Character with variant names from productions of different materials',
 			.post('/productions')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
+				startDate: '2011-06-16',
+				pressDate: '2011-06-21',
+				endDate: '2011-08-20',
 				material: {
 					name: 'Rosencrantz and Guildenstern Are Dead'
 				},
@@ -197,6 +203,9 @@ describe('Character with variant names from productions of different materials',
 			.post('/productions')
 			.send({
 				name: 'Fortinbras',
+				startDate: '1991-06-18',
+				pressDate: '1991-06-25',
+				endDate: '1991-07-28',
 				material: {
 					name: 'Fortinbras'
 				},
@@ -229,6 +238,8 @@ describe('Character with variant names from productions of different materials',
 			.post('/productions')
 			.send({
 				name: 'Hamletmachine',
+				startDate: '2017-07-07',
+				endDate: '2017-07-28', // Contrivance because date unavailable.
 				material: {
 					name: 'Hamletmachine'
 				},
@@ -358,6 +369,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
 					name: 'Fortinbras',
+					startDate: '1991-06-18',
+					endDate: '1991-07-28',
 					theatre: {
 						model: 'theatre',
 						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
@@ -379,6 +392,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -400,6 +415,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
 					name: 'Hamletmachine',
+					startDate: '2017-07-07',
+					endDate: '2017-07-28',
 					theatre: {
 						model: 'theatre',
 						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
@@ -421,6 +438,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
+					startDate: '2011-06-16',
+					endDate: '2011-08-20',
 					theatre: {
 						model: 'theatre',
 						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
@@ -621,6 +640,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -655,6 +676,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
+					startDate: '2011-06-16',
+					endDate: '2011-08-20',
 					theatre: {
 						model: 'theatre',
 						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
@@ -689,6 +712,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
 					name: 'Fortinbras',
+					startDate: '1991-06-18',
+					endDate: '1991-07-28',
 					theatre: {
 						model: 'theatre',
 						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
@@ -723,6 +748,8 @@ describe('Character with variant names from productions of different materials',
 					model: 'production',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
 					name: 'Hamletmachine',
+					startDate: '2017-07-07',
+					endDate: '2017-07-28',
 					theatre: {
 						model: 'theatre',
 						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,

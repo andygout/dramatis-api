@@ -96,6 +96,9 @@ describe('Character with multiple appearances in the same material in different 
 			.post('/productions')
 			.send({
 				name: '3 Winters',
+				startDate: '2014-11-26',
+				pressDate: '2014-12-03',
+				endDate: '2015-03-02',
 				material: {
 					name: '3 Winters'
 				},
@@ -241,6 +244,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -315,6 +320,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -381,6 +388,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -450,6 +459,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -657,6 +668,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -691,6 +704,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -725,6 +740,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -759,6 +776,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -793,6 +812,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -827,6 +848,8 @@ describe('Character with multiple appearances in the same material in different 
 					model: 'production',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
+					startDate: '2014-11-26',
+					endDate: '2015-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,

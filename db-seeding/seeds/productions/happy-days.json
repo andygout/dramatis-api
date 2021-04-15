@@ -1,5 +1,8 @@
 {
 	"name": "Happy Days",
+	"startDate": "2007-01-18",
+	"pressDate": "2007-01-25",
+	"endDate": "2007-03-01",
 	"material": {
 		"name": "Happy Days"
 	},

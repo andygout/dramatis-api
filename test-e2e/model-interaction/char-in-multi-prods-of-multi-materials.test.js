@@ -97,6 +97,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 1',
+				startDate: '2005-05-04',
+				pressDate: '2005-05-16',
+				endDate: '2005-08-31',
 				material: {
 					name: 'Henry IV: Part 1'
 				},
@@ -119,6 +122,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
+				startDate: '2005-04-26',
+				pressDate: '2005-05-04',
+				endDate: '2005-08-31',
 				material: {
 					name: 'Henry IV: Part 2'
 				},
@@ -140,7 +146,11 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
+				// Contrivance for purposes of test.
 				name: 'The Merry Wives of Windsor',
+				startDate: '2005-09-04',
+				pressDate: '2005-09-11',
+				endDate: '2005-11-27',
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
@@ -163,6 +173,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 1',
+				startDate: '2010-06-06',
+				pressDate: '2010-07-14',
+				endDate: '2010-10-02',
 				material: {
 					name: 'Henry IV: Part 1'
 				},
@@ -185,6 +198,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
+				startDate: '2010-07-03',
+				pressDate: '2010-07-14',
+				endDate: '2010-10-03',
 				material: {
 					name: 'Henry IV: Part 2'
 				},
@@ -207,6 +223,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
+				startDate: '2019-05-17',
+				pressDate: '2019-05-28',
+				endDate: '2019-10-12',
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
@@ -215,6 +234,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
+						// Contrivance for purposes of test.
 						name: 'Roger Allam',
 						roles: [
 							{
@@ -229,6 +249,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 1',
+				startDate: '2000-04-12', // Contrivance because date unavailable.
+				pressDate: '2000-04-19',
+				endDate: '2000-06-15', // Contrivance because date unavailable.
 				theatre: {
 					name: 'Swan Theatre'
 				},
@@ -237,6 +260,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
+						// Contrivance for purposes of test.
 						name: 'Richard Cordery',
 						roles: [
 							{
@@ -251,6 +275,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV: Part 2',
+				startDate: '2000-06-22', // Contrivance because date unavailable.
+				pressDate: '2000-06-29',
+				endDate: '2000-09-15', // Contrivance because date unavailable.
 				material: {
 					name: 'Henry IV: Part 2'
 				},
@@ -259,6 +286,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
+						// Contrivance for purposes of test.
 						name: 'Richard Cordery',
 						roles: [
 							{
@@ -273,6 +301,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
+				startDate: '2002-10-24',
+				pressDate: '2002-10-31',
+				endDate: '2003-01-25',
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
@@ -355,6 +386,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV: Part 1',
+					startDate: '2005-05-04',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -376,6 +409,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
 					name: 'Henry IV: Part 1',
+					startDate: '2010-06-06',
+					endDate: '2010-10-02',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -397,6 +432,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
 					name: 'Henry IV: Part 1',
+					startDate: '2000-04-12',
+					endDate: '2000-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,
@@ -418,6 +455,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV: Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -439,6 +478,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
 					name: 'Henry IV: Part 2',
+					startDate: '2010-07-03',
+					endDate: '2010-10-03',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -460,6 +501,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
 					name: 'Henry IV: Part 2',
+					startDate: '2000-06-22',
+					endDate: '2000-09-15',
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,
@@ -481,6 +524,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
+					startDate: '2005-09-04',
+					endDate: '2005-11-27',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -502,6 +547,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
+					startDate: '2019-05-17',
+					endDate: '2019-10-12',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -523,6 +570,8 @@ describe('Character in multiple productions of multiple materials', () => {
 					model: 'production',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
+					startDate: '2002-10-24',
+					endDate: '2003-01-25',
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,

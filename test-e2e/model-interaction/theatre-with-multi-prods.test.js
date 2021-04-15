@@ -34,6 +34,9 @@ describe('Theatre with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'A Streetcar Named Desire',
+				startDate: '2009-07-23',
+				pressDate: '2009-07-28',
+				endDate: '2009-10-03',
 				theatre: {
 					name: 'Donmar Warehouse'
 				}
@@ -43,6 +46,9 @@ describe('Theatre with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Life is a Dream',
+				startDate: '2009-10-08',
+				pressDate: '2009-10-13',
+				endDate: '2009-11-28',
 				theatre: {
 					name: 'Donmar Warehouse'
 				}
@@ -52,6 +58,9 @@ describe('Theatre with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Red',
+				startDate: '2009-12-03',
+				pressDate: '2009-12-08',
+				endDate: '2010-02-06',
 				theatre: {
 					name: 'Donmar Warehouse'
 				}
@@ -86,18 +95,24 @@ describe('Theatre with multiple productions', () => {
 					model: 'production',
 					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
 					name: 'A Streetcar Named Desire',
+					startDate: '2009-07-23',
+					endDate: '2009-10-03',
 					subTheatre: null
 				},
 				{
 					model: 'production',
 					uuid: LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID,
 					name: 'Life is a Dream',
+					startDate: '2009-10-08',
+					endDate: '2009-11-28',
 					subTheatre: null
 				},
 				{
 					model: 'production',
 					uuid: RED_DONMAR_PRODUCTION_UUID,
 					name: 'Red',
+					startDate: '2009-12-03',
+					endDate: '2010-02-06',
 					subTheatre: null
 				}
 			];

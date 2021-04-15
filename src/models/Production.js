@@ -1,4 +1,5 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
+import { isValidDate } from '../lib/is-valid-date';
 import Base from './Base';
 import { CastMember, CreativeCredit, CrewCredit, Material, ProducerCredit, Theatre } from '.';
 
@@ -8,9 +9,26 @@ export default class Production extends Base {
 
 		super(props);
 
-		const { uuid, material, theatre, producerCredits, cast, creativeCredits, crewCredits } = props;
+		const {
+			uuid,
+			startDate,
+			pressDate,
+			endDate,
+			material,
+			theatre,
+			producerCredits,
+			cast,
+			creativeCredits,
+			crewCredits
+		} = props;
 
 		this.uuid = uuid;
+
+		this.startDate = startDate?.trim() || '';
+
+		this.pressDate = pressDate?.trim() || '';
+
+		this.endDate = endDate?.trim() || '';
 
 		this.material = new Material({ ...material, isAssociation: true });
 
@@ -44,6 +62,8 @@ export default class Production extends Base {
 
 		this.validateName({ isRequired: true });
 
+		this.validateDates();
+
 		this.material.validateName({ isRequired: false });
 
 		this.material.validateDifferentiator();
@@ -75,6 +95,42 @@ export default class Production extends Base {
 		this.crewCredits.forEach((crewCredit, index) =>
 			crewCredit.runInputValidations({ isDuplicate: duplicateCrewCreditIndices.includes(index) })
 		);
+
+	}
+
+	validateDates () {
+
+		const formatErrorText = 'Value needs to be in date format';
+
+		if (Boolean(this.startDate) && !isValidDate(this.startDate))
+			this.addPropertyError('startDate', formatErrorText);
+
+		if (Boolean(this.pressDate) && !isValidDate(this.pressDate))
+			this.addPropertyError('pressDate', formatErrorText);
+
+		if (Boolean(this.endDate) && !isValidDate(this.endDate))
+			this.addPropertyError('endDate', formatErrorText);
+
+		if (isValidDate(this.startDate) && isValidDate(this.endDate) && this.startDate > this.endDate) {
+
+			this.addPropertyError('startDate', 'Start date must not be after end date');
+			this.addPropertyError('endDate', 'End date must not be before start date');
+
+		}
+
+		if (isValidDate(this.startDate) && isValidDate(this.pressDate) && this.startDate > this.pressDate) {
+
+			this.addPropertyError('startDate', 'Start date must not be after press date');
+			this.addPropertyError('pressDate', 'Press date must not be before start date');
+
+		}
+
+		if (isValidDate(this.pressDate) && isValidDate(this.endDate) && this.pressDate > this.endDate) {
+
+			this.addPropertyError('pressDate', 'Press date must not be after end date');
+			this.addPropertyError('endDate', 'End date must not be before press date');
+
+		}
 
 	}
 

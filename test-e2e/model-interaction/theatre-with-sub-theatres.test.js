@@ -93,6 +93,9 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
+				startDate: '2009-09-16',
+				pressDate: '2009-09-25',
+				endDate: '2009-12-08',
 				material: {
 					name: 'Mother Courage and Her Children'
 				},
@@ -115,6 +118,9 @@ describe('Theatre with sub-theatres', () => {
 			.post('/productions')
 			.send({
 				name: 'Richard II',
+				startDate: '1995-05-26',
+				pressDate: '1995-06-02',
+				endDate: '1996-02-17',
 				material: {
 					name: 'Richard II'
 				},
@@ -203,6 +209,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					subTheatre: {
 						model: 'theatre',
 						name: 'Olivier Theatre',
@@ -213,6 +221,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					subTheatre: null
 				}
 			];
@@ -248,6 +258,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					subTheatre: null
 				}
 			];
@@ -269,6 +281,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -309,6 +323,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -345,6 +361,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -375,6 +393,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -443,6 +463,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -466,6 +488,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -542,6 +566,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -557,6 +583,8 @@ describe('Theatre with sub-theatres', () => {
 					model: 'production',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,

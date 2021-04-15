@@ -76,6 +76,9 @@ describe('Character with multiple appearances in the same material under differe
 			.post('/productions')
 			.send({
 				name: 'Rock \'n\' Roll',
+				startDate: '2006-06-03',
+				pressDate: '2006-06-14',
+				endDate: '2006-07-15',
 				material: {
 					name: 'Rock \'n\' Roll'
 				},
@@ -189,6 +192,8 @@ describe('Character with multiple appearances in the same material under differe
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
+					startDate: '2006-06-03',
+					endDate: '2006-07-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
@@ -247,6 +252,8 @@ describe('Character with multiple appearances in the same material under differe
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
+					startDate: '2006-06-03',
+					endDate: '2006-07-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
@@ -290,6 +297,8 @@ describe('Character with multiple appearances in the same material under differe
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
+					startDate: '2006-06-03',
+					endDate: '2006-07-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
@@ -444,6 +453,8 @@ describe('Character with multiple appearances in the same material under differe
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
+					startDate: '2006-06-03',
+					endDate: '2006-07-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,
@@ -484,6 +495,8 @@ describe('Character with multiple appearances in the same material under differe
 					model: 'production',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
+					startDate: '2006-06-03',
+					endDate: '2006-07-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_COURT_THEATRE_UUID,

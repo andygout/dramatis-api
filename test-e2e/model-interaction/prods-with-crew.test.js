@@ -80,6 +80,9 @@ describe('Productions with crew', () => {
 			.post('/productions')
 			.send({
 				name: 'Waste',
+				startDate: '2008-09-25',
+				pressDate: '2008-10-02',
+				endDate: '2008-11-15',
 				theatre: {
 					name: 'Almeida Theatre'
 				},
@@ -166,6 +169,9 @@ describe('Productions with crew', () => {
 			.post('/productions')
 			.send({
 				name: 'Much Ado About Nothing',
+				startDate: '2007-12-10',
+				pressDate: '2007-12-18',
+				endDate: '2008-03-29',
 				theatre: {
 					name: 'Olivier Theatre'
 				},
@@ -257,6 +263,9 @@ describe('Productions with crew', () => {
 			.post('/productions')
 			.send({
 				name: 'Phèdre',
+				startDate: '2009-06-04',
+				pressDate: '2009-06-11',
+				endDate: '2009-08-27',
 				theatre: {
 					name: 'Lyttelton Theatre'
 				},
@@ -342,6 +351,9 @@ describe('Productions with crew', () => {
 			.post('/productions')
 			.send({
 				name: 'Pains of Youth',
+				startDate: '2009-10-21',
+				pressDate: '2009-10-28',
+				endDate: '2010-01-21',
 				theatre: {
 					name: 'Cottesloe Theatre'
 				},
@@ -879,6 +891,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -902,6 +916,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -925,6 +941,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -959,6 +977,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1038,6 +1058,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
 					name: 'Pains of Youth',
+					startDate: '2009-10-21',
+					endDate: '2010-01-21',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -1117,6 +1139,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1202,6 +1226,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -1292,6 +1318,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1381,6 +1409,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
 					name: 'Pains of Youth',
+					startDate: '2009-10-21',
+					endDate: '2010-01-21',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -1459,6 +1489,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1537,6 +1569,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -1626,6 +1660,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1719,6 +1755,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1742,6 +1780,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1765,6 +1805,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -1805,6 +1847,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1883,6 +1927,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
 					name: 'Pains of Youth',
+					startDate: '2009-10-21',
+					endDate: '2010-01-21',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -1961,6 +2007,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -2039,6 +2087,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -2128,6 +2178,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
 					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -2218,6 +2270,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
 					name: 'Pains of Youth',
+					startDate: '2009-10-21',
+					endDate: '2010-01-21',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -2296,6 +2350,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
+					startDate: '2009-06-04',
+					endDate: '2009-08-27',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -2374,6 +2430,8 @@ describe('Productions with crew', () => {
 					model: 'production',
 					uuid: WASTE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Waste',
+					startDate: '2008-09-25',
+					endDate: '2008-11-15',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,

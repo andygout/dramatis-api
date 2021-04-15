@@ -64,6 +64,9 @@ describe('Character portrayed with other roles', () => {
 			.post('/productions')
 			.send({
 				name: 'War Horse',
+				startDate: '2007-10-09',
+				pressDate: '2007-10-17',
+				endDate: '2008-02-14',
 				material: {
 					name: 'War Horse'
 				},
@@ -128,6 +131,8 @@ describe('Character portrayed with other roles', () => {
 					model: 'production',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
+					startDate: '2007-10-09',
+					endDate: '2008-02-14',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -183,6 +188,8 @@ describe('Character portrayed with other roles', () => {
 					model: 'production',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
+					startDate: '2007-10-09',
+					endDate: '2008-02-14',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -238,6 +245,8 @@ describe('Character portrayed with other roles', () => {
 					model: 'production',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
+					startDate: '2007-10-09',
+					endDate: '2008-02-14',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -293,6 +302,8 @@ describe('Character portrayed with other roles', () => {
 					model: 'production',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
+					startDate: '2007-10-09',
+					endDate: '2008-02-14',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,

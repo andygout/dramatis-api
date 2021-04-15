@@ -11,7 +11,13 @@ describe('Cypher Queries Production module', () => {
 
 			const result = cypherQueriesProduction.getCreateQuery();
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				CREATE (production:Production { uuid: $uuid, name: $name })
+				CREATE (production:Production {
+					uuid: $uuid,
+					name: $name,
+					startDate: $startDate,
+					pressDate: $pressDate,
+					endDate: $endDate
+				})
 
 				WITH production
 
@@ -612,6 +618,9 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
+					production.startDate AS startDate,
+					production.pressDate AS pressDate,
+					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
 					producerCredits,
@@ -649,7 +658,11 @@ describe('Cypher Queries Production module', () => {
 
 				WITH DISTINCT production
 
-				SET production.name = $name
+				SET
+					production.name = $name,
+					production.startDate = $startDate,
+					production.pressDate = $pressDate,
+					production.endDate = $endDate
 
 				WITH production
 
@@ -1250,6 +1263,9 @@ describe('Cypher Queries Production module', () => {
 					'production' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
+					production.startDate AS startDate,
+					production.pressDate AS pressDate,
+					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
 					producerCredits,

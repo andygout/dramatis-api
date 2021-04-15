@@ -1,5 +1,8 @@
 {
 	"name": "Rock 'n' Roll",
+	"startDate": "2006-06-03",
+	"pressDate": "2006-06-14",
+	"endDate": "2006-07-15",
 	"material": {
 		"name": "Rock 'n' Roll"
 	},

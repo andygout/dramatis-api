@@ -260,6 +260,9 @@ describe('Materials with source material', () => {
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
+				startDate: '2006-02-02',
+				pressDate: '2006-02-07',
+				endDate: '2006-02-25',
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
@@ -272,6 +275,9 @@ describe('Materials with source material', () => {
 			.post('/productions')
 			.send({
 				name: 'The Donkey Show',
+				startDate: '2000-09-12',
+				pressDate: '2000-09-18',
+				endDate: '2002-01-02',
 				material: {
 					name: 'The Donkey Show'
 				},
@@ -284,6 +290,9 @@ describe('Materials with source material', () => {
 			.post('/productions')
 			.send({
 				name: 'The Indian Boy',
+				startDate: '2006-11-07',
+				pressDate: '2006-11-07',
+				endDate: '2006-11-11',
 				material: {
 					name: 'The Indian Boy'
 				},
@@ -296,6 +305,9 @@ describe('Materials with source material', () => {
 			.post('/productions')
 			.send({
 				name: 'Shakespeare\'s Villains',
+				startDate: '1998-06-30',
+				pressDate: '1998-07-07',
+				endDate: '1998-08-08',
 				material: {
 					name: 'Shakespeare\'s Villains'
 				},
@@ -308,6 +320,9 @@ describe('Materials with source material', () => {
 			.post('/productions')
 			.send({
 				name: 'Othello',
+				startDate: '2007-11-30',
+				pressDate: '2007-12-04',
+				endDate: '2008-02-23',
 				material: {
 					name: 'Othello'
 				},
@@ -500,6 +515,8 @@ describe('Materials with source material', () => {
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '2006-02-02',
+					endDate: '2006-02-25',
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
@@ -522,6 +539,8 @@ describe('Materials with source material', () => {
 					model: 'production',
 					uuid: THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID,
 					name: 'The Donkey Show',
+					startDate: '2000-09-12',
+					endDate: '2002-01-02',
 					theatre: {
 						model: 'theatre',
 						uuid: HANOVER_GRAND_THEATRE_UUID,
@@ -533,6 +552,8 @@ describe('Materials with source material', () => {
 					model: 'production',
 					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
 					name: 'The Indian Boy',
+					startDate: '2006-11-07',
+					endDate: '2006-11-11',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,

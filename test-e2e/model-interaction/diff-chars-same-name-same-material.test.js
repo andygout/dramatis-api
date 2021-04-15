@@ -64,6 +64,9 @@ describe('Different characters with the same name from the same material', () =>
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
+				startDate: '2005-04-14',
+				pressDate: '2005-04-20',
+				endDate: '2005-05-14',
 				material: {
 					name: 'Julius Caesar'
 				},
@@ -133,6 +136,8 @@ describe('Different characters with the same name from the same material', () =>
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -176,6 +181,8 @@ describe('Different characters with the same name from the same material', () =>
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -212,6 +219,8 @@ describe('Different characters with the same name from the same material', () =>
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -335,6 +344,8 @@ describe('Different characters with the same name from the same material', () =>
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -375,6 +386,8 @@ describe('Different characters with the same name from the same material', () =>
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,

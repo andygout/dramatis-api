@@ -73,6 +73,9 @@ describe('Character with variant names from productions of the same material', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
+				startDate: '2017-06-09',
+				pressDate: '2017-06-15',
+				endDate: '2017-09-02',
 				material: {
 					name: 'Hamlet'
 				},
@@ -109,6 +112,9 @@ describe('Character with variant names from productions of the same material', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
+				startDate: '2008-12-03',
+				pressDate: '2008-12-09',
+				endDate: '2009-01-10',
 				material: {
 					name: 'Hamlet'
 				},
@@ -144,6 +150,9 @@ describe('Character with variant names from productions of the same material', (
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
+				startDate: '2009-05-29',
+				pressDate: '2009-06-03',
+				endDate: '2009-08-22',
 				material: {
 					name: 'Hamlet'
 				},
@@ -226,6 +235,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2017-06-09',
+					endDate: '2017-09-02',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -254,6 +265,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2008-12-03',
+					endDate: '2009-01-10',
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
@@ -282,6 +295,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2009-05-29',
+					endDate: '2009-08-22',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -466,6 +481,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2017-06-09',
+					endDate: '2017-09-02',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -506,6 +523,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2008-12-03',
+					endDate: '2009-01-10',
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
@@ -546,6 +565,8 @@ describe('Character with variant names from productions of the same material', (
 					model: 'production',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2009-05-29',
+					endDate: '2009-08-22',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
