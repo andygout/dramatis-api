@@ -261,10 +261,10 @@ describe('Production model', () => {
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
-				instance.theatre.validateName,
-				instance.theatre.validateDifferentiator,
 				instance.material.validateName,
 				instance.material.validateDifferentiator,
+				instance.theatre.validateName,
+				instance.theatre.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.producerCredits[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
@@ -276,14 +276,14 @@ describe('Production model', () => {
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.theatre.validateName.calledOnce).to.be.true;
-			expect(instance.theatre.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.theatre.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.theatre.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.material.validateName.calledOnce).to.be.true;
 			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.material.validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.theatre.validateName.calledOnce).to.be.true;
+			expect(instance.theatre.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.theatre.validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.theatre.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledThrice).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
 				instance.producerCredits

@@ -8,7 +8,7 @@ export default class Production extends Base {
 
 		super(props);
 
-		const { uuid, theatre, material, producerCredits, cast, creativeCredits, crewCredits } = props;
+		const { uuid, material, theatre, producerCredits, cast, creativeCredits, crewCredits } = props;
 
 		this.uuid = uuid;
 
@@ -44,13 +44,13 @@ export default class Production extends Base {
 
 		this.validateName({ isRequired: true });
 
-		this.theatre.validateName({ isRequired: false });
-
-		this.theatre.validateDifferentiator();
-
 		this.material.validateName({ isRequired: false });
 
 		this.material.validateDifferentiator();
+
+		this.theatre.validateName({ isRequired: false });
+
+		this.theatre.validateDifferentiator();
 
 		const duplicateProducerCreditIndices = getDuplicateNameIndices(this.producerCredits);
 
