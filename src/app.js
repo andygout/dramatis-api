@@ -1,5 +1,3 @@
-/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
-
 import './dotenv';
 
 import http from 'http';
