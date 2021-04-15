@@ -29,17 +29,17 @@ describe('Productions with creative team', () => {
 	const MARK_GRIMMER_PERSON_UUID = '21';
 	const LYSANDER_ASHTON_PERSON_UUID = '22';
 	const NINA_DUNN_PERSON_UUID = '23';
-	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = '24';
-	const BARBORA_ŠENOLTOVÁ_PERSON_UUID = '34';
-	const RICHARD_SLANEY_PERSON_UUID = '38';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '40';
-	const DANIEL_DENTON_PERSON_UUID = '49';
-	const ANNA_JAMESON_PERSON_UUID = '52';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '24';
+	const DANIEL_DENTON_PERSON_UUID = '33';
+	const ANNA_JAMESON_PERSON_UUID = '36';
+	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = '40';
+	const BARBORA_ŠENOLTOVÁ_PERSON_UUID = '50';
+	const RICHARD_SLANEY_PERSON_UUID = '54';
 	const RICHARD_II_COTTESLOE_PRODUCTION_UUID = '56';
 
 	let juliusCaesarBarbicanProduction;
-	let happyDaysLytteltonProduction;
 	let motherCourageAndHerChildrenOlivierProduction;
+	let happyDaysLytteltonProduction;
 	let richardIICottesloeProduction;
 	let deborahWarnerPerson;
 	let ninaDunnPerson;
@@ -163,90 +163,6 @@ describe('Productions with creative team', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Happy Days',
-				theatre: {
-					name: 'Lyttelton Theatre'
-				},
-				creativeCredits: [
-					{
-						name: 'Direction',
-						entities: [
-							{
-								name: 'Deborah Warner'
-							}
-						]
-					},
-					// Contrivance for purposes of testing person with multiple creative credits for same production.
-					{
-						name: 'Design',
-						entities: [
-							{
-								name: 'Nina Dunn'
-							}
-						]
-					},
-					// Contrivance for purposes of test.
-					{
-						name: 'Sound Design',
-						entities: [
-							{
-								model: 'company',
-								name: 'Autograph'
-							}
-						]
-					},
-					// Contrivance for purposes of test.
-					{
-						name: 'Video Design',
-						entities: [
-							{
-								model: 'company',
-								name: 'Cineluma'
-							},
-							{
-								name: 'Akhila Krishnan'
-							},
-							{
-								model: 'company',
-								name: 'Mesmer',
-								creditedMembers: [
-									{
-										name: 'Dick Straker'
-									},
-									{
-										name: 'Barbora Šenoltová'
-									},
-									{
-										name: 'Ian William Galloway'
-									}
-								]
-							},
-							{
-								name: 'Nina Dunn'
-							},
-							{
-								model: 'company',
-								name: '59 Productions',
-								creditedMembers: [
-									{
-										name: 'Leo Warner'
-									},
-									{
-										name: 'Richard Slaney'
-									},
-									{
-										name: 'Mark Grimmer'
-									}
-								]
-							}
-						]
-					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/productions')
-			.send({
 				name: 'Mother Courage and Her Children',
 				theatre: {
 					name: 'Olivier Theatre'
@@ -337,6 +253,90 @@ describe('Productions with creative team', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
+				name: 'Happy Days',
+				theatre: {
+					name: 'Lyttelton Theatre'
+				},
+				creativeCredits: [
+					{
+						name: 'Direction',
+						entities: [
+							{
+								name: 'Deborah Warner'
+							}
+						]
+					},
+					// Contrivance for purposes of testing person with multiple creative credits for same production.
+					{
+						name: 'Design',
+						entities: [
+							{
+								name: 'Nina Dunn'
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Sound Design',
+						entities: [
+							{
+								model: 'company',
+								name: 'Autograph'
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Video Design',
+						entities: [
+							{
+								model: 'company',
+								name: 'Cineluma'
+							},
+							{
+								name: 'Akhila Krishnan'
+							},
+							{
+								model: 'company',
+								name: 'Mesmer',
+								creditedMembers: [
+									{
+										name: 'Dick Straker'
+									},
+									{
+										name: 'Barbora Šenoltová'
+									},
+									{
+										name: 'Ian William Galloway'
+									}
+								]
+							},
+							{
+								name: 'Nina Dunn'
+							},
+							{
+								model: 'company',
+								name: '59 Productions',
+								creditedMembers: [
+									{
+										name: 'Leo Warner'
+									},
+									{
+										name: 'Richard Slaney'
+									},
+									{
+										name: 'Mark Grimmer'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
 				name: 'Richard II',
 				theatre: {
 					name: 'Cottesloe Theatre'
@@ -394,11 +394,11 @@ describe('Productions with creative team', () => {
 		juliusCaesarBarbicanProduction = await chai.request(app)
 			.get(`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`);
 
-		happyDaysLytteltonProduction = await chai.request(app)
-			.get(`/productions/${HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID}`);
-
 		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
+
+		happyDaysLytteltonProduction = await chai.request(app)
+			.get(`/productions/${HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID}`);
 
 		richardIICottesloeProduction = await chai.request(app)
 			.get(`/productions/${RICHARD_II_COTTESLOE_PRODUCTION_UUID}`);
@@ -548,121 +548,6 @@ describe('Productions with creative team', () => {
 
 	});
 
-	describe('Happy Days at Lyttelton Theatre (production)', () => {
-
-		it('includes creative team credits', () => {
-
-			const expectedCreativeCredits = [
-				{
-					model: 'creativeCredit',
-					name: 'Direction',
-					entities: [
-						{
-							model: 'person',
-							uuid: DEBORAH_WARNER_PERSON_UUID,
-							name: 'Deborah Warner'
-						}
-					]
-				},
-				{
-					model: 'creativeCredit',
-					name: 'Design',
-					entities: [
-						{
-							model: 'person',
-							uuid: NINA_DUNN_PERSON_UUID,
-							name: 'Nina Dunn'
-						}
-					]
-				},
-				{
-					model: 'creativeCredit',
-					name: 'Sound Design',
-					entities: [
-						{
-							model: 'company',
-							uuid: AUTOGRAPH_COMPANY_UUID,
-							name: 'Autograph',
-							creditedMembers: []
-						}
-					]
-				},
-				{
-					model: 'creativeCredit',
-					name: 'Video Design',
-					entities: [
-						{
-							model: 'company',
-							uuid: CINELUMA_COMPANY_UUID,
-							name: 'Cineluma',
-							creditedMembers: []
-						},
-						{
-							model: 'person',
-							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
-							name: 'Akhila Krishnan'
-						},
-						{
-							model: 'company',
-							uuid: MESMER_COMPANY_UUID,
-							name: 'Mesmer',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: DICK_STRAKER_PERSON_UUID,
-									name: 'Dick Straker'
-								},
-								{
-									model: 'person',
-									uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
-									name: 'Barbora Šenoltová'
-								},
-								{
-									model: 'person',
-									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
-									name: 'Ian William Galloway'
-								}
-							]
-						},
-						{
-							model: 'person',
-							uuid: NINA_DUNN_PERSON_UUID,
-							name: 'Nina Dunn'
-						},
-						{
-							model: 'company',
-							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
-							name: '59 Productions',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: LEO_WARNER_PERSON_UUID,
-									name: 'Leo Warner'
-								},
-								{
-									model: 'person',
-									uuid: RICHARD_SLANEY_PERSON_UUID,
-									name: 'Richard Slaney'
-								},
-								{
-									model: 'person',
-									uuid: MARK_GRIMMER_PERSON_UUID,
-									name: 'Mark Grimmer'
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { creativeCredits } = happyDaysLytteltonProduction.body;
-
-			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
-
-		});
-
-	});
-
 	describe('Mother Courage and Her Children at Olivier Theatre (production)', () => {
 
 		it('includes creative team credits', () => {
@@ -778,6 +663,121 @@ describe('Productions with creative team', () => {
 			];
 
 			const { creativeCredits } = motherCourageAndHerChildrenOlivierProduction.body;
+
+			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
+
+		});
+
+	});
+
+	describe('Happy Days at Lyttelton Theatre (production)', () => {
+
+		it('includes creative team credits', () => {
+
+			const expectedCreativeCredits = [
+				{
+					model: 'creativeCredit',
+					name: 'Direction',
+					entities: [
+						{
+							model: 'person',
+							uuid: DEBORAH_WARNER_PERSON_UUID,
+							name: 'Deborah Warner'
+						}
+					]
+				},
+				{
+					model: 'creativeCredit',
+					name: 'Design',
+					entities: [
+						{
+							model: 'person',
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
+						}
+					]
+				},
+				{
+					model: 'creativeCredit',
+					name: 'Sound Design',
+					entities: [
+						{
+							model: 'company',
+							uuid: AUTOGRAPH_COMPANY_UUID,
+							name: 'Autograph',
+							creditedMembers: []
+						}
+					]
+				},
+				{
+					model: 'creativeCredit',
+					name: 'Video Design',
+					entities: [
+						{
+							model: 'company',
+							uuid: CINELUMA_COMPANY_UUID,
+							name: 'Cineluma',
+							creditedMembers: []
+						},
+						{
+							model: 'person',
+							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							name: 'Akhila Krishnan'
+						},
+						{
+							model: 'company',
+							uuid: MESMER_COMPANY_UUID,
+							name: 'Mesmer',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: DICK_STRAKER_PERSON_UUID,
+									name: 'Dick Straker'
+								},
+								{
+									model: 'person',
+									uuid: BARBORA_ŠENOLTOVÁ_PERSON_UUID,
+									name: 'Barbora Šenoltová'
+								},
+								{
+									model: 'person',
+									uuid: IAN_WILLIAM_GALLOWAY_PERSON_UUID,
+									name: 'Ian William Galloway'
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: NINA_DUNN_PERSON_UUID,
+							name: 'Nina Dunn'
+						},
+						{
+							model: 'company',
+							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
+							name: '59 Productions',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: LEO_WARNER_PERSON_UUID,
+									name: 'Leo Warner'
+								},
+								{
+									model: 'person',
+									uuid: RICHARD_SLANEY_PERSON_UUID,
+									name: 'Richard Slaney'
+								},
+								{
+									model: 'person',
+									uuid: MARK_GRIMMER_PERSON_UUID,
+									name: 'Mark Grimmer'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { creativeCredits } = happyDaysLytteltonProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
 

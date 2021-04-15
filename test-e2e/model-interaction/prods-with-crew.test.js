@@ -29,17 +29,17 @@ describe('Productions with crew', () => {
 	const JULIA_WICKHAM_PERSON_UUID = '21';
 	const CHERYL_FIRTH_PERSON_UUID = '22';
 	const CASS_KIRCHNER_PERSON_UUID = '23';
-	const PHÈDRE_LYTTELTON_PRODUCTION_UUID = '24';
-	const KERRY_MCDEVITT_PERSON_UUID = '34';
-	const TOM_LEGGAT_PERSON_UUID = '38';
-	const MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID = '40';
-	const TAMARA_ALBACHARI_PERSON_UUID = '49';
-	const PETER_GREGORY_PERSON_UUID = '52';
+	const MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID = '24';
+	const TAMARA_ALBACHARI_PERSON_UUID = '33';
+	const PETER_GREGORY_PERSON_UUID = '36';
+	const PHÈDRE_LYTTELTON_PRODUCTION_UUID = '40';
+	const KERRY_MCDEVITT_PERSON_UUID = '50';
+	const TOM_LEGGAT_PERSON_UUID = '54';
 	const PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID = '56';
 
 	let wasteAlmeidaProduction;
-	let phèdreLytteltonProduction;
 	let muchAdoAboutNothingOlivierProduction;
+	let phèdreLytteltonProduction;
 	let painsOfYouthCottesloeProduction;
 	let tariqHussainPerson;
 	let cassKirchnerPerson;
@@ -165,91 +165,6 @@ describe('Productions with crew', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Phèdre',
-				theatre: {
-					name: 'Lyttelton Theatre'
-				},
-				crewCredits: [
-					// Contrivance for purposes of test.
-					{
-						name: 'Production Management',
-						entities: [
-							{
-								name: 'Tariq Hussain'
-							}
-						]
-					},
-					// Contrivance for purposes of testing person with multiple crew credits for same production.
-					{
-						name: 'Rigging Supervision',
-						entities: [
-							{
-								name: 'Cass Kirchner'
-							}
-						]
-					},
-					// Contrivance for purposes of test.
-					{
-						name: 'Sound Operation',
-						entities: [
-							{
-								model: 'company',
-								name: 'Stagecraft Ltd'
-							}
-						]
-					},
-					// Contrivance for purposes of test.
-					{
-						name: 'Stage Management',
-						entities: [
-							{
-								model: 'company',
-								name: 'Theatrical Production Services Ltd'
-							},
-							{
-								name: 'Prad Pankhani'
-							},
-							{
-								model: 'company',
-								name: 'Crew Deputies Ltd',
-								creditedMembers: [
-									{
-										name: 'Benjamin Donoghue'
-									},
-									{
-										name: 'Kerry McDevitt'
-									},
-									{
-										name: 'Nik Haffenden'
-									}
-								]
-							},
-							{
-								name: 'Cass Kirchner'
-							},
-							{
-								model: 'company',
-								name: 'Crew Assistants Ltd',
-								creditedMembers: [
-									{
-										name: 'Sara Gunter'
-									},
-									{
-										name: 'Tom Leggat'
-									},
-									{
-										name: 'Julia Wickham'
-									}
-								]
-							}
-						]
-					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/productions')
-			.send({
 				name: 'Much Ado About Nothing',
 				theatre: {
 					name: 'Olivier Theatre'
@@ -341,6 +256,91 @@ describe('Productions with crew', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
+				name: 'Phèdre',
+				theatre: {
+					name: 'Lyttelton Theatre'
+				},
+				crewCredits: [
+					// Contrivance for purposes of test.
+					{
+						name: 'Production Management',
+						entities: [
+							{
+								name: 'Tariq Hussain'
+							}
+						]
+					},
+					// Contrivance for purposes of testing person with multiple crew credits for same production.
+					{
+						name: 'Rigging Supervision',
+						entities: [
+							{
+								name: 'Cass Kirchner'
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Sound Operation',
+						entities: [
+							{
+								model: 'company',
+								name: 'Stagecraft Ltd'
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Stage Management',
+						entities: [
+							{
+								model: 'company',
+								name: 'Theatrical Production Services Ltd'
+							},
+							{
+								name: 'Prad Pankhani'
+							},
+							{
+								model: 'company',
+								name: 'Crew Deputies Ltd',
+								creditedMembers: [
+									{
+										name: 'Benjamin Donoghue'
+									},
+									{
+										name: 'Kerry McDevitt'
+									},
+									{
+										name: 'Nik Haffenden'
+									}
+								]
+							},
+							{
+								name: 'Cass Kirchner'
+							},
+							{
+								model: 'company',
+								name: 'Crew Assistants Ltd',
+								creditedMembers: [
+									{
+										name: 'Sara Gunter'
+									},
+									{
+										name: 'Tom Leggat'
+									},
+									{
+										name: 'Julia Wickham'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
 				name: 'Pains of Youth',
 				theatre: {
 					name: 'Cottesloe Theatre'
@@ -398,11 +398,11 @@ describe('Productions with crew', () => {
 		wasteAlmeidaProduction = await chai.request(app)
 			.get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
 
-		phèdreLytteltonProduction = await chai.request(app)
-			.get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
-
 		muchAdoAboutNothingOlivierProduction = await chai.request(app)
 			.get(`/productions/${MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID}`);
+
+		phèdreLytteltonProduction = await chai.request(app)
+			.get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
 
 		painsOfYouthCottesloeProduction = await chai.request(app)
 			.get(`/productions/${PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID}`);
