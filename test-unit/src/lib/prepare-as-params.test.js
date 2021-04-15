@@ -605,6 +605,9 @@ describe('Prepare As Params module', () => {
 				expect(result.material.writingCredits.length).to.equal(1);
 				expect(result.material.writingCredits[0].name).to.equal('version by');
 				expect(result.material.writingCredits[0]).to.not.have.property('position');
+				expect(result.material.characterGroups.length).to.equal(1);
+				expect(result.material.characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.material.characterGroups[0]).to.not.have.property('position');
 				expect(result.material.producerCredits.length).to.equal(1);
 				expect(result.material.producerCredits[0].name).to.equal('in association with');
 				expect(result.material.producerCredits[0]).to.not.have.property('position');
