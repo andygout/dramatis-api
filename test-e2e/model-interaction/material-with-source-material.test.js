@@ -537,19 +537,6 @@ describe('Materials with source material', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'production',
-					uuid: THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID,
-					name: 'The Donkey Show',
-					startDate: '2000-09-12',
-					endDate: '2002-01-02',
-					theatre: {
-						model: 'theatre',
-						uuid: HANOVER_GRAND_THEATRE_UUID,
-						name: 'Hanover Grand',
-						surTheatre: null
-					}
-				},
-				{
-					model: 'production',
 					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
 					name: 'The Indian Boy',
 					startDate: '2006-11-07',
@@ -558,6 +545,19 @@ describe('Materials with source material', () => {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
 						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID,
+					name: 'The Donkey Show',
+					startDate: '2000-09-12',
+					endDate: '2002-01-02',
+					theatre: {
+						model: 'theatre',
+						uuid: HANOVER_GRAND_THEATRE_UUID,
+						name: 'Hanover Grand',
 						surTheatre: null
 					}
 				}

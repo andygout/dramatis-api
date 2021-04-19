@@ -138,33 +138,6 @@ describe('Cast member with multiple production credits', () => {
 			const expectedCastMemberProductions = [
 				{
 					model: 'production',
-					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
-					name: 'City of Angels',
-					startDate: '1993-03-19',
-					endDate: '1993-11-18',
-					theatre: {
-						model: 'theatre',
-						uuid: PRINCE_OF_WALES_THEATRE_UUID,
-						name: 'Prince of Wales Theatre',
-						surTheatre: null
-					},
-					roles: [
-						{
-							model: 'character',
-							uuid: null,
-							name: 'Alaura Kingsley',
-							qualifier: null
-						},
-						{
-							model: 'character',
-							uuid: null,
-							name: 'Carla Haywood',
-							qualifier: null
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID,
 					name: 'Enron',
 					startDate: '2009-07-11',
@@ -192,6 +165,33 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Irene Gant',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
+					name: 'City of Angels',
+					startDate: '1993-03-19',
+					endDate: '1993-11-18',
+					theatre: {
+						model: 'theatre',
+						uuid: PRINCE_OF_WALES_THEATRE_UUID,
+						name: 'Prince of Wales Theatre',
+						surTheatre: null
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Alaura Kingsley',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: null,
+							name: 'Carla Haywood',
 							qualifier: null
 						}
 					]

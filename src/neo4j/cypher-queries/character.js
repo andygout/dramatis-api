@@ -203,7 +203,7 @@ const getShowQuery = () => `
 			qualifier: role.qualifier,
 			otherRoles: otherRoles
 		}) AS performers
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	RETURN
 		'character' AS model,

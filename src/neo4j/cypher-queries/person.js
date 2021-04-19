@@ -255,7 +255,7 @@ const getShowQuery = () => `
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS producerCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH person, materials,
 		COLLECT(
@@ -308,7 +308,7 @@ const getShowQuery = () => `
 				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
 			END
 		) AS roles
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH person, materials, producerProductions,
 		COLLECT(
@@ -482,7 +482,7 @@ const getShowQuery = () => `
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH person, materials, producerProductions, castMemberProductions,
 		COLLECT(
@@ -670,7 +670,7 @@ const getShowQuery = () => `
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	RETURN
 		'person' AS model,
