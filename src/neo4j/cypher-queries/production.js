@@ -1,7 +1,15 @@
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: 'CREATE (production:Production { uuid: $uuid, name: $name })',
+		create: `
+			CREATE (production:Production {
+				uuid: $uuid,
+				name: $name,
+				startDate: $startDate,
+				pressDate: $pressDate,
+				endDate: $endDate
+			})
+		`,
 		update: `
 			MATCH (production:Production { uuid: $uuid })
 
@@ -13,7 +21,11 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT production
 
-			SET production.name = $name
+			SET
+				production.name = $name,
+				production.startDate = $startDate,
+				production.pressDate = $pressDate,
+				production.endDate = $endDate
 		`
 	};
 
@@ -627,6 +639,9 @@ const getEditQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
+		production.startDate AS startDate,
+		production.pressDate AS pressDate,
+		production.endDate AS endDate,
 		{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 		{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
 		producerCredits,
@@ -942,6 +957,9 @@ const getShowQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
+		production.startDate AS startDate,
+		production.pressDate AS pressDate,
+		production.endDate AS endDate,
 		material,
 		theatre,
 		producerCredits,
@@ -970,6 +988,8 @@ const getListQuery = () => `
 		'production' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
+		production.startDate AS startDate,
+		production.endDate AS endDate,
 		CASE theatre WHEN NULL
 			THEN null
 			ELSE theatre {

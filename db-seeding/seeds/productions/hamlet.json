@@ -1,5 +1,8 @@
 {
 	"name": "Hamlet",
+	"startDate": "2010-09-30",
+	"pressDate": "2010-10-07",
+	"endDate": "2011-01-26",
 	"material": {
 		"name": "Hamlet"
 	},

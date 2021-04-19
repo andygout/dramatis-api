@@ -62,6 +62,9 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
+				startDate: '2010-05-13',
+				pressDate: '2010-05-18',
+				endDate: '2010-06-05',
 				material: {
 					name: 'True West'
 				},
@@ -98,6 +101,9 @@ describe('Roles with alternating cast', () => {
 			.post('/productions')
 			.send({
 				name: 'True West',
+				startDate: '2018-11-23',
+				pressDate: '2018-12-04',
+				endDate: '2019-02-23',
 				material: {
 					name: 'True West'
 				},
@@ -171,6 +177,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
@@ -214,6 +222,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2018-11-23',
+					endDate: '2019-02-23',
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
@@ -272,6 +282,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
@@ -315,6 +327,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2018-11-23',
+					endDate: '2019-02-23',
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
@@ -479,6 +493,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
@@ -519,6 +535,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
 					theatre: {
 						model: 'theatre',
 						uuid: CRUCIBLE_THEATRE_UUID,
@@ -559,6 +577,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2018-11-23',
+					endDate: '2019-02-23',
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,
@@ -599,6 +619,8 @@ describe('Roles with alternating cast', () => {
 					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
+					startDate: '2018-11-23',
+					endDate: '2019-02-23',
 					theatre: {
 						model: 'theatre',
 						uuid: VAUDEVILLE_THEATRE_UUID,

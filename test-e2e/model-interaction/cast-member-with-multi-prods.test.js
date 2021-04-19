@@ -37,6 +37,9 @@ describe('Cast member with multiple production credits', () => {
 			.post('/productions')
 			.send({
 				name: 'The Greeks',
+				startDate: '1980-01-26', // Contrivance because date unavailable.
+				pressDate: '1980-02-02',
+				endDate: '1980-03-29',
 				theatre: {
 					name: 'Aldwych Theatre'
 				},
@@ -59,6 +62,9 @@ describe('Cast member with multiple production credits', () => {
 			.post('/productions')
 			.send({
 				name: 'City of Angels',
+				startDate: '1993-03-19',
+				pressDate: '1993-03-30',
+				endDate: '1993-11-18',
 				theatre: {
 					name: 'Prince of Wales Theatre'
 				},
@@ -81,6 +87,9 @@ describe('Cast member with multiple production credits', () => {
 			.post('/productions')
 			.send({
 				name: 'Enron',
+				startDate: '2009-07-11',
+				pressDate: '2009-07-22',
+				endDate: '2009-08-29',
 				theatre: {
 					name: 'Chichester Festival Theatre'
 				},
@@ -131,6 +140,8 @@ describe('Cast member with multiple production credits', () => {
 					model: 'production',
 					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
 					name: 'City of Angels',
+					startDate: '1993-03-19',
+					endDate: '1993-11-18',
 					theatre: {
 						model: 'theatre',
 						uuid: PRINCE_OF_WALES_THEATRE_UUID,
@@ -156,6 +167,8 @@ describe('Cast member with multiple production credits', () => {
 					model: 'production',
 					uuid: ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID,
 					name: 'Enron',
+					startDate: '2009-07-11',
+					endDate: '2009-08-29',
 					theatre: {
 						model: 'theatre',
 						uuid: CHICHESTER_FESTIVAL_THEATRE_UUID,
@@ -187,6 +200,8 @@ describe('Cast member with multiple production credits', () => {
 					model: 'production',
 					uuid: THE_GREEKS_ALDWYCH_PRODUCTION_UUID,
 					name: 'The Greeks',
+					startDate: '1980-01-26',
+					endDate: '1980-03-29',
 					theatre: {
 						model: 'theatre',
 						uuid: ALDWYCH_THEATRE_UUID,

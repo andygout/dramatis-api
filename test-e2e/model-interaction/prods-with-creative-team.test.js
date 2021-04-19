@@ -80,6 +80,9 @@ describe('Productions with creative team', () => {
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
+				startDate: '2005-04-14',
+				pressDate: '2005-04-20',
+				endDate: '2005-05-14',
 				theatre: {
 					name: 'Barbican Theatre'
 				},
@@ -164,6 +167,9 @@ describe('Productions with creative team', () => {
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
+				startDate: '2009-09-16',
+				pressDate: '2009-09-25',
+				endDate: '2009-12-08',
 				theatre: {
 					name: 'Olivier Theatre'
 				},
@@ -254,6 +260,9 @@ describe('Productions with creative team', () => {
 			.post('/productions')
 			.send({
 				name: 'Happy Days',
+				startDate: '2007-01-18',
+				pressDate: '2007-01-25',
+				endDate: '2007-03-01',
 				theatre: {
 					name: 'Lyttelton Theatre'
 				},
@@ -338,6 +347,9 @@ describe('Productions with creative team', () => {
 			.post('/productions')
 			.send({
 				name: 'Richard II',
+				startDate: '1995-05-26',
+				pressDate: '1995-06-02',
+				endDate: '1996-02-17',
 				theatre: {
 					name: 'Cottesloe Theatre'
 				},
@@ -875,6 +887,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -898,6 +912,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -917,6 +933,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -955,6 +973,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1040,6 +1060,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -1115,6 +1137,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1194,6 +1218,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -1288,6 +1314,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1366,6 +1394,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -1440,6 +1470,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1529,6 +1561,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -1622,6 +1656,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1715,6 +1751,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1738,6 +1776,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -1763,6 +1803,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -1801,6 +1843,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -1879,6 +1923,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -1953,6 +1999,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -2031,6 +2079,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,
@@ -2124,6 +2174,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID,
 					name: 'Happy Days',
+					startDate: '2007-01-18',
+					endDate: '2007-03-01',
 					theatre: {
 						model: 'theatre',
 						uuid: LYTTELTON_THEATRE_UUID,
@@ -2202,6 +2254,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
+					startDate: '2005-04-14',
+					endDate: '2005-05-14',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -2276,6 +2330,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
+					startDate: '2009-09-16',
+					endDate: '2009-12-08',
 					theatre: {
 						model: 'theatre',
 						uuid: OLIVIER_THEATRE_UUID,
@@ -2366,6 +2422,8 @@ describe('Productions with creative team', () => {
 					model: 'production',
 					uuid: RICHARD_II_COTTESLOE_PRODUCTION_UUID,
 					name: 'Richard II',
+					startDate: '1995-05-26',
+					endDate: '1996-02-17',
 					theatre: {
 						model: 'theatre',
 						uuid: COTTESLOE_THEATRE_UUID,

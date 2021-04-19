@@ -1,5 +1,8 @@
 {
 	"name": "Julius Caesar",
+	"startDate": "2005-04-14",
+	"pressDate": "2005-04-20",
+	"endDate": "2005-05-14",
 	"material": {
 		"name": "Julius Caesar"
 	},

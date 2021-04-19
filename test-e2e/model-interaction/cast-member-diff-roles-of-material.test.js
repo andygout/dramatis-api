@@ -60,6 +60,9 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/productions')
 			.send({
 				name: 'King Lear',
+				startDate: '1982-06-20', // Contrivance because date unavailable.
+				pressDate: '1982-06-28',
+				endDate: '1982-08-28', // Contrivance because date unavailable.
 				material: {
 					name: 'The Tragedy of King Lear'
 				},
@@ -90,6 +93,9 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/productions')
 			.send({
 				name: 'King Lear',
+				startDate: '2016-11-10',
+				pressDate: '2016-11-15',
+				endDate: '2016-12-23',
 				material: {
 					name: 'The Tragedy of King Lear'
 				},
@@ -154,6 +160,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '2016-11-10',
+					endDate: '2016-12-23',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -175,6 +183,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '1982-06-20',
+					endDate: '1982-08-28',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -211,6 +221,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '2016-11-10',
+					endDate: '2016-12-23',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -232,6 +244,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '1982-06-20',
+					endDate: '1982-08-28',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -350,6 +364,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '1982-06-20',
+					endDate: '1982-08-28',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -384,6 +400,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '2016-11-10',
+					endDate: '2016-12-23',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,
@@ -403,6 +421,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '1982-06-20',
+					endDate: '1982-08-28',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -437,6 +457,8 @@ describe('Cast member performing different roles in different productions of sam
 					model: 'production',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
+					startDate: '2016-11-10',
+					endDate: '2016-12-23',
 					theatre: {
 						model: 'theatre',
 						uuid: BARBICAN_THEATRE_UUID,

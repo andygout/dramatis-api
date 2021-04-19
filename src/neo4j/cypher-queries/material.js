@@ -524,6 +524,8 @@ const getShowQuery = () => `
 						model: 'production',
 						.uuid,
 						.name,
+						.startDate,
+						.endDate,
 						usesSourcingMaterial: usesSourcingMaterial,
 						theatre: CASE theatre WHEN NULL
 							THEN null
@@ -554,11 +556,11 @@ const getShowQuery = () => `
 		characterGroups,
 		[
 			production IN productions WHERE NOT production.usesSourcingMaterial |
-			production { .model, .uuid, .name, .theatre }
+			production { .model, .uuid, .name, .startDate, .endDate, .theatre }
 		] AS productions,
 		[
 			production IN productions WHERE production.usesSourcingMaterial |
-			production { .model, .uuid, .name, .theatre }
+			production { .model, .uuid, .name, .startDate, .endDate, .theatre }
 		] AS sourcingMaterialProductions
 	`;
 

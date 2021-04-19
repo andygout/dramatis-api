@@ -22,6 +22,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = {
 				model: 'production',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				name: '',
 				errors: {},
 				material: {
@@ -142,6 +145,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -235,6 +241,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -332,6 +341,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -425,6 +437,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
+				startDate: null,
+				pressDate: null,
+				endDate: null,
 				material: null,
 				theatre: null,
 				producerCredits: [],
@@ -448,6 +463,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				name: 'The Tempest',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -557,6 +575,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
+					startDate: '2010-09-30',
+					pressDate: '2010-10-07',
+					endDate: '2011-01-26',
 					material: {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
 						differentiator: '1'
@@ -846,6 +867,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				startDate: '2010-09-30',
+				pressDate: '2010-10-07',
+				endDate: '2011-01-26',
 				errors: {},
 				material: {
 					model: 'material',
@@ -1472,6 +1496,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				startDate: '2010-09-30',
+				pressDate: '2010-10-07',
+				endDate: '2011-01-26',
 				material: {
 					model: 'material',
 					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID,
@@ -1810,6 +1837,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				startDate: '2010-09-30',
+				pressDate: '2010-10-07',
+				endDate: '2011-01-26',
 				errors: {},
 				material: {
 					model: 'material',
@@ -2434,6 +2464,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
+					startDate: '2016-06-07',
+					pressDate: '2016-06-16',
+					endDate: '2016-08-06',
 					material: {
 						name: 'The Tragedy of King Richard III',
 						differentiator: '1'
@@ -2723,6 +2756,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				startDate: '2016-06-07',
+				pressDate: '2016-06-16',
+				endDate: '2016-08-06',
 				errors: {},
 				material: {
 					model: 'material',
@@ -3349,6 +3385,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				startDate: '2016-06-07',
+				pressDate: '2016-06-16',
+				endDate: '2016-08-06',
 				material: {
 					model: 'material',
 					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID,
@@ -3692,6 +3731,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'production',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -3786,6 +3828,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const expectedResponseBody = {
 				model: 'production',
 				name: 'Richard III',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
 				errors: {},
 				material: {
 					model: 'material',
@@ -3834,6 +3879,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Measure for Measure',
+					startDate: '2004-05-18',
+					pressDate: '2004-05-27',
+					endDate: '2006-03-18',
 					theatre: {
 						name: 'National Theatre'
 					}
@@ -3843,6 +3891,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
+					startDate: '2010-09-30',
+					pressDate: '2010-10-07',
+					endDate: '2011-01-26',
 					theatre: {
 						name: 'National Theatre'
 					}
@@ -3852,6 +3903,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Measure for Measure',
+					startDate: '2010-02-12',
+					pressDate: '2010-02-18',
+					endDate: '2010-04-10',
 					theatre: {
 						name: 'Almeida Theatre'
 					}
@@ -3861,6 +3915,9 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
+					startDate: '2017-06-09',
+					pressDate: '2017-06-15',
+					endDate: '2017-09-02',
 					theatre: {
 						name: 'Almeida Theatre'
 					}
@@ -3884,6 +3941,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					model: 'production',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2017-06-09',
+					endDate: '2017-09-02',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -3895,6 +3954,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					model: 'production',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -3906,6 +3967,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					model: 'production',
 					uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
 					name: 'Measure for Measure',
+					startDate: '2010-02-12',
+					endDate: '2010-04-10',
 					theatre: {
 						model: 'theatre',
 						uuid: ALMEIDA_THEATRE_UUID,
@@ -3917,6 +3980,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					model: 'production',
 					uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
 					name: 'Measure for Measure',
+					startDate: '2004-05-18',
+					endDate: '2006-03-18',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,

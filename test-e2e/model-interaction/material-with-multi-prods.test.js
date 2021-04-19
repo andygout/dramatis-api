@@ -44,6 +44,8 @@ describe('Material with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
+				startDate: '2012-09-22',
+				endDate: '2012-10-14',
 				material: {
 					name: 'Twelfth Night'
 				},
@@ -56,6 +58,9 @@ describe('Material with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night, or What You Will',
+				startDate: '2002-10-11',
+				pressDate: '2002-10-22',
+				endDate: '2002-11-30',
 				material: {
 					name: 'Twelfth Night'
 				},
@@ -68,6 +73,9 @@ describe('Material with multiple productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
+				startDate: '2011-01-11',
+				pressDate: '2011-01-18',
+				endDate: '2011-03-02',
 				material: {
 					name: 'Twelfth Night'
 				},
@@ -105,6 +113,8 @@ describe('Material with multiple productions', () => {
 					model: 'production',
 					uuid: TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID,
 					name: 'Twelfth Night',
+					startDate: '2011-01-11',
+					endDate: '2011-03-02',
 					theatre: {
 						model: 'theatre',
 						uuid: NATIONAL_THEATRE_UUID,
@@ -116,6 +126,8 @@ describe('Material with multiple productions', () => {
 					model: 'production',
 					uuid: TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID,
 					name: 'Twelfth Night',
+					startDate: '2012-09-22',
+					endDate: '2012-10-14',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -127,6 +139,8 @@ describe('Material with multiple productions', () => {
 					model: 'production',
 					uuid: TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID,
 					name: 'Twelfth Night, or What You Will',
+					startDate: '2002-10-11',
+					endDate: '2002-11-30',
 					theatre: {
 						model: 'theatre',
 						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,

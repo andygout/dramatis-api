@@ -87,6 +87,123 @@ describe('Production model', () => {
 
 	describe('constructor method', () => {
 
+		describe('startDate property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.startDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', startDate: '' });
+				expect(instance.startDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', startDate: ' ' });
+				expect(instance.startDate).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
+				expect(instance.startDate).to.equal('2010-09-30');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ name: 'Hamlet', startDate: ' 2010-09-30 ' });
+				expect(instance.startDate).to.equal('2010-09-30');
+
+			});
+
+		});
+
+		describe('pressDate property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.pressDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', pressDate: '' });
+				expect(instance.pressDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', pressDate: ' ' });
+				expect(instance.pressDate).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
+				expect(instance.pressDate).to.equal('2010-10-07');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ name: 'Hamlet', pressDate: ' 2010-10-07 ' });
+				expect(instance.pressDate).to.equal('2010-10-07');
+
+			});
+
+		});
+
+		describe('endDate property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.endDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', endDate: '' });
+				expect(instance.endDate).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'Hamlet', endDate: ' ' });
+				expect(instance.endDate).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value is string with length', () => {
+
+				const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
+				expect(instance.endDate).to.equal('2011-01-26');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ name: 'Hamlet', endDate: ' 2011-01-26 ' });
+				expect(instance.endDate).to.equal('2011-01-26');
+
+			});
+
+		});
+
 		describe('producerCredits property', () => {
 
 			it('assigns empty array if absent from props', () => {
@@ -258,9 +375,11 @@ describe('Production model', () => {
 			};
 			const instance = createInstance(props);
 			spy(instance, 'validateName');
+			spy(instance, 'validateDates');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
+				instance.validateDates,
 				instance.material.validateName,
 				instance.material.validateDifferentiator,
 				instance.theatre.validateName,
@@ -276,6 +395,8 @@ describe('Production model', () => {
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
+			expect(instance.validateDates.calledOnce).to.be.true;
+			expect(instance.validateDates.calledWithExactly()).to.be.true;
 			expect(instance.material.validateName.calledOnce).to.be.true;
 			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
@@ -312,6 +433,383 @@ describe('Production model', () => {
 			expect(instance.crewCredits[0].runInputValidations.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
+
+		});
+
+	});
+
+	describe('validateDates method', () => {
+
+		context('valid data', () => {
+
+			context('startDate with empty string values', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate with valid date format', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate with empty string values', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate with valid date format', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('endDate with empty string values', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', endDate: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate with valid date format', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and endDate with valid date format with startDate before endDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2011-01-26' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and endDate with valid date format with startDate same as endDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and pressDate with valid date format with startDate before pressDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2010-09-30',
+						pressDate: '2010-10-07'
+					});
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and pressDate with valid date format with startDate same as pressDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', pressDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate and endDate with valid date format with pressDate before endDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07', endDate: '2011-01-26' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate and endDate with valid date format with pressDate same as endDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-09-30', endDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate, pressDate, and endDate with empty string values', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '', pressDate: '', endDate: '' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate, pressDate, and endDate with valid date format with startDate before pressDate and pressDate before endDate', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2010-09-30',
+						pressDate: '2010-10-07',
+						endDate: '2011-01-26'
+					});
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+			context('startDate, pressDate, and endDate with valid date format all with same value', () => {
+
+				it('will not call addPropertyError method', () => {
+
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2010-09-30',
+						pressDate: '2010-09-30',
+						endDate: '2010-09-30'
+					});
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.notCalled).to.be.true;
+
+				});
+
+			});
+
+		});
+
+		context('invalid data', () => {
+
+			context('startDate with invalid date format', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: 'foobar' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'startDate',
+						'Value needs to be in date format'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate with invalid date format', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: 'foobar' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'pressDate',
+						'Value needs to be in date format'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('endDate with invalid date format', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', endDate: 'foobar' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'endDate',
+						'Value needs to be in date format'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and endDate with valid date format with startDate after endDate', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2011-01-26', endDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.getCall(0).calledWithExactly(
+						'startDate',
+						'Start date must not be after end date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(1).calledWithExactly(
+						'endDate',
+						'End date must not be before start date'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('startDate and pressDate with valid date format with startDate after pressDate', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', startDate: '2010-10-07', pressDate: '2010-09-30' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.getCall(0).calledWithExactly(
+						'startDate',
+						'Start date must not be after press date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(1).calledWithExactly(
+						'pressDate',
+						'Press date must not be before start date'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('pressDate and endDate with valid date format with pressDate after endDate', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({ name: 'Hamlet', pressDate: '2011-01-26', endDate: '2010-10-07' });
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.getCall(0).calledWithExactly(
+						'pressDate',
+						'Press date must not be after end date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(1).calledWithExactly(
+						'endDate',
+						'End date must not be before press date'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+
+				it('will call addPropertyError method', () => {
+
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2011-01-26',
+						pressDate: '2010-10-07',
+						endDate: '2010-09-30'
+					});
+					spy(instance, 'addPropertyError');
+					instance.validateDates();
+					expect(instance.addPropertyError.callCount).to.equal(6);
+					expect(instance.addPropertyError.getCall(0).calledWithExactly(
+						'startDate',
+						'Start date must not be after end date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(1).calledWithExactly(
+						'endDate',
+						'End date must not be before start date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(2).calledWithExactly(
+						'startDate',
+						'Start date must not be after press date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(3).calledWithExactly(
+						'pressDate',
+						'Press date must not be before start date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(4).calledWithExactly(
+						'pressDate',
+						'Press date must not be after end date'
+					)).to.be.true;
+					expect(instance.addPropertyError.getCall(5).calledWithExactly(
+						'endDate',
+						'End date must not be before press date'
+					)).to.be.true;
+
+				});
+
+			});
 
 		});
 

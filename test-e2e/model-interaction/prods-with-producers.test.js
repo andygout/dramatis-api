@@ -80,6 +80,9 @@ describe('Productions with producer', () => {
 			.post('/productions')
 			.send({
 				name: 'Hangmen',
+				startDate: '2015-12-01',
+				pressDate: '2015-12-07',
+				endDate: '2016-03-05',
 				theatre: {
 					name: 'Wyndham\'s Theatre'
 				},
@@ -165,6 +168,9 @@ describe('Productions with producer', () => {
 			.post('/productions')
 			.send({
 				name: 'White Pearl',
+				startDate: '2019-05-10',
+				pressDate: '2019-05-16',
+				endDate: '2019-06-15',
 				theatre: {
 					name: 'Jerwood Theatre Downstairs'
 				},
@@ -250,6 +256,9 @@ describe('Productions with producer', () => {
 			.post('/productions')
 			.send({
 				name: 'Pah-La',
+				startDate: '2019-04-03',
+				pressDate: '2019-04-08',
+				endDate: '2019-04-27',
 				theatre: {
 					name: 'Jerwood Theatre Upstairs'
 				},
@@ -341,6 +350,8 @@ describe('Productions with producer', () => {
 			.post('/productions')
 			.send({
 				name: 'Lights Out',
+				startDate: '2017-05-17',
+				endDate: '2017-05-19',
 				theatre: {
 					name: 'The Site'
 				},
@@ -878,6 +889,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -897,6 +910,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -920,6 +935,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
@@ -958,6 +975,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -1033,6 +1052,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
 						uuid: THE_SITE_THEATRE_UUID,
@@ -1112,6 +1133,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -1191,6 +1214,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
@@ -1291,6 +1316,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -1365,6 +1392,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
 						uuid: THE_SITE_THEATRE_UUID,
@@ -1443,6 +1472,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -1532,6 +1563,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
@@ -1625,6 +1658,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -1718,6 +1753,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -1743,6 +1780,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -1766,6 +1805,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
@@ -1804,6 +1845,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -1878,6 +1921,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
 						uuid: THE_SITE_THEATRE_UUID,
@@ -1956,6 +2001,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -2034,6 +2081,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
@@ -2127,6 +2176,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
 						uuid: WYNDHAMS_THEATRE_UUID,
@@ -2201,6 +2252,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
 						uuid: THE_SITE_THEATRE_UUID,
@@ -2279,6 +2332,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
@@ -2369,6 +2424,8 @@ describe('Productions with producer', () => {
 					model: 'production',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,

@@ -225,6 +225,8 @@ const getShowQuery = () => `
 					model: 'production',
 					.uuid,
 					.name,
+					.startDate,
+					.endDate,
 					theatre: CASE theatre WHEN NULL
 						THEN null
 						ELSE theatre {
@@ -343,6 +345,8 @@ const getShowQuery = () => `
 					model: 'production',
 					.uuid,
 					.name,
+					.startDate,
+					.endDate,
 					theatre: CASE theatre WHEN NULL
 						THEN null
 						ELSE theatre {
@@ -490,6 +494,8 @@ const getShowQuery = () => `
 					model: 'production',
 					.uuid,
 					.name,
+					.startDate,
+					.endDate,
 					theatre: CASE theatre WHEN NULL
 						THEN null
 						ELSE theatre {

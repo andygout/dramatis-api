@@ -121,6 +121,8 @@ const getShowQuery = () => `
 					model: 'production',
 					.uuid,
 					.name,
+					.startDate,
+					.endDate,
 					subTheatre: CASE theatreToProductionPathLength WHEN 2
 						THEN subTheatreForProduction { model: 'theatre', .uuid, .name }
 						ELSE null

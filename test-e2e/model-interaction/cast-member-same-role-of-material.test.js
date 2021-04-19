@@ -51,6 +51,9 @@ describe('Cast member performing same role in different productions of same mate
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
+				startDate: '1962-04-10', // Contrivance because date unavailable.
+				pressDate: '1962-04-17',
+				endDate: '1962-07-20', // Contrivance because date unavailable.
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
@@ -74,6 +77,9 @@ describe('Cast member performing same role in different productions of same mate
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
+				startDate: '2010-02-09',
+				pressDate: '2010-02-15',
+				endDate: '2010-03-20',
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
@@ -122,6 +128,8 @@ describe('Cast member performing same role in different productions of same mate
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '2010-02-09',
+					endDate: '2010-03-20',
 					theatre: {
 						model: 'theatre',
 						uuid: ROSE_THEATRE_UUID,
@@ -143,6 +151,8 @@ describe('Cast member performing same role in different productions of same mate
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '1962-04-10',
+					endDate: '1962-07-20',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -235,6 +245,8 @@ describe('Cast member performing same role in different productions of same mate
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '2010-02-09',
+					endDate: '2010-03-20',
 					theatre: {
 						model: 'theatre',
 						uuid: ROSE_THEATRE_UUID,
@@ -254,6 +266,8 @@ describe('Cast member performing same role in different productions of same mate
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '1962-04-10',
+					endDate: '1962-07-20',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,

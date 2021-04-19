@@ -86,6 +86,9 @@ describe('Different characters with the same name from different materials', () 
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
+				startDate: '2006-02-02',
+				pressDate: '2006-02-07',
+				endDate: '2006-02-25',
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
@@ -116,6 +119,9 @@ describe('Different characters with the same name from different materials', () 
 			.post('/productions')
 			.send({
 				name: 'Titus Andronicus',
+				startDate: '2006-05-20',
+				pressDate: '2006-05-30',
+				endDate: '2006-10-06',
 				material: {
 					name: 'Titus Andronicus'
 				},
@@ -183,6 +189,8 @@ describe('Different characters with the same name from different materials', () 
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '2006-02-02',
+					endDate: '2006-02-25',
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
@@ -219,6 +227,8 @@ describe('Different characters with the same name from different materials', () 
 					model: 'production',
 					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 					name: 'Titus Andronicus',
+					startDate: '2006-05-20',
+					endDate: '2006-10-06',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -392,6 +402,8 @@ describe('Different characters with the same name from different materials', () 
 					model: 'production',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
+					startDate: '2006-02-02',
+					endDate: '2006-02-25',
 					theatre: {
 						model: 'theatre',
 						uuid: NOVELLO_THEATRE_UUID,
@@ -426,6 +438,8 @@ describe('Different characters with the same name from different materials', () 
 					model: 'production',
 					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 					name: 'Titus Andronicus',
+					startDate: '2006-05-20',
+					endDate: '2006-10-06',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,

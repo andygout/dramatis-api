@@ -40,6 +40,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -85,10 +88,130 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {
 						name: [
 							'Value is too long'
+						]
+					},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('startDate, pressDate, and endDate values with invalid date format', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					startDate: 'foobar',
+					pressDate: 'foobar',
+					endDate: 'foobar'
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					startDate: 'foobar',
+					pressDate: 'foobar',
+					endDate: 'foobar',
+					hasErrors: true,
+					errors: {
+						startDate: [
+							'Value needs to be in date format'
+						],
+						pressDate: [
+							'Value needs to be in date format'
+						],
+						endDate: [
+							'Value needs to be in date format'
+						]
+					},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					theatre: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					startDate: '2011-01-26',
+					pressDate: '2010-10-07',
+					endDate: '2010-09-30'
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					startDate: '2011-01-26',
+					pressDate: '2010-10-07',
+					endDate: '2010-09-30',
+					hasErrors: true,
+					errors: {
+						startDate: [
+							'Start date must not be after end date',
+							'Start date must not be after press date'
+						],
+						pressDate: [
+							'Press date must not be before start date',
+							'Press date must not be after end date'
+						],
+						endDate: [
+							'End date must not be before start date',
+							'End date must not be before press date'
 						]
 					},
 					material: {
@@ -133,6 +256,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -182,6 +308,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -230,6 +359,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -279,6 +411,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -329,6 +464,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -388,6 +526,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -458,6 +599,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -527,6 +671,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -596,6 +743,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -667,6 +817,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -756,6 +909,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -891,6 +1047,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -973,6 +1132,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1056,6 +1218,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1128,6 +1293,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1188,6 +1356,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1257,6 +1428,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1351,6 +1525,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1423,6 +1600,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1495,6 +1675,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1568,6 +1751,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1640,6 +1826,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1712,6 +1901,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1794,6 +1986,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1903,6 +2098,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -1962,6 +2160,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2032,6 +2233,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2100,6 +2304,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2169,6 +2376,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2238,6 +2448,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2309,6 +2522,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2398,6 +2614,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2533,6 +2752,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2615,6 +2837,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2698,6 +2923,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2769,6 +2997,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2828,6 +3059,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2898,6 +3132,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -2966,6 +3203,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3035,6 +3275,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3104,6 +3347,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3175,6 +3421,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3264,6 +3513,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3399,6 +3651,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3481,6 +3736,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
@@ -3564,6 +3822,9 @@ describe('Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
 					hasErrors: true,
 					errors: {},
 					material: {
