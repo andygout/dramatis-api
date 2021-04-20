@@ -48,7 +48,7 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Henry IV: Part 1',
+				name: 'Henry IV, Part 1',
 				format: 'play',
 				characterGroups: [
 					{
@@ -64,7 +64,7 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Henry IV: Part 2',
+				name: 'Henry IV, Part 2',
 				format: 'play',
 				characterGroups: [
 					{
@@ -96,12 +96,12 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 1',
+				name: 'Henry IV, Part 1',
 				startDate: '2005-04-16',
 				pressDate: '2005-05-04',
 				endDate: '2005-08-31',
 				material: {
-					name: 'Henry IV: Part 1'
+					name: 'Henry IV, Part 1'
 				},
 				theatre: {
 					name: 'National Theatre'
@@ -121,12 +121,12 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 2',
+				name: 'Henry IV, Part 2',
 				startDate: '2005-04-26',
 				pressDate: '2005-05-04',
 				endDate: '2005-08-31',
 				material: {
-					name: 'Henry IV: Part 2'
+					name: 'Henry IV, Part 2'
 				},
 				theatre: {
 					name: 'National Theatre'
@@ -172,12 +172,12 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 1',
+				name: 'Henry IV, Part 1',
 				startDate: '2010-06-06',
 				pressDate: '2010-07-14',
 				endDate: '2010-10-02',
 				material: {
-					name: 'Henry IV: Part 1'
+					name: 'Henry IV, Part 1'
 				},
 				theatre: {
 					name: 'Shakespeare\'s Globe'
@@ -197,12 +197,12 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 2',
+				name: 'Henry IV, Part 2',
 				startDate: '2010-07-03',
 				pressDate: '2010-07-14',
 				endDate: '2010-10-03',
 				material: {
-					name: 'Henry IV: Part 2'
+					name: 'Henry IV, Part 2'
 				},
 				theatre: {
 					name: 'Shakespeare\'s Globe'
@@ -248,7 +248,7 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 1',
+				name: 'Henry IV, Part 1',
 				startDate: '2000-04-12', // Contrivance because date unavailable.
 				pressDate: '2000-04-19',
 				endDate: '2000-06-15', // Contrivance because date unavailable.
@@ -256,7 +256,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Swan Theatre'
 				},
 				material: {
-					name: 'Henry IV: Part 1'
+					name: 'Henry IV, Part 1'
 				},
 				cast: [
 					{
@@ -274,12 +274,12 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Henry IV: Part 2',
+				name: 'Henry IV, Part 2',
 				startDate: '2000-06-22', // Contrivance because date unavailable.
 				pressDate: '2000-06-29',
 				endDate: '2000-09-15', // Contrivance because date unavailable.
 				material: {
-					name: 'Henry IV: Part 2'
+					name: 'Henry IV, Part 2'
 				},
 				theatre: {
 					name: 'Swan Theatre'
@@ -350,7 +350,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'material',
 					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
-					name: 'Henry IV: Part 1',
+					name: 'Henry IV, Part 1',
 					format: 'play',
 					writingCredits: [],
 					depictions: []
@@ -358,7 +358,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'material',
 					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
-					name: 'Henry IV: Part 2',
+					name: 'Henry IV, Part 2',
 					format: 'play',
 					writingCredits: [],
 					depictions: []
@@ -408,7 +408,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
+					name: 'Henry IV, Part 2',
 					startDate: '2010-07-03',
 					endDate: '2010-10-03',
 					theatre: {
@@ -431,7 +431,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
+					name: 'Henry IV, Part 1',
 					startDate: '2010-06-06',
 					endDate: '2010-10-02',
 					theatre: {
@@ -477,7 +477,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
+					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
 					theatre: {
@@ -500,7 +500,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
+					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
 					theatre: {
@@ -546,7 +546,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
+					name: 'Henry IV, Part 2',
 					startDate: '2000-06-22',
 					endDate: '2000-09-15',
 					theatre: {
@@ -569,7 +569,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
+					name: 'Henry IV, Part 1',
 					startDate: '2000-04-12',
 					endDate: '2000-06-15',
 					theatre: {
@@ -599,7 +599,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 	});
 
-	describe('Henry IV: Part 1 (material)', () => {
+	describe('Henry IV, Part 1 (material)', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
@@ -620,7 +620,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 	});
 
-	describe('Henry IV: Part 2 (material)', () => {
+	describe('Henry IV, Part 2 (material)', () => {
 
 		it('includes Sir John Falstaff in its characters', () => {
 
