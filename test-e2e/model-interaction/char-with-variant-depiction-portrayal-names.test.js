@@ -263,8 +263,8 @@ describe('Character with variant depiction and portrayal names', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				startDate: '2005-05-04',
-				pressDate: '2005-05-16',
+				startDate: '2005-04-16',
+				pressDate: '2005-05-04',
 				endDate: '2005-08-31',
 				material: {
 					name: 'Henry IV, Part 1'
@@ -530,7 +530,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
-					startDate: '2005-05-04',
+					startDate: '2005-04-16',
 					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
@@ -725,7 +725,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
-					startDate: '2005-05-04',
+					startDate: '2005-04-16',
 					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
@@ -1427,7 +1427,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					model: 'production',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
-					startDate: '2005-05-04',
+					startDate: '2005-04-16',
 					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
