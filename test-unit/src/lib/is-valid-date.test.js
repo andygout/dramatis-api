@@ -8,7 +8,7 @@ describe('Is Valid Date module', () => {
 
 		it('returns false', () => {
 
-			expect(isValidDate('')).to.equal(false);
+			expect(isValidDate('')).to.be.false;
 
 		});
 
@@ -18,7 +18,7 @@ describe('Is Valid Date module', () => {
 
 		it('returns false', () => {
 
-			expect(isValidDate('foobar')).to.equal(false);
+			expect(isValidDate('foobar')).to.be.false;
 
 		});
 
@@ -28,7 +28,7 @@ describe('Is Valid Date module', () => {
 
 		it('returns false', () => {
 
-			expect(isValidDate('16-04-2020')).to.equal(false);
+			expect(isValidDate('16-04-2020')).to.be.false;
 
 		});
 
@@ -38,7 +38,7 @@ describe('Is Valid Date module', () => {
 
 		it('returns true', () => {
 
-			expect(isValidDate('2020-04-16')).to.equal(true);
+			expect(isValidDate('2020-04-16')).to.be.true;
 
 		});
 
@@ -48,7 +48,7 @@ describe('Is Valid Date module', () => {
 
 		it('returns true', () => {
 
-			expect(isValidDate('04-16-2020')).to.equal(true);
+			expect(isValidDate('04-16-2020')).to.be.true;
 
 		});
 
