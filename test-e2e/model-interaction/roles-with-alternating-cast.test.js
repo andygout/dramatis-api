@@ -175,51 +175,6 @@ describe('Roles with alternating cast', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-					name: 'True West',
-					startDate: '2010-05-13',
-					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: NIGEL_HARMAN_PERSON_UUID,
-							name: 'Nigel Harman',
-							roleName: 'Austin',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: LEE_CHARACTER_UUID,
-									name: 'Lee',
-									qualifier: null
-								}
-							]
-						},
-						{
-							model: 'person',
-							uuid: JOHN_LIGHT_PERSON_UUID,
-							name: 'John Light',
-							roleName: 'Austin',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: LEE_CHARACTER_UUID,
-									name: 'Lee',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
@@ -250,6 +205,51 @@ describe('Roles with alternating cast', () => {
 							model: 'person',
 							uuid: JOHNNY_FLYNN_PERSON_UUID,
 							name: 'Johnny Flynn',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: NIGEL_HARMAN_PERSON_UUID,
+							name: 'Nigel Harman',
+							roleName: 'Austin',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: LEE_CHARACTER_UUID,
+									name: 'Lee',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHN_LIGHT_PERSON_UUID,
+							name: 'John Light',
 							roleName: 'Austin',
 							qualifier: null,
 							otherRoles: [
@@ -280,51 +280,6 @@ describe('Roles with alternating cast', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
-					name: 'True West',
-					startDate: '2010-05-13',
-					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
-						name: 'Crucible Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: NIGEL_HARMAN_PERSON_UUID,
-							name: 'Nigel Harman',
-							roleName: 'Lee',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: AUSTIN_CHARACTER_UUID,
-									name: 'Austin',
-									qualifier: null
-								}
-							]
-						},
-						{
-							model: 'person',
-							uuid: JOHN_LIGHT_PERSON_UUID,
-							name: 'John Light',
-							roleName: 'Lee',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: AUSTIN_CHARACTER_UUID,
-									name: 'Austin',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
@@ -355,6 +310,51 @@ describe('Roles with alternating cast', () => {
 							model: 'person',
 							uuid: JOHNNY_FLYNN_PERSON_UUID,
 							name: 'Johnny Flynn',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
+					name: 'True West',
+					startDate: '2010-05-13',
+					endDate: '2010-06-05',
+					theatre: {
+						model: 'theatre',
+						uuid: CRUCIBLE_THEATRE_UUID,
+						name: 'Crucible Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: NIGEL_HARMAN_PERSON_UUID,
+							name: 'Nigel Harman',
+							roleName: 'Lee',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: AUSTIN_CHARACTER_UUID,
+									name: 'Austin',
+									qualifier: null
+								}
+							]
+						},
+						{
+							model: 'person',
+							uuid: JOHN_LIGHT_PERSON_UUID,
+							name: 'John Light',
 							roleName: 'Lee',
 							qualifier: null,
 							otherRoles: [

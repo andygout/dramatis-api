@@ -111,19 +111,6 @@ describe('Material with multiple productions', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID,
-					name: 'Twelfth Night',
-					startDate: '2011-01-11',
-					endDate: '2011-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					}
-				},
-				{
-					model: 'production',
 					uuid: TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID,
 					name: 'Twelfth Night',
 					startDate: '2012-09-22',
@@ -132,6 +119,19 @@ describe('Material with multiple productions', () => {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
 						name: 'Shakespeare\'s Globe',
+						surTheatre: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID,
+					name: 'Twelfth Night',
+					startDate: '2011-01-11',
+					endDate: '2011-03-02',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
 						surTheatre: null
 					}
 				},

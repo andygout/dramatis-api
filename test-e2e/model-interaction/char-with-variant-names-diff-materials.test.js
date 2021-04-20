@@ -367,52 +367,6 @@ describe('Character with variant names from productions of different materials',
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
-					name: 'Fortinbras',
-					startDate: '1991-06-18',
-					endDate: '1991-07-28',
-					theatre: {
-						model: 'theatre',
-						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
-						name: 'La Jolla Playhouse',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: DON_REILLY_PERSON_UUID,
-							name: 'Don Reilly',
-							roleName: 'Spirit of Hamlet',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
-					name: 'Hamlet',
-					startDate: '2010-09-30',
-					endDate: '2011-01-26',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: RORY_KINNEAR_PERSON_UUID,
-							name: 'Rory Kinnear',
-							roleName: 'Hamlet, Prince of Denmark',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
 					name: 'Hamletmachine',
 					startDate: '2017-07-07',
@@ -452,6 +406,52 @@ describe('Character with variant names from productions of different materials',
 							uuid: JACK_HAWKINS_PERSON_UUID,
 							name: 'Jack Hawkins',
 							roleName: 'Prince Hamlet',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
+					name: 'Hamlet',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RORY_KINNEAR_PERSON_UUID,
+							name: 'Rory Kinnear',
+							roleName: 'Hamlet, Prince of Denmark',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
+					name: 'Fortinbras',
+					startDate: '1991-06-18',
+					endDate: '1991-07-28',
+					theatre: {
+						model: 'theatre',
+						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
+						name: 'La Jolla Playhouse',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: DON_REILLY_PERSON_UUID,
+							name: 'Don Reilly',
+							roleName: 'Spirit of Hamlet',
 							qualifier: null,
 							otherRoles: []
 						}

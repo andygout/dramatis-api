@@ -93,10 +93,10 @@ describe('Theatre with multiple productions', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
-					name: 'A Streetcar Named Desire',
-					startDate: '2009-07-23',
-					endDate: '2009-10-03',
+					uuid: RED_DONMAR_PRODUCTION_UUID,
+					name: 'Red',
+					startDate: '2009-12-03',
+					endDate: '2010-02-06',
 					subTheatre: null
 				},
 				{
@@ -109,10 +109,10 @@ describe('Theatre with multiple productions', () => {
 				},
 				{
 					model: 'production',
-					uuid: RED_DONMAR_PRODUCTION_UUID,
-					name: 'Red',
-					startDate: '2009-12-03',
-					endDate: '2010-02-06',
+					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
+					name: 'A Streetcar Named Desire',
+					startDate: '2009-07-23',
+					endDate: '2009-10-03',
 					subTheatre: null
 				}
 			];

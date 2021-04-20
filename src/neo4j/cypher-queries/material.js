@@ -508,7 +508,7 @@ const getShowQuery = () => `
 			theatre,
 			surTheatre,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
-			ORDER BY production.name, theatre.name
+			ORDER BY production.startDate DESC, production.name, theatre.name
 
 		WITH
 			material,

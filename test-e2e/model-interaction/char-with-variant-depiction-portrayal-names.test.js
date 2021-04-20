@@ -528,28 +528,58 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV, Part 1',
-					startDate: '2005-04-16',
-					endDate: '2005-08-31',
+					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Henry V',
+					startDate: '2015-09-12',
+					endDate: '2015-10-25',
 					theatre: {
 						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre',
 						surTheatre: null
 					},
 					performers: [
 						{
 							model: 'person',
-							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
-							name: 'Matthew Macfadyen',
-							roleName: 'Prince Hal',
+							uuid: ALEX_HASSELL_PERSON_UUID,
+							name: 'Alex Hassell',
+							roleName: 'Henry V',
 							qualifier: null,
 							otherRoles: [
 								{
 									model: 'character',
-									uuid: MESSENGER_CHARACTER_UUID,
-									name: 'Messenger',
+									uuid: SOLDIER_CHARACTER_UUID,
+									name: 'Soldier',
+									qualifier: null
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Henry IV, Part 2',
+					startDate: '2014-03-28',
+					endDate: '2014-09-06',
+					theatre: {
+						model: 'theatre',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+						name: 'Royal Shakespeare Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ALEX_HASSELL_PERSON_UUID,
+							name: 'Alex Hassell',
+							roleName: 'Hal',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: ATTENDANT_CHARACTER_UUID,
+									name: 'Attendant',
 									qualifier: null
 								}
 							]
@@ -618,28 +648,28 @@ describe('Character with variant depiction and portrayal names', () => {
 				},
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'Henry IV, Part 2',
-					startDate: '2014-03-28',
-					endDate: '2014-09-06',
+					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV, Part 1',
+					startDate: '2005-04-16',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
 						surTheatre: null
 					},
 					performers: [
 						{
 							model: 'person',
-							uuid: ALEX_HASSELL_PERSON_UUID,
-							name: 'Alex Hassell',
-							roleName: 'Hal',
+							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
+							name: 'Matthew Macfadyen',
+							roleName: 'Prince Hal',
 							qualifier: null,
 							otherRoles: [
 								{
 									model: 'character',
-									uuid: ATTENDANT_CHARACTER_UUID,
-									name: 'Attendant',
+									uuid: MESSENGER_CHARACTER_UUID,
+									name: 'Messenger',
 									qualifier: null
 								}
 							]
@@ -663,36 +693,6 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'person',
 							uuid: ADRIAN_LESTER_PERSON_UUID,
 							name: 'Adrian Lester',
-							roleName: 'Henry V',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: SOLDIER_CHARACTER_UUID,
-									name: 'Soldier',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'Henry V',
-					startDate: '2015-09-12',
-					endDate: '2015-10-25',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
-						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: ALEX_HASSELL_PERSON_UUID,
-							name: 'Alex Hassell',
 							roleName: 'Henry V',
 							qualifier: null,
 							otherRoles: [
@@ -723,36 +723,6 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV, Part 1',
-					startDate: '2005-04-16',
-					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
-							name: 'Matthew Macfadyen',
-							roleName: 'Messenger',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: KING_HENRY_V_CHARACTER_UUID,
-									name: 'Prince Hal',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
 					startDate: '2014-03-18',
@@ -780,6 +750,36 @@ describe('Character with variant depiction and portrayal names', () => {
 							]
 						}
 					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV, Part 1',
+					startDate: '2005-04-16',
+					endDate: '2005-08-31',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
+							name: 'Matthew Macfadyen',
+							roleName: 'Messenger',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: KING_HENRY_V_CHARACTER_UUID,
+									name: 'Prince Hal',
+									qualifier: null
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -796,36 +796,6 @@ describe('Character with variant depiction and portrayal names', () => {
 		it('includes productions in which character was portrayed (with portrayers\' other roles using uuid of King Henry V and specific display name)', () => {
 
 			const expectedProductions = [
-				{
-					model: 'production',
-					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV, Part 2',
-					startDate: '2005-04-26',
-					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
-							name: 'Matthew Macfadyen',
-							roleName: 'Attendant',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: KING_HENRY_V_CHARACTER_UUID,
-									name: 'Hal, Prince of England',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
@@ -855,6 +825,36 @@ describe('Character with variant depiction and portrayal names', () => {
 							]
 						}
 					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV, Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MATTHEW_MACFADYEN_PERSON_UUID,
+							name: 'Matthew Macfadyen',
+							roleName: 'Attendant',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: KING_HENRY_V_CHARACTER_UUID,
+									name: 'Hal, Prince of England',
+									qualifier: null
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -873,36 +873,6 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry V',
-					startDate: '2003-05-06',
-					endDate: '2003-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: ADRIAN_LESTER_PERSON_UUID,
-							name: 'Adrian Lester',
-							roleName: 'Soldier',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: KING_HENRY_V_CHARACTER_UUID,
-									name: 'Henry V',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Henry V',
 					startDate: '2015-09-12',
@@ -918,6 +888,36 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'person',
 							uuid: ALEX_HASSELL_PERSON_UUID,
 							name: 'Alex Hassell',
+							roleName: 'Soldier',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: KING_HENRY_V_CHARACTER_UUID,
+									name: 'Henry V',
+									qualifier: null
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_V_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry V',
+					startDate: '2003-05-06',
+					endDate: '2003-08-20',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: ADRIAN_LESTER_PERSON_UUID,
+							name: 'Adrian Lester',
 							roleName: 'Soldier',
 							qualifier: null,
 							otherRoles: [
@@ -1329,10 +1329,10 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedCastMemberProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'Henry IV, Part 1',
-					startDate: '2014-03-18',
-					endDate: '2014-09-06',
+					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Henry V',
+					startDate: '2015-09-12',
+					endDate: '2015-10-25',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1343,13 +1343,13 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Henry, Prince of Wales',
+							name: 'Henry V',
 							qualifier: null
 						},
 						{
 							model: 'character',
-							uuid: MESSENGER_CHARACTER_UUID,
-							name: 'Messenger',
+							uuid: SOLDIER_CHARACTER_UUID,
+							name: 'Soldier',
 							qualifier: null
 						}
 					]
@@ -1383,10 +1383,10 @@ describe('Character with variant depiction and portrayal names', () => {
 				},
 				{
 					model: 'production',
-					uuid: HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'Henry V',
-					startDate: '2015-09-12',
-					endDate: '2015-10-25',
+					uuid: HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Henry IV, Part 1',
+					startDate: '2014-03-18',
+					endDate: '2014-09-06',
 					theatre: {
 						model: 'theatre',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
@@ -1397,13 +1397,13 @@ describe('Character with variant depiction and portrayal names', () => {
 						{
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Henry V',
+							name: 'Henry, Prince of Wales',
 							qualifier: null
 						},
 						{
 							model: 'character',
-							uuid: SOLDIER_CHARACTER_UUID,
-							name: 'Soldier',
+							uuid: MESSENGER_CHARACTER_UUID,
+							name: 'Messenger',
 							qualifier: null
 						}
 					]
@@ -1423,33 +1423,6 @@ describe('Character with variant depiction and portrayal names', () => {
 		it('includes productions of their portrayals of King Henry V under variant names (Prince Hal; Hal, Prince of England) but using its uuid value', () => {
 
 			const expectedCastMemberProductions = [
-				{
-					model: 'production',
-					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV, Part 1',
-					startDate: '2005-04-16',
-					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					roles: [
-						{
-							model: 'character',
-							uuid: KING_HENRY_V_CHARACTER_UUID,
-							name: 'Prince Hal',
-							qualifier: null
-						},
-						{
-							model: 'character',
-							uuid: MESSENGER_CHARACTER_UUID,
-							name: 'Messenger',
-							qualifier: null
-						}
-					]
-				},
 				{
 					model: 'production',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
@@ -1473,6 +1446,33 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: ATTENDANT_CHARACTER_UUID,
 							name: 'Attendant',
+							qualifier: null
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV, Part 1',
+					startDate: '2005-04-16',
+					endDate: '2005-08-31',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					roles: [
+						{
+							model: 'character',
+							uuid: KING_HENRY_V_CHARACTER_UUID,
+							name: 'Prince Hal',
+							qualifier: null
+						},
+						{
+							model: 'character',
+							uuid: MESSENGER_CHARACTER_UUID,
+							name: 'Messenger',
 							qualifier: null
 						}
 					]

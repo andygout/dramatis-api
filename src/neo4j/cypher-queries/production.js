@@ -1003,7 +1003,7 @@ const getListQuery = () => `
 			}
 		END AS theatre
 
-	ORDER BY production.name, theatre.name
+	ORDER BY production.startDate DESC, production.name, theatre.name
 
 	LIMIT 100
 `;

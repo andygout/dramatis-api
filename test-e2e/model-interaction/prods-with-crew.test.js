@@ -889,31 +889,6 @@ describe('Productions with crew', () => {
 			const expectedCrewProductions = [
 				{
 					model: 'production',
-					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
-					name: 'Much Ado About Nothing',
-					startDate: '2007-12-10',
-					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
-						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
-							name: 'National Theatre'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'crewCredit',
-							name: 'Production Management by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
 					startDate: '2009-06-04',
@@ -957,22 +932,7 @@ describe('Productions with crew', () => {
 							coCreditedEntities: []
 						}
 					]
-				}
-			];
-
-			const { crewProductions } = tariqHussainPerson.body;
-
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
-		});
-
-	});
-
-	describe('Cass Kirchner (person)', () => {
-
-		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
-			const expectedCrewProductions = [
+				},
 				{
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
@@ -992,68 +952,27 @@ describe('Productions with crew', () => {
 					crewCredits: [
 						{
 							model: 'crewCredit',
-							name: 'Stage Management by',
+							name: 'Production Management by',
 							creditedEmployerCompany: null,
-							coCreditedEntities: [
-								{
-									model: 'company',
-									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
-									name: 'Crew Deputies Ltd',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: TAMARA_ALBACHARI_PERSON_UUID,
-											name: 'Tamara Albachari'
-										},
-										{
-											model: 'person',
-											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
-											name: 'Benjamin Donoghue'
-										},
-										{
-											model: 'person',
-											uuid: NIK_HAFFENDEN_PERSON_UUID,
-											name: 'Nik Haffenden'
-										}
-									]
-								},
-								{
-									model: 'company',
-									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
-									name: 'Crew Assistants Ltd',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: PETER_GREGORY_PERSON_UUID,
-											name: 'Peter Gregory'
-										},
-										{
-											model: 'person',
-											uuid: SARA_GUNTER_PERSON_UUID,
-											name: 'Sara Gunter'
-										},
-										{
-											model: 'person',
-											uuid: JULIA_WICKHAM_PERSON_UUID,
-											name: 'Julia Wickham'
-										}
-									]
-								},
-								{
-									model: 'company',
-									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
-									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: PRAD_PANKHANI_PERSON_UUID,
-									name: 'Prad Pankhani'
-								}
-							]
+							coCreditedEntities: []
 						}
 					]
-				},
+				}
+			];
+
+			const { crewProductions } = tariqHussainPerson.body;
+
+			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('Cass Kirchner (person)', () => {
+
+		it('includes productions for which they have a crew credit, included co-credited entities', () => {
+
+			const expectedCrewProductions = [
 				{
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
@@ -1298,22 +1217,7 @@ describe('Productions with crew', () => {
 							]
 						}
 					]
-				}
-			];
-
-			const { crewProductions } = cassKirchnerPerson.body;
-
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
-		});
-
-	});
-
-	describe('Sara Gunter (person)', () => {
-
-		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
-			const expectedCrewProductions = [
+				},
 				{
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
@@ -1333,41 +1237,9 @@ describe('Productions with crew', () => {
 					crewCredits: [
 						{
 							model: 'crewCredit',
-							name: 'Rigging Supervision by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
-								name: 'Crew Assistants Ltd',
-								coCreditedMembers: []
-							},
-							coCreditedEntities: []
-						},
-						{
-							model: 'crewCredit',
 							name: 'Stage Management by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
-								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: PETER_GREGORY_PERSON_UUID,
-										name: 'Peter Gregory'
-									},
-									{
-										model: 'person',
-										uuid: JULIA_WICKHAM_PERSON_UUID,
-										name: 'Julia Wickham'
-									}
-								]
-							},
+							creditedEmployerCompany: null,
 							coCreditedEntities: [
-								{
-									model: 'person',
-									uuid: CASS_KIRCHNER_PERSON_UUID,
-									name: 'Cass Kirchner'
-								},
 								{
 									model: 'company',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
@@ -1392,6 +1264,28 @@ describe('Productions with crew', () => {
 								},
 								{
 									model: 'company',
+									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+									name: 'Crew Assistants Ltd',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: PETER_GREGORY_PERSON_UUID,
+											name: 'Peter Gregory'
+										},
+										{
+											model: 'person',
+											uuid: SARA_GUNTER_PERSON_UUID,
+											name: 'Sara Gunter'
+										},
+										{
+											model: 'person',
+											uuid: JULIA_WICKHAM_PERSON_UUID,
+											name: 'Julia Wickham'
+										}
+									]
+								},
+								{
+									model: 'company',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
 									creditedMembers: []
@@ -1404,7 +1298,22 @@ describe('Productions with crew', () => {
 							]
 						}
 					]
-				},
+				}
+			];
+
+			const { crewProductions } = cassKirchnerPerson.body;
+
+			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('Sara Gunter (person)', () => {
+
+		it('includes productions for which they have a crew credit, included co-credited entities', () => {
+
+			const expectedCrewProductions = [
 				{
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
@@ -1640,6 +1549,97 @@ describe('Productions with crew', () => {
 							]
 						}
 					]
+				},
+				{
+					model: 'production',
+					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
+					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'crewCredit',
+							name: 'Rigging Supervision by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Crew Assistants Ltd',
+								coCreditedMembers: []
+							},
+							coCreditedEntities: []
+						},
+						{
+							model: 'crewCredit',
+							name: 'Stage Management by',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+								name: 'Crew Assistants Ltd',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: PETER_GREGORY_PERSON_UUID,
+										name: 'Peter Gregory'
+									},
+									{
+										model: 'person',
+										uuid: JULIA_WICKHAM_PERSON_UUID,
+										name: 'Julia Wickham'
+									}
+								]
+							},
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: CASS_KIRCHNER_PERSON_UUID,
+									name: 'Cass Kirchner'
+								},
+								{
+									model: 'company',
+									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
+									name: 'Crew Deputies Ltd',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: TAMARA_ALBACHARI_PERSON_UUID,
+											name: 'Tamara Albachari'
+										},
+										{
+											model: 'person',
+											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
+											name: 'Benjamin Donoghue'
+										},
+										{
+											model: 'person',
+											uuid: NIK_HAFFENDEN_PERSON_UUID,
+											name: 'Nik Haffenden'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
+									name: 'Theatrical Production Services Ltd',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PRAD_PANKHANI_PERSON_UUID,
+									name: 'Prad Pankhani'
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -1753,31 +1753,6 @@ describe('Productions with crew', () => {
 			const expectedCrewProductions = [
 				{
 					model: 'production',
-					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
-					name: 'Much Ado About Nothing',
-					startDate: '2007-12-10',
-					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
-						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
-							name: 'National Theatre'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'crewCredit',
-							name: 'Sound Operation by',
-							creditedMembers: [],
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: PHÈDRE_LYTTELTON_PRODUCTION_UUID,
 					name: 'Phèdre',
 					startDate: '2009-06-04',
@@ -1827,22 +1802,7 @@ describe('Productions with crew', () => {
 							coCreditedEntities: []
 						}
 					]
-				}
-			];
-
-			const { crewProductions } = stagecraftLtdCompany.body;
-
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
-		});
-
-	});
-
-	describe('Crew Deputies Ltd (company)', () => {
-
-		it('includes productions for which they have a crew credit', () => {
-
-			const expectedCrewProductions = [
+				},
 				{
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
@@ -1862,67 +1822,27 @@ describe('Productions with crew', () => {
 					crewCredits: [
 						{
 							model: 'crewCredit',
-							name: 'Stage Management by',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: TAMARA_ALBACHARI_PERSON_UUID,
-									name: 'Tamara Albachari'
-								},
-								{
-									model: 'person',
-									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
-									name: 'Benjamin Donoghue'
-								},
-								{
-									model: 'person',
-									uuid: NIK_HAFFENDEN_PERSON_UUID,
-									name: 'Nik Haffenden'
-								}
-							],
-							coCreditedEntities: [
-								{
-									model: 'person',
-									uuid: CASS_KIRCHNER_PERSON_UUID,
-									name: 'Cass Kirchner'
-								},
-								{
-									model: 'company',
-									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
-									name: 'Crew Assistants Ltd',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: PETER_GREGORY_PERSON_UUID,
-											name: 'Peter Gregory'
-										},
-										{
-											model: 'person',
-											uuid: SARA_GUNTER_PERSON_UUID,
-											name: 'Sara Gunter'
-										},
-										{
-											model: 'person',
-											uuid: JULIA_WICKHAM_PERSON_UUID,
-											name: 'Julia Wickham'
-										}
-									]
-								},
-								{
-									model: 'company',
-									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
-									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: PRAD_PANKHANI_PERSON_UUID,
-									name: 'Prad Pankhani'
-								}
-							]
+							name: 'Sound Operation by',
+							creditedMembers: [],
+							coCreditedEntities: []
 						}
 					]
-				},
+				}
+			];
+
+			const { crewProductions } = stagecraftLtdCompany.body;
+
+			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('Crew Deputies Ltd (company)', () => {
+
+		it('includes productions for which they have a crew credit', () => {
+
+			const expectedCrewProductions = [
 				{
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
@@ -2158,22 +2078,7 @@ describe('Productions with crew', () => {
 							]
 						}
 					]
-				}
-			];
-
-			const { crewProductions } = crewDeputiesLtdCompany.body;
-
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
-		});
-
-	});
-
-	describe('Crew Assistants Ltd (company)', () => {
-
-		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
-			const expectedCrewProductions = [
+				},
 				{
 					model: 'production',
 					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
@@ -2193,34 +2098,22 @@ describe('Productions with crew', () => {
 					crewCredits: [
 						{
 							model: 'crewCredit',
-							name: 'Rigging Supervision by',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: SARA_GUNTER_PERSON_UUID,
-									name: 'Sara Gunter'
-								}
-							],
-							coCreditedEntities: []
-						},
-						{
-							model: 'crewCredit',
 							name: 'Stage Management by',
 							creditedMembers: [
 								{
 									model: 'person',
-									uuid: PETER_GREGORY_PERSON_UUID,
-									name: 'Peter Gregory'
+									uuid: TAMARA_ALBACHARI_PERSON_UUID,
+									name: 'Tamara Albachari'
 								},
 								{
 									model: 'person',
-									uuid: SARA_GUNTER_PERSON_UUID,
-									name: 'Sara Gunter'
+									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
+									name: 'Benjamin Donoghue'
 								},
 								{
 									model: 'person',
-									uuid: JULIA_WICKHAM_PERSON_UUID,
-									name: 'Julia Wickham'
+									uuid: NIK_HAFFENDEN_PERSON_UUID,
+									name: 'Nik Haffenden'
 								}
 							],
 							coCreditedEntities: [
@@ -2231,23 +2124,23 @@ describe('Productions with crew', () => {
 								},
 								{
 									model: 'company',
-									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
-									name: 'Crew Deputies Ltd',
+									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
+									name: 'Crew Assistants Ltd',
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: TAMARA_ALBACHARI_PERSON_UUID,
-											name: 'Tamara Albachari'
+											uuid: PETER_GREGORY_PERSON_UUID,
+											name: 'Peter Gregory'
 										},
 										{
 											model: 'person',
-											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
-											name: 'Benjamin Donoghue'
+											uuid: SARA_GUNTER_PERSON_UUID,
+											name: 'Sara Gunter'
 										},
 										{
 											model: 'person',
-											uuid: NIK_HAFFENDEN_PERSON_UUID,
-											name: 'Nik Haffenden'
+											uuid: JULIA_WICKHAM_PERSON_UUID,
+											name: 'Julia Wickham'
 										}
 									]
 								},
@@ -2265,7 +2158,22 @@ describe('Productions with crew', () => {
 							]
 						}
 					]
-				},
+				}
+			];
+
+			const { crewProductions } = crewDeputiesLtdCompany.body;
+
+			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('Crew Assistants Ltd (company)', () => {
+
+		it('includes productions for which they have a crew credit, included co-credited entities', () => {
+
+			const expectedCrewProductions = [
 				{
 					model: 'production',
 					uuid: PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID,
@@ -2497,6 +2405,98 @@ describe('Productions with crew', () => {
 									model: 'person',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
 									name: 'Cass Kirchner'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID,
+					name: 'Much Ado About Nothing',
+					startDate: '2007-12-10',
+					endDate: '2008-03-29',
+					theatre: {
+						model: 'theatre',
+						uuid: OLIVIER_THEATRE_UUID,
+						name: 'Olivier Theatre',
+						surTheatre: {
+							model: 'theatre',
+							uuid: NATIONAL_THEATRE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'crewCredit',
+							name: 'Rigging Supervision by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: SARA_GUNTER_PERSON_UUID,
+									name: 'Sara Gunter'
+								}
+							],
+							coCreditedEntities: []
+						},
+						{
+							model: 'crewCredit',
+							name: 'Stage Management by',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: PETER_GREGORY_PERSON_UUID,
+									name: 'Peter Gregory'
+								},
+								{
+									model: 'person',
+									uuid: SARA_GUNTER_PERSON_UUID,
+									name: 'Sara Gunter'
+								},
+								{
+									model: 'person',
+									uuid: JULIA_WICKHAM_PERSON_UUID,
+									name: 'Julia Wickham'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: CASS_KIRCHNER_PERSON_UUID,
+									name: 'Cass Kirchner'
+								},
+								{
+									model: 'company',
+									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
+									name: 'Crew Deputies Ltd',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: TAMARA_ALBACHARI_PERSON_UUID,
+											name: 'Tamara Albachari'
+										},
+										{
+											model: 'person',
+											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
+											name: 'Benjamin Donoghue'
+										},
+										{
+											model: 'person',
+											uuid: NIK_HAFFENDEN_PERSON_UUID,
+											name: 'Nik Haffenden'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
+									name: 'Theatrical Production Services Ltd',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PRAD_PANKHANI_PERSON_UUID,
+									name: 'Prad Pankhani'
 								}
 							]
 						}

@@ -384,33 +384,10 @@ describe('Character in multiple productions of multiple materials', () => {
 			const expectedProductions = [
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
-					startDate: '2005-04-16',
-					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: MICHAEL_GAMBON_PERSON_UUID,
-							name: 'Michael Gambon',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
-					startDate: '2010-06-06',
-					endDate: '2010-10-02',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
+					name: 'The Merry Wives of Windsor',
+					startDate: '2019-05-17',
+					endDate: '2019-10-12',
 					theatre: {
 						model: 'theatre',
 						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
@@ -422,52 +399,6 @@ describe('Character in multiple productions of multiple materials', () => {
 							model: 'person',
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
-					name: 'Henry IV: Part 1',
-					startDate: '2000-04-12',
-					endDate: '2000-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: SWAN_THEATRE_UUID,
-						name: 'Swan Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: RICHARD_CORDERY_PERSON_UUID,
-							name: 'Richard Cordery',
-							roleName: 'Sir John Falstaff',
-							qualifier: null,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
-					startDate: '2005-04-26',
-					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
-						name: 'National Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: MICHAEL_GAMBON_PERSON_UUID,
-							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
@@ -499,21 +430,21 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				{
 					model: 'production',
-					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
-					name: 'Henry IV: Part 2',
-					startDate: '2000-06-22',
-					endDate: '2000-09-15',
+					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					startDate: '2010-06-06',
+					endDate: '2010-10-02',
 					theatre: {
 						model: 'theatre',
-						uuid: SWAN_THEATRE_UUID,
-						name: 'Swan Theatre',
+						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+						name: 'Shakespeare\'s Globe',
 						surTheatre: null
 					},
 					performers: [
 						{
 							model: 'person',
-							uuid: RICHARD_CORDERY_PERSON_UUID,
-							name: 'Richard Cordery',
+							uuid: ROGER_ALLAM_PERSON_UUID,
+							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
@@ -545,21 +476,44 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				{
 					model: 'production',
-					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
-					name: 'The Merry Wives of Windsor',
-					startDate: '2019-05-17',
-					endDate: '2019-10-12',
+					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					startDate: '2005-04-26',
+					endDate: '2005-08-31',
 					theatre: {
 						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
-						name: 'Shakespeare\'s Globe',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
 						surTheatre: null
 					},
 					performers: [
 						{
 							model: 'person',
-							uuid: ROGER_ALLAM_PERSON_UUID,
-							name: 'Roger Allam',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					startDate: '2005-04-16',
+					endDate: '2005-08-31',
+					theatre: {
+						model: 'theatre',
+						uuid: NATIONAL_THEATRE_UUID,
+						name: 'National Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: MICHAEL_GAMBON_PERSON_UUID,
+							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
 							otherRoles: []
@@ -572,6 +526,52 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor',
 					startDate: '2002-10-24',
 					endDate: '2003-01-25',
+					theatre: {
+						model: 'theatre',
+						uuid: SWAN_THEATRE_UUID,
+						name: 'Swan Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RICHARD_CORDERY_PERSON_UUID,
+							name: 'Richard Cordery',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
+					name: 'Henry IV: Part 2',
+					startDate: '2000-06-22',
+					endDate: '2000-09-15',
+					theatre: {
+						model: 'theatre',
+						uuid: SWAN_THEATRE_UUID,
+						name: 'Swan Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: RICHARD_CORDERY_PERSON_UUID,
+							name: 'Richard Cordery',
+							roleName: 'Sir John Falstaff',
+							qualifier: null,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
+					name: 'Henry IV: Part 1',
+					startDate: '2000-04-12',
+					endDate: '2000-06-15',
 					theatre: {
 						model: 'theatre',
 						uuid: SWAN_THEATRE_UUID,

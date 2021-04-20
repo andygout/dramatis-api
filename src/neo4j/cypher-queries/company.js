@@ -215,7 +215,7 @@ const getShowQuery = () => `
 			creditedMembers: creditedMembers,
 			coCreditedEntities: coCreditedEntities
 		}) AS producerCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH company, materials,
 		COLLECT(
@@ -335,7 +335,7 @@ const getShowQuery = () => `
 			creditedMembers: creditedMembers,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH company, materials, producerProductions,
 		COLLECT(
@@ -457,7 +457,7 @@ const getShowQuery = () => `
 			creditedMembers: creditedMembers,
 			coCreditedEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	RETURN
 		'company' AS model,

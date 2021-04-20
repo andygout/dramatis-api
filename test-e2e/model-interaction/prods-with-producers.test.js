@@ -887,20 +887,24 @@ describe('Productions with producer', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
 					},
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Producer',
+							name: 'Producing',
 							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						}
@@ -933,24 +937,20 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
 					},
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Producing',
+							name: 'Producer',
 							creditedEmployerCompany: null,
 							coCreditedEntities: []
 						}
@@ -973,91 +973,14 @@ describe('Productions with producer', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
-								{
-									model: 'company',
-									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
-									name: 'Royal Court Theatre',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
-										},
-										{
-											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
-										},
-										{
-											model: 'person',
-											uuid: OLA_INCE_PERSON_UUID,
-											name: 'Ola Ince'
-										}
-									]
-								},
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
-								},
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'company',
-									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-									name: 'Playful Productions',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-											name: 'Matthew Byam Shaw'
-										},
-										{
-											model: 'person',
-											uuid: NIA_JANIS_PERSON_UUID,
-											name: 'Nia Janis'
-										},
-										{
-											model: 'person',
-											uuid: NICK_SALMON_PERSON_UUID,
-											name: 'Nick Salmon'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
-					name: 'Lights Out',
-					startDate: '2017-05-17',
-					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
-						name: 'The Site',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -1067,9 +990,26 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
+							name: 'Associate Producing',
+							creditedEmployerCompany: null,
+							coCreditedEntities: []
+						},
+						{
+							model: 'producerCredit',
+							name: 'Co-Producing',
 							creditedEmployerCompany: null,
 							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1077,13 +1017,13 @@ describe('Productions with producer', () => {
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: SAM_PRITCHARD_PERSON_UUID,
-											name: 'Sam Pritchard'
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
 										},
 										{
 											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
 										},
 										{
 											model: 'person',
@@ -1099,13 +1039,13 @@ describe('Productions with producer', () => {
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: NICK_SALMON_PERSON_UUID,
-											name: 'Nick Salmon'
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
 										},
 										{
 											model: 'person',
-											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-											name: 'Matthew Byam Shaw'
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
 										},
 										{
 											model: 'person',
@@ -1113,17 +1053,6 @@ describe('Productions with producer', () => {
 											name: 'Nia Janis'
 										}
 									]
-								},
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
 								}
 							]
 						}
@@ -1212,14 +1141,14 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
+					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
+						uuid: THE_SITE_THEATRE_UUID,
+						name: 'The Site',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -1229,26 +1158,9 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Associate Producing',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
-						},
-						{
-							model: 'producerCredit',
-							name: 'Co-Producing',
+							name: 'Co-Producing by',
 							creditedEmployerCompany: null,
 							coCreditedEntities: [
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
-								},
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1256,13 +1168,13 @@ describe('Productions with producer', () => {
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
 										},
 										{
 											model: 'person',
-											uuid: HAMISH_PIRIE_PERSON_UUID,
-											name: 'Hamish Pirie'
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
 										},
 										{
 											model: 'person',
@@ -1278,13 +1190,13 @@ describe('Productions with producer', () => {
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-											name: 'Matthew Byam Shaw'
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
 										},
 										{
 											model: 'person',
-											uuid: HARRIET_ASTBURY_PERSON_UUID,
-											name: 'Harriet Astbury'
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
 										},
 										{
 											model: 'person',
@@ -1292,26 +1204,22 @@ describe('Productions with producer', () => {
 											name: 'Nia Janis'
 										}
 									]
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
 								}
 							]
 						}
 					]
-				}
-			];
-
-			const { producerProductions } = ericAbrahamPerson.body;
-
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
-		});
-
-	});
-
-	describe('Matthew Byam Shaw (person)', () => {
-
-		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
-			const expectedProducerProductions = [
+				},
 				{
 					model: 'production',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
@@ -1328,23 +1236,7 @@ describe('Productions with producer', () => {
 						{
 							model: 'producerCredit',
 							name: 'Co-Producers',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									},
-									{
-										model: 'person',
-										uuid: NICK_SALMON_PERSON_UUID,
-										name: 'Nick Salmon'
-									}
-								]
-							},
+							creditedEmployerCompany: null,
 							coCreditedEntities: [
 								{
 									model: 'company',
@@ -1380,24 +1272,56 @@ describe('Productions with producer', () => {
 									creditedMembers: []
 								},
 								{
-									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										},
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										}
+									]
 								}
 							]
 						}
 					]
-				},
+				}
+			];
+
+			const { producerProductions } = ericAbrahamPerson.body;
+
+			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+
+		});
+
+	});
+
+	describe('Matthew Byam Shaw (person)', () => {
+
+		it('includes productions for which they have a producer credit, included co-credited entities', () => {
+
+			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
-					name: 'Lights Out',
-					startDate: '2017-05-17',
-					endDate: '2017-05-19',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
-						name: 'The Site',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -1407,7 +1331,7 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
+							name: 'Co-Producing',
 							creditedEmployerCompany: {
 								model: 'company',
 								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
@@ -1415,8 +1339,8 @@ describe('Productions with producer', () => {
 								coCreditedMembers: [
 									{
 										model: 'person',
-										uuid: NICK_SALMON_PERSON_UUID,
-										name: 'Nick Salmon'
+										uuid: HARRIET_ASTBURY_PERSON_UUID,
+										name: 'Harriet Astbury'
 									},
 									{
 										model: 'person',
@@ -1427,33 +1351,6 @@ describe('Productions with producer', () => {
 							},
 							coCreditedEntities: [
 								{
-									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
-								},
-								{
-									model: 'company',
-									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
-									name: 'Royal Court Theatre',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: SAM_PRITCHARD_PERSON_UUID,
-											name: 'Sam Pritchard'
-										},
-										{
-											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
-										},
-										{
-											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
-										}
-									]
-								},
-								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
@@ -1463,6 +1360,33 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
 								}
 							]
 						}
@@ -1561,14 +1485,14 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
+					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
+						uuid: THE_SITE_THEATRE_UUID,
+						name: 'The Site',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -1578,7 +1502,7 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
+							name: 'Co-Producing by',
 							creditedEmployerCompany: {
 								model: 'company',
 								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
@@ -1586,8 +1510,8 @@ describe('Productions with producer', () => {
 								coCreditedMembers: [
 									{
 										model: 'person',
-										uuid: HARRIET_ASTBURY_PERSON_UUID,
-										name: 'Harriet Astbury'
+										uuid: NICK_SALMON_PERSON_UUID,
+										name: 'Nick Salmon'
 									},
 									{
 										model: 'person',
@@ -1598,6 +1522,33 @@ describe('Productions with producer', () => {
 							},
 							coCreditedEntities: [
 								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
@@ -1607,7 +1558,45 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
-								},
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'Co-Producers',
+							creditedEmployerCompany: {
+								model: 'company',
+								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+								name: 'Playful Productions',
+								coCreditedMembers: [
+									{
+										model: 'person',
+										uuid: NIA_JANIS_PERSON_UUID,
+										name: 'Nia Janis'
+									},
+									{
+										model: 'person',
+										uuid: NICK_SALMON_PERSON_UUID,
+										name: 'Nick Salmon'
+									}
+								]
+							},
+							coCreditedEntities: [
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1620,15 +1609,26 @@ describe('Productions with producer', () => {
 										},
 										{
 											model: 'person',
-											uuid: HAMISH_PIRIE_PERSON_UUID,
-											name: 'Hamish Pirie'
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
 										},
 										{
 											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
+											uuid: OLA_INCE_PERSON_UUID,
+											name: 'Ola Ince'
 										}
 									]
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
 								},
 								{
 									model: 'person',
@@ -1751,26 +1751,24 @@ describe('Productions with producer', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
 					},
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Associate Producer',
-							creditedMembers: [],
-							coCreditedEntities: []
-						},
-						{
-							model: 'producerCredit',
-							name: 'Executive Producer',
+							name: 'Executive Producing',
 							creditedMembers: [],
 							coCreditedEntities: []
 						}
@@ -1803,24 +1801,26 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
 					},
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Executive Producing',
+							name: 'Associate Producer',
+							creditedMembers: [],
+							coCreditedEntities: []
+						},
+						{
+							model: 'producerCredit',
+							name: 'Executive Producer',
 							creditedMembers: [],
 							coCreditedEntities: []
 						}
@@ -1843,90 +1843,14 @@ describe('Productions with producer', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: LUCY_DAVIES_PERSON_UUID,
-									name: 'Lucy Davies'
-								},
-								{
-									model: 'person',
-									uuid: OLA_INCE_PERSON_UUID,
-									name: 'Ola Ince'
-								}
-							],
-							coCreditedEntities: [
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
-								},
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'company',
-									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-									name: 'Playful Productions',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-											name: 'Matthew Byam Shaw'
-										},
-										{
-											model: 'person',
-											uuid: NIA_JANIS_PERSON_UUID,
-											name: 'Nia Janis'
-										},
-										{
-											model: 'person',
-											uuid: NICK_SALMON_PERSON_UUID,
-											name: 'Nick Salmon'
-										}
-									]
-								},
-								{
-									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
-					name: 'Lights Out',
-					startDate: '2017-05-17',
-					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
-						name: 'The Site',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -1936,17 +1860,17 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
+							name: 'Co-Producing',
 							creditedMembers: [
-								{
-									model: 'person',
-									uuid: SAM_PRITCHARD_PERSON_UUID,
-									name: 'Sam Pritchard'
-								},
 								{
 									model: 'person',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
+								},
+								{
+									model: 'person',
+									uuid: HAMISH_PIRIE_PERSON_UUID,
+									name: 'Hamish Pirie'
 								},
 								{
 									model: 'person',
@@ -1955,6 +1879,17 @@ describe('Productions with producer', () => {
 								}
 							],
 							coCreditedEntities: [
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -1967,13 +1902,13 @@ describe('Productions with producer', () => {
 									creditedMembers: [
 										{
 											model: 'person',
-											uuid: NICK_SALMON_PERSON_UUID,
-											name: 'Nick Salmon'
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
 										},
 										{
 											model: 'person',
-											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-											name: 'Matthew Byam Shaw'
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
 										},
 										{
 											model: 'person',
@@ -1981,17 +1916,6 @@ describe('Productions with producer', () => {
 											name: 'Nia Janis'
 										}
 									]
-								},
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
 								}
 							]
 						}
@@ -2079,14 +2003,14 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
+					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
+						uuid: THE_SITE_THEATRE_UUID,
+						name: 'The Site',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -2096,17 +2020,17 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
+							name: 'Co-Producing by',
 							creditedMembers: [
+								{
+									model: 'person',
+									uuid: SAM_PRITCHARD_PERSON_UUID,
+									name: 'Sam Pritchard'
+								},
 								{
 									model: 'person',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: HAMISH_PIRIE_PERSON_UUID,
-									name: 'Hamish Pirie'
 								},
 								{
 									model: 'person',
@@ -2115,6 +2039,33 @@ describe('Productions with producer', () => {
 								}
 							],
 							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
+								},
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -2125,11 +2076,55 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'Co-Producers',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+									name: 'Vicky Featherstone'
 								},
 								{
 									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
+									uuid: LUCY_DAVIES_PERSON_UUID,
+									name: 'Lucy Davies'
+								},
+								{
+									model: 'person',
+									uuid: OLA_INCE_PERSON_UUID,
+									name: 'Ola Ince'
+								}
+							],
+							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
 								},
 								{
 									model: 'company',
@@ -2143,15 +2138,20 @@ describe('Productions with producer', () => {
 										},
 										{
 											model: 'person',
-											uuid: HARRIET_ASTBURY_PERSON_UUID,
-											name: 'Harriet Astbury'
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										},
 										{
 											model: 'person',
-											uuid: NIA_JANIS_PERSON_UUID,
-											name: 'Nia Janis'
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
 										}
 									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
 								}
 							]
 						}
@@ -2174,90 +2174,14 @@ describe('Productions with producer', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
 					theatre: {
 						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: NIA_JANIS_PERSON_UUID,
-									name: 'Nia Janis'
-								},
-								{
-									model: 'person',
-									uuid: NICK_SALMON_PERSON_UUID,
-									name: 'Nick Salmon'
-								}
-							],
-							coCreditedEntities: [
-								{
-									model: 'company',
-									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
-									name: 'Royal Court Theatre',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
-										},
-										{
-											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
-										},
-										{
-											model: 'person',
-											uuid: OLA_INCE_PERSON_UUID,
-											name: 'Ola Ince'
-										}
-									]
-								},
-								{
-									model: 'person',
-									uuid: PAUL_ELLIOTT_PERSON_UUID,
-									name: 'Paul Elliott'
-								},
-								{
-									model: 'company',
-									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
-									name: 'Old Vic Productions',
-									creditedMembers: []
-								},
-								{
-									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
-					name: 'Lights Out',
-					startDate: '2017-05-17',
-					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
-						name: 'The Site',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -2267,17 +2191,17 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
+							name: 'Co-Producing',
 							creditedMembers: [
-								{
-									model: 'person',
-									uuid: NICK_SALMON_PERSON_UUID,
-									name: 'Nick Salmon'
-								},
 								{
 									model: 'person',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
+								},
+								{
+									model: 'person',
+									uuid: HARRIET_ASTBURY_PERSON_UUID,
+									name: 'Harriet Astbury'
 								},
 								{
 									model: 'person',
@@ -2286,33 +2210,6 @@ describe('Productions with producer', () => {
 								}
 							],
 							coCreditedEntities: [
-								{
-									model: 'person',
-									uuid: ERIC_ABRAHAM_PERSON_UUID,
-									name: 'Eric Abraham'
-								},
-								{
-									model: 'company',
-									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
-									name: 'Royal Court Theatre',
-									creditedMembers: [
-										{
-											model: 'person',
-											uuid: SAM_PRITCHARD_PERSON_UUID,
-											name: 'Sam Pritchard'
-										},
-										{
-											model: 'person',
-											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-											name: 'Vicky Featherstone'
-										},
-										{
-											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
-										}
-									]
-								},
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -2323,6 +2220,33 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
 								}
 							]
 						}
@@ -2422,14 +2346,14 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
+					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
+					name: 'Lights Out',
+					startDate: '2017-05-17',
+					endDate: '2017-05-19',
 					theatre: {
 						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
+						uuid: THE_SITE_THEATRE_UUID,
+						name: 'The Site',
 						surTheatre: {
 							model: 'theatre',
 							uuid: ROYAL_COURT_THEATRE_UUID,
@@ -2439,17 +2363,17 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
+							name: 'Co-Producing by',
 							creditedMembers: [
+								{
+									model: 'person',
+									uuid: NICK_SALMON_PERSON_UUID,
+									name: 'Nick Salmon'
+								},
 								{
 									model: 'person',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: HARRIET_ASTBURY_PERSON_UUID,
-									name: 'Harriet Astbury'
 								},
 								{
 									model: 'person',
@@ -2458,6 +2382,33 @@ describe('Productions with producer', () => {
 								}
 							],
 							coCreditedEntities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -2468,7 +2419,45 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'Co-Producers',
+							creditedMembers: [
+								{
+									model: 'person',
+									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+									name: 'Matthew Byam Shaw'
 								},
+								{
+									model: 'person',
+									uuid: NIA_JANIS_PERSON_UUID,
+									name: 'Nia Janis'
+								},
+								{
+									model: 'person',
+									uuid: NICK_SALMON_PERSON_UUID,
+									name: 'Nick Salmon'
+								}
+							],
+							coCreditedEntities: [
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -2481,15 +2470,26 @@ describe('Productions with producer', () => {
 										},
 										{
 											model: 'person',
-											uuid: HAMISH_PIRIE_PERSON_UUID,
-											name: 'Hamish Pirie'
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
 										},
 										{
 											model: 'person',
-											uuid: LUCY_DAVIES_PERSON_UUID,
-											name: 'Lucy Davies'
+											uuid: OLA_INCE_PERSON_UUID,
+											name: 'Ola Ince'
 										}
 									]
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
 								},
 								{
 									model: 'person',

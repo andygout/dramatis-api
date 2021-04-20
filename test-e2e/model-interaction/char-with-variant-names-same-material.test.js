@@ -263,36 +263,6 @@ describe('Character with variant names from productions of the same material', (
 				},
 				{
 					model: 'production',
-					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
-					name: 'Hamlet',
-					startDate: '2008-12-03',
-					endDate: '2009-01-10',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
-						name: 'Novello Theatre',
-						surTheatre: null
-					},
-					performers: [
-						{
-							model: 'person',
-							uuid: PATRICK_STEWART_PERSON_UUID,
-							name: 'Patrick Stewart',
-							roleName: 'Ghost',
-							qualifier: null,
-							otherRoles: [
-								{
-									model: 'character',
-									uuid: CLAUDIUS_CHARACTER_UUID,
-									name: 'Claudius, King of Denmark',
-									qualifier: null
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'production',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2009-05-29',
@@ -315,6 +285,36 @@ describe('Character with variant names from productions of the same material', (
 									model: 'character',
 									uuid: FIRST_PLAYER_CHARACTER_UUID,
 									name: 'First Player',
+									qualifier: null
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
+					name: 'Hamlet',
+					startDate: '2008-12-03',
+					endDate: '2009-01-10',
+					theatre: {
+						model: 'theatre',
+						uuid: NOVELLO_THEATRE_UUID,
+						name: 'Novello Theatre',
+						surTheatre: null
+					},
+					performers: [
+						{
+							model: 'person',
+							uuid: PATRICK_STEWART_PERSON_UUID,
+							name: 'Patrick Stewart',
+							roleName: 'Ghost',
+							qualifier: null,
+							otherRoles: [
+								{
+									model: 'character',
+									uuid: CLAUDIUS_CHARACTER_UUID,
+									name: 'Claudius, King of Denmark',
 									qualifier: null
 								}
 							]
