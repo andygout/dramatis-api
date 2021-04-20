@@ -1,0 +1,8 @@
+{
+	"name": "Royal Shakespeare Theatre",
+	"subTheatres": [
+		{
+			"name": "The Cube"
+		}
+	]
+}

@@ -291,7 +291,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Indian Boy',
 				startDate: '2006-11-07',
-				pressDate: '2006-11-07',
+				pressDate: '2006-11-09',
 				endDate: '2006-11-11',
 				material: {
 					name: 'The Indian Boy'
