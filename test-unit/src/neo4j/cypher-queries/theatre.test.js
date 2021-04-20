@@ -10,37 +10,18 @@ describe('Cypher Queries Theatre module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesTheatre.getCreateQuery();
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+
+			const compactedResult = removeExcessWhitespace(result);
+
+			const startSegment = removeExcessWhitespace(`
 				CREATE (theatre:Theatre { uuid: $uuid, name: $name, differentiator: $differentiator })
+			`);
 
-				WITH theatre
+			const middleSegment = removeExcessWhitespace(`
+				CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+			`);
 
-				UNWIND (CASE $subTheatres WHEN [] THEN [null] ELSE $subTheatres END) AS subTheatreParam
-
-					OPTIONAL MATCH (existingTheatre:Theatre { name: subTheatreParam.name })
-						WHERE
-							(subTheatreParam.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-							subTheatreParam.differentiator = existingTheatre.differentiator
-
-					FOREACH (item IN CASE subTheatreParam WHEN NULL THEN [] ELSE [1] END |
-						MERGE (subTheatre:Theatre {
-							uuid: COALESCE(existingTheatre.uuid, subTheatreParam.uuid),
-							name: subTheatreParam.name
-						})
-							ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
-
-						CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
-					)
-
-				WITH DISTINCT theatre
-
-				MATCH (theatre:Theatre { uuid: $uuid })
-
-				OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
-
-				WITH theatre, subTheatreRel, subTheatre
-					ORDER BY subTheatreRel.position
-
+			const endSegment = removeExcessWhitespace(`
 				RETURN
 					'theatre' AS model,
 					theatre.uuid AS uuid,
@@ -52,7 +33,11 @@ describe('Cypher Queries Theatre module', () => {
 							ELSE subTheatre { .name, .differentiator }
 						END
 					) + [{}] AS subTheatres
-			`));
+			`);
+
+			expect(compactedResult.startsWith(startSegment)).to.be.true;
+			expect(compactedResult.includes(middleSegment)).to.be.true;
+			expect(compactedResult.endsWith(endSegment)).to.be.true;
 
 		});
 
@@ -63,7 +48,10 @@ describe('Cypher Queries Theatre module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesTheatre.getUpdateQuery();
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+
+			const compactedResult = removeExcessWhitespace(result);
+
+			const startSegment = removeExcessWhitespace(`
 				MATCH (theatre:Theatre { uuid: $uuid })
 
 				OPTIONAL MATCH (theatre)-[relationship:HAS_SUB_THEATRE]->(:Theatre)
@@ -75,35 +63,13 @@ describe('Cypher Queries Theatre module', () => {
 				SET
 					theatre.name = $name,
 					theatre.differentiator = $differentiator
+			`);
 
-				WITH theatre
+			const middleSegment = removeExcessWhitespace(`
+				CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+			`);
 
-				UNWIND (CASE $subTheatres WHEN [] THEN [null] ELSE $subTheatres END) AS subTheatreParam
-
-					OPTIONAL MATCH (existingTheatre:Theatre { name: subTheatreParam.name })
-						WHERE
-							(subTheatreParam.differentiator IS NULL AND existingTheatre.differentiator IS NULL) OR
-							subTheatreParam.differentiator = existingTheatre.differentiator
-
-					FOREACH (item IN CASE subTheatreParam WHEN NULL THEN [] ELSE [1] END |
-						MERGE (subTheatre:Theatre {
-							uuid: COALESCE(existingTheatre.uuid, subTheatreParam.uuid),
-							name: subTheatreParam.name
-						})
-							ON CREATE SET subTheatre.differentiator = subTheatreParam.differentiator
-
-						CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
-					)
-
-				WITH DISTINCT theatre
-
-				MATCH (theatre:Theatre { uuid: $uuid })
-
-				OPTIONAL MATCH (theatre)-[subTheatreRel:HAS_SUB_THEATRE]->(subTheatre:Theatre)
-
-				WITH theatre, subTheatreRel, subTheatre
-					ORDER BY subTheatreRel.position
-
+			const endSegment = removeExcessWhitespace(`
 				RETURN
 					'theatre' AS model,
 					theatre.uuid AS uuid,
@@ -115,7 +81,11 @@ describe('Cypher Queries Theatre module', () => {
 							ELSE subTheatre { .name, .differentiator }
 						END
 					) + [{}] AS subTheatres
-			`));
+			`);
+
+			expect(compactedResult.startsWith(startSegment)).to.be.true;
+			expect(compactedResult.includes(middleSegment)).to.be.true;
+			expect(compactedResult.endsWith(endSegment)).to.be.true;
 
 		});
 
