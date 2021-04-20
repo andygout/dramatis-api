@@ -1,6 +1,7 @@
 {
 	"name": "The Seagull",
 	"startDate": "2013-04-11",
+	"pressDate": "2013-04-16",
 	"endDate": "2013-04-20",
 	"material": {
 		"name": "The Seagull",
@@ -17,7 +18,7 @@
 					"name": "Headlong Theatre",
 					"creditedMembers": [
 						{
-							"name": "Jeremy Herrin"
+							"name": "Rupert Goold"
 						}
 					]
 				}
