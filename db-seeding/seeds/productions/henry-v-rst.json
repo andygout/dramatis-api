@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Royal Shakespeare Company",
-					"creditedMembers": [
-						{
-							"name": "Gregory Doran"
-						}
-					]
+					"name": "Royal Shakespeare Company"
 				}
 			]
 		}

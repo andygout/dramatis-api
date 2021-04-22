@@ -133,128 +133,68 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-	OPTIONAL MATCH (person)<-[personProducerRel:HAS_PRODUCER_ENTITY]-(production:Production)
+	OPTIONAL MATCH (person)<-[:HAS_PRODUCER_ENTITY]-(production:Production)
 
-	OPTIONAL MATCH (production)-[companyProducerRel:HAS_PRODUCER_ENTITY]->
-		(creditedEmployerCompany:Company { uuid: personProducerRel.creditedCompanyUuid })
+	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY]->(entity)
 		WHERE
-			personProducerRel.creditPosition IS NULL OR
-			personProducerRel.creditPosition = companyProducerRel.creditPosition
+			(entity:Person OR entity:Company) AND
+			entityRel.creditedCompanyUuid IS NULL
 
-	UNWIND (CASE WHEN companyProducerRel IS NOT NULL AND EXISTS(companyProducerRel.creditedMemberUuids)
-		THEN [uuid IN companyProducerRel.creditedMemberUuids]
+	UNWIND (CASE WHEN entityRel IS NOT NULL AND EXISTS(entityRel.creditedMemberUuids)
+		THEN [uuid IN entityRel.creditedMemberUuids]
 		ELSE [null]
-	END) AS coCreditedMemberUuid
+	END) AS creditedMemberUuid
 
-		OPTIONAL MATCH (production)-[coCreditedMemberRel:HAS_PRODUCER_ENTITY]->
-			(coCreditedMember:Person { uuid: coCreditedMemberUuid })
+		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
+			(creditedMember:Person { uuid: creditedMemberUuid })
 			WHERE
-				coCreditedMember.uuid <> person.uuid AND
-				(
-					companyProducerRel.creditPosition IS NULL OR
-					companyProducerRel.creditPosition = coCreditedMemberRel.creditPosition
-				)
+				entityRel.creditPosition IS NULL OR
+				entityRel.creditPosition = creditedMemberRel.creditPosition
 
-		WITH
-			person,
-			materials,
-			personProducerRel,
-			production,
-			companyProducerRel,
-			creditedEmployerCompany,
-			coCreditedMember
-			ORDER BY coCreditedMemberRel.memberPosition
+		WITH person, materials, production, entityRel, entity, creditedMember
+			ORDER BY creditedMember.memberPosition
 
-		WITH person, materials, personProducerRel, production, companyProducerRel, creditedEmployerCompany,
-			COLLECT(coCreditedMember { model: 'person', .uuid, .name }) AS coCreditedMembers
-
-	WITH
-		person,
-		materials,
-		personProducerRel,
-		production,
-		CASE creditedEmployerCompany WHEN NULL
-			THEN null
-			ELSE creditedEmployerCompany { model: 'company', .uuid, .name, coCreditedMembers: coCreditedMembers }
-		END AS creditedEmployerCompany,
-		COALESCE(creditedEmployerCompany, person) AS entity,
-		COALESCE(companyProducerRel, personProducerRel) AS entityProducerRel
-
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_PRODUCER_ENTITY]->(coCreditedEntity)
-		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
-			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
-			(
-				entityProducerRel.creditPosition IS NULL OR
-				entityProducerRel.creditPosition = coCreditedEntityRel.creditPosition
-			) AND
-			coCreditedEntity.uuid <> entity.uuid
-
-	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND EXISTS(coCreditedEntityRel.creditedMemberUuids)
-		THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
-		ELSE [null]
-	END) AS coCreditedCompanyCreditedMemberUuid
-
-		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_PRODUCER_ENTITY]->
-			(coCreditedCompanyCreditedMember:Person { uuid: coCreditedCompanyCreditedMemberUuid })
-			WHERE
-				coCreditedEntityRel.creditPosition IS NULL OR
-				coCreditedEntityRel.creditPosition = coCreditedCompanyCreditedMemberRel.creditPosition
-
-		WITH
-			person,
-			materials,
-			production,
-			entityProducerRel,
-			creditedEmployerCompany,
-			coCreditedEntityRel,
-			coCreditedEntity,
-			coCreditedCompanyCreditedMember
-			ORDER BY coCreditedCompanyCreditedMemberRel.memberPosition
-
-		WITH
-			person,
-			materials,
-			production,
-			entityProducerRel,
-			creditedEmployerCompany,
-			coCreditedEntityRel,
-			coCreditedEntity,
-			COLLECT(coCreditedCompanyCreditedMember {
+		WITH person, materials, production, entityRel, entity,
+			COLLECT(DISTINCT(creditedMember {
 				model: 'person',
-				.uuid,
+				uuid: CASE creditedMember.uuid WHEN person.uuid THEN null ELSE creditedMember.uuid END,
 				.name
-			}) AS coCreditedCompanyCreditedMembers
-			ORDER BY coCreditedEntityRel.entityPosition
+			})) AS creditedMembers
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	WITH person, materials, production, entityProducerRel, creditedEmployerCompany,
-		[coCreditedEntity IN COLLECT(
-			CASE coCreditedEntity WHEN NULL
+	WITH person, materials, production, entityRel.credit AS producerCreditName,
+		[entity IN COLLECT(
+			CASE entity WHEN NULL
 				THEN null
-				ELSE coCreditedEntity {
-					model: TOLOWER(HEAD(LABELS(coCreditedEntity))),
-					.uuid,
+				ELSE entity {
+					model: TOLOWER(HEAD(LABELS(entity))),
+					uuid: CASE entity.uuid WHEN person.uuid THEN null ELSE entity.uuid END,
 					.name,
-					creditedMembers: coCreditedCompanyCreditedMembers
+					creditedMembers: creditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'company'
-			THEN coCreditedEntity
-			ELSE coCreditedEntity { .model, .uuid, .name }
-		END] AS coCreditedEntities
-		ORDER BY entityProducerRel.creditPosition
+		) | CASE entity.model WHEN 'company'
+			THEN entity
+			ELSE entity { .model, .uuid, .name }
+		END] AS entities
+
+	WITH person, materials, production,
+		COLLECT(
+			CASE SIZE(entities) WHEN 0
+				THEN null
+				ELSE {
+					model: 'producerCredit',
+					name: COALESCE(producerCreditName, 'produced by'),
+					entities: entities
+				}
+			END
+		) AS producerCredits
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
-	WITH person, materials, production, theatre, surTheatre,
-		COLLECT({
-			model: 'producerCredit',
-			name: COALESCE(entityProducerRel.credit, 'Producer'),
-			creditedEmployerCompany: creditedEmployerCompany,
-			coCreditedEntities: coCreditedEntities
-		}) AS producerCredits
+	WITH person, materials, production, producerCredits, theatre, surTheatre
 		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH person, materials,

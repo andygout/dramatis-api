@@ -26,12 +26,7 @@
 				},
 				{
 					"model": "company",
-					"name": "Young Vic Company",
-					"creditedMembers": [
-						{
-							"name": "David Lan"
-						}
-					]
+					"name": "Young Vic Company"
 				}
 			]
 		}

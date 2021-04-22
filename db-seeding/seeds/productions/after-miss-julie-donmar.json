@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Donmar Warehouse",
-					"creditedMembers": [
-						{
-							"name": "Michael Grandage"
-						}
-					]
+					"name": "Donmar Warehouse"
 				}
 			]
 		}

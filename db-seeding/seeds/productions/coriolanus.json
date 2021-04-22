@@ -13,12 +13,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Ninagawa Company",
-					"creditedMembers": [
-						{
-							"name": "Yukio Ninagawa"
-						}
-					]
+					"name": "Ninagawa Company"
 				}
 			]
 		}
