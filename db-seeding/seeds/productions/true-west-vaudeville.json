@@ -14,15 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Nimax Theatres",
-					"creditedMembers": [
-						{
-							"name": "Nica Burns"
-						},
-						{
-							"name": "Max Weitzenhoffer"
-						}
-					]
+					"name": "Nimax Theatres"
 				}
 			]
 		}

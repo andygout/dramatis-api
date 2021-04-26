@@ -644,7 +644,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					producerCredits: [
 						// Contrivance for purposes of test.
 						{
-							name: 'Executive Director',
+							name: 'executive produced by',
 							entities: [
 								{
 									name: 'Lisa Burger',
@@ -654,7 +654,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Associate Producer',
+							name: 'in association with',
 							entities: [
 								{
 									model: 'company',
@@ -665,7 +665,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Associates',
+							name: 'associate produced by',
 							entities: [
 								{
 									name: 'Simon Godwin',
@@ -678,7 +678,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							]
 						},
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -886,7 +886,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [
 					{
 						model: 'producerCredit',
-						name: 'Executive Director',
+						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
@@ -905,7 +905,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associate Producer',
+						name: 'in association with',
 						errors: {},
 						entities: [
 							{
@@ -932,7 +932,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associates',
+						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
@@ -957,7 +957,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Producer',
+						name: 'produced by',
 						errors: {},
 						entities: [
 							{
@@ -1515,7 +1515,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [
 					{
 						model: 'producerCredit',
-						name: 'Executive Director',
+						name: 'executive produced by',
 						entities: [
 							{
 								model: 'person',
@@ -1526,7 +1526,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associate Producer',
+						name: 'in association with',
 						entities: [
 							{
 								model: 'company',
@@ -1538,7 +1538,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associates',
+						name: 'associate produced by',
 						entities: [
 							{
 								model: 'person',
@@ -1554,7 +1554,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Producer',
+						name: 'produced by',
 						entities: [
 							{
 								model: 'company',
@@ -1856,7 +1856,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [
 					{
 						model: 'producerCredit',
-						name: 'Executive Director',
+						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
@@ -1875,7 +1875,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associate Producer',
+						name: 'in association with',
 						errors: {},
 						entities: [
 							{
@@ -1902,7 +1902,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associates',
+						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
@@ -1927,7 +1927,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Producer',
+						name: 'produced by',
 						errors: {},
 						entities: [
 							{
@@ -2477,7 +2477,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					producerCredits: [
 						{
-							name: 'Executive Director',
+							name: 'executive produced by',
 							entities: [
 								{
 									name: 'Denise Wood',
@@ -2487,7 +2487,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Associate Producer',
+							name: 'in association with',
 							entities: [
 								{
 									model: 'company',
@@ -2498,7 +2498,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Associates',
+							name: 'associate produced by',
 							entities: [
 								{
 									name: 'Rebecca Frecknall',
@@ -2511,7 +2511,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							]
 						},
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -2775,7 +2775,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [
 					{
 						model: 'producerCredit',
-						name: 'Executive Director',
+						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
@@ -2794,7 +2794,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associate Producer',
+						name: 'in association with',
 						errors: {},
 						entities: [
 							{
@@ -2821,7 +2821,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associates',
+						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
@@ -2846,7 +2846,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Producer',
+						name: 'produced by',
 						errors: {},
 						entities: [
 							{
@@ -3404,7 +3404,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [
 					{
 						model: 'producerCredit',
-						name: 'Executive Director',
+						name: 'executive produced by',
 						entities: [
 							{
 								model: 'person',
@@ -3415,7 +3415,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associate Producer',
+						name: 'in association with',
 						entities: [
 							{
 								model: 'company',
@@ -3427,7 +3427,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Associates',
+						name: 'associate produced by',
 						entities: [
 							{
 								model: 'person',
@@ -3443,7 +3443,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'producerCredit',
-						name: 'Producer',
+						name: 'produced by',
 						entities: [
 							{
 								model: 'company',

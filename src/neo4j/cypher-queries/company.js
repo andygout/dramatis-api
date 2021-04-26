@@ -133,88 +133,68 @@ const getShowQuery = () => `
 				END
 			) AS materials
 
-	OPTIONAL MATCH (company)<-[producerRel:HAS_PRODUCER_ENTITY]-(production:Production)
+	OPTIONAL MATCH (company)<-[:HAS_PRODUCER_ENTITY]-(production:Production)
 
-	UNWIND (CASE WHEN producerRel IS NOT NULL AND EXISTS(producerRel.creditedMemberUuids)
-		THEN producerRel.creditedMemberUuids
+	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY]->(entity)
+		WHERE
+			(entity:Person OR entity:Company) AND
+			entityRel.creditedCompanyUuid IS NULL
+
+	UNWIND (CASE WHEN entityRel IS NOT NULL AND EXISTS(entityRel.creditedMemberUuids)
+		THEN [uuid IN entityRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS creditedMemberUuid
 
 		OPTIONAL MATCH (production)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
 			(creditedMember:Person { uuid: creditedMemberUuid })
-			WHERE producerRel.creditPosition IS NULL OR producerRel.creditPosition = creditedMemberRel.creditPosition
-
-		WITH company, materials, producerRel, production, creditedMember
-			ORDER BY creditedMemberRel.memberPosition
-
-		WITH company, materials, producerRel, production,
-			COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
-
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_PRODUCER_ENTITY]->(coCreditedEntity)
-		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
-			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
-			(producerRel.creditPosition IS NULL OR producerRel.creditPosition = coCreditedEntityRel.creditPosition) AND
-			coCreditedEntity.uuid <> company.uuid
-
-	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND EXISTS(coCreditedEntityRel.creditedMemberUuids)
-		THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
-		ELSE [null]
-	END) AS coCreditedCompanyCreditedMemberUuid
-
-		OPTIONAL MATCH (production)-[coCreditedCompanyCreditedMemberRel:HAS_PRODUCER_ENTITY]->
-			(coCreditedCompanyCreditedMember:Person { uuid: coCreditedCompanyCreditedMemberUuid })
 			WHERE
-				coCreditedEntityRel.creditPosition IS NULL OR
-				coCreditedEntityRel.creditPosition = coCreditedCompanyCreditedMemberRel.creditPosition
+				entityRel.creditPosition IS NULL OR
+				entityRel.creditPosition = creditedMemberRel.creditPosition
 
-		WITH
-			company,
-			materials,
-			producerRel,
-			production,
-			creditedMembers,
-			coCreditedEntityRel,
-			coCreditedEntity,
-			coCreditedCompanyCreditedMember
-			ORDER BY coCreditedCompanyCreditedMemberRel.memberPosition
+		WITH company, materials, production, entityRel, entity, creditedMember
+			ORDER BY creditedMember.memberPosition
 
-		WITH company, materials, producerRel, production, creditedMembers, coCreditedEntityRel, coCreditedEntity,
-			COLLECT(coCreditedCompanyCreditedMember {
+		WITH company, materials, production, entityRel, entity,
+			COLLECT(DISTINCT(creditedMember {
 				model: 'person',
 				.uuid,
 				.name
-			}) AS coCreditedCompanyCreditedMembers
-			ORDER BY coCreditedEntityRel.entityPosition
+			})) AS creditedMembers
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	WITH company, materials, producerRel, production, creditedMembers,
-		[coCreditedEntity IN COLLECT(
-			CASE coCreditedEntity WHEN NULL
+	WITH company, materials, production, entityRel.credit AS producerCreditName,
+		[entity IN COLLECT(
+			CASE entity WHEN NULL
 				THEN null
-				ELSE coCreditedEntity {
-					model: TOLOWER(HEAD(LABELS(coCreditedEntity))),
-					.uuid,
+				ELSE entity {
+					model: TOLOWER(HEAD(LABELS(entity))),
+					uuid: CASE entity.uuid WHEN company.uuid THEN null ELSE entity.uuid END,
 					.name,
-					creditedMembers: coCreditedCompanyCreditedMembers
+					creditedMembers: creditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'company'
-			THEN coCreditedEntity
-			ELSE coCreditedEntity { .model, .uuid, .name }
-		END] AS coCreditedEntities
-		ORDER BY producerRel.creditPosition
+		) | CASE entity.model WHEN 'company'
+			THEN entity
+			ELSE entity { .model, .uuid, .name }
+		END] AS entities
+
+	WITH company, materials, production,
+		COLLECT(
+			CASE SIZE(entities) WHEN 0
+				THEN null
+				ELSE {
+					model: 'producerCredit',
+					name: COALESCE(producerCreditName, 'produced by'),
+					entities: entities
+				}
+			END
+		) AS producerCredits
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
 	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
 
-	WITH company, materials, production, theatre, surTheatre,
-		COLLECT({
-			model: 'producerCredit',
-			name: COALESCE(producerRel.credit, 'Producer'),
-			creditedMembers: creditedMembers,
-			coCreditedEntities: coCreditedEntities
-		}) AS producerCredits
+	WITH company, materials, production, producerCredits, theatre, surTheatre
 		ORDER BY production.startDate DESC, production.name, theatre.name
 
 	WITH company, materials,

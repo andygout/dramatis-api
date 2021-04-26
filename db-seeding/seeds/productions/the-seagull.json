@@ -15,12 +15,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Headlong Theatre",
-					"creditedMembers": [
-						{
-							"name": "Rupert Goold"
-						}
-					]
+					"name": "Headlong Theatre"
 				}
 			]
 		}

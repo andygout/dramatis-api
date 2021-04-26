@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Shakespeare's Globe",
-					"creditedMembers": [
-						{
-							"name": "Dominic Dromgoole"
-						}
-					]
+					"name": "Shakespeare's Globe"
 				}
 			]
 		}

@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Sonia Freidman Productions",
-					"creditedMembers": [
-						{
-							"name": "Sonia Freidman"
-						}
-					]
+					"name": "Sonia Freidman Productions"
 				}
 			]
 		}

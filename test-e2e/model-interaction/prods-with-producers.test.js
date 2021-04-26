@@ -97,7 +97,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of testing company with multiple producer credits for same production.
 					{
-						name: 'Associate Producer',
+						name: 'in association with',
 						entities: [
 							{
 								model: 'company',
@@ -107,7 +107,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Executive Producer',
+						name: 'in partnership with',
 						entities: [
 							{
 								model: 'company',
@@ -117,7 +117,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Co-Producers',
+						name: 'in a co-production with',
 						entities: [
 							{
 								model: 'company',
@@ -177,7 +177,7 @@ describe('Productions with producer', () => {
 				producerCredits: [
 					// Contrivance for purposes of test.
 					{
-						name: 'Producing',
+						name: 'producing by',
 						entities: [
 							{
 								name: 'Robert Fox'
@@ -186,7 +186,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of testing person with multiple producer credits for same production.
 					{
-						name: 'Associate Producing',
+						name: 'associate producing by',
 						entities: [
 							{
 								name: 'Eric Abraham'
@@ -195,7 +195,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Executive Producing',
+						name: 'partnership producing by',
 						entities: [
 							{
 								model: 'company',
@@ -205,7 +205,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Co-Producing',
+						name: 'co-producing by',
 						entities: [
 							{
 								model: 'company',
@@ -265,7 +265,7 @@ describe('Productions with producer', () => {
 				producerCredits: [
 					// Contrivance for purposes of test.
 					{
-						name: 'Producing by',
+						name: 'producing services by',
 						entities: [
 							{
 								name: 'Robert Fox'
@@ -274,7 +274,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of testing company and credited member with multiple producer credits for same production.
 					{
-						name: 'Associate Producing by',
+						name: 'associate producing services by',
 						entities: [
 							{
 								model: 'company',
@@ -289,7 +289,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Executive Producing by',
+						name: 'partnership producing services by',
 						entities: [
 							{
 								model: 'company',
@@ -299,7 +299,7 @@ describe('Productions with producer', () => {
 					},
 					// Contrivance for purposes of test.
 					{
-						name: 'Co-Producing by',
+						name: 'co-producing services by',
 						entities: [
 							{
 								name: 'Eric Abraham'
@@ -358,7 +358,7 @@ describe('Productions with producer', () => {
 				producerCredits: [
 					// Contrivance for purposes of test.
 					{
-						name: 'Co-Producing by',
+						name: 'co-producing services by',
 						entities: [
 							{
 								name: 'Eric Abraham'
@@ -453,7 +453,7 @@ describe('Productions with producer', () => {
 			const expectedProducerCredits = [
 				{
 					model: 'producerCredit',
-					name: 'Producer',
+					name: 'produced by',
 					entities: [
 						{
 							model: 'person',
@@ -464,7 +464,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Associate Producer',
+					name: 'in association with',
 					entities: [
 						{
 							model: 'company',
@@ -476,7 +476,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Executive Producer',
+					name: 'in partnership with',
 					entities: [
 						{
 							model: 'company',
@@ -488,7 +488,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Co-Producers',
+					name: 'in a co-production with',
 					entities: [
 						{
 							model: 'company',
@@ -569,7 +569,7 @@ describe('Productions with producer', () => {
 			const expectedProducerCredits = [
 				{
 					model: 'producerCredit',
-					name: 'Producing',
+					name: 'producing by',
 					entities: [
 						{
 							model: 'person',
@@ -580,7 +580,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Associate Producing',
+					name: 'associate producing by',
 					entities: [
 						{
 							model: 'person',
@@ -591,7 +591,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Executive Producing',
+					name: 'partnership producing by',
 					entities: [
 						{
 							model: 'company',
@@ -603,7 +603,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Co-Producing',
+					name: 'co-producing by',
 					entities: [
 						{
 							model: 'company',
@@ -684,7 +684,7 @@ describe('Productions with producer', () => {
 			const expectedProducerCredits = [
 				{
 					model: 'producerCredit',
-					name: 'Producing by',
+					name: 'producing services by',
 					entities: [
 						{
 							model: 'person',
@@ -695,7 +695,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Associate Producing by',
+					name: 'associate producing services by',
 					entities: [
 						{
 							model: 'company',
@@ -713,7 +713,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Executive Producing by',
+					name: 'partnership producing services by',
 					entities: [
 						{
 							model: 'company',
@@ -725,7 +725,7 @@ describe('Productions with producer', () => {
 				},
 				{
 					model: 'producerCredit',
-					name: 'Co-Producing by',
+					name: 'co-producing services by',
 					entities: [
 						{
 							model: 'person',
@@ -806,7 +806,7 @@ describe('Productions with producer', () => {
 			const expectedProducerCredits = [
 				{
 					model: 'producerCredit',
-					name: 'Co-Producing by',
+					name: 'co-producing services by',
 					entities: [
 						{
 							model: 'person',
@@ -904,101 +904,42 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Producing',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Pah-La',
-					startDate: '2019-04-03',
-					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Producing by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Producer',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
-						}
-					]
-				}
-			];
-
-			const { producerProductions } = robertFoxPerson.body;
-
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
-		});
-
-	});
-
-	describe('Eric Abraham (person)', () => {
-
-		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
-			const expectedProducerProductions = [
-				{
-					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Associate Producing',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							name: 'producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Robert Fox'
+								}
+							]
 						},
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -1031,6 +972,11 @@ describe('Productions with producer', () => {
 											name: 'Lucy Davies'
 										}
 									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
 								},
 								{
 									model: 'company',
@@ -1077,9 +1023,430 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							name: 'producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ROGER_CHAPMAN_PERSON_UUID,
+											name: 'Roger Chapman'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										},
+										{
+											model: 'person',
+											uuid: OLA_INCE_PERSON_UUID,
+											name: 'Ola Ince'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										},
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { producerProductions } = robertFoxPerson.body;
+
+			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+
+		});
+
+	});
+
+	describe('Eric Abraham (person)', () => {
+
+		it('includes productions for which they have a producer credit, included co-credited entities', () => {
+
+			const expectedProducerProductions = [
+				{
+					model: 'production',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
+					theatre: {
+						model: 'theatre',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Eric Abraham'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
+					theatre: {
+						model: 'theatre',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Eric Abraham'
+								},
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1158,9 +1525,13 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							name: 'co-producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Eric Abraham'
+								},
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1235,9 +1606,43 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							name: 'produced by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1292,6 +1697,11 @@ describe('Productions with producer', () => {
 											name: 'Nick Salmon'
 										}
 									]
+								},
+								{
+									model: 'person',
+									uuid: null,
+									name: 'Eric Abraham'
 								}
 							]
 						}
@@ -1331,25 +1741,42 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: HARRIET_ASTBURY_PERSON_UUID,
-										name: 'Harriet Astbury'
-									},
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									}
-								]
-							},
-							coCreditedEntities: [
+							name: 'producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -1387,6 +1814,28 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
 								}
 							]
 						}
@@ -1411,36 +1860,49 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Associate Producing by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: []
-							},
-							coCreditedEntities: []
+							name: 'producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
 						},
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: ROGER_CHAPMAN_PERSON_UUID,
-										name: 'Roger Chapman'
-									},
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									}
-								]
-							},
-							coCreditedEntities: [
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -1465,6 +1927,28 @@ describe('Productions with producer', () => {
 											model: 'person',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ROGER_CHAPMAN_PERSON_UUID,
+											name: 'Roger Chapman'
+										},
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										}
 									]
 								},
@@ -1502,25 +1986,8 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: NICK_SALMON_PERSON_UUID,
-										name: 'Nick Salmon'
-									},
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									}
-								]
-							},
-							coCreditedEntities: [
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -1545,6 +2012,28 @@ describe('Productions with producer', () => {
 											model: 'person',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										},
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										}
 									]
 								},
@@ -1578,25 +2067,43 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									},
-									{
-										model: 'person',
-										uuid: NICK_SALMON_PERSON_UUID,
-										name: 'Nick Salmon'
-									}
-								]
-							},
-							coCreditedEntities: [
+							name: 'produced by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -1629,6 +2136,28 @@ describe('Productions with producer', () => {
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										},
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										}
+									]
 								},
 								{
 									model: 'person',
@@ -1673,25 +2202,49 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedEmployerCompany: {
-								model: 'company',
-								uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
-								name: 'Playful Productions',
-								coCreditedMembers: [
-									{
-										model: 'person',
-										uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-										name: 'Matthew Byam Shaw'
-									},
-									{
-										model: 'person',
-										uuid: NIA_JANIS_PERSON_UUID,
-										name: 'Nia Janis'
-									}
-								]
-							},
-							coCreditedEntities: [
+							name: 'producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -1716,6 +2269,28 @@ describe('Productions with producer', () => {
 											model: 'person',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: null,
+											name: 'Roger Chapman'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										}
 									]
 								},
@@ -1768,117 +2343,42 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Executive Producing',
-							creditedMembers: [],
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Pah-La',
-					startDate: '2019-04-03',
-					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Executive Producing by',
-							creditedMembers: [],
-							coCreditedEntities: []
-						}
-					]
-				},
-				{
-					model: 'production',
-					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Hangmen',
-					startDate: '2015-12-01',
-					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
-						name: 'Wyndham\'s Theatre',
-						surTheatre: null
-					},
-					producerCredits: [
-						{
-							model: 'producerCredit',
-							name: 'Associate Producer',
-							creditedMembers: [],
-							coCreditedEntities: []
+							name: 'producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
 						},
 						{
 							model: 'producerCredit',
-							name: 'Executive Producer',
-							creditedMembers: [],
-							coCreditedEntities: []
-						}
-					]
-				}
-			];
-
-			const { producerProductions } = soniaFriedmanProductionsCompany.body;
-
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
-		});
-
-	});
-
-	describe('Royal Court Theatre (company)', () => {
-
-		it('includes productions for which they have a producer credit', () => {
-
-			const expectedProducerProductions = [
-				{
-					model: 'production',
-					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-					name: 'White Pearl',
-					startDate: '2019-05-10',
-					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
-						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
-							name: 'Royal Court Theatre'
-						}
-					},
-					producerCredits: [
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						},
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
-							creditedMembers: [
+							name: 'partnership producing by',
+							entities: [
 								{
-									model: 'person',
-									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: HAMISH_PIRIE_PERSON_UUID,
-									name: 'Hamish Pirie'
-								},
-								{
-									model: 'person',
-									uuid: LUCY_DAVIES_PERSON_UUID,
-									name: 'Lucy Davies'
+									model: 'company',
+									uuid: null,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -1889,6 +2389,28 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
 								},
 								{
 									model: 'person',
@@ -1940,29 +2462,451 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedMembers: [
+							name: 'producing services by',
+							entities: [
 								{
 									model: 'person',
-									uuid: SAM_PRITCHARD_PERSON_UUID,
-									name: 'Sam Pritchard'
-								},
-								{
-									model: 'person',
-									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: LUCY_DAVIES_PERSON_UUID,
-									name: 'Lucy Davies'
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ROGER_CHAPMAN_PERSON_UUID,
+											name: 'Roger Chapman'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hangmen',
+					startDate: '2015-12-01',
+					endDate: '2016-03-05',
+					theatre: {
+						model: 'theatre',
+						uuid: WYNDHAMS_THEATRE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surTheatre: null
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
+								{
+									model: 'company',
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										},
+										{
+											model: 'person',
+											uuid: OLA_INCE_PERSON_UUID,
+											name: 'Ola Ince'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										},
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { producerProductions } = soniaFriedmanProductionsCompany.body;
+
+			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+
+		});
+
+	});
+
+	describe('Royal Court Theatre (company)', () => {
+
+		it('includes productions for which they have a producer credit', () => {
+
+			const expectedProducerProductions = [
+				{
+					model: 'production',
+					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+					name: 'White Pearl',
+					startDate: '2019-05-10',
+					endDate: '2019-06-15',
+					theatre: {
+						model: 'theatre',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+						name: 'Jerwood Theatre Downstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
+									name: 'Old Vic Productions',
+									creditedMembers: []
+								},
+								{
+									model: 'person',
+									uuid: PAUL_ELLIOTT_PERSON_UUID,
+									name: 'Paul Elliott'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: HAMISH_PIRIE_PERSON_UUID,
+											name: 'Hamish Pirie'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'production',
+					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Pah-La',
+					startDate: '2019-04-03',
+					endDate: '2019-04-27',
+					theatre: {
+						model: 'theatre',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surTheatre: {
+							model: 'theatre',
+							uuid: ROYAL_COURT_THEATRE_UUID,
+							name: 'Royal Court Theatre'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'producerCredit',
+							name: 'producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
 								},
 								{
 									model: 'company',
@@ -2020,29 +2964,34 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: SAM_PRITCHARD_PERSON_UUID,
-									name: 'Sam Pritchard'
-								},
-								{
-									model: 'person',
-									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: LUCY_DAVIES_PERSON_UUID,
-									name: 'Lucy Davies'
-								}
-							],
-							coCreditedEntities: [
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: SAM_PRITCHARD_PERSON_UUID,
+											name: 'Sam Pritchard'
+										},
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										}
+									]
 								},
 								{
 									model: 'company',
@@ -2096,25 +3045,65 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedMembers: [
+							name: 'produced by',
+							entities: [
 								{
 									model: 'person',
-									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
-									name: 'Vicky Featherstone'
-								},
-								{
-									model: 'person',
-									uuid: LUCY_DAVIES_PERSON_UUID,
-									name: 'Lucy Davies'
-								},
-								{
-									model: 'person',
-									uuid: OLA_INCE_PERSON_UUID,
-									name: 'Ola Ince'
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Royal Court Theatre',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
+											name: 'Vicky Featherstone'
+										},
+										{
+											model: 'person',
+											uuid: LUCY_DAVIES_PERSON_UUID,
+											name: 'Lucy Davies'
+										},
+										{
+											model: 'person',
+											uuid: OLA_INCE_PERSON_UUID,
+											name: 'Ola Ince'
+										}
+									]
+								},
 								{
 									model: 'person',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
@@ -2191,25 +3180,42 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing',
-							creditedMembers: [
+							name: 'producing by',
+							entities: [
 								{
 									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: HARRIET_ASTBURY_PERSON_UUID,
-									name: 'Harriet Astbury'
-								},
-								{
-									model: 'person',
-									uuid: NIA_JANIS_PERSON_UUID,
-									name: 'Nia Janis'
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'associate producing by',
+							entities: [
+								{
+									model: 'person',
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
+									name: 'Eric Abraham'
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing by',
+							entities: [
 								{
 									model: 'company',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
@@ -2247,6 +3253,28 @@ describe('Productions with producer', () => {
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: HARRIET_ASTBURY_PERSON_UUID,
+											name: 'Harriet Astbury'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										}
+									]
 								}
 							]
 						}
@@ -2271,37 +3299,49 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Associate Producing by',
-							creditedMembers: [
+							name: 'producing services by',
+							entities: [
 								{
 									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
 								}
-							],
-							coCreditedEntities: []
+							]
 						},
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedMembers: [
+							name: 'associate producing services by',
+							entities: [
 								{
-									model: 'person',
-									uuid: ROGER_CHAPMAN_PERSON_UUID,
-									name: 'Roger Chapman'
-								},
-								{
-									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: NIA_JANIS_PERSON_UUID,
-									name: 'Nia Janis'
+									model: 'company',
+									uuid: null,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										}
+									]
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'partnership producing services by',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -2326,6 +3366,28 @@ describe('Productions with producer', () => {
 											model: 'person',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: ROGER_CHAPMAN_PERSON_UUID,
+											name: 'Roger Chapman'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										}
 									]
 								},
@@ -2363,25 +3425,8 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producing by',
-							creditedMembers: [
-								{
-									model: 'person',
-									uuid: NICK_SALMON_PERSON_UUID,
-									name: 'Nick Salmon'
-								},
-								{
-									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: NIA_JANIS_PERSON_UUID,
-									name: 'Nia Janis'
-								}
-							],
-							coCreditedEntities: [
+							name: 'co-producing services by',
+							entities: [
 								{
 									model: 'person',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
@@ -2406,6 +3451,28 @@ describe('Productions with producer', () => {
 											model: 'person',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
+										}
+									]
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										},
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
 										}
 									]
 								},
@@ -2439,25 +3506,43 @@ describe('Productions with producer', () => {
 					producerCredits: [
 						{
 							model: 'producerCredit',
-							name: 'Co-Producers',
-							creditedMembers: [
+							name: 'produced by',
+							entities: [
 								{
 									model: 'person',
-									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
-									name: 'Matthew Byam Shaw'
-								},
-								{
-									model: 'person',
-									uuid: NIA_JANIS_PERSON_UUID,
-									name: 'Nia Janis'
-								},
-								{
-									model: 'person',
-									uuid: NICK_SALMON_PERSON_UUID,
-									name: 'Nick Salmon'
+									uuid: ROBERT_FOX_PERSON_UUID,
+									name: 'Robert Fox'
 								}
-							],
-							coCreditedEntities: [
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in association with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in partnership with',
+							entities: [
+								{
+									model: 'company',
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
+									name: 'Sonia Friedman Productions',
+									creditedMembers: []
+								}
+							]
+						},
+						{
+							model: 'producerCredit',
+							name: 'in a co-production with',
+							entities: [
 								{
 									model: 'company',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
@@ -2490,6 +3575,28 @@ describe('Productions with producer', () => {
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
+								},
+								{
+									model: 'company',
+									uuid: null,
+									name: 'Playful Productions',
+									creditedMembers: [
+										{
+											model: 'person',
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
+											name: 'Matthew Byam Shaw'
+										},
+										{
+											model: 'person',
+											uuid: NIA_JANIS_PERSON_UUID,
+											name: 'Nia Janis'
+										},
+										{
+											model: 'person',
+											uuid: NICK_SALMON_PERSON_UUID,
+											name: 'Nick Salmon'
+										}
+									]
 								},
 								{
 									model: 'person',

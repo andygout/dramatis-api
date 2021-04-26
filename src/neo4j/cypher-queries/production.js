@@ -831,7 +831,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE {
 					model: 'producerCredit',
-					name: COALESCE(producerCreditName, 'Producer'),
+					name: COALESCE(producerCreditName, 'produced by'),
 					entities: producerEntities
 				}
 			END

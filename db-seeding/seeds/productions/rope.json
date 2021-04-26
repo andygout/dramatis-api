@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Almeida Theatre Company",
-					"creditedMembers": [
-						{
-							"name": "Michael Attenborough"
-						}
-					]
+					"name": "Almeida Theatre Company"
 				}
 			]
 		}

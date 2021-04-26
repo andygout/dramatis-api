@@ -304,7 +304,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: 'Paul Higgins'
@@ -330,7 +330,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: 'Paul Higgins',
@@ -357,7 +357,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: 'Paul Higgins'
@@ -383,7 +383,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: 'Paul Higgins',
@@ -468,7 +468,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Hamlet',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -495,7 +495,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Hamlet',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -523,7 +523,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Hamlet',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -550,7 +550,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Hamlet',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -620,7 +620,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -652,7 +652,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -685,7 +685,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -717,7 +717,7 @@ describe('Uniqueness in database: Productions API', () => {
 					name: 'Girl No 7',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',

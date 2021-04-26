@@ -25,7 +25,7 @@
 			]
 		},
 		{
-			"name": "Associate Producers",
+			"name": "in association with",
 			"entities": [
 				{
 					"model": "company",
@@ -37,12 +37,7 @@
 				},
 				{
 					"model": "company",
-					"name": "Liverpool Everyman & Playhouse",
-					"creditedMembers": [
-						{
-							"name": "Gemma Bodinetz"
-						}
-					]
+					"name": "Liverpool Everyman & Playhouse"
 				},
 				{
 					"model": "company",

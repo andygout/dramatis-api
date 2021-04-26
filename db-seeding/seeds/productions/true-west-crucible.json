@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Sheffield Theatres",
-					"creditedMembers": [
-						{
-							"name": "Daniel Evans"
-						}
-					]
+					"name": "Sheffield Theatres"
 				}
 			]
 		}

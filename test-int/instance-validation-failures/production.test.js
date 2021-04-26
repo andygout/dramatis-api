@@ -511,10 +511,10 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
-							name: 'Producer'
+							name: 'produced by'
 						},
 						{
-							name: 'Producer'
+							name: 'produced by'
 						}
 					]
 				};
@@ -545,7 +545,7 @@ describe('Production instance', () => {
 					},
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -554,7 +554,7 @@ describe('Production instance', () => {
 							entities: []
 						},
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {
 								name: [
 									'This item has been duplicated within the group'
@@ -582,7 +582,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: ABOVE_MAX_LENGTH_STRING
@@ -618,7 +618,7 @@ describe('Production instance', () => {
 					},
 					producerCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -653,7 +653,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									name: 'Paul Elliott',
@@ -693,7 +693,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -725,7 +725,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -765,7 +765,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -798,7 +798,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -839,7 +839,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -1023,7 +1023,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -1069,7 +1069,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -1109,7 +1109,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -1154,7 +1154,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{
@@ -1194,7 +1194,7 @@ describe('Production instance', () => {
 					name: 'Waiting for Godot',
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							entities: [
 								{
 									model: 'company',
@@ -1240,7 +1240,7 @@ describe('Production instance', () => {
 					creativeCredits: [],
 					crewCredits: [
 						{
-							name: 'Producer',
+							name: 'produced by',
 							errors: {},
 							entities: [
 								{

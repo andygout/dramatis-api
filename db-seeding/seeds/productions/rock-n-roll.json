@@ -14,12 +14,7 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Royal Court Theatre",
-					"creditedMembers": [
-						{
-							"name": "Ian Rickson"
-						}
-					]
+					"name": "Royal Court Theatre"
 				}
 			]
 		}
