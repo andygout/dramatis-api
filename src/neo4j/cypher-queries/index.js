@@ -17,29 +17,29 @@ import {
 } from './production';
 import * as sharedQueries from './shared';
 import {
-	getCreateQuery as getTheatreCreateQuery,
-	getEditQuery as getTheatreEditQuery,
-	getUpdateQuery as getTheatreUpdateQuery,
-	getShowQuery as getTheatreShowQuery,
-	getListQuery as getTheatreListQuery
-} from './theatre';
+	getCreateQuery as getVenueCreateQuery,
+	getEditQuery as getVenueEditQuery,
+	getUpdateQuery as getVenueUpdateQuery,
+	getShowQuery as getVenueShowQuery,
+	getListQuery as getVenueListQuery
+} from './venue';
 
 const getCreateQueries = {
 	material: getMaterialCreateQuery,
 	production: getProductionCreateQuery,
-	theatre: getTheatreCreateQuery
+	venue: getVenueCreateQuery
 };
 
 const getEditQueries = {
 	material: getMaterialEditQuery,
 	production: getProductionEditQuery,
-	theatre: getTheatreEditQuery
+	venue: getVenueEditQuery
 };
 
 const getUpdateQueries = {
 	material: getMaterialUpdateQuery,
 	production: getProductionUpdateQuery,
-	theatre: getTheatreUpdateQuery
+	venue: getVenueUpdateQuery
 };
 
 const getShowQueries = {
@@ -48,13 +48,13 @@ const getShowQueries = {
 	person: getPersonShowQuery,
 	material: getMaterialShowQuery,
 	production: getProductionShowQuery,
-	theatre: getTheatreShowQuery
+	venue: getVenueShowQuery
 };
 
 const getListQueries = {
 	material: getMaterialListQuery,
 	production: getProductionListQuery,
-	theatre: getTheatreListQuery
+	venue: getVenueListQuery
 };
 
 export {

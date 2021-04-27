@@ -16,7 +16,7 @@ describe('Character with multiple appearances in the same material under differe
 	const ELEANOR_CHARACTER_UUID = '10';
 	const ALICE_CHARACTER_UUID = '11';
 	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = '12';
-	const ROYAL_COURT_THEATRE_UUID = '14';
+	const ROYAL_COURT_THEATRE_VENUE_UUID = '14';
 	const ALICE_EVE_PERSON_UUID = '15';
 	const BRIAN_COX_PERSON_UUID = '16';
 	const SINEAD_CUSACK_PERSON_UUID = '17';
@@ -82,7 +82,7 @@ describe('Character with multiple appearances in the same material under differe
 				material: {
 					name: 'Rock \'n\' Roll'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Court Theatre'
 				},
 				cast: [
@@ -194,11 +194,11 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_COURT_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -254,11 +254,11 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_COURT_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -299,11 +299,11 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_COURT_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -455,11 +455,11 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_COURT_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -497,11 +497,11 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_COURT_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

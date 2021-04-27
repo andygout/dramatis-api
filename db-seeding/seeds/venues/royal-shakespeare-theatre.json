@@ -1,6 +1,6 @@
 {
 	"name": "Royal Shakespeare Theatre",
-	"subTheatres": [
+	"subVenues": [
 		{
 			"name": "The Cube"
 		}

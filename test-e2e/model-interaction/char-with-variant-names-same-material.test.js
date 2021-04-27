@@ -15,15 +15,15 @@ describe('Character with variant names from productions of the same material', (
 	const GHOST_CHARACTER_UUID = '10';
 	const FIRST_PLAYER_CHARACTER_UUID = '11';
 	const HAMLET_ALMEIDA_PRODUCTION_UUID = '12';
-	const ALMEIDA_THEATRE_UUID = '14';
+	const ALMEIDA_THEATRE_VENUE_UUID = '14';
 	const ANDREW_SCOTT_PERSON_UUID = '15';
 	const DAVID_RINTOUL_PERSON_UUID = '16';
 	const HAMLET_NOVELLO_PRODUCTION_UUID = '17';
-	const NOVELLO_THEATRE_UUID = '19';
+	const NOVELLO_THEATRE_VENUE_UUID = '19';
 	const DAVID_TENNANT_PERSON_UUID = '20';
 	const PATRICK_STEWART_PERSON_UUID = '21';
 	const HAMLET_WYNDHAMS_PRODUCTION_UUID = '22';
-	const WYNDHAMS_THEATRE_UUID = '24';
+	const WYNDHAMS_THEATRE_VENUE_UUID = '24';
 	const JUDE_LAW_PERSON_UUID = '25';
 	const PETER_EYRE_PERSON_UUID = '26';
 
@@ -79,7 +79,7 @@ describe('Character with variant names from productions of the same material', (
 				material: {
 					name: 'Hamlet'
 				},
-				theatre: {
+				venue: {
 					name: 'Almeida Theatre'
 				},
 				cast: [
@@ -118,7 +118,7 @@ describe('Character with variant names from productions of the same material', (
 				material: {
 					name: 'Hamlet'
 				},
-				theatre: {
+				venue: {
 					name: 'Novello Theatre'
 				},
 				cast: [
@@ -156,7 +156,7 @@ describe('Character with variant names from productions of the same material', (
 				material: {
 					name: 'Hamlet'
 				},
-				theatre: {
+				venue: {
 					name: 'Wyndham\'s Theatre'
 				},
 				cast: [
@@ -237,11 +237,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -267,11 +267,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2009-05-29',
 					endDate: '2009-08-22',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -297,11 +297,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2008-12-03',
 					endDate: '2009-01-10',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -483,11 +483,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -525,11 +525,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2008-12-03',
 					endDate: '2009-01-10',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -567,11 +567,11 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet',
 					startDate: '2009-05-29',
 					endDate: '2009-08-22',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

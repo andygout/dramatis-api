@@ -1,9 +1,9 @@
 import material from './material';
 import production from './production';
-import theatre from './theatre';
+import venue from './venue';
 
 export {
 	material,
 	production,
-	theatre
+	venue
 };

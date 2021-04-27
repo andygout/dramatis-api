@@ -15,7 +15,7 @@ describe('Different characters with the same name from the same material', () =>
 	const VOLUMNIUS_CHARACTER_UUID = '8';
 	const CINNA_CHARACTER_2_UUID = '9';
 	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '10';
-	const BARBICAN_THEATRE_UUID = '12';
+	const BARBICAN_THEATRE_VENUE_UUID = '12';
 	const PAUL_SHEARER_PERSON_UUID = '13';
 	const LEO_WRINGER_PERSON_UUID = '14';
 
@@ -70,7 +70,7 @@ describe('Different characters with the same name from the same material', () =>
 				material: {
 					name: 'Julius Caesar'
 				},
-				theatre: {
+				venue: {
 					name: 'Barbican'
 				},
 				cast: [
@@ -138,11 +138,11 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -183,11 +183,11 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -221,11 +221,11 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -346,11 +346,11 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -388,11 +388,11 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

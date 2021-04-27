@@ -18,7 +18,7 @@ describe('Cypher Queries Shared module', () => {
 		};
 
 		stubs.capitalise.withArgs('production').returns('Production');
-		stubs.capitalise.withArgs('theatre').returns('Theatre');
+		stubs.capitalise.withArgs('venue').returns('Venue');
 
 	});
 
@@ -32,11 +32,11 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getExistenceQuery('theatre');
+			const result = cypherQueriesShared.getExistenceQuery('venue');
 			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Theatre { uuid: $uuid })
+				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN n
 			`));
@@ -49,11 +49,11 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getDuplicateRecordCountQuery('theatre', undefined);
+			const result = cypherQueriesShared.getDuplicateRecordCountQuery('venue', undefined);
 			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Theatre { name: $name })
+				MATCH (n:Venue { name: $name })
 					WHERE
 						(
 							($differentiator IS NULL AND n.differentiator IS NULL) OR
@@ -75,19 +75,19 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getCreateQuery('theatre');
+			const result = cypherQueriesShared.getCreateQuery('venue');
 			expect(stubs.capitalise.calledTwice).to.be.true;
-			expect(stubs.capitalise.firstCall.calledWithExactly('theatre')).to.be.true;
-			expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.firstCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.capitalise.secondCall.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				CREATE (n:Theatre { uuid: $uuid, name: $name, differentiator: $differentiator })
+				CREATE (n:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 				WITH n
 
-				MATCH (n:Theatre { uuid: $uuid })
+				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'theatre' AS model,
+					'venue' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
@@ -101,14 +101,14 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getEditQuery('theatre');
+			const result = cypherQueriesShared.getEditQuery('venue');
 			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Theatre { uuid: $uuid })
+				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'theatre' AS model,
+					'venue' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
@@ -122,22 +122,22 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getUpdateQuery('theatre');
+			const result = cypherQueriesShared.getUpdateQuery('venue');
 			expect(stubs.capitalise.calledTwice).to.be.true;
-			expect(stubs.capitalise.firstCall.calledWithExactly('theatre')).to.be.true;
-			expect(stubs.capitalise.secondCall.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.firstCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.capitalise.secondCall.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Theatre { uuid: $uuid })
+				MATCH (n:Venue { uuid: $uuid })
 					SET
 						n.name = $name,
 						n.differentiator = $differentiator
 
 				WITH n
 
-				MATCH (n:Theatre { uuid: $uuid })
+				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'theatre' AS model,
+					'venue' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
@@ -151,16 +151,16 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getDeleteQuery('theatre');
+			const result = cypherQueriesShared.getDeleteQuery('venue');
 			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (:Theatre { uuid: $uuid })
+				MATCH (:Venue { uuid: $uuid })
 
-				OPTIONAL MATCH (deletableInstance:Theatre { uuid: $uuid })
+				OPTIONAL MATCH (deletableInstance:Venue { uuid: $uuid })
 					WHERE NOT (deletableInstance)-[]-()
 
-				OPTIONAL MATCH (undeletableInstance:Theatre { uuid: $uuid })
+				OPTIONAL MATCH (undeletableInstance:Venue { uuid: $uuid })
 					-[]-(undeleteableInstanceAssociate)
 
 				UNWIND
@@ -186,7 +186,7 @@ describe('Cypher Queries Shared module', () => {
 					DETACH DELETE deletableInstance
 
 					RETURN
-						'theatre' AS model,
+						'venue' AS model,
 						CASE WHEN isDeleted
 							THEN deletableInstanceName
 							ELSE undeletableInstance.name
@@ -207,14 +207,14 @@ describe('Cypher Queries Shared module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesShared.getListQuery('theatre');
+			const result = cypherQueriesShared.getListQuery('venue');
 			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('theatre')).to.be.true;
+			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Theatre)
+				MATCH (n:Venue)
 
 				RETURN
-					'theatre' AS model,
+					'venue' AS model,
 					n.uuid AS uuid,
 					n.name AS name
 

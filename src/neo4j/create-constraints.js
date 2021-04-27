@@ -8,7 +8,7 @@ const MODELS = [
 	'Material',
 	'Person',
 	'Production',
-	'Theatre'
+	'Venue'
 ];
 
 const createConstraint = async model => {

@@ -150,69 +150,69 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			const instance = { theatre: { uuid: '' } };
+			const instance = { venue: { uuid: '' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
 		it('assigns value to uuid property if undefined', () => {
 
-			const instance = { theatre: { uuid: undefined } };
+			const instance = { venue: { uuid: undefined } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 		});
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			const instance = { theatre: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
+			const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
 		});
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
 
-			const instance = { theatre: { foo: 'bar' } };
+			const instance = { venue: { foo: 'bar' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre.foo).to.equal('bar');
+			expect(result.venue.foo).to.equal('bar');
 
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
-			const instance = { theatre: { foo: '' } };
+			const instance = { venue: { foo: '' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre.foo).to.equal(null);
+			expect(result.venue.foo).to.equal(null);
 
 		});
 
 		it('will not add position property', () => {
 
-			const instance = { theatre: { uuid: '' } };
+			const instance = { venue: { uuid: '' } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
-			expect(result.theatre).not.to.have.property('position');
+			expect(result.venue).not.to.have.property('position');
 
 		});
 
 		it('will add model property with value from model getter method', () => {
 
-			const instance = { theatre: applyModelGetter({ foo: '' }) };
+			const instance = { venue: applyModelGetter({ foo: '' }) };
 			const result = prepareAsParams(instance);
-			expect(result.theatre.model).to.equal('base');
+			expect(result.venue.model).to.equal('base');
 
 		});
 

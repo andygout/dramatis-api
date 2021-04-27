@@ -50,8 +50,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
-						model: 'theatre',
+					venue: {
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -119,8 +119,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
-						model: 'theatre',
+					venue: {
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -149,7 +149,7 @@ describe('Instance validation failures: Productions API', () => {
 	describe('attempt to delete instance', () => {
 
 		const OTHELLO_DONMAR_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const DONMAR_WAREHOUSE_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const DONMAR_WAREHOUSE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 		const OTHELLO_MATERIAL_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
@@ -163,8 +163,8 @@ describe('Instance validation failures: Productions API', () => {
 			});
 
 			await createNode({
-				label: 'Theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				label: 'Venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse'
 			});
 
@@ -177,8 +177,8 @@ describe('Instance validation failures: Productions API', () => {
 			await createRelationship({
 				sourceLabel: 'Production',
 				sourceUuid: OTHELLO_DONMAR_PRODUCTION_UUID,
-				destinationLabel: 'Theatre',
-				destinationUuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				destinationLabel: 'Venue',
+				destinationUuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				relationshipName: 'PLAYS_AT'
 			});
 
@@ -212,7 +212,7 @@ describe('Instance validation failures: Productions API', () => {
 					errors: {
 						associations: [
 							'Material',
-							'Theatre'
+							'Venue'
 						]
 					},
 					material: {
@@ -221,8 +221,8 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
-						model: 'theatre',
+					venue: {
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}

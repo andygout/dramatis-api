@@ -57,27 +57,27 @@ or
 - The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`.
 
 ## Endpoints
-Using theatre model as an example.
+Using venue model as an example.
 
-### GET `/theatres/new`
-- Get data required to prepare **new** theatre.
+### GET `/venues/new`
+- Get data required to prepare **new** venue.
 
-### POST `/theatres`
-- **Create** theatre.
+### POST `/venues`
+- **Create** venue.
 - Requires body, e.g. `{ "name": "National Theatre" }`.
 
-### GET `/theatres/:uuid/edit`
-- Get data required to **edit** specific theatre.
+### GET `/venues/:uuid/edit`
+- Get data required to **edit** specific venue.
 
-### PUT `/theatres/:uuid`
-- **Update** specific theatre.
+### PUT `/venues/:uuid`
+- **Update** specific venue.
 - Requires body, e.g. `{ "name": "Almeida Theatre" }`.
 
-### DELETE `/theatres/:uuid`
-- **Delete** specific theatre.
+### DELETE `/venues/:uuid`
+- **Delete** specific venue.
 
-### GET `/theatres/:uuid`
-- **Show** specific theatre.
+### GET `/venues/:uuid`
+- **Show** specific venue.
 
-### GET `/theatres`
-- **List** theatres.
+### GET `/venues`
+- **List** venues.

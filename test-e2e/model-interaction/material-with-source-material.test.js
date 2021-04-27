@@ -27,11 +27,11 @@ describe('Materials with source material', () => {
 	const A_MOORISH_CAPTAIN_MATERIAL_UUID = '48';
 	const OTHELLO_MATERIAL_UUID = '58';
 	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = '64';
-	const NOVELLO_THEATRE_UUID = '66';
+	const NOVELLO_THEATRE_VENUE_UUID = '66';
 	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = '67';
-	const HANOVER_GRAND_THEATRE_UUID = '69';
+	const HANOVER_GRAND_VENUE_UUID = '69';
 	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '70';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '72';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '72';
 	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '73';
 	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = '76';
 
@@ -266,7 +266,7 @@ describe('Materials with source material', () => {
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
-				theatre: {
+				venue: {
 					name: 'Novello Theatre'
 				}
 			});
@@ -281,7 +281,7 @@ describe('Materials with source material', () => {
 				material: {
 					name: 'The Donkey Show'
 				},
-				theatre: {
+				venue: {
 					name: 'Hanover Grand'
 				}
 			});
@@ -296,7 +296,7 @@ describe('Materials with source material', () => {
 				material: {
 					name: 'The Indian Boy'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				}
 			});
@@ -311,7 +311,7 @@ describe('Materials with source material', () => {
 				material: {
 					name: 'Shakespeare\'s Villains'
 				},
-				theatre: {
+				venue: {
 					name: 'Theatre Royal Haymarket'
 				}
 			});
@@ -326,7 +326,7 @@ describe('Materials with source material', () => {
 				material: {
 					name: 'Othello'
 				},
-				theatre: {
+				venue: {
 					name: 'Donmar Warehouse'
 				}
 			});
@@ -517,11 +517,11 @@ describe('Materials with source material', () => {
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];
@@ -541,11 +541,11 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					startDate: '2006-11-07',
 					endDate: '2006-11-11',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -554,11 +554,11 @@ describe('Materials with source material', () => {
 					name: 'The Donkey Show',
 					startDate: '2000-09-12',
 					endDate: '2002-01-02',
-					theatre: {
-						model: 'theatre',
-						uuid: HANOVER_GRAND_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: HANOVER_GRAND_VENUE_UUID,
 						name: 'Hanover Grand',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];

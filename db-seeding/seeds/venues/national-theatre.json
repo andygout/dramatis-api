@@ -1,6 +1,6 @@
 {
 	"name": "National Theatre",
-	"subTheatres": [
+	"subVenues": [
 		{
 			"name": "Olivier Theatre"
 		},

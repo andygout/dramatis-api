@@ -15,7 +15,7 @@ describe('Character portrayed with other roles', () => {
 	const COCO_CHARACTER_UUID = '12';
 	const GEORDIE_CHARACTER_UUID = '13';
 	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = '14';
-	const NATIONAL_THEATRE_UUID = '16';
+	const NATIONAL_THEATRE_VENUE_UUID = '16';
 	const STEPHEN_HARPER_PERSON_UUID = '18';
 
 	let joeysMotherCharacter;
@@ -70,7 +70,7 @@ describe('Character portrayed with other roles', () => {
 				material: {
 					name: 'War Horse'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -133,11 +133,11 @@ describe('Character portrayed with other roles', () => {
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -190,11 +190,11 @@ describe('Character portrayed with other roles', () => {
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -247,11 +247,11 @@ describe('Character portrayed with other roles', () => {
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -304,11 +304,11 @@ describe('Character portrayed with other roles', () => {
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{

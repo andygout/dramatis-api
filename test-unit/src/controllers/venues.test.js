@@ -2,15 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { createStubInstance, stub } from 'sinon';
 
-import { Theatre } from '../../../src/models';
+import { Venue } from '../../../src/models';
 
-describe('Theatres controller', () => {
+describe('Venues controller', () => {
 
 	let stubs;
 
-	const TheatreStub = function () {
+	const VenueStub = function () {
 
-		return createStubInstance(Theatre);
+		return createStubInstance(Venue);
 
 	};
 
@@ -25,7 +25,7 @@ describe('Theatres controller', () => {
 				sendJsonResponse: stub().returns('sendJsonResponse response')
 			},
 			models: {
-				Theatre: TheatreStub
+				Venue: VenueStub
 			},
 			request: stub(),
 			response: stub(),
@@ -35,7 +35,7 @@ describe('Theatres controller', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/controllers/theatres', {
+		proxyquire('../../../src/controllers/venues', {
 			'../lib/call-class-methods': stubs.callClassMethodsModule,
 			'../lib/send-json-response': stubs.sendJsonResponseModule,
 			'../models': stubs.models
@@ -43,9 +43,9 @@ describe('Theatres controller', () => {
 
 	const callFunction = functionName => {
 
-		const theatresController = createSubject();
+		const venuesController = createSubject();
 
-		return theatresController[functionName](stubs.request, stubs.response, stubs.next);
+		return venuesController[functionName](stubs.request, stubs.response, stubs.next);
 
 	};
 
@@ -56,7 +56,7 @@ describe('Theatres controller', () => {
 			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
 			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
-				stubs.response, stubs.models.Theatre() // eslint-disable-line new-cap
+				stubs.response, stubs.models.Venue() // eslint-disable-line new-cap
 			)).to.be.true;
 
 		});
@@ -70,7 +70,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre(), 'create' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Venue(), 'create' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -85,7 +85,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre(), 'edit' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Venue(), 'edit' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -100,7 +100,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre(), 'update' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Venue(), 'update' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -115,7 +115,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre(), 'delete' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Venue(), 'delete' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -130,7 +130,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre(), 'show' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Venue(), 'show' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -145,7 +145,7 @@ describe('Theatres controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Theatre, 'theatre'
+				stubs.response, stubs.next, stubs.models.Venue, 'venue'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

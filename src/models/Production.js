@@ -1,7 +1,7 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
 import Base from './Base';
-import { CastMember, CreativeCredit, CrewCredit, Material, ProducerCredit, Theatre } from '.';
+import { CastMember, CreativeCredit, CrewCredit, Material, ProducerCredit, Venue } from '.';
 
 export default class Production extends Base {
 
@@ -15,7 +15,7 @@ export default class Production extends Base {
 			pressDate,
 			endDate,
 			material,
-			theatre,
+			venue,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -32,7 +32,7 @@ export default class Production extends Base {
 
 		this.material = new Material({ ...material, isAssociation: true });
 
-		this.theatre = new Theatre({ ...theatre, isAssociation: true });
+		this.venue = new Venue({ ...venue, isAssociation: true });
 
 		this.producerCredits = producerCredits
 			? producerCredits.map(producerCredit => new ProducerCredit(producerCredit))
@@ -68,9 +68,9 @@ export default class Production extends Base {
 
 		this.material.validateDifferentiator();
 
-		this.theatre.validateName({ isRequired: false });
+		this.venue.validateName({ isRequired: false });
 
-		this.theatre.validateDifferentiator();
+		this.venue.validateDifferentiator();
 
 		const duplicateProducerCreditIndices = getDuplicateNameIndices(this.producerCredits);
 

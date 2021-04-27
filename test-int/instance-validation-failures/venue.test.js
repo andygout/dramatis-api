@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { createSandbox } from 'sinon';
 
-import Theatre from '../../src/models/Theatre';
+import Venue from '../../src/models/Venue';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
-describe('Theatre instance', () => {
+describe('Venue instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -29,7 +29,7 @@ describe('Theatre instance', () => {
 
 			it('assigns appropriate error', async () => {
 
-				const instance = new Theatre({ name: '' });
+				const instance = new Venue({ name: '' });
 
 				const result = await instance.create();
 
@@ -43,7 +43,7 @@ describe('Theatre instance', () => {
 							'Value is too short'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -56,7 +56,7 @@ describe('Theatre instance', () => {
 
 			it('assigns appropriate error', async () => {
 
-				const instance = new Theatre({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Venue({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance.create();
 
@@ -70,7 +70,7 @@ describe('Theatre instance', () => {
 							'Value is too long'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -83,7 +83,7 @@ describe('Theatre instance', () => {
 
 			it('assigns appropriate error', async () => {
 
-				const instance = new Theatre({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Venue({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance.create();
 
@@ -97,7 +97,7 @@ describe('Theatre instance', () => {
 							'Value is too long'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -106,20 +106,20 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('sub-theatre name value exceeds maximum limit', () => {
+		context('sub-venue name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
 				};
 
-				const instance = new Theatre(instanceProps);
+				const instance = new Venue(instanceProps);
 
 				const result = await instance.create();
 
@@ -129,7 +129,7 @@ describe('Theatre instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
-					subTheatres: [
+					subVenues: [
 						{
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,
@@ -149,13 +149,13 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('sub-theatre differentiator value exceeds maximum limit', () => {
+		context('sub-venue differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Olivier Theatre',
 							differentiator: ABOVE_MAX_LENGTH_STRING
@@ -163,7 +163,7 @@ describe('Theatre instance', () => {
 					]
 				};
 
-				const instance = new Theatre(instanceProps);
+				const instance = new Venue(instanceProps);
 
 				const result = await instance.create();
 
@@ -173,7 +173,7 @@ describe('Theatre instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
-					subTheatres: [
+					subVenues: [
 						{
 							uuid: undefined,
 							name: 'Olivier Theatre',
@@ -193,20 +193,20 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('theatre instance assigns itself as a sub-theatre', () => {
+		context('venue instance assigns itself as a sub-venue', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'National Theatre'
 						}
 					]
 				};
 
-				const instance = new Theatre(instanceProps);
+				const instance = new Venue(instanceProps);
 
 				const result = await instance.create();
 
@@ -216,7 +216,7 @@ describe('Theatre instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
-					subTheatres: [
+					subVenues: [
 						{
 							uuid: undefined,
 							name: 'National Theatre',
@@ -239,13 +239,13 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('duplicate sub-theatres', () => {
+		context('duplicate sub-venues', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Olivier Theatre'
 						},
@@ -263,7 +263,7 @@ describe('Theatre instance', () => {
 					]
 				};
 
-				const instance = new Theatre(instanceProps);
+				const instance = new Venue(instanceProps);
 
 				const result = await instance.create();
 
@@ -273,7 +273,7 @@ describe('Theatre instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {},
-					subTheatres: [
+					subVenues: [
 						{
 							uuid: undefined,
 							name: 'Olivier Theatre',
@@ -335,7 +335,7 @@ describe('Theatre instance', () => {
 
 			it('assigns appropriate error', async () => {
 
-				const instance = new Theatre({ name: 'National Theatre' });
+				const instance = new Venue({ name: 'National Theatre' });
 
 				const result = await instance.create();
 
@@ -352,7 +352,7 @@ describe('Theatre instance', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -371,20 +371,20 @@ describe('Theatre instance', () => {
 
 		});
 
-		context('sub-theatre name value exceeds maximum limit and name value already exists in database', () => {
+		context('sub-venue name value exceeds maximum limit and name value already exists in database', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
 				};
 
-				const instance = new Theatre(instanceProps);
+				const instance = new Venue(instanceProps);
 
 				const result = await instance.create();
 
@@ -401,7 +401,7 @@ describe('Theatre instance', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					subTheatres: [
+					subVenues: [
 						{
 							uuid: undefined,
 							name: ABOVE_MAX_LENGTH_STRING,

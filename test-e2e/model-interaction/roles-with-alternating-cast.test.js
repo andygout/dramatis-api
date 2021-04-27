@@ -13,11 +13,11 @@ describe('Roles with alternating cast', () => {
 	const AUSTIN_CHARACTER_UUID = '6';
 	const LEE_CHARACTER_UUID = '7';
 	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = '8';
-	const CRUCIBLE_THEATRE_UUID = '10';
+	const CRUCIBLE_THEATRE_VENUE_UUID = '10';
 	const NIGEL_HARMAN_PERSON_UUID = '11';
 	const JOHN_LIGHT_PERSON_UUID = '12';
 	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '13';
-	const VAUDEVILLE_THEATRE_UUID = '15';
+	const VAUDEVILLE_THEATRE_VENUE_UUID = '15';
 	const KIT_HARINGTON_PERSON_UUID = '16';
 	const JOHNNY_FLYNN_PERSON_UUID = '17';
 
@@ -68,7 +68,7 @@ describe('Roles with alternating cast', () => {
 				material: {
 					name: 'True West'
 				},
-				theatre: {
+				venue: {
 					name: 'Crucible Theatre'
 				},
 				cast: [
@@ -107,7 +107,7 @@ describe('Roles with alternating cast', () => {
 				material: {
 					name: 'True West'
 				},
-				theatre: {
+				venue: {
 					name: 'Vaudeville Theatre'
 				},
 				cast: [
@@ -179,11 +179,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
-					theatre: {
-						model: 'theatre',
-						uuid: VAUDEVILLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -224,11 +224,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -284,11 +284,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
-					theatre: {
-						model: 'theatre',
-						uuid: VAUDEVILLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -329,11 +329,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -495,11 +495,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -537,11 +537,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
-					theatre: {
-						model: 'theatre',
-						uuid: CRUCIBLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -579,11 +579,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
-					theatre: {
-						model: 'theatre',
-						uuid: VAUDEVILLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -621,11 +621,11 @@ describe('Roles with alternating cast', () => {
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
-					theatre: {
-						model: 'theatre',
-						uuid: VAUDEVILLE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

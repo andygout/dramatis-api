@@ -134,19 +134,19 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
-	describe('Production theatre uniqueness in database', () => {
+	describe('Production venue uniqueness in database', () => {
 
 		const DIAL_M_FOR_MURDER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-		const expectedTheatreNewTheatre1 = {
-			model: 'theatre',
+		const expectedVenueNewTheatre1 = {
+			model: 'venue',
 			name: 'New Theatre',
 			differentiator: '',
 			errors: {}
 		};
 
-		const expectedTheatreNewTheatre2 = {
-			model: 'theatre',
+		const expectedVenueNewTheatre2 = {
+			model: 'venue',
 			name: 'New Theatre',
 			differentiator: '1',
 			errors: {}
@@ -174,81 +174,81 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		it('updates production and creates theatre that does not have a differentiator', async () => {
+		it('updates production and creates venue that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(0);
+			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
 			const response = await chai.request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
-					theatre: {
+					venue: {
 						name: 'New Theatre'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 		});
 
-		it('updates production and creates theatre that has same name as existing theatre but uses a differentiator', async () => {
+		it('updates production and creates venue that has same name as existing venue but uses a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			const response = await chai.request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
-					theatre: {
+					venue: {
 						name: 'New Theatre',
 						differentiator: '1'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('updates production and uses existing theatre that does not have a differentiator', async () => {
+		it('updates production and uses existing venue that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
-					theatre: {
+					venue: {
 						name: 'New Theatre'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre1);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('updates production and uses existing theatre that has a differentiator', async () => {
+		it('updates production and uses existing venue that has a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
-					theatre: {
+					venue: {
 						name: 'New Theatre',
 						differentiator: '1'
 					}
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.theatre).to.deep.equal(expectedTheatreNewTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 

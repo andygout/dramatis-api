@@ -55,7 +55,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -103,7 +103,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -160,7 +160,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -220,7 +220,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -271,7 +271,7 @@ describe('Production instance', () => {
 							]
 						}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -323,7 +323,7 @@ describe('Production instance', () => {
 							]
 						}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -341,13 +341,13 @@ describe('Production instance', () => {
 
 		});
 
-		context('theatre name value exceeds maximum limit', () => {
+		context('venue name value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
+					venue: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
 				};
@@ -370,7 +370,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
@@ -392,13 +392,13 @@ describe('Production instance', () => {
 
 		});
 
-		context('theatre differentiator value exceeds maximum limit', () => {
+		context('venue differentiator value exceeds maximum limit', () => {
 
 			it('assigns appropriate error', async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
-					theatre: {
+					venue: {
 						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
@@ -422,7 +422,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
@@ -475,7 +475,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -537,7 +537,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -610,7 +610,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -682,7 +682,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -754,7 +754,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -828,7 +828,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -920,7 +920,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1058,7 +1058,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1143,7 +1143,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1229,7 +1229,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1304,7 +1304,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1367,7 +1367,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1439,7 +1439,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1536,7 +1536,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1611,7 +1611,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1686,7 +1686,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1762,7 +1762,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1837,7 +1837,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1912,7 +1912,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1997,7 +1997,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2109,7 +2109,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2171,7 +2171,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2244,7 +2244,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2315,7 +2315,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2387,7 +2387,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2459,7 +2459,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2533,7 +2533,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2625,7 +2625,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2763,7 +2763,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2848,7 +2848,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2934,7 +2934,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3008,7 +3008,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3070,7 +3070,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3143,7 +3143,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3214,7 +3214,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3286,7 +3286,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3358,7 +3358,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3432,7 +3432,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3524,7 +3524,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3662,7 +3662,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3747,7 +3747,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3833,7 +3833,7 @@ describe('Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
-					theatre: {
+					venue: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',

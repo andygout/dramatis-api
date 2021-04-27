@@ -6,14 +6,14 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Theatre with sub-theatres', () => {
+describe('Venue with sub-venues', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_UUID = '4';
-	const OLIVIER_THEATRE_UUID = '5';
-	const LYTTELTON_THEATRE_UUID = '6';
-	const DORFMAN_THEATRE_UUID = '7';
+	const NATIONAL_THEATRE_VENUE_UUID = '4';
+	const OLIVIER_THEATRE_VENUE_UUID = '5';
+	const LYTTELTON_THEATRE_VENUE_UUID = '6';
+	const DORFMAN_THEATRE_VENUE_UUID = '7';
 	const MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID = '11';
 	const MOTHER_COURAGE_CHARACTER_UUID = '13';
 	const RICHARD_II_MATERIAL_UUID = '17';
@@ -22,8 +22,8 @@ describe('Theatre with sub-theatres', () => {
 	const FIONA_SHAW_PERSON_UUID = '23';
 	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '24';
 
-	let nationalTheatre;
-	let olivierTheatre;
+	let nationalTheatreVenue;
+	let olivierTheatreVenue;
 	let motherCourageCharacter;
 	let kingRichardIICharacter;
 	let motherCourageAndHerChildrenMaterial;
@@ -43,10 +43,10 @@ describe('Theatre with sub-theatres', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/theatres')
+			.post('/venues')
 			.send({
 				name: 'National Theatre',
-				subTheatres: [
+				subVenues: [
 					{
 						name: 'Olivier Theatre'
 					},
@@ -99,7 +99,7 @@ describe('Theatre with sub-theatres', () => {
 				material: {
 					name: 'Mother Courage and Her Children'
 				},
-				theatre: {
+				venue: {
 					name: 'Olivier Theatre'
 				},
 				cast: [
@@ -124,7 +124,7 @@ describe('Theatre with sub-theatres', () => {
 				material: {
 					name: 'Richard II'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -139,11 +139,11 @@ describe('Theatre with sub-theatres', () => {
 				]
 			});
 
-		nationalTheatre = await chai.request(app)
-			.get(`/theatres/${NATIONAL_THEATRE_UUID}`);
+		nationalTheatreVenue = await chai.request(app)
+			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatre = await chai.request(app)
-			.get(`/theatres/${OLIVIER_THEATRE_UUID}`);
+		olivierTheatreVenue = await chai.request(app)
+			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
 		motherCourageCharacter = await chai.request(app)
 			.get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
@@ -174,35 +174,35 @@ describe('Theatre with sub-theatres', () => {
 
 	});
 
-	describe('National Theatre (theatre)', () => {
+	describe('National Theatre (venue)', () => {
 
-		it('includes its sub-theatres', () => {
+		it('includes its sub-venues', () => {
 
-			const expectedSubTheatres = [
+			const expectedSubVenues = [
 				{
-					model: 'theatre',
-					uuid: OLIVIER_THEATRE_UUID,
+					model: 'venue',
+					uuid: OLIVIER_THEATRE_VENUE_UUID,
 					name: 'Olivier Theatre'
 				},
 				{
-					model: 'theatre',
-					uuid: LYTTELTON_THEATRE_UUID,
+					model: 'venue',
+					uuid: LYTTELTON_THEATRE_VENUE_UUID,
 					name: 'Lyttelton Theatre'
 				},
 				{
-					model: 'theatre',
-					uuid: DORFMAN_THEATRE_UUID,
+					model: 'venue',
+					uuid: DORFMAN_THEATRE_VENUE_UUID,
 					name: 'Dorfman Theatre'
 				}
 			];
 
-			const { subTheatres } = nationalTheatre.body;
+			const { subVenues } = nationalTheatreVenue.body;
 
-			expect(subTheatres).to.deep.equal(expectedSubTheatres);
+			expect(subVenues).to.deep.equal(expectedSubVenues);
 
 		});
 
-		it('includes productions at this theatre and, where applicable, the specific sub-theatre', () => {
+		it('includes productions at this venue and, where applicable, the specific sub-venue', () => {
 
 			const expectedProductions = [
 				{
@@ -211,10 +211,10 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					subTheatre: {
-						model: 'theatre',
+					subVenue: {
+						model: 'venue',
 						name: 'Olivier Theatre',
-						uuid: OLIVIER_THEATRE_UUID
+						uuid: OLIVIER_THEATRE_VENUE_UUID
 					}
 				},
 				{
@@ -223,11 +223,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					subTheatre: null
+					subVenue: null
 				}
 			];
 
-			const { productions } = nationalTheatre.body;
+			const { productions } = nationalTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
@@ -235,23 +235,23 @@ describe('Theatre with sub-theatres', () => {
 
 	});
 
-	describe('Olivier Theatre (theatre)', () => {
+	describe('Olivier Theatre (venue)', () => {
 
-		it('includes National Theatre as its sur-theatre', () => {
+		it('includes National Theatre as its sur-venue', () => {
 
-			const expectedSurTheatre = {
-				model: 'theatre',
-				uuid: NATIONAL_THEATRE_UUID,
+			const expectedSurVenue = {
+				model: 'venue',
+				uuid: NATIONAL_THEATRE_VENUE_UUID,
 				name: 'National Theatre'
 			};
 
-			const { surTheatre } = olivierTheatre.body;
+			const { surVenue } = olivierTheatreVenue.body;
 
-			expect(surTheatre).to.deep.equal(expectedSurTheatre);
+			expect(surVenue).to.deep.equal(expectedSurVenue);
 
 		});
 
-		it('includes productions at this theatre', () => {
+		it('includes productions at this venue', () => {
 
 			const expectedProductions = [
 				{
@@ -260,11 +260,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					subTheatre: null
+					subVenue: null
 				}
 			];
 
-			const { productions } = olivierTheatre.body;
+			const { productions } = olivierTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
@@ -274,7 +274,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Mother Courage (character)', () => {
 
-		it('includes productions in which character was portrayed, including the theatre and its sur-theatre', () => {
+		it('includes productions in which character was portrayed, including the venue and its sur-venue', () => {
 
 			const expectedProductions = [
 				{
@@ -283,13 +283,13 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -316,7 +316,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('King Richard II (character)', () => {
 
-		it('includes productions in which character was portrayed, including the theatre (but with no sur-theatre as does not apply)', () => {
+		it('includes productions in which character was portrayed, including the venue (but with no sur-venue as does not apply)', () => {
 
 			const expectedProductions = [
 				{
@@ -325,11 +325,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -354,7 +354,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Mother Courage and Her Children (material)', () => {
 
-		it('includes productions of material, including the theatre and its sur-theatre', () => {
+		it('includes productions of material, including the venue and its sur-venue', () => {
 
 			const expectedProductions = [
 				{
@@ -363,13 +363,13 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					}
@@ -386,7 +386,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Richard II (material)', () => {
 
-		it('includes productions of material, including the theatre (but with no sur-theatre as does not apply)', () => {
+		it('includes productions of material, including the venue (but with no sur-venue as does not apply)', () => {
 
 			const expectedProductions = [
 				{
@@ -395,11 +395,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];
@@ -414,22 +414,22 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Mother Courage and Her Children at Olivier Theatre (production)', () => {
 
-		it('includes the theatre and its sur-theatre', () => {
+		it('includes the venue and its sur-venue', () => {
 
-			const expectedTheatre = {
-				model: 'theatre',
-				uuid: OLIVIER_THEATRE_UUID,
+			const expectedVenue = {
+				model: 'venue',
+				uuid: OLIVIER_THEATRE_VENUE_UUID,
 				name: 'Olivier Theatre',
-				surTheatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
+				surVenue: {
+					model: 'venue',
+					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre'
 				}
 			};
 
-			const { theatre } = motherCourageAndHerChildrenOlivierProduction.body;
+			const { venue } = motherCourageAndHerChildrenOlivierProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatre);
+			expect(venue).to.deep.equal(expectedVenue);
 
 		});
 
@@ -437,18 +437,18 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Richard II at National Theatre (production)', () => {
 
-		it('includes the theatre (but with no sur-theatre as does not apply)', () => {
+		it('includes the venue (but with no sur-venue as does not apply)', () => {
 
-			const expectedTheatre = {
-				model: 'theatre',
-				uuid: NATIONAL_THEATRE_UUID,
+			const expectedVenue = {
+				model: 'venue',
+				uuid: NATIONAL_THEATRE_VENUE_UUID,
 				name: 'National Theatre',
-				surTheatre: null
+				surVenue: null
 			};
 
-			const { theatre } = richardIINationalProduction.body;
+			const { venue } = richardIINationalProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatre);
+			expect(venue).to.deep.equal(expectedVenue);
 
 		});
 
@@ -456,7 +456,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('Fiona Shaw (person)', () => {
 
-		it('includes in their production credits the theatre and, where applicable, its sur-theatre', () => {
+		it('includes in their production credits the venue and, where applicable, its sur-venue', () => {
 
 			const expectedCastMemberProductions = [
 				{
@@ -465,13 +465,13 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -490,11 +490,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -515,32 +515,32 @@ describe('Theatre with sub-theatres', () => {
 
 	});
 
-	describe('theatres list', () => {
+	describe('venues list', () => {
 
-		it('includes theatre and corresponding sub-theatres', async () => {
+		it('includes venue and corresponding sub-venues', async () => {
 
 			const response = await chai.request(app)
-				.get('/theatres');
+				.get('/venues');
 
 			const expectedResponseBody = [
 				{
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
+					model: 'venue',
+					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre',
-					subTheatres: [
+					subVenues: [
 						{
-							model: 'theatre',
-							uuid: OLIVIER_THEATRE_UUID,
+							model: 'venue',
+							uuid: OLIVIER_THEATRE_VENUE_UUID,
 							name: 'Olivier Theatre'
 						},
 						{
-							model: 'theatre',
-							uuid: LYTTELTON_THEATRE_UUID,
+							model: 'venue',
+							uuid: LYTTELTON_THEATRE_VENUE_UUID,
 							name: 'Lyttelton Theatre'
 						},
 						{
-							model: 'theatre',
-							uuid: DORFMAN_THEATRE_UUID,
+							model: 'venue',
+							uuid: DORFMAN_THEATRE_VENUE_UUID,
 							name: 'Dorfman Theatre'
 						}
 					]
@@ -556,7 +556,7 @@ describe('Theatre with sub-theatres', () => {
 
 	describe('productions list', () => {
 
-		it('includes theatre and (if applicable) corresponding sur-theatre', async () => {
+		it('includes venue and (if applicable) corresponding sur-venue', async () => {
 
 			const response = await chai.request(app)
 				.get('/productions');
@@ -568,13 +568,13 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					}
@@ -585,11 +585,11 @@ describe('Theatre with sub-theatres', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];

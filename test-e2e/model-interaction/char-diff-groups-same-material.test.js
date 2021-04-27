@@ -16,7 +16,7 @@ describe('Character with multiple appearances in the same material in different 
 	const ALEKSANDER_KING_CHARACTER_UUID = '10';
 	const ROSE_KING_CHARACTER_UUID = '11';
 	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '12';
-	const NATIONAL_THEATRE_UUID = '14';
+	const NATIONAL_THEATRE_VENUE_UUID = '14';
 	const SIOBHAN_FINNERAN_PERSON_UUID = '15';
 	const JO_HERBERT_PERSON_UUID = '16';
 	const JAMES_LAURENSON_PERSON_UUID = '17';
@@ -102,7 +102,7 @@ describe('Character with multiple appearances in the same material in different 
 				material: {
 					name: '3 Winters'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -246,11 +246,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -322,11 +322,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -390,11 +390,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -461,11 +461,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -670,11 +670,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -706,11 +706,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -742,11 +742,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -778,11 +778,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -814,11 +814,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -850,11 +850,11 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

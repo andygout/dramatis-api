@@ -10,12 +10,12 @@ describe('Productions with producer', () => {
 
 	chai.use(chaiHttp);
 
-	const ROYAL_COURT_THEATRE_UUID = '4';
-	const JERWOOD_THEATRE_DOWNSTAIRS_UUID = '5';
-	const JERWOOD_THEATRE_UPSTAIRS_UUID = '6';
-	const THE_SITE_THEATRE_UUID = '7';
+	const ROYAL_COURT_THEATRE_VENUE_UUID = '4';
+	const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '5';
+	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '6';
+	const THE_SITE_VENUE_UUID = '7';
 	const HANGMEN_WYNDHAMS_PRODUCTION_UUID = '8';
-	const WYNDHAMS_THEATRE_UUID = '10';
+	const WYNDHAMS_THEATRE_VENUE_UUID = '10';
 	const ROBERT_FOX_PERSON_UUID = '11';
 	const SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID = '12';
 	const ROYAL_COURT_THEATRE_COMPANY_UUID = '13';
@@ -60,10 +60,10 @@ describe('Productions with producer', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/theatres')
+			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
-				subTheatres: [
+				subVenues: [
 					{
 						name: 'Jerwood Theatre Downstairs'
 					},
@@ -83,7 +83,7 @@ describe('Productions with producer', () => {
 				startDate: '2015-12-01',
 				pressDate: '2015-12-07',
 				endDate: '2016-03-05',
-				theatre: {
+				venue: {
 					name: 'Wyndham\'s Theatre'
 				},
 				producerCredits: [
@@ -171,7 +171,7 @@ describe('Productions with producer', () => {
 				startDate: '2019-05-10',
 				pressDate: '2019-05-16',
 				endDate: '2019-06-15',
-				theatre: {
+				venue: {
 					name: 'Jerwood Theatre Downstairs'
 				},
 				producerCredits: [
@@ -259,7 +259,7 @@ describe('Productions with producer', () => {
 				startDate: '2019-04-03',
 				pressDate: '2019-04-08',
 				endDate: '2019-04-27',
-				theatre: {
+				venue: {
 					name: 'Jerwood Theatre Upstairs'
 				},
 				producerCredits: [
@@ -352,7 +352,7 @@ describe('Productions with producer', () => {
 				name: 'Lights Out',
 				startDate: '2017-05-17',
 				endDate: '2017-05-19',
-				theatre: {
+				venue: {
 					name: 'The Site'
 				},
 				producerCredits: [
@@ -891,13 +891,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1010,13 +1010,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1136,11 +1136,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{
@@ -1267,13 +1267,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1386,13 +1386,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1512,13 +1512,13 @@ describe('Productions with producer', () => {
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1597,11 +1597,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{
@@ -1728,13 +1728,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1847,13 +1847,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -1973,13 +1973,13 @@ describe('Productions with producer', () => {
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2058,11 +2058,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{
@@ -2189,13 +2189,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2330,13 +2330,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2449,13 +2449,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2575,11 +2575,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{
@@ -2706,13 +2706,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2825,13 +2825,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -2951,13 +2951,13 @@ describe('Productions with producer', () => {
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -3036,11 +3036,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{
@@ -3167,13 +3167,13 @@ describe('Productions with producer', () => {
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_DOWNSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -3286,13 +3286,13 @@ describe('Productions with producer', () => {
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
-					theatre: {
-						model: 'theatre',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_UUID,
+					venue: {
+						model: 'venue',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -3412,13 +3412,13 @@ describe('Productions with producer', () => {
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
-					theatre: {
-						model: 'theatre',
-						uuid: THE_SITE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
-						surTheatre: {
-							model: 'theatre',
-							uuid: ROYAL_COURT_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
@@ -3497,11 +3497,11 @@ describe('Productions with producer', () => {
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
-					theatre: {
-						model: 'theatre',
-						uuid: WYNDHAMS_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					producerCredits: [
 						{

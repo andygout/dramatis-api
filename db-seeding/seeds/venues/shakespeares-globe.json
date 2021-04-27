@@ -1,6 +1,6 @@
 {
 	"name": "Shakespeare's Globe",
-	"subTheatres": [
+	"subVenues": [
 		{
 			"name": "Globe Theatre"
 		},

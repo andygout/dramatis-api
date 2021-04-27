@@ -17,19 +17,19 @@ describe('Character with variant names from productions of different materials',
 	const FORTINBRAS_MATERIAL_UUID = '20';
 	const HAMLETMACHINE_MATERIAL_UUID = '28';
 	const HAMLET_NATIONAL_PRODUCTION_UUID = '32';
-	const NATIONAL_THEATRE_UUID = '34';
+	const NATIONAL_THEATRE_VENUE_UUID = '34';
 	const RORY_KINNEAR_PERSON_UUID = '35';
 	const PATRICK_MALAHIDE_PERSON_UUID = '36';
 	const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID = '37';
-	const THEATRE_ROYAL_HAYMARKET_THEATRE_UUID = '39';
+	const THEATRE_ROYAL_HAYMARKET_VENUE_UUID = '39';
 	const JACK_HAWKINS_PERSON_UUID = '40';
 	const JAMES_SIMMONS_PERSON_UUID = '41';
 	const FORTINBRAS_LA_JOLLA_PRODUCTION_UUID = '42';
-	const LA_JOLLA_PLAYHOUSE_THEATRE_UUID = '44';
+	const LA_JOLLA_PLAYHOUSE_VENUE_UUID = '44';
 	const DON_REILLY_PERSON_UUID = '45';
 	const JONATHAN_FREEMAN_PERSON_UUID = '46';
 	const HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID = '47';
-	const TEATRO_SAN_NICOLÒ_THEATRE_UUID = '49';
+	const TEATRO_SAN_NICOLÒ_VENUE_UUID = '49';
 	const GABRIELE_CICIRELLO_PERSON_UUID = '50';
 	const RENATO_CIVELLO_PERSON_UUID = '51';
 
@@ -139,7 +139,7 @@ describe('Character with variant names from productions of different materials',
 				material: {
 					name: 'Hamlet'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -174,7 +174,7 @@ describe('Character with variant names from productions of different materials',
 				material: {
 					name: 'Rosencrantz and Guildenstern Are Dead'
 				},
-				theatre: {
+				venue: {
 					name: 'Theatre Royal Haymarket'
 				},
 				cast: [
@@ -209,7 +209,7 @@ describe('Character with variant names from productions of different materials',
 				material: {
 					name: 'Fortinbras'
 				},
-				theatre: {
+				venue: {
 					name: 'La Jolla Playhouse'
 				},
 				cast: [
@@ -243,7 +243,7 @@ describe('Character with variant names from productions of different materials',
 				material: {
 					name: 'Hamletmachine'
 				},
-				theatre: {
+				venue: {
 					name: 'Teatro San Nicolò'
 				},
 				cast: [
@@ -371,11 +371,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Hamletmachine',
 					startDate: '2017-07-07',
 					endDate: '2017-07-28',
-					theatre: {
-						model: 'theatre',
-						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: TEATRO_SAN_NICOLÒ_VENUE_UUID,
 						name: 'Teatro San Nicolò',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -394,11 +394,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					startDate: '2011-06-16',
 					endDate: '2011-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
 						name: 'Theatre Royal Haymarket',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -417,11 +417,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -440,11 +440,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Fortinbras',
 					startDate: '1991-06-18',
 					endDate: '1991-07-28',
-					theatre: {
-						model: 'theatre',
-						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LA_JOLLA_PLAYHOUSE_VENUE_UUID,
 						name: 'La Jolla Playhouse',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -642,11 +642,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -678,11 +678,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					startDate: '2011-06-16',
 					endDate: '2011-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: THEATRE_ROYAL_HAYMARKET_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
 						name: 'Theatre Royal Haymarket',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -714,11 +714,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Fortinbras',
 					startDate: '1991-06-18',
 					endDate: '1991-07-28',
-					theatre: {
-						model: 'theatre',
-						uuid: LA_JOLLA_PLAYHOUSE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LA_JOLLA_PLAYHOUSE_VENUE_UUID,
 						name: 'La Jolla Playhouse',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -750,11 +750,11 @@ describe('Character with variant names from productions of different materials',
 					name: 'Hamletmachine',
 					startDate: '2017-07-07',
 					endDate: '2017-07-28',
-					theatre: {
-						model: 'theatre',
-						uuid: TEATRO_SAN_NICOLÒ_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: TEATRO_SAN_NICOLÒ_VENUE_UUID,
 						name: 'Teatro San Nicolò',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
