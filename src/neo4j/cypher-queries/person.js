@@ -277,16 +277,16 @@ const getShowQuery = () => `
 			END
 		) AS castMemberProductions
 
-	OPTIONAL MATCH (person)<-[personCreativeRel:HAS_CREATIVE_ENTITY]-(production:Production)
+	OPTIONAL MATCH (person)<-[personRel:HAS_CREATIVE_ENTITY]-(production:Production)
 
-	OPTIONAL MATCH (production)-[companyCreativeRel:HAS_CREATIVE_ENTITY]->
-		(creditedEmployerCompany:Company { uuid: personCreativeRel.creditedCompanyUuid })
+	OPTIONAL MATCH (production)-[companyRel:HAS_CREATIVE_ENTITY]->
+		(creditedEmployerCompany:Company { uuid: personRel.creditedCompanyUuid })
 		WHERE
-			personCreativeRel.creditPosition IS NULL OR
-			personCreativeRel.creditPosition = companyCreativeRel.creditPosition
+			personRel.creditPosition IS NULL OR
+			personRel.creditPosition = companyRel.creditPosition
 
-	UNWIND (CASE WHEN companyCreativeRel IS NOT NULL AND EXISTS(companyCreativeRel.creditedMemberUuids)
-		THEN [uuid IN companyCreativeRel.creditedMemberUuids]
+	UNWIND (CASE WHEN companyRel IS NOT NULL AND EXISTS(companyRel.creditedMemberUuids)
+		THEN [uuid IN companyRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS coCreditedMemberUuid
 
@@ -295,8 +295,8 @@ const getShowQuery = () => `
 			WHERE
 				coCreditedMember.uuid <> person.uuid AND
 				(
-					companyCreativeRel.creditPosition IS NULL OR
-					companyCreativeRel.creditPosition = coCreditedMemberRel.creditPosition
+					companyRel.creditPosition IS NULL OR
+					companyRel.creditPosition = coCreditedMemberRel.creditPosition
 				)
 
 		WITH
@@ -304,9 +304,9 @@ const getShowQuery = () => `
 			materials,
 			producerProductions,
 			castMemberProductions,
-			personCreativeRel,
+			personRel,
 			production,
-			companyCreativeRel,
+			companyRel,
 			creditedEmployerCompany,
 			coCreditedMember
 			ORDER BY coCreditedMemberRel.memberPosition
@@ -316,9 +316,9 @@ const getShowQuery = () => `
 			materials,
 			producerProductions,
 			castMemberProductions,
-			personCreativeRel,
+			personRel,
 			production,
-			companyCreativeRel,
+			companyRel,
 			creditedEmployerCompany,
 			COLLECT(coCreditedMember { model: 'person', .uuid, .name }) AS coCreditedMembers
 
@@ -327,22 +327,22 @@ const getShowQuery = () => `
 		materials,
 		producerProductions,
 		castMemberProductions,
-		personCreativeRel,
+		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
 			ELSE creditedEmployerCompany { model: 'company', .uuid, .name, coCreditedMembers: coCreditedMembers }
 		END AS creditedEmployerCompany,
 		COALESCE(creditedEmployerCompany, person) AS entity,
-		COALESCE(companyCreativeRel, personCreativeRel) AS entityCreativeRel
+		COALESCE(companyRel, personRel) AS entityRel
 
 	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity)
 		WHERE
 			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(
-				entityCreativeRel.creditPosition IS NULL OR
-				entityCreativeRel.creditPosition = coCreditedEntityRel.creditPosition
+				entityRel.creditPosition IS NULL OR
+				entityRel.creditPosition = coCreditedEntityRel.creditPosition
 			) AND
 			coCreditedEntity.uuid <> entity.uuid
 
@@ -363,7 +363,7 @@ const getShowQuery = () => `
 			producerProductions,
 			castMemberProductions,
 			production,
-			entityCreativeRel,
+			entityRel,
 			creditedEmployerCompany,
 			coCreditedEntityRel,
 			coCreditedEntity,
@@ -376,7 +376,7 @@ const getShowQuery = () => `
 			producerProductions,
 			castMemberProductions,
 			production,
-			entityCreativeRel,
+			entityRel,
 			creditedEmployerCompany,
 			coCreditedEntityRel,
 			coCreditedEntity,
@@ -393,7 +393,7 @@ const getShowQuery = () => `
 		producerProductions,
 		castMemberProductions,
 		production,
-		entityCreativeRel,
+		entityRel,
 		creditedEmployerCompany,
 		[coCreditedEntity IN COLLECT(
 			CASE coCreditedEntity WHEN NULL
@@ -409,7 +409,7 @@ const getShowQuery = () => `
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
-		ORDER BY entityCreativeRel.creditPosition
+		ORDER BY entityRel.creditPosition
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
@@ -418,7 +418,7 @@ const getShowQuery = () => `
 	WITH person, materials, producerProductions, castMemberProductions, production, theatre, surTheatre,
 		COLLECT({
 			model: 'creativeCredit',
-			name: entityCreativeRel.credit,
+			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
@@ -451,16 +451,16 @@ const getShowQuery = () => `
 			END
 		) AS creativeProductions
 
-	OPTIONAL MATCH (person)<-[personCrewRel:HAS_CREW_ENTITY]-(production:Production)
+	OPTIONAL MATCH (person)<-[personRel:HAS_CREW_ENTITY]-(production:Production)
 
-	OPTIONAL MATCH (production)-[companyCrewRel:HAS_CREW_ENTITY]->
-		(creditedEmployerCompany:Company { uuid: personCrewRel.creditedCompanyUuid })
+	OPTIONAL MATCH (production)-[companyRel:HAS_CREW_ENTITY]->
+		(creditedEmployerCompany:Company { uuid: personRel.creditedCompanyUuid })
 		WHERE
-			personCrewRel.creditPosition IS NULL OR
-			personCrewRel.creditPosition = companyCrewRel.creditPosition
+			personRel.creditPosition IS NULL OR
+			personRel.creditPosition = companyRel.creditPosition
 
-	UNWIND (CASE WHEN companyCrewRel IS NOT NULL AND EXISTS(companyCrewRel.creditedMemberUuids)
-		THEN [uuid IN companyCrewRel.creditedMemberUuids]
+	UNWIND (CASE WHEN companyRel IS NOT NULL AND EXISTS(companyRel.creditedMemberUuids)
+		THEN [uuid IN companyRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS coCreditedMemberUuid
 
@@ -469,8 +469,8 @@ const getShowQuery = () => `
 			WHERE
 				coCreditedMember.uuid <> person.uuid AND
 				(
-					companyCrewRel.creditPosition IS NULL OR
-					companyCrewRel.creditPosition = coCreditedMemberRel.creditPosition
+					companyRel.creditPosition IS NULL OR
+					companyRel.creditPosition = coCreditedMemberRel.creditPosition
 				)
 
 		WITH
@@ -479,9 +479,9 @@ const getShowQuery = () => `
 			producerProductions,
 			castMemberProductions,
 			creativeProductions,
-			personCrewRel,
+			personRel,
 			production,
-			companyCrewRel,
+			companyRel,
 			creditedEmployerCompany,
 			coCreditedMember
 			ORDER BY coCreditedMemberRel.memberPosition
@@ -492,9 +492,9 @@ const getShowQuery = () => `
 			producerProductions,
 			castMemberProductions,
 			creativeProductions,
-			personCrewRel,
+			personRel,
 			production,
-			companyCrewRel,
+			companyRel,
 			creditedEmployerCompany,
 			COLLECT(coCreditedMember { model: 'person', .uuid, .name }) AS coCreditedMembers
 
@@ -504,22 +504,22 @@ const getShowQuery = () => `
 		producerProductions,
 		castMemberProductions,
 		creativeProductions,
-		personCrewRel,
+		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
 			ELSE creditedEmployerCompany { model: 'company', .uuid, .name, coCreditedMembers: coCreditedMembers }
 		END AS creditedEmployerCompany,
 		COALESCE(creditedEmployerCompany, person) AS entity,
-		COALESCE(companyCrewRel, personCrewRel) AS entityCrewRel
+		COALESCE(companyRel, personRel) AS entityRel
 
 	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity)
 		WHERE
 			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(
-				entityCrewRel.creditPosition IS NULL OR
-				entityCrewRel.creditPosition = coCreditedEntityRel.creditPosition
+				entityRel.creditPosition IS NULL OR
+				entityRel.creditPosition = coCreditedEntityRel.creditPosition
 			) AND
 			coCreditedEntity.uuid <> entity.uuid
 
@@ -541,7 +541,7 @@ const getShowQuery = () => `
 			castMemberProductions,
 			creativeProductions,
 			production,
-			entityCrewRel,
+			entityRel,
 			creditedEmployerCompany,
 			coCreditedEntityRel,
 			coCreditedEntity,
@@ -555,7 +555,7 @@ const getShowQuery = () => `
 			castMemberProductions,
 			creativeProductions,
 			production,
-			entityCrewRel,
+			entityRel,
 			creditedEmployerCompany,
 			coCreditedEntityRel,
 			coCreditedEntity,
@@ -573,7 +573,7 @@ const getShowQuery = () => `
 		castMemberProductions,
 		creativeProductions,
 		production,
-		entityCrewRel,
+		entityRel,
 		creditedEmployerCompany,
 		[coCreditedEntity IN COLLECT(
 			CASE coCreditedEntity WHEN NULL
@@ -589,7 +589,7 @@ const getShowQuery = () => `
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
-		ORDER BY entityCrewRel.creditPosition
+		ORDER BY entityRel.creditPosition
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
 
@@ -606,7 +606,7 @@ const getShowQuery = () => `
 		surTheatre,
 		COLLECT({
 			model: 'crewCredit',
-			name: entityCrewRel.credit,
+			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS crewCredits
