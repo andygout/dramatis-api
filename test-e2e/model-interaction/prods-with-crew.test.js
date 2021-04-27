@@ -10,12 +10,12 @@ describe('Productions with crew', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_UUID = '4';
-	const OLIVIER_THEATRE_UUID = '5';
-	const LYTTELTON_THEATRE_UUID = '6';
-	const COTTESLOE_THEATRE_UUID = '7';
+	const NATIONAL_THEATRE_VENUE_UUID = '4';
+	const OLIVIER_THEATRE_VENUE_UUID = '5';
+	const LYTTELTON_THEATRE_VENUE_UUID = '6';
+	const COTTESLOE_THEATRE_VENUE_UUID = '7';
 	const WASTE_ALMEIDA_PRODUCTION_UUID = '8';
-	const ALMEIDA_THEATRE_UUID = '10';
+	const ALMEIDA_THEATRE_VENUE_UUID = '10';
 	const TARIQ_HUSSAIN_PERSON_UUID = '11';
 	const STAGECRAFT_LTD_COMPANY_UUID = '12';
 	const CREW_DEPUTIES_LTD_COMPANY_UUID = '13';
@@ -60,10 +60,10 @@ describe('Productions with crew', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/theatres')
+			.post('/venues')
 			.send({
 				name: 'National Theatre',
-				subTheatres: [
+				subVenues: [
 					{
 						name: 'Olivier Theatre'
 					},
@@ -83,7 +83,7 @@ describe('Productions with crew', () => {
 				startDate: '2008-09-25',
 				pressDate: '2008-10-02',
 				endDate: '2008-11-15',
-				theatre: {
+				venue: {
 					name: 'Almeida Theatre'
 				},
 				crewCredits: [
@@ -172,7 +172,7 @@ describe('Productions with crew', () => {
 				startDate: '2007-12-10',
 				pressDate: '2007-12-18',
 				endDate: '2008-03-29',
-				theatre: {
+				venue: {
 					name: 'Olivier Theatre'
 				},
 				crewCredits: [
@@ -266,7 +266,7 @@ describe('Productions with crew', () => {
 				startDate: '2009-06-04',
 				pressDate: '2009-06-11',
 				endDate: '2009-08-27',
-				theatre: {
+				venue: {
 					name: 'Lyttelton Theatre'
 				},
 				crewCredits: [
@@ -354,7 +354,7 @@ describe('Productions with crew', () => {
 				startDate: '2009-10-21',
 				pressDate: '2009-10-28',
 				endDate: '2010-01-21',
-				theatre: {
+				venue: {
 					name: 'Cottesloe Theatre'
 				},
 				crewCredits: [
@@ -893,13 +893,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -918,11 +918,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -939,13 +939,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -979,13 +979,13 @@ describe('Productions with crew', () => {
 					name: 'Pains of Youth',
 					startDate: '2009-10-21',
 					endDate: '2010-01-21',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1060,13 +1060,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1147,11 +1147,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -1224,13 +1224,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1320,13 +1320,13 @@ describe('Productions with crew', () => {
 					name: 'Pains of Youth',
 					startDate: '2009-10-21',
 					endDate: '2010-01-21',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1400,13 +1400,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1480,11 +1480,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -1556,13 +1556,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1662,13 +1662,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1757,13 +1757,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1782,11 +1782,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -1809,13 +1809,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1849,13 +1849,13 @@ describe('Productions with crew', () => {
 					name: 'Pains of Youth',
 					startDate: '2009-10-21',
 					endDate: '2010-01-21',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1929,13 +1929,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2009,11 +2009,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -2085,13 +2085,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2180,13 +2180,13 @@ describe('Productions with crew', () => {
 					name: 'Pains of Youth',
 					startDate: '2009-10-21',
 					endDate: '2010-01-21',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2260,13 +2260,13 @@ describe('Productions with crew', () => {
 					name: 'Phèdre',
 					startDate: '2009-06-04',
 					endDate: '2009-08-27',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2340,11 +2340,11 @@ describe('Productions with crew', () => {
 					name: 'Waste',
 					startDate: '2008-09-25',
 					endDate: '2008-11-15',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					crewCredits: [
 						{
@@ -2416,13 +2416,13 @@ describe('Productions with crew', () => {
 					name: 'Much Ado About Nothing',
 					startDate: '2007-12-10',
 					endDate: '2008-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},

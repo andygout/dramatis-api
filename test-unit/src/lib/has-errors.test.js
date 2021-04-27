@@ -8,7 +8,7 @@ describe('Has Errors module', () => {
 
 		it('returns false if no error values present', () => {
 
-			const instance = { errors: {}, theatre: { errors: {} } };
+			const instance = { errors: {}, venue: { errors: {} } };
 			const result = hasErrors(instance);
 			expect(result).to.be.false;
 
@@ -56,7 +56,7 @@ describe('Has Errors module', () => {
 
 		it('returns true', () => {
 
-			const instance = { theatre: { errors: { name: ['Value is too short'] } } };
+			const instance = { venue: { errors: { name: ['Value is too short'] } } };
 			const result = hasErrors(instance);
 			expect(result).to.be.true;
 

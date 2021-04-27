@@ -33,8 +33,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -155,8 +155,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -251,8 +251,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -351,8 +351,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -441,7 +441,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				pressDate: null,
 				endDate: null,
 				material: null,
-				theatre: null,
+				venue: null,
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
@@ -473,8 +473,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -497,7 +497,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		const PRODUCTION_UUID = '0';
 		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = '1';
-		const NATIONAL_THEATRE_UUID = '2';
+		const NATIONAL_THEATRE_VENUE_UUID = '2';
 		const LISA_BURGER_PERSON_UUID = '3';
 		const FUEL_THEATRE_COMPANY_UUID = '4';
 		const SIMON_GODWIN_PERSON_UUID = '5';
@@ -524,7 +524,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const MOLLY_EINCHCOMB_PERSON_UUID = '26';
 		const MATTHEW_HELLYER_PERSON_UUID = '27';
 		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '28';
-		const ALMEIDA_THEATRE_UUID = '29';
+		const ALMEIDA_THEATRE_VENUE_UUID = '29';
 		const DENISE_WOOD_PERSON_UUID = '30';
 		const TIATA_FAHODZI_COMPANY_UUID = '31';
 		const REBECCA_FRECKNALL_PERSON_UUID = '32';
@@ -582,7 +582,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'The Tragedy of Hamlet, Prince of Denmark',
 						differentiator: '1'
 					},
-					theatre: {
+					venue: {
 						name: 'National Theatre',
 						differentiator: '1'
 					},
@@ -877,8 +877,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: 'National Theatre',
 					differentiator: '1',
 					errors: {}
@@ -1506,11 +1506,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					format: null,
 					writingCredits: []
 				},
-				theatre: {
-					model: 'theatre',
-					uuid: NATIONAL_THEATRE_UUID,
+				venue: {
+					model: 'venue',
+					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre',
-					surTheatre: null
+					surVenue: null
 				},
 				producerCredits: [
 					{
@@ -1847,8 +1847,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: 'National Theatre',
 					differentiator: '1',
 					errors: {}
@@ -2471,7 +2471,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'The Tragedy of King Richard III',
 						differentiator: '1'
 					},
-					theatre: {
+					venue: {
 						name: 'Almeida Theatre',
 						differentiator: '1'
 					},
@@ -2766,8 +2766,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '1',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: 'Almeida Theatre',
 					differentiator: '1',
 					errors: {}
@@ -3395,11 +3395,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					format: null,
 					writingCredits: []
 				},
-				theatre: {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
+				venue: {
+					model: 'venue',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Almeida Theatre',
-					surTheatre: null
+					surVenue: null
 				},
 				producerCredits: [
 					{
@@ -3741,8 +3741,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -3838,8 +3838,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
-				theatre: {
-					model: 'theatre',
+				venue: {
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -3861,10 +3861,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('GET list endpoint', () => {
 
 		const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
-		const NATIONAL_THEATRE_UUID = '2';
+		const NATIONAL_THEATRE_VENUE_UUID = '2';
 		const HAMLET_NATIONAL_PRODUCTION_UUID = '3';
 		const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '6';
-		const ALMEIDA_THEATRE_UUID = '8';
+		const ALMEIDA_THEATRE_VENUE_UUID = '8';
 		const HAMLET_ALMEIDA_PRODUCTION_UUID = '9';
 
 		before(async () => {
@@ -3882,7 +3882,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					startDate: '2004-05-18',
 					pressDate: '2004-05-27',
 					endDate: '2006-03-18',
-					theatre: {
+					venue: {
 						name: 'National Theatre'
 					}
 				});
@@ -3894,7 +3894,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',
-					theatre: {
+					venue: {
 						name: 'National Theatre'
 					}
 				});
@@ -3906,7 +3906,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					startDate: '2010-02-12',
 					pressDate: '2010-02-18',
 					endDate: '2010-04-10',
-					theatre: {
+					venue: {
 						name: 'Almeida Theatre'
 					}
 				});
@@ -3918,7 +3918,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					startDate: '2017-06-09',
 					pressDate: '2017-06-15',
 					endDate: '2017-09-02',
-					theatre: {
+					venue: {
 						name: 'Almeida Theatre'
 					}
 				});
@@ -3931,7 +3931,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
-		it('lists all productions ordered by name then theatre name', async () => {
+		it('lists all productions ordered by name then venue name', async () => {
 
 			const response = await chai.request(app)
 				.get('/productions');
@@ -3943,11 +3943,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -3956,11 +3956,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -3969,11 +3969,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Measure for Measure',
 					startDate: '2010-02-12',
 					endDate: '2010-04-10',
-					theatre: {
-						model: 'theatre',
-						uuid: ALMEIDA_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -3982,11 +3982,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Measure for Measure',
 					startDate: '2004-05-18',
 					endDate: '2006-03-18',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];

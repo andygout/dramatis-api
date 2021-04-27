@@ -36,7 +36,7 @@ describe('Cypher Queries Production module', () => {
 					production.pressDate AS pressDate,
 					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
-					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
+					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -87,7 +87,7 @@ describe('Cypher Queries Production module', () => {
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
-				CREATE (production)-[:PLAYS_AT]->(theatre)
+				CREATE (production)-[:PLAYS_AT]->(venue)
 			`);
 
 			const endSegment = removeExcessWhitespace(`
@@ -99,7 +99,7 @@ describe('Cypher Queries Production module', () => {
 					production.pressDate AS pressDate,
 					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
-					{ name: COALESCE(theatre.name, ''), differentiator: COALESCE(theatre.differentiator, '') } AS theatre,
+					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
 					producerCredits,
 					cast,
 					creativeCredits,

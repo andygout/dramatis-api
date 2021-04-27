@@ -8,16 +8,16 @@ import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
 import createNode from '../test-helpers/neo4j/create-node';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Uniqueness in database: Theatres API', () => {
+describe('Uniqueness in database: Venues API', () => {
 
 	chai.use(chaiHttp);
 
 	const sandbox = createSandbox();
 
-	describe('Theatre uniqueness in database', () => {
+	describe('Venue uniqueness in database', () => {
 
-		const THEATRE_1_UUID = '1';
-		const THEATRE_2_UUID = '4';
+		const VENUE_1_UUID = '1';
+		const VENUE_2_UUID = '4';
 
 		before(async () => {
 
@@ -35,25 +35,25 @@ describe('Uniqueness in database: Theatres API', () => {
 
 		});
 
-		it('creates theatre without differentiator', async () => {
+		it('creates venue without differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(0);
+			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
 			const response = await chai.request(app)
-				.post('/theatres')
+				.post('/venues')
 				.send({
 					name: 'New Theatre'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
-				uuid: THEATRE_1_UUID,
+				model: 'venue',
+				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '',
 				errors: {},
-				subTheatres: [
+				subVenues: [
 					{
-						model: 'theatre',
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -63,22 +63,22 @@ describe('Uniqueness in database: Theatres API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 		});
 
-		it('responds with errors if trying to create existing theatre that does also not have differentiator', async () => {
+		it('responds with errors if trying to create existing venue that does also not have differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post('/theatres')
+				.post('/venues')
 				.send({
 					name: 'New Theatre'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
+				model: 'venue',
 				name: 'New Theatre',
 				differentiator: '',
 				hasErrors: true,
@@ -90,35 +90,35 @@ describe('Uniqueness in database: Theatres API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
-				subTheatres: []
+				subVenues: []
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 		});
 
-		it('creates theatre with same name as existing theatre but uses a differentiator', async () => {
+		it('creates venue with same name as existing venue but uses a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			const response = await chai.request(app)
-				.post('/theatres')
+				.post('/venues')
 				.send({
 					name: 'New Theatre',
 					differentiator: '1'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
-				uuid: THEATRE_2_UUID,
+				model: 'venue',
+				uuid: VENUE_2_UUID,
 				name: 'New Theatre',
 				differentiator: '1',
 				errors: {},
-				subTheatres: [
+				subVenues: [
 					{
-						model: 'theatre',
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -128,24 +128,24 @@ describe('Uniqueness in database: Theatres API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('responds with errors if trying to update theatre to one with same name and differentiator combination', async () => {
+		it('responds with errors if trying to update venue to one with same name and differentiator combination', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${THEATRE_1_UUID}`)
+				.put(`/venues/${VENUE_1_UUID}`)
 				.send({
 					name: 'New Theatre',
 					differentiator: '1'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
-				uuid: THEATRE_1_UUID,
+				model: 'venue',
+				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '1',
 				hasErrors: true,
@@ -157,35 +157,35 @@ describe('Uniqueness in database: Theatres API', () => {
 						'Name and differentiator combination already exists'
 					]
 				},
-				subTheatres: []
+				subVenues: []
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('updates theatre with same name as existing theatre but uses a different differentiator', async () => {
+		it('updates venue with same name as existing venue but uses a different differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${THEATRE_1_UUID}`)
+				.put(`/venues/${VENUE_1_UUID}`)
 				.send({
 					name: 'New Theatre',
 					differentiator: '2'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
-				uuid: THEATRE_1_UUID,
+				model: 'venue',
+				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '2',
 				errors: {},
-				subTheatres: [
+				subVenues: [
 					{
-						model: 'theatre',
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -195,29 +195,29 @@ describe('Uniqueness in database: Theatres API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('updates theatre with same name as existing theatre but without a differentiator', async () => {
+		it('updates venue with same name as existing venue but without a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${THEATRE_2_UUID}`)
+				.put(`/venues/${VENUE_2_UUID}`)
 				.send({
 					name: 'New Theatre'
 				});
 
 			const expectedResponseBody = {
-				model: 'theatre',
-				uuid: THEATRE_2_UUID,
+				model: 'venue',
+				uuid: VENUE_2_UUID,
 				name: 'New Theatre',
 				differentiator: '',
 				errors: {},
-				subTheatres: [
+				subVenues: [
 					{
-						model: 'theatre',
+						model: 'venue',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -227,25 +227,25 @@ describe('Uniqueness in database: Theatres API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
 	});
 
-	describe('Theatre sub-theatre uniqueness in database', () => {
+	describe('Venue sub-venue uniqueness in database', () => {
 
-		const SHEFFIELD_THEATRES_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const SHEFFIELD_THEATRES_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-		const expectedSubTheatreStudioTheatre1 = {
-			model: 'theatre',
+		const expectedSubVenueStudioTheatre1 = {
+			model: 'venue',
 			name: 'Studio Theatre',
 			differentiator: '',
 			errors: {}
 		};
 
-		const expectedSubTheatreStudioTheatre2 = {
-			model: 'theatre',
+		const expectedSubVenueStudioTheatre2 = {
+			model: 'venue',
 			name: 'Studio Theatre',
 			differentiator: '1',
 			errors: {}
@@ -260,8 +260,8 @@ describe('Uniqueness in database: Theatres API', () => {
 			await purgeDatabase();
 
 			await createNode({
-				label: 'Theatre',
-				uuid: SHEFFIELD_THEATRES_UUID,
+				label: 'Venue',
+				uuid: SHEFFIELD_THEATRES_VENUE_UUID,
 				name: 'Sheffield Theatres'
 			});
 
@@ -273,15 +273,15 @@ describe('Uniqueness in database: Theatres API', () => {
 
 		});
 
-		it('updates theatre and creates sub-theatre that does not have a differentiator', async () => {
+		it('updates venue and creates sub-venue that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(1);
+			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${SHEFFIELD_THEATRES_UUID}`)
+				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Studio Theatre'
 						}
@@ -289,20 +289,20 @@ describe('Uniqueness in database: Theatres API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(response.body.subVenues[0]).to.deep.equal(expectedSubVenueStudioTheatre1);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 		});
 
-		it('updates theatre and creates sub-theatre that has same name as existing sub-theatre but uses a differentiator', async () => {
+		it('updates venue and creates sub-venue that has same name as existing sub-venue but uses a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(2);
+			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${SHEFFIELD_THEATRES_UUID}`)
+				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Studio Theatre',
 							differentiator: '1'
@@ -311,20 +311,20 @@ describe('Uniqueness in database: Theatres API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(3);
+			expect(response.body.subVenues[0]).to.deep.equal(expectedSubVenueStudioTheatre2);
+			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
 		});
 
-		it('updates theatre and uses existing sub-theatre that does not have a differentiator', async () => {
+		it('updates venue and uses existing sub-venue that does not have a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(3);
+			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${SHEFFIELD_THEATRES_UUID}`)
+				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Studio Theatre'
 						}
@@ -332,20 +332,20 @@ describe('Uniqueness in database: Theatres API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre1);
-			expect(await countNodesWithLabel('Theatre')).to.equal(3);
+			expect(response.body.subVenues[0]).to.deep.equal(expectedSubVenueStudioTheatre1);
+			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
 		});
 
-		it('updates theatre and uses existing sub-theatre that has a differentiator', async () => {
+		it('updates venue and uses existing sub-venue that has a differentiator', async () => {
 
-			expect(await countNodesWithLabel('Theatre')).to.equal(3);
+			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
 			const response = await chai.request(app)
-				.put(`/theatres/${SHEFFIELD_THEATRES_UUID}`)
+				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
-					subTheatres: [
+					subVenues: [
 						{
 							name: 'Studio Theatre',
 							differentiator: '1'
@@ -354,8 +354,8 @@ describe('Uniqueness in database: Theatres API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.subTheatres[0]).to.deep.equal(expectedSubTheatreStudioTheatre2);
-			expect(await countNodesWithLabel('Theatre')).to.equal(3);
+			expect(response.body.subVenues[0]).to.deep.equal(expectedSubVenueStudioTheatre2);
+			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
 		});
 

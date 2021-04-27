@@ -6,16 +6,16 @@ import { v4 as uuid } from 'uuid';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Theatre with multiple productions', () => {
+describe('Venue with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
 	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
-	const DONMAR_WAREHOUSE_THEATRE_UUID = '2';
+	const DONMAR_WAREHOUSE_VENUE_UUID = '2';
 	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '3';
 	const RED_DONMAR_PRODUCTION_UUID = '6';
 
-	let donmarWarehouseTheatre;
+	let donmarWarehouseVenue;
 	let streetcarNamedDesireDonmarProduction;
 	let lifeIsADreamDonmarProduction;
 	let redDonmarProduction;
@@ -37,7 +37,7 @@ describe('Theatre with multiple productions', () => {
 				startDate: '2009-07-23',
 				pressDate: '2009-07-28',
 				endDate: '2009-10-03',
-				theatre: {
+				venue: {
 					name: 'Donmar Warehouse'
 				}
 			});
@@ -49,7 +49,7 @@ describe('Theatre with multiple productions', () => {
 				startDate: '2009-10-08',
 				pressDate: '2009-10-13',
 				endDate: '2009-11-28',
-				theatre: {
+				venue: {
 					name: 'Donmar Warehouse'
 				}
 			});
@@ -61,13 +61,13 @@ describe('Theatre with multiple productions', () => {
 				startDate: '2009-12-03',
 				pressDate: '2009-12-08',
 				endDate: '2010-02-06',
-				theatre: {
+				venue: {
 					name: 'Donmar Warehouse'
 				}
 			});
 
-		donmarWarehouseTheatre = await chai.request(app)
-			.get(`/theatres/${DONMAR_WAREHOUSE_THEATRE_UUID}`);
+		donmarWarehouseVenue = await chai.request(app)
+			.get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
 
 		streetcarNamedDesireDonmarProduction = await chai.request(app)
 			.get(`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
@@ -86,9 +86,9 @@ describe('Theatre with multiple productions', () => {
 
 	});
 
-	describe('Donmar Warehouse (theatre)', () => {
+	describe('Donmar Warehouse (venue)', () => {
 
-		it('includes productions at this theatre', () => {
+		it('includes productions at this venue', () => {
 
 			const expectedProductions = [
 				{
@@ -97,7 +97,7 @@ describe('Theatre with multiple productions', () => {
 					name: 'Red',
 					startDate: '2009-12-03',
 					endDate: '2010-02-06',
-					subTheatre: null
+					subVenue: null
 				},
 				{
 					model: 'production',
@@ -105,7 +105,7 @@ describe('Theatre with multiple productions', () => {
 					name: 'Life is a Dream',
 					startDate: '2009-10-08',
 					endDate: '2009-11-28',
-					subTheatre: null
+					subVenue: null
 				},
 				{
 					model: 'production',
@@ -113,11 +113,11 @@ describe('Theatre with multiple productions', () => {
 					name: 'A Streetcar Named Desire',
 					startDate: '2009-07-23',
 					endDate: '2009-10-03',
-					subTheatre: null
+					subVenue: null
 				}
 			];
 
-			const { productions } = donmarWarehouseTheatre.body;
+			const { productions } = donmarWarehouseVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
@@ -127,18 +127,18 @@ describe('Theatre with multiple productions', () => {
 
 	describe('A Streetcar Named Desire at Donmar Warehouse (production)', () => {
 
-		it('attributes theatre as Donmar Warehouse', () => {
+		it('attributes venue as Donmar Warehouse', () => {
 
-			const expectedTheatre = {
-				model: 'theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+			const expectedVenue = {
+				model: 'venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
-				surTheatre: null
+				surVenue: null
 			};
 
-			const { theatre } = streetcarNamedDesireDonmarProduction.body;
+			const { venue } = streetcarNamedDesireDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatre);
+			expect(venue).to.deep.equal(expectedVenue);
 
 		});
 
@@ -146,18 +146,18 @@ describe('Theatre with multiple productions', () => {
 
 	describe('Life is a Dream at Donmar Warehouse (production)', () => {
 
-		it('attributes theatre as Donmar Warehouse', () => {
+		it('attributes venue as Donmar Warehouse', () => {
 
-			const expectedTheatre = {
-				model: 'theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+			const expectedVenue = {
+				model: 'venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
-				surTheatre: null
+				surVenue: null
 			};
 
-			const { theatre } = lifeIsADreamDonmarProduction.body;
+			const { venue } = lifeIsADreamDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatre);
+			expect(venue).to.deep.equal(expectedVenue);
 
 		});
 
@@ -165,18 +165,18 @@ describe('Theatre with multiple productions', () => {
 
 	describe('Red at Donmar Warehouse (production)', () => {
 
-		it('attributes theatre as Donmar Warehouse', () => {
+		it('attributes venue as Donmar Warehouse', () => {
 
-			const expectedTheatre = {
-				model: 'theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+			const expectedVenue = {
+				model: 'venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
-				surTheatre: null
+				surVenue: null
 			};
 
-			const { theatre } = redDonmarProduction.body;
+			const { venue } = redDonmarProduction.body;
 
-			expect(theatre).to.deep.equal(expectedTheatre);
+			expect(venue).to.deep.equal(expectedVenue);
 
 		});
 

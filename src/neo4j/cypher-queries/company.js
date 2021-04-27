@@ -190,12 +190,12 @@ const getShowQuery = () => `
 			END
 		) AS producerCredits
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, production, producerCredits, theatre, surTheatre
-		ORDER BY production.startDate DESC, production.name, theatre.name
+	WITH company, materials, production, producerCredits, venue, surVenue
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH company, materials,
 		COLLECT(
@@ -207,15 +207,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,
@@ -304,18 +304,18 @@ const getShowQuery = () => `
 		END] AS coCreditedEntities
 		ORDER BY creativeRel.creditPosition
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, producerProductions, production, theatre, surTheatre,
+	WITH company, materials, producerProductions, production, venue, surVenue,
 		COLLECT({
 			model: 'creativeCredit',
 			name: creativeRel.credit,
 			creditedMembers: creditedMembers,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH company, materials, producerProductions,
 		COLLECT(
@@ -327,15 +327,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,
@@ -426,18 +426,18 @@ const getShowQuery = () => `
 		END] AS coCreditedEntities
 		ORDER BY crewRel.creditPosition
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, producerProductions, creativeProductions, production, theatre, surTheatre,
+	WITH company, materials, producerProductions, creativeProductions, production, venue, surVenue,
 		COLLECT({
 			model: 'crewCredit',
 			name: crewRel.credit,
 			creditedMembers: creditedMembers,
 			coCreditedEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	RETURN
 		'company' AS model,
@@ -476,15 +476,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,

@@ -1,30 +1,30 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
-import { theatre as theatreSeedProps } from './model-seed-props';
+import { venue as venueSeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
-import { Theatre } from '../models';
+import { Venue } from '../models';
 
 const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Theatre(theatreSeedProps));
+	sendJsonResponse(response, new Venue(venueSeedProps));
 
 const createRoute = (request, response, next) =>
-	callInstanceMethod(response, next, new Theatre(request.body), 'create');
+	callInstanceMethod(response, next, new Venue(request.body), 'create');
 
 const editRoute = (request, response, next) =>
-	callInstanceMethod(response, next, new Theatre(request.params), 'edit');
+	callInstanceMethod(response, next, new Venue(request.params), 'edit');
 
 const updateRoute = (request, response, next) =>
-	callInstanceMethod(response, next, new Theatre({ ...request.body, ...request.params }), 'update');
+	callInstanceMethod(response, next, new Venue({ ...request.body, ...request.params }), 'update');
 
 const deleteRoute = (request, response, next) =>
-	callInstanceMethod(response, next, new Theatre(request.params), 'delete');
+	callInstanceMethod(response, next, new Venue(request.params), 'delete');
 
 const showRoute = (request, response, next) =>
-	callInstanceMethod(response, next, new Theatre(request.params), 'show');
+	callInstanceMethod(response, next, new Venue(request.params), 'show');
 
 const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, Theatre, 'theatre');
+	callStaticListMethod(response, next, Venue, 'venue');
 
 export {
 	newRoute,

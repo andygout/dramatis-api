@@ -9,7 +9,7 @@ import Person from './Person';
 import ProducerCredit from './ProducerCredit';
 import Production from './Production';
 import Role from './Role';
-import Theatre from './Theatre';
+import Venue from './Venue';
 import WritingCredit from './WritingCredit';
 
 export {
@@ -24,6 +24,6 @@ export {
 	ProducerCredit,
 	Production,
 	Role,
-	Theatre,
+	Venue,
 	WritingCredit
 };

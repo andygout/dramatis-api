@@ -491,9 +491,9 @@ const getShowQuery = () => `
 
 	UNWIND (CASE productions WHEN [] THEN [null] ELSE productions END) AS production
 
-		OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+		OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-		OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+		OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
 
@@ -505,10 +505,10 @@ const getShowQuery = () => `
 			sourcingMaterials,
 			characterGroups,
 			production,
-			theatre,
-			surTheatre,
+			venue,
+			surVenue,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
-			ORDER BY production.startDate DESC, production.name, theatre.name
+			ORDER BY production.startDate DESC, production.name, venue.name
 
 		WITH
 			material,
@@ -527,15 +527,15 @@ const getShowQuery = () => `
 						.startDate,
 						.endDate,
 						usesSourcingMaterial: usesSourcingMaterial,
-						theatre: CASE theatre WHEN NULL
+						venue: CASE venue WHEN NULL
 							THEN null
-							ELSE theatre {
-								model: 'theatre',
+							ELSE venue {
+								model: 'venue',
 								.uuid,
 								.name,
-								surTheatre: CASE surTheatre WHEN NULL
+								surVenue: CASE surVenue WHEN NULL
 									THEN null
-									ELSE surTheatre { model: 'theatre', .uuid, .name }
+									ELSE surVenue { model: 'venue', .uuid, .name }
 								END
 							}
 						END
@@ -556,11 +556,11 @@ const getShowQuery = () => `
 		characterGroups,
 		[
 			production IN productions WHERE NOT production.usesSourcingMaterial |
-			production { .model, .uuid, .name, .startDate, .endDate, .theatre }
+			production { .model, .uuid, .name, .startDate, .endDate, .venue }
 		] AS productions,
 		[
 			production IN productions WHERE production.usesSourcingMaterial |
-			production { .model, .uuid, .name, .startDate, .endDate, .theatre }
+			production { .model, .uuid, .name, .startDate, .endDate, .venue }
 		] AS sourcingMaterialProductions
 	`;
 

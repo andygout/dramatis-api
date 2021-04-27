@@ -10,12 +10,12 @@ describe('Productions with creative team', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_UUID = '4';
-	const OLIVIER_THEATRE_UUID = '5';
-	const LYTTELTON_THEATRE_UUID = '6';
-	const COTTESLOE_THEATRE_UUID = '7';
+	const NATIONAL_THEATRE_VENUE_UUID = '4';
+	const OLIVIER_THEATRE_VENUE_UUID = '5';
+	const LYTTELTON_THEATRE_VENUE_UUID = '6';
+	const COTTESLOE_THEATRE_VENUE_UUID = '7';
 	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '8';
-	const BARBICAN_THEATRE_UUID = '10';
+	const BARBICAN_THEATRE_VENUE_UUID = '10';
 	const DEBORAH_WARNER_PERSON_UUID = '11';
 	const AUTOGRAPH_COMPANY_UUID = '12';
 	const MESMER_COMPANY_UUID = '13';
@@ -60,10 +60,10 @@ describe('Productions with creative team', () => {
 		await purgeDatabase();
 
 		await chai.request(app)
-			.post('/theatres')
+			.post('/venues')
 			.send({
 				name: 'National Theatre',
-				subTheatres: [
+				subVenues: [
 					{
 						name: 'Olivier Theatre'
 					},
@@ -83,7 +83,7 @@ describe('Productions with creative team', () => {
 				startDate: '2005-04-14',
 				pressDate: '2005-04-20',
 				endDate: '2005-05-14',
-				theatre: {
+				venue: {
 					name: 'Barbican Theatre'
 				},
 				creativeCredits: [
@@ -170,7 +170,7 @@ describe('Productions with creative team', () => {
 				startDate: '2009-09-16',
 				pressDate: '2009-09-25',
 				endDate: '2009-12-08',
-				theatre: {
+				venue: {
 					name: 'Olivier Theatre'
 				},
 				creativeCredits: [
@@ -263,7 +263,7 @@ describe('Productions with creative team', () => {
 				startDate: '2007-01-18',
 				pressDate: '2007-01-25',
 				endDate: '2007-03-01',
-				theatre: {
+				venue: {
 					name: 'Lyttelton Theatre'
 				},
 				creativeCredits: [
@@ -350,7 +350,7 @@ describe('Productions with creative team', () => {
 				startDate: '1995-05-26',
 				pressDate: '1995-06-02',
 				endDate: '1996-02-17',
-				theatre: {
+				venue: {
 					name: 'Cottesloe Theatre'
 				},
 				creativeCredits: [
@@ -889,13 +889,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -914,13 +914,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -939,11 +939,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -975,13 +975,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1056,13 +1056,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1143,11 +1143,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -1220,13 +1220,13 @@ describe('Productions with creative team', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1316,13 +1316,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1407,13 +1407,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1487,11 +1487,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -1563,13 +1563,13 @@ describe('Productions with creative team', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1658,13 +1658,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1753,13 +1753,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1778,13 +1778,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1803,11 +1803,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -1845,13 +1845,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -1925,13 +1925,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2005,11 +2005,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -2081,13 +2081,13 @@ describe('Productions with creative team', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2176,13 +2176,13 @@ describe('Productions with creative team', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					theatre: {
-						model: 'theatre',
-						uuid: OLIVIER_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2268,13 +2268,13 @@ describe('Productions with creative team', () => {
 					name: 'Happy Days',
 					startDate: '2007-01-18',
 					endDate: '2007-03-01',
-					theatre: {
-						model: 'theatre',
-						uuid: LYTTELTON_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
@@ -2348,11 +2348,11 @@ describe('Productions with creative team', () => {
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					creativeCredits: [
 						{
@@ -2424,13 +2424,13 @@ describe('Productions with creative team', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					theatre: {
-						model: 'theatre',
-						uuid: COTTESLOE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: COTTESLOE_THEATRE_VENUE_UUID,
 						name: 'Cottesloe Theatre',
-						surTheatre: {
-							model: 'theatre',
-							uuid: NATIONAL_THEATRE_UUID,
+						surVenue: {
+							model: 'venue',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},

@@ -15,17 +15,17 @@ describe('Character in multiple productions of multiple materials', () => {
 	const HENRY_IV_PART_2_MATERIAL_UUID = '9';
 	const THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID = '15';
 	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '18';
-	const NATIONAL_THEATRE_UUID = '20';
+	const NATIONAL_THEATRE_VENUE_UUID = '20';
 	const MICHAEL_GAMBON_PERSON_UUID = '21';
 	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '22';
 	const THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID = '26';
 	const HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID = '30';
-	const SHAKESPEARES_GLOBE_THEATRE_UUID = '32';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = '32';
 	const ROGER_ALLAM_PERSON_UUID = '33';
 	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '34';
 	const THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID = '38';
 	const HENRY_IV_PART_1_SWAN_PRODUCTION_UUID = '42';
-	const SWAN_THEATRE_UUID = '44';
+	const SWAN_THEATRE_VENUE_UUID = '44';
 	const RICHARD_CORDERY_PERSON_UUID = '45';
 	const HENRY_IV_PART_2_SWAN_PRODUCTION_UUID = '46';
 	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '50';
@@ -103,7 +103,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'Henry IV, Part 1'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -128,7 +128,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'Henry IV, Part 2'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -154,7 +154,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -179,7 +179,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'Henry IV, Part 1'
 				},
-				theatre: {
+				venue: {
 					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
@@ -204,7 +204,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'Henry IV, Part 2'
 				},
-				theatre: {
+				venue: {
 					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
@@ -229,7 +229,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
-				theatre: {
+				venue: {
 					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
@@ -252,7 +252,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				startDate: '2000-04-12', // Contrivance because date unavailable.
 				pressDate: '2000-04-19',
 				endDate: '2000-06-15', // Contrivance because date unavailable.
-				theatre: {
+				venue: {
 					name: 'Swan Theatre'
 				},
 				material: {
@@ -281,7 +281,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'Henry IV, Part 2'
 				},
-				theatre: {
+				venue: {
 					name: 'Swan Theatre'
 				},
 				cast: [
@@ -307,7 +307,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				material: {
 					name: 'The Merry Wives of Windsor'
 				},
-				theatre: {
+				venue: {
 					name: 'Swan Theatre'
 				},
 				cast: [
@@ -388,11 +388,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor',
 					startDate: '2019-05-17',
 					endDate: '2019-10-12',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -411,11 +411,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2010-07-03',
 					endDate: '2010-10-03',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -434,11 +434,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2010-06-06',
 					endDate: '2010-10-02',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -457,11 +457,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor',
 					startDate: '2005-09-04',
 					endDate: '2005-11-27',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -480,11 +480,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -503,11 +503,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -526,11 +526,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor',
 					startDate: '2002-10-24',
 					endDate: '2003-01-25',
-					theatre: {
-						model: 'theatre',
-						uuid: SWAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -549,11 +549,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2000-06-22',
 					endDate: '2000-09-15',
-					theatre: {
-						model: 'theatre',
-						uuid: SWAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -572,11 +572,11 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2000-04-12',
 					endDate: '2000-06-15',
-					theatre: {
-						model: 'theatre',
-						uuid: SWAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{

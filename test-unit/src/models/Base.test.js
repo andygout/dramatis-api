@@ -39,9 +39,9 @@ describe('Base model', () => {
 				production: sandbox.stub(cypherQueries.getUpdateQueries, 'production')
 			},
 			getShowQueries: {
-				theatre:
-					sandbox.stub(cypherQueries.getShowQueries, 'theatre')
-						.returns('getShowTheatreQuery response')
+				venue:
+					sandbox.stub(cypherQueries.getShowQueries, 'venue')
+						.returns('getShowVenueQuery response')
 			},
 			sharedQueries: {
 				getExistenceQuery:
@@ -848,7 +848,7 @@ describe('Base model', () => {
 					});
 				stubs.hasErrors.returns(true);
 				const getCreateUpdateQueryStub = stub();
-				instance.model = 'theatre';
+				instance.model = 'venue';
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
@@ -882,7 +882,7 @@ describe('Base model', () => {
 				expect(instance.constructor.notCalled).to.be.true;
 				expect(result).to.deep.equal(instance);
 				expect(result).to.deep.equal({
-					model: 'theatre',
+					model: 'venue',
 					name: 'Foobar',
 					errors: {},
 					hasErrors: true
@@ -1022,7 +1022,7 @@ describe('Base model', () => {
 				it('deletes instance and returns object with its model and name properties', async () => {
 
 					stubs.neo4jQuery.resolves({
-						model: 'theatre',
+						model: 'venue',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: true,
@@ -1045,7 +1045,7 @@ describe('Base model', () => {
 					)).to.be.true;
 					expect(instance.constructor.calledOnce).to.be.true;
 					expect(instance.constructor.calledWithExactly(
-						{ model: 'theatre', name: 'Almeida Theatre', differentiator: null }
+						{ model: 'venue', name: 'Almeida Theatre', differentiator: null }
 					)).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
@@ -1101,7 +1101,7 @@ describe('Base model', () => {
 				it('returns instance without deleting', async () => {
 
 					stubs.neo4jQuery.resolves({
-						model: 'theatre',
+						model: 'venue',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: false,
@@ -1152,7 +1152,7 @@ describe('Base model', () => {
 						name: 'Hamlet',
 						differentiator: null,
 						isDeleted: false,
-						associatedModels: ['Theatre']
+						associatedModels: ['Venue']
 					});
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
@@ -1170,7 +1170,7 @@ describe('Base model', () => {
 					)).to.be.true;
 					expect(instance.constructor.notCalled).to.be.true;
 					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly('associations', 'Theatre')).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly('associations', 'Venue')).to.be.true;
 					expect(instance.setErrorStatus.calledOnce).to.be.true;
 					expect(instance.setErrorStatus.calledWithExactly()).to.be.true;
 					expect(result).to.deep.equal(instance);
@@ -1178,7 +1178,7 @@ describe('Base model', () => {
 						name: 'Hamlet',
 						errors: {
 							associations: [
-								'Theatre'
+								'Venue'
 							]
 						},
 						hasErrors: false
@@ -1196,13 +1196,13 @@ describe('Base model', () => {
 
 		it('gets show data', async () => {
 
-			instance.model = 'theatre';
+			instance.model = 'venue';
 			const result = await instance.show();
-			expect(stubs.getShowQueries.theatre.calledOnce).to.be.true;
-			expect(stubs.getShowQueries.theatre.calledWithExactly()).to.be.true;
+			expect(stubs.getShowQueries.venue.calledOnce).to.be.true;
+			expect(stubs.getShowQueries.venue.calledWithExactly()).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getShowTheatreQuery response', params: { uuid: instance.uuid } }
+				{ query: 'getShowVenueQuery response', params: { uuid: instance.uuid } }
 			)).to.be.true;
 			expect(result).to.deep.equal(neo4jQueryMockResponse);
 

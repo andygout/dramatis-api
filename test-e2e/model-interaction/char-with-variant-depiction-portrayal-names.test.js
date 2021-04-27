@@ -21,14 +21,14 @@ describe('Character with variant depiction and portrayal names', () => {
 	const SOLDIER_CHARACTER_UUID = '29';
 	const THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID = '33';
 	const HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '36';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '38';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '38';
 	const ALEX_HASSELL_PERSON_UUID = '39';
 	const ANTONY_SHER_PERSON_UUID = '40';
 	const HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '41';
 	const HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '46';
 	const SIMON_THORP_PERSON_UUID = '50';
 	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '51';
-	const NATIONAL_THEATRE_UUID = '53';
+	const NATIONAL_THEATRE_VENUE_UUID = '53';
 	const MATTHEW_MACFADYEN_PERSON_UUID = '54';
 	const MICHAEL_GAMBON_PERSON_UUID = '55';
 	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '56';
@@ -159,7 +159,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry IV, Part 1'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
@@ -195,7 +195,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry IV, Part 2'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
@@ -232,7 +232,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry V'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
@@ -269,7 +269,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry IV, Part 1'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -306,7 +306,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry IV, Part 2'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -343,7 +343,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				material: {
 					name: 'Henry V'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				},
 				cast: [
@@ -532,11 +532,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2015-09-12',
 					endDate: '2015-10-25',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -562,11 +562,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2014-03-28',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -592,11 +592,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2014-03-18',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -622,11 +622,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -652,11 +652,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -682,11 +682,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2003-05-06',
 					endDate: '2003-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -727,11 +727,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2014-03-18',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -757,11 +757,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -802,11 +802,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2014-03-28',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -832,11 +832,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -877,11 +877,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2015-09-12',
 					endDate: '2015-10-25',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -907,11 +907,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2003-05-06',
 					endDate: '2003-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -1333,11 +1333,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2015-09-12',
 					endDate: '2015-10-25',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -1360,11 +1360,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2014-03-28',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -1387,11 +1387,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2014-03-18',
 					endDate: '2014-09-06',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -1429,11 +1429,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -1456,11 +1456,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -1498,11 +1498,11 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					startDate: '2003-05-06',
 					endDate: '2003-08-20',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

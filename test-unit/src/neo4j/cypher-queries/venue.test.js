@@ -1,38 +1,38 @@
 import { expect } from 'chai';
 
-import * as cypherQueriesTheatre from '../../../../src/neo4j/cypher-queries/theatre';
+import * as cypherQueriesVenue from '../../../../src/neo4j/cypher-queries/venue';
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace';
 
-describe('Cypher Queries Theatre module', () => {
+describe('Cypher Queries Venue module', () => {
 
 	describe('getCreateQuery function', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesTheatre.getCreateQuery();
+			const result = cypherQueriesVenue.getCreateQuery();
 
 			const compactedResult = removeExcessWhitespace(result);
 
 			const startSegment = removeExcessWhitespace(`
-				CREATE (theatre:Theatre { uuid: $uuid, name: $name, differentiator: $differentiator })
+				CREATE (venue:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
-				CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+				CREATE (venue)-[:HAS_SUB_VENUE { position: subVenueParam.position }]->(subVenue)
 			`);
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'theatre' AS model,
-					theatre.uuid AS uuid,
-					theatre.name AS name,
-					theatre.differentiator AS differentiator,
+					'venue' AS model,
+					venue.uuid AS uuid,
+					venue.name AS name,
+					venue.differentiator AS differentiator,
 					COLLECT(
-						CASE subTheatre WHEN NULL
+						CASE subVenue WHEN NULL
 							THEN null
-							ELSE subTheatre { .name, .differentiator }
+							ELSE subVenue { .name, .differentiator }
 						END
-					) + [{}] AS subTheatres
+					) + [{}] AS subVenues
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -47,40 +47,40 @@ describe('Cypher Queries Theatre module', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesTheatre.getUpdateQuery();
+			const result = cypherQueriesVenue.getUpdateQuery();
 
 			const compactedResult = removeExcessWhitespace(result);
 
 			const startSegment = removeExcessWhitespace(`
-				MATCH (theatre:Theatre { uuid: $uuid })
+				MATCH (venue:Venue { uuid: $uuid })
 
-				OPTIONAL MATCH (theatre)-[relationship:HAS_SUB_THEATRE]->(:Theatre)
+				OPTIONAL MATCH (venue)-[relationship:HAS_SUB_VENUE]->(:Venue)
 
 				DELETE relationship
 
-				WITH DISTINCT theatre
+				WITH DISTINCT venue
 
 				SET
-					theatre.name = $name,
-					theatre.differentiator = $differentiator
+					venue.name = $name,
+					venue.differentiator = $differentiator
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
-				CREATE (theatre)-[:HAS_SUB_THEATRE { position: subTheatreParam.position }]->(subTheatre)
+				CREATE (venue)-[:HAS_SUB_VENUE { position: subVenueParam.position }]->(subVenue)
 			`);
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'theatre' AS model,
-					theatre.uuid AS uuid,
-					theatre.name AS name,
-					theatre.differentiator AS differentiator,
+					'venue' AS model,
+					venue.uuid AS uuid,
+					venue.name AS name,
+					venue.differentiator AS differentiator,
 					COLLECT(
-						CASE subTheatre WHEN NULL
+						CASE subVenue WHEN NULL
 							THEN null
-							ELSE subTheatre { .name, .differentiator }
+							ELSE subVenue { .name, .differentiator }
 						END
-					) + [{}] AS subTheatres
+					) + [{}] AS subVenues
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;

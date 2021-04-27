@@ -7,7 +7,7 @@ const MODELS = [
 	'Company',
 	'Material',
 	'Person',
-	'Theatre'
+	'Venue'
 ];
 
 const createIndex = async model => {

@@ -8,21 +8,21 @@ import createRelationship from '../test-helpers/neo4j/create-relationship';
 import isNodeExistent from '../test-helpers/neo4j/is-node-existent';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Instance validation failures: Theatres API', () => {
+describe('Instance validation failures: Venues API', () => {
 
 	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
 
-		const DONMAR_WAREHOUSE_THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const DONMAR_WAREHOUSE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
 
 			await purgeDatabase();
 
 			await createNode({
-				label: 'Theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				label: 'Venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse'
 			});
 
@@ -32,16 +32,16 @@ describe('Instance validation failures: Theatres API', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 				const response = await chai.request(app)
-					.post('/theatres')
+					.post('/venues')
 					.send({
 						name: ''
 					});
 
 				const expectedResponseBody = {
-					model: 'theatre',
+					model: 'venue',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -50,12 +50,12 @@ describe('Instance validation failures: Theatres API', () => {
 							'Value is too short'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			});
 
@@ -65,16 +65,16 @@ describe('Instance validation failures: Theatres API', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 				const response = await chai.request(app)
-					.post('/theatres')
+					.post('/venues')
 					.send({
 						name: 'Donmar Warehouse'
 					});
 
 				const expectedResponseBody = {
-					model: 'theatre',
+					model: 'venue',
 					name: 'Donmar Warehouse',
 					differentiator: '',
 					hasErrors: true,
@@ -86,12 +86,12 @@ describe('Instance validation failures: Theatres API', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			});
 
@@ -101,22 +101,22 @@ describe('Instance validation failures: Theatres API', () => {
 
 	describe('attempt to update instance', () => {
 
-		const ALMEIDA_THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const DONMAR_WAREHOUSE_THEATRE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const ALMEIDA_THEATRE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const DONMAR_WAREHOUSE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
 
 			await purgeDatabase();
 
 			await createNode({
-				label: 'Theatre',
-				uuid: ALMEIDA_THEATRE_UUID,
+				label: 'Venue',
+				uuid: ALMEIDA_THEATRE_VENUE_UUID,
 				name: 'Almeida Theatre'
 			});
 
 			await createNode({
-				label: 'Theatre',
-				uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+				label: 'Venue',
+				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse'
 			});
 
@@ -126,17 +126,17 @@ describe('Instance validation failures: Theatres API', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
-				expect(await countNodesWithLabel('Theatre')).to.equal(2);
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 				const response = await chai.request(app)
-					.put(`/theatres/${ALMEIDA_THEATRE_UUID}`)
+					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
 					.send({
 						name: ''
 					});
 
 				const expectedResponseBody = {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
+					model: 'venue',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -145,16 +145,16 @@ describe('Instance validation failures: Theatres API', () => {
 							'Value is too short'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Theatre')).to.equal(2);
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
 				expect(await isNodeExistent({
-					label: 'Theatre',
+					label: 'Venue',
 					name: 'Almeida Theatre',
-					uuid: ALMEIDA_THEATRE_UUID
+					uuid: ALMEIDA_THEATRE_VENUE_UUID
 				})).to.be.true;
 
 			});
@@ -165,17 +165,17 @@ describe('Instance validation failures: Theatres API', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
-				expect(await countNodesWithLabel('Theatre')).to.equal(2);
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
 				const response = await chai.request(app)
-					.put(`/theatres/${ALMEIDA_THEATRE_UUID}`)
+					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
 					.send({
 						name: 'Donmar Warehouse'
 					});
 
 				const expectedResponseBody = {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
+					model: 'venue',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Donmar Warehouse',
 					differentiator: '',
 					hasErrors: true,
@@ -187,16 +187,16 @@ describe('Instance validation failures: Theatres API', () => {
 							'Name and differentiator combination already exists'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Theatre')).to.equal(2);
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
 				expect(await isNodeExistent({
-					label: 'Theatre',
+					label: 'Venue',
 					name: 'Almeida Theatre',
-					uuid: ALMEIDA_THEATRE_UUID
+					uuid: ALMEIDA_THEATRE_VENUE_UUID
 				})).to.be.true;
 
 			});
@@ -207,7 +207,7 @@ describe('Instance validation failures: Theatres API', () => {
 
 	describe('attempt to delete instance', () => {
 
-		const ALMEIDA_THEATRE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const ALMEIDA_THEATRE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const THE_MERCHANT_OF_VENICE_ALMEIDA_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
@@ -215,8 +215,8 @@ describe('Instance validation failures: Theatres API', () => {
 			await purgeDatabase();
 
 			await createNode({
-				label: 'Theatre',
-				uuid: ALMEIDA_THEATRE_UUID,
+				label: 'Venue',
+				uuid: ALMEIDA_THEATRE_VENUE_UUID,
 				name: 'Almeida Theatre'
 			});
 
@@ -229,8 +229,8 @@ describe('Instance validation failures: Theatres API', () => {
 			await createRelationship({
 				sourceLabel: 'Production',
 				sourceUuid: THE_MERCHANT_OF_VENICE_ALMEIDA_PRODUCTION_UUID,
-				destinationLabel: 'Theatre',
-				destinationUuid: ALMEIDA_THEATRE_UUID,
+				destinationLabel: 'Venue',
+				destinationUuid: ALMEIDA_THEATRE_VENUE_UUID,
 				relationshipName: 'PLAYS_AT'
 			});
 
@@ -240,14 +240,14 @@ describe('Instance validation failures: Theatres API', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 				const response = await chai.request(app)
-					.delete(`/theatres/${ALMEIDA_THEATRE_UUID}`);
+					.delete(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'theatre',
-					uuid: ALMEIDA_THEATRE_UUID,
+					model: 'venue',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Almeida Theatre',
 					differentiator: null,
 					hasErrors: true,
@@ -256,12 +256,12 @@ describe('Instance validation failures: Theatres API', () => {
 							'Production'
 						]
 					},
-					subTheatres: []
+					subVenues: []
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Theatre')).to.equal(1);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
 			});
 

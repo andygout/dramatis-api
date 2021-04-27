@@ -258,7 +258,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					differentiator: '3'
 				},
-				theatre: {
+				venue: {
 					name: 'Barbican'
 				}
 			});

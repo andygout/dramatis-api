@@ -13,11 +13,11 @@ describe('Cast member performing different roles in different productions of sam
 	const KING_LEAR_CHARACTER_UUID = '6';
 	const FOOL_CHARACTER_UUID = '7';
 	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '8';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '10';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '10';
 	const MICHAEL_GAMBON_PERSON_UUID = '11';
 	const ANTONY_SHER_PERSON_UUID = '12';
 	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '13';
-	const BARBICAN_THEATRE_UUID = '15';
+	const BARBICAN_THEATRE_VENUE_UUID = '15';
 	const GRAHAM_TURNER_PERSON_UUID = '17';
 
 	let kingLearCharacter;
@@ -66,7 +66,7 @@ describe('Cast member performing different roles in different productions of sam
 				material: {
 					name: 'The Tragedy of King Lear'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
@@ -99,7 +99,7 @@ describe('Cast member performing different roles in different productions of sam
 				material: {
 					name: 'The Tragedy of King Lear'
 				},
-				theatre: {
+				venue: {
 					name: 'Barbican'
 				},
 				cast: [
@@ -162,11 +162,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -185,11 +185,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -223,11 +223,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -246,11 +246,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -366,11 +366,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -402,11 +402,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -423,11 +423,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -459,11 +459,11 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
-					theatre: {
-						model: 'theatre',
-						uuid: BARBICAN_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

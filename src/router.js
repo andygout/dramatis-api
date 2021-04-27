@@ -8,7 +8,7 @@ import {
 	materials as materialsController,
 	people as peopleController,
 	productions as productionsController,
-	theatres as theatresController
+	venues as venuesController
 } from './controllers';
 
 const router = new Router();
@@ -53,13 +53,13 @@ router.delete('/productions/:uuid', productionsController.deleteRoute);
 router.get('/productions/:uuid', productionsController.showRoute);
 router.get('/productions', productionsController.listRoute);
 
-router.get('/theatres/new', theatresController.newRoute);
-router.post('/theatres', theatresController.createRoute);
-router.get('/theatres/:uuid/edit', theatresController.editRoute);
-router.put('/theatres/:uuid', theatresController.updateRoute);
-router.delete('/theatres/:uuid', theatresController.deleteRoute);
-router.get('/theatres/:uuid', theatresController.showRoute);
-router.get('/theatres', theatresController.listRoute);
+router.get('/venues/new', venuesController.newRoute);
+router.post('/venues', venuesController.createRoute);
+router.get('/venues/:uuid/edit', venuesController.editRoute);
+router.put('/venues/:uuid', venuesController.updateRoute);
+router.delete('/venues/:uuid', venuesController.deleteRoute);
+router.get('/venues/:uuid', venuesController.showRoute);
+router.get('/venues', venuesController.listRoute);
 
 router.get('*', (request, response, next) => response.sendStatus(404));
 

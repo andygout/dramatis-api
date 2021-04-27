@@ -190,12 +190,12 @@ const getShowQuery = () => `
 			END
 		) AS producerCredits
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH person, materials, production, producerCredits, theatre, surTheatre
-		ORDER BY production.startDate DESC, production.name, theatre.name
+	WITH person, materials, production, producerCredits, venue, surVenue
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH person, materials,
 		COLLECT(
@@ -207,15 +207,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,
@@ -226,9 +226,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (person)<-[role:HAS_CAST_MEMBER]-(production:Production)
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:HAS_CHARACTER]->(character:Character)
 		WHERE
@@ -238,17 +238,17 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, materials, producerProductions, production, theatre, surTheatre, role, character
+	WITH DISTINCT person, materials, producerProductions, production, venue, surVenue, role, character
 		ORDER BY role.rolePosition
 
-	WITH person, materials, producerProductions, production, theatre, surTheatre,
+	WITH person, materials, producerProductions, production, venue, surVenue,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
 				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
 			END
 		) AS roles
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH person, materials, producerProductions,
 		COLLECT(
@@ -260,15 +260,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,
@@ -411,18 +411,18 @@ const getShowQuery = () => `
 		END] AS coCreditedEntities
 		ORDER BY entityRel.creditPosition
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH person, materials, producerProductions, castMemberProductions, production, theatre, surTheatre,
+	WITH person, materials, producerProductions, castMemberProductions, production, venue, surVenue,
 		COLLECT({
 			model: 'creativeCredit',
 			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH person, materials, producerProductions, castMemberProductions,
 		COLLECT(
@@ -434,15 +434,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,
@@ -591,9 +591,9 @@ const getShowQuery = () => `
 		END] AS coCreditedEntities
 		ORDER BY entityRel.creditPosition
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 	WITH
 		person,
@@ -602,15 +602,15 @@ const getShowQuery = () => `
 		castMemberProductions,
 		creativeProductions,
 		production,
-		theatre,
-		surTheatre,
+		venue,
+		surVenue,
 		COLLECT({
 			model: 'crewCredit',
 			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	RETURN
 		'person' AS model,
@@ -650,15 +650,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,

@@ -11,12 +11,12 @@ describe('Cast member with multiple production credits', () => {
 	chai.use(chaiHttp);
 
 	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = '0';
-	const ALDWYCH_THEATRE_UUID = '2';
+	const ALDWYCH_THEATRE_VENUE_UUID = '2';
 	const SUSANNAH_FELLOWS_PERSON_UUID = '3';
 	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = '4';
-	const PRINCE_OF_WALES_THEATRE_UUID = '6';
+	const PRINCE_OF_WALES_THEATRE_VENUE_UUID = '6';
 	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = '8';
-	const CHICHESTER_FESTIVAL_THEATRE_UUID = '10';
+	const CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID = '10';
 
 	let susannahFellowsPerson;
 	let theGreeksAldwychProduction;
@@ -40,7 +40,7 @@ describe('Cast member with multiple production credits', () => {
 				startDate: '1980-01-26', // Contrivance because date unavailable.
 				pressDate: '1980-02-02',
 				endDate: '1980-03-29',
-				theatre: {
+				venue: {
 					name: 'Aldwych Theatre'
 				},
 				cast: [
@@ -65,7 +65,7 @@ describe('Cast member with multiple production credits', () => {
 				startDate: '1993-03-19',
 				pressDate: '1993-03-30',
 				endDate: '1993-11-18',
-				theatre: {
+				venue: {
 					name: 'Prince of Wales Theatre'
 				},
 				cast: [
@@ -90,7 +90,7 @@ describe('Cast member with multiple production credits', () => {
 				startDate: '2009-07-11',
 				pressDate: '2009-07-22',
 				endDate: '2009-08-29',
-				theatre: {
+				venue: {
 					name: 'Chichester Festival Theatre'
 				},
 				cast: [
@@ -142,11 +142,11 @@ describe('Cast member with multiple production credits', () => {
 					name: 'Enron',
 					startDate: '2009-07-11',
 					endDate: '2009-08-29',
-					theatre: {
-						model: 'theatre',
-						uuid: CHICHESTER_FESTIVAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID,
 						name: 'Chichester Festival Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -175,11 +175,11 @@ describe('Cast member with multiple production credits', () => {
 					name: 'City of Angels',
 					startDate: '1993-03-19',
 					endDate: '1993-11-18',
-					theatre: {
-						model: 'theatre',
-						uuid: PRINCE_OF_WALES_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: PRINCE_OF_WALES_THEATRE_VENUE_UUID,
 						name: 'Prince of Wales Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -202,11 +202,11 @@ describe('Cast member with multiple production credits', () => {
 					name: 'The Greeks',
 					startDate: '1980-01-26',
 					endDate: '1980-03-29',
-					theatre: {
-						model: 'theatre',
-						uuid: ALDWYCH_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ALDWYCH_THEATRE_VENUE_UUID,
 						name: 'Aldwych Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

@@ -12,10 +12,10 @@ describe('Cast member performing same role in different productions of same mate
 
 	const TITANIA_CHARACTER_UUID = '5';
 	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
-	const ROYAL_SHAKESPEARE_THEATRE_UUID = '8';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '8';
 	const JUDI_DENCH_PERSON_UUID = '9';
 	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '10';
-	const ROSE_THEATRE_UUID = '12';
+	const ROSE_THEATRE_VENUE_UUID = '12';
 
 	let titaniaCharacter;
 	let aMidsummerNightsDreamRoyalShakespeareProduction;
@@ -57,7 +57,7 @@ describe('Cast member performing same role in different productions of same mate
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
-				theatre: {
+				venue: {
 					name: 'Royal Shakespeare Theatre'
 				},
 				cast: [
@@ -83,7 +83,7 @@ describe('Cast member performing same role in different productions of same mate
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
-				theatre: {
+				venue: {
 					name: 'Rose Theatre'
 				},
 				cast: [
@@ -130,11 +130,11 @@ describe('Cast member performing same role in different productions of same mate
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
-					theatre: {
-						model: 'theatre',
-						uuid: ROSE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROSE_THEATRE_VENUE_UUID,
 						name: 'Rose Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -153,11 +153,11 @@ describe('Cast member performing same role in different productions of same mate
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -247,11 +247,11 @@ describe('Cast member performing same role in different productions of same mate
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
-					theatre: {
-						model: 'theatre',
-						uuid: ROSE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROSE_THEATRE_VENUE_UUID,
 						name: 'Rose Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -268,11 +268,11 @@ describe('Cast member performing same role in different productions of same mate
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
-					theatre: {
-						model: 'theatre',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{

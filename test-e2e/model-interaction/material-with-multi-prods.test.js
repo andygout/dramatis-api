@@ -12,11 +12,11 @@ describe('Material with multiple productions', () => {
 
 	const TWELFTH_NIGHT_MATERIAL_UUID = '2';
 	const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = '4';
-	const SHAKESPEARES_GLOBE_THEATRE_UUID = '6';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = '6';
 	const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = '7';
-	const DONMAR_WAREHOUSE_THEATRE_UUID = '9';
+	const DONMAR_WAREHOUSE_VENUE_UUID = '9';
 	const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = '10';
-	const NATIONAL_THEATRE_UUID = '12';
+	const NATIONAL_THEATRE_VENUE_UUID = '12';
 
 	let twelfthNightMaterial;
 	let twelfthNightGlobeProduction;
@@ -49,7 +49,7 @@ describe('Material with multiple productions', () => {
 				material: {
 					name: 'Twelfth Night'
 				},
-				theatre: {
+				venue: {
 					name: 'Shakespeare\'s Globe'
 				}
 			});
@@ -64,7 +64,7 @@ describe('Material with multiple productions', () => {
 				material: {
 					name: 'Twelfth Night'
 				},
-				theatre: {
+				venue: {
 					name: 'Donmar Warehouse'
 				}
 			});
@@ -79,7 +79,7 @@ describe('Material with multiple productions', () => {
 				material: {
 					name: 'Twelfth Night'
 				},
-				theatre: {
+				venue: {
 					name: 'National Theatre'
 				}
 			});
@@ -106,7 +106,7 @@ describe('Material with multiple productions', () => {
 
 	describe('Twelfth Night (material)', () => {
 
-		it('includes productions of material ordered by production name then theatre name', () => {
+		it('includes productions of material ordered by production name then venue name', () => {
 
 			const expectedProductions = [
 				{
@@ -115,11 +115,11 @@ describe('Material with multiple productions', () => {
 					name: 'Twelfth Night',
 					startDate: '2012-09-22',
 					endDate: '2012-10-14',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -128,11 +128,11 @@ describe('Material with multiple productions', () => {
 					name: 'Twelfth Night',
 					startDate: '2011-01-11',
 					endDate: '2011-03-02',
-					theatre: {
-						model: 'theatre',
-						uuid: NATIONAL_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
-						surTheatre: null
+						surVenue: null
 					}
 				},
 				{
@@ -141,11 +141,11 @@ describe('Material with multiple productions', () => {
 					name: 'Twelfth Night, or What You Will',
 					startDate: '2002-10-11',
 					endDate: '2002-11-30',
-					theatre: {
-						model: 'theatre',
-						uuid: DONMAR_WAREHOUSE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 						name: 'Donmar Warehouse',
-						surTheatre: null
+						surVenue: null
 					}
 				}
 			];

@@ -153,9 +153,9 @@ const getShowQuery = () => `
 				otherCharacter.differentiator = otherRole.characterDifferentiator
 			)
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(theatre:Theatre)
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
-	OPTIONAL MATCH (theatre)<-[:HAS_SUB_THEATRE]-(surTheatre:Theatre)
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 	WITH
 		character,
@@ -163,8 +163,8 @@ const getShowQuery = () => `
 		materials,
 		variantNamedPortrayals,
 		production,
-		theatre,
-		surTheatre,
+		venue,
+		surVenue,
 		person,
 		role,
 		otherRole,
@@ -177,8 +177,8 @@ const getShowQuery = () => `
 		materials,
 		variantNamedPortrayals,
 		production,
-		theatre,
-		surTheatre,
+		venue,
+		surVenue,
 		person,
 		role,
 		COLLECT(DISTINCT(
@@ -194,7 +194,7 @@ const getShowQuery = () => `
 		)) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, theatre, surTheatre,
+	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, venue, surVenue,
 		COLLECT(person {
 			model: 'person',
 			.uuid,
@@ -203,7 +203,7 @@ const getShowQuery = () => `
 			qualifier: role.qualifier,
 			otherRoles: otherRoles
 		}) AS performers
-		ORDER BY production.startDate DESC, production.name, theatre.name
+		ORDER BY production.startDate DESC, production.name, venue.name
 
 	RETURN
 		'character' AS model,
@@ -222,15 +222,15 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					theatre: CASE theatre WHEN NULL
+					venue: CASE venue WHEN NULL
 						THEN null
-						ELSE theatre {
-							model: 'theatre',
+						ELSE venue {
+							model: 'venue',
 							.uuid,
 							.name,
-							surTheatre: CASE surTheatre WHEN NULL
+							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surTheatre { model: 'theatre', .uuid, .name }
+								ELSE surVenue { model: 'venue', .uuid, .name }
 							END
 						}
 					END,

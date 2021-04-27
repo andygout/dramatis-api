@@ -17,11 +17,11 @@ describe('Different characters with the same name from different materials', () 
 	const DEMETRIUS_CHARACTER_2_UUID = '14';
 	const CHIRON_CHARACTER_UUID = '15';
 	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = '16';
-	const NOVELLO_THEATRE_UUID = '18';
+	const NOVELLO_THEATRE_VENUE_UUID = '18';
 	const OSCAR_PEARCE_PERSON_UUID = '19';
 	const TRYSTAN_GRAVELLE_PERSON_UUID = '20';
 	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '21';
-	const SHAKESPEARES_GLOBE_THEATRE_UUID = '23';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = '23';
 	const RICHARD_RIDDELL_PERSON_UUID = '24';
 	const SAM_ALEXANDER_PERSON_UUID = '25';
 
@@ -92,7 +92,7 @@ describe('Different characters with the same name from different materials', () 
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},
-				theatre: {
+				venue: {
 					name: 'Novello Theatre'
 				},
 				cast: [
@@ -125,7 +125,7 @@ describe('Different characters with the same name from different materials', () 
 				material: {
 					name: 'Titus Andronicus'
 				},
-				theatre: {
+				venue: {
 					name: 'Shakespeare\'s Globe'
 				},
 				cast: [
@@ -191,11 +191,11 @@ describe('Different characters with the same name from different materials', () 
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -229,11 +229,11 @@ describe('Different characters with the same name from different materials', () 
 					name: 'Titus Andronicus',
 					startDate: '2006-05-20',
 					endDate: '2006-10-06',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					},
 					performers: [
 						{
@@ -404,11 +404,11 @@ describe('Different characters with the same name from different materials', () 
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
-					theatre: {
-						model: 'theatre',
-						uuid: NOVELLO_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
@@ -440,11 +440,11 @@ describe('Different characters with the same name from different materials', () 
 					name: 'Titus Andronicus',
 					startDate: '2006-05-20',
 					endDate: '2006-10-06',
-					theatre: {
-						model: 'theatre',
-						uuid: SHAKESPEARES_GLOBE_THEATRE_UUID,
+					venue: {
+						model: 'venue',
+						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
-						surTheatre: null
+						surVenue: null
 					},
 					roles: [
 						{
