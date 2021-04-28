@@ -4,9 +4,7 @@ export const validateString = (stringValue, opts) => {
 
 	let errorText;
 
-	const isStringWithLength =
-		stringValue !== null &&
-		!!stringValue.length;
+	const isStringWithLength = Boolean(stringValue);
 
 	if (opts.isRequired && !isStringWithLength) errorText = 'Value is too short';
 

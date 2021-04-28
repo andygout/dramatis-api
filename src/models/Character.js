@@ -34,7 +34,7 @@ export default class Character extends Base {
 
 	validateCharacterNameUnderlyingNameDisparity () {
 
-		if (!!this.underlyingName && this.name === this.underlyingName) {
+		if (Boolean(this.underlyingName) && this.name === this.underlyingName) {
 
 			this.addPropertyError('underlyingName', 'Underlying name is only required if different from character name');
 

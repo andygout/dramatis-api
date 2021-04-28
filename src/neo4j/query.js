@@ -7,8 +7,8 @@ export const neo4jQuery = async (queryData, queryOpts = {}) => {
 
 	const { query, params } = queryData;
 
-	const isOptionalResult = !!queryOpts.isOptionalResult;
-	const isArrayResult = !!queryOpts.isArrayResult;
+	const isOptionalResult = Boolean(queryOpts.isOptionalResult);
+	const isArrayResult = Boolean(queryOpts.isArrayResult);
 
 	const session = driver.session();
 

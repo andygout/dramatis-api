@@ -96,7 +96,7 @@ export default class Base {
 	validateNoAssociationWithSelf (associationName, associationDifferentiator) {
 
 		const hasAssociationWithSelf =
-			!!associationName.length &&
+			Boolean(associationName) &&
 			this.name === associationName &&
 			this.differentiator === associationDifferentiator;
 
@@ -111,7 +111,7 @@ export default class Base {
 
 	validateNamePresenceIfNamedChildren (children) {
 
-		if (this.name === '' && children.some(child => !!child.name)) {
+		if (this.name === '' && children.some(child => Boolean(child.name))) {
 
 			this.addPropertyError('name', 'Name is required if named children exist');
 

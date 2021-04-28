@@ -3,7 +3,7 @@ const getDuplicateBaseInstanceIndices = arrayOfObjects => {
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			!!object.name.length &&
+			Boolean(object.name) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
 				object.name === comparisonObject.name &&
@@ -39,7 +39,7 @@ const getDuplicateCharacterIndices = arrayOfObjects => {
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			!!object.name.length &&
+			Boolean(object.name) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
 				isDuplicateCharacterName(object, comparisonObject) &&
@@ -60,7 +60,7 @@ const getDuplicateEntityIndices = arrayOfObjects => {
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			!!object.name.length &&
+			Boolean(object.name) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
 				object.model === comparisonObject.model &&
@@ -81,7 +81,7 @@ const getDuplicateNameIndices = arrayOfObjects => {
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			!!object.name.length &&
+			Boolean(object.name) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
 				object.name === comparisonObject.name
@@ -116,7 +116,7 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			!!object.name.length &&
+			Boolean(object.name) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
 				isDuplicateRoleName(object, comparisonObject) &&
