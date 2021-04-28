@@ -19,17 +19,17 @@ export const prepareAsParams = instance => {
 
 	const hasNameOrIsExempt = key => item =>
 		!Object.prototype.hasOwnProperty.call(item, 'name')
-		|| !!item.name.length
+		|| Boolean(item.name)
 		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
 
 	const isNotWritingCreditWithoutNamedEntity = key => item =>
-		key !== WRITING_CREDITS || item.entities.some(entity => !!entity.name);
+		key !== WRITING_CREDITS || item.entities.some(entity => Boolean(entity.name));
 
 	const isNotCharacterGroupWithoutNamedCharacter = key => item =>
-		key !== CHARACTER_GROUPS || item.characters.some(character => !!character.name);
+		key !== CHARACTER_GROUPS || item.characters.some(character => Boolean(character.name));
 
 	const isNotProducerCreditWithoutNamedEntity = key => item =>
-		key !== PRODUCER_CREDITS || item.entities.some(entity => !!entity.name);
+		key !== PRODUCER_CREDITS || item.entities.some(entity => Boolean(entity.name));
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
 

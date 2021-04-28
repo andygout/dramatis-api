@@ -36,7 +36,7 @@ const getDuplicateEntities = arrayOfEntities => {
 const isEntityInArray = (entity, array) => {
 
 	const foundEntity =
-		!!entity.name.length &&
+		Boolean(entity.name) &&
 		array.find(comparisonEntity =>
 			entity.name === comparisonEntity.name &&
 			entity.differentiator === comparisonEntity.differentiator &&
