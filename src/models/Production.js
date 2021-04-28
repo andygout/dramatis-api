@@ -1,7 +1,7 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
 import Base from './Base';
-import { CastMember, CreativeCredit, CrewCredit, Material, ProducerCredit, Venue } from '.';
+import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '.';
 
 export default class Production extends Base {
 
@@ -30,9 +30,9 @@ export default class Production extends Base {
 
 		this.endDate = endDate?.trim() || '';
 
-		this.material = new Material({ ...material, isAssociation: true });
+		this.material = new MaterialBase(material);
 
-		this.venue = new Venue({ ...venue, isAssociation: true });
+		this.venue = new VenueBase(venue);
 
 		this.producerCredits = producerCredits
 			? producerCredits.map(producerCredit => new ProducerCredit(producerCredit))

@@ -1,6 +1,6 @@
 import Base from './Base';
 
-export default class Character extends Base {
+export default class MaterialBase extends Base {
 
 	constructor (props = {}) {
 
@@ -15,7 +15,7 @@ export default class Character extends Base {
 
 	get model () {
 
-		return 'character';
+		return 'material';
 
 	}
 

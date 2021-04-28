@@ -1,6 +1,6 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
 import Base from './Base';
-import { Company, Person } from '.';
+import { CompanyWithCreditedMembers, Person } from '.';
 
 export default class ProductionTeamCredit extends Base {
 
@@ -14,7 +14,7 @@ export default class ProductionTeamCredit extends Base {
 			? entities.map(entity => {
 				switch (entity.model) {
 					case 'company':
-						return new Company({ ...entity, isProductionAssociation: true });
+						return new CompanyWithCreditedMembers(entity);
 					default:
 						return new Person(entity);
 				}
@@ -41,23 +41,7 @@ export default class ProductionTeamCredit extends Base {
 
 			entity.validateUniquenessInGroup({ isDuplicate: isEntityInArray(entity, duplicateEntities) });
 
-			if (entity.model === 'company') {
-
-				entity.validateNamePresenceIfNamedChildren(entity.creditedMembers);
-
-				entity.creditedMembers.forEach(creditedMember => {
-
-					creditedMember.validateName({ isRequired: false });
-
-					creditedMember.validateDifferentiator();
-
-					creditedMember.validateUniquenessInGroup(
-						{ isDuplicate: isEntityInArray(creditedMember, duplicateEntities) }
-					);
-
-				});
-
-			}
+			if (entity.model === 'company') entity.runInputValidations({ duplicateEntities });
 
 		});
 

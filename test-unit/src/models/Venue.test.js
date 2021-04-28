@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
 import * as getDuplicateIndicesModule from '../../../src/lib/get-duplicate-indices';
-import Venue from '../../../src/models/Venue';
+import { Venue, VenueBase } from '../../../src/models';
 
 describe('Venue model', () => {
 
@@ -27,106 +27,36 @@ describe('Venue model', () => {
 
 	describe('constructor method', () => {
 
-		describe('differentiator property', () => {
-
-			it('assigns empty string if absent from props', () => {
-
-				const instance = new Venue({ name: 'New Theatre' });
-				expect(instance.differentiator).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new Venue({ name: 'New Theatre', differentiator: '' });
-				expect(instance.differentiator).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new Venue({ name: 'New Theatre', differentiator: ' ' });
-				expect(instance.differentiator).to.equal('');
-
-			});
-
-			it('assigns value if included in props and value is string with length', () => {
-
-				const instance = new Venue({ name: 'New Theatre', differentiator: '1' });
-				expect(instance.differentiator).to.equal('1');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new Venue({ name: 'New Theatre', differentiator: ' 1 ' });
-				expect(instance.differentiator).to.equal('1');
-
-			});
-
-		});
-
 		describe('sub-venues property', () => {
 
-			context('instance is subject', () => {
+			it('assigns empty array if absent from props', () => {
 
-				it('assigns empty array if absent from props', () => {
-
-					const instance = new Venue({ name: 'National Theatre' });
-					expect(instance.subVenues).to.deep.equal([]);
-
-				});
-
-				it('assigns array of sub-venues if included in props, retaining those with empty or whitespace-only string names', () => {
-
-					const props = {
-						name: 'National Theatre',
-						subVenues: [
-							{
-								name: 'Olivier Theatre'
-							},
-							{
-								name: ''
-							},
-							{
-								name: ' '
-							}
-						]
-					};
-					const instance = new Venue(props);
-					expect(instance.subVenues.length).to.equal(3);
-					expect(instance.subVenues[0].constructor.name).to.equal('Venue');
-					expect(instance.subVenues[1].constructor.name).to.equal('Venue');
-					expect(instance.subVenues[2].constructor.name).to.equal('Venue');
-
-				});
+				const instance = new Venue({ name: 'National Theatre' });
+				expect(instance.subVenues).to.deep.equal([]);
 
 			});
 
-			context('instance is not subject, i.e. it is an association of another instance', () => {
+			it('assigns array of sub-venues if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				it('will not assign any value if absent from props', () => {
-
-					const instance = new Venue({ name: 'National Theatre', isAssociation: true });
-					expect(instance).not.to.have.property('subVenues');
-
-				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'National Theatre',
-						subVenues: [
-							{
-								name: 'Olivier Theatre'
-							}
-						],
-						isAssociation: true
-					};
-					const instance = new Venue(props);
-					expect(instance).not.to.have.property('subVenues');
-
-				});
+				const props = {
+					name: 'National Theatre',
+					subVenues: [
+						{
+							name: 'Olivier Theatre'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = new Venue(props);
+				expect(instance.subVenues.length).to.equal(3);
+				expect(instance.subVenues[0] instanceof VenueBase).to.be.true;
+				expect(instance.subVenues[1] instanceof VenueBase).to.be.true;
+				expect(instance.subVenues[2] instanceof VenueBase).to.be.true;
 
 			});
 

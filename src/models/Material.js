@@ -1,47 +1,31 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-indices';
-import Base from './Base';
+import MaterialBase from './MaterialBase';
 import { CharacterGroup, WritingCredit } from '.';
 
-export default class Material extends Base {
+export default class Material extends MaterialBase {
 
 	constructor (props = {}) {
 
 		super(props);
 
 		const {
-			uuid,
-			differentiator,
 			format,
 			originalVersionMaterial,
 			writingCredits,
-			characterGroups,
-			isAssociation
+			characterGroups
 		} = props;
 
-		this.uuid = uuid;
-		this.differentiator = differentiator?.trim() || '';
+		this.format = format?.trim() || '';
 
-		if (!isAssociation) {
+		this.originalVersionMaterial = new MaterialBase(originalVersionMaterial);
 
-			this.format = format?.trim() || '';
+		this.writingCredits = writingCredits
+			? writingCredits.map(writingCredit => new WritingCredit(writingCredit))
+			: [];
 
-			this.originalVersionMaterial = new Material({ ...originalVersionMaterial, isAssociation: true });
-
-			this.writingCredits = writingCredits
-				? writingCredits.map(writingCredit => new WritingCredit(writingCredit))
-				: [];
-
-			this.characterGroups = characterGroups
-				? characterGroups.map(characterGroup => new CharacterGroup(characterGroup))
-				: [];
-
-		}
-
-	}
-
-	get model () {
-
-		return 'material';
+		this.characterGroups = characterGroups
+			? characterGroups.map(characterGroup => new CharacterGroup(characterGroup))
+			: [];
 
 	}
 

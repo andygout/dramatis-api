@@ -2,15 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Company, Person } from '../../../src/models';
+import { CompanyWithCreditedMembers, Person } from '../../../src/models';
 
 describe('ProducerCredit model', () => {
 
 	let stubs;
 
-	const CompanyStub = function () {
+	const CompanyWithCreditedMembersStub = function () {
 
-		return createStubInstance(Company);
+		return createStubInstance(CompanyWithCreditedMembers);
 
 	};
 
@@ -28,7 +28,7 @@ describe('ProducerCredit model', () => {
 				isEntityInArray: stub().returns(false)
 			},
 			models: {
-				Company: CompanyStub,
+				CompanyWithCreditedMembers: CompanyWithCreditedMembersStub,
 				Person: PersonStub
 			}
 		};
@@ -91,11 +91,11 @@ describe('ProducerCredit model', () => {
 				const instance = createInstance(props);
 				expect(instance.entities.length).to.equal(6);
 				expect(instance.entities[0] instanceof Person).to.be.true;
-				expect(instance.entities[1] instanceof Company).to.be.true;
+				expect(instance.entities[1] instanceof CompanyWithCreditedMembers).to.be.true;
 				expect(instance.entities[2] instanceof Person).to.be.true;
-				expect(instance.entities[3] instanceof Company).to.be.true;
+				expect(instance.entities[3] instanceof CompanyWithCreditedMembers).to.be.true;
 				expect(instance.entities[4] instanceof Person).to.be.true;
-				expect(instance.entities[5] instanceof Company).to.be.true;
+				expect(instance.entities[5] instanceof CompanyWithCreditedMembers).to.be.true;
 
 			});
 
@@ -115,20 +115,13 @@ describe('ProducerCredit model', () => {
 					},
 					{
 						model: 'company',
-						name: 'Fiery Angel',
-						creditedMembers: [
-							{
-								name: 'Edward Snape'
-							}
-						]
+						name: 'Fiery Angel'
 					}
 				]
 			};
 			const instance = createInstance(props);
 			instance.entities[0].name = 'Jason Haigh-Ellery';
 			instance.entities[1].name = 'Fiery Angel';
-			instance.entities[1].creditedMembers = [createStubInstance(Person)];
-			instance.entities[1].creditedMembers[0].name = 'Edward Snape';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfNamedChildren');
@@ -145,11 +138,7 @@ describe('ProducerCredit model', () => {
 				instance.entities[1].validateDifferentiator,
 				stubs.getDuplicatesInfoModule.isEntityInArray,
 				instance.entities[1].validateUniquenessInGroup,
-				instance.entities[1].validateNamePresenceIfNamedChildren,
-				instance.entities[1].creditedMembers[0].validateName,
-				instance.entities[1].creditedMembers[0].validateDifferentiator,
-				stubs.getDuplicatesInfoModule.isEntityInArray,
-				instance.entities[1].creditedMembers[0].validateUniquenessInGroup
+				instance.entities[1].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
@@ -163,7 +152,7 @@ describe('ProducerCredit model', () => {
 			expect(instance.entities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledThrice).to.be.true;
+			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledTwice).to.be.true;
 			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(0).calledWithExactly(
 				instance.entities[0], 'getDuplicateEntities response'
 			)).to.be.true;
@@ -182,23 +171,9 @@ describe('ProducerCredit model', () => {
 			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
-			expect(instance.entities[1].validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.entities[1].validateNamePresenceIfNamedChildren.calledWithExactly(
-				instance.entities[1].creditedMembers
-			)).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateName.calledOnce).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateName.calledWithExactly(
-				{ isRequired: false }
-			)).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateDifferentiator.calledWithExactly())
-				.to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(2).calledWithExactly(
-				instance.entities[1].creditedMembers[0], 'getDuplicateEntities response'
-			)).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].creditedMembers[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
+			expect(instance.entities[1].runInputValidations.calledOnce).to.be.true;
+			expect(instance.entities[1].runInputValidations.calledWithExactly(
+				{ duplicateEntities: 'getDuplicateEntities response' }
 			)).to.be.true;
 
 		});

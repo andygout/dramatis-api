@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Company, Person, Material } from '../../../src/models';
+import { Company, Person, MaterialBase } from '../../../src/models';
 
 describe('WritingCredit model', () => {
 
@@ -14,9 +14,9 @@ describe('WritingCredit model', () => {
 
 	};
 
-	const MaterialStub = function () {
+	const MaterialBaseStub = function () {
 
-		return createStubInstance(Material);
+		return createStubInstance(MaterialBase);
 
 	};
 
@@ -34,7 +34,7 @@ describe('WritingCredit model', () => {
 			},
 			models: {
 				Company: CompanyStub,
-				Material: MaterialStub,
+				MaterialBase: MaterialBaseStub,
 				Person: PersonStub
 			}
 		};
@@ -144,13 +144,13 @@ describe('WritingCredit model', () => {
 				expect(instance.entities.length).to.equal(9);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof Company).to.be.true;
-				expect(instance.entities[2] instanceof Material).to.be.true;
+				expect(instance.entities[2] instanceof MaterialBase).to.be.true;
 				expect(instance.entities[3] instanceof Person).to.be.true;
 				expect(instance.entities[4] instanceof Company).to.be.true;
-				expect(instance.entities[5] instanceof Material).to.be.true;
+				expect(instance.entities[5] instanceof MaterialBase).to.be.true;
 				expect(instance.entities[6] instanceof Person).to.be.true;
 				expect(instance.entities[7] instanceof Company).to.be.true;
-				expect(instance.entities[8] instanceof Material).to.be.true;
+				expect(instance.entities[8] instanceof MaterialBase).to.be.true;
 
 			});
 
