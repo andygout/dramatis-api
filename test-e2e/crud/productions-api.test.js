@@ -3860,12 +3860,15 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID = '0';
-		const NATIONAL_THEATRE_VENUE_UUID = '2';
+		const MACBETH_GIELGUD_PRODUCTION_UUID = '0';
+		const GIELGUD_THEATRE_VENUE_UUID = '2';
 		const HAMLET_NATIONAL_PRODUCTION_UUID = '3';
-		const MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID = '6';
+		const NATIONAL_THEATRE_VENUE_UUID = '5';
+		const MACBETH_ALMEIDA_PRODUCTION_UUID = '6';
 		const ALMEIDA_THEATRE_VENUE_UUID = '8';
-		const HAMLET_ALMEIDA_PRODUCTION_UUID = '9';
+		const HAMLET_WYNDHAMS_PRODUCTION_UUID = '9';
+		const WYNDHAMS_THEATRE_VENUE_UUID = '11';
+		const HAMLET_ALMEIDA_PRODUCTION_UUID = '12';
 
 		before(async () => {
 
@@ -3878,12 +3881,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Measure for Measure',
-					startDate: '2004-05-18',
-					pressDate: '2004-05-27',
-					endDate: '2006-03-18',
+					name: 'Macbeth',
+					// Contrivance for purposes of test.
+					startDate: '2010-09-30',
+					pressDate: '2010-10-07',
+					endDate: '2011-01-26',
 					venue: {
-						name: 'National Theatre'
+						name: 'Gielgud Theatre'
 					}
 				});
 
@@ -3902,12 +3906,25 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Measure for Measure',
-					startDate: '2010-02-12',
-					pressDate: '2010-02-18',
-					endDate: '2010-04-10',
+					name: 'Macbeth',
+					// Contrivance for purposes of test.
+					startDate: '2010-09-30',
+					pressDate: '2010-10-07',
+					endDate: '2011-01-26',
 					venue: {
 						name: 'Almeida Theatre'
+					}
+				});
+
+			await chai.request(app)
+				.post('/productions')
+				.send({
+					name: 'Hamlet',
+					startDate: '2009-05-29',
+					pressDate: '2009-06-03',
+					endDate: '2009-08-22',
+					venue: {
+						name: 'Wyndham\'s Theatre'
 					}
 				});
 
@@ -3931,7 +3948,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
-		it('lists all productions ordered by name then venue name', async () => {
+		it('lists all productions ordered by start date then name then venue name', async () => {
 
 			const response = await chai.request(app)
 				.get('/productions');
@@ -3965,10 +3982,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				{
 					model: 'production',
-					uuid: MEASURE_FOR_MEASURE_ALMEIDA_PRODUCTION_UUID,
-					name: 'Measure for Measure',
-					startDate: '2010-02-12',
-					endDate: '2010-04-10',
+					uuid: MACBETH_ALMEIDA_PRODUCTION_UUID,
+					name: 'Macbeth',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
 					venue: {
 						model: 'venue',
 						uuid: ALMEIDA_THEATRE_VENUE_UUID,
@@ -3978,14 +3995,27 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				{
 					model: 'production',
-					uuid: MEASURE_FOR_MEASURE_NATIONAL_PRODUCTION_UUID,
-					name: 'Measure for Measure',
-					startDate: '2004-05-18',
-					endDate: '2006-03-18',
+					uuid: MACBETH_GIELGUD_PRODUCTION_UUID,
+					name: 'Macbeth',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
 					venue: {
 						model: 'venue',
-						uuid: NATIONAL_THEATRE_VENUE_UUID,
-						name: 'National Theatre',
+						uuid: GIELGUD_THEATRE_VENUE_UUID,
+						name: 'Gielgud Theatre',
+						surVenue: null
+					}
+				},
+				{
+					model: 'production',
+					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Hamlet',
+					startDate: '2009-05-29',
+					endDate: '2009-08-22',
+					venue: {
+						model: 'venue',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					}
 				}
