@@ -1,16 +1,15 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
-import Base from './Base';
+import Entity from './Entity';
 import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '.';
 
-export default class Production extends Base {
+export default class Production extends Entity {
 
 	constructor (props = {}) {
 
 		super(props);
 
 		const {
-			uuid,
 			startDate,
 			pressDate,
 			endDate,
@@ -21,8 +20,6 @@ export default class Production extends Base {
 			creativeCredits,
 			crewCredits
 		} = props;
-
-		this.uuid = uuid;
 
 		this.startDate = startDate?.trim() || '';
 
