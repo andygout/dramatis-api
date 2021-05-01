@@ -1,30 +1,17 @@
 import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
-import Base from './Base';
+import VenueBase from './VenueBase';
 
-export default class Venue extends Base {
+export default class Venue extends VenueBase {
 
 	constructor (props = {}) {
 
 		super(props);
 
-		const { uuid, differentiator, subVenues, isAssociation } = props;
+		const { subVenues } = props;
 
-		this.uuid = uuid;
-		this.differentiator = differentiator?.trim() || '';
-
-		if (!isAssociation) {
-
-			this.subVenues = subVenues
-				? subVenues.map(subVenue => new this.constructor({ ...subVenue, isAssociation: true }))
-				: [];
-
-		}
-
-	}
-
-	get model () {
-
-		return 'venue';
+		this.subVenues = subVenues
+			? subVenues.map(subVenue => new VenueBase(subVenue))
+			: [];
 
 	}
 

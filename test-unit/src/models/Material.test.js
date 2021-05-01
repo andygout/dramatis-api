@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterGroup, WritingCredit } from '../../../src/models';
+import { CharacterGroup, MaterialBase, WritingCredit } from '../../../src/models';
 
 describe('Material model', () => {
 
@@ -50,116 +50,46 @@ describe('Material model', () => {
 
 	describe('constructor method', () => {
 
-		describe('differentiator property', () => {
+		describe('format property', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const instance = createInstance({ name: 'Home' });
-				expect(instance.differentiator).to.equal('');
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				const instance = createInstance({ name: 'Home', differentiator: '' });
-				expect(instance.differentiator).to.equal('');
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: '' });
+				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				const instance = createInstance({ name: 'Home', differentiator: ' ' });
-				expect(instance.differentiator).to.equal('');
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: ' ' });
+				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				const instance = createInstance({ name: 'Home', differentiator: '1' });
-				expect(instance.differentiator).to.equal('1');
+				const instance = createInstance({
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					format: 'play'
+				});
+				expect(instance.format).to.equal('play');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const instance = createInstance({ name: 'Home', differentiator: ' 1 ' });
-				expect(instance.differentiator).to.equal('1');
-
-			});
-
-		});
-
-		describe('format property', () => {
-
-			context('instance is subject', () => {
-
-				it('assigns empty string if absent from props', () => {
-
-					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.format).to.equal('');
-
+				const instance = createInstance({
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					format: ' play '
 				});
-
-				it('assigns empty string if included in props but value is empty string', () => {
-
-					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: '' });
-					expect(instance.format).to.equal('');
-
-				});
-
-				it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: ' ' });
-					expect(instance.format).to.equal('');
-
-				});
-
-				it('assigns value if included in props and value is string with length', () => {
-
-					const instance = createInstance({
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						format: 'play'
-					});
-					expect(instance.format).to.equal('play');
-
-				});
-
-				it('trims value before assigning', () => {
-
-					const instance = createInstance({
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						format: ' play '
-					});
-					expect(instance.format).to.equal('play');
-
-				});
-
-			});
-
-			context('instance is not subject, i.e. it is an association of another instance', () => {
-
-				it('will not assign any value if absent from props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('format');
-
-				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						format: 'play',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('format');
-
-				});
+				expect(instance.format).to.equal('play');
 
 			});
 
@@ -167,63 +97,27 @@ describe('Material model', () => {
 
 		describe('originalVersionMaterial property', () => {
 
-			context('instance is subject', () => {
+			it('assigns instance if absent from props', () => {
 
-				it('assigns instance if absent from props', () => {
-
-					const instance = createInstance({
-						name: 'The Seagull',
-						differentiator: '2'
-					});
-					expect(instance.originalVersionMaterial.constructor.name).to.equal('Material');
-
+				const instance = createInstance({
+					name: 'The Seagull',
+					differentiator: '2'
 				});
-
-				it('assigns instance if included in props', () => {
-
-					const instance = createInstance({
-						name: 'The Seagull',
-						differentiator: '2',
-						originalVersionMaterial: {
-							name: 'The Seagull',
-							differentiator: '1'
-						}
-					});
-					expect(instance.originalVersionMaterial.constructor.name).to.equal('Material');
-
-				});
+				expect(instance.originalVersionMaterial instanceof MaterialBase).to.be.true;
 
 			});
 
-			context('instance is not subject, i.e. it is an association of another instance', () => {
+			it('assigns instance if included in props', () => {
 
-				it('will not assign any value if absent from props', () => {
-
-					const props = {
+				const instance = createInstance({
+					name: 'The Seagull',
+					differentiator: '2',
+					originalVersionMaterial: {
 						name: 'The Seagull',
-						differentiator: '2',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('originalVersionMaterial');
-
+						differentiator: '1'
+					}
 				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'The Seagull',
-						differentiator: '2',
-						originalVersionMaterial: {
-							name: 'The Seagull',
-							differentiator: '1'
-						},
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('originalVersionMaterial');
-
-				});
+				expect(instance.originalVersionMaterial instanceof MaterialBase).to.be.true;
 
 			});
 
@@ -231,69 +125,34 @@ describe('Material model', () => {
 
 		describe('writingCredits property', () => {
 
-			context('instance is subject', () => {
+			it('assigns empty array if absent from props', () => {
 
-				it('assigns empty array if absent from props', () => {
-
-					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.writingCredits).to.deep.equal([]);
-
-				});
-
-				it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writingCredits: [
-							{
-								name: 'version by'
-							},
-							{
-								name: ''
-							},
-							{
-								name: ' '
-							}
-						]
-					};
-					const instance = createInstance(props);
-					expect(instance.writingCredits.length).to.equal(3);
-					expect(instance.writingCredits[0] instanceof WritingCredit).to.be.true;
-					expect(instance.writingCredits[1] instanceof WritingCredit).to.be.true;
-					expect(instance.writingCredits[2] instanceof WritingCredit).to.be.true;
-
-				});
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				expect(instance.writingCredits).to.deep.equal([]);
 
 			});
 
-			context('instance is not subject, i.e. it is an association of another instance', () => {
+			it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				it('will not assign any value if absent from props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writingCredits');
-
-				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						writingCredits: [
-							{
-								name: 'version by'
-							}
-						],
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('writingCredits');
-
-				});
+				const props = {
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					writingCredits: [
+						{
+							name: 'version by'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.writingCredits.length).to.equal(3);
+				expect(instance.writingCredits[0] instanceof WritingCredit).to.be.true;
+				expect(instance.writingCredits[1] instanceof WritingCredit).to.be.true;
+				expect(instance.writingCredits[2] instanceof WritingCredit).to.be.true;
 
 			});
 
@@ -301,69 +160,34 @@ describe('Material model', () => {
 
 		describe('characterGroups property', () => {
 
-			context('instance is subject', () => {
+			it('assigns empty array if absent from props', () => {
 
-				it('assigns empty array if absent from props', () => {
-
-					const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
-					expect(instance.characterGroups).to.deep.equal([]);
-
-				});
-
-				it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						characterGroups: [
-							{
-								name: 'Court of Elsinore'
-							},
-							{
-								name: ''
-							},
-							{
-								name: ' '
-							}
-						]
-					};
-					const instance = createInstance(props);
-					expect(instance.characterGroups.length).to.equal(3);
-					expect(instance.characterGroups[0] instanceof CharacterGroup).to.be.true;
-					expect(instance.characterGroups[1] instanceof CharacterGroup).to.be.true;
-					expect(instance.characterGroups[2] instanceof CharacterGroup).to.be.true;
-
-				});
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				expect(instance.characterGroups).to.deep.equal([]);
 
 			});
 
-			context('instance is not subject, i.e. it is an association of another instance', () => {
+			it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', () => {
 
-				it('will not assign any value if absent from props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('characterGroups');
-
-				});
-
-				it('will not assign any value if included in props', () => {
-
-					const props = {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
-						characterGroups: [
-							{
-								name: 'Court of Elsinore'
-							}
-						],
-						isAssociation: true
-					};
-					const instance = createInstance(props);
-					expect(instance).not.to.have.property('characterGroups');
-
-				});
+				const props = {
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					characterGroups: [
+						{
+							name: 'Court of Elsinore'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.characterGroups.length).to.equal(3);
+				expect(instance.characterGroups[0] instanceof CharacterGroup).to.be.true;
+				expect(instance.characterGroups[1] instanceof CharacterGroup).to.be.true;
+				expect(instance.characterGroups[2] instanceof CharacterGroup).to.be.true;
 
 			});
 

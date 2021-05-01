@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CastMember, CreativeCredit, CrewCredit, Material, ProducerCredit, Venue } from '../../../src/models';
+import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -26,9 +26,9 @@ describe('Production model', () => {
 
 	};
 
-	const MaterialStub = function () {
+	const MaterialBaseStub = function () {
 
-		return createStubInstance(Material);
+		return createStubInstance(MaterialBase);
 
 	};
 
@@ -38,9 +38,9 @@ describe('Production model', () => {
 
 	};
 
-	const VenueStub = function () {
+	const VenueBaseStub = function () {
 
-		return createStubInstance(Venue);
+		return createStubInstance(VenueBase);
 
 	};
 
@@ -60,9 +60,9 @@ describe('Production model', () => {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
 				CrewCredit: CrewCreditStub,
-				Material: MaterialStub,
+				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
-				Venue: VenueStub
+				VenueBase: VenueBaseStub
 			}
 		};
 

@@ -1,6 +1,6 @@
 import { getDuplicateEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Company, Person, Material } from '.';
+import { Company, Person, MaterialBase } from '.';
 import { CREDIT_TYPES } from '../utils/constants';
 
 export default class WritingCredit extends Base {
@@ -19,7 +19,7 @@ export default class WritingCredit extends Base {
 					case 'company':
 						return new Company(entity);
 					case 'material':
-						return new Material({ ...entity, isAssociation: true });
+						return new MaterialBase(entity);
 					default:
 						return new Person(entity);
 				}

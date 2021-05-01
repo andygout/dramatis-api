@@ -1,6 +1,6 @@
 import { getDuplicateCharacterIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Character } from '.';
+import { CharacterDepiction } from '.';
 
 export default class CharacterGroup extends Base {
 
@@ -11,7 +11,7 @@ export default class CharacterGroup extends Base {
 		const { characters } = props;
 
 		this.characters = characters
-			? characters.map(character => new Character({ ...character, isAssociation: true }))
+			? characters.map(character => new CharacterDepiction(character))
 			: [];
 
 	}

@@ -2,15 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Character } from '../../../src/models';
+import { CharacterDepiction } from '../../../src/models';
 
 describe('CharacterGroup model', () => {
 
 	let stubs;
 
-	const CharacterStub = function () {
+	const CharacterDepictionStub = function () {
 
-		return createStubInstance(Character);
+		return createStubInstance(CharacterDepiction);
 
 	};
 
@@ -21,7 +21,7 @@ describe('CharacterGroup model', () => {
 				getDuplicateCharacterIndices: stub().returns([])
 			},
 			models: {
-				Character: CharacterStub
+				CharacterDepiction: CharacterDepictionStub
 			}
 		};
 
@@ -70,9 +70,9 @@ describe('CharacterGroup model', () => {
 				};
 				const instance = createInstance(props);
 				expect(instance.characters.length).to.equal(3);
-				expect(instance.characters[0] instanceof Character).to.be.true;
-				expect(instance.characters[1] instanceof Character).to.be.true;
-				expect(instance.characters[2] instanceof Character).to.be.true;
+				expect(instance.characters[0] instanceof CharacterDepiction).to.be.true;
+				expect(instance.characters[1] instanceof CharacterDepiction).to.be.true;
+				expect(instance.characters[2] instanceof CharacterDepiction).to.be.true;
 
 			});
 

@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import Character from '../../../src/models/Character';
+import VenueBase from '../../../src/models/VenueBase';
 
-describe('Character model', () => {
+describe('VenueBase model', () => {
 
 	describe('constructor method', () => {
 
@@ -10,35 +10,35 @@ describe('Character model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const instance = new Character({ name: 'Demetrius' });
+				const instance = new VenueBase({ name: 'New Theatre' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				const instance = new Character({ name: 'Demetrius', differentiator: '' });
+				const instance = new VenueBase({ name: 'New Theatre', differentiator: '' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				const instance = new Character({ name: 'Demetrius', differentiator: ' ' });
+				const instance = new VenueBase({ name: 'New Theatre', differentiator: ' ' });
 				expect(instance.differentiator).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				const instance = new Character({ name: 'Demetrius', differentiator: '1' });
+				const instance = new VenueBase({ name: 'New Theatre', differentiator: '1' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const instance = new Character({ name: 'Demetrius', differentiator: ' 1 ' });
+				const instance = new VenueBase({ name: 'New Theatre', differentiator: ' 1 ' });
 				expect(instance.differentiator).to.equal('1');
 
 			});
