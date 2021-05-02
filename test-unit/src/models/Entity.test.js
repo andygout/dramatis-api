@@ -819,13 +819,13 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Almeida Theatre',
+						differentiator: null,
+						hasErrors: false,
 						errors: {
 							associations: [
 								'Production'
 							]
-						},
-						differentiator: null,
-						hasErrors: false
+						}
 					});
 
 				});
