@@ -6,10 +6,6 @@ export default class MaterialBase extends Entity {
 
 		super(props);
 
-		const { differentiator } = props;
-
-		this.differentiator = differentiator?.trim() || '';
-
 	}
 
 	get model () {

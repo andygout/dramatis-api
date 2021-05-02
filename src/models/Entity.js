@@ -17,9 +17,11 @@ export default class Entity extends Base {
 
 		super(props);
 
-		const { uuid } = props;
+		const { uuid, differentiator } = props;
 
 		this.uuid = uuid;
+
+		if (this.model !== 'production') this.differentiator = differentiator?.trim() || '';
 
 	}
 
