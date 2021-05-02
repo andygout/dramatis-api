@@ -786,6 +786,7 @@ describe('Entity model', () => {
 
 				it('returns instance without deleting', async () => {
 
+					stubs.hasErrors.returns(true);
 					stubs.neo4jQuery.resolves({
 						model: 'venue',
 						name: 'Almeida Theatre',
@@ -818,7 +819,7 @@ describe('Entity model', () => {
 						uuid: undefined,
 						name: 'Almeida Theatre',
 						differentiator: null,
-						hasErrors: false,
+						hasErrors: true,
 						errors: {
 							associations: [
 								'Production'
@@ -835,6 +836,7 @@ describe('Entity model', () => {
 				it('returns instance without deleting', async () => {
 
 					const instance = new Production({ name: 'Foobar' });
+					stubs.hasErrors.returns(true);
 					stubs.neo4jQuery.resolves({
 						model: 'production',
 						name: 'Hamlet',
@@ -868,7 +870,7 @@ describe('Entity model', () => {
 						startDate: '',
 						pressDate: '',
 						endDate: '',
-						hasErrors: false,
+						hasErrors: true,
 						errors: {
 							associations: [
 								'Venue'
