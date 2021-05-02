@@ -702,7 +702,7 @@ describe('Entity model', () => {
 					)).to.be.true;
 					expect(instance.constructor.calledOnce).to.be.true;
 					expect(instance.constructor.calledWithExactly(
-						{ model: 'venue', name: 'Almeida Theatre', differentiator: null }
+						{ name: 'Almeida Theatre', differentiator: null }
 					)).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
@@ -745,9 +745,7 @@ describe('Entity model', () => {
 						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					)).to.be.true;
 					expect(instance.constructor.calledOnce).to.be.true;
-					expect(instance.constructor.calledWithExactly(
-						{ model: 'production', name: 'Hamlet' }
-					)).to.be.true;
+					expect(instance.constructor.calledWithExactly({ name: 'Hamlet' })).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
 					expect(result instanceof Production).to.be.true;

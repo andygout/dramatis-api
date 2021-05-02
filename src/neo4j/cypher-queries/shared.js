@@ -86,7 +86,6 @@ const getDeleteQuery = model => {
 			DETACH DELETE deletableInstance
 
 			RETURN
-				'${model}' AS model,
 				CASE WHEN isDeleted
 					THEN deletableInstanceName
 					ELSE undeletableInstance.name
