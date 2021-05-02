@@ -1,14 +1,13 @@
-import Base from './Base';
+import Entity from './Entity';
 
-export default class MaterialBase extends Base {
+export default class MaterialBase extends Entity {
 
 	constructor (props = {}) {
 
 		super(props);
 
-		const { uuid, differentiator } = props;
+		const { differentiator } = props;
 
-		this.uuid = uuid;
 		this.differentiator = differentiator?.trim() || '';
 
 	}
