@@ -6,10 +6,6 @@ export default class Person extends Entity {
 
 		super(props);
 
-		const { differentiator } = props;
-
-		this.differentiator = differentiator?.trim() || '';
-
 	}
 
 	get model () {

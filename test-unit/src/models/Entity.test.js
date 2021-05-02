@@ -4,6 +4,7 @@ import { assert, createSandbox, spy, stub } from 'sinon';
 import * as hasErrorsModule from '../../../src/lib/has-errors';
 import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
 import Entity from '../../../src/models/Entity';
+import { Production } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
@@ -69,6 +70,64 @@ describe('Entity model', () => {
 
 	});
 
+	describe('constructor method', () => {
+
+		describe('differentiator property', () => {
+
+			context('model is not production', () => {
+
+				it('assigns empty string if absent from props', () => {
+
+					const instance = new Entity({ name: 'Foobar' });
+					expect(instance.differentiator).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is empty string', () => {
+
+					const instance = new Entity({ name: 'Foobar', differentiator: '' });
+					expect(instance.differentiator).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+					const instance = new Entity({ name: 'Foobar', differentiator: ' ' });
+					expect(instance.differentiator).to.equal('');
+
+				});
+
+				it('assigns value if included in props and value is string with length', () => {
+
+					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+					expect(instance.differentiator).to.equal('1');
+
+				});
+
+				it('trims value before assigning', () => {
+
+					const instance = new Entity({ name: 'Foobar', differentiator: ' 1 ' });
+					expect(instance.differentiator).to.equal('1');
+
+				});
+
+			});
+
+			context('model is production', () => {
+
+				it('does not assign differentiator property (because when productions are created they are treated as unique)', () => {
+
+					const instance = new Production({ name: 'Foobar', differentiator: '1' });
+					expect(instance).to.not.have.property('differentiator');
+
+				});
+
+			});
+
+		});
+
+	});
+
 	describe('hasDifferentiatorProperty method', () => {
 
 		context('instance has differentiator property', () => {
@@ -87,6 +146,7 @@ describe('Entity model', () => {
 
 			it('returns false', () => {
 
+				const instance = new Production({ name: 'Foobar', differentiator: '1' });
 				const result = instance.hasDifferentiatorProperty();
 				expect(result).to.be.false;
 
@@ -480,6 +540,7 @@ describe('Entity model', () => {
 					model: 'venue',
 					uuid: undefined,
 					name: 'Foobar',
+					differentiator: '',
 					errors: {},
 					hasErrors: true
 				});
@@ -615,7 +676,7 @@ describe('Entity model', () => {
 
 			context('instance has differentiator property', () => {
 
-				it('deletes instance and returns object with its model and name properties', async () => {
+				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
 
 					stubs.neo4jQuery.resolves({
 						model: 'venue',
@@ -646,6 +707,12 @@ describe('Entity model', () => {
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
 					expect(result instanceof Entity).to.be.true;
+					expect(result).to.deep.equal({
+						uuid: undefined,
+						name: 'Almeida Theatre',
+						differentiator: '',
+						errors: {}
+					});
 
 				});
 
@@ -653,8 +720,9 @@ describe('Entity model', () => {
 
 			context('instance does not have differentiator property', () => {
 
-				it('deletes instance and returns object with its model and name properties', async () => {
+				it('deletes instance and returns newly instantiated instance with assigned name property', async () => {
 
+					const instance = new Production();
 					stubs.neo4jQuery.resolves({
 						model: 'production',
 						name: 'Hamlet',
@@ -682,7 +750,31 @@ describe('Entity model', () => {
 					)).to.be.true;
 					expect(instance.addPropertyError.notCalled).to.be.true;
 					expect(instance.setErrorStatus.notCalled).to.be.true;
-					expect(result instanceof Entity).to.be.true;
+					expect(result instanceof Production).to.be.true;
+					expect(result).to.deep.equal({
+						uuid: undefined,
+						name: 'Hamlet',
+						startDate: '',
+						pressDate: '',
+						endDate: '',
+						errors: {},
+						material: {
+							uuid: undefined,
+							name: '',
+							differentiator	: '',
+							errors: {}
+						},
+						venue: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
+					});
 
 				});
 
@@ -744,6 +836,7 @@ describe('Entity model', () => {
 
 				it('returns instance without deleting', async () => {
 
+					const instance = new Production({ name: 'Foobar' });
 					stubs.neo4jQuery.resolves({
 						model: 'production',
 						name: 'Hamlet',
@@ -774,12 +867,31 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Hamlet',
+						startDate: '',
+						pressDate: '',
+						endDate: '',
+						hasErrors: false,
 						errors: {
 							associations: [
 								'Venue'
 							]
 						},
-						hasErrors: false
+						material: {
+							uuid: undefined,
+							name: '',
+							differentiator	: '',
+							errors: {}
+						},
+						venue: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					});
 
 				});

@@ -6,10 +6,6 @@ export default class Company extends Entity {
 
 		super(props);
 
-		const { differentiator } = props;
-
-		this.differentiator = differentiator?.trim() || '';
-
 	}
 
 	get model () {
