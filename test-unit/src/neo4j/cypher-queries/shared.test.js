@@ -186,7 +186,6 @@ describe('Cypher Queries Shared module', () => {
 					DETACH DELETE deletableInstance
 
 					RETURN
-						'venue' AS model,
 						CASE WHEN isDeleted
 							THEN deletableInstanceName
 							ELSE undeletableInstance.name

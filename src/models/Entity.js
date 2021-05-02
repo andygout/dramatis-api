@@ -164,7 +164,7 @@ export default class Entity extends Base {
 
 		const { getDeleteQuery } = sharedQueries;
 
-		const { model, name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
+		const { name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
 			query: getDeleteQuery(this.model),
 			params: { uuid: this.uuid }
 		});
@@ -172,7 +172,6 @@ export default class Entity extends Base {
 		if (isDeleted) {
 
 			return new this.constructor({
-				model,
 				name,
 				...(this.hasDifferentiatorProperty() && { differentiator })
 			});
