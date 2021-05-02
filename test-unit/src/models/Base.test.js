@@ -39,35 +39,35 @@ describe('Base model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				instance = new Base({});
+				const instance = new Base({});
 				expect(instance.name).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				instance = new Base({ name: '' });
+				const instance = new Base({ name: '' });
 				expect(instance.name).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				instance = new Base({ name: ' ' });
+				const instance = new Base({ name: ' ' });
 				expect(instance.name).to.equal('');
 
 			});
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				instance = new Base({ name: 'Barfoo' });
+				const instance = new Base({ name: 'Barfoo' });
 				expect(instance.name).to.equal('Barfoo');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				instance = new Base({ name: ' Barfoo ' });
+				const instance = new Base({ name: ' Barfoo ' });
 				expect(instance.name).to.equal('Barfoo');
 
 			});
@@ -122,7 +122,7 @@ describe('Base model', () => {
 
 			it('will call addPropertyError method', () => {
 
-				instance = new Base({ name: '' });
+				const instance = new Base({ name: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateStringForProperty('name', { isRequired: true });
 				assert.callOrder(
