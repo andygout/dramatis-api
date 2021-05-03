@@ -247,12 +247,29 @@ describe('Entity model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('will call validateUniquenessInDatabase method', () => {
+		context('model is not production', () => {
 
-			spy(instance, 'validateUniquenessInDatabase');
-			instance.runDatabaseValidations();
-			expect(instance.validateUniquenessInDatabase.calledOnce).to.be.true;
-			expect(instance.validateUniquenessInDatabase.calledWithExactly()).to.be.true;
+			it('will call validateUniquenessInDatabase method', () => {
+
+				spy(instance, 'validateUniquenessInDatabase');
+				instance.runDatabaseValidations();
+				expect(instance.validateUniquenessInDatabase.calledOnce).to.be.true;
+				expect(instance.validateUniquenessInDatabase.calledWithExactly()).to.be.true;
+
+			});
+
+		});
+
+		context('model is production', () => {
+
+			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', () => {
+
+				const instance = new Production();
+				spy(instance, 'validateUniquenessInDatabase');
+				instance.runDatabaseValidations();
+				expect(instance.validateUniquenessInDatabase.notCalled).to.be.true;
+
+			});
 
 		});
 

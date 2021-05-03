@@ -131,12 +131,4 @@ export default class Production extends Entity {
 
 	}
 
-	// Overrides Base model runDatabaseValidations() method because Production instances
-	// do not require database validation as they can have the same name as others.
-	runDatabaseValidations () {
-
-		return;
-
-	}
-
 }

@@ -51,11 +51,6 @@ describe('Production model', () => {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([])
 			},
-			Base: {
-				neo4jQueryModule: {
-					neo4jQuery: stub()
-				}
-			},
 			models: {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
@@ -71,9 +66,6 @@ describe('Production model', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
-			'./Base': proxyquire('../../../src/models/Base', {
-				'../neo4j/query': stubs.Base.neo4jQueryModule
-			}),
 			'.': stubs.models
 		}).default;
 
@@ -810,18 +802,6 @@ describe('Production model', () => {
 				});
 
 			});
-
-		});
-
-	});
-
-	describe('runDatabaseValidations method', () => {
-
-		it('does nothing, i.e. it overrides the Base model runDatabaseValidations() method with an empty function', () => {
-
-			const instance = createInstance({ name: 'Hamlet' });
-			instance.runDatabaseValidations();
-			expect(stubs.Base.neo4jQueryModule.neo4jQuery.notCalled).to.be.true;
 
 		});
 

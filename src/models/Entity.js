@@ -63,6 +63,8 @@ export default class Entity extends Base {
 
 	async runDatabaseValidations () {
 
+		if (this.model === 'production') return;
+
 		await this.validateUniquenessInDatabase();
 
 	}
