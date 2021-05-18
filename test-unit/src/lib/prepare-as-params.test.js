@@ -426,6 +426,26 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		context('object is in array where items do not require any named children', () => {
+
+			it('retains objects whether they have named children (e.g. roles) or not', () => {
+
+				const instance = {
+					cast: [
+						{ name: 'David Bradley', roles: [{ name: 'King Henry IV' }] },
+						{ name: 'Matthew Macfadyen', roles: [] },
+						{ name: 'Samuel Roukin' }
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledThrice).to.be.true;
+				expect(result.cast.length).to.equal(3);
+
+			});
+
+		});
+
 		it('applies the same uuid value to items that will need to share the same database entry', () => {
 
 			stubs.uuid
@@ -679,6 +699,28 @@ describe('Prepare As Params module', () => {
 				expect(result.material.crewCredits.length).to.equal(1);
 				expect(result.material.crewCredits[0].name).to.equal('Stage Manager');
 				expect(result.material.crewCredits[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in array where items do not require any named children', () => {
+
+			it('retains objects whether they have named children (e.g. roles) or not', () => {
+
+				const instance = {
+					production: {
+						cast: [
+							{ name: 'David Bradley', roles: [{ name: 'King Henry IV' }] },
+							{ name: 'Matthew Macfadyen', roles: [] },
+							{ name: 'Samuel Roukin' }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledThrice).to.be.true;
+				expect(result.production.cast.length).to.equal(3);
 
 			});
 
@@ -975,6 +1017,31 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].crewCredits.length).to.equal(1);
 				expect(result.materials[0].crewCredits[0].name).to.equal('Stage Manager');
 				expect(result.materials[0].crewCredits[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in array where items do not require any named children', () => {
+
+			it('retains objects whether they have named children (e.g. roles) or not', () => {
+
+				const instance = {
+					productions: [
+						{
+							name: 'Henry IV, Part 1',
+							cast: [
+								{ name: 'David Bradley', roles: [{ name: 'King Henry IV' }] },
+								{ name: 'Matthew Macfadyen', roles: [] },
+								{ name: 'Samuel Roukin' }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.uuid.notCalled).to.be.true;
+				expect(stubs.neo4jInt.calledThrice).to.be.true;
+				expect(result.productions[0].cast.length).to.equal(3);
 
 			});
 
