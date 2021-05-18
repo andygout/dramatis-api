@@ -222,7 +222,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			const instance = { cast: [{ uuid: '' }] };
+			const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -232,7 +232,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			const instance = { cast: [{ uuid: undefined }] };
+			const instance = { cast: [{ uuid: undefined, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -242,7 +242,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] };
+			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -252,7 +252,7 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
 
-			const instance = { cast: [{ foo: 'bar' }] };
+			const instance = { cast: [{ foo: 'bar', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -262,7 +262,7 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
-			const instance = { cast: [{ foo: '' }] };
+			const instance = { cast: [{ foo: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -274,7 +274,7 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', () => {
 
-				const instance = { cast: [{ uuid: '' }] };
+				const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -284,7 +284,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { cast: [applyModelGetter({ foo: '' })] };
+				const instance = { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] };
 				const result = prepareAsParams(instance);
 				expect(result.cast[0].model).to.equal('base');
 
@@ -296,9 +296,9 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', () => {
 
-				const instance = { cast: [{ uuid: '' }, { uuid: '' }] };
+				const instance = { cast: [{ uuid: '', name: 'David Calder' }, { uuid: '', name: 'Ruth Negga' }] };
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.getCall(0).calledWithExactly(0)).to.be.true;
 				expect(stubs.neo4jInt.getCall(1).calledWithExactly(1)).to.be.true;
@@ -311,7 +311,12 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { cast: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] };
+				const instance = {
+					cast: [
+						applyModelGetter({ foo: '', name: 'David Calder' }),
+						applyModelGetter({ foo: '', name: 'Ruth Negga' })
+					]
+				};
 				const result = prepareAsParams(instance);
 				expect(result.cast[0].model).to.equal('base');
 
@@ -323,12 +328,12 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', () => {
 
-				const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] };
+				const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
 				expect(result.cast.length).to.equal(1);
-				expect(result.cast[0].name).to.equal('Ian McKellen');
+				expect(result.cast[0].name).to.equal('David Calder');
 				expect(result.cast[0]).to.not.have.property('position');
 
 			});
@@ -453,7 +458,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			const instance = { production: { cast: [{ uuid: '' }] } };
+			const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -463,7 +468,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			const instance = { production: { cast: [{ uuid: undefined }] } };
+			const instance = { production: { cast: [{ uuid: undefined, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -473,7 +478,16 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			const instance = { production: { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] } };
+			const instance = {
+				production: {
+					cast: [
+						{
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+							name: 'David Calder'
+						}
+					]
+				}
+			};
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -483,7 +497,7 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
 
-			const instance = { production: { cast: [{ foo: 'bar' }] } };
+			const instance = { production: { cast: [{ foo: 'bar', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -493,7 +507,7 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
-			const instance = { production: { cast: [{ foo: '' }] } };
+			const instance = { production: { cast: [{ foo: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -505,7 +519,7 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', () => {
 
-				const instance = { production: { cast: [{ uuid: '' }] } };
+				const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -515,7 +529,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { production: { cast: [applyModelGetter({ foo: '' })] } };
+				const instance = { production: { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] } };
 				const result = prepareAsParams(instance);
 				expect(result.production.cast[0].model).to.equal('base');
 
@@ -527,9 +541,16 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', () => {
 
-				const instance = { production: { cast: [{ uuid: '' }, { uuid: '' }] } };
+				const instance = {
+					production: {
+						cast: [
+							{ uuid: '', name: 'David Calder' },
+							{ uuid: '', name: 'Ruth Negga' }
+						]
+					}
+				};
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.getCall(0).calledWithExactly(0)).to.be.true;
 				expect(stubs.neo4jInt.getCall(1).calledWithExactly(1)).to.be.true;
@@ -542,7 +563,14 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { production: { cast: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] } };
+				const instance = {
+					production: {
+						cast: [
+							applyModelGetter({ foo: '', name: 'David Calder' }),
+							applyModelGetter({ foo: '', name: 'Ruth Negga' })
+						]
+					}
+				};
 				const result = prepareAsParams(instance);
 				expect(result.production.cast[0].model).to.equal('base');
 
@@ -554,12 +582,12 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', () => {
 
-				const instance = { production: { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'Ian McKellen' }] } };
+				const instance = { production: { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
 				expect(result.production.cast.length).to.equal(1);
-				expect(result.production.cast[0].name).to.equal('Ian McKellen');
+				expect(result.production.cast[0].name).to.equal('David Calder');
 				expect(result.production.cast[0]).to.not.have.property('position');
 
 			});
@@ -690,7 +718,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', () => {
 
-			const instance = { cast: [{ roles: [{ uuid: '' }] }] };
+			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -700,7 +728,7 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', () => {
 
-			const instance = { cast: [{ roles: [{ uuid: undefined }] }] };
+			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: undefined, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.calledOnce).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -710,7 +738,19 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', () => {
 
-			const instance = { cast: [{ roles: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }] }] };
+			const instance = {
+				cast: [
+					{
+						name: 'David Calder',
+						roles: [
+							{
+								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+								name: 'Polonius'
+							}
+						]
+					}
+				]
+			};
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -720,7 +760,7 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', () => {
 
-			const instance = { cast: [{ roles: [{ foo: 'bar' }] }] };
+			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: 'bar', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -730,7 +770,7 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
-			const instance = { cast: [{ roles: [{ foo: '' }] }] };
+			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.uuid.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -742,7 +782,7 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', () => {
 
-				const instance = { cast: [{ roles: [{ uuid: '' }] }] };
+				const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -753,7 +793,16 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { cast: [{ roles: [applyModelGetter({ foo: '' })] }] };
+				const instance = {
+					cast: [
+						{
+							name: 'David Calder',
+							roles: [
+								applyModelGetter({ foo: '', name: 'Polonius' })
+							]
+						}
+					]
+				};
 				const result = prepareAsParams(instance);
 				expect(result.cast[0].roles[0].model).to.equal('base');
 
@@ -765,9 +814,19 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', () => {
 
-				const instance = { cast: [{ roles: [{ uuid: '' }, { uuid: '' }] }] };
+				const instance = {
+					cast: [
+						{
+							name: 'David Calder',
+							roles: [
+								{ uuid: '', name: 'Polonius' },
+								{ uuid: '', name: 'Gravedigger' }
+							]
+						}
+					]
+				};
 				const result = prepareAsParams(instance);
-				expect(stubs.uuid.calledOnce).to.be.true;
+				expect(stubs.uuid.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.calledTwice).to.be.true;
 				expect(stubs.neo4jInt.getCall(0).calledWithExactly(0)).to.be.true;
 				expect(stubs.neo4jInt.getCall(1).calledWithExactly(1)).to.be.true;
@@ -781,7 +840,17 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', () => {
 
-				const instance = { cast: [{ roles: [applyModelGetter({ foo: '' }), applyModelGetter({ foo: '' })] }] };
+				const instance = {
+					cast: [
+						{
+							name: 'David Calder',
+							roles: [
+								applyModelGetter({ foo: '', name: 'Polonius' }),
+								applyModelGetter({ foo: '', name: 'Gravedigger' })
+							]
+						}
+					]
+				};
 				const result = prepareAsParams(instance);
 				expect(result.cast[0].roles[0].model).to.equal('base');
 
@@ -793,12 +862,22 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', () => {
 
-				const instance = { cast: [{ roles: [{ uuid: '', name: '' }, { uuid: '', name: 'Laertes' }] }] };
+				const instance = {
+					cast: [
+						{
+							name: 'David Calder',
+							roles: [
+								{ uuid: '', name: '' },
+								{ uuid: '', name: 'Polonius' }
+							]
+						}
+					]
+				};
 				const result = prepareAsParams(instance);
 				expect(stubs.uuid.calledOnce).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
 				expect(result.cast[0].roles.length).to.equal(1);
-				expect(result.cast[0].roles[0].name).to.equal('Laertes');
+				expect(result.cast[0].roles[0].name).to.equal('Polonius');
 				expect(result.cast[0].roles[0]).to.not.have.property('position');
 
 			});
@@ -812,6 +891,7 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					materials: [
 						{
+							name: 'Foobar',
 							writingCredits: [
 								{ name: '', entities: [{ name: 'Henrik Ibsen' }] }
 							],
@@ -848,6 +928,7 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					materials: [
 						{
+							name: 'Foobar',
 							writingCredits: [
 								{ name: 'adaptation by', entities: [{ name: '' }] },
 								{ name: 'version by', entities: [{ name: 'David Eldridge' }] },

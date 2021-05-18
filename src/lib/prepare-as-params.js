@@ -28,9 +28,8 @@ export const prepareAsParams = instance => {
 	const recordedInstances = [];
 
 	const hasNameOrIsExempt = key => item =>
-		!Object.prototype.hasOwnProperty.call(item, 'name')
-		|| Boolean(item.name)
-		|| EMPTY_NAME_EXCEPTION_KEYS.includes(key);
+		Boolean(item.name) ||
+		EMPTY_NAME_EXCEPTION_KEYS.includes(key);
 
 	const hasNamedChildrenIfRequired = key => item =>
 		!REQUIRES_NAMED_CHILDREN_KEYS.includes(key) ||
