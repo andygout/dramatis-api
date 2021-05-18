@@ -335,7 +335,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
+		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -365,23 +365,37 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name entities/characters', () => {
+		});
+
+		context('object is in array where items must have at least one named child', () => {
+
+			it('filters out objects that do not have any named children (e.g. entities, characters)', () => {
 
 				const instance = {
 					writingCredits: [
-						{ name: '', entities: [{ name: '' }] },
+						{ name: 'adaptation by', entities: [{ name: '' }] },
 						{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
-						{ name: 'translation by', entities: [{ name: '' }] }
+						{ name: 'translation by' }
 					],
 					characterGroups: [
-						{ name: '', characters: [{ name: '' }] },
+						{ name: 'The Rentheims', characters: [{ name: '' }] },
 						{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
-						{ name: 'The Foldals', characters: [{ name: '' }] }
+						{ name: 'The Foldals' }
 					],
 					producerCredits: [
-						{ name: '', entities: [{ name: '' }] },
+						{ name: 'in partnership with', entities: [{ name: '' }] },
 						{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
-						{ name: 'originally commissioned by', entities: [{ name: '' }] }
+						{ name: 'originally commissioned by' }
+					],
+					creativeCredits: [
+						{ name: 'Director', entities: [{ name: '' }] },
+						{ name: 'Designer', entities: [{ name: 'Vicki Mortimer' }] },
+						{ name: 'Lighting Designer' }
+					],
+					crewCredits: [
+						{ name: 'Production Manager', entities: [{ name: '' }] },
+						{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
+						{ name: 'Costume Supervisor' }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -396,6 +410,12 @@ describe('Prepare As Params module', () => {
 				expect(result.producerCredits.length).to.equal(1);
 				expect(result.producerCredits[0].name).to.equal('in association with');
 				expect(result.producerCredits[0]).to.not.have.property('position');
+				expect(result.creativeCredits.length).to.equal(1);
+				expect(result.creativeCredits[0].name).to.equal('Designer');
+				expect(result.creativeCredits[0]).to.not.have.property('position');
+				expect(result.crewCredits.length).to.equal(1);
+				expect(result.crewCredits[0].name).to.equal('Stage Manager');
+				expect(result.crewCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -546,7 +566,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
+		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -578,24 +598,38 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name entities/characters', () => {
+		});
+
+		context('object is in array where items must have at least one named child', () => {
+
+			it('filters out objects that do not have any named children (e.g. entities, characters)', () => {
 
 				const instance = {
 					material: {
 						writingCredits: [
-							{ name: '', entities: [{ name: '' }] },
+							{ name: 'adaptation by', entities: [{ name: '' }] },
 							{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
-							{ name: 'translation by', entities: [{ name: '' }] }
+							{ name: 'translation by' }
 						],
 						characterGroups: [
-							{ name: '', characters: [{ name: '' }] },
+							{ name: 'The Rentheims', characters: [{ name: '' }] },
 							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
-							{ name: 'The Foldals', characters: [{ name: '' }] }
+							{ name: 'The Foldals' }
 						],
 						producerCredits: [
-							{ name: '', entities: [{ name: '' }] },
+							{ name: 'in partnership with', entities: [{ name: '' }] },
 							{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
-							{ name: 'originally commissioned by', entities: [{ name: '' }] }
+							{ name: 'originally commissioned by' }
+						],
+						creativeCredits: [
+							{ name: 'Director', entities: [{ name: '' }] },
+							{ name: 'Designer', entities: [{ name: 'Vicki Mortimer' }] },
+							{ name: 'Lighting Designer' }
+						],
+						crewCredits: [
+							{ name: 'Production Manager', entities: [{ name: '' }] },
+							{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
+							{ name: 'Costume Supervisor' }
 						]
 					}
 				};
@@ -611,6 +645,12 @@ describe('Prepare As Params module', () => {
 				expect(result.material.producerCredits.length).to.equal(1);
 				expect(result.material.producerCredits[0].name).to.equal('in association with');
 				expect(result.material.producerCredits[0]).to.not.have.property('position');
+				expect(result.material.creativeCredits.length).to.equal(1);
+				expect(result.material.creativeCredits[0].name).to.equal('Designer');
+				expect(result.material.creativeCredits[0]).to.not.have.property('position');
+				expect(result.material.crewCredits.length).to.equal(1);
+				expect(result.material.crewCredits[0].name).to.equal('Stage Manager');
+				expect(result.material.crewCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -765,7 +805,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array (e.g. writingCredits, characterGroups, producerCredits) where items are permitted an empty string name value', () => {
+		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -799,25 +839,39 @@ describe('Prepare As Params module', () => {
 
 			});
 
-			it('filters out objects that do not have any non-empty string name entities/characters', () => {
+		});
+
+		context('object is in array where items must have at least one named child', () => {
+
+			it('filters out objects that do not have any named children (e.g. entities, characters)', () => {
 
 				const instance = {
 					materials: [
 						{
 							writingCredits: [
-								{ name: '', entities: [{ name: '' }] },
+								{ name: 'adaptation by', entities: [{ name: '' }] },
 								{ name: 'version by', entities: [{ name: 'David Eldridge' }] },
-								{ name: 'translation by', entities: [{ name: '' }] }
+								{ name: 'translation by' }
 							],
 							characterGroups: [
-								{ name: '', characters: [{ name: '' }] },
+								{ name: 'The Rentheims', characters: [{ name: '' }] },
 								{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
-								{ name: 'The Foldals', characters: [{ name: '' }] }
+								{ name: 'The Foldals' }
 							],
 							producerCredits: [
-								{ name: '', entities: [{ name: '' }] },
+								{ name: 'in partnership with', entities: [{ name: '' }] },
 								{ name: 'in association with', entities: [{ name: 'Fuel Theatre' }] },
-								{ name: 'translation by', entities: [{ name: '' }] }
+								{ name: 'translation by' }
+							],
+							creativeCredits: [
+								{ name: 'Director', entities: [{ name: '' }] },
+								{ name: 'Designer', entities: [{ name: 'Vicki Mortimer' }] },
+								{ name: 'Lighting Designer' }
+							],
+							crewCredits: [
+								{ name: 'Production Manager', entities: [{ name: '' }] },
+								{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
+								{ name: 'Costume Supervisor' }
 							]
 						}
 					]
@@ -834,6 +888,12 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].producerCredits.length).to.equal(1);
 				expect(result.materials[0].producerCredits[0].name).to.equal('in association with');
 				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
+				expect(result.materials[0].creativeCredits.length).to.equal(1);
+				expect(result.materials[0].creativeCredits[0].name).to.equal('Designer');
+				expect(result.materials[0].creativeCredits[0]).to.not.have.property('position');
+				expect(result.materials[0].crewCredits.length).to.equal(1);
+				expect(result.materials[0].crewCredits[0].name).to.equal('Stage Manager');
+				expect(result.materials[0].crewCredits[0]).to.not.have.property('position');
 
 			});
 
