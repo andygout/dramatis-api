@@ -2,13 +2,13 @@ import directly from 'directly';
 
 import { neo4jQuery } from './query';
 
-const MODELS = [
+const MODELS = new Set([
 	'Character',
 	'Company',
 	'Material',
 	'Person',
 	'Venue'
-];
+]);
 
 const createIndex = async model => {
 
@@ -47,7 +47,7 @@ export default async () => {
 				.filter(index => index.properties.includes('name'))
 				.map(index => index.labelsOrTypes[0]);
 
-		const modelsToIndex = MODELS.filter(model => !modelsWithIndex.includes(model));
+		const modelsToIndex = [...MODELS].filter(model => !modelsWithIndex.includes(model));
 
 		console.log('Neo4j database: Creating indexes…'); // eslint-disable-line no-console
 
