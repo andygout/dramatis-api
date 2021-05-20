@@ -2,14 +2,14 @@ import directly from 'directly';
 
 import { neo4jQuery } from './query';
 
-const MODELS = [
+const MODELS = new Set([
 	'Character',
 	'Company',
 	'Material',
 	'Person',
 	'Production',
 	'Venue'
-];
+]);
 
 const createConstraint = async model => {
 
@@ -45,7 +45,7 @@ export default async () => {
 
 		const modelsWithConstraint = constraints.map(constraint => constraint.labelsOrTypes[0]);
 
-		const modelsToConstrain = MODELS.filter(model => !modelsWithConstraint.includes(model));
+		const modelsToConstrain = [...MODELS].filter(model => !modelsWithConstraint.includes(model));
 
 		console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
 

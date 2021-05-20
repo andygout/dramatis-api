@@ -41,7 +41,7 @@ export default class Base {
 
 			const uniquenessErrorMessage = 'This item has been duplicated within the group';
 
-			const properties = [
+			const properties = new Set([
 				'name',
 				'underlyingName',
 				'characterName',
@@ -49,7 +49,7 @@ export default class Base {
 				'characterDifferentiator',
 				'qualifier',
 				'group'
-			];
+			]);
 
 			properties.forEach(property => {
 

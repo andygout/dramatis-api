@@ -9,19 +9,19 @@ const CREW_CREDITS = 'crewCredits';
 const PRODUCER_CREDITS = 'producerCredits';
 const WRITING_CREDITS = 'writingCredits';
 
-const EMPTY_NAME_EXCEPTION_KEYS = [
+const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	CHARACTER_GROUPS,
 	PRODUCER_CREDITS,
 	WRITING_CREDITS
-];
+]);
 
-const REQUIRES_NAMED_CHILDREN_KEYS = [
+const REQUIRES_NAMED_CHILDREN_KEYS = new Set([
 	CHARACTER_GROUPS,
 	CREATIVE_CREDITS,
 	CREW_CREDITS,
 	PRODUCER_CREDITS,
 	WRITING_CREDITS
-];
+]);
 
 export const prepareAsParams = instance => {
 
@@ -29,10 +29,10 @@ export const prepareAsParams = instance => {
 
 	const hasNameOrIsExempt = key => item =>
 		Boolean(item.name) ||
-		EMPTY_NAME_EXCEPTION_KEYS.includes(key);
+		EMPTY_NAME_EXCEPTION_KEYS.has(key);
 
 	const hasNamedChildrenIfRequired = key => item =>
-		!REQUIRES_NAMED_CHILDREN_KEYS.includes(key) ||
+		!REQUIRES_NAMED_CHILDREN_KEYS.has(key) ||
 		item[key === CHARACTER_GROUPS ? 'characters' : 'entities']?.some(child => Boolean(child.name));
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
