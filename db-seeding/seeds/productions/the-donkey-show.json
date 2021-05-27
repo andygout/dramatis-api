@@ -1,0 +1,200 @@
+{
+	"name": "The Donkey Show",
+	"startDate": "2000-09-12",
+	"pressDate": "2000-09-18",
+	"endDate": "2002-01-02",
+	"material": {
+		"name": "The Donkey Show"
+	},
+	"venue": {
+		"name": "Hanover Grand"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "company",
+					"name": "Pleasance Theatre Festival"
+				},
+				{
+					"name": "David Babani"
+				}
+			]
+		},
+		{
+			"name": "with",
+			"entities": [
+				{
+					"model": "company",
+					"name": "Project 400"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"name": "Jordan Roth"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Rachel Benboy Murdy",
+			"roles": [
+				{
+					"name": "Oberon"
+				},
+				{
+					"name": "Mia"
+				}
+			]
+		},
+		{
+			"name": "Anna Wilson",
+			"roles": [
+				{
+					"name": "Tytania"
+				},
+				{
+					"name": "Sander"
+				}
+			]
+		},
+		{
+			"name": "Roman Pietrs",
+			"roles": [
+				{
+					"name": "Dr Wheelgood"
+				}
+			]
+		},
+		{
+			"name": "Jordin Ruderman",
+			"roles": [
+				{
+					"name": "Helen"
+				},
+				{
+					"name": "Vinnie",
+					"qualifier": "#1"
+				}
+			]
+		},
+		{
+			"name": "Emily Hellstrom",
+			"roles": [
+				{
+					"name": "Dimitri"
+				},
+				{
+					"name": "Vinnie",
+					"qualifier": "#2"
+				}
+			]
+		},
+		{
+			"name": "Oscar Estevez",
+			"roles": [
+				{
+					"name": "Mustard Seed"
+				}
+			]
+		},
+		{
+			"name": "Luke Miller",
+			"roles": [
+				{
+					"name": "Cob Web"
+				}
+			]
+		},
+		{
+			"name": "Dan Cryer",
+			"roles": [
+				{
+					"name": "Moth"
+				}
+			]
+		},
+		{
+			"name": "Kesu James",
+			"roles": [
+				{
+					"name": "Peaseblossom"
+				}
+			]
+		},
+		{
+			"name": "Barry Brisco",
+			"roles": [
+				{
+					"name": "Fleetwood Coupe DeVille"
+				}
+			]
+		},
+		{
+			"name": "Danuta",
+			"roles": [
+				{
+					"name": "Disco Lady"
+				}
+			]
+		},
+		{
+			"name": "djRobG",
+			"roles": [
+				{
+					"name": "DJ Fernando Pacheski"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Diane Paulus"
+				},
+				{
+					"name": "Randy Weiner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Scott Pask"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "David C Woolard"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Kevin Adams"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Brett Jarvis"
+				}
+			]
+		}
+	]
+}
