@@ -1,0 +1,93 @@
+{
+	"name": "The Donkey Show",
+	"format": "musical",
+	"writingCredits": [
+		{
+			"name": "book by",
+			"entities": [
+				{
+					"name": "Diane Paulus"
+				},
+				{
+					"name": "Randy Weiner"
+				}
+			]
+		},
+		{
+			"name": "adapted from",
+			"entities": [
+				{
+					"model": "material",
+					"name": "A Midsummer Night's Dream"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Oberon"
+				},
+				{
+					"name": "Tytania",
+					"underlyingName": "Titania"
+				},
+				{
+					"name": "Dr Wheelgood",
+					"underlyingName": "Puck"
+				},
+				{
+					"name": "Helen",
+					"underlyingName": "Helena"
+				},
+				{
+					"name": "Dimitri",
+					"underlyingName": "Demetrius",
+					"differentiator": "1"
+				},
+				{
+					"name": "Sander",
+					"underlyingName": "Lysander"
+				},
+				{
+					"name": "Mia",
+					"underlyingName": "Hermia"
+				},
+				{
+					"name": "Vinnie",
+					"qualifier": "#1",
+					"underlyingName": "Nick Bottom"
+				},
+				{
+					"name": "Vinnie",
+					"qualifier": "#2",
+					"underlyingName": "Nick Bottom"
+				},
+				{
+					"name": "Mustard Seed",
+					"underlyingName": "Mustardseed"
+				},
+				{
+					"name": "Cob Web",
+					"underlyingName": "Cobweb"
+				},
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Peaseblossom"
+				},
+				{
+					"name": "Fleetwood Coupe DeVille"
+				},
+				{
+					"name": "Disco Lady"
+				},
+				{
+					"name": "DJ Fernando Pacheski"
+				}
+			]
+		}
+	]
+}
