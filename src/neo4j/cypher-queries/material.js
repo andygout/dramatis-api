@@ -302,6 +302,7 @@ const getShowQuery = () => `
 		OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]-(material)
 
 		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
+			WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
 		WITH
 			material,
@@ -571,6 +572,7 @@ const getListQuery = () => `
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
+		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
 	WITH material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
