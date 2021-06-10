@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:14.13.0
-      - image: neo4j:4.2.1
+      - image: neo4j:4.2.7
         environment:
           NEO4J_AUTH: none
     steps:
