@@ -7,6 +7,7 @@ const getShowQuery = () => `
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
+		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
 	WITH
 		character,
