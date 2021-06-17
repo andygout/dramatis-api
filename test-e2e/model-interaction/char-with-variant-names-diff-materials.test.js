@@ -58,6 +58,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Hamlet',
 				format: 'play',
+				year: 1601,
 				characterGroups: [
 					{
 						characters: [
@@ -77,6 +78,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
 				format: 'play',
+				year: 1966,
 				characterGroups: [
 					{
 						characters: [
@@ -96,6 +98,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Fortinbras',
 				format: 'play',
+				year: 1991,
 				characterGroups: [
 					{
 						characters: [
@@ -115,6 +118,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Hamletmachine',
 				format: 'play',
+				year: 1977,
 				characterGroups: [
 					{
 						characters: [
@@ -313,14 +317,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: FORTINBRAS_MATERIAL_UUID,
 					name: 'Fortinbras',
 					format: 'play',
-					writingCredits: [],
-					depictions: []
-				},
-				{
-					model: 'material',
-					uuid: HAMLET_MATERIAL_UUID,
-					name: 'Hamlet',
-					format: 'play',
+					year: 1991,
 					writingCredits: [],
 					depictions: []
 				},
@@ -329,6 +326,7 @@ describe('Character with variant names from productions of different materials',
 					uuid: HAMLETMACHINE_MATERIAL_UUID,
 					name: 'Hamletmachine',
 					format: 'play',
+					year: 1977,
 					writingCredits: [],
 					depictions: []
 				},
@@ -337,6 +335,16 @@ describe('Character with variant names from productions of different materials',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_MATERIAL_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					format: 'play',
+					year: 1966,
+					writingCredits: [],
+					depictions: []
+				},
+				{
+					model: 'material',
+					uuid: HAMLET_MATERIAL_UUID,
+					name: 'Hamlet',
+					format: 'play',
+					year: 1601,
 					writingCredits: [],
 					depictions: []
 				}

@@ -50,6 +50,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '1',
 				format: 'play',
+				year: 1867,
 				writingCredits: [
 					{
 						entities: [
@@ -81,6 +82,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '2',
 				format: 'play',
+				year: 2000,
 				originalVersionMaterial: {
 					name: 'Peer Gynt',
 					differentiator: '1'
@@ -124,6 +126,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '3',
 				format: 'play',
+				year: 2007,
 				originalVersionMaterial: {
 					name: 'Peer Gynt',
 					differentiator: '1'
@@ -183,6 +186,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Ghosts',
 				differentiator: '1',
 				format: 'play',
+				year: 1881,
 				writingCredits: [
 					{
 						entities: [
@@ -206,6 +210,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Ghosts',
 				differentiator: '2',
 				format: 'play',
+				year: 2008,
 				originalVersionMaterial: {
 					name: 'Ghosts',
 					differentiator: '1'
@@ -305,6 +310,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -345,6 +351,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -405,6 +412,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
+				year: 1867,
 				writingCredits: [
 					{
 						model: 'writingCredit',
@@ -502,6 +510,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 1881,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -526,6 +535,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 1867,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -561,6 +571,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 2008,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -617,6 +628,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -673,6 +685,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -723,6 +736,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 2008,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -779,6 +793,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -850,6 +865,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 1881,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -874,6 +890,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 1867,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -909,6 +926,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 2008,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -965,6 +983,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1021,6 +1040,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1071,6 +1091,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 2008,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1127,6 +1148,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1197,6 +1219,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
+				year: 2007,
 				writingCredits: [
 					{
 						model: 'writingCredit',
@@ -1267,6 +1290,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1324,6 +1348,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1360,6 +1385,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 1867,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1400,33 +1426,10 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 			const expectedResponseBody = [
 				{
 					model: 'material',
-					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
-					name: 'Ghosts',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							entities: [
-								{
-									model: 'person',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'company',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
+					year: 2008,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1480,9 +1483,10 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				{
 					model: 'material',
-					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2007,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1499,6 +1503,38 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									name: 'Ibsen Theatre Company'
 								}
 							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'translated by',
+							entities: [
+								{
+									model: 'person',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'company',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'person',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'person',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
 						}
 					]
 				},
@@ -1507,6 +1543,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1539,9 +1576,10 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				},
 				{
 					model: 'material',
-					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
-					name: 'Peer Gynt',
+					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Ghosts',
 					format: 'play',
+					year: 1881,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1558,36 +1596,29 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 									name: 'Ibsen Theatre Company'
 								}
 							]
-						},
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 1867,
+					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'translated by',
+							name: 'by',
 							entities: [
 								{
 									model: 'person',
-									uuid: GERRY_BAMMAN_PERSON_UUID,
-									name: 'Gerry Bamman'
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
 								},
 								{
 									model: 'company',
-									uuid: BAMMAN_THEATRE_COMPANY_UUID,
-									name: 'Bamman Theatre Company'
-								},
-								{
-									model: 'person',
-									uuid: IRENE_B_BERMAN_PERSON_UUID,
-									name: 'Irene B Berman'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'adapted by',
-							entities: [
-								{
-									model: 'person',
-									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
-									name: 'Baltasar Kormákur'
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
 								}
 							]
 						}

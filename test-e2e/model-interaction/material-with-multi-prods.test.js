@@ -37,7 +37,8 @@ describe('Material with multiple productions', () => {
 			.post('/materials')
 			.send({
 				name: 'Twelfth Night',
-				format: 'play'
+				format: 'play',
+				year: 1602
 			});
 
 		await chai.request(app)
@@ -167,6 +168,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
+				year: 1602,
 				writingCredits: []
 			};
 
@@ -187,6 +189,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
+				year: 1602,
 				writingCredits: []
 			};
 
@@ -207,6 +210,7 @@ describe('Material with multiple productions', () => {
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
+				year: 1602,
 				writingCredits: []
 			};
 

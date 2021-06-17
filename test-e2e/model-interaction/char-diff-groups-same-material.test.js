@@ -52,6 +52,7 @@ describe('Character with multiple appearances in the same material in different 
 			.send({
 				name: '3 Winters',
 				format: 'play',
+				year: 2014,
 				characterGroups: [
 					{
 						name: '2011',
@@ -215,6 +216,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
+					year: 2014,
 					writingCredits: [],
 					depictions: [
 						{
@@ -291,6 +293,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
+					year: 2014,
 					writingCredits: [],
 					depictions: [
 						{
@@ -359,6 +362,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
+					year: 2014,
 					writingCredits: [],
 					depictions: [
 						{
@@ -435,6 +439,7 @@ describe('Character with multiple appearances in the same material in different 
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
+					year: 2014,
 					writingCredits: [],
 					depictions: [
 						{

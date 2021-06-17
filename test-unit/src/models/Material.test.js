@@ -26,17 +26,23 @@ describe('Material model', () => {
 			getDuplicateIndicesModule: {
 				getDuplicateNameIndices: stub().returns([])
 			},
+			isValidYearModule: {
+				isValidYear: stub().returns(false)
+			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
 				WritingCredit: WritingCreditStub
 			}
 		};
 
+		stubs.isValidYearModule.isValidYear.withArgs(1959).returns(true);
+
 	});
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Material', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/is-valid-year': stubs.isValidYearModule,
 			'.': stubs.models
 		}).default;
 
@@ -90,6 +96,66 @@ describe('Material model', () => {
 					format: ' play '
 				});
 				expect(instance.format).to.equal('play');
+
+			});
+
+		});
+
+		describe('year property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'The Caretaker' });
+				expect(instance.year).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: '' });
+				expect(instance.year).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: ' ' });
+				expect(instance.year).to.equal('');
+
+			});
+
+			it('assigns value if included in props and value cannot be parsed as integer', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
+				expect(instance.year).to.equal('Nineteen Fifty-Nine');
+
+			});
+
+			it('assigns whitespace-trimmed value if included in props and value cannot be parsed as integer', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: ' Nineteen Fifty-Nine ' });
+				expect(instance.year).to.equal('Nineteen Fifty-Nine');
+
+			});
+
+			it('assigns value converted to integer if included in props and value can be parsed as integer', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: '1959' });
+				expect(instance.year).to.equal(1959);
+
+			});
+
+			it('assigns value with flanking whitespace converted to integer if included in props and value can be parsed as integer', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: ' 1959 ' });
+				expect(instance.year).to.equal(1959);
+
+			});
+
+			it('assigns value if included in props and value is an integer', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
+				expect(instance.year).to.equal(1959);
 
 			});
 
@@ -217,6 +283,7 @@ describe('Material model', () => {
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateFormat');
+			spy(instance, 'validateYear');
 			spy(instance.originalVersionMaterial, 'validateName');
 			spy(instance.originalVersionMaterial, 'validateDifferentiator');
 			instance.runInputValidations();
@@ -224,6 +291,7 @@ describe('Material model', () => {
 				instance.validateName,
 				instance.validateDifferentiator,
 				instance.validateFormat,
+				instance.validateYear,
 				instance.originalVersionMaterial.validateName,
 				instance.originalVersionMaterial.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
@@ -237,6 +305,8 @@ describe('Material model', () => {
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.validateFormat.calledOnce).to.be.true;
 			expect(instance.validateFormat.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.validateYear.calledOnce).to.be.true;
+			expect(instance.validateYear.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.originalVersionMaterial.validateName.calledOnce).to.be.true;
 			expect(instance.originalVersionMaterial.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.originalVersionMaterial.validateDifferentiator.calledOnce).to.be.true;
@@ -276,6 +346,57 @@ describe('Material model', () => {
 			instance.validateFormat({ isRequired: false });
 			expect(instance.validateStringForProperty.calledOnce).to.be.true;
 			expect(instance.validateStringForProperty.calledWithExactly('format', { isRequired: false })).to.be.true;
+
+		});
+
+	});
+
+	describe('validateYear method', () => {
+
+		context('year value equates to false', () => {
+
+			it('will not call isValidYear function or addPropertyError method', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: '' });
+				spy(instance, 'addPropertyError');
+				instance.validateYear();
+				expect(stubs.isValidYearModule.isValidYear.notCalled).to.be.true;
+				expect(instance.addPropertyError.notCalled).to.be.true;
+
+			});
+
+		});
+
+		context('year value is not a valid year', () => {
+
+			it('will call isValidYear function and addPropertyError method', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
+				spy(instance, 'addPropertyError');
+				instance.validateYear();
+				expect(stubs.isValidYearModule.isValidYear.calledOnce).to.be.true;
+				expect(stubs.isValidYearModule.isValidYear.calledWithExactly('Nineteen Fifty-Nine')).to.be.true;
+				expect(instance.addPropertyError.calledOnce).to.be.true;
+				expect(instance.addPropertyError.calledWithExactly(
+					'year', 'Value needs to be a valid year'
+				)).to.be.true;
+
+			});
+
+		});
+
+		context('year value is a valid year', () => {
+
+			it('will call isValidYear function but not addPropertyError method', () => {
+
+				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
+				spy(instance, 'addPropertyError');
+				instance.validateYear();
+				expect(stubs.isValidYearModule.isValidYear.calledOnce).to.be.true;
+				expect(stubs.isValidYearModule.isValidYear.calledWithExactly(1959)).to.be.true;
+				expect(instance.addPropertyError.notCalled).to.be.true;
+
+			});
 
 		});
 
