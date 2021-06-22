@@ -44,6 +44,7 @@ describe('Character with multiple appearances in the same material under differe
 			.send({
 				name: 'Rock \'n\' Roll',
 				format: 'play',
+				year: 2006,
 				characterGroups: [
 					{
 						characters: [
@@ -163,6 +164,7 @@ describe('Character with multiple appearances in the same material under differe
 					uuid: ROCK_N_ROLL_MATERIAL_UUID,
 					name: 'Rock \'n\' Roll',
 					format: 'play',
+					year: 2006,
 					writingCredits: [],
 					depictions: [
 						{

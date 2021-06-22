@@ -36,6 +36,7 @@ describe('Materials with rights grantor credits', () => {
 				name: 'The Ladykillers',
 				differentiator: '1',
 				format: 'motion picture screenplay',
+				year: 1955,
 				writingCredits: [
 					{
 						entities: [
@@ -53,6 +54,7 @@ describe('Materials with rights grantor credits', () => {
 				name: 'The Ladykillers',
 				differentiator: '2',
 				format: 'play',
+				year: 2011,
 				writingCredits: [
 					{
 						entities: [
@@ -112,6 +114,7 @@ describe('Materials with rights grantor credits', () => {
 					uuid: THE_LADYKILLERS_PLAY_MATERIAL_UUID,
 					name: 'The Ladykillers',
 					format: 'play',
+					year: 2011,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -133,6 +136,7 @@ describe('Materials with rights grantor credits', () => {
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
+									year: 1955,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -187,6 +191,7 @@ describe('Materials with rights grantor credits', () => {
 					uuid: THE_LADYKILLERS_PLAY_MATERIAL_UUID,
 					name: 'The Ladykillers',
 					format: 'play',
+					year: 2011,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -208,6 +213,7 @@ describe('Materials with rights grantor credits', () => {
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
+									year: 1955,
 									writingCredits: [
 										{
 											model: 'writingCredit',

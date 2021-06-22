@@ -68,6 +68,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry IV, Part 1',
 				format: 'play',
+				year: 1597,
 				characterGroups: [
 					{
 						characters: [
@@ -91,6 +92,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry IV, Part 2',
 				format: 'play',
+				year: 1599,
 				characterGroups: [
 					{
 						characters: [
@@ -114,6 +116,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry V',
 				format: 'play',
+				year: 1599,
 				characterGroups: [
 					{
 						characters: [
@@ -137,6 +140,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'The Merry Wives of Windsor',
 				format: 'play',
+				year: 1597,
 				characterGroups: [
 					{
 						characters: [
@@ -433,23 +437,10 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedMaterials = [
 				{
 					model: 'material',
-					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
-					name: 'Henry IV, Part 1',
-					format: 'play',
-					writingCredits: [],
-					depictions: [
-						{
-							displayName: 'Henry, Prince of Wales',
-							qualifier: null,
-							group: null
-						}
-					]
-				},
-				{
-					model: 'material',
 					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
 					name: 'Henry IV, Part 2',
 					format: 'play',
+					year: 1599,
 					writingCredits: [],
 					depictions: [
 						{
@@ -464,14 +455,31 @@ describe('Character with variant depiction and portrayal names', () => {
 					uuid: HENRY_V_MATERIAL_UUID,
 					name: 'Henry V',
 					format: 'play',
+					year: 1599,
 					writingCredits: [],
 					depictions: []
+				},
+				{
+					model: 'material',
+					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
+					name: 'Henry IV, Part 1',
+					format: 'play',
+					year: 1597,
+					writingCredits: [],
+					depictions: [
+						{
+							displayName: 'Henry, Prince of Wales',
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'material',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
+					year: 1597,
 					writingCredits: [],
 					depictions: [
 						{

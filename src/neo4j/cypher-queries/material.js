@@ -2,7 +2,13 @@ const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
 		create: `
-			CREATE (material:Material { uuid: $uuid, name: $name, differentiator: $differentiator, format: $format })
+			CREATE (material:Material {
+				uuid: $uuid,
+				name: $name,
+				differentiator: $differentiator,
+				format: $format,
+				year: $year
+			})
 		`,
 		update: `
 			MATCH (material:Material { uuid: $uuid })
@@ -35,7 +41,8 @@ const getCreateUpdateQuery = action => {
 			SET
 				material.name = $name,
 				material.differentiator = $differentiator,
-				material.format = $format
+				material.format = $format,
+				material.year = $year
 		`
 	};
 
@@ -262,6 +269,7 @@ const getEditQuery = () => `
 		material.name AS name,
 		material.differentiator AS differentiator,
 		material.format AS format,
+		material.year AS year,
 		{
 			name: COALESCE(originalVersionMaterial.name, ''),
 			differentiator: COALESCE(originalVersionMaterial.differentiator, '')
@@ -377,6 +385,7 @@ const getShowQuery = () => `
 						uuid: CASE entity.uuid WHEN material.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
+						.year,
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
@@ -396,7 +405,7 @@ const getShowQuery = () => `
 					}
 				END
 			) AS writingCredits
-			ORDER BY relatedMaterial.name
+			ORDER BY relatedMaterial.year DESC, relatedMaterial.name
 
 		WITH material,
 			COLLECT(
@@ -407,6 +416,7 @@ const getShowQuery = () => `
 						.uuid,
 						.name,
 						.format,
+						.year,
 						writingCredits: writingCredits,
 						isOriginalVersion: isOriginalVersion,
 						isSubsequentVersion: isSubsequentVersion,
@@ -423,15 +433,15 @@ const getShowQuery = () => `
 			]) AS writingCredits,
 			HEAD([
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
-				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
+				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
 			]) AS originalVersionMaterial,
 			[
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
-				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
+				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
 			] AS subsequentVersionMaterials,
 			[
 				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
-				relatedMaterial { .model, .uuid, .name, .format, .writingCredits }
+				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
 			] AS sourcingMaterials
 
 	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
@@ -550,6 +560,7 @@ const getShowQuery = () => `
 		material.name AS name,
 		material.differentiator AS differentiator,
 		material.format AS format,
+		material.year AS year,
 		writingCredits,
 		originalVersionMaterial,
 		subsequentVersionMaterials,
@@ -607,6 +618,7 @@ const getListQuery = () => `
 					.uuid,
 					.name,
 					.format,
+					.year,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -616,13 +628,14 @@ const getListQuery = () => `
 		END] AS entities
 
 	WITH material, writingCreditName, entities
-		ORDER BY material.name, material.differentiator
+		ORDER BY material.year DESC, material.name
 
 	RETURN
 		'material' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.format AS format,
+		material.year AS year,
 		COLLECT(
 			CASE SIZE(entities) WHEN 0
 				THEN null

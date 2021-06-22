@@ -25,6 +25,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: '',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -108,6 +109,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -167,6 +169,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Uncle Vanya',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -230,6 +233,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -289,6 +293,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: null,
 				format: null,
+				year: null,
 				originalVersionMaterial: null,
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
@@ -315,6 +320,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -380,6 +386,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'John Gabriel Borkman',
 					differentiator: '2',
 					format: 'play',
+					year: 2007,
 					originalVersionMaterial: {
 						name: 'John Gabriel Borkman',
 						differentiator: '1'
@@ -454,6 +461,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
 				format: 'play',
+				year: 2007,
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -618,11 +626,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
 				format: 'play',
+				year: 2007,
 				originalVersionMaterial: {
 					model: 'material',
 					uuid: JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'John Gabriel Borkman',
 					format: null,
+					year: null,
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
@@ -664,6 +674,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								uuid: JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'John Gabriel Borkman',
 								format: null,
+								year: null,
 								writingCredits: []
 							}
 						]
@@ -716,6 +727,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
 				format: 'play',
+				year: 2007,
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -878,6 +890,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Three Sisters',
 					differentiator: '2',
 					format: 'play',
+					year: 2012,
 					originalVersionMaterial: {
 						name: 'Three Sisters',
 						differentiator: '1'
@@ -952,6 +965,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: 'play',
+				year: 2012,
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -1116,11 +1130,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: 'play',
+				year: 2012,
 				originalVersionMaterial: {
 					model: 'material',
 					uuid: THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Three Sisters',
 					format: null,
+					year: null,
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
@@ -1162,6 +1178,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								uuid: THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'Three Sisters',
 								format: null,
+								year: null,
 								writingCredits: []
 							}
 						]
@@ -1220,6 +1237,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -1280,6 +1298,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -1301,9 +1320,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const UNCLE_VANYA_MATERIAL_UUID = '2';
-		const THE_CHERRY_ORCHARD_MATERIAL_UUID = '6';
-		const THREE_SISTERS_MATERIAL_UUID = '10';
+		const HAUNTING_JULIA_MATERIAL_UUID = '2';
+		const A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID = '6';
+		const THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID = '10';
+		const DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID = '14';
+		const COMMUNICATING_DOORS_MATERIAL_UUID = '18';
 
 		before(async () => {
 
@@ -1316,22 +1337,41 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			await chai.request(app)
 				.post('/materials')
 				.send({
-					name: 'Uncle Vanya',
-					format: 'play'
+					name: 'Haunting Julia',
+					format: 'play',
+					year: 1994
 				});
 
 			await chai.request(app)
 				.post('/materials')
 				.send({
-					name: 'The Cherry Orchard',
-					format: 'play'
+					name: 'A Word from Our Sponsor',
+					format: 'play',
+					year: 1995
 				});
 
 			await chai.request(app)
 				.post('/materials')
 				.send({
-					name: 'Three Sisters',
-					format: 'play'
+					name: 'The Musical Jigsaw Play',
+					format: 'play',
+					year: 1994
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Dreams from a Summer House',
+					format: 'play',
+					year: 1992
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Communicating Doors',
+					format: 'play',
+					year: 1994
 				});
 
 		});
@@ -1342,7 +1382,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		});
 
-		it('lists all materials ordered by name', async () => {
+		it('lists all materials ordered by year then name', async () => {
 
 			const response = await chai.request(app)
 				.get('/materials');
@@ -1350,23 +1390,42 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			const expectedResponseBody = [
 				{
 					model: 'material',
-					uuid: THE_CHERRY_ORCHARD_MATERIAL_UUID,
-					name: 'The Cherry Orchard',
+					uuid: A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID,
+					name: 'A Word from Our Sponsor',
 					format: 'play',
+					year: 1995,
 					writingCredits: []
 				},
 				{
 					model: 'material',
-					uuid: THREE_SISTERS_MATERIAL_UUID,
-					name: 'Three Sisters',
+					uuid: COMMUNICATING_DOORS_MATERIAL_UUID,
+					name: 'Communicating Doors',
 					format: 'play',
+					year: 1994,
 					writingCredits: []
 				},
 				{
 					model: 'material',
-					uuid: UNCLE_VANYA_MATERIAL_UUID,
-					name: 'Uncle Vanya',
+					uuid: HAUNTING_JULIA_MATERIAL_UUID,
+					name: 'Haunting Julia',
 					format: 'play',
+					year: 1994,
+					writingCredits: []
+				},
+				{
+					model: 'material',
+					uuid: THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID,
+					name: 'The Musical Jigsaw Play',
+					format: 'play',
+					year: 1994,
+					writingCredits: []
+				},
+				{
+					model: 'material',
+					uuid: DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID,
+					name: 'Dreams from a Summer House',
+					format: 'play',
+					year: 1992,
 					writingCredits: []
 				}
 			];

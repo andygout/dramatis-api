@@ -51,6 +51,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -114,6 +115,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '',
 				format: '',
+				year: '',
 				hasErrors: true,
 				errors: {
 					name: [
@@ -156,6 +158,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '1',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -221,6 +224,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '1',
 				format: '',
+				year: '',
 				hasErrors: true,
 				errors: {
 					name: [
@@ -263,6 +267,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '2',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',
@@ -327,6 +332,7 @@ describe('Uniqueness in database: Materials API', () => {
 				name: 'Home',
 				differentiator: '',
 				format: '',
+				year: '',
 				errors: {},
 				originalVersionMaterial: {
 					model: 'material',

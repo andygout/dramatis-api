@@ -14,7 +14,13 @@ describe('Cypher Queries Material module', () => {
 			const compactedResult = removeExcessWhitespace(result);
 
 			const startSegment = removeExcessWhitespace(`
-				CREATE (material:Material { uuid: $uuid, name: $name, differentiator: $differentiator, format: $format })
+				CREATE (material:Material {
+					uuid: $uuid,
+					name: $name,
+					differentiator: $differentiator,
+					format: $format,
+					year: $year
+				})
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
@@ -28,6 +34,7 @@ describe('Cypher Queries Material module', () => {
 					material.name AS name,
 					material.differentiator AS differentiator,
 					material.format AS format,
+					material.year AS year,
 					{
 						name: COALESCE(originalVersionMaterial.name, ''),
 						differentiator: COALESCE(originalVersionMaterial.differentiator, '')
@@ -88,7 +95,8 @@ describe('Cypher Queries Material module', () => {
 				SET
 					material.name = $name,
 					material.differentiator = $differentiator,
-					material.format = $format
+					material.format = $format,
+					material.year = $year
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
@@ -102,6 +110,7 @@ describe('Cypher Queries Material module', () => {
 					material.name AS name,
 					material.differentiator AS differentiator,
 					material.format AS format,
+					material.year AS year,
 					{
 						name: COALESCE(originalVersionMaterial.name, ''),
 						differentiator: COALESCE(originalVersionMaterial.differentiator, '')

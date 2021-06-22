@@ -50,6 +50,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'Henry IV, Part 1',
 				format: 'play',
+				year: 1597,
 				characterGroups: [
 					{
 						characters: [
@@ -66,6 +67,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'Henry IV, Part 2',
 				format: 'play',
+				year: 1599,
 				characterGroups: [
 					{
 						characters: [
@@ -82,6 +84,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'The Merry Wives of Windsor',
 				format: 'play',
+				year: 1597,
 				characterGroups: [
 					{
 						characters: [
@@ -349,17 +352,19 @@ describe('Character in multiple productions of multiple materials', () => {
 			const expectedMaterials = [
 				{
 					model: 'material',
-					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
-					name: 'Henry IV, Part 1',
+					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
+					name: 'Henry IV, Part 2',
 					format: 'play',
+					year: 1599,
 					writingCredits: [],
 					depictions: []
 				},
 				{
 					model: 'material',
-					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
-					name: 'Henry IV, Part 2',
+					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
+					name: 'Henry IV, Part 1',
 					format: 'play',
+					year: 1597,
 					writingCredits: [],
 					depictions: []
 				},
@@ -368,6 +373,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
+					year: 1597,
 					writingCredits: [],
 					depictions: []
 				}

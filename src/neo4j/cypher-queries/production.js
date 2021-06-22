@@ -729,6 +729,7 @@ const getShowQuery = () => `
 					.uuid,
 					.name,
 					.format,
+					.year,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -766,7 +767,7 @@ const getShowQuery = () => `
 	WITH production, venue, castMember,
 		CASE material WHEN NULL
 			THEN null
-			ELSE material { model: 'material', .uuid, .name, .format, writingCredits: writingCredits }
+			ELSE material { model: 'material', .uuid, .name, .format, .year, writingCredits: writingCredits }
 		END AS material,
 		COLLECT(
 			CASE role.roleName WHEN NULL

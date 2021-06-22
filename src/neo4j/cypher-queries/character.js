@@ -55,6 +55,7 @@ const getShowQuery = () => `
 					.uuid,
 					.name,
 					.format,
+					.year,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -83,7 +84,7 @@ const getShowQuery = () => `
 				ELSE materialRel { .displayName, .qualifier, .group }
 			END
 		) AS depictions
-		ORDER BY material.name
+		ORDER BY material.year DESC, material.name
 
 	WITH character,
 		COLLECT(
@@ -94,6 +95,7 @@ const getShowQuery = () => `
 					.uuid,
 					.name,
 					.format,
+					.year,
 					writingCredits: writingCredits,
 					depictions: depictions
 				}

@@ -1,4 +1,5 @@
 import { getDuplicateNameIndices } from '../lib/get-duplicate-indices';
+import { isValidYear } from '../lib/is-valid-year';
 import MaterialBase from './MaterialBase';
 import { CharacterGroup, WritingCredit } from '.';
 
@@ -10,12 +11,15 @@ export default class Material extends MaterialBase {
 
 		const {
 			format,
+			year,
 			originalVersionMaterial,
 			writingCredits,
 			characterGroups
 		} = props;
 
 		this.format = format?.trim() || '';
+
+		this.year = parseInt(year) || year?.trim() || '';
 
 		this.originalVersionMaterial = new MaterialBase(originalVersionMaterial);
 
@@ -36,6 +40,8 @@ export default class Material extends MaterialBase {
 		this.validateDifferentiator();
 
 		this.validateFormat({ isRequired: false });
+
+		this.validateYear({ isRequired: false });
 
 		this.originalVersionMaterial.validateName({ isRequired: false });
 
@@ -63,6 +69,13 @@ export default class Material extends MaterialBase {
 	validateFormat (opts) {
 
 		this.validateStringForProperty('format', { isRequired: opts.isRequired });
+
+	}
+
+	validateYear () {
+
+		if (Boolean(this.year) && !isValidYear(this.year))
+			this.addPropertyError('year', 'Value needs to be a valid year');
 
 	}
 

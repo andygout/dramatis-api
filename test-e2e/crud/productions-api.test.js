@@ -1504,6 +1504,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID,
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					format: null,
+					year: null,
 					writingCredits: []
 				},
 				venue: {
@@ -3393,6 +3394,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID,
 					name: 'The Tragedy of King Richard III',
 					format: null,
+					year: null,
 					writingCredits: []
 				},
 				venue: {

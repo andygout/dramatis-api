@@ -95,6 +95,7 @@ const getShowQuery = () => `
 						uuid: CASE entity.uuid WHEN person.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
+						.year,
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
@@ -114,7 +115,7 @@ const getShowQuery = () => `
 					}
 				END
 			) AS writingCredits
-			ORDER BY material.name
+			ORDER BY material.year DESC, material.name
 
 		WITH person,
 			COLLECT(
@@ -125,6 +126,7 @@ const getShowQuery = () => `
 						.uuid,
 						.name,
 						.format,
+						.year,
 						writingCredits: writingCredits,
 						creditType: creditType,
 						hasDirectCredit: hasDirectCredit,
@@ -623,21 +625,21 @@ const getShowQuery = () => `
 				material.hasDirectCredit AND
 				NOT material.isSubsequentVersion AND
 				material.creditType IS NULL |
-			material { .model, .uuid, .name, .format, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits }
 		] AS materials,
 		[
 			material IN materials WHERE material.isSubsequentVersion |
-			material { .model, .uuid, .name, .format, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits }
 		] AS subsequentVersionMaterials,
 		[
 			material IN materials WHERE
 				material.isSourcingMaterial OR
 				material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
-			material { .model, .uuid, .name, .format, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits }
 		] AS sourcingMaterials,
 		[
 			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
-			material { .model, .uuid, .name, .format, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits }
 		] AS rightsGrantorMaterials,
 		producerProductions,
 		castMemberProductions,

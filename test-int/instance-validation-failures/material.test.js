@@ -8,6 +8,7 @@ describe('Material instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+	const INVALID_YEAR_STRING = 'Nineteen Fifty-Nine';
 
 	const sandbox = createSandbox();
 
@@ -38,6 +39,7 @@ describe('Material instance', () => {
 					name: '',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -73,6 +75,7 @@ describe('Material instance', () => {
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -108,6 +111,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						differentiator: [
@@ -143,10 +147,47 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: ABOVE_MAX_LENGTH_STRING,
+					year: '',
 					hasErrors: true,
 					errors: {
 						format: [
 							'Value is too long'
+						]
+					},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('year value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instance = new Material({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					format: '',
+					year: INVALID_YEAR_STRING,
+					hasErrors: true,
+					errors: {
+						year: [
+							'Value needs to be a valid year'
 						]
 					},
 					originalVersionMaterial: {
@@ -185,6 +226,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -228,6 +270,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -270,6 +313,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -317,6 +361,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -371,6 +416,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -436,6 +482,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -499,6 +546,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -562,6 +610,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -626,6 +675,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -689,6 +739,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -753,6 +804,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -825,6 +877,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -918,6 +971,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -979,6 +1033,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1032,6 +1087,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1095,6 +1151,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1159,6 +1216,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1223,6 +1281,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1287,6 +1346,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1351,6 +1411,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1425,6 +1486,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {},
 					originalVersionMaterial: {
@@ -1531,6 +1593,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -1592,6 +1655,7 @@ describe('Material instance', () => {
 					name: 'Rosmersholm',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [

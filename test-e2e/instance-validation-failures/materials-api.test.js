@@ -45,6 +45,7 @@ describe('Instance validation failures: Materials API', () => {
 					name: '',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -86,6 +87,7 @@ describe('Instance validation failures: Materials API', () => {
 					name: 'The Wild Duck',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -156,6 +158,7 @@ describe('Instance validation failures: Materials API', () => {
 					name: '',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -203,6 +206,7 @@ describe('Instance validation failures: Materials API', () => {
 					name: 'The Wild Duck',
 					differentiator: '',
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						name: [
@@ -283,6 +287,7 @@ describe('Instance validation failures: Materials API', () => {
 					name: 'Ghosts',
 					differentiator: null,
 					format: '',
+					year: '',
 					hasErrors: true,
 					errors: {
 						associations: [

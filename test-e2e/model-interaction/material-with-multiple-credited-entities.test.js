@@ -33,6 +33,7 @@ describe('Materials with entities credited multiple times', () => {
 			.send({
 				name: 'Material name',
 				format: 'play',
+				year: 2015,
 				writingCredits: [
 					{
 						entities: [
@@ -134,6 +135,7 @@ describe('Materials with entities credited multiple times', () => {
 					uuid: MATERIAL_UUID,
 					name: 'Material name',
 					format: 'play',
+					year: 2015,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -189,6 +191,7 @@ describe('Materials with entities credited multiple times', () => {
 					uuid: MATERIAL_UUID,
 					name: 'Material name',
 					format: 'play',
+					year: 2015,
 					writingCredits: [
 						{
 							model: 'writingCredit',

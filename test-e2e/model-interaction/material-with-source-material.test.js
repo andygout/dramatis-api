@@ -67,6 +67,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'A Midsummer Night\'s Dream',
 				format: 'play',
+				year: 1595,
 				writingCredits: [
 					{
 						entities: [
@@ -88,6 +89,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Donkey Show',
 				format: 'musical',
+				year: 2000,
 				writingCredits: [
 					{
 						name: 'book by',
@@ -117,6 +119,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Indian Boy',
 				format: 'play',
+				year: 2006,
 				writingCredits: [
 					{
 						entities: [
@@ -156,6 +159,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'Shakespeare\'s Villains',
 				format: 'play',
+				year: 1998,
 				writingCredits: [
 					{
 						entities: [
@@ -200,6 +204,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'A Moorish Captain',
 				format: 'tale',
+				year: 1565,
 				writingCredits: [
 					{
 						entities: [
@@ -222,6 +227,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'Othello',
 				format: 'play',
+				year: 1603,
 				writingCredits: [
 					{
 						entities: [
@@ -394,63 +400,10 @@ describe('Materials with source material', () => {
 			const expectedSourcingMaterials = [
 				{
 					model: 'material',
-					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
-					name: 'The Donkey Show',
-					format: 'musical',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'book by',
-							entities: [
-								{
-									model: 'person',
-									uuid: DIANE_PAULUS_PERSON_UUID,
-									name: 'Diane Paulus'
-								},
-								{
-									model: 'person',
-									uuid: RANDY_WEINER_PERSON_UUID,
-									name: 'Randy Weiner'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'based on',
-							entities: [
-								{
-									model: 'material',
-									uuid: null,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
-									writingCredits: [
-										{
-											model: 'writingCredit',
-											name: 'by',
-											entities: [
-												{
-													model: 'person',
-													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'company',
-													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -477,6 +430,63 @@ describe('Materials with source material', () => {
 									uuid: null,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
+									year: 1595,
+									writingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											entities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
+					name: 'The Donkey Show',
+					format: 'musical',
+					year: 2000,
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'book by',
+							entities: [
+								{
+									model: 'person',
+									uuid: DIANE_PAULUS_PERSON_UUID,
+									name: 'Diane Paulus'
+								},
+								{
+									model: 'person',
+									uuid: RANDY_WEINER_PERSON_UUID,
+									name: 'Randy Weiner'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							entities: [
+								{
+									model: 'material',
+									uuid: null,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -601,6 +611,7 @@ describe('Materials with source material', () => {
 							uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 							name: 'A Midsummer Night\'s Dream',
 							format: 'play',
+							year: 1595,
 							writingCredits: [
 								{
 									model: 'writingCredit',
@@ -689,6 +700,7 @@ describe('Materials with source material', () => {
 					uuid: OTHELLO_MATERIAL_UUID,
 					name: 'Othello',
 					format: 'play',
+					year: 1603,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -715,6 +727,7 @@ describe('Materials with source material', () => {
 									uuid: null,
 									name: 'A Moorish Captain',
 									format: 'tale',
+									year: 1565,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -778,6 +791,7 @@ describe('Materials with source material', () => {
 							uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 							name: 'A Moorish Captain',
 							format: 'tale',
+							year: 1565,
 							writingCredits: [
 								{
 									model: 'writingCredit',
@@ -816,9 +830,10 @@ describe('Materials with source material', () => {
 			const expectedSourcingMaterials = [
 				{
 					model: 'material',
-					uuid: OTHELLO_MATERIAL_UUID,
-					name: 'Othello',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -826,13 +841,69 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'person',
-									uuid: null,
-									name: 'William Shakespeare'
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
 								},
 								{
 									model: 'company',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'material',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
+									writingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											entities: [
+												{
+													model: 'person',
+													uuid: null,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
+					name: 'The Donkey Show',
+					format: 'musical',
+					year: 2000,
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'book by',
+							entities: [
+								{
+									model: 'person',
+									uuid: DIANE_PAULUS_PERSON_UUID,
+									name: 'Diane Paulus'
+								},
+								{
+									model: 'person',
+									uuid: RANDY_WEINER_PERSON_UUID,
+									name: 'Randy Weiner'
 								}
 							]
 						},
@@ -842,9 +913,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
-									name: 'A Moorish Captain',
-									format: 'tale',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -873,6 +945,7 @@ describe('Materials with source material', () => {
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -910,23 +983,24 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'material',
-					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
-					name: 'The Donkey Show',
-					format: 'musical',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
 					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'book by',
+							name: 'by',
 							entities: [
 								{
 									model: 'person',
-									uuid: DIANE_PAULUS_PERSON_UUID,
-									name: 'Diane Paulus'
+									uuid: null,
+									name: 'William Shakespeare'
 								},
 								{
-									model: 'person',
-									uuid: RANDY_WEINER_PERSON_UUID,
-									name: 'Randy Weiner'
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						},
@@ -936,63 +1010,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
-									writingCredits: [
-										{
-											model: 'writingCredit',
-											name: 'by',
-											entities: [
-												{
-													model: 'person',
-													uuid: null,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'company',
-													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
-					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
-					name: 'The Indian Boy',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							entities: [
-								{
-									model: 'person',
-									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro'
-								},
-								{
-									model: 'company',
-									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
-									name: 'Royal Shakespeare Company'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'inspired by',
-							entities: [
-								{
-									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1036,6 +1057,7 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1062,6 +1084,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1105,6 +1128,7 @@ describe('Materials with source material', () => {
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1157,9 +1181,10 @@ describe('Materials with source material', () => {
 			const expectedSourcingMaterials = [
 				{
 					model: 'material',
-					uuid: OTHELLO_MATERIAL_UUID,
-					name: 'Othello',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1167,13 +1192,69 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'person',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
 								},
 								{
 									model: 'company',
-									uuid: null,
-									name: 'The King\'s Men'
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'material',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
+									writingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											entities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: null,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
+					name: 'The Donkey Show',
+					format: 'musical',
+					year: 2000,
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'book by',
+							entities: [
+								{
+									model: 'person',
+									uuid: DIANE_PAULUS_PERSON_UUID,
+									name: 'Diane Paulus'
+								},
+								{
+									model: 'person',
+									uuid: RANDY_WEINER_PERSON_UUID,
+									name: 'Randy Weiner'
 								}
 							]
 						},
@@ -1183,9 +1264,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
-									name: 'A Moorish Captain',
-									format: 'tale',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1214,6 +1296,7 @@ describe('Materials with source material', () => {
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1251,23 +1334,24 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'material',
-					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
-					name: 'The Donkey Show',
-					format: 'musical',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
 					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'book by',
+							name: 'by',
 							entities: [
 								{
 									model: 'person',
-									uuid: DIANE_PAULUS_PERSON_UUID,
-									name: 'Diane Paulus'
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
 								},
 								{
-									model: 'person',
-									uuid: RANDY_WEINER_PERSON_UUID,
-									name: 'Randy Weiner'
+									model: 'company',
+									uuid: null,
+									name: 'The King\'s Men'
 								}
 							]
 						},
@@ -1277,63 +1361,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
-									writingCredits: [
-										{
-											model: 'writingCredit',
-											name: 'by',
-											entities: [
-												{
-													model: 'person',
-													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'company',
-													uuid: null,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
-					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
-					name: 'The Indian Boy',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							entities: [
-								{
-									model: 'person',
-									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro'
-								},
-								{
-									model: 'company',
-									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
-									name: 'Royal Shakespeare Company'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'inspired by',
-							entities: [
-								{
-									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1377,6 +1408,7 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1403,6 +1435,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1446,6 +1479,7 @@ describe('Materials with source material', () => {
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1500,6 +1534,7 @@ describe('Materials with source material', () => {
 				uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 				name: 'The Indian Boy',
 				format: 'play',
+				year: 2006,
 				writingCredits: [
 					{
 						model: 'writingCredit',
@@ -1526,6 +1561,7 @@ describe('Materials with source material', () => {
 								uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 								name: 'A Midsummer Night\'s Dream',
 								format: 'play',
+								year: 1595,
 								writingCredits: [
 									{
 										model: 'writingCredit',
@@ -1567,6 +1603,7 @@ describe('Materials with source material', () => {
 				uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 				name: 'Shakespeare\'s Villains',
 				format: 'play',
+				year: 1998,
 				writingCredits: [
 					{
 						model: 'writingCredit',
@@ -1620,6 +1657,7 @@ describe('Materials with source material', () => {
 				uuid: OTHELLO_MATERIAL_UUID,
 				name: 'Othello',
 				format: 'play',
+				year: 1603,
 				writingCredits: [
 					{
 						model: 'writingCredit',
@@ -1646,6 +1684,7 @@ describe('Materials with source material', () => {
 								uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 								name: 'A Moorish Captain',
 								format: 'tale',
+								year: 1565,
 								writingCredits: [
 									{
 										model: 'writingCredit',
@@ -1688,6 +1727,7 @@ describe('Materials with source material', () => {
 					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1714,6 +1754,7 @@ describe('Materials with source material', () => {
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1755,64 +1796,10 @@ describe('Materials with source material', () => {
 			const expectedMaterials = [
 				{
 					model: 'material',
-					uuid: OTHELLO_MATERIAL_UUID,
-					name: 'Othello',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							entities: [
-								{
-									model: 'person',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
-								},
-								{
-									model: 'company',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
-								}
-							]
-						},
-						{
-							model: 'writingCredit',
-							name: 'based on',
-							entities: [
-								{
-									model: 'material',
-									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
-									name: 'A Moorish Captain',
-									format: 'tale',
-									writingCredits: [
-										{
-											model: 'writingCredit',
-											name: 'by',
-											entities: [
-												{
-													model: 'person',
-													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'company',
-													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					depictions: []
-				},
-				{
-					model: 'material',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1843,6 +1830,63 @@ describe('Materials with source material', () => {
 									model: 'company',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
 									name: 'The King\'s Men'
+								}
+							]
+						}
+					],
+					depictions: []
+				},
+				{
+					model: 'material',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
+					writingCredits: [
+						{
+							model: 'writingCredit',
+							name: 'by',
+							entities: [
+								{
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'based on',
+							entities: [
+								{
+									model: 'material',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
+									writingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											entities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -1869,9 +1913,10 @@ describe('Materials with source material', () => {
 			const expectedResponseBody = [
 				{
 					model: 'material',
-					uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
 					format: 'play',
+					year: 2006,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -1879,13 +1924,44 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'person',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
 								},
 								{
 									model: 'company',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'writingCredit',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'material',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
+									writingCredits: [
+										{
+											model: 'writingCredit',
+											name: 'by',
+											entities: [
+												{
+													model: 'person',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'company',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
 								}
 							]
 						}
@@ -1893,47 +1969,24 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'material',
-					uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
-					name: 'A Moorish Captain',
-					format: 'tale',
+					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
+					name: 'The Donkey Show',
+					format: 'musical',
+					year: 2000,
 					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'by',
+							name: 'book by',
 							entities: [
 								{
 									model: 'person',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
+									uuid: DIANE_PAULUS_PERSON_UUID,
+									name: 'Diane Paulus'
 								},
-								{
-									model: 'company',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'material',
-					uuid: OTHELLO_MATERIAL_UUID,
-					name: 'Othello',
-					format: 'play',
-					writingCredits: [
-						{
-							model: 'writingCredit',
-							name: 'by',
-							entities: [
 								{
 									model: 'person',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
-								},
-								{
-									model: 'company',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									uuid: RANDY_WEINER_PERSON_UUID,
+									name: 'Randy Weiner'
 								}
 							]
 						},
@@ -1943,9 +1996,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
-									name: 'A Moorish Captain',
-									format: 'tale',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -1974,6 +2028,7 @@ describe('Materials with source material', () => {
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
+					year: 1998,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -2011,23 +2066,24 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'material',
-					uuid: THE_DONKEY_SHOW_MATERIAL_UUID,
-					name: 'The Donkey Show',
-					format: 'musical',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
 					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'book by',
+							name: 'by',
 							entities: [
 								{
 									model: 'person',
-									uuid: DIANE_PAULUS_PERSON_UUID,
-									name: 'Diane Paulus'
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
 								},
 								{
-									model: 'person',
-									uuid: RANDY_WEINER_PERSON_UUID,
-									name: 'Randy Weiner'
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						},
@@ -2037,9 +2093,10 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
 									writingCredits: [
 										{
 											model: 'writingCredit',
@@ -2065,9 +2122,10 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'material',
-					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
-					name: 'The Indian Boy',
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+					name: 'A Midsummer Night\'s Dream',
 					format: 'play',
+					year: 1595,
 					writingCredits: [
 						{
 							model: 'writingCredit',
@@ -2075,43 +2133,38 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'person',
-									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro'
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
 								},
 								{
 									model: 'company',
-									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
-									name: 'Royal Shakespeare Company'
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
-						},
+						}
+					]
+				},
+				{
+					model: 'material',
+					uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+					name: 'A Moorish Captain',
+					format: 'tale',
+					year: 1565,
+					writingCredits: [
 						{
 							model: 'writingCredit',
-							name: 'inspired by',
+							name: 'by',
 							entities: [
 								{
-									model: 'material',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
-									writingCredits: [
-										{
-											model: 'writingCredit',
-											name: 'by',
-											entities: [
-												{
-													model: 'person',
-													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'company',
-													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
+									model: 'person',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'company',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
 								}
 							]
 						}
