@@ -30,7 +30,7 @@ describe('Role model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 				expect(instance.characterName).to.equal('Hamlet');
@@ -69,7 +69,7 @@ describe('Role model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 				expect(instance.characterDifferentiator).to.equal('1');
@@ -108,7 +108,7 @@ describe('Role model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = new Role({ name: 'Esme', qualifier: 'younger' });
 				expect(instance.qualifier).to.equal('younger');

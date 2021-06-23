@@ -58,7 +58,7 @@ describe('Base model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = new Base({ name: 'Barfoo' });
 				expect(instance.name).to.equal('Barfoo');

@@ -102,7 +102,7 @@ describe('Production model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
 				expect(instance.startDate).to.equal('2010-09-30');
@@ -141,7 +141,7 @@ describe('Production model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
 				expect(instance.pressDate).to.equal('2010-10-07');
@@ -180,7 +180,7 @@ describe('Production model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
 				expect(instance.endDate).to.equal('2011-01-26');
