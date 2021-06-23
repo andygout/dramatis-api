@@ -187,7 +187,7 @@ describe('Material instance', () => {
 					hasErrors: true,
 					errors: {
 						year: [
-							'Value needs to be a valid year'
+							'Value must be a valid year'
 						]
 					},
 					originalVersionMaterial: {

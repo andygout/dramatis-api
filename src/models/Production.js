@@ -97,7 +97,7 @@ export default class Production extends Entity {
 
 	validateDates () {
 
-		const formatErrorText = 'Value needs to be in date format';
+		const formatErrorText = 'Value must be in date format';
 
 		if (Boolean(this.startDate) && !isValidDate(this.startDate))
 			this.addPropertyError('startDate', formatErrorText);
