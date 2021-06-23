@@ -81,20 +81,14 @@ describe('Material model', () => {
 
 			it('assigns value if included in props and value is string with length', () => {
 
-				const instance = createInstance({
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
-					format: 'play'
-				});
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: 'play' });
 				expect(instance.format).to.equal('play');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const instance = createInstance({
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
-					format: ' play '
-				});
+				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: ' play ' });
 				expect(instance.format).to.equal('play');
 
 			});
