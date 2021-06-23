@@ -657,7 +657,7 @@ describe('Production model', () => {
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'startDate',
-						'Value needs to be in date format'
+						'Value must be in date format'
 					)).to.be.true;
 
 				});
@@ -674,7 +674,7 @@ describe('Production model', () => {
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'pressDate',
-						'Value needs to be in date format'
+						'Value must be in date format'
 					)).to.be.true;
 
 				});
@@ -691,7 +691,7 @@ describe('Production model', () => {
 					expect(instance.addPropertyError.calledOnce).to.be.true;
 					expect(instance.addPropertyError.calledWithExactly(
 						'endDate',
-						'Value needs to be in date format'
+						'Value must be in date format'
 					)).to.be.true;
 
 				});

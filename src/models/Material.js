@@ -75,7 +75,7 @@ export default class Material extends MaterialBase {
 	validateYear () {
 
 		if (Boolean(this.year) && !isValidYear(this.year))
-			this.addPropertyError('year', 'Value needs to be a valid year');
+			this.addPropertyError('year', 'Value must be a valid year');
 
 	}
 

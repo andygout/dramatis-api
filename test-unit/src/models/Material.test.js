@@ -372,7 +372,7 @@ describe('Material model', () => {
 				expect(stubs.isValidYearModule.isValidYear.calledWithExactly('Nineteen Fifty-Nine')).to.be.true;
 				expect(instance.addPropertyError.calledOnce).to.be.true;
 				expect(instance.addPropertyError.calledWithExactly(
-					'year', 'Value needs to be a valid year'
+					'year', 'Value must be a valid year'
 				)).to.be.true;
 
 			});

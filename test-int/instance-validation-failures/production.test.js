@@ -145,13 +145,13 @@ describe('Production instance', () => {
 					hasErrors: true,
 					errors: {
 						startDate: [
-							'Value needs to be in date format'
+							'Value must be in date format'
 						],
 						pressDate: [
-							'Value needs to be in date format'
+							'Value must be in date format'
 						],
 						endDate: [
-							'Value needs to be in date format'
+							'Value must be in date format'
 						]
 					},
 					material: {
