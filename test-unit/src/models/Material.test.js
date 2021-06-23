@@ -79,7 +79,7 @@ describe('Material model', () => {
 
 			});
 
-			it('assigns value if included in props and value is string with length', () => {
+			it('assigns value if included in props and is string with length', () => {
 
 				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: 'play' });
 				expect(instance.format).to.equal('play');
@@ -118,7 +118,7 @@ describe('Material model', () => {
 
 			});
 
-			it('assigns value if included in props and value cannot be parsed as integer', () => {
+			it('assigns value if included in props and cannot be parsed as integer', () => {
 
 				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 				expect(instance.year).to.equal('Nineteen Fifty-Nine');
@@ -146,7 +146,7 @@ describe('Material model', () => {
 
 			});
 
-			it('assigns value if included in props and value is an integer', () => {
+			it('assigns value if included in props and is an integer', () => {
 
 				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
 				expect(instance.year).to.equal(1959);

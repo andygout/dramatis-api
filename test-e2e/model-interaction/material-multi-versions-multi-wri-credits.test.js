@@ -221,7 +221,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Henrik Ibsen'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'company',
 								name: 'Ibsen Theatre Company'
@@ -234,7 +233,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Gerry Bamman'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'company',
 								name: 'Bamman Theatre Company'

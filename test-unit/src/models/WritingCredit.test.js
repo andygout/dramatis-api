@@ -73,7 +73,7 @@ describe('WritingCredit model', () => {
 
 			});
 
-			it('assigns value if included in props and value is an accepted credit type', () => {
+			it('assigns value if included in props and is an accepted credit type', () => {
 
 				const creditTypes = [
 					'NON_SPECIFIC_SOURCE_MATERIAL',

@@ -97,7 +97,7 @@ describe('Entity model', () => {
 
 				});
 
-				it('assigns value if included in props and value is string with length', () => {
+				it('assigns value if included in props and is string with length', () => {
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 					expect(instance.differentiator).to.equal('1');
