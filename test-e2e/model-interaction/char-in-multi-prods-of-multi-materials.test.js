@@ -407,6 +407,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -430,6 +431,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -453,6 +455,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -476,6 +479,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -499,6 +503,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -522,6 +527,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -545,6 +551,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -568,6 +575,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -591,6 +599,7 @@ describe('Character in multiple productions of multiple materials', () => {
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]

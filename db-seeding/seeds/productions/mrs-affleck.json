@@ -32,7 +32,8 @@
 			"name": "Omar Brown",
 			"roles": [
 				{
-					"name": "George Constantine"
+					"name": "George Constantine",
+					"isAlternate": true
 				}
 			]
 		},
@@ -40,7 +41,8 @@
 			"name": "René Gray",
 			"roles": [
 				{
-					"name": "George Constantine"
+					"name": "George Constantine",
+					"isAlternate": true
 				}
 			]
 		},

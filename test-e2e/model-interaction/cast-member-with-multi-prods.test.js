@@ -153,19 +153,22 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Congresswoman',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Sheryl Sloman',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Irene Gant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -186,13 +189,15 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Alaura Kingsley',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Carla Haywood',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -213,13 +218,15 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Chorus',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Trojan slave',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -247,13 +254,15 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Chorus',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Trojan slave',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -281,13 +290,15 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Alaura Kingsley',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Carla Haywood',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -315,19 +326,22 @@ describe('Cast member with multiple production credits', () => {
 							model: 'character',
 							uuid: null,
 							name: 'Congresswoman',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Sheryl Sloman',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: null,
 							name: 'Irene Gant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}

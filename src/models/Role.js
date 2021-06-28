@@ -6,11 +6,12 @@ export default class Role extends Base {
 
 		super(props);
 
-		const { characterName, characterDifferentiator, qualifier } = props;
+		const { characterName, characterDifferentiator, qualifier, isAlternate } = props;
 
 		this.characterName = characterName?.trim() || '';
 		this.characterDifferentiator = characterDifferentiator?.trim() || '';
 		this.qualifier = qualifier?.trim() || '';
+		this.isAlternate = Boolean(isAlternate) || null;
 
 	}
 

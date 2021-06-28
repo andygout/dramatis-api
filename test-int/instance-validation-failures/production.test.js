@@ -1559,6 +1559,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {}
 								}
 							]
@@ -1630,6 +1631,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										name: [
 											'Value is too long'
@@ -1705,6 +1707,7 @@ describe('Production instance', () => {
 									characterName: ABOVE_MAX_LENGTH_STRING,
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										characterName: [
 											'Value is too long'
@@ -1781,6 +1784,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: ABOVE_MAX_LENGTH_STRING,
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										characterDifferentiator: [
 											'Value is too long'
@@ -1856,6 +1860,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '',
 									qualifier: ABOVE_MAX_LENGTH_STRING,
+									isAlternate: null,
 									errors: {
 										qualifier: [
 											'Value is too long'
@@ -1931,6 +1936,7 @@ describe('Production instance', () => {
 									characterName: 'Hamlet',
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										characterName: [
 											'Character name is only required if different from role name'
@@ -2016,6 +2022,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										name: [
 											'This item has been duplicated within the group'
@@ -2036,6 +2043,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '1',
 									qualifier: '',
+									isAlternate: null,
 									errors: {}
 								},
 								{
@@ -2043,6 +2051,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '',
 									qualifier: '',
+									isAlternate: null,
 									errors: {
 										name: [
 											'This item has been duplicated within the group'
@@ -2063,6 +2072,7 @@ describe('Production instance', () => {
 									characterName: '',
 									characterDifferentiator: '2',
 									qualifier: '',
+									isAlternate: null,
 									errors: {}
 								}
 							]

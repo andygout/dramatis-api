@@ -124,6 +124,38 @@ describe('Role model', () => {
 
 		});
 
+		describe('isAlternate property', () => {
+
+			it('assigns null if absent from props', () => {
+
+				const instance = new Role({ name: 'Young Lucius' });
+				expect(instance.isAlternate).to.equal(null);
+
+			});
+
+			it('assigns null if included in props but value evaluates to false', () => {
+
+				const instance = new Role({ name: 'Young Lucius', isAlternate: false });
+				expect(instance.isAlternate).to.equal(null);
+
+			});
+
+			it('assigns true if included in props and value evaluates to true', () => {
+
+				const instance = new Role({ name: 'Young Lucius', isAlternate: 'foobar' });
+				expect(instance.isAlternate).to.equal(true);
+
+			});
+
+			it('assigns true if included in props and value is true', () => {
+
+				const instance = new Role({ name: 'Young Lucius', isAlternate: true });
+				expect(instance.isAlternate).to.equal(true);
+
+			});
+
+		});
+
 	});
 
 	describe('validateCharacterName method', () => {

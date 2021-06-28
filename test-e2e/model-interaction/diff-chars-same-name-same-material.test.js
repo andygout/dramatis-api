@@ -151,12 +151,14 @@ describe('Different characters with the same name from the same material', () =>
 							name: 'Paul Shearer',
 							roleName: 'Cinna',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: VOLUMNIUS_CHARACTER_UUID,
 									name: 'Volumnius',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -196,6 +198,7 @@ describe('Different characters with the same name from the same material', () =>
 							name: 'Leo Wringer',
 							roleName: 'Cinna',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -234,12 +237,14 @@ describe('Different characters with the same name from the same material', () =>
 							name: 'Paul Shearer',
 							roleName: 'Volumnius',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: CINNA_CHARACTER_1_UUID,
 									name: 'Cinna',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -302,13 +307,15 @@ describe('Different characters with the same name from the same material', () =>
 							model: 'character',
 							uuid: CINNA_CHARACTER_1_UUID,
 							name: 'Cinna',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: VOLUMNIUS_CHARACTER_UUID,
 							name: 'Volumnius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -321,7 +328,8 @@ describe('Different characters with the same name from the same material', () =>
 							model: 'character',
 							uuid: CINNA_CHARACTER_2_UUID,
 							name: 'Cinna',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -357,13 +365,15 @@ describe('Different characters with the same name from the same material', () =>
 							model: 'character',
 							uuid: CINNA_CHARACTER_1_UUID,
 							name: 'Cinna',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: VOLUMNIUS_CHARACTER_UUID,
 							name: 'Volumnius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -399,7 +409,8 @@ describe('Different characters with the same name from the same material', () =>
 							model: 'character',
 							uuid: CINNA_CHARACTER_2_UUID,
 							name: 'Cinna',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}

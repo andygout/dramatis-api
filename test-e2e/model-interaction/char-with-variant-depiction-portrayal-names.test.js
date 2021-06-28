@@ -553,12 +553,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Henry V',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: SOLDIER_CHARACTER_UUID,
 									name: 'Soldier',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -583,12 +585,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Hal',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: ATTENDANT_CHARACTER_UUID,
 									name: 'Attendant',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -613,12 +617,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Henry, Prince of Wales',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: MESSENGER_CHARACTER_UUID,
 									name: 'Messenger',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -643,12 +649,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Matthew Macfadyen',
 							roleName: 'Hal, Prince of England',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: ATTENDANT_CHARACTER_UUID,
 									name: 'Attendant',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -673,12 +681,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Matthew Macfadyen',
 							roleName: 'Prince Hal',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: MESSENGER_CHARACTER_UUID,
 									name: 'Messenger',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -703,12 +713,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Adrian Lester',
 							roleName: 'Henry V',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: SOLDIER_CHARACTER_UUID,
 									name: 'Soldier',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -748,12 +760,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Messenger',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Henry, Prince of Wales',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -778,12 +792,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Matthew Macfadyen',
 							roleName: 'Messenger',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Prince Hal',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -823,12 +839,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Attendant',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Hal',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -853,12 +871,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Matthew Macfadyen',
 							roleName: 'Attendant',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Hal, Prince of England',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -898,12 +918,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Alex Hassell',
 							roleName: 'Soldier',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Henry V',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -928,12 +950,14 @@ describe('Character with variant depiction and portrayal names', () => {
 							name: 'Adrian Lester',
 							roleName: 'Soldier',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: KING_HENRY_V_CHARACTER_UUID,
 									name: 'Henry V',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -1062,13 +1086,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry, Prince of Wales',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: MESSENGER_CHARACTER_UUID,
 							name: 'Messenger',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1081,7 +1107,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 							name: 'Sir John Falstaff',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1109,13 +1136,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Hal',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: ATTENDANT_CHARACTER_UUID,
 							name: 'Attendant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1128,7 +1157,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 							name: 'Sir John Falstaff',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1156,13 +1186,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry V',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: SOLDIER_CHARACTER_UUID,
 							name: 'Soldier',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1175,7 +1207,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_OF_FRANCE_CHARACTER_UUID,
 							name: 'King of France',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1203,13 +1236,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Prince Hal',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: MESSENGER_CHARACTER_UUID,
 							name: 'Messenger',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1222,7 +1257,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 							name: 'Sir John Falstaff',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1250,13 +1286,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Hal, Prince of England',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: ATTENDANT_CHARACTER_UUID,
 							name: 'Attendant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1269,7 +1307,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 							name: 'Sir John Falstaff',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1297,13 +1336,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry V',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: SOLDIER_CHARACTER_UUID,
 							name: 'Soldier',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1316,7 +1357,8 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_OF_FRANCE_CHARACTER_UUID,
 							name: 'King of France',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1352,13 +1394,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry V',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: SOLDIER_CHARACTER_UUID,
 							name: 'Soldier',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1379,13 +1423,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Hal',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: ATTENDANT_CHARACTER_UUID,
 							name: 'Attendant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1406,13 +1452,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry, Prince of Wales',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: MESSENGER_CHARACTER_UUID,
 							name: 'Messenger',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1448,13 +1496,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Hal, Prince of England',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: ATTENDANT_CHARACTER_UUID,
 							name: 'Attendant',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -1475,13 +1525,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Prince Hal',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: MESSENGER_CHARACTER_UUID,
 							name: 'Messenger',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -1517,13 +1569,15 @@ describe('Character with variant depiction and portrayal names', () => {
 							model: 'character',
 							uuid: KING_HENRY_V_CHARACTER_UUID,
 							name: 'Henry V',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						},
 						{
 							model: 'character',
 							uuid: SOLDIER_CHARACTER_UUID,
 							name: 'Soldier',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
