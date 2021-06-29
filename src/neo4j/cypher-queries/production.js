@@ -199,7 +199,8 @@ const getCreateUpdateQuery = action => {
 							roleName: role.name,
 							characterName: role.characterName,
 							characterDifferentiator: role.characterDifferentiator,
-							qualifier: role.qualifier
+							qualifier: role.qualifier,
+							isAlternate: role.isAlternate
 						}]->(castMember)
 				)
 			)
@@ -506,7 +507,8 @@ const getEditQuery = () => `
 					name: role.roleName,
 					characterName: COALESCE(role.characterName, ''),
 					characterDifferentiator: COALESCE(role.characterDifferentiator, ''),
-					qualifier: COALESCE(role.qualifier, '')
+					qualifier: COALESCE(role.qualifier, ''),
+					isAlternate: role.isAlternate
 				}
 			END
 		) + [{}] AS roles
@@ -772,7 +774,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
+				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
 			END
 		) AS roles
 

@@ -76,10 +76,12 @@ describe('Roles with alternating cast', () => {
 						name: 'Nigel Harman',
 						roles: [
 							{
-								name: 'Austin'
+								name: 'Austin',
+								isAlternate: true
 							},
 							{
-								name: 'Lee'
+								name: 'Lee',
+								isAlternate: true
 							}
 						]
 					},
@@ -87,10 +89,12 @@ describe('Roles with alternating cast', () => {
 						name: 'John Light',
 						roles: [
 							{
-								name: 'Lee'
+								name: 'Lee',
+								isAlternate: true
 							},
 							{
-								name: 'Austin'
+								name: 'Austin',
+								isAlternate: true
 							}
 						]
 					}
@@ -115,10 +119,12 @@ describe('Roles with alternating cast', () => {
 						name: 'Kit Harington',
 						roles: [
 							{
-								name: 'Austin'
+								name: 'Austin',
+								isAlternate: true
 							},
 							{
-								name: 'Lee'
+								name: 'Lee',
+								isAlternate: true
 							}
 						]
 					},
@@ -126,10 +132,12 @@ describe('Roles with alternating cast', () => {
 						name: 'Johnny Flynn',
 						roles: [
 							{
-								name: 'Lee'
+								name: 'Lee',
+								isAlternate: true
 							},
 							{
-								name: 'Austin'
+								name: 'Austin',
+								isAlternate: true
 							}
 						]
 					}
@@ -192,12 +200,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Kit Harington',
 							roleName: 'Austin',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						},
@@ -207,12 +217,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Johnny Flynn',
 							roleName: 'Austin',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						}
@@ -237,12 +249,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Nigel Harman',
 							roleName: 'Austin',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						},
@@ -252,12 +266,14 @@ describe('Roles with alternating cast', () => {
 							name: 'John Light',
 							roleName: 'Austin',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						}
@@ -297,12 +313,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Kit Harington',
 							roleName: 'Lee',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						},
@@ -312,12 +330,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Johnny Flynn',
 							roleName: 'Lee',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						}
@@ -342,12 +362,14 @@ describe('Roles with alternating cast', () => {
 							name: 'Nigel Harman',
 							roleName: 'Lee',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						},
@@ -357,12 +379,14 @@ describe('Roles with alternating cast', () => {
 							name: 'John Light',
 							roleName: 'Lee',
 							qualifier: null,
+							isAlternate: true,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
-									qualifier: null
+									qualifier: null,
+									isAlternate: true
 								}
 							]
 						}
@@ -392,13 +416,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				},
@@ -411,13 +437,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}
@@ -445,13 +473,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				},
@@ -464,13 +494,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}
@@ -506,13 +538,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}
@@ -548,13 +582,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}
@@ -590,13 +626,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}
@@ -632,13 +670,15 @@ describe('Roles with alternating cast', () => {
 							model: 'character',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						},
 						{
 							model: 'character',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
-							qualifier: null
+							qualifier: null,
+							isAlternate: true
 						}
 					]
 				}

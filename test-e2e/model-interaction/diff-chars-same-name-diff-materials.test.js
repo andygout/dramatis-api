@@ -204,6 +204,7 @@ describe('Different characters with the same name from different materials', () 
 							name: 'Oscar Pearce',
 							roleName: 'Demetrius',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -242,6 +243,7 @@ describe('Different characters with the same name from different materials', () 
 							name: 'Sam Alexander',
 							roleName: 'Demetrius',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -325,7 +327,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -338,7 +341,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: LYSANDER_CHARACTER_UUID,
 							name: 'Lysander',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -366,7 +370,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: CHIRON_CHARACTER_UUID,
 							name: 'Chiron',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -379,7 +384,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -415,7 +421,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -451,7 +458,8 @@ describe('Different characters with the same name from different materials', () 
 							model: 'character',
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}

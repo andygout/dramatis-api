@@ -248,7 +248,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier }
+				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
 			END
 		) AS roles
 		ORDER BY production.startDate DESC, production.name, venue.name

@@ -392,6 +392,7 @@ describe('Character with variant names from productions of different materials',
 							name: 'Gabriele Cicirello',
 							roleName: 'Hamlet, Prince of Denmark',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -415,6 +416,7 @@ describe('Character with variant names from productions of different materials',
 							name: 'Jack Hawkins',
 							roleName: 'Prince Hamlet',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -438,6 +440,7 @@ describe('Character with variant names from productions of different materials',
 							name: 'Rory Kinnear',
 							roleName: 'Hamlet, Prince of Denmark',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -461,6 +464,7 @@ describe('Character with variant names from productions of different materials',
 							name: 'Don Reilly',
 							roleName: 'Spirit of Hamlet',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: []
 						}
 					]
@@ -489,7 +493,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -502,7 +507,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -530,7 +536,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Prince Hamlet',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -543,7 +550,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'King Claudius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -571,7 +579,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Spirit of Hamlet',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -584,7 +593,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Spirit of Claudius',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -612,7 +622,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				},
@@ -625,7 +636,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -661,7 +673,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -697,7 +710,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Prince Hamlet',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -733,7 +747,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Spirit of Hamlet',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}
@@ -769,7 +784,8 @@ describe('Character with variant names from productions of different materials',
 							model: 'character',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
-							qualifier: null
+							qualifier: null,
+							isAlternate: null
 						}
 					]
 				}

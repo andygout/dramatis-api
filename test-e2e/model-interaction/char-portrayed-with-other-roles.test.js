@@ -146,24 +146,28 @@ describe('Character portrayed with other roles', () => {
 							name: 'Stephen Harper',
 							roleName: 'Joey\'s mother',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -203,24 +207,28 @@ describe('Character portrayed with other roles', () => {
 							name: 'Stephen Harper',
 							roleName: 'Dr Schweyk',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -260,24 +268,28 @@ describe('Character portrayed with other roles', () => {
 							name: 'Stephen Harper',
 							roleName: 'Coco',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}
@@ -317,24 +329,28 @@ describe('Character portrayed with other roles', () => {
 							name: 'Stephen Harper',
 							roleName: 'Geordie',
 							qualifier: null,
+							isAlternate: null,
 							otherRoles: [
 								{
 									model: 'character',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								},
 								{
 									model: 'character',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
-									qualifier: null
+									qualifier: null,
+									isAlternate: null
 								}
 							]
 						}

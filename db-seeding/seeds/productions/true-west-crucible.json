@@ -24,10 +24,12 @@
 			"name": "Nigel Harman",
 			"roles": [
 				{
-					"name": "Austin"
+					"name": "Austin",
+					"isAlternate": true
 				},
 				{
-					"name": "Lee"
+					"name": "Lee",
+					"isAlternate": true
 				}
 			]
 		},
@@ -35,10 +37,12 @@
 			"name": "John Light",
 			"roles": [
 				{
-					"name": "Lee"
+					"name": "Lee",
+					"isAlternate": true
 				},
 				{
-					"name": "Austin"
+					"name": "Austin",
+					"isAlternate": true
 				}
 			]
 		}

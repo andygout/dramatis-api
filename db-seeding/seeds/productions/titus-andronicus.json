@@ -108,7 +108,8 @@
 			"name": "Hugh Wyld",
 			"roles": [
 				{
-					"name": "Young Lucius"
+					"name": "Young Lucius",
+					"isAlternate": true
 				}
 			]
 		},
@@ -116,7 +117,8 @@
 			"name": "Steven Williams",
 			"roles": [
 				{
-					"name": "Young Lucius"
+					"name": "Young Lucius",
+					"isAlternate": true
 				}
 			]
 		},
