@@ -45,6 +45,22 @@
 					"isAlternate": true
 				}
 			]
+		},
+		{
+			"name": "Abigail McKern",
+			"roles": [
+				{
+					"name": "Mom"
+				}
+			]
+		},
+		{
+			"name": "John Schwab",
+			"roles": [
+				{
+					"name": "Saul Kimmer"
+				}
+			]
 		}
 	],
 	"creativeCredits": [
