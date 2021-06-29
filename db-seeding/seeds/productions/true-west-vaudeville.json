@@ -14,7 +14,11 @@
 			"entities": [
 				{
 					"model": "company",
-					"name": "Nimax Theatres"
+					"name": "Smith & Brant Theatricals"
+				},
+				{
+					"model": "company",
+					"name": "Empire Street Productions"
 				}
 			]
 		}
@@ -45,6 +49,23 @@
 					"isAlternate": true
 				}
 			]
+		},
+		{
+			"name": "Donald Sage Albery",
+			"roles": [
+				{
+					"name": "Saul",
+					"characterName": "Saul Kimmer"
+				}
+			]
+		},
+		{
+			"name": "Madeleine Potter",
+			"roles": [
+				{
+					"name": "Mom"
+				}
+			]
 		}
 	],
 	"creativeCredits": [
@@ -57,10 +78,45 @@
 			]
 		},
 		{
-			"name": "Set / Costume Design",
+			"name": "Designer",
 			"entities": [
 				{
 					"name": "Jon Bausor"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Joshua Carr"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ian Dickinson"
+				}
+			]
+		},
+		{
+			"name": "Composers",
+			"entities": [
+				{
+					"name": "Johnny Flynn"
+				},
+				{
+					"name": "Joe Zeitlin"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Amy Ball"
 				}
 			]
 		}
