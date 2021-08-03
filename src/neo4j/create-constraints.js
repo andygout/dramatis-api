@@ -3,6 +3,7 @@ import directly from 'directly';
 import { neo4jQuery } from './query';
 
 const MODELS = new Set([
+	'Award',
 	'Character',
 	'Company',
 	'Material',
