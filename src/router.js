@@ -3,6 +3,7 @@
 import { Router } from 'express';
 
 import {
+	awards as awardsController,
 	characters as charactersController,
 	companies as companiesController,
 	materials as materialsController,
@@ -12,6 +13,14 @@ import {
 } from './controllers';
 
 const router = new Router();
+
+router.get('/awards/new', awardsController.newRoute);
+router.post('/awards', awardsController.createRoute);
+router.get('/awards/:uuid/edit', awardsController.editRoute);
+router.put('/awards/:uuid', awardsController.updateRoute);
+router.delete('/awards/:uuid', awardsController.deleteRoute);
+router.get('/awards/:uuid', awardsController.showRoute);
+router.get('/awards', awardsController.listRoute);
 
 router.get('/characters/new', charactersController.newRoute);
 router.post('/characters', charactersController.createRoute);

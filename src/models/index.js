@@ -1,3 +1,4 @@
+import Award from './Award';
 import CastMember from './CastMember';
 import Character from './Character';
 import CharacterDepiction from './CharacterDepiction';
@@ -17,6 +18,7 @@ import VenueBase from './VenueBase';
 import WritingCredit from './WritingCredit';
 
 export {
+	Award,
 	CastMember,
 	Character,
 	CharacterDepiction,

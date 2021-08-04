@@ -1,3 +1,4 @@
+import { getShowQuery as getAwardShowQuery } from './award';
 import { getShowQuery as getCharacterShowQuery } from './character';
 import { getShowQuery as getCompanyShowQuery } from './company';
 import {
@@ -43,6 +44,7 @@ const getUpdateQueries = {
 };
 
 const getShowQueries = {
+	award: getAwardShowQuery,
 	character: getCharacterShowQuery,
 	company: getCompanyShowQuery,
 	person: getPersonShowQuery,
