@@ -1,4 +1,5 @@
 import * as awards from './awards';
+import * as awardCeremonies from './award-ceremonies';
 import * as characters from './characters';
 import * as companies from './companies';
 import * as materials from './materials';
@@ -8,6 +9,7 @@ import * as venues from './venues';
 
 export {
 	awards,
+	awardCeremonies,
 	characters,
 	companies,
 	materials,

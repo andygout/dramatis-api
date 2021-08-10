@@ -4,6 +4,7 @@ const CREDIT_TYPES = {
 };
 
 const IRREGULAR_PLURAL_NOUNS_MAP = {
+	awardCeremony: 'awardCeremonies',
 	company: 'companies',
 	person: 'people'
 };

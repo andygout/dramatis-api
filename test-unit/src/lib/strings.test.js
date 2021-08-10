@@ -45,8 +45,9 @@ describe('Strings module', () => {
 			it('returns specific plural noun', () => {
 
 				const nouns = [
-					{ singular: 'person', plural: 'people' },
-					{ singular: 'company', plural: 'companies' }
+					{ singular: 'awardCeremony', plural: 'awardCeremonies' },
+					{ singular: 'company', plural: 'companies' },
+					{ singular: 'person', plural: 'people' }
 				];
 
 				nouns.forEach(noun => {

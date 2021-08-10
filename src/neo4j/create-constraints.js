@@ -4,6 +4,7 @@ import { neo4jQuery } from './query';
 
 const MODELS = new Set([
 	'Award',
+	'AwardCeremony',
 	'Character',
 	'Company',
 	'Material',

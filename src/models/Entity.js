@@ -21,7 +21,7 @@ export default class Entity extends Base {
 
 		this.uuid = uuid;
 
-		if (this.model !== 'production') this.differentiator = differentiator?.trim() || '';
+		if (!['production', 'awardCeremony'].includes(this.model)) this.differentiator = differentiator?.trim() || '';
 
 	}
 

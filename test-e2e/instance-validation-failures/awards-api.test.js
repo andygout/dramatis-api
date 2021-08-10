@@ -204,7 +204,7 @@ describe('Instance validation failures: Awards API', () => {
 	describe('attempt to delete instance', () => {
 
 		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-		const EVENING_STANDARD_AWARDS_2019_CEREMONY_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+		const TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
 
@@ -217,14 +217,14 @@ describe('Instance validation failures: Awards API', () => {
 			});
 
 			await createNode({
-				label: 'Ceremony',
-				uuid: EVENING_STANDARD_AWARDS_2019_CEREMONY_UUID,
+				label: 'AwardCeremony',
+				uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 				name: '2019'
 			});
 
 			await createRelationship({
-				sourceLabel: 'Ceremony',
-				sourceUuid: EVENING_STANDARD_AWARDS_2019_CEREMONY_UUID,
+				sourceLabel: 'AwardCeremony',
+				sourceUuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 				destinationLabel: 'Award',
 				destinationUuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 				relationshipName: 'PRESENTED_AT'
@@ -249,7 +249,7 @@ describe('Instance validation failures: Awards API', () => {
 					hasErrors: true,
 					errors: {
 						associations: [
-							'Ceremony'
+							'AwardCeremony'
 						]
 					}
 				};
