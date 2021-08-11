@@ -1,26 +1,26 @@
 import { expect } from 'chai';
 
-import { capitalise, pluralise } from '../../../src/lib/strings';
+import { pascalCasify, pluralise } from '../../../src/lib/strings';
 
 describe('Strings module', () => {
 
-	describe('capitalise function', () => {
+	describe('pascalCasify function', () => {
 
 		context('input string is lowercase', () => {
 
 			it('returns string with initial letter as capital', () => {
 
-				expect(capitalise('string')).to.equal('String');
+				expect(pascalCasify('foo')).to.equal('Foo');
 
 			});
 
 		});
 
-		context('input string is uppercase', () => {
+		context('input string is camel case', () => {
 
 			it('returns string with initial letter as capital', () => {
 
-				expect(capitalise('STRING')).to.equal('String');
+				expect(pascalCasify('fooBar')).to.equal('FooBar');
 
 			});
 

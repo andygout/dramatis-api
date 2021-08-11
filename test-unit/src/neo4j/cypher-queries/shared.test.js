@@ -14,11 +14,11 @@ describe('Cypher Queries Shared module', () => {
 	beforeEach(() => {
 
 		stubs = {
-			capitalise: sandbox.stub(strings, 'capitalise')
+			pascalCasify: sandbox.stub(strings, 'pascalCasify')
 		};
 
-		stubs.capitalise.withArgs('production').returns('Production');
-		stubs.capitalise.withArgs('venue').returns('Venue');
+		stubs.pascalCasify.withArgs('production').returns('Production');
+		stubs.pascalCasify.withArgs('venue').returns('Venue');
 
 	});
 
@@ -33,8 +33,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getExistenceQuery('venue');
-			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledOnce).to.be.true;
+			expect(stubs.pascalCasify.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -50,8 +50,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getDuplicateRecordCountQuery('venue', undefined);
-			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledOnce).to.be.true;
+			expect(stubs.pascalCasify.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { name: $name })
 					WHERE
@@ -76,9 +76,9 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getCreateQuery('venue');
-			expect(stubs.capitalise.calledTwice).to.be.true;
-			expect(stubs.capitalise.firstCall.calledWithExactly('venue')).to.be.true;
-			expect(stubs.capitalise.secondCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledTwice).to.be.true;
+			expect(stubs.pascalCasify.firstCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.secondCall.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				CREATE (n:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 
@@ -102,8 +102,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getEditQuery('venue');
-			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledOnce).to.be.true;
+			expect(stubs.pascalCasify.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -123,9 +123,9 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getUpdateQuery('venue');
-			expect(stubs.capitalise.calledTwice).to.be.true;
-			expect(stubs.capitalise.firstCall.calledWithExactly('venue')).to.be.true;
-			expect(stubs.capitalise.secondCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledTwice).to.be.true;
+			expect(stubs.pascalCasify.firstCall.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.secondCall.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 					SET
@@ -152,8 +152,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getDeleteQuery('venue');
-			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledOnce).to.be.true;
+			expect(stubs.pascalCasify.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (:Venue { uuid: $uuid })
 
@@ -207,8 +207,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getListQuery('venue');
-			expect(stubs.capitalise.calledOnce).to.be.true;
-			expect(stubs.capitalise.calledWithExactly('venue')).to.be.true;
+			expect(stubs.pascalCasify.calledOnce).to.be.true;
+			expect(stubs.pascalCasify.calledWithExactly('venue')).to.be.true;
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue)
 
