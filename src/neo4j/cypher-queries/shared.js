@@ -1,13 +1,13 @@
-import { capitalise } from '../../lib/strings';
+import { pascalCasify } from '../../lib/strings';
 
 const getExistenceQuery = model => `
-	MATCH (n:${capitalise(model)} { uuid: $uuid })
+	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
 
 	RETURN n
 `;
 
 const getDuplicateRecordCountQuery = model => `
-	MATCH (n:${capitalise(model)} { name: $name })
+	MATCH (n:${pascalCasify(model)} { name: $name })
 		WHERE
 			(
 				($differentiator IS NULL AND n.differentiator IS NULL) OR
@@ -22,7 +22,7 @@ const getDuplicateRecordCountQuery = model => `
 `;
 
 const getCreateQuery = model => `
-	CREATE (n:${capitalise(model)} { uuid: $uuid, name: $name, differentiator: $differentiator })
+	CREATE (n:${pascalCasify(model)} { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 	WITH n
 
@@ -30,7 +30,7 @@ const getCreateQuery = model => `
 `;
 
 const getEditQuery = model => `
-	MATCH (n:${capitalise(model)} { uuid: $uuid })
+	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
 
 	RETURN
 		'${model}' AS model,
@@ -40,7 +40,7 @@ const getEditQuery = model => `
 `;
 
 const getUpdateQuery = model => `
-	MATCH (n:${capitalise(model)} { uuid: $uuid })
+	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
 		SET
 			n.name = $name,
 			n.differentiator = $differentiator
@@ -52,7 +52,7 @@ const getUpdateQuery = model => `
 
 const getDeleteQuery = model => {
 
-	const label = capitalise(model);
+	const label = pascalCasify(model);
 
 	return `
 		MATCH (:${label} { uuid: $uuid })
@@ -101,7 +101,7 @@ const getDeleteQuery = model => {
 };
 
 const getListQuery = model => `
-	MATCH (n:${capitalise(model)})
+	MATCH (n:${pascalCasify(model)})
 
 	RETURN
 		'${model}' AS model,
