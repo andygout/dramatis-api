@@ -1,4 +1,12 @@
 import { getShowQuery as getAwardShowQuery } from './award';
+import {
+	getAwardContextualDuplicateRecordCountQuery,
+	getCreateQuery as getAwardCeremonyCreateQuery,
+	getEditQuery as getAwardCeremonyEditQuery,
+	getUpdateQuery as getAwardCeremonyUpdateQuery,
+	getShowQuery as getAwardCeremonyShowQuery,
+	getListQuery as getAwardCeremonyListQuery
+} from './award-ceremony';
 import { getShowQuery as getCharacterShowQuery } from './character';
 import { getShowQuery as getCompanyShowQuery } from './company';
 import {
@@ -26,18 +34,21 @@ import {
 } from './venue';
 
 const getCreateQueries = {
+	awardCeremony: getAwardCeremonyCreateQuery,
 	material: getMaterialCreateQuery,
 	production: getProductionCreateQuery,
 	venue: getVenueCreateQuery
 };
 
 const getEditQueries = {
+	awardCeremony: getAwardCeremonyEditQuery,
 	material: getMaterialEditQuery,
 	production: getProductionEditQuery,
 	venue: getVenueEditQuery
 };
 
 const getUpdateQueries = {
+	awardCeremony: getAwardCeremonyUpdateQuery,
 	material: getMaterialUpdateQuery,
 	production: getProductionUpdateQuery,
 	venue: getVenueUpdateQuery
@@ -45,6 +56,7 @@ const getUpdateQueries = {
 
 const getShowQueries = {
 	award: getAwardShowQuery,
+	awardCeremony: getAwardCeremonyShowQuery,
 	character: getCharacterShowQuery,
 	company: getCompanyShowQuery,
 	person: getPersonShowQuery,
@@ -54,12 +66,14 @@ const getShowQueries = {
 };
 
 const getListQueries = {
+	awardCeremony: getAwardCeremonyListQuery,
 	material: getMaterialListQuery,
 	production: getProductionListQuery,
 	venue: getVenueListQuery
 };
 
 export {
+	getAwardContextualDuplicateRecordCountQuery,
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
