@@ -33,7 +33,7 @@ describe('Instance validation failures: Productions API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'production',
+					model: 'PRODUCTION',
 					name: '',
 					startDate: '',
 					pressDate: '',
@@ -45,13 +45,13 @@ describe('Instance validation failures: Productions API', () => {
 						]
 					},
 					material: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -101,7 +101,7 @@ describe('Instance validation failures: Productions API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MACBETH_PRODUCTION_UUID,
 					name: '',
 					startDate: '',
@@ -114,13 +114,13 @@ describe('Instance validation failures: Productions API', () => {
 						]
 					},
 					material: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -202,7 +202,7 @@ describe('Instance validation failures: Productions API', () => {
 					.delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: OTHELLO_DONMAR_PRODUCTION_UUID,
 					name: 'Othello',
 					startDate: '',
@@ -216,13 +216,13 @@ describe('Instance validation failures: Productions API', () => {
 						]
 					},
 					material: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
 					},
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}

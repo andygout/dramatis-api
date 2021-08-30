@@ -41,7 +41,7 @@ describe('Instance validation failures: Companies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'company',
+					model: 'COMPANY',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -73,7 +73,7 @@ describe('Instance validation failures: Companies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'company',
+					model: 'COMPANY',
 					name: 'Donmar Warehouse Projects',
 					differentiator: '',
 					hasErrors: true,
@@ -133,7 +133,7 @@ describe('Instance validation failures: Companies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'company',
+					model: 'COMPANY',
 					uuid: SHAKESPEARE_GLOBE_TRUST_COMPANY_UUID,
 					name: '',
 					differentiator: '',
@@ -171,7 +171,7 @@ describe('Instance validation failures: Companies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'company',
+					model: 'COMPANY',
 					uuid: SHAKESPEARE_GLOBE_TRUST_COMPANY_UUID,
 					name: 'Donmar Warehouse Projects',
 					differentiator: '',
@@ -242,7 +242,7 @@ describe('Instance validation failures: Companies API', () => {
 					.delete(`/companies/${SHAKESPEARE_GLOBE_TRUST_COMPANY_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'company',
+					model: 'COMPANY',
 					uuid: SHAKESPEARE_GLOBE_TRUST_COMPANY_UUID,
 					name: 'Shakespeare Globe Trust',
 					differentiator: null,

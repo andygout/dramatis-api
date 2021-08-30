@@ -69,21 +69,21 @@ describe('ProductionTeamCredit model', () => {
 							name: 'Sara Gunter'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: 'Assistant Stage Managers Ltd'
 						},
 						{
 							name: ''
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ''
 						},
 						{
 							name: ' '
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ' '
 						}
 					]
@@ -114,7 +114,7 @@ describe('ProductionTeamCredit model', () => {
 						name: 'Sara Gunter'
 					},
 					{
-						model: 'company',
+						model: 'COMPANY',
 						name: 'Assistant Stage Managers Ltd'
 					}
 				]

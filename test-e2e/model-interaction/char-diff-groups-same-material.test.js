@@ -212,7 +212,7 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
@@ -243,20 +243,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JODIE_MCNEE_PERSON_UUID,
 							name: 'Jodie McNee',
 							roleName: 'Alisa Kos',
@@ -265,7 +265,7 @@ describe('Character with multiple appearances in the same material in different 
 							otherRoles: []
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: BEBE_SANDERS_PERSON_UUID,
 							name: 'Bebe Sanders',
 							roleName: 'Alisa Kos',
@@ -291,7 +291,7 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
@@ -322,20 +322,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: SIOBHAN_FINNERAN_PERSON_UUID,
 							name: 'Siobhan Finneran',
 							roleName: 'Maša Kos',
@@ -361,7 +361,7 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
@@ -392,20 +392,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JAMES_LAURENSON_PERSON_UUID,
 							name: 'James Laurenson',
 							roleName: 'Aleksander King',
@@ -414,7 +414,7 @@ describe('Character with multiple appearances in the same material in different 
 							otherRoles: []
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ALEX_PRICE_PERSON_UUID,
 							name: 'Alex Price',
 							roleName: 'Aleksander King',
@@ -440,7 +440,7 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THREE_WINTERS_MATERIAL_UUID,
 					name: '3 Winters',
 					format: 'play',
@@ -466,20 +466,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JO_HERBERT_PERSON_UUID,
 							name: 'Jo Herbert',
 							roleName: 'Rose King',
@@ -505,18 +505,18 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCharacterGroups = [
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: '2011',
 					position: 0,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null
@@ -524,24 +524,24 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: '1990',
 					position: 1,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: null
@@ -549,18 +549,18 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: '1945',
 					position: 2,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ROSE_KING_CHARACTER_UUID,
 							name: 'Rose King',
 							qualifier: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: null
@@ -583,12 +583,12 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SIOBHAN_FINNERAN_PERSON_UUID,
 					name: 'Siobhan Finneran',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null,
@@ -597,12 +597,12 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JO_HERBERT_PERSON_UUID,
 					name: 'Jo Herbert',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ROSE_KING_CHARACTER_UUID,
 							name: 'Rose King',
 							qualifier: null,
@@ -611,12 +611,12 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JAMES_LAURENSON_PERSON_UUID,
 					name: 'James Laurenson',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1990',
@@ -625,12 +625,12 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JODIE_MCNEE_PERSON_UUID,
 					name: 'Jodie McNee',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '2011',
@@ -639,12 +639,12 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: ALEX_PRICE_PERSON_UUID,
 					name: 'Alex Price',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1945',
@@ -653,12 +653,12 @@ describe('Character with multiple appearances in the same material in different 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: BEBE_SANDERS_PERSON_UUID,
 					name: 'Bebe Sanders',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '1990',
@@ -682,20 +682,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null,
@@ -719,20 +719,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ROSE_KING_CHARACTER_UUID,
 							name: 'Rose King',
 							qualifier: null,
@@ -756,20 +756,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1990',
@@ -793,20 +793,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '2011',
@@ -830,20 +830,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1945',
@@ -867,20 +867,20 @@ describe('Character with multiple appearances in the same material in different 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THREE_WINTERS_NATIONAL_PRODUCTION_UUID,
 					name: '3 Winters',
 					startDate: '2014-11-26',
 					endDate: '2015-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '1990',

@@ -43,7 +43,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			uuid: CHARACTER_1_UUID,
 			name: 'Demetrius',
 			differentiator: '',
@@ -67,7 +67,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			name: 'Demetrius',
 			differentiator: '',
 			hasErrors: true,
@@ -99,7 +99,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			uuid: CHARACTER_2_UUID,
 			name: 'Demetrius',
 			differentiator: '1',
@@ -124,7 +124,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			uuid: CHARACTER_1_UUID,
 			name: 'Demetrius',
 			differentiator: '1',
@@ -157,7 +157,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			uuid: CHARACTER_1_UUID,
 			name: 'Demetrius',
 			differentiator: '2',
@@ -181,7 +181,7 @@ describe('Uniqueness in database: Characters API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'character',
+			model: 'CHARACTER',
 			uuid: CHARACTER_2_UUID,
 			name: 'Demetrius',
 			differentiator: '',

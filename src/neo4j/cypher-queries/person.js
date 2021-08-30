@@ -48,7 +48,7 @@ const getShowQuery = () => `
 				CASE sourceMaterialWriter WHEN NULL
 					THEN null
 					ELSE sourceMaterialWriter {
-						model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+						model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))),
 						uuid: CASE sourceMaterialWriter.uuid WHEN person.uuid
 							THEN null
 							ELSE sourceMaterialWriter.uuid
@@ -71,7 +71,7 @@ const getShowQuery = () => `
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
 					ELSE {
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: COALESCE(sourceMaterialWritingCreditName, 'by'),
 						entities: sourceMaterialWriters
 					}
@@ -91,7 +91,7 @@ const getShowQuery = () => `
 				CASE entity WHEN NULL
 					THEN null
 					ELSE entity {
-						model: TOLOWER(HEAD(LABELS(entity))),
+						model: TOUPPER(HEAD(LABELS(entity))),
 						uuid: CASE entity.uuid WHEN person.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
@@ -99,7 +99,7 @@ const getShowQuery = () => `
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
-			) | CASE entity.model WHEN 'material'
+			) | CASE entity.model WHEN 'MATERIAL'
 				THEN entity
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
@@ -109,7 +109,7 @@ const getShowQuery = () => `
 				CASE SIZE(entities) WHEN 0
 					THEN null
 					ELSE {
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: COALESCE(writingCreditName, 'by'),
 						entities: entities
 					}
@@ -122,7 +122,7 @@ const getShowQuery = () => `
 				CASE material WHEN NULL
 					THEN null
 					ELSE material {
-						model: 'material',
+						model: 'MATERIAL',
 						.uuid,
 						.name,
 						.format,
@@ -159,7 +159,7 @@ const getShowQuery = () => `
 
 		WITH person, materials, production, entityRel, entity,
 			COLLECT(DISTINCT(creditedMember {
-				model: 'person',
+				model: 'PERSON',
 				uuid: CASE creditedMember.uuid WHEN person.uuid THEN null ELSE creditedMember.uuid END,
 				.name
 			})) AS creditedMembers
@@ -170,13 +170,13 @@ const getShowQuery = () => `
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
-					model: TOLOWER(HEAD(LABELS(entity))),
+					model: TOUPPER(HEAD(LABELS(entity))),
 					uuid: CASE entity.uuid WHEN person.uuid THEN null ELSE entity.uuid END,
 					.name,
 					creditedMembers: creditedMembers
 				}
 			END
-		) | CASE entity.model WHEN 'company'
+		) | CASE entity.model WHEN 'COMPANY'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -186,7 +186,7 @@ const getShowQuery = () => `
 			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: COALESCE(producerCreditName, 'produced by'),
 					entities: entities
 				}
@@ -205,7 +205,7 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
@@ -213,12 +213,12 @@ const getShowQuery = () => `
 					venue: CASE venue WHEN NULL
 						THEN null
 						ELSE venue {
-							model: 'venue',
+							model: 'VENUE',
 							.uuid,
 							.name,
 							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surVenue { model: 'venue', .uuid, .name }
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
@@ -248,7 +248,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
+				ELSE role { model: 'CHARACTER', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
 			END
 		) AS roles
 		ORDER BY production.startDate DESC, production.name, venue.name
@@ -258,7 +258,7 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
@@ -266,12 +266,12 @@ const getShowQuery = () => `
 					venue: CASE venue WHEN NULL
 						THEN null
 						ELSE venue {
-							model: 'venue',
+							model: 'VENUE',
 							.uuid,
 							.name,
 							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surVenue { model: 'venue', .uuid, .name }
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
@@ -323,7 +323,7 @@ const getShowQuery = () => `
 			production,
 			companyRel,
 			creditedEmployerCompany,
-			COLLECT(coCreditedMember { model: 'person', .uuid, .name }) AS coCreditedMembers
+			COLLECT(coCreditedMember { model: 'PERSON', .uuid, .name }) AS coCreditedMembers
 
 	WITH
 		person,
@@ -334,7 +334,7 @@ const getShowQuery = () => `
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
-			ELSE creditedEmployerCompany { model: 'company', .uuid, .name, coCreditedMembers: coCreditedMembers }
+			ELSE creditedEmployerCompany { model: 'COMPANY', .uuid, .name, coCreditedMembers: coCreditedMembers }
 		END AS creditedEmployerCompany,
 		COALESCE(creditedEmployerCompany, person) AS entity,
 		COALESCE(companyRel, personRel) AS entityRel
@@ -384,7 +384,7 @@ const getShowQuery = () => `
 			coCreditedEntityRel,
 			coCreditedEntity,
 			COLLECT(coCreditedCompanyCreditedMember {
-				model: 'person',
+				model: 'PERSON',
 				.uuid,
 				.name
 			}) AS coCreditedCompanyCreditedMembers
@@ -402,13 +402,13 @@ const getShowQuery = () => `
 			CASE coCreditedEntity WHEN NULL
 				THEN null
 				ELSE coCreditedEntity {
-					model: TOLOWER(HEAD(LABELS(coCreditedEntity))),
+					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
 					.uuid,
 					.name,
 					creditedMembers: coCreditedCompanyCreditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'company'
+		) | CASE coCreditedEntity.model WHEN 'COMPANY'
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
@@ -420,7 +420,7 @@ const getShowQuery = () => `
 
 	WITH person, materials, producerProductions, castMemberProductions, production, venue, surVenue,
 		COLLECT({
-			model: 'creativeCredit',
+			model: 'CREATIVE_CREDIT',
 			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
@@ -432,7 +432,7 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
@@ -440,12 +440,12 @@ const getShowQuery = () => `
 					venue: CASE venue WHEN NULL
 						THEN null
 						ELSE venue {
-							model: 'venue',
+							model: 'VENUE',
 							.uuid,
 							.name,
 							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surVenue { model: 'venue', .uuid, .name }
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
@@ -499,7 +499,7 @@ const getShowQuery = () => `
 			production,
 			companyRel,
 			creditedEmployerCompany,
-			COLLECT(coCreditedMember { model: 'person', .uuid, .name }) AS coCreditedMembers
+			COLLECT(coCreditedMember { model: 'PERSON', .uuid, .name }) AS coCreditedMembers
 
 	WITH
 		person,
@@ -511,7 +511,7 @@ const getShowQuery = () => `
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
-			ELSE creditedEmployerCompany { model: 'company', .uuid, .name, coCreditedMembers: coCreditedMembers }
+			ELSE creditedEmployerCompany { model: 'COMPANY', .uuid, .name, coCreditedMembers: coCreditedMembers }
 		END AS creditedEmployerCompany,
 		COALESCE(creditedEmployerCompany, person) AS entity,
 		COALESCE(companyRel, personRel) AS entityRel
@@ -563,7 +563,7 @@ const getShowQuery = () => `
 			coCreditedEntityRel,
 			coCreditedEntity,
 			COLLECT(coCreditedCompanyCreditedMember {
-				model: 'person',
+				model: 'PERSON',
 				.uuid,
 				.name
 			}) AS coCreditedCompanyCreditedMembers
@@ -582,13 +582,13 @@ const getShowQuery = () => `
 			CASE coCreditedEntity WHEN NULL
 				THEN null
 				ELSE coCreditedEntity {
-					model: TOLOWER(HEAD(LABELS(coCreditedEntity))),
+					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
 					.uuid,
 					.name,
 					creditedMembers: coCreditedCompanyCreditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'company'
+		) | CASE coCreditedEntity.model WHEN 'COMPANY'
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
@@ -608,7 +608,7 @@ const getShowQuery = () => `
 		venue,
 		surVenue,
 		COLLECT({
-			model: 'crewCredit',
+			model: 'CREW_CREDIT',
 			name: entityRel.credit,
 			creditedEmployerCompany: creditedEmployerCompany,
 			coCreditedEntities: coCreditedEntities
@@ -616,7 +616,7 @@ const getShowQuery = () => `
 		ORDER BY production.startDate DESC, production.name, venue.name
 
 	RETURN
-		'person' AS model,
+		'PERSON' AS model,
 		person.uuid AS uuid,
 		person.name AS name,
 		person.differentiator AS differentiator,
@@ -648,7 +648,7 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
@@ -656,12 +656,12 @@ const getShowQuery = () => `
 					venue: CASE venue WHEN NULL
 						THEN null
 						ELSE venue {
-							model: 'venue',
+							model: 'VENUE',
 							.uuid,
 							.name,
 							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surVenue { model: 'venue', .uuid, .name }
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,

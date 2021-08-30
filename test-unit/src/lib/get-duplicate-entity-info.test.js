@@ -15,11 +15,11 @@ describe('Get Duplicate Info module', () => {
 			it('returns an array of unique duplicates', () => {
 
 				const arrayOfEntities = [
-					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Vicki Mortimer', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Jon Clark', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'person')
+					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Vicki Mortimer', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Jon Clark', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -32,7 +32,7 @@ describe('Get Duplicate Info module', () => {
 				];
 
 				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('person');
+				expect(result[0].model).to.equal('PERSON');
 
 			});
 
@@ -46,7 +46,7 @@ describe('Get Duplicate Info module', () => {
 					applyModelGetter({
 						name: 'Mesmer',
 						differentiator: ''
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: '59 Productions',
 						differentiator: '',
@@ -54,17 +54,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Leo Warner',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Leo Warner',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
-					}, 'person')
+					}, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -77,7 +77,7 @@ describe('Get Duplicate Info module', () => {
 				];
 
 				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('person');
+				expect(result[0].model).to.equal('PERSON');
 
 			});
 
@@ -91,7 +91,7 @@ describe('Get Duplicate Info module', () => {
 					applyModelGetter({
 						name: 'Dick Straker',
 						differentiator: ''
-					}, 'person'),
+					}, 'PERSON'),
 					applyModelGetter({
 						name: 'Mesmer',
 						differentiator: '',
@@ -99,17 +99,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Dick Straker',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Mark Grimmer',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
-					}, 'person')
+					}, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -122,7 +122,7 @@ describe('Get Duplicate Info module', () => {
 				];
 
 				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('person');
+				expect(result[0].model).to.equal('PERSON');
 
 			});
 
@@ -136,7 +136,7 @@ describe('Get Duplicate Info module', () => {
 					applyModelGetter({
 						name: 'Nina Dunn',
 						differentiator: ''
-					}, 'person'),
+					}, 'PERSON'),
 					applyModelGetter({
 						name: '59 Productions',
 						differentiator: '',
@@ -144,13 +144,13 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Leo Warner',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Ian William Galloway',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Mesmer',
 						differentiator: '',
@@ -158,17 +158,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Ian William Galloway',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'John O\'Connell',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
-					}, 'person')
+					}, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -181,7 +181,7 @@ describe('Get Duplicate Info module', () => {
 				];
 
 				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('person');
+				expect(result[0].model).to.equal('PERSON');
 
 			});
 
@@ -195,7 +195,7 @@ describe('Get Duplicate Info module', () => {
 					applyModelGetter({
 						name: 'Mark Grimmer',
 						differentiator: ''
-					}, 'person'),
+					}, 'PERSON'),
 					applyModelGetter({
 						name: '59 Productions',
 						differentiator: '',
@@ -203,17 +203,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Leo Warner',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Mark Grimmer',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Ian William Galloway',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Mesmer',
 						differentiator: '',
@@ -221,25 +221,25 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Ian William Galloway',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'John O\'Connell',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'Ian William Galloway',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Mark Grimmer',
 						differentiator: ''
-					}, 'person'),
+					}, 'PERSON'),
 					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
-					}, 'person')
+					}, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -256,8 +256,8 @@ describe('Get Duplicate Info module', () => {
 				];
 
 				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('person');
-				expect(result[1].model).to.equal('person');
+				expect(result[0].model).to.equal('PERSON');
+				expect(result[1].model).to.equal('PERSON');
 
 			});
 
@@ -271,11 +271,11 @@ describe('Get Duplicate Info module', () => {
 					applyModelGetter({
 						name: '',
 						differentiator: ''
-					}, 'person'),
+					}, 'PERSON'),
 					applyModelGetter({
 						name: '',
 						differentiator: ''
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: '59 Productions',
 						differentiator: '',
@@ -283,17 +283,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: 'Leo Warner',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: '',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: '',
 						differentiator: ''
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Mesmer',
 						differentiator: '',
@@ -301,17 +301,17 @@ describe('Get Duplicate Info module', () => {
 							applyModelGetter({
 								name: '',
 								differentiator: ''
-							}, 'person'),
+							}, 'PERSON'),
 							applyModelGetter({
 								name: 'John O\'Connell',
 								differentiator: ''
-							}, 'person')
+							}, 'PERSON')
 						]
-					}, 'company'),
+					}, 'COMPANY'),
 					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
-					}, 'person')
+					}, 'PERSON')
 				];
 
 				const result = getDuplicateEntities(arrayOfEntities);
@@ -332,12 +332,12 @@ describe('Get Duplicate Info module', () => {
 
 			it('returns true', () => {
 
-				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'person');
+				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 
 				const array = [
-					applyModelGetter({ name: 'Patrick Stewart', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Chiwetel Ejiofor', differentiator: '' }, 'person')
+					applyModelGetter({ name: 'Patrick Stewart', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Chiwetel Ejiofor', differentiator: '' }, 'PERSON')
 				];
 
 				const result = isEntityInArray(entity, array);
@@ -352,13 +352,13 @@ describe('Get Duplicate Info module', () => {
 
 			it('returns false', () => {
 
-				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'person');
+				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 
 				const array = [
-					applyModelGetter({ name: 'Patrick Stewart', differentiator: '' }, 'person'),
-					applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'company'),
-					applyModelGetter({ name: 'Ian McKellen', differentiator: '1' }, 'person'),
-					applyModelGetter({ name: 'Chiwetel Ejiofor', differentiator: '' }, 'person')
+					applyModelGetter({ name: 'Patrick Stewart', differentiator: '' }, 'PERSON'),
+					applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'COMPANY'),
+					applyModelGetter({ name: 'Ian McKellen', differentiator: '1' }, 'PERSON'),
+					applyModelGetter({ name: 'Chiwetel Ejiofor', differentiator: '' }, 'PERSON')
 				];
 
 				const result = isEntityInArray(entity, array);

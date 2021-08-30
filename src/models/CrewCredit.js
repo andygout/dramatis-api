@@ -1,4 +1,5 @@
 import ProductionTeamCredit from './ProductionTeamCredit';
+import { MODELS } from '../utils/constants';
 
 export default class CrewCredit extends ProductionTeamCredit {
 
@@ -10,7 +11,7 @@ export default class CrewCredit extends ProductionTeamCredit {
 
 	get model () {
 
-		return 'crewCredit';
+		return MODELS.CREW_CREDIT;
 
 	}
 

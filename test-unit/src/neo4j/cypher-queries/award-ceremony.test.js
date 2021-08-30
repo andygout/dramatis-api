@@ -23,7 +23,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'awardCeremony' AS model,
+					'AWARD_CEREMONY' AS model,
 					awardCeremony.uuid AS uuid,
 					awardCeremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
@@ -63,7 +63,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'awardCeremony' AS model,
+					'AWARD_CEREMONY' AS model,
 					awardCeremony.uuid AS uuid,
 					awardCeremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award

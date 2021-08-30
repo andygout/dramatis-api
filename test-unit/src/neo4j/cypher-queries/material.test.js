@@ -29,7 +29,7 @@ describe('Cypher Queries Material module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'material' AS model,
+					'MATERIAL' AS model,
 					material.uuid AS uuid,
 					material.name AS name,
 					material.differentiator AS differentiator,
@@ -43,7 +43,7 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
-							ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
+							ELSE { model: 'CHARACTER_GROUP', name: characterGroupName, characters: characters }
 						END
 					) + [{ characters: [{}] }] AS characterGroups
 			`);
@@ -105,7 +105,7 @@ describe('Cypher Queries Material module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'material' AS model,
+					'MATERIAL' AS model,
 					material.uuid AS uuid,
 					material.name AS name,
 					material.differentiator AS differentiator,
@@ -119,7 +119,7 @@ describe('Cypher Queries Material module', () => {
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
-							ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
+							ELSE { model: 'CHARACTER_GROUP', name: characterGroupName, characters: characters }
 						END
 					) + [{ characters: [{}] }] AS characterGroups
 			`);

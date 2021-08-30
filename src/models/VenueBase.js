@@ -1,4 +1,5 @@
 import Entity from './Entity';
+import { MODELS } from '../utils/constants';
 
 export default class Venue extends Entity {
 
@@ -10,7 +11,7 @@ export default class Venue extends Entity {
 
 	get model () {
 
-		return 'venue';
+		return MODELS.VENUE;
 
 	}
 

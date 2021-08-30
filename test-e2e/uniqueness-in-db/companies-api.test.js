@@ -43,7 +43,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			uuid: COMPANY_1_UUID,
 			name: 'Gate Theatre Company',
 			differentiator: '',
@@ -67,7 +67,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Gate Theatre Company',
 			differentiator: '',
 			hasErrors: true,
@@ -99,7 +99,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			uuid: COMPANY_2_UUID,
 			name: 'Gate Theatre Company',
 			differentiator: '1',
@@ -124,7 +124,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			uuid: COMPANY_1_UUID,
 			name: 'Gate Theatre Company',
 			differentiator: '1',
@@ -157,7 +157,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			uuid: COMPANY_1_UUID,
 			name: 'Gate Theatre Company',
 			differentiator: '2',
@@ -181,7 +181,7 @@ describe('Uniqueness in database: Companies API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'company',
+			model: 'COMPANY',
 			uuid: COMPANY_2_UUID,
 			name: 'Gate Theatre Company',
 			differentiator: '',

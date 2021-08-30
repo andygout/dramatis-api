@@ -1,4 +1,5 @@
 import Entity from './Entity';
+import { MODELS } from '../utils/constants';
 
 export default class MaterialBase extends Entity {
 
@@ -10,7 +11,7 @@ export default class MaterialBase extends Entity {
 
 	get model () {
 
-		return 'material';
+		return MODELS.MATERIAL;
 
 	}
 

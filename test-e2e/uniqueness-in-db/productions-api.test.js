@@ -19,14 +19,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const HOME_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedMaterialHome1 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'Home',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedMaterialHome2 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'Home',
 			differentiator: '1',
 			errors: {}
@@ -139,14 +139,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const DIAL_M_FOR_MURDER_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedVenueNewTheatre1 = {
-			model: 'venue',
+			model: 'VENUE',
 			name: 'New Theatre',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedVenueNewTheatre2 = {
-			model: 'venue',
+			model: 'VENUE',
 			name: 'New Theatre',
 			differentiator: '1',
 			errors: {}
@@ -259,14 +259,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonPaulHiggins1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonPaulHiggins2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '1',
 			errors: {}
@@ -407,13 +407,13 @@ describe('Uniqueness in database: Productions API', () => {
 		const HAMLET_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCompanyTheatreRoyalProductions1 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Theatre Royal Productions',
 			differentiator: '',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -422,13 +422,13 @@ describe('Uniqueness in database: Productions API', () => {
 		};
 
 		const expectedCompanyTheatreRoyalProductions2 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Theatre Royal Productions',
 			differentiator: '1',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -471,7 +471,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre Royal Productions'
 								}
 							]
@@ -498,7 +498,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre Royal Productions',
 									differentiator: '1'
 								}
@@ -526,7 +526,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre Royal Productions'
 								}
 							]
@@ -553,7 +553,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre Royal Productions',
 									differentiator: '1'
 								}
@@ -575,14 +575,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonPaulHiggins1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonPaulHiggins2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '1',
 			errors: {}
@@ -623,7 +623,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
 									creditedMembers: [
 										{
@@ -655,7 +655,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
 									creditedMembers: [
 										{
@@ -688,7 +688,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
 									creditedMembers: [
 										{
@@ -720,7 +720,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
 									creditedMembers: [
 										{
@@ -747,13 +747,13 @@ describe('Uniqueness in database: Productions API', () => {
 		const ARISTOCRATS_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCastMemberPaulHiggins1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {},
 			roles: [
 				{
-					model: 'role',
+					model: 'ROLE',
 					name: '',
 					characterName: '',
 					characterDifferentiator: '',
@@ -765,13 +765,13 @@ describe('Uniqueness in database: Productions API', () => {
 		};
 
 		const expectedCastMemberPaulHiggins2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '1',
 			errors: {},
 			roles: [
 				{
-					model: 'role',
+					model: 'ROLE',
 					name: '',
 					characterName: '',
 					characterDifferentiator: '',
@@ -897,14 +897,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonPaulHiggins1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonPaulHiggins2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '1',
 			errors: {}
@@ -1045,13 +1045,13 @@ describe('Uniqueness in database: Productions API', () => {
 		const MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCompanyAutograph1 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Autograph',
 			differentiator: '',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1060,13 +1060,13 @@ describe('Uniqueness in database: Productions API', () => {
 		};
 
 		const expectedCompanyAutograph2 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Autograph',
 			differentiator: '1',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1109,7 +1109,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph'
 								}
 							]
@@ -1136,7 +1136,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1'
 								}
@@ -1164,7 +1164,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph'
 								}
 							]
@@ -1191,7 +1191,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1'
 								}
@@ -1213,14 +1213,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonAndrewBruce1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Andrew Bruce',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonAndrewBruce2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Andrew Bruce',
 			differentiator: '1',
 			errors: {}
@@ -1261,7 +1261,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -1293,7 +1293,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -1326,7 +1326,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -1358,7 +1358,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Sound Designer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -1385,14 +1385,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const MRS_AFFLECK_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonTariqHussain1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Tariq Hussain',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonTariqHussain2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Tariq Hussain',
 			differentiator: '1',
 			errors: {}
@@ -1533,13 +1533,13 @@ describe('Uniqueness in database: Productions API', () => {
 		const THREE_SISTERS_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCompanyCrewDeputiesLtd1 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Crew Deputies Ltd',
 			differentiator: '',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1548,13 +1548,13 @@ describe('Uniqueness in database: Productions API', () => {
 		};
 
 		const expectedCompanyCrewDeputiesLtd2 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Crew Deputies Ltd',
 			differentiator: '1',
 			errors: {},
 			creditedMembers: [
 				{
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1597,7 +1597,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Deputies Ltd'
 								}
 							]
@@ -1624,7 +1624,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Deputies Ltd',
 									differentiator: '1'
 								}
@@ -1652,7 +1652,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Deputies Ltd'
 								}
 							]
@@ -1679,7 +1679,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Deputies Ltd',
 									differentiator: '1'
 								}
@@ -1701,14 +1701,14 @@ describe('Uniqueness in database: Productions API', () => {
 		const HAMLET_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonMollyEinchcomb1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Molly Einchcomb',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonMollyEinchcomb2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Molly Einchcomb',
 			differentiator: '1',
 			errors: {}
@@ -1749,7 +1749,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									creditedMembers: [
 										{
@@ -1781,7 +1781,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									creditedMembers: [
 										{
@@ -1814,7 +1814,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									creditedMembers: [
 										{
@@ -1846,7 +1846,7 @@ describe('Uniqueness in database: Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									creditedMembers: [
 										{

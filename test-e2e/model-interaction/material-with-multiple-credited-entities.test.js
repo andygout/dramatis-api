@@ -41,7 +41,7 @@ describe('Materials with entities credited multiple times', () => {
 								name: 'Person #1'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Company #1'
 							}
 						]
@@ -53,7 +53,7 @@ describe('Materials with entities credited multiple times', () => {
 								name: 'Person #1'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Company #1'
 							}
 						]
@@ -84,32 +84,32 @@ describe('Materials with entities credited multiple times', () => {
 
 			const expectedWritingCredits = [
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PERSON_UUID,
 							name: 'Person #1'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: COMPANY_UUID,
 							name: 'Company #1'
 						}
 					]
 				},
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'additional material by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PERSON_UUID,
 							name: 'Person #1'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: COMPANY_UUID,
 							name: 'Company #1'
 						}
@@ -131,39 +131,39 @@ describe('Materials with entities credited multiple times', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: MATERIAL_UUID,
 					name: 'Material name',
 					format: 'play',
 					year: 2015,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Person #1'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: COMPANY_UUID,
 									name: 'Company #1'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'additional material by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Person #1'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: COMPANY_UUID,
 									name: 'Company #1'
 								}
@@ -187,39 +187,39 @@ describe('Materials with entities credited multiple times', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: MATERIAL_UUID,
 					name: 'Material name',
 					format: 'play',
 					year: 2015,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PERSON_UUID,
 									name: 'Person #1'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Company #1'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'additional material by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PERSON_UUID,
 									name: 'Person #1'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Company #1'
 								}

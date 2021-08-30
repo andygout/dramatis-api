@@ -100,7 +100,7 @@ describe('Productions with producer', () => {
 						name: 'in association with',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Sonia Friedman Productions'
 							}
 						]
@@ -110,7 +110,7 @@ describe('Productions with producer', () => {
 						name: 'in partnership with',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Sonia Friedman Productions'
 							}
 						]
@@ -120,7 +120,7 @@ describe('Productions with producer', () => {
 						name: 'in a co-production with',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Royal Court Theatre',
 								creditedMembers: [
 									{
@@ -138,11 +138,11 @@ describe('Productions with producer', () => {
 								name: 'Paul Elliott'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Old Vic Productions'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Playful Productions',
 								creditedMembers: [
 									{
@@ -198,7 +198,7 @@ describe('Productions with producer', () => {
 						name: 'partnership producing by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Sonia Friedman Productions'
 							}
 						]
@@ -208,14 +208,14 @@ describe('Productions with producer', () => {
 						name: 'co-producing by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Old Vic Productions'
 							},
 							{
 								name: 'Paul Elliott'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Royal Court Theatre',
 								creditedMembers: [
 									{
@@ -233,7 +233,7 @@ describe('Productions with producer', () => {
 								name: 'Eric Abraham'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Playful Productions',
 								creditedMembers: [
 									{
@@ -277,7 +277,7 @@ describe('Productions with producer', () => {
 						name: 'associate producing services by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Playful Productions',
 								creditedMembers: [
 									{
@@ -292,7 +292,7 @@ describe('Productions with producer', () => {
 						name: 'partnership producing services by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Sonia Friedman Productions'
 							}
 						]
@@ -305,7 +305,7 @@ describe('Productions with producer', () => {
 								name: 'Eric Abraham'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Royal Court Theatre',
 								creditedMembers: [
 									{
@@ -320,7 +320,7 @@ describe('Productions with producer', () => {
 								]
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Playful Productions',
 								creditedMembers: [
 									{
@@ -335,7 +335,7 @@ describe('Productions with producer', () => {
 								]
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Old Vic Productions'
 							},
 							{
@@ -364,7 +364,7 @@ describe('Productions with producer', () => {
 								name: 'Eric Abraham'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Royal Court Theatre',
 								creditedMembers: [
 									{
@@ -379,7 +379,7 @@ describe('Productions with producer', () => {
 								]
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Playful Productions',
 								creditedMembers: [
 									{
@@ -394,7 +394,7 @@ describe('Productions with producer', () => {
 								]
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Old Vic Productions'
 							},
 							{
@@ -452,22 +452,22 @@ describe('Productions with producer', () => {
 
 			const expectedProducerCredits = [
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'produced by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROBERT_FOX_PERSON_UUID,
 							name: 'Robert Fox'
 						}
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'in association with',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
 							creditedMembers: []
@@ -475,11 +475,11 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'in partnership with',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
 							creditedMembers: []
@@ -487,66 +487,66 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'in a co-production with',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: LUCY_DAVIES_PERSON_UUID,
 									name: 'Lucy Davies'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: OLA_INCE_PERSON_UUID,
 									name: 'Ola Ince'
 								}
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_ELLIOTT_PERSON_UUID,
 							name: 'Paul Elliott'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
 							creditedMembers: []
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NIA_JANIS_PERSON_UUID,
 									name: 'Nia Janis'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NICK_SALMON_PERSON_UUID,
 									name: 'Nick Salmon'
 								}
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ERIC_ABRAHAM_PERSON_UUID,
 							name: 'Eric Abraham'
 						}
@@ -568,33 +568,33 @@ describe('Productions with producer', () => {
 
 			const expectedProducerCredits = [
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'producing by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROBERT_FOX_PERSON_UUID,
 							name: 'Robert Fox'
 						}
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'associate producing by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ERIC_ABRAHAM_PERSON_UUID,
 							name: 'Eric Abraham'
 						}
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'partnership producing by',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
 							creditedMembers: []
@@ -602,64 +602,64 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'co-producing by',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
 							creditedMembers: []
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_ELLIOTT_PERSON_UUID,
 							name: 'Paul Elliott'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HAMISH_PIRIE_PERSON_UUID,
 									name: 'Hamish Pirie'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: LUCY_DAVIES_PERSON_UUID,
 									name: 'Lucy Davies'
 								}
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ERIC_ABRAHAM_PERSON_UUID,
 							name: 'Eric Abraham'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HARRIET_ASTBURY_PERSON_UUID,
 									name: 'Harriet Astbury'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NIA_JANIS_PERSON_UUID,
 									name: 'Nia Janis'
 								}
@@ -683,27 +683,27 @@ describe('Productions with producer', () => {
 
 			const expectedProducerCredits = [
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'producing services by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROBERT_FOX_PERSON_UUID,
 							name: 'Robert Fox'
 						}
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'associate producing services by',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
 								}
@@ -712,11 +712,11 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'partnership producing services by',
 					entities: [
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
 							creditedMembers: []
@@ -724,66 +724,66 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'co-producing services by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ERIC_ABRAHAM_PERSON_UUID,
 							name: 'Eric Abraham'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: SAM_PRITCHARD_PERSON_UUID,
 									name: 'Sam Pritchard'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: LUCY_DAVIES_PERSON_UUID,
 									name: 'Lucy Davies'
 								}
 							]
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROGER_CHAPMAN_PERSON_UUID,
 									name: 'Roger Chapman'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NIA_JANIS_PERSON_UUID,
 									name: 'Nia Janis'
 								}
 							]
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
 							creditedMembers: []
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_ELLIOTT_PERSON_UUID,
 							name: 'Paul Elliott'
 						}
@@ -805,66 +805,66 @@ describe('Productions with producer', () => {
 
 			const expectedProducerCredits = [
 				{
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: 'co-producing services by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ERIC_ABRAHAM_PERSON_UUID,
 							name: 'Eric Abraham'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: SAM_PRITCHARD_PERSON_UUID,
 									name: 'Sam Pritchard'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 									name: 'Vicky Featherstone'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: LUCY_DAVIES_PERSON_UUID,
 									name: 'Lucy Davies'
 								}
 							]
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
 							creditedMembers: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NICK_SALMON_PERSON_UUID,
 									name: 'Nick Salmon'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 									name: 'Matthew Byam Shaw'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: NIA_JANIS_PERSON_UUID,
 									name: 'Nia Janis'
 								}
 							]
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
 							creditedMembers: []
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_ELLIOTT_PERSON_UUID,
 							name: 'Paul Elliott'
 						}
@@ -886,50 +886,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -937,64 +937,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -1005,44 +1005,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -1051,11 +1051,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1063,66 +1063,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -1131,35 +1131,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1167,11 +1167,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1179,66 +1179,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
@@ -1262,50 +1262,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1313,64 +1313,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -1381,44 +1381,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -1427,11 +1427,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1439,66 +1439,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -1507,83 +1507,83 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -1592,35 +1592,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1628,11 +1628,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1640,66 +1640,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Eric Abraham'
 								}
@@ -1723,50 +1723,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1774,64 +1774,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -1842,44 +1842,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Matthew Byam Shaw'
 										}
@@ -1888,11 +1888,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -1900,66 +1900,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -1968,83 +1968,83 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -2053,35 +2053,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2089,11 +2089,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2101,66 +2101,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
@@ -2184,44 +2184,44 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -2230,11 +2230,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2242,66 +2242,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: null,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -2325,50 +2325,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2376,64 +2376,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -2444,44 +2444,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -2490,11 +2490,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2502,66 +2502,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -2570,35 +2570,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2606,11 +2606,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2618,66 +2618,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
@@ -2701,50 +2701,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2752,64 +2752,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -2820,44 +2820,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -2866,11 +2866,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -2878,66 +2878,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -2946,83 +2946,83 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -3031,35 +3031,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3067,11 +3067,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3079,66 +3079,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
@@ -3162,50 +3162,50 @@ describe('Productions with producer', () => {
 
 			const expectedProducerProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
 					name: 'White Pearl',
 					startDate: '2019-05-10',
 					endDate: '2019-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3213,64 +3213,64 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HAMISH_PIRIE_PERSON_UUID,
 											name: 'Hamish Pirie'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: HARRIET_ASTBURY_PERSON_UUID,
 											name: 'Harriet Astbury'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
@@ -3281,44 +3281,44 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Pah-La',
 					startDate: '2019-04-03',
 					endDate: '2019-04-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'associate producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
@@ -3327,11 +3327,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'partnership producing services by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3339,66 +3339,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -3407,83 +3407,83 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: LIGHTS_OUT_THE_SITE_PRODUCTION_UUID,
 					name: 'Lights Out',
 					startDate: '2017-05-17',
 					endDate: '2017-05-19',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THE_SITE_VENUE_UUID,
 						name: 'The Site',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 							name: 'Royal Court Theatre'
 						}
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'co-producing services by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
 											name: 'Sam Pritchard'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										}
 									]
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								}
@@ -3492,35 +3492,35 @@ describe('Productions with producer', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HANGMEN_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hangmen',
 					startDate: '2015-12-01',
 					endDate: '2016-03-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					producerCredits: [
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'produced by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3528,11 +3528,11 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in partnership with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									creditedMembers: []
@@ -3540,66 +3540,66 @@ describe('Productions with producer', () => {
 							]
 						},
 						{
-							model: 'producerCredit',
+							model: 'PRODUCER_CREDIT',
 							name: 'in a co-production with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
 											name: 'Vicky Featherstone'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: LUCY_DAVIES_PERSON_UUID,
 											name: 'Lucy Davies'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: OLA_INCE_PERSON_UUID,
 											name: 'Ola Ince'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: PAUL_ELLIOTT_PERSON_UUID,
 									name: 'Paul Elliott'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
 									creditedMembers: []
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
 									creditedMembers: [
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NIA_JANIS_PERSON_UUID,
 											name: 'Nia Janis'
 										},
 										{
-											model: 'person',
+											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
 											name: 'Nick Salmon'
 										}
 									]
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}

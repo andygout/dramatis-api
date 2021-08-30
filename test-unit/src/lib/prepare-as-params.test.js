@@ -140,7 +140,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = applyModelGetter({ foo: '' });
 			const result = prepareAsParams(instance);
-			expect(result.model).to.equal('base');
+			expect(result.model).to.equal('BASE');
 
 		});
 
@@ -212,7 +212,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: applyModelGetter({ foo: '' }) };
 			const result = prepareAsParams(instance);
-			expect(result.venue.model).to.equal('base');
+			expect(result.venue.model).to.equal('BASE');
 
 		});
 
@@ -286,7 +286,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] };
 				const result = prepareAsParams(instance);
-				expect(result.cast[0].model).to.equal('base');
+				expect(result.cast[0].model).to.equal('BASE');
 
 			});
 
@@ -318,7 +318,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				expect(result.cast[0].model).to.equal('base');
+				expect(result.cast[0].model).to.equal('BASE');
 
 			});
 
@@ -551,7 +551,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { production: { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] } };
 				const result = prepareAsParams(instance);
-				expect(result.production.cast[0].model).to.equal('base');
+				expect(result.production.cast[0].model).to.equal('BASE');
 
 			});
 
@@ -592,7 +592,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				expect(result.production.cast[0].model).to.equal('base');
+				expect(result.production.cast[0].model).to.equal('BASE');
 
 			});
 
@@ -846,7 +846,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				expect(result.cast[0].roles[0].model).to.equal('base');
+				expect(result.cast[0].roles[0].model).to.equal('BASE');
 
 			});
 
@@ -894,7 +894,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				expect(result.cast[0].roles[0].model).to.equal('base');
+				expect(result.cast[0].roles[0].model).to.equal('BASE');
 
 			});
 

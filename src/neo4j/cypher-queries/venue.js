@@ -57,7 +57,7 @@ const getEditQuery = () => `
 		ORDER BY subVenueRel.position
 
 	RETURN
-		'venue' AS model,
+		'VENUE' AS model,
 		venue.uuid AS uuid,
 		venue.name AS name,
 		venue.differentiator AS differentiator,
@@ -79,7 +79,7 @@ const getShowQuery = () => `
 	WITH venue,
 		CASE surVenue WHEN NULL
 			THEN null
-			ELSE surVenue { model: 'venue', .uuid, .name }
+			ELSE surVenue { model: 'VENUE', .uuid, .name }
 		END AS surVenue
 
 	OPTIONAL MATCH (venue)-[subVenueRel:HAS_SUB_VENUE]->(subVenue:Venue)
@@ -91,7 +91,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE subVenue WHEN NULL
 				THEN null
-				ELSE subVenue { model: 'venue', .uuid, .name }
+				ELSE subVenue { model: 'VENUE', .uuid, .name }
 			END
 		) AS subVenues
 
@@ -108,7 +108,7 @@ const getShowQuery = () => `
 		ORDER BY production.startDate DESC, production.name
 
 	RETURN
-		'venue' AS model,
+		'VENUE' AS model,
 		venue.uuid AS uuid,
 		venue.name AS name,
 		venue.differentiator AS differentiator,
@@ -118,13 +118,13 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
 					.endDate,
 					subVenue: CASE venueToProductionPathLength WHEN 2
-						THEN subVenueForProduction { model: 'venue', .uuid, .name }
+						THEN subVenueForProduction { model: 'VENUE', .uuid, .name }
 						ELSE null
 					END
 				}
@@ -142,13 +142,13 @@ const getListQuery = () => `
 		ORDER BY subVenueRel.position
 
 	RETURN
-		'venue' AS model,
+		'VENUE' AS model,
 		venue.uuid AS uuid,
 		venue.name AS name,
 		COLLECT(
 			CASE subVenue WHEN NULL
 				THEN null
-				ELSE subVenue { model: 'venue', .uuid, .name }
+				ELSE subVenue { model: 'VENUE', .uuid, .name }
 			END
 		) AS subVenues
 

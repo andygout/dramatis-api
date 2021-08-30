@@ -145,7 +145,7 @@ describe('Venues controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Venue, 'venue'
+				stubs.response, stubs.next, stubs.models.Venue, 'VENUE'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

@@ -160,7 +160,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: ROCK_N_ROLL_MATERIAL_UUID,
 					name: 'Rock \'n\' Roll',
 					format: 'play',
@@ -191,20 +191,20 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ALICE_EVE_PERSON_UUID,
 							name: 'Alice Eve',
 							roleName: 'Esme',
@@ -212,7 +212,7 @@ describe('Character with multiple appearances in the same material under differe
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: ALICE_CHARACTER_UUID,
 									name: 'Alice',
 									qualifier: null,
@@ -221,7 +221,7 @@ describe('Character with multiple appearances in the same material under differe
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: SINEAD_CUSACK_PERSON_UUID,
 							name: 'Sinead Cusack',
 							roleName: 'Esme',
@@ -229,7 +229,7 @@ describe('Character with multiple appearances in the same material under differe
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: ELEANOR_CHARACTER_UUID,
 									name: 'Eleanor',
 									qualifier: null,
@@ -255,20 +255,20 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ALICE_EVE_PERSON_UUID,
 							name: 'Alice Eve',
 							roleName: 'Alice',
@@ -276,7 +276,7 @@ describe('Character with multiple appearances in the same material under differe
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: ESME_CHARACTER_UUID,
 									name: 'Esme',
 									qualifier: 'younger',
@@ -302,20 +302,20 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: SINEAD_CUSACK_PERSON_UUID,
 							name: 'Sinead Cusack',
 							roleName: 'Eleanor',
@@ -323,7 +323,7 @@ describe('Character with multiple appearances in the same material under differe
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: ESME_CHARACTER_UUID,
 									name: 'Esme',
 									qualifier: 'older',
@@ -349,31 +349,31 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: ESME_CHARACTER_UUID,
 					name: 'Esme',
 					qualifier: 'younger'
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: MAX_CHARACTER_UUID,
 					name: 'Max',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: ELEANOR_CHARACTER_UUID,
 					name: 'Eleanor',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: ESME_CHARACTER_UUID,
 					name: 'Esme',
 					qualifier: 'older'
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: ALICE_CHARACTER_UUID,
 					name: 'Alice',
 					qualifier: null
@@ -394,19 +394,19 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: ALICE_EVE_PERSON_UUID,
 					name: 'Alice Eve',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'younger',
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALICE_CHARACTER_UUID,
 							name: 'Alice',
 							qualifier: null,
@@ -415,12 +415,12 @@ describe('Character with multiple appearances in the same material under differe
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: BRIAN_COX_PERSON_UUID,
 					name: 'Brian Cox',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MAX_CHARACTER_UUID,
 							name: 'Max',
 							qualifier: null,
@@ -429,19 +429,19 @@ describe('Character with multiple appearances in the same material under differe
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SINEAD_CUSACK_PERSON_UUID,
 					name: 'Sinead Cusack',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ELEANOR_CHARACTER_UUID,
 							name: 'Eleanor',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'older',
@@ -465,27 +465,27 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'younger',
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ALICE_CHARACTER_UUID,
 							name: 'Alice',
 							qualifier: null,
@@ -509,27 +509,27 @@ describe('Character with multiple appearances in the same material under differe
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID,
 					name: 'Rock \'n\' Roll',
 					startDate: '2006-06-03',
 					endDate: '2006-07-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ELEANOR_CHARACTER_UUID,
 							name: 'Eleanor',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'older',

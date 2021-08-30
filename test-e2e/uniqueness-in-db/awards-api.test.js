@@ -43,7 +43,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			uuid: AWARD_1_UUID,
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '',
@@ -67,7 +67,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '',
 			hasErrors: true,
@@ -99,7 +99,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			uuid: AWARD_2_UUID,
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '1',
@@ -124,7 +124,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			uuid: AWARD_1_UUID,
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '1',
@@ -157,7 +157,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			uuid: AWARD_1_UUID,
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '2',
@@ -181,7 +181,7 @@ describe('Uniqueness in database: Awards API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'award',
+			model: 'AWARD',
 			uuid: AWARD_2_UUID,
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '',

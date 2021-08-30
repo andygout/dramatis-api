@@ -21,7 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				.get('/characters/new');
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				name: '',
 				differentiator: '',
 				errors: {}
@@ -63,7 +63,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				uuid: CHARACTER_UUID,
 				name: 'Romeo',
 				differentiator: '',
@@ -82,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				.get(`/characters/${CHARACTER_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				uuid: CHARACTER_UUID,
 				name: 'Romeo',
 				differentiator: '',
@@ -105,7 +105,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				uuid: CHARACTER_UUID,
 				name: 'Juliet',
 				differentiator: '',
@@ -124,7 +124,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				.get(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				uuid: CHARACTER_UUID,
 				name: 'Juliet',
 				differentiator: null,
@@ -147,7 +147,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				.delete(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'character',
+				model: 'CHARACTER',
 				name: 'Juliet',
 				differentiator: '',
 				errors: {}
@@ -208,17 +208,17 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: JULIET_CHARACTER_UUID,
 					name: 'Juliet'
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: NURSE_CHARACTER_UUID,
 					name: 'Nurse'
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: ROMEO_CHARACTER_UUID,
 					name: 'Romeo'
 				}

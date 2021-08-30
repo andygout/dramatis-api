@@ -21,7 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				.get('/companies/new');
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				name: '',
 				differentiator: '',
 				errors: {}
@@ -63,7 +63,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				uuid: COMPANY_UUID,
 				name: 'National Theatre Company',
 				differentiator: '',
@@ -82,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				.get(`/companies/${COMPANY_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				uuid: COMPANY_UUID,
 				name: 'National Theatre Company',
 				differentiator: '',
@@ -105,7 +105,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				uuid: COMPANY_UUID,
 				name: 'Royal Shakespeare Company',
 				differentiator: '',
@@ -124,7 +124,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				.get(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				uuid: COMPANY_UUID,
 				name: 'Royal Shakespeare Company',
 				differentiator: null,
@@ -150,7 +150,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				.delete(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'company',
+				model: 'COMPANY',
 				name: 'Royal Shakespeare Company',
 				differentiator: '',
 				errors: {}
@@ -211,17 +211,17 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'company',
+					model: 'COMPANY',
 					uuid: ALMEIDA_THEATRE_COMPANY_UUID,
 					name: 'Almeida Theatre Company'
 				},
 				{
-					model: 'company',
+					model: 'COMPANY',
 					uuid: NATIONAL_THEATRE_COMPANY_UUID,
 					name: 'National Theatre Company'
 				},
 				{
-					model: 'company',
+					model: 'COMPANY',
 					uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
 					name: 'Royal Shakespeare Company'
 				}

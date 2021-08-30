@@ -182,20 +182,20 @@ describe('Roles with alternating cast', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: KIT_HARINGTON_PERSON_UUID,
 							name: 'Kit Harington',
 							roleName: 'Austin',
@@ -203,7 +203,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
 									qualifier: null,
@@ -212,7 +212,7 @@ describe('Roles with alternating cast', () => {
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JOHNNY_FLYNN_PERSON_UUID,
 							name: 'Johnny Flynn',
 							roleName: 'Austin',
@@ -220,7 +220,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
 									qualifier: null,
@@ -231,20 +231,20 @@ describe('Roles with alternating cast', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: NIGEL_HARMAN_PERSON_UUID,
 							name: 'Nigel Harman',
 							roleName: 'Austin',
@@ -252,7 +252,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
 									qualifier: null,
@@ -261,7 +261,7 @@ describe('Roles with alternating cast', () => {
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JOHN_LIGHT_PERSON_UUID,
 							name: 'John Light',
 							roleName: 'Austin',
@@ -269,7 +269,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: LEE_CHARACTER_UUID,
 									name: 'Lee',
 									qualifier: null,
@@ -295,20 +295,20 @@ describe('Roles with alternating cast', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: KIT_HARINGTON_PERSON_UUID,
 							name: 'Kit Harington',
 							roleName: 'Lee',
@@ -316,7 +316,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
 									qualifier: null,
@@ -325,7 +325,7 @@ describe('Roles with alternating cast', () => {
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JOHNNY_FLYNN_PERSON_UUID,
 							name: 'Johnny Flynn',
 							roleName: 'Lee',
@@ -333,7 +333,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
 									qualifier: null,
@@ -344,20 +344,20 @@ describe('Roles with alternating cast', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: NIGEL_HARMAN_PERSON_UUID,
 							name: 'Nigel Harman',
 							roleName: 'Lee',
@@ -365,7 +365,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
 									qualifier: null,
@@ -374,7 +374,7 @@ describe('Roles with alternating cast', () => {
 							]
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JOHN_LIGHT_PERSON_UUID,
 							name: 'John Light',
 							roleName: 'Lee',
@@ -382,7 +382,7 @@ describe('Roles with alternating cast', () => {
 							isAlternate: true,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: AUSTIN_CHARACTER_UUID,
 									name: 'Austin',
 									qualifier: null,
@@ -408,19 +408,19 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: NIGEL_HARMAN_PERSON_UUID,
 					name: 'Nigel Harman',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
@@ -429,19 +429,19 @@ describe('Roles with alternating cast', () => {
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JOHN_LIGHT_PERSON_UUID,
 					name: 'John Light',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
@@ -465,19 +465,19 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: KIT_HARINGTON_PERSON_UUID,
 					name: 'Kit Harington',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
@@ -486,19 +486,19 @@ describe('Roles with alternating cast', () => {
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JOHNNY_FLYNN_PERSON_UUID,
 					name: 'Johnny Flynn',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
@@ -522,27 +522,27 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
@@ -566,27 +566,27 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_CRUCIBLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2010-05-13',
 					endDate: '2010-06-05',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: CRUCIBLE_THEATRE_VENUE_UUID,
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
@@ -610,27 +610,27 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
@@ -654,27 +654,27 @@ describe('Roles with alternating cast', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID,
 					name: 'True West',
 					startDate: '2018-11-23',
 					endDate: '2019-02-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LEE_CHARACTER_UUID,
 							name: 'Lee',
 							qualifier: null,
 							isAlternate: true
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: AUSTIN_CHARACTER_UUID,
 							name: 'Austin',
 							qualifier: null,

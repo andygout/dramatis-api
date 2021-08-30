@@ -145,7 +145,7 @@ describe('Materials controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Material, 'material'
+				stubs.response, stubs.next, stubs.models.Material, 'MATERIAL'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

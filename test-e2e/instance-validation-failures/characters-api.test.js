@@ -41,7 +41,7 @@ describe('Instance validation failures: Characters API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'character',
+					model: 'CHARACTER',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -73,7 +73,7 @@ describe('Instance validation failures: Characters API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'character',
+					model: 'CHARACTER',
 					name: 'Orsino',
 					differentiator: '',
 					hasErrors: true,
@@ -133,7 +133,7 @@ describe('Instance validation failures: Characters API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: '',
 					differentiator: '',
@@ -171,7 +171,7 @@ describe('Instance validation failures: Characters API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: 'Orsino',
 					differentiator: '',
@@ -242,7 +242,7 @@ describe('Instance validation failures: Characters API', () => {
 					.delete(`/characters/${VIOLA_CHARACTER_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: VIOLA_CHARACTER_UUID,
 					name: 'Viola',
 					differentiator: null,

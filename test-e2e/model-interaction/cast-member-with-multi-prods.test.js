@@ -137,34 +137,34 @@ describe('Cast member with multiple production credits', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID,
 					name: 'Enron',
 					startDate: '2009-07-11',
 					endDate: '2009-08-29',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID,
 						name: 'Chichester Festival Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Congresswoman',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Sheryl Sloman',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Irene Gant',
 							qualifier: null,
@@ -173,27 +173,27 @@ describe('Cast member with multiple production credits', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID,
 					name: 'City of Angels',
 					startDate: '1993-03-19',
 					endDate: '1993-11-18',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: PRINCE_OF_WALES_THEATRE_VENUE_UUID,
 						name: 'Prince of Wales Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Alaura Kingsley',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Carla Haywood',
 							qualifier: null,
@@ -202,27 +202,27 @@ describe('Cast member with multiple production credits', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THE_GREEKS_ALDWYCH_PRODUCTION_UUID,
 					name: 'The Greeks',
 					startDate: '1980-01-26',
 					endDate: '1980-03-29',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ALDWYCH_THEATRE_VENUE_UUID,
 						name: 'Aldwych Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Chorus',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Trojan slave',
 							qualifier: null,
@@ -246,19 +246,19 @@ describe('Cast member with multiple production credits', () => {
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
 					name: 'Susannah Fellows',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Chorus',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Trojan slave',
 							qualifier: null,
@@ -282,19 +282,19 @@ describe('Cast member with multiple production credits', () => {
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
 					name: 'Susannah Fellows',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Alaura Kingsley',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Carla Haywood',
 							qualifier: null,
@@ -318,26 +318,26 @@ describe('Cast member with multiple production credits', () => {
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SUSANNAH_FELLOWS_PERSON_UUID,
 					name: 'Susannah Fellows',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Congresswoman',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Sheryl Sloman',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: null,
 							name: 'Irene Gant',
 							qualifier: null,

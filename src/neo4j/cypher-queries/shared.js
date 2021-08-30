@@ -1,13 +1,13 @@
-import { pascalCasify } from '../../lib/strings';
+import { MODEL_TO_NODE_LABEL_MAP } from '../../utils/constants';
 
 const getExistenceQuery = model => `
-	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
+	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]} { uuid: $uuid })
 
 	RETURN n
 `;
 
 const getDuplicateRecordCountQuery = model => `
-	MATCH (n:${pascalCasify(model)} { name: $name })
+	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]} { name: $name })
 		WHERE
 			(
 				($differentiator IS NULL AND n.differentiator IS NULL) OR
@@ -22,7 +22,7 @@ const getDuplicateRecordCountQuery = model => `
 `;
 
 const getCreateQuery = model => `
-	CREATE (n:${pascalCasify(model)} { uuid: $uuid, name: $name, differentiator: $differentiator })
+	CREATE (n:${MODEL_TO_NODE_LABEL_MAP[model]} { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 	WITH n
 
@@ -30,7 +30,7 @@ const getCreateQuery = model => `
 `;
 
 const getEditQuery = model => `
-	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
+	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]} { uuid: $uuid })
 
 	RETURN
 		'${model}' AS model,
@@ -40,7 +40,7 @@ const getEditQuery = model => `
 `;
 
 const getUpdateQuery = model => `
-	MATCH (n:${pascalCasify(model)} { uuid: $uuid })
+	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]} { uuid: $uuid })
 		SET
 			n.name = $name,
 			n.differentiator = $differentiator
@@ -52,7 +52,7 @@ const getUpdateQuery = model => `
 
 const getDeleteQuery = model => {
 
-	const label = pascalCasify(model);
+	const label = MODEL_TO_NODE_LABEL_MAP[model];
 
 	return `
 		MATCH (:${label} { uuid: $uuid })
@@ -101,7 +101,7 @@ const getDeleteQuery = model => {
 };
 
 const getListQuery = model => `
-	MATCH (n:${pascalCasify(model)})
+	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]})
 
 	RETURN
 		'${model}' AS model,

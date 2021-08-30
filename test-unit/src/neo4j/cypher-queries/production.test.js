@@ -29,7 +29,7 @@ describe('Cypher Queries Production module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'production' AS model,
+					'PRODUCTION' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
 					production.startDate AS startDate,
@@ -44,7 +44,7 @@ describe('Cypher Queries Production module', () => {
 						CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
 							THEN null
 							ELSE {
-								model: 'crewCredit',
+								model: 'CREW_CREDIT',
 								name: crewCreditName,
 								entities: crewEntities
 							}
@@ -92,7 +92,7 @@ describe('Cypher Queries Production module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'production' AS model,
+					'PRODUCTION' AS model,
 					production.uuid AS uuid,
 					production.name AS name,
 					production.startDate AS startDate,
@@ -107,7 +107,7 @@ describe('Cypher Queries Production module', () => {
 						CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
 							THEN null
 							ELSE {
-								model: 'crewCredit',
+								model: 'CREW_CREDIT',
 								name: crewCreditName,
 								entities: crewEntities
 							}

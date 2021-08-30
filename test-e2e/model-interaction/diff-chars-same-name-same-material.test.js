@@ -133,20 +133,20 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_SHEARER_PERSON_UUID,
 							name: 'Paul Shearer',
 							roleName: 'Cinna',
@@ -154,7 +154,7 @@ describe('Different characters with the same name from the same material', () =>
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: VOLUMNIUS_CHARACTER_UUID,
 									name: 'Volumnius',
 									qualifier: null,
@@ -180,20 +180,20 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: LEO_WRINGER_PERSON_UUID,
 							name: 'Leo Wringer',
 							roleName: 'Cinna',
@@ -219,20 +219,20 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PAUL_SHEARER_PERSON_UUID,
 							name: 'Paul Shearer',
 							roleName: 'Volumnius',
@@ -240,7 +240,7 @@ describe('Different characters with the same name from the same material', () =>
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: CINNA_CHARACTER_1_UUID,
 									name: 'Cinna',
 									qualifier: null,
@@ -266,19 +266,19 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: CINNA_CHARACTER_1_UUID,
 					name: 'Cinna',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: VOLUMNIUS_CHARACTER_UUID,
 					name: 'Volumnius',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: CINNA_CHARACTER_2_UUID,
 					name: 'Cinna',
 					qualifier: null
@@ -299,19 +299,19 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: PAUL_SHEARER_PERSON_UUID,
 					name: 'Paul Shearer',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CINNA_CHARACTER_1_UUID,
 							name: 'Cinna',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: VOLUMNIUS_CHARACTER_UUID,
 							name: 'Volumnius',
 							qualifier: null,
@@ -320,12 +320,12 @@ describe('Different characters with the same name from the same material', () =>
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: LEO_WRINGER_PERSON_UUID,
 					name: 'Leo Wringer',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CINNA_CHARACTER_2_UUID,
 							name: 'Cinna',
 							qualifier: null,
@@ -349,27 +349,27 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CINNA_CHARACTER_1_UUID,
 							name: 'Cinna',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: VOLUMNIUS_CHARACTER_UUID,
 							name: 'Volumnius',
 							qualifier: null,
@@ -393,20 +393,20 @@ describe('Different characters with the same name from the same material', () =>
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
 					endDate: '2005-05-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CINNA_CHARACTER_2_UUID,
 							name: 'Cinna',
 							qualifier: null,

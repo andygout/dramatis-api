@@ -23,7 +23,7 @@ describe('Cypher Queries Venue module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'venue' AS model,
+					'VENUE' AS model,
 					venue.uuid AS uuid,
 					venue.name AS name,
 					venue.differentiator AS differentiator,
@@ -71,7 +71,7 @@ describe('Cypher Queries Venue module', () => {
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
-					'venue' AS model,
+					'VENUE' AS model,
 					venue.uuid AS uuid,
 					venue.name AS name,
 					venue.differentiator AS differentiator,

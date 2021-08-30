@@ -21,32 +21,32 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get('/productions/new');
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
 				name: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -56,13 +56,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -75,12 +75,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -90,12 +90,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -143,7 +143,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
 				startDate: '',
@@ -151,25 +151,25 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -179,13 +179,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -198,12 +198,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -213,12 +213,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -240,7 +240,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
 				startDate: '',
@@ -248,25 +248,25 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -276,13 +276,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -295,12 +295,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -310,12 +310,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -341,7 +341,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
 				startDate: '',
@@ -349,25 +349,25 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -377,13 +377,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -396,12 +396,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -411,12 +411,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -438,7 +438,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
 				startDate: null,
@@ -465,20 +465,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				name: 'The Tempest',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -662,7 +662,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Fuel Theatre',
 									differentiator: '1'
 								}
@@ -686,7 +686,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'National Theatre Company',
 									differentiator: '1',
 									creditedMembers: [
@@ -707,7 +707,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Co-Producer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'London Theatre Company',
 									differentiator: '1',
 									creditedMembers: [
@@ -734,7 +734,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Designers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Handspring Puppet Company',
 									differentiator: '1'
 								}
@@ -759,7 +759,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Lighting Designers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: '59 Productions',
 									differentiator: '1',
 									creditedMembers: [
@@ -780,7 +780,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Video Designers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: '59 Productions',
 									differentiator: '1',
 									creditedMembers: [
@@ -808,7 +808,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Deputies Ltd',
 									differentiator: '1'
 								}
@@ -832,7 +832,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									differentiator: '1',
 									creditedMembers: [
@@ -853,7 +853,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Sound Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									differentiator: '1',
 									creditedMembers: [
@@ -869,7 +869,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
 				startDate: '2010-09-30',
@@ -877,31 +877,31 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '2011-01-26',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					differentiator: '1',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: 'National Theatre',
 					differentiator: '1',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Lisa Burger',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -909,18 +909,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'in association with',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Fuel Theatre',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -928,7 +928,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -936,24 +936,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Simon Godwin',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Tom Morris',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -961,30 +961,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'National Theatre Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nicholas Hytner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nick Starr',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -992,7 +992,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1000,24 +1000,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'Co-Producer',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'London Theatre Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nicholas Hytner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1025,7 +1025,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1033,12 +1033,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1048,13 +1048,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Rory Kinnear',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Hamlet',
 								characterName: 'Hamlet, Prince of Denmark',
 								characterDifferentiator: '1',
@@ -1063,7 +1063,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -1074,13 +1074,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'James Laurenson',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
 								characterDifferentiator: '1',
@@ -1089,7 +1089,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'First Player',
 								characterName: 'Player King',
 								characterDifferentiator: '1',
@@ -1098,7 +1098,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -1109,13 +1109,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Michael Sheldon',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Third Player',
 								characterName: 'Lucianus',
 								characterDifferentiator: '1',
@@ -1124,7 +1124,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Ambassador of the English',
 								characterName: 'English Ambassador',
 								characterDifferentiator: '1',
@@ -1133,7 +1133,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -1144,13 +1144,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Leo Staar',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -1161,13 +1161,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -1180,18 +1180,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Director',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Nicholas Hytner',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1199,18 +1199,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1218,7 +1218,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1226,24 +1226,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Sound Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Ben Ringham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Max Ringham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1251,30 +1251,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Lighting Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Leo Warner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Mark Grimmer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1282,7 +1282,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1290,24 +1290,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Video Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Leo Warner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1315,7 +1315,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1323,12 +1323,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1338,18 +1338,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Production Manager',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Igor',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1357,18 +1357,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Deputy Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1376,7 +1376,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1384,24 +1384,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Assistant Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Sara Gunter',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Julia Wickham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1409,30 +1409,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Molly Einchcomb',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Matthew Hellyer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1440,7 +1440,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1448,24 +1448,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Sound Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Molly Einchcomb',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1473,7 +1473,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1481,12 +1481,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1508,14 +1508,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
 				startDate: '2010-09-30',
 				pressDate: '2010-10-07',
 				endDate: '2011-01-26',
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID,
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					format: null,
@@ -1523,29 +1523,29 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					writingCredits: []
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre',
 					surVenue: null
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'executive produced by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: LISA_BURGER_PERSON_UUID,
 								name: 'Lisa Burger'
 							}
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'in association with',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: FUEL_THEATRE_COMPANY_UUID,
 								name: 'Fuel Theatre',
 								creditedMembers: []
@@ -1553,37 +1553,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'associate produced by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: SIMON_GODWIN_PERSON_UUID,
 								name: 'Simon Godwin'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: TOM_MORRIS_PERSON_UUID,
 								name: 'Tom Morris'
 							}
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'produced by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: NATIONAL_THEATRE_COMPANY_UUID,
 								name: 'National Theatre Company',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: NICHOLAS_HYTNER_PERSON_UUID,
 										name: 'Nicholas Hytner'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: NICK_STARR_PERSON_UUID,
 										name: 'Nick Starr'
 									}
@@ -1592,16 +1592,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'Co-Producer',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: LONDON_THEATRE_COMPANY_UUID,
 								name: 'London Theatre Company',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: NICHOLAS_HYTNER_PERSON_UUID,
 										name: 'Nicholas Hytner'
 									}
@@ -1612,12 +1612,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: RORY_KINNEAR_PERSON_UUID,
 						name: 'Rory Kinnear',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Hamlet',
 								qualifier: 'foo',
@@ -1626,19 +1626,19 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: JAMES_LAURENSON_PERSON_UUID,
 						name: 'James Laurenson',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Ghost',
 								qualifier: 'bar',
 								isAlternate: null
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'First Player',
 								qualifier: 'baz',
@@ -1647,19 +1647,19 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: MICHAEL_SHELDON_PERSON_UUID,
 						name: 'Michael Sheldon',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Third Player',
 								qualifier: 'qux',
 								isAlternate: null
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Ambassador of the English',
 								qualifier: 'quux',
@@ -1668,7 +1668,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: LEO_STAAR_PERSON_UUID,
 						name: 'Leo Staar',
 						roles: [
@@ -1680,22 +1680,22 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Director',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: NICHOLAS_HYTNER_PERSON_UUID,
 								name: 'Nicholas Hytner'
 							}
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Designers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: HANDSPRING_PUPPET_COMPANY_UUID,
 								name: 'Handspring Puppet Company',
 								creditedMembers: []
@@ -1703,37 +1703,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Sound Designers',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: BEN_RINGHAM_PERSON_UUID,
 								name: 'Ben Ringham'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: MAX_RINGHAM_PERSON_UUID,
 								name: 'Max Ringham'
 							}
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Lighting Designers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: LEO_WARNER_PERSON_UUID,
 										name: 'Leo Warner'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: MARK_GRIMMER_PERSON_UUID,
 										name: 'Mark Grimmer'
 									}
@@ -1742,16 +1742,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Video Designers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: LEO_WARNER_PERSON_UUID,
 										name: 'Leo Warner'
 									}
@@ -1762,22 +1762,22 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Production Manager',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: IGOR_PERSON_UUID,
 								name: 'Igor'
 							}
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Deputy Stage Managers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 								name: 'Crew Deputies Ltd',
 								creditedMembers: []
@@ -1785,37 +1785,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Assistant Stage Managers',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: SARA_GUNTER_PERSON_UUID,
 								name: 'Sara Gunter'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: JULIA_WICKHAM_PERSON_UUID,
 								name: 'Julia Wickham'
 							}
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Design Assistants',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
 										name: 'Molly Einchcomb'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: MATTHEW_HELLYER_PERSON_UUID,
 										name: 'Matthew Hellyer'
 									}
@@ -1824,16 +1824,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Sound Design Assistants',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
 										name: 'Molly Einchcomb'
 									}
@@ -1855,7 +1855,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
 				startDate: '2010-09-30',
@@ -1863,31 +1863,31 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '2011-01-26',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					differentiator: '1',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: 'National Theatre',
 					differentiator: '1',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Lisa Burger',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1895,18 +1895,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'in association with',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Fuel Theatre',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1914,7 +1914,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1922,24 +1922,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Simon Godwin',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Tom Morris',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1947,30 +1947,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'National Theatre Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nicholas Hytner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nick Starr',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -1978,7 +1978,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1986,24 +1986,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'Co-Producer',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'London Theatre Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nicholas Hytner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2011,7 +2011,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2019,12 +2019,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2034,13 +2034,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Rory Kinnear',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Hamlet',
 								characterName: 'Hamlet, Prince of Denmark',
 								characterDifferentiator: '1',
@@ -2049,7 +2049,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2060,13 +2060,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'James Laurenson',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Ghost',
 								characterName: 'Ghost of King Hamlet',
 								characterDifferentiator: '1',
@@ -2075,7 +2075,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'First Player',
 								characterName: 'Player King',
 								characterDifferentiator: '1',
@@ -2084,7 +2084,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2095,13 +2095,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Michael Sheldon',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Third Player',
 								characterName: 'Lucianus',
 								characterDifferentiator: '1',
@@ -2110,7 +2110,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Ambassador of the English',
 								characterName: 'English Ambassador',
 								characterDifferentiator: '1',
@@ -2119,7 +2119,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2130,13 +2130,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Leo Staar',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2147,13 +2147,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2166,18 +2166,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Director',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Nicholas Hytner',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2185,18 +2185,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2204,7 +2204,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2212,24 +2212,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Sound Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Ben Ringham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Max Ringham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2237,30 +2237,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Lighting Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Leo Warner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Mark Grimmer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2268,7 +2268,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2276,24 +2276,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Video Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Leo Warner',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2301,7 +2301,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2309,12 +2309,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2324,18 +2324,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Production Manager',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Igor',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2343,18 +2343,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Deputy Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2362,7 +2362,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2370,24 +2370,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Assistant Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Sara Gunter',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Julia Wickham',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2395,30 +2395,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Molly Einchcomb',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Matthew Hellyer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2426,7 +2426,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2434,24 +2434,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Sound Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Molly Einchcomb',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2459,7 +2459,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2467,12 +2467,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2521,7 +2521,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'in association with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Tiata Fahodzi',
 									differentiator: '1'
 								}
@@ -2545,7 +2545,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Almeida Theatre Company',
 									differentiator: '1',
 									creditedMembers: [
@@ -2566,7 +2566,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Co-Producer',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Headlong Theatre',
 									differentiator: '1',
 									creditedMembers: [
@@ -2649,7 +2649,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Fight Directors',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'RC-Annie',
 									differentiator: '1'
 								}
@@ -2674,7 +2674,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Sound Designers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1',
 									creditedMembers: [
@@ -2695,7 +2695,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Video Designers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1',
 									creditedMembers: [
@@ -2724,7 +2724,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Deputy Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Deputy Stage Managers Ltd',
 									differentiator: '1'
 								}
@@ -2748,7 +2748,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Design Assistants Ltd',
 									differentiator: '1',
 									creditedMembers: [
@@ -2769,7 +2769,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							name: 'Sound Design Assistants',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Design Assistants Ltd',
 									differentiator: '1',
 									creditedMembers: [
@@ -2785,7 +2785,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
 				startDate: '2016-06-07',
@@ -2793,31 +2793,31 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '2016-08-06',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'The Tragedy of King Richard III',
 					differentiator: '1',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: 'Almeida Theatre',
 					differentiator: '1',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'executive produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Denise Wood',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2825,18 +2825,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'in association with',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Tiata Fahodzi',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2844,7 +2844,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2852,24 +2852,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'associate produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Rebecca Frecknall',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Simeon Blake-Hall',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2877,30 +2877,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'produced by',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Almeida Theatre Company',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Rupert Goold',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Robert Icke',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2908,7 +2908,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2916,24 +2916,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'Co-Producer',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Headlong Theatre',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Rupert Goold',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -2941,7 +2941,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2949,12 +2949,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -2964,13 +2964,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Ralph Fiennes',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Richard, Duke of Gloucester',
 								characterName: 'King Richard III',
 								characterDifferentiator: '1',
@@ -2979,7 +2979,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -2990,13 +2990,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Tom Canton',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Brakenbury',
 								characterName: 'Sir Robert Brakenbury',
 								characterDifferentiator: '1',
@@ -3005,7 +3005,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Richmond',
 								characterName: 'Henry, Earl of Richmond',
 								characterDifferentiator: '1',
@@ -3014,7 +3014,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -3025,13 +3025,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Mark Hadfield',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Ratcliffe',
 								characterName: 'Sir Richard Ratcliffe',
 								characterDifferentiator: '1',
@@ -3040,7 +3040,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: 'Lord Mayor',
 								characterName: 'Lord Mayor of London',
 								characterDifferentiator: '1',
@@ -3049,7 +3049,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							},
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -3060,13 +3060,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: 'Josh Collins',
 						differentiator: '1',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -3077,13 +3077,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -3096,18 +3096,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Director',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Rupert Goold',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3115,18 +3115,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Fight Directors',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'RC-Annie',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3134,7 +3134,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3142,24 +3142,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Hildegard Bechtler',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Chloe Lamford',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3167,30 +3167,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Sound Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Autograph',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Andrew Bruce',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Nick Lidster',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3198,7 +3198,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3206,24 +3206,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Video Designers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Autograph',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Andrew Bruce',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3231,7 +3231,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3239,12 +3239,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3254,18 +3254,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Production Manager',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Anna Anderson',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3273,18 +3273,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Deputy Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Deputy Stage Managers Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3292,7 +3292,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3300,24 +3300,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Assistant Stage Managers',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Cheryl Firth',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Tom Leggat',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3325,30 +3325,30 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Design Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Colin Falconer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Alex Lowde',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3356,7 +3356,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3364,24 +3364,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Sound Design Assistants',
 						errors: {},
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Design Assistants Ltd',
 								differentiator: '1',
 								errors: {},
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: 'Colin Falconer',
 										differentiator: '1',
 										errors: {}
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										name: '',
 										differentiator: '',
 										errors: {}
@@ -3389,7 +3389,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3397,12 +3397,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3424,14 +3424,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
 				startDate: '2016-06-07',
 				pressDate: '2016-06-16',
 				endDate: '2016-08-06',
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID,
 					name: 'The Tragedy of King Richard III',
 					format: null,
@@ -3439,29 +3439,29 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					writingCredits: []
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Almeida Theatre',
 					surVenue: null
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'executive produced by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: DENISE_WOOD_PERSON_UUID,
 								name: 'Denise Wood'
 							}
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'in association with',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: TIATA_FAHODZI_COMPANY_UUID,
 								name: 'Tiata Fahodzi',
 								creditedMembers: []
@@ -3469,37 +3469,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'associate produced by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: REBECCA_FRECKNALL_PERSON_UUID,
 								name: 'Rebecca Frecknall'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: SIMEON_BLAKE_HALL_PERSON_UUID,
 								name: 'Simeon Blake-Hall'
 							}
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'produced by',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: ALMEIDA_THEATRE_COMPANY_UUID,
 								name: 'Almeida Theatre Company',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: RUPERT_GOOLD_PERSON_UUID,
 										name: 'Rupert Goold'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: ROBERT_ICKE_PERSON_UUID,
 										name: 'Robert Icke'
 									}
@@ -3508,16 +3508,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: 'Co-Producer',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: HEADLONG_THEATRE_COMPANY_UUID,
 								name: 'Headlong Theatre',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: RUPERT_GOOLD_PERSON_UUID,
 										name: 'Rupert Goold'
 									}
@@ -3528,12 +3528,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: RALPH_FIENNES_PERSON_UUID,
 						name: 'Ralph Fiennes',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Richard, Duke of Gloucester',
 								qualifier: 'foo',
@@ -3542,19 +3542,19 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: TOM_CANTON_PERSON_UUID,
 						name: 'Tom Canton',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Brakenbury',
 								qualifier: 'bar',
 								isAlternate: null
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Richmond',
 								qualifier: 'baz',
@@ -3563,19 +3563,19 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: MARK_HADFIELD_PERSON_UUID,
 						name: 'Mark Hadfield',
 						roles: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Ratcliffe',
 								qualifier: 'qux',
 								isAlternate: null
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: null,
 								name: 'Lord Mayor',
 								qualifier: 'quux',
@@ -3584,7 +3584,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'person',
+						model: 'PERSON',
 						uuid: JOSH_COLLINS_PERSON_UUID,
 						name: 'Josh Collins',
 						roles: [
@@ -3596,22 +3596,22 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Director',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: RUPERT_GOOLD_PERSON_UUID,
 								name: 'Rupert Goold'
 							}
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Fight Directors',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: RC_ANNIE_LTD_COMPANY_UUID,
 								name: 'RC-Annie',
 								creditedMembers: []
@@ -3619,37 +3619,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Designers',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: HILDEGARD_BECHTLER_PERSON_UUID,
 								name: 'Hildegard Bechtler'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: CHLOE_LAMFORD_PERSON_UUID,
 								name: 'Chloe Lamford'
 							}
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Sound Designers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: AUTOGRAPH_COMPANY_UUID,
 								name: 'Autograph',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: ANDREW_BRUCE_PERSON_UUID,
 										name: 'Andrew Bruce'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: NICK_LIDSTER_PERSON_UUID,
 										name: 'Nick Lidster'
 									}
@@ -3658,16 +3658,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: 'Video Designers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: AUTOGRAPH_COMPANY_UUID,
 								name: 'Autograph',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: ANDREW_BRUCE_PERSON_UUID,
 										name: 'Andrew Bruce'
 									}
@@ -3678,22 +3678,22 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Production Manager',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: ANNA_ANDERSON_PERSON_UUID,
 								name: 'Anna Anderson'
 							}
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Deputy Stage Managers',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID,
 								name: 'Deputy Stage Managers Ltd',
 								creditedMembers: []
@@ -3701,37 +3701,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Assistant Stage Managers',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: CHERYL_FIRTH_PERSON_UUID,
 								name: 'Cheryl Firth'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: TOM_LEGGAT_PERSON_UUID,
 								name: 'Tom Leggat'
 							}
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Design Assistants',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Design Assistants Ltd',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: COLIN_FALCONER_PERSON_UUID,
 										name: 'Colin Falconer'
 									},
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: ALEX_LOWDE_PERSON_UUID,
 										name: 'Alex Lowde'
 									}
@@ -3740,16 +3740,16 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					},
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: 'Sound Design Assistants',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Design Assistants Ltd',
 								creditedMembers: [
 									{
-										model: 'person',
+										model: 'PERSON',
 										uuid: COLIN_FALCONER_PERSON_UUID,
 										name: 'Colin Falconer'
 									}
@@ -3776,7 +3776,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
 				startDate: '',
@@ -3784,25 +3784,25 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				producerCredits: [
 					{
-						model: 'producerCredit',
+						model: 'PRODUCER_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3812,13 +3812,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				cast: [
 					{
-						model: 'person',
+						model: 'PERSON',
 						name: '',
 						differentiator: '',
 						errors: {},
 						roles: [
 							{
-								model: 'role',
+								model: 'ROLE',
 								name: '',
 								characterName: '',
 								characterDifferentiator: '',
@@ -3831,12 +3831,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				creativeCredits: [
 					{
-						model: 'creativeCredit',
+						model: 'CREATIVE_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3846,12 +3846,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				],
 				crewCredits: [
 					{
-						model: 'crewCredit',
+						model: 'CREW_CREDIT',
 						name: '',
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -3875,20 +3875,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'production',
+				model: 'PRODUCTION',
 				name: 'Richard III',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
 				errors: {},
 				material: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				venue: {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -4004,65 +4004,65 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MACBETH_ALMEIDA_PRODUCTION_UUID,
 					name: 'Macbeth',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MACBETH_GIELGUD_PRODUCTION_UUID,
 					name: 'Macbeth',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: GIELGUD_THEATRE_VENUE_UUID,
 						name: 'Gielgud Theatre',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2009-05-29',
 					endDate: '2009-08-22',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null

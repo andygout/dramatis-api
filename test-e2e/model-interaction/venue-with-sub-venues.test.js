@@ -180,17 +180,17 @@ describe('Venue with sub-venues', () => {
 
 			const expectedSubVenues = [
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: OLIVIER_THEATRE_VENUE_UUID,
 					name: 'Olivier Theatre'
 				},
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: LYTTELTON_THEATRE_VENUE_UUID,
 					name: 'Lyttelton Theatre'
 				},
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: DORFMAN_THEATRE_VENUE_UUID,
 					name: 'Dorfman Theatre'
 				}
@@ -206,19 +206,19 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
 					subVenue: {
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Olivier Theatre',
 						uuid: OLIVIER_THEATRE_VENUE_UUID
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
 					startDate: '1995-05-26',
@@ -240,7 +240,7 @@ describe('Venue with sub-venues', () => {
 		it('includes National Theatre as its sur-venue', () => {
 
 			const expectedSurVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: NATIONAL_THEATRE_VENUE_UUID,
 				name: 'National Theatre'
 			};
@@ -255,7 +255,7 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
@@ -278,24 +278,24 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: FIONA_SHAW_PERSON_UUID,
 							name: 'Fiona Shaw',
 							roleName: 'Mother Courage',
@@ -321,20 +321,20 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: FIONA_SHAW_PERSON_UUID,
 							name: 'Fiona Shaw',
 							roleName: 'King Richard II',
@@ -360,17 +360,17 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
@@ -392,13 +392,13 @@ describe('Venue with sub-venues', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
@@ -419,11 +419,11 @@ describe('Venue with sub-venues', () => {
 		it('includes the venue and its sur-venue', () => {
 
 			const expectedVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: OLIVIER_THEATRE_VENUE_UUID,
 				name: 'Olivier Theatre',
 				surVenue: {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre'
 				}
@@ -442,7 +442,7 @@ describe('Venue with sub-venues', () => {
 		it('includes the venue (but with no sur-venue as does not apply)', () => {
 
 			const expectedVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: NATIONAL_THEATRE_VENUE_UUID,
 				name: 'National Theatre',
 				surVenue: null
@@ -462,24 +462,24 @@ describe('Venue with sub-venues', () => {
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MOTHER_COURAGE_CHARACTER_UUID,
 							name: 'Mother Courage',
 							qualifier: null,
@@ -488,20 +488,20 @@ describe('Venue with sub-venues', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: KING_RICHARD_II_CHARACTER_UUID,
 							name: 'King Richard II',
 							qualifier: null,
@@ -528,22 +528,22 @@ describe('Venue with sub-venues', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre',
 					subVenues: [
 						{
-							model: 'venue',
+							model: 'VENUE',
 							uuid: OLIVIER_THEATRE_VENUE_UUID,
 							name: 'Olivier Theatre'
 						},
 						{
-							model: 'venue',
+							model: 'VENUE',
 							uuid: LYTTELTON_THEATRE_VENUE_UUID,
 							name: 'Lyttelton Theatre'
 						},
 						{
-							model: 'venue',
+							model: 'VENUE',
 							uuid: DORFMAN_THEATRE_VENUE_UUID,
 							name: 'Dorfman Theatre'
 						}
@@ -567,30 +567,30 @@ describe('Venue with sub-venues', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID,
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre',
 						surVenue: {
-							model: 'venue',
+							model: 'VENUE',
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RICHARD_II_NATIONAL_PRODUCTION_UUID,
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null

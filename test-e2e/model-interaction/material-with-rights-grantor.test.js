@@ -67,7 +67,7 @@ describe('Materials with rights grantor credits', () => {
 						name: 'from',
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								name: 'The Ladykillers',
 								differentiator: '1'
 							}
@@ -78,7 +78,7 @@ describe('Materials with rights grantor credits', () => {
 						creditType: 'RIGHTS_GRANTOR',
 						entities: [
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'StudioCanal'
 							},
 							// Contrivance for purposes of test.
@@ -110,40 +110,40 @@ describe('Materials with rights grantor credits', () => {
 
 			const expectedRightsGrantorMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_LADYKILLERS_PLAY_MATERIAL_UUID,
 					name: 'The Ladykillers',
 					format: 'play',
 					year: 2011,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GRAHAM_LINEHAN_PERSON_UUID,
 									name: 'Graham Linehan'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'from',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
 									year: 1955,
 									writingCredits: [
 										{
-											model: 'writingCredit',
+											model: 'WRITING_CREDIT',
 											name: 'by',
 											entities: [
 												{
-													model: 'person',
+													model: 'PERSON',
 													uuid: WILLIAM_ROSE_PERSON_UUID,
 													name: 'William Rose'
 												}
@@ -154,16 +154,16 @@ describe('Materials with rights grantor credits', () => {
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by special arrangement with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'StudioCanal'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: ALISON_MEESE_PERSON_UUID,
 									name: 'Alison Meese'
 								}
@@ -187,40 +187,40 @@ describe('Materials with rights grantor credits', () => {
 
 			const expectedRightsGrantorMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_LADYKILLERS_PLAY_MATERIAL_UUID,
 					name: 'The Ladykillers',
 					format: 'play',
 					year: 2011,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GRAHAM_LINEHAN_PERSON_UUID,
 									name: 'Graham Linehan'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'from',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									uuid: THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID,
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
 									year: 1955,
 									writingCredits: [
 										{
-											model: 'writingCredit',
+											model: 'WRITING_CREDIT',
 											name: 'by',
 											entities: [
 												{
-													model: 'person',
+													model: 'PERSON',
 													uuid: WILLIAM_ROSE_PERSON_UUID,
 													name: 'William Rose'
 												}
@@ -231,16 +231,16 @@ describe('Materials with rights grantor credits', () => {
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by special arrangement with',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: STUDIOCANAL_COMPANY_UUID,
 									name: 'StudioCanal'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Alison Meese'
 								}

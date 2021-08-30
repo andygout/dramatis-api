@@ -128,20 +128,20 @@ describe('Character portrayed with other roles', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: STEPHEN_HARPER_PERSON_UUID,
 							name: 'Stephen Harper',
 							roleName: 'Joey\'s mother',
@@ -149,21 +149,21 @@ describe('Character portrayed with other roles', () => {
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
 									qualifier: null,
@@ -189,20 +189,20 @@ describe('Character portrayed with other roles', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: STEPHEN_HARPER_PERSON_UUID,
 							name: 'Stephen Harper',
 							roleName: 'Dr Schweyk',
@@ -210,21 +210,21 @@ describe('Character portrayed with other roles', () => {
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
 									qualifier: null,
@@ -250,20 +250,20 @@ describe('Character portrayed with other roles', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: STEPHEN_HARPER_PERSON_UUID,
 							name: 'Stephen Harper',
 							roleName: 'Coco',
@@ -271,21 +271,21 @@ describe('Character portrayed with other roles', () => {
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: GEORDIE_CHARACTER_UUID,
 									name: 'Geordie',
 									qualifier: null,
@@ -311,20 +311,20 @@ describe('Character portrayed with other roles', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: WAR_HORSE_NATIONAL_PRODUCTION_UUID,
 					name: 'War Horse',
 					startDate: '2007-10-09',
 					endDate: '2008-02-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: STEPHEN_HARPER_PERSON_UUID,
 							name: 'Stephen Harper',
 							roleName: 'Geordie',
@@ -332,21 +332,21 @@ describe('Character portrayed with other roles', () => {
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
 									name: 'Joey\'s mother',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: DR_SCHWEYK_CHARACTER_UUID,
 									name: 'Dr Schweyk',
 									qualifier: null,
 									isAlternate: null
 								},
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: COCO_CHARACTER_UUID,
 									name: 'Coco',
 									qualifier: null,

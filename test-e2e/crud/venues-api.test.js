@@ -21,13 +21,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get('/venues/new');
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				name: '',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -71,14 +71,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'National Theatre',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -98,14 +98,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'National Theatre',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -129,14 +129,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'Almeida Theatre',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -156,7 +156,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'Almeida Theatre',
 				differentiator: null,
@@ -178,7 +178,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				name: 'Almeida Theatre',
 				differentiator: '',
 				errors: {},
@@ -244,32 +244,32 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'National Theatre',
 				differentiator: '1',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Olivier Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Lyttelton Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Dorfman Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -289,24 +289,24 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'National Theatre',
 				differentiator: '1',
 				surVenue: null,
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
 						name: 'Olivier Theatre'
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						uuid: LYTTELTON_THEATRE_VENUE_UUID,
 						name: 'Lyttelton Theatre'
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						uuid: DORFMAN_THEATRE_VENUE_UUID,
 						name: 'Dorfman Theatre'
 					}
@@ -325,32 +325,32 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'National Theatre',
 				differentiator: '1',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Olivier Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Lyttelton Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Dorfman Theatre',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -385,26 +385,26 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'Royal Court Theatre',
 				differentiator: '1',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Jerwood Theatre Downstairs',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Jerwood Theatre Upstairs',
 						differentiator: '1',
 						errors: {}
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -424,19 +424,19 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'Royal Court Theatre',
 				differentiator: '1',
 				surVenue: null,
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Downstairs'
 					},
 					{
-						model: 'venue',
+						model: 'VENUE',
 						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
 						name: 'Jerwood Theatre Upstairs'
 					}
@@ -461,14 +461,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_UUID,
 				name: 'Royal Court Theatre',
 				differentiator: '1',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -490,7 +490,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				.delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				name: 'Royal Court Theatre',
 				differentiator: '1',
 				errors: {},
@@ -552,19 +552,19 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Almeida Theatre',
 					subVenues: []
 				},
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 					name: 'Donmar Warehouse',
 					subVenues: []
 				},
 				{
-					model: 'venue',
+					model: 'VENUE',
 					uuid: NATIONAL_THEATRE_VENUE_UUID,
 					name: 'National Theatre',
 					subVenues: []

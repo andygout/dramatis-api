@@ -92,7 +92,7 @@ describe('Venue with multiple productions', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: RED_DONMAR_PRODUCTION_UUID,
 					name: 'Red',
 					startDate: '2009-12-03',
@@ -100,7 +100,7 @@ describe('Venue with multiple productions', () => {
 					subVenue: null
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID,
 					name: 'Life is a Dream',
 					startDate: '2009-10-08',
@@ -108,7 +108,7 @@ describe('Venue with multiple productions', () => {
 					subVenue: null
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID,
 					name: 'A Streetcar Named Desire',
 					startDate: '2009-07-23',
@@ -130,7 +130,7 @@ describe('Venue with multiple productions', () => {
 		it('attributes venue as Donmar Warehouse', () => {
 
 			const expectedVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
 				surVenue: null
@@ -149,7 +149,7 @@ describe('Venue with multiple productions', () => {
 		it('attributes venue as Donmar Warehouse', () => {
 
 			const expectedVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
 				surVenue: null
@@ -168,7 +168,7 @@ describe('Venue with multiple productions', () => {
 		it('attributes venue as Donmar Warehouse', () => {
 
 			const expectedVenue = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse',
 				surVenue: null

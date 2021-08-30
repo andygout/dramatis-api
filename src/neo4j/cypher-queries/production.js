@@ -71,9 +71,9 @@ const getCreateUpdateQuery = action => {
 		UNWIND (CASE $producerCredits WHEN [] THEN [{ entities: [] }] ELSE $producerCredits END) AS producerCredit
 
 			UNWIND
-				CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'PERSON']) WHEN 0
 					THEN [null]
-					ELSE [entity IN producerCredit.entities WHERE entity.model = 'person']
+					ELSE [entity IN producerCredit.entities WHERE entity.model = 'PERSON']
 				END AS producerPersonParam
 
 				OPTIONAL MATCH (existingProducerPerson:Person { name: producerPersonParam.name })
@@ -102,9 +102,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT production, producerCredit
 
 			UNWIND
-				CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN producerCredit.entities WHERE entity.model = 'COMPANY']) WHEN 0
 					THEN [null]
-					ELSE [entity IN producerCredit.entities WHERE entity.model = 'company']
+					ELSE [entity IN producerCredit.entities WHERE entity.model = 'COMPANY']
 				END AS producerCompanyParam
 
 				OPTIONAL MATCH (existingProducerCompany:Company { name: producerCompanyParam.name })
@@ -210,9 +210,9 @@ const getCreateUpdateQuery = action => {
 		UNWIND (CASE $creativeCredits WHEN [] THEN [{ entities: [] }] ELSE $creativeCredits END) AS creativeCredit
 
 			UNWIND
-				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'PERSON']) WHEN 0
 					THEN [null]
-					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'person']
+					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'PERSON']
 				END AS creativePersonParam
 
 				OPTIONAL MATCH (existingCreativePerson:Person { name: creativePersonParam.name })
@@ -241,9 +241,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT production, creativeCredit
 
 			UNWIND
-				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN creativeCredit.entities WHERE entity.model = 'COMPANY']) WHEN 0
 					THEN [null]
-					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'company']
+					ELSE [entity IN creativeCredit.entities WHERE entity.model = 'COMPANY']
 				END AS creativeCompanyParam
 
 				OPTIONAL MATCH (existingCreativeCompany:Company { name: creativeCompanyParam.name })
@@ -319,9 +319,9 @@ const getCreateUpdateQuery = action => {
 		UNWIND (CASE $crewCredits WHEN [] THEN [{ entities: [] }] ELSE $crewCredits END) AS crewCredit
 
 			UNWIND
-				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'PERSON']) WHEN 0
 					THEN [null]
-					ELSE [entity IN crewCredit.entities WHERE entity.model = 'person']
+					ELSE [entity IN crewCredit.entities WHERE entity.model = 'PERSON']
 				END AS crewPersonParam
 
 				OPTIONAL MATCH (existingCrewPerson:Person { name: crewPersonParam.name })
@@ -350,9 +350,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT production, crewCredit
 
 			UNWIND
-				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN crewCredit.entities WHERE entity.model = 'COMPANY']) WHEN 0
 					THEN [null]
-					ELSE [entity IN crewCredit.entities WHERE entity.model = 'company']
+					ELSE [entity IN crewCredit.entities WHERE entity.model = 'COMPANY']
 				END AS crewCompanyParam
 
 				OPTIONAL MATCH (existingCrewCompany:Company { name: crewCompanyParam.name })
@@ -446,7 +446,7 @@ const getEditQuery = () => `
 
 	WITH production, material, venue, producerEntityRel,
 		COLLECT(producerEntity {
-			model: TOLOWER(HEAD(LABELS(producerEntity))),
+			model: TOUPPER(HEAD(LABELS(producerEntity))),
 			.name,
 			.differentiator,
 			creditedMemberUuids: producerEntityRel.creditedMemberUuids
@@ -477,7 +477,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE producerEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
 			END
-		) | CASE producerEntity.model WHEN 'company'
+		) | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
 			ELSE producerEntity { .model, .name, .differentiator }
 		END] + [{}] AS producerEntities
@@ -487,7 +487,7 @@ const getEditQuery = () => `
 			CASE WHEN producerCreditName IS NULL AND SIZE(producerEntities) = 1
 				THEN null
 				ELSE {
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: producerCreditName,
 					entities: producerEntities
 				}
@@ -528,7 +528,7 @@ const getEditQuery = () => `
 
 	WITH production, material, venue, producerCredits, cast, creativeEntityRel,
 		COLLECT(creativeEntity {
-			model: TOLOWER(HEAD(LABELS(creativeEntity))),
+			model: TOUPPER(HEAD(LABELS(creativeEntity))),
 			.name,
 			.differentiator,
 			creditedMemberUuids: creativeEntityRel.creditedMemberUuids
@@ -559,7 +559,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE creativeEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
 			END
-		) | CASE creativeEntity.model WHEN 'company'
+		) | CASE creativeEntity.model WHEN 'COMPANY'
 			THEN creativeEntity
 			ELSE creativeEntity { .model, .name, .differentiator }
 		END] + [{}] AS creativeEntities
@@ -569,7 +569,7 @@ const getEditQuery = () => `
 			CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 				THEN null
 				ELSE {
-					model: 'creativeCredit',
+					model: 'CREATIVE_CREDIT',
 					name: creativeCreditName,
 					entities: creativeEntities
 				}
@@ -583,7 +583,7 @@ const getEditQuery = () => `
 
 	WITH production, material, venue, producerCredits, cast, creativeCredits, crewEntityRel,
 		COLLECT(crewEntity {
-			model: TOLOWER(HEAD(LABELS(crewEntity))),
+			model: TOUPPER(HEAD(LABELS(crewEntity))),
 			.name,
 			.differentiator,
 			creditedMemberUuids: crewEntityRel.creditedMemberUuids
@@ -632,13 +632,13 @@ const getEditQuery = () => `
 				THEN null
 				ELSE crewEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
 			END
-		) | CASE crewEntity.model WHEN 'company'
+		) | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity
 			ELSE crewEntity { .model, .name, .differentiator }
 		END] + [{}] AS crewEntities
 
 	RETURN
-		'production' AS model,
+		'PRODUCTION' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
 		production.startDate AS startDate,
@@ -653,7 +653,7 @@ const getEditQuery = () => `
 			CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
 				THEN null
 				ELSE {
-					model: 'crewCredit',
+					model: 'CREW_CREDIT',
 					name: crewCreditName,
 					entities: crewEntities
 				}
@@ -674,12 +674,12 @@ const getShowQuery = () => `
 		CASE venue WHEN NULL
 			THEN null
 			ELSE venue {
-				model: 'venue',
+				model: 'VENUE',
 				.uuid,
 				.name,
 				surVenue: CASE surVenue WHEN NULL
 					THEN null
-					ELSE surVenue { model: 'venue', .uuid, .name }
+					ELSE surVenue { model: 'VENUE', .uuid, .name }
 				END
 			}
 		END AS venue
@@ -705,7 +705,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -714,7 +714,7 @@ const getShowQuery = () => `
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
 					entities: sourceMaterialWriters
 				}
@@ -727,7 +727,7 @@ const getShowQuery = () => `
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
-					model: TOLOWER(HEAD(LABELS(entity))),
+					model: TOUPPER(HEAD(LABELS(entity))),
 					.uuid,
 					.name,
 					.format,
@@ -735,7 +735,7 @@ const getShowQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'material'
+		) | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -745,7 +745,7 @@ const getShowQuery = () => `
 			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(writingCreditName, 'by'),
 					entities: entities
 				}
@@ -769,12 +769,12 @@ const getShowQuery = () => `
 	WITH production, venue, castMember,
 		CASE material WHEN NULL
 			THEN null
-			ELSE material { model: 'material', .uuid, .name, .format, .year, writingCredits: writingCredits }
+			ELSE material { model: 'MATERIAL', .uuid, .name, .format, .year, writingCredits: writingCredits }
 		END AS material,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE role { model: 'character', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
+				ELSE role { model: 'CHARACTER', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
 			END
 		) AS roles
 
@@ -782,7 +782,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE castMember WHEN NULL
 				THEN null
-				ELSE castMember { model: 'person', .uuid, .name, roles: roles }
+				ELSE castMember { model: 'PERSON', .uuid, .name, roles: roles }
 			END
 		) AS cast
 
@@ -793,7 +793,7 @@ const getShowQuery = () => `
 
 	WITH production, material, venue, cast, producerEntityRel,
 		COLLECT(producerEntity {
-			model: TOLOWER(HEAD(LABELS(producerEntity))),
+			model: TOUPPER(HEAD(LABELS(producerEntity))),
 			.uuid,
 			.name,
 			creditedMemberUuids: producerEntityRel.creditedMemberUuids
@@ -813,7 +813,7 @@ const getShowQuery = () => `
 				ORDER BY creditedMemberRel.memberPosition
 
 			WITH production, material, venue, cast, producerEntityRel, producerEntity,
-				COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
+				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
 	WITH production, material, venue, cast, producerEntityRel, producerEntity, creditedMembers
 		ORDER BY producerEntityRel.creditPosition, producerEntityRel.entityPosition
@@ -824,7 +824,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE producerEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
 			END
-		) | CASE producerEntity.model WHEN 'company'
+		) | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
 			ELSE producerEntity { .model, .uuid, .name }
 		END] AS producerEntities
@@ -834,7 +834,7 @@ const getShowQuery = () => `
 			CASE SIZE(producerEntities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'producerCredit',
+					model: 'PRODUCER_CREDIT',
 					name: COALESCE(producerCreditName, 'produced by'),
 					entities: producerEntities
 				}
@@ -848,7 +848,7 @@ const getShowQuery = () => `
 
 	WITH production, material, venue, cast, producerCredits, creativeEntityRel,
 		COLLECT(creativeEntity {
-			model: TOLOWER(HEAD(LABELS(creativeEntity))),
+			model: TOUPPER(HEAD(LABELS(creativeEntity))),
 			.uuid,
 			.name,
 			creditedMemberUuids: creativeEntityRel.creditedMemberUuids
@@ -868,7 +868,7 @@ const getShowQuery = () => `
 				ORDER BY creditedMemberRel.memberPosition
 
 			WITH production, material, venue, cast, producerCredits, creativeEntityRel, creativeEntity,
-				COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
+				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
 	WITH production, material, venue, cast, producerCredits, creativeEntityRel, creativeEntity, creditedMembers
 		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
@@ -879,7 +879,7 @@ const getShowQuery = () => `
 				THEN null
 				ELSE creativeEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
 			END
-		) | CASE creativeEntity.model WHEN 'company'
+		) | CASE creativeEntity.model WHEN 'COMPANY'
 			THEN creativeEntity
 			ELSE creativeEntity { .model, .uuid, .name }
 		END] AS creativeEntities
@@ -889,7 +889,7 @@ const getShowQuery = () => `
 			CASE SIZE(creativeEntities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'creativeCredit',
+					model: 'CREATIVE_CREDIT',
 					name: creativeCreditName,
 					entities: creativeEntities
 				}
@@ -903,7 +903,7 @@ const getShowQuery = () => `
 
 	WITH production, material, venue, cast, producerCredits, creativeCredits, crewEntityRel,
 		COLLECT(crewEntity {
-			model: TOLOWER(HEAD(LABELS(crewEntity))),
+			model: TOUPPER(HEAD(LABELS(crewEntity))),
 			.uuid,
 			.name,
 			creditedMemberUuids: crewEntityRel.creditedMemberUuids
@@ -932,7 +932,7 @@ const getShowQuery = () => `
 				ORDER BY creditedMemberRel.memberPosition
 
 			WITH production, material, venue, cast, producerCredits, creativeCredits, crewEntityRel, crewEntity,
-				COLLECT(creditedMember { model: 'person', .uuid, .name }) AS creditedMembers
+				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
 	WITH
 		production,
@@ -952,13 +952,13 @@ const getShowQuery = () => `
 				THEN null
 				ELSE crewEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
 			END
-		) | CASE crewEntity.model WHEN 'company'
+		) | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity
 			ELSE crewEntity { .model, .uuid, .name }
 		END] AS crewEntities
 
 	RETURN
-		'production' AS model,
+		'PRODUCTION' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
 		production.startDate AS startDate,
@@ -973,7 +973,7 @@ const getShowQuery = () => `
 			CASE SIZE(crewEntities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'crewCredit',
+					model: 'CREW_CREDIT',
 					name: crewCreditName,
 					entities: crewEntities
 				}
@@ -989,7 +989,7 @@ const getListQuery = () => `
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 	RETURN
-		'production' AS model,
+		'PRODUCTION' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
 		production.startDate AS startDate,
@@ -997,12 +997,12 @@ const getListQuery = () => `
 		CASE venue WHEN NULL
 			THEN null
 			ELSE venue {
-				model: 'venue',
+				model: 'VENUE',
 				.uuid,
 				.name,
 				surVenue: CASE surVenue WHEN NULL
 					THEN null
-					ELSE surVenue { model: 'venue', .uuid, .name }
+					ELSE surVenue { model: 'VENUE', .uuid, .name }
 				END
 			}
 		END AS venue

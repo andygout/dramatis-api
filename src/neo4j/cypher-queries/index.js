@@ -32,44 +32,45 @@ import {
 	getShowQuery as getVenueShowQuery,
 	getListQuery as getVenueListQuery
 } from './venue';
+import { MODELS } from '../../utils/constants';
 
 const getCreateQueries = {
-	awardCeremony: getAwardCeremonyCreateQuery,
-	material: getMaterialCreateQuery,
-	production: getProductionCreateQuery,
-	venue: getVenueCreateQuery
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyCreateQuery,
+	[MODELS.MATERIAL]: getMaterialCreateQuery,
+	[MODELS.PRODUCTION]: getProductionCreateQuery,
+	[MODELS.VENUE]: getVenueCreateQuery
 };
 
 const getEditQueries = {
-	awardCeremony: getAwardCeremonyEditQuery,
-	material: getMaterialEditQuery,
-	production: getProductionEditQuery,
-	venue: getVenueEditQuery
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyEditQuery,
+	[MODELS.MATERIAL]: getMaterialEditQuery,
+	[MODELS.PRODUCTION]: getProductionEditQuery,
+	[MODELS.VENUE]: getVenueEditQuery
 };
 
 const getUpdateQueries = {
-	awardCeremony: getAwardCeremonyUpdateQuery,
-	material: getMaterialUpdateQuery,
-	production: getProductionUpdateQuery,
-	venue: getVenueUpdateQuery
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyUpdateQuery,
+	[MODELS.MATERIAL]: getMaterialUpdateQuery,
+	[MODELS.PRODUCTION]: getProductionUpdateQuery,
+	[MODELS.VENUE]: getVenueUpdateQuery
 };
 
 const getShowQueries = {
-	award: getAwardShowQuery,
-	awardCeremony: getAwardCeremonyShowQuery,
-	character: getCharacterShowQuery,
-	company: getCompanyShowQuery,
-	person: getPersonShowQuery,
-	material: getMaterialShowQuery,
-	production: getProductionShowQuery,
-	venue: getVenueShowQuery
+	[MODELS.AWARD]: getAwardShowQuery,
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyShowQuery,
+	[MODELS.CHARACTER]: getCharacterShowQuery,
+	[MODELS.COMPANY]: getCompanyShowQuery,
+	[MODELS.PERSON]: getPersonShowQuery,
+	[MODELS.MATERIAL]: getMaterialShowQuery,
+	[MODELS.PRODUCTION]: getProductionShowQuery,
+	[MODELS.VENUE]: getVenueShowQuery
 };
 
 const getListQueries = {
-	awardCeremony: getAwardCeremonyListQuery,
-	material: getMaterialListQuery,
-	production: getProductionListQuery,
-	venue: getVenueListQuery
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyListQuery,
+	[MODELS.MATERIAL]: getMaterialListQuery,
+	[MODELS.PRODUCTION]: getProductionListQuery,
+	[MODELS.VENUE]: getVenueListQuery
 };
 
 export {

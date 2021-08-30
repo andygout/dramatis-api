@@ -125,20 +125,20 @@ describe('Cast member performing same role in different productions of same mate
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROSE_THEATRE_VENUE_UUID,
 						name: 'Rose Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JUDI_DENCH_PERSON_UUID,
 							name: 'Judi Dench',
 							roleName: 'Titania, Faerie Queene',
@@ -149,20 +149,20 @@ describe('Cast member performing same role in different productions of same mate
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JUDI_DENCH_PERSON_UUID,
 							name: 'Judi Dench',
 							roleName: 'Titania',
@@ -188,12 +188,12 @@ describe('Cast member performing same role in different productions of same mate
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Judi Dench',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania',
 							qualifier: null,
@@ -217,12 +217,12 @@ describe('Cast member performing same role in different productions of same mate
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Judi Dench',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania, Faerie Queene',
 							qualifier: null,
@@ -246,20 +246,20 @@ describe('Cast member performing same role in different productions of same mate
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROSE_THEATRE_VENUE_UUID,
 						name: 'Rose Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania, Faerie Queene',
 							qualifier: null,
@@ -268,20 +268,20 @@ describe('Cast member performing same role in different productions of same mate
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania',
 							qualifier: null,
