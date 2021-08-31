@@ -41,7 +41,7 @@ describe('Instance validation failures: Awards API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -73,7 +73,7 @@ describe('Instance validation failures: Awards API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'award',
+					model: 'AWARD',
 					name: 'Laurence Olivier Awards',
 					differentiator: '',
 					hasErrors: true,
@@ -133,7 +133,7 @@ describe('Instance validation failures: Awards API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'award',
+					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: '',
 					differentiator: '',
@@ -171,7 +171,7 @@ describe('Instance validation failures: Awards API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'award',
+					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Laurence Olivier Awards',
 					differentiator: '',
@@ -242,7 +242,7 @@ describe('Instance validation failures: Awards API', () => {
 					.delete(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'award',
+					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Evening Standard Theatre Awards',
 					differentiator: null,

@@ -3,6 +3,7 @@ import Entity from './Entity';
 import { Award } from '.';
 import { getAwardContextualDuplicateRecordCountQuery } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
+import { MODELS } from '../utils/constants';
 
 export default class AwardCeremony extends Entity {
 
@@ -18,7 +19,7 @@ export default class AwardCeremony extends Entity {
 
 	get model () {
 
-		return 'awardCeremony';
+		return MODELS.AWARD_CEREMONY;
 
 	}
 

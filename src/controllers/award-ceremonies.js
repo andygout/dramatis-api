@@ -3,6 +3,7 @@
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { AwardCeremony } from '../models';
+import { MODELS } from '../utils/constants';
 
 const newRoute = (request, response, next) =>
 	sendJsonResponse(response, new AwardCeremony());
@@ -23,7 +24,7 @@ const showRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new AwardCeremony(request.params), 'show');
 
 const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, AwardCeremony, 'awardCeremony');
+	callStaticListMethod(response, next, AwardCeremony, MODELS.AWARD_CEREMONY);
 
 export {
 	newRoute,

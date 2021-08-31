@@ -2,6 +2,7 @@ import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib
 import { isValidDate } from '../lib/is-valid-date';
 import Entity from './Entity';
 import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '.';
+import { MODELS } from '../utils/constants';
 
 export default class Production extends Entity {
 
@@ -51,7 +52,7 @@ export default class Production extends Entity {
 
 	get model () {
 
-		return 'production';
+		return MODELS.PRODUCTION;
 
 	}
 

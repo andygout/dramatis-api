@@ -1,4 +1,5 @@
 import Base from './Base';
+import { MODELS } from '../utils/constants';
 
 export default class Role extends Base {
 
@@ -17,7 +18,7 @@ export default class Role extends Base {
 
 	get model () {
 
-		return 'role';
+		return MODELS.ROLE;
 
 	}
 

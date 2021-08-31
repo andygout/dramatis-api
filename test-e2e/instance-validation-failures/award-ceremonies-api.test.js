@@ -56,7 +56,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					name: '',
 					hasErrors: true,
 					errors: {
@@ -65,7 +65,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						]
 					},
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -96,7 +96,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					name: '2020',
 					hasErrors: true,
 					errors: {
@@ -105,7 +105,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						]
 					},
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						name: 'Laurence Olivier Awards',
 						differentiator: '',
 						errors: {
@@ -180,7 +180,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '',
 					hasErrors: true,
@@ -190,7 +190,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						]
 					},
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -226,7 +226,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2020',
 					hasErrors: true,
@@ -236,7 +236,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						]
 					},
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						name: 'Laurence Olivier Awards',
 						differentiator: '',
 						errors: {
@@ -306,7 +306,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 					.delete(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2019',
 					hasErrors: true,
@@ -316,7 +316,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						]
 					},
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						name: '',
 						differentiator: '',
 						errors: {}

@@ -157,20 +157,20 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ANTONY_SHER_PERSON_UUID,
 							name: 'Antony Sher',
 							roleName: 'King Lear',
@@ -181,20 +181,20 @@ describe('Cast member performing different roles in different productions of sam
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
 							roleName: 'King Lear',
@@ -220,20 +220,20 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: GRAHAM_TURNER_PERSON_UUID,
 							name: 'Graham Turner',
 							roleName: 'Fool',
@@ -244,20 +244,20 @@ describe('Cast member performing different roles in different productions of sam
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ANTONY_SHER_PERSON_UUID,
 							name: 'Antony Sher',
 							roleName: 'Fool',
@@ -283,12 +283,12 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: MICHAEL_GAMBON_PERSON_UUID,
 					name: 'Michael Gambon',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: KING_LEAR_CHARACTER_UUID,
 							name: 'King Lear',
 							qualifier: null,
@@ -297,12 +297,12 @@ describe('Cast member performing different roles in different productions of sam
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: ANTONY_SHER_PERSON_UUID,
 					name: 'Antony Sher',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FOOL_CHARACTER_UUID,
 							name: 'Fool',
 							qualifier: null,
@@ -326,12 +326,12 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: ANTONY_SHER_PERSON_UUID,
 					name: 'Antony Sher',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: KING_LEAR_CHARACTER_UUID,
 							name: 'King Lear',
 							qualifier: null,
@@ -340,12 +340,12 @@ describe('Cast member performing different roles in different productions of sam
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: GRAHAM_TURNER_PERSON_UUID,
 					name: 'Graham Turner',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FOOL_CHARACTER_UUID,
 							name: 'Fool',
 							qualifier: null,
@@ -369,20 +369,20 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: KING_LEAR_CHARACTER_UUID,
 							name: 'King Lear',
 							qualifier: null,
@@ -406,20 +406,20 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: KING_LEAR_CHARACTER_UUID,
 							name: 'King Lear',
 							qualifier: null,
@@ -428,20 +428,20 @@ describe('Cast member performing different roles in different productions of sam
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '1982-06-20',
 					endDate: '1982-08-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FOOL_CHARACTER_UUID,
 							name: 'Fool',
 							qualifier: null,
@@ -465,20 +465,20 @@ describe('Cast member performing different roles in different productions of sam
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: KING_LEAR_BARBICAN_PRODUCTION_UUID,
 					name: 'King Lear',
 					startDate: '2016-11-10',
 					endDate: '2016-12-23',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
 						name: 'Barbican',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FOOL_CHARACTER_UUID,
 							name: 'Fool',
 							qualifier: null,

@@ -46,7 +46,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_1_UUID,
 				name: 'Home',
 				differentiator: '',
@@ -54,20 +54,20 @@ describe('Uniqueness in database: Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -77,12 +77,12 @@ describe('Uniqueness in database: Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -111,7 +111,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				name: 'Home',
 				differentiator: '',
 				format: '',
@@ -126,7 +126,7 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -153,7 +153,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_2_UUID,
 				name: 'Home',
 				differentiator: '1',
@@ -161,20 +161,20 @@ describe('Uniqueness in database: Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -184,12 +184,12 @@ describe('Uniqueness in database: Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -219,7 +219,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_1_UUID,
 				name: 'Home',
 				differentiator: '1',
@@ -235,7 +235,7 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -262,7 +262,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_1_UUID,
 				name: 'Home',
 				differentiator: '2',
@@ -270,20 +270,20 @@ describe('Uniqueness in database: Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -293,12 +293,12 @@ describe('Uniqueness in database: Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -327,7 +327,7 @@ describe('Uniqueness in database: Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_2_UUID,
 				name: 'Home',
 				differentiator: '',
@@ -335,20 +335,20 @@ describe('Uniqueness in database: Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -358,12 +358,12 @@ describe('Uniqueness in database: Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -388,14 +388,14 @@ describe('Uniqueness in database: Materials API', () => {
 		const THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedOriginalVersionMaterialTheSeagull1 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'The Seagull',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedOriginalVersionMaterialTheSeagull2 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'The Seagull',
 			differentiator: '1',
 			errors: {}
@@ -512,14 +512,14 @@ describe('Uniqueness in database: Materials API', () => {
 		const DOT_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedPersonKateRyan1 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Kate Ryan',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedPersonKateRyan2 = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Kate Ryan',
 			differentiator: '1',
 			errors: {}
@@ -656,14 +656,14 @@ describe('Uniqueness in database: Materials API', () => {
 		const UNTITLED_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCompanyGateTheatreCompany1 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Gate Theatre Company',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedCompanyGateTheatreCompany2 = {
-			model: 'company',
+			model: 'COMPANY',
 			name: 'Gate Theatre Company',
 			differentiator: '1',
 			errors: {}
@@ -703,7 +703,7 @@ describe('Uniqueness in database: Materials API', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Gate Theatre Company'
 								}
 							]
@@ -729,7 +729,7 @@ describe('Uniqueness in database: Materials API', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Gate Theatre Company',
 									differentiator: '1'
 								}
@@ -756,7 +756,7 @@ describe('Uniqueness in database: Materials API', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Gate Theatre Company'
 								}
 							]
@@ -782,7 +782,7 @@ describe('Uniqueness in database: Materials API', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Gate Theatre Company',
 									differentiator: '1'
 								}
@@ -804,14 +804,14 @@ describe('Uniqueness in database: Materials API', () => {
 		const THE_INDIAN_BOY_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedMaterialAMidsummerNightsDream1 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'A Midsummer Night\'s Dream',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedMaterialAMidsummerNightsDream2 = {
-			model: 'material',
+			model: 'MATERIAL',
 			name: 'A Midsummer Night\'s Dream',
 			differentiator: '1',
 			errors: {}
@@ -852,7 +852,7 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'A Midsummer Night\'s Dream'
 								}
 							]
@@ -879,7 +879,7 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'A Midsummer Night\'s Dream',
 									differentiator: '1'
 								}
@@ -907,7 +907,7 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'A Midsummer Night\'s Dream'
 								}
 							]
@@ -934,7 +934,7 @@ describe('Uniqueness in database: Materials API', () => {
 							name: 'inspired by',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'A Midsummer Night\'s Dream',
 									differentiator: '1'
 								}
@@ -956,7 +956,7 @@ describe('Uniqueness in database: Materials API', () => {
 		const TITUS_ANDRONICUS_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedCharacterDemetrius1 = {
-			model: 'character',
+			model: 'CHARACTER',
 			name: 'Demetrius',
 			underlyingName: '',
 			differentiator: '',
@@ -965,7 +965,7 @@ describe('Uniqueness in database: Materials API', () => {
 		};
 
 		const expectedCharacterDemetrius2 = {
-			model: 'character',
+			model: 'CHARACTER',
 			name: 'Demetrius',
 			underlyingName: '',
 			differentiator: '1',

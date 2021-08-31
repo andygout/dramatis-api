@@ -186,20 +186,20 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: OSCAR_PEARCE_PERSON_UUID,
 							name: 'Oscar Pearce',
 							roleName: 'Demetrius',
@@ -225,20 +225,20 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 					name: 'Titus Andronicus',
 					startDate: '2006-05-20',
 					endDate: '2006-10-06',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: SAM_ALEXANDER_PERSON_UUID,
 							name: 'Sam Alexander',
 							roleName: 'Demetrius',
@@ -264,13 +264,13 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: LYSANDER_CHARACTER_UUID,
 					name: 'Lysander',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: DEMETRIUS_CHARACTER_1_UUID,
 					name: 'Demetrius',
 					qualifier: null
@@ -291,13 +291,13 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: DEMETRIUS_CHARACTER_2_UUID,
 					name: 'Demetrius',
 					qualifier: null
 				},
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: CHIRON_CHARACTER_UUID,
 					name: 'Chiron',
 					qualifier: null
@@ -319,12 +319,12 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: OSCAR_PEARCE_PERSON_UUID,
 					name: 'Oscar Pearce',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
 							qualifier: null,
@@ -333,12 +333,12 @@ describe('Different characters with the same name from different materials', () 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: TRYSTAN_GRAVELLE_PERSON_UUID,
 					name: 'Trystan Gravelle',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: LYSANDER_CHARACTER_UUID,
 							name: 'Lysander',
 							qualifier: null,
@@ -362,12 +362,12 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: RICHARD_RIDDELL_PERSON_UUID,
 					name: 'Richard Riddell',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CHIRON_CHARACTER_UUID,
 							name: 'Chiron',
 							qualifier: null,
@@ -376,12 +376,12 @@ describe('Different characters with the same name from different materials', () 
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: SAM_ALEXANDER_PERSON_UUID,
 					name: 'Sam Alexander',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
 							qualifier: null,
@@ -405,20 +405,20 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
 							qualifier: null,
@@ -442,20 +442,20 @@ describe('Different characters with the same name from different materials', () 
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID,
 					name: 'Titus Andronicus',
 					startDate: '2006-05-20',
 					endDate: '2006-10-06',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
 							qualifier: null,

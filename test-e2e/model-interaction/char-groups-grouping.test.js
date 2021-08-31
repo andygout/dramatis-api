@@ -74,12 +74,12 @@ describe('Nameless character groups grouping', () => {
 
 			const expectedCharacterGroups = [
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: null,
 					position: 0,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: JULIUS_CAESAR_CHARACTER_UUID,
 							name: 'Julius Caesar',
 							qualifier: null
@@ -87,12 +87,12 @@ describe('Nameless character groups grouping', () => {
 					]
 				},
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: 'Triumvirs after Caesar\'s death',
 					position: 1,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MARK_ANTONY_CHARACTER_UUID,
 							name: 'Mark Antony',
 							qualifier: null
@@ -100,12 +100,12 @@ describe('Nameless character groups grouping', () => {
 					]
 				},
 				{
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: null,
 					position: 2,
 					characters: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: MESSENGER_CHARACTER_UUID,
 							name: 'Messenger',
 							qualifier: null

@@ -21,7 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				.get('/people/new');
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				name: '',
 				differentiator: '',
 				errors: {}
@@ -63,7 +63,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				uuid: PERSON_UUID,
 				name: 'Ian McKellen',
 				differentiator: '',
@@ -82,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				.get(`/people/${PERSON_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				uuid: PERSON_UUID,
 				name: 'Ian McKellen',
 				differentiator: '',
@@ -105,7 +105,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart',
 				differentiator: '',
@@ -124,7 +124,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				.get(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				uuid: PERSON_UUID,
 				name: 'Patrick Stewart',
 				differentiator: null,
@@ -151,7 +151,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				.delete(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'person',
+				model: 'PERSON',
 				name: 'Patrick Stewart',
 				differentiator: '',
 				errors: {}
@@ -212,17 +212,17 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: IAN_MCKELLEN_PERSON_UUID,
 					name: 'Ian McKellen'
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: MATTHEW_KELLY_PERSON_UUID,
 					name: 'Matthew Kelly'
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: PATRICK_STEWART_PERSON_UUID,
 					name: 'Patrick Stewart'
 				}

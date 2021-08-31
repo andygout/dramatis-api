@@ -1,7 +1,7 @@
 import { getDuplicateEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { Company, Person, MaterialBase } from '.';
-import { CREDIT_TYPES } from '../utils/constants';
+import { CREDIT_TYPES, MODELS } from '../utils/constants';
 
 export default class WritingCredit extends Base {
 
@@ -16,9 +16,9 @@ export default class WritingCredit extends Base {
 		this.entities = entities
 			? entities.map(entity => {
 				switch (entity.model) {
-					case 'company':
+					case MODELS.COMPANY:
 						return new Company(entity);
-					case 'material':
+					case MODELS.MATERIAL:
 						return new MaterialBase(entity);
 					default:
 						return new Person(entity);
@@ -30,7 +30,7 @@ export default class WritingCredit extends Base {
 
 	get model () {
 
-		return 'writingCredit';
+		return MODELS.WRITING_CREDIT;
 
 	}
 
@@ -50,7 +50,7 @@ export default class WritingCredit extends Base {
 
 			entity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
 
-			if (entity.model === 'material') {
+			if (entity.model === MODELS.MATERIAL) {
 
 				entity.validateNoAssociationWithSelf(opts.subject.name, opts.subject.differentiator);
 

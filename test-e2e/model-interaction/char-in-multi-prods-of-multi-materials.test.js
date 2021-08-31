@@ -351,7 +351,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
 					name: 'Henry IV, Part 2',
 					format: 'play',
@@ -360,7 +360,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
 					name: 'Henry IV, Part 1',
 					format: 'play',
@@ -369,7 +369,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
@@ -389,20 +389,20 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
 					startDate: '2019-05-17',
 					endDate: '2019-10-12',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
@@ -413,20 +413,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
 					startDate: '2010-07-03',
 					endDate: '2010-10-03',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
@@ -437,20 +437,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
 					startDate: '2010-06-06',
 					endDate: '2010-10-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: ROGER_ALLAM_PERSON_UUID,
 							name: 'Roger Allam',
 							roleName: 'Sir John Falstaff',
@@ -461,20 +461,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
 					startDate: '2005-09-04',
 					endDate: '2005-11-27',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
@@ -485,20 +485,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
 					startDate: '2005-04-26',
 					endDate: '2005-08-31',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
@@ -509,20 +509,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
 					startDate: '2005-04-16',
 					endDate: '2005-08-31',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: MICHAEL_GAMBON_PERSON_UUID,
 							name: 'Michael Gambon',
 							roleName: 'Sir John Falstaff',
@@ -533,20 +533,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID,
 					name: 'The Merry Wives of Windsor',
 					startDate: '2002-10-24',
 					endDate: '2003-01-25',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: RICHARD_CORDERY_PERSON_UUID,
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
@@ -557,20 +557,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_2_SWAN_PRODUCTION_UUID,
 					name: 'Henry IV, Part 2',
 					startDate: '2000-06-22',
 					endDate: '2000-09-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: RICHARD_CORDERY_PERSON_UUID,
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
@@ -581,20 +581,20 @@ describe('Character in multiple productions of multiple materials', () => {
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HENRY_IV_PART_1_SWAN_PRODUCTION_UUID,
 					name: 'Henry IV, Part 1',
 					startDate: '2000-04-12',
 					endDate: '2000-06-15',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SWAN_THEATRE_VENUE_UUID,
 						name: 'Swan Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: RICHARD_CORDERY_PERSON_UUID,
 							name: 'Richard Cordery',
 							roleName: 'Sir John Falstaff',
@@ -620,7 +620,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 					name: 'Sir John Falstaff',
 					qualifier: null
@@ -641,7 +641,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 					name: 'Sir John Falstaff',
 					qualifier: null
@@ -662,7 +662,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const expectedCharacters = [
 				{
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: SIR_JOHN_FALSTAFF_CHARACTER_UUID,
 					name: 'Sir John Falstaff',
 					qualifier: null

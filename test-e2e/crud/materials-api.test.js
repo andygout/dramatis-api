@@ -21,27 +21,27 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get('/materials/new');
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				name: '',
 				differentiator: '',
 				format: '',
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -51,12 +51,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -104,7 +104,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'Uncle Vanya',
 				differentiator: '',
@@ -112,20 +112,20 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -135,12 +135,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -164,7 +164,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'Uncle Vanya',
 				differentiator: '',
@@ -172,20 +172,20 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -195,12 +195,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -228,7 +228,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'The Cherry Orchard',
 				differentiator: '',
@@ -236,20 +236,20 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -259,12 +259,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -288,7 +288,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'The Cherry Orchard',
 				differentiator: null,
@@ -316,14 +316,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				name: 'The Cherry Orchard',
 				differentiator: '',
 				format: '',
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -401,7 +401,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								},
 								// Contrivance for purposes of test.
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Ibsen Theatre Company',
 									differentiator: '1'
 								}
@@ -421,7 +421,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							name: 'based on',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'John Gabriel Borkman',
 									differentiator: '3'
 								}
@@ -456,7 +456,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
@@ -464,32 +464,32 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: 2007,
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'John Gabriel Borkman',
 					differentiator: '1',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Henrik Ibsen',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -497,19 +497,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'version by',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'David Eldridge',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -517,19 +517,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'based on',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								name: 'John Gabriel Borkman',
 								differentiator: '3',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -537,13 +537,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -553,12 +553,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: 'The Borkmans',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'John Gabriel Borkman',
 								underlyingName: 'Mr John Gabriel Borkman',
 								differentiator: '1',
@@ -566,7 +566,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Gunhild Borkman',
 								underlyingName: 'Mrs Gunhild Borkman',
 								differentiator: '1',
@@ -574,7 +574,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Erhart Borkman',
 								underlyingName: 'Mr Erhart Borkman',
 								differentiator: '1',
@@ -582,7 +582,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -592,12 +592,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -621,14 +621,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
 				format: 'play',
 				year: 2007,
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'John Gabriel Borkman',
 					format: null,
@@ -639,38 +639,38 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				sourcingMaterials: [],
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: IBSEN_THEATRE_COMPANY_UUID,
 								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'version by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: DAVID_ELDRIDGE_PERSON_UUID,
 								name: 'David Eldridge'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'based on',
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								uuid: JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'John Gabriel Borkman',
 								format: null,
@@ -682,24 +682,24 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: 'The Borkmans',
 						position: null,
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: JOHN_GABRIEL_BORKMAN_CHARACTER_UUID,
 								name: 'John Gabriel Borkman',
 								qualifier: 'foo'
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: GUNHILD_BORKMAN_CHARACTER_UUID,
 								name: 'Gunhild Borkman',
 								qualifier: 'bar'
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: ERHART_BORKMAN_CHARACTER_UUID,
 								name: 'Erhart Borkman',
 								qualifier: 'baz'
@@ -722,7 +722,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'John Gabriel Borkman',
 				differentiator: '2',
@@ -730,32 +730,32 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: 2007,
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'John Gabriel Borkman',
 					differentiator: '1',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Henrik Ibsen',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -763,19 +763,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'version by',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'David Eldridge',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -783,19 +783,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'based on',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								name: 'John Gabriel Borkman',
 								differentiator: '3',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -803,13 +803,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -819,12 +819,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: 'The Borkmans',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'John Gabriel Borkman',
 								underlyingName: 'Mr John Gabriel Borkman',
 								differentiator: '1',
@@ -832,7 +832,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Gunhild Borkman',
 								underlyingName: 'Mrs Gunhild Borkman',
 								differentiator: '1',
@@ -840,7 +840,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Erhart Borkman',
 								underlyingName: 'Mr Erhart Borkman',
 								differentiator: '1',
@@ -848,7 +848,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -858,12 +858,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -905,7 +905,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								},
 								// Contrivance for purposes of test.
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Chekhov Theatre Company',
 									differentiator: '1'
 								}
@@ -925,7 +925,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							name: 'based on',
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'Three Sisters',
 									differentiator: '3'
 								}
@@ -960,7 +960,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'Three Sisters',
 				differentiator: '2',
@@ -968,32 +968,32 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: 2012,
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'Three Sisters',
 					differentiator: '1',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Anton Chekhov',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Chekhov Theatre Company',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1001,19 +1001,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'adaptation by',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: 'Benedict Andrews',
 								differentiator: '1',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1021,19 +1021,19 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'based on',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								name: 'Three Sisters',
 								differentiator: '3',
 								errors: {}
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1041,13 +1041,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1057,12 +1057,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: 'The Prozorovs',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Olga',
 								underlyingName: 'Olga Sergeyevna Prozorova',
 								differentiator: '1',
@@ -1070,7 +1070,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Maria',
 								underlyingName: 'Maria Sergeyevna Kulygina',
 								differentiator: '1',
@@ -1078,7 +1078,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: 'Irina',
 								underlyingName: 'Irina Sergeyevna Prozorova',
 								differentiator: '1',
@@ -1086,7 +1086,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -1096,12 +1096,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					},
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -1125,14 +1125,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: 'play',
 				year: 2012,
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Three Sisters',
 					format: null,
@@ -1143,38 +1143,38 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				sourcingMaterials: [],
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: ANTON_CHEKHOV_PERSON_UUID,
 								name: 'Anton Chekhov'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: CHEKHOV_THEATRE_COMPANY_UUID,
 								name: 'Chekhov Theatre Company'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'adaptation by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: BENEDICT_ANDREWS_PERSON_UUID,
 								name: 'Benedict Andrews'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'based on',
 						entities: [
 							{
-								model: 'material',
+								model: 'MATERIAL',
 								uuid: THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID,
 								name: 'Three Sisters',
 								format: null,
@@ -1186,24 +1186,24 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: 'The Prozorovs',
 						position: null,
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID,
 								name: 'Olga',
 								qualifier: 'foo'
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID,
 								name: 'Maria',
 								qualifier: 'bar'
 							},
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								uuid: IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID,
 								name: 'Irina',
 								qualifier: 'baz'
@@ -1232,7 +1232,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: MATERIAL_UUID,
 				name: 'Three Sisters',
 				differentiator: '2',
@@ -1240,20 +1240,20 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
 				},
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: '',
 						creditType: null,
 						errors: {},
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								name: '',
 								differentiator: '',
 								errors: {}
@@ -1263,12 +1263,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				],
 				characterGroups: [
 					{
-						model: 'characterGroup',
+						model: 'CHARACTER_GROUP',
 						name: '',
 						errors: {},
 						characters: [
 							{
-								model: 'character',
+								model: 'CHARACTER',
 								name: '',
 								underlyingName: '',
 								differentiator: '',
@@ -1294,14 +1294,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				.delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'material',
+				model: 'MATERIAL',
 				name: 'Three Sisters',
 				differentiator: '2',
 				format: '',
 				year: '',
 				errors: {},
 				originalVersionMaterial: {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -1389,7 +1389,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID,
 					name: 'A Word from Our Sponsor',
 					format: 'play',
@@ -1397,7 +1397,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: COMMUNICATING_DOORS_MATERIAL_UUID,
 					name: 'Communicating Doors',
 					format: 'play',
@@ -1405,7 +1405,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: HAUNTING_JULIA_MATERIAL_UUID,
 					name: 'Haunting Julia',
 					format: 'play',
@@ -1413,7 +1413,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID,
 					name: 'The Musical Jigsaw Play',
 					format: 'play',
@@ -1421,7 +1421,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID,
 					name: 'Dreams from a Summer House',
 					format: 'play',

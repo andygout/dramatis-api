@@ -145,7 +145,7 @@ describe('People controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Person, 'person'
+				stubs.response, stubs.next, stubs.models.Person, 'PERSON'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

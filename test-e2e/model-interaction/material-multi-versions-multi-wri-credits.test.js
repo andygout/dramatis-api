@@ -59,7 +59,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							},
 							// Contrivance for purposes of test.
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
 							}
 						]
@@ -95,7 +95,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							},
 							// Contrivance for purposes of test.
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
 							}
 						]
@@ -139,7 +139,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							},
 							// Contrivance for purposes of test.
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
 							}
 						]
@@ -152,7 +152,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							},
 							// Contrivance for purposes of test.
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Bamman Theatre Company'
 							},
 							{
@@ -195,7 +195,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							},
 							// Contrivance for purposes of test.
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
 							}
 						]
@@ -222,7 +222,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								name: 'Henrik Ibsen'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
 							}
 						]
@@ -234,7 +234,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								name: 'Gerry Bamman'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								name: 'Bamman Theatre Company'
 							},
 							{
@@ -304,39 +304,39 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -345,18 +345,18 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'version by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness'
 								}
@@ -376,16 +376,16 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedWritingCredits = [
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: IBSEN_THEATRE_COMPANY_UUID,
 							name: 'Ibsen Theatre Company'
 						}
@@ -406,23 +406,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 		it('includes original version of this material, with corresponding writers', () => {
 
 			const expectedOriginalVersionMaterial = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
 				year: 1867,
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: IBSEN_THEATRE_COMPANY_UUID,
 								name: 'Ibsen Theatre Company'
 							}
@@ -441,48 +441,48 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedWritingCredits = [
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: HENRIK_IBSEN_PERSON_UUID,
 							name: 'Henrik Ibsen'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: IBSEN_THEATRE_COMPANY_UUID,
 							name: 'Ibsen Theatre Company'
 						}
 					]
 				},
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'translated by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: GERRY_BAMMAN_PERSON_UUID,
 							name: 'Gerry Bamman'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							uuid: BAMMAN_THEATRE_COMPANY_UUID,
 							name: 'Bamman Theatre Company'
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: IRENE_B_BERMAN_PERSON_UUID,
 							name: 'Irene B Berman'
 						}
 					]
 				},
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'adapted by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 							name: 'Baltasar Kormákur'
 						}
@@ -504,23 +504,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
@@ -529,23 +529,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
@@ -565,55 +565,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -622,55 +622,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -679,34 +679,34 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'version by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness'
 								}
@@ -730,55 +730,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -787,55 +787,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: null,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -859,23 +859,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Ibsen Theatre Company'
 								}
@@ -884,23 +884,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Ibsen Theatre Company'
 								}
@@ -920,55 +920,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -977,55 +977,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1034,34 +1034,34 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'version by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness'
 								}
@@ -1085,55 +1085,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1142,55 +1142,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: null,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1213,55 +1213,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 		it('includes in its material data the writers of the material', () => {
 
 			const expectedMaterial = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 				name: 'Peer Gynt',
 				format: 'play',
 				year: 2007,
 				writingCredits: [
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: HENRIK_IBSEN_PERSON_UUID,
 								name: 'Henrik Ibsen'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: IBSEN_THEATRE_COMPANY_UUID,
 								name: 'Ibsen Theatre Company'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'translated by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: GERRY_BAMMAN_PERSON_UUID,
 								name: 'Gerry Bamman'
 							},
 							{
-								model: 'company',
+								model: 'COMPANY',
 								uuid: BAMMAN_THEATRE_COMPANY_UUID,
 								name: 'Bamman Theatre Company'
 							},
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: IRENE_B_BERMAN_PERSON_UUID,
 								name: 'Irene B Berman'
 							}
 						]
 					},
 					{
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: 'adapted by',
 						entities: [
 							{
-								model: 'person',
+								model: 'PERSON',
 								uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 								name: 'Baltasar Kormákur'
 							}
@@ -1284,55 +1284,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1342,34 +1342,34 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'version by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness'
 								}
@@ -1379,23 +1379,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
@@ -1423,55 +1423,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1480,55 +1480,55 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: IRENE_B_BERMAN_PERSON_UUID,
 									name: 'Irene B Berman'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'adapted by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
 									name: 'Baltasar Kormákur'
 								}
@@ -1537,34 +1537,34 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
 						},
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'version by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: FRANK_MCGUINNESS_PERSON_UUID,
 									name: 'Frank McGuinness'
 								}
@@ -1573,23 +1573,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
@@ -1598,23 +1598,23 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					]
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
 					writingCredits: [
 						{
-							model: 'writingCredit',
+							model: 'WRITING_CREDIT',
 							name: 'by',
 							entities: [
 								{
-									model: 'person',
+									model: 'PERSON',
 									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}

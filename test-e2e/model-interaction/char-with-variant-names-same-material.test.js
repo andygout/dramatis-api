@@ -232,20 +232,20 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: DAVID_RINTOUL_PERSON_UUID,
 							name: 'David Rintoul',
 							roleName: 'Ghost of King Hamlet',
@@ -253,7 +253,7 @@ describe('Character with variant names from productions of the same material', (
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: FIRST_PLAYER_CHARACTER_UUID,
 									name: 'Player King',
 									qualifier: null,
@@ -264,20 +264,20 @@ describe('Character with variant names from productions of the same material', (
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2009-05-29',
 					endDate: '2009-08-22',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PETER_EYRE_PERSON_UUID,
 							name: 'Peter Eyre',
 							roleName: 'King Hamlet',
@@ -285,7 +285,7 @@ describe('Character with variant names from productions of the same material', (
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: FIRST_PLAYER_CHARACTER_UUID,
 									name: 'First Player',
 									qualifier: null,
@@ -296,20 +296,20 @@ describe('Character with variant names from productions of the same material', (
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2008-12-03',
 					endDate: '2009-01-10',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PATRICK_STEWART_PERSON_UUID,
 							name: 'Patrick Stewart',
 							roleName: 'Ghost',
@@ -317,7 +317,7 @@ describe('Character with variant names from productions of the same material', (
 							isAlternate: null,
 							otherRoles: [
 								{
-									model: 'character',
+									model: 'CHARACTER',
 									uuid: CLAUDIUS_CHARACTER_UUID,
 									name: 'Claudius, King of Denmark',
 									qualifier: null,
@@ -343,12 +343,12 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: ANDREW_SCOTT_PERSON_UUID,
 					name: 'Andrew Scott',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -357,19 +357,19 @@ describe('Character with variant names from productions of the same material', (
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: DAVID_RINTOUL_PERSON_UUID,
 					name: 'David Rintoul',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost of King Hamlet',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'Player King',
 							qualifier: null,
@@ -393,12 +393,12 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: DAVID_TENNANT_PERSON_UUID,
 					name: 'David Tennant',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -407,19 +407,19 @@ describe('Character with variant names from productions of the same material', (
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: PATRICK_STEWART_PERSON_UUID,
 					name: 'Patrick Stewart',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost',
 							qualifier: null,
@@ -443,12 +443,12 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDE_LAW_PERSON_UUID,
 					name: 'Jude Law',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -457,19 +457,19 @@ describe('Character with variant names from productions of the same material', (
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: PETER_EYRE_PERSON_UUID,
 					name: 'Peter Eyre',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'King Hamlet',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'First Player',
 							qualifier: null,
@@ -493,27 +493,27 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_ALMEIDA_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2017-06-09',
 					endDate: '2017-09-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: ALMEIDA_THEATRE_VENUE_UUID,
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost of King Hamlet',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'Player King',
 							qualifier: null,
@@ -537,27 +537,27 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_NOVELLO_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2008-12-03',
 					endDate: '2009-01-10',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost',
 							qualifier: null,
@@ -581,27 +581,27 @@ describe('Character with variant names from productions of the same material', (
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2009-05-29',
 					endDate: '2009-08-22',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'King Hamlet',
 							qualifier: null,
 							isAlternate: null
 						},
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'First Player',
 							qualifier: null,

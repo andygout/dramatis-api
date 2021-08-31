@@ -74,9 +74,9 @@ const getCreateUpdateQuery = action => {
 		UNWIND (CASE $writingCredits WHEN [] THEN [{ entities: [] }] ELSE $writingCredits END) AS writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'person']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'PERSON']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.entities WHERE entity.model = 'person']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'PERSON']
 				END AS writingPersonParam
 
 				OPTIONAL MATCH (existingWritingPerson:Person { name: writingPersonParam.name })
@@ -103,9 +103,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT material, writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'company']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'COMPANY']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.entities WHERE entity.model = 'company']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'COMPANY']
 				END AS writingCompanyParam
 
 				OPTIONAL MATCH (existingWritingCompany:Company { name: writingCompanyParam.name })
@@ -135,9 +135,9 @@ const getCreateUpdateQuery = action => {
 			WITH DISTINCT material, writingCredit
 
 			UNWIND
-				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'material']) WHEN 0
+				CASE SIZE([entity IN writingCredit.entities WHERE entity.model = 'MATERIAL']) WHEN 0
 					THEN [null]
-					ELSE [entity IN writingCredit.entities WHERE entity.model = 'material']
+					ELSE [entity IN writingCredit.entities WHERE entity.model = 'MATERIAL']
 				END AS sourceMaterialParam
 
 				OPTIONAL MATCH (existingSourceMaterial:Material { name: sourceMaterialParam.name })
@@ -227,7 +227,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
-				ELSE entity { model: TOLOWER(HEAD(LABELS(entity))), .name, .differentiator }
+				ELSE entity { model: TOUPPER(HEAD(LABELS(entity))), .name, .differentiator }
 			END
 		) + [{}] AS entities
 
@@ -236,7 +236,7 @@ const getEditQuery = () => `
 			CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: writingCreditName,
 					creditType: writingCreditType,
 					entities: entities
@@ -264,7 +264,7 @@ const getEditQuery = () => `
 		) + [{}] AS characters
 
 	RETURN
-		'material' AS model,
+		'MATERIAL' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.differentiator AS differentiator,
@@ -278,7 +278,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null
-				ELSE { model: 'characterGroup', name: characterGroupName, characters: characters }
+				ELSE { model: 'CHARACTER_GROUP', name: characterGroupName, characters: characters }
 			END
 		) + [{ characters: [{}] }] AS characterGroups
 `;
@@ -339,7 +339,7 @@ const getShowQuery = () => `
 				CASE sourceMaterialWriter WHEN NULL
 					THEN null
 					ELSE sourceMaterialWriter {
-						model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))),
+						model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))),
 						uuid: CASE sourceMaterialWriter.uuid WHEN material.uuid
 							THEN null
 							ELSE sourceMaterialWriter.uuid
@@ -362,7 +362,7 @@ const getShowQuery = () => `
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
 					ELSE {
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: COALESCE(sourceMaterialWritingCreditName, 'by'),
 						entities: sourceMaterialWriters
 					}
@@ -381,7 +381,7 @@ const getShowQuery = () => `
 				CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 					THEN null
 					ELSE entity {
-						model: TOLOWER(HEAD(LABELS(entity))),
+						model: TOUPPER(HEAD(LABELS(entity))),
 						uuid: CASE entity.uuid WHEN material.uuid THEN null ELSE entity.uuid END,
 						.name,
 						.format,
@@ -389,7 +389,7 @@ const getShowQuery = () => `
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
-			) | CASE entity.model WHEN 'material'
+			) | CASE entity.model WHEN 'MATERIAL'
 				THEN entity
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
@@ -399,7 +399,7 @@ const getShowQuery = () => `
 				CASE SIZE(entities) WHEN 0
 					THEN null
 					ELSE {
-						model: 'writingCredit',
+						model: 'WRITING_CREDIT',
 						name: COALESCE(writingCreditName, 'by'),
 						entities: entities
 					}
@@ -412,7 +412,7 @@ const getShowQuery = () => `
 				CASE relatedMaterial WHEN NULL
 					THEN null
 					ELSE relatedMaterial {
-						model: 'material',
+						model: 'MATERIAL',
 						.uuid,
 						.name,
 						.format,
@@ -468,7 +468,7 @@ const getShowQuery = () => `
 			CASE character WHEN NULL
 				THEN null
 				ELSE character {
-					model: 'character',
+					model: 'CHARACTER',
 					.uuid,
 					name: COALESCE(characterRel.displayName, character.name),
 					qualifier: characterRel.qualifier
@@ -481,7 +481,7 @@ const getShowQuery = () => `
 			CASE SIZE(characters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'characterGroup',
+					model: 'CHARACTER_GROUP',
 					name: characterGroupName,
 					position: characterGroupPosition,
 					characters: characters
@@ -532,7 +532,7 @@ const getShowQuery = () => `
 				CASE production WHEN NULL
 					THEN null
 					ELSE production {
-						model: 'production',
+						model: 'PRODUCTION',
 						.uuid,
 						.name,
 						.startDate,
@@ -541,12 +541,12 @@ const getShowQuery = () => `
 						venue: CASE venue WHEN NULL
 							THEN null
 							ELSE venue {
-								model: 'venue',
+								model: 'VENUE',
 								.uuid,
 								.name,
 								surVenue: CASE surVenue WHEN NULL
 									THEN null
-									ELSE surVenue { model: 'venue', .uuid, .name }
+									ELSE surVenue { model: 'VENUE', .uuid, .name }
 								END
 							}
 						END
@@ -555,7 +555,7 @@ const getShowQuery = () => `
 			) AS productions
 
 	RETURN
-		'material' AS model,
+		'MATERIAL' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.differentiator AS differentiator,
@@ -592,7 +592,7 @@ const getListQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -601,7 +601,7 @@ const getListQuery = () => `
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
 					entities: sourceMaterialWriters
 				}
@@ -614,7 +614,7 @@ const getListQuery = () => `
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
-					model: TOLOWER(HEAD(LABELS(entity))),
+					model: TOUPPER(HEAD(LABELS(entity))),
 					.uuid,
 					.name,
 					.format,
@@ -622,7 +622,7 @@ const getListQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'material'
+		) | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -631,7 +631,7 @@ const getListQuery = () => `
 		ORDER BY material.year DESC, material.name
 
 	RETURN
-		'material' AS model,
+		'MATERIAL' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.format AS format,
@@ -640,7 +640,7 @@ const getListQuery = () => `
 			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(writingCreditName, 'by'),
 					entities: entities
 				}

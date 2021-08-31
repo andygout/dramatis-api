@@ -109,33 +109,33 @@ describe('WritingCredit model', () => {
 							name: 'David Eldridge'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: 'Told by an Idiot'
 						},
 						{
-							model: 'material',
+							model: 'MATERIAL',
 							name: 'A Midsummer Night\'s Dream'
 						},
 						{
 							name: ''
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ''
 						},
 						{
-							model: 'material',
+							model: 'MATERIAL',
 							name: ''
 						},
 						{
 							name: ' '
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ' '
 						},
 						{
-							model: 'material',
+							model: 'MATERIAL',
 							name: ' '
 						}
 					]
@@ -169,11 +169,11 @@ describe('WritingCredit model', () => {
 						name: 'David Eldridge'
 					},
 					{
-						model: 'company',
+						model: 'COMPANY',
 						name: 'Told by an Idiot'
 					},
 					{
-						model: 'material',
+						model: 'MATERIAL',
 						name: 'A Midsummer Night\'s Dream'
 					}
 				]

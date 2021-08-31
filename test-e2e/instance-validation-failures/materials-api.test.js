@@ -41,7 +41,7 @@ describe('Instance validation failures: Materials API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'material',
+					model: 'MATERIAL',
 					name: '',
 					differentiator: '',
 					format: '',
@@ -53,7 +53,7 @@ describe('Instance validation failures: Materials API', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -83,7 +83,7 @@ describe('Instance validation failures: Materials API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'material',
+					model: 'MATERIAL',
 					name: 'The Wild Duck',
 					differentiator: '',
 					format: '',
@@ -98,7 +98,7 @@ describe('Instance validation failures: Materials API', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -153,7 +153,7 @@ describe('Instance validation failures: Materials API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_MATERIAL_UUID,
 					name: '',
 					differentiator: '',
@@ -166,7 +166,7 @@ describe('Instance validation failures: Materials API', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -201,7 +201,7 @@ describe('Instance validation failures: Materials API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_MATERIAL_UUID,
 					name: 'The Wild Duck',
 					differentiator: '',
@@ -217,7 +217,7 @@ describe('Instance validation failures: Materials API', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -282,7 +282,7 @@ describe('Instance validation failures: Materials API', () => {
 					.delete(`/materials/${GHOSTS_MATERIAL_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: GHOSTS_MATERIAL_UUID,
 					name: 'Ghosts',
 					differentiator: null,
@@ -295,7 +295,7 @@ describe('Instance validation failures: Materials API', () => {
 						]
 					},
 					originalVersionMaterial: {
-						model: 'material',
+						model: 'MATERIAL',
 						name: '',
 						differentiator: '',
 						errors: {}

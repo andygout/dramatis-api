@@ -10,6 +10,7 @@ import {
 	sharedQueries
 } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
+import { MODELS } from '../utils/constants';
 
 export default class Entity extends Base {
 
@@ -21,7 +22,8 @@ export default class Entity extends Base {
 
 		this.uuid = uuid;
 
-		if (!['production', 'awardCeremony'].includes(this.model)) this.differentiator = differentiator?.trim() || '';
+		if (![MODELS.PRODUCTION, MODELS.AWARD_CEREMONY].includes(this.model))
+			this.differentiator = differentiator?.trim() || '';
 
 	}
 
@@ -63,7 +65,7 @@ export default class Entity extends Base {
 
 	async runDatabaseValidations () {
 
-		if (this.model === 'production') return;
+		if (this.model === MODELS.PRODUCTION) return;
 
 		await this.validateUniquenessInDatabase();
 

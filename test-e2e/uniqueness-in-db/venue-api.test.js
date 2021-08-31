@@ -46,14 +46,14 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -78,7 +78,7 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				name: 'New Theatre',
 				differentiator: '',
 				hasErrors: true,
@@ -111,14 +111,14 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_2_UUID,
 				name: 'New Theatre',
 				differentiator: '1',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -144,7 +144,7 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '1',
@@ -178,14 +178,14 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_1_UUID,
 				name: 'New Theatre',
 				differentiator: '2',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -210,14 +210,14 @@ describe('Uniqueness in database: Venues API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'venue',
+				model: 'VENUE',
 				uuid: VENUE_2_UUID,
 				name: 'New Theatre',
 				differentiator: '',
 				errors: {},
 				subVenues: [
 					{
-						model: 'venue',
+						model: 'VENUE',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -238,14 +238,14 @@ describe('Uniqueness in database: Venues API', () => {
 		const SHEFFIELD_THEATRES_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedSubVenueStudioTheatre1 = {
-			model: 'venue',
+			model: 'VENUE',
 			name: 'Studio Theatre',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedSubVenueStudioTheatre2 = {
-			model: 'venue',
+			model: 'VENUE',
 			name: 'Studio Theatre',
 			differentiator: '1',
 			errors: {}

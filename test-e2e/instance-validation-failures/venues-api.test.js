@@ -41,7 +41,7 @@ describe('Instance validation failures: Venues API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'venue',
+					model: 'VENUE',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -74,7 +74,7 @@ describe('Instance validation failures: Venues API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'venue',
+					model: 'VENUE',
 					name: 'Donmar Warehouse',
 					differentiator: '',
 					hasErrors: true,
@@ -135,7 +135,7 @@ describe('Instance validation failures: Venues API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: '',
 					differentiator: '',
@@ -174,7 +174,7 @@ describe('Instance validation failures: Venues API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Donmar Warehouse',
 					differentiator: '',
@@ -246,7 +246,7 @@ describe('Instance validation failures: Venues API', () => {
 					.delete(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'venue',
+					model: 'VENUE',
 					uuid: ALMEIDA_THEATRE_VENUE_UUID,
 					name: 'Almeida Theatre',
 					differentiator: null,

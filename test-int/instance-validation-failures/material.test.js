@@ -593,7 +593,7 @@ describe('Material instance', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: ABOVE_MAX_LENGTH_STRING
 								}
 							]
@@ -657,7 +657,7 @@ describe('Material instance', () => {
 						{
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Ibsen Theatre Company',
 									differentiator: ABOVE_MAX_LENGTH_STRING
 								}
@@ -722,7 +722,7 @@ describe('Material instance', () => {
 						{
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: ABOVE_MAX_LENGTH_STRING
 								}
 							]
@@ -786,7 +786,7 @@ describe('Material instance', () => {
 						{
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'Rosmersholm',
 									differentiator: ABOVE_MAX_LENGTH_STRING
 								}
@@ -860,7 +860,7 @@ describe('Material instance', () => {
 									name: 'Henrik Ibsen'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Foo'
 								}
 							]
@@ -937,8 +937,8 @@ describe('Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.writingCredits[0].entities[1].model).to.equal('person');
-				expect(result.writingCredits[0].entities[3].model).to.equal('company');
+				expect(result.writingCredits[0].entities[1].model).to.equal('PERSON');
+				expect(result.writingCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
 
@@ -954,7 +954,7 @@ describe('Material instance', () => {
 						{
 							entities: [
 								{
-									model: 'material',
+									model: 'MATERIAL',
 									name: 'Rosmersholm'
 								}
 							]

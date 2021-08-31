@@ -1,15 +1,16 @@
 import directly from 'directly';
 
 import { neo4jQuery } from './query';
+import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants';
 
-const MODELS = new Set([
-	'Award',
-	'AwardCeremony',
-	'Character',
-	'Company',
-	'Material',
-	'Person',
-	'Venue'
+const INDEXABLE_MODELS = new Set([
+	MODEL_TO_NODE_LABEL_MAP.AWARD,
+	MODEL_TO_NODE_LABEL_MAP.AWARD_CEREMONY,
+	MODEL_TO_NODE_LABEL_MAP.CHARACTER,
+	MODEL_TO_NODE_LABEL_MAP.COMPANY,
+	MODEL_TO_NODE_LABEL_MAP.MATERIAL,
+	MODEL_TO_NODE_LABEL_MAP.PERSON,
+	MODEL_TO_NODE_LABEL_MAP.VENUE
 ]);
 
 const createIndex = async model => {
@@ -49,7 +50,7 @@ export default async () => {
 				.filter(index => index.properties.includes('name'))
 				.map(index => index.labelsOrTypes[0]);
 
-		const modelsToIndex = [...MODELS].filter(model => !modelsWithIndex.includes(model));
+		const modelsToIndex = [...INDEXABLE_MODELS].filter(model => !modelsWithIndex.includes(model));
 
 		console.log('Neo4j database: Creating indexes…'); // eslint-disable-line no-console
 

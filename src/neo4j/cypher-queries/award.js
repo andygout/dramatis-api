@@ -7,14 +7,14 @@ const getShowQuery = () => `
 		ORDER BY awardCeremony.name DESC
 
 	RETURN
-		'award' AS model,
+		'AWARD' AS model,
 		award.uuid AS uuid,
 		award.name AS name,
 		award.differentiator AS differentiator,
 		COLLECT(
 			CASE awardCeremony WHEN NULL
 				THEN null
-				ELSE awardCeremony { model: 'awardCeremony', .uuid, .name }
+				ELSE awardCeremony { model: 'AWARD_CEREMONY', .uuid, .name }
 			END
 		) AS awardCeremonies
 `;

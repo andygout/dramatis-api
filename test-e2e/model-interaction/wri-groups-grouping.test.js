@@ -75,27 +75,27 @@ describe('Nameless writer groups grouping', () => {
 
 			const expectedWritingCredits = [
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PERSON_1_UUID,
 							name: 'Person #1'
 						},
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PERSON_3_UUID,
 							name: 'Person #3'
 						}
 					]
 				},
 				{
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: 'version by',
 					entities: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: PERSON_2_UUID,
 							name: 'Person #2'
 						}

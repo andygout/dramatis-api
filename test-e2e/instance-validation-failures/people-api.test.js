@@ -41,7 +41,7 @@ describe('Instance validation failures: People API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'person',
+					model: 'PERSON',
 					name: '',
 					differentiator: '',
 					hasErrors: true,
@@ -73,7 +73,7 @@ describe('Instance validation failures: People API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'person',
+					model: 'PERSON',
 					name: 'Maggie Smith',
 					differentiator: '',
 					hasErrors: true,
@@ -133,7 +133,7 @@ describe('Instance validation failures: People API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: '',
 					differentiator: '',
@@ -171,7 +171,7 @@ describe('Instance validation failures: People API', () => {
 					});
 
 				const expectedResponseBody = {
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Maggie Smith',
 					differentiator: '',
@@ -242,7 +242,7 @@ describe('Instance validation failures: People API', () => {
 					.delete(`/people/${JUDI_DENCH_PERSON_UUID}`);
 
 				const expectedResponseBody = {
-					model: 'person',
+					model: 'PERSON',
 					uuid: JUDI_DENCH_PERSON_UUID,
 					name: 'Judi Dench',
 					differentiator: null,

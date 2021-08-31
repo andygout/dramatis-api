@@ -29,7 +29,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
-				ELSE sourceMaterialWriter { model: TOLOWER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
 		) AS sourceMaterialWriters
 
@@ -38,7 +38,7 @@ const getShowQuery = () => `
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
 					entities: sourceMaterialWriters
 				}
@@ -51,7 +51,7 @@ const getShowQuery = () => `
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
-					model: TOLOWER(HEAD(LABELS(entity))),
+					model: TOUPPER(HEAD(LABELS(entity))),
 					.uuid,
 					.name,
 					.format,
@@ -59,7 +59,7 @@ const getShowQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'material'
+		) | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -69,7 +69,7 @@ const getShowQuery = () => `
 			CASE SIZE(entities) WHEN 0
 				THEN null
 				ELSE {
-					model: 'writingCredit',
+					model: 'WRITING_CREDIT',
 					name: COALESCE(writingCreditName, 'by'),
 					entities: entities
 				}
@@ -91,7 +91,7 @@ const getShowQuery = () => `
 			CASE material WHEN NULL
 				THEN null
 				ELSE material {
-					model: 'material',
+					model: 'MATERIAL',
 					.uuid,
 					.name,
 					.format,
@@ -188,7 +188,7 @@ const getShowQuery = () => `
 			CASE otherRole WHEN NULL
 				THEN null
 				ELSE {
-					model: 'character',
+					model: 'CHARACTER',
 					uuid: otherCharacter.uuid,
 					name: otherRole.roleName,
 					qualifier: otherRole.qualifier,
@@ -200,7 +200,7 @@ const getShowQuery = () => `
 
 	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, venue, surVenue,
 		COLLECT(person {
-			model: 'person',
+			model: 'PERSON',
 			.uuid,
 			.name,
 			roleName: role.roleName,
@@ -211,7 +211,7 @@ const getShowQuery = () => `
 		ORDER BY production.startDate DESC, production.name, venue.name
 
 	RETURN
-		'character' AS model,
+		'CHARACTER' AS model,
 		character.uuid AS uuid,
 		character.name AS name,
 		character.differentiator AS differentiator,
@@ -222,7 +222,7 @@ const getShowQuery = () => `
 			CASE production WHEN NULL
 				THEN null
 				ELSE production {
-					model: 'production',
+					model: 'PRODUCTION',
 					.uuid,
 					.name,
 					.startDate,
@@ -230,12 +230,12 @@ const getShowQuery = () => `
 					venue: CASE venue WHEN NULL
 						THEN null
 						ELSE venue {
-							model: 'venue',
+							model: 'VENUE',
 							.uuid,
 							.name,
 							surVenue: CASE surVenue WHEN NULL
 								THEN null
-								ELSE surVenue { model: 'venue', .uuid, .name }
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,

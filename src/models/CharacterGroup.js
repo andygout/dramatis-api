@@ -1,6 +1,7 @@
 import { getDuplicateCharacterIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { CharacterDepiction } from '.';
+import { MODELS } from '../utils/constants';
 
 export default class CharacterGroup extends Base {
 
@@ -18,7 +19,7 @@ export default class CharacterGroup extends Base {
 
 	get model () {
 
-		return 'characterGroup';
+		return MODELS.CHARACTER_GROUP;
 
 	}
 

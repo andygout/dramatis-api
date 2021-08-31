@@ -33,19 +33,19 @@ describe('Convert Neo4j Records To Objects module', () => {
 						'writingCredits'
 					],
 					_fields: [
-						'material',
+						'MATERIAL',
 						'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						'3 Winters',
 						null,
 						[
 							{
 								name: 'by',
-								model: 'writingCredit',
+								model: 'WRITING_CREDIT',
 								entities: [
 									{
-										name: 'Tena Štivičić',
-										model: 'person',
-										uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+										model: 'PERSON',
+										uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+										name: 'Tena Štivičić'
 									}
 								]
 							}
@@ -57,19 +57,19 @@ describe('Convert Neo4j Records To Objects module', () => {
 
 		const expectedResult = [
 			{
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: '3 Winters',
 				differentiator: null,
 				writingCredits: [
 					{
+						model: 'WRITING_CREDIT',
 						name: 'by',
-						model: 'writingCredit',
 						entities: [
 							{
-								name: 'Tena Štivičić',
-								model: 'person',
-								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+								model: 'PERSON',
+								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+								name: 'Tena Štivičić'
 							}
 						]
 					}

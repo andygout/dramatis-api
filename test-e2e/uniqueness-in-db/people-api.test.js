@@ -43,7 +43,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '',
@@ -67,7 +67,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			name: 'Paul Higgins',
 			differentiator: '',
 			hasErrors: true,
@@ -99,7 +99,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			uuid: PERSON_2_UUID,
 			name: 'Paul Higgins',
 			differentiator: '1',
@@ -124,7 +124,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '1',
@@ -157,7 +157,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			uuid: PERSON_1_UUID,
 			name: 'Paul Higgins',
 			differentiator: '2',
@@ -181,7 +181,7 @@ describe('Uniqueness in database: People API', () => {
 			});
 
 		const expectedResponseBody = {
-			model: 'person',
+			model: 'PERSON',
 			uuid: PERSON_2_UUID,
 			name: 'Paul Higgins',
 			differentiator: '',

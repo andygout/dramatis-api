@@ -146,7 +146,7 @@ describe('Characters controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Character, 'character'
+				stubs.response, stubs.next, stubs.models.Character, 'CHARACTER'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

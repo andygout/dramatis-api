@@ -111,39 +111,39 @@ describe('Material with multiple productions', () => {
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID,
 					name: 'Twelfth Night',
 					startDate: '2012-09-22',
 					endDate: '2012-10-14',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID,
 					name: 'Twelfth Night',
 					startDate: '2011-01-11',
 					endDate: '2011-03-02',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					}
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID,
 					name: 'Twelfth Night, or What You Will',
 					startDate: '2002-10-11',
 					endDate: '2002-11-30',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 						name: 'Donmar Warehouse',
 						surVenue: null
@@ -164,7 +164,7 @@ describe('Material with multiple productions', () => {
 		it('attributes material as Twelfth Night', () => {
 
 			const expectedMaterial = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
@@ -185,7 +185,7 @@ describe('Material with multiple productions', () => {
 		it('attributes material as Twelfth Night', () => {
 
 			const expectedMaterial = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',
@@ -206,7 +206,7 @@ describe('Material with multiple productions', () => {
 		it('attributes material as Twelfth Night', () => {
 
 			const expectedMaterial = {
-				model: 'material',
+				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
 				name: 'Twelfth Night',
 				format: 'play',

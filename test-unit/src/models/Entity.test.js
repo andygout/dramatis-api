@@ -23,20 +23,20 @@ describe('Entity model', () => {
 			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns('prepareAsParams response'),
 			hasErrors: sandbox.stub(hasErrorsModule, 'hasErrors').returns(false),
 			getCreateQueries: {
-				production:
-					sandbox.stub(cypherQueries.getCreateQueries, 'production')
+				PRODUCTION:
+					sandbox.stub(cypherQueries.getCreateQueries, 'PRODUCTION')
 			},
 			getEditQueries: {
-				production:
-					sandbox.stub(cypherQueries.getEditQueries, 'production')
+				PRODUCTION:
+					sandbox.stub(cypherQueries.getEditQueries, 'PRODUCTION')
 						.returns('getEditProductionQuery response')
 			},
 			getUpdateQueries: {
-				production: sandbox.stub(cypherQueries.getUpdateQueries, 'production')
+				PRODUCTION: sandbox.stub(cypherQueries.getUpdateQueries, 'PRODUCTION')
 			},
 			getShowQueries: {
-				venue:
-					sandbox.stub(cypherQueries.getShowQueries, 'venue')
+				VENUE:
+					sandbox.stub(cypherQueries.getShowQueries, 'VENUE')
 						.returns('getShowVenueQuery response')
 			},
 			sharedQueries: {
@@ -520,7 +520,7 @@ describe('Entity model', () => {
 					});
 				stubs.hasErrors.returns(true);
 				const getCreateUpdateQueryStub = stub();
-				instance.model = 'venue';
+				instance.model = 'VENUE';
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
@@ -554,7 +554,7 @@ describe('Entity model', () => {
 				expect(instance.constructor.notCalled).to.be.true;
 				expect(result).to.deep.equal(instance);
 				expect(result).to.deep.equal({
-					model: 'venue',
+					model: 'VENUE',
 					uuid: undefined,
 					name: 'Foobar',
 					differentiator: '',
@@ -574,7 +574,7 @@ describe('Entity model', () => {
 
 			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
 
-				instance.model = 'production';
+				instance.model = 'PRODUCTION';
 				spy(instance, 'createUpdate');
 				await instance.create();
 				expect(instance.createUpdate.calledOnce).to.be.true;
@@ -605,7 +605,7 @@ describe('Entity model', () => {
 
 			it('gets edit data using model-specific query', async () => {
 
-				instance.model = 'production';
+				instance.model = 'PRODUCTION';
 				spy(instance, 'constructor');
 				const result = await instance.edit();
 				expect(stubs.getEditQueries[instance.model].calledOnce).to.be.true;
@@ -631,7 +631,7 @@ describe('Entity model', () => {
 				const result = await instance.edit();
 				expect(stubs.sharedQueries.getEditQuery.calledOnce).to.be.true;
 				expect(stubs.sharedQueries.getEditQuery.calledWithExactly(instance.model)).to.be.true;
-				expect(stubs.getEditQueries.production.notCalled).to.be.true;
+				expect(stubs.getEditQueries.PRODUCTION.notCalled).to.be.true;
 				expect(stubs.neo4jQuery.calledOnce).to.be.true;
 				expect(stubs.neo4jQuery.calledWithExactly(
 					{ query: 'getEditQuery response', params: { uuid: instance.uuid } }
@@ -654,7 +654,7 @@ describe('Entity model', () => {
 
 				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
-					instance.model = 'production';
+					instance.model = 'PRODUCTION';
 					spy(instance, 'confirmExistenceInDatabase');
 					spy(instance, 'createUpdate');
 					await instance.update();
@@ -696,7 +696,7 @@ describe('Entity model', () => {
 				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
 
 					stubs.neo4jQuery.resolves({
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: true,
@@ -741,7 +741,7 @@ describe('Entity model', () => {
 
 					const instance = new Production();
 					stubs.neo4jQuery.resolves({
-						model: 'production',
+						model: 'PRODUCTION',
 						name: 'Hamlet',
 						differentiator: null,
 						isDeleted: true,
@@ -805,7 +805,7 @@ describe('Entity model', () => {
 
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQuery.resolves({
-						model: 'venue',
+						model: 'VENUE',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: false,
@@ -855,7 +855,7 @@ describe('Entity model', () => {
 					const instance = new Production({ name: 'Foobar' });
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQuery.resolves({
-						model: 'production',
+						model: 'PRODUCTION',
 						name: 'Hamlet',
 						differentiator: null,
 						isDeleted: false,
@@ -923,10 +923,10 @@ describe('Entity model', () => {
 
 		it('gets show data', async () => {
 
-			instance.model = 'venue';
+			instance.model = 'VENUE';
 			const result = await instance.show();
-			expect(stubs.getShowQueries.venue.calledOnce).to.be.true;
-			expect(stubs.getShowQueries.venue.calledWithExactly()).to.be.true;
+			expect(stubs.getShowQueries.VENUE.calledOnce).to.be.true;
+			expect(stubs.getShowQueries.VENUE.calledWithExactly()).to.be.true;
 			expect(stubs.neo4jQuery.calledOnce).to.be.true;
 			expect(stubs.neo4jQuery.calledWithExactly(
 				{ query: 'getShowVenueQuery response', params: { uuid: instance.uuid } }

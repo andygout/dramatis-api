@@ -21,11 +21,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get('/awards/ceremonies/new');
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				name: '',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -68,12 +68,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2020',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -92,12 +92,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2020',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -120,12 +120,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -144,7 +144,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
 				award: null
@@ -163,11 +163,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.delete(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				name: '2019',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -218,12 +218,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: 'Laurence Olivier Awards',
 					differentiator: '1',
 					errors: {}
@@ -242,11 +242,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 					name: 'Laurence Olivier Awards'
 				}
@@ -263,12 +263,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: 'Laurence Olivier Awards',
 					differentiator: '1',
 					errors: {}
@@ -295,12 +295,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2020',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: 'Evening Standard Theatre Awards',
 					differentiator: '2',
 					errors: {}
@@ -319,11 +319,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2020',
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Evening Standard Theatre Awards'
 				}
@@ -345,12 +345,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2020',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -371,11 +371,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				.delete(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'awardCeremony',
+				model: 'AWARD_CEREMONY',
 				name: '2020',
 				errors: {},
 				award: {
-					model: 'award',
+					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -478,61 +478,61 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 					name: '2020',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 						name: 'Evening Standard Theatre Awards'
 					}
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 					name: '2020',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 						name: 'Laurence Olivier Awards'
 					}
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2019',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 						name: 'Evening Standard Theatre Awards'
 					}
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2019',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 						name: 'Laurence Olivier Awards'
 					}
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
 					name: '2018',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 						name: 'Evening Standard Theatre Awards'
 					}
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
 					name: '2018',
 					award: {
-						model: 'award',
+						model: 'AWARD',
 						uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 						name: 'Laurence Olivier Awards'
 					}

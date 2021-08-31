@@ -146,7 +146,7 @@ describe('Productions controller', () => {
 			const result = await callFunction('listRoute');
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Production, 'production'
+				stubs.response, stubs.next, stubs.models.Production, 'PRODUCTION'
 			)).to.be.true;
 			expect(result).to.equal('callStaticListMethod response');
 

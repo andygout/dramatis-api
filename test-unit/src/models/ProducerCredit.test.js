@@ -69,21 +69,21 @@ describe('ProducerCredit model', () => {
 							name: 'Jason Haigh-Ellery'
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: 'Stage Entertainment UK'
 						},
 						{
 							name: ''
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ''
 						},
 						{
 							name: ' '
 						},
 						{
-							model: 'company',
+							model: 'COMPANY',
 							name: ' '
 						}
 					]
@@ -114,7 +114,7 @@ describe('ProducerCredit model', () => {
 						name: 'Jason Haigh-Ellery'
 					},
 					{
-						model: 'company',
+						model: 'COMPANY',
 						name: 'Fiery Angel'
 					}
 				]

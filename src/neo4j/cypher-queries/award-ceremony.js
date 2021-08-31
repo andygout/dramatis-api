@@ -67,7 +67,7 @@ const getEditQuery = () => `
 	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
 
 	RETURN
-		'awardCeremony' AS model,
+		'AWARD_CEREMONY' AS model,
 		awardCeremony.uuid AS uuid,
 		awardCeremony.name AS name,
 		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
@@ -81,10 +81,10 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
 
 	RETURN
-		'awardCeremony' AS model,
+		'AWARD_CEREMONY' AS model,
 		awardCeremony.uuid AS uuid,
 		awardCeremony.name AS name,
-		CASE award WHEN NULL THEN null ELSE award { model: 'award', .uuid, .name } END AS award
+		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award
 `;
 
 const getListQuery = () => `
@@ -93,10 +93,10 @@ const getListQuery = () => `
 	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
 
 	RETURN
-		'awardCeremony' AS model,
+		'AWARD_CEREMONY' AS model,
 		awardCeremony.uuid AS uuid,
 		awardCeremony.name AS name,
-		CASE award WHEN NULL THEN null ELSE award { model: 'award', .uuid, .name } END AS award
+		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award
 
 	ORDER BY awardCeremony.name DESC, award.name
 

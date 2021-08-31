@@ -3,6 +3,7 @@
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { Person } from '../models';
+import { MODELS } from '../utils/constants';
 
 const newRoute = (request, response, next) =>
 	sendJsonResponse(response, new Person());
@@ -23,7 +24,7 @@ const showRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Person(request.params), 'show');
 
 const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, Person, 'person');
+	callStaticListMethod(response, next, Person, MODELS.PERSON);
 
 export {
 	newRoute,

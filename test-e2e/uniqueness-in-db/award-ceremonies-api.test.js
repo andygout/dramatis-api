@@ -19,14 +19,14 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		const TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		const expectedAwardCriticsCircleTheatreAwards1 = {
-			model: 'award',
+			model: 'AWARD',
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '',
 			errors: {}
 		};
 
 		const expectedAwardCriticsCircleTheatreAwards2 = {
-			model: 'award',
+			model: 'AWARD',
 			name: 'Critics\' Circle Theatre Awards',
 			differentiator: '1',
 			errors: {}

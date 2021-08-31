@@ -4,6 +4,7 @@ import { material as materialSeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { Material } from '../models';
+import { MODELS } from '../utils/constants';
 
 const newRoute = (request, response, next) =>
 	sendJsonResponse(response, new Material(materialSeedProps));
@@ -24,7 +25,7 @@ const showRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Material(request.params), 'show');
 
 const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, Material, 'material');
+	callStaticListMethod(response, next, Material, MODELS.MATERIAL);
 
 export {
 	newRoute,

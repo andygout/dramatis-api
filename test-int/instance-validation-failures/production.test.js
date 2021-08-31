@@ -728,7 +728,7 @@ describe('Production instance', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: ABOVE_MAX_LENGTH_STRING
 								}
 							]
@@ -801,7 +801,7 @@ describe('Production instance', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
 									differentiator: ABOVE_MAX_LENGTH_STRING
 								}
@@ -875,7 +875,7 @@ describe('Production instance', () => {
 							name: 'Producers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
 									creditedMembers: [
 										{
@@ -890,11 +890,11 @@ describe('Production instance', () => {
 									name: 'Duncan C Weldon'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Foo'
 								}
 							]
@@ -1008,8 +1008,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
-				expect(result.crewCredits[0].entities[3].model).to.equal('company');
+				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
 
@@ -1026,7 +1026,7 @@ describe('Production instance', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: '',
 									creditedMembers: [
 										{
@@ -1112,7 +1112,7 @@ describe('Production instance', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
 									creditedMembers: [
 										{
@@ -1197,7 +1197,7 @@ describe('Production instance', () => {
 							name: 'produced by',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
 									creditedMembers: [
 										{
@@ -2443,7 +2443,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: ABOVE_MAX_LENGTH_STRING
 								}
 							]
@@ -2516,7 +2516,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: ABOVE_MAX_LENGTH_STRING
 								}
@@ -2590,7 +2590,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -2605,11 +2605,11 @@ describe('Production instance', () => {
 									name: 'Andrew Bruce'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Foo'
 								}
 							]
@@ -2723,8 +2723,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.creativeCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
-				expect(result.creativeCredits[0].entities[3].model).to.equal('company');
+				expect(result.creativeCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.creativeCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
 
@@ -2741,7 +2741,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: '',
 									creditedMembers: [
 										{
@@ -2827,7 +2827,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -2912,7 +2912,7 @@ describe('Production instance', () => {
 							name: 'Sound Design',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Autograph',
 									creditedMembers: [
 										{
@@ -3342,7 +3342,7 @@ describe('Production instance', () => {
 							name: 'Stage Manager',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: ABOVE_MAX_LENGTH_STRING
 								}
 							]
@@ -3415,7 +3415,7 @@ describe('Production instance', () => {
 							name: 'Assistant Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: ABOVE_MAX_LENGTH_STRING
 								}
@@ -3489,7 +3489,7 @@ describe('Production instance', () => {
 							name: 'Assistant Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
 									creditedMembers: [
 										{
@@ -3504,11 +3504,11 @@ describe('Production instance', () => {
 									name: 'Sara Gunter'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd'
 								},
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Foo'
 								}
 							]
@@ -3622,8 +3622,8 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('person');
-				expect(result.crewCredits[0].entities[3].model).to.equal('company');
+				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
 
@@ -3640,7 +3640,7 @@ describe('Production instance', () => {
 							name: 'Assistant Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: '',
 									creditedMembers: [
 										{
@@ -3726,7 +3726,7 @@ describe('Production instance', () => {
 							name: 'Assistant Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
 									creditedMembers: [
 										{
@@ -3811,7 +3811,7 @@ describe('Production instance', () => {
 							name: 'Assistant Stage Managers',
 							entities: [
 								{
-									model: 'company',
+									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
 									creditedMembers: [
 										{

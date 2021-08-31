@@ -21,7 +21,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				.get('/awards/new');
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				name: '',
 				differentiator: '',
 				errors: {}
@@ -63,7 +63,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				uuid: AWARD_UUID,
 				name: 'Laurence Olivier Awards',
 				differentiator: '',
@@ -82,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				.get(`/awards/${AWARD_UUID}/edit`);
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				uuid: AWARD_UUID,
 				name: 'Laurence Olivier Awards',
 				differentiator: '',
@@ -105,7 +105,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				});
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				uuid: AWARD_UUID,
 				name: 'Evening Standard Theatre Awards',
 				differentiator: '',
@@ -124,7 +124,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				.get(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				uuid: AWARD_UUID,
 				name: 'Evening Standard Theatre Awards',
 				differentiator: null,
@@ -144,7 +144,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				.delete(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
-				model: 'award',
+				model: 'AWARD',
 				name: 'Evening Standard Theatre Awards',
 				differentiator: '',
 				errors: {}
@@ -205,17 +205,17 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			const expectedResponseBody = [
 				{
-					model: 'award',
+					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Critics\' Circle Theatre Awards'
 				},
 				{
-					model: 'award',
+					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Evening Standard Theatre Awards'
 				},
 				{
-					model: 'award',
+					model: 'AWARD',
 					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 					name: 'Laurence Olivier Awards'
 				}

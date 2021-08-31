@@ -313,7 +313,7 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedMaterials = [
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: FORTINBRAS_MATERIAL_UUID,
 					name: 'Fortinbras',
 					format: 'play',
@@ -322,7 +322,7 @@ describe('Character with variant names from productions of different materials',
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: HAMLETMACHINE_MATERIAL_UUID,
 					name: 'Hamletmachine',
 					format: 'play',
@@ -331,7 +331,7 @@ describe('Character with variant names from productions of different materials',
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_MATERIAL_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					format: 'play',
@@ -340,7 +340,7 @@ describe('Character with variant names from productions of different materials',
 					depictions: []
 				},
 				{
-					model: 'material',
+					model: 'MATERIAL',
 					uuid: HAMLET_MATERIAL_UUID,
 					name: 'Hamlet',
 					format: 'play',
@@ -374,20 +374,20 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
 					name: 'Hamletmachine',
 					startDate: '2017-07-07',
 					endDate: '2017-07-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: TEATRO_SAN_NICOLÒ_VENUE_UUID,
 						name: 'Teatro San Nicolò',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: GABRIELE_CICIRELLO_PERSON_UUID,
 							name: 'Gabriele Cicirello',
 							roleName: 'Hamlet, Prince of Denmark',
@@ -398,20 +398,20 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					startDate: '2011-06-16',
 					endDate: '2011-08-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
 						name: 'Theatre Royal Haymarket',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: JACK_HAWKINS_PERSON_UUID,
 							name: 'Jack Hawkins',
 							roleName: 'Prince Hamlet',
@@ -422,20 +422,20 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: RORY_KINNEAR_PERSON_UUID,
 							name: 'Rory Kinnear',
 							roleName: 'Hamlet, Prince of Denmark',
@@ -446,20 +446,20 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
 					name: 'Fortinbras',
 					startDate: '1991-06-18',
 					endDate: '1991-07-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: LA_JOLLA_PLAYHOUSE_VENUE_UUID,
 						name: 'La Jolla Playhouse',
 						surVenue: null
 					},
 					performers: [
 						{
-							model: 'person',
+							model: 'PERSON',
 							uuid: DON_REILLY_PERSON_UUID,
 							name: 'Don Reilly',
 							roleName: 'Spirit of Hamlet',
@@ -485,12 +485,12 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: RORY_KINNEAR_PERSON_UUID,
 					name: 'Rory Kinnear',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -499,12 +499,12 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: PATRICK_MALAHIDE_PERSON_UUID,
 					name: 'Patrick Malahide',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
@@ -528,12 +528,12 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JACK_HAWKINS_PERSON_UUID,
 					name: 'Jack Hawkins',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Prince Hamlet',
 							qualifier: null,
@@ -542,12 +542,12 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JAMES_SIMMONS_PERSON_UUID,
 					name: 'James Simmons',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'King Claudius',
 							qualifier: null,
@@ -571,12 +571,12 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: DON_REILLY_PERSON_UUID,
 					name: 'Don Reilly',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Spirit of Hamlet',
 							qualifier: null,
@@ -585,12 +585,12 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: JONATHAN_FREEMAN_PERSON_UUID,
 					name: 'Jonathan Freeman',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Spirit of Claudius',
 							qualifier: null,
@@ -614,12 +614,12 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCast = [
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: GABRIELE_CICIRELLO_PERSON_UUID,
 					name: 'Gabriele Cicirello',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -628,12 +628,12 @@ describe('Character with variant names from productions of different materials',
 					]
 				},
 				{
-					model: 'person',
+					model: 'PERSON',
 					uuid: RENATO_CIVELLO_PERSON_UUID,
 					name: 'Renato Civello',
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
@@ -657,20 +657,20 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					endDate: '2011-01-26',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
@@ -694,20 +694,20 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID,
 					name: 'Rosencrantz and Guildenstern Are Dead',
 					startDate: '2011-06-16',
 					endDate: '2011-08-20',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
 						name: 'Theatre Royal Haymarket',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Prince Hamlet',
 							qualifier: null,
@@ -731,20 +731,20 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: FORTINBRAS_LA_JOLLA_PRODUCTION_UUID,
 					name: 'Fortinbras',
 					startDate: '1991-06-18',
 					endDate: '1991-07-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: LA_JOLLA_PLAYHOUSE_VENUE_UUID,
 						name: 'La Jolla Playhouse',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Spirit of Hamlet',
 							qualifier: null,
@@ -768,20 +768,20 @@ describe('Character with variant names from productions of different materials',
 
 			const expectedCastMemberProductions = [
 				{
-					model: 'production',
+					model: 'PRODUCTION',
 					uuid: HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID,
 					name: 'Hamletmachine',
 					startDate: '2017-07-07',
 					endDate: '2017-07-28',
 					venue: {
-						model: 'venue',
+						model: 'VENUE',
 						uuid: TEATRO_SAN_NICOLÒ_VENUE_UUID,
 						name: 'Teatro San Nicolò',
 						surVenue: null
 					},
 					roles: [
 						{
-							model: 'character',
+							model: 'CHARACTER',
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,

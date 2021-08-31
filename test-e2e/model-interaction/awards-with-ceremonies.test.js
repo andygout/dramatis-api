@@ -106,17 +106,17 @@ describe('Awards with award ceremonies', () => {
 
 			const expectedAwardCeremonies = [
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 					name: '2020'
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2019'
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
 					name: '2018'
 				}
@@ -136,17 +136,17 @@ describe('Awards with award ceremonies', () => {
 
 			const expectedAwardCeremonies = [
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
 					name: '2019'
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
 					name: '2018'
 				},
 				{
-					model: 'awardCeremony',
+					model: 'AWARD_CEREMONY',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID,
 					name: '2017'
 				}
