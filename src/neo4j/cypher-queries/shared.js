@@ -18,7 +18,7 @@ const getDuplicateRecordCountQuery = model => `
 				$uuid <> n.uuid
 			)
 
-	RETURN SIGN(COUNT(n)) AS instanceCount
+	RETURN SIGN(COUNT(n)) AS duplicateRecordCount
 `;
 
 const getCreateQuery = model => `

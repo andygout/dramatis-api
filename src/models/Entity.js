@@ -77,7 +77,7 @@ export default class Entity extends Base {
 
 		const preparedParams = prepareAsParams(this);
 
-		const { instanceCount } = await neo4jQuery({
+		const { duplicateRecordCount } = await neo4jQuery({
 			query: getDuplicateRecordCountQuery(this.model),
 			params: {
 				uuid: preparedParams.uuid,
@@ -86,7 +86,7 @@ export default class Entity extends Base {
 			}
 		});
 
-		if (instanceCount > 0) {
+		if (duplicateRecordCount > 0) {
 
 			const uniquenessErrorMessage = 'Name and differentiator combination already exists';
 

@@ -286,7 +286,7 @@ describe('Entity model', () => {
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
-				stubs.neo4jQuery.resolves({ instanceCount: 0 });
+				stubs.neo4jQuery.resolves({ duplicateRecordCount: 0 });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
@@ -324,7 +324,7 @@ describe('Entity model', () => {
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
-				stubs.neo4jQuery.resolves({ instanceCount: 1 });
+				stubs.neo4jQuery.resolves({ duplicateRecordCount: 1 });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(

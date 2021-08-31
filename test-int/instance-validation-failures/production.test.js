@@ -13,7 +13,7 @@ describe('Production instance', () => {
 
 	beforeEach(() => {
 
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 0 });
+		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
 
 	});
 

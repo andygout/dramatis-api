@@ -37,7 +37,7 @@ describe('Cypher Queries Shared module', () => {
 							$uuid <> n.uuid
 						)
 
-				RETURN SIGN(COUNT(n)) AS instanceCount
+				RETURN SIGN(COUNT(n)) AS duplicateRecordCount
 			`));
 
 		});
