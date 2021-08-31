@@ -6,7 +6,7 @@ import {
 } from '../../../src/lib/get-duplicate-entity-info';
 import applyModelGetter from '../../test-helpers/apply-model-getter';
 
-describe('Get Duplicate Info module', () => {
+describe('Get Duplicate Entity Info module', () => {
 
 	describe('getDuplicateEntities function', () => {
 
