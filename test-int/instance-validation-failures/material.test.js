@@ -22,7 +22,7 @@ describe('Material instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 0 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
 
 		});
 
@@ -1576,7 +1576,7 @@ describe('Material instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 1 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
 
 		});
 
@@ -1625,7 +1625,7 @@ describe('Material instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 1 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
 
 		});
 

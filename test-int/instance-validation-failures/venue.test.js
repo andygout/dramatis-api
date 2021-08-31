@@ -21,7 +21,7 @@ describe('Venue instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 0 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
 
 		});
 
@@ -327,7 +327,7 @@ describe('Venue instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 1 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
 
 		});
 
@@ -367,7 +367,7 @@ describe('Venue instance', () => {
 
 		beforeEach(() => {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ instanceCount: 1 });
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
 
 		});
 
