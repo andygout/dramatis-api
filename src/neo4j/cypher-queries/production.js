@@ -13,8 +13,6 @@ const getCreateUpdateQuery = action => {
 		update: `
 			MATCH (production:Production { uuid: $uuid })
 
-			WITH production
-
 			OPTIONAL MATCH (production)-[relationship]-()
 
 			DELETE relationship

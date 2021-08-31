@@ -71,8 +71,6 @@ describe('Cypher Queries Production module', () => {
 			const startSegment = removeExcessWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
 
-				WITH production
-
 				OPTIONAL MATCH (production)-[relationship]-()
 
 				DELETE relationship
