@@ -70,7 +70,7 @@ describe('Awards controller', () => {
 			const result = await callFunction('createRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Award(), 'create' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Award(), 'CREATE' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -85,7 +85,7 @@ describe('Awards controller', () => {
 			const result = await callFunction('editRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Award(), 'edit' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Award(), 'EDIT' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -100,7 +100,7 @@ describe('Awards controller', () => {
 			const result = await callFunction('updateRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Award(), 'update' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Award(), 'UPDATE' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -115,7 +115,7 @@ describe('Awards controller', () => {
 			const result = await callFunction('deleteRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Award(), 'delete' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Award(), 'DELETE' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 
@@ -130,7 +130,7 @@ describe('Awards controller', () => {
 			const result = await callFunction('showRoute');
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
 			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
-				stubs.response, stubs.next, stubs.models.Award(), 'show' // eslint-disable-line new-cap
+				stubs.response, stubs.next, stubs.models.Award(), 'SHOW' // eslint-disable-line new-cap
 			)).to.be.true;
 			expect(result).to.equal('callInstanceMethod response');
 

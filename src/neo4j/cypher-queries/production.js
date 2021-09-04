@@ -1,7 +1,9 @@
+import { ACTIONS } from '../../utils/constants';
+
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: `
+		[ACTIONS.CREATE]: `
 			CREATE (production:Production {
 				uuid: $uuid,
 				name: $name,
@@ -10,7 +12,7 @@ const getCreateUpdateQuery = action => {
 				endDate: $endDate
 			})
 		`,
-		update: `
+		[ACTIONS.UPDATE]: `
 			MATCH (production:Production { uuid: $uuid })
 
 			OPTIONAL MATCH (production)-[relationship]-()
@@ -428,7 +430,7 @@ const getCreateUpdateQuery = action => {
 
 };
 
-const getCreateQuery = () => getCreateUpdateQuery('create');
+const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getEditQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
@@ -659,7 +661,7 @@ const getEditQuery = () => `
 		) + [{ entities: [{}] }] AS crewCredits
 `;
 
-const getUpdateQuery = () => getCreateUpdateQuery('update');
+const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
 const getShowQuery = () => `
 	MATCH (production:Production { uuid: $uuid })

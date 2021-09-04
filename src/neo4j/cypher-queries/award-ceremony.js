@@ -1,3 +1,5 @@
+import { ACTIONS } from '../../utils/constants';
+
 const getAwardContextualDuplicateRecordCountQuery = () => `
 	MATCH (awardCeremony:AwardCeremony { name: $name })<-[:PRESENTED_AT]-(award:Award { name: $award.name })
 		WHERE
@@ -16,10 +18,10 @@ const getAwardContextualDuplicateRecordCountQuery = () => `
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: `
+		[ACTIONS.CREATE]: `
 			CREATE (awardCeremony:AwardCeremony { uuid: $uuid, name: $name })
 		`,
-		update: `
+		[ACTIONS.UPDATE]: `
 			MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
 
 			OPTIONAL MATCH (awardCeremony)-[relationship]-()
@@ -59,7 +61,7 @@ const getCreateUpdateQuery = action => {
 
 };
 
-const getCreateQuery = () => getCreateUpdateQuery('create');
+const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getEditQuery = () => `
 	MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
@@ -73,7 +75,7 @@ const getEditQuery = () => `
 		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
 `;
 
-const getUpdateQuery = () => getCreateUpdateQuery('update');
+const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
 const getShowQuery = () => `
 	MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
