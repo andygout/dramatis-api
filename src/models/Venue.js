@@ -21,23 +21,19 @@ export default class Venue extends VenueBase {
 
 		this.validateDifferentiator();
 
-		if (Object.prototype.hasOwnProperty.call(this, 'subVenues')) {
+		const duplicateSubVenueIndices = getDuplicateBaseInstanceIndices(this.subVenues);
 
-			const duplicateSubVenueIndices = getDuplicateBaseInstanceIndices(this.subVenues);
+		this.subVenues.forEach((subVenue, index) => {
 
-			this.subVenues.forEach((subVenue, index) => {
+			subVenue.validateName({ isRequired: false });
 
-				subVenue.validateName({ isRequired: false });
+			subVenue.validateDifferentiator();
 
-				subVenue.validateDifferentiator();
+			subVenue.validateNoAssociationWithSelf(this.name, this.differentiator);
 
-				subVenue.validateNoAssociationWithSelf(this.name, this.differentiator);
+			subVenue.validateUniquenessInGroup({ isDuplicate: duplicateSubVenueIndices.includes(index) });
 
-				subVenue.validateUniquenessInGroup({ isDuplicate: duplicateSubVenueIndices.includes(index) });
-
-			});
-
-		}
+		});
 
 	}
 
