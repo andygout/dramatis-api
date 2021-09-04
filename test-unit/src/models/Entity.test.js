@@ -74,7 +74,7 @@ describe('Entity model', () => {
 
 		describe('differentiator property', () => {
 
-			context('model is not production', () => {
+			context('model is not exempt', () => {
 
 				it('assigns empty string if absent from props', () => {
 
@@ -113,9 +113,9 @@ describe('Entity model', () => {
 
 			});
 
-			context('model is production', () => {
+			context('model is exempt', () => {
 
-				it('does not assign differentiator property (because when productions are created they are treated as unique)', () => {
+				it('does not assign differentiator property', () => {
 
 					const instance = new Production({ name: 'Foobar', differentiator: '1' });
 					expect(instance).to.not.have.property('differentiator');
@@ -247,7 +247,7 @@ describe('Entity model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		context('model is not production', () => {
+		context('model is not exempt', () => {
 
 			it('will call validateUniquenessInDatabase method', async () => {
 
@@ -260,7 +260,7 @@ describe('Entity model', () => {
 
 		});
 
-		context('model is production', () => {
+		context('model is exempt', () => {
 
 			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
 
