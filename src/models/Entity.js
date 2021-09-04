@@ -12,6 +12,15 @@ import {
 import { neo4jQuery } from '../neo4j/query';
 import { MODELS } from '../utils/constants';
 
+const DIFFERENTIATOR_EXEMPT_MODELS = new Set([
+	MODELS.AWARD_CEREMONY,
+	MODELS.PRODUCTION
+]);
+
+const DATABASE_VALIDATION_EXEMPT_MODELS = new Set([
+	MODELS.PRODUCTION
+]);
+
 export default class Entity extends Base {
 
 	constructor (props = {}) {
@@ -22,8 +31,7 @@ export default class Entity extends Base {
 
 		this.uuid = uuid;
 
-		if (![MODELS.PRODUCTION, MODELS.AWARD_CEREMONY].includes(this.model))
-			this.differentiator = differentiator?.trim() || '';
+		if (!DIFFERENTIATOR_EXEMPT_MODELS.has(this.model)) this.differentiator = differentiator?.trim() || '';
 
 	}
 
@@ -65,7 +73,7 @@ export default class Entity extends Base {
 
 	async runDatabaseValidations () {
 
-		if (this.model === MODELS.PRODUCTION) return;
+		if (DATABASE_VALIDATION_EXEMPT_MODELS.has(this.model)) return;
 
 		await this.validateUniquenessInDatabase();
 
