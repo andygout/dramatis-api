@@ -249,10 +249,10 @@ describe('Entity model', () => {
 
 		context('model is not production', () => {
 
-			it('will call validateUniquenessInDatabase method', () => {
+			it('will call validateUniquenessInDatabase method', async () => {
 
 				spy(instance, 'validateUniquenessInDatabase');
-				instance.runDatabaseValidations();
+				await instance.runDatabaseValidations();
 				expect(instance.validateUniquenessInDatabase.calledOnce).to.be.true;
 				expect(instance.validateUniquenessInDatabase.calledWithExactly()).to.be.true;
 
@@ -262,11 +262,11 @@ describe('Entity model', () => {
 
 		context('model is production', () => {
 
-			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', () => {
+			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
 
 				const instance = new Production();
 				spy(instance, 'validateUniquenessInDatabase');
-				instance.runDatabaseValidations();
+				await instance.runDatabaseValidations();
 				expect(instance.validateUniquenessInDatabase.notCalled).to.be.true;
 
 			});
