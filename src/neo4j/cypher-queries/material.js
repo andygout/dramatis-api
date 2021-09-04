@@ -1,7 +1,9 @@
+import { ACTIONS } from '../../utils/constants';
+
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: `
+		[ACTIONS.CREATE]: `
 			CREATE (material:Material {
 				uuid: $uuid,
 				name: $name,
@@ -10,7 +12,7 @@ const getCreateUpdateQuery = action => {
 				year: $year
 			})
 		`,
-		update: `
+		[ACTIONS.UPDATE]: `
 			MATCH (material:Material { uuid: $uuid })
 
 			OPTIONAL MATCH (material)-[originalVersionMaterialRel:SUBSEQUENT_VERSION_OF]->(:Material)
@@ -206,7 +208,7 @@ const getCreateUpdateQuery = action => {
 
 };
 
-const getCreateQuery = () => getCreateUpdateQuery('create');
+const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getEditQuery = () => `
 	MATCH (material:Material { uuid: $uuid })
@@ -283,7 +285,7 @@ const getEditQuery = () => `
 		) + [{ characters: [{}] }] AS characterGroups
 `;
 
-const getUpdateQuery = () => getCreateUpdateQuery('update');
+const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
 const getShowQuery = () => `
 	MATCH (material:Material { uuid: $uuid })

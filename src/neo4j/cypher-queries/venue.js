@@ -1,8 +1,10 @@
+import { ACTIONS } from '../../utils/constants';
+
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
-		create: 'CREATE (venue:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })',
-		update: `
+		[ACTIONS.CREATE]: 'CREATE (venue:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })',
+		[ACTIONS.UPDATE]: `
 			MATCH (venue:Venue { uuid: $uuid })
 
 			OPTIONAL MATCH (venue)-[relationship:HAS_SUB_VENUE]->(:Venue)
@@ -46,7 +48,7 @@ const getCreateUpdateQuery = action => {
 
 };
 
-const getCreateQuery = () => getCreateUpdateQuery('create');
+const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getEditQuery = () => `
 	MATCH (venue:Venue { uuid: $uuid })
@@ -69,7 +71,7 @@ const getEditQuery = () => `
 		) + [{}] AS subVenues
 `;
 
-const getUpdateQuery = () => getCreateUpdateQuery('update');
+const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
 const getShowQuery = () => `
 	MATCH (venue:Venue { uuid: $uuid })

@@ -1,10 +1,10 @@
 import { sendJsonResponse } from './send-json-response';
 
-const callInstanceMethod = async (response, next, classInstance, method) => {
+const callInstanceMethod = async (response, next, classInstance, action) => {
 
 	try {
 
-		const instance = await classInstance[method]();
+		const instance = await classInstance[action.toLowerCase()]();
 
 		return sendJsonResponse(response, instance);
 
