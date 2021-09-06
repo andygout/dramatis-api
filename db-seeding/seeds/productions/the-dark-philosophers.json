@@ -13,11 +13,11 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "National Theatre of Wales"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Told by an Idiot"
 				}
 			]

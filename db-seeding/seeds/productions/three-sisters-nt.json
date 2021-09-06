@@ -14,11 +14,11 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "National Theatre Company"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Fuel Theatre"
 				}
 			]
@@ -183,7 +183,7 @@
 			"name": "Fight Directors",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "RC-Annie Ltd",
 					"creditedMembers": [
 						{

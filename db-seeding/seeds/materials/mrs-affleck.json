@@ -14,7 +14,7 @@
 			"name": "from",
 			"entities": [
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "Little Eyolf"
 				}
 			]

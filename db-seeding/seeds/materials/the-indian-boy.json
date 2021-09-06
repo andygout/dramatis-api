@@ -14,7 +14,7 @@
 			"name": "inspired by",
 			"entities": [
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "A Midsummer Night's Dream"
 				}
 			]

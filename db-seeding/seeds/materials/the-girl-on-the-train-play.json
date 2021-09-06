@@ -8,12 +8,12 @@
 			"name": "based on",
 			"entities": [
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "The Girl on the Train",
 					"differentiator": "1"
 				},
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "The Girl on the Train",
 					"differentiator": "2"
 				}

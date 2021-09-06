@@ -15,7 +15,7 @@
 			"name": "from",
 			"entities": [
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "The Ladykillers",
 					"differentiator": "1"
 				}
@@ -26,7 +26,7 @@
 			"creditType": "RIGHTS_GRANTOR",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "StudioCanal"
 				}
 			]

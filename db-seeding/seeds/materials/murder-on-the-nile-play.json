@@ -14,7 +14,7 @@
 			"name": "based on",
 			"entities": [
 				{
-					"model": "material",
+					"model": "MATERIAL",
 					"name": "Death on the Nile"
 				}
 			]

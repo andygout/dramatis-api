@@ -12,7 +12,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Ninagawa Company"
 				}
 			]

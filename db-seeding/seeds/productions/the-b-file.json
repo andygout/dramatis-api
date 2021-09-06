@@ -12,7 +12,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Kernawells Theatre Company"
 				}
 			]
@@ -21,7 +21,7 @@
 			"name": "in association with",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Weaver Hughes Ensemble"
 				}
 			]
