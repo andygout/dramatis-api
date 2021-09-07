@@ -1,7 +1,8 @@
+import crypto from 'crypto';
+
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
-import { v4 as uuid } from 'uuid';
 
 import app from '../../src/app';
 import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
@@ -81,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		before(async () => {
 
-			sandbox.stub(uuid, 'v4').returns(MATERIAL_UUID);
+			sandbox.stub(crypto, 'randomUUID').returns(MATERIAL_UUID);
 
 			await purgeDatabase();
 
@@ -364,7 +365,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			let uuidCallCount = 0;
 
-			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -1330,7 +1331,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			let uuidCallCount = 0;
 
-			sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 

@@ -1,7 +1,8 @@
+import crypto from 'crypto';
+
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
-import { v4 as uuid } from 'uuid';
 
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
@@ -28,7 +29,7 @@ describe('Awards with award ceremonies', () => {
 
 		let uuidCallCount = 0;
 
-		sandbox.stub(uuid, 'v4').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
 
 		await purgeDatabase();
 
