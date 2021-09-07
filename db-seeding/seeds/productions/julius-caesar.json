@@ -13,19 +13,19 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Théâtre National du Chaillot"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Teatro Español"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Grand Théâtre de la Ville"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Young Vic Company"
 				}
 			]

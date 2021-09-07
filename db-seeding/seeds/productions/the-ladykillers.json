@@ -14,7 +14,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Fiery Angel",
 					"creditedMembers": [
 						{
@@ -28,23 +28,23 @@
 			"name": "in association with",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Stage Entertainment UK"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Fiery Dragons"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Liverpool Everyman & Playhouse"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Olympus Theatricals"
 				},
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "StudioCanal"
 				},
 				{

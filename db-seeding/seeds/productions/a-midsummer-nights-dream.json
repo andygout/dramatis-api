@@ -13,7 +13,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Royal Shakespeare Company"
 				}
 			]
@@ -267,7 +267,7 @@
 			"name": "Directors of Puppetry",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Little Angel Theatre",
 					"creditedMembers": [
 						{

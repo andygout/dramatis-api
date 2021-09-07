@@ -13,7 +13,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "National Theatre Company"
 				}
 			]

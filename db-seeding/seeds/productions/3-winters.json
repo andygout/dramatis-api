@@ -13,7 +13,7 @@
 		{
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "National Theatre Company"
 				}
 			]
@@ -207,7 +207,7 @@
 			"name": "Projection Designer",
 			"entities": [
 				{
-					"model": "company",
+					"model": "COMPANY",
 					"name": "Cineluma",
 					"creditedMembers": [
 						{
