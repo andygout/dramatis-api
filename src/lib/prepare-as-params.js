@@ -1,5 +1,6 @@
+import { randomUUID } from 'crypto';
+
 import neo4j from 'neo4j-driver';
-import { v4 as uuid } from 'uuid';
 
 import { isObjectWithKeys } from './is-object-with-keys';
 
@@ -82,7 +83,7 @@ export const prepareAsParams = instance => {
 						instance.differentiator === recordedInstance.differentiator
 					);
 
-					accumulator[key] = instanceWithShareableUuid?.uuid || uuid();
+					accumulator[key] = instanceWithShareableUuid?.uuid || randomUUID({ disableEntropyCache: true });
 
 					if (!instanceWithShareableUuid) {
 
