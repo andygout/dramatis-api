@@ -30,7 +30,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -78,7 +85,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -102,7 +116,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -130,7 +151,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -148,7 +176,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
 				name: '2019',
-				award: null
+				award: null,
+				categories: []
 			};
 
 			expect(response).to.have.status(200);
@@ -172,7 +201,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: []
 			};
 
 			expect(response).to.have.status(200);
@@ -212,23 +242,57 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.post('/awards/ceremonies')
 				.send({
-					name: '2019',
+					name: '2020',
 					award: {
 						name: 'Laurence Olivier Awards',
-						differentiator: '1'					}
+						differentiator: '1'
+					},
+					categories: [
+						{
+							name: 'Best New Play'
+						},
+						{
+							name: 'Best New Musical'
+						},
+						{
+							name: 'Best Revival'
+						}
+					]
 				});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2020',
 				errors: {},
 				award: {
 					model: 'AWARD',
 					name: 'Laurence Olivier Awards',
 					differentiator: '1',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Musical',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Revival',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -245,12 +309,26 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2020',
 				award: {
 					model: 'AWARD',
 					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 					name: 'Laurence Olivier Awards'
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play'
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Musical'
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Revival'
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -266,14 +344,36 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2020',
 				errors: {},
 				award: {
 					model: 'AWARD',
 					name: 'Laurence Olivier Awards',
 					differentiator: '1',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Musical',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Revival',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -288,24 +388,57 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
-					name: '2020',
+					name: '2019',
 					award: {
 						name: 'Evening Standard Theatre Awards',
 						differentiator: '2'
-					}
+					},
+					categories: [
+						{
+							name: 'Best Director'
+						},
+						{
+							name: 'Best Actor'
+						},
+						{
+							name: 'Best Actress'
+						}
+					]
 				});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2019',
 				errors: {},
 				award: {
 					model: 'AWARD',
 					name: 'Evening Standard Theatre Awards',
 					differentiator: '2',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Director',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Actor',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Actress',
+						errors: {}
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -322,12 +455,26 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2019',
 				award: {
 					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 					name: 'Evening Standard Theatre Awards'
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Director'
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Actor'
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Actress'
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -342,20 +489,27 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
-					name: '2020'
+					name: '2019'
 				});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2019',
 				errors: {},
 				award: {
 					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {}
+					}
+				]
 			};
 
 			expect(response).to.have.status(200);
@@ -373,14 +527,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
-				name: '2020',
+				name: '2019',
 				errors: {},
 				award: {
 					model: 'AWARD',
 					name: '',
 					differentiator: '',
 					errors: {}
-				}
+				},
+				categories: []
 			};
 
 			expect(response).to.have.status(200);

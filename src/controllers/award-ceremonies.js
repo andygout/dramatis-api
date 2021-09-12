@@ -1,12 +1,13 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
+import { awardCeremony as awardCeremonySeedProps } from './model-seed-props';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods';
 import { sendJsonResponse } from '../lib/send-json-response';
 import { AwardCeremony } from '../models';
 import { ACTIONS, MODELS } from '../utils/constants';
 
 const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new AwardCeremony());
+	sendJsonResponse(response, new AwardCeremony(awardCeremonySeedProps));
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new AwardCeremony(request.body), ACTIONS.CREATE);

@@ -69,7 +69,8 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
-					}
+					},
+					categories: []
 				};
 
 				expect(response).to.have.status(200);
@@ -116,7 +117,8 @@ describe('Instance validation failures: Award ceremonies API', () => {
 								'Award ceremony already exists for given award'
 							]
 						}
-					}
+					},
+					categories: []
 				};
 
 				expect(response).to.have.status(200);
@@ -194,7 +196,8 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
-					}
+					},
+					categories: []
 				};
 
 				expect(response).to.have.status(200);
@@ -247,7 +250,8 @@ describe('Instance validation failures: Award ceremonies API', () => {
 								'Award ceremony already exists for given award'
 							]
 						}
-					}
+					},
+					categories: []
 				};
 
 				expect(response).to.have.status(200);
@@ -320,7 +324,8 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
-					}
+					},
+					categories: []
 				};
 
 				expect(response).to.have.status(200);

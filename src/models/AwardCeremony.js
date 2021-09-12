@@ -1,6 +1,7 @@
+import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Entity from './Entity';
-import { Award } from '.';
+import { Award, AwardCeremonyCategory } from '.';
 import { getAwardContextualDuplicateRecordCountQuery } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 import { MODELS } from '../utils/constants';
@@ -11,9 +12,13 @@ export default class AwardCeremony extends Entity {
 
 		super(props);
 
-		const { award } = props;
+		const { award, categories } = props;
 
 		this.award = new Award(award);
+
+		this.categories = categories
+			? categories.map(category => new AwardCeremonyCategory(category))
+			: [];
 
 	}
 
@@ -30,6 +35,16 @@ export default class AwardCeremony extends Entity {
 		this.award.validateName({ isRequired: false });
 
 		this.award.validateDifferentiator();
+
+		const duplicateCategoryIndices = getDuplicateBaseInstanceIndices(this.categories);
+
+		this.categories.forEach((category, index) => {
+
+			category.validateName({ isRequired: false });
+
+			category.validateUniquenessInGroup({ isDuplicate: duplicateCategoryIndices.includes(index) });
+
+		});
 
 	}
 
