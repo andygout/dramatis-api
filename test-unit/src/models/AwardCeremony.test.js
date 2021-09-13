@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Award } from '../../../src/models';
+import { Award, AwardCeremonyCategory } from '../../../src/models';
 
 describe('AwardCeremony model', () => {
 
@@ -11,6 +11,12 @@ describe('AwardCeremony model', () => {
 	const AwardStub = function () {
 
 		return createStubInstance(Award);
+
+	};
+
+	const AwardCeremonyCategoryStub = function () {
+
+		return createStubInstance(AwardCeremonyCategory);
 
 	};
 
@@ -28,7 +34,8 @@ describe('AwardCeremony model', () => {
 				})
 			},
 			models: {
-				Award: AwardStub
+				Award: AwardStub,
+				AwardCeremonyCategory: AwardCeremonyCategoryStub
 			},
 			cypherQueriesModule: {
 				getAwardContextualDuplicateRecordCountQuery: stub()
@@ -56,6 +63,38 @@ describe('AwardCeremony model', () => {
 		return new AwardCeremony(props);
 
 	};
+
+	describe('constructor method', () => {
+
+		describe('categories property', () => {
+
+			it('assigns array of category instances, retaining those with empty or whitespace-only string names', () => {
+
+				const props = {
+					name: '2020',
+					categories: [
+						{
+							name: 'Best New Play'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.categories.length).to.equal(3);
+				expect(instance.categories[0] instanceof AwardCeremonyCategory).to.be.true;
+				expect(instance.categories[1] instanceof AwardCeremonyCategory).to.be.true;
+				expect(instance.categories[2] instanceof AwardCeremonyCategory).to.be.true;
+
+			});
+
+		});
+
+	});
 
 	describe('runInputValidations method', () => {
 

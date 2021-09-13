@@ -24,7 +24,13 @@ const getCreateUpdateQuery = action => {
 		[ACTIONS.UPDATE]: `
 			MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
 
-			OPTIONAL MATCH (awardCeremony)-[relationship]-()
+			OPTIONAL MATCH (awardCeremony)-[:PRESENTS_CATEGORY]->(awardCeremonyCategory:AwardCeremonyCategory)
+
+			DETACH DELETE awardCeremonyCategory
+
+			WITH awardCeremony
+
+			OPTIONAL MATCH (awardCeremony)<-[relationship]-()
 
 			DELETE relationship
 
@@ -56,6 +62,13 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT awardCeremony
 
+		FOREACH (categoryParam IN $categories |
+			CREATE (:AwardCeremonyCategory { name: categoryParam.name })
+				<-[:PRESENTS_CATEGORY { position: categoryParam.position }]-(awardCeremony)
+		)
+
+		WITH DISTINCT awardCeremony
+
 		${getEditQuery()}
 	`;
 
@@ -68,11 +81,23 @@ const getEditQuery = () => `
 
 	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
 
+	OPTIONAL MATCH (awardCeremony)-[awardCeremonyCategoryRel:PRESENTS_CATEGORY]->
+		(awardCeremonyCategory:AwardCeremonyCategory)
+
+	WITH awardCeremony, award, awardCeremonyCategory
+		ORDER BY awardCeremonyCategoryRel.position
+
 	RETURN
 		'AWARD_CEREMONY' AS model,
 		awardCeremony.uuid AS uuid,
 		awardCeremony.name AS name,
-		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
+		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
+		COLLECT(
+			CASE awardCeremonyCategory WHEN NULL
+				THEN null
+				ELSE awardCeremonyCategory { .name }
+			END
+		) + [{}] AS categories
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
@@ -82,11 +107,23 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
 
+	OPTIONAL MATCH (awardCeremony)-[awardCeremonyCategoryRel:PRESENTS_CATEGORY]->
+		(awardCeremonyCategory:AwardCeremonyCategory)
+
+	WITH awardCeremony, award, awardCeremonyCategory
+		ORDER BY awardCeremonyCategoryRel.position
+
 	RETURN
 		'AWARD_CEREMONY' AS model,
 		awardCeremony.uuid AS uuid,
 		awardCeremony.name AS name,
-		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award
+		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award,
+		COLLECT(
+			CASE awardCeremonyCategory WHEN NULL
+				THEN null
+				ELSE awardCeremonyCategory { model: 'AWARD_CEREMONY_CATEGORY', .name }
+			END
+		) AS categories
 `;
 
 const getListQuery = () => `

@@ -47,7 +47,8 @@ describe('AwardCeremony instance', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
-					}
+					},
+					categories: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -78,7 +79,8 @@ describe('AwardCeremony instance', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
-					}
+					},
+					categories: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -116,7 +118,8 @@ describe('AwardCeremony instance', () => {
 								'Value is too long'
 							]
 						}
-					}
+					},
+					categories: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -155,7 +158,125 @@ describe('AwardCeremony instance', () => {
 								'Value is too long'
 							]
 						}
-					}
+					},
+					categories: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2020',
+					categories: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2020',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate categories', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2020',
+					categories: [
+						{
+							name: 'Best New Play'
+						},
+						{
+							name: 'Best New Musical'
+						},
+						{
+							name: 'Best New Play'
+						},
+						{
+							name: 'Best Revival'
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2020',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best New Play',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							name: 'Best New Musical',
+							errors: {}
+						},
+						{
+							name: 'Best New Play',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							name: 'Best Revival',
+							errors: {}
+						}
+					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -210,7 +331,78 @@ describe('AwardCeremony instance', () => {
 								'Award ceremony already exists for given award'
 							]
 						}
-					}
+					},
+					categories: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+	});
+
+	describe('combined input and database validation failure', () => {
+
+		beforeEach(() => {
+
+			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
+
+		});
+
+		context('category name value exceeds maximum limit and name value with relationship to award already exists in database', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2020',
+					award: {
+						name: 'Laurence Olivier Awards'
+					},
+					categories: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2020',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Award ceremony already exists for given award'
+						]
+					},
+					award: {
+						uuid: undefined,
+						name: 'Laurence Olivier Awards',
+						differentiator: '',
+						errors: {
+							name: [
+								'Award ceremony already exists for given award'
+							],
+							differentiator: [
+								'Award ceremony already exists for given award'
+							]
+						}
+					},
+					categories: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);

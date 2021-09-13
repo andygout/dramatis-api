@@ -26,7 +26,13 @@ describe('Cypher Queries Award Ceremony module', () => {
 					'AWARD_CEREMONY' AS model,
 					awardCeremony.uuid AS uuid,
 					awardCeremony.name AS name,
-					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
+					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
+					COLLECT(
+						CASE awardCeremonyCategory WHEN NULL
+							THEN null
+							ELSE awardCeremonyCategory { .name }
+						END
+					) + [{}] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -48,7 +54,13 @@ describe('Cypher Queries Award Ceremony module', () => {
 			const startSegment = removeExcessWhitespace(`
 				MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
 
-				OPTIONAL MATCH (awardCeremony)-[relationship]-()
+				OPTIONAL MATCH (awardCeremony)-[:PRESENTS_CATEGORY]->(awardCeremonyCategory:AwardCeremonyCategory)
+
+				DETACH DELETE awardCeremonyCategory
+
+				WITH awardCeremony
+
+				OPTIONAL MATCH (awardCeremony)<-[relationship]-()
 
 				DELETE relationship
 
@@ -66,7 +78,13 @@ describe('Cypher Queries Award Ceremony module', () => {
 					'AWARD_CEREMONY' AS model,
 					awardCeremony.uuid AS uuid,
 					awardCeremony.name AS name,
-					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award
+					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
+					COLLECT(
+						CASE awardCeremonyCategory WHEN NULL
+							THEN null
+							ELSE awardCeremonyCategory { .name }
+						END
+					) + [{}] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
