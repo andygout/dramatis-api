@@ -35,7 +35,21 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -90,7 +104,21 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -121,7 +149,21 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -156,7 +198,21 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -215,9 +271,33 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const AWARD_CEREMONY_UUID = '2';
-		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '3';
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '5';
+		const AWARD_CEREMONY_UUID = '14';
+		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '15';
+		const STEVE_C_KENNEDY_PERSON_UUID = '16';
+		const SOUNDWAVES_LTD_COMPANY_UUID = '17';
+		const PAUL_ARDITTI_PERSON_UUID = '18';
+		const JOCELYN_POOK_PERSON_UUID = '19';
+		const AUTOGRAPH_COMPANY_UUID = '20';
+		const TERRY_JARDINE_PERSON_UUID = '21';
+		const NICK_LIDSTER_PERSON_UUID ='22';
+		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '23';
+		const ROB_ASHFORD_PERSON_UUID = '24';
+		const MARIANNE_ELLIOTT_PERSON_UUID = '25';
+		const TOM_MORRIS_PERSON_UUID = '26';
+		const RUPERT_GOOLD_PERSON_UUID = '27';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '41';
+		const PAULE_CONSTABLE_PERSON_UUID = '42';
+		const ILLUMINATIONS_LTD_COMPANY_UUID = '43';
+		const NEIL_AUSTIN_PERSON_UUID = '44';
+		const MARK_HENDERSON_PERSON_UUID = '45';
+		const LIMELIGHT_LTD_COMPANY_UUID = '46';
+		const KEVIN_ADAMS_PERSON_UUID = '47';
+		const JON_CLARK_PERSON_UUID = '48';
+		const STAGE_SUN_LTD_COMPANY_UUID = '49';
+		const RAFAEL_AMARGO_PERSON_UUID = '50';
+		const STEVEN_HOGGETT_PERSON_UUID = '51';
+		const LYNNE_PAGE_PERSON_UUID = '52';
+		const KATE_PRINCE_PERSON_UUID = '53';
 
 		before(async () => {
 
@@ -242,20 +322,117 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.post('/awards/ceremonies')
 				.send({
-					name: '2020',
+					name: '2008',
 					award: {
 						name: 'Laurence Olivier Awards',
 						differentiator: '1'
 					},
 					categories: [
 						{
-							name: 'Best New Play'
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Steve C Kennedy',
+											differentiator: '1'
+										}
+									]
+								},
+								// Contrivance for purposes of test.
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Soundwaves Ltd',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Paul Arditti',
+											differentiator: '1'
+										},
+										{
+											name: 'Jocelyn Pook',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											differentiator: '1',
+											nominatedMembers: [
+												{
+													name: 'Terry Jardine',
+													differentiator: '1'
+												},
+												{
+													name: 'Nick Lidster',
+													differentiator: '1'
+												}
+											]
+										}
+									]
+								},
+								// Contrivance for purposes of test.
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Audio Creative Ltd',
+											differentiator: '1',
+											nominatedMembers: [
+												{
+													name: 'Terry Jardine',
+													differentiator: '1'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
-							name: 'Best New Musical'
+							name: 'Best Director',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Rob Ashford',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Marianne Elliott',
+											differentiator: '1'
+										},
+										{
+											name: 'Tom Morris',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Rupert Goold',
+											differentiator: '1'
+										}
+									]
+								}
+							]
 						},
 						{
-							name: 'Best Revival'
+							name: 'Best New Dance Production'
 						}
 					]
 				});
@@ -263,7 +440,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2008',
 				errors: {},
 				award: {
 					model: 'AWARD',
@@ -274,23 +451,277 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				categories: [
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Play',
-						errors: {}
+						name: 'Best Sound Design',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Steve C Kennedy',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Soundwaves Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Paul Arditti',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Jocelyn Pook',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Autograph',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: 'Nick Lidster',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Audio Creative Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Musical',
-						errors: {}
+						name: 'Best Director',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rob Ashford',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Marianne Elliott',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Tom Morris',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rupert Goold',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Revival',
-						errors: {}
+						name: 'Best New Dance Production',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -309,7 +740,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2008',
 				award: {
 					model: 'AWARD',
 					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
@@ -318,15 +749,130 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				categories: [
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Play'
+						name: 'Best Sound Design',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: STEVE_C_KENNEDY_PERSON_UUID,
+										name: 'Steve C Kennedy'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: SOUNDWAVES_LTD_COMPANY_UUID,
+										name: 'Soundwaves Ltd',
+										nominatedMembers: []
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: PAUL_ARDITTI_PERSON_UUID,
+										name: 'Paul Arditti'
+									},
+									{
+										model: 'PERSON',
+										uuid: JOCELYN_POOK_PERSON_UUID,
+										name: 'Jocelyn Pook'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: AUTOGRAPH_COMPANY_UUID,
+										name: 'Autograph',
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												uuid: TERRY_JARDINE_PERSON_UUID,
+												name: 'Terry Jardine'
+											},
+											{
+												model: 'PERSON',
+												uuid: NICK_LIDSTER_PERSON_UUID,
+												name: 'Nick Lidster'
+											}
+										]
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: AUDIO_CREATIVE_LTD_COMPANY_UUID,
+										name: 'Audio Creative Ltd',
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												uuid: TERRY_JARDINE_PERSON_UUID,
+												name: 'Terry Jardine'
+											}
+										]
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Musical'
+						name: 'Best Director',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: ROB_ASHFORD_PERSON_UUID,
+										name: 'Rob Ashford'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: MARIANNE_ELLIOTT_PERSON_UUID,
+										name: 'Marianne Elliott'
+									},
+									{
+										model: 'PERSON',
+										uuid: TOM_MORRIS_PERSON_UUID,
+										name: 'Tom Morris'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: RUPERT_GOOLD_PERSON_UUID,
+										name: 'Rupert Goold'
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Revival'
+						name: 'Best New Dance Production',
+						nominations: []
 					}
 				]
 			};
@@ -344,7 +890,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2020',
+				name: '2008',
 				errors: {},
 				award: {
 					model: 'AWARD',
@@ -355,23 +901,277 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				categories: [
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Play',
-						errors: {}
+						name: 'Best Sound Design',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Steve C Kennedy',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Soundwaves Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Paul Arditti',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Jocelyn Pook',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Autograph',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: 'Nick Lidster',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Audio Creative Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best New Musical',
-						errors: {}
+						name: 'Best Director',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rob Ashford',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Marianne Elliott',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Tom Morris',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rupert Goold',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Revival',
-						errors: {}
+						name: 'Best New Dance Production',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -388,20 +1188,118 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
-					name: '2019',
+					name: '2009',
 					award: {
 						name: 'Evening Standard Theatre Awards',
 						differentiator: '2'
 					},
 					categories: [
 						{
-							name: 'Best Director'
+							name: 'Best Lighting Design',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Paule Constable',
+											differentiator: '1'
+										}
+									]
+								},
+								// Contrivance for purposes of test.
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Illuminations Ltd',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Neil Austin',
+											differentiator: '1'
+										},
+										{
+											name: 'Mark Henderson',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Limelight Ltd',
+											differentiator: '1',
+											nominatedMembers: [
+												{
+													name: 'Kevin Adams',
+													differentiator: '1'
+												},
+												{
+													name: 'Jon Clark',
+													differentiator: '1'
+												}
+											]
+										}
+									]
+								},
+								// Contrivance for purposes of test.
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Stage Sun Ltd',
+											differentiator: '1',
+											nominatedMembers: [
+												{
+													name: 'Kevin Adams',
+													differentiator: '1'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
-							name: 'Best Actor'
+							name: 'Best Theatre Choreographer',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Rafael Amargo',
+											differentiator: '1'
+										}
+									]
+								},
+								// Contrivance for purposes of test.
+								{
+									entities: [
+										{
+											name: 'Steven Hoggett',
+											differentiator: '1'
+										},
+										{
+											name: 'Lynne Page',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Kate Prince',
+											differentiator: '1'
+										}
+									]
+								}
+							]
 						},
 						{
-							name: 'Best Actress'
+							name: 'Best New Opera Production'
 						}
 					]
 				});
@@ -409,7 +1307,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2009',
 				errors: {},
 				award: {
 					model: 'AWARD',
@@ -420,23 +1318,277 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				categories: [
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Director',
-						errors: {}
+						name: 'Best Lighting Design',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Paule Constable',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Illuminations Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Neil Austin',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Mark Henderson',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Limelight Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Kevin Adams',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: 'Jon Clark',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Stage Sun Ltd',
+										differentiator: '1',
+										errors: {},
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												name: 'Kevin Adams',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Actor',
-						errors: {}
+						name: 'Best Theatre Choreographer',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rafael Amargo',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Steven Hoggett',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Lynne Page',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Kate Prince',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Actress',
-						errors: {}
+						name: 'Best New Opera Production',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -455,7 +1607,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2009',
 				award: {
 					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
@@ -464,15 +1616,130 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				categories: [
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Director'
+						name: 'Best Lighting Design',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: PAULE_CONSTABLE_PERSON_UUID,
+										name: 'Paule Constable'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: ILLUMINATIONS_LTD_COMPANY_UUID,
+										name: 'Illuminations Ltd',
+										nominatedMembers: []
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: NEIL_AUSTIN_PERSON_UUID,
+										name: 'Neil Austin'
+									},
+									{
+										model: 'PERSON',
+										uuid: MARK_HENDERSON_PERSON_UUID,
+										name: 'Mark Henderson'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: LIMELIGHT_LTD_COMPANY_UUID,
+										name: 'Limelight Ltd',
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												uuid: KEVIN_ADAMS_PERSON_UUID,
+												name: 'Kevin Adams'
+											},
+											{
+												model: 'PERSON',
+												uuid: JON_CLARK_PERSON_UUID,
+												name: 'Jon Clark'
+											}
+										]
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'COMPANY',
+										uuid: STAGE_SUN_LTD_COMPANY_UUID,
+										name: 'Stage Sun Ltd',
+										nominatedMembers: [
+											{
+												model: 'PERSON',
+												uuid: KEVIN_ADAMS_PERSON_UUID,
+												name: 'Kevin Adams'
+											}
+										]
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Actor'
+						name: 'Best Theatre Choreographer',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: RAFAEL_AMARGO_PERSON_UUID,
+										name: 'Rafael Amargo'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: STEVEN_HOGGETT_PERSON_UUID,
+										name: 'Steven Hoggett'
+									},
+									{
+										model: 'PERSON',
+										uuid: LYNNE_PAGE_PERSON_UUID,
+										name: 'Lynne Page'
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: KATE_PRINCE_PERSON_UUID,
+										name: 'Kate Prince'
+									}
+								]
+							}
+						]
 					},
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
-						name: 'Best Actress'
+						name: 'Best New Opera Production',
+						nominations: []
 					}
 				]
 			};
@@ -489,13 +1756,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			const response = await chai.request(app)
 				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
-					name: '2019'
+					name: '2009'
 				});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
 				uuid: AWARD_CEREMONY_UUID,
-				name: '2019',
+				name: '2009',
 				errors: {},
 				award: {
 					model: 'AWARD',
@@ -507,7 +1774,21 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					{
 						model: 'AWARD_CEREMONY_CATEGORY',
 						name: '',
-						errors: {}
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
 					}
 				]
 			};
@@ -527,7 +1808,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
-				name: '2019',
+				name: '2009',
 				errors: {},
 				award: {
 					model: 'AWARD',

@@ -136,7 +136,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				producerProductions: [],
 				castMemberProductions: [],
 				creativeProductions: [],
-				crewProductions: []
+				crewProductions: [],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);

@@ -203,7 +203,8 @@ describe('AwardCeremony instance', () => {
 								name: [
 									'Value is too long'
 								]
-							}
+							},
+							nominations: []
 						}
 					]
 				};
@@ -258,11 +259,13 @@ describe('AwardCeremony instance', () => {
 								name: [
 									'This item has been duplicated within the group'
 								]
-							}
+							},
+							nominations: []
 						},
 						{
 							name: 'Best New Musical',
-							errors: {}
+							errors: {},
+							nominations: []
 						},
 						{
 							name: 'Best New Play',
@@ -270,11 +273,752 @@ describe('AwardCeremony instance', () => {
 								name: [
 									'This item has been duplicated within the group'
 								]
-							}
+							},
+							nominations: []
 						},
 						{
 							name: 'Best Revival',
-							errors: {}
+							errors: {},
+							nominations: []
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category without name has named nomination entities', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: '',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Christopher Shutt'
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: '',
+							errors: {
+								name: [
+									'Name is required if named children exist'
+								]
+							},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Christopher Shutt',
+											differentiator: '',
+											errors: {}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (person) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (person) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Christopher Shutt',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Christopher Shutt',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (company) name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											nominatedMembers: [],
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (company) differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Autograph',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											nominatedMembers: [],
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate category nomination entities, including category nomination entity (company) nominated members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											nominatedMembers: [
+												{
+													name: 'Ian Dickinson'
+												},
+												{
+													name: 'Foo'
+												}
+											]
+										},
+										{
+											name: 'Ian Dickinson'
+										},
+										{
+											model: 'COMPANY',
+											name: 'Autograph'
+										},
+										{
+											model: 'COMPANY',
+											name: 'Foo'
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Autograph',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											},
+											nominatedMembers: [
+												{
+													uuid: undefined,
+													name: 'Ian Dickinson',
+													differentiator: '',
+													errors: {
+														name: [
+															'This item has been duplicated within the group'
+														],
+														differentiator: [
+															'This item has been duplicated within the group'
+														]
+													}
+												},
+												{
+													uuid: undefined,
+													name: 'Foo',
+													differentiator: '',
+													errors: {}
+												}
+											]
+										},
+										{
+											uuid: undefined,
+											name: 'Ian Dickinson',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											uuid: undefined,
+											name: 'Autograph',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											},
+											nominatedMembers: []
+										},
+										{
+											uuid: undefined,
+											name: 'Foo',
+											differentiator: '',
+											errors: {},
+											nominatedMembers: []
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (company) without name has named nominated members', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: '',
+											nominatedMembers: [
+												{
+													name: 'Ian Dickinson'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: '',
+											differentiator: '',
+											errors: {
+												name: [
+													'Name is required if named children exist'
+												]
+											},
+											nominatedMembers: [
+												{
+													uuid: undefined,
+													name: 'Ian Dickinson',
+													differentiator: '',
+													errors: {}
+												}
+											]
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (company) nominated member name value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											nominatedMembers: [
+												{
+													name: ABOVE_MAX_LENGTH_STRING
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Autograph',
+											differentiator: '',
+											errors: {},
+											nominatedMembers: [
+												{
+													uuid: undefined,
+													name: ABOVE_MAX_LENGTH_STRING,
+													differentiator: '',
+													errors: {
+														name: [
+															'Value is too long'
+														]
+													}
+												}
+											]
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination entity (company) nominated member differentiator value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											nominatedMembers: [
+												{
+													name: 'Ian Dickinson',
+													differentiator: ABOVE_MAX_LENGTH_STRING
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Autograph',
+											differentiator: '',
+											errors: {},
+											nominatedMembers: [
+												{
+													uuid: undefined,
+													name: 'Ian Dickinson',
+													differentiator: ABOVE_MAX_LENGTH_STRING,
+													errors: {
+														differentiator: [
+															'Value is too long'
+														]
+													}
+												}
+											]
+										}
+									],
+									errors: {}
+								}
+							]
 						}
 					]
 				};
@@ -400,7 +1144,8 @@ describe('AwardCeremony instance', () => {
 								name: [
 									'Value is too long'
 								]
-							}
+							},
+							nominations: []
 						}
 					]
 				};

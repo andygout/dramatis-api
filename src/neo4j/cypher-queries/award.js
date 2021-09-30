@@ -1,10 +1,10 @@
 const getShowQuery = () => `
 	MATCH (award:Award { uuid: $uuid })
 
-	OPTIONAL MATCH (award)-[:PRESENTED_AT]->(awardCeremony:AwardCeremony)
+	OPTIONAL MATCH (award)-[:PRESENTED_AT]->(ceremony:AwardCeremony)
 
-	WITH award, awardCeremony
-		ORDER BY awardCeremony.name DESC
+	WITH award, ceremony
+		ORDER BY ceremony.name DESC
 
 	RETURN
 		'AWARD' AS model,
@@ -12,11 +12,11 @@ const getShowQuery = () => `
 		award.name AS name,
 		award.differentiator AS differentiator,
 		COLLECT(
-			CASE awardCeremony WHEN NULL
+			CASE ceremony WHEN NULL
 				THEN null
-				ELSE awardCeremony { model: 'AWARD_CEREMONY', .uuid, .name }
+				ELSE ceremony { model: 'AWARD_CEREMONY', .uuid, .name }
 			END
-		) AS awardCeremonies
+		) AS ceremonies
 `;
 
 export {

@@ -615,6 +615,243 @@ const getShowQuery = () => `
 		}) AS crewCredits
 		ORDER BY production.startDate DESC, production.name, venue.name
 
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		COLLECT(
+			CASE production WHEN NULL
+				THEN null
+				ELSE production {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					.startDate,
+					.endDate,
+					venue: CASE venue WHEN NULL
+						THEN null
+						ELSE venue {
+							model: 'VENUE',
+							.uuid,
+							.name,
+							surVenue: CASE surVenue WHEN NULL
+								THEN null
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
+							END
+						}
+					END,
+					crewCredits: crewCredits
+				}
+			END
+		) AS crewProductions
+
+	OPTIONAL MATCH (person)<-[personRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
+		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
+
+	OPTIONAL MATCH (category)-[companyRel:HAS_NOMINEE]->
+		(nominatedEmployerCompany:Company { uuid: personRel.nominatedCompanyUuid })
+		WHERE
+			personRel.nominationPosition IS NULL OR
+			personRel.nominationPosition = companyRel.nominationPosition
+
+	UNWIND (CASE WHEN companyRel IS NOT NULL AND EXISTS(companyRel.nominatedMemberUuids)
+		THEN [uuid IN companyRel.nominatedMemberUuids]
+		ELSE [null]
+	END) AS coNominatedMemberUuid
+
+		OPTIONAL MATCH (category)-[coNominatedMemberRel:HAS_NOMINEE]->
+			(coNominatedMember:Person { uuid: coNominatedMemberUuid })
+			WHERE
+				coNominatedMember.uuid <> person.uuid AND
+				(
+					companyRel.nominationPosition IS NULL OR
+					companyRel.nominationPosition = coNominatedMemberRel.nominationPosition
+				)
+
+		WITH
+			person,
+			materials,
+			producerProductions,
+			castMemberProductions,
+			creativeProductions,
+			crewProductions,
+			personRel,
+			companyRel,
+			nominatedEmployerCompany,
+			category,
+			categoryRel,
+			ceremony,
+			award,
+			coNominatedMember
+			ORDER BY coNominatedMemberRel.memberPosition
+
+		WITH
+			person,
+			materials,
+			producerProductions,
+			castMemberProductions,
+			creativeProductions,
+			crewProductions,
+			personRel,
+			companyRel,
+			nominatedEmployerCompany,
+			category,
+			categoryRel,
+			ceremony,
+			award,
+			COLLECT(coNominatedMember { model: 'PERSON', .uuid, .name }) AS coNominatedMembers
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		CASE nominatedEmployerCompany WHEN NULL
+			THEN null
+			ELSE nominatedEmployerCompany { model: 'COMPANY', .uuid, .name, coNominatedMembers: coNominatedMembers }
+		END AS nominatedEmployerCompany,
+		COALESCE(nominatedEmployerCompany, person) AS entity,
+		COALESCE(companyRel, personRel) AS entityRel
+
+	OPTIONAL MATCH (category)-[coNominatedEntityRel:HAS_NOMINEE]->(coNominatedEntity)
+		WHERE
+			(coNominatedEntity:Person OR coNominatedEntity:Company) AND
+			coNominatedEntityRel.nominatedCompanyUuid IS NULL AND
+			(
+				entityRel.nominationPosition IS NULL OR
+				entityRel.nominationPosition = coNominatedEntityRel.nominationPosition
+			) AND
+			coNominatedEntity.uuid <> entity.uuid
+
+	UNWIND (CASE WHEN coNominatedEntityRel IS NOT NULL AND EXISTS(coNominatedEntityRel.nominatedMemberUuids)
+		THEN [uuid IN coNominatedEntityRel.nominatedMemberUuids]
+		ELSE [null]
+	END) AS coNominatedCompanyNominatedMemberUuid
+
+		OPTIONAL MATCH (category)-[coNominatedCompanyNominatedMemberRel:HAS_NOMINEE]->
+			(coNominatedCompanyNominatedMember:Person { uuid: coNominatedCompanyNominatedMemberUuid })
+			WHERE
+				coNominatedEntityRel.nominationPosition IS NULL OR
+				coNominatedEntityRel.nominationPosition = coNominatedCompanyNominatedMemberRel.nominationPosition
+
+		WITH
+			person,
+			materials,
+			producerProductions,
+			castMemberProductions,
+			creativeProductions,
+			crewProductions,
+			entityRel,
+			nominatedEmployerCompany,
+			category,
+			categoryRel,
+			ceremony,
+			award,
+			coNominatedEntityRel,
+			coNominatedEntity,
+			coNominatedCompanyNominatedMember
+			ORDER BY coNominatedCompanyNominatedMemberRel.memberPosition
+
+		WITH
+			person,
+			materials,
+			producerProductions,
+			castMemberProductions,
+			creativeProductions,
+			crewProductions,
+			entityRel,
+			nominatedEmployerCompany,
+			category,
+			categoryRel,
+			ceremony,
+			award,
+			coNominatedEntityRel,
+			coNominatedEntity,
+			COLLECT(coNominatedCompanyNominatedMember {
+				model: 'PERSON', .uuid, .name
+			}) AS coNominatedCompanyNominatedMembers
+			ORDER BY coNominatedEntityRel.entityPosition
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		entityRel,
+		nominatedEmployerCompany,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		[coNominatedEntity IN COLLECT(
+			CASE coNominatedEntity WHEN NULL
+				THEN null
+				ELSE coNominatedEntity {
+					model: TOUPPER(HEAD(LABELS(coNominatedEntity))),
+					.uuid,
+					.name,
+					nominatedMembers: coNominatedCompanyNominatedMembers
+				}
+			END
+		) | CASE coNominatedEntity.model WHEN 'COMPANY'
+			THEN coNominatedEntity
+			ELSE coNominatedEntity { .model, .uuid, .name }
+		END] AS coNominatedEntities
+		ORDER BY entityRel.nominationPosition
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		COLLECT({
+			model: 'NOMINATION',
+			nominatedEmployerCompany: nominatedEmployerCompany,
+			coNominatedEntities: coNominatedEntities
+		}) AS nominations
+		ORDER BY categoryRel.position
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		ceremony,
+		award,
+		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
+		ORDER BY ceremony.name DESC
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		award,
+		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
+		ORDER BY award.name
+
 	RETURN
 		'PERSON' AS model,
 		person.uuid AS uuid,
@@ -644,31 +881,8 @@ const getShowQuery = () => `
 		producerProductions,
 		castMemberProductions,
 		creativeProductions,
-		COLLECT(
-			CASE production WHEN NULL
-				THEN null
-				ELSE production {
-					model: 'PRODUCTION',
-					.uuid,
-					.name,
-					.startDate,
-					.endDate,
-					venue: CASE venue WHEN NULL
-						THEN null
-						ELSE venue {
-							model: 'VENUE',
-							.uuid,
-							.name,
-							surVenue: CASE surVenue WHEN NULL
-								THEN null
-								ELSE surVenue { model: 'VENUE', .uuid, .name }
-							END
-						}
-					END,
-					crewCredits: crewCredits
-				}
-			END
-		) AS crewProductions
+		crewProductions,
+		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS awards
 `;
 
 export {

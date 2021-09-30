@@ -38,13 +38,9 @@ export default class AwardCeremony extends Entity {
 
 		const duplicateCategoryIndices = getDuplicateBaseInstanceIndices(this.categories);
 
-		this.categories.forEach((category, index) => {
-
-			category.validateName({ isRequired: false });
-
-			category.validateUniquenessInGroup({ isDuplicate: duplicateCategoryIndices.includes(index) });
-
-		});
+		this.categories.forEach((category, index) =>
+			category.runInputValidations({ isDuplicate: duplicateCategoryIndices.includes(index) })
+		);
 
 	}
 

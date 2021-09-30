@@ -129,7 +129,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				uuid: AWARD_UUID,
 				name: 'Evening Standard Theatre Awards',
 				differentiator: null,
-				awardCeremonies: []
+				ceremonies: []
 			};
 
 			expect(response).to.have.status(200);

@@ -1,49 +1,54 @@
 import { ACTIONS } from '../../utils/constants';
 
 const getAwardContextualDuplicateRecordCountQuery = () => `
-	MATCH (awardCeremony:AwardCeremony { name: $name })<-[:PRESENTED_AT]-(award:Award { name: $award.name })
+	MATCH (ceremony:AwardCeremony { name: $name })<-[:PRESENTED_AT]-(award:Award { name: $award.name })
 		WHERE
 			(
 				$uuid IS NULL OR
-				$uuid <> awardCeremony.uuid
+				$uuid <> ceremony.uuid
 			) AND
 			(
 				($award.differentiator IS NULL AND award.differentiator IS NULL) OR
 				$award.differentiator = award.differentiator
 			)
 
-	RETURN SIGN(COUNT(awardCeremony)) AS duplicateRecordCount
+	RETURN SIGN(COUNT(ceremony)) AS duplicateRecordCount
 `;
 
 const getCreateUpdateQuery = action => {
 
 	const createUpdateQueryOpeningMap = {
 		[ACTIONS.CREATE]: `
-			CREATE (awardCeremony:AwardCeremony { uuid: $uuid, name: $name })
+			CREATE (ceremony:AwardCeremony { uuid: $uuid, name: $name })
 		`,
 		[ACTIONS.UPDATE]: `
-			MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
+			MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-			OPTIONAL MATCH (awardCeremony)-[:PRESENTS_CATEGORY]->(awardCeremonyCategory:AwardCeremonyCategory)
+			OPTIONAL MATCH (ceremony)-[:PRESENTS_CATEGORY]->(category:AwardCeremonyCategory)
 
-			DETACH DELETE awardCeremonyCategory
+			OPTIONAL MATCH (category)-[nomineeEntityRel:HAS_NOMINEE]->(nomineeEntity)
+				WHERE nomineeEntity:Person OR nomineeEntity:Company
 
-			WITH awardCeremony
+			DELETE nomineeEntityRel
 
-			OPTIONAL MATCH (awardCeremony)<-[relationship]-()
+			DETACH DELETE category
+
+			WITH ceremony
+
+			OPTIONAL MATCH (ceremony)<-[relationship]-()
 
 			DELETE relationship
 
-			WITH DISTINCT awardCeremony
+			WITH DISTINCT ceremony
 
-			SET awardCeremony.name = $name
+			SET ceremony.name = $name
 		`
 	};
 
 	return `
 		${createUpdateQueryOpeningMap[action]}
 
-		WITH awardCeremony
+		WITH ceremony
 
 		OPTIONAL MATCH (existingAward:Award { name: $award.name })
 			WHERE
@@ -57,17 +62,139 @@ const getCreateUpdateQuery = action => {
 			})
 				ON CREATE SET award.differentiator = $award.differentiator
 
-			CREATE (awardCeremony)<-[:PRESENTED_AT]-(award)
+			CREATE (ceremony)<-[:PRESENTED_AT]-(award)
 		)
 
-		WITH DISTINCT awardCeremony
+		WITH DISTINCT ceremony
 
-		FOREACH (categoryParam IN $categories |
-			CREATE (:AwardCeremonyCategory { name: categoryParam.name })
-				<-[:PRESENTS_CATEGORY { position: categoryParam.position }]-(awardCeremony)
-		)
+		UNWIND (CASE $categories WHEN [] THEN [{ nominations: [] }] ELSE $categories END) AS categoryParam
 
-		WITH DISTINCT awardCeremony
+			FOREACH (item IN CASE categoryParam.name WHEN NULL THEN [] ELSE [1] END |
+				CREATE (:AwardCeremonyCategory { name: categoryParam.name })
+					<-[:PRESENTS_CATEGORY { position: categoryParam.position }]-(ceremony)
+			)
+
+			WITH ceremony, categoryParam
+
+			OPTIONAL MATCH (category:AwardCeremonyCategory { name: categoryParam.name })
+				<-[:PRESENTS_CATEGORY]-(ceremony)
+
+			UNWIND (CASE categoryParam.nominations WHEN []
+				THEN [{ entities: [] }]
+				ELSE categoryParam.nominations
+			END) AS nomination
+
+				UNWIND
+					CASE SIZE([entity IN nomination.entities WHERE entity.model = 'PERSON']) WHEN 0
+						THEN [null]
+						ELSE [entity IN nomination.entities WHERE entity.model = 'PERSON']
+					END AS nomineePersonParam
+
+					OPTIONAL MATCH (existingNomineePerson:Person { name: nomineePersonParam.name })
+						WHERE
+							(
+								nomineePersonParam.differentiator IS NULL AND
+								existingNomineePerson.differentiator IS NULL
+							) OR
+							nomineePersonParam.differentiator = existingNomineePerson.differentiator
+
+					FOREACH (item IN CASE nomineePersonParam WHEN NULL THEN [] ELSE [1] END |
+						MERGE (nomineePerson:Person {
+							uuid: COALESCE(existingNomineePerson.uuid, nomineePersonParam.uuid),
+							name: nomineePersonParam.name
+						})
+							ON CREATE SET nomineePerson.differentiator = nomineePersonParam.differentiator
+
+						CREATE (category)-
+							[:HAS_NOMINEE {
+								nominationPosition: nomination.position,
+								entityPosition: nomineePersonParam.position
+							}]->(nomineePerson)
+					)
+
+				WITH DISTINCT ceremony, category, nomination
+
+				UNWIND
+					CASE SIZE([entity IN nomination.entities WHERE entity.model = 'COMPANY']) WHEN 0
+						THEN [null]
+						ELSE [entity IN nomination.entities WHERE entity.model = 'COMPANY']
+					END AS nomineeCompanyParam
+
+					OPTIONAL MATCH (existingNomineeCompany:Company { name: nomineeCompanyParam.name })
+						WHERE
+							(
+								nomineeCompanyParam.differentiator IS NULL AND
+								existingNomineeCompany.differentiator IS NULL
+							) OR
+							nomineeCompanyParam.differentiator = existingNomineeCompany.differentiator
+
+					FOREACH (item IN CASE nomineeCompanyParam WHEN NULL THEN [] ELSE [1] END |
+						MERGE (nomineeCompany:Company {
+							uuid: COALESCE(existingNomineeCompany.uuid, nomineeCompanyParam.uuid),
+							name: nomineeCompanyParam.name
+						})
+							ON CREATE SET nomineeCompany.differentiator = nomineeCompanyParam.differentiator
+
+						CREATE (category)-
+							[:HAS_NOMINEE {
+								nominationPosition: nomination.position,
+								entityPosition: nomineeCompanyParam.position
+							}]->(nomineeCompany)
+					)
+
+					WITH DISTINCT ceremony, category, nomination, nomineeCompanyParam
+
+					UNWIND
+						CASE WHEN nomineeCompanyParam IS NOT NULL AND SIZE(nomineeCompanyParam.nominatedMembers) > 0
+							THEN nomineeCompanyParam.nominatedMembers
+							ELSE [null]
+						END AS nominatedMemberParam
+
+						OPTIONAL MATCH (nominatedCompany:Company { name: nomineeCompanyParam.name })
+							WHERE
+								(
+									nomineeCompanyParam.differentiator IS NULL AND
+									nominatedCompany.differentiator IS NULL
+								) OR
+								nomineeCompanyParam.differentiator = nominatedCompany.differentiator
+
+						OPTIONAL MATCH (nominatedCompany)<-[nomineeCompanyRel:HAS_NOMINEE]-(category)
+							WHERE
+								nomination.position IS NULL OR
+								nomination.position = nomineeCompanyRel.nominationPosition
+
+						OPTIONAL MATCH (existingPerson:Person { name: nominatedMemberParam.name })
+							WHERE
+								(
+									nominatedMemberParam.differentiator IS NULL AND
+									existingPerson.differentiator IS NULL
+								) OR
+								nominatedMemberParam.differentiator = existingPerson.differentiator
+
+						FOREACH (item IN CASE WHEN SIZE(nomineeCompanyParam.nominatedMembers) > 0
+							THEN [1]
+							ELSE []
+						END | SET nomineeCompanyRel.nominatedMemberUuids = [])
+
+						FOREACH (item IN CASE nominatedMemberParam WHEN NULL THEN [] ELSE [1] END |
+							MERGE (nominatedMember:Person {
+								uuid: COALESCE(existingPerson.uuid, nominatedMemberParam.uuid),
+								name: nominatedMemberParam.name
+							})
+								ON CREATE SET nominatedMember.differentiator = nominatedMemberParam.differentiator
+
+							CREATE (category)-
+								[:HAS_NOMINEE {
+									nominationPosition: nomination.position,
+									memberPosition: nominatedMemberParam.position,
+									nominatedCompanyUuid: nominatedCompany.uuid
+								}]->(nominatedMember)
+
+							SET nomineeCompanyRel.nominatedMemberUuids =
+								nomineeCompanyRel.nominatedMemberUuids + nominatedMember.uuid
+						)
+
+		WITH DISTINCT ceremony
 
 		${getEditQuery()}
 	`;
@@ -77,67 +204,181 @@ const getCreateUpdateQuery = action => {
 const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getEditQuery = () => `
-	MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
+	MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
-	OPTIONAL MATCH (awardCeremony)-[awardCeremonyCategoryRel:PRESENTS_CATEGORY]->
-		(awardCeremonyCategory:AwardCeremonyCategory)
+	OPTIONAL MATCH (ceremony)-[categoryRel:PRESENTS_CATEGORY]->
+		(category:AwardCeremonyCategory)
 
-	WITH awardCeremony, award, awardCeremonyCategory
-		ORDER BY awardCeremonyCategoryRel.position
+	OPTIONAL MATCH (category)-[nomineeEntityRel:HAS_NOMINEE]->(nomineeEntity)
+		WHERE
+			(nomineeEntity:Person AND nomineeEntityRel.nominatedCompanyUuid IS NULL) OR
+			nomineeEntity:Company
+
+	WITH ceremony, award, categoryRel, category, nomineeEntityRel,
+		COLLECT(nomineeEntity {
+			model: TOUPPER(HEAD(LABELS(nomineeEntity))),
+			.name,
+			.differentiator,
+			nominatedMemberUuids: nomineeEntityRel.nominatedMemberUuids
+		}) AS nomineeEntities
+
+	UNWIND (CASE nomineeEntities WHEN [] THEN [null] ELSE nomineeEntities END) AS nomineeEntity
+
+		UNWIND (COALESCE(nomineeEntity.nominatedMemberUuids, [null])) AS nominatedMemberUuid
+
+			OPTIONAL MATCH (category)-[nominatedMemberRel:HAS_NOMINEE]->
+				(nominatedMember:Person { uuid: nominatedMemberUuid })
+				WHERE
+					nomineeEntityRel.nominationPosition IS NULL OR
+					nomineeEntityRel.nominationPosition = nominatedMemberRel.nominationPosition
+
+			WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity, nominatedMember
+				ORDER BY nominatedMemberRel.memberPosition
+
+			WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity,
+				COLLECT(nominatedMember { .name, .differentiator }) + [{}] AS nominatedMembers
+
+	WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity, nominatedMembers
+		ORDER BY nomineeEntityRel.nominationPosition, nomineeEntityRel.entityPosition
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeEntityRel.nominationPosition AS nominationPosition,
+		[nomineeEntity IN COLLECT(
+			CASE nomineeEntity WHEN NULL
+				THEN null
+				ELSE nomineeEntity { .model, .name, .differentiator, nominatedMembers }
+			END
+		) | CASE nomineeEntity.model WHEN 'COMPANY'
+			THEN nomineeEntity
+			ELSE nomineeEntity { .model, .name, .differentiator }
+		END] + [{}] AS nomineeEntities
+
+	WITH ceremony, award, categoryRel, category,
+		COLLECT(
+			CASE SIZE(nomineeEntities) WHEN 1
+				THEN null
+				ELSE {
+					model: 'NOMINATION',
+					entities: nomineeEntities
+				}
+			END
+		) + [{ entities: [{}] }] AS nominations
+		ORDER BY categoryRel.position
 
 	RETURN
 		'AWARD_CEREMONY' AS model,
-		awardCeremony.uuid AS uuid,
-		awardCeremony.name AS name,
+		ceremony.uuid AS uuid,
+		ceremony.name AS name,
 		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 		COLLECT(
-			CASE awardCeremonyCategory WHEN NULL
+			CASE category WHEN NULL
 				THEN null
-				ELSE awardCeremonyCategory { .name }
+				ELSE category { .name, nominations }
 			END
-		) + [{}] AS categories
+		) + [{ nominations: [{ entities: [{}] }] }] AS categories
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
 const getShowQuery = () => `
-	MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
+	MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
-	OPTIONAL MATCH (awardCeremony)-[awardCeremonyCategoryRel:PRESENTS_CATEGORY]->
-		(awardCeremonyCategory:AwardCeremonyCategory)
+	OPTIONAL MATCH (ceremony)-[categoryRel:PRESENTS_CATEGORY]->
+		(category:AwardCeremonyCategory)
 
-	WITH awardCeremony, award, awardCeremonyCategory
-		ORDER BY awardCeremonyCategoryRel.position
+	OPTIONAL MATCH (category)-[nomineeEntityRel:HAS_NOMINEE]->(nomineeEntity)
+		WHERE
+			(nomineeEntity:Person AND nomineeEntityRel.nominatedCompanyUuid IS NULL) OR
+			nomineeEntity:Company
+
+	WITH ceremony, award, categoryRel, category, nomineeEntityRel,
+		COLLECT(nomineeEntity {
+			model: TOUPPER(HEAD(LABELS(nomineeEntity))),
+			.uuid,
+			.name,
+			nominatedMemberUuids: nomineeEntityRel.nominatedMemberUuids
+		}) AS nomineeEntities
+
+	UNWIND (CASE nomineeEntities WHEN [] THEN [null] ELSE nomineeEntities END) AS nomineeEntity
+
+		UNWIND (COALESCE(nomineeEntity.nominatedMemberUuids, [null])) AS nominatedMemberUuid
+
+			OPTIONAL MATCH (category)-[nominatedMemberRel:HAS_NOMINEE]->
+				(nominatedMember:Person { uuid: nominatedMemberUuid })
+				WHERE
+					nomineeEntityRel.nominationPosition IS NULL OR
+					nomineeEntityRel.nominationPosition = nominatedMemberRel.nominationPosition
+
+			WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity, nominatedMember
+				ORDER BY nominatedMemberRel.memberPosition
+
+			WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity,
+				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
+
+	WITH ceremony, award, categoryRel, category, nomineeEntityRel, nomineeEntity, nominatedMembers
+		ORDER BY nomineeEntityRel.nominationPosition, nomineeEntityRel.entityPosition
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeEntityRel.nominationPosition AS nominationPosition,
+		[nomineeEntity IN COLLECT(
+			CASE nomineeEntity WHEN NULL
+				THEN null
+				ELSE nomineeEntity { .model, .uuid, .name, nominatedMembers }
+			END
+		) | CASE nomineeEntity.model WHEN 'COMPANY'
+			THEN nomineeEntity
+			ELSE nomineeEntity { .model, .uuid, .name }
+		END] AS nomineeEntities
+
+	WITH ceremony, award, categoryRel, category,
+		COLLECT(
+			CASE SIZE(nomineeEntities) WHEN 0
+				THEN null
+				ELSE {
+					model: 'NOMINATION',
+					entities: nomineeEntities
+				}
+			END
+		) AS nominations
+		ORDER BY categoryRel.position
 
 	RETURN
 		'AWARD_CEREMONY' AS model,
-		awardCeremony.uuid AS uuid,
-		awardCeremony.name AS name,
+		ceremony.uuid AS uuid,
+		ceremony.name AS name,
 		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award,
 		COLLECT(
-			CASE awardCeremonyCategory WHEN NULL
+			CASE category WHEN NULL
 				THEN null
-				ELSE awardCeremonyCategory { model: 'AWARD_CEREMONY_CATEGORY', .name }
+				ELSE category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }
 			END
 		) AS categories
 `;
 
 const getListQuery = () => `
-	MATCH (awardCeremony:AwardCeremony)
+	MATCH (ceremony:AwardCeremony)
 
-	OPTIONAL MATCH (awardCeremony)<-[:PRESENTED_AT]-(award:Award)
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
 	RETURN
 		'AWARD_CEREMONY' AS model,
-		awardCeremony.uuid AS uuid,
-		awardCeremony.name AS name,
+		ceremony.uuid AS uuid,
+		ceremony.name AS name,
 		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award
 
-	ORDER BY awardCeremony.name DESC, award.name
+	ORDER BY ceremony.name DESC, award.name
 
 	LIMIT 100
 `;

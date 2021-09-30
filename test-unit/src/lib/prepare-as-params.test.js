@@ -341,7 +341,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -354,6 +354,9 @@ describe('Prepare As Params module', () => {
 					],
 					producerCredits: [
 						{ name: '', entities: [{ name: 'National Theatre Company' }] }
+					],
+					nominations: [
+						{ entities: [{ name: 'Simon Baker' }] }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -368,6 +371,9 @@ describe('Prepare As Params module', () => {
 				expect(result.producerCredits.length).to.equal(1);
 				expect(result.producerCredits[0].name).to.be.null;
 				expect(result.producerCredits[0]).to.not.have.property('position');
+				expect(result.nominations.length).to.equal(1);
+				expect(result.nominations[0]).to.not.have.property('name');
+				expect(result.nominations[0]).to.not.have.property('position');
 
 			});
 
@@ -402,6 +408,11 @@ describe('Prepare As Params module', () => {
 						{ name: 'Production Manager', entities: [{ name: '' }] },
 						{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
 						{ name: 'Costume Supervisor' }
+					],
+					nominations: [
+						{ entities: [{ name: '' }] },
+						{ entities: [{ name: 'Simon Baker' }] },
+						{}
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -422,6 +433,9 @@ describe('Prepare As Params module', () => {
 				expect(result.crewCredits.length).to.equal(1);
 				expect(result.crewCredits[0].name).to.equal('Stage Manager');
 				expect(result.crewCredits[0]).to.not.have.property('position');
+				expect(result.nominations.length).to.equal(1);
+				expect(result.nominations[0]).to.not.have.property('name');
+				expect(result.nominations[0]).to.not.have.property('position');
 
 			});
 
@@ -615,7 +629,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -629,6 +643,9 @@ describe('Prepare As Params module', () => {
 						],
 						producerCredits: [
 							{ name: '', entities: [{ name: 'National Theatre Company' }] }
+						],
+						nominations: [
+							{ entities: [{ name: 'Simon Baker' }] }
 						]
 					}
 				};
@@ -644,6 +661,9 @@ describe('Prepare As Params module', () => {
 				expect(result.material.producerCredits.length).to.equal(1);
 				expect(result.material.producerCredits[0].name).to.be.null;
 				expect(result.material.producerCredits[0]).to.not.have.property('position');
+				expect(result.material.nominations.length).to.equal(1);
+				expect(result.material.nominations[0]).to.not.have.property('name');
+				expect(result.material.nominations[0]).to.not.have.property('position');
 
 			});
 
@@ -679,6 +699,11 @@ describe('Prepare As Params module', () => {
 							{ name: 'Production Manager', entities: [{ name: '' }] },
 							{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
 							{ name: 'Costume Supervisor' }
+						],
+						nominations: [
+							{ entities: [{ name: '' }] },
+							{ entities: [{ name: 'Simon Baker' }] },
+							{}
 						]
 					}
 				};
@@ -700,6 +725,9 @@ describe('Prepare As Params module', () => {
 				expect(result.material.crewCredits.length).to.equal(1);
 				expect(result.material.crewCredits[0].name).to.equal('Stage Manager');
 				expect(result.material.crewCredits[0]).to.not.have.property('position');
+				expect(result.material.nominations.length).to.equal(1);
+				expect(result.material.nominations[0]).to.not.have.property('name');
+				expect(result.material.nominations[0]).to.not.have.property('position');
 
 			});
 
@@ -927,7 +955,7 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property empty string name value (providing they have named children)', () => {
 
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
@@ -943,6 +971,9 @@ describe('Prepare As Params module', () => {
 							],
 							producerCredits: [
 								{ name: '', entities: [{ name: 'National Theatre Company' }] }
+							],
+							nominations: [
+								{ entities: [{ name: 'Simon Baker' }] }
 							]
 						}
 					]
@@ -959,6 +990,9 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].producerCredits.length).to.equal(1);
 				expect(result.materials[0].producerCredits[0].name).to.be.null;
 				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
+				expect(result.materials[0].nominations.length).to.equal(1);
+				expect(result.materials[0].nominations[0]).to.not.have.property('name');
+				expect(result.materials[0].nominations[0]).to.not.have.property('position');
 
 			});
 
@@ -996,6 +1030,11 @@ describe('Prepare As Params module', () => {
 								{ name: 'Production Manager', entities: [{ name: '' }] },
 								{ name: 'Stage Manager', entities: [{ name: 'Andrew Speed' }] },
 								{ name: 'Costume Supervisor' }
+							],
+							nominations: [
+								{ entities: [{ name: '' }] },
+								{ entities: [{ name: 'Simon Baker' }] },
+								{}
 							]
 						}
 					]
@@ -1018,6 +1057,9 @@ describe('Prepare As Params module', () => {
 				expect(result.materials[0].crewCredits.length).to.equal(1);
 				expect(result.materials[0].crewCredits[0].name).to.equal('Stage Manager');
 				expect(result.materials[0].crewCredits[0]).to.not.have.property('position');
+				expect(result.materials[0].nominations.length).to.equal(1);
+				expect(result.materials[0].nominations[0]).to.not.have.property('name');
+				expect(result.materials[0].nominations[0]).to.not.have.property('position');
 
 			});
 
