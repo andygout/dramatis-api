@@ -62,6 +62,20 @@ describe('Get Duplicate Entity Info module', () => {
 						]
 					}, 'COMPANY'),
 					applyModelGetter({
+						name: 'Autograph',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Ian Dickinson',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Ian Dickinson',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
 					}, 'PERSON')
@@ -72,6 +86,10 @@ describe('Get Duplicate Entity Info module', () => {
 				const expectedResult = [
 					{
 						name: 'Leo Warner',
+						differentiator: ''
+					},
+					{
+						name: 'Ian Dickinson',
 						differentiator: ''
 					}
 				];
@@ -107,6 +125,24 @@ describe('Get Duplicate Entity Info module', () => {
 						]
 					}, 'COMPANY'),
 					applyModelGetter({
+						name: 'Andrew Bruce',
+						differentiator: ''
+					}, 'PERSON'),
+					applyModelGetter({
+						name: 'Autograph',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Andrew Bruce',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Nick Lidster',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
 					}, 'PERSON')
@@ -117,6 +153,10 @@ describe('Get Duplicate Entity Info module', () => {
 				const expectedResult = [
 					{
 						name: 'Dick Straker',
+						differentiator: ''
+					},
+					{
+						name: 'Andrew Bruce',
 						differentiator: ''
 					}
 				];
@@ -166,6 +206,34 @@ describe('Get Duplicate Entity Info module', () => {
 						]
 					}, 'COMPANY'),
 					applyModelGetter({
+						name: 'Autograph',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Nick Lidster',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
+						name: 'Soundwaves Ltd',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Brian Ronan',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
 						name: 'Akhila Krishnan',
 						differentiator: ''
 					}, 'PERSON')
@@ -176,6 +244,10 @@ describe('Get Duplicate Entity Info module', () => {
 				const expectedResult = [
 					{
 						name: 'Ian William Galloway',
+						differentiator: ''
+					},
+					{
+						name: 'Terry Jardine',
 						differentiator: ''
 					}
 				];
@@ -233,6 +305,42 @@ describe('Get Duplicate Entity Info module', () => {
 						]
 					}, 'COMPANY'),
 					applyModelGetter({
+						name: 'Autograph',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Nick Lidster',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
+						name: 'Soundwaves Ltd',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Andrew Bruce',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Brian Ronan',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
 						name: 'Mark Grimmer',
 						differentiator: ''
 					}, 'PERSON'),
@@ -251,6 +359,10 @@ describe('Get Duplicate Entity Info module', () => {
 					},
 					{
 						name: 'Ian William Galloway',
+						differentiator: ''
+					},
+					{
+						name: 'Terry Jardine',
 						differentiator: ''
 					}
 				];
@@ -304,6 +416,34 @@ describe('Get Duplicate Entity Info module', () => {
 							}, 'PERSON'),
 							applyModelGetter({
 								name: 'John O\'Connell',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
+						name: 'Autograph',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: '',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: 'Terry Jardine',
+								differentiator: ''
+							}, 'PERSON')
+						]
+					}, 'COMPANY'),
+					applyModelGetter({
+						name: 'Soundwaves Ltd',
+						differentiator: '',
+						nominatedMembers: [
+							applyModelGetter({
+								name: 'Brian Ronan',
+								differentiator: ''
+							}, 'PERSON'),
+							applyModelGetter({
+								name: '',
 								differentiator: ''
 							}, 'PERSON')
 						]

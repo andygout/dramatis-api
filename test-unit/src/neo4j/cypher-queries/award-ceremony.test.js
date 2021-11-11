@@ -14,25 +14,25 @@ describe('Cypher Queries Award Ceremony module', () => {
 			const compactedResult = removeExcessWhitespace(result);
 
 			const startSegment = removeExcessWhitespace(`
-				CREATE (awardCeremony:AwardCeremony { uuid: $uuid, name: $name })
+				CREATE (ceremony:AwardCeremony { uuid: $uuid, name: $name })
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
-				WITH awardCeremony
+				WITH ceremony
 			`);
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
 					'AWARD_CEREMONY' AS model,
-					awardCeremony.uuid AS uuid,
-					awardCeremony.name AS name,
+					ceremony.uuid AS uuid,
+					ceremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 					COLLECT(
-						CASE awardCeremonyCategory WHEN NULL
+						CASE category WHEN NULL
 							THEN null
-							ELSE awardCeremonyCategory { .name }
+							ELSE category { .name, nominations }
 						END
-					) + [{}] AS categories
+					) + [{ nominations: [{ entities: [{}] }] }] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -52,39 +52,44 @@ describe('Cypher Queries Award Ceremony module', () => {
 			const compactedResult = removeExcessWhitespace(result);
 
 			const startSegment = removeExcessWhitespace(`
-				MATCH (awardCeremony:AwardCeremony { uuid: $uuid })
+				MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-				OPTIONAL MATCH (awardCeremony)-[:PRESENTS_CATEGORY]->(awardCeremonyCategory:AwardCeremonyCategory)
+				OPTIONAL MATCH (ceremony)-[:PRESENTS_CATEGORY]->(category:AwardCeremonyCategory)
 
-				DETACH DELETE awardCeremonyCategory
+				OPTIONAL MATCH (category)-[nomineeEntityRel:HAS_NOMINEE]->(nomineeEntity)
+					WHERE nomineeEntity:Person OR nomineeEntity:Company
 
-				WITH awardCeremony
+				DELETE nomineeEntityRel
 
-				OPTIONAL MATCH (awardCeremony)<-[relationship]-()
+				DETACH DELETE category
+
+				WITH ceremony
+
+				OPTIONAL MATCH (ceremony)<-[relationship]-()
 
 				DELETE relationship
 
-				WITH DISTINCT awardCeremony
+				WITH DISTINCT ceremony
 
-				SET awardCeremony.name = $name
+				SET ceremony.name = $name
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
-				WITH awardCeremony
+				WITH ceremony
 			`);
 
 			const endSegment = removeExcessWhitespace(`
 				RETURN
 					'AWARD_CEREMONY' AS model,
-					awardCeremony.uuid AS uuid,
-					awardCeremony.name AS name,
+					ceremony.uuid AS uuid,
+					ceremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 					COLLECT(
-						CASE awardCeremonyCategory WHEN NULL
+						CASE category WHEN NULL
 							THEN null
-							ELSE awardCeremonyCategory { .name }
+							ELSE category { .name, nominations }
 						END
-					) + [{}] AS categories
+					) + [{ nominations: [{ entities: [{}] }] }] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
