@@ -185,7 +185,7 @@
 				{
 					"model": "COMPANY",
 					"name": "RC-Annie Ltd",
-					"creditedMembers": [
+					"members": [
 						{
 							"name": "Rachel Bown-Williams"
 						},

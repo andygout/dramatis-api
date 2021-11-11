@@ -772,7 +772,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
-									creditedMembers: [],
+									members: [],
 									errors: {
 										name: [
 											'Value is too long'
@@ -846,7 +846,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: 'Duncan C Weldon Productions',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
-									creditedMembers: [],
+									members: [],
 									errors: {
 										differentiator: [
 											'Value is too long'
@@ -877,7 +877,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Duncan C Weldon'
 										},
@@ -946,7 +946,7 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Duncan C Weldon',
@@ -993,14 +993,14 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: []
+									members: []
 								},
 								{
 									uuid: undefined,
 									name: 'Foo',
 									differentiator: '',
 									errors: {},
-									creditedMembers: []
+									members: []
 								}
 							]
 						}
@@ -1008,7 +1008,7 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.crewCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
@@ -1028,7 +1028,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: '',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Duncan C Weldon',
 											differentiator: ''
@@ -1081,7 +1081,7 @@ describe('Production instance', () => {
 											'Name is required if named children exist'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Duncan C Weldon',
@@ -1114,7 +1114,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: ABOVE_MAX_LENGTH_STRING
 										}
@@ -1162,7 +1162,7 @@ describe('Production instance', () => {
 									name: 'Duncan C Weldon Productions',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: ABOVE_MAX_LENGTH_STRING,
@@ -1199,7 +1199,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Duncan C Weldon Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Duncan C Weldon',
 											differentiator: ABOVE_MAX_LENGTH_STRING
@@ -1248,7 +1248,7 @@ describe('Production instance', () => {
 									name: 'Duncan C Weldon Productions',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Duncan C Weldon',
@@ -2486,7 +2486,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
-									creditedMembers: [],
+									members: [],
 									errors: {
 										name: [
 											'Value is too long'
@@ -2560,7 +2560,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: 'Autograph',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
-									creditedMembers: [],
+									members: [],
 									errors: {
 										differentiator: [
 											'Value is too long'
@@ -2592,7 +2592,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce'
 										},
@@ -2660,7 +2660,7 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Andrew Bruce',
@@ -2707,14 +2707,14 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: []
+									members: []
 								},
 								{
 									uuid: undefined,
 									name: 'Foo',
 									differentiator: '',
 									errors: {},
-									creditedMembers: []
+									members: []
 								}
 							]
 						}
@@ -2723,7 +2723,7 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.creativeCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.creativeCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.creativeCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
@@ -2743,7 +2743,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: '',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: ''
@@ -2795,7 +2795,7 @@ describe('Production instance', () => {
 											'Name is required if named children exist'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Andrew Bruce',
@@ -2829,7 +2829,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: ABOVE_MAX_LENGTH_STRING
 										}
@@ -2876,7 +2876,7 @@ describe('Production instance', () => {
 									name: 'Autograph',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: ABOVE_MAX_LENGTH_STRING,
@@ -2914,7 +2914,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: ABOVE_MAX_LENGTH_STRING
@@ -2962,7 +2962,7 @@ describe('Production instance', () => {
 									name: 'Autograph',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Andrew Bruce',
@@ -3386,7 +3386,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
-									creditedMembers: [],
+									members: [],
 									errors: {
 										name: [
 											'Value is too long'
@@ -3460,7 +3460,7 @@ describe('Production instance', () => {
 									uuid: undefined,
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
-									creditedMembers: [],
+									members: [],
 									errors: {
 										differentiator: [
 											'Value is too long'
@@ -3491,7 +3491,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Sara Gunter'
 										},
@@ -3560,7 +3560,7 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Sara Gunter',
@@ -3607,14 +3607,14 @@ describe('Production instance', () => {
 											'This item has been duplicated within the group'
 										]
 									},
-									creditedMembers: []
+									members: []
 								},
 								{
 									uuid: undefined,
 									name: 'Foo',
 									differentiator: '',
 									errors: {},
-									creditedMembers: []
+									members: []
 								}
 							]
 						}
@@ -3622,7 +3622,7 @@ describe('Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].creditedMembers[1].model).to.equal('PERSON');
+				expect(result.crewCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
@@ -3642,7 +3642,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: '',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Sara Gunter',
 											differentiator: ''
@@ -3695,7 +3695,7 @@ describe('Production instance', () => {
 											'Name is required if named children exist'
 										]
 									},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Sara Gunter',
@@ -3728,7 +3728,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: ABOVE_MAX_LENGTH_STRING
 										}
@@ -3776,7 +3776,7 @@ describe('Production instance', () => {
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: ABOVE_MAX_LENGTH_STRING,
@@ -3813,7 +3813,7 @@ describe('Production instance', () => {
 								{
 									model: 'COMPANY',
 									name: 'Assistant Stage Managers Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Sara Gunter',
 											differentiator: ABOVE_MAX_LENGTH_STRING
@@ -3862,7 +3862,7 @@ describe('Production instance', () => {
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: '',
 									errors: {},
-									creditedMembers: [
+									members: [
 										{
 											uuid: undefined,
 											name: 'Sara Gunter',

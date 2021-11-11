@@ -4,7 +4,7 @@ import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { Person } from '../../../src/models';
 
-describe('CompanyWithNominatedMembers model', () => {
+describe('CompanyWithMembers model', () => {
 
 	let stubs;
 
@@ -28,7 +28,7 @@ describe('CompanyWithNominatedMembers model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/CompanyWithNominatedMembers', {
+		proxyquire('../../../src/models/CompanyWithMembers', {
 			'../lib/get-duplicate-entity-info': stubs.getDuplicatesInfoModule,
 			'.': stubs.models
 		}).default;
@@ -43,20 +43,20 @@ describe('CompanyWithNominatedMembers model', () => {
 
 	describe('constructor method', () => {
 
-		describe('nominatedMembers property', () => {
+		describe('members property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
 				const instance = createInstance({ name: 'Autograph' });
-				expect(instance.nominatedMembers).to.deep.equal([]);
+				expect(instance.members).to.deep.equal([]);
 
 			});
 
-			it('assigns array of nominatedMembers if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of members if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'Autograph',
-					nominatedMembers: [
+					members: [
 						{
 							name: 'Andrew Bruce'
 						},
@@ -69,10 +69,10 @@ describe('CompanyWithNominatedMembers model', () => {
 					]
 				};
 				const instance = createInstance(props);
-				expect(instance.nominatedMembers.length).to.equal(3);
-				expect(instance.nominatedMembers[0] instanceof Person).to.be.true;
-				expect(instance.nominatedMembers[1] instanceof Person).to.be.true;
-				expect(instance.nominatedMembers[2] instanceof Person).to.be.true;
+				expect(instance.members.length).to.equal(3);
+				expect(instance.members[0] instanceof Person).to.be.true;
+				expect(instance.members[1] instanceof Person).to.be.true;
+				expect(instance.members[2] instanceof Person).to.be.true;
 
 			});
 
@@ -86,34 +86,34 @@ describe('CompanyWithNominatedMembers model', () => {
 
 			const props = {
 				name: 'Fiery Angel',
-				nominatedMembers: [
+				members: [
 					{
 						name: 'Edward Snape'
 					}
 				]
 			};
 			const instance = createInstance(props);
-			instance.nominatedMembers[0].name = 'Edward Snape';
+			instance.members[0].name = 'Edward Snape';
 			spy(instance, 'validateNamePresenceIfNamedChildren');
 			instance.runInputValidations({ duplicateEntities: [] });
 			assert.callOrder(
 				instance.validateNamePresenceIfNamedChildren,
-				instance.nominatedMembers[0].validateName,
-				instance.nominatedMembers[0].validateDifferentiator,
+				instance.members[0].validateName,
+				instance.members[0].validateDifferentiator,
 				stubs.getDuplicatesInfoModule.isEntityInArray,
-				instance.nominatedMembers[0].validateUniquenessInGroup
+				instance.members[0].validateUniquenessInGroup
 			);
 			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.nominatedMembers[0].validateName.calledOnce).to.be.true;
-			expect(instance.nominatedMembers[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.nominatedMembers[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.nominatedMembers[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.members[0].validateName.calledOnce).to.be.true;
+			expect(instance.members[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.members[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.members[0].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledOnce).to.be.true;
 			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledWithExactly(
-				instance.nominatedMembers[0], []
+				instance.members[0], []
 			)).to.be.true;
-			expect(instance.nominatedMembers[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.nominatedMembers[0].validateUniquenessInGroup.calledWithExactly(
+			expect(instance.members[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
 			)).to.be.true;
 

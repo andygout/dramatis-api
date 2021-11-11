@@ -123,7 +123,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Royal Court Theatre',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Vicky Featherstone'
 									},
@@ -145,7 +145,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Playful Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Matthew Byam Shaw'
 									},
@@ -218,7 +218,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Royal Court Theatre',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Vicky Featherstone'
 									},
@@ -236,7 +236,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Playful Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Matthew Byam Shaw'
 									},
@@ -280,7 +280,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Playful Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Matthew Byam Shaw'
 									}
@@ -308,7 +308,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Royal Court Theatre',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Sam Pritchard'
 									},
@@ -323,7 +323,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Playful Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Roger Chapman'
 									},
@@ -367,7 +367,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Royal Court Theatre',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Sam Pritchard'
 									},
@@ -382,7 +382,7 @@ describe('Productions with producer', () => {
 							{
 								model: 'COMPANY',
 								name: 'Playful Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Nick Salmon'
 									},
@@ -471,7 +471,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -483,7 +483,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -495,7 +495,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -522,13 +522,13 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -598,7 +598,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -610,7 +610,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -621,7 +621,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -648,7 +648,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -702,7 +702,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -720,7 +720,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 							name: 'Sonia Friedman Productions',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -737,7 +737,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -759,7 +759,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -781,7 +781,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -818,7 +818,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 							name: 'Royal Court Theatre',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -840,7 +840,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 							name: 'Playful Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: NICK_SALMON_PERSON_UUID,
@@ -862,7 +862,7 @@ describe('Productions with producer', () => {
 							model: 'COMPANY',
 							uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 							name: 'Old Vic Productions',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -933,7 +933,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -945,7 +945,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -956,7 +956,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -983,7 +983,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1041,7 +1041,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1059,7 +1059,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1076,7 +1076,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -1098,7 +1098,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -1120,7 +1120,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1163,7 +1163,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1175,7 +1175,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1187,7 +1187,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -1214,13 +1214,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1309,7 +1309,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1321,7 +1321,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1332,7 +1332,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -1359,7 +1359,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1417,7 +1417,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1435,7 +1435,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1452,7 +1452,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -1474,7 +1474,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -1496,7 +1496,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1537,7 +1537,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -1559,7 +1559,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
@@ -1581,7 +1581,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1624,7 +1624,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1636,7 +1636,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1648,7 +1648,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -1675,13 +1675,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -1770,7 +1770,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1782,7 +1782,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1793,7 +1793,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -1820,7 +1820,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: null,
@@ -1878,7 +1878,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: null,
@@ -1896,7 +1896,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -1913,7 +1913,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -1935,7 +1935,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -1957,7 +1957,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1998,7 +1998,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -2020,7 +2020,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
@@ -2042,7 +2042,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2085,7 +2085,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2097,7 +2097,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2109,7 +2109,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -2136,13 +2136,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: null,
@@ -2220,7 +2220,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2238,7 +2238,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2255,7 +2255,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -2277,7 +2277,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: null,
@@ -2299,7 +2299,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2372,7 +2372,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2384,7 +2384,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2395,7 +2395,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -2422,7 +2422,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2480,7 +2480,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2498,7 +2498,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2515,7 +2515,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -2537,7 +2537,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -2559,7 +2559,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2602,7 +2602,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2614,7 +2614,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2626,7 +2626,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -2653,13 +2653,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2748,7 +2748,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2760,7 +2760,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2771,7 +2771,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -2798,7 +2798,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2856,7 +2856,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -2874,7 +2874,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -2891,7 +2891,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -2913,7 +2913,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -2935,7 +2935,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2976,7 +2976,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -2998,7 +2998,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
@@ -3020,7 +3020,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -3063,7 +3063,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3075,7 +3075,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3087,7 +3087,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -3114,13 +3114,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -3209,7 +3209,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3221,7 +3221,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -3232,7 +3232,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -3259,7 +3259,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -3317,7 +3317,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
@@ -3335,7 +3335,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3352,7 +3352,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -3374,7 +3374,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ROGER_CHAPMAN_PERSON_UUID,
@@ -3396,7 +3396,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -3437,7 +3437,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SAM_PRITCHARD_PERSON_UUID,
@@ -3459,7 +3459,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: NICK_SALMON_PERSON_UUID,
@@ -3481,7 +3481,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -3524,7 +3524,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3536,7 +3536,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
-									creditedMembers: []
+									members: []
 								}
 							]
 						},
@@ -3548,7 +3548,7 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: VICKY_FEATHERSTONE_PERSON_UUID,
@@ -3575,13 +3575,13 @@ describe('Productions with producer', () => {
 									model: 'COMPANY',
 									uuid: OLD_VIC_PRODUCTIONS_COMPANY_UUID,
 									name: 'Old Vic Productions',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: null,
 									name: 'Playful Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,

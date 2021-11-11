@@ -367,7 +367,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'COMPANY',
 											name: 'Autograph',
 											differentiator: '1',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Terry Jardine',
 													differentiator: '1'
@@ -387,7 +387,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'COMPANY',
 											name: 'Audio Creative Ltd',
 											differentiator: '1',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Terry Jardine',
 													differentiator: '1'
@@ -481,7 +481,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Soundwaves Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: '',
@@ -531,7 +531,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Autograph',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Terry Jardine',
@@ -569,7 +569,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Audio Creative Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Terry Jardine',
@@ -768,7 +768,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: SOUNDWAVES_LTD_COMPANY_UUID,
 										name: 'Soundwaves Ltd',
-										nominatedMembers: []
+										members: []
 									}
 								]
 							},
@@ -794,7 +794,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: AUTOGRAPH_COMPANY_UUID,
 										name: 'Autograph',
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												uuid: TERRY_JARDINE_PERSON_UUID,
@@ -816,7 +816,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: AUDIO_CREATIVE_LTD_COMPANY_UUID,
 										name: 'Audio Creative Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												uuid: TERRY_JARDINE_PERSON_UUID,
@@ -931,7 +931,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Soundwaves Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: '',
@@ -981,7 +981,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Autograph',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Terry Jardine',
@@ -1019,7 +1019,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Audio Creative Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Terry Jardine',
@@ -1233,7 +1233,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'COMPANY',
 											name: 'Limelight Ltd',
 											differentiator: '1',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Kevin Adams',
 													differentiator: '1'
@@ -1253,7 +1253,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'COMPANY',
 											name: 'Stage Sun Ltd',
 											differentiator: '1',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Kevin Adams',
 													differentiator: '1'
@@ -1348,7 +1348,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Illuminations Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: '',
@@ -1398,7 +1398,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Limelight Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Kevin Adams',
@@ -1436,7 +1436,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Stage Sun Ltd',
 										differentiator: '1',
 										errors: {},
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												name: 'Kevin Adams',
@@ -1635,7 +1635,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: ILLUMINATIONS_LTD_COMPANY_UUID,
 										name: 'Illuminations Ltd',
-										nominatedMembers: []
+										members: []
 									}
 								]
 							},
@@ -1661,7 +1661,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: LIMELIGHT_LTD_COMPANY_UUID,
 										name: 'Limelight Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												uuid: KEVIN_ADAMS_PERSON_UUID,
@@ -1683,7 +1683,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										model: 'COMPANY',
 										uuid: STAGE_SUN_LTD_COMPANY_UUID,
 										name: 'Stage Sun Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												model: 'PERSON',
 												uuid: KEVIN_ADAMS_PERSON_UUID,

@@ -412,7 +412,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Theatre Royal Productions',
 			differentiator: '',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -427,7 +427,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Theatre Royal Productions',
 			differentiator: '1',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -626,7 +626,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Paul Higgins'
 										}
@@ -638,7 +638,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonPaulHiggins1);
+			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -658,7 +658,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Paul Higgins',
 											differentiator: '1'
@@ -671,7 +671,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonPaulHiggins2);
+			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -691,7 +691,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Paul Higgins'
 										}
@@ -703,7 +703,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonPaulHiggins1);
+			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -723,7 +723,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Theatre 503 Productions',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Paul Higgins',
 											differentiator: '1'
@@ -736,7 +736,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonPaulHiggins2);
+			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1050,7 +1050,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Autograph',
 			differentiator: '',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -1065,7 +1065,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Autograph',
 			differentiator: '1',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -1264,7 +1264,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce'
 										}
@@ -1276,7 +1276,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -1296,7 +1296,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: '1'
@@ -1309,7 +1309,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1329,7 +1329,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce'
 										}
@@ -1341,7 +1341,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce1);
+			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1361,7 +1361,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Autograph',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: '1'
@@ -1374,7 +1374,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonAndrewBruce2);
+			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1538,7 +1538,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Crew Deputies Ltd',
 			differentiator: '',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -1553,7 +1553,7 @@ describe('Uniqueness in database: Productions API', () => {
 			name: 'Crew Deputies Ltd',
 			differentiator: '1',
 			errors: {},
-			creditedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -1752,7 +1752,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb'
 										}
@@ -1764,7 +1764,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -1784,7 +1784,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb',
 											differentiator: '1'
@@ -1797,7 +1797,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1817,7 +1817,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb'
 										}
@@ -1829,7 +1829,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
+			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -1849,7 +1849,7 @@ describe('Uniqueness in database: Productions API', () => {
 								{
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb',
 											differentiator: '1'
@@ -1862,7 +1862,7 @@ describe('Uniqueness in database: Productions API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].creditedMembers[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
+			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});

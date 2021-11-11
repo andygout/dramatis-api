@@ -133,8 +133,8 @@ const getCreateUpdateQuery = action => {
 				WITH production, producerCredit, producerCompanyParam
 
 				UNWIND
-					CASE WHEN producerCompanyParam IS NOT NULL AND SIZE(producerCompanyParam.creditedMembers) > 0
-						THEN producerCompanyParam.creditedMembers
+					CASE WHEN producerCompanyParam IS NOT NULL AND SIZE(producerCompanyParam.members) > 0
+						THEN producerCompanyParam.members
 						ELSE [null]
 					END AS creditedMemberParam
 
@@ -153,7 +153,7 @@ const getCreateUpdateQuery = action => {
 							(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
 							creditedMemberParam.differentiator = existingPerson.differentiator
 
-					FOREACH (item IN CASE WHEN SIZE(producerCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+					FOREACH (item IN CASE WHEN SIZE(producerCompanyParam.members) > 0 THEN [1] ELSE [] END |
 						SET producerCompanyRel.creditedMemberUuids = []
 					)
 
@@ -272,8 +272,8 @@ const getCreateUpdateQuery = action => {
 				WITH production, creativeCredit, creativeCompanyParam
 
 				UNWIND
-					CASE WHEN creativeCompanyParam IS NOT NULL AND SIZE(creativeCompanyParam.creditedMembers) > 0
-						THEN creativeCompanyParam.creditedMembers
+					CASE WHEN creativeCompanyParam IS NOT NULL AND SIZE(creativeCompanyParam.members) > 0
+						THEN creativeCompanyParam.members
 						ELSE [null]
 					END AS creditedMemberParam
 
@@ -292,7 +292,7 @@ const getCreateUpdateQuery = action => {
 							(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
 							creditedMemberParam.differentiator = existingPerson.differentiator
 
-					FOREACH (item IN CASE WHEN SIZE(creativeCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+					FOREACH (item IN CASE WHEN SIZE(creativeCompanyParam.members) > 0 THEN [1] ELSE [] END |
 						SET creativeCompanyRel.creditedMemberUuids = []
 					)
 
@@ -381,8 +381,8 @@ const getCreateUpdateQuery = action => {
 				WITH production, crewCredit, crewCompanyParam
 
 				UNWIND
-					CASE WHEN crewCompanyParam IS NOT NULL AND SIZE(crewCompanyParam.creditedMembers) > 0
-						THEN crewCompanyParam.creditedMembers
+					CASE WHEN crewCompanyParam IS NOT NULL AND SIZE(crewCompanyParam.members) > 0
+						THEN crewCompanyParam.members
 						ELSE [null]
 					END AS creditedMemberParam
 
@@ -401,7 +401,7 @@ const getCreateUpdateQuery = action => {
 							(creditedMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
 							creditedMemberParam.differentiator = existingPerson.differentiator
 
-					FOREACH (item IN CASE WHEN SIZE(crewCompanyParam.creditedMembers) > 0 THEN [1] ELSE [] END |
+					FOREACH (item IN CASE WHEN SIZE(crewCompanyParam.members) > 0 THEN [1] ELSE [] END |
 						SET crewCompanyRel.creditedMemberUuids = []
 					)
 
@@ -475,7 +475,7 @@ const getEditQuery = () => `
 		[producerEntity IN COLLECT(
 			CASE producerEntity WHEN NULL
 				THEN null
-				ELSE producerEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+				ELSE producerEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
 		) | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
@@ -557,7 +557,7 @@ const getEditQuery = () => `
 		[creativeEntity IN COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
-				ELSE creativeEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+				ELSE creativeEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
 		) | CASE creativeEntity.model WHEN 'COMPANY'
 			THEN creativeEntity
@@ -630,7 +630,7 @@ const getEditQuery = () => `
 		[crewEntity IN COLLECT(
 			CASE crewEntity WHEN NULL
 				THEN null
-				ELSE crewEntity { .model, .name, .differentiator, creditedMembers: creditedMembers }
+				ELSE crewEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
 		) | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity
@@ -822,7 +822,7 @@ const getShowQuery = () => `
 		[producerEntity IN COLLECT(
 			CASE producerEntity WHEN NULL
 				THEN null
-				ELSE producerEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
+				ELSE producerEntity { .model, .uuid, .name, members: creditedMembers }
 			END
 		) | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
@@ -877,7 +877,7 @@ const getShowQuery = () => `
 		[creativeEntity IN COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
-				ELSE creativeEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
+				ELSE creativeEntity { .model, .uuid, .name, members: creditedMembers }
 			END
 		) | CASE creativeEntity.model WHEN 'COMPANY'
 			THEN creativeEntity
@@ -950,7 +950,7 @@ const getShowQuery = () => `
 		[crewEntity IN COLLECT(
 			CASE crewEntity WHEN NULL
 				THEN null
-				ELSE crewEntity { .model, .uuid, .name, creditedMembers: creditedMembers }
+				ELSE crewEntity { .model, .uuid, .name, members: creditedMembers }
 			END
 		) | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity

@@ -269,7 +269,7 @@
 				{
 					"model": "COMPANY",
 					"name": "Little Angel Theatre",
-					"creditedMembers": [
+					"members": [
 						{
 							"name": "Steve Tiplady"
 						},

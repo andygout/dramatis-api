@@ -209,7 +209,7 @@
 				{
 					"model": "COMPANY",
 					"name": "Cineluma",
-					"creditedMembers": [
+					"members": [
 						{
 							"name": "Jon Driscoll"
 						}

@@ -308,7 +308,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			name: 'Autograph',
 			differentiator: '',
 			errors: {},
-			nominatedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -323,7 +323,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			name: 'Autograph',
 			differentiator: '1',
 			errors: {},
-			nominatedMembers: [
+			members: [
 				{
 					model: 'PERSON',
 					name: '',
@@ -540,7 +540,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson'
 												}
@@ -554,7 +554,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].nominatedMembers[0]).to.deep.equal(expectedPersonIanDickinson1);
+			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(expectedPersonIanDickinson1);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 		});
@@ -576,7 +576,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson',
 													differentiator: '1'
@@ -591,7 +591,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].nominatedMembers[0]).to.deep.equal(expectedPersonIanDickinson2);
+			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(expectedPersonIanDickinson2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -613,7 +613,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson'
 												}
@@ -627,7 +627,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].nominatedMembers[0]).to.deep.equal(expectedPersonIanDickinson1);
+			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(expectedPersonIanDickinson1);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});
@@ -649,7 +649,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson',
 													differentiator: '1'
@@ -664,7 +664,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				});
 
 			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].nominatedMembers[0]).to.deep.equal(expectedPersonIanDickinson2);
+			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(expectedPersonIanDickinson2);
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 		});

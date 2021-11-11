@@ -6,8 +6,7 @@ import Character from './Character';
 import CharacterDepiction from './CharacterDepiction';
 import CharacterGroup from './CharacterGroup';
 import Company from './Company';
-import CompanyWithCreditedMembers from './CompanyWithCreditedMembers';
-import CompanyWithNominatedMembers from './CompanyWithNominatedMembers';
+import CompanyWithMembers from './CompanyWithMembers';
 import CreativeCredit from './CreativeCredit';
 import CrewCredit from './CrewCredit';
 import Material from './Material';
@@ -30,8 +29,7 @@ export {
 	CharacterDepiction,
 	CharacterGroup,
 	Company,
-	CompanyWithCreditedMembers,
-	CompanyWithNominatedMembers,
+	CompanyWithMembers,
 	CreativeCredit,
 	CrewCredit,
 	Material,

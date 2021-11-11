@@ -690,7 +690,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'National Theatre Company',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Nicholas Hytner',
 											differentiator: '1'
@@ -711,7 +711,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'London Theatre Company',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Nicholas Hytner',
 											differentiator: '1'
@@ -763,7 +763,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: '59 Productions',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Leo Warner',
 											differentiator: '1'
@@ -784,7 +784,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: '59 Productions',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Leo Warner',
 											differentiator: '1'
@@ -836,7 +836,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb',
 											differentiator: '1'
@@ -857,7 +857,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Crew Assistants Ltd',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Molly Einchcomb',
 											differentiator: '1'
@@ -919,7 +919,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Fuel Theatre',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -971,7 +971,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'National Theatre Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Nicholas Hytner',
@@ -1010,7 +1010,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'London Theatre Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Nicholas Hytner',
@@ -1209,7 +1209,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -1261,7 +1261,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Leo Warner',
@@ -1300,7 +1300,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Leo Warner',
@@ -1367,7 +1367,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Deputies Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -1419,7 +1419,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Molly Einchcomb',
@@ -1458,7 +1458,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Molly Einchcomb',
@@ -1549,7 +1549,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: FUEL_THEATRE_COMPANY_UUID,
 								name: 'Fuel Theatre',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -1577,7 +1577,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: NATIONAL_THEATRE_COMPANY_UUID,
 								name: 'National Theatre Company',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: NICHOLAS_HYTNER_PERSON_UUID,
@@ -1600,7 +1600,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: LONDON_THEATRE_COMPANY_UUID,
 								name: 'London Theatre Company',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: NICHOLAS_HYTNER_PERSON_UUID,
@@ -1699,7 +1699,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: HANDSPRING_PUPPET_COMPANY_UUID,
 								name: 'Handspring Puppet Company',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -1727,7 +1727,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: LEO_WARNER_PERSON_UUID,
@@ -1750,7 +1750,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: LEO_WARNER_PERSON_UUID,
@@ -1781,7 +1781,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 								name: 'Crew Deputies Ltd',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -1809,7 +1809,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
@@ -1832,7 +1832,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: MOLLY_EINCHCOMB_PERSON_UUID,
@@ -1905,7 +1905,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Fuel Theatre',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -1957,7 +1957,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'National Theatre Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Nicholas Hytner',
@@ -1996,7 +1996,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'London Theatre Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Nicholas Hytner',
@@ -2195,7 +2195,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Handspring Puppet Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -2247,7 +2247,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Leo Warner',
@@ -2286,7 +2286,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: '59 Productions',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Leo Warner',
@@ -2353,7 +2353,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Deputies Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -2405,7 +2405,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Molly Einchcomb',
@@ -2444,7 +2444,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Crew Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Molly Einchcomb',
@@ -2549,7 +2549,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Almeida Theatre Company',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Rupert Goold',
 											differentiator: '1'
@@ -2570,7 +2570,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Headlong Theatre',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Rupert Goold',
 											differentiator: '1'
@@ -2678,7 +2678,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: '1'
@@ -2699,7 +2699,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Autograph',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Andrew Bruce',
 											differentiator: '1'
@@ -2752,7 +2752,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Design Assistants Ltd',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Colin Falconer',
 											differentiator: '1'
@@ -2773,7 +2773,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									model: 'COMPANY',
 									name: 'Design Assistants Ltd',
 									differentiator: '1',
-									creditedMembers: [
+									members: [
 										{
 											name: 'Colin Falconer',
 											differentiator: '1'
@@ -2835,7 +2835,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Tiata Fahodzi',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -2887,7 +2887,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Almeida Theatre Company',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Rupert Goold',
@@ -2926,7 +2926,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Headlong Theatre',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Rupert Goold',
@@ -3125,7 +3125,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'RC-Annie',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -3177,7 +3177,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Autograph',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Andrew Bruce',
@@ -3216,7 +3216,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Autograph',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Andrew Bruce',
@@ -3283,7 +3283,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Deputy Stage Managers Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: '',
@@ -3335,7 +3335,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Design Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Colin Falconer',
@@ -3374,7 +3374,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								name: 'Design Assistants Ltd',
 								differentiator: '1',
 								errors: {},
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										name: 'Colin Falconer',
@@ -3465,7 +3465,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: TIATA_FAHODZI_COMPANY_UUID,
 								name: 'Tiata Fahodzi',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -3493,7 +3493,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: ALMEIDA_THEATRE_COMPANY_UUID,
 								name: 'Almeida Theatre Company',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: RUPERT_GOOLD_PERSON_UUID,
@@ -3516,7 +3516,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: HEADLONG_THEATRE_COMPANY_UUID,
 								name: 'Headlong Theatre',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: RUPERT_GOOLD_PERSON_UUID,
@@ -3615,7 +3615,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: RC_ANNIE_LTD_COMPANY_UUID,
 								name: 'RC-Annie',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -3643,7 +3643,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: AUTOGRAPH_COMPANY_UUID,
 								name: 'Autograph',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: ANDREW_BRUCE_PERSON_UUID,
@@ -3666,7 +3666,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: AUTOGRAPH_COMPANY_UUID,
 								name: 'Autograph',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: ANDREW_BRUCE_PERSON_UUID,
@@ -3697,7 +3697,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID,
 								name: 'Deputy Stage Managers Ltd',
-								creditedMembers: []
+								members: []
 							}
 						]
 					},
@@ -3725,7 +3725,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Design Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: COLIN_FALCONER_PERSON_UUID,
@@ -3748,7 +3748,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								model: 'COMPANY',
 								uuid: DESIGN_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Design Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										model: 'PERSON',
 										uuid: COLIN_FALCONER_PERSON_UUID,
