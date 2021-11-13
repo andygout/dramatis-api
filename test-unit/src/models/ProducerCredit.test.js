@@ -23,7 +23,7 @@ describe('ProducerCredit model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicatesInfoModule: {
+			getDuplicateEntityInfoModule: {
 				getDuplicateEntities: stub().returns('getDuplicateEntities response'),
 				isEntityInArray: stub().returns(false)
 			},
@@ -37,7 +37,7 @@ describe('ProducerCredit model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/ProducerCredit', {
-			'../lib/get-duplicate-entity-info': stubs.getDuplicatesInfoModule,
+			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'.': stubs.models
 		}).default;
 
@@ -129,14 +129,14 @@ describe('ProducerCredit model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
-				stubs.getDuplicatesInfoModule.getDuplicateEntities,
+				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.entities[0].validateName,
 				instance.entities[0].validateDifferentiator,
-				stubs.getDuplicatesInfoModule.isEntityInArray,
+				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.entities[0].validateUniquenessInGroup,
 				instance.entities[1].validateName,
 				instance.entities[1].validateDifferentiator,
-				stubs.getDuplicatesInfoModule.isEntityInArray,
+				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.entities[1].validateUniquenessInGroup,
 				instance.entities[1].runInputValidations
 			);
@@ -144,16 +144,16 @@ describe('ProducerCredit model', () => {
 			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.getDuplicateEntities.calledOnce).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.getDuplicateEntities.calledWithExactly(
+			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
+			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
 				instance.entities
 			)).to.be.true;
 			expect(instance.entities[0].validateName.calledOnce).to.be.true;
 			expect(instance.entities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledTwice).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(0).calledWithExactly(
+			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledTwice).to.be.true;
+			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0).calledWithExactly(
 				instance.entities[0], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
@@ -164,7 +164,7 @@ describe('ProducerCredit model', () => {
 			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.getCall(1).calledWithExactly(
+			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1).calledWithExactly(
 				instance.entities[1], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
