@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { assert, spy } from 'sinon';
 
 import { AwardCeremonyCategory, Nomination } from '../../../src/models';
 
@@ -31,6 +32,39 @@ describe('AwardCeremonyCategory model', () => {
 				expect(instance.nominations[2] instanceof Nomination).to.be.true;
 
 			});
+
+		});
+
+	});
+
+	describe('runInputValidations method', () => {
+
+		it('calls instance validate method and associated models\' validate methods', () => {
+
+			const props = {
+				name: '2020',
+				nominations: [{}]
+			};
+			const instance = new AwardCeremonyCategory(props);
+			spy(instance, 'validateName');
+			spy(instance, 'validateUniquenessInGroup');
+			spy(instance, 'validateNamePresenceIfNamedChildren');
+			spy(instance.nominations[0], 'runInputValidations');
+			instance.runInputValidations({ isDuplicate: false });
+			assert.callOrder(
+				instance.validateName,
+				instance.validateUniquenessInGroup,
+				instance.validateNamePresenceIfNamedChildren,
+				instance.nominations[0].runInputValidations
+			);
+			expect(instance.validateName.calledOnce).to.be.true;
+			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
+			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
+			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly([])).to.be.true;
+			expect(instance.nominations[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.nominations[0].runInputValidations.calledWithExactly()).to.be.true;
 
 		});
 
