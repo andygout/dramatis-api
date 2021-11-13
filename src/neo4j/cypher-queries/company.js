@@ -173,7 +173,7 @@ const getShowQuery = () => `
 					model: TOUPPER(HEAD(LABELS(entity))),
 					uuid: CASE entity.uuid WHEN company.uuid THEN null ELSE entity.uuid END,
 					.name,
-					creditedMembers: creditedMembers
+					members: creditedMembers
 				}
 			END
 		) | CASE entity.model WHEN 'COMPANY'
@@ -298,7 +298,7 @@ const getShowQuery = () => `
 					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
 					.uuid,
 					.name,
-					creditedMembers: coCreditedCompanyCreditedMembers
+					members: coCreditedCompanyCreditedMembers
 				}
 			END
 		) | CASE coCreditedEntity.model WHEN 'COMPANY'
@@ -315,8 +315,8 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: creativeRel.credit,
-			creditedMembers: creditedMembers,
-			coCreditedEntities: coCreditedEntities
+			members: creditedMembers,
+			coEntities: coCreditedEntities
 		}) AS creativeCredits
 		ORDER BY production.startDate DESC, production.name, venue.name
 
@@ -420,7 +420,7 @@ const getShowQuery = () => `
 					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
 					.uuid,
 					.name,
-					creditedMembers: coCreditedCompanyCreditedMembers
+					members: coCreditedCompanyCreditedMembers
 				}
 			END
 		) | CASE coCreditedEntity.model WHEN 'COMPANY'
@@ -437,8 +437,8 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: crewRel.credit,
-			creditedMembers: creditedMembers,
-			coCreditedEntities: coCreditedEntities
+			members: creditedMembers,
+			coEntities: coCreditedEntities
 		}) AS crewCredits
 		ORDER BY production.startDate DESC, production.name, venue.name
 
@@ -588,7 +588,7 @@ const getShowQuery = () => `
 					model: TOUPPER(HEAD(LABELS(coNominatedEntity))),
 					.uuid,
 					.name,
-					nominatedMembers: coNominatedCompanyNominatedMembers
+					members: coNominatedCompanyNominatedMembers
 				}
 			END
 		) | CASE coNominatedEntity.model WHEN 'COMPANY'
@@ -609,8 +609,8 @@ const getShowQuery = () => `
 		award,
 		COLLECT({
 			model: 'NOMINATION',
-			nominatedMembers: nominatedMembers,
-			coNominatedEntities: coNominatedEntities
+			members: nominatedMembers,
+			coEntities: coNominatedEntities
 		}) AS nominations
 		ORDER BY categoryRel.position
 

@@ -124,7 +124,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Benjamin Donoghue'
 									},
@@ -146,7 +146,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Sara Gunter'
 									},
@@ -193,7 +193,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Sara Gunter'
 									}
@@ -221,7 +221,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Tamara Albachari'
 									},
@@ -236,7 +236,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Peter Gregory'
 									},
@@ -313,7 +313,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Benjamin Donoghue'
 									},
@@ -331,7 +331,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Sara Gunter'
 									},
@@ -369,7 +369,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Deputies Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Tamara Albachari'
 									},
@@ -384,7 +384,7 @@ describe('Productions with crew', () => {
 							{
 								model: 'COMPANY',
 								name: 'Crew Assistants Ltd',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Cheryl Firth'
 									},
@@ -473,7 +473,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
 							name: 'Stagecraft Ltd',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -485,7 +485,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
 							name: 'Stagecraft Ltd',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -497,7 +497,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 							name: 'Crew Deputies Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -524,13 +524,13 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 							name: 'Theatrical Production Services Ltd',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'COMPANY',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 							name: 'Crew Assistants Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
@@ -600,7 +600,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
 							name: 'Stagecraft Ltd',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -612,7 +612,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 							name: 'Theatrical Production Services Ltd',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -623,7 +623,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 							name: 'Crew Deputies Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -650,7 +650,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 							name: 'Crew Assistants Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
@@ -704,7 +704,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 							name: 'Crew Assistants Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
@@ -722,7 +722,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: STAGECRAFT_LTD_COMPANY_UUID,
 							name: 'Stagecraft Ltd',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -739,7 +739,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 							name: 'Crew Deputies Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -761,7 +761,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 							name: 'Crew Assistants Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: PETER_GREGORY_PERSON_UUID,
@@ -783,7 +783,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 							name: 'Theatrical Production Services Ltd',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -820,7 +820,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 							name: 'Crew Deputies Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -842,7 +842,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 							name: 'Crew Assistants Ltd',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -864,7 +864,7 @@ describe('Productions with crew', () => {
 							model: 'COMPANY',
 							uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 							name: 'Theatrical Production Services Ltd',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -908,8 +908,8 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Production Management',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				},
@@ -929,8 +929,8 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Production Manager',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				},
@@ -954,8 +954,8 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Production Management by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				}
@@ -994,13 +994,13 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1022,7 +1022,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -1044,7 +1044,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1075,19 +1075,19 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Rigging Supervision',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						},
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1098,7 +1098,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -1120,7 +1120,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SARA_GUNTER_PERSON_UUID,
@@ -1158,13 +1158,13 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Managers',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -1191,13 +1191,13 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SARA_GUNTER_PERSON_UUID,
@@ -1239,13 +1239,13 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1267,7 +1267,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: PETER_GREGORY_PERSON_UUID,
@@ -1289,7 +1289,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1335,11 +1335,11 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -1352,7 +1352,7 @@ describe('Productions with crew', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -1362,7 +1362,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1384,7 +1384,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1415,11 +1415,11 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: TOM_LEGGAT_PERSON_UUID,
@@ -1432,12 +1432,12 @@ describe('Productions with crew', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1448,7 +1448,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -1491,11 +1491,11 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Managers',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: JULIA_WICKHAM_PERSON_UUID,
@@ -1508,12 +1508,12 @@ describe('Productions with crew', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -1540,7 +1540,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1571,22 +1571,22 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Rigging Supervision by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: []
+								coMembers: []
 							},
-							coCreditedEntities: []
+							coEntities: []
 						},
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: PETER_GREGORY_PERSON_UUID,
@@ -1599,7 +1599,7 @@ describe('Productions with crew', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -1609,7 +1609,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1631,7 +1631,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1677,11 +1677,11 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 								name: 'Crew Assistants Ltd',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: SARA_GUNTER_PERSON_UUID,
@@ -1694,7 +1694,7 @@ describe('Productions with crew', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -1704,7 +1704,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1726,7 +1726,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1772,8 +1772,8 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Sound Operation',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				},
@@ -1793,14 +1793,14 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Rigging Supervisor',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						},
 						{
 							model: 'CREW_CREDIT',
 							name: 'Sound Operator',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				},
@@ -1824,8 +1824,8 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Sound Operation by',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				}
@@ -1864,7 +1864,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -1881,7 +1881,7 @@ describe('Productions with crew', () => {
 									name: 'Nik Haffenden'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -1891,7 +1891,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -1913,7 +1913,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1944,7 +1944,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -1961,12 +1961,12 @@ describe('Productions with crew', () => {
 									name: 'Nik Haffenden'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1982,7 +1982,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SARA_GUNTER_PERSON_UUID,
@@ -2020,7 +2020,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Managers',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -2037,7 +2037,7 @@ describe('Productions with crew', () => {
 									name: 'Emma Cameron'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: PRAD_PANKHANI_PERSON_UUID,
@@ -2047,13 +2047,13 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: SARA_GUNTER_PERSON_UUID,
@@ -2100,7 +2100,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -2117,7 +2117,7 @@ describe('Productions with crew', () => {
 									name: 'Nik Haffenden'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -2127,7 +2127,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_ASSISTANTS_LTD_COMPANY_UUID,
 									name: 'Crew Assistants Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: PETER_GREGORY_PERSON_UUID,
@@ -2149,7 +2149,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2195,7 +2195,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: CHERYL_FIRTH_PERSON_UUID,
@@ -2212,7 +2212,7 @@ describe('Productions with crew', () => {
 									name: 'Julia Wickham'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -2222,7 +2222,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -2244,7 +2244,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2275,7 +2275,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
@@ -2292,12 +2292,12 @@ describe('Productions with crew', () => {
 									name: 'Julia Wickham'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2308,7 +2308,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -2351,7 +2351,7 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Managers',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
@@ -2368,12 +2368,12 @@ describe('Productions with crew', () => {
 									name: 'Cheryl Firth'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: BENJAMIN_DONOGHUE_PERSON_UUID,
@@ -2400,7 +2400,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2431,19 +2431,19 @@ describe('Productions with crew', () => {
 						{
 							model: 'CREW_CREDIT',
 							name: 'Rigging Supervision by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: SARA_GUNTER_PERSON_UUID,
 									name: 'Sara Gunter'
 								}
 							],
-							coCreditedEntities: []
+							coEntities: []
 						},
 						{
 							model: 'CREW_CREDIT',
 							name: 'Stage Management by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: PETER_GREGORY_PERSON_UUID,
@@ -2460,7 +2460,7 @@ describe('Productions with crew', () => {
 									name: 'Julia Wickham'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: CASS_KIRCHNER_PERSON_UUID,
@@ -2470,7 +2470,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: CREW_DEPUTIES_LTD_COMPANY_UUID,
 									name: 'Crew Deputies Ltd',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: TAMARA_ALBACHARI_PERSON_UUID,
@@ -2492,7 +2492,7 @@ describe('Productions with crew', () => {
 									model: 'COMPANY',
 									uuid: THEATRICAL_PRODUCTION_SERVICES_LTD_COMPANY_UUID,
 									name: 'Theatrical Production Services Ltd',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',

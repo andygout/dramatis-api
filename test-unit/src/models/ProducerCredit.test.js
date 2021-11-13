@@ -2,15 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CompanyWithCreditedMembers, Person } from '../../../src/models';
+import { CompanyWithMembers, Person } from '../../../src/models';
 
 describe('ProducerCredit model', () => {
 
 	let stubs;
 
-	const CompanyWithCreditedMembersStub = function () {
+	const CompanyWithMembersStub = function () {
 
-		return createStubInstance(CompanyWithCreditedMembers);
+		return createStubInstance(CompanyWithMembers);
 
 	};
 
@@ -28,7 +28,7 @@ describe('ProducerCredit model', () => {
 				isEntityInArray: stub().returns(false)
 			},
 			models: {
-				CompanyWithCreditedMembers: CompanyWithCreditedMembersStub,
+				CompanyWithMembers: CompanyWithMembersStub,
 				Person: PersonStub
 			}
 		};
@@ -91,11 +91,11 @@ describe('ProducerCredit model', () => {
 				const instance = createInstance(props);
 				expect(instance.entities.length).to.equal(6);
 				expect(instance.entities[0] instanceof Person).to.be.true;
-				expect(instance.entities[1] instanceof CompanyWithCreditedMembers).to.be.true;
+				expect(instance.entities[1] instanceof CompanyWithMembers).to.be.true;
 				expect(instance.entities[2] instanceof Person).to.be.true;
-				expect(instance.entities[3] instanceof CompanyWithCreditedMembers).to.be.true;
+				expect(instance.entities[3] instanceof CompanyWithMembers).to.be.true;
 				expect(instance.entities[4] instanceof Person).to.be.true;
-				expect(instance.entities[5] instanceof CompanyWithCreditedMembers).to.be.true;
+				expect(instance.entities[5] instanceof CompanyWithMembers).to.be.true;
 
 			});
 

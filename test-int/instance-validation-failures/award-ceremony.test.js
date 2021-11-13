@@ -544,7 +544,7 @@ describe('AwardCeremony instance', () => {
 											uuid: undefined,
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
-											nominatedMembers: [],
+											members: [],
 											errors: {
 												name: [
 													'Value is too long'
@@ -615,7 +615,7 @@ describe('AwardCeremony instance', () => {
 											uuid: undefined,
 											name: 'Autograph',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
-											nominatedMembers: [],
+											members: [],
 											errors: {
 												differentiator: [
 													'Value is too long'
@@ -651,7 +651,7 @@ describe('AwardCeremony instance', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson'
 												},
@@ -712,7 +712,7 @@ describe('AwardCeremony instance', () => {
 													'This item has been duplicated within the group'
 												]
 											},
-											nominatedMembers: [
+											members: [
 												{
 													uuid: undefined,
 													name: 'Ian Dickinson',
@@ -759,14 +759,14 @@ describe('AwardCeremony instance', () => {
 													'This item has been duplicated within the group'
 												]
 											},
-											nominatedMembers: []
+											members: []
 										},
 										{
 											uuid: undefined,
 											name: 'Foo',
 											differentiator: '',
 											errors: {},
-											nominatedMembers: []
+											members: []
 										}
 									],
 									errors: {}
@@ -797,7 +797,7 @@ describe('AwardCeremony instance', () => {
 										{
 											model: 'COMPANY',
 											name: '',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson'
 												}
@@ -841,7 +841,7 @@ describe('AwardCeremony instance', () => {
 													'Name is required if named children exist'
 												]
 											},
-											nominatedMembers: [
+											members: [
 												{
 													uuid: undefined,
 													name: 'Ian Dickinson',
@@ -879,7 +879,7 @@ describe('AwardCeremony instance', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: ABOVE_MAX_LENGTH_STRING
 												}
@@ -919,7 +919,7 @@ describe('AwardCeremony instance', () => {
 											name: 'Autograph',
 											differentiator: '',
 											errors: {},
-											nominatedMembers: [
+											members: [
 												{
 													uuid: undefined,
 													name: ABOVE_MAX_LENGTH_STRING,
@@ -961,7 +961,7 @@ describe('AwardCeremony instance', () => {
 										{
 											model: 'COMPANY',
 											name: 'Autograph',
-											nominatedMembers: [
+											members: [
 												{
 													name: 'Ian Dickinson',
 													differentiator: ABOVE_MAX_LENGTH_STRING
@@ -1002,7 +1002,7 @@ describe('AwardCeremony instance', () => {
 											name: 'Autograph',
 											differentiator: '',
 											errors: {},
-											nominatedMembers: [
+											members: [
 												{
 													uuid: undefined,
 													name: 'Ian Dickinson',

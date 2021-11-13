@@ -122,7 +122,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: 'Mesmer',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Dick Straker'
 									},
@@ -144,7 +144,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Leo Warner'
 									},
@@ -190,7 +190,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Leo Warner'
 									}
@@ -218,7 +218,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: 'Mesmer',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Daniel Denton'
 									},
@@ -233,7 +233,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Anna Jameson'
 									},
@@ -309,7 +309,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: 'Mesmer',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Dick Straker'
 									},
@@ -327,7 +327,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Leo Warner'
 									},
@@ -365,7 +365,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: 'Mesmer',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Daniel Denton'
 									},
@@ -380,7 +380,7 @@ describe('Productions with creative team', () => {
 							{
 								model: 'COMPANY',
 								name: '59 Productions',
-								creditedMembers: [
+								members: [
 									{
 										name: 'Lysander Ashton'
 									},
@@ -469,7 +469,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: AUTOGRAPH_COMPANY_UUID,
 							name: 'Autograph',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -481,7 +481,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: AUTOGRAPH_COMPANY_UUID,
 							name: 'Autograph',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -493,7 +493,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: MESMER_COMPANY_UUID,
 							name: 'Mesmer',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DICK_STRAKER_PERSON_UUID,
@@ -520,13 +520,13 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: CINELUMA_COMPANY_UUID,
 							name: 'Cineluma',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'COMPANY',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 							name: '59 Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
@@ -585,7 +585,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 							name: '59 Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
@@ -603,7 +603,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: AUTOGRAPH_COMPANY_UUID,
 							name: 'Autograph',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -620,7 +620,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: MESMER_COMPANY_UUID,
 							name: 'Mesmer',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DANIEL_DENTON_PERSON_UUID,
@@ -642,7 +642,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 							name: '59 Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: ANNA_JAMESON_PERSON_UUID,
@@ -664,7 +664,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: CINELUMA_COMPANY_UUID,
 							name: 'Cineluma',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -718,7 +718,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: AUTOGRAPH_COMPANY_UUID,
 							name: 'Autograph',
-							creditedMembers: []
+							members: []
 						}
 					]
 				},
@@ -730,7 +730,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: CINELUMA_COMPANY_UUID,
 							name: 'Cineluma',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -741,7 +741,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: MESMER_COMPANY_UUID,
 							name: 'Mesmer',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DICK_STRAKER_PERSON_UUID,
@@ -768,7 +768,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 							name: '59 Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
@@ -816,7 +816,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: MESMER_COMPANY_UUID,
 							name: 'Mesmer',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DANIEL_DENTON_PERSON_UUID,
@@ -838,7 +838,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 							name: '59 Productions',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LYSANDER_ASHTON_PERSON_UUID,
@@ -860,7 +860,7 @@ describe('Productions with creative team', () => {
 							model: 'COMPANY',
 							uuid: CINELUMA_COMPANY_UUID,
 							name: 'Cineluma',
-							creditedMembers: []
+							members: []
 						},
 						{
 							model: 'PERSON',
@@ -904,8 +904,8 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Directed by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				},
@@ -929,8 +929,8 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Direction',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				},
@@ -950,8 +950,8 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Director',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						}
 					]
 				}
@@ -990,13 +990,13 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1018,7 +1018,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ANNA_JAMESON_PERSON_UUID,
@@ -1040,7 +1040,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1071,19 +1071,19 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Design',
-							creditedEmployerCompany: null,
-							coCreditedEntities: []
+							employerCompany: null,
+							coEntities: []
 						},
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1094,7 +1094,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -1116,7 +1116,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LEO_WARNER_PERSON_UUID,
@@ -1154,13 +1154,13 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Designers',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -1187,13 +1187,13 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LEO_WARNER_PERSON_UUID,
@@ -1235,13 +1235,13 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedEmployerCompany: null,
-							coCreditedEntities: [
+							employerCompany: null,
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1263,7 +1263,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LYSANDER_ASHTON_PERSON_UUID,
@@ -1285,7 +1285,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1331,22 +1331,22 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Design by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: []
+								coMembers: []
 							},
-							coCreditedEntities: []
+							coEntities: []
 						},
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: ANNA_JAMESON_PERSON_UUID,
@@ -1359,7 +1359,7 @@ describe('Productions with creative team', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -1369,7 +1369,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1391,7 +1391,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1422,11 +1422,11 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: RICHARD_SLANEY_PERSON_UUID,
@@ -1439,12 +1439,12 @@ describe('Productions with creative team', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1455,7 +1455,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -1498,11 +1498,11 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Designers',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: MARK_GRIMMER_PERSON_UUID,
@@ -1515,12 +1515,12 @@ describe('Productions with creative team', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -1547,7 +1547,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1578,11 +1578,11 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: LYSANDER_ASHTON_PERSON_UUID,
@@ -1595,7 +1595,7 @@ describe('Productions with creative team', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -1605,7 +1605,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1627,7 +1627,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1673,11 +1673,11 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedEmployerCompany: {
+							employerCompany: {
 								model: 'COMPANY',
 								uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 								name: '59 Productions',
-								coCreditedMembers: [
+								coMembers: [
 									{
 										model: 'PERSON',
 										uuid: LEO_WARNER_PERSON_UUID,
@@ -1690,7 +1690,7 @@ describe('Productions with creative team', () => {
 									}
 								]
 							},
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -1700,7 +1700,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1722,7 +1722,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1768,8 +1768,8 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Sound Design by',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				},
@@ -1793,8 +1793,8 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Sound Design',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				},
@@ -1814,14 +1814,14 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Designer',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						},
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Sound Designer',
-							creditedMembers: [],
-							coCreditedEntities: []
+							members: [],
+							coEntities: []
 						}
 					]
 				}
@@ -1860,7 +1860,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DANIEL_DENTON_PERSON_UUID,
@@ -1877,7 +1877,7 @@ describe('Productions with creative team', () => {
 									name: 'Ian William Galloway'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -1887,7 +1887,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: ANNA_JAMESON_PERSON_UUID,
@@ -1909,7 +1909,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1940,7 +1940,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DICK_STRAKER_PERSON_UUID,
@@ -1957,12 +1957,12 @@ describe('Productions with creative team', () => {
 									name: 'Ian William Galloway'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -1978,7 +1978,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LEO_WARNER_PERSON_UUID,
@@ -2016,7 +2016,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Designers',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DICK_STRAKER_PERSON_UUID,
@@ -2033,7 +2033,7 @@ describe('Productions with creative team', () => {
 									name: 'John O\'Connell'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
@@ -2043,13 +2043,13 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LEO_WARNER_PERSON_UUID,
@@ -2096,7 +2096,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: DANIEL_DENTON_PERSON_UUID,
@@ -2113,7 +2113,7 @@ describe('Productions with creative team', () => {
 									name: 'Ian William Galloway'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -2123,7 +2123,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: FIFTY_NINE_PRODUCTIONS_COMPANY_UUID,
 									name: '59 Productions',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: LYSANDER_ASHTON_PERSON_UUID,
@@ -2145,7 +2145,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2191,19 +2191,19 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Design by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
 									name: 'Leo Warner'
 								}
 							],
-							coCreditedEntities: []
+							coEntities: []
 						},
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: ANNA_JAMESON_PERSON_UUID,
@@ -2220,7 +2220,7 @@ describe('Productions with creative team', () => {
 									name: 'Mark Grimmer'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -2230,7 +2230,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -2252,7 +2252,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2283,7 +2283,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
@@ -2300,12 +2300,12 @@ describe('Productions with creative team', () => {
 									name: 'Mark Grimmer'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2316,7 +2316,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -2359,7 +2359,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Designers',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LEO_WARNER_PERSON_UUID,
@@ -2376,12 +2376,12 @@ describe('Productions with creative team', () => {
 									name: 'Lysander Ashton'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DICK_STRAKER_PERSON_UUID,
@@ -2408,7 +2408,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',
@@ -2439,7 +2439,7 @@ describe('Productions with creative team', () => {
 						{
 							model: 'CREATIVE_CREDIT',
 							name: 'Video Design by',
-							creditedMembers: [
+							members: [
 								{
 									model: 'PERSON',
 									uuid: LYSANDER_ASHTON_PERSON_UUID,
@@ -2456,7 +2456,7 @@ describe('Productions with creative team', () => {
 									name: 'Mark Grimmer'
 								}
 							],
-							coCreditedEntities: [
+							coEntities: [
 								{
 									model: 'PERSON',
 									uuid: NINA_DUNN_PERSON_UUID,
@@ -2466,7 +2466,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: MESMER_COMPANY_UUID,
 									name: 'Mesmer',
-									creditedMembers: [
+									members: [
 										{
 											model: 'PERSON',
 											uuid: DANIEL_DENTON_PERSON_UUID,
@@ -2488,7 +2488,7 @@ describe('Productions with creative team', () => {
 									model: 'COMPANY',
 									uuid: CINELUMA_COMPANY_UUID,
 									name: 'Cineluma',
-									creditedMembers: []
+									members: []
 								},
 								{
 									model: 'PERSON',

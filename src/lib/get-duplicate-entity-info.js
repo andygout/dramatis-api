@@ -20,11 +20,8 @@ const getDuplicateEntities = arrayOfEntities => {
 
 	arrayOfEntities.reduce((accumulator, entity) => {
 
-		Object.prototype.hasOwnProperty.call(entity, 'creditedMembers') &&
-		entity.creditedMembers.forEach(nestedEntity => pushIntoRequisiteArray(nestedEntity, accumulator));
-
-		Object.prototype.hasOwnProperty.call(entity, 'nominatedMembers') &&
-		entity.nominatedMembers.forEach(nestedEntity => pushIntoRequisiteArray(nestedEntity, accumulator));
+		Object.prototype.hasOwnProperty.call(entity, 'members') &&
+		entity.members.forEach(nestedEntity => pushIntoRequisiteArray(nestedEntity, accumulator));
 
 		pushIntoRequisiteArray(entity, accumulator);
 

@@ -1,6 +1,6 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
 import Base from './Base';
-import { CompanyWithNominatedMembers, Person } from '.';
+import { CompanyWithMembers, Person } from '.';
 import { MODELS } from '../utils/constants';
 
 export default class Nomination extends Base {
@@ -15,7 +15,7 @@ export default class Nomination extends Base {
 			? entities.map(entity => {
 				switch (entity.model) {
 					case MODELS.COMPANY:
-						return new CompanyWithNominatedMembers(entity);
+						return new CompanyWithMembers(entity);
 					default:
 						return new Person(entity);
 				}

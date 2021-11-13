@@ -160,7 +160,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Ferdinand Foo'
 											},
@@ -175,7 +175,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Quincy Qux'
 											},
@@ -232,7 +232,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Clara Quux'
 											},
@@ -250,7 +250,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Beatrice Bar'
 											},
@@ -345,7 +345,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Brandon Baz'
 											},
@@ -360,7 +360,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Christian Quuz'
 											},
@@ -452,7 +452,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Ferdinand Foo'
 											},
@@ -527,7 +527,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Quincy Qux'
 											},
@@ -610,7 +610,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Clara Quux'
 											},
@@ -625,7 +625,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Beatrice Bar'
 											},
@@ -686,7 +686,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Christian Quuz'
 											},
@@ -701,7 +701,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Brandon Baz'
 											},
@@ -778,7 +778,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Stagecraft Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Ferdinand Foo'
 											},
@@ -793,7 +793,7 @@ describe('Award ceremonies', () => {
 									{
 										model: 'COMPANY',
 										name: 'Theatricals Ltd',
-										nominatedMembers: [
+										members: [
 											{
 												name: 'Quincy Qux'
 											},
@@ -933,18 +933,18 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: []
+											employerCompany: null,
+											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: CURTAIN_UP_LTD_COMPANY_UUID,
 													name: 'Curtain Up Ltd',
-													nominatedMembers: []
+													members: []
 												},
 												{
 													model: 'PERSON',
@@ -975,8 +975,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: []
+											employerCompany: null,
+											coEntities: []
 										}
 									]
 								}
@@ -993,13 +993,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: BACKSTAGE_LTD_COMPANY_UUID,
 													name: 'Backstage Ltd',
-													nominatedMembers: []
+													members: []
 												},
 												{
 													model: 'PERSON',
@@ -1023,13 +1023,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: CURTAIN_UP_LTD_COMPANY_UUID,
 													name: 'Curtain Up Ltd',
-													nominatedMembers: []
+													members: []
 												},
 												{
 													model: 'PERSON',
@@ -1046,8 +1046,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1057,7 +1057,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: BACKSTAGE_LTD_COMPANY_UUID,
 													name: 'Backstage Ltd',
-													nominatedMembers: []
+													members: []
 												}
 											]
 										}
@@ -1083,18 +1083,18 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: []
+											employerCompany: null,
+											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: CURTAIN_UP_LTD_COMPANY_UUID,
 													name: 'Curtain Up Ltd',
-													nominatedMembers: []
+													members: []
 												},
 												{
 													model: 'PERSON',
@@ -1111,8 +1111,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1122,7 +1122,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: BACKSTAGE_LTD_COMPANY_UUID,
 													name: 'Backstage Ltd',
-													nominatedMembers: []
+													members: []
 												}
 											]
 										}
@@ -1141,8 +1141,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1152,7 +1152,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: CURTAIN_UP_LTD_COMPANY_UUID,
 													name: 'Curtain Up Ltd',
-													nominatedMembers: []
+													members: []
 												}
 											]
 										}
@@ -1193,8 +1193,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: [
+											members: [],
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1229,8 +1229,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: []
+											members: [],
+											coEntities: []
 										}
 									]
 								}
@@ -1247,8 +1247,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: [
+											members: [],
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JOHN_DOE_PERSON_UUID,
@@ -1269,8 +1269,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: []
+											members: [],
+											coEntities: []
 										}
 									]
 								}
@@ -1294,8 +1294,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: [
+											members: [],
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1316,8 +1316,8 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: []
+											members: [],
+											coEntities: []
 										}
 									]
 								}
@@ -1334,13 +1334,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: []
+											members: [],
+											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [],
-											coNominatedEntities: [
+											members: [],
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: JANE_ROE_PERSON_UUID,
@@ -1390,13 +1390,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: FERDINAND_FOO_PERSON_UUID,
@@ -1418,7 +1418,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: QUINCY_QUX_PERSON_UUID,
@@ -1460,13 +1460,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: QUINCY_QUX_PERSON_UUID,
@@ -1501,13 +1501,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: FERDINAND_FOO_PERSON_UUID,
@@ -1542,13 +1542,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CLARA_QUUX_PERSON_UUID,
@@ -1570,7 +1570,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BEATRICE_BAR_PERSON_UUID,
@@ -1598,13 +1598,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -1626,7 +1626,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BRANDON_BAZ_PERSON_UUID,
@@ -1668,13 +1668,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: FERDINAND_FOO_PERSON_UUID,
@@ -1696,7 +1696,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: QUINCY_QUX_PERSON_UUID,
@@ -1724,13 +1724,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CLARA_QUUX_PERSON_UUID,
@@ -1752,7 +1752,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BEATRICE_BAR_PERSON_UUID,
@@ -1787,13 +1787,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: null,
-											coNominatedEntities: [
+											employerCompany: null,
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BRANDON_BAZ_PERSON_UUID,
@@ -1815,7 +1815,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -1872,7 +1872,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: FERDINAND_FOO_PERSON_UUID,
@@ -1889,12 +1889,12 @@ describe('Award ceremonies', () => {
 													name: 'Brandon Baz'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: QUINCY_QUX_PERSON_UUID,
@@ -1941,7 +1941,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: FERDINAND_FOO_PERSON_UUID,
@@ -1958,7 +1958,7 @@ describe('Award ceremonies', () => {
 													name: 'Beatrice Bar'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -1981,7 +1981,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: BEATRICE_BAR_PERSON_UUID,
@@ -1998,12 +1998,12 @@ describe('Award ceremonies', () => {
 													name: 'Brandon Baz'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CLARA_QUUX_PERSON_UUID,
@@ -2036,7 +2036,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: BRANDON_BAZ_PERSON_UUID,
@@ -2053,7 +2053,7 @@ describe('Award ceremonies', () => {
 													name: 'Ferdinand Foo'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2063,7 +2063,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -2105,7 +2105,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: FERDINAND_FOO_PERSON_UUID,
@@ -2122,12 +2122,12 @@ describe('Award ceremonies', () => {
 													name: 'Brandon Baz'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: QUINCY_QUX_PERSON_UUID,
@@ -2160,7 +2160,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: BEATRICE_BAR_PERSON_UUID,
@@ -2177,12 +2177,12 @@ describe('Award ceremonies', () => {
 													name: 'Ferdinand Foo'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CLARA_QUUX_PERSON_UUID,
@@ -2222,7 +2222,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedMembers: [
+											members: [
 												{
 													model: 'PERSON',
 													uuid: BRANDON_BAZ_PERSON_UUID,
@@ -2239,7 +2239,7 @@ describe('Award ceremonies', () => {
 													name: 'Beatrice Bar'
 												}
 											],
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2249,7 +2249,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: THEATRICALS_LTD_COMPANY_UUID,
 													name: 'Theatricals Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -2306,11 +2306,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CLARA_QUUX_PERSON_UUID,
@@ -2323,12 +2323,12 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: FERDINAND_FOO_PERSON_UUID,
@@ -2375,11 +2375,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -2392,7 +2392,7 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2415,11 +2415,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CLARA_QUUX_PERSON_UUID,
@@ -2432,12 +2432,12 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BEATRICE_BAR_PERSON_UUID,
@@ -2470,11 +2470,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -2487,7 +2487,7 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2497,7 +2497,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BRANDON_BAZ_PERSON_UUID,
@@ -2539,11 +2539,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CLARA_QUUX_PERSON_UUID,
@@ -2556,12 +2556,12 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: FERDINAND_FOO_PERSON_UUID,
@@ -2594,11 +2594,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CLARA_QUUX_PERSON_UUID,
@@ -2611,7 +2611,7 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2621,7 +2621,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BEATRICE_BAR_PERSON_UUID,
@@ -2656,11 +2656,11 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
-											nominatedEmployerCompany: {
+											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
 												name: 'Theatricals Ltd',
-												coNominatedMembers: [
+												coMembers: [
 													{
 														model: 'PERSON',
 														uuid: CHRISTIAN_QUUZ_PERSON_UUID,
@@ -2673,7 +2673,7 @@ describe('Award ceremonies', () => {
 													}
 												]
 											},
-											coNominatedEntities: [
+											coEntities: [
 												{
 													model: 'PERSON',
 													uuid: CONOR_CORGE_PERSON_UUID,
@@ -2683,7 +2683,7 @@ describe('Award ceremonies', () => {
 													model: 'COMPANY',
 													uuid: STAGECRAFT_LTD_COMPANY_UUID,
 													name: 'Stagecraft Ltd',
-													nominatedMembers: [
+													members: [
 														{
 															model: 'PERSON',
 															uuid: BRANDON_BAZ_PERSON_UUID,

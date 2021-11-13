@@ -16,7 +16,7 @@
 				{
 					"model": "COMPANY",
 					"name": "Fiery Angel",
-					"creditedMembers": [
+					"members": [
 						{
 							"name": "Edward Snape"
 						}

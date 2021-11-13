@@ -145,8 +145,8 @@ const getCreateUpdateQuery = action => {
 					WITH DISTINCT ceremony, category, nomination, nomineeCompanyParam
 
 					UNWIND
-						CASE WHEN nomineeCompanyParam IS NOT NULL AND SIZE(nomineeCompanyParam.nominatedMembers) > 0
-							THEN nomineeCompanyParam.nominatedMembers
+						CASE WHEN nomineeCompanyParam IS NOT NULL AND SIZE(nomineeCompanyParam.members) > 0
+							THEN nomineeCompanyParam.members
 							ELSE [null]
 						END AS nominatedMemberParam
 
@@ -171,7 +171,7 @@ const getCreateUpdateQuery = action => {
 								) OR
 								nominatedMemberParam.differentiator = existingPerson.differentiator
 
-						FOREACH (item IN CASE WHEN SIZE(nomineeCompanyParam.nominatedMembers) > 0
+						FOREACH (item IN CASE WHEN SIZE(nomineeCompanyParam.members) > 0
 							THEN [1]
 							ELSE []
 						END | SET nomineeCompanyRel.nominatedMemberUuids = [])
@@ -252,7 +252,7 @@ const getEditQuery = () => `
 		[nomineeEntity IN COLLECT(
 			CASE nomineeEntity WHEN NULL
 				THEN null
-				ELSE nomineeEntity { .model, .name, .differentiator, nominatedMembers }
+				ELSE nomineeEntity { .model, .name, .differentiator, members: nominatedMembers }
 			END
 		) | CASE nomineeEntity.model WHEN 'COMPANY'
 			THEN nomineeEntity
@@ -335,7 +335,7 @@ const getShowQuery = () => `
 		[nomineeEntity IN COLLECT(
 			CASE nomineeEntity WHEN NULL
 				THEN null
-				ELSE nomineeEntity { .model, .uuid, .name, nominatedMembers }
+				ELSE nomineeEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
 		) | CASE nomineeEntity.model WHEN 'COMPANY'
 			THEN nomineeEntity
