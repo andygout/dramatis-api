@@ -124,7 +124,6 @@ describe('ProducerCredit model', () => {
 			instance.entities[1].name = 'Fiery Angel';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
-			spy(instance, 'validateNamePresenceIfNamedChildren');
 			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(
 				instance.validateName,
