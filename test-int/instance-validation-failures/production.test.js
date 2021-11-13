@@ -1030,8 +1030,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Duncan C Weldon',
-											differentiator: ''
+											name: 'Duncan C Weldon'
 										}
 									]
 								}
@@ -2745,8 +2744,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Andrew Bruce',
-											differentiator: ''
+											name: 'Andrew Bruce'
 										}
 									]
 								}
@@ -3644,8 +3642,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Sara Gunter',
-											differentiator: ''
+											name: 'Sara Gunter'
 										}
 									]
 								}
