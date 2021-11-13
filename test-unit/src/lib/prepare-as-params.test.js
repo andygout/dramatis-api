@@ -634,7 +634,7 @@ describe('Prepare As Params module', () => {
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
 				const instance = {
-					material: {
+					foo: {
 						characterGroups: [
 							{ name: '', characters: [{ name: 'Malene' }] }
 						],
@@ -652,18 +652,18 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.material.characterGroups.length).to.equal(1);
-				expect(result.material.characterGroups[0].name).to.be.null;
-				expect(result.material.characterGroups[0]).to.not.have.property('position');
-				expect(result.material.nominations.length).to.equal(1);
-				expect(result.material.nominations[0]).to.not.have.property('name');
-				expect(result.material.nominations[0]).to.not.have.property('position');
-				expect(result.material.producerCredits.length).to.equal(1);
-				expect(result.material.producerCredits[0].name).to.be.null;
-				expect(result.material.producerCredits[0]).to.not.have.property('position');
-				expect(result.material.writingCredits.length).to.equal(1);
-				expect(result.material.writingCredits[0].name).to.be.null;
-				expect(result.material.writingCredits[0]).to.not.have.property('position');
+				expect(result.foo.characterGroups.length).to.equal(1);
+				expect(result.foo.characterGroups[0].name).to.be.null;
+				expect(result.foo.characterGroups[0]).to.not.have.property('position');
+				expect(result.foo.nominations.length).to.equal(1);
+				expect(result.foo.nominations[0]).to.not.have.property('name');
+				expect(result.foo.nominations[0]).to.not.have.property('position');
+				expect(result.foo.producerCredits.length).to.equal(1);
+				expect(result.foo.producerCredits[0].name).to.be.null;
+				expect(result.foo.producerCredits[0]).to.not.have.property('position');
+				expect(result.foo.writingCredits.length).to.equal(1);
+				expect(result.foo.writingCredits[0].name).to.be.null;
+				expect(result.foo.writingCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -674,7 +674,7 @@ describe('Prepare As Params module', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', () => {
 
 				const instance = {
-					material: {
+					foo: {
 						characterGroups: [
 							{ name: 'The Rentheims', characters: [{ name: '' }] },
 							{ name: 'The Borkmans', characters: [{ name: 'John Gabriel Borkman' }] },
@@ -710,24 +710,24 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.material.characterGroups.length).to.equal(1);
-				expect(result.material.characterGroups[0]).to.not.have.property('position');
-				expect(result.material.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.material.creativeCredits.length).to.equal(1);
-				expect(result.material.creativeCredits[0]).to.not.have.property('position');
-				expect(result.material.creativeCredits[0].name).to.equal('Designer');
-				expect(result.material.crewCredits.length).to.equal(1);
-				expect(result.material.crewCredits[0]).to.not.have.property('position');
-				expect(result.material.crewCredits[0].name).to.equal('Stage Manager');
-				expect(result.material.nominations.length).to.equal(1);
-				expect(result.material.nominations[0]).to.not.have.property('name');
-				expect(result.material.nominations[0]).to.not.have.property('position');
-				expect(result.material.producerCredits.length).to.equal(1);
-				expect(result.material.producerCredits[0]).to.not.have.property('position');
-				expect(result.material.producerCredits[0].name).to.equal('in association with');
-				expect(result.material.writingCredits.length).to.equal(1);
-				expect(result.material.writingCredits[0]).to.not.have.property('position');
-				expect(result.material.writingCredits[0].name).to.equal('version by');
+				expect(result.foo.characterGroups.length).to.equal(1);
+				expect(result.foo.characterGroups[0]).to.not.have.property('position');
+				expect(result.foo.characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.foo.creativeCredits.length).to.equal(1);
+				expect(result.foo.creativeCredits[0]).to.not.have.property('position');
+				expect(result.foo.creativeCredits[0].name).to.equal('Designer');
+				expect(result.foo.crewCredits.length).to.equal(1);
+				expect(result.foo.crewCredits[0]).to.not.have.property('position');
+				expect(result.foo.crewCredits[0].name).to.equal('Stage Manager');
+				expect(result.foo.nominations.length).to.equal(1);
+				expect(result.foo.nominations[0]).to.not.have.property('name');
+				expect(result.foo.nominations[0]).to.not.have.property('position');
+				expect(result.foo.producerCredits.length).to.equal(1);
+				expect(result.foo.producerCredits[0]).to.not.have.property('position');
+				expect(result.foo.producerCredits[0].name).to.equal('in association with');
+				expect(result.foo.writingCredits.length).to.equal(1);
+				expect(result.foo.writingCredits[0]).to.not.have.property('position');
+				expect(result.foo.writingCredits[0].name).to.equal('version by');
 
 			});
 
@@ -960,7 +960,7 @@ describe('Prepare As Params module', () => {
 			it('does not filter out objects that have a name attribute which is an empty string', () => {
 
 				const instance = {
-					materials: [
+					foos: [
 						{
 							name: 'Foobar',
 							characterGroups: [
@@ -981,18 +981,18 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.materials[0].characterGroups.length).to.equal(1);
-				expect(result.materials[0].characterGroups[0].name).to.be.null;
-				expect(result.materials[0].characterGroups[0]).to.not.have.property('position');
-				expect(result.materials[0].nominations.length).to.equal(1);
-				expect(result.materials[0].nominations[0]).to.not.have.property('name');
-				expect(result.materials[0].nominations[0]).to.not.have.property('position');
-				expect(result.materials[0].producerCredits.length).to.equal(1);
-				expect(result.materials[0].producerCredits[0].name).to.be.null;
-				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
-				expect(result.materials[0].writingCredits.length).to.equal(1);
-				expect(result.materials[0].writingCredits[0].name).to.be.null;
-				expect(result.materials[0].writingCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].characterGroups.length).to.equal(1);
+				expect(result.foos[0].characterGroups[0].name).to.be.null;
+				expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
+				expect(result.foos[0].nominations.length).to.equal(1);
+				expect(result.foos[0].nominations[0]).to.not.have.property('name');
+				expect(result.foos[0].nominations[0]).to.not.have.property('position');
+				expect(result.foos[0].producerCredits.length).to.equal(1);
+				expect(result.foos[0].producerCredits[0].name).to.be.null;
+				expect(result.foos[0].producerCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].writingCredits.length).to.equal(1);
+				expect(result.foos[0].writingCredits[0].name).to.be.null;
+				expect(result.foos[0].writingCredits[0]).to.not.have.property('position');
 
 			});
 
@@ -1003,7 +1003,7 @@ describe('Prepare As Params module', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', () => {
 
 				const instance = {
-					materials: [
+					foos: [
 						{
 							name: 'Foobar',
 							characterGroups: [
@@ -1042,24 +1042,24 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.materials[0].characterGroups.length).to.equal(1);
-				expect(result.materials[0].characterGroups[0]).to.not.have.property('position');
-				expect(result.materials[0].characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.materials[0].creativeCredits.length).to.equal(1);
-				expect(result.materials[0].creativeCredits[0]).to.not.have.property('position');
-				expect(result.materials[0].creativeCredits[0].name).to.equal('Designer');
-				expect(result.materials[0].crewCredits.length).to.equal(1);
-				expect(result.materials[0].crewCredits[0]).to.not.have.property('position');
-				expect(result.materials[0].crewCredits[0].name).to.equal('Stage Manager');
-				expect(result.materials[0].nominations.length).to.equal(1);
-				expect(result.materials[0].nominations[0]).to.not.have.property('name');
-				expect(result.materials[0].nominations[0]).to.not.have.property('position');
-				expect(result.materials[0].producerCredits.length).to.equal(1);
-				expect(result.materials[0].producerCredits[0]).to.not.have.property('position');
-				expect(result.materials[0].producerCredits[0].name).to.equal('in association with');
-				expect(result.materials[0].writingCredits.length).to.equal(1);
-				expect(result.materials[0].writingCredits[0]).to.not.have.property('position');
-				expect(result.materials[0].writingCredits[0].name).to.equal('version by');
+				expect(result.foos[0].characterGroups.length).to.equal(1);
+				expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
+				expect(result.foos[0].characterGroups[0].name).to.equal('The Borkmans');
+				expect(result.foos[0].creativeCredits.length).to.equal(1);
+				expect(result.foos[0].creativeCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].creativeCredits[0].name).to.equal('Designer');
+				expect(result.foos[0].crewCredits.length).to.equal(1);
+				expect(result.foos[0].crewCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].crewCredits[0].name).to.equal('Stage Manager');
+				expect(result.foos[0].nominations.length).to.equal(1);
+				expect(result.foos[0].nominations[0]).to.not.have.property('name');
+				expect(result.foos[0].nominations[0]).to.not.have.property('position');
+				expect(result.foos[0].producerCredits.length).to.equal(1);
+				expect(result.foos[0].producerCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].producerCredits[0].name).to.equal('in association with');
+				expect(result.foos[0].writingCredits.length).to.equal(1);
+				expect(result.foos[0].writingCredits[0]).to.not.have.property('position');
+				expect(result.foos[0].writingCredits[0].name).to.equal('version by');
 
 			});
 
