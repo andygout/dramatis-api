@@ -330,7 +330,6 @@ const getShowQuery = () => `
 		materials,
 		producerProductions,
 		castMemberProductions,
-		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
@@ -507,7 +506,6 @@ const getShowQuery = () => `
 		producerProductions,
 		castMemberProductions,
 		creativeProductions,
-		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
