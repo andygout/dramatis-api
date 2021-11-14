@@ -127,11 +127,11 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
-						writingCredits: writingCredits,
-						creditType: creditType,
-						hasDirectCredit: hasDirectCredit,
-						isSubsequentVersion: isSubsequentVersion,
-						isSourcingMaterial: isSourcingMaterial
+						writingCredits,
+						creditType,
+						hasDirectCredit,
+						isSubsequentVersion,
+						isSourcingMaterial
 					}
 				END
 			) AS materials
@@ -222,7 +222,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					producerCredits: producerCredits
+					producerCredits
 				}
 			END
 		) AS producerProductions
@@ -342,7 +342,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					creativeCredits: creativeCredits
+					creativeCredits
 				}
 			END
 		) AS creativeProductions
@@ -464,7 +464,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					crewCredits: crewCredits
+					crewCredits
 				}
 			END
 		) AS crewProductions

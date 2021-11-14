@@ -419,10 +419,10 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
-						writingCredits: writingCredits,
-						isOriginalVersion: isOriginalVersion,
-						isSubsequentVersion: isSubsequentVersion,
-						isSourcingMaterial: isSourcingMaterial
+						writingCredits,
+						isOriginalVersion,
+						isSubsequentVersion,
+						isSourcingMaterial
 					}
 				END
 			) AS relatedMaterials
@@ -539,7 +539,7 @@ const getShowQuery = () => `
 						.name,
 						.startDate,
 						.endDate,
-						usesSourcingMaterial: usesSourcingMaterial,
+						usesSourcingMaterial,
 						venue: CASE venue WHEN NULL
 							THEN null
 							ELSE venue {

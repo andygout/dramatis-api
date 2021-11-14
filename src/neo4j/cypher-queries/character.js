@@ -96,8 +96,8 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
-					writingCredits: writingCredits,
-					depictions: depictions
+					writingCredits,
+					depictions
 				}
 			END
 		) AS materials
@@ -206,7 +206,7 @@ const getShowQuery = () => `
 			roleName: role.roleName,
 			qualifier: role.qualifier,
 			isAlternate: role.isAlternate,
-			otherRoles: otherRoles
+			otherRoles
 		}) AS performers
 		ORDER BY production.startDate DESC, production.name, venue.name
 
@@ -239,7 +239,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					performers: performers
+					performers
 				}
 			END
 		) AS productions
