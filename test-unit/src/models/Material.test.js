@@ -310,8 +310,8 @@ describe('Material model', () => {
 				.firstCall.calledWithExactly(instance.writingCredits)
 			).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices
-				.secondCall.calledWithExactly(
-			instance.characterGroups)).to.be.true;
+				.secondCall.calledWithExactly(instance.characterGroups)
+			).to.be.true;
 			expect(instance.writingCredits[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.writingCredits[0].runInputValidations.calledWithExactly(
 				{

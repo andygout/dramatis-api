@@ -146,9 +146,7 @@ describe('Nomination model', () => {
 				instance.entities[0], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[1].validateName.calledOnce).to.be.true;
 			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
@@ -157,9 +155,7 @@ describe('Nomination model', () => {
 				instance.entities[1], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[1].runInputValidations.calledOnce).to.be.true;
 			expect(instance.entities[1].runInputValidations.calledWithExactly(
 				{ duplicateEntities: 'getDuplicateEntities response' }

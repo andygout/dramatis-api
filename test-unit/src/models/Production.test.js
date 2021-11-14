@@ -422,9 +422,7 @@ describe('Production model', () => {
 				instance.crewCredits
 			)).to.be.true;
 			expect(instance.crewCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.crewCredits[0].runInputValidations.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.crewCredits[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 

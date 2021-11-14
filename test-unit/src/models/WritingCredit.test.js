@@ -212,27 +212,21 @@ describe('WritingCredit model', () => {
 			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.entities[1].validateName.calledOnce).to.be.true;
 			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
 			expect(instance.entities[2].validateName.calledOnce).to.be.true;
 			expect(instance.entities[2].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[2].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.entities[2].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.entities[2].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[2].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[2].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
 			expect(instance.entities[2].validateNoAssociationWithSelf.calledWithExactly(
 				'The Indian Boy', '1'

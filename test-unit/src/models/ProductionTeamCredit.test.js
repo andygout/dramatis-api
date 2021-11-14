@@ -148,9 +148,7 @@ describe('ProductionTeamCredit model', () => {
 			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly(
-				instance.entities
-			)).to.be.true;
+			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly(instance.entities)).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
 				instance.entities
@@ -164,9 +162,7 @@ describe('ProductionTeamCredit model', () => {
 				instance.entities[0], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[1].validateName.calledOnce).to.be.true;
 			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
@@ -175,9 +171,7 @@ describe('ProductionTeamCredit model', () => {
 				instance.entities[1], 'getDuplicateEntities response'
 			)).to.be.true;
 			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[1].runInputValidations.calledOnce).to.be.true;
 			expect(instance.entities[1].runInputValidations.calledWithExactly(
 				{ duplicateEntities: 'getDuplicateEntities response' }

@@ -113,9 +113,7 @@ describe('CompanyWithMembers model', () => {
 				instance.members[0], []
 			)).to.be.true;
 			expect(instance.members[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 
