@@ -57,7 +57,6 @@ describe('Cypher Queries Shared module', () => {
 				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'VENUE' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
@@ -76,7 +75,6 @@ describe('Cypher Queries Shared module', () => {
 				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'VENUE' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
@@ -102,7 +100,6 @@ describe('Cypher Queries Shared module', () => {
 				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
-					'VENUE' AS model,
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator

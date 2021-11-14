@@ -1,7 +1,7 @@
 const getShowQuery = () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	OPTIONAL MATCH (character)<-[materialRel:HAS_CHARACTER]-(material:Material)
+	OPTIONAL MATCH (character)<-[materialRel:DEPICTS]-(material:Material)
 
 	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
@@ -96,13 +96,13 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
-					writingCredits: writingCredits,
-					depictions: depictions
+					writingCredits,
+					depictions
 				}
 			END
 		) AS materials
 
-	OPTIONAL MATCH (character)<-[variantNamedDepiction:HAS_CHARACTER]-(:Material)
+	OPTIONAL MATCH (character)<-[variantNamedDepiction:DEPICTS]-(:Material)
 		WHERE EXISTS(variantNamedDepiction.displayName)
 
 	WITH character, materials, variantNamedDepiction
@@ -110,7 +110,7 @@ const getShowQuery = () => `
 
 	WITH character, materials, COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 
-	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:HAS_CHARACTER]-(:Material)
+	OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:DEPICTS]-(:Material)
 		<-[:PRODUCTION_OF]-(:Production)-[variantNamedPortrayal:HAS_CAST_MEMBER]->(:Person)
 		WHERE
 			character.name <> variantNamedPortrayal.roleName AND
@@ -125,7 +125,7 @@ const getShowQuery = () => `
 	WITH character, variantNamedDepictions, materials,
 		COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 
-	OPTIONAL MATCH (character)<-[characterDepiction:HAS_CHARACTER]-(materialForProduction:Material)
+	OPTIONAL MATCH (character)<-[characterDepiction:DEPICTS]-(materialForProduction:Material)
 		<-[productionRel:PRODUCTION_OF]-(production:Production)-[role:HAS_CAST_MEMBER]->(person:Person)
 		WHERE
 			(
@@ -145,7 +145,7 @@ const getShowQuery = () => `
 			)
 
 	OPTIONAL MATCH (person)<-[otherRole]-(production)-[productionRel]->
-		(materialForProduction)-[otherCharacterDepiction:HAS_CHARACTER]->(otherCharacter:Character)
+		(materialForProduction)-[otherCharacterDepiction:DEPICTS]->(otherCharacter:Character)
 		WHERE
 			(
 				otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
@@ -206,7 +206,7 @@ const getShowQuery = () => `
 			roleName: role.roleName,
 			qualifier: role.qualifier,
 			isAlternate: role.isAlternate,
-			otherRoles: otherRoles
+			otherRoles
 		}) AS performers
 		ORDER BY production.startDate DESC, production.name, venue.name
 
@@ -239,7 +239,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					performers: performers
+					performers
 				}
 			END
 		) AS productions

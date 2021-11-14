@@ -34,7 +34,7 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(:Character)
+			OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 			DELETE characterRel
 
@@ -189,7 +189,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET character.differentiator = characterParam.differentiator
 
 					CREATE (material)-
-						[:HAS_CHARACTER {
+						[:DEPICTS {
 							groupPosition: characterGroup.position,
 							characterPosition: characterParam.position,
 							displayName: CASE characterParam.underlyingName WHEN NULL
@@ -238,7 +238,6 @@ const getEditQuery = () => `
 			CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 				THEN null
 				ELSE {
-					model: 'WRITING_CREDIT',
 					name: writingCreditName,
 					creditType: writingCreditType,
 					entities: entities
@@ -246,7 +245,7 @@ const getEditQuery = () => `
 			END
 		) + [{ entities: [{}] }] AS writingCredits
 
-	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
 	WITH material, originalVersionMaterial, writingCredits, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
@@ -266,7 +265,6 @@ const getEditQuery = () => `
 		) + [{}] AS characters
 
 	RETURN
-		'MATERIAL' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.differentiator AS differentiator,
@@ -280,7 +278,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null
-				ELSE { model: 'CHARACTER_GROUP', name: characterGroupName, characters: characters }
+				ELSE { name: characterGroupName, characters: characters }
 			END
 		) + [{ characters: [{}] }] AS characterGroups
 `;
@@ -419,10 +417,10 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
-						writingCredits: writingCredits,
-						isOriginalVersion: isOriginalVersion,
-						isSubsequentVersion: isSubsequentVersion,
-						isSourcingMaterial: isSourcingMaterial
+						writingCredits,
+						isOriginalVersion,
+						isSubsequentVersion,
+						isSourcingMaterial
 					}
 				END
 			) AS relatedMaterials
@@ -446,7 +444,7 @@ const getShowQuery = () => `
 				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
 			] AS sourcingMaterials
 
-	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
 	WITH
 		material,
@@ -539,7 +537,7 @@ const getShowQuery = () => `
 						.name,
 						.startDate,
 						.endDate,
-						usesSourcingMaterial: usesSourcingMaterial,
+						usesSourcingMaterial,
 						venue: CASE venue WHEN NULL
 							THEN null
 							ELSE venue {

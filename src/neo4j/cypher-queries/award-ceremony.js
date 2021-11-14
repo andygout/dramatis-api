@@ -35,9 +35,9 @@ const getCreateUpdateQuery = action => {
 
 			WITH ceremony
 
-			OPTIONAL MATCH (ceremony)<-[relationship]-()
+			OPTIONAL MATCH (ceremony)<-[awardRel:PRESENTED_AT]-(:Award)
 
-			DELETE relationship
+			DELETE awardRel
 
 			WITH DISTINCT ceremony
 
@@ -263,16 +263,12 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE SIZE(nomineeEntities) WHEN 1
 				THEN null
-				ELSE {
-					model: 'NOMINATION',
-					entities: nomineeEntities
-				}
+				ELSE { entities: nomineeEntities }
 			END
 		) + [{ entities: [{}] }] AS nominations
 		ORDER BY categoryRel.position
 
 	RETURN
-		'AWARD_CEREMONY' AS model,
 		ceremony.uuid AS uuid,
 		ceremony.name AS name,
 		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,

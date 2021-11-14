@@ -127,11 +127,11 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
-						writingCredits: writingCredits,
-						creditType: creditType,
-						hasDirectCredit: hasDirectCredit,
-						isSubsequentVersion: isSubsequentVersion,
-						isSourcingMaterial: isSourcingMaterial
+						writingCredits,
+						creditType,
+						hasDirectCredit,
+						isSubsequentVersion,
+						isSourcingMaterial
 					}
 				END
 			) AS materials
@@ -222,7 +222,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					producerCredits: producerCredits
+					producerCredits
 				}
 			END
 		) AS producerProductions
@@ -233,7 +233,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:DEPICTS]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR
@@ -275,7 +275,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					roles: roles
+					roles
 				}
 			END
 		) AS castMemberProductions
@@ -330,7 +330,6 @@ const getShowQuery = () => `
 		materials,
 		producerProductions,
 		castMemberProductions,
-		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
@@ -449,7 +448,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					creativeCredits: creativeCredits
+					creativeCredits
 				}
 			END
 		) AS creativeProductions
@@ -507,7 +506,6 @@ const getShowQuery = () => `
 		producerProductions,
 		castMemberProductions,
 		creativeProductions,
-		personRel,
 		production,
 		CASE creditedEmployerCompany WHEN NULL
 			THEN null
@@ -642,7 +640,7 @@ const getShowQuery = () => `
 							END
 						}
 					END,
-					crewCredits: crewCredits
+					crewCredits
 				}
 			END
 		) AS crewProductions

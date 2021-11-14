@@ -33,7 +33,6 @@ const getEditQuery = model => `
 	MATCH (n:${MODEL_TO_NODE_LABEL_MAP[model]} { uuid: $uuid })
 
 	RETURN
-		'${model}' AS model,
 		n.uuid AS uuid,
 		n.name AS name,
 		n.differentiator AS differentiator
