@@ -39,7 +39,7 @@ describe('AwardCeremonyCategory model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
 				name: '2020',
