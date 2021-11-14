@@ -233,7 +233,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:DEPICTS]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR

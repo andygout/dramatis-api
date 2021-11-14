@@ -755,7 +755,7 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
 	OPTIONAL MATCH (castMember)<-[role]-(production)-[materialRel]->
-		(material)-[characterRel:HAS_CHARACTER]->(character:Character)
+		(material)-[characterRel:DEPICTS]->(character:Character)
 		WHERE
 			(
 				role.roleName IN [character.name, characterRel.displayName] OR

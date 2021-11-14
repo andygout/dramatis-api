@@ -86,7 +86,7 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(:Character)
+				OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 				DELETE characterRel
 

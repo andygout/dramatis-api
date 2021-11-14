@@ -34,7 +34,7 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(:Character)
+			OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 			DELETE characterRel
 
@@ -189,7 +189,7 @@ const getCreateUpdateQuery = action => {
 						ON CREATE SET character.differentiator = characterParam.differentiator
 
 					CREATE (material)-
-						[:HAS_CHARACTER {
+						[:DEPICTS {
 							groupPosition: characterGroup.position,
 							characterPosition: characterParam.position,
 							displayName: CASE characterParam.underlyingName WHEN NULL
@@ -246,7 +246,7 @@ const getEditQuery = () => `
 			END
 		) + [{ entities: [{}] }] AS writingCredits
 
-	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
 	WITH material, originalVersionMaterial, writingCredits, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
@@ -446,7 +446,7 @@ const getShowQuery = () => `
 				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
 			] AS sourcingMaterials
 
-	OPTIONAL MATCH (material)-[characterRel:HAS_CHARACTER]->(character:Character)
+	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
 	WITH
 		material,
