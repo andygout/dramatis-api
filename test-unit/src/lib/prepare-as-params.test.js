@@ -127,6 +127,16 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		it('will assign null value to non-uuid properties with false values', () => {
+
+			const instance = { foo: false };
+			const result = prepareAsParams(instance);
+			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+			expect(stubs.neo4jInt.notCalled).to.be.true;
+			expect(result.foo).to.equal(null);
+
+		});
+
 		it('will not add position property', () => {
 
 			const instance = { foo: '' };
@@ -199,6 +209,16 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		it('will assign null value to non-uuid properties with false values', () => {
+
+			const instance = { venue: { foo: false } };
+			const result = prepareAsParams(instance);
+			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+			expect(stubs.neo4jInt.notCalled).to.be.true;
+			expect(result.venue.foo).to.equal(null);
+
+		});
+
 		it('will not add position property', () => {
 
 			const instance = { venue: { uuid: '' } };
@@ -264,6 +284,16 @@ describe('Prepare As Params module', () => {
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			const instance = { cast: [{ foo: '', name: 'David Calder' }] };
+			const result = prepareAsParams(instance);
+			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+			expect(stubs.neo4jInt.notCalled).to.be.true;
+			expect(result.cast[0].foo).to.equal(null);
+
+		});
+
+		it('will assign null value to non-uuid properties with false values', () => {
+
+			const instance = { cast: [{ foo: false, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -543,6 +573,16 @@ describe('Prepare As Params module', () => {
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			const instance = { production: { cast: [{ foo: '', name: 'David Calder' }] } };
+			const result = prepareAsParams(instance);
+			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+			expect(stubs.neo4jInt.notCalled).to.be.true;
+			expect(result.production.cast[0].foo).to.equal(null);
+
+		});
+
+		it('will assign null value to non-uuid properties with false values', () => {
+
+			const instance = { production: { cast: [{ foo: false, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
 			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;
@@ -842,6 +882,16 @@ describe('Prepare As Params module', () => {
 		it('will assign null value to non-uuid properties with empty string values', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: '', name: 'Polonius' }] }] };
+			const result = prepareAsParams(instance);
+			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+			expect(stubs.neo4jInt.notCalled).to.be.true;
+			expect(result.cast[0].roles[0].foo).to.equal(null);
+
+		});
+
+		it('will assign null value to non-uuid properties with false values', () => {
+
+			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: false, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
 			expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 			expect(stubs.neo4jInt.notCalled).to.be.true;

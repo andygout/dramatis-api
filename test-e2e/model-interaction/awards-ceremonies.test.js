@@ -85,9 +85,10 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
-										name: 'David Suchet'
+										name: 'Kyle Soller'
 									}
 								]
 							}
@@ -108,6 +109,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Actor',
 						nominations: [
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Andrew Scott'
@@ -135,6 +137,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'John Doe'
@@ -214,6 +217,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'John Doe'
@@ -289,6 +293,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Actor',
 						nominations: [
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Bryan Cranston'
@@ -338,6 +343,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Conor Corge'
@@ -406,6 +412,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Ralph Fiennes'
@@ -440,6 +447,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										model: 'COMPANY',
@@ -500,6 +508,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Andrew Scott'
@@ -513,6 +522,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'John Doe'
@@ -565,6 +575,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Andrew Garfield'
@@ -592,6 +603,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'John Doe'
@@ -679,6 +691,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Conor Corge'
@@ -740,6 +753,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Actor',
 						nominations: [
 							{
+								isWinner: true,
 								entities: [
 									{
 										name: 'Andrew Scott'
@@ -811,6 +825,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								isWinner: true,
 								entities: [
 									{
 										model: 'COMPANY',
@@ -933,11 +948,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -975,6 +992,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: []
 										}
@@ -993,6 +1011,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1023,6 +1042,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1046,6 +1066,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1083,11 +1104,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1111,6 +1134,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1141,6 +1165,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1193,6 +1218,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: [
 												{
@@ -1229,6 +1255,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											members: [],
 											coEntities: []
 										}
@@ -1247,6 +1274,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											members: [],
 											coEntities: [
 												{
@@ -1269,6 +1297,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: []
 										}
@@ -1294,6 +1323,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: [
 												{
@@ -1316,6 +1346,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: []
 										}
@@ -1334,11 +1365,13 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: []
 										},
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [],
 											coEntities: [
 												{
@@ -1390,6 +1423,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1460,6 +1494,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1501,6 +1536,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1542,6 +1578,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1598,6 +1635,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1668,6 +1706,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1724,6 +1763,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1787,6 +1827,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -1872,6 +1913,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [
 												{
 													model: 'PERSON',
@@ -1941,6 +1983,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [
 												{
 													model: 'PERSON',
@@ -1981,6 +2024,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [
 												{
 													model: 'PERSON',
@@ -2036,6 +2080,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											members: [
 												{
 													model: 'PERSON',
@@ -2105,6 +2150,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [
 												{
 													model: 'PERSON',
@@ -2160,6 +2206,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											members: [
 												{
 													model: 'PERSON',
@@ -2222,6 +2269,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											members: [
 												{
 													model: 'PERSON',
@@ -2306,6 +2354,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2375,6 +2424,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2415,6 +2465,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2470,6 +2521,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2539,6 +2591,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2594,6 +2647,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: false,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -2656,6 +2710,7 @@ describe('Award ceremonies', () => {
 									nominations: [
 										{
 											model: 'NOMINATION',
+											isWinner: true,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,

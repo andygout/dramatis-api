@@ -9,7 +9,9 @@ export default class Nomination extends Base {
 
 		super(props);
 
-		const { entities } = props;
+		const { isWinner, entities } = props;
+
+		this.isWinner = Boolean(isWinner);
 
 		this.entities = entities
 			? entities.map(entity => {

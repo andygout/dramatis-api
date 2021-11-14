@@ -609,6 +609,7 @@ const getShowQuery = () => `
 		award,
 		COLLECT({
 			model: 'NOMINATION',
+			isWinner: COALESCE(nomineeRel.isWinner, false),
 			members: nominatedMembers,
 			coEntities: coNominatedEntities
 		}) AS nominations
