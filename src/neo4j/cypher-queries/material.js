@@ -238,7 +238,6 @@ const getEditQuery = () => `
 			CASE WHEN writingCreditName IS NULL AND SIZE(entities) = 1
 				THEN null
 				ELSE {
-					model: 'WRITING_CREDIT',
 					name: writingCreditName,
 					creditType: writingCreditType,
 					entities: entities
@@ -266,7 +265,6 @@ const getEditQuery = () => `
 		) + [{}] AS characters
 
 	RETURN
-		'MATERIAL' AS model,
 		material.uuid AS uuid,
 		material.name AS name,
 		material.differentiator AS differentiator,
@@ -280,7 +278,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null
-				ELSE { model: 'CHARACTER_GROUP', name: characterGroupName, characters: characters }
+				ELSE { name: characterGroupName, characters: characters }
 			END
 		) + [{ characters: [{}] }] AS characterGroups
 `;

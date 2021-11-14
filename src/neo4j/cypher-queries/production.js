@@ -486,11 +486,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN producerCreditName IS NULL AND SIZE(producerEntities) = 1
 				THEN null
-				ELSE {
-					model: 'PRODUCER_CREDIT',
-					name: producerCreditName,
-					entities: producerEntities
-				}
+				ELSE { name: producerCreditName, entities: producerEntities }
 			END
 		) + [{ entities: [{}] }] AS producerCredits
 
@@ -568,11 +564,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 				THEN null
-				ELSE {
-					model: 'CREATIVE_CREDIT',
-					name: creativeCreditName,
-					entities: creativeEntities
-				}
+				ELSE { name: creativeCreditName, entities: creativeEntities }
 			END
 		) + [{ entities: [{}] }] AS creativeCredits
 
@@ -638,7 +630,6 @@ const getEditQuery = () => `
 		END] + [{}] AS crewEntities
 
 	RETURN
-		'PRODUCTION' AS model,
 		production.uuid AS uuid,
 		production.name AS name,
 		production.startDate AS startDate,
@@ -652,11 +643,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
 				THEN null
-				ELSE {
-					model: 'CREW_CREDIT',
-					name: crewCreditName,
-					entities: crewEntities
-				}
+				ELSE { name: crewCreditName, entities: crewEntities }
 			END
 		) + [{ entities: [{}] }] AS crewCredits
 `;

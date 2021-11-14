@@ -59,7 +59,6 @@ const getEditQuery = () => `
 		ORDER BY subVenueRel.position
 
 	RETURN
-		'VENUE' AS model,
 		venue.uuid AS uuid,
 		venue.name AS name,
 		venue.differentiator AS differentiator,
