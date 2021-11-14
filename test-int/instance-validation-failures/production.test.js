@@ -1015,7 +1015,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('producer credit entity without name has named credited members', () => {
+		context('producer credit entity (company) without name has named credited members', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -1030,8 +1030,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Duncan C Weldon',
-											differentiator: ''
+											name: 'Duncan C Weldon'
 										}
 									]
 								}
@@ -2730,7 +2729,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('creative credit entity without name has named credited members', () => {
+		context('creative credit entity (company) without name has named credited members', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -2745,8 +2744,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Andrew Bruce',
-											differentiator: ''
+											name: 'Andrew Bruce'
 										}
 									]
 								}
@@ -3629,7 +3627,7 @@ describe('Production instance', () => {
 
 		});
 
-		context('crew credit entity without name has named credited members', () => {
+		context('crew credit entity (company) without name has named credited members', () => {
 
 			it('assigns appropriate error', async () => {
 
@@ -3644,8 +3642,7 @@ describe('Production instance', () => {
 									name: '',
 									members: [
 										{
-											name: 'Sara Gunter',
-											differentiator: ''
+											name: 'Sara Gunter'
 										}
 									]
 								}

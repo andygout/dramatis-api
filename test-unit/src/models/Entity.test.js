@@ -158,7 +158,7 @@ describe('Entity model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('will call validateName method', () => {
+		it('calls instance\'s validate methods', () => {
 
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');

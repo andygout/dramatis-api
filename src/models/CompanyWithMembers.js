@@ -26,9 +26,7 @@ export default class CompanyWithMembers extends Company {
 
 			member.validateDifferentiator();
 
-			member.validateUniquenessInGroup(
-				{ isDuplicate: isEntityInArray(member, opts.duplicateEntities) }
-			);
+			member.validateUniquenessInGroup({ isDuplicate: isEntityInArray(member, opts.duplicateEntities) });
 
 		});
 

@@ -705,7 +705,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Co-Producer',
+							name: 'co-produced by',
 							entities: [
 								{
 									model: 'COMPANY',
@@ -1002,7 +1002,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCER_CREDIT',
-						name: 'Co-Producer',
+						name: 'co-produced by',
 						errors: {},
 						entities: [
 							{
@@ -1594,7 +1594,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCER_CREDIT',
-						name: 'Co-Producer',
+						name: 'co-produced by',
 						entities: [
 							{
 								model: 'COMPANY',
@@ -1988,7 +1988,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCER_CREDIT',
-						name: 'Co-Producer',
+						name: 'co-produced by',
 						errors: {},
 						entities: [
 							{
@@ -2564,7 +2564,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						},
 						// Contrivance for purposes of test.
 						{
-							name: 'Co-Producer',
+							name: 'co-produced by',
 							entities: [
 								{
 									model: 'COMPANY',
@@ -2918,7 +2918,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCER_CREDIT',
-						name: 'Co-Producer',
+						name: 'co-produced by',
 						errors: {},
 						entities: [
 							{
@@ -3510,7 +3510,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCER_CREDIT',
-						name: 'Co-Producer',
+						name: 'co-produced by',
 						entities: [
 							{
 								model: 'COMPANY',

@@ -17,7 +17,7 @@ describe('CompanyWithMembers model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicatesInfoModule: {
+			getDuplicateEntityInfoModule: {
 				isEntityInArray: stub().returns(false)
 			},
 			models: {
@@ -29,7 +29,7 @@ describe('CompanyWithMembers model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/CompanyWithMembers', {
-			'../lib/get-duplicate-entity-info': stubs.getDuplicatesInfoModule,
+			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'.': stubs.models
 		}).default;
 
@@ -82,7 +82,7 @@ describe('CompanyWithMembers model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
 				name: 'Fiery Angel',
@@ -100,7 +100,7 @@ describe('CompanyWithMembers model', () => {
 				instance.validateNamePresenceIfNamedChildren,
 				instance.members[0].validateName,
 				instance.members[0].validateDifferentiator,
-				stubs.getDuplicatesInfoModule.isEntityInArray,
+				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0].validateUniquenessInGroup
 			);
 			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
@@ -108,14 +108,12 @@ describe('CompanyWithMembers model', () => {
 			expect(instance.members[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.members[0].validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.members[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledOnce).to.be.true;
-			expect(stubs.getDuplicatesInfoModule.isEntityInArray.calledWithExactly(
+			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledOnce).to.be.true;
+			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledWithExactly(
 				instance.members[0], []
 			)).to.be.true;
 			expect(instance.members[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 

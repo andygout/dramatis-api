@@ -340,7 +340,7 @@ describe('Production model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
 				name: 'Hamlet',
@@ -422,9 +422,7 @@ describe('Production model', () => {
 				instance.crewCredits
 			)).to.be.true;
 			expect(instance.crewCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.crewCredits[0].runInputValidations.calledWithExactly(
-				{ isDuplicate: false }
-			)).to.be.true;
+			expect(instance.crewCredits[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 

@@ -66,7 +66,7 @@ describe('Venue model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
 				name: 'National Theatre',
@@ -100,9 +100,7 @@ describe('Venue model', () => {
 			expect(instance.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(stubs.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndices.calledWithExactly(
-				instance.subVenues
-			)).to.be.true;
+			expect(stubs.getDuplicateBaseInstanceIndices.calledWithExactly(instance.subVenues)).to.be.true;
 			expect(instance.subVenues[0].validateName.calledOnce).to.be.true;
 			expect(instance.subVenues[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.subVenues[0].validateDifferentiator.calledOnce).to.be.true;
