@@ -65,9 +65,9 @@ describe('Cypher Queries Award Ceremony module', () => {
 
 				WITH ceremony
 
-				OPTIONAL MATCH (ceremony)<-[relationship]-()
+				OPTIONAL MATCH (ceremony)<-[awardRel:PRESENTED_AT]-(:Award)
 
-				DELETE relationship
+				DELETE awardRel
 
 				WITH DISTINCT ceremony
 
