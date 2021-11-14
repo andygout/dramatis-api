@@ -23,6 +23,9 @@ describe('AwardCeremony model', () => {
 	beforeEach(() => {
 
 		stubs = {
+			getDuplicateIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([])
+			},
 			prepareAsParamsModule: {
 				prepareAsParams: stub().returns({
 					uuid: 'UUID_VALUE',
@@ -50,6 +53,7 @@ describe('AwardCeremony model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/AwardCeremony', {
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'../lib/prepare-as-params': stubs.prepareAsParamsModule,
 			'.': stubs.models,
 			'../neo4j/cypher-queries': stubs.cypherQueriesModule,
@@ -100,13 +104,23 @@ describe('AwardCeremony model', () => {
 
 		it('calls instance validate method and associated models\' validate methods', () => {
 
-			const instance = createInstance();
+			const props = {
+				name: '2020',
+				categories: [
+					{
+						name: 'Best New Play'
+					}
+				]
+			};
+			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
 				instance.award.validateName,
-				instance.award.validateDifferentiator
+				instance.award.validateDifferentiator,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.categories[0].runInputValidations
 			);
 			expect(instance.validateName.calledOnce).to.be.true;
 			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
@@ -114,6 +128,12 @@ describe('AwardCeremony model', () => {
 			expect(instance.award.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.award.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.award.validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+				instance.categories
+			)).to.be.true;
+			expect(instance.categories[0].runInputValidations.calledOnce).to.be.true;
+			expect(instance.categories[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
 
 		});
 
