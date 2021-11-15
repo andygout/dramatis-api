@@ -60,23 +60,23 @@ describe('Nomination model', () => {
 
 			});
 
-			it('assigns false if included in props but value is empty string', () => {
+			it('assigns false if included in props but value evaluates to false', () => {
 
-				const instance = createInstance({ isWinner: '' });
+				const instance = createInstance({ isWinner: null });
 				expect(instance.isWinner).to.equal(false);
 
 			});
 
-			it('assigns true if included in props but value is whitespace-only string', () => {
+			it('assigns false if included in props but value is false', () => {
 
-				const instance = createInstance({ isWinner: ' ' });
-				expect(instance.isWinner).to.equal(true);
+				const instance = createInstance({ isWinner: false });
+				expect(instance.isWinner).to.equal(false);
 
 			});
 
-			it('assigns true if included in props and is string with length', () => {
+			it('assigns true if included in props and value evaluates to true', () => {
 
-				const instance = createInstance({ isWinner: 'foo' });
+				const instance = createInstance({ isWinner: 'foobar' });
 				expect(instance.isWinner).to.equal(true);
 
 			});
