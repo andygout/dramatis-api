@@ -107,9 +107,9 @@ const getCreateUpdateQuery = action => {
 
 						CREATE (category)-
 							[:HAS_NOMINEE {
-								isWinner: nomination.isWinner,
 								nominationPosition: nomination.position,
-								entityPosition: nomineePersonParam.position
+								entityPosition: nomineePersonParam.position,
+								isWinner: nomination.isWinner
 							}]->(nomineePerson)
 					)
 
@@ -138,9 +138,9 @@ const getCreateUpdateQuery = action => {
 
 						CREATE (category)-
 							[:HAS_NOMINEE {
-								isWinner: nomination.isWinner,
 								nominationPosition: nomination.position,
-								entityPosition: nomineeCompanyParam.position
+								entityPosition: nomineeCompanyParam.position,
+								isWinner: nomination.isWinner
 							}]->(nomineeCompany)
 					)
 
