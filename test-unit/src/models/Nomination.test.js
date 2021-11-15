@@ -51,6 +51,45 @@ describe('Nomination model', () => {
 
 	describe('constructor method', () => {
 
+		describe('isWinner property', () => {
+
+			it('assigns false if absent from props', () => {
+
+				const instance = createInstance({});
+				expect(instance.isWinner).to.equal(false);
+
+			});
+
+			it('assigns false if included in props but value is empty string', () => {
+
+				const instance = createInstance({ isWinner: '' });
+				expect(instance.isWinner).to.equal(false);
+
+			});
+
+			it('assigns true if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ isWinner: ' ' });
+				expect(instance.isWinner).to.equal(true);
+
+			});
+
+			it('assigns true if included in props and is string with length', () => {
+
+				const instance = createInstance({ isWinner: 'foo' });
+				expect(instance.isWinner).to.equal(true);
+
+			});
+
+			it('assigns true if included in props and is true', () => {
+
+				const instance = createInstance({ isWinner: true });
+				expect(instance.isWinner).to.equal(true);
+
+			});
+
+		});
+
 		describe('entities property', () => {
 
 			it('assigns empty array if absent from props', () => {

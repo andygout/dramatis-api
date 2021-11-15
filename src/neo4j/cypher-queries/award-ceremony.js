@@ -107,6 +107,7 @@ const getCreateUpdateQuery = action => {
 
 						CREATE (category)-
 							[:HAS_NOMINEE {
+								isWinner: nomination.isWinner,
 								nominationPosition: nomination.position,
 								entityPosition: nomineePersonParam.position
 							}]->(nomineePerson)
@@ -137,6 +138,7 @@ const getCreateUpdateQuery = action => {
 
 						CREATE (category)-
 							[:HAS_NOMINEE {
+								isWinner: nomination.isWinner,
 								nominationPosition: nomination.position,
 								entityPosition: nomineeCompanyParam.position
 							}]->(nomineeCompany)
@@ -249,6 +251,7 @@ const getEditQuery = () => `
 		categoryRel,
 		category,
 		nomineeEntityRel.nominationPosition AS nominationPosition,
+		nomineeEntityRel.isWinner AS isWinner,
 		[nomineeEntity IN COLLECT(
 			CASE nomineeEntity WHEN NULL
 				THEN null
@@ -263,7 +266,7 @@ const getEditQuery = () => `
 		COLLECT(
 			CASE SIZE(nomineeEntities) WHEN 1
 				THEN null
-				ELSE { entities: nomineeEntities }
+				ELSE { isWinner: COALESCE(isWinner, false), entities: nomineeEntities }
 			END
 		) + [{ entities: [{}] }] AS nominations
 		ORDER BY categoryRel.position
@@ -328,6 +331,7 @@ const getShowQuery = () => `
 		categoryRel,
 		category,
 		nomineeEntityRel.nominationPosition AS nominationPosition,
+		nomineeEntityRel.isWinner AS isWinner,
 		[nomineeEntity IN COLLECT(
 			CASE nomineeEntity WHEN NULL
 				THEN null
@@ -342,10 +346,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE SIZE(nomineeEntities) WHEN 0
 				THEN null
-				ELSE {
-					model: 'NOMINATION',
-					entities: nomineeEntities
-				}
+				ELSE { model: 'NOMINATION', isWinner: COALESCE(isWinner, false), entities: nomineeEntities }
 			END
 		) AS nominations
 		ORDER BY categoryRel.position

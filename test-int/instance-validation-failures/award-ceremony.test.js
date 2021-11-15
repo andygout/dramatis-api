@@ -337,6 +337,7 @@ describe('AwardCeremony instance', () => {
 							},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -401,6 +402,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -470,6 +472,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -539,6 +542,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -610,6 +614,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -699,6 +704,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -831,6 +837,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -913,6 +920,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,
@@ -996,6 +1004,7 @@ describe('AwardCeremony instance', () => {
 							errors: {},
 							nominations: [
 								{
+									isWinner: false,
 									entities: [
 										{
 											uuid: undefined,

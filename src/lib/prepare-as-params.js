@@ -101,7 +101,7 @@ export const prepareAsParams = instance => {
 
 				}
 				else if (typeof value === 'number') accumulator[key] = neo4j.int(value);
-				else if (value === '') accumulator[key] = null;
+				else if (value === '' || (typeof value === 'boolean' && !value)) accumulator[key] = null;
 				else accumulator[key] = value;
 
 			}
