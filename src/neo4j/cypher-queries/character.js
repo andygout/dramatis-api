@@ -192,7 +192,7 @@ const getShowQuery = () => `
 					uuid: otherCharacter.uuid,
 					name: otherRole.roleName,
 					qualifier: otherRole.qualifier,
-					isAlternate: otherRole.isAlternate
+					isAlternate: COALESCE(otherRole.isAlternate, false)
 				}
 			END
 		)) AS otherRoles
@@ -205,7 +205,7 @@ const getShowQuery = () => `
 			.name,
 			roleName: role.roleName,
 			qualifier: role.qualifier,
-			isAlternate: role.isAlternate,
+			isAlternate: COALESCE(role.isAlternate, false),
 			otherRoles
 		}) AS performers
 		ORDER BY production.startDate DESC, production.name, venue.name

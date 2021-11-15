@@ -262,7 +262,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'Jodie McNee',
 							roleName: 'Alisa Kos',
 							qualifier: '2011',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						},
 						{
@@ -271,7 +271,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'Bebe Sanders',
 							roleName: 'Alisa Kos',
 							qualifier: '1990',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -341,7 +341,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'Siobhan Finneran',
 							roleName: 'Maša Kos',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -411,7 +411,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'James Laurenson',
 							roleName: 'Aleksander King',
 							qualifier: '1990',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						},
 						{
@@ -420,7 +420,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'Alex Price',
 							roleName: 'Aleksander King',
 							qualifier: '1945',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -485,7 +485,7 @@ describe('Character with multiple appearances in the same material in different 
 							name: 'Jo Herbert',
 							roleName: 'Rose King',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -593,7 +593,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -607,7 +607,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ROSE_KING_CHARACTER_UUID,
 							name: 'Rose King',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -621,7 +621,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1990',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -635,7 +635,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '2011',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -649,7 +649,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1945',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -663,7 +663,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '1990',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -700,7 +700,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: MAŠA_KOS_CHARACTER_UUID,
 							name: 'Maša Kos',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -737,7 +737,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ROSE_KING_CHARACTER_UUID,
 							name: 'Rose King',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -774,7 +774,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1990',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -811,7 +811,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '2011',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -848,7 +848,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALEKSANDER_KING_CHARACTER_UUID,
 							name: 'Aleksander King',
 							qualifier: '1945',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -885,7 +885,7 @@ describe('Character with multiple appearances in the same material in different 
 							uuid: ALISA_KOS_CHARACTER_UUID,
 							name: 'Alisa Kos',
 							qualifier: '1990',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}

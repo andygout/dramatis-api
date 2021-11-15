@@ -68,7 +68,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -191,7 +191,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -288,7 +288,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -389,7 +389,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1060,7 +1060,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Hamlet, Prince of Denmark',
 								characterDifferentiator: '1',
 								qualifier: 'foo',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -1069,7 +1069,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1086,7 +1086,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Ghost of King Hamlet',
 								characterDifferentiator: '1',
 								qualifier: 'bar',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -1095,7 +1095,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Player King',
 								characterDifferentiator: '1',
 								qualifier: 'baz',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -1104,7 +1104,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1121,7 +1121,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Lucianus',
 								characterDifferentiator: '1',
 								qualifier: 'qux',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -1139,7 +1139,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1156,7 +1156,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1173,7 +1173,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -1622,7 +1622,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Hamlet',
 								qualifier: 'foo',
-								isAlternate: null
+								isAlternate: false
 							}
 						]
 					},
@@ -1636,14 +1636,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Ghost',
 								qualifier: 'bar',
-								isAlternate: null
+								isAlternate: false
 							},
 							{
 								model: 'CHARACTER',
 								uuid: null,
 								name: 'First Player',
 								qualifier: 'baz',
-								isAlternate: null
+								isAlternate: false
 							}
 						]
 					},
@@ -1657,7 +1657,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Third Player',
 								qualifier: 'qux',
-								isAlternate: null
+								isAlternate: false
 							},
 							{
 								model: 'CHARACTER',
@@ -2046,7 +2046,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Hamlet, Prince of Denmark',
 								characterDifferentiator: '1',
 								qualifier: 'foo',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -2055,7 +2055,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -2072,7 +2072,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Ghost of King Hamlet',
 								characterDifferentiator: '1',
 								qualifier: 'bar',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -2081,7 +2081,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Player King',
 								characterDifferentiator: '1',
 								qualifier: 'baz',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -2090,7 +2090,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -2107,7 +2107,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Lucianus',
 								characterDifferentiator: '1',
 								qualifier: 'qux',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -2125,7 +2125,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -2142,7 +2142,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -2159,7 +2159,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -2976,7 +2976,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'King Richard III',
 								characterDifferentiator: '1',
 								qualifier: 'foo',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -2985,7 +2985,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -3002,7 +3002,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Sir Robert Brakenbury',
 								characterDifferentiator: '1',
 								qualifier: 'bar',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -3011,7 +3011,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Henry, Earl of Richmond',
 								characterDifferentiator: '1',
 								qualifier: 'baz',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -3020,7 +3020,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -3037,7 +3037,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: 'Sir Richard Ratcliffe',
 								characterDifferentiator: '1',
 								qualifier: 'qux',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							},
 							{
@@ -3055,7 +3055,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -3072,7 +3072,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -3089,7 +3089,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]
@@ -3538,7 +3538,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Richard, Duke of Gloucester',
 								qualifier: 'foo',
-								isAlternate: null
+								isAlternate: false
 							}
 						]
 					},
@@ -3552,14 +3552,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Brakenbury',
 								qualifier: 'bar',
-								isAlternate: null
+								isAlternate: false
 							},
 							{
 								model: 'CHARACTER',
 								uuid: null,
 								name: 'Richmond',
 								qualifier: 'baz',
-								isAlternate: null
+								isAlternate: false
 							}
 						]
 					},
@@ -3573,7 +3573,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								uuid: null,
 								name: 'Ratcliffe',
 								qualifier: 'qux',
-								isAlternate: null
+								isAlternate: false
 							},
 							{
 								model: 'CHARACTER',
@@ -3824,7 +3824,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								characterName: '',
 								characterDifferentiator: '',
 								qualifier: '',
-								isAlternate: null,
+								isAlternate: false,
 								errors: {}
 							}
 						]

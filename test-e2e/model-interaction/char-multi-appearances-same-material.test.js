@@ -210,14 +210,14 @@ describe('Character with multiple appearances in the same material under differe
 							name: 'Alice Eve',
 							roleName: 'Esme',
 							qualifier: 'younger',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: ALICE_CHARACTER_UUID,
 									name: 'Alice',
 									qualifier: null,
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						},
@@ -227,14 +227,14 @@ describe('Character with multiple appearances in the same material under differe
 							name: 'Sinead Cusack',
 							roleName: 'Esme',
 							qualifier: 'older',
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: ELEANOR_CHARACTER_UUID,
 									name: 'Eleanor',
 									qualifier: null,
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -274,14 +274,14 @@ describe('Character with multiple appearances in the same material under differe
 							name: 'Alice Eve',
 							roleName: 'Alice',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: ESME_CHARACTER_UUID,
 									name: 'Esme',
 									qualifier: 'younger',
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -321,14 +321,14 @@ describe('Character with multiple appearances in the same material under differe
 							name: 'Sinead Cusack',
 							roleName: 'Eleanor',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: ESME_CHARACTER_UUID,
 									name: 'Esme',
 									qualifier: 'older',
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -404,14 +404,14 @@ describe('Character with multiple appearances in the same material under differe
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'younger',
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: ALICE_CHARACTER_UUID,
 							name: 'Alice',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -425,7 +425,7 @@ describe('Character with multiple appearances in the same material under differe
 							uuid: MAX_CHARACTER_UUID,
 							name: 'Max',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -439,14 +439,14 @@ describe('Character with multiple appearances in the same material under differe
 							uuid: ELEANOR_CHARACTER_UUID,
 							name: 'Eleanor',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'older',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -483,14 +483,14 @@ describe('Character with multiple appearances in the same material under differe
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'younger',
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: ALICE_CHARACTER_UUID,
 							name: 'Alice',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -527,14 +527,14 @@ describe('Character with multiple appearances in the same material under differe
 							uuid: ELEANOR_CHARACTER_UUID,
 							name: 'Eleanor',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: ESME_CHARACTER_UUID,
 							name: 'Esme',
 							qualifier: 'older',
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}

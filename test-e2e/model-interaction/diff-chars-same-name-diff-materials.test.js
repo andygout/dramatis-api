@@ -205,7 +205,7 @@ describe('Different characters with the same name from different materials', () 
 							name: 'Oscar Pearce',
 							roleName: 'Demetrius',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -244,7 +244,7 @@ describe('Different characters with the same name from different materials', () 
 							name: 'Sam Alexander',
 							roleName: 'Demetrius',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -329,7 +329,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -343,7 +343,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: LYSANDER_CHARACTER_UUID,
 							name: 'Lysander',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -372,7 +372,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: CHIRON_CHARACTER_UUID,
 							name: 'Chiron',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -386,7 +386,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -423,7 +423,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: DEMETRIUS_CHARACTER_1_UUID,
 							name: 'Demetrius',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -460,7 +460,7 @@ describe('Different characters with the same name from different materials', () 
 							uuid: DEMETRIUS_CHARACTER_2_UUID,
 							name: 'Demetrius',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
