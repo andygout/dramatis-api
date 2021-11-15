@@ -126,17 +126,24 @@ describe('Role model', () => {
 
 		describe('isAlternate property', () => {
 
-			it('assigns null if absent from props', () => {
+			it('assigns false if absent from props', () => {
 
 				const instance = new Role({ name: 'Young Lucius' });
-				expect(instance.isAlternate).to.equal(null);
+				expect(instance.isAlternate).to.equal(false);
 
 			});
 
-			it('assigns null if included in props but value evaluates to false', () => {
+			it('assigns false if included in props but value evaluates to false', () => {
+
+				const instance = new Role({ name: 'Young Lucius', isAlternate: null });
+				expect(instance.isAlternate).to.equal(false);
+
+			});
+
+			it('assigns false if included in props but value is false', () => {
 
 				const instance = new Role({ name: 'Young Lucius', isAlternate: false });
-				expect(instance.isAlternate).to.equal(null);
+				expect(instance.isAlternate).to.equal(false);
 
 			});
 

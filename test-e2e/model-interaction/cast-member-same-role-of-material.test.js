@@ -144,7 +144,7 @@ describe('Cast member performing same role in different productions of same mate
 							name: 'Judi Dench',
 							roleName: 'Titania, Faerie Queene',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -168,7 +168,7 @@ describe('Cast member performing same role in different productions of same mate
 							name: 'Judi Dench',
 							roleName: 'Titania',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -198,7 +198,7 @@ describe('Cast member performing same role in different productions of same mate
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -227,7 +227,7 @@ describe('Cast member performing same role in different productions of same mate
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania, Faerie Queene',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -264,7 +264,7 @@ describe('Cast member performing same role in different productions of same mate
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania, Faerie Queene',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -286,7 +286,7 @@ describe('Cast member performing same role in different productions of same mate
 							uuid: TITANIA_CHARACTER_UUID,
 							name: 'Titania',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}

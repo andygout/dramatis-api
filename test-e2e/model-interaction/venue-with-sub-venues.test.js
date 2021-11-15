@@ -301,7 +301,7 @@ describe('Venue with sub-venues', () => {
 							name: 'Fiona Shaw',
 							roleName: 'Mother Courage',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -340,7 +340,7 @@ describe('Venue with sub-venues', () => {
 							name: 'Fiona Shaw',
 							roleName: 'King Richard II',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: []
 						}
 					]
@@ -484,7 +484,7 @@ describe('Venue with sub-venues', () => {
 							uuid: MOTHER_COURAGE_CHARACTER_UUID,
 							name: 'Mother Courage',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -506,7 +506,7 @@ describe('Venue with sub-venues', () => {
 							uuid: KING_RICHARD_II_CHARACTER_UUID,
 							name: 'King Richard II',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}

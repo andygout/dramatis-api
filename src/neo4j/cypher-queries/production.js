@@ -504,7 +504,7 @@ const getEditQuery = () => `
 					characterName: COALESCE(role.characterName, ''),
 					characterDifferentiator: COALESCE(role.characterDifferentiator, ''),
 					qualifier: COALESCE(role.qualifier, ''),
-					isAlternate: role.isAlternate
+					isAlternate: COALESCE(role.isAlternate, false)
 				}
 			END
 		) + [{}] AS roles
@@ -761,7 +761,13 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
-				ELSE role { model: 'CHARACTER', uuid: character.uuid, name: role.roleName, .qualifier, .isAlternate }
+				ELSE role {
+					model: 'CHARACTER',
+					uuid: character.uuid,
+					name: role.roleName,
+					.qualifier,
+					isAlternate: COALESCE(role.isAlternate, false)
+				}
 			END
 		) AS roles
 

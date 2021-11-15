@@ -251,14 +251,14 @@ describe('Character with variant names from productions of the same material', (
 							name: 'David Rintoul',
 							roleName: 'Ghost of King Hamlet',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: FIRST_PLAYER_CHARACTER_UUID,
 									name: 'Player King',
 									qualifier: null,
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -283,14 +283,14 @@ describe('Character with variant names from productions of the same material', (
 							name: 'Peter Eyre',
 							roleName: 'King Hamlet',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: FIRST_PLAYER_CHARACTER_UUID,
 									name: 'First Player',
 									qualifier: null,
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -315,14 +315,14 @@ describe('Character with variant names from productions of the same material', (
 							name: 'Patrick Stewart',
 							roleName: 'Ghost',
 							qualifier: null,
-							isAlternate: null,
+							isAlternate: false,
 							otherRoles: [
 								{
 									model: 'CHARACTER',
 									uuid: CLAUDIUS_CHARACTER_UUID,
 									name: 'Claudius, King of Denmark',
 									qualifier: null,
-									isAlternate: null
+									isAlternate: false
 								}
 							]
 						}
@@ -353,7 +353,7 @@ describe('Character with variant names from productions of the same material', (
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -367,14 +367,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost of King Hamlet',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'Player King',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -403,7 +403,7 @@ describe('Character with variant names from productions of the same material', (
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -417,14 +417,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -453,7 +453,7 @@ describe('Character with variant names from productions of the same material', (
 							uuid: HAMLET_CHARACTER_UUID,
 							name: 'Hamlet, Prince of Denmark',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				},
@@ -467,14 +467,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'King Hamlet',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'First Player',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -511,14 +511,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost of King Hamlet',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'Player King',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -555,14 +555,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: CLAUDIUS_CHARACTER_UUID,
 							name: 'Claudius, King of Denmark',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'Ghost',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}
@@ -599,14 +599,14 @@ describe('Character with variant names from productions of the same material', (
 							uuid: GHOST_CHARACTER_UUID,
 							name: 'King Hamlet',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						},
 						{
 							model: 'CHARACTER',
 							uuid: FIRST_PLAYER_CHARACTER_UUID,
 							name: 'First Player',
 							qualifier: null,
-							isAlternate: null
+							isAlternate: false
 						}
 					]
 				}

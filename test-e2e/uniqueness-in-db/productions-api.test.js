@@ -759,7 +759,7 @@ describe('Uniqueness in database: Productions API', () => {
 					characterName: '',
 					characterDifferentiator: '',
 					qualifier: '',
-					isAlternate: null,
+					isAlternate: false,
 					errors: {}
 				}
 			]
@@ -777,7 +777,7 @@ describe('Uniqueness in database: Productions API', () => {
 					characterName: '',
 					characterDifferentiator: '',
 					qualifier: '',
-					isAlternate: null,
+					isAlternate: false,
 					errors: {}
 				}
 			]

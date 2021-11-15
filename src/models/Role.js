@@ -12,7 +12,7 @@ export default class Role extends Base {
 		this.characterName = characterName?.trim() || '';
 		this.characterDifferentiator = characterDifferentiator?.trim() || '';
 		this.qualifier = qualifier?.trim() || '';
-		this.isAlternate = Boolean(isAlternate) || null;
+		this.isAlternate = Boolean(isAlternate);
 
 	}
 
