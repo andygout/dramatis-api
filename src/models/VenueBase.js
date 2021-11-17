@@ -1,7 +1,7 @@
 import Entity from './Entity';
 import { MODELS } from '../utils/constants';
 
-export default class Venue extends Entity {
+export default class VenueBase extends Entity {
 
 	constructor (props = {}) {
 
