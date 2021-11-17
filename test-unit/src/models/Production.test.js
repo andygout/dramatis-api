@@ -196,6 +196,52 @@ describe('Production model', () => {
 
 		});
 
+		describe('material property', () => {
+
+			it('assigns instance if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.material instanceof MaterialBase).to.be.true;
+
+			});
+
+			it('assigns instance if included in props', () => {
+
+				const instance = createInstance({
+					name: 'Hamlet',
+					material: {
+						name: 'The Tragedy of Hamlet, Prince of Denmark'
+					}
+				});
+				expect(instance.material instanceof MaterialBase).to.be.true;
+
+			});
+
+		});
+
+		describe('venue property', () => {
+
+			it('assigns instance if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.venue instanceof VenueBase).to.be.true;
+
+			});
+
+			it('assigns instance if included in props', () => {
+
+				const instance = createInstance({
+					name: 'Hamlet',
+					venue: {
+						name: 'Olivier Theatre'
+					}
+				});
+				expect(instance.venue instanceof VenueBase).to.be.true;
+
+			});
+
+		});
+
 		describe('producerCredits property', () => {
 
 			it('assigns empty array if absent from props', () => {
