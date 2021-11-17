@@ -45,6 +45,13 @@ describe('CastMember model', () => {
 
 		describe('roles property', () => {
 
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({ name: 'Ian McKellen' });
+				expect(instance.roles).to.deep.equal([]);
+
+			});
+
 			it('assigns array of role instances, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {

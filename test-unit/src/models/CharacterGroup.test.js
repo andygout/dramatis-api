@@ -43,7 +43,7 @@ describe('CharacterGroup model', () => {
 
 	describe('constructor method', () => {
 
-		describe('character property', () => {
+		describe('characters property', () => {
 
 			it('assigns empty array if absent from props', () => {
 

@@ -70,7 +70,37 @@ describe('AwardCeremony model', () => {
 
 	describe('constructor method', () => {
 
+		describe('award property', () => {
+
+			it('assigns instance if absent from props', () => {
+
+				const instance = createInstance({ name: '2020' });
+				expect(instance.award instanceof Award).to.be.true;
+
+			});
+
+			it('assigns instance if included in props', () => {
+
+				const instance = createInstance({
+					name: '2020',
+					award: {
+						name: 'Laurence Olivier Awards'
+					}
+				});
+				expect(instance.award instanceof Award).to.be.true;
+
+			});
+
+		});
+
 		describe('categories property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({ name: '2020' });
+				expect(instance.categories).to.deep.equal([]);
+
+			});
 
 			it('assigns array of category instances, retaining those with empty or whitespace-only string names', () => {
 

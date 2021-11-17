@@ -72,6 +72,17 @@ describe('Entity model', () => {
 
 	describe('constructor method', () => {
 
+		describe('uuid property', () => {
+
+			it('assigns value', () => {
+
+				const instance = new Entity({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+			});
+
+		});
+
 		describe('differentiator property', () => {
 
 			context('model is not exempt', () => {
