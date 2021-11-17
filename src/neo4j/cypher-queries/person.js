@@ -813,6 +813,76 @@ const getShowQuery = () => `
 			THEN coNominatedEntity
 			ELSE coNominatedEntity { .model, .uuid, .name }
 		END] AS coNominatedEntities
+
+	OPTIONAL MATCH (category)-[productionRel:HAS_NOMINEE]->(nominatedProduction:Production)
+		WHERE
+			(
+				entityRel.nominationPosition IS NULL OR
+				entityRel.nominationPosition = productionRel.nominationPosition
+			)
+
+	OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		entityRel,
+		nominatedEmployerCompany,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		coNominatedEntities,
+		productionRel,
+		nominatedProduction,
+		venue,
+		surVenue
+		ORDER BY productionRel.productionPosition
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		entityRel,
+		nominatedEmployerCompany,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		coNominatedEntities,
+		COLLECT(
+			CASE nominatedProduction WHEN NULL
+				THEN null
+				ELSE nominatedProduction {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					.startDate,
+					.endDate,
+					venue: CASE venue WHEN NULL
+						THEN null
+						ELSE venue {
+							model: 'VENUE',
+							.uuid,
+							.name,
+							surVenue: CASE surVenue WHEN NULL
+								THEN null
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
+							END
+						}
+					END
+				}
+			END
+		) AS nominatedProductions
 		ORDER BY entityRel.nominationPosition
 
 	WITH
@@ -830,7 +900,8 @@ const getShowQuery = () => `
 			model: 'NOMINATION',
 			isWinner: COALESCE(entityRel.isWinner, false),
 			employerCompany: nominatedEmployerCompany,
-			coEntities: coNominatedEntities
+			coEntities: coNominatedEntities,
+			productions: nominatedProductions
 		}) AS nominations
 		ORDER BY categoryRel.position
 

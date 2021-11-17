@@ -15,6 +15,7 @@ import Nomination from './Nomination';
 import Person from './Person';
 import ProducerCredit from './ProducerCredit';
 import Production from './Production';
+import ProductionIdentifier from './ProductionIdentifier';
 import Role from './Role';
 import Venue from './Venue';
 import VenueBase from './VenueBase';
@@ -38,6 +39,7 @@ export {
 	Person,
 	ProducerCredit,
 	Production,
+	ProductionIdentifier,
 	Role,
 	Venue,
 	VenueBase,

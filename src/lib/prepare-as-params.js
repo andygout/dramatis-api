@@ -9,12 +9,14 @@ const CREATIVE_CREDITS = 'creativeCredits';
 const CREW_CREDITS = 'crewCredits';
 const NOMINATIONS = 'nominations';
 const PRODUCER_CREDITS = 'producerCredits';
+const PRODUCTIONS = 'productions';
 const WRITING_CREDITS = 'writingCredits';
 
 const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	CHARACTER_GROUPS,
 	NOMINATIONS,
 	PRODUCER_CREDITS,
+	PRODUCTIONS, // Excepted from having empty name only in the context of being an association of another subject.
 	WRITING_CREDITS
 ]);
 
@@ -37,7 +39,14 @@ export const prepareAsParams = instance => {
 
 	const hasNamedChildrenIfRequired = key => item =>
 		!REQUIRES_NAMED_CHILDREN_KEYS.has(key) ||
-		item[key === CHARACTER_GROUPS ? 'characters' : 'entities']?.some(child => Boolean(child.name));
+		item[key === CHARACTER_GROUPS ? 'characters' : 'entities']?.some(child => Boolean(child.name)) ||
+		(
+			key === NOMINATIONS &&
+			(
+				item['entities']?.some(child => Boolean(child.name)) ||
+				item['productions']?.some(child => Boolean(child.uuid))
+			)
+		);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
 

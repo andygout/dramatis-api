@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, stub } from 'sinon';
 
-import { CompanyWithMembers, Person } from '../../../src/models';
+import { CompanyWithMembers, Person, ProductionIdentifier } from '../../../src/models';
 
 describe('Nomination model', () => {
 
@@ -20,6 +20,12 @@ describe('Nomination model', () => {
 
 	};
 
+	const ProductionIdentifierStub = function () {
+
+		return createStubInstance(ProductionIdentifier);
+
+	};
+
 	beforeEach(() => {
 
 		stubs = {
@@ -27,9 +33,13 @@ describe('Nomination model', () => {
 				getDuplicateEntities: stub().returns('getDuplicateEntities response'),
 				isEntityInArray: stub().returns(false)
 			},
+			getDuplicateIndicesModule: {
+				getDuplicateProductionIdentifierIndices: stub().returns([])
+			},
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
-				Person: PersonStub
+				Person: PersonStub,
+				ProductionIdentifier: ProductionIdentifierStub
 			}
 		};
 
@@ -38,6 +48,7 @@ describe('Nomination model', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/models/Nomination', {
 			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
 
@@ -99,7 +110,7 @@ describe('Nomination model', () => {
 
 			});
 
-			it('assigns array of nominees if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of entities if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					entities: [
@@ -139,6 +150,40 @@ describe('Nomination model', () => {
 
 		});
 
+		describe('productions property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({});
+				expect(instance.productions).to.deep.equal([]);
+
+			});
+
+			it('assigns array of productions if included in props, retaining those with empty or whitespace-only string uuids', () => {
+
+				const props = {
+					productions: [
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						},
+						{
+							uuid: ''
+						},
+						{
+							uuid: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.productions.length).to.equal(3);
+				expect(instance.productions[0] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.productions[1] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.productions[2] instanceof ProductionIdentifier).to.be.true;
+
+			});
+
+		});
+
 	});
 
 	describe('runInputValidations method', () => {
@@ -153,6 +198,11 @@ describe('Nomination model', () => {
 					{
 						model: 'COMPANY',
 						name: 'Autograph'
+					}
+				],
+				productions: [
+					{
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				]
 			};
@@ -170,7 +220,10 @@ describe('Nomination model', () => {
 				instance.entities[1].validateDifferentiator,
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.entities[1].validateUniquenessInGroup,
-				instance.entities[1].runInputValidations
+				instance.entities[1].runInputValidations,
+				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
+				instance.productions[0].validateUuid,
+				instance.productions[0].validateUniquenessInGroup
 			);
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
@@ -199,6 +252,36 @@ describe('Nomination model', () => {
 			expect(instance.entities[1].runInputValidations.calledWithExactly(
 				{ duplicateEntities: 'getDuplicateEntities response' }
 			)).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledWithExactly(
+				instance.productions
+			)).to.be.true;
+			expect(instance.productions[0].validateUuid.calledOnce).to.be.true;
+			expect(instance.productions[0].validateUuid.calledWithExactly()).to.be.true;
+			expect(instance.productions[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.productions[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false, properties: new Set(['uuid']) }
+			)).to.be.true;
+
+		});
+
+	});
+
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated productions\' runDatabaseValidations method', async () => {
+
+			const props = {
+				productions: [
+					{
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+					}
+				]
+			};
+			const instance = createInstance(props);
+			await instance.runDatabaseValidations();
+			expect(instance.productions[0].runDatabaseValidations.calledOnce).to.be.true;
+			expect(instance.productions[0].runDatabaseValidations.calledWithExactly()).to.be.true;
 
 		});
 

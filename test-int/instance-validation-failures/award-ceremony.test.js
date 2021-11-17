@@ -346,6 +346,7 @@ describe('AwardCeremony instance', () => {
 											errors: {}
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -415,6 +416,7 @@ describe('AwardCeremony instance', () => {
 											}
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -485,6 +487,7 @@ describe('AwardCeremony instance', () => {
 											}
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -556,6 +559,7 @@ describe('AwardCeremony instance', () => {
 											}
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -628,6 +632,7 @@ describe('AwardCeremony instance', () => {
 											}
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -775,6 +780,7 @@ describe('AwardCeremony instance', () => {
 											members: []
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -858,6 +864,7 @@ describe('AwardCeremony instance', () => {
 											]
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -941,6 +948,7 @@ describe('AwardCeremony instance', () => {
 											]
 										}
 									],
+									productions: [],
 									errors: {}
 								}
 							]
@@ -1025,6 +1033,161 @@ describe('AwardCeremony instance', () => {
 											]
 										}
 									],
+									productions: [],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('category nomination production uuid value exceeds maximum limit', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									productions: [
+										{
+											uuid: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									entities: [],
+									productions: [
+										{
+											uuid: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												uuid: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('duplicate category nomination productions', () => {
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									productions: [
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+										},
+										{
+											uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+										},
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									entities: [],
+									productions: [
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+											errors: {
+												uuid: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+											errors: {}
+										},
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+											errors: {
+												uuid: [
+													'This item has been duplicated within the group'
+												]
+											}
+										}
+									],
 									errors: {}
 								}
 							]
@@ -1042,13 +1205,13 @@ describe('AwardCeremony instance', () => {
 
 	describe('database validation failure', () => {
 
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
 		context('name value with relationship to award already exists in database', () => {
+
+			beforeEach(() => {
+
+				sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
+
+			});
 
 			it('assigns appropriate error', async () => {
 
@@ -1086,6 +1249,85 @@ describe('AwardCeremony instance', () => {
 						}
 					},
 					categories: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		});
+
+		context('nominated production uuid does not exist in database', () => {
+
+			beforeEach(() => {
+
+				sandbox.stub(neo4jQueryModule, 'neo4jQuery')
+					.onFirstCall().resolves({ duplicateRecordCount: 0 })
+					.onSecondCall().rejects(new Error('Not Found'));
+
+			});
+
+			it('assigns appropriate error', async () => {
+
+				const instanceProps = {
+					name: '2020',
+					award: {
+						name: 'Laurence Olivier Awards'
+					},
+					categories: [
+						{
+							name: 'Best Revival',
+							nominations: [
+								{
+									productions: [
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance.create();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2020',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: 'Laurence Olivier Awards',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Revival',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									errors: {},
+									entities: [],
+									productions: [
+										{
+											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+											errors: {
+												uuid: [
+													'Production with this UUID does not exist'
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);

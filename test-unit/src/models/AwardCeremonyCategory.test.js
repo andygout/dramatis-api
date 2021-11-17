@@ -70,4 +70,21 @@ describe('AwardCeremonyCategory model', () => {
 
 	});
 
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated nominations\' runDatabaseValidations method', async () => {
+
+			const props = {
+				nominations: [{}]
+			};
+			const instance = new AwardCeremonyCategory(props);
+			spy(instance.nominations[0], 'runDatabaseValidations');
+			await instance.runDatabaseValidations();
+			expect(instance.nominations[0].runDatabaseValidations.calledOnce).to.be.true;
+			expect(instance.nominations[0].runDatabaseValidations.calledWithExactly()).to.be.true;
+
+		});
+
+	});
+
 });

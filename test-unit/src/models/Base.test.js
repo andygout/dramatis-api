@@ -275,18 +275,14 @@ describe('Base model', () => {
 
 			context('instance has group property', () => {
 
-				it('will call addPropertyError method with group context error text for name and group properties', () => {
+				it('will call addPropertyError method with group context error text for name property', () => {
 
-					instance.group = '';
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
-						'group', 'This item has been duplicated within the group'
 					)).to.be.true;
 
 				});
@@ -295,16 +291,15 @@ describe('Base model', () => {
 
 			context('instance has differentiator, characterDifferentiator, qualifier, and group property', () => {
 
-				it('will call addPropertyError method with group context error text for name, differentiator, qualifier, and group properties', () => {
+				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', () => {
 
 					instance.differentiator = '';
 					instance.characterDifferentiator = '';
 					instance.qualifier = '';
-					instance.group = '';
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.callCount).to.equal(5);
+					expect(instance.addPropertyError.callCount).to.equal(4);
 					expect(instance.addPropertyError.firstCall.calledWithExactly(
 						'name', 'This item has been duplicated within the group'
 					)).to.be.true;
@@ -317,8 +312,22 @@ describe('Base model', () => {
 					expect(instance.addPropertyError.getCall(3).calledWithExactly(
 						'qualifier', 'This item has been duplicated within the group'
 					)).to.be.true;
-					expect(instance.addPropertyError.getCall(4).calledWithExactly(
-						'group', 'This item has been duplicated within the group'
+
+				});
+
+			});
+
+			context('instance has uuid property which is specified via opts argument as requiring an error assigned to it', () => {
+
+				it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', () => {
+
+					instance.uuid = '';
+					spy(instance, 'addPropertyError');
+					const opts = { isDuplicate: true, properties: new Set(['uuid']) };
+					instance.validateUniquenessInGroup(opts);
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'uuid', 'This item has been duplicated within the group'
 					)).to.be.true;
 
 				});

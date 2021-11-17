@@ -171,13 +171,23 @@ describe('AwardCeremony model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('calls instance validate method and associated models\' validate methods', async () => {
+		it('calls instance\'s validateAwardContextualUniquenessInDatabase method and associated categories\' runDatabaseValidations method', async () => {
 
-			const instance = createInstance();
+			const props = {
+				name: '2020',
+				categories: [
+					{
+						name: 'Best New Play'
+					}
+				]
+			};
+			const instance = createInstance(props);
 			spy(instance, 'validateAwardContextualUniquenessInDatabase');
 			await instance.runDatabaseValidations();
 			expect(instance.validateAwardContextualUniquenessInDatabase.calledOnce).to.be.true;
 			expect(instance.validateAwardContextualUniquenessInDatabase.calledWithExactly()).to.be.true;
+			expect(instance.categories[0].runDatabaseValidations.calledOnce).to.be.true;
+			expect(instance.categories[0].runDatabaseValidations.calledWithExactly()).to.be.true;
 
 		});
 

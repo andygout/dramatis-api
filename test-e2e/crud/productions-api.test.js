@@ -450,7 +450,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);
@@ -1842,7 +1843,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
-				]
+				],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);
@@ -3758,7 +3760,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
-				]
+				],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);

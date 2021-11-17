@@ -5,6 +5,9 @@ export default {
 				{
 					entities: [
 						{}
+					],
+					productions: [
+						{}
 					]
 				}
 			]

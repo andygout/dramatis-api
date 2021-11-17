@@ -34,4 +34,10 @@ export default class AwardCeremonyCategory extends Base {
 
 	}
 
+	async runDatabaseValidations () {
+
+		for (const nomination of this.nominations) await nomination.runDatabaseValidations();
+
+	}
+
 }

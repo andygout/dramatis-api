@@ -48,6 +48,8 @@ export default class AwardCeremony extends Entity {
 
 		await this.validateAwardContextualUniquenessInDatabase();
 
+		for (const category of this.categories) await category.runDatabaseValidations();
+
 	}
 
 	async validateAwardContextualUniquenessInDatabase () {
