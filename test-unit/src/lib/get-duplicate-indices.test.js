@@ -5,6 +5,7 @@ import {
 	getDuplicateCharacterIndices,
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
+	getDuplicateProductionIdentifierIndices,
 	getDuplicateRoleIndices
 } from '../../../src/lib/get-duplicate-indices';
 import applyModelGetter from '../../test-helpers/apply-model-getter';
@@ -238,6 +239,46 @@ describe('Get Duplicate Indices module', () => {
 						{ name: 'Bar' },
 						{ name: '' },
 						{ name: 'Foo' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 3]);
+
+			});
+
+		});
+
+	});
+
+	describe('getDuplicateProductionIdentifierIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateProductionIdentifierIndices(
+					[
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string uuid values', () => {
+
+				const result = getDuplicateProductionIdentifierIndices(
+					[
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' },
+						{ uuid: '' },
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 					]
 				);
 

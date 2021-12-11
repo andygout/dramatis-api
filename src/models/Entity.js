@@ -14,7 +14,8 @@ import { MODELS } from '../utils/constants';
 
 const DIFFERENTIATOR_EXEMPT_MODELS = new Set([
 	MODELS.AWARD_CEREMONY,
-	MODELS.PRODUCTION
+	MODELS.PRODUCTION,
+	MODELS.PRODUCTION_IDENTIFIER
 ]);
 
 const DATABASE_VALIDATION_EXEMPT_MODELS = new Set([
@@ -111,12 +112,12 @@ export default class Entity extends Base {
 
 	}
 
-	async confirmExistenceInDatabase () {
+	async confirmExistenceInDatabase (opts = {}) {
 
 		const { getExistenceQuery } = sharedQueries;
 
 		await neo4jQuery({
-			query: getExistenceQuery(this.model),
+			query: getExistenceQuery(opts.model || this.model),
 			params: { uuid: this.uuid }
 		});
 

@@ -2,7 +2,8 @@ import { validateString } from '../lib/validate-string';
 import { MODELS } from '../utils/constants';
 
 const NAME_EXEMPT_MODELS = new Set([
-	MODELS.NOMINATION
+	MODELS.NOMINATION,
+	MODELS.PRODUCTION_IDENTIFIER
 ]);
 
 export default class Base {
@@ -47,17 +48,16 @@ export default class Base {
 
 			const uniquenessErrorMessage = 'This item has been duplicated within the group';
 
-			const properties = new Set([
+			const defaultProperties = new Set([
 				'name',
+				'differentiator',
 				'underlyingName',
 				'characterName',
-				'differentiator',
 				'characterDifferentiator',
-				'qualifier',
-				'group'
+				'qualifier'
 			]);
 
-			properties.forEach(property => {
+			(opts.properties || defaultProperties).forEach(property => {
 
 				if (Object.prototype.hasOwnProperty.call(this, property))
 					this.addPropertyError(property, uniquenessErrorMessage);

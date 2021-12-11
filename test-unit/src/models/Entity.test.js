@@ -4,7 +4,7 @@ import { assert, createSandbox, spy, stub } from 'sinon';
 import * as hasErrorsModule from '../../../src/lib/has-errors';
 import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
 import Entity from '../../../src/models/Entity';
-import { Production } from '../../../src/models';
+import { Person, Production, ProductionIdentifier } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
@@ -126,10 +126,28 @@ describe('Entity model', () => {
 
 			context('model is exempt', () => {
 
-				it('does not assign differentiator property', () => {
+				context('model is Production', () => {
 
-					const instance = new Production({ name: 'Foobar', differentiator: '1' });
-					expect(instance).to.not.have.property('differentiator');
+					it('does not assign differentiator property', () => {
+
+						const instance = new Production({ name: 'Foobar', differentiator: '1' });
+						expect(instance).to.not.have.property('differentiator');
+
+					});
+
+				});
+
+				context('model is ProductionIdentifier', () => {
+
+					it('does not assign differentiator property', () => {
+
+						const instance = new ProductionIdentifier({
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							differentiator: '1'
+						});
+						expect(instance).to.not.have.property('differentiator');
+
+					});
 
 				});
 
@@ -388,20 +406,47 @@ describe('Entity model', () => {
 
 	describe('confirmExistenceInDatabase method', () => {
 
-		it('confirms existence of instance in database', async () => {
+		context('opts argument is not provided', () => {
 
-			stubs.neo4jQuery.resolves({ exists: true });
-			await instance.confirmExistenceInDatabase();
-			assert.callOrder(
-				stubs.sharedQueries.getExistenceQuery,
-				stubs.neo4jQuery
-			);
-			expect(stubs.sharedQueries.getExistenceQuery.calledOnce).to.be.true;
-			expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(instance.model)).to.be.true;
-			expect(stubs.neo4jQuery.calledOnce).to.be.true;
-			expect(stubs.neo4jQuery.calledWithExactly(
-				{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
-			)).to.be.true;
+			it('confirms existence of instance in database using model value of instance', async () => {
+
+				const instance = new Person({ name: 'Antony Sher' });
+				stubs.neo4jQuery.resolves({ exists: true });
+				await instance.confirmExistenceInDatabase();
+				assert.callOrder(
+					stubs.sharedQueries.getExistenceQuery,
+					stubs.neo4jQuery
+				);
+				expect(stubs.sharedQueries.getExistenceQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(instance.model)).to.be.true;
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.neo4jQuery.calledWithExactly(
+					{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
+				)).to.be.true;
+
+			});
+
+		});
+
+		context('model value is provided in opts argument', () => {
+
+			it('confirms existence of instance in database using provided model value', async () => {
+
+				const model = 'PRODUCTION';
+				stubs.neo4jQuery.resolves({ exists: true });
+				await instance.confirmExistenceInDatabase({ model });
+				assert.callOrder(
+					stubs.sharedQueries.getExistenceQuery,
+					stubs.neo4jQuery
+				);
+				expect(stubs.sharedQueries.getExistenceQuery.calledOnce).to.be.true;
+				expect(stubs.sharedQueries.getExistenceQuery.calledWithExactly(model)).to.be.true;
+				expect(stubs.neo4jQuery.calledOnce).to.be.true;
+				expect(stubs.neo4jQuery.calledWithExactly(
+					{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
+				)).to.be.true;
+
+			});
 
 		});
 

@@ -31,7 +31,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 							THEN null
 							ELSE category { .name, nominations }
 						END
-					) + [{ nominations: [{ entities: [{}] }] }] AS categories
+					) + [{ nominations: [{ entities: [{}], productions: [{ uuid: '' }] }] }] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -54,11 +54,6 @@ describe('Cypher Queries Award Ceremony module', () => {
 				MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
 				OPTIONAL MATCH (ceremony)-[:PRESENTS_CATEGORY]->(category:AwardCeremonyCategory)
-
-				OPTIONAL MATCH (category)-[nomineeEntityRel:HAS_NOMINEE]->(nomineeEntity)
-					WHERE nomineeEntity:Person OR nomineeEntity:Company
-
-				DELETE nomineeEntityRel
 
 				DETACH DELETE category
 
@@ -87,7 +82,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 							THEN null
 							ELSE category { .name, nominations }
 						END
-					) + [{ nominations: [{ entities: [{}] }] }] AS categories
+					) + [{ nominations: [{ entities: [{}], productions: [{ uuid: '' }] }] }] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;

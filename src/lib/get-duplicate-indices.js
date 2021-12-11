@@ -95,6 +95,25 @@ const getDuplicateNameIndices = arrayOfObjects => {
 
 };
 
+const getDuplicateProductionIdentifierIndices = arrayOfObjects => {
+
+	return arrayOfObjects.reduce((accumulator, object, index) => {
+
+		const isDuplicate =
+			Boolean(object.uuid) &&
+			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				index !== comparisonIndex &&
+				object.uuid === comparisonObject.uuid
+			);
+
+		if (isDuplicate) accumulator.push(index);
+
+		return accumulator;
+
+	}, []);
+
+};
+
 const isDuplicateRoleName = (object, comparisonObject) => {
 
 	const objectCharacterName =
@@ -137,5 +156,6 @@ export {
 	getDuplicateCharacterIndices,
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
+	getDuplicateProductionIdentifierIndices,
 	getDuplicateRoleIndices
 };
