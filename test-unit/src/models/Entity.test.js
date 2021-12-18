@@ -141,7 +141,7 @@ describe('Entity model', () => {
 
 					it('does not assign differentiator property', () => {
 
-						const instance = new Production({ name: 'Foobar', differentiator: '1' });
+						const instance = new Production({ name: 'Hamlet', differentiator: '1' });
 						expect(instance).to.not.have.property('differentiator');
 
 					});
