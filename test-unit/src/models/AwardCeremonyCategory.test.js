@@ -42,7 +42,7 @@ describe('AwardCeremonyCategory model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
-				name: '2020',
+				name: 'Best New Play',
 				nominations: [{}]
 			};
 			const instance = new AwardCeremonyCategory(props);
