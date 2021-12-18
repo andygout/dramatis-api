@@ -15,6 +15,8 @@ describe('Award ceremonies', () => {
 	const OLIVIER_THEATRE_VENUE_UUID = '5';
 	const LYTTELTON_THEATRE_VENUE_UUID = '6';
 	const DORFMAN_THEATRE_VENUE_UUID = '7';
+	const YOUNG_VIC_THEATRE_VENUE_UUID = '10';
+	const MAIN_HOUSE_VENUE_UUID = '11';
 	const THE_LEHMAN_TRILOGY_LYTTELTON_PRODUCTION_UUID = '12';
 	const KING_LEAR_DUKE_OF_YORKS_PRODUCTION_UUID = '15';
 	const THE_INHERITANCE_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID = '18';
@@ -26,6 +28,7 @@ describe('Award ceremonies', () => {
 	const HAROLD_PINTER_THEATRE_VENUE_UUID = '29';
 	const DEATH_OF_A_SALESMAN_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID = '30';
 	const DEATH_OF_A_SALESMAN_PICCADILLY_PRODUCTION_UUID = '33';
+	const PICCADILLY_THEATRE_VENUE_UUID = '35';
 	const GARPLY_LYTTELTON_PRODUCTION_UUID = '36';
 	const GARPLY_WYNDHAMS_PRODUCTION_UUID = '39';
 	const WYNDHAMS_THEATRE_VENUE_UUID = '41';
@@ -57,6 +60,9 @@ describe('Award ceremonies', () => {
 	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '118';
 	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '119';
 	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '143';
+	const ANDREW_SCOTT_PERSON_UUID = '145';
+	const TOBY_JONES_PERSON_UUID = '146';
+	const WENDELL_PIERCE_PERSON_UUID = '147';
 	const JOHN_DOE_PERSON_UUID = '148';
 	const CURTAIN_UP_LTD_COMPANY_UUID = '149';
 	const JANE_ROE_PERSON_UUID = '150';
@@ -78,6 +84,7 @@ describe('Award ceremonies', () => {
 	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '299';
 	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '300';
 
+	let laurenceOlivierAwards2020AwardCeremony;
 	let laurenceOlivierAwardsAward;
 	let eveningStandardTheatreAwardsAward;
 	let johnDoePerson;
@@ -1668,6 +1675,9 @@ describe('Award ceremonies', () => {
 				]
 			});
 
+		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
+			.get(`/awards/ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
+
 		laurenceOlivierAwardsAward = await chai.request(app)
 			.get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);
 
@@ -1700,6 +1710,545 @@ describe('Award ceremonies', () => {
 	after(() => {
 
 		sandbox.restore();
+
+	});
+
+	describe('Laurence Olivier Awards 2020 (award ceremony)', () => {
+
+		it('includes its categories', () => {
+
+			const expectedCategories = [
+				{
+					name: 'Best Actor',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ANDREW_SCOTT_PERSON_UUID,
+									name: 'Andrew Scott'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID,
+									name: 'Present Laughter',
+									startDate: '2019-06-17',
+									endDate: '2019-08-10',
+									venue: {
+										model: 'VENUE',
+										uuid: OLD_VIC_THEATRE_VENUE_UUID,
+										name: 'Old Vic Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOBY_JONES_PERSON_UUID,
+									name: 'Toby Jones'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: UNCLE_VANYA_HAROLD_PINTER_PRODUCTION_UUID,
+									name: 'Uncle Vanya',
+									startDate: '2020-01-14',
+									endDate: '2020-03-16',
+									venue: {
+										model: 'VENUE',
+										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
+										name: 'Harold Pinter Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WENDELL_PIERCE_PERSON_UUID,
+									name: 'Wendell Pierce'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: DEATH_OF_A_SALESMAN_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID,
+									name: 'Death of a Salesman',
+									startDate: '2019-05-01',
+									endDate: '2019-07-13',
+									venue: {
+										model: 'VENUE',
+										uuid: MAIN_HOUSE_VENUE_UUID,
+										name: 'Main House',
+										surVenue: {
+											model: 'VENUE',
+											uuid: YOUNG_VIC_THEATRE_VENUE_UUID,
+											name: 'Young Vic Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: DEATH_OF_A_SALESMAN_PICCADILLY_PRODUCTION_UUID,
+									name: 'Death of a Salesman',
+									startDate: '2019-10-24',
+									endDate: '2020-01-04',
+									venue: {
+										model: 'VENUE',
+										uuid: PICCADILLY_THEATRE_VENUE_UUID,
+										name: 'Piccadilly Theatre',
+										surVenue: null
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					name: 'Best Miscellaneous Role',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JOHN_DOE_PERSON_UUID,
+									name: 'John Doe'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-06-01',
+									endDate: '2019-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: LYTTELTON_THEATRE_VENUE_UUID,
+										name: 'Lyttelton Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-07-01',
+									endDate: '2019-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+										name: 'Wyndham\'s Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: CURTAIN_UP_LTD_COMPANY_UUID,
+									name: 'Curtain Up Ltd',
+									members: []
+								},
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								},
+								{
+									model: 'PERSON',
+									uuid: JOHN_DOE_PERSON_UUID,
+									name: 'John Doe'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PLUGH_PLAYHOUSE_PRODUCTION_UUID,
+									name: 'Plugh',
+									startDate: '2019-08-01',
+									endDate: '2019-08-31',
+									venue: {
+										model: 'VENUE',
+										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+										name: 'Playhouse Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									name: 'Stagecraft Ltd',
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									members: [
+										{
+											model: 'PERSON',
+											uuid: FERDINAND_FOO_PERSON_UUID,
+											name: 'Ferdinand Foo'
+										},
+										{
+											model: 'PERSON',
+											uuid: BEATRICE_BAR_PERSON_UUID,
+											name: 'Beatrice Bar'
+										},
+										{
+											model: 'PERSON',
+											uuid: BRANDON_BAZ_PERSON_UUID,
+											name: 'Brandon Baz'
+										}
+									]
+								},
+								{
+									name: 'Theatricals Ltd',
+									model: 'COMPANY',
+									uuid: '155',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: QUINCY_QUX_PERSON_UUID,
+											name: 'Quincy Qux'
+										},
+										{
+											model: 'PERSON',
+											uuid: CLARA_QUUX_PERSON_UUID,
+											name: 'Clara Quux'
+										},
+										{
+											model: 'PERSON',
+											uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+											name: 'Christian Quuz'
+										}
+									]
+								},
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-06-01',
+									endDate: '2019-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: LYTTELTON_THEATRE_VENUE_UUID,
+										name: 'Lyttelton Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-07-01',
+									endDate: '2019-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+										name: 'Wyndham\'s Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: BACKSTAGE_LTD_COMPANY_UUID,
+									name: 'Backstage Ltd',
+									members: []
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: FRED_OLD_VIC_PRODUCTION_UUID,
+									name: 'Fred',
+									startDate: '2019-09-01',
+									endDate: '2019-09-30',
+									venue: {
+										model: 'VENUE',
+										uuid: OLD_VIC_THEATRE_VENUE_UUID,
+										name: 'Old Vic Theatre',
+										surVenue: null
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: WALDO_DORFMAN_PRODUCTION_UUID,
+									name: 'Waldo',
+									startDate: '2019-10-01',
+									endDate: '2019-10-31',
+									venue: {
+										model: 'VENUE',
+										uuid: DORFMAN_THEATRE_VENUE_UUID,
+										name: 'Dorfman Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: WALDO_NOËL_COWARD_PRODUCTION_UUID,
+									name: 'Waldo',
+									startDate: '2019-11-01',
+									endDate: '2019-11-30',
+									venue: {
+										model: 'VENUE',
+										uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+										name: 'Noël Coward Theatre',
+										surVenue: null
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					name: 'Best Random Role',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								}
+							],
+							productions: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JOHN_DOE_PERSON_UUID,
+									name: 'John Doe'
+								},
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BACKSTAGE_LTD_COMPANY_UUID,
+									name: 'Backstage Ltd',
+									members: []
+								}
+							],
+							productions: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Theatricals Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CLARA_QUUX_PERSON_UUID,
+											name: 'Clara Quux'
+										},
+										{
+											model: 'PERSON',
+											uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+											name: 'Christian Quuz'
+										},
+										{
+											model: 'PERSON',
+											uuid: QUINCY_QUX_PERSON_UUID,
+											name: 'Quincy Qux'
+										}
+									]
+								},
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: BEATRICE_BAR_PERSON_UUID,
+											name: 'Beatrice Bar'
+										},
+										{
+											model: 'PERSON',
+											uuid: BRANDON_BAZ_PERSON_UUID,
+											name: 'Brandon Baz'
+										},
+										{
+											model: 'PERSON',
+											uuid: FERDINAND_FOO_PERSON_UUID,
+											name: 'Ferdinand Foo'
+										}
+									]
+								}
+							],
+							productions: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: CURTAIN_UP_LTD_COMPANY_UUID,
+									name: 'Curtain Up Ltd',
+									members: []
+								}
+							],
+							productions: []
+						}
+					]
+				},
+				{
+					name: 'Best Noteworthy Production',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: FRED_OLD_VIC_PRODUCTION_UUID,
+									name: 'Fred',
+									startDate: '2019-09-01',
+									endDate: '2019-09-30',
+									venue: {
+										model: 'VENUE',
+										uuid: OLD_VIC_THEATRE_VENUE_UUID,
+										name: 'Old Vic Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-06-01',
+									endDate: '2019-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: LYTTELTON_THEATRE_VENUE_UUID,
+										name: 'Lyttelton Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+									name: 'Garply',
+									startDate: '2019-07-01',
+									endDate: '2019-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+										name: 'Wyndham\'s Theatre',
+										surVenue: null
+									}
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PLUGH_PLAYHOUSE_PRODUCTION_UUID,
+									name: 'Plugh',
+									startDate: '2019-08-01',
+									endDate: '2019-08-31',
+									venue: {
+										model: 'VENUE',
+										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+										name: 'Playhouse Theatre',
+										surVenue: null
+									}
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { categories } = laurenceOlivierAwards2020AwardCeremony.body;
+
+			expect(categories).to.deep.equal(expectedCategories);
+
+		});
 
 	});
 
