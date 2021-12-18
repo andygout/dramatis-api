@@ -4,7 +4,7 @@ import { assert, createSandbox, spy, stub } from 'sinon';
 import * as hasErrorsModule from '../../../src/lib/has-errors';
 import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
 import Entity from '../../../src/models/Entity';
-import { Person, Production, ProductionIdentifier } from '../../../src/models';
+import { AwardCeremony, Person, Production, ProductionIdentifier } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
@@ -125,6 +125,17 @@ describe('Entity model', () => {
 			});
 
 			context('model is exempt', () => {
+
+				context('model is AwardCeremony', () => {
+
+					it('does not assign differentiator property', () => {
+
+						const instance = new AwardCeremony({ name: '2020', differentiator: '1' });
+						expect(instance).to.not.have.property('differentiator');
+
+					});
+
+				});
 
 				context('model is Production', () => {
 
