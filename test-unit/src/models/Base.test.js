@@ -3,6 +3,7 @@ import { assert, createSandbox, spy } from 'sinon';
 
 import * as validateStringModule from '../../../src/lib/validate-string';
 import Base from '../../../src/models/Base';
+import { Nomination, ProductionIdentifier } from '../../../src/models';
 
 describe('Base model', () => {
 
@@ -37,38 +38,71 @@ describe('Base model', () => {
 
 		describe('name property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			context('model is not exempt', () => {
 
-				const instance = new Base({});
-				expect(instance.name).to.equal('');
+				it('assigns empty string if absent from props', () => {
+
+					const instance = new Base({});
+					expect(instance.name).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is empty string', () => {
+
+					const instance = new Base({ name: '' });
+					expect(instance.name).to.equal('');
+
+				});
+
+				it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+					const instance = new Base({ name: ' ' });
+					expect(instance.name).to.equal('');
+
+				});
+
+				it('assigns value if included in props and is string with length', () => {
+
+					const instance = new Base({ name: 'Barfoo' });
+					expect(instance.name).to.equal('Barfoo');
+
+				});
+
+				it('trims value before assigning', () => {
+
+					const instance = new Base({ name: ' Barfoo ' });
+					expect(instance.name).to.equal('Barfoo');
+
+				});
 
 			});
 
-			it('assigns empty string if included in props but value is empty string', () => {
+			context('model is exempt', () => {
 
-				const instance = new Base({ name: '' });
-				expect(instance.name).to.equal('');
+				context('model is Nomination', () => {
 
-			});
+					it('does not assign differentiator property', () => {
 
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
+						const instance = new Nomination({ differentiator: '1' });
+						expect(instance).to.not.have.property('differentiator');
 
-				const instance = new Base({ name: ' ' });
-				expect(instance.name).to.equal('');
+					});
 
-			});
+				});
 
-			it('assigns value if included in props and is string with length', () => {
+				context('model is ProductionIdentifier', () => {
 
-				const instance = new Base({ name: 'Barfoo' });
-				expect(instance.name).to.equal('Barfoo');
+					it('does not assign differentiator property', () => {
 
-			});
+						const instance = new ProductionIdentifier({
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							differentiator: '1'
+						});
+						expect(instance).to.not.have.property('differentiator');
 
-			it('trims value before assigning', () => {
+					});
 
-				const instance = new Base({ name: ' Barfoo ' });
-				expect(instance.name).to.equal('Barfoo');
+				});
 
 			});
 
