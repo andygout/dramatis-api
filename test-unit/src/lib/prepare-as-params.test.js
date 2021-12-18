@@ -373,7 +373,7 @@ describe('Prepare As Params module', () => {
 
 		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
 
-			it('does not filter out objects that have a name attribute which is an empty string', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
 				const instance = {
 					characterGroups: [
@@ -675,7 +675,7 @@ describe('Prepare As Params module', () => {
 
 		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
 
-			it('does not filter out objects that have a name attribute which is an empty string', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
 				const instance = {
 					foo: {
@@ -1015,7 +1015,7 @@ describe('Prepare As Params module', () => {
 
 		context('object is in array where items are permitted an absent name property empty string name value (providing they have named children)', () => {
 
-			it('does not filter out objects that have a name attribute which is an empty string', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
 				const instance = {
 					foos: [
