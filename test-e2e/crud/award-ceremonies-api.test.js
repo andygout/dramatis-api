@@ -317,43 +317,45 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const DONMAR_WAREHOUSE_VENUE_UUID = '22';
 		const GRAULT_ALMEIDA_PRODUCTION_UUID = '23';
 		const ALMEIDA_THEATRE_VENUE_UUID = '25';
-		const AWARD_CEREMONY_UUID = '40';
-		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '41';
-		const STEVE_C_KENNEDY_PERSON_UUID = '42';
-		const SOUNDWAVES_LTD_COMPANY_UUID = '43';
-		const PAUL_ARDITTI_PERSON_UUID = '44';
-		const JOCELYN_POOK_PERSON_UUID = '45';
-		const AUTOGRAPH_COMPANY_UUID = '46';
-		const TERRY_JARDINE_PERSON_UUID = '47';
-		const NICK_LIDSTER_PERSON_UUID ='48';
-		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '49';
-		const ROB_ASHFORD_PERSON_UUID = '50';
-		const MARIANNE_ELLIOTT_PERSON_UUID = '51';
-		const TOM_MORRIS_PERSON_UUID = '52';
-		const RUPERT_GOOLD_PERSON_UUID = '53';
-		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '54';
-		const PIAF_DONMAR_PRODUCTION_UUID = '57';
-		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '60';
-		const VAUDEVILLE_THEATRE_VENUE_UUID = '62';
-		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '63';
-		const WALDO_DORFMAN_PRODUCTION_UUID = '66';
-		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '69';
-		const NOËL_COWARD_THEATRE_VENUE_UUID = '71';
-		const FRED_OLD_VIC_PRODUCTION_UUID = '72';
-		const OLD_VIC_THEATRE_VENUE_UUID = '74';
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '88';
-		const PAULE_CONSTABLE_PERSON_UUID = '89';
-		const ILLUMINATIONS_LTD_COMPANY_UUID = '90';
-		const NEIL_AUSTIN_PERSON_UUID = '91';
-		const MARK_HENDERSON_PERSON_UUID = '92';
-		const LIMELIGHT_LTD_COMPANY_UUID = '93';
-		const KEVIN_ADAMS_PERSON_UUID = '94';
-		const JON_CLARK_PERSON_UUID = '95';
-		const STAGE_SUN_LTD_COMPANY_UUID = '96';
-		const RAFAEL_AMARGO_PERSON_UUID = '97';
-		const STEVEN_HOGGETT_PERSON_UUID = '98';
-		const LYNNE_PAGE_PERSON_UUID = '99';
-		const KATE_PRINCE_PERSON_UUID = '100';
+		const AWARD_CEREMONY_UUID = '41';
+		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '42';
+		const STEVE_C_KENNEDY_PERSON_UUID = '43';
+		const SOUNDWAVES_LTD_COMPANY_UUID = '44';
+		const PAUL_ARDITTI_PERSON_UUID = '45';
+		const JOCELYN_POOK_PERSON_UUID = '46';
+		const AUTOGRAPH_COMPANY_UUID = '47';
+		const TERRY_JARDINE_PERSON_UUID = '48';
+		const NICK_LIDSTER_PERSON_UUID ='49';
+		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '50';
+		const SIMON_BAKER_PERSON_UUID ='51';
+		const ROB_ASHFORD_PERSON_UUID = '52';
+		const MARIANNE_ELLIOTT_PERSON_UUID = '53';
+		const TOM_MORRIS_PERSON_UUID = '54';
+		const RUPERT_GOOLD_PERSON_UUID = '55';
+		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '56';
+		const PIAF_DONMAR_PRODUCTION_UUID = '59';
+		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '62';
+		const VAUDEVILLE_THEATRE_VENUE_UUID = '64';
+		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '65';
+		const WALDO_DORFMAN_PRODUCTION_UUID = '68';
+		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '71';
+		const NOËL_COWARD_THEATRE_VENUE_UUID = '73';
+		const FRED_OLD_VIC_PRODUCTION_UUID = '74';
+		const OLD_VIC_THEATRE_VENUE_UUID = '76';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '91';
+		const PAULE_CONSTABLE_PERSON_UUID = '92';
+		const ILLUMINATIONS_LTD_COMPANY_UUID = '93';
+		const NEIL_AUSTIN_PERSON_UUID = '94';
+		const MARK_HENDERSON_PERSON_UUID = '95';
+		const LIMELIGHT_LTD_COMPANY_UUID = '96';
+		const KEVIN_ADAMS_PERSON_UUID = '97';
+		const JON_CLARK_PERSON_UUID = '98';
+		const STAGE_SUN_LTD_COMPANY_UUID = '99';
+		const HOWARD_HARRISON_PERSON_UUID = '100';
+		const RAFAEL_AMARGO_PERSON_UUID = '101';
+		const STEVEN_HOGGETT_PERSON_UUID = '102';
+		const LYNNE_PAGE_PERSON_UUID = '103';
+		const KATE_PRINCE_PERSON_UUID = '104';
 
 		before(async () => {
 
@@ -556,6 +558,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 													differentiator: '1'
 												}
 											]
+										},
+										{
+											name: 'Simon Baker',
+											differentiator: '1'
 										}
 									],
 									productions: [
@@ -844,6 +850,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 												errors: {}
 											}
 										]
+									},
+									{
+										model: 'PERSON',
+										name: 'Simon Baker',
+										differentiator: '1',
+										errors: {}
 									},
 									{
 										model: 'PERSON',
@@ -1350,6 +1362,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 												name: 'Terry Jardine'
 											}
 										]
+									},
+									{
+										model: 'PERSON',
+										uuid: SIMON_BAKER_PERSON_UUID,
+										name: 'Simon Baker'
 									}
 								],
 								productions: [
@@ -1743,6 +1760,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 												errors: {}
 											}
 										]
+									},
+									{
+										model: 'PERSON',
+										name: 'Simon Baker',
+										differentiator: '1',
+										errors: {}
 									},
 									{
 										model: 'PERSON',
@@ -2252,6 +2275,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 													differentiator: '1'
 												}
 											]
+										},
+										{
+											name: 'Howard Harrison',
+											differentiator: '1'
 										}
 									],
 									productions: [
@@ -2547,6 +2574,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 												errors: {}
 											}
 										]
+									},
+									{
+										model: 'PERSON',
+										name: 'Howard Harrison',
+										differentiator: '1',
+										errors: {}
 									},
 									{
 										model: 'PERSON',
@@ -3067,6 +3100,11 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 												name: 'Kevin Adams'
 											}
 										]
+									},
+									{
+										model: 'PERSON',
+										uuid: HOWARD_HARRISON_PERSON_UUID,
+										name: 'Howard Harrison'
 									}
 								],
 								productions: [
