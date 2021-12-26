@@ -303,59 +303,58 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const NATIONAL_THEATRE_VENUE_UUID = '4';
-		const OLIVIER_THEATRE_VENUE_UUID = '5';
-		const LYTTELTON_THEATRE_VENUE_UUID = '6';
-		const DORFMAN_THEATRE_VENUE_UUID = '7';
-		const HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID = '8';
-		const SHAFTESBURY_THEATRE_VENUE_UUID = '10';
-		const GARPLY_LYTTELTON_PRODUCTION_UUID = '11';
-		const GARPLY_WYNDHAMS_PRODUCTION_UUID = '14';
-		const WYNDHAMS_THEATRE_VENUE_UUID = '16';
-		const SAINT_JOAN_OLIVIER_PRODUCTION_UUID = '17';
-		const PARADE_DONMAR_PRODUCTION_UUID = '20';
-		const DONMAR_WAREHOUSE_VENUE_UUID = '22';
-		const GRAULT_ALMEIDA_PRODUCTION_UUID = '23';
-		const ALMEIDA_THEATRE_VENUE_UUID = '25';
-		const AWARD_CEREMONY_UUID = '41';
-		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '42';
-		const STEVE_C_KENNEDY_PERSON_UUID = '43';
-		const SOUNDWAVES_LTD_COMPANY_UUID = '44';
-		const PAUL_ARDITTI_PERSON_UUID = '45';
-		const JOCELYN_POOK_PERSON_UUID = '46';
-		const AUTOGRAPH_COMPANY_UUID = '47';
-		const TERRY_JARDINE_PERSON_UUID = '48';
-		const NICK_LIDSTER_PERSON_UUID ='49';
-		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '50';
-		const SIMON_BAKER_PERSON_UUID ='51';
-		const ROB_ASHFORD_PERSON_UUID = '52';
-		const MARIANNE_ELLIOTT_PERSON_UUID = '53';
-		const TOM_MORRIS_PERSON_UUID = '54';
-		const RUPERT_GOOLD_PERSON_UUID = '55';
-		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '56';
-		const PIAF_DONMAR_PRODUCTION_UUID = '59';
-		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '62';
-		const VAUDEVILLE_THEATRE_VENUE_UUID = '64';
-		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '65';
-		const WALDO_DORFMAN_PRODUCTION_UUID = '68';
-		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '71';
-		const NOËL_COWARD_THEATRE_VENUE_UUID = '73';
-		const FRED_OLD_VIC_PRODUCTION_UUID = '74';
-		const OLD_VIC_THEATRE_VENUE_UUID = '76';
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '91';
-		const PAULE_CONSTABLE_PERSON_UUID = '92';
-		const ILLUMINATIONS_LTD_COMPANY_UUID = '93';
-		const NEIL_AUSTIN_PERSON_UUID = '94';
-		const MARK_HENDERSON_PERSON_UUID = '95';
-		const LIMELIGHT_LTD_COMPANY_UUID = '96';
-		const KEVIN_ADAMS_PERSON_UUID = '97';
-		const JON_CLARK_PERSON_UUID = '98';
-		const STAGE_SUN_LTD_COMPANY_UUID = '99';
-		const HOWARD_HARRISON_PERSON_UUID = '100';
-		const RAFAEL_AMARGO_PERSON_UUID = '101';
-		const STEVEN_HOGGETT_PERSON_UUID = '102';
-		const LYNNE_PAGE_PERSON_UUID = '103';
-		const KATE_PRINCE_PERSON_UUID = '104';
+		const HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID = '0';
+		const SHAFTESBURY_THEATRE_VENUE_UUID = '2';
+		const GARPLY_LYTTELTON_PRODUCTION_UUID = '3';
+		const LYTTELTON_THEATRE_VENUE_UUID = '5';
+		const GARPLY_WYNDHAMS_PRODUCTION_UUID = '6';
+		const WYNDHAMS_THEATRE_VENUE_UUID = '8';
+		const SAINT_JOAN_OLIVIER_PRODUCTION_UUID = '9';
+		const OLIVIER_THEATRE_VENUE_UUID = '11';
+		const PARADE_DONMAR_PRODUCTION_UUID = '12';
+		const DONMAR_WAREHOUSE_VENUE_UUID = '14';
+		const GRAULT_ALMEIDA_PRODUCTION_UUID = '15';
+		const ALMEIDA_THEATRE_VENUE_UUID = '17';
+		const AWARD_CEREMONY_UUID = '33';
+		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '34';
+		const STEVE_C_KENNEDY_PERSON_UUID = '35';
+		const SOUNDWAVES_LTD_COMPANY_UUID = '36';
+		const PAUL_ARDITTI_PERSON_UUID = '37';
+		const JOCELYN_POOK_PERSON_UUID = '38';
+		const AUTOGRAPH_COMPANY_UUID = '39';
+		const TERRY_JARDINE_PERSON_UUID = '40';
+		const NICK_LIDSTER_PERSON_UUID ='41';
+		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '42';
+		const SIMON_BAKER_PERSON_UUID ='43';
+		const ROB_ASHFORD_PERSON_UUID = '44';
+		const MARIANNE_ELLIOTT_PERSON_UUID = '45';
+		const TOM_MORRIS_PERSON_UUID = '46';
+		const RUPERT_GOOLD_PERSON_UUID = '47';
+		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '48';
+		const PIAF_DONMAR_PRODUCTION_UUID = '51';
+		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '54';
+		const VAUDEVILLE_THEATRE_VENUE_UUID = '56';
+		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '57';
+		const WALDO_DORFMAN_PRODUCTION_UUID = '60';
+		const DORFMAN_THEATRE_VENUE_UUID = '62';
+		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '63';
+		const NOËL_COWARD_THEATRE_VENUE_UUID = '65';
+		const FRED_OLD_VIC_PRODUCTION_UUID = '66';
+		const OLD_VIC_THEATRE_VENUE_UUID = '68';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '83';
+		const PAULE_CONSTABLE_PERSON_UUID = '84';
+		const ILLUMINATIONS_LTD_COMPANY_UUID = '85';
+		const NEIL_AUSTIN_PERSON_UUID = '86';
+		const MARK_HENDERSON_PERSON_UUID = '87';
+		const LIMELIGHT_LTD_COMPANY_UUID = '88';
+		const KEVIN_ADAMS_PERSON_UUID = '89';
+		const JON_CLARK_PERSON_UUID = '90';
+		const STAGE_SUN_LTD_COMPANY_UUID = '91';
+		const HOWARD_HARRISON_PERSON_UUID = '92';
+		const RAFAEL_AMARGO_PERSON_UUID = '93';
+		const STEVEN_HOGGETT_PERSON_UUID = '94';
+		const LYNNE_PAGE_PERSON_UUID = '95';
+		const KATE_PRINCE_PERSON_UUID = '96';
 
 		before(async () => {
 
@@ -376,23 +375,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('creates award ceremony', async () => {
 
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
-
-			await chai.request(app)
-				.post('/venues')
-				.send({
-					name: 'National Theatre',
-					subVenues: [
-						{
-							name: 'Olivier Theatre'
-						},
-						{
-							name: 'Lyttelton Theatre'
-						},
-						{
-							name: 'Dorfman Theatre'
-						}
-					]
-				});
 
 			await chai.request(app)
 				.post('/productions')
@@ -1252,11 +1234,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
@@ -1300,11 +1278,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: OLIVIER_THEATRE_VENUE_UUID,
 											name: 'Olivier Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									}
 								]
@@ -1380,11 +1354,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
@@ -1470,11 +1440,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
@@ -1527,11 +1493,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: OLIVIER_THEATRE_VENUE_UUID,
 											name: 'Olivier Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									}
 								]
@@ -3063,11 +3025,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
@@ -3118,11 +3076,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
@@ -3261,11 +3215,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											model: 'VENUE',
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
-											surVenue: {
-												model: 'VENUE',
-												uuid: NATIONAL_THEATRE_VENUE_UUID,
-												name: 'National Theatre'
-											}
+											surVenue: null
 										}
 									},
 									{
