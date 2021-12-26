@@ -596,11 +596,11 @@ const getShowQuery = () => `
 			ELSE coNominatedEntity { .model, .uuid, .name }
 		END] AS coNominatedEntities
 
-	OPTIONAL MATCH (category)-[productionRel:HAS_NOMINEE]->(nominatedProduction:Production)
+	OPTIONAL MATCH (category)-[nominatedProductionRel:HAS_NOMINEE]->(nominatedProduction:Production)
 		WHERE
 			(
 				nomineeRel.nominationPosition IS NULL OR
-				nomineeRel.nominationPosition = productionRel.nominationPosition
+				nomineeRel.nominationPosition = nominatedProductionRel.nominationPosition
 			)
 
 	OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
@@ -620,11 +620,11 @@ const getShowQuery = () => `
 		award,
 		nominatedMembers,
 		coNominatedEntities,
-		productionRel,
+		nominatedProductionRel,
 		nominatedProduction,
 		venue,
 		surVenue
-		ORDER BY productionRel.productionPosition
+		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
 		company,

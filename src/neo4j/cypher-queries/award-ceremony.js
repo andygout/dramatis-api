@@ -155,10 +155,10 @@ const getCreateUpdateQuery = action => {
 								) OR
 								nomineeCompanyParam.differentiator = nominatedCompany.differentiator
 
-						OPTIONAL MATCH (nominatedCompany)<-[nomineeCompanyRel:HAS_NOMINEE]-(category)
+						OPTIONAL MATCH (nominatedCompany)<-[nominatedCompanyRel:HAS_NOMINEE]-(category)
 							WHERE
 								nomination.position IS NULL OR
-								nomination.position = nomineeCompanyRel.nominationPosition
+								nomination.position = nominatedCompanyRel.nominationPosition
 
 						OPTIONAL MATCH (existingPerson:Person { name: nominatedMemberParam.name })
 							WHERE
@@ -171,7 +171,7 @@ const getCreateUpdateQuery = action => {
 						FOREACH (item IN CASE WHEN SIZE(nomineeCompanyParam.members) > 0
 							THEN [1]
 							ELSE []
-						END | SET nomineeCompanyRel.nominatedMemberUuids = [])
+						END | SET nominatedCompanyRel.nominatedMemberUuids = [])
 
 						FOREACH (item IN CASE nominatedMemberParam WHEN NULL THEN [] ELSE [1] END |
 							MERGE (nominatedMember:Person {
@@ -187,8 +187,8 @@ const getCreateUpdateQuery = action => {
 									nominatedCompanyUuid: nominatedCompany.uuid
 								}]->(nominatedMember)
 
-							SET nomineeCompanyRel.nominatedMemberUuids =
-								nomineeCompanyRel.nominatedMemberUuids + nominatedMember.uuid
+							SET nominatedCompanyRel.nominatedMemberUuids =
+								nominatedCompanyRel.nominatedMemberUuids + nominatedMember.uuid
 						)
 
 				WITH DISTINCT ceremony, category, nomination
