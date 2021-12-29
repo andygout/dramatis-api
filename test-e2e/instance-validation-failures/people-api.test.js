@@ -28,7 +28,7 @@ describe('Instance validation failures: People API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -60,7 +60,7 @@ describe('Instance validation failures: People API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -120,7 +120,7 @@ describe('Instance validation failures: People API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -158,7 +158,7 @@ describe('Instance validation failures: People API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 

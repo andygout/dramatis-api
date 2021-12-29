@@ -4,10 +4,15 @@ import { createSandbox } from 'sinon';
 import Production from '../../src/models/Production';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
-describe('Production instance', () => {
+describe('Input validation failures: Production instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+	const methods = [
+		'create',
+		'update'
+	];
 
 	const sandbox = createSandbox();
 
@@ -23,11 +28,11 @@ describe('Production instance', () => {
 
 	});
 
-	describe('input validation failure', () => {
+	context('name value is empty string', () => {
 
-		context('name value is empty string', () => {
+		for (const method of methods) {
 
-			it('assigns appropriate error', async () => {
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: ''
@@ -35,7 +40,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -71,11 +76,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: ABOVE_MAX_LENGTH_STRING
@@ -83,7 +92,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -119,11 +128,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('startDate, pressDate, and endDate values with invalid date format', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('startDate, pressDate, and endDate values with invalid date format', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -134,7 +147,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -176,11 +189,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -191,7 +208,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -236,11 +253,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('material name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('material name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -251,7 +272,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -287,11 +308,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('material differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('material differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -303,7 +328,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -339,11 +364,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('venue name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('venue name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -354,7 +383,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -390,11 +419,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('venue differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('venue differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -406,7 +439,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -442,11 +475,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -459,7 +496,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -501,11 +538,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate producer credit name values', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate producer credit name values', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -521,7 +562,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -572,11 +613,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (person) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (person) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -594,7 +639,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -643,11 +688,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (person) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (person) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -666,7 +715,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -715,11 +764,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (company) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (company) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -738,7 +791,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -788,11 +841,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (company) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (company) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -812,7 +869,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -862,11 +919,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -904,7 +965,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1013,11 +1074,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (company) without name has named credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (company) without name has named credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -1041,7 +1106,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1098,11 +1163,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (company) credited member name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (company) credited member name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -1126,7 +1195,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1183,11 +1252,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
@@ -1212,7 +1285,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1269,11 +1342,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1287,7 +1364,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1331,11 +1408,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1350,7 +1431,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1394,11 +1475,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate cast members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate cast members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1422,7 +1507,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1497,11 +1582,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member without name has named roles', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member without name has named roles', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1519,7 +1608,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1572,11 +1661,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member role name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member role name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1595,7 +1688,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1648,11 +1741,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member role characterName value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member role characterName value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1671,7 +1768,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1724,11 +1821,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member role characterDifferentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member role characterDifferentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1748,7 +1849,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1801,11 +1902,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member role qualifier value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member role qualifier value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1824,7 +1929,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1877,11 +1982,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('cast member role name and characterName values are the same', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('cast member role name and characterName values are the same', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1900,7 +2009,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1953,11 +2062,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate cast member roles', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate cast member roles', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -1986,7 +2099,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2085,11 +2198,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2102,7 +2219,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2144,11 +2261,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate creative credit name values', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate creative credit name values', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2164,7 +2285,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2215,11 +2336,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit without name has named creative entities', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit without name has named creative entities', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2237,7 +2362,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2286,11 +2411,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (person) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (person) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2308,7 +2437,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2357,11 +2486,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (person) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (person) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2380,7 +2513,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2429,11 +2562,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (company) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (company) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2452,7 +2589,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2502,11 +2639,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (company) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (company) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2526,7 +2667,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2576,11 +2717,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2618,7 +2763,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2727,11 +2872,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (company) without name has named credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (company) without name has named credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2755,7 +2904,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2812,11 +2961,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (company) credited member name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (company) credited member name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2840,7 +2993,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2897,11 +3050,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -2926,7 +3083,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -2983,11 +3140,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3000,7 +3161,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3042,11 +3203,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate crew credit name values', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate crew credit name values', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3062,7 +3227,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3113,11 +3278,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit without name has named crew entities', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit without name has named crew entities', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3135,7 +3304,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3184,11 +3353,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (person) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (person) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3206,7 +3379,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3255,11 +3428,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (person) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (person) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3278,7 +3455,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3327,11 +3504,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (company) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (company) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3350,7 +3531,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3400,11 +3581,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (company) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (company) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3424,7 +3609,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3474,11 +3659,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3516,7 +3705,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3625,11 +3814,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (company) without name has named credited members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (company) without name has named credited members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3653,7 +3846,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3710,11 +3903,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (company) credited member name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (company) credited member name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3738,7 +3935,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3795,11 +3992,15 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
-		context('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Hamlet',
@@ -3824,7 +4025,7 @@ describe('Production instance', () => {
 
 				const instance = new Production(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -3881,7 +4082,7 @@ describe('Production instance', () => {
 
 			});
 
-		});
+		}
 
 	});
 

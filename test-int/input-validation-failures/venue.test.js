@@ -4,12 +4,23 @@ import { createSandbox } from 'sinon';
 import Venue from '../../src/models/Venue';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
-describe('Venue instance', () => {
+describe('Input validation failures: Venue instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
+	const methods = [
+		'create',
+		'update'
+	];
+
 	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
+
+	});
 
 	afterEach(() => {
 
@@ -17,21 +28,15 @@ describe('Venue instance', () => {
 
 	});
 
-	describe('input validation failure', () => {
+	context('name value is empty string', () => {
 
-		beforeEach(() => {
+		for (const method of methods) {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
-
-		});
-
-		context('name value is empty string', () => {
-
-			it('assigns appropriate error', async () => {
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Venue({ name: '' });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -50,15 +55,19 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Venue({ name: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -77,15 +86,19 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Venue({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -104,11 +117,15 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('sub-venue name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('sub-venue name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
@@ -121,7 +138,7 @@ describe('Venue instance', () => {
 
 				const instance = new Venue(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -147,11 +164,15 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('sub-venue differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('sub-venue differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
@@ -165,7 +186,7 @@ describe('Venue instance', () => {
 
 				const instance = new Venue(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -191,11 +212,15 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('venue instance assigns itself as a sub-venue', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('venue instance assigns itself as a sub-venue', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
@@ -208,7 +233,7 @@ describe('Venue instance', () => {
 
 				const instance = new Venue(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -237,11 +262,15 @@ describe('Venue instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate sub-venues', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate sub-venues', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'National Theatre',
@@ -265,7 +294,7 @@ describe('Venue instance', () => {
 
 				const instance = new Venue(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -319,107 +348,7 @@ describe('Venue instance', () => {
 
 			});
 
-		});
-
-	});
-
-	describe('database validation failure', () => {
-
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
-		context('name value already exists in database', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instance = new Venue({ name: 'National Theatre' });
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'National Theatre',
-					differentiator: '',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
-					},
-					subVenues: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-	});
-
-	describe('combined input and database validation failure', () => {
-
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
-		context('sub-venue name value exceeds maximum limit and name value already exists in database', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'National Theatre',
-					subVenues: [
-						{
-							name: ABOVE_MAX_LENGTH_STRING
-						}
-					]
-				};
-
-				const instance = new Venue(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'National Theatre',
-					differentiator: '',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
-					},
-					subVenues: [
-						{
-							uuid: undefined,
-							name: ABOVE_MAX_LENGTH_STRING,
-							differentiator: '',
-							errors: {
-								name: [
-									'Value is too long'
-								]
-							}
-						}
-					]
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
+		}
 
 	});
 

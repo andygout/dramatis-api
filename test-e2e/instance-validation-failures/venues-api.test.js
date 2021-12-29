@@ -10,6 +10,9 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Instance validation failures: Venues API', () => {
 
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
@@ -28,7 +31,7 @@ describe('Instance validation failures: Venues API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -61,7 +64,7 @@ describe('Instance validation failures: Venues API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -97,6 +100,58 @@ describe('Instance validation failures: Venues API', () => {
 
 		});
 
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
+
+				const response = await chai.request(app)
+					.post('/venues')
+					.send({
+						name: 'Donmar Warehouse',
+						subVenues: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'VENUE',
+					name: 'Donmar Warehouse',
+					differentiator: '',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
+						]
+					},
+					subVenues: [
+						{
+							model: 'VENUE',
+							name: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					]
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Venue')).to.equal(1);
+
+			});
+
+		});
+
 	});
 
 	describe('attempt to update instance', () => {
@@ -122,7 +177,7 @@ describe('Instance validation failures: Venues API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -161,7 +216,7 @@ describe('Instance validation failures: Venues API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -188,6 +243,64 @@ describe('Instance validation failures: Venues API', () => {
 						]
 					},
 					subVenues: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
+				expect(await isNodeExistent({
+					label: 'Venue',
+					name: 'Almeida Theatre',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID
+				})).to.be.true;
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Venue')).to.equal(2);
+
+				const response = await chai.request(app)
+					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
+					.send({
+						name: 'Donmar Warehouse',
+						subVenues: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'VENUE',
+					uuid: ALMEIDA_THEATRE_VENUE_UUID,
+					name: 'Donmar Warehouse',
+					differentiator: '',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
+						]
+					},
+					subVenues: [
+						{
+							model: 'VENUE',
+							name: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					]
 				};
 
 				expect(response).to.have.status(200);

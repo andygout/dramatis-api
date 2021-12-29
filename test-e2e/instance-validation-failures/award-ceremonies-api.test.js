@@ -10,6 +10,9 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Instance validation failures: Award ceremonies API', () => {
 
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
@@ -43,7 +46,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -81,7 +84,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -119,6 +122,70 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						}
 					},
 					categories: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
+
+				const response = await chai.request(app)
+					.post('/awards/ceremonies')
+					.send({
+						name: '2020',
+						award: {
+							name: 'Laurence Olivier Awards'
+						},
+						categories: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'AWARD_CEREMONY',
+					name: '2020',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Award ceremony already exists for given award'
+						]
+					},
+					award: {
+						model: 'AWARD',
+						name: 'Laurence Olivier Awards',
+						differentiator: '',
+						errors: {
+							name: [
+								'Award ceremony already exists for given award'
+							],
+							differentiator: [
+								'Award ceremony already exists for given award'
+							]
+						}
+					},
+					categories: [
+						{
+							model: 'AWARD_CEREMONY_CATEGORY',
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							nominations: []
+						}
+					]
 				};
 
 				expect(response).to.have.status(200);
@@ -169,7 +236,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -213,7 +280,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -252,6 +319,76 @@ describe('Instance validation failures: Award ceremonies API', () => {
 						}
 					},
 					categories: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('AwardCeremony')).to.equal(2);
+				expect(await isNodeExistent({
+					label: 'AwardCeremony',
+					name: '2019',
+					uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID
+				})).to.be.true;
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('AwardCeremony')).to.equal(2);
+
+				const response = await chai.request(app)
+					.put(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
+					.send({
+						name: '2020',
+						award: {
+							name: 'Laurence Olivier Awards'
+						},
+						categories: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'AWARD_CEREMONY',
+					uuid: TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+					name: '2020',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Award ceremony already exists for given award'
+						]
+					},
+					award: {
+						model: 'AWARD',
+						name: 'Laurence Olivier Awards',
+						differentiator: '',
+						errors: {
+							name: [
+								'Award ceremony already exists for given award'
+							],
+							differentiator: [
+								'Award ceremony already exists for given award'
+							]
+						}
+					},
+					categories: [
+						{
+							model: 'AWARD_CEREMONY_CATEGORY',
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							nominations: []
+						}
+					]
 				};
 
 				expect(response).to.have.status(200);
