@@ -10,6 +10,9 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Instance validation failures: Materials API', () => {
 
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
@@ -28,7 +31,7 @@ describe('Instance validation failures: Materials API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -70,7 +73,7 @@ describe('Instance validation failures: Materials API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -115,6 +118,67 @@ describe('Instance validation failures: Materials API', () => {
 
 		});
 
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Material')).to.equal(1);
+
+				const response = await chai.request(app)
+					.post('/materials')
+					.send({
+						name: 'The Wild Duck',
+						characterGroups: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'MATERIAL',
+					name: 'The Wild Duck',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
+						]
+					},
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							characters: []
+						}
+					]
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Material')).to.equal(1);
+
+			});
+
+		});
+
 	});
 
 	describe('attempt to update instance', () => {
@@ -140,7 +204,7 @@ describe('Instance validation failures: Materials API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -188,7 +252,7 @@ describe('Instance validation failures: Materials API', () => {
 
 		});
 
-		context('instance has database validation errors', () => {
+		context('instance has database validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -224,6 +288,73 @@ describe('Instance validation failures: Materials API', () => {
 					},
 					writingCredits: [],
 					characterGroups: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+				expect(await isNodeExistent({
+					label: 'Material',
+					name: 'Ghosts',
+					uuid: GHOSTS_MATERIAL_UUID
+				})).to.be.true;
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+
+				const response = await chai.request(app)
+					.put(`/materials/${GHOSTS_MATERIAL_UUID}`)
+					.send({
+						name: 'The Wild Duck',
+						characterGroups: [
+							{
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'MATERIAL',
+					uuid: GHOSTS_MATERIAL_UUID,
+					name: 'The Wild Duck',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {
+						name: [
+							'Name and differentiator combination already exists'
+						],
+						differentiator: [
+							'Name and differentiator combination already exists'
+						]
+					},
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							},
+							characters: []
+						}
+					]
 				};
 
 				expect(response).to.have.status(200);

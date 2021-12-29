@@ -4,13 +4,24 @@ import { createSandbox } from 'sinon';
 import Material from '../../src/models/Material';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
-describe('Material instance', () => {
+describe('Input validation failures: Material instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 	const INVALID_YEAR_STRING = 'Nineteen Fifty-Nine';
 
+	const methods = [
+		'create',
+		'update'
+	];
+
 	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
+
+	});
 
 	afterEach(() => {
 
@@ -18,21 +29,15 @@ describe('Material instance', () => {
 
 	});
 
-	describe('input validation failure', () => {
+	context('name value is empty string', () => {
 
-		beforeEach(() => {
+		for (const method of methods) {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
-
-		});
-
-		context('name value is empty string', () => {
-
-			it('assigns appropriate error', async () => {
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Material({ name: '' });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -60,15 +65,19 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Material({ name: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -96,15 +105,19 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Material({ name: 'Rosmersholm', differentiator: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -132,15 +145,19 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('format value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('format value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Material({ name: 'Rosmersholm', format: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -168,15 +185,19 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('year value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('year value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Material({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -204,11 +225,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('original version material name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('original version material name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -219,7 +244,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -247,11 +272,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('original version material differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('original version material differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -263,7 +292,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -291,11 +320,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('material instance assigns itself as the original version material', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('material instance assigns itself as the original version material', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -306,7 +339,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -337,11 +370,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writingCredit name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writingCredit name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -354,7 +391,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -389,11 +426,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate writingCredits', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate writingCredits', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -409,7 +450,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -454,11 +495,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (person) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (person) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -475,7 +520,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -517,11 +562,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (person) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (person) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -539,7 +588,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -581,11 +630,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (company) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (company) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -603,7 +656,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -645,11 +698,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (company) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (company) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -668,7 +725,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -710,11 +767,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (source material) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (source material) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -732,7 +793,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -774,11 +835,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('writing entity (source material) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('writing entity (source material) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -797,7 +862,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -839,11 +904,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate entities', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate entities', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -870,7 +939,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -942,11 +1011,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('material instance assigns itself as source material', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('material instance assigns itself as source material', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -964,7 +1037,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1009,11 +1082,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('characterGroup name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('characterGroup name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1026,7 +1103,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1060,11 +1137,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate characterGroups', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate characterGroups', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1080,7 +1161,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1123,11 +1204,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('character name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('character name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1144,7 +1229,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1187,11 +1272,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('character underlyingName value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('character underlyingName value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1209,7 +1298,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1252,11 +1341,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('character differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('character differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1274,7 +1367,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1317,11 +1410,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('character qualifier value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('character qualifier value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1339,7 +1436,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1382,11 +1479,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('character name and underlyingName values are the same', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('character name and underlyingName values are the same', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1404,7 +1505,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1447,11 +1548,15 @@ describe('Material instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate characters', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate characters', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: 'Rosmersholm',
@@ -1479,7 +1584,7 @@ describe('Material instance', () => {
 
 				const instance = new Material(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1568,137 +1673,7 @@ describe('Material instance', () => {
 
 			});
 
-		});
-
-	});
-
-	describe('database validation failure', () => {
-
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
-		context('name value already exists in database', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instance = new Material({ name: 'Rosmersholm' });
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'Rosmersholm',
-					differentiator: '',
-					format: '',
-					year: '',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
-					},
-					originalVersionMaterial: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					writingCredits: [],
-					characterGroups: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-	});
-
-	describe('combined input and database validation failure', () => {
-
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
-		context('character name value exceeds maximum limit and name value already exists in database', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: 'Rosmersholm',
-					characterGroups: [
-						{
-							characters: [
-								{
-									name: ABOVE_MAX_LENGTH_STRING
-								}
-							]
-						}
-					]
-				};
-
-				const instance = new Material(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'Rosmersholm',
-					differentiator: '',
-					format: '',
-					year: '',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
-					},
-					originalVersionMaterial: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					writingCredits: [],
-					characterGroups: [
-						{
-							name: '',
-							errors: {},
-							characters: [
-								{
-									uuid: undefined,
-									name: ABOVE_MAX_LENGTH_STRING,
-									underlyingName: '',
-									differentiator: '',
-									qualifier: '',
-									errors: {
-										name: [
-											'Value is too long'
-										]
-									}
-								}
-							]
-						}
-					]
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
+		}
 
 	});
 

@@ -4,12 +4,23 @@ import { createSandbox } from 'sinon';
 import AwardCeremony from '../../src/models/AwardCeremony';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
-describe('AwardCeremony instance', () => {
+describe('Input validation failures: AwardCeremony instance', () => {
 
 	const STRING_MAX_LENGTH = 1000;
 	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
+	const methods = [
+		'create',
+		'update'
+	];
+
 	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
+
+	});
 
 	afterEach(() => {
 
@@ -17,21 +28,15 @@ describe('AwardCeremony instance', () => {
 
 	});
 
-	describe('input validation failure', () => {
+	context('name value is empty string', () => {
 
-		beforeEach(() => {
+		for (const method of methods) {
 
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
-
-		});
-
-		context('name value is empty string', () => {
-
-			it('assigns appropriate error', async () => {
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new AwardCeremony({ name: '' });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -55,15 +60,19 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new AwardCeremony({ name: ABOVE_MAX_LENGTH_STRING });
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -87,11 +96,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('award name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('award name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2020',
@@ -102,7 +115,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -126,11 +139,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('award differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('award differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2020',
@@ -142,7 +159,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -166,11 +183,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2020',
@@ -183,7 +204,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -213,11 +234,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate categories', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate categories', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2020',
@@ -239,7 +264,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -288,11 +313,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category without name has named nomination entities', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category without name has named nomination entities', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -314,7 +343,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -358,11 +387,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (person) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (person) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -384,7 +417,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -428,11 +461,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (person) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (person) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -455,7 +492,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -499,11 +536,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (company) name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (company) name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -526,7 +567,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -571,11 +612,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (company) differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (company) differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -599,7 +644,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -644,11 +689,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate category nomination entities, including category nomination entity (company) nominated members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate category nomination entities, including category nomination entity (company) nominated members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -690,7 +739,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -792,11 +841,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (company) without name has named nominated members', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (company) without name has named nominated members', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -824,7 +877,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -876,11 +929,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (company) nominated member name value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (company) nominated member name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -908,7 +965,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -960,11 +1017,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination entity (company) nominated member differentiator value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination entity (company) nominated member differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -993,7 +1054,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1045,11 +1106,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('category nomination production uuid value exceeds maximum limit', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('category nomination production uuid value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -1071,7 +1136,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1113,11 +1178,15 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
+		}
 
-		context('duplicate category nomination productions', () => {
+	});
 
-			it('assigns appropriate error', async () => {
+	context('duplicate category nomination productions', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instanceProps = {
 					name: '2010',
@@ -1145,7 +1214,7 @@ describe('AwardCeremony instance', () => {
 
 				const instance = new AwardCeremony(instanceProps);
 
-				const result = await instance.create();
+				const result = await instance[method]();
 
 				const expectedResponseBody = {
 					uuid: undefined,
@@ -1199,213 +1268,7 @@ describe('AwardCeremony instance', () => {
 
 			});
 
-		});
-
-	});
-
-	describe('database validation failure', () => {
-
-		context('name value with relationship to award already exists in database', () => {
-
-			beforeEach(() => {
-
-				sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-			});
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: '2020',
-					award: {
-						name: 'Laurence Olivier Awards'
-					}
-				};
-
-				const instance = new AwardCeremony(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: '2020',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Award ceremony already exists for given award'
-						]
-					},
-					award: {
-						uuid: undefined,
-						name: 'Laurence Olivier Awards',
-						differentiator: '',
-						errors: {
-							name: [
-								'Award ceremony already exists for given award'
-							],
-							differentiator: [
-								'Award ceremony already exists for given award'
-							]
-						}
-					},
-					categories: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-		context('nominated production uuid does not exist in database', () => {
-
-			beforeEach(() => {
-
-				sandbox.stub(neo4jQueryModule, 'neo4jQuery')
-					.onFirstCall().resolves({ duplicateRecordCount: 0 })
-					.onSecondCall().rejects(new Error('Not Found'));
-
-			});
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: '2020',
-					award: {
-						name: 'Laurence Olivier Awards'
-					},
-					categories: [
-						{
-							name: 'Best Revival',
-							nominations: [
-								{
-									productions: [
-										{
-											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-										}
-									]
-								}
-							]
-						}
-					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: '2020',
-					hasErrors: true,
-					errors: {},
-					award: {
-						uuid: undefined,
-						name: 'Laurence Olivier Awards',
-						differentiator: '',
-						errors: {}
-					},
-					categories: [
-						{
-							name: 'Best Revival',
-							errors: {},
-							nominations: [
-								{
-									isWinner: false,
-									errors: {},
-									entities: [],
-									productions: [
-										{
-											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-											errors: {
-												uuid: [
-													'Production with this UUID does not exist'
-												]
-											}
-										}
-									]
-								}
-							]
-						}
-					]
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
-
-	});
-
-	describe('combined input and database validation failure', () => {
-
-		beforeEach(() => {
-
-			sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 1 });
-
-		});
-
-		context('category name value exceeds maximum limit and name value with relationship to award already exists in database', () => {
-
-			it('assigns appropriate error', async () => {
-
-				const instanceProps = {
-					name: '2020',
-					award: {
-						name: 'Laurence Olivier Awards'
-					},
-					categories: [
-						{
-							name: ABOVE_MAX_LENGTH_STRING
-						}
-					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
-
-				const result = await instance.create();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: '2020',
-					hasErrors: true,
-					errors: {
-						name: [
-							'Award ceremony already exists for given award'
-						]
-					},
-					award: {
-						uuid: undefined,
-						name: 'Laurence Olivier Awards',
-						differentiator: '',
-						errors: {
-							name: [
-								'Award ceremony already exists for given award'
-							],
-							differentiator: [
-								'Award ceremony already exists for given award'
-							]
-						}
-					},
-					categories: [
-						{
-							name: ABOVE_MAX_LENGTH_STRING,
-							errors: {
-								name: [
-									'Value is too long'
-								]
-							},
-							nominations: []
-						}
-					]
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
-		});
+		}
 
 	});
 

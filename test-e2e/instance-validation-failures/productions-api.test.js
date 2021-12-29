@@ -20,7 +20,7 @@ describe('Instance validation failures: Productions API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
@@ -88,7 +88,7 @@ describe('Instance validation failures: Productions API', () => {
 
 		});
 
-		context('instance has input validation errors', () => {
+		context('instance has input validation failures', () => {
 
 			it('returns instance with appropriate errors attached', async () => {
 
