@@ -883,6 +883,54 @@ const getShowQuery = () => `
 				}
 			END
 		) AS nominatedProductions
+
+	OPTIONAL MATCH (category)-[nominatedMaterialRel:HAS_NOMINEE]->(nominatedMaterial:Material)
+		WHERE
+			(
+				entityRel.nominationPosition IS NULL OR
+				entityRel.nominationPosition = nominatedMaterialRel.nominationPosition
+			)
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		entityRel,
+		nominatedEmployerCompany,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		coNominatedEntities,
+		nominatedProductions,
+		nominatedMaterialRel,
+		nominatedMaterial
+		ORDER BY nominatedMaterialRel.materialPosition
+
+	WITH
+		person,
+		materials,
+		producerProductions,
+		castMemberProductions,
+		creativeProductions,
+		crewProductions,
+		entityRel,
+		nominatedEmployerCompany,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		coNominatedEntities,
+		nominatedProductions,
+		COLLECT(
+			CASE nominatedMaterial WHEN NULL
+				THEN null
+				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+			END
+		) AS nominatedMaterials
 		ORDER BY entityRel.nominationPosition
 
 	WITH
@@ -901,7 +949,8 @@ const getShowQuery = () => `
 			isWinner: COALESCE(entityRel.isWinner, false),
 			employerCompany: nominatedEmployerCompany,
 			coEntities: coNominatedEntities,
-			productions: nominatedProductions
+			productions: nominatedProductions,
+			materials: nominatedMaterials
 		}) AS nominations
 		ORDER BY categoryRel.position
 

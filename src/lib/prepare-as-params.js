@@ -44,7 +44,8 @@ export const prepareAsParams = instance => {
 			key === NOMINATIONS &&
 			(
 				item['entities']?.some(child => Boolean(child.name)) ||
-				item['productions']?.some(child => Boolean(child.uuid))
+				item['productions']?.some(child => Boolean(child.uuid)) ||
+				item['materials']?.some(child => Boolean(child.name))
 			)
 		);
 

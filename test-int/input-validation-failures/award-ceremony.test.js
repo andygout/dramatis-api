@@ -376,6 +376,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -450,6 +451,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -525,6 +527,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -601,6 +604,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -678,6 +682,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -830,6 +835,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -918,6 +924,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -1006,6 +1013,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -1095,6 +1103,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										}
 									],
 									productions: [],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -1167,6 +1176,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											}
 										}
 									],
+									materials: [],
 									errors: {}
 								}
 							]
@@ -1252,6 +1262,261 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 											errors: {
 												uuid: [
+													'This item has been duplicated within the group'
+												]
+											}
+										}
+									],
+									materials: [],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('category nomination material name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best New Play',
+							nominations: [
+								{
+									entities: [
+										{
+											name: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best New Play',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									entities: [
+										{
+											uuid: undefined,
+											name: ABOVE_MAX_LENGTH_STRING,
+											differentiator: '',
+											errors: {
+												name: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									productions: [],
+									materials: [],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('category nomination material differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best New Play',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Jerusalem',
+											differentiator: ABOVE_MAX_LENGTH_STRING
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best New Play',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									entities: [
+										{
+											uuid: undefined,
+											name: 'Jerusalem',
+											differentiator: ABOVE_MAX_LENGTH_STRING,
+											errors: {
+												differentiator: [
+													'Value is too long'
+												]
+											}
+										}
+									],
+									productions: [],
+									materials: [],
+									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('duplicate category nomination materials', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best New Play',
+							nominations: [
+								{
+									materials: [
+										{
+											name: 'Jerusalem'
+										},
+										{
+											name: 'The Mountaintop'
+										},
+										{
+											name: 'Jerusalem'
+										}
+									]
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best New Play',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									entities: [],
+									productions: [],
+									materials: [
+										{
+											uuid: undefined,
+											name: 'Jerusalem',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
+													'This item has been duplicated within the group'
+												]
+											}
+										},
+										{
+											uuid: undefined,
+											name: 'The Mountaintop',
+											differentiator: '',
+											errors: {}
+										},
+										{
+											uuid: undefined,
+											name: 'Jerusalem',
+											differentiator: '',
+											errors: {
+												name: [
+													'This item has been duplicated within the group'
+												],
+												differentiator: [
 													'This item has been duplicated within the group'
 												]
 											}

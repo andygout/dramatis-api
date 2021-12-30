@@ -75,7 +75,7 @@ const getCreateUpdateQuery = action => {
 				<-[:PRESENTS_CATEGORY]-(ceremony)
 
 			UNWIND (CASE categoryParam.nominations WHEN []
-				THEN [{ entities: [], productions: [] }]
+				THEN [{ entities: [], productions: [], materials: [] }]
 				ELSE categoryParam.nominations
 			END) AS nomination
 
@@ -210,6 +210,37 @@ const getCreateUpdateQuery = action => {
 							}]->(existingNomineeProduction)
 					)
 
+				WITH DISTINCT ceremony, category, nomination
+
+				UNWIND
+					(CASE nomination.materials WHEN []
+						THEN [null]
+						ELSE nomination.materials
+					END) AS nomineeMaterialParam
+
+					OPTIONAL MATCH (existingNomineeMaterial:Material { name: nomineeMaterialParam.name })
+						WHERE
+							(
+								nomineeMaterialParam.differentiator IS NULL AND
+								existingNomineeMaterial.differentiator IS NULL
+							) OR
+							nomineeMaterialParam.differentiator = existingNomineeMaterial.differentiator
+
+					FOREACH (item IN CASE nomineeMaterialParam WHEN NULL THEN [] ELSE [1] END |
+						MERGE (nomineeMaterial:Material {
+							uuid: COALESCE(existingNomineeMaterial.uuid, nomineeMaterialParam.uuid),
+							name: nomineeMaterialParam.name
+						})
+							ON CREATE SET nomineeMaterial.differentiator = nomineeMaterialParam.differentiator
+
+						CREATE (category)-
+							[:HAS_NOMINEE {
+								nominationPosition: nomination.position,
+								materialPosition: nomineeMaterialParam.position,
+								isWinner: nomination.isWinner
+							}]->(nomineeMaterial)
+					)
+
 		WITH DISTINCT ceremony
 
 		${getEditQuery()}
@@ -230,7 +261,8 @@ const getEditQuery = () => `
 		WHERE
 			(nominee:Person AND nomineeRel.nominatedCompanyUuid IS NULL) OR
 			nominee:Company OR
-			nominee:Production
+			nominee:Production OR
+			nominee:Material
 
 	WITH ceremony, award, categoryRel, category, nomineeRel,
 		COLLECT(nominee {
@@ -258,7 +290,11 @@ const getEditQuery = () => `
 				COLLECT(nominatedMember { .name, .differentiator }) + [{}] AS nominatedMembers
 
 	WITH ceremony, award, categoryRel, category, nomineeRel, nominee, nominatedMembers
-		ORDER BY nomineeRel.nominationPosition, nomineeRel.entityPosition, nomineeRel.productionPosition
+		ORDER BY
+			nomineeRel.nominationPosition,
+			nomineeRel.entityPosition,
+			nomineeRel.productionPosition,
+			nomineeRel.materialPosition
 
 	WITH
 		ceremony,
@@ -276,6 +312,7 @@ const getEditQuery = () => `
 			WHEN 'COMPANY' THEN nominee { .model, .name, .differentiator, .members }
 			WHEN 'PERSON' THEN nominee { .model, .name, .differentiator }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid }
+			WHEN 'MATERIAL' THEN nominee { .model, .name, .differentiator }
 		END] + [{}] AS nominees
 
 	WITH
@@ -285,15 +322,21 @@ const getEditQuery = () => `
 		category,
 		isWinner,
 		[nominee IN nominees WHERE nominee.model = 'PERSON' OR nominee.model = 'COMPANY'] + [{}] AS nomineeEntities,
-		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] + [{ uuid: '' }] AS nomineeProductions
+		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] + [{ uuid: '' }] AS nomineeProductions,
+		[nominee IN nominees WHERE nominee.model = 'MATERIAL'] + [{}] AS nomineeMaterials
 
 	WITH ceremony, award, categoryRel, category,
 		COLLECT(
-			CASE WHEN SIZE(nomineeEntities) = 1 AND SIZE(nomineeProductions) = 1
+			CASE WHEN SIZE(nomineeEntities) = 1 AND SIZE(nomineeProductions) = 1 AND SIZE(nomineeMaterials) = 1
 				THEN null
-				ELSE { isWinner: COALESCE(isWinner, false), entities: nomineeEntities, productions: nomineeProductions }
+				ELSE {
+					isWinner: COALESCE(isWinner, false),
+					entities: nomineeEntities,
+					productions: nomineeProductions,
+					materials: nomineeMaterials
+				}
 			END
-		) + [{ entities: [{}], productions: [{ uuid: '' }] }] AS nominations
+		) + [{ entities: [{}], productions: [{ uuid: '' }], materials: [{}] }] AS nominations
 		ORDER BY categoryRel.position
 
 	RETURN
@@ -305,7 +348,13 @@ const getEditQuery = () => `
 				THEN null
 				ELSE category { .name, nominations }
 			END
-		) + [{ nominations: [{ entities: [{}], productions: [{ uuid: '' }] }] }] AS categories
+		) + [{
+			nominations: [{
+				entities: [{}],
+				productions: [{ uuid: '' }],
+				materials: [{}]
+			}]
+		}] AS categories
 `;
 
 const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
@@ -321,7 +370,8 @@ const getShowQuery = () => `
 		WHERE
 			(nominee:Person AND nomineeRel.nominatedCompanyUuid IS NULL) OR
 			nominee:Company OR
-			nominee:Production
+			nominee:Production OR
+			nominee:Material
 
 	OPTIONAL MATCH (nominee)-[:PLAYS_AT]->(venue:Venue)
 
@@ -346,7 +396,9 @@ const getShowQuery = () => `
 						ELSE surVenue { model: 'VENUE', .uuid, .name }
 					END
 				}
-			END
+			END,
+			.format,
+			.year
 		}) AS nominees
 
 	UNWIND (CASE nominees WHEN [] THEN [null] ELSE nominees END) AS nominee
@@ -366,7 +418,11 @@ const getShowQuery = () => `
 				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
 
 	WITH ceremony, award, categoryRel, category, nomineeRel, nominee, nominatedMembers
-		ORDER BY nomineeRel.nominationPosition, nomineeRel.entityPosition, nomineeRel.productionPosition
+		ORDER BY
+			nomineeRel.nominationPosition,
+			nomineeRel.entityPosition,
+			nomineeRel.productionPosition,
+			nomineeRel.materialPosition
 
 	WITH
 		ceremony,
@@ -378,12 +434,23 @@ const getShowQuery = () => `
 		[nominee IN COLLECT(
 			CASE nominee WHEN NULL
 				THEN null
-				ELSE nominee { .model, .uuid, .name, members: nominatedMembers, .startDate, .endDate, .venue }
+				ELSE nominee {
+					.model,
+					.uuid,
+					.name,
+					members: nominatedMembers,
+					.startDate,
+					.endDate,
+					.venue,
+					.format,
+					.year
+				}
 			END
 		) | CASE nominee.model
 			WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 			WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue }
+			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year }
 		END] AS nominees
 
 	WITH
@@ -393,17 +460,19 @@ const getShowQuery = () => `
 		category,
 		isWinner,
 		[nominee IN nominees WHERE nominee.model = 'PERSON' OR nominee.model = 'COMPANY'] AS nomineeEntities,
-		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] AS nomineeProductions
+		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] AS nomineeProductions,
+		[nominee IN nominees WHERE nominee.model = 'MATERIAL'] AS nomineeMaterials
 
 	WITH ceremony, award, categoryRel, category,
 		COLLECT(
-			CASE WHEN SIZE(nomineeEntities) = 0 AND SIZE(nomineeProductions) = 0
+			CASE WHEN SIZE(nomineeEntities) = 0 AND SIZE(nomineeProductions) = 0 AND SIZE(nomineeMaterials) = 0
 				THEN null
 				ELSE {
 					model: 'NOMINATION',
 					isWinner: COALESCE(isWinner, false),
 					entities: nomineeEntities,
-					productions: nomineeProductions
+					productions: nomineeProductions,
+					materials: nomineeMaterials
 				}
 			END
 		) AS nominations
