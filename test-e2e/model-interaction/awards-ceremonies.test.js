@@ -57,32 +57,45 @@ describe('Award ceremonies', () => {
 	const INK_ALMEIDA_PRODUCTION_UUID = '102';
 	const INK_DUKE_OF_YORKS_PRODUCTION_UUID = '105';
 	const HAMLET_HAROLD_PINTER_PRODUCTION_UUID = '108';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '118';
-	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '119';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '143';
-	const ANDREW_SCOTT_PERSON_UUID = '145';
-	const TOBY_JONES_PERSON_UUID = '146';
-	const WENDELL_PIERCE_PERSON_UUID = '147';
-	const JOHN_DOE_PERSON_UUID = '148';
-	const CURTAIN_UP_LTD_COMPANY_UUID = '149';
-	const JANE_ROE_PERSON_UUID = '150';
-	const STAGECRAFT_LTD_COMPANY_UUID = '151';
-	const FERDINAND_FOO_PERSON_UUID = '152';
-	const BEATRICE_BAR_PERSON_UUID = '153';
-	const BRANDON_BAZ_PERSON_UUID = '154';
-	const THEATRICALS_LTD_COMPANY_UUID = '155';
-	const QUINCY_QUX_PERSON_UUID = '156';
-	const CLARA_QUUX_PERSON_UUID = '157';
-	const CHRISTIAN_QUUZ_PERSON_UUID = '158';
-	const CONOR_CORGE_PERSON_UUID = '159';
-	const BACKSTAGE_LTD_COMPANY_UUID = '160';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '179';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '211';
-	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '212';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '236';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID = '265';
-	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '299';
-	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '300';
+	const GARPLY_MATERIAL_UUID = '113';
+	const PLUGH_MATERIAL_UUID = '117';
+	const FRED_MATERIAL_UUID = '121';
+	const WALDO_MATERIAL_UUID = '125';
+	const PIYO_MATERIAL_UUID = '129';
+	const XYZZY_MATERIAL_UUID = '133';
+	const WIBBLE_MATERIAL_UUID = '137';
+	const HOGE_MATERIAL_UUID = '141';
+	const THUD_MATERIAL_UUID = '145';
+	const TOTO_MATERIAL_UUID = '149';
+	const FUGA_MATERIAL_UUID = '153';
+	const TUTU_MATERIAL_UUID = '157';
+	const GRAULT_MATERIAL_UUID = '161';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '170';
+	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '171';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '199';
+	const ANDREW_SCOTT_PERSON_UUID = '201';
+	const TOBY_JONES_PERSON_UUID = '202';
+	const WENDELL_PIERCE_PERSON_UUID = '203';
+	const JOHN_DOE_PERSON_UUID = '204';
+	const CURTAIN_UP_LTD_COMPANY_UUID = '206';
+	const JANE_ROE_PERSON_UUID = '207';
+	const STAGECRAFT_LTD_COMPANY_UUID = '209';
+	const FERDINAND_FOO_PERSON_UUID = '210';
+	const BEATRICE_BAR_PERSON_UUID = '211';
+	const BRANDON_BAZ_PERSON_UUID = '212';
+	const THEATRICALS_LTD_COMPANY_UUID = '213';
+	const QUINCY_QUX_PERSON_UUID = '214';
+	const CLARA_QUUX_PERSON_UUID = '215';
+	const CHRISTIAN_QUUZ_PERSON_UUID = '216';
+	const CONOR_CORGE_PERSON_UUID = '217';
+	const BACKSTAGE_LTD_COMPANY_UUID = '218';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '244';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '284';
+	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '285';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '315';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID = '352';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '396';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '397';
 
 	let laurenceOlivierAwards2020AwardCeremony;
 	let laurenceOlivierAwardsAward;
@@ -94,6 +107,8 @@ describe('Award ceremonies', () => {
 	let quincyQuxPerson;
 	let garplyLytteltonProduction;
 	let xyzzyPlayhouseProduction;
+	let garplyMaterial;
+	let xyzzyMaterial;
 
 	const sandbox = createSandbox();
 
@@ -496,6 +511,110 @@ describe('Award ceremonies', () => {
 					}
 				});
 
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Garply',
+					format: 'play',
+					year: '2019'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Plugh',
+					format: 'play',
+					year: '2019'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Fred',
+					format: 'play',
+					year: '2019'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Waldo',
+					format: 'play',
+					year: '2019'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Piyo',
+					format: 'play',
+					year: '2017'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Xyzzy',
+					format: 'play',
+					year: '2017'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Wibble',
+					format: 'play',
+					year: '2017'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Hoge',
+					format: 'play',
+					year: '2017'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Thud',
+					format: 'play',
+					year: '2017'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Toto',
+					format: 'play',
+					year: '2018'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Fuga',
+					format: 'play',
+					year: '2018'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Tutu',
+					format: 'play',
+					year: '2018'
+				});
+
+			await chai.request(app)
+				.post('/materials')
+				.send({
+					name: 'Grault',
+					format: 'play',
+					year: '2019'
+				});
+
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
@@ -629,6 +748,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Garply'
+									}
 								]
 							},
 							{
@@ -647,6 +771,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: PLUGH_PLAYHOUSE_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Plugh'
 									}
 								]
 							},
@@ -693,6 +822,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Garply'
+									}
 								]
 							},
 							{
@@ -711,6 +845,14 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: WALDO_NOËL_COWARD_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Fred'
+									},
+									{
+										name: 'Waldo'
 									}
 								]
 							}
@@ -819,6 +961,37 @@ describe('Award ceremonies', () => {
 								]
 							}
 						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Most Remarkable Play',
+						nominations: [
+							{
+								materials: [
+									{
+										name: 'Fred'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Garply'
+									},
+									{
+										name: 'Waldo'
+									}
+								]
+							},
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Plugh'
+									}
+								]
+							}
+						]
 					}
 				]
 			});
@@ -888,6 +1061,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: PIYO_HAROLD_PINTER_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Piyo'
+									}
 								]
 							},
 							{
@@ -909,6 +1087,11 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Xyzzy'
 									}
 								]
 							},
@@ -956,6 +1139,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: WIBBLE_WYNDHAMS_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Wibble'
+									}
 								]
 							},
 							{
@@ -968,6 +1156,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: HOGE_ALMEIDA_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Hoge'
 									}
 								]
 							}
@@ -1002,6 +1195,37 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID
+									}
+								]
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Most Remarkable Play',
+						nominations: [
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Hoge'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Thud'
+									},
+									{
+										name: 'Xyzzy'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Wibble'
 									}
 								]
 							}
@@ -1081,6 +1305,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: TOTO_NOËL_COWARD_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Toto'
+									}
 								]
 							},
 							{
@@ -1094,6 +1323,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: FUGA_OLIVIER_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Fuga'
 									}
 								]
 							},
@@ -1121,6 +1355,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: TUTU_PLAYHOUSE_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Tutu'
 									}
 								]
 							}
@@ -1194,6 +1433,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: GRAULT_ALMEIDA_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Grault'
+									}
 								]
 							},
 							{
@@ -1220,6 +1464,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Garply'
 									}
 								]
 							}
@@ -1251,6 +1500,34 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: WALDO_NOËL_COWARD_PRODUCTION_UUID
+									}
+								]
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Most Remarkable Play',
+						nominations: [
+							{
+								materials: [
+									{
+										name: 'Garply'
+									}
+								]
+							},
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Grault'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Waldo'
 									}
 								]
 							}
@@ -1403,6 +1680,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: WIBBLE_OLD_VIC_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Wibble'
+									}
 								]
 							},
 							{
@@ -1427,6 +1709,14 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: HOGE_ALMEIDA_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Xyzzy'
+									},
+									{
+										name: 'Hoge'
 									}
 								]
 							},
@@ -1471,6 +1761,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: WIBBLE_OLD_VIC_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Wibble'
+									}
 								]
 							},
 							{
@@ -1483,6 +1778,11 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: PIYO_HAROLD_PINTER_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Piyo'
 									}
 								]
 							}
@@ -1514,6 +1814,34 @@ describe('Award ceremonies', () => {
 									},
 									{
 										uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID
+									}
+								]
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Most Remarkable Play',
+						nominations: [
+							{
+								materials: [
+									{
+										name: 'Thud'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Wibble'
+									}
+								]
+							},
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Xyzzy'
 									}
 								]
 							}
@@ -1562,6 +1890,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: GRAULT_ALMEIDA_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Grault'
+									}
 								]
 							},
 							{
@@ -1580,6 +1913,17 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: PLUGH_PLAYHOUSE_PRODUCTION_UUID
+									},
+									{
+										uuid: FRED_OLD_VIC_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Plugh'
+									},
+									{
+										name: 'Fred'
 									}
 								]
 							},
@@ -1623,6 +1967,11 @@ describe('Award ceremonies', () => {
 									{
 										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
 									}
+								],
+								materials: [
+									{
+										name: 'Garply'
+									}
 								]
 							},
 							{
@@ -1635,10 +1984,12 @@ describe('Award ceremonies', () => {
 								],
 								productions: [
 									{
-										uuid: FRED_OLD_VIC_PRODUCTION_UUID
-									},
-									{
 										uuid: WALDO_DORFMAN_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Waldo'
 									}
 								]
 							}
@@ -1667,6 +2018,37 @@ describe('Award ceremonies', () => {
 								productions: [
 									{
 										uuid: WALDO_DORFMAN_PRODUCTION_UUID
+									}
+								]
+							}
+						]
+					},
+					// Contrivance for purposes of test.
+					{
+						name: 'Most Remarkable Play',
+						nominations: [
+							{
+								materials: [
+									{
+										name: 'Fred'
+									}
+								]
+							},
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Garply'
+									},
+									{
+										name: 'Plugh'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Waldo'
 									}
 								]
 							}
@@ -1704,6 +2086,12 @@ describe('Award ceremonies', () => {
 
 		xyzzyPlayhouseProduction = await chai.request(app)
 			.get(`/productions/${XYZZY_PLAYHOUSE_PRODUCTION_UUID}`);
+
+		garplyMaterial = await chai.request(app)
+			.get(`/materials/${GARPLY_MATERIAL_UUID}`);
+
+		xyzzyMaterial = await chai.request(app)
+			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
 	});
 
@@ -1746,7 +2134,8 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
-							]
+							],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -1772,7 +2161,8 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
-							]
+							],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -1815,7 +2205,8 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
-							]
+							],
+							materials: []
 						}
 					]
 				},
@@ -1864,6 +2255,15 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: GARPLY_MATERIAL_UUID,
+									name: 'Garply',
+									format: 'play',
+									year: 2019
+								}
 							]
 						},
 						{
@@ -1901,6 +2301,15 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: PLUGH_MATERIAL_UUID,
+									name: 'Plugh',
+									format: 'play',
+									year: 2019
+								}
 							]
 						},
 						{
@@ -1932,7 +2341,7 @@ describe('Award ceremonies', () => {
 								{
 									name: 'Theatricals Ltd',
 									model: 'COMPANY',
-									uuid: '155',
+									uuid: THEATRICALS_LTD_COMPANY_UUID,
 									members: [
 										{
 											model: 'PERSON',
@@ -1987,6 +2396,15 @@ describe('Award ceremonies', () => {
 										name: 'Wyndham\'s Theatre',
 										surVenue: null
 									}
+								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: GARPLY_MATERIAL_UUID,
+									name: 'Garply',
+									format: 'play',
+									year: 2019
 								}
 							]
 						},
@@ -2045,6 +2463,22 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: FRED_MATERIAL_UUID,
+									name: 'Fred',
+									format: 'play',
+									year: 2019
+								},
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'play',
+									year: 2019
+								}
 							]
 						}
 					]
@@ -2063,7 +2497,8 @@ describe('Award ceremonies', () => {
 									name: 'Jane Roe'
 								}
 							],
-							productions: []
+							productions: [],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -2086,7 +2521,8 @@ describe('Award ceremonies', () => {
 									members: []
 								}
 							],
-							productions: []
+							productions: [],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -2142,7 +2578,8 @@ describe('Award ceremonies', () => {
 									]
 								}
 							],
-							productions: []
+							productions: [],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -2155,7 +2592,8 @@ describe('Award ceremonies', () => {
 									members: []
 								}
 							],
-							productions: []
+							productions: [],
+							materials: []
 						}
 					]
 				},
@@ -2181,7 +2619,8 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
-							]
+							],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -2218,7 +2657,8 @@ describe('Award ceremonies', () => {
 										surVenue: null
 									}
 								}
-							]
+							],
+							materials: []
 						},
 						{
 							model: 'NOMINATION',
@@ -2237,6 +2677,65 @@ describe('Award ceremonies', () => {
 										name: 'Playhouse Theatre',
 										surVenue: null
 									}
+								}
+							],
+							materials: []
+						}
+					]
+				},
+				{
+					name: 'Most Remarkable Play',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: FRED_MATERIAL_UUID,
+									name: 'Fred',
+									format: 'play',
+									year: 2019
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: GARPLY_MATERIAL_UUID,
+									name: 'Garply',
+									format: 'play',
+									year: 2019
+								},
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'play',
+									year: 2019
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: PLUGH_MATERIAL_UUID,
+									name: 'Plugh',
+									format: 'play',
+									year: 2019
 								}
 							]
 						}
@@ -2350,6 +2849,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GRAULT_MATERIAL_UUID,
+													name: 'Grault',
+													format: 'play',
+													year: 2019
+												}
 											]
 										},
 										{
@@ -2382,6 +2890,35 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_OLD_VIC_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2019-09-01',
+													endDate: '2019-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLD_VIC_THEATRE_VENUE_UUID,
+														name: 'Old Vic Theatre',
+														surVenue: null
+													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PLUGH_MATERIAL_UUID,
+													name: 'Plugh',
+													format: 'play',
+													year: 2019
+												},
+												{
+													model: 'MATERIAL',
+													uuid: FRED_MATERIAL_UUID,
+													name: 'Fred',
+													format: 'play',
+													year: 2019
 												}
 											]
 										}
@@ -2423,6 +2960,15 @@ describe('Award ceremonies', () => {
 														name: 'Almeida Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GRAULT_MATERIAL_UUID,
+													name: 'Grault',
+													format: 'play',
+													year: 2019
 												}
 											]
 										}
@@ -2470,6 +3016,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: TOTO_MATERIAL_UUID,
+													name: 'Toto',
+													format: 'play',
+													year: 2018
+												}
 											]
 										}
 									]
@@ -2502,7 +3057,8 @@ describe('Award ceremonies', () => {
 													name: 'Jane Roe'
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								},
@@ -2571,6 +3127,22 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: XYZZY_MATERIAL_UUID,
+													name: 'Xyzzy',
+													format: 'play',
+													year: 2017
+												},
+												{
+													model: 'MATERIAL',
+													uuid: HOGE_MATERIAL_UUID,
+													name: 'Hoge',
+													format: 'play',
+													year: 2017
+												}
 											]
 										}
 									]
@@ -2629,6 +3201,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										},
 										{
@@ -2662,6 +3243,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PLUGH_MATERIAL_UUID,
+													name: 'Plugh',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -2687,7 +3277,8 @@ describe('Award ceremonies', () => {
 													members: []
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								}
@@ -2749,6 +3340,15 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: XYZZY_MATERIAL_UUID,
+													name: 'Xyzzy',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -2816,6 +3416,35 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_OLD_VIC_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2019-09-01',
+													endDate: '2019-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLD_VIC_THEATRE_VENUE_UUID,
+														name: 'Old Vic Theatre',
+														surVenue: null
+													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PLUGH_MATERIAL_UUID,
+													name: 'Plugh',
+													format: 'play',
+													year: 2019
+												},
+												{
+													model: 'MATERIAL',
+													uuid: FRED_MATERIAL_UUID,
+													name: 'Fred',
+													format: 'play',
+													year: 2019
 												}
 											]
 										}
@@ -2862,6 +3491,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: FUGA_MATERIAL_UUID,
+													name: 'Fuga',
+													format: 'play',
+													year: 2018
+												}
 											]
 										}
 									]
@@ -2893,7 +3531,8 @@ describe('Award ceremonies', () => {
 													name: 'Jane Roe'
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								},
@@ -2919,6 +3558,15 @@ describe('Award ceremonies', () => {
 														name: 'Harold Pinter Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PIYO_MATERIAL_UUID,
+													name: 'Piyo',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -2972,6 +3620,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PLUGH_MATERIAL_UUID,
+													name: 'Plugh',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -2985,7 +3642,8 @@ describe('Award ceremonies', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								}
@@ -3018,6 +3676,15 @@ describe('Award ceremonies', () => {
 														name: 'Harold Pinter Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: PIYO_MATERIAL_UUID,
+													name: 'Piyo',
+													format: 'play',
+													year: 2017
 												}
 											]
 										},
@@ -3067,6 +3734,15 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: XYZZY_MATERIAL_UUID,
+													name: 'Xyzzy',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -3173,6 +3849,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -3241,6 +3926,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -3297,6 +3991,15 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: TUTU_MATERIAL_UUID,
+													name: 'Tutu',
+													format: 'play',
+													year: 2018
 												}
 											]
 										}
@@ -3363,7 +4066,8 @@ describe('Award ceremonies', () => {
 													]
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								},
@@ -3434,6 +4138,15 @@ describe('Award ceremonies', () => {
 														name: 'Old Vic Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -3538,6 +4251,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -3596,7 +4318,8 @@ describe('Award ceremonies', () => {
 													]
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								}
@@ -3687,6 +4410,15 @@ describe('Award ceremonies', () => {
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -3792,6 +4524,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -3854,6 +4595,15 @@ describe('Award ceremonies', () => {
 														name: 'Playhouse Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: TUTU_MATERIAL_UUID,
+													name: 'Tutu',
+													format: 'play',
+													year: 2018
 												}
 											]
 										}
@@ -3919,7 +4669,8 @@ describe('Award ceremonies', () => {
 													name: 'Conor Corge'
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								},
@@ -3989,6 +4740,15 @@ describe('Award ceremonies', () => {
 														name: 'Old Vic Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -4092,6 +4852,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -4149,7 +4918,8 @@ describe('Award ceremonies', () => {
 													name: 'Conor Corge'
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								}
@@ -4239,6 +5009,15 @@ describe('Award ceremonies', () => {
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -4344,6 +5123,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -4411,6 +5199,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -4475,7 +5272,8 @@ describe('Award ceremonies', () => {
 													name: 'Conor Corge'
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								},
@@ -4545,6 +5343,15 @@ describe('Award ceremonies', () => {
 														name: 'Old Vic Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -4648,6 +5455,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -4705,7 +5521,8 @@ describe('Award ceremonies', () => {
 													]
 												}
 											],
-											productions: []
+											productions: [],
+											materials: []
 										}
 									]
 								}
@@ -4795,6 +5612,15 @@ describe('Award ceremonies', () => {
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: WIBBLE_MATERIAL_UUID,
+													name: 'Wibble',
+													format: 'play',
+													year: 2017
 												}
 											]
 										}
@@ -4887,7 +5713,16 @@ describe('Award ceremonies', () => {
 													name: 'Conor Corge'
 												}
 											],
-											coProductions: []
+											coProductions: [],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
+											]
 										}
 									]
 								},
@@ -4899,7 +5734,8 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											coProductions: []
+											coProductions: [],
+											materials: []
 										}
 									]
 								}
@@ -4953,7 +5789,16 @@ describe('Award ceremonies', () => {
 													]
 												}
 											],
-											coProductions: []
+											coProductions: [],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
+											]
 										}
 									]
 								},
@@ -4965,7 +5810,8 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											coProductions: []
+											coProductions: [],
+											materials: []
 										}
 									]
 								}
@@ -5010,6 +5856,15 @@ describe('Award ceremonies', () => {
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
 													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
 												}
 											]
 										},
@@ -5081,6 +5936,15 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: GARPLY_MATERIAL_UUID,
+													name: 'Garply',
+													format: 'play',
+													year: 2019
+												}
 											]
 										}
 									]
@@ -5107,7 +5971,8 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
-											]
+											],
+											materials: []
 										}
 									]
 								}
@@ -5196,6 +6061,22 @@ describe('Award ceremonies', () => {
 														surVenue: null
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: XYZZY_MATERIAL_UUID,
+													name: 'Xyzzy',
+													format: 'play',
+													year: 2017
+												},
+												{
+													model: 'MATERIAL',
+													uuid: HOGE_MATERIAL_UUID,
+													name: 'Hoge',
+													format: 'play',
+													year: 2017
+												}
 											]
 										}
 									]
@@ -5226,7 +6107,8 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
-											]
+											],
+											materials: []
 										}
 									]
 								}
@@ -5287,6 +6169,15 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: XYZZY_MATERIAL_UUID,
+													name: 'Xyzzy',
+													format: 'play',
+													year: 2017
+												}
 											]
 										}
 									]
@@ -5317,7 +6208,8 @@ describe('Award ceremonies', () => {
 														}
 													}
 												}
-											]
+											],
+											materials: []
 										}
 									]
 								}
@@ -5328,6 +6220,616 @@ describe('Award ceremonies', () => {
 			];
 
 			const { awards } = xyzzyPlayhouseProduction.body;
+
+			expect(awards).to.deep.equal(expectedAwards);
+
+		});
+
+	});
+
+	describe('Garply (material)', () => {
+
+		it('includes its award nominations', () => {
+
+			const expectedAwards = [
+				{
+					model: 'AWARD',
+					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Critics\' Circle Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														},
+														{
+															model: 'PERSON',
+															uuid: BEATRICE_BAR_PERSON_UUID,
+															name: 'Beatrice Bar'
+														},
+														{
+															model: 'PERSON',
+															uuid: BRANDON_BAZ_PERSON_UUID,
+															name: 'Brandon Baz'
+														}
+													]
+												},
+												{
+													model: 'COMPANY',
+													uuid: THEATRICALS_LTD_COMPANY_UUID,
+													name: 'Theatricals Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: QUINCY_QUX_PERSON_UUID,
+															name: 'Quincy Qux'
+														},
+														{
+															model: 'PERSON',
+															uuid: CLARA_QUUX_PERSON_UUID,
+															name: 'Clara Quux'
+														},
+														{
+															model: 'PERSON',
+															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+															name: 'Christian Quuz'
+														}
+													]
+												},
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
+											coMaterials: []
+										}
+									]
+								},
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											entities: [],
+											productions: [],
+											coMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: PLUGH_MATERIAL_UUID,
+													name: 'Plugh',
+													format: 'play',
+													year: 2019
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Evening Standard Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THEATRICALS_LTD_COMPANY_UUID,
+													name: 'Theatricals Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: QUINCY_QUX_PERSON_UUID,
+															name: 'Quincy Qux'
+														},
+														{
+															model: 'PERSON',
+															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+															name: 'Christian Quuz'
+														},
+														{
+															model: 'PERSON',
+															uuid: CLARA_QUUX_PERSON_UUID,
+															name: 'Clara Quux'
+														}
+													]
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
+											coMaterials: []
+										}
+									]
+								},
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [],
+											productions: [],
+											coMaterials: []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
+					name: 'Laurence Olivier Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							name: '2020',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JOHN_DOE_PERSON_UUID,
+													name: 'John Doe'
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-07-01',
+													endDate: '2019-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
+											coMaterials: []
+										},
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														},
+														{
+															model: 'PERSON',
+															uuid: BEATRICE_BAR_PERSON_UUID,
+															name: 'Beatrice Bar'
+														},
+														{
+															model: 'PERSON',
+															uuid: BRANDON_BAZ_PERSON_UUID,
+															name: 'Brandon Baz'
+														}
+													]
+												},
+												{
+													model: 'COMPANY',
+													uuid: THEATRICALS_LTD_COMPANY_UUID,
+													name: 'Theatricals Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: QUINCY_QUX_PERSON_UUID,
+															name: 'Quincy Qux'
+														},
+														{
+															model: 'PERSON',
+															uuid: CLARA_QUUX_PERSON_UUID,
+															name: 'Clara Quux'
+														},
+														{
+															model: 'PERSON',
+															uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+															name: 'Christian Quuz'
+														}
+													]
+												},
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Garply',
+													startDate: '2019-07-01',
+													endDate: '2019-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
+											coMaterials: []
+										}
+									]
+								},
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [],
+											productions: [],
+											coMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: WALDO_MATERIAL_UUID,
+													name: 'Waldo',
+													format: 'play',
+													year: 2019
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { awards } = garplyMaterial.body;
+
+			expect(awards).to.deep.equal(expectedAwards);
+
+		});
+
+	});
+
+	describe('Xyzzy (material)', () => {
+
+		it('includes its award nominations', () => {
+
+			const expectedAwards = [
+				{
+					model: 'AWARD',
+					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Evening Standard Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID,
+							name: '2017',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'PERSON',
+													uuid: JOHN_DOE_PERSON_UUID,
+													name: 'John Doe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: BACKSTAGE_LTD_COMPANY_UUID,
+													name: 'Backstage Ltd',
+													members: []
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_DORFMAN_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2017-06-01',
+													endDate: '2017-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DORFMAN_THEATRE_VENUE_UUID,
+														name: 'Dorfman Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2017-07-01',
+													endDate: '2017-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+														name: 'Playhouse Theatre',
+														surVenue: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_ALMEIDA_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2017-10-01',
+													endDate: '2017-10-31',
+													venue: {
+														model: 'VENUE',
+														uuid: ALMEIDA_THEATRE_VENUE_UUID,
+														name: 'Almeida Theatre',
+														surVenue: null
+													}
+												}
+											],
+											coMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: HOGE_MATERIAL_UUID,
+													name: 'Hoge',
+													format: 'play',
+													year: 2017
+												}
+											]
+										}
+									]
+								},
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											entities: [],
+											productions: [],
+											coMaterials: []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
+					name: 'Laurence Olivier Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							name: '2018',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: CURTAIN_UP_LTD_COMPANY_UUID,
+													name: 'Curtain Up Ltd',
+													members: []
+												},
+												{
+													model: 'PERSON',
+													uuid: JOHN_DOE_PERSON_UUID,
+													name: 'John Doe'
+												}
+											],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_DORFMAN_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2017-06-01',
+													endDate: '2017-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DORFMAN_THEATRE_VENUE_UUID,
+														name: 'Dorfman Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2017-07-01',
+													endDate: '2017-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+														name: 'Playhouse Theatre',
+														surVenue: null
+													}
+												}
+											],
+											coMaterials: []
+										}
+									]
+								},
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											entities: [],
+											productions: [],
+											coMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: THUD_MATERIAL_UUID,
+													name: 'Thud',
+													format: 'play',
+													year: 2017
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { awards } = xyzzyMaterial.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
 

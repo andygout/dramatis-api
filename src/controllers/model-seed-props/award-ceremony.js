@@ -8,6 +8,9 @@ export default {
 					],
 					productions: [
 						{}
+					],
+					materials: [
+						{}
 					]
 				}
 			]

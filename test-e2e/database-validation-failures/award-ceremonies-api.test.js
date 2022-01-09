@@ -81,7 +81,8 @@ describe('Database validation failures: Award ceremonies API', () => {
 												]
 											}
 										}
-									]
+									],
+									materials: []
 								}
 							]
 						}
@@ -191,7 +192,8 @@ describe('Database validation failures: Award ceremonies API', () => {
 												]
 											}
 										}
-									]
+									],
+									materials: []
 								}
 							]
 						}

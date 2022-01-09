@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, stub } from 'sinon';
 
-import { CompanyWithMembers, Person, ProductionIdentifier } from '../../../src/models';
+import { CompanyWithMembers, MaterialBase, Person, ProductionIdentifier } from '../../../src/models';
 
 describe('Nomination model', () => {
 
@@ -11,6 +11,12 @@ describe('Nomination model', () => {
 	const CompanyWithMembersStub = function () {
 
 		return createStubInstance(CompanyWithMembers);
+
+	};
+
+	const MaterialBaseStub = function () {
+
+		return createStubInstance(MaterialBase);
 
 	};
 
@@ -34,10 +40,12 @@ describe('Nomination model', () => {
 				isEntityInArray: stub().returns(false)
 			},
 			getDuplicateIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateProductionIdentifierIndices: stub().returns([])
 			},
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
+				MaterialBase: MaterialBaseStub,
 				Person: PersonStub,
 				ProductionIdentifier: ProductionIdentifierStub
 			}
@@ -184,6 +192,40 @@ describe('Nomination model', () => {
 
 		});
 
+		describe('materials property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({});
+				expect(instance.materials).to.deep.equal([]);
+
+			});
+
+			it('assigns array of materials if included in props, retaining those with empty or whitespace-only string names', () => {
+
+				const props = {
+					materials: [
+						{
+							name: 'Baghdad Wedding'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.materials.length).to.equal(3);
+				expect(instance.materials[0] instanceof MaterialBase).to.be.true;
+				expect(instance.materials[1] instanceof MaterialBase).to.be.true;
+				expect(instance.materials[2] instanceof MaterialBase).to.be.true;
+
+			});
+
+		});
+
 	});
 
 	describe('runInputValidations method', () => {
@@ -204,6 +246,11 @@ describe('Nomination model', () => {
 					{
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
+				],
+				materials: [
+					{
+						name: 'Baghdad Wedding'
+					}
 				]
 			};
 			const instance = createInstance(props);
@@ -223,7 +270,11 @@ describe('Nomination model', () => {
 				instance.entities[1].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
 				instance.productions[0].validateUuid,
-				instance.productions[0].validateUniquenessInGroup
+				instance.productions[0].validateUniquenessInGroup,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.materials[0].validateName,
+				instance.materials[0].validateDifferentiator,
+				instance.materials[0].validateUniquenessInGroup
 			);
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
@@ -261,6 +312,19 @@ describe('Nomination model', () => {
 			expect(instance.productions[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.productions[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false, properties: new Set(['uuid']) }
+			)).to.be.true;
+
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+				instance.materials
+			)).to.be.true;
+			expect(instance.materials[0].validateName.calledOnce).to.be.true;
+			expect(instance.materials[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.materials[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.materials[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.materials[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.materials[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false }
 			)).to.be.true;
 
 		});

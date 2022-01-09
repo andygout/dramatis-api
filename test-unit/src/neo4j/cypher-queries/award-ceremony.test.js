@@ -31,7 +31,13 @@ describe('Cypher Queries Award Ceremony module', () => {
 							THEN null
 							ELSE category { .name, nominations }
 						END
-					) + [{ nominations: [{ entities: [{}], productions: [{ uuid: '' }] }] }] AS categories
+					) + [{
+						nominations: [{
+							entities: [{}],
+							productions: [{ uuid: '' }],
+							materials: [{}]
+						}]
+					}] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -82,7 +88,13 @@ describe('Cypher Queries Award Ceremony module', () => {
 							THEN null
 							ELSE category { .name, nominations }
 						END
-					) + [{ nominations: [{ entities: [{}], productions: [{ uuid: '' }] }] }] AS categories
+					) + [{
+						nominations: [{
+							entities: [{}],
+							productions: [{ uuid: '' }],
+							materials: [{}]
+						}]
+					}] AS categories
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;

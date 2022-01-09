@@ -55,6 +55,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							}
 						]
@@ -132,6 +140,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							}
 						]
@@ -183,6 +199,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -240,6 +264,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -315,46 +347,60 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const DONMAR_WAREHOUSE_VENUE_UUID = '14';
 		const GRAULT_ALMEIDA_PRODUCTION_UUID = '15';
 		const ALMEIDA_THEATRE_VENUE_UUID = '17';
-		const AWARD_CEREMONY_UUID = '33';
-		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '34';
-		const STEVE_C_KENNEDY_PERSON_UUID = '35';
-		const SOUNDWAVES_LTD_COMPANY_UUID = '36';
-		const PAUL_ARDITTI_PERSON_UUID = '37';
-		const JOCELYN_POOK_PERSON_UUID = '38';
-		const AUTOGRAPH_COMPANY_UUID = '39';
-		const TERRY_JARDINE_PERSON_UUID = '40';
-		const NICK_LIDSTER_PERSON_UUID ='41';
-		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '42';
-		const SIMON_BAKER_PERSON_UUID ='43';
-		const ROB_ASHFORD_PERSON_UUID = '44';
-		const MARIANNE_ELLIOTT_PERSON_UUID = '45';
-		const TOM_MORRIS_PERSON_UUID = '46';
-		const RUPERT_GOOLD_PERSON_UUID = '47';
-		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '48';
-		const PIAF_DONMAR_PRODUCTION_UUID = '51';
-		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '54';
-		const VAUDEVILLE_THEATRE_VENUE_UUID = '56';
-		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '57';
-		const WALDO_DORFMAN_PRODUCTION_UUID = '60';
-		const DORFMAN_THEATRE_VENUE_UUID = '62';
-		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '63';
-		const NOËL_COWARD_THEATRE_VENUE_UUID = '65';
-		const FRED_OLD_VIC_PRODUCTION_UUID = '66';
-		const OLD_VIC_THEATRE_VENUE_UUID = '68';
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '83';
-		const PAULE_CONSTABLE_PERSON_UUID = '84';
-		const ILLUMINATIONS_LTD_COMPANY_UUID = '85';
-		const NEIL_AUSTIN_PERSON_UUID = '86';
-		const MARK_HENDERSON_PERSON_UUID = '87';
-		const LIMELIGHT_LTD_COMPANY_UUID = '88';
-		const KEVIN_ADAMS_PERSON_UUID = '89';
-		const JON_CLARK_PERSON_UUID = '90';
-		const STAGE_SUN_LTD_COMPANY_UUID = '91';
-		const HOWARD_HARRISON_PERSON_UUID = '92';
-		const RAFAEL_AMARGO_PERSON_UUID = '93';
-		const STEVEN_HOGGETT_PERSON_UUID = '94';
-		const LYNNE_PAGE_PERSON_UUID = '95';
-		const KATE_PRINCE_PERSON_UUID = '96';
+		const AWARD_CEREMONY_UUID = '40';
+		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '41';
+		const STEVE_C_KENNEDY_PERSON_UUID = '42';
+		const HAIRSPRAY_MATERIAL_UUID = '43';
+		const SOUNDWAVES_LTD_COMPANY_UUID = '44';
+		const GARPLY_MATERIAL_UUID = '45';
+		const PAUL_ARDITTI_PERSON_UUID = '46';
+		const JOCELYN_POOK_PERSON_UUID = '47';
+		const SAINT_JOAN_MATERIAL_UUID = '48';
+		const AUTOGRAPH_COMPANY_UUID = '49';
+		const TERRY_JARDINE_PERSON_UUID = '50';
+		const NICK_LIDSTER_PERSON_UUID ='51';
+		const PARADE_MATERIAL_UUID = '52';
+		const AUDIO_CREATIVE_LTD_COMPANY_UUID = '53';
+		const SIMON_BAKER_PERSON_UUID ='54';
+		const ROB_ASHFORD_PERSON_UUID = '55';
+		const MARIANNE_ELLIOTT_PERSON_UUID = '56';
+		const TOM_MORRIS_PERSON_UUID = '57';
+		const RUPERT_GOOLD_PERSON_UUID = '58';
+		const A_DISAPPEARING_NUMBER_MATERIAL_UUID = '59';
+		const THE_REPORTER_MATERIAL_UUID = '60';
+		const VERNON_GOD_LITTLE_MATERIAL_UUID = '61';
+		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '62';
+		const PIAF_DONMAR_PRODUCTION_UUID = '65';
+		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '68';
+		const VAUDEVILLE_THEATRE_VENUE_UUID = '70';
+		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '71';
+		const WALDO_DORFMAN_PRODUCTION_UUID = '74';
+		const DORFMAN_THEATRE_VENUE_UUID = '76';
+		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '77';
+		const NOËL_COWARD_THEATRE_VENUE_UUID = '79';
+		const FRED_OLD_VIC_PRODUCTION_UUID = '80';
+		const OLD_VIC_THEATRE_VENUE_UUID = '82';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '104';
+		const PAULE_CONSTABLE_PERSON_UUID = '105';
+		const THE_CHALK_GARDEN_MATERIAL_UUID = '106';
+		const ILLUMINATIONS_LTD_COMPANY_UUID = '107';
+		const PIAF_MATERIAL_UUID = '108';
+		const NEIL_AUSTIN_PERSON_UUID = '109';
+		const MARK_HENDERSON_PERSON_UUID = '110';
+		const IVANOV_MATERIAL_UUID = '111';
+		const LIMELIGHT_LTD_COMPANY_UUID = '112';
+		const KEVIN_ADAMS_PERSON_UUID = '113';
+		const JON_CLARK_PERSON_UUID = '114';
+		const WALDO_MATERIAL_UUID = '115';
+		const STAGE_SUN_LTD_COMPANY_UUID = '116';
+		const HOWARD_HARRISON_PERSON_UUID = '117';
+		const RAFAEL_AMARGO_PERSON_UUID = '118';
+		const STEVEN_HOGGETT_PERSON_UUID = '119';
+		const LYNNE_PAGE_PERSON_UUID = '120';
+		const KATE_PRINCE_PERSON_UUID = '121';
+		const ENGLAND_PEOPLE_VERY_NICE_MATERIAL_UUID = '122';
+		const JERUSALEM_MATERIAL_UUID = '123';
+		const OUR_CLASS_MATERIAL_UUID = '124';
 
 		before(async () => {
 
@@ -465,6 +511,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										{
 											uuid: HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID
 										}
+									],
+									// Contrivance for purposes of test.
+									materials: [
+										{
+											name: 'Hairspray',
+											differentiator: '1'
+										}
 									]
 								},
 								// Contrivance for purposes of test.
@@ -483,6 +536,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										{
 											uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
 										}
+									],
+									materials: [
+										{
+											name: 'Garply',
+											differentiator: '1'
+										}
 									]
 								},
 								{
@@ -500,6 +559,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									productions: [
 										{
 											uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID
+										}
+									],
+									// Contrivance for purposes of test.
+									materials: [
+										{
+											name: 'Saint Joan',
+											differentiator: '1'
 										}
 									]
 								},
@@ -524,6 +590,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									productions: [
 										{
 											uuid: PARADE_DONMAR_PRODUCTION_UUID
+										}
+									],
+									// Contrivance for purposes of test.
+									materials: [
+										{
+											name: 'Parade',
+											differentiator: '1'
 										}
 									]
 								},
@@ -552,6 +625,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										},
 										{
 											uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Garply',
+											differentiator: '1'
 										}
 									]
 								}
@@ -623,6 +702,36 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							]
 						},
 						{
+							name: 'Best New Play',
+							nominations: [
+								{
+									isWinner: true,
+									materials: [
+										{
+											name: 'A Disappearing Number',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									materials: [
+										{
+											name: 'The Reporter',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									materials: [
+										{
+											name: 'Vernon God Little',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
 							name: 'Best New Dance Production'
 						}
 					]
@@ -674,6 +783,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Hairspray',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -718,6 +841,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -753,6 +890,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Saint Joan',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -804,6 +955,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Parade',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -862,6 +1027,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -880,6 +1059,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -915,6 +1102,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -947,6 +1142,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -973,6 +1176,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -991,6 +1202,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1030,6 +1249,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1053,6 +1280,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1080,6 +1315,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1098,6 +1341,151 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'A Disappearing Number',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'The Reporter',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Vernon God Little',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1127,6 +1515,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							}
 						]
@@ -1152,6 +1548,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1210,6 +1614,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: HAIRSPRAY_MATERIAL_UUID,
+										name: 'Hairspray',
+										format: null,
+										year: null
+									}
 								]
 							},
 							{
@@ -1250,6 +1663,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: GARPLY_MATERIAL_UUID,
+										name: 'Garply',
+										format: null,
+										year: null
+									}
 								]
 							},
 							{
@@ -1280,6 +1702,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											name: 'Olivier Theatre',
 											surVenue: null
 										}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: SAINT_JOAN_MATERIAL_UUID,
+										name: 'Saint Joan',
+										format: null,
+										year: null
 									}
 								]
 							},
@@ -1318,6 +1749,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											name: 'Donmar Warehouse',
 											surVenue: null
 										}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: PARADE_MATERIAL_UUID,
+										name: 'Parade',
+										format: null,
+										year: null
 									}
 								]
 							},
@@ -1370,6 +1810,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: GARPLY_MATERIAL_UUID,
+										name: 'Garply',
+										format: null,
+										year: null
+									}
 								]
 							}
 						]
@@ -1388,7 +1837,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Rob Ashford'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -1405,7 +1855,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Tom Morris'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -1417,7 +1868,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Rupert Goold'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							}
 						]
 					},
@@ -1456,7 +1908,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
-								]
+								],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -1476,7 +1929,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
-								]
+								],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -1495,6 +1949,58 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											name: 'Olivier Theatre',
 											surVenue: null
 										}
+									}
+								],
+								materials: []
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: A_DISAPPEARING_NUMBER_MATERIAL_UUID,
+										name: 'A Disappearing Number',
+										format: null,
+										year: null
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: THE_REPORTER_MATERIAL_UUID,
+										name: 'The Reporter',
+										format: null,
+										year: null
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: VERNON_GOD_LITTLE_MATERIAL_UUID,
+										name: 'Vernon God Little',
+										format: null,
+										year: null
 									}
 								]
 							}
@@ -1564,6 +2070,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Hairspray',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1608,6 +2128,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1643,6 +2177,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Saint Joan',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1694,6 +2242,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Parade',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1752,6 +2314,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1770,6 +2346,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1805,6 +2389,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1837,6 +2429,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1863,6 +2463,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1881,6 +2489,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1920,6 +2536,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1943,6 +2567,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -1970,6 +2602,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -1988,6 +2628,151 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'A Disappearing Number',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'The Reporter',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Vernon God Little',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2017,6 +2802,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							}
 						]
@@ -2042,6 +2835,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2162,6 +2963,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										{
 											uuid: THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID
 										}
+									],
+									materials: [
+										{
+											name: 'The Chalk Garden',
+											differentiator: '1'
+										}
 									]
 								},
 								{
@@ -2179,6 +2986,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										{
 											uuid: PIAF_VAUDEVILLE_PRODUCTION_UUID
 										}
+									],
+									materials: [
+										{
+											name: 'Piaf',
+											differentiator: '1'
+										}
 									]
 								},
 								{
@@ -2195,6 +3008,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									productions: [
 										{
 											uuid: IVANOV_WYNDHAMS_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Ivanov',
+											differentiator: '1'
 										}
 									]
 								},
@@ -2223,6 +3042,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										{
 											uuid: WALDO_NOËL_COWARD_PRODUCTION_UUID
 										}
+									],
+									materials: [
+										{
+											name: 'Waldo',
+											differentiator: '1'
+										}
 									]
 								},
 								{
@@ -2249,6 +3074,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										},
 										{
 											uuid: WALDO_NOËL_COWARD_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Waldo',
+											differentiator: '1'
 										}
 									]
 								}
@@ -2322,6 +3153,36 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							]
 						},
 						{
+							name: 'Best Play',
+							nominations: [
+								{
+									materials: [
+										{
+											name: 'England People Very Nice',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									isWinner: true,
+									materials: [
+										{
+											name: 'Jerusalem',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									materials: [
+										{
+											name: 'Our Class',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
 							name: 'Best New Opera Production'
 						}
 					]
@@ -2373,6 +3234,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'The Chalk Garden',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2417,6 +3292,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Piaf',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2452,6 +3341,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Ivanov',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2510,6 +3413,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Waldo',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2566,6 +3483,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Waldo',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2584,6 +3515,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2619,6 +3558,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2643,6 +3590,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2677,6 +3632,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2695,6 +3658,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2729,6 +3700,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2757,6 +3736,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2789,6 +3776,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							},
 							{
@@ -2807,6 +3802,151 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Play',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'England People Very Nice',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Jerusalem',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Our Class',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2836,6 +3976,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: '',
 										errors: {}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
 								]
 							}
 						]
@@ -2861,6 +4009,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]
@@ -2919,6 +4075,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: THE_CHALK_GARDEN_MATERIAL_UUID,
+										name: 'The Chalk Garden',
+										format: null,
+										year: null
+									}
 								]
 							},
 							{
@@ -2959,6 +4124,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: PIAF_MATERIAL_UUID,
+										name: 'Piaf',
+										format: null,
+										year: null
+									}
 								]
 							},
 							{
@@ -2989,6 +4163,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											name: 'Wyndham\'s Theatre',
 											surVenue: null
 										}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: IVANOV_MATERIAL_UUID,
+										name: 'Ivanov',
+										format: null,
+										year: null
 									}
 								]
 							},
@@ -3041,6 +4224,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: WALDO_MATERIAL_UUID,
+										name: 'Waldo',
+										format: null,
+										year: null
+									}
 								]
 							},
 							{
@@ -3092,6 +4284,15 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: WALDO_MATERIAL_UUID,
+										name: 'Waldo',
+										format: null,
+										year: null
+									}
 								]
 							}
 						]
@@ -3110,7 +4311,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Rafael Amargo'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -3122,7 +4324,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Steven Hoggett'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -3139,7 +4342,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Kate Prince'
 									}
 								],
-								productions: []
+								productions: [],
+								materials: []
 							}
 						]
 					},
@@ -3165,7 +4369,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
-								]
+								],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -3198,7 +4403,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											surVenue: null
 										}
 									}
-								]
+								],
+								materials: []
 							},
 							{
 								model: 'NOMINATION',
@@ -3230,6 +4436,58 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											name: 'Noël Coward Theatre',
 											surVenue: null
 										}
+									}
+								],
+								materials: []
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Play',
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: ENGLAND_PEOPLE_VERY_NICE_MATERIAL_UUID,
+										name: 'England People Very Nice',
+										format: null,
+										year: null
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: JERUSALEM_MATERIAL_UUID,
+										name: 'Jerusalem',
+										format: null,
+										year: null
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								entities: [],
+								productions: [],
+								materials: [
+									{
+										model: 'MATERIAL',
+										uuid: OUR_CLASS_MATERIAL_UUID,
+										name: 'Our Class',
+										format: null,
+										year: null
 									}
 								]
 							}
@@ -3291,6 +4549,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 									{
 										model: 'PRODUCTION_IDENTIFIER',
 										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
 										errors: {}
 									}
 								]

@@ -1,7 +1,7 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
-import { getDuplicateProductionIdentifierIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateBaseInstanceIndices, getDuplicateProductionIdentifierIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { CompanyWithMembers, Person, ProductionIdentifier } from '.';
+import { CompanyWithMembers, MaterialBase, Person, ProductionIdentifier } from '.';
 import { MODELS } from '../utils/constants';
 
 export default class Nomination extends Base {
@@ -10,7 +10,7 @@ export default class Nomination extends Base {
 
 		super(props);
 
-		const { isWinner, entities, productions } = props;
+		const { isWinner, entities, productions, materials } = props;
 
 		this.isWinner = Boolean(isWinner);
 
@@ -27,6 +27,10 @@ export default class Nomination extends Base {
 
 		this.productions = productions
 			? productions.map(production => new ProductionIdentifier(production))
+			: [];
+
+		this.materials = materials
+			? materials.map(material => new MaterialBase(material))
 			: [];
 
 	}
@@ -62,6 +66,18 @@ export default class Nomination extends Base {
 			production.validateUniquenessInGroup(
 				{ isDuplicate: duplicateProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }
 			);
+
+		});
+
+		const duplicateMaterialIndices = getDuplicateBaseInstanceIndices(this.materials);
+
+		this.materials.forEach((material, index) => {
+
+			material.validateName({ isRequired: false });
+
+			material.validateDifferentiator();
+
+			material.validateUniquenessInGroup({ isDuplicate: duplicateMaterialIndices.includes(index) });
 
 		});
 

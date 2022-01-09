@@ -301,7 +301,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				writingCredits: [],
 				characterGroups: [],
 				productions: [],
-				sourcingMaterialProductions: []
+				sourcingMaterialProductions: [],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);
@@ -709,7 +710,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					}
 				],
 				productions: [],
-				sourcingMaterialProductions: []
+				sourcingMaterialProductions: [],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);
@@ -1213,7 +1215,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					}
 				],
 				productions: [],
-				sourcingMaterialProductions: []
+				sourcingMaterialProductions: [],
+				awards: []
 			};
 
 			expect(response).to.have.status(200);
