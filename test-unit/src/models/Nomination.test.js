@@ -254,8 +254,6 @@ describe('Nomination model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.entities[0].name = 'Simon Baker';
-			instance.entities[1].name = 'Autograph';
 			instance.runInputValidations();
 			assert.callOrder(
 				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
