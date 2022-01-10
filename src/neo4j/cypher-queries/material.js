@@ -756,11 +756,11 @@ const getShowQuery = () => `
 			END
 		) AS nominatedProductions
 
-	OPTIONAL MATCH (category)-[coNominatedRel:HAS_NOMINEE]->(coNominatedMaterial:Material)
+	OPTIONAL MATCH (category)-[coNominatedMaterialRel:HAS_NOMINEE]->(coNominatedMaterial:Material)
 		WHERE
 			(
 				nomineeRel.nominationPosition IS NULL OR
-				nomineeRel.nominationPosition = coNominatedRel.nominationPosition
+				nomineeRel.nominationPosition = coNominatedMaterialRel.nominationPosition
 			) AND
 			coNominatedMaterial.uuid <> material.uuid
 
@@ -779,9 +779,9 @@ const getShowQuery = () => `
 		award,
 		nominatedEntities,
 		nominatedProductions,
-		coNominatedRel,
+		coNominatedMaterialRel,
 		coNominatedMaterial
-		ORDER BY coNominatedRel.materialPosition
+		ORDER BY coNominatedMaterialRel.materialPosition
 
 	WITH
 		material,
