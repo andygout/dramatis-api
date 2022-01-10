@@ -47,7 +47,7 @@ export default async () => {
 
 		const modelsWithIndex =
 			indexes
-				.filter(index => index.properties.includes('name'))
+				.filter(index => index.name.startsWith('index') && index.properties?.includes('name'))
 				.map(index => index.labelsOrTypes[0]);
 
 		const modelsToIndex = [...INDEXABLE_MODELS].filter(model => !modelsWithIndex.includes(model));
