@@ -179,8 +179,6 @@ describe('WritingCredit model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.entities[2].name = 'A Midsummer Night\'s Dream';
-			instance.entities[2].differentiator = '1';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations(

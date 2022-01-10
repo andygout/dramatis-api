@@ -120,10 +120,6 @@ describe('ProductionTeamCredit model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.entities[0].name = 'Sara Gunter';
-			instance.entities[1].name = 'Assistant Stage Managers Ltd';
-			instance.entities[1].members = [createStubInstance(Person)];
-			instance.entities[1].members[0].name = 'Julia Wickham';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfNamedChildren');

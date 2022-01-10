@@ -93,7 +93,6 @@ describe('CompanyWithMembers model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.members[0].name = 'Edward Snape';
 			spy(instance, 'validateNamePresenceIfNamedChildren');
 			instance.runInputValidations({ duplicateEntities: [] });
 			assert.callOrder(

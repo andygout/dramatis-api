@@ -120,8 +120,6 @@ describe('ProducerCredit model', () => {
 				]
 			};
 			const instance = createInstance(props);
-			instance.entities[0].name = 'Jason Haigh-Ellery';
-			instance.entities[1].name = 'Fiery Angel';
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations({ isDuplicate: false });
