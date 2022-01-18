@@ -136,7 +136,10 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				producerProductions: [],
 				creativeProductions: [],
 				crewProductions: [],
-				awards: []
+				awards: [],
+				subsequentVersionMaterialAwards: [],
+				sourcingMaterialAwards: [],
+				rightsGrantorMaterialAwards: []
 			};
 
 			expect(response).to.have.status(200);
