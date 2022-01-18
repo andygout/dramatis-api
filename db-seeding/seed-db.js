@@ -24,9 +24,9 @@ async function performFetch (url, instance) {
 
 };
 
-async function seedInstances (pluralisedModel) {
+async function seedInstances (directoryName, modelUrlRoute) {
 
-	const seedsPath = path.join(__dirname, `seeds/${pluralisedModel}`);
+	const seedsPath = path.join(__dirname, `seeds/${directoryName}`);
 
 	const seedFilenames = fs.readdirSync(seedsPath);
 
@@ -37,7 +37,7 @@ async function seedInstances (pluralisedModel) {
 
 				const instance = JSON.parse(rawData);
 
-				const url = `${BASE_URL}/${pluralisedModel}`;
+				const url = `${BASE_URL}/${modelUrlRoute}`;
 
 				await performFetch(url, instance);
 
@@ -49,24 +49,27 @@ async function seedInstances (pluralisedModel) {
 
 	return;
 
-
 };
 
 async function seedDatabase () {
 
 	console.log('Seeding Neo4j database: Commenced'); // eslint-disable-line no-console
 
-	await seedInstances('venues');
+	await seedInstances('venues', 'venues');
 
 	console.log('Seeding Neo4j database: Venue seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('materials');
+	await seedInstances('materials', 'materials');
 
 	console.log('Seeding Neo4j database: Material seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('productions');
+	await seedInstances('productions', 'productions');
 
 	console.log('Seeding Neo4j database: Production seeds sown'); // eslint-disable-line no-console
+
+	await seedInstances('award-ceremonies', 'awards/ceremonies');
+
+	console.log('Seeding Neo4j database: Award ceremony seeds sown'); // eslint-disable-line no-console
 
 	console.log('Seeding Neo4j database: Complete'); // eslint-disable-line no-console
 

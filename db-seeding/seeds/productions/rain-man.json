@@ -1,0 +1,169 @@
+{
+	"uuid": "2bb010d8-5520-4742-9efd-6796e3347ad7",
+	"name": "Rain Man",
+	"startDate": "2008-08-28",
+	"pressDate": "2008-09-19",
+	"endDate": "2008-12-20",
+	"material": {
+		"name": "Rain Main",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Apollo Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"name": "Nica Burns"
+				},
+				{
+					"name": "Jane Walmsley"
+				},
+				{
+					"name": "Michael Braham"
+				},
+				{
+					"name": "Max Weitzenhoffer"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "MGM on Stage"
+				},
+				{
+					"name": "Darcie Denkert"
+				},
+				{
+					"name": "Dean Stolber"
+				},
+				{
+					"name": "Joseph Genetay"
+				},
+				{
+					"name": "Ian Lenagan"
+				},
+				{
+					"name": "Ian Osborne"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Josh Hartnett",
+			"roles": [
+				{
+					"name": "Charlie Babbitt"
+				}
+			]
+		},
+		{
+			"name": "Adam Godley",
+			"roles": [
+				{
+					"name": "Raymond Babbitt"
+				}
+			]
+		},
+		{
+			"name": "Mary Stockley",
+			"roles": [
+				{
+					"name": "Susan"
+				}
+			]
+		},
+		{
+			"name": "Colin Stinton",
+			"roles": [
+				{
+					"name": "Dr Bruener"
+				}
+			]
+		},
+		{
+			"name": "Tilly Blackwood",
+			"roles": [
+				{
+					"name": "Lucy"
+				},
+				{
+					"name": "Waitress"
+				},
+				{
+					"name": "Iris"
+				}
+			]
+		},
+		{
+			"name": "Charles Diash",
+			"roles": [
+				{
+					"name": "Mr Mooney"
+				},
+				{
+					"name": "Cop"
+				},
+				{
+					"name": "Dr Marsden"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Terry Johnson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Jonathan Fensom"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jason Taylor"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Fergus O'Hare"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Colin Towns"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Clare Lovett"
+				}
+			]
+		}
+	]
+}

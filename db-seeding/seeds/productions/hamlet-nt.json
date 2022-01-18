@@ -107,7 +107,8 @@
 					"name": "Polonius"
 				},
 				{
-					"name": "Gravedigger"
+					"name": "Gravedigger",
+					"characterName": "First Gravedigger"
 				}
 			]
 		},

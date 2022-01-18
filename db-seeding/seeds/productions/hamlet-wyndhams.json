@@ -1,0 +1,270 @@
+{
+	"uuid": "93c3157f-3427-44cb-b308-8e871f34dd65",
+	"name": "Hamlet",
+	"startDate": "2009-05-29",
+	"pressDate": "2009-06-03",
+	"endDate": "2009-08-22",
+	"material": {
+		"name": "Hamlet"
+	},
+	"venue": {
+		"name": "Wyndham's Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Burke",
+			"roles": [
+				{
+					"name": "Barnardo"
+				},
+				{
+					"name": "First Gravedigger"
+				}
+			]
+		},
+		{
+			"name": "Alan Turkington",
+			"roles": [
+				{
+					"name": "Francisco"
+				},
+				{
+					"name": "Fortinbras"
+				},
+				{
+					"name": "Fourth Player"
+				}
+			]
+		},
+		{
+			"name": "Henry Pettigrew",
+			"roles": [
+				{
+					"name": "Marcellus"
+				},
+				{
+					"name": "Third Player",
+					"characterName": "Lucianus"
+				},
+				{
+					"name": "Second Gravedigger"
+				}
+			]
+		},
+		{
+			"name": "Matt Ryan",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Kevin R McNally",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Ian Drysdale",
+			"roles": [
+				{
+					"name": "Osric"
+				}
+			]
+		},
+		{
+			"name": "Alex Waldmann",
+			"roles": [
+				{
+					"name": "Laertes"
+				}
+			]
+		},
+		{
+			"name": "Ron Cook",
+			"roles": [
+				{
+					"name": "Polonius"
+				}
+			]
+		},
+		{
+			"name": "Penelope Wilton",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Jude Law",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Gugu Mbatha-Raw",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Peter Eyre",
+			"roles": [
+				{
+					"name": "Ghost of Hamlet's Father",
+					"characterName": "King Hamlet"
+				},
+				{
+					"name": "Player King"
+				}
+			]
+		},
+		{
+			"name": "Sean Jackson",
+			"roles": [
+				{
+					"name": "Reynaldo"
+				}
+			]
+		},
+		{
+			"name": "John MacMillan",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "Gwilym Lee",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "Jenny Funnell",
+			"roles": [
+				{
+					"name": "Player Queen"
+				}
+			]
+		},
+		{
+			"name": "Harry Attwell",
+			"roles": [
+				{
+					"name": "Cornelius"
+				},
+				{
+					"name": "Captain",
+					"characterName": "Captain in Fortinbras' Army"
+				},
+				{
+					"name": "Priest"
+				}
+			]
+		},
+		{
+			"name": "Faye Winter",
+			"roles": [
+				{
+					"name": "Member of the Court"
+				}
+			]
+		},
+		{
+			"name": "Colin Haigh",
+			"roles": [
+				{
+					"name": "Member of the Court"
+				}
+			]
+		},
+		{
+			"name": "James Le Feuvre",
+			"roles": [
+				{
+					"name": "Member of the Court"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Vicky Richardson"
+				}
+			]
+		}
+	]
+}

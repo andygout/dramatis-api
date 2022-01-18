@@ -1,0 +1,215 @@
+{
+	"uuid": "fde766d2-7e70-4d95-b651-c84e7bdbcb2c",
+	"name": "A View from the Bridge",
+	"startDate": "2009-01-24",
+	"pressDate": "2009-02-05",
+	"endDate": "2009-05-16",
+	"material": {
+		"name": "A View from the Bridge"
+	},
+	"venue": {
+		"name": "Duke of York's Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Stanhope Productions",
+					"members": [
+						{
+							"name": "Kim Poster"
+						}
+					]
+				},
+				{
+					"model": "COMPANY",
+					"name": "Sonia Friedman Productions"
+				},
+				{
+					"name": "Robert G Bartner"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Antonio Magro",
+			"roles": [
+				{
+					"name": "Louis",
+					"characterName": "Louis Bereli"
+				}
+			]
+		},
+		{
+			"name": "Enzo Squillino Jr",
+			"roles": [
+				{
+					"name": "Mike"
+				}
+			]
+		},
+		{
+			"name": "Allan Corduner",
+			"roles": [
+				{
+					"name": "Alfieri"
+				}
+			]
+		},
+		{
+			"name": "Ken Stott",
+			"roles": [
+				{
+					"name": "Eddie",
+					"characterName": "Eddie Carbone"
+				}
+			]
+		},
+		{
+			"name": "Hayley Atwell",
+			"roles": [
+				{
+					"name": "Catherine"
+				}
+			]
+		},
+		{
+			"name": "Mary Elizabeth Mastrantonio",
+			"roles": [
+				{
+					"name": "Beatrice",
+					"characterName": "Beatrice Carbone"
+				}
+			]
+		},
+		{
+			"name": "Gerard Monaco",
+			"roles": [
+				{
+					"name": "Marco"
+				}
+			]
+		},
+		{
+			"name": "John Moraitis",
+			"roles": [
+				{
+					"name": "Tony"
+				},
+				{
+					"name": "Mr Lipari"
+				}
+			]
+		},
+		{
+			"name": "Harry Lloyd",
+			"roles": [
+				{
+					"name": "Rodolpho"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Jaynes",
+			"roles": [
+				{
+					"name": "First Immigration Officer"
+				},
+				{
+					"name": "Neighbour"
+				}
+			]
+		},
+		{
+			"name": "Philip Desmeules",
+			"roles": [
+				{
+					"name": "Second Immigration Officer"
+				},
+				{
+					"name": "Neighbour"
+				}
+			]
+		},
+		{
+			"name": "Julie Barrie",
+			"roles": [
+				{
+					"name": "Mrs Lipari"
+				}
+			]
+		},
+		{
+			"name": "Peter Basham",
+			"roles": [
+				{
+					"name": "Submarine"
+				},
+				{
+					"name": "Neighbour"
+				}
+			]
+		},
+		{
+			"name": "Abby Forknall",
+			"roles": [
+				{
+					"name": "Neighbour"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Lindsay Posner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Amy Ball"
+				}
+			]
+		}
+	]
+}

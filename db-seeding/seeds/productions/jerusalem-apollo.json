@@ -1,0 +1,261 @@
+{
+	"uuid": "877b27a1-d184-4c06-8083-0815aad98b57",
+	"name": "Jerusalem",
+	"startDate": "2010-01-28",
+	"pressDate": "2010-02-10",
+	"endDate": "2010-04-24",
+	"material": {
+		"name": "Jerusalem"
+	},
+	"venue": {
+		"name": "Apollo Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		},
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sonia Friedman Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Old Vic Productions"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Aimeé-Ffion Edwards",
+			"roles": [
+				{
+					"name": "Phaedra"
+				}
+			]
+		},
+		{
+			"name": "Sarah Moyle",
+			"roles": [
+				{
+					"name": "Ms Fawcett"
+				}
+			]
+		},
+		{
+			"name": "Harvey Robinson",
+			"roles": [
+				{
+					"name": "Mr Parsons"
+				}
+			]
+		},
+		{
+			"name": "Mark Rylance",
+			"roles": [
+				{
+					"name": "Johnny 'Rooster' Byron"
+				}
+			]
+		},
+		{
+			"name": "Mackenzie Crook",
+			"roles": [
+				{
+					"name": "Ginger"
+				}
+			]
+		},
+		{
+			"name": "Alan David",
+			"roles": [
+				{
+					"name": "The Professor"
+				}
+			]
+		},
+		{
+			"name": "Tom Brooke",
+			"roles": [
+				{
+					"name": "Lee"
+				}
+			]
+		},
+		{
+			"name": "Danny Kirrane",
+			"roles": [
+				{
+					"name": "Davey"
+				}
+			]
+		},
+		{
+			"name": "Jessica Barden",
+			"roles": [
+				{
+					"name": "Pea"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Mills",
+			"roles": [
+				{
+					"name": "Tanya"
+				}
+			]
+		},
+		{
+			"name": "Gerard Horan",
+			"roles": [
+				{
+					"name": "Wesley"
+				}
+			]
+		},
+		{
+			"name": "Amy Beth Hayes",
+			"roles": [
+				{
+					"name": "Dawn"
+				}
+			]
+		},
+		{
+			"name": "Charlie Dunbar-Aldred",
+			"roles": [
+				{
+					"name": "Marky",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Lenny Harvey",
+			"roles": [
+				{
+					"name": "Marky",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jake Noble",
+			"roles": [
+				{
+					"name": "Marky",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Barry Sloane",
+			"roles": [
+				{
+					"name": "Troy Whitworth"
+				}
+			]
+		},
+		{
+			"name": "Marc Baylis",
+			"roles": [
+				{
+					"name": "Danny Whitworth"
+				}
+			]
+		},
+		{
+			"name": "Tom Meredith",
+			"roles": [
+				{
+					"name": "Frank Whitworth"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ian Rickson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ultz"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mimi Jordan Sherin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Autograph",
+					"members": [
+						{
+							"name": "Ian Dickinson"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Stephen Warbeck"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Dan Barnard"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Amy Ball"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Lotte Hines"
+				}
+			]
+		}
+	]
+}

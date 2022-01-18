@@ -1,0 +1,69 @@
+{
+	"name": "2008",
+	"award": {
+		"name": "Evening Standard Theatre Awards"
+	},
+	"categories": [
+		{
+			"name": "Best Actor",
+			"nominations": [
+				{
+					"isWinner": true,
+					"entities": [
+						{
+							"name": "Chiwetel Ejiofor"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "68417b3e-f7d5-4216-97c9-4743ab629c99"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Adam Godley"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "2bb010d8-5520-4742-9efd-6796e3347ad7"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Best Actress",
+			"nominations": [
+				{
+					"isWinner": true,
+					"entities": [
+						{
+							"name": "Margaret Tyzack"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "9622be54-daea-4d92-b4d8-556256bbb877"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"entities": [
+						{
+							"name": "Penelope Wilton"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "9622be54-daea-4d92-b4d8-556256bbb877"
+						}
+					]
+				}
+			]
+		}
+	]
+}

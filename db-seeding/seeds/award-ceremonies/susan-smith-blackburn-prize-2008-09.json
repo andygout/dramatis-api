@@ -1,0 +1,84 @@
+{
+	"name": "2008-09",
+	"award": {
+		"name": "Susan Smith Blackburn Prize"
+	},
+	"categories": [
+		{
+			"name": "Susan Smith Blackburn Prize",
+			"nominations": [
+				{
+					"materials": [
+						{
+							"name": "Free Outgoing"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Happy Now?"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "What Once We Felt"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Inana"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Oliver Parker!"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"materials": [
+						{
+							"name": "This Wide Night"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Ruined"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "The Almond and the Seahorse"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "On the Rocks"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Ten Tiny Toes"
+						}
+					]
+				}
+			]
+		}
+	]
+}

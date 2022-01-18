@@ -1,0 +1,59 @@
+{
+	"name": "A Doll's House",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2009,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"entities": [
+				{
+					"name": "Zinnie Harris"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nora",
+					"underlyingName": "Nora Helmer"
+				},
+				{
+					"name": "Thomas",
+					"underlyingName": "Torvald Helmer"
+				},
+				{
+					"name": "Annie",
+					"underlyingName": "Anne Marie"
+				},
+				{
+					"name": "Christine Lyle",
+					"underlyingName": "Kristine Linde"
+				},
+				{
+					"name": "Neil Kelman",
+					"underlyingName": "Nils Krogstad"
+				},
+				{
+					"name": "Dr Rank"
+				},
+				{
+					"name": "Emmy"
+				},
+				{
+					"name": "Ivor",
+					"underlyingName": "Ivar"
+				}
+			]
+		}
+	]
+}

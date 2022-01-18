@@ -1,0 +1,84 @@
+{
+	"name": "2007-08",
+	"award": {
+		"name": "Susan Smith Blackburn Prize"
+	},
+	"categories": [
+		{
+			"name": "Susan Smith Blackburn Prize",
+			"nominations": [
+				{
+					"materials": [
+						{
+							"name": "Black Crows"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Girls and Dolls"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Boats on a River"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "God's Ear"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Hardball"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"materials": [
+						{
+							"name": "Palace of the End"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Stick Fly"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Stockholm"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Strangers, Babies"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "That Face"
+						}
+					]
+				}
+			]
+		}
+	]
+}

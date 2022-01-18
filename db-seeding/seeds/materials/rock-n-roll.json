@@ -63,7 +63,8 @@
 					"qualifier": "older"
 				},
 				{
-					"name": "Alice"
+					"name": "Alice",
+					"differentiator": "Rock 'n' Roll"
 				},
 				{
 					"name": "Stephen"
@@ -75,7 +76,8 @@
 					"name": "Deirdre"
 				},
 				{
-					"name": "Waiter"
+					"name": "Waiter",
+					"differentiator": "Rock 'n' Roll"
 				}
 			]
 		}

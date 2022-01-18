@@ -1,0 +1,203 @@
+{
+	"uuid": "68417b3e-f7d5-4216-97c9-4743ab629c99",
+	"name": "Othello",
+	"startDate": "2007-11-30",
+	"pressDate": "2007-12-04",
+	"endDate": "2008-02-23",
+	"material": {
+		"name": "Othello"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Edward Bennett",
+			"roles": [
+				{
+					"name": "Roderigo"
+				}
+			]
+		},
+		{
+			"name": "Ewan McGregor",
+			"roles": [
+				{
+					"name": "Iago"
+				}
+			]
+		},
+		{
+			"name": "James Laurenson",
+			"roles": [
+				{
+					"name": "Brabantio"
+				},
+				{
+					"name": "Gratiano"
+				}
+			]
+		},
+		{
+			"name": "Chiwetel Ejiofor",
+			"roles": [
+				{
+					"name": "Othello"
+				}
+			]
+		},
+		{
+			"name": "Tom Hiddleston",
+			"roles": [
+				{
+					"name": "Cassio"
+				}
+			]
+		},
+		{
+			"name": "Alastair Sims",
+			"roles": [
+				{
+					"name": "First Officer",
+					"characterName": "Officers"
+				},
+				{
+					"name": "First Cyprus Gentleman",
+					"characterName": "Gentlemen"
+				}
+			]
+		},
+		{
+			"name": "David Mara",
+			"roles": [
+				{
+					"name": "First Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Second Cyprus Gentleman",
+					"characterName": "Gentlemen"
+				}
+			]
+		},
+		{
+			"name": "Michael Hadley",
+			"roles": [
+				{
+					"name": "Duke of Venice"
+				},
+				{
+					"name": "Lodovico"
+				}
+			]
+		},
+		{
+			"name": "Kelly Reilly",
+			"roles": [
+				{
+					"name": "Desdemona"
+				}
+			]
+		},
+		{
+			"name": "Michael Jenn",
+			"roles": [
+				{
+					"name": "Montano"
+				}
+			]
+		},
+		{
+			"name": "Michelle Fairley",
+			"roles": [
+				{
+					"name": "Emilia"
+				}
+			]
+		},
+		{
+			"name": "Martina Laird",
+			"roles": [
+				{
+					"name": "Bianca"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Alex Sims"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Gracie Harris"
+				}
+			]
+		}
+	]
+}

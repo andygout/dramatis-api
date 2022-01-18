@@ -1,0 +1,38 @@
+{
+	"name": "Three Days of Rain",
+	"format": "play",
+	"year": 1997,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Richard Greenberg"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Walker"
+				},
+				{
+					"name": "Ned"
+				},
+				{
+					"name": "Pip"
+				},
+				{
+					"name": "Theo"
+				},
+				{
+					"name": "Nan"
+				},
+				{
+					"name": "Lina"
+				}
+			]
+		}
+	]
+}

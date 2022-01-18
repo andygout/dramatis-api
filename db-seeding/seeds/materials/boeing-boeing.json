@@ -1,0 +1,46 @@
+{
+	"name": "Boeing-Boeing",
+	"format": "play",
+	"year": 1960,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Marc Camoletti"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Beverley Cross"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bernard"
+				},
+				{
+					"name": "Berthe"
+				},
+				{
+					"name": "Robert"
+				},
+				{
+					"name": "Gabriella"
+				},
+				{
+					"name": "Gloria"
+				},
+				{
+					"name": "Gretchen"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,280 @@
+{
+	"uuid": "02047e75-3d9e-4841-907a-b5fae44f5cd3",
+	"name": "Enron",
+	"startDate": "2009-09-17",
+	"pressDate": "2009-09-22",
+	"endDate": "2009-11-07",
+	"material": {
+		"name": "Enron"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Downstairs"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Headlong Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Gillian Budd",
+			"roles": [
+				{
+					"name": "News Reporter",
+					"characterName": "Reporter"
+				}
+			]
+		},
+		{
+			"name": "Peter Caulfield",
+			"roles": [
+				{
+					"name": "Lehman Brother"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Howard Charles",
+			"roles": [
+				{
+					"name": "Security Officer"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Andrew Corbett",
+			"roles": [
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Amanda Drew",
+			"roles": [
+				{
+					"name": "Claudia Roe"
+				}
+			]
+		},
+		{
+			"name": "Susannah Fellows",
+			"roles": [
+				{
+					"name": "Congresswoman"
+				},
+				{
+					"name": "Sheryl Sloman"
+				},
+				{
+					"name": "Irene Gant"
+				}
+			]
+		},
+		{
+			"name": "Stephen Fewell",
+			"roles": [
+				{
+					"name": "Arthur Andersen"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Tom Godwin",
+			"roles": [
+				{
+					"name": "Lehman Brother"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Tom Goodman-Hill",
+			"roles": [
+				{
+					"name": "Andy Fastow"
+				}
+			]
+		},
+		{
+			"name": "Orion Lee",
+			"roles": [
+				{
+					"name": "Lou-Pai"
+				},
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Eleanor Matsuura",
+			"roles": [
+				{
+					"name": "Hewitt",
+					"characterName": "Ramsay & Hewitt"
+				},
+				{
+					"name": "News Reporter",
+					"characterName": "Reporter"
+				}
+			]
+		},
+		{
+			"name": "Tim Pigott-Smith",
+			"roles": [
+				{
+					"name": "Ken Lay"
+				}
+			]
+		},
+		{
+			"name": "Ashley Rolfe",
+			"roles": [
+				{
+					"name": "Ramsay",
+					"characterName": "Ramsay & Hewitt"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Rosa Solieri-Whitwell",
+			"roles": [
+				{
+					"name": "Daughter",
+					"characterName": "Skilling's Daughter",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Gabrielle Willcocks",
+			"roles": [
+				{
+					"name": "Daughter",
+					"characterName": "Skilling's Daughter",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Samuel West",
+			"roles": [
+				{
+					"name": "Jeffrey Skilling"
+				}
+			]
+		},
+		{
+			"name": "Trevor White",
+			"roles": [
+				{
+					"name": "Lawyer #1"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rupert Goold"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Anthony Ward"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Henderson"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Scott Ambler"
+				}
+			]
+		},
+		{
+			"name": "Video and Projection Designer",
+			"entities": [
+				{
+					"name": "Jon Driscoll"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Sophie Hunter"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Joyce Nettles"
+				}
+			]
+		}
+	]
+}

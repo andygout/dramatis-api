@@ -1,0 +1,83 @@
+{
+	"uuid": "6cd58fb8-2df9-4a0a-9fae-879bd83e9c99",
+	"name": "Duet for One",
+	"startDate": "2009-05-07",
+	"pressDate": "2009-05-12",
+	"endDate": "2009-08-01",
+	"material": {
+		"name": "Duet for One"
+	},
+	"venue": {
+		"name": "Vaudeville Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Almeida Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Henry Goodman",
+			"roles": [
+				{
+					"name": "Dr Feldmann"
+				}
+			]
+		},
+		{
+			"name": "Juliet Stephenson",
+			"roles": [
+				{
+					"name": "Stephanie Abrahams"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matthew Lloyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lez Brotherston"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jason Taylor"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Poppy Burton-Morgan"
+				}
+			]
+		}
+	]
+}

@@ -57,7 +57,8 @@
 					"name": "Caius"
 				},
 				{
-					"name": "Valentine"
+					"name": "Valentine",
+					"differentiator": "Titus Andronicus"
 				},
 				{
 					"name": "Æmilius"
@@ -67,7 +68,8 @@
 					"differentiator": "Titus Andronicus"
 				},
 				{
-					"name": "Clown"
+					"name": "Clown",
+					"differentiator": "Titus Andronicus"
 				},
 				{
 					"name": "Messenger",

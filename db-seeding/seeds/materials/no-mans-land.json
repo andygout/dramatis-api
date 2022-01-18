@@ -1,0 +1,32 @@
+{
+	"name": "No Man's Land",
+	"format": "play",
+	"year": 1974,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Harold Pinter"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Hirst"
+				},
+				{
+					"name": "Spooner"
+				},
+				{
+					"name": "Foster"
+				},
+				{
+					"name": "Briggs"
+				}
+			]
+		}
+	]
+}

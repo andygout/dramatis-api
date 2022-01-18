@@ -1,0 +1,142 @@
+{
+	"uuid": "f11a8fd9-9a6c-48cc-bc75-2b6f4033843b",
+	"name": "That Face",
+	"startDate": "2008-05-01",
+	"pressDate": "2008-05-09",
+	"endDate": "2008-07-05",
+	"material": {
+		"name": "That Face"
+	},
+	"venue": {
+		"name": "Duke of York's Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		},
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sonia Friedman Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Tulchin/Bartner Productions"
+				},
+				{
+					"name": "Eric Abraham"
+				},
+				{
+					"name": "Jamie Hendry"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Hannah Murray",
+			"roles": [
+				{
+					"name": "Mia"
+				}
+			]
+		},
+		{
+			"name": "Catherine Steadman",
+			"roles": [
+				{
+					"name": "Izzy"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Eve",
+			"roles": [
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Lindsay Duncan",
+			"roles": [
+				{
+					"name": "Martha"
+				}
+			]
+		},
+		{
+			"name": "Matt Smith",
+			"roles": [
+				{
+					"name": "Henry"
+				}
+			]
+		},
+		{
+			"name": "Julian Wadham",
+			"roles": [
+				{
+					"name": "Hugh"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jeremy Herrin"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mike Britton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Natasha Chivers"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Emma Laxton"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Kate Lonergan"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Lisa Makin"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,140 @@
+{
+	"name": "2008",
+	"award": {
+		"name": "Laurence Olivier Award"
+	},
+	"categories": [
+		{
+			"name": "Best Actor",
+			"nominations": [
+				{
+					"isWinner": true,
+					"entities": [
+						{
+							"name": "Chiwetel Ejiofor"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "68417b3e-f7d5-4216-97c9-4743ab629c99"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Ian McKellen"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "4873277a-ced3-4b24-9e08-30158e6a0ac9"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Mark Rylance"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "2f2449c2-e582-46fc-9a42-0f2504bbbda5"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "John Simm"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "5b6332a9-9d55-4223-8313-637e66f79809"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Patrick Stewart"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "24ad7c46-86d7-4301-afe2-2ba49e326919"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Best Actress",
+			"nominations": [
+				{
+					"entities": [
+						{
+							"name": "Anne-Marie Duff"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "50b9a18a-cae0-4a62-a035-ada3255a62c3"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Kelly Reilly"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "68417b3e-f7d5-4216-97c9-4743ab629c99"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"entities": [
+						{
+							"name": "Kristin Scott Thomas"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "fcf2e59c-7edf-4914-a3ff-51166939041c"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Fiona Shaw"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "7e4fcdd0-fb46-4934-bab0-18a8c02e7b98"
+						}
+					]
+				},
+				{
+					"entities": [
+						{
+							"name": "Penelope Wilton"
+						}
+					],
+					"productions": [
+						{
+							"uuid": "9b4c3c71-d369-432e-b9c0-58fe5eee4c93"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,176 @@
+{
+	"uuid": "307d7290-833c-4cb6-89f3-b7dcb2c3f2f3",
+	"name": "A Doll's House",
+	"startDate": "2009-05-14",
+	"pressDate": "2009-05-19",
+	"endDate": "2009-07-18",
+	"material": {
+		"name": "A Doll's House",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Gillian Anderson",
+			"roles": [
+				{
+					"name": "Nora"
+				}
+			]
+		},
+		{
+			"name": "Toby Stephens",
+			"roles": [
+				{
+					"name": "Thomas"
+				}
+			]
+		},
+		{
+			"name": "Maggie Wells",
+			"roles": [
+				{
+					"name": "Annie"
+				}
+			]
+		},
+		{
+			"name": "Tara Fitzgerald",
+			"roles": [
+				{
+					"name": "Christine Lyle"
+				}
+			]
+		},
+		{
+			"name": "Christopher Eccleston",
+			"roles": [
+				{
+					"name": "Neil Kelman"
+				}
+			]
+		},
+		{
+			"name": "Anton Lesser",
+			"roles": [
+				{
+					"name": "Dr Rank"
+				}
+			]
+		},
+		{
+			"name": "Leah Davies",
+			"roles": [
+				{
+					"name": "Emmy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Abby Negus",
+			"roles": [
+				{
+					"name": "Emmy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ted O'Neill",
+			"roles": [
+				{
+					"name": "Ivor",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "William Nye",
+			"roles": [
+				{
+					"name": "Ivor",
+					"isAlternate": true
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Kfir Yefet"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Anthony Ward"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Hugh Vanstone"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Aletta Collins"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Tim Phillips"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Paul Hart"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Vicky Richardson"
+				}
+			]
+		}
+	]
+}

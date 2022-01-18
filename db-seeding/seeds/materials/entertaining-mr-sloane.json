@@ -1,0 +1,32 @@
+{
+	"name": "Entertaining Mr Sloane",
+	"format": "play",
+	"year": 1963,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Joe Orton"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Sloane"
+				},
+				{
+					"name": "Kath"
+				},
+				{
+					"name": "Ed"
+				},
+				{
+					"name": "Kemp"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,153 @@
+{
+	"uuid": "c002c4b9-cb8f-43e0-8587-9f2b9bf19f41",
+	"name": "Three Days of Rain",
+	"startDate": "2009-01-30",
+	"pressDate": "2009-02-10",
+	"endDate": "2009-05-09",
+	"material": {
+		"name": "Three Days of Rain"
+	},
+	"venue": {
+		"name": "Apollo Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Neal Street Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "CMP"
+				},
+				{
+					"name": "Nica Burns"
+				},
+				{
+					"name": "Jay Harris"
+				},
+				{
+					"name": "Stephanie P McClelland"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Northcroft Films"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Old Vic Productions"
+				},
+				{
+					"name": "Daniel Sparrow"
+				},
+				{
+					"name": "Mike Walsh"
+				},
+				{
+					"model": "COMPANY",
+					"name": "TFP"
+				},
+				{
+					"name": "Max Weitzenhoffer"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "James McAvoy",
+			"roles": [
+				{
+					"name": "Walker"
+				},
+				{
+					"name": "Ned"
+				}
+			]
+		},
+		{
+			"name": "Nigel Harman",
+			"roles": [
+				{
+					"name": "Pip"
+				},
+				{
+					"name": "Theo"
+				}
+			]
+		},
+		{
+			"name": "Lyndsey Marshal",
+			"roles": [
+				{
+					"name": "Nan"
+				},
+				{
+					"name": "Lina"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jamie Lloyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Soutra Gilmour"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Chris Cahill"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jon Clark"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Ben Ringham"
+				},
+				{
+					"name": "Max Ringham"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Cat Totty"
+				}
+			]
+		}
+	]
+}

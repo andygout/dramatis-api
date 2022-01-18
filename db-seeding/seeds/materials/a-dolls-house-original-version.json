@@ -1,0 +1,54 @@
+{
+	"name": "A Doll's House",
+	"differentiator": "1",
+	"format": "play",
+	"year": 1879,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nora Helmer"
+				},
+				{
+					"name": "Torvald Helmer"
+				},
+				{
+					"name": "Dr Rank"
+				},
+				{
+					"name": "Kristine Linde"
+				},
+				{
+					"name": "Nils Krogstad"
+				},
+				{
+					"name": "Ivar"
+				},
+				{
+					"name": "Bobby"
+				},
+				{
+					"name": "Emmy"
+				},
+				{
+					"name": "Anne Marie"
+				},
+				{
+					"name": "Helene"
+				},
+				{
+					"name": "The Porter"
+				}
+			]
+		}
+	]
+}

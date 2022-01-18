@@ -1,0 +1,147 @@
+{
+	"uuid": "5b6332a9-9d55-4223-8313-637e66f79809",
+	"name": "Elling",
+	"startDate": "2007-07-06",
+	"pressDate": "2007-07-10",
+	"endDate": "2007-10-06",
+	"material": {
+		"name": "Elling",
+		"differentiator": "3"
+	},
+	"venue": {
+		"name": "Studio 1"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bush Theatre"
+				}
+			]
+		},
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Ambassador Theatre Group",
+					"members": [
+						{
+							"name": "Howard Panter"
+						}
+					]
+				},
+				{
+					"model": "COMPANY",
+					"name": "Trademark",
+					"members": [
+						{
+							"name": "David Parfitt"
+						}
+					]
+				},
+				{
+					"name": "Finola Dwyer"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Tulchin/Bartner Productions"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Adrian Bower",
+			"roles": [
+				{
+					"name": "Kjell Bjarne"
+				}
+			]
+		},
+		{
+			"name": "John Simm",
+			"roles": [
+				{
+					"name": "Elling"
+				}
+			]
+		},
+		{
+			"name": "Ingrid Lacey",
+			"roles": [
+				{
+					"name": "Reidun"
+				},
+				{
+					"name": "Gunn"
+				},
+				{
+					"name": "Johanne"
+				},
+				{
+					"name": "Poet",
+					"characterName": "Poets"
+				}
+			]
+		},
+		{
+			"name": "Keir Charles",
+			"roles": [
+				{
+					"name": "Frank Asli"
+				},
+				{
+					"name": "Poet",
+					"characterName": "Poets"
+				},
+				{
+					"name": "Waiter"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Cecil",
+			"roles": [
+				{
+					"name": "Alfons"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Paul Miller"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Simon Daw"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Doubleday"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Jack C Arnold"
+				}
+			]
+		}
+	]
+}

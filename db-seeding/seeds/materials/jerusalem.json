@@ -1,0 +1,63 @@
+{
+	"name": "Jerusalem",
+	"format": "play",
+	"year": 2009,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jez Butterworth"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Phaedra"
+				},
+				{
+					"name": "Ms Fawcett"
+				},
+				{
+					"name": "Mr Parsons"
+				},
+				{
+					"name": "Johnny 'Rooster' Byron"
+				},
+				{
+					"name": "Ginger"
+				},
+				{
+					"name": "The Professor"
+				},
+				{
+					"name": "Lee",
+					"differentiator": "Jerusalem"
+				},
+				{
+					"name": "Davey"
+				},
+				{
+					"name": "Pea"
+				},
+				{
+					"name": "Tanya"
+				},
+				{
+					"name": "Wesley"
+				},
+				{
+					"name": "Dawn"
+				},
+				{
+					"name": "Marky"
+				},
+				{
+					"name": "Troy Whitworth"
+				}
+			]
+		}
+	]
+}
