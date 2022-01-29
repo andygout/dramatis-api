@@ -1,0 +1,404 @@
+{
+	"uuid": "24ad7c46-86d7-4301-afe2-2ba49e326919",
+	"name": "Macbeth",
+	"startDate": "2007-09-21",
+	"pressDate": "2007-09-27",
+	"endDate": "2007-12-01",
+	"material": {
+		"name": "Macbeth"
+	},
+	"venue": {
+		"name": "Gielgud Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Triumph Entertainment Ltd",
+					"members": [
+						{
+							"name": "Duncan C Weldon"
+						},
+						{
+							"name": "Paul Elliott Weldon"
+						}
+					]
+				}
+			]
+		},
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Paul Shelley",
+			"roles": [
+				{
+					"name": "Duncan",
+					"characterName": "King Duncan"
+				},
+				{
+					"name": "Scottish doctor",
+					"characterName": "Lady Macbeth's doctor"
+				}
+			]
+		},
+		{
+			"name": "Scott Handy",
+			"roles": [
+				{
+					"name": "Malcolm",
+					"characterName": "King Malcolm"
+				}
+			]
+		},
+		{
+			"name": "Ben Carpenter",
+			"roles": [
+				{
+					"name": "Donalbain"
+				},
+				{
+					"name": "Young Seward",
+					"characterName": "Young Siward"
+				}
+			]
+		},
+		{
+			"name": "Patrick Stewart",
+			"roles": [
+				{
+					"name": "Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Martin Turner",
+			"roles": [
+				{
+					"name": "Banquo"
+				}
+			]
+		},
+		{
+			"name": "Michael Feast",
+			"roles": [
+				{
+					"name": "Macduff"
+				}
+			]
+		},
+		{
+			"name": "Mark Rawlings",
+			"roles": [
+				{
+					"name": "Lennox"
+				}
+			]
+		},
+		{
+			"name": "Tim Treloar",
+			"roles": [
+				{
+					"name": "Ross"
+				}
+			]
+		},
+		{
+			"name": "Bill Nash",
+			"roles": [
+				{
+					"name": "Angus"
+				}
+			]
+		},
+		{
+			"name": "Robert Madge",
+			"roles": [
+				{
+					"name": "Fleance",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ben Rowe",
+			"roles": [
+				{
+					"name": "Fleance",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ben Williams",
+			"roles": [
+				{
+					"name": "Fleance",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Christopher Knott",
+			"roles": [
+				{
+					"name": "Old Seyward",
+					"characterName": "Siward"
+				},
+				{
+					"name": "Murderer",
+					"characterName": "Three Murderers"
+				}
+			]
+		},
+		{
+			"name": "Christopher Patrick Nolan",
+			"roles": [
+				{
+					"name": "Seyton"
+				}
+			]
+		},
+		{
+			"name": "Hywel John",
+			"roles": [
+				{
+					"name": "Bloody Sergeant"
+				},
+				{
+					"name": "Murderer",
+					"characterName": "Three Murderers"
+				}
+			]
+		},
+		{
+			"name": "Kate Fleetwood",
+			"roles": [
+				{
+					"name": "Lady Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Suzanne Burden",
+			"roles": [
+				{
+					"name": "Lady Macduff"
+				}
+			]
+		},
+		{
+			"name": "Shea Davies",
+			"roles": [
+				{
+					"name": "Macduff child (group #1)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Charlie Evans",
+			"roles": [
+				{
+					"name": "Macduff child (group #1)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Naomi Preston-Lowe",
+			"roles": [
+				{
+					"name": "Macduff child (group #1)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Poppy Lee Friar",
+			"roles": [
+				{
+					"name": "Macduff child (group #2)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Miel Kleinman",
+			"roles": [
+				{
+					"name": "Macduff child (group #2)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Piers Stubbs",
+			"roles": [
+				{
+					"name": "Macduff child (group #2)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Nicholas Brown",
+			"roles": [
+				{
+					"name": "Macduff child (group #3)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Emily Miles",
+			"roles": [
+				{
+					"name": "Macduff child (group #3)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Tianna Webster",
+			"roles": [
+				{
+					"name": "Macduff child (group #3)",
+					"characterName": "Macduff's son",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Sophie Hunter",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				}
+			]
+		},
+		{
+			"name": "Polly Frame",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				},
+				{
+					"name": "Gentlewoman",
+					"characterName": "Lady Macbeth's caretaker"
+				}
+			]
+		},
+		{
+			"name": "Niamh McGrady",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				}
+			]
+		},
+		{
+			"name": "Oliver Birch",
+			"roles": [
+				{
+					"name": "Lady Macbeth's servant",
+					"characterName": "Servants"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rupert Goold"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Anthony Ward"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Howard Harrison"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Georgina Lamb"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Video and Projection",
+			"entities": [
+				{
+					"name": "Lorna Heavey"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Christopher Haydon"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Gabrielle Dawes"
+				}
+			]
+		}
+	]
+}

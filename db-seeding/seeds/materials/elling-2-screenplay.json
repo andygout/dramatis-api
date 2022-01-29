@@ -1,0 +1,23 @@
+{
+	"name": "Elling",
+	"differentiator": "2",
+	"format": "screenplay",
+	"year": 2001,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Alex Hellstenius"
+				}
+			]
+		},
+		{
+			"name": "in collaboration with",
+			"entities": [
+				{
+					"name": "Petter Næss"
+				}
+			]
+		}
+	]
+}

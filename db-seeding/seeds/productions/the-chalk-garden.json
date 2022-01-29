@@ -1,0 +1,147 @@
+{
+	"uuid": "9622be54-daea-4d92-b4d8-556256bbb877",
+	"name": "The Chalk Garden",
+	"startDate": "2008-06-05",
+	"pressDate": "2008-06-11",
+	"endDate": "2008-08-02",
+	"material": {
+		"name": "The Chalk Garden"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Penelope Wilton",
+			"roles": [
+				{
+					"name": "Miss Madrigal"
+				}
+			]
+		},
+		{
+			"name": "Jamie Glover",
+			"roles": [
+				{
+					"name": "Maitland"
+				}
+			]
+		},
+		{
+			"name": "Steph Bramwell",
+			"roles": [
+				{
+					"name": "Second Applicant"
+				}
+			]
+		},
+		{
+			"name": "Felicity Jones",
+			"roles": [
+				{
+					"name": "Laurel"
+				}
+			]
+		},
+		{
+			"name": "Linda Broughton",
+			"roles": [
+				{
+					"name": "Third Applicant"
+				}
+			]
+		},
+		{
+			"name": "Margaret Tyzack",
+			"roles": [
+				{
+					"name": "Mrs St Maugham"
+				}
+			]
+		},
+		{
+			"name": "Suzanne Burden",
+			"roles": [
+				{
+					"name": "Olivia"
+				}
+			]
+		},
+		{
+			"name": "Clifford Rose",
+			"roles": [
+				{
+					"name": "Judge"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Resident Assistant Director",
+			"entities": [
+				{
+					"name": "Abbey Wright"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Gracie Harris"
+				}
+			]
+		}
+	]
+}

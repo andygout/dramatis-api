@@ -1,0 +1,83 @@
+{
+	"name": "Cat on a Hot Tin Roof",
+	"format": "play",
+	"year": 1955,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tennessee Williams"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Margaret"
+				},
+				{
+					"name": "Brick"
+				},
+				{
+					"name": "Mae"
+				},
+				{
+					"name": "Big Mama"
+				},
+				{
+					"name": "Dixie"
+				},
+				{
+					"name": "Big Daddy"
+				},
+				{
+					"name": "Reverend Tooker"
+				},
+				{
+					"name": "Gooper"
+				},
+				{
+					"name": "Doctor Baugh"
+				},
+				{
+					"name": "Lacey"
+				},
+				{
+					"name": "Sookey"
+				},
+				{
+					"name": "Buster"
+				},
+				{
+					"name": "Sonny"
+				},
+				{
+					"name": "Trixie"
+				},
+				{
+					"name": "Daisy"
+				},
+				{
+					"name": "Brightie"
+				},
+				{
+					"name": "Small"
+				},
+				{
+					"name": "Little Girl #1"
+				},
+				{
+					"name": "Little Girl #2"
+				},
+				{
+					"name": "Small Boy #1"
+				},
+				{
+					"name": "Small Boy #2"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,74 @@
+{
+	"name": "King Lear",
+	"format": "play",
+	"year": 1606,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Lear"
+				},
+				{
+					"name": "Earl of Gloucester"
+				},
+				{
+					"name": "Earl of Kent"
+				},
+				{
+					"name": "Fool"
+				},
+				{
+					"name": "Edgar"
+				},
+				{
+					"name": "Edmund"
+				},
+				{
+					"name": "Goneril"
+				},
+				{
+					"name": "Regan"
+				},
+				{
+					"name": "Cordelia"
+				},
+				{
+					"name": "Duke of Albany"
+				},
+				{
+					"name": "Duke of Cornwall"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Oswald"
+				},
+				{
+					"name": "King of France",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Duke of Burgundy",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Old Man"
+				},
+				{
+					"name": "Curan"
+				}
+			]
+		}
+	]
+}

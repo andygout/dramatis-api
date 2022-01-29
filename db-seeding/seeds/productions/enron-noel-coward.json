@@ -1,0 +1,344 @@
+{
+	"uuid": "23e06dd4-aee7-4885-a1b6-56cea133c5b8",
+	"name": "Enron",
+	"startDate": "2010-01-16",
+	"pressDate": "2010-01-26",
+	"endDate": "2010-08-14",
+	"material": {
+		"name": "Enron"
+	},
+	"venue": {
+		"name": "Noël Coward Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Headlong Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		},
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"name": "Matthew Byam Shaw"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Act Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Neal Street Productions",
+					"members": [
+						{
+							"name": "Caro Newling"
+						}
+					]
+				},
+				{
+					"name": "Jeffrey Richards"
+				},
+				{
+					"name": "Jerry Frankel"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Samuel West",
+			"roles": [
+				{
+					"name": "Jeffrey Skilling"
+				}
+			]
+		},
+		{
+			"name": "Amanda Drew",
+			"roles": [
+				{
+					"name": "Claudia Roe"
+				}
+			]
+		},
+		{
+			"name": "Tom Goodman-Hill",
+			"roles": [
+				{
+					"name": "Andy Fastow"
+				}
+			]
+		},
+		{
+			"name": "Tim Pigott-Smith",
+			"roles": [
+				{
+					"name": "Ken Lay"
+				}
+			]
+		},
+		{
+			"name": "Ellie Bruce",
+			"roles": [
+				{
+					"name": "Daughter",
+					"characterName": "Skilling's Daughter",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Stephanie Coulter",
+			"roles": [
+				{
+					"name": "Daughter",
+					"characterName": "Skilling's Daughter",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Cleo Demetriou",
+			"roles": [
+				{
+					"name": "Daughter",
+					"characterName": "Skilling's Daughter",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Gillian Budd",
+			"roles": [
+				{
+					"name": "News Reporter",
+					"characterName": "Reporter"
+				}
+			]
+		},
+		{
+			"name": "Peter Caulfield",
+			"roles": [
+				{
+					"name": "Lehman Brother"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Howard Charles",
+			"roles": [
+				{
+					"name": "Security Officer"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Susannah Fellows",
+			"roles": [
+				{
+					"name": "Congresswoman"
+				},
+				{
+					"name": "Sheryl Sloman"
+				},
+				{
+					"name": "Irene Gant"
+				}
+			]
+		},
+		{
+			"name": "Stephen Fewell",
+			"roles": [
+				{
+					"name": "Arthur Andersen"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Tom Godwin",
+			"roles": [
+				{
+					"name": "Lehman Brother"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Orion Lee",
+			"roles": [
+				{
+					"name": "Senator"
+				}
+			]
+		},
+		{
+			"name": "Eleanor Matsuura",
+			"roles": [
+				{
+					"name": "Hewitt",
+					"characterName": "Ramsay & Hewitt"
+				},
+				{
+					"name": "News Reporter",
+					"characterName": "Reporter"
+				},
+				{
+					"name": "Prostitute"
+				},
+				{
+					"name": "Lawyer #2"
+				}
+			]
+		},
+		{
+			"name": "Ashley Rolfe",
+			"roles": [
+				{
+					"name": "Ramsay",
+					"characterName": "Ramsay & Hewitt"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Ewan Wardrop",
+			"roles": [
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Trevor White",
+			"roles": [
+				{
+					"name": "Lawyer #1"
+				},
+				{
+					"name": "Trader",
+					"characterName": "Traders"
+				}
+			]
+		},
+		{
+			"name": "Matt Blair",
+			"roles": [
+				{
+					"name": "Swing"
+				}
+			]
+		},
+		{
+			"name": "Anna Martine",
+			"roles": [
+				{
+					"name": "Swing"
+				}
+			]
+		},
+		{
+			"name": "Richard Taylor Woods",
+			"roles": [
+				{
+					"name": "Swing"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rupert Goold"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Anthony Ward"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Henderson"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Scott Ambler"
+				}
+			]
+		},
+		{
+			"name": "Video and Projection Designer",
+			"entities": [
+				{
+					"name": "Jon Driscoll"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Lisa Spirling"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Joyce Nettles"
+				}
+			]
+		}
+	]
+}

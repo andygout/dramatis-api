@@ -1,0 +1,140 @@
+{
+	"uuid": "9b4c3c71-d369-432e-b9c0-58fe5eee4c93",
+	"name": "John Gabriel Borkman",
+	"startDate": "2007-11-30",
+	"pressDate": "2007-12-04",
+	"endDate": "2008-02-23",
+	"material": {
+		"name": "John Gabriel Borkman",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Deborah Findlay",
+			"roles": [
+				{
+					"name": "Mrs Gunhild Borkman"
+				}
+			]
+		},
+		{
+			"name": "Emma Beattie",
+			"roles": [
+				{
+					"name": "Malene"
+				}
+			]
+		},
+		{
+			"name": "Penelope Wilton",
+			"roles": [
+				{
+					"name": "Miss Ella Rentheim"
+				}
+			]
+		},
+		{
+			"name": "Lolita Chakrabarti",
+			"roles": [
+				{
+					"name": "Mrs Fanny Wilton"
+				}
+			]
+		},
+		{
+			"name": "Rafe Spall",
+			"roles": [
+				{
+					"name": "Erhart Borkman"
+				}
+			]
+		},
+		{
+			"name": "Ian McDiarmid",
+			"roles": [
+				{
+					"name": "John Gabriel Borkman"
+				}
+			]
+		},
+		{
+			"name": "Lisa Diveney",
+			"roles": [
+				{
+					"name": "Frida Foldal"
+				}
+			]
+		},
+		{
+			"name": "David Burke",
+			"roles": [
+				{
+					"name": "Vilhelm Foldal"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Alex Sims"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		}
+	]
+}

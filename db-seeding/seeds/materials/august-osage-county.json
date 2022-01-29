@@ -1,0 +1,59 @@
+{
+	"name": "August: Osage County",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tracy Letts"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Beverly Weston"
+				},
+				{
+					"name": "Violet Weston"
+				},
+				{
+					"name": "Barbara Fordham"
+				},
+				{
+					"name": "Ivy Weston"
+				},
+				{
+					"name": "Karen Weston"
+				},
+				{
+					"name": "Bill Fordham"
+				},
+				{
+					"name": "Jean Fordham"
+				},
+				{
+					"name": "Steve Heidebrecht"
+				},
+				{
+					"name": "Mattie Fae Aiken"
+				},
+				{
+					"name": "Charlie Aiken"
+				},
+				{
+					"name": "'Little' Charles Aiken"
+				},
+				{
+					"name": "Johnna Monevata"
+				},
+				{
+					"name": "Sheriff Deon Gilbeau"
+				}
+			]
+		}
+	]
+}

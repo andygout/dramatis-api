@@ -52,7 +52,10 @@
 					"name": "Polonius"
 				},
 				{
-					"name": "Gravedigger"
+					"name": "First Gravedigger"
+				},
+				{
+					"name": "Second Gravedigger"
 				},
 				{
 					"name": "Hamlet"
@@ -88,7 +91,7 @@
 					"name": "Fortinbras"
 				},
 				{
-					"name": "Osrick"
+					"name": "Osric"
 				},
 				{
 					"name": "Messenger",

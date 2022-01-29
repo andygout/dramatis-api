@@ -1,0 +1,116 @@
+{
+	"uuid": "42714861-a8e0-4f78-b336-04f4b78448ea",
+	"name": "No Man's Land",
+	"startDate": "2008-09-27",
+	"pressDate": "2008-10-07",
+	"endDate": "2009-01-03",
+	"material": {
+		"name": "No Man's Land"
+	},
+	"venue": {
+		"name": "Duke of York's Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sonia Friedman Productions"
+				}
+			]
+		},
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Gate Theatre (Dublin)"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Michael Gambon",
+			"roles": [
+				{
+					"name": "Hirst"
+				}
+			]
+		},
+		{
+			"name": "David Bradley",
+			"roles": [
+				{
+					"name": "Spooner"
+				}
+			]
+		},
+		{
+			"name": "David Walliams",
+			"roles": [
+				{
+					"name": "Foster"
+				}
+			]
+		},
+		{
+			"name": "Nick Dunning",
+			"roles": [
+				{
+					"name": "Briggs"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rupert Goold"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Giles Cadle"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Jeremy Whelehan"
+				}
+			]
+		},
+		{
+			"name": "Casting Director (understudies)",
+			"entities": [
+				{
+					"name": "Lisa Makin"
+				}
+			]
+		}
+	]
+}

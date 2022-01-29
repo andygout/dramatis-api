@@ -1,0 +1,84 @@
+{
+	"name": "2009-10",
+	"award": {
+		"name": "Susan Smith Blackburn Prize"
+	},
+	"categories": [
+		{
+			"name": "Susan Smith Blackburn Prize",
+			"nominations": [
+				{
+					"materials": [
+						{
+							"name": "The Aliens"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"materials": [
+						{
+							"name": "The Language Archives"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "This"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "It Felt Empty When the Heart Went at First But It Is Alright Now"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "The Shipment"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "The Nature of Love"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "East of Berlin"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "The Swallowing Dark"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Enron"
+						}
+					]
+				},
+				{
+					"materials": [
+						{
+							"name": "Strandline"
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"name": "John Gabriel Borkman",
+	"differentiator": "1",
+	"format": "play",
+	"year": 1896,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "John Gabriel Borkman"
+				},
+				{
+					"name": "Mrs Gunhild Borkman"
+				},
+				{
+					"name": "Erhart Borkman"
+				},
+				{
+					"name": "Ella Rentheim",
+					"underlyingName": "Miss Ella Rentheim"
+				},
+				{
+					"name": "Mrs Fanny Wilton"
+				},
+				{
+					"name": "Vilhelm Foldal"
+				},
+				{
+					"name": "Frida Foldal"
+				},
+				{
+					"name": "Malene"
+				}
+			]
+		}
+	]
+}

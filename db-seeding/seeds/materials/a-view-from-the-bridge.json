@@ -1,0 +1,59 @@
+{
+	"name": "A View from the Bridge",
+	"format": "play",
+	"year": 1955,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Arthur Miller"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Eddie Carbone"
+				},
+				{
+					"name": "Beatrice Carbone"
+				},
+				{
+					"name": "Catherine"
+				},
+				{
+					"name": "Alfieri"
+				},
+				{
+					"name": "Marco"
+				},
+				{
+					"name": "Rodolpho"
+				},
+				{
+					"name": "Louis Bereli"
+				},
+				{
+					"name": "Mike"
+				},
+				{
+					"name": "Tony"
+				},
+				{
+					"name": "Mr Lipari"
+				},
+				{
+					"name": "Mrs Lipari"
+				},
+				{
+					"name": "First Immigration Officer"
+				},
+				{
+					"name": "Second Immigration Officer"
+				}
+			]
+		}
+	]
+}

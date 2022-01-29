@@ -1,0 +1,53 @@
+{
+	"name": "A Streetcar Named Desire",
+	"format": "play",
+	"year": 1947,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tennessee Williams"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Blanche DuBois"
+				},
+				{
+					"name": "Stella Kowalski"
+				},
+				{
+					"name": "Stanley Kowalski"
+				},
+				{
+					"name": "Harold 'Mitch' Mitchell"
+				},
+				{
+					"name": "Eunice Hubbel"
+				},
+				{
+					"name": "Steve Hubbel"
+				},
+				{
+					"name": "Pablo Gonzales"
+				},
+				{
+					"name": "A Strange Man (Doctor)"
+				},
+				{
+					"name": "A Strange Woman (Nurse)"
+				},
+				{
+					"name": "A Young Collector"
+				},
+				{
+					"name": "A Mexican Woman"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,63 @@
+{
+	"name": "Rain Main",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2008,
+	"writingCredits": [
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Dan Gordon"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Rain Main",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Charlie Babbitt"
+				},
+				{
+					"name": "Raymond Babbitt"
+				},
+				{
+					"name": "Susan"
+				},
+				{
+					"name": "Dr Bruener"
+				},
+				{
+					"name": "Lucy"
+				},
+				{
+					"name": "Waitress",
+					"differentiator": "Rain Man"
+				},
+				{
+					"name": "Iris"
+				},
+				{
+					"name": "Mr Mooney"
+				},
+				{
+					"name": "Cop"
+				},
+				{
+					"name": "Dr Marsden"
+				}
+			]
+		}
+	]
+}

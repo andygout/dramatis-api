@@ -1,0 +1,87 @@
+{
+	"name": "Saint Joan",
+	"format": "play",
+	"year": 1923,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "George Bernard Shaw"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Robert de Baudricourt"
+				},
+				{
+					"name": "Steward to de Baudricourt"
+				},
+				{
+					"name": "Joan"
+				},
+				{
+					"name": "Bertrand de Poulengy"
+				},
+				{
+					"name": "De la Trémouille, Lord Chamberlain"
+				},
+				{
+					"name": "Duchess de la Trémouille"
+				},
+				{
+					"name": "Archbishop of Rheims"
+				},
+				{
+					"name": "Gilles de Rais (Bluebeard)"
+				},
+				{
+					"name": "Captain La Hire"
+				},
+				{
+					"name": "Bishop of Beauvais"
+				},
+				{
+					"name": "Dauphin, Charles VII"
+				},
+				{
+					"name": "Earl of Warwick"
+				},
+				{
+					"name": "Dunois, Bastard of Orléans"
+				},
+				{
+					"name": "Page to Dunois"
+				},
+				{
+					"name": "John de Stogumber, English chaplain"
+				},
+				{
+					"name": "Canon John D'Estivet"
+				},
+				{
+					"name": "Canon de Courcelles"
+				},
+				{
+					"name": "Brother Martin Ladvenu"
+				},
+				{
+					"name": "Brother John Lemaître, The Inquisitor"
+				},
+				{
+					"name": "Executioner"
+				},
+				{
+					"name": "English Soldier"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "Saint Joan"
+				}
+			]
+		}
+	]
+}

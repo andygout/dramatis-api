@@ -1,0 +1,78 @@
+{
+	"name": "Elling",
+	"differentiator": "3",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Simon Bent"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Elling",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Elling",
+					"differentiator": "2"
+				}
+			]
+		},
+		{
+			"name": "literal translation by",
+			"entities": [
+				{
+					"name": "Nicholas Norris"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Kjell Bjarne"
+				},
+				{
+					"name": "Elling"
+				},
+				{
+					"name": "Reidun"
+				},
+				{
+					"name": "Gunn"
+				},
+				{
+					"name": "Johanne"
+				},
+				{
+					"name": "Frank Asli"
+				},
+				{
+					"name": "Alfons"
+				},
+				{
+					"name": "Waiter",
+					"differentiator": "Elling"
+				},
+				{
+					"name": "Poets"
+				}
+			]
+		}
+	]
+}

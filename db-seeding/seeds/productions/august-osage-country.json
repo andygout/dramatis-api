@@ -1,0 +1,217 @@
+{
+	"uuid": "337b1b99-8a3a-45b6-b535-640452a6f3c1",
+	"name": "August: Osage County",
+	"startDate": "2008-11-21",
+	"pressDate": "2008-11-26",
+	"endDate": "2009-01-21",
+	"material": {
+		"name": "August: Osage County"
+	},
+	"venue": {
+		"name": "Lyttelton Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Steppenwolf Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		},
+		{
+			"name": "by special arrangement with",
+			"entities": [
+				{
+					"name": "Jeffrey Richards"
+				},
+				{
+					"name": "Jean Doumanian"
+				},
+				{
+					"name": "Steve Traxler"
+				},
+				{
+					"name": "Jerry Frankel"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Chelcie Ross",
+			"roles": [
+				{
+					"name": "Beverly Weston"
+				}
+			]
+		},
+		{
+			"name": "Deanna Dunagan",
+			"roles": [
+				{
+					"name": "Violet Weston"
+				}
+			]
+		},
+		{
+			"name": "Amy Morton",
+			"roles": [
+				{
+					"name": "Barbara Fordham"
+				}
+			]
+		},
+		{
+			"name": "Jeff Perry",
+			"roles": [
+				{
+					"name": "Bill Fordham"
+				}
+			]
+		},
+		{
+			"name": "Molly Ranson",
+			"roles": [
+				{
+					"name": "Jean Fordham"
+				}
+			]
+		},
+		{
+			"name": "Sally Murphy",
+			"roles": [
+				{
+					"name": "Ivy Weston"
+				}
+			]
+		},
+		{
+			"name": "Mariann Mayberry",
+			"roles": [
+				{
+					"name": "Karen Weston"
+				}
+			]
+		},
+		{
+			"name": "Rondi Reed",
+			"roles": [
+				{
+					"name": "Mattie Fae Aiken"
+				}
+			]
+		},
+		{
+			"name": "Paul Vincent O'Connor",
+			"roles": [
+				{
+					"name": "Charlie Aiken"
+				}
+			]
+		},
+		{
+			"name": "Ian Barford",
+			"roles": [
+				{
+					"name": "Little Charles",
+					"characterName": "'Little' Charles Aiken"
+				}
+			]
+		},
+		{
+			"name": "Kimberly Guerrero",
+			"roles": [
+				{
+					"name": "Johnna Monevata"
+				}
+			]
+		},
+		{
+			"name": "Gary Cole",
+			"roles": [
+				{
+					"name": "Steve Heidebrecht"
+				}
+			]
+		},
+		{
+			"name": "Troy West",
+			"roles": [
+				{
+					"name": "Sheriff Deon Gilbeau"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Anna D Shapiro"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Todd Rosenthal"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Ana Kuzmanic"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Ann G Wrightson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Richard Woodbury"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "David Singer"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Chuck Coyl"
+				}
+			]
+		},
+		{
+			"name": "Casting Director (understudies)",
+			"entities": [
+				{
+					"name": "Alastair Coomer"
+				}
+			]
+		}
+	]
+}

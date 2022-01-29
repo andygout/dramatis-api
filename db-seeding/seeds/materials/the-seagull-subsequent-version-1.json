@@ -1,0 +1,86 @@
+{
+	"name": "The Seagull",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2007,
+	"originalVersionMaterial": {
+		"name": "The Seagull",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"entities": [
+				{
+					"name": "Christopher Hampton"
+				}
+			]
+		},
+		{
+			"name": "literal translation by",
+			"entities": [
+				{
+					"name": "Vera Liber"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Polina",
+					"underlyingName": "Polina Andryevna"
+				},
+				{
+					"name": "Konstantin",
+					"underlyingName": "Konstantin Gavrilovich Treplev"
+				},
+				{
+					"name": "Trigorin",
+					"underlyingName": "Boris Alexeyevich Trigorin"
+				},
+				{
+					"name": "Shamrayev",
+					"underlyingName": "Ilya Afanasyevich Shamrayev"
+				},
+				{
+					"name": "Dorn",
+					"underlyingName": "Yevgeny Sergeyevich Dorn"
+				},
+				{
+					"name": "Nina",
+					"underlyingName": "Nina Mikhailovna Zarechniy"
+				},
+				{
+					"name": "Yakov"
+				},
+				{
+					"name": "Masha"
+				},
+				{
+					"name": "Maid"
+				},
+				{
+					"name": "Medvedenko",
+					"underlyingName": "Semyon Semyonovich Medvedenko"
+				},
+				{
+					"name": "Arkadina",
+					"underlyingName": "Irina Nikolayevna Arkadina"
+				},
+				{
+					"name": "Sorin",
+					"underlyingName": "Pyotr Nikolayevich Sorin"
+				}
+			]
+		}
+	]
+}

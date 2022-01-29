@@ -1,0 +1,49 @@
+{
+	"name": "The Chalk Garden",
+	"format": "play",
+	"year": 1955,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Enid Bagnold"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Maitland"
+				},
+				{
+					"name": "Judge"
+				},
+				{
+					"name": "Miss Madrigal"
+				},
+				{
+					"name": "Second Applicant"
+				},
+				{
+					"name": "Third Applicant"
+				},
+				{
+					"name": "Laurel"
+				},
+				{
+					"name": "Mrs St Maugham"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "The Chalk Garden"
+				},
+				{
+					"name": "Olivia",
+					"differentiator": "The Chalk Garden"
+				}
+			]
+		}
+	]
+}

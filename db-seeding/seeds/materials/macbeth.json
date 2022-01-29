@@ -1,0 +1,126 @@
+{
+	"name": "Macbeth",
+	"format": "play",
+	"year": 1606,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Duncan"
+				},
+				{
+					"name": "Malcolm"
+				},
+				{
+					"name": "Donalbain"
+				},
+				{
+					"name": "Macbeth"
+				},
+				{
+					"name": "Lady Macbeth"
+				},
+				{
+					"name": "Banquo"
+				},
+				{
+					"name": "Fleance"
+				},
+				{
+					"name": "Macduff"
+				},
+				{
+					"name": "Lady Macduff"
+				},
+				{
+					"name": "Macduff's son"
+				},
+				{
+					"name": "Ross"
+				},
+				{
+					"name": "Lennox"
+				},
+				{
+					"name": "Angus"
+				},
+				{
+					"name": "Menteith"
+				},
+				{
+					"name": "Caithness"
+				},
+				{
+					"name": "Siward"
+				},
+				{
+					"name": "Young Siward"
+				},
+				{
+					"name": "Seyton"
+				},
+				{
+					"name": "Hecate"
+				},
+				{
+					"name": "Three Witches"
+				},
+				{
+					"name": "Captain in the Scottish army"
+				},
+				{
+					"name": "Three Murderers"
+				},
+				{
+					"name": "Porter"
+				},
+				{
+					"name": "Lady Macbeth's doctor"
+				},
+				{
+					"name": "Doctor at the English Court"
+				},
+				{
+					"name": "Lady Macbeth's caretaker"
+				},
+				{
+					"name": "Lord"
+				},
+				{
+					"name": "First Apparition"
+				},
+				{
+					"name": "Second Apparition"
+				},
+				{
+					"name": "Third Apparition"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Macbeth"
+				}
+			]
+		}
+	]
+}

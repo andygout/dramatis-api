@@ -1,0 +1,180 @@
+{
+	"uuid": "fcf2e59c-7edf-4914-a3ff-51166939041c",
+	"name": "The Seagull",
+	"startDate": "2007-01-18",
+	"pressDate": "2007-01-25",
+	"endDate": "2007-03-17",
+	"material": {
+		"name": "The Seagull",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Downstairs"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Denise Black",
+			"roles": [
+				{
+					"name": "Polina"
+				}
+			]
+		},
+		{
+			"name": "Mackenzie Crook",
+			"roles": [
+				{
+					"name": "Konstantin"
+				}
+			]
+		},
+		{
+			"name": "Chiwetel Ejiofor",
+			"roles": [
+				{
+					"name": "Trigorin"
+				}
+			]
+		},
+		{
+			"name": "Paul Jesson",
+			"roles": [
+				{
+					"name": "Shamrayev"
+				}
+			]
+		},
+		{
+			"name": "Art Malik",
+			"roles": [
+				{
+					"name": "Dorn"
+				}
+			]
+		},
+		{
+			"name": "Carey Mulligan",
+			"roles": [
+				{
+					"name": "Nina"
+				}
+			]
+		},
+		{
+			"name": "Christopher Patrick Nolan",
+			"roles": [
+				{
+					"name": "Yakov"
+				}
+			]
+		},
+		{
+			"name": "Katherine Parkinson",
+			"roles": [
+				{
+					"name": "Masha"
+				}
+			]
+		},
+		{
+			"name": "Mary Rose",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Pearce Quigley",
+			"roles": [
+				{
+					"name": "Medvedenko"
+				}
+			]
+		},
+		{
+			"name": "Kristin Scott Thomas",
+			"roles": [
+				{
+					"name": "Arkadina"
+				}
+			]
+		},
+		{
+			"name": "Peter Wight",
+			"roles": [
+				{
+					"name": "Sorin"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ian Rickson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Hildegard Bechtler"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ian Dickinson"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Stephen Warbeck"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Jacqueline Rice"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Amy Ball"
+				}
+			]
+		}
+	]
+}

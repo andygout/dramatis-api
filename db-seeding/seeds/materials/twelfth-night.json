@@ -1,0 +1,70 @@
+{
+	"name": "Twelfth Night",
+	"format": "play",
+	"year": 1601,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Viola"
+				},
+				{
+					"name": "Sebastian"
+				},
+				{
+					"name": "Duke Orsino"
+				},
+				{
+					"name": "Olivia",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Malvolio"
+				},
+				{
+					"name": "Maria"
+				},
+				{
+					"name": "Sir Toby Belch"
+				},
+				{
+					"name": "Sir Andrew Aguecheek"
+				},
+				{
+					"name": "Feste"
+				},
+				{
+					"name": "Fabian"
+				},
+				{
+					"name": "Antonio"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Curio"
+				},
+				{
+					"name": "Servant of Olivia"
+				},
+				{
+					"name": "Sea Captain"
+				},
+				{
+					"name": "Priest"
+				}
+			]
+		}
+	]
+}

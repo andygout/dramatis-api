@@ -1,0 +1,26 @@
+{
+	"name": "Duet for One",
+	"format": "play",
+	"year": 1980,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tom Kempinski"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Dr Feldmann"
+				},
+				{
+					"name": "Stephanie Abrahams"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,92 @@
+{
+	"name": "Enron",
+	"format": "play",
+	"year": 2009,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lucy Prebble"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ken Lay"
+				},
+				{
+					"name": "Jeffrey Skilling"
+				},
+				{
+					"name": "Andy Fastow"
+				},
+				{
+					"name": "Claudia Roe"
+				},
+				{
+					"name": "Skilling's Daughter"
+				},
+				{
+					"name": "Arthur Andersen"
+				},
+				{
+					"name": "Ramsay & Hewitt"
+				},
+				{
+					"name": "Sheryl Sloman"
+				},
+				{
+					"name": "Lawyer #1"
+				},
+				{
+					"name": "Irene Gant"
+				},
+				{
+					"name": "Analysts"
+				},
+				{
+					"name": "Lawyer #2"
+				},
+				{
+					"name": "Reporter"
+				},
+				{
+					"name": "Congresswoman"
+				},
+				{
+					"name": "Security Officer"
+				},
+				{
+					"name": "Senator"
+				},
+				{
+					"name": "Court Officer"
+				},
+				{
+					"name": "Police Officer"
+				},
+				{
+					"name": "Emoloyees/Market"
+				},
+				{
+					"name": "Traders"
+				},
+				{
+					"name": "The Board"
+				},
+				{
+					"name": "Press"
+				},
+				{
+					"name": "Raptors"
+				},
+				{
+					"name": "Passers-by"
+				}
+			]
+		}
+	]
+}

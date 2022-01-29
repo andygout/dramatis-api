@@ -1,0 +1,53 @@
+{
+	"name": "John Gabriel Borkman",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Henrik Ibsen"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"entities": [
+				{
+					"name": "David Eldridge"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Mrs Gunhild Borkman"
+				},
+				{
+					"name": "Malene"
+				},
+				{
+					"name": "Miss Ella Rentheim"
+				},
+				{
+					"name": "Mrs Fanny Wilton"
+				},
+				{
+					"name": "Erhart Borkman"
+				},
+				{
+					"name": "John Gabriel Borkman"
+				},
+				{
+					"name": "Frida Foldal"
+				},
+				{
+					"name": "Vilhelm Foldal"
+				}
+			]
+		}
+	]
+}

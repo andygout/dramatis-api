@@ -1,0 +1,145 @@
+{
+	"uuid": "2f2449c2-e582-46fc-9a42-0f2504bbbda5",
+	"name": "Boeing-Boeing",
+	"startDate": "2007-02-03",
+	"pressDate": "2007-02-15",
+	"endDate": "2008-01-05",
+	"material": {
+		"name": "Boeing-Boeing"
+	},
+	"venue": {
+		"name": "Comedy Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sonia Friedman Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Act Productions"
+				},
+				{
+					"name": "Matthew Byam Shaw"
+				},
+				{
+					"name": "Robert Bartner"
+				},
+				{
+					"name": "Bob Boyett"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Tamzin Outhwaite",
+			"roles": [
+				{
+					"name": "Gloria"
+				}
+			]
+		},
+		{
+			"name": "Roger Allam",
+			"roles": [
+				{
+					"name": "Bernard"
+				}
+			]
+		},
+		{
+			"name": "Frances De La Tour",
+			"roles": [
+				{
+					"name": "Bertha",
+					"characterName": "Berthe"
+				}
+			]
+		},
+		{
+			"name": "Mark Rylance",
+			"roles": [
+				{
+					"name": "Robert"
+				}
+			]
+		},
+		{
+			"name": "Daisy Beaumont",
+			"roles": [
+				{
+					"name": "Gabriella"
+				}
+			]
+		},
+		{
+			"name": "Michelle Gomez",
+			"roles": [
+				{
+					"name": "Gretchen"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matthew Warchus"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rob Howell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Hugh Vanstone"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Simon Baker"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Claire Van Kampen"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Lisa Makin"
+				}
+			]
+		},
+		{
+			"name": "Casting Director (understudies)",
+			"entities": [
+				{
+					"name": "Imogen Kinchin"
+				}
+			]
+		}
+	]
+}

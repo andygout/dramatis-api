@@ -1,0 +1,277 @@
+{
+	"uuid": "0d028d2a-d32b-46ab-b1b5-91bcb60bfebe",
+	"name": "Cat on a Hot Tin Roof",
+	"startDate": "2009-11-21",
+	"pressDate": "2009-12-01",
+	"endDate": "2010-04-10",
+	"material": {
+		"name": "Cat on a Hot Tin Roof"
+	},
+	"venue": {
+		"name": "Novello Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Front Row Productions",
+					"members": [
+						{
+							"name": "Stephen Byrd"
+						},
+						{
+							"name": "Alia Jones"
+						}
+					]
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "James Earl Jones",
+			"roles": [
+				{
+					"name": "Big Daddy"
+				}
+			]
+		},
+		{
+			"name": "Phylicia Rashad",
+			"roles": [
+				{
+					"name": "Big Mama"
+				}
+			]
+		},
+		{
+			"name": "Adrian Lester",
+			"roles": [
+				{
+					"name": "Brick"
+				}
+			]
+		},
+		{
+			"name": "Sanaa Lathan",
+			"roles": [
+				{
+					"name": "Maggie",
+					"characterName": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "Richard Blackwood",
+			"roles": [
+				{
+					"name": "Brightie"
+				}
+			]
+		},
+		{
+			"name": "Derek Griffiths",
+			"roles": [
+				{
+					"name": "Reverend Tooker"
+				}
+			]
+		},
+		{
+			"name": "Nina Sosanya",
+			"roles": [
+				{
+					"name": "Mae"
+				}
+			]
+		},
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Doctor Baugh"
+				}
+			]
+		},
+		{
+			"name": "Peter De Jersey",
+			"roles": [
+				{
+					"name": "Gooper"
+				}
+			]
+		},
+		{
+			"name": "Guy Burgess",
+			"roles": [
+				{
+					"name": "Lacey"
+				}
+			]
+		},
+		{
+			"name": "Claudia Cadette",
+			"roles": [
+				{
+					"name": "Nanny"
+				}
+			]
+		},
+		{
+			"name": "Susan Lawson-Reynolds",
+			"roles": [
+				{
+					"name": "Sookey"
+				}
+			]
+		},
+		{
+			"name": "Vienna Best",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Nina Cassells",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Leah Champagnie",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Corrigan Griffith",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Bernice Leith",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Solana Lord-Baptiste",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Zach Morris",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Ben Mushumani",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Sanneh",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		},
+		{
+			"name": "Siann Williams",
+			"roles": [
+				{
+					"name": "Child"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Debbie Allen"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Morgan Large"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Fay Fullerton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Holmes"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Richard Brooker"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Andrew 'Tex' Allen"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Anthony Ekundayo Lennon"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Gabrielle Dawes"
+				}
+			]
+		}
+	]
+}

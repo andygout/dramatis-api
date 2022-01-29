@@ -1,0 +1,265 @@
+{
+	"uuid": "0a181943-9f6e-4682-b012-d46657d3dd08",
+	"name": "Duet for One",
+	"startDate": "2009-01-22",
+	"pressDate": "2009-01-29",
+	"endDate": "2009-03-14",
+	"material": {
+		"name": "Duet for One"
+	},
+	"venue": {
+		"name": "Almeida Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Almeida Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Henry Goodman",
+			"roles": [
+				{
+					"name": "Dr Feldmann"
+				}
+			]
+		},
+		{
+			"name": "Juliet Stephenson",
+			"roles": [
+				{
+					"name": "Stephanie Abrahams"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matthew Lloyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lez Brotherston"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jason Taylor"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Poppy Burton-Morgan"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Julia Wilson Dickson"
+				}
+			]
+		},
+		{
+			"name": "Physiotherapist",
+			"entities": [
+				{
+					"name": "Warrick McNeill"
+				}
+			]
+		},
+		{
+			"name": "Violinist",
+			"entities": [
+				{
+					"name": "Thomas Gould"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Igor"
+				}
+			]
+		},
+		{
+			"name": "Company Manager",
+			"entities": [
+				{
+					"name": "Rupert Carlile"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Laura Flowers"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Nicole Keighley"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Laura Draper"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Poppy Hall"
+				}
+			]
+		},
+		{
+			"name": "Wardrobe Supervisor",
+			"entities": [
+				{
+					"name": "Catrina Richardson"
+				}
+			]
+		},
+		{
+			"name": "Wardrobe Deputy",
+			"entities": [
+				{
+					"name": "Eleanor Dolan"
+				}
+			]
+		},
+		{
+			"name": "Hair and Make Up Supervisor",
+			"entities": [
+				{
+					"name": "Cally Bone"
+				}
+			]
+		},
+		{
+			"name": "Chief Technician",
+			"entities": [
+				{
+					"name": "Jason Wescombe"
+				}
+			]
+		},
+		{
+			"name": "Lighting Technician",
+			"entities": [
+				{
+					"name": "Robin Fisher"
+				}
+			]
+		},
+		{
+			"name": "Sound Technician",
+			"entities": [
+				{
+					"name": "Howard Wood"
+				}
+			]
+		},
+		{
+			"name": "Theatre Technician",
+			"entities": [
+				{
+					"name": "Adriano Agostino"
+				}
+			]
+		},
+		{
+			"name": "Production Carpenter",
+			"entities": [
+				{
+					"name": "Eddie King"
+				}
+			]
+		},
+		{
+			"name": "Set Builder",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Scott Fleary Ltd"
+				}
+			]
+		},
+		{
+			"name": "Set Painters",
+			"entities": [
+				{
+					"name": "Charlotte Gainey"
+				},
+				{
+					"name": "Natasha Shepherd"
+				}
+			]
+		},
+		{
+			"name": "Production photography",
+			"entities": [
+				{
+					"name": "John Haynes"
+				}
+			]
+		},
+		{
+			"name": "Rehearsal photography",
+			"entities": [
+				{
+					"name": "Bridget Jones"
+				}
+			]
+		},
+		{
+			"name": "Student on attachment to Stage Management",
+			"entities": [
+				{
+					"name": "Christine Hollinshead"
+				}
+			]
+		}
+	]
+}

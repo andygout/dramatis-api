@@ -1,0 +1,136 @@
+{
+	"uuid": "96ed05ff-3f88-4dac-bb27-2e01d877acb0",
+	"name": "Entertaining Mr Sloane",
+	"startDate": "2009-01-22",
+	"pressDate": "2009-01-30",
+	"endDate": "2009-04-11",
+	"material": {
+		"name": "Entertaining Mr Sloane"
+	},
+	"venue": {
+		"name": "Studio 1"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "MJE Productions",
+					"members": [
+						{
+							"name": "Michael Edwards"
+						},
+						{
+							"name": "Carole Winter"
+						}
+					]
+				},
+				{
+					"model": "COMPANY",
+					"name": "English Touring Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Imelda Staunton",
+			"roles": [
+				{
+					"name": "Kath"
+				}
+			]
+		},
+		{
+			"name": "Mathew Horne",
+			"roles": [
+				{
+					"name": "Sloane"
+				}
+			]
+		},
+		{
+			"name": "Richard Bremmer",
+			"roles": [
+				{
+					"name": "Kemp"
+				}
+			]
+		},
+		{
+			"name": "Simon Paisley Day",
+			"roles": [
+				{
+					"name": "Ed"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nick Bagnall"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Colin Richmond"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Simon Mills"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Mike Furness"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Kate Waters"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Will Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Jerry Knight-Smith"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,90 @@
+{
+	"name": "Othello",
+	"format": "play",
+	"year": 1603,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Othello"
+				},
+				{
+					"name": "Desdemona"
+				},
+				{
+					"name": "Iago"
+				},
+				{
+					"name": "Cassio"
+				},
+				{
+					"name": "Emilia"
+				},
+				{
+					"name": "Bianca"
+				},
+				{
+					"name": "Brabantio"
+				},
+				{
+					"name": "Roderigo"
+				},
+				{
+					"name": "Duke of Venice"
+				},
+				{
+					"name": "Gratiano"
+				},
+				{
+					"name": "Lodovico"
+				},
+				{
+					"name": "Montano"
+				},
+				{
+					"name": "Clown",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Sailor"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Gentlemen"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Herald",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "Othello"
+				}
+			]
+		}
+	]
+}
