@@ -852,6 +852,731 @@ const getShowQuery = () => `
 		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
 		ORDER BY award.name
 
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS awards
+
+	OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedSubsequentVersionMaterial:Material)
+		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
+		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(subsequentVersionMaterialAward:Award)
+
+	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
+		WHERE
+			(
+				(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
+				nominatedEntity:Company
+			) AND
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
+			)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntityRel,
+		COLLECT(nominatedEntity {
+			model: TOUPPER(HEAD(LABELS(nominatedEntity))),
+			.uuid,
+			.name,
+			nominatedMemberUuids: nominatedEntityRel.nominatedMemberUuids
+		}) AS nominatedEntities
+
+	UNWIND (CASE nominatedEntities WHEN [] THEN [null] ELSE nominatedEntities END) AS nominatedEntity
+
+		UNWIND (COALESCE(nominatedEntity.nominatedMemberUuids, [null])) AS nominatedMemberUuid
+
+			OPTIONAL MATCH (category)-[nominatedMemberRel:HAS_NOMINEE]->
+				(nominatedMember:Person { uuid: nominatedMemberUuid })
+				WHERE
+					nominatedEntityRel.nominationPosition IS NULL OR
+					nominatedEntityRel.nominationPosition = nominatedMemberRel.nominationPosition
+
+			WITH
+				material,
+				writingCredits,
+				originalVersionMaterial,
+				subsequentVersionMaterials,
+				sourcingMaterials,
+				characterGroups,
+				productions,
+				awards,
+				nominatedSubsequentVersionMaterial,
+				nomineeRel,
+				category,
+				categoryRel,
+				ceremony,
+				subsequentVersionMaterialAward,
+				nominatedEntityRel,
+				nominatedEntity,
+				nominatedMember
+				ORDER BY nominatedMemberRel.memberPosition
+
+			WITH
+				material,
+				writingCredits,
+				originalVersionMaterial,
+				subsequentVersionMaterials,
+				sourcingMaterials,
+				characterGroups,
+				productions,
+				awards,
+				nominatedSubsequentVersionMaterial,
+				nomineeRel,
+				category,
+				categoryRel,
+				ceremony,
+				subsequentVersionMaterialAward,
+				nominatedEntityRel,
+				nominatedEntity,
+				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntityRel,
+		nominatedEntity,
+		nominatedMembers
+		ORDER BY nominatedEntityRel.nominationPosition, nominatedEntityRel.entityPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		[nominatedEntity IN COLLECT(
+			CASE nominatedEntity WHEN NULL
+				THEN null
+				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
+			END
+		) | CASE nominatedEntity.model WHEN 'COMPANY'
+			THEN nominatedEntity
+			ELSE nominatedEntity { .model, .uuid, .name }
+		END] AS nominatedEntities
+
+	OPTIONAL MATCH (category)-[nominatedProductionRel:HAS_NOMINEE]->(nominatedProduction:Production)
+		WHERE
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedProductionRel.nominationPosition
+			)
+
+	OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntities,
+		nominatedProductionRel,
+		nominatedProduction,
+		venue,
+		surVenue
+		ORDER BY nominatedProductionRel.productionPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntities,
+		COLLECT(
+			CASE nominatedProduction WHEN NULL
+				THEN null
+				ELSE nominatedProduction {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					.startDate,
+					.endDate,
+					venue: CASE venue WHEN NULL
+						THEN null
+						ELSE venue {
+							model: 'VENUE',
+							.uuid,
+							.name,
+							surVenue: CASE surVenue WHEN NULL
+								THEN null
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
+							END
+						}
+					END
+				}
+			END
+		) AS nominatedProductions
+
+	OPTIONAL MATCH (category)-[nominatedMaterialRel:HAS_NOMINEE]->(nominatedMaterial:Material)
+		WHERE
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
+			) AND
+			nominatedMaterial.uuid <> nominatedSubsequentVersionMaterial.uuid AND NOT
+			(material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedMaterial)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		nominatedMaterialRel,
+		nominatedMaterial
+		ORDER BY nominatedMaterialRel.materialPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		COLLECT(
+			CASE nominatedMaterial WHEN NULL
+				THEN null
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					uuid: CASE nominatedMaterial.uuid WHEN material.uuid THEN null ELSE nominatedMaterial.uuid END,
+					.name,
+					.format,
+					.year
+				}
+			END
+		) AS nominatedMaterials
+		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nomineeRel.isWinner AS isWinner,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		nominatedMaterials,
+		COLLECT(
+			CASE nominatedSubsequentVersionMaterial WHEN NULL
+				THEN null
+				ELSE nominatedSubsequentVersionMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+			END
+		) AS nominatedSubsequentVersionMaterials
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		COLLECT({
+			model: 'NOMINATION',
+			isWinner: COALESCE(isWinner, false),
+			entities: nominatedEntities,
+			productions: nominatedProductions,
+			materials: nominatedMaterials,
+			subsequentVersionMaterials: nominatedSubsequentVersionMaterials
+		}) AS nominations
+		ORDER BY categoryRel.position
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		ceremony,
+		subsequentVersionMaterialAward,
+		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
+		ORDER BY ceremony.name DESC
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAward,
+		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
+		ORDER BY subsequentVersionMaterialAward.name
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		COLLECT(subsequentVersionMaterialAward {
+			model: 'AWARD',
+			.uuid,
+			.name,
+			ceremonies
+		}) AS subsequentVersionMaterialAwards
+
+	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(nominatedSourcingMaterial:Material)
+		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
+		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(sourcingMaterialAward:Award)
+
+	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
+		WHERE
+			(
+				(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
+				nominatedEntity:Company
+			) AND
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
+			)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntityRel,
+		COLLECT(nominatedEntity {
+			model: TOUPPER(HEAD(LABELS(nominatedEntity))),
+			.uuid,
+			.name,
+			nominatedMemberUuids: nominatedEntityRel.nominatedMemberUuids
+		}) AS nominatedEntities
+
+	UNWIND (CASE nominatedEntities WHEN [] THEN [null] ELSE nominatedEntities END) AS nominatedEntity
+
+		UNWIND (COALESCE(nominatedEntity.nominatedMemberUuids, [null])) AS nominatedMemberUuid
+
+			OPTIONAL MATCH (category)-[nominatedMemberRel:HAS_NOMINEE]->
+				(nominatedMember:Person { uuid: nominatedMemberUuid })
+				WHERE
+					nominatedEntityRel.nominationPosition IS NULL OR
+					nominatedEntityRel.nominationPosition = nominatedMemberRel.nominationPosition
+
+			WITH
+				material,
+				writingCredits,
+				originalVersionMaterial,
+				subsequentVersionMaterials,
+				sourcingMaterials,
+				characterGroups,
+				productions,
+				awards,
+				subsequentVersionMaterialAwards,
+				nominatedSourcingMaterial,
+				nomineeRel,
+				category,
+				categoryRel,
+				ceremony,
+				sourcingMaterialAward,
+				nominatedEntityRel,
+				nominatedEntity,
+				nominatedMember
+				ORDER BY nominatedMemberRel.memberPosition
+
+			WITH
+				material,
+				writingCredits,
+				originalVersionMaterial,
+				subsequentVersionMaterials,
+				sourcingMaterials,
+				characterGroups,
+				productions,
+				awards,
+				subsequentVersionMaterialAwards,
+				nominatedSourcingMaterial,
+				nomineeRel,
+				category,
+				categoryRel,
+				ceremony,
+				sourcingMaterialAward,
+				nominatedEntityRel,
+				nominatedEntity,
+				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntityRel,
+		nominatedEntity,
+		nominatedMembers
+		ORDER BY nominatedEntityRel.nominationPosition, nominatedEntityRel.entityPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		[nominatedEntity IN COLLECT(
+			CASE nominatedEntity WHEN NULL
+				THEN null
+				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
+			END
+		) | CASE nominatedEntity.model WHEN 'COMPANY'
+			THEN nominatedEntity
+			ELSE nominatedEntity { .model, .uuid, .name }
+		END] AS nominatedEntities
+
+	OPTIONAL MATCH (category)-[nominatedProductionRel:HAS_NOMINEE]->(nominatedProduction:Production)
+		WHERE
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedProductionRel.nominationPosition
+			)
+
+	OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntities,
+		nominatedProductionRel,
+		nominatedProduction,
+		venue,
+		surVenue
+		ORDER BY nominatedProductionRel.productionPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntities,
+		COLLECT(
+			CASE nominatedProduction WHEN NULL
+				THEN null
+				ELSE nominatedProduction {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					.startDate,
+					.endDate,
+					venue: CASE venue WHEN NULL
+						THEN null
+						ELSE venue {
+							model: 'VENUE',
+							.uuid,
+							.name,
+							surVenue: CASE surVenue WHEN NULL
+								THEN null
+								ELSE surVenue { model: 'VENUE', .uuid, .name }
+							END
+						}
+					END
+				}
+			END
+		) AS nominatedProductions
+
+	OPTIONAL MATCH (category)-[nominatedMaterialRel:HAS_NOMINEE]->(nominatedMaterial:Material)
+		WHERE
+			(
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
+			) AND
+			nominatedMaterial.uuid <> nominatedSourcingMaterial.uuid AND NOT
+			(material)<-[:USES_SOURCE_MATERIAL]-(nominatedMaterial)
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		nominatedMaterialRel,
+		nominatedMaterial
+		ORDER BY nominatedMaterialRel.materialPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		COLLECT(
+			CASE nominatedMaterial WHEN NULL
+				THEN null
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					uuid: CASE nominatedMaterial.uuid WHEN material.uuid THEN null ELSE nominatedMaterial.uuid END,
+					.name,
+					.format,
+					.year
+				}
+			END
+		) AS nominatedMaterials
+		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nomineeRel.isWinner AS isWinner,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		nominatedEntities,
+		nominatedProductions,
+		nominatedMaterials,
+		COLLECT(
+			CASE nominatedSourcingMaterial WHEN NULL
+				THEN null
+				ELSE nominatedSourcingMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+			END
+		) AS nominatedSourcingMaterials
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		COLLECT({
+			model: 'NOMINATION',
+			isWinner: COALESCE(isWinner, false),
+			entities: nominatedEntities,
+			productions: nominatedProductions,
+			materials: nominatedMaterials,
+			sourcingMaterials: nominatedSourcingMaterials
+		}) AS nominations
+		ORDER BY categoryRel.position
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		ceremony,
+		sourcingMaterialAward,
+		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
+		ORDER BY ceremony.name DESC
+
+	WITH
+		material,
+		writingCredits,
+		originalVersionMaterial,
+		subsequentVersionMaterials,
+		sourcingMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		sourcingMaterialAward,
+		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
+		ORDER BY sourcingMaterialAward.name
+
 	RETURN
 		'MATERIAL' AS model,
 		material.uuid AS uuid,
@@ -872,7 +1597,9 @@ const getShowQuery = () => `
 			production IN productions WHERE production.usesSourcingMaterial |
 			production { .model, .uuid, .name, .startDate, .endDate, .venue }
 		] AS sourcingMaterialProductions,
-		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS awards
+		awards,
+		subsequentVersionMaterialAwards,
+		COLLECT(sourcingMaterialAward { model: 'AWARD', .uuid, .name, ceremonies }) AS sourcingMaterialAwards
 	`;
 
 const getListQuery = () => `

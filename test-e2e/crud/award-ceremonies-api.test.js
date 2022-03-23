@@ -1621,7 +1621,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: HAIRSPRAY_MATERIAL_UUID,
 										name: 'Hairspray',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -1670,7 +1671,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: GARPLY_MATERIAL_UUID,
 										name: 'Garply',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -1710,7 +1712,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: SAINT_JOAN_MATERIAL_UUID,
 										name: 'Saint Joan',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -1757,7 +1760,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: PARADE_MATERIAL_UUID,
 										name: 'Parade',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -1817,7 +1821,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: GARPLY_MATERIAL_UUID,
 										name: 'Garply',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							}
@@ -1970,7 +1975,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: A_DISAPPEARING_NUMBER_MATERIAL_UUID,
 										name: 'A Disappearing Number',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -1985,7 +1991,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: THE_REPORTER_MATERIAL_UUID,
 										name: 'The Reporter',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -2000,7 +2007,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: VERNON_GOD_LITTLE_MATERIAL_UUID,
 										name: 'Vernon God Little',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							}
@@ -4082,7 +4090,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: THE_CHALK_GARDEN_MATERIAL_UUID,
 										name: 'The Chalk Garden',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4131,7 +4140,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: PIAF_MATERIAL_UUID,
 										name: 'Piaf',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4171,7 +4181,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: IVANOV_MATERIAL_UUID,
 										name: 'Ivanov',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4231,7 +4242,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: WALDO_MATERIAL_UUID,
 										name: 'Waldo',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4291,7 +4303,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: WALDO_MATERIAL_UUID,
 										name: 'Waldo',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							}
@@ -4457,7 +4470,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: ENGLAND_PEOPLE_VERY_NICE_MATERIAL_UUID,
 										name: 'England People Very Nice',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4472,7 +4486,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: JERUSALEM_MATERIAL_UUID,
 										name: 'Jerusalem',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							},
@@ -4487,7 +4502,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										uuid: OUR_CLASS_MATERIAL_UUID,
 										name: 'Our Class',
 										format: null,
-										year: null
+										year: null,
+										writingCredits: []
 									}
 								]
 							}

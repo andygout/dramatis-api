@@ -2262,7 +2262,8 @@ describe('Award ceremonies', () => {
 									uuid: GARPLY_MATERIAL_UUID,
 									name: 'Garply',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						},
@@ -2308,7 +2309,8 @@ describe('Award ceremonies', () => {
 									uuid: PLUGH_MATERIAL_UUID,
 									name: 'Plugh',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						},
@@ -2404,7 +2406,8 @@ describe('Award ceremonies', () => {
 									uuid: GARPLY_MATERIAL_UUID,
 									name: 'Garply',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						},
@@ -2470,14 +2473,16 @@ describe('Award ceremonies', () => {
 									uuid: FRED_MATERIAL_UUID,
 									name: 'Fred',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								},
 								{
 									model: 'MATERIAL',
 									uuid: WALDO_MATERIAL_UUID,
 									name: 'Waldo',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						}
@@ -2698,7 +2703,8 @@ describe('Award ceremonies', () => {
 									uuid: FRED_MATERIAL_UUID,
 									name: 'Fred',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						},
@@ -2713,14 +2719,16 @@ describe('Award ceremonies', () => {
 									uuid: GARPLY_MATERIAL_UUID,
 									name: 'Garply',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								},
 								{
 									model: 'MATERIAL',
 									uuid: WALDO_MATERIAL_UUID,
 									name: 'Waldo',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						},
@@ -2735,7 +2743,8 @@ describe('Award ceremonies', () => {
 									uuid: PLUGH_MATERIAL_UUID,
 									name: 'Plugh',
 									format: 'play',
-									year: 2019
+									year: 2019,
+									writingCredits: []
 								}
 							]
 						}

@@ -377,6 +377,115 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominee)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
+		WHERE entity:Person OR entity:Company OR entity:Material
+
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
+		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		entityRel,
+		entity,
+		sourceMaterialWriterRel, sourceMaterialWriter
+		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		entityRel,
+		entity,
+		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
+		COLLECT(
+			CASE sourceMaterialWriter WHEN NULL
+				THEN null
+				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+			END
+		) AS sourceMaterialWriters
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		entityRel,
+		entity,
+		COLLECT(
+			CASE SIZE(sourceMaterialWriters) WHEN 0
+				THEN null
+				ELSE {
+					model: 'WRITING_CREDIT',
+					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
+					entities: sourceMaterialWriters
+				}
+			END
+		) AS sourceMaterialWritingCredits
+		ORDER BY entityRel.creditPosition, entityRel.entityPosition
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		entityRel.credit AS writingCreditName,
+		[entity IN COLLECT(
+			CASE entity WHEN NULL
+				THEN null
+				ELSE entity {
+					model: TOUPPER(HEAD(LABELS(entity))),
+					.uuid,
+					.name,
+					.format,
+					.year,
+					writingCredits: sourceMaterialWritingCredits
+				}
+			END
+		) | CASE entity.model WHEN 'MATERIAL'
+			THEN entity
+			ELSE entity { .model, .uuid, .name }
+		END] AS entities
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		COLLECT(
+			CASE SIZE(entities) WHEN 0
+				THEN null
+				ELSE {
+					model: 'WRITING_CREDIT',
+					name: COALESCE(writingCreditName, 'by'),
+					entities: entities
+				}
+			END
+		) AS writingCredits
+
 	WITH ceremony, award, categoryRel, category, nomineeRel,
 		COLLECT(nominee {
 			model: TOUPPER(HEAD(LABELS(nominee))),
@@ -398,7 +507,8 @@ const getShowQuery = () => `
 				}
 			END,
 			.format,
-			.year
+			.year,
+			writingCredits
 		}) AS nominees
 
 	UNWIND (CASE nominees WHEN [] THEN [null] ELSE nominees END) AS nominee
@@ -443,14 +553,15 @@ const getShowQuery = () => `
 					.endDate,
 					.venue,
 					.format,
-					.year
+					.year,
+					.writingCredits
 				}
 			END
 		) | CASE nominee.model
 			WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 			WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue }
-			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year }
+			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year, .writingCredits }
 		END] AS nominees
 
 	WITH
