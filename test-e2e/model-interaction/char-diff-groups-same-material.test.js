@@ -53,7 +53,7 @@ describe('Character with multiple appearances in the same material in different 
 			.send({
 				name: '3 Winters',
 				format: 'play',
-				year: 2014,
+				year: '2014',
 				characterGroups: [
 					{
 						name: '2011',

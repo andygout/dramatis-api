@@ -59,7 +59,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Hamlet',
 				format: 'play',
-				year: 1601,
+				year: '1601',
 				characterGroups: [
 					{
 						characters: [
@@ -79,7 +79,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
 				format: 'play',
-				year: 1966,
+				year: '1966',
 				characterGroups: [
 					{
 						characters: [
@@ -99,7 +99,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Fortinbras',
 				format: 'play',
-				year: 1991,
+				year: '1991',
 				characterGroups: [
 					{
 						characters: [
@@ -119,7 +119,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Hamletmachine',
 				format: 'play',
-				year: 1977,
+				year: '1977',
 				characterGroups: [
 					{
 						characters: [

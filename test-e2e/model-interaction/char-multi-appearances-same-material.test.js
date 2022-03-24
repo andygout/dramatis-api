@@ -45,7 +45,7 @@ describe('Character with multiple appearances in the same material under differe
 			.send({
 				name: 'Rock \'n\' Roll',
 				format: 'play',
-				year: 2006,
+				year: '2006',
 				characterGroups: [
 					{
 						characters: [

@@ -11,10 +11,10 @@ describe('Nameless writer groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const MATERIAL_UUID = '5';
-	const PERSON_1_UUID = '7';
-	const PERSON_2_UUID = '8';
-	const PERSON_3_UUID = '9';
+	const XYZZY_MATERIAL_UUID = '5';
+	const FERDINAND_FOO_PERSON_UUID = '7';
+	const BEATRICE_BAR_PERSON_UUID = '8';
+	const BRANDON_BAZ_PERSON_UUID = '9';
 
 	let material;
 
@@ -31,13 +31,13 @@ describe('Nameless writer groups grouping', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Material name',
+				name: 'Xyzzy',
 				format: 'play',
 				writingCredits: [
 					{
 						entities: [
 							{
-								name: 'Person #1'
+								name: 'Ferdinand Foo'
 							}
 						]
 					},
@@ -45,14 +45,14 @@ describe('Nameless writer groups grouping', () => {
 						name: 'version by',
 						entities: [
 							{
-								name: 'Person #2'
+								name: 'Beatrice Bar'
 							}
 						]
 					},
 					{
 						entities: [
 							{
-								name: 'Person #3'
+								name: 'Brandon Baz'
 							}
 						]
 					}
@@ -60,7 +60,7 @@ describe('Nameless writer groups grouping', () => {
 			});
 
 		material = await chai.request(app)
-			.get(`/materials/${MATERIAL_UUID}`);
+			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
 	});
 
@@ -81,13 +81,13 @@ describe('Nameless writer groups grouping', () => {
 					entities: [
 						{
 							model: 'PERSON',
-							uuid: PERSON_1_UUID,
-							name: 'Person #1'
+							uuid: FERDINAND_FOO_PERSON_UUID,
+							name: 'Ferdinand Foo'
 						},
 						{
 							model: 'PERSON',
-							uuid: PERSON_3_UUID,
-							name: 'Person #3'
+							uuid: BRANDON_BAZ_PERSON_UUID,
+							name: 'Brandon Baz'
 						}
 					]
 				},
@@ -97,8 +97,8 @@ describe('Nameless writer groups grouping', () => {
 					entities: [
 						{
 							model: 'PERSON',
-							uuid: PERSON_2_UUID,
-							name: 'Person #2'
+							uuid: BEATRICE_BAR_PERSON_UUID,
+							name: 'Beatrice Bar'
 						}
 					]
 				}

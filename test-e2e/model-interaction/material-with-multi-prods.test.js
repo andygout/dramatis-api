@@ -39,7 +39,7 @@ describe('Material with multiple productions', () => {
 			.send({
 				name: 'Twelfth Night',
 				format: 'play',
-				year: 1602
+				year: '1602'
 			});
 
 		await chai.request(app)

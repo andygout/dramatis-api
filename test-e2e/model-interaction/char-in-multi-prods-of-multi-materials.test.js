@@ -51,7 +51,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'Henry IV, Part 1',
 				format: 'play',
-				year: 1597,
+				year: '1597',
 				characterGroups: [
 					{
 						characters: [
@@ -68,7 +68,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'Henry IV, Part 2',
 				format: 'play',
-				year: 1599,
+				year: '1599',
 				characterGroups: [
 					{
 						characters: [
@@ -85,7 +85,7 @@ describe('Character in multiple productions of multiple materials', () => {
 			.send({
 				name: 'The Merry Wives of Windsor',
 				format: 'play',
-				year: 1597,
+				year: '1597',
 				characterGroups: [
 					{
 						characters: [

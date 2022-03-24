@@ -37,7 +37,7 @@ describe('Materials with rights grantor credits', () => {
 				name: 'The Ladykillers',
 				differentiator: '1',
 				format: 'motion picture screenplay',
-				year: 1955,
+				year: '1955',
 				writingCredits: [
 					{
 						entities: [
@@ -55,7 +55,7 @@ describe('Materials with rights grantor credits', () => {
 				name: 'The Ladykillers',
 				differentiator: '2',
 				format: 'play',
-				year: 2011,
+				year: '2011',
 				writingCredits: [
 					{
 						entities: [
