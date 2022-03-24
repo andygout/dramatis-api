@@ -11,9 +11,9 @@ describe('Materials with entities credited multiple times', () => {
 
 	chai.use(chaiHttp);
 
-	const MATERIAL_UUID = '4';
-	const PERSON_UUID = '6';
-	const COMPANY_UUID = '7';
+	const XYZZY_MATERIAL_UUID = '4';
+	const FERDINAND_FOO_PERSON_UUID = '6';
+	const STAGECRAFT_LTD_COMPANY_UUID = '7';
 
 	let material;
 	let person;
@@ -32,18 +32,18 @@ describe('Materials with entities credited multiple times', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Material name',
+				name: 'Xyzzy',
 				format: 'play',
-				year: 2015,
+				year: '2015',
 				writingCredits: [
 					{
 						entities: [
 							{
-								name: 'Person #1'
+								name: 'Ferdinand Foo'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Company #1'
+								name: 'Stagecraft Ltd'
 							}
 						]
 					},
@@ -51,11 +51,11 @@ describe('Materials with entities credited multiple times', () => {
 						name: 'additional material by',
 						entities: [
 							{
-								name: 'Person #1'
+								name: 'Ferdinand Foo'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Company #1'
+								name: 'Stagecraft Ltd'
 							}
 						]
 					}
@@ -63,13 +63,13 @@ describe('Materials with entities credited multiple times', () => {
 			});
 
 		material = await chai.request(app)
-			.get(`/materials/${MATERIAL_UUID}`);
+			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
 		person = await chai.request(app)
-			.get(`/people/${PERSON_UUID}`);
+			.get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
 		company = await chai.request(app)
-			.get(`/companies/${COMPANY_UUID}`);
+			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
 	});
 
@@ -90,13 +90,13 @@ describe('Materials with entities credited multiple times', () => {
 					entities: [
 						{
 							model: 'PERSON',
-							uuid: PERSON_UUID,
-							name: 'Person #1'
+							uuid: FERDINAND_FOO_PERSON_UUID,
+							name: 'Ferdinand Foo'
 						},
 						{
 							model: 'COMPANY',
-							uuid: COMPANY_UUID,
-							name: 'Company #1'
+							uuid: STAGECRAFT_LTD_COMPANY_UUID,
+							name: 'Stagecraft Ltd'
 						}
 					]
 				},
@@ -106,13 +106,13 @@ describe('Materials with entities credited multiple times', () => {
 					entities: [
 						{
 							model: 'PERSON',
-							uuid: PERSON_UUID,
-							name: 'Person #1'
+							uuid: FERDINAND_FOO_PERSON_UUID,
+							name: 'Ferdinand Foo'
 						},
 						{
 							model: 'COMPANY',
-							uuid: COMPANY_UUID,
-							name: 'Company #1'
+							uuid: STAGECRAFT_LTD_COMPANY_UUID,
+							name: 'Stagecraft Ltd'
 						}
 					]
 				}
@@ -133,8 +133,8 @@ describe('Materials with entities credited multiple times', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: MATERIAL_UUID,
-					name: 'Material name',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
 					format: 'play',
 					year: 2015,
 					writingCredits: [
@@ -145,12 +145,12 @@ describe('Materials with entities credited multiple times', () => {
 								{
 									model: 'PERSON',
 									uuid: null,
-									name: 'Person #1'
+									name: 'Ferdinand Foo'
 								},
 								{
 									model: 'COMPANY',
-									uuid: COMPANY_UUID,
-									name: 'Company #1'
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
 								}
 							]
 						},
@@ -161,12 +161,12 @@ describe('Materials with entities credited multiple times', () => {
 								{
 									model: 'PERSON',
 									uuid: null,
-									name: 'Person #1'
+									name: 'Ferdinand Foo'
 								},
 								{
 									model: 'COMPANY',
-									uuid: COMPANY_UUID,
-									name: 'Company #1'
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
 								}
 							]
 						}
@@ -189,8 +189,8 @@ describe('Materials with entities credited multiple times', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: MATERIAL_UUID,
-					name: 'Material name',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
 					format: 'play',
 					year: 2015,
 					writingCredits: [
@@ -200,13 +200,13 @@ describe('Materials with entities credited multiple times', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: PERSON_UUID,
-									name: 'Person #1'
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
 								},
 								{
 									model: 'COMPANY',
 									uuid: null,
-									name: 'Company #1'
+									name: 'Stagecraft Ltd'
 								}
 							]
 						},
@@ -216,13 +216,13 @@ describe('Materials with entities credited multiple times', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: PERSON_UUID,
-									name: 'Person #1'
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
 								},
 								{
 									model: 'COMPANY',
 									uuid: null,
-									name: 'Company #1'
+									name: 'Stagecraft Ltd'
 								}
 							]
 						}

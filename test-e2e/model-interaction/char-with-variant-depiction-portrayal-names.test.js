@@ -69,7 +69,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry IV, Part 1',
 				format: 'play',
-				year: 1597,
+				year: '1597',
 				characterGroups: [
 					{
 						characters: [
@@ -93,7 +93,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry IV, Part 2',
 				format: 'play',
-				year: 1599,
+				year: '1599',
 				characterGroups: [
 					{
 						characters: [
@@ -117,7 +117,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'Henry V',
 				format: 'play',
-				year: 1599,
+				year: '1599',
 				characterGroups: [
 					{
 						characters: [
@@ -141,7 +141,7 @@ describe('Character with variant depiction and portrayal names', () => {
 			.send({
 				name: 'The Merry Wives of Windsor',
 				format: 'play',
-				year: 1597,
+				year: '1597',
 				characterGroups: [
 					{
 						characters: [

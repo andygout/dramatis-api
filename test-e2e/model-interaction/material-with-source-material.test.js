@@ -68,7 +68,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'A Midsummer Night\'s Dream',
 				format: 'play',
-				year: 1595,
+				year: '1595',
 				writingCredits: [
 					{
 						entities: [
@@ -90,7 +90,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Donkey Show',
 				format: 'musical',
-				year: 2000,
+				year: '2000',
 				writingCredits: [
 					{
 						name: 'book by',
@@ -120,7 +120,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'The Indian Boy',
 				format: 'play',
-				year: 2006,
+				year: '2006',
 				writingCredits: [
 					{
 						entities: [
@@ -160,7 +160,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'Shakespeare\'s Villains',
 				format: 'play',
-				year: 1998,
+				year: '1998',
 				writingCredits: [
 					{
 						entities: [
@@ -205,7 +205,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'A Moorish Captain',
 				format: 'tale',
-				year: 1565,
+				year: '1565',
 				writingCredits: [
 					{
 						entities: [
@@ -228,7 +228,7 @@ describe('Materials with source material', () => {
 			.send({
 				name: 'Othello',
 				format: 'play',
-				year: 1603,
+				year: '1603',
 				writingCredits: [
 					{
 						entities: [

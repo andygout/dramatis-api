@@ -51,7 +51,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '1',
 				format: 'play',
-				year: 1867,
+				year: '1867',
 				writingCredits: [
 					{
 						entities: [
@@ -83,7 +83,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '2',
 				format: 'play',
-				year: 2000,
+				year: '2000',
 				originalVersionMaterial: {
 					name: 'Peer Gynt',
 					differentiator: '1'
@@ -127,7 +127,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				differentiator: '3',
 				format: 'play',
-				year: 2007,
+				year: '2007',
 				originalVersionMaterial: {
 					name: 'Peer Gynt',
 					differentiator: '1'
@@ -187,7 +187,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Ghosts',
 				differentiator: '1',
 				format: 'play',
-				year: 1881,
+				year: '1881',
 				writingCredits: [
 					{
 						entities: [
@@ -211,7 +211,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Ghosts',
 				differentiator: '2',
 				format: 'play',
-				year: 2008,
+				year: '2008',
 				originalVersionMaterial: {
 					name: 'Ghosts',
 					differentiator: '1'

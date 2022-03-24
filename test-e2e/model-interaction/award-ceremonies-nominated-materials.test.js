@@ -7,6 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
+// Contrived data for purposes of tests.
 describe('Award ceremonies with nominated materials', () => {
 
 	chai.use(chaiHttp);
@@ -79,7 +80,6 @@ describe('Award ceremonies with nominated materials', () => {
 
 		await purgeDatabase();
 
-		// Contrivances for purposes of test.
 		await chai.request(app)
 			.post('/materials')
 			.send({
@@ -446,7 +446,6 @@ describe('Award ceremonies with nominated materials', () => {
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
-				// Contrivance for purposes of test.
 				name: '2009',
 				award: {
 					name: 'Wordsmith Award'
@@ -524,7 +523,6 @@ describe('Award ceremonies with nominated materials', () => {
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
-				// Contrivance for purposes of test.
 				name: '2008',
 				award: {
 					name: 'Wordsmith Award'
@@ -563,7 +561,6 @@ describe('Award ceremonies with nominated materials', () => {
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
-				// Contrivance for purposes of test.
 				name: '2008',
 				award: {
 					name: 'Playwriting Prize'
@@ -602,7 +599,6 @@ describe('Award ceremonies with nominated materials', () => {
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
-				// Contrivance for purposes of test.
 				name: '2009',
 				award: {
 					name: 'Playwriting Prize'
@@ -642,7 +638,6 @@ describe('Award ceremonies with nominated materials', () => {
 		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
-				// Contrivance for purposes of test.
 				name: '2007',
 				award: {
 					name: 'Playwriting Prize'

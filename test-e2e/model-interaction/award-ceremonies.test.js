@@ -7,6 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
+// Contrived data for purposes of tests.
 describe('Award ceremonies', () => {
 
 	chai.use(chaiHttp);
@@ -15,87 +16,64 @@ describe('Award ceremonies', () => {
 	const OLIVIER_THEATRE_VENUE_UUID = '5';
 	const LYTTELTON_THEATRE_VENUE_UUID = '6';
 	const DORFMAN_THEATRE_VENUE_UUID = '7';
-	const YOUNG_VIC_THEATRE_VENUE_UUID = '10';
-	const MAIN_HOUSE_VENUE_UUID = '11';
-	const THE_LEHMAN_TRILOGY_LYTTELTON_PRODUCTION_UUID = '12';
-	const KING_LEAR_DUKE_OF_YORKS_PRODUCTION_UUID = '15';
-	const THE_INHERITANCE_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID = '18';
-	const THE_INHERITANCE_NOËL_COWARD_PRODUCTION_UUID = '21';
-	const NOËL_COWARD_THEATRE_VENUE_UUID = '23';
-	const PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID = '24';
-	const OLD_VIC_THEATRE_VENUE_UUID = '26';
-	const UNCLE_VANYA_HAROLD_PINTER_PRODUCTION_UUID = '27';
-	const HAROLD_PINTER_THEATRE_VENUE_UUID = '29';
-	const DEATH_OF_A_SALESMAN_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID = '30';
-	const DEATH_OF_A_SALESMAN_PICCADILLY_PRODUCTION_UUID = '33';
-	const PICCADILLY_THEATRE_VENUE_UUID = '35';
-	const GARPLY_LYTTELTON_PRODUCTION_UUID = '36';
-	const GARPLY_WYNDHAMS_PRODUCTION_UUID = '39';
-	const WYNDHAMS_THEATRE_VENUE_UUID = '41';
-	const PLUGH_PLAYHOUSE_PRODUCTION_UUID = '42';
-	const PLAYHOUSE_THEATRE_VENUE_UUID = '44';
-	const FRED_OLD_VIC_PRODUCTION_UUID = '45';
-	const WALDO_DORFMAN_PRODUCTION_UUID = '48';
-	const WALDO_NOËL_COWARD_PRODUCTION_UUID = '51';
-	const NETWORK_LYTTELTON_PRODUCTION_UUID = '54';
-	const ANGELS_IN_AMERICA_LYTTELTON_PRODUCTION_UUID = '57';
-	const HAMLET_ALMEIDA_PRODUCTION_UUID = '60';
-	const ALMEIDA_THEATRE_VENUE_UUID = '62';
-	const PIYO_HAROLD_PINTER_PRODUCTION_UUID = '63';
-	const XYZZY_DORFMAN_PRODUCTION_UUID = '66';
-	const XYZZY_PLAYHOUSE_PRODUCTION_UUID = '69';
-	const WIBBLE_OLD_VIC_PRODUCTION_UUID = '72';
-	const WIBBLE_WYNDHAMS_PRODUCTION_UUID = '75';
-	const HOGE_ALMEIDA_PRODUCTION_UUID = '78';
-	const THUD_DUKE_OF_YORKS_PRODUCTION_UUID = '81';
-	const ANTONY_AND_CLEOPATRA_OLIVIER_PRODUCTION_UUID = '84';
-	const TOTO_NOËL_COWARD_PRODUCTION_UUID = '87';
-	const FUGA_OLIVIER_PRODUCTION_UUID = '90';
-	const TUTU_PLAYHOUSE_PRODUCTION_UUID = '93';
-	const DOWNSTATE_DORFMAN_PRODUCTION_UUID = '96';
-	const GRAULT_ALMEIDA_PRODUCTION_UUID = '99';
-	const INK_ALMEIDA_PRODUCTION_UUID = '102';
-	const INK_DUKE_OF_YORKS_PRODUCTION_UUID = '105';
-	const HAMLET_HAROLD_PINTER_PRODUCTION_UUID = '108';
-	const GARPLY_MATERIAL_UUID = '113';
-	const PLUGH_MATERIAL_UUID = '117';
-	const FRED_MATERIAL_UUID = '121';
-	const WALDO_MATERIAL_UUID = '125';
-	const PIYO_MATERIAL_UUID = '129';
-	const XYZZY_MATERIAL_UUID = '133';
-	const WIBBLE_MATERIAL_UUID = '137';
-	const HOGE_MATERIAL_UUID = '141';
-	const THUD_MATERIAL_UUID = '145';
-	const TOTO_MATERIAL_UUID = '149';
-	const FUGA_MATERIAL_UUID = '153';
-	const TUTU_MATERIAL_UUID = '157';
-	const GRAULT_MATERIAL_UUID = '161';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '170';
-	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '171';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '199';
-	const ANDREW_SCOTT_PERSON_UUID = '201';
-	const TOBY_JONES_PERSON_UUID = '202';
-	const WENDELL_PIERCE_PERSON_UUID = '203';
-	const JOHN_DOE_PERSON_UUID = '204';
-	const CURTAIN_UP_LTD_COMPANY_UUID = '206';
-	const JANE_ROE_PERSON_UUID = '207';
-	const STAGECRAFT_LTD_COMPANY_UUID = '209';
-	const FERDINAND_FOO_PERSON_UUID = '210';
-	const BEATRICE_BAR_PERSON_UUID = '211';
-	const BRANDON_BAZ_PERSON_UUID = '212';
-	const THEATRICALS_LTD_COMPANY_UUID = '213';
-	const QUINCY_QUX_PERSON_UUID = '214';
-	const CLARA_QUUX_PERSON_UUID = '215';
-	const CHRISTIAN_QUUZ_PERSON_UUID = '216';
-	const CONOR_CORGE_PERSON_UUID = '217';
-	const BACKSTAGE_LTD_COMPANY_UUID = '218';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '244';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '284';
-	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '285';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '315';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID = '352';
-	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '396';
-	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '397';
+	const GARPLY_LYTTELTON_PRODUCTION_UUID = '8';
+	const GARPLY_WYNDHAMS_PRODUCTION_UUID = '11';
+	const WYNDHAMS_THEATRE_VENUE_UUID = '13';
+	const PLUGH_PLAYHOUSE_PRODUCTION_UUID = '14';
+	const PLAYHOUSE_THEATRE_VENUE_UUID = '16';
+	const FRED_OLD_VIC_PRODUCTION_UUID = '17';
+	const OLD_VIC_THEATRE_VENUE_UUID = '19';
+	const WALDO_DORFMAN_PRODUCTION_UUID = '20';
+	const WALDO_NOËL_COWARD_PRODUCTION_UUID = '23';
+	const NOËL_COWARD_THEATRE_VENUE_UUID = '25';
+	const PIYO_HAROLD_PINTER_PRODUCTION_UUID = '26';
+	const HAROLD_PINTER_THEATRE_VENUE_UUID = '28';
+	const XYZZY_DORFMAN_PRODUCTION_UUID = '29';
+	const XYZZY_PLAYHOUSE_PRODUCTION_UUID = '32';
+	const WIBBLE_OLD_VIC_PRODUCTION_UUID = '35';
+	const WIBBLE_WYNDHAMS_PRODUCTION_UUID = '38';
+	const HOGE_ALMEIDA_PRODUCTION_UUID = '41';
+	const ALMEIDA_THEATRE_VENUE_UUID = '43';
+	const THUD_DUKE_OF_YORKS_PRODUCTION_UUID = '44';
+	const TOTO_NOËL_COWARD_PRODUCTION_UUID = '47';
+	const FUGA_OLIVIER_PRODUCTION_UUID = '50';
+	const TUTU_PLAYHOUSE_PRODUCTION_UUID = '53';
+	const GRAULT_ALMEIDA_PRODUCTION_UUID = '56';
+	const GARPLY_MATERIAL_UUID = '61';
+	const PLUGH_MATERIAL_UUID = '65';
+	const FRED_MATERIAL_UUID = '69';
+	const WALDO_MATERIAL_UUID = '73';
+	const PIYO_MATERIAL_UUID = '77';
+	const XYZZY_MATERIAL_UUID = '81';
+	const WIBBLE_MATERIAL_UUID = '85';
+	const HOGE_MATERIAL_UUID = '89';
+	const THUD_MATERIAL_UUID = '93';
+	const TOTO_MATERIAL_UUID = '97';
+	const FUGA_MATERIAL_UUID = '101';
+	const TUTU_MATERIAL_UUID = '105';
+	const GRAULT_MATERIAL_UUID = '109';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '130';
+	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '131';
+	const JOHN_DOE_PERSON_UUID = '132';
+	const CURTAIN_UP_LTD_COMPANY_UUID = '134';
+	const JANE_ROE_PERSON_UUID = '135';
+	const STAGECRAFT_LTD_COMPANY_UUID = '137';
+	const FERDINAND_FOO_PERSON_UUID = '138';
+	const BEATRICE_BAR_PERSON_UUID = '139';
+	const BRANDON_BAZ_PERSON_UUID = '140';
+	const THEATRICALS_LTD_COMPANY_UUID = '141';
+	const QUINCY_QUX_PERSON_UUID = '142';
+	const CLARA_QUUX_PERSON_UUID = '143';
+	const CHRISTIAN_QUUZ_PERSON_UUID = '144';
+	const CONOR_CORGE_PERSON_UUID = '145';
+	const BACKSTAGE_LTD_COMPANY_UUID = '146';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '169';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '203';
+	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '204';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '228';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID = '259';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '299';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '300';
 
 	let laurenceOlivierAwards2020AwardCeremony;
 	let laurenceOlivierAwardsAward;
@@ -120,561 +98,312 @@ describe('Award ceremonies', () => {
 
 		await purgeDatabase();
 
-			await chai.request(app)
-				.post('/venues')
-				.send({
-					name: 'National Theatre',
-					subVenues: [
-						{
-							name: 'Olivier Theatre'
-						},
-						{
-							name: 'Lyttelton Theatre'
-						},
-						{
-							name: 'Dorfman Theatre'
-						}
-					]
-				});
-
-			await chai.request(app)
-				.post('/venues')
-				.send({
-					name: 'Young Vic Theatre',
-					subVenues: [
-						{
-							name: 'Main House'
-						}
-					]
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'The Lehman Trilogy',
-					startDate: '2018-07-04',
-					endDate: '2018-10-20',
-					venue: {
-						name: 'Lyttelton Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'King Lear',
-					startDate: '2018-07-11',
-					endDate: '2018-11-03',
-					venue: {
-						name: 'Duke of York\'s Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'The Inheritance',
-					startDate: '2018-03-02',
-					endDate: '2018-05-19',
-					venue: {
-						name: 'Main House'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'The Inheritance',
-					startDate: '2018-09-21',
-					endDate: '2019-01-25',
-					venue: {
-						name: 'Noël Coward Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Present Laughter',
-					startDate: '2019-06-17',
-					endDate: '2019-08-10',
-					venue: {
-						name: 'Old Vic Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Uncle Vanya',
-					startDate: '2020-01-14',
-					endDate: '2020-03-16',
-					venue: {
-						name: 'Harold Pinter Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Death of a Salesman',
-					startDate: '2019-05-01',
-					endDate: '2019-07-13',
-					venue: {
-						name: 'Main House'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Death of a Salesman',
-					startDate: '2019-10-24',
-					endDate: '2020-01-04',
-					venue: {
-						name: 'Piccadilly Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Garply',
-					startDate: '2019-06-01',
-					endDate: '2019-06-30',
-					venue: {
-						name: 'Lyttelton Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Garply',
-					startDate: '2019-07-01',
-					endDate: '2019-07-31',
-					venue: {
-						name: 'Wyndham\'s Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Plugh',
-					startDate: '2019-08-01',
-					endDate: '2019-08-31',
-					venue: {
-						name: 'Playhouse Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Fred',
-					startDate: '2019-09-01',
-					endDate: '2019-09-30',
-					venue: {
-						name: 'Old Vic Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Waldo',
-					startDate: '2019-10-01',
-					endDate: '2019-10-31',
-					venue: {
-						name: 'Dorfman Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Waldo',
-					startDate: '2019-11-01',
-					endDate: '2019-11-30',
-					venue: {
-						name: 'Noël Coward Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Network',
-					startDate: '2017-11-04',
-					endDate: '2018-03-24',
-					venue: {
-						name: 'Lyttelton Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Angels in America',
-					startDate: '2017-04-11',
-					endDate: '2017-08-19',
-					venue: {
-						name: 'Lyttelton Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Hamlet',
-					startDate: '2017-02-17',
-					endDate: '2017-04-15',
-					venue: {
-						name: 'Almeida Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Piyo',
-					startDate: '2017-05-01',
-					endDate: '2017-05-31',
-					venue: {
-						name: 'Harold Pinter Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Xyzzy',
-					startDate: '2017-06-01',
-					endDate: '2017-06-30',
-					venue: {
-						name: 'Dorfman Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Xyzzy',
-					startDate: '2017-07-01',
-					endDate: '2017-07-31',
-					venue: {
-						name: 'Playhouse Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Wibble',
-					startDate: '2017-08-01',
-					endDate: '2017-08-31',
-					venue: {
-						name: 'Old Vic Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Wibble',
-					startDate: '2017-09-01',
-					endDate: '2017-09-30',
-					venue: {
-						name: 'Wyndham\'s Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Hoge',
-					startDate: '2017-10-01',
-					endDate: '2017-10-31',
-					venue: {
-						name: 'Almeida Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Thud',
-					startDate: '2017-11-01',
-					endDate: '2017-11-30',
-					venue: {
-						name: 'Duke of York\'s Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Antony and Cleopatra',
-					startDate: '2018-09-18',
-					endDate: '2019-01-19',
-					venue: {
-						name: 'Olivier Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Toto',
-					startDate: '2018-03-01',
-					endDate: '2018-03-31',
-					venue: {
-						name: 'Noël Coward Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Fuga',
-					startDate: '2018-04-01',
-					endDate: '2018-04-30',
-					venue: {
-						name: 'Olivier Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Tutu',
-					startDate: '2018-05-01',
-					endDate: '2018-05-31',
-					venue: {
-						name: 'Playhouse Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Downstate',
-					startDate: '2019-03-12',
-					endDate: '2019-04-27',
-					venue: {
-						name: 'Dorfman Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Grault',
-					startDate: '2019-12-01',
-					endDate: '2019-12-31',
-					venue: {
-						name: 'Almeida Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Ink',
-					startDate: '2017-06-17',
-					endDate: '2017-08-05',
-					venue: {
-						name: 'Almeida Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Ink',
-					startDate: '2017-09-09',
-					endDate: '2018-01-06',
-					venue: {
-						name: 'Duke of York\'s Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/productions')
-				.send({
-					name: 'Hamlet',
-					startDate: '2017-06-09',
-					endDate: '2017-09-02',
-					venue: {
-						name: 'Harold Pinter Theatre'
-					}
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Garply',
-					format: 'play',
-					year: '2019'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Plugh',
-					format: 'play',
-					year: '2019'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Fred',
-					format: 'play',
-					year: '2019'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Waldo',
-					format: 'play',
-					year: '2019'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Piyo',
-					format: 'play',
-					year: '2017'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Xyzzy',
-					format: 'play',
-					year: '2017'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Wibble',
-					format: 'play',
-					year: '2017'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Hoge',
-					format: 'play',
-					year: '2017'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Thud',
-					format: 'play',
-					year: '2017'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Toto',
-					format: 'play',
-					year: '2018'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Fuga',
-					format: 'play',
-					year: '2018'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Tutu',
-					format: 'play',
-					year: '2018'
-				});
-
-			await chai.request(app)
-				.post('/materials')
-				.send({
-					name: 'Grault',
-					format: 'play',
-					year: '2019'
-				});
-
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/venues')
 			.send({
-				name: '2019',
-				award: {
-					name: 'Laurence Olivier Awards'
-				},
-				categories: [
+				name: 'National Theatre',
+				subVenues: [
 					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								entities: [
-									{
-										name: 'Simon Russell Beale'
-									},
-									{
-										name: 'Adam Godley'
-									},
-									{
-										name: 'Ben Miles'
-									}
-								],
-								productions: [
-									{
-										uuid: THE_LEHMAN_TRILOGY_LYTTELTON_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Ian McKellen'
-									}
-								],
-								productions: [
-									{
-										uuid: KING_LEAR_DUKE_OF_YORKS_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Kyle Soller'
-									}
-								],
-								productions: [
-									{
-										uuid: THE_INHERITANCE_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID
-									},
-									{
-										uuid: THE_INHERITANCE_NOËL_COWARD_PRODUCTION_UUID
-									}
-								]
-							}
-						]
+						name: 'Olivier Theatre'
+					},
+					{
+						name: 'Lyttelton Theatre'
+					},
+					{
+						name: 'Dorfman Theatre'
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Garply',
+				startDate: '2019-06-01',
+				endDate: '2019-06-30',
+				venue: {
+					name: 'Lyttelton Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Garply',
+				startDate: '2019-07-01',
+				endDate: '2019-07-31',
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Plugh',
+				startDate: '2019-08-01',
+				endDate: '2019-08-31',
+				venue: {
+					name: 'Playhouse Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Fred',
+				startDate: '2019-09-01',
+				endDate: '2019-09-30',
+				venue: {
+					name: 'Old Vic Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Waldo',
+				startDate: '2019-10-01',
+				endDate: '2019-10-31',
+				venue: {
+					name: 'Dorfman Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Waldo',
+				startDate: '2019-11-01',
+				endDate: '2019-11-30',
+				venue: {
+					name: 'Noël Coward Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Piyo',
+				startDate: '2017-05-01',
+				endDate: '2017-05-31',
+				venue: {
+					name: 'Harold Pinter Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Xyzzy',
+				startDate: '2017-06-01',
+				endDate: '2017-06-30',
+				venue: {
+					name: 'Dorfman Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Xyzzy',
+				startDate: '2017-07-01',
+				endDate: '2017-07-31',
+				venue: {
+					name: 'Playhouse Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Wibble',
+				startDate: '2017-08-01',
+				endDate: '2017-08-31',
+				venue: {
+					name: 'Old Vic Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Wibble',
+				startDate: '2017-09-01',
+				endDate: '2017-09-30',
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Hoge',
+				startDate: '2017-10-01',
+				endDate: '2017-10-31',
+				venue: {
+					name: 'Almeida Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Thud',
+				startDate: '2017-11-01',
+				endDate: '2017-11-30',
+				venue: {
+					name: 'Duke of York\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Toto',
+				startDate: '2018-03-01',
+				endDate: '2018-03-31',
+				venue: {
+					name: 'Noël Coward Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Fuga',
+				startDate: '2018-04-01',
+				endDate: '2018-04-30',
+				venue: {
+					name: 'Olivier Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Tutu',
+				startDate: '2018-05-01',
+				endDate: '2018-05-31',
+				venue: {
+					name: 'Playhouse Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Grault',
+				startDate: '2019-12-01',
+				endDate: '2019-12-31',
+				venue: {
+					name: 'Almeida Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Garply',
+				format: 'play',
+				year: '2019'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Plugh',
+				format: 'play',
+				year: '2019'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Fred',
+				format: 'play',
+				year: '2019'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Waldo',
+				format: 'play',
+				year: '2019'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Piyo',
+				format: 'play',
+				year: '2017'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Xyzzy',
+				format: 'play',
+				year: '2017'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Wibble',
+				format: 'play',
+				year: '2017'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Hoge',
+				format: 'play',
+				year: '2017'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Thud',
+				format: 'play',
+				year: '2017'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Toto',
+				format: 'play',
+				year: '2018'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Fuga',
+				format: 'play',
+				year: '2018'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Tutu',
+				format: 'play',
+				year: '2018'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Grault',
+				format: 'play',
+				year: '2019'
 			});
 
 		await chai.request(app)
@@ -685,52 +414,6 @@ describe('Award ceremonies', () => {
 					name: 'Laurence Olivier Awards'
 				},
 				categories: [
-					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Andrew Scott'
-									}
-								],
-								productions: [
-									{
-										uuid: PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Toby Jones'
-									}
-								],
-								productions: [
-									{
-										uuid: UNCLE_VANYA_HAROLD_PINTER_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Wendell Pierce'
-									}
-								],
-								productions: [
-									{
-										uuid: DEATH_OF_A_SALESMAN_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID
-									},
-									{
-										uuid: DEATH_OF_A_SALESMAN_PICCADILLY_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
@@ -858,7 +541,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Random Role',
 						nominations: [
@@ -931,7 +613,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Noteworthy Production',
 						nominations: [
@@ -962,7 +643,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Most Remarkable Play',
 						nominations: [
@@ -1004,49 +684,6 @@ describe('Award ceremonies', () => {
 					name: 'Laurence Olivier Awards'
 				},
 				categories: [
-					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Bryan Cranston'
-									}
-								],
-								productions: [
-									{
-										uuid: NETWORK_LYTTELTON_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Andrew Garfield'
-									}
-								],
-								productions: [
-									{
-										uuid: ANGELS_IN_AMERICA_LYTTELTON_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Andrew Scott'
-									}
-								],
-								productions: [
-									{
-										uuid: HAMLET_ALMEIDA_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
@@ -1166,7 +803,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Noteworthy Production',
 						nominations: [
@@ -1200,7 +836,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Most Remarkable Play',
 						nominations: [
@@ -1242,49 +877,6 @@ describe('Award ceremonies', () => {
 					name: 'Evening Standard Theatre Awards'
 				},
 				categories: [
-					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								entities: [
-									{
-										name: 'Bryan Cranston'
-									}
-								],
-								productions: [
-									{
-										uuid: NETWORK_LYTTELTON_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Ralph Fiennes'
-									}
-								],
-								productions: [
-									{
-										uuid: ANTONY_AND_CLEOPATRA_OLIVIER_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Ian McKellen'
-									}
-								],
-								productions: [
-									{
-										uuid: KING_LEAR_DUKE_OF_YORKS_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
@@ -1377,49 +969,6 @@ describe('Award ceremonies', () => {
 				},
 				categories: [
 					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								entities: [
-									{
-										name: 'K Todd Freeman'
-									}
-								],
-								productions: [
-									{
-										uuid: DOWNSTATE_DORFMAN_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Francis Guinan'
-									}
-								],
-								productions: [
-									{
-										uuid: DOWNSTATE_DORFMAN_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Andrew Scott'
-									}
-								],
-								productions: [
-									{
-										uuid: PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
-					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
@@ -1474,7 +1023,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Noteworthy Production',
 						nominations: [
@@ -1505,7 +1053,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Most Remarkable Play',
 						nominations: [
@@ -1544,55 +1091,6 @@ describe('Award ceremonies', () => {
 					name: 'Evening Standard Theatre Awards'
 				},
 				categories: [
-					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								entities: [
-									{
-										name: 'Bertie Carvel'
-									}
-								],
-								productions: [
-									{
-										uuid: INK_ALMEIDA_PRODUCTION_UUID
-									},
-									{
-										uuid: INK_DUKE_OF_YORKS_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Andrew Garfield'
-									}
-								],
-								productions: [
-									{
-										uuid: ANGELS_IN_AMERICA_LYTTELTON_PRODUCTION_UUID
-									}
-								]
-							},
-							{
-								entities: [
-									{
-										name: 'Andrew Scott'
-									}
-								],
-								productions: [
-									{
-										uuid: HAMLET_ALMEIDA_PRODUCTION_UUID
-									},
-									{
-										uuid: HAMLET_HAROLD_PINTER_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Random Role',
 						nominations: [
@@ -1665,7 +1163,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
@@ -1788,7 +1285,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Noteworthy Production',
 						nominations: [
@@ -1819,7 +1315,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Most Remarkable Play',
 						nominations: [
@@ -1858,25 +1353,6 @@ describe('Award ceremonies', () => {
 					name: 'Critics\' Circle Theatre Awards'
 				},
 				categories: [
-					{
-						name: 'Best Actor',
-						nominations: [
-							{
-								isWinner: true,
-								entities: [
-									{
-										name: 'Andrew Scott'
-									}
-								],
-								productions: [
-									{
-										uuid: PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID
-									}
-								]
-							}
-						]
-					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Miscellaneous Role',
 						nominations: [
@@ -1995,7 +1471,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Best Noteworthy Production',
 						nominations: [
@@ -2023,7 +1498,6 @@ describe('Award ceremonies', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Most Remarkable Play',
 						nominations: [
@@ -2106,110 +1580,6 @@ describe('Award ceremonies', () => {
 		it('includes its categories', () => {
 
 			const expectedCategories = [
-				{
-					name: 'Best Actor',
-					model: 'AWARD_CEREMONY_CATEGORY',
-					nominations: [
-						{
-							model: 'NOMINATION',
-							isWinner: true,
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: ANDREW_SCOTT_PERSON_UUID,
-									name: 'Andrew Scott'
-								}
-							],
-							productions: [
-								{
-									model: 'PRODUCTION',
-									uuid: PRESENT_LAUGHTER_OLD_VIC_PRODUCTION_UUID,
-									name: 'Present Laughter',
-									startDate: '2019-06-17',
-									endDate: '2019-08-10',
-									venue: {
-										model: 'VENUE',
-										uuid: OLD_VIC_THEATRE_VENUE_UUID,
-										name: 'Old Vic Theatre',
-										surVenue: null
-									}
-								}
-							],
-							materials: []
-						},
-						{
-							model: 'NOMINATION',
-							isWinner: false,
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOBY_JONES_PERSON_UUID,
-									name: 'Toby Jones'
-								}
-							],
-							productions: [
-								{
-									model: 'PRODUCTION',
-									uuid: UNCLE_VANYA_HAROLD_PINTER_PRODUCTION_UUID,
-									name: 'Uncle Vanya',
-									startDate: '2020-01-14',
-									endDate: '2020-03-16',
-									venue: {
-										model: 'VENUE',
-										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
-										name: 'Harold Pinter Theatre',
-										surVenue: null
-									}
-								}
-							],
-							materials: []
-						},
-						{
-							model: 'NOMINATION',
-							isWinner: false,
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: WENDELL_PIERCE_PERSON_UUID,
-									name: 'Wendell Pierce'
-								}
-							],
-							productions: [
-								{
-									model: 'PRODUCTION',
-									uuid: DEATH_OF_A_SALESMAN_YOUNG_VIC_MAIN_HOUSE_PRODUCTION_UUID,
-									name: 'Death of a Salesman',
-									startDate: '2019-05-01',
-									endDate: '2019-07-13',
-									venue: {
-										model: 'VENUE',
-										uuid: MAIN_HOUSE_VENUE_UUID,
-										name: 'Main House',
-										surVenue: {
-											model: 'VENUE',
-											uuid: YOUNG_VIC_THEATRE_VENUE_UUID,
-											name: 'Young Vic Theatre'
-										}
-									}
-								},
-								{
-									model: 'PRODUCTION',
-									uuid: DEATH_OF_A_SALESMAN_PICCADILLY_PRODUCTION_UUID,
-									name: 'Death of a Salesman',
-									startDate: '2019-10-24',
-									endDate: '2020-01-04',
-									venue: {
-										model: 'VENUE',
-										uuid: PICCADILLY_THEATRE_VENUE_UUID,
-										name: 'Piccadilly Theatre',
-										surVenue: null
-									}
-								}
-							],
-							materials: []
-						}
-					]
-				},
 				{
 					name: 'Best Miscellaneous Role',
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -2769,11 +2139,6 @@ describe('Award ceremonies', () => {
 					model: 'AWARD_CEREMONY',
 					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 					name: '2020'
-				},
-				{
-					model: 'AWARD_CEREMONY',
-					uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
-					name: '2019'
 				},
 				{
 					model: 'AWARD_CEREMONY',
