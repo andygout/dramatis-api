@@ -427,41 +427,20 @@ const getShowQuery = () => `
 
 		WITH
 			material,
-			HEAD([
-				relatedMaterial IN relatedMaterials
-					WHERE relatedMaterial.uuid = material.uuid | relatedMaterial.writingCredits
-			]) AS writingCredits,
-			HEAD([
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
-				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
-			]) AS originalVersionMaterial,
-			[
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
-				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
-			] AS subsequentVersionMaterials,
-			[
-				relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
-				relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
-			] AS sourcingMaterials
+			relatedMaterials
 
 	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterRel,
 		character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterRel.group AS characterGroupName,
 		characterRel.groupPosition AS characterGroupPosition,
 		COLLECT(
@@ -476,7 +455,7 @@ const getShowQuery = () => `
 			END
 		) AS characters
 
-	WITH material, writingCredits, originalVersionMaterial, subsequentVersionMaterials, sourcingMaterials,
+	WITH material, relatedMaterials,
 		COLLECT(
 			CASE SIZE(characters) WHEN 0
 				THEN null
@@ -493,10 +472,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		COLLECT(production) AS productions
 
@@ -510,10 +486,7 @@ const getShowQuery = () => `
 
 		WITH
 			material,
-			writingCredits,
-			originalVersionMaterial,
-			subsequentVersionMaterials,
-			sourcingMaterials,
+			relatedMaterials,
 			characterGroups,
 			production,
 			venue,
@@ -523,10 +496,7 @@ const getShowQuery = () => `
 
 		WITH
 			material,
-			writingCredits,
-			originalVersionMaterial,
-			subsequentVersionMaterials,
-			sourcingMaterials,
+			relatedMaterials,
 			characterGroups,
 			COLLECT(
 				CASE production WHEN NULL
@@ -556,10 +526,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions
 
@@ -581,10 +548,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -612,10 +576,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				nomineeRel,
@@ -630,10 +591,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				nomineeRel,
@@ -647,10 +605,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -665,10 +620,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -699,10 +651,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -719,10 +668,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -766,10 +712,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -785,10 +728,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		nomineeRel,
@@ -808,10 +748,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		category,
@@ -829,10 +766,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		ceremony,
@@ -842,10 +776,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		award,
@@ -854,10 +785,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS awards
@@ -881,10 +809,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -914,10 +839,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				awards,
@@ -934,10 +856,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				awards,
@@ -953,10 +872,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -973,10 +889,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1009,10 +922,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1031,10 +941,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1081,10 +988,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1102,10 +1006,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1133,10 +1034,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1157,10 +1055,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1180,10 +1075,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1194,10 +1086,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1207,10 +1096,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1240,10 +1126,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1274,10 +1157,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				awards,
@@ -1295,10 +1175,7 @@ const getShowQuery = () => `
 
 			WITH
 				material,
-				writingCredits,
-				originalVersionMaterial,
-				subsequentVersionMaterials,
-				sourcingMaterials,
+				relatedMaterials,
 				characterGroups,
 				productions,
 				awards,
@@ -1315,10 +1192,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1336,10 +1210,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1373,10 +1244,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1396,10 +1264,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1447,10 +1312,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1469,10 +1331,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1501,10 +1360,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1526,10 +1382,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1550,10 +1403,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1565,10 +1415,7 @@ const getShowQuery = () => `
 
 	WITH
 		material,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		relatedMaterials,
 		characterGroups,
 		productions,
 		awards,
@@ -1584,10 +1431,22 @@ const getShowQuery = () => `
 		material.differentiator AS differentiator,
 		material.format AS format,
 		material.year AS year,
-		writingCredits,
-		originalVersionMaterial,
-		subsequentVersionMaterials,
-		sourcingMaterials,
+		HEAD([
+			relatedMaterial IN relatedMaterials
+				WHERE relatedMaterial.uuid = material.uuid | relatedMaterial.writingCredits
+		]) AS writingCredits,
+		HEAD([
+			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
+			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+		]) AS originalVersionMaterial,
+		[
+			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
+			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+		] AS subsequentVersionMaterials,
+		[
+			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
+			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+		] AS sourcingMaterials,
 		characterGroups,
 		[
 			production IN productions WHERE NOT production.usesSourcingMaterial |
