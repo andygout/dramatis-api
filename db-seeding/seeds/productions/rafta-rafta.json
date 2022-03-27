@@ -1,0 +1,163 @@
+{
+	"uuid": "80fe797f-1408-4b0c-bcd4-7a288ed4d847",
+	"name": "Rafta, Rafta…",
+	"startDate": "2007-04-19",
+	"pressDate": "2007-04-26",
+	"endDate": "2007-11-10",
+	"material": {
+		"name": "Rafta, Rafta…"
+	},
+	"venue": {
+		"name": "Lyttelton Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Harish Patel",
+			"roles": [
+				{
+					"name": "Eeshwar Dutt"
+				}
+			]
+		},
+		{
+			"name": "Ronny Jhutti",
+			"roles": [
+				{
+					"name": "Atul Dutt"
+				}
+			]
+		},
+		{
+			"name": "Rudi Dharmalingam",
+			"roles": [
+				{
+					"name": "Jai Dutt"
+				}
+			]
+		},
+		{
+			"name": "Arsher Ali",
+			"roles": [
+				{
+					"name": "Etash Tailor"
+				}
+			]
+		},
+		{
+			"name": "Simon Nagra",
+			"roles": [
+				{
+					"name": "Jivav Bhatt"
+				}
+			]
+		},
+		{
+			"name": "Meera Syal",
+			"roles": [
+				{
+					"name": "Lopa Dutt"
+				}
+			]
+		},
+		{
+			"name": "Shaheen Khan",
+			"roles": [
+				{
+					"name": "Lata Patel"
+				}
+			]
+		},
+		{
+			"name": "Rokhsaneh Ghawam-Shahidi",
+			"roles": [
+				{
+					"name": "Vina Patel"
+				}
+			]
+		},
+		{
+			"name": "Natalie Grady",
+			"roles": [
+				{
+					"name": "Molly Bhatt"
+				}
+			]
+		},
+		{
+			"name": "Kriss Dosanjh",
+			"roles": [
+				{
+					"name": "Laxman Patel"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Hytner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tim Hatley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Hugh Vanstone"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Niraj Chag"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Alastair Coomer"
+				}
+			]
+		}
+	]
+}

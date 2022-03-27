@@ -1,0 +1,449 @@
+{
+	"uuid": "31af19e4-eb50-4960-b32a-cff562d60370",
+	"name": "War Horse",
+	"startDate": "2007-10-09",
+	"pressDate": "2007-10-17",
+	"endDate": "2008-02-14",
+	"material": {
+		"name": "War Horse",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Handspring Puppet Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jamie Ballard",
+			"roles": [
+				{
+					"name": "Major Nicholls"
+				}
+			]
+		},
+		{
+			"name": "Alice Barclay",
+			"roles": [
+				{
+					"name": "Swallow"
+				},
+				{
+					"name": "Emilie"
+				}
+			]
+		},
+		{
+			"name": "Jason Barnett",
+			"roles": [
+				{
+					"name": "Chapman Carter"
+				},
+				{
+					"name": "Rudi"
+				}
+			]
+		},
+		{
+			"name": "James Barriscale",
+			"roles": [
+				{
+					"name": "Sergeant Bone"
+				},
+				{
+					"name": "Colonel Strauss"
+				},
+				{
+					"name": "Sergeant Fine"
+				}
+			]
+		},
+		{
+			"name": "Simon Bubb",
+			"roles": [
+				{
+					"name": "Captain Stewart"
+				},
+				{
+					"name": "Soldat Schmidt"
+				}
+			]
+		},
+		{
+			"name": "Finn Caldwell",
+			"roles": [
+				{
+					"name": "Joey's Mother",
+					"characterName": "Alice"
+				},
+				{
+					"name": "Goose"
+				},
+				{
+					"name": "Topthorn"
+				},
+				{
+					"name": "Veterinary Officer Martin"
+				}
+			]
+		},
+		{
+			"name": "Paul Chequer",
+			"roles": [
+				{
+					"name": "David Taylor"
+				},
+				{
+					"name": "Soldat Schultz"
+				}
+			]
+		},
+		{
+			"name": "Tim Van Eyken",
+			"roles": [
+				{
+					"name": "Song Man"
+				}
+			]
+		},
+		{
+			"name": "Thomas Goodridge",
+			"roles": [
+				{
+					"name": "Young Joey",
+					"characterName": "Joey"
+				},
+				{
+					"name": "Topthorn"
+				}
+			]
+		},
+		{
+			"name": "Stephen Harper",
+			"roles": [
+				{
+					"name": "Joey's Mother",
+					"characterName": "Alice"
+				},
+				{
+					"name": "Dr Schweyk",
+					"characterName": "Doctor Schweyk"
+				},
+				{
+					"name": "Coco"
+				},
+				{
+					"name": "Geordie"
+				}
+			]
+		},
+		{
+			"name": "Thusitha Jayasundera",
+			"roles": [
+				{
+					"name": "Rose Narracott"
+				},
+				{
+					"name": "Private Shaw",
+					"characterName": "Sentry Shaw"
+				}
+			]
+		},
+		{
+			"name": "Gareth Kennerley",
+			"roles": [
+				{
+					"name": "Veterinary Officer Bright"
+				},
+				{
+					"name": "Karl",
+					"characterName": "Gefreiter Karl"
+				}
+			]
+		},
+		{
+			"name": "Craig Leo",
+			"roles": [
+				{
+					"name": "Crow"
+				},
+				{
+					"name": "Joey"
+				}
+			]
+		},
+		{
+			"name": "Rachel Leonard",
+			"roles": [
+				{
+					"name": "Young Joey",
+					"characterName": "Joey"
+				},
+				{
+					"name": "Emilie"
+				}
+			]
+		},
+		{
+			"name": "Tim Lewis",
+			"roles": [
+				{
+					"name": "Topthorn"
+				},
+				{
+					"name": "Major Callaghan"
+				}
+			]
+		},
+		{
+			"name": "Tommy Luther",
+			"roles": [
+				{
+					"name": "Joey"
+				}
+			]
+		},
+		{
+			"name": "Mervyn Millar",
+			"roles": [
+				{
+					"name": "Young Joey",
+					"characterName": "Joey"
+				},
+				{
+					"name": "Emilie"
+				}
+			]
+		},
+		{
+			"name": "Emily Mytton",
+			"roles": [
+				{
+					"name": "Paulette"
+				},
+				{
+					"name": "Crow"
+				}
+			]
+		},
+		{
+			"name": "Toby Olié",
+			"roles": [
+				{
+					"name": "Swallow"
+				},
+				{
+					"name": "Joey"
+				},
+				{
+					"name": "Crow"
+				}
+			]
+		},
+		{
+			"name": "Toby Sedgwick",
+			"roles": [
+				{
+					"name": "Ted Narracott"
+				},
+				{
+					"name": "Coco"
+				}
+			]
+		},
+		{
+			"name": "Ashley Taylor-Rhys",
+			"roles": [
+				{
+					"name": "Ned Warren"
+				},
+				{
+					"name": "Heine"
+				}
+			]
+		},
+		{
+			"name": "Luke Treadaway",
+			"roles": [
+				{
+					"name": "Albert Narracott"
+				}
+			]
+		},
+		{
+			"name": "Howard Ward",
+			"roles": [
+				{
+					"name": "Sergeant Thunder"
+				},
+				{
+					"name": "Soldat Klebb",
+					"characterName": "Unteroffizier Klebb"
+				}
+			]
+		},
+		{
+			"name": "Alan Williams",
+			"roles": [
+				{
+					"name": "Arthur Warren"
+				},
+				{
+					"name": "Soldat Manfred"
+				}
+			]
+		},
+		{
+			"name": "Matthew Woodyatt",
+			"roles": [
+				{
+					"name": "Heine"
+				}
+			]
+		},
+		{
+			"name": "Angus Wright",
+			"roles": [
+				{
+					"name": "Hauptmann Friedrich Müller"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Marianne Elliott"
+				},
+				{
+					"name": "Tom Morris"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rae Smith"
+				}
+			]
+		},
+		{
+			"name": "Puppets",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Handspring Puppet Company",
+					"members": [
+						{
+							"name": "Basil Jones"
+						},
+						{
+							"name": "Adrian Kohler"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Toby Sedgwick"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Adrian Sutton"
+				}
+			]
+		},
+		{
+			"name": "Songmaker",
+			"entities": [
+				{
+					"name": "John Tams"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Harvey Brough"
+				}
+			]
+		},
+		{
+			"name": "Video Designers",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "59 Productions",
+					"members": [
+						{
+							"name": "Leo Warner"
+						},
+						{
+							"name": "Mark Grimmer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Polly Findlay"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Alastair Coomer"
+				}
+			]
+		}
+	]
+}

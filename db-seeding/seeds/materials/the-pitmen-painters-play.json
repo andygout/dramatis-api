@@ -1,0 +1,58 @@
+{
+	"name": "The Pitmen Painters",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2008,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lee Hall"
+				}
+			]
+		},
+		{
+			"name": "inspired by",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Pitmen Painters",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "George Brown"
+				},
+				{
+					"name": "Oliver Kilbourn"
+				},
+				{
+					"name": "Jimmy Floyd"
+				},
+				{
+					"name": "Young Lad"
+				},
+				{
+					"name": "Ben Nicholson"
+				},
+				{
+					"name": "Harry Wilson"
+				},
+				{
+					"name": "Robert Lyon"
+				},
+				{
+					"name": "Susan Parks"
+				},
+				{
+					"name": "Helen Sutherland"
+				}
+			]
+		}
+	]
+}

@@ -135,6 +135,62 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Play",
+			"nominations": [
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "312936f0-24b6-4b87-90af-0a4ee8dc4006"
+						}
+					],
+					"materials": [
+						{
+							"name": "A Disappearing Number"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "15cd0c78-8fd5-4aa2-9c02-a90bf7ee2fd6"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Reporter"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "63b50859-6c27-49c5-b873-d30707f68bab"
+						}
+					],
+					"materials": [
+						{
+							"name": "Vernon God Little",
+							"differentiator": "2"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "31af19e4-eb50-4960-b32a-cff562d60370"
+						}
+					],
+					"materials": [
+						{
+							"name": "War Horse",
+							"differentiator": "2"
+						}
+					]
+				}
+			]
 		}
 	]
 }

@@ -1,0 +1,182 @@
+{
+	"uuid": "15cd0c78-8fd5-4aa2-9c02-a90bf7ee2fd6",
+	"name": "The Reporter",
+	"startDate": "2007-02-14",
+	"pressDate": "2007-02-21",
+	"endDate": "2007-06-02",
+	"material": {
+		"name": "The Reporter"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ben Chaplin",
+			"roles": [
+				{
+					"name": "James Mossman"
+				}
+			]
+		},
+		{
+			"name": "Aleksander Mikic",
+			"roles": [
+				{
+					"name": "Marko"
+				}
+			]
+		},
+		{
+			"name": "Angelo Paragoso",
+			"roles": [
+				{
+					"name": "Waiter"
+				}
+			]
+		},
+		{
+			"name": "Tilly Tremaine",
+			"roles": [
+				{
+					"name": "Joan Marsden"
+				},
+				{
+					"name": "Mrs Rudge"
+				}
+			]
+		},
+		{
+			"name": "Paul Ritter",
+			"roles": [
+				{
+					"name": "Robin Day"
+				}
+			]
+		},
+		{
+			"name": "Bruce Alexander",
+			"roles": [
+				{
+					"name": "Ray Ray"
+				}
+			]
+		},
+		{
+			"name": "Leo Bill",
+			"roles": [
+				{
+					"name": "Daniel"
+				}
+			]
+		},
+		{
+			"name": "John Cummins",
+			"roles": [
+				{
+					"name": "Cameraman"
+				}
+			]
+		},
+		{
+			"name": "Chris New",
+			"roles": [
+				{
+					"name": "Louis"
+				}
+			]
+		},
+		{
+			"name": "Gillian Raine",
+			"roles": [
+				{
+					"name": "Molly Mossman"
+				}
+			]
+		},
+		{
+			"name": "Patrick Brennan",
+			"roles": [
+				{
+					"name": "Harold Wilson"
+				}
+			]
+		},
+		{
+			"name": "Angela Thorne",
+			"roles": [
+				{
+					"name": "Rosamond Lehmann"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Richard Eyre"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rob Howell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Rich Walsh"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Richard Hartley"
+				}
+			]
+		},
+		{
+			"name": "Projection Designer",
+			"entities": [
+				{
+					"name": "Jon Drsicoll"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Wendy Spon"
+				}
+			]
+		}
+	]
+}

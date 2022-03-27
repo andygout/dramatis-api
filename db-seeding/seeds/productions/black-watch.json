@@ -1,0 +1,183 @@
+{
+	"uuid": "269b01df-6f28-42ce-879f-538771a862de",
+	"name": "Black Watch",
+	"startDate": "2008-06-20",
+	"pressDate": "2008-06-24",
+	"endDate": "2008-07-26",
+	"material": {
+		"name": "Black Watch"
+	},
+	"venue": {
+		"name": "Barbican Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of Scotland"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Colvin",
+			"roles": [
+				{
+					"name": "Macca"
+				}
+			]
+		},
+		{
+			"name": "Paul James Corrigan",
+			"roles": [
+				{
+					"name": "Kenzie"
+				}
+			]
+		},
+		{
+			"name": "Ali Craig",
+			"roles": [
+				{
+					"name": "Stewarty"
+				}
+			]
+		},
+		{
+			"name": "Emun Elliott",
+			"roles": [
+				{
+					"name": "Fraz"
+				}
+			]
+		},
+		{
+			"name": "Jack Fortune",
+			"roles": [
+				{
+					"name": "Officer"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Holt",
+			"roles": [
+				{
+					"name": "Granty"
+				}
+			]
+		},
+		{
+			"name": "Michael Nardone",
+			"roles": [
+				{
+					"name": "Writer"
+				},
+				{
+					"name": "Sergeant"
+				}
+			]
+		},
+		{
+			"name": "Henry Pettigrew",
+			"roles": [
+				{
+					"name": "Rossco"
+				}
+			]
+		},
+		{
+			"name": "Paul Rattray",
+			"roles": [
+				{
+					"name": "Cammy"
+				}
+			]
+		},
+		{
+			"name": "Nabil Stuart",
+			"roles": [
+				{
+					"name": "Nabsy"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "John Tiffany"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Laura Hopkins"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Jessica Brettle"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Colin Grenfell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Gareth Fry"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Steven Hoggett"
+				}
+			]
+		},
+		{
+			"name": "Video Designers",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "59 Productions",
+					"members": [
+						{
+							"name": "Leo Warner"
+						},
+						{
+							"name": "Mark Grimmer"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Davey Anderson"
+				}
+			]
+		}
+	]
+}

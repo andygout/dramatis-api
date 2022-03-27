@@ -1,0 +1,139 @@
+{
+	"uuid": "c45a69fb-fa84-48dd-8822-5eadcdb87e70",
+	"name": "Now or Later",
+	"startDate": "2008-09-03",
+	"pressDate": "2008-09-11",
+	"endDate": "2008-11-01",
+	"material": {
+		"name": "Now or Later"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Downstairs"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Court Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Adam James",
+			"roles": [
+				{
+					"name": "Marc"
+				}
+			]
+		},
+		{
+			"name": "Domhnall Gleeson",
+			"roles": [
+				{
+					"name": "Matt"
+				}
+			]
+		},
+		{
+			"name": "Eddie Redmayne",
+			"roles": [
+				{
+					"name": "John"
+				}
+			]
+		},
+		{
+			"name": "Nancy Crane",
+			"roles": [
+				{
+					"name": "Jessica"
+				}
+			]
+		},
+		{
+			"name": "Pamela Nomvete",
+			"roles": [
+				{
+					"name": "Tracy"
+				}
+			]
+		},
+		{
+			"name": "Matthew Marsh",
+			"roles": [
+				{
+					"name": "John Sr"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dominic Cooke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Hildegard Bechtler"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Charles Balfour"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ian Dickinson"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Des Kennedy"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Amy Ball"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Lotte Hines"
+				}
+			]
+		}
+	]
+}

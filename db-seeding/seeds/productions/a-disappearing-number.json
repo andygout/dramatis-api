@@ -1,0 +1,116 @@
+{
+	"uuid": "312936f0-24b6-4b87-90af-0a4ee8dc4006",
+	"name": "A Disappearing Number",
+	"startDate": "2007-09-05",
+	"pressDate": "2007-09-11",
+	"endDate": "2007-10-06",
+	"material": {
+		"name": "A Disappearing Number"
+	},
+	"venue": {
+		"name": "Barbican Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Théâtre de Complicité"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Annen"
+		},
+		{
+			"name": "Firdous Bamji"
+		},
+		{
+			"name": "Paul Bhattacharjee"
+		},
+		{
+			"name": "Hiren Chate"
+		},
+		{
+			"name": "Saraj Chaudhry"
+		},
+		{
+			"name": "Divya Kasturi"
+		},
+		{
+			"name": "Chetna Pandya"
+		},
+		{
+			"name": "Saskia Reeves"
+		},
+		{
+			"name": "Shane Shambhu"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Simon McBurney"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Michael Levine"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Christine Cunningham"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paul Anderson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Projection Designer",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Mesmer",
+					"members": [
+						{
+							"name": "Sven Ortel"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Nitin Sawhney"
+				}
+			]
+		}
+	]
+}

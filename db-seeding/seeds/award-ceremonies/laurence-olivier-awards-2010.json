@@ -156,6 +156,66 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Play",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "02047e75-3d9e-4841-907a-b5fae44f5cd3"
+						},
+						{
+							"uuid": "23e06dd4-aee7-4885-a1b6-56cea133c5b8"
+						}
+					],
+					"materials": [
+						{
+							"name": "Enron"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "e02232dd-127a-4ce4-9c52-583719c985bd"
+						},
+						{
+							"uuid": "877b27a1-d184-4c06-8083-0815aad98b57"
+						}
+					],
+					"materials": [
+						{
+							"name": "Jerusalem"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "1c92b10f-12b0-4b2c-8bfb-c0dee2c6f917"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Mountaintop"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "7b0cbb91-a648-41bf-a29b-aa7c82811afe"
+						}
+					],
+					"materials": [
+						{
+							"name": "Red"
+						}
+					]
+				}
+			]
 		}
 	]
 }

@@ -1,0 +1,38 @@
+{
+	"name": "Now or Later",
+	"format": "play",
+	"year": 2008,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Christopher Shinn"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Marc"
+				},
+				{
+					"name": "Matt"
+				},
+				{
+					"name": "John"
+				},
+				{
+					"name": "Jessica"
+				},
+				{
+					"name": "Tracy"
+				},
+				{
+					"name": "John Sr"
+				}
+			]
+		}
+	]
+}

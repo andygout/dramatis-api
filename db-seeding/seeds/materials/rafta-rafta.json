@@ -1,0 +1,59 @@
+{
+	"name": "Rafta, Rafta…",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Ayub Khan-Din"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "All in Good Time"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Eeshwar Dutt"
+				},
+				{
+					"name": "Atul Dutt"
+				},
+				{
+					"name": "Jai Dutt"
+				},
+				{
+					"name": "Etash Tailor"
+				},
+				{
+					"name": "Jivav Bhatt"
+				},
+				{
+					"name": "Lopa Dutt"
+				},
+				{
+					"name": "Lata Patel"
+				},
+				{
+					"name": "Vina Patel"
+				},
+				{
+					"name": "Molly Bhatt"
+				},
+				{
+					"name": "Laxman Patel"
+				}
+			]
+		}
+	]
+}

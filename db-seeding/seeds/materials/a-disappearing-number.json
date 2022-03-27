@@ -1,0 +1,24 @@
+{
+	"name": "A Disappearing Number",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"name": "conceived by",
+			"entities": [
+				{
+					"name": "Simon McBurney"
+				}
+			]
+		},
+		{
+			"name": "devised by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Théâtre de Complicité"
+				}
+			]
+		}
+	]
+}

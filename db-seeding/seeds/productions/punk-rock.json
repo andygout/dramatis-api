@@ -1,0 +1,164 @@
+{
+	"uuid": "439aed3c-237e-40fa-ae84-bfc05e7bc401",
+	"name": "Punk Rock",
+	"startDate": "2009-09-03",
+	"pressDate": "2009-09-08",
+	"endDate": "2009-09-26",
+	"material": {
+		"name": "Punk Rock"
+	},
+	"venue": {
+		"name": "Lyric Hammersmith"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Lyric Theatre Hammersmith"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Exchange Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Tom Sturridge",
+			"roles": [
+				{
+					"name": "William Carlisle"
+				}
+			]
+		},
+		{
+			"name": "Jessica Raine",
+			"roles": [
+				{
+					"name": "Lilly Cahill"
+				}
+			]
+		},
+		{
+			"name": "Henry Lloyd-Hughes",
+			"roles": [
+				{
+					"name": "Bennett Francis"
+				}
+			]
+		},
+		{
+			"name": "Sophie Wu",
+			"roles": [
+				{
+					"name": "Cissy Franks"
+				}
+			]
+		},
+		{
+			"name": "Katie West",
+			"roles": [
+				{
+					"name": "Tanya Gleason"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Banks",
+			"roles": [
+				{
+					"name": "Nicholas Chatman"
+				}
+			]
+		},
+		{
+			"name": "Harry McEntire",
+			"roles": [
+				{
+					"name": "Chadwick Meade"
+				}
+			]
+		},
+		{
+			"name": "Ghazaleh Golpira",
+			"roles": [
+				{
+					"name": "Lucy Francis"
+				}
+			]
+		},
+		{
+			"name": "Simon Wolfe",
+			"roles": [
+				{
+					"name": "Dr Richard Harvey"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Sarah Frankcom"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Paul Wills"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Phil Gladwell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Peter Rice"
+				}
+			]
+		},
+		{
+			"name": "Musical Director and Fight Director",
+			"entities": [
+				{
+					"name": "Mike Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Clive Judd"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Jerry Knight-Smith"
+				}
+			]
+		}
+	]
+}

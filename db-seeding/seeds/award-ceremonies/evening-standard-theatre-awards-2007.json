@@ -171,6 +171,48 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best Play",
+			"nominations": [
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "312936f0-24b6-4b87-90af-0a4ee8dc4006"
+						}
+					],
+					"materials": [
+						{
+							"name": "A Disappearing Number"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "80fe797f-1408-4b0c-bcd4-7a288ed4d847"
+						}
+					],
+					"materials": [
+						{
+							"name": "Rafta, Rafta…"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "15cd0c78-8fd5-4aa2-9c02-a90bf7ee2fd6"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Reporter"
+						}
+					]
+				}
+			]
 		}
 	]
 }

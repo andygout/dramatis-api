@@ -1,0 +1,26 @@
+{
+	"name": "Red",
+	"format": "play",
+	"year": 2009,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "John Logan"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Mark Rothko"
+				},
+				{
+					"name": "Ken"
+				}
+			]
+		}
+	]
+}

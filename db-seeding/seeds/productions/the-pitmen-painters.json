@@ -1,0 +1,131 @@
+{
+	"uuid": "b3a7ac9a-f4cd-431f-b3b9-cf87e2dc77c3",
+	"name": "The Pitmen Painters",
+	"startDate": "2008-05-19",
+	"pressDate": "2008-05-21",
+	"endDate": "2008-06-25",
+	"material": {
+		"name": "The Pitmen Painters",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Live Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Deka Walmsley",
+			"roles": [
+				{
+					"name": "George Brown"
+				}
+			]
+		},
+		{
+			"name": "Christopher Connel",
+			"roles": [
+				{
+					"name": "Oliver Kilbourn"
+				}
+			]
+		},
+		{
+			"name": "David Whitaker",
+			"roles": [
+				{
+					"name": "Jimmy Floyd"
+				}
+			]
+		},
+		{
+			"name": "Brian Lonsdale",
+			"roles": [
+				{
+					"name": "Young Lad"
+				},
+				{
+					"name": "Ben Nicholson"
+				}
+			]
+		},
+		{
+			"name": "Michael Hodgson",
+			"roles": [
+				{
+					"name": "Harry Wilson"
+				}
+			]
+		},
+		{
+			"name": "Ian Kelly",
+			"roles": [
+				{
+					"name": "Robert Lyon"
+				}
+			]
+		},
+		{
+			"name": "Lisa McGrillis",
+			"roles": [
+				{
+					"name": "Susan Parks"
+				}
+			]
+		},
+		{
+			"name": "Phillippa Wilson",
+			"roles": [
+				{
+					"name": "Helen Sutherland"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Max Roberts"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Gary McCann"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Douglas Kuhrt"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Martin Hodgson"
+				}
+			]
+		}
+	]
+}

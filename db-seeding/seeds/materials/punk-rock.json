@@ -1,0 +1,47 @@
+{
+	"name": "Punk Rock",
+	"format": "play",
+	"year": 2009,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Simon Stephens"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "William Carlisle"
+				},
+				{
+					"name": "Lilly Cahill"
+				},
+				{
+					"name": "Bennett Francis"
+				},
+				{
+					"name": "Cissy Franks"
+				},
+				{
+					"name": "Nicholas Chatman"
+				},
+				{
+					"name": "Tanya Gleason"
+				},
+				{
+					"name": "Chadwick Meade"
+				},
+				{
+					"name": "Lucy Francis"
+				},
+				{
+					"name": "Dr Richard Harvey"
+				}
+			]
+		}
+	]
+}
