@@ -111,6 +111,61 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Play",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "337b1b99-8a3a-45b6-b535-640452a6f3c1"
+						}
+					],
+					"materials": [
+						{
+							"name": "August: Osage County"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "269b01df-6f28-42ce-879f-538771a862de"
+						}
+					],
+					"materials": [
+						{
+							"name": "Black Watch"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "b3a7ac9a-f4cd-431f-b3b9-cf87e2dc77c3"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Pitmen Painters",
+							"differentiator": "2"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "f11a8fd9-9a6c-48cc-bc75-2b6f4033843b"
+						}
+					],
+					"materials": [
+						{
+							"name": "That Face"
+						}
+					]
+				}
+			]
 		}
 	]
 }

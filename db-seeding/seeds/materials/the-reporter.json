@@ -1,0 +1,60 @@
+{
+	"name": "The Reporter",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nicholas Wright"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "James Mossman"
+				},
+				{
+					"name": "Marko"
+				},
+				{
+					"name": "Waiter",
+					"differentiator": "The Reporter"
+				},
+				{
+					"name": "Joan Marsden"
+				},
+				{
+					"name": "Mrs Rudge"
+				},
+				{
+					"name": "Robin Day"
+				},
+				{
+					"name": "Ray Ray"
+				},
+				{
+					"name": "Daniel"
+				},
+				{
+					"name": "Cameraman"
+				},
+				{
+					"name": "Louis"
+				},
+				{
+					"name": "Molly Mossman"
+				},
+				{
+					"name": "Harold Wilson"
+				},
+				{
+					"name": "Rosamond Lehmann"
+				}
+			]
+		}
+	]
+}

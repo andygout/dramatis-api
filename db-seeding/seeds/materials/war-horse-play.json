@@ -1,0 +1,143 @@
+{
+	"name": "War Horse",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nick Stafford"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "War Horse",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Joey"
+				},
+				{
+					"name": "Alice",
+					"differentiator": "War Horse"
+				},
+				{
+					"name": "Chapman Carter"
+				},
+				{
+					"name": "Villagers/Ringsiders"
+				},
+				{
+					"name": "Albert Narracott"
+				},
+				{
+					"name": "Ted Narracott"
+				},
+				{
+					"name": "Arthur Warren"
+				},
+				{
+					"name": "Ned Warren"
+				},
+				{
+					"name": "Rose Narracott"
+				},
+				{
+					"name": "Captain Stewart"
+				},
+				{
+					"name": "Topthorn"
+				},
+				{
+					"name": "Sergeant Greig"
+				},
+				{
+					"name": "Sergeant Bone"
+				},
+				{
+					"name": "Major Nicholls"
+				},
+				{
+					"name": "Veterinary Officer Bright"
+				},
+				{
+					"name": "Sergeant Thunder"
+				},
+				{
+					"name": "David Taylor"
+				},
+				{
+					"name": "Hauptmann Friedrich Müller"
+				},
+				{
+					"name": "Stein"
+				},
+				{
+					"name": "Gefreiter Karl"
+				},
+				{
+					"name": "Doctor Schweyk"
+				},
+				{
+					"name": "Colonel Strauss"
+				},
+				{
+					"name": "Paulette"
+				},
+				{
+					"name": "Emilie"
+				},
+				{
+					"name": "Unteroffizier Klebb"
+				},
+				{
+					"name": "Soldat Schultz"
+				},
+				{
+					"name": "Heine"
+				},
+				{
+					"name": "Coco"
+				},
+				{
+					"name": "Sergeant Fine"
+				},
+				{
+					"name": "Sentry Shaw"
+				},
+				{
+					"name": "Rudi"
+				},
+				{
+					"name": "Soldat Schmidt"
+				},
+				{
+					"name": "Geordie"
+				},
+				{
+					"name": "Soldat Manfred"
+				},
+				{
+					"name": "Ludwig"
+				},
+				{
+					"name": "Major Callaghan"
+				},
+				{
+					"name": "Veterinary Officer Martin"
+				}
+			]
+		}
+	]
+}

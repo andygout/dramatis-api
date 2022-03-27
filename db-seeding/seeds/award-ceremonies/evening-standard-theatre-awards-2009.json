@@ -141,6 +141,60 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best Play",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "337b1b99-8a3a-45b6-b535-640452a6f3c1"
+						}
+					],
+					"materials": [
+						{
+							"name": "August: Osage County"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "02047e75-3d9e-4841-907a-b5fae44f5cd3"
+						}
+					],
+					"materials": [
+						{
+							"name": "Enron"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "439aed3c-237e-40fa-ae84-bfc05e7bc401"
+						}
+					],
+					"materials": [
+						{
+							"name": "Punk Rock"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "e02232dd-127a-4ce4-9c52-583719c985bd"
+						}
+					],
+					"materials": [
+						{
+							"name": "Jerusalem"
+						}
+					]
+				}
+			]
 		}
 	]
 }

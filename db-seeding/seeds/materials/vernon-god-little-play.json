@@ -1,0 +1,72 @@
+{
+	"name": "Vernon God Little",
+	"differentiator": "2",
+	"format": "play",
+	"year": 2007,
+	"writingCredits": [
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Vernon God Little",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Tanya Ronder"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Betty"
+				},
+				{
+					"name": "Pam"
+				},
+				{
+					"name": "Abdini"
+				},
+				{
+					"name": "Mr Pelayo"
+				},
+				{
+					"name": "Ella"
+				},
+				{
+					"name": "Taylor"
+				},
+				{
+					"name": "Lally"
+				},
+				{
+					"name": "Vernon"
+				},
+				{
+					"name": "Sheriff Pokorney"
+				},
+				{
+					"name": "Vaine"
+				},
+				{
+					"name": "Leona"
+				},
+				{
+					"name": "Mom",
+					"differentiator": "Vernon God Little"
+				},
+				{
+					"name": "Lasalie"
+				}
+			]
+		}
+	]
+}

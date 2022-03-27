@@ -1,0 +1,212 @@
+{
+	"uuid": "63b50859-6c27-49c5-b873-d30707f68bab",
+	"name": "Vernon God Little",
+	"startDate": "2007-04-27",
+	"pressDate": "2007-05-08",
+	"endDate": "2007-06-09",
+	"material": {
+		"name": "Vernon God Little",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Main House"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Young Vic Company"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Cuba Pictures"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Lorraine Bruce",
+			"roles": [
+				{
+					"name": "Betty"
+				},
+				{
+					"name": "Pam"
+				}
+			]
+		},
+		{
+			"name": "Andrew Clark",
+			"roles": [
+				{
+					"name": "Abdini"
+				},
+				{
+					"name": "Mr Pelayo"
+				}
+			]
+		},
+		{
+			"name": "Mariah Gale",
+			"roles": [
+				{
+					"name": "Ella"
+				},
+				{
+					"name": "Taylor"
+				}
+			]
+		},
+		{
+			"name": "Mark Lockyer",
+			"roles": [
+				{
+					"name": "Lally"
+				}
+			]
+		},
+		{
+			"name": "Colin Morgan",
+			"roles": [
+				{
+					"name": "Vernon"
+				}
+			]
+		},
+		{
+			"name": "Nathan Osgood",
+			"roles": [
+				{
+					"name": "Sheriff Pokorney"
+				}
+			]
+		},
+		{
+			"name": "Penny Layden",
+			"roles": [
+				{
+					"name": "Vaine",
+					"isAlternate": true
+				},
+				{
+					"name": "Leona",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Sian Reeves",
+			"roles": [
+				{
+					"name": "Vaine",
+					"isAlternate": true
+				},
+				{
+					"name": "Leona",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Joanna Scanlan",
+			"roles": [
+				{
+					"name": "Mom"
+				}
+			]
+		},
+		{
+			"name": "Ray Shell",
+			"roles": [
+				{
+					"name": "Lasalie"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rufus Norris"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ian McNeil"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Nicky Gillibrand"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Arditti"
+				}
+			]
+		},
+		{
+			"name": "Video Designer and Projections",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Gray Circle"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Duncan Wisbey"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Jim Gaffney"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Maggie Lunn"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

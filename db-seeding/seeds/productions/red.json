@@ -1,0 +1,91 @@
+{
+	"uuid": "7b0cbb91-a648-41bf-a29b-aa7c82811afe",
+	"name": "Red",
+	"startDate": "2009-12-03",
+	"pressDate": "2009-12-08",
+	"endDate": "2010-02-06",
+	"material": {
+		"name": "Red"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Alfred Molina",
+			"roles": [
+				{
+					"name": "Mark Rothko"
+				}
+			]
+		},
+		{
+			"name": "Eddie Redmayne",
+			"roles": [
+				{
+					"name": "Ken"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Vicky Richardson"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,53 @@
+{
+	"name": "Black Watch",
+	"format": "play",
+	"year": 2006,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Gregory Burke"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Cammy"
+				},
+				{
+					"name": "Granty"
+				},
+				{
+					"name": "Rossco"
+				},
+				{
+					"name": "Stewarty"
+				},
+				{
+					"name": "Macca"
+				},
+				{
+					"name": "Nabsy"
+				},
+				{
+					"name": "Writer"
+				},
+				{
+					"name": "Sergeant"
+				},
+				{
+					"name": "Kenzie"
+				},
+				{
+					"name": "Fraz"
+				},
+				{
+					"name": "Officer"
+				}
+			]
+		}
+	]
+}

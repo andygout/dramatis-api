@@ -64,6 +64,49 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best Play",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "269b01df-6f28-42ce-879f-538771a862de"
+						}
+					],
+					"materials": [
+						{
+							"name": "Black Watch"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "c45a69fb-fa84-48dd-8822-5eadcdb87e70"
+						}
+					],
+					"materials": [
+						{
+							"name": "Now or Later"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "b3a7ac9a-f4cd-431f-b3b9-cf87e2dc77c3"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Pitmen Painters",
+							"differentiator": "2"
+						}
+					]
+				}
+			]
 		}
 	]
 }
