@@ -42,14 +42,45 @@ describe('Award ceremonies with nominated materials', () => {
 	const THUD_MATERIAL_UUID = '89';
 	const TOTO_MATERIAL_UUID = '104';
 	const GRAULT_MATERIAL_UUID = '119';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '127';
-	const WORDSMITH_AWARD_UUID = '128';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '137';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '147';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '157';
-	const PLAYWRITING_PRIZE_AWARD_UUID = '158';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '167';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_SEVEN_AWARD_CEREMONY_UUID = '177';
+	const NATIONAL_THEATRE_VENUE_UUID = '126';
+	const OLIVIER_THEATRE_VENUE_UUID = '127';
+	const LYTTELTON_THEATRE_VENUE_UUID = '128';
+	const COTTESLOE_THEATRE_VENUE_UUID = '129';
+	const ROYAL_COURT_THEATRE_VENUE_UUID = '133';
+	const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '134';
+	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '135';
+	const PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '136';
+	const PIYO_WYNDHAMS_PRODUCTION_UUID = '139';
+	const WYNDHAMS_THEATRE_VENUE_UUID = '141';
+	const WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '142';
+	const WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID = '145';
+	const DUKE_OF_YORKS_THEATRE_VENUE_UUID = '147';
+	const XYZZY_OLIVIER_PRODUCTION_UUID = '148';
+	const XYZZY_DUKE_OF_YORKS_PRODUCTION_UUID = '151';
+	const FRED_LYTTELTON_PRODUCTION_UUID = '154';
+	const FRED_NOËL_COWARD_PRODUCTION_UUID = '157';
+	const NOËL_COWARD_THEATRE_VENUE_UUID = '159';
+	const GARPLY_ALMEIDA_PRODUCTION_UUID = '160';
+	const PLUGH_LYTTELTON_PRODUCTION_UUID = '163';
+	const PLUGH_WYNDHAMS_PRODUCTION_UUID = '166';
+	const HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '169';
+	const HOGE_NOËL_COWARD_PRODUCTION_UUID = '172';
+	const THUD_PLAYHOUSE_PRODUCTION_UUID = '175';
+	const PLAYHOUSE_THEATRE_VENUE_UUID = '177';
+	const TUTU_OLD_VIC_PRODUCTION_UUID = '178';
+	const TOTO_COTTESLOE_PRODUCTION_UUID = '181';
+	const TOTO_GIELGUD_PRODUCTION_UUID = '184';
+	const GIELGUD_THEATRE_VENUE_UUID = '186';
+	const FUGA_ALMEIDA_PRODUCTION_UUID = '187';
+	const GRAULT_GIELGUD_PRODUCTION_UUID = '190';
+	const WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '198';
+	const WORDSMITH_AWARD_UUID = '199';
+	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '208';
+	const WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '218';
+	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '228';
+	const PLAYWRITING_PRIZE_AWARD_UUID = '229';
+	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '238';
+	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_SEVEN_AWARD_CEREMONY_UUID = '248';
 
 	let wordsmithAward2009AwardCeremony;
 	let playwritingPrize2009AwardCeremony;
@@ -444,6 +475,305 @@ describe('Award ceremonies with nominated materials', () => {
 			});
 
 		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'National Theatre',
+				subVenues: [
+					{
+						name: 'Olivier Theatre'
+					},
+					{
+						name: 'Lyttelton Theatre'
+					},
+					{
+						name: 'Cottesloe Theatre'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'Royal Court Theatre',
+				subVenues: [
+					{
+						name: 'Jerwood Theatre Downstairs'
+					},
+					{
+						name: 'Jerwood Theatre Upstairs'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Piyo',
+				startDate: '2008-09-01',
+				endDate: '2008-09-30',
+				material: {
+					name: 'Piyo'
+				},
+				venue: {
+					name: 'Jerwood Theatre Downstairs'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Piyo',
+				startDate: '2008-10-01',
+				endDate: '2008-10-31',
+				material: {
+					name: 'Piyo'
+				},
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Wibble',
+				startDate: '2009-05-01',
+				endDate: '2009-05-31',
+				material: {
+					name: 'Wibble'
+				},
+				venue: {
+					name: 'Jerwood Theatre Upstairs'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Wibble',
+				startDate: '2009-06-01',
+				endDate: '2009-06-30',
+				material: {
+					name: 'Wibble'
+				},
+				venue: {
+					name: 'Duke of York\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Xyzzy',
+				startDate: '2008-11-01',
+				endDate: '2008-11-30',
+				material: {
+					name: 'Xyzzy'
+				},
+				venue: {
+					name: 'Olivier Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Xyzzy',
+				startDate: '2008-12-01',
+				endDate: '2008-12-31',
+				material: {
+					name: 'Xyzzy'
+				},
+				venue: {
+					name: 'Duke of York\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Fred',
+				startDate: '2010-02-01',
+				endDate: '2010-02-28',
+				material: {
+					name: 'Fred'
+				},
+				venue: {
+					name: 'Lyttelton Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Fred',
+				startDate: '2010-03-01',
+				endDate: '2010-03-31',
+				material: {
+					name: 'Fred'
+				},
+				venue: {
+					name: 'Noël Coward Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Garply',
+				startDate: '2010-04-01',
+				endDate: '2010-04-30',
+				material: {
+					name: 'Garply'
+				},
+				venue: {
+					name: 'Almeida Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Plugh',
+				startDate: '2009-07-01',
+				endDate: '2009-07-31',
+				material: {
+					name: 'Plugh',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Lyttelton Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Plugh',
+				startDate: '2009-08-01',
+				endDate: '2009-08-31',
+				material: {
+					name: 'Plugh',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Hoge',
+				startDate: '2008-05-01',
+				endDate: '2008-05-31',
+				material: {
+					name: 'Hoge'
+				},
+				venue: {
+					name: 'Jerwood Theatre Downstairs'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Hoge',
+				startDate: '2008-06-01',
+				endDate: '2008-06-30',
+				material: {
+					name: 'Hoge'
+				},
+				venue: {
+					name: 'Noël Coward Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Thud',
+				startDate: '2007-03-01',
+				endDate: '2007-03-31',
+				material: {
+					name: 'Thud'
+				},
+				venue: {
+					name: 'Playhouse Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Tutu',
+				startDate: '2007-04-01',
+				endDate: '2007-04-30',
+				material: {
+					name: 'Tutu'
+				},
+				venue: {
+					name: 'Old Vic Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Toto',
+				startDate: '2008-07-01',
+				endDate: '2008-07-31',
+				material: {
+					name: 'Toto'
+				},
+				venue: {
+					name: 'Cottesloe Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Toto',
+				startDate: '2008-08-01',
+				endDate: '2008-08-31',
+				material: {
+					name: 'Toto'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Fuga',
+				startDate: '2007-05-01',
+				endDate: '2007-05-31',
+				material: {
+					name: 'Fuga'
+				},
+				venue: {
+					name: 'Almeida Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Grault',
+				startDate: '2007-06-01',
+				endDate: '2007-06-30',
+				material: {
+					name: 'Grault'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				}
+			});
+
+		await chai.request(app)
 			.post('/awards/ceremonies')
 			.send({
 				name: '2009',
@@ -455,6 +785,14 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Miscellaneous Play',
 						nominations: [
 							{
+								productions: [
+									{
+										uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+									},
+									{
+										uuid: PIYO_WYNDHAMS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Piyo'
@@ -462,6 +800,14 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+									},
+									{
+										uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Wibble'
@@ -470,6 +816,14 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: XYZZY_OLIVIER_PRODUCTION_UUID
+									},
+									{
+										uuid: XYZZY_DUKE_OF_YORKS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Xyzzy'
@@ -493,6 +847,14 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Miscellaneous Play',
 						nominations: [
 							{
+								productions: [
+									{
+										uuid: FRED_LYTTELTON_PRODUCTION_UUID
+									},
+									{
+										uuid: FRED_NOËL_COWARD_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Fred'
@@ -501,6 +863,11 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: GARPLY_ALMEIDA_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Garply'
@@ -508,6 +875,14 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: PLUGH_LYTTELTON_PRODUCTION_UUID
+									},
+									{
+										uuid: PLUGH_WYNDHAMS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Plugh',
@@ -533,6 +908,11 @@ describe('Award ceremonies with nominated materials', () => {
 						nominations: [
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Hoge'
@@ -540,6 +920,11 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: THUD_PLAYHOUSE_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Thud'
@@ -547,6 +932,11 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: TUTU_OLD_VIC_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Tutu'
@@ -570,6 +960,11 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Random Play',
 						nominations: [
 							{
+								productions: [
+									{
+										uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Piyo'
@@ -578,6 +973,14 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: TOTO_COTTESLOE_PRODUCTION_UUID
+									},
+									{
+										uuid: TOTO_GIELGUD_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Toto'
@@ -585,6 +988,11 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: XYZZY_OLIVIER_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Xyzzy'
@@ -608,6 +1016,14 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Random Play',
 						nominations: [
 							{
+								productions: [
+									{
+										uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+									},
+									{
+										uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Hoge'
@@ -616,6 +1032,11 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: PLUGH_LYTTELTON_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Plugh',
@@ -624,6 +1045,14 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+									},
+									{
+										uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Wibble'
@@ -647,6 +1076,11 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Random Play',
 						nominations: [
 							{
+								productions: [
+									{
+										uuid: FUGA_ALMEIDA_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Fuga'
@@ -654,6 +1088,11 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								productions: [
+									{
+										uuid: GRAULT_GIELGUD_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Grault'
@@ -662,6 +1101,11 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								productions: [
+									{
+										uuid: THUD_PLAYHOUSE_PRODUCTION_UUID
+									}
+								],
 								materials: [
 									{
 										name: 'Thud'
@@ -748,7 +1192,38 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: false,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+									name: 'Piyo',
+									startDate: '2008-09-01',
+									endDate: '2008-09-30',
+									venue: {
+										model: 'VENUE',
+										uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+										name: 'Jerwood Theatre Downstairs',
+										surVenue: {
+											model: 'VENUE',
+											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+											name: 'Royal Court Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: PIYO_WYNDHAMS_PRODUCTION_UUID,
+									name: 'Piyo',
+									startDate: '2008-10-01',
+									endDate: '2008-10-31',
+									venue: {
+										model: 'VENUE',
+										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+										name: 'Wyndham\'s Theatre',
+										surVenue: null
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -813,7 +1288,38 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: false,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2009-05-01',
+									endDate: '2009-05-31',
+									venue: {
+										model: 'VENUE',
+										uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+										name: 'Jerwood Theatre Upstairs',
+										surVenue: {
+											model: 'VENUE',
+											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+											name: 'Royal Court Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2009-06-01',
+									endDate: '2009-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+										name: 'Duke of York\'s Theatre',
+										surVenue: null
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -877,7 +1383,38 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: true,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_OLIVIER_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2008-11-01',
+									endDate: '2008-11-30',
+									venue: {
+										model: 'VENUE',
+										uuid: OLIVIER_THEATRE_VENUE_UUID,
+										name: 'Olivier Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_DUKE_OF_YORKS_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2008-12-01',
+									endDate: '2008-12-31',
+									venue: {
+										model: 'VENUE',
+										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+										name: 'Duke of York\'s Theatre',
+										surVenue: null
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -947,7 +1484,38 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: false,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+									name: 'Hoge',
+									startDate: '2008-05-01',
+									endDate: '2008-05-31',
+									venue: {
+										model: 'VENUE',
+										uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+										name: 'Jerwood Theatre Downstairs',
+										surVenue: {
+											model: 'VENUE',
+											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+											name: 'Royal Court Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID,
+									name: 'Hoge',
+									startDate: '2008-06-01',
+									endDate: '2008-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+										name: 'Noël Coward Theatre',
+										surVenue: null
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -996,7 +1564,25 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: true,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+									name: 'Plugh',
+									startDate: '2009-07-01',
+									endDate: '2009-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: LYTTELTON_THEATRE_VENUE_UUID,
+										name: 'Lyttelton Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -1045,7 +1631,38 @@ describe('Award ceremonies with nominated materials', () => {
 							model: 'NOMINATION',
 							isWinner: false,
 							entities: [],
-							productions: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2009-05-01',
+									endDate: '2009-05-31',
+									venue: {
+										model: 'VENUE',
+										uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+										name: 'Jerwood Theatre Upstairs',
+										surVenue: {
+											model: 'VENUE',
+											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+											name: 'Royal Court Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2009-06-01',
+									endDate: '2009-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+										name: 'Duke of York\'s Theatre',
+										surVenue: null
+									}
+								}
+							],
 							materials: [
 								{
 									model: 'MATERIAL',
@@ -1141,7 +1758,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_COTTESLOE_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-07-01',
+													endDate: '2008-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: COTTESLOE_THEATRE_VENUE_UUID,
+														name: 'Cottesloe Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_GIELGUD_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-08-01',
+													endDate: '2008-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: GIELGUD_THEATRE_VENUE_UUID,
+														name: 'Gielgud Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1177,7 +1825,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_LYTTELTON_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2010-02-01',
+													endDate: '2010-02-28',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2010-03-01',
+													endDate: '2010-03-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1228,7 +1907,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_COTTESLOE_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-07-01',
+													endDate: '2008-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: COTTESLOE_THEATRE_VENUE_UUID,
+														name: 'Cottesloe Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_GIELGUD_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-08-01',
+													endDate: '2008-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: GIELGUD_THEATRE_VENUE_UUID,
+														name: 'Gielgud Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1264,7 +1974,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_LYTTELTON_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2010-02-01',
+													endDate: '2010-02-28',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: FRED_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Fred',
+													startDate: '2010-03-01',
+													endDate: '2010-03-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1315,7 +2056,25 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-09-01',
+													endDate: '2008-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1344,7 +2103,21 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: THUD_PLAYHOUSE_PRODUCTION_UUID,
+													name: 'Thud',
+													startDate: '2007-03-01',
+													endDate: '2007-03-31',
+													venue: {
+														model: 'VENUE',
+														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+														name: 'Playhouse Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1380,7 +2153,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-09-01',
+													endDate: '2008-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-10-01',
+													endDate: '2008-10-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1409,7 +2213,21 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: THUD_PLAYHOUSE_PRODUCTION_UUID,
+													name: 'Thud',
+													startDate: '2007-03-01',
+													endDate: '2007-03-31',
+													venue: {
+														model: 'VENUE',
+														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+														name: 'Playhouse Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1460,7 +2278,25 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-09-01',
+													endDate: '2008-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1496,7 +2332,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-09-01',
+													endDate: '2008-09-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PIYO_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Piyo',
+													startDate: '2008-10-01',
+													endDate: '2008-10-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1547,7 +2414,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-06-01',
+													endDate: '2008-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1563,7 +2461,25 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1592,7 +2508,21 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: GRAULT_GIELGUD_PRODUCTION_UUID,
+													name: 'Grault',
+													startDate: '2007-06-01',
+													endDate: '2007-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: GIELGUD_THEATRE_VENUE_UUID,
+														name: 'Gielgud Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1628,7 +2558,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1657,7 +2618,25 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1708,7 +2687,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-06-01',
+													endDate: '2008-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1724,7 +2734,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1760,7 +2801,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: false,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1789,7 +2861,25 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											members: [],
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -1839,7 +2929,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -1875,7 +2983,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -1928,7 +3067,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -1964,7 +3121,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -2018,7 +3206,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -2054,7 +3260,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_LYTTELTON_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: LYTTELTON_THEATRE_VENUE_UUID,
+														name: 'Lyttelton Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											subsequentVersionMaterials: [
 												{
@@ -2106,7 +3343,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2142,7 +3410,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2193,7 +3492,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2229,7 +3559,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2280,7 +3641,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2316,7 +3708,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2368,7 +3791,38 @@ describe('Award ceremonies with nominated materials', () => {
 											isWinner: true,
 											employerCompany: null,
 											coEntities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_COTTESLOE_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-07-01',
+													endDate: '2008-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: COTTESLOE_THEATRE_VENUE_UUID,
+														name: 'Cottesloe Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: TOTO_GIELGUD_PRODUCTION_UUID,
+													name: 'Toto',
+													startDate: '2008-08-01',
+													endDate: '2008-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: GIELGUD_THEATRE_VENUE_UUID,
+														name: 'Gielgud Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [
 												{
 													model: 'MATERIAL',
@@ -2406,7 +3860,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_OLIVIER_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-11-01',
+													endDate: '2008-11-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2442,7 +3914,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_OLIVIER_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-11-01',
+													endDate: '2008-11-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-12-01',
+													endDate: '2008-12-31',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2496,7 +3999,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_OLIVIER_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-11-01',
+													endDate: '2008-11-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2532,7 +4053,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_OLIVIER_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-11-01',
+													endDate: '2008-11-30',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: XYZZY_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Xyzzy',
+													startDate: '2008-12-01',
+													endDate: '2008-12-31',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											sourcingMaterials: [
 												{
@@ -2586,7 +4138,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-06-01',
+													endDate: '2008-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											rightsGrantorMaterials: [
 												{
@@ -2622,7 +4205,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											rightsGrantorMaterials: [
 												{
@@ -2676,7 +4277,38 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-06-01',
+													endDate: '2008-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
+												}
+											],
 											materials: [],
 											rightsGrantorMaterials: [
 												{
@@ -2712,7 +4344,25 @@ describe('Award ceremonies with nominated materials', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											entities: [],
-											productions: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Hoge',
+													startDate: '2008-05-01',
+													endDate: '2008-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Downstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													}
+												}
+											],
 											materials: [],
 											rightsGrantorMaterials: [
 												{
