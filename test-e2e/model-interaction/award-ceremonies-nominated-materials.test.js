@@ -511,9 +511,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Piyo',
 				startDate: '2008-09-01',
 				endDate: '2008-09-30',
-				material: {
-					name: 'Piyo'
-				},
 				venue: {
 					name: 'Jerwood Theatre Downstairs'
 				}
@@ -525,9 +522,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Piyo',
 				startDate: '2008-10-01',
 				endDate: '2008-10-31',
-				material: {
-					name: 'Piyo'
-				},
 				venue: {
 					name: 'Wyndham\'s Theatre'
 				}
@@ -539,9 +533,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Wibble',
 				startDate: '2009-05-01',
 				endDate: '2009-05-31',
-				material: {
-					name: 'Wibble'
-				},
 				venue: {
 					name: 'Jerwood Theatre Upstairs'
 				}
@@ -553,9 +544,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Wibble',
 				startDate: '2009-06-01',
 				endDate: '2009-06-30',
-				material: {
-					name: 'Wibble'
-				},
 				venue: {
 					name: 'Duke of York\'s Theatre'
 				}
@@ -567,9 +555,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Xyzzy',
 				startDate: '2008-11-01',
 				endDate: '2008-11-30',
-				material: {
-					name: 'Xyzzy'
-				},
 				venue: {
 					name: 'Olivier Theatre'
 				}
@@ -581,9 +566,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Xyzzy',
 				startDate: '2008-12-01',
 				endDate: '2008-12-31',
-				material: {
-					name: 'Xyzzy'
-				},
 				venue: {
 					name: 'Duke of York\'s Theatre'
 				}
@@ -595,9 +577,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Fred',
 				startDate: '2010-02-01',
 				endDate: '2010-02-28',
-				material: {
-					name: 'Fred'
-				},
 				venue: {
 					name: 'Lyttelton Theatre'
 				}
@@ -609,9 +588,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Fred',
 				startDate: '2010-03-01',
 				endDate: '2010-03-31',
-				material: {
-					name: 'Fred'
-				},
 				venue: {
 					name: 'Noël Coward Theatre'
 				}
@@ -623,9 +599,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Garply',
 				startDate: '2010-04-01',
 				endDate: '2010-04-30',
-				material: {
-					name: 'Garply'
-				},
 				venue: {
 					name: 'Almeida Theatre'
 				}
@@ -637,10 +610,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Plugh',
 				startDate: '2009-07-01',
 				endDate: '2009-07-31',
-				material: {
-					name: 'Plugh',
-					differentiator: '2'
-				},
 				venue: {
 					name: 'Lyttelton Theatre'
 				}
@@ -652,10 +621,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Plugh',
 				startDate: '2009-08-01',
 				endDate: '2009-08-31',
-				material: {
-					name: 'Plugh',
-					differentiator: '2'
-				},
 				venue: {
 					name: 'Wyndham\'s Theatre'
 				}
@@ -667,9 +632,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Hoge',
 				startDate: '2008-05-01',
 				endDate: '2008-05-31',
-				material: {
-					name: 'Hoge'
-				},
 				venue: {
 					name: 'Jerwood Theatre Downstairs'
 				}
@@ -681,9 +643,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Hoge',
 				startDate: '2008-06-01',
 				endDate: '2008-06-30',
-				material: {
-					name: 'Hoge'
-				},
 				venue: {
 					name: 'Noël Coward Theatre'
 				}
@@ -695,9 +654,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Thud',
 				startDate: '2007-03-01',
 				endDate: '2007-03-31',
-				material: {
-					name: 'Thud'
-				},
 				venue: {
 					name: 'Playhouse Theatre'
 				}
@@ -709,9 +665,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Tutu',
 				startDate: '2007-04-01',
 				endDate: '2007-04-30',
-				material: {
-					name: 'Tutu'
-				},
 				venue: {
 					name: 'Old Vic Theatre'
 				}
@@ -723,9 +676,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Toto',
 				startDate: '2008-07-01',
 				endDate: '2008-07-31',
-				material: {
-					name: 'Toto'
-				},
 				venue: {
 					name: 'Cottesloe Theatre'
 				}
@@ -737,9 +687,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Toto',
 				startDate: '2008-08-01',
 				endDate: '2008-08-31',
-				material: {
-					name: 'Toto'
-				},
 				venue: {
 					name: 'Gielgud Theatre'
 				}
@@ -751,9 +698,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Fuga',
 				startDate: '2007-05-01',
 				endDate: '2007-05-31',
-				material: {
-					name: 'Fuga'
-				},
 				venue: {
 					name: 'Almeida Theatre'
 				}
@@ -765,9 +709,6 @@ describe('Award ceremonies with nominated materials', () => {
 				name: 'Grault',
 				startDate: '2007-06-01',
 				endDate: '2007-06-30',
-				material: {
-					name: 'Grault'
-				},
 				venue: {
 					name: 'Gielgud Theatre'
 				}
