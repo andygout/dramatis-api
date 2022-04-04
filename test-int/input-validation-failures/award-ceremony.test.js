@@ -367,6 +367,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -378,6 +379,71 @@ describe('Input validation failures: AwardCeremony instance', () => {
 									productions: [],
 									materials: [],
 									errors: {}
+								}
+							]
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('category nomination customType value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: '2010',
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									customType: ABOVE_MAX_LENGTH_STRING
+								}
+							]
+						}
+					]
+				};
+
+				const instance = new AwardCeremony(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2010',
+					hasErrors: true,
+					errors: {},
+					award: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							errors: {},
+							nominations: [
+								{
+									isWinner: false,
+									customType: ABOVE_MAX_LENGTH_STRING,
+									entities: [],
+									productions: [],
+									materials: [],
+									errors: {
+										customType: [
+											'Value is too long'
+										]
+									}
 								}
 							]
 						}
@@ -438,6 +504,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -514,6 +581,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -590,6 +658,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -668,6 +737,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -764,6 +834,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -903,6 +974,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -992,6 +1064,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -1082,6 +1155,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -1165,6 +1239,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [],
 									productions: [
 										{
@@ -1244,6 +1319,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [],
 									productions: [
 										{
@@ -1329,6 +1405,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -1405,6 +1482,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [
 										{
 											uuid: undefined,
@@ -1486,6 +1564,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							nominations: [
 								{
 									isWinner: false,
+									customType: '',
 									entities: [],
 									productions: [],
 									materials: [

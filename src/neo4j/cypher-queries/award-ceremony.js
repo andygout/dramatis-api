@@ -104,7 +104,8 @@ const getCreateUpdateQuery = action => {
 							[:HAS_NOMINEE {
 								nominationPosition: nomination.position,
 								entityPosition: nomineePersonParam.position,
-								isWinner: nomination.isWinner
+								isWinner: nomination.isWinner,
+								customType: nomination.customType
 							}]->(nomineePerson)
 					)
 
@@ -135,7 +136,8 @@ const getCreateUpdateQuery = action => {
 							[:HAS_NOMINEE {
 								nominationPosition: nomination.position,
 								entityPosition: nomineeCompanyParam.position,
-								isWinner: nomination.isWinner
+								isWinner: nomination.isWinner,
+								customType: nomination.customType
 							}]->(nomineeCompany)
 					)
 
@@ -206,7 +208,8 @@ const getCreateUpdateQuery = action => {
 							[:HAS_NOMINEE {
 								nominationPosition: nomination.position,
 								productionPosition: nomineeProductionParam.position,
-								isWinner: nomination.isWinner
+								isWinner: nomination.isWinner,
+								customType: nomination.customType
 							}]->(existingNomineeProduction)
 					)
 
@@ -237,7 +240,8 @@ const getCreateUpdateQuery = action => {
 							[:HAS_NOMINEE {
 								nominationPosition: nomination.position,
 								materialPosition: nomineeMaterialParam.position,
-								isWinner: nomination.isWinner
+								isWinner: nomination.isWinner,
+								customType: nomination.customType
 							}]->(nomineeMaterial)
 					)
 
@@ -303,6 +307,7 @@ const getEditQuery = () => `
 		category,
 		nomineeRel.nominationPosition AS nominationPosition,
 		nomineeRel.isWinner AS isWinner,
+		nomineeRel.customType AS customType,
 		[nominee IN COLLECT(
 			CASE nominee WHEN NULL
 				THEN null
@@ -321,6 +326,7 @@ const getEditQuery = () => `
 		categoryRel,
 		category,
 		isWinner,
+		customType,
 		[nominee IN nominees WHERE nominee.model = 'PERSON' OR nominee.model = 'COMPANY'] + [{}] AS nomineeEntities,
 		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] + [{ uuid: '' }] AS nomineeProductions,
 		[nominee IN nominees WHERE nominee.model = 'MATERIAL'] + [{}] AS nomineeMaterials
@@ -331,6 +337,7 @@ const getEditQuery = () => `
 				THEN null
 				ELSE {
 					isWinner: COALESCE(isWinner, false),
+					customType: customType,
 					entities: nomineeEntities,
 					productions: nomineeProductions,
 					materials: nomineeMaterials
@@ -541,6 +548,7 @@ const getShowQuery = () => `
 		category,
 		nomineeRel.nominationPosition AS nominationPosition,
 		nomineeRel.isWinner AS isWinner,
+		nomineeRel.customType AS customType,
 		[nominee IN COLLECT(
 			CASE nominee WHEN NULL
 				THEN null
@@ -570,6 +578,7 @@ const getShowQuery = () => `
 		categoryRel,
 		category,
 		isWinner,
+		customType,
 		[nominee IN nominees WHERE nominee.model = 'PERSON' OR nominee.model = 'COMPANY'] AS nomineeEntities,
 		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] AS nomineeProductions,
 		[nominee IN nominees WHERE nominee.model = 'MATERIAL'] AS nomineeMaterials
@@ -581,6 +590,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'NOMINATION',
 					isWinner: COALESCE(isWinner, false),
+					customType: customType,
 					entities: nomineeEntities,
 					productions: nomineeProductions,
 					materials: nomineeMaterials

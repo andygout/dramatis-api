@@ -8,6 +8,7 @@
 			"name": "Best Actor",
 			"nominations": [
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Mackenzie Crook"
@@ -20,6 +21,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Lee Evans"
@@ -32,6 +34,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Mark Rylance"
@@ -44,6 +47,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "John Simm"
@@ -74,6 +78,7 @@
 			"name": "Best Actress",
 			"nominations": [
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Frances de la Tour"
@@ -99,6 +104,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Lindsay Duncan"
@@ -111,6 +117,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Kate Fleetwood"
@@ -123,6 +130,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Carey Mulligan"
@@ -135,6 +143,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Kristin Scott Thomas"
@@ -147,6 +156,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Fiona Shaw"
@@ -159,6 +169,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Penelope Wilton"
@@ -189,6 +200,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "80fe797f-1408-4b0c-bcd4-7a288ed4d847"
@@ -201,6 +213,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "15cd0c78-8fd5-4aa2-9c02-a90bf7ee2fd6"

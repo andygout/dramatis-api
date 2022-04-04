@@ -726,6 +726,7 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Miscellaneous Play',
 						nominations: [
 							{
+								customType: 'Shortlisted',
 								productions: [
 									{
 										uuid: PIYO_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
@@ -741,6 +742,7 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								productions: [
 									{
 										uuid: WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
@@ -757,6 +759,7 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								productions: [
 									{
 										uuid: XYZZY_OLIVIER_PRODUCTION_UUID
@@ -788,6 +791,7 @@ describe('Award ceremonies with nominated materials', () => {
 						name: 'Best Miscellaneous Play',
 						nominations: [
 							{
+								customType: 'Longlisted',
 								productions: [
 									{
 										uuid: FRED_LYTTELTON_PRODUCTION_UUID
@@ -804,6 +808,7 @@ describe('Award ceremonies with nominated materials', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								productions: [
 									{
 										uuid: GARPLY_ALMEIDA_PRODUCTION_UUID
@@ -816,6 +821,7 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								productions: [
 									{
 										uuid: PLUGH_LYTTELTON_PRODUCTION_UUID
@@ -849,6 +855,7 @@ describe('Award ceremonies with nominated materials', () => {
 						nominations: [
 							{
 								isWinner: true,
+								customType: 'First Place',
 								productions: [
 									{
 										uuid: HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
@@ -861,6 +868,7 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								productions: [
 									{
 										uuid: THUD_PLAYHOUSE_PRODUCTION_UUID
@@ -873,6 +881,7 @@ describe('Award ceremonies with nominated materials', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								productions: [
 									{
 										uuid: TUTU_OLD_VIC_PRODUCTION_UUID
@@ -1132,6 +1141,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: 'Shortlisted',
 							entities: [],
 							productions: [
 								{
@@ -1228,6 +1238,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: 'Longlisted',
 							entities: [],
 							productions: [
 								{
@@ -1323,6 +1334,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: 'First Place',
 							entities: [],
 							productions: [
 								{
@@ -1424,6 +1436,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -1504,6 +1517,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -1571,6 +1585,7 @@ describe('Award ceremonies with nominated materials', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -1697,6 +1712,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -1764,6 +1780,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -1846,6 +1863,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [
@@ -1913,6 +1931,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -1995,6 +2014,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2042,6 +2062,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2092,6 +2113,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2152,6 +2174,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2217,6 +2240,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2271,6 +2295,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2353,6 +2378,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2400,6 +2426,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2447,6 +2474,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2497,6 +2525,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2557,6 +2586,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2626,6 +2656,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2673,6 +2704,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2740,6 +2772,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2800,6 +2833,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2869,6 +2903,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -2923,6 +2958,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [],
 											productions: [
 												{
@@ -3007,6 +3043,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3061,6 +3098,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [],
 											productions: [
 												{
@@ -3146,6 +3184,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3200,6 +3239,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [],
 											productions: [
 												{
@@ -3283,6 +3323,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3350,6 +3391,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [],
 											productions: [
 												{
@@ -3432,6 +3474,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3499,6 +3542,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [],
 											productions: [
 												{
@@ -3581,6 +3625,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3648,6 +3693,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [],
 											productions: [
 												{
@@ -3730,6 +3776,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -3800,6 +3847,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3854,6 +3902,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											productions: [
 												{
@@ -3939,6 +3988,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -3993,6 +4043,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											productions: [
 												{
@@ -4078,6 +4129,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -4145,6 +4197,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											productions: [
 												{
@@ -4217,6 +4270,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [
 												{
@@ -4284,6 +4338,7 @@ describe('Award ceremonies with nominated materials', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											productions: [
 												{

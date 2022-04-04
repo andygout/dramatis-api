@@ -8,6 +8,7 @@
 			"name": "Susan Smith Blackburn Prize",
 			"nominations": [
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Black Crows"
@@ -15,6 +16,7 @@
 					]
 				},
 				{
+					"customType": "Special Commendation",
 					"materials": [
 						{
 							"name": "Girls and Dolls"
@@ -22,6 +24,7 @@
 					]
 				},
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Boats on a River"
@@ -29,6 +32,7 @@
 					]
 				},
 				{
+					"customType": "Special Commendation",
 					"materials": [
 						{
 							"name": "God's Ear"
@@ -36,6 +40,7 @@
 					]
 				},
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Hardball"
@@ -51,6 +56,7 @@
 					]
 				},
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Stick Fly"
@@ -58,6 +64,7 @@
 					]
 				},
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Stockholm"
@@ -65,6 +72,7 @@
 					]
 				},
 				{
+					"customType": "Finalist",
 					"materials": [
 						{
 							"name": "Strangers, Babies"
@@ -72,6 +80,7 @@
 					]
 				},
 				{
+					"customType": "Special Commendation",
 					"materials": [
 						{
 							"name": "That Face"
