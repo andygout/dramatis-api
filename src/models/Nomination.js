@@ -10,9 +10,11 @@ export default class Nomination extends Base {
 
 		super(props);
 
-		const { isWinner, entities, productions, materials } = props;
+		const { isWinner, customType, entities, productions, materials } = props;
 
 		this.isWinner = Boolean(isWinner);
+
+		this.customType = customType?.trim() || '';
 
 		this.entities = entities
 			? entities.map(entity => {
@@ -42,6 +44,8 @@ export default class Nomination extends Base {
 	}
 
 	runInputValidations () {
+
+		this.validateCustomType({ isRequired: false });
 
 		const duplicateEntities = getDuplicateEntities(this.entities);
 
@@ -80,6 +84,12 @@ export default class Nomination extends Base {
 			material.validateUniquenessInGroup({ isDuplicate: duplicateMaterialIndices.includes(index) });
 
 		});
+
+	}
+
+	validateCustomType (opts) {
+
+		this.validateStringForProperty('customType', { isRequired: opts.isRequired });
 
 	}
 

@@ -758,6 +758,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(nomineeRel.isWinner, false),
+			customType: nomineeRel.customType,
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			coMaterials: coNominatedMaterials
@@ -1039,6 +1040,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nomineeRel.isWinner AS isWinner,
+		nomineeRel.customType AS customType,
 		category,
 		categoryRel,
 		ceremony,
@@ -1066,6 +1068,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
+			customType: customType,
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
@@ -1366,6 +1369,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nomineeRel.isWinner AS isWinner,
+		nomineeRel.customType AS customType,
 		category,
 		categoryRel,
 		ceremony,
@@ -1394,6 +1398,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
+			customType: customType,
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,

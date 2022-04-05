@@ -21,6 +21,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Adam Godley"
@@ -69,6 +70,7 @@
 			"name": "Best Play",
 			"nominations": [
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "269b01df-6f28-42ce-879f-538771a862de"
@@ -81,6 +83,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "c45a69fb-fa84-48dd-8822-5eadcdb87e70"

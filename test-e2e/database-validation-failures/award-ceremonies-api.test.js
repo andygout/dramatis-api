@@ -69,6 +69,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 								{
 									model: 'NOMINATION',
 									isWinner: false,
+									customType: '',
 									errors: {},
 									entities: [],
 									productions: [
@@ -180,6 +181,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 								{
 									model: 'NOMINATION',
 									isWinner: false,
+									customType: '',
 									errors: {},
 									entities: [],
 									productions: [

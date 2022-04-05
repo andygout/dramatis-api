@@ -881,6 +881,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
+								customType: 'Longlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -906,6 +907,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -924,6 +926,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -973,6 +976,7 @@ describe('Award ceremonies', () => {
 						nominations: [
 							{
 								isWinner: true,
+								customType: 'First Place',
 								entities: [
 									{
 										name: 'John Doe'
@@ -990,6 +994,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								entities: [
 									{
 										name: 'Conor Corge'
@@ -1028,6 +1033,7 @@ describe('Award ceremonies', () => {
 						nominations: [
 							{
 								isWinner: true,
+								customType: 'First Place',
 								productions: [
 									{
 										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
@@ -1035,6 +1041,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								productions: [
 									{
 										uuid: GRAULT_ALMEIDA_PRODUCTION_UUID
@@ -1042,6 +1049,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								productions: [
 									{
 										uuid: WALDO_DORFMAN_PRODUCTION_UUID
@@ -1057,6 +1065,7 @@ describe('Award ceremonies', () => {
 						name: 'Most Remarkable Play',
 						nominations: [
 							{
+								customType: 'Shortlisted',
 								materials: [
 									{
 										name: 'Garply'
@@ -1065,6 +1074,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								materials: [
 									{
 										name: 'Grault'
@@ -1072,6 +1082,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								materials: [
 									{
 										name: 'Waldo'
@@ -1095,6 +1106,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Random Role',
 						nominations: [
 							{
+								customType: 'Longlisted',
 								entities: [
 									{
 										name: 'Jane Roe'
@@ -1103,6 +1115,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								entities: [
 									{
 										name: 'John Doe'
@@ -1117,6 +1130,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1154,6 +1168,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1167,6 +1182,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
+								customType: 'Shortlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1185,6 +1201,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								entities: [
 									{
 										name: 'Jane Roe'
@@ -1219,6 +1236,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								entities: [
 									{
 										name: 'Conor Corge'
@@ -1266,6 +1284,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Shortlisted',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1289,6 +1308,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Noteworthy Production',
 						nominations: [
 							{
+								customType: 'Shortlisted',
 								productions: [
 									{
 										uuid: PIYO_HAROLD_PINTER_PRODUCTION_UUID
@@ -1297,6 +1317,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								productions: [
 									{
 										uuid: THUD_DUKE_OF_YORKS_PRODUCTION_UUID
@@ -1304,6 +1325,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								productions: [
 									{
 										uuid: XYZZY_DORFMAN_PRODUCTION_UUID
@@ -1319,6 +1341,7 @@ describe('Award ceremonies', () => {
 						name: 'Most Remarkable Play',
 						nominations: [
 							{
+								customType: 'Shortlisted',
 								materials: [
 									{
 										name: 'Thud'
@@ -1326,6 +1349,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Longlisted',
 								materials: [
 									{
 										name: 'Wibble'
@@ -1334,6 +1358,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'First Place',
 								materials: [
 									{
 										name: 'Xyzzy'
@@ -1357,6 +1382,7 @@ describe('Award ceremonies', () => {
 						name: 'Best Miscellaneous Role',
 						nominations: [
 							{
+								customType: 'Special Commendation',
 								entities: [
 									{
 										name: 'John Doe'
@@ -1374,6 +1400,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Finalist',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1404,6 +1431,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Finalist',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1452,6 +1480,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'Prize Recipient',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1476,6 +1505,7 @@ describe('Award ceremonies', () => {
 						nominations: [
 							{
 								isWinner: true,
+								customType: 'Prize Recipient',
 								productions: [
 									{
 										uuid: FRED_OLD_VIC_PRODUCTION_UUID
@@ -1483,6 +1513,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Finalist',
 								productions: [
 									{
 										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
@@ -1490,6 +1521,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Special Commendation',
 								productions: [
 									{
 										uuid: WALDO_DORFMAN_PRODUCTION_UUID
@@ -1502,6 +1534,7 @@ describe('Award ceremonies', () => {
 						name: 'Most Remarkable Play',
 						nominations: [
 							{
+								customType: 'Special Commendation',
 								materials: [
 									{
 										name: 'Fred'
@@ -1510,6 +1543,7 @@ describe('Award ceremonies', () => {
 							},
 							{
 								isWinner: true,
+								customType: 'Prize Recipient',
 								materials: [
 									{
 										name: 'Garply'
@@ -1520,6 +1554,7 @@ describe('Award ceremonies', () => {
 								]
 							},
 							{
+								customType: 'Finalist',
 								materials: [
 									{
 										name: 'Waldo'
@@ -1587,6 +1622,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: null,
 							entities: [
 								{
 									model: 'PERSON',
@@ -1640,6 +1676,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									model: 'COMPANY',
@@ -1687,6 +1724,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									name: 'Stagecraft Ltd',
@@ -1784,6 +1822,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									model: 'COMPANY',
@@ -1865,6 +1904,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									model: 'PERSON',
@@ -1878,6 +1918,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: null,
 							entities: [
 								{
 									model: 'PERSON',
@@ -1902,6 +1943,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									model: 'COMPANY',
@@ -1959,6 +2001,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [
 								{
 									model: 'COMPANY',
@@ -1979,6 +2022,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -2000,6 +2044,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -2038,6 +2083,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [
 								{
@@ -2065,6 +2111,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [],
 							materials: [
@@ -2081,6 +2128,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: false,
+							customType: null,
 							entities: [],
 							productions: [],
 							materials: [
@@ -2105,6 +2153,7 @@ describe('Award ceremonies', () => {
 						{
 							model: 'NOMINATION',
 							isWinner: true,
+							customType: null,
 							entities: [],
 							productions: [],
 							materials: [
@@ -2207,6 +2256,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Special Commendation',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2237,6 +2287,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2319,6 +2370,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2362,6 +2414,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2417,6 +2470,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2443,6 +2497,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2542,6 +2597,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [],
 											productions: [
@@ -2589,6 +2645,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2637,6 +2694,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2670,6 +2728,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -2764,6 +2823,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											members: [],
 											coEntities: [
 												{
@@ -2845,6 +2905,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2892,6 +2953,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											members: [],
 											coEntities: [
 												{
@@ -2917,6 +2979,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											members: [],
 											coEntities: [],
 											productions: [
@@ -2967,6 +3030,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [
 												{
@@ -3014,6 +3078,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [],
@@ -3035,6 +3100,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [],
 											productions: [
@@ -3065,6 +3131,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [],
 											coEntities: [
 												{
@@ -3158,6 +3225,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3257,6 +3325,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3327,6 +3396,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3393,6 +3463,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3452,6 +3523,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3547,6 +3619,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3645,6 +3718,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3711,6 +3785,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: null,
 											coEntities: [
 												{
@@ -3834,6 +3909,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											members: [
 												{
 													model: 'PERSON',
@@ -3932,6 +4008,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											members: [
 												{
 													model: 'PERSON',
@@ -3997,6 +4074,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											members: [
 												{
 													model: 'PERSON',
@@ -4055,6 +4133,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											members: [
 												{
 													model: 'PERSON',
@@ -4149,6 +4228,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [
 												{
 													model: 'PERSON',
@@ -4246,6 +4326,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											members: [
 												{
 													model: 'PERSON',
@@ -4311,6 +4392,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											members: [
 												{
 													model: 'PERSON',
@@ -4433,6 +4515,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4531,6 +4614,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4600,6 +4684,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4658,6 +4743,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4752,6 +4838,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4849,6 +4936,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -4914,6 +5002,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											employerCompany: {
 												model: 'COMPANY',
 												uuid: THEATRICALS_LTD_COMPANY_UUID,
@@ -5036,6 +5125,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5107,6 +5197,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5134,6 +5225,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [
 												{
 													model: 'PERSON',
@@ -5183,6 +5275,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5210,6 +5303,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -5245,6 +5339,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5330,6 +5425,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [],
 											coProductions: [
 												{
@@ -5386,6 +5482,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [
 												{
 													model: 'PERSON',
@@ -5462,6 +5559,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [],
 											coProductions: [
 												{
@@ -5507,6 +5605,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -5563,6 +5662,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [],
 											coProductions: [
 												{
@@ -5623,6 +5723,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Finalist',
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5704,6 +5805,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'Prize Recipient',
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -5739,6 +5841,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [
 												{
 													model: 'PERSON',
@@ -5798,6 +5901,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Shortlisted',
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -5825,6 +5929,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -5869,6 +5974,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5963,6 +6069,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -6013,6 +6120,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: 'Longlisted',
 											entities: [
 												{
 													model: 'PERSON',
@@ -6095,6 +6203,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: true,
+											customType: 'First Place',
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -6122,6 +6231,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6183,6 +6293,7 @@ describe('Award ceremonies', () => {
 										{
 											model: 'NOMINATION',
 											isWinner: false,
+											customType: null,
 											entities: [],
 											productions: [],
 											coMaterials: [

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import { assert, createStubInstance, stub } from 'sinon';
+import { assert, createStubInstance, spy, stub } from 'sinon';
 
 import { CompanyWithMembers, MaterialBase, Person, ProductionIdentifier } from '../../../src/models';
 
@@ -104,6 +104,45 @@ describe('Nomination model', () => {
 
 				const instance = createInstance({ isWinner: true });
 				expect(instance.isWinner).to.equal(true);
+
+			});
+
+		});
+
+		describe('customType property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({});
+				expect(instance.customType).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ customType: '' });
+				expect(instance.customType).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ customType: ' ' });
+				expect(instance.customType).to.equal('');
+
+			});
+
+			it('assigns value if included in props and is string with length', () => {
+
+				const instance = createInstance({ customType: 'Shortlisted' });
+				expect(instance.customType).to.equal('Shortlisted');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ customType: ' Shortlisted ' });
+				expect(instance.customType).to.equal('Shortlisted');
 
 			});
 
@@ -233,6 +272,7 @@ describe('Nomination model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
+				customType: 'Shortlisted',
 				entities: [
 					{
 						name: 'Simon Baker'
@@ -254,8 +294,10 @@ describe('Nomination model', () => {
 				]
 			};
 			const instance = createInstance(props);
+			spy(instance, 'validateCustomType');
 			instance.runInputValidations();
 			assert.callOrder(
+				instance.validateCustomType,
 				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.entities[0].validateName,
 				instance.entities[0].validateDifferentiator,
@@ -274,6 +316,8 @@ describe('Nomination model', () => {
 				instance.materials[0].validateDifferentiator,
 				instance.materials[0].validateUniquenessInGroup
 			);
+			expect(instance.validateCustomType.calledOnce).to.be.true;
+			expect(instance.validateCustomType.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
 			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
 				instance.entities
@@ -323,6 +367,22 @@ describe('Nomination model', () => {
 			expect(instance.materials[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.materials[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false }
+			)).to.be.true;
+
+		});
+
+	});
+
+	describe('validateCustomType method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			const instance = createInstance({ customType: 'Shortlisted' });
+			spy(instance, 'validateStringForProperty');
+			instance.validateCustomType({ isRequired: false });
+			expect(instance.validateStringForProperty.calledOnce).to.be.true;
+			expect(instance.validateStringForProperty.calledWithExactly(
+				'customType', { isRequired: false }
 			)).to.be.true;
 
 		});

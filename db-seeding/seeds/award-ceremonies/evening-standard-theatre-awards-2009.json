@@ -8,6 +8,7 @@
 			"name": "Best Actor",
 			"nominations": [
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Henry Goodman"
@@ -23,6 +24,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "David Harewood"
@@ -48,6 +50,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Ken Stott"
@@ -60,6 +63,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Samuel West"
@@ -77,6 +81,7 @@
 			"name": "Best Actress",
 			"nominations": [
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Deanna Dunagan"
@@ -89,6 +94,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Mary Elizabeth Mastrantonio"
@@ -101,6 +107,7 @@
 					]
 				},
 				{
+					"customType": "Longlisted",
 					"entities": [
 						{
 							"name": "Amy Morton"
@@ -113,6 +120,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"entities": [
 						{
 							"name": "Juliet Stevenson"
@@ -146,6 +154,7 @@
 			"name": "Best Play",
 			"nominations": [
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "337b1b99-8a3a-45b6-b535-640452a6f3c1"
@@ -158,6 +167,7 @@
 					]
 				},
 				{
+					"customType": "Shortlisted",
 					"productions": [
 						{
 							"uuid": "02047e75-3d9e-4841-907a-b5fae44f5cd3"
@@ -166,18 +176,6 @@
 					"materials": [
 						{
 							"name": "Enron"
-						}
-					]
-				},
-				{
-					"productions": [
-						{
-							"uuid": "439aed3c-237e-40fa-ae84-bfc05e7bc401"
-						}
-					],
-					"materials": [
-						{
-							"name": "Punk Rock"
 						}
 					]
 				},
@@ -191,6 +189,19 @@
 					"materials": [
 						{
 							"name": "Jerusalem"
+						}
+					]
+				},
+				{
+					"customType": "Shortlisted",
+					"productions": [
+						{
+							"uuid": "439aed3c-237e-40fa-ae84-bfc05e7bc401"
+						}
+					],
+					"materials": [
+						{
+							"name": "Punk Rock"
 						}
 					]
 				}
