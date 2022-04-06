@@ -1621,8 +1621,8 @@ describe('Award ceremonies', () => {
 
 			const expectedCategories = [
 				{
-					name: 'Best Miscellaneous Role',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Miscellaneous Role',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -1732,9 +1732,9 @@ describe('Award ceremonies', () => {
 							type: 'Nomination',
 							entities: [
 								{
-									name: 'Stagecraft Ltd',
 									model: 'COMPANY',
 									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd',
 									members: [
 										{
 											model: 'PERSON',
@@ -1754,9 +1754,9 @@ describe('Award ceremonies', () => {
 									]
 								},
 								{
-									name: 'Theatricals Ltd',
 									model: 'COMPANY',
 									uuid: THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Theatricals Ltd',
 									members: [
 										{
 											model: 'PERSON',
@@ -1903,8 +1903,8 @@ describe('Award ceremonies', () => {
 					]
 				},
 				{
-					name: 'Best Random Role',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Random Role',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -2021,8 +2021,8 @@ describe('Award ceremonies', () => {
 					]
 				},
 				{
-					name: 'Best Noteworthy Production',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Noteworthy Production',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -2110,8 +2110,8 @@ describe('Award ceremonies', () => {
 					]
 				},
 				{
-					name: 'Most Remarkable Play',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Most Remarkable Play',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -2260,6 +2260,9 @@ describe('Award ceremonies', () => {
 									]
 								},
 								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd',
 									members: [
 										{
 											model: 'PERSON',
@@ -2276,10 +2279,7 @@ describe('Award ceremonies', () => {
 											uuid: BRANDON_BAZ_PERSON_UUID,
 											name: 'Brandon Baz'
 										}
-									],
-									model: 'COMPANY',
-									uuid: STAGECRAFT_LTD_COMPANY_UUID,
-									name: 'Stagecraft Ltd'
+									]
 								},
 								{
 									model: 'PERSON',
@@ -2296,10 +2296,10 @@ describe('Award ceremonies', () => {
 							type: 'Longlisted',
 							entities: [
 								{
-									members: [],
-									name: 'Backstage Ltd',
 									model: 'COMPANY',
-									uuid: BACKSTAGE_LTD_COMPANY_UUID
+									uuid: BACKSTAGE_LTD_COMPANY_UUID,
+									name: 'Backstage Ltd',
+									members: []
 								}
 							],
 							productions: [],
@@ -2468,6 +2468,9 @@ describe('Award ceremonies', () => {
 									]
 								},
 								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd',
 									members: [
 										{
 											model: 'PERSON',
@@ -2484,10 +2487,7 @@ describe('Award ceremonies', () => {
 											uuid: FERDINAND_FOO_PERSON_UUID,
 											name: 'Ferdinand Foo'
 										}
-									],
-									model: 'COMPANY',
-									uuid: STAGECRAFT_LTD_COMPANY_UUID,
-									name: 'Stagecraft Ltd'
+									]
 								}
 							],
 							productions: [
@@ -2557,8 +2557,8 @@ describe('Award ceremonies', () => {
 					]
 				},
 				{
-					name: 'Best Noteworthy Production',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Noteworthy Production',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -2646,8 +2646,8 @@ describe('Award ceremonies', () => {
 					]
 				},
 				{
-					name: 'Most Remarkable Play',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Most Remarkable Play',
 					nominations: [
 						{
 							model: 'NOMINATION',
