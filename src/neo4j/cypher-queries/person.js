@@ -964,7 +964,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(entityRel.isWinner, false),
-			customType: entityRel.customType,
+			type: COALESCE(entityRel.customType, CASE WHEN entityRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
 			employerCompany: nominatedEmployerCompany,
 			coEntities: coNominatedEntities,
 			productions: nominatedProductions,
@@ -1302,7 +1302,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
-			customType: customType,
+			type: COALESCE(customType, CASE WHEN isWinner THEN 'Winner' ELSE 'Nomination' END),
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
@@ -1664,7 +1664,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
-			customType: customType,
+			type: COALESCE(customType, CASE WHEN isWinner THEN 'Winner' ELSE 'Nomination' END),
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
@@ -2030,7 +2030,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
-			customType: customType,
+			type: COALESCE(customType, CASE WHEN isWinner THEN 'Winner' ELSE 'Nomination' END),
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
