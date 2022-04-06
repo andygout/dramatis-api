@@ -590,7 +590,7 @@ const getShowQuery = () => `
 				ELSE {
 					model: 'NOMINATION',
 					isWinner: COALESCE(isWinner, false),
-					customType: customType,
+					type: COALESCE(customType, CASE WHEN isWinner THEN 'Winner' ELSE 'Nomination' END),
 					entities: nomineeEntities,
 					productions: nomineeProductions,
 					materials: nomineeMaterials

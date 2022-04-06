@@ -1226,7 +1226,7 @@ const getShowQuery = () => `
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(nomineeRel.isWinner, false),
-			customType: nomineeRel.customType,
+			type: COALESCE(nomineeRel.customType, CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
 			entities: nominatedEntities,
 			coProductions: coNominatedProductions,
 			materials: nominatedMaterials

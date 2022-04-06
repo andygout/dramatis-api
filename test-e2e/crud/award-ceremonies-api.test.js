@@ -1619,7 +1619,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -1656,7 +1656,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1707,7 +1707,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [
 									{
 										model: 'PERSON',
@@ -1749,7 +1749,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1798,7 +1798,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -1866,7 +1866,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -1880,7 +1880,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -1899,7 +1899,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [
 									{
 										model: 'PERSON',
@@ -1919,7 +1919,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [],
 								productions: [
 									{
@@ -1954,7 +1954,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [],
 								productions: [
 									{
@@ -1976,7 +1976,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [],
 								productions: [
 									{
@@ -2004,7 +2004,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [],
 								productions: [],
 								materials: [
@@ -2021,7 +2021,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: 'Special Commendation',
+								type: 'Special Commendation',
 								entities: [],
 								productions: [],
 								materials: [
@@ -2038,7 +2038,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: 'Finalist',
+								type: 'Finalist',
 								entities: [],
 								productions: [],
 								materials: [
@@ -4144,7 +4144,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [
 									{
 										model: 'PERSON',
@@ -4181,7 +4181,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -4232,7 +4232,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -4274,7 +4274,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -4336,7 +4336,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'COMPANY',
@@ -4404,7 +4404,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -4418,7 +4418,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [
 									{
 										model: 'PERSON',
@@ -4432,7 +4432,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [
 									{
 										model: 'PERSON',
@@ -4457,7 +4457,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [],
 								productions: [
 									{
@@ -4479,7 +4479,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: null,
+								type: 'Nomination',
 								entities: [],
 								productions: [
 									{
@@ -4514,7 +4514,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [],
 								productions: [
 									{
@@ -4555,7 +4555,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: 'Shortlisted',
+								type: 'Shortlisted',
 								entities: [],
 								productions: [],
 								materials: [
@@ -4572,7 +4572,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: true,
-								customType: null,
+								type: 'Winner',
 								entities: [],
 								productions: [],
 								materials: [
@@ -4589,7 +4589,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 							{
 								model: 'NOMINATION',
 								isWinner: false,
-								customType: 'Longlisted',
+								type: 'Longlisted',
 								entities: [],
 								productions: [],
 								materials: [
