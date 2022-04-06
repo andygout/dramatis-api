@@ -35,6 +35,7 @@ describe('Award ceremonies', () => {
 	const HOGE_ALMEIDA_PRODUCTION_UUID = '41';
 	const ALMEIDA_THEATRE_VENUE_UUID = '43';
 	const THUD_DUKE_OF_YORKS_PRODUCTION_UUID = '44';
+	const DUKE_OF_YORKS_THEATRE_VENUE_UUID = '46';
 	const TOTO_NOËL_COWARD_PRODUCTION_UUID = '47';
 	const FUGA_OLIVIER_PRODUCTION_UUID = '50';
 	const TUTU_PLAYHOUSE_PRODUCTION_UUID = '53';
@@ -76,6 +77,7 @@ describe('Award ceremonies', () => {
 	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '300';
 
 	let laurenceOlivierAwards2020AwardCeremony;
+	let eveningStandardTheatreAwards2017AwardCeremony;
 	let laurenceOlivierAwardsAward;
 	let eveningStandardTheatreAwardsAward;
 	let johnDoePerson;
@@ -1569,6 +1571,9 @@ describe('Award ceremonies', () => {
 		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
 			.get(`/awards/ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
 
+		eveningStandardTheatreAwards2017AwardCeremony = await chai.request(app)
+			.get(`/awards/ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID}`);
+
 		laurenceOlivierAwardsAward = await chai.request(app)
 			.get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);
 
@@ -2172,6 +2177,534 @@ describe('Award ceremonies', () => {
 			];
 
 			const { categories } = laurenceOlivierAwards2020AwardCeremony.body;
+
+			expect(categories).to.deep.equal(expectedCategories);
+
+		});
+
+	});
+
+	describe('Evening Standard Theatre Awards 2017 (award ceremony)', () => {
+
+		it('includes its categories', () => {
+
+			const expectedCategories = [
+				{
+					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Random Role',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Longlisted',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								}
+							],
+							productions: [],
+							materials: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							type: 'First Place',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JOHN_DOE_PERSON_UUID,
+									name: 'John Doe'
+								},
+								{
+									model: 'COMPANY',
+									uuid: CURTAIN_UP_LTD_COMPANY_UUID,
+									name: 'Curtain Up Ltd',
+									members: []
+								},
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								}
+							],
+							productions: [],
+							materials: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Shortlisted',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Theatricals Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CLARA_QUUX_PERSON_UUID,
+											name: 'Clara Quux'
+										},
+										{
+											model: 'PERSON',
+											uuid: QUINCY_QUX_PERSON_UUID,
+											name: 'Quincy Qux'
+										},
+										{
+											model: 'PERSON',
+											uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+											name: 'Christian Quuz'
+										}
+									]
+								},
+								{
+									members: [
+										{
+											model: 'PERSON',
+											uuid: BEATRICE_BAR_PERSON_UUID,
+											name: 'Beatrice Bar'
+										},
+										{
+											model: 'PERSON',
+											uuid: FERDINAND_FOO_PERSON_UUID,
+											name: 'Ferdinand Foo'
+										},
+										{
+											model: 'PERSON',
+											uuid: BRANDON_BAZ_PERSON_UUID,
+											name: 'Brandon Baz'
+										}
+									],
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								},
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							],
+							productions: [],
+							materials: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Longlisted',
+							entities: [
+								{
+									members: [],
+									name: 'Backstage Ltd',
+									model: 'COMPANY',
+									uuid: BACKSTAGE_LTD_COMPANY_UUID
+								}
+							],
+							productions: [],
+							materials: []
+						}
+					]
+				},
+				{
+					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Miscellaneous Role',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Shortlisted',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: BACKSTAGE_LTD_COMPANY_UUID,
+									name: 'Backstage Ltd',
+									members: []
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_OLD_VIC_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2017-08-01',
+									endDate: '2017-08-31',
+									venue: {
+										model: 'VENUE',
+										uuid: OLD_VIC_THEATRE_VENUE_UUID,
+										name: 'Old Vic Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: WIBBLE_MATERIAL_UUID,
+									name: 'Wibble',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Longlisted',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								},
+								{
+									model: 'PERSON',
+									uuid: JOHN_DOE_PERSON_UUID,
+									name: 'John Doe'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BACKSTAGE_LTD_COMPANY_UUID,
+									name: 'Backstage Ltd',
+									members: []
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_DORFMAN_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2017-06-01',
+									endDate: '2017-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: DORFMAN_THEATRE_VENUE_UUID,
+										name: 'Dorfman Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2017-07-01',
+									endDate: '2017-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+										name: 'Playhouse Theatre',
+										surVenue: null
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: HOGE_ALMEIDA_PRODUCTION_UUID,
+									name: 'Hoge',
+									startDate: '2017-10-01',
+									endDate: '2017-10-31',
+									venue: {
+										model: 'VENUE',
+										uuid: ALMEIDA_THEATRE_VENUE_UUID,
+										name: 'Almeida Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: XYZZY_MATERIAL_UUID,
+									name: 'Xyzzy',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								},
+								{
+									model: 'MATERIAL',
+									uuid: HOGE_MATERIAL_UUID,
+									name: 'Hoge',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							type: 'First Place',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Theatricals Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHRISTIAN_QUUZ_PERSON_UUID,
+											name: 'Christian Quuz'
+										},
+										{
+											model: 'PERSON',
+											uuid: CLARA_QUUX_PERSON_UUID,
+											name: 'Clara Quux'
+										},
+										{
+											model: 'PERSON',
+											uuid: QUINCY_QUX_PERSON_UUID,
+											name: 'Quincy Qux'
+										}
+									]
+								},
+								{
+									members: [
+										{
+											model: 'PERSON',
+											uuid: BRANDON_BAZ_PERSON_UUID,
+											name: 'Brandon Baz'
+										},
+										{
+											model: 'PERSON',
+											uuid: BEATRICE_BAR_PERSON_UUID,
+											name: 'Beatrice Bar'
+										},
+										{
+											model: 'PERSON',
+											uuid: FERDINAND_FOO_PERSON_UUID,
+											name: 'Ferdinand Foo'
+										}
+									],
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: WIBBLE_OLD_VIC_PRODUCTION_UUID,
+									name: 'Wibble',
+									startDate: '2017-08-01',
+									endDate: '2017-08-31',
+									venue: {
+										model: 'VENUE',
+										uuid: OLD_VIC_THEATRE_VENUE_UUID,
+										name: 'Old Vic Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: WIBBLE_MATERIAL_UUID,
+									name: 'Wibble',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Shortlisted',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: CURTAIN_UP_LTD_COMPANY_UUID,
+									name: 'Curtain Up Ltd',
+									members: []
+								}
+							],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PIYO_HAROLD_PINTER_PRODUCTION_UUID,
+									name: 'Piyo',
+									startDate: '2017-05-01',
+									endDate: '2017-05-31',
+									venue: {
+										model: 'VENUE',
+										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
+										name: 'Harold Pinter Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: PIYO_MATERIAL_UUID,
+									name: 'Piyo',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						}
+					]
+				},
+				{
+					name: 'Best Noteworthy Production',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Shortlisted',
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: PIYO_HAROLD_PINTER_PRODUCTION_UUID,
+									name: 'Piyo',
+									startDate: '2017-05-01',
+									endDate: '2017-05-31',
+									venue: {
+										model: 'VENUE',
+										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
+										name: 'Harold Pinter Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							type: 'First Place',
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: THUD_DUKE_OF_YORKS_PRODUCTION_UUID,
+									name: 'Thud',
+									startDate: '2017-11-01',
+									endDate: '2017-11-30',
+									venue: {
+										model: 'VENUE',
+										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+										name: 'Duke of York\'s Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: []
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Longlisted',
+							entities: [],
+							productions: [
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_DORFMAN_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2017-06-01',
+									endDate: '2017-06-30',
+									venue: {
+										model: 'VENUE',
+										uuid: DORFMAN_THEATRE_VENUE_UUID,
+										name: 'Dorfman Theatre',
+										surVenue: {
+											model: 'VENUE',
+											uuid: NATIONAL_THEATRE_VENUE_UUID,
+											name: 'National Theatre'
+										}
+									}
+								},
+								{
+									model: 'PRODUCTION',
+									uuid: XYZZY_PLAYHOUSE_PRODUCTION_UUID,
+									name: 'Xyzzy',
+									startDate: '2017-07-01',
+									endDate: '2017-07-31',
+									venue: {
+										model: 'VENUE',
+										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
+										name: 'Playhouse Theatre',
+										surVenue: null
+									}
+								}
+							],
+							materials: []
+						}
+					]
+				},
+				{
+					name: 'Most Remarkable Play',
+					model: 'AWARD_CEREMONY_CATEGORY',
+					nominations: [
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Shortlisted',
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: THUD_MATERIAL_UUID,
+									name: 'Thud',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: false,
+							type: 'Longlisted',
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: WIBBLE_MATERIAL_UUID,
+									name: 'Wibble',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						},
+						{
+							model: 'NOMINATION',
+							isWinner: true,
+							type: 'First Place',
+							entities: [],
+							productions: [],
+							materials: [
+								{
+									model: 'MATERIAL',
+									uuid: XYZZY_MATERIAL_UUID,
+									name: 'Xyzzy',
+									format: 'play',
+									year: 2017,
+									writingCredits: []
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { categories } = eveningStandardTheatreAwards2017AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
 
