@@ -1135,8 +1135,8 @@ describe('Award ceremonies with nominated materials', () => {
 
 			const expectedCategories = [
 				{
-					name: 'Best Miscellaneous Play',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Miscellaneous Play',
 					nominations: [
 						{
 							model: 'NOMINATION',
@@ -1430,8 +1430,8 @@ describe('Award ceremonies with nominated materials', () => {
 
 			const expectedCategories = [
 				{
-					name: 'Best Random Play',
 					model: 'AWARD_CEREMONY_CATEGORY',
+					name: 'Best Random Play',
 					nominations: [
 						{
 							model: 'NOMINATION',
