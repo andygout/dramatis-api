@@ -166,6 +166,7 @@ describe('Character with multiple appearances in the same material under differe
 					name: 'Rock \'n\' Roll',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{

@@ -34,6 +34,12 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
+			OPTIONAL MATCH (material)-[subMaterialRel:HAS_SUB_MATERIAL]->(:Material)
+
+			DELETE subMaterialRel
+
+			WITH DISTINCT material
+
 			OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 			DELETE characterRel
@@ -167,6 +173,28 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT material
 
+			UNWIND (CASE $subMaterials WHEN [] THEN [null] ELSE $subMaterials END) AS subMaterialParam
+
+				OPTIONAL MATCH (existingSubMaterial:Material { name: subMaterialParam.name })
+					WHERE
+						(subMaterialParam.differentiator IS NULL AND existingSubMaterial.differentiator IS NULL) OR
+						subMaterialParam.differentiator = existingSubMaterial.differentiator
+
+				FOREACH (item IN CASE subMaterialParam WHEN NULL THEN [] ELSE [1] END |
+					MERGE (subMaterial:Material {
+						uuid: COALESCE(existingSubMaterial.uuid, subMaterialParam.uuid),
+						name: subMaterialParam.name
+					})
+						ON CREATE SET
+							subMaterial.differentiator = subMaterialParam.differentiator,
+							subMaterial.format = subMaterialParam.format,
+							subMaterial.year = subMaterialParam.year
+
+					CREATE (material)-[:HAS_SUB_MATERIAL { position: subMaterialParam.position }]->(subMaterial)
+				)
+
+		WITH DISTINCT material
+
 		UNWIND (CASE $characterGroups WHEN [] THEN [{ characters: [] }] ELSE $characterGroups END) AS characterGroup
 
 			UNWIND (CASE characterGroup.characters WHEN []
@@ -245,12 +273,25 @@ const getEditQuery = () => `
 			END
 		) + [{ entities: [{}] }] AS writingCredits
 
+	OPTIONAL MATCH (material)-[subMaterialRel:HAS_SUB_MATERIAL]->(subMaterial:Material)
+
+	WITH material, originalVersionMaterial, writingCredits, subMaterialRel, subMaterial
+		ORDER BY subMaterialRel.position
+
+	WITH material, originalVersionMaterial, writingCredits,
+		COLLECT(
+			CASE subMaterial WHEN NULL
+				THEN null
+				ELSE subMaterial { .name, .differentiator, .format, .year }
+			END
+		) + [{}] AS subMaterials
+
 	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
-	WITH material, originalVersionMaterial, writingCredits, characterRel, character
+	WITH material, originalVersionMaterial, writingCredits, subMaterials, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	WITH material, originalVersionMaterial, writingCredits, characterRel.group AS characterGroupName,
+	WITH material, originalVersionMaterial, writingCredits, subMaterials, characterRel.group AS characterGroupName,
 		COLLECT(
 			CASE character WHEN NULL
 				THEN null
@@ -275,6 +316,7 @@ const getEditQuery = () => `
 			differentiator: COALESCE(originalVersionMaterial.differentiator, '')
 		} AS originalVersionMaterial,
 		writingCredits,
+		subMaterials,
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null
@@ -292,9 +334,15 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL]-(subOrSurMaterial:Material)
+
 	WITH
 		material,
-		[material] + COLLECT(originalOrSubsequentVersionMaterial) + COLLECT(sourcingMaterial) AS relatedMaterials
+		[material] +
+		COLLECT(originalOrSubsequentVersionMaterial) +
+		COLLECT(sourcingMaterial) +
+		COLLECT(subOrSurMaterial)
+			AS relatedMaterials
 
 	UNWIND (CASE relatedMaterials WHEN [] THEN [null] ELSE relatedMaterials END) AS relatedMaterial
 
@@ -304,6 +352,10 @@ const getShowQuery = () => `
 
 		OPTIONAL MATCH (relatedMaterial)-[sourcingMaterialRel:USES_SOURCE_MATERIAL]->(material)
 
+		OPTIONAL MATCH (relatedMaterial)-[surMaterialRel:HAS_SUB_MATERIAL]->(material)
+
+		OPTIONAL MATCH (relatedMaterial)<-[subMaterialRel:HAS_SUB_MATERIAL]-(material)
+
 		OPTIONAL MATCH (relatedMaterial)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 			WHERE entity:Person OR entity:Company OR entity:Material
 
@@ -312,14 +364,20 @@ const getShowQuery = () => `
 		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 			WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
+		OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
 		WITH
 			material,
 			relatedMaterial,
 			CASE originalVersionRel WHEN NULL THEN false ELSE true END AS isOriginalVersion,
 			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
+			CASE surMaterialRel WHEN NULL THEN false ELSE true END AS isSurMaterial,
+			CASE subMaterialRel WHEN NULL THEN false ELSE true END AS isSubMaterial,
+			subMaterialRel.position AS relatedMaterialPosition,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			CASE originalVersionWritingEntityRel WHEN NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel,
 			sourceMaterialWriter
@@ -331,8 +389,12 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
+			isSurMaterial,
+			isSubMaterial,
+			relatedMaterialPosition,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
@@ -355,8 +417,12 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
+			isSurMaterial,
+			isSubMaterial,
+			relatedMaterialPosition,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			isOriginalVersionWritingEntity,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
@@ -376,6 +442,9 @@ const getShowQuery = () => `
 			isOriginalVersion,
 			isSubsequentVersion,
 			isSourcingMaterial,
+			isSurMaterial,
+			isSubMaterial,
+			relatedMaterialPosition,
 			entityRel.credit AS writingCreditName,
 			[entity IN COLLECT(
 				CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
@@ -386,6 +455,10 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
+						surMaterial: CASE entitySurMaterial WHEN NULL
+							THEN null
+							ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+						END,
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
@@ -394,7 +467,15 @@ const getShowQuery = () => `
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
 
-		WITH material, relatedMaterial, isOriginalVersion, isSubsequentVersion, isSourcingMaterial,
+		WITH
+			material,
+			relatedMaterial,
+			isOriginalVersion,
+			isSubsequentVersion,
+			isSourcingMaterial,
+			isSurMaterial,
+			isSubMaterial,
+			relatedMaterialPosition,
 			COLLECT(
 				CASE SIZE(entities) WHEN 0
 					THEN null
@@ -405,7 +486,9 @@ const getShowQuery = () => `
 					}
 				END
 			) AS writingCredits
-			ORDER BY relatedMaterial.year DESC, relatedMaterial.name
+			ORDER BY relatedMaterialPosition, relatedMaterial.year DESC, relatedMaterial.name
+
+		OPTIONAL MATCH (relatedMaterial)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 		WITH material,
 			COLLECT(
@@ -417,17 +500,19 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
+						surMaterial: CASE surMaterial WHEN NULL
+							THEN null
+							ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+						END,
 						writingCredits,
 						isOriginalVersion,
 						isSubsequentVersion,
-						isSourcingMaterial
+						isSourcingMaterial,
+						isSurMaterial,
+						isSubMaterial
 					}
 				END
 			) AS relatedMaterials
-
-		WITH
-			material,
-			relatedMaterials
 
 	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
@@ -530,8 +615,22 @@ const getShowQuery = () => `
 		characterGroups,
 		productions
 
-	OPTIONAL MATCH (material)<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
+	OPTIONAL MATCH path=(material)-[:HAS_NOMINEE|HAS_SUB_MATERIAL*1..2]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	WITH
+		material,
+		relatedMaterials,
+		characterGroups,
+		productions,
+		category,
+		categoryRel,
+		ceremony,
+		HEAD([rel IN RELATIONSHIPS(path) WHERE TYPE(rel) = 'HAS_NOMINEE']) AS nomineeRel,
+		CASE SIZE([node in NODES(path) WHERE HEAD(LABELS(node)) = "Material"]) WHEN 2
+			THEN LAST([node in NODES(path) WHERE HEAD(LABELS(node)) = "Material"])
+			ELSE null
+		END AS recipientMaterial
 
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
@@ -551,6 +650,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -579,6 +679,7 @@ const getShowQuery = () => `
 				relatedMaterials,
 				characterGroups,
 				productions,
+				recipientMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -594,6 +695,7 @@ const getShowQuery = () => `
 				relatedMaterials,
 				characterGroups,
 				productions,
+				recipientMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -608,6 +710,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -623,6 +726,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -654,6 +758,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -671,6 +776,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -708,13 +814,15 @@ const getShowQuery = () => `
 				nomineeRel.nominationPosition IS NULL OR
 				nomineeRel.nominationPosition = coNominatedMaterialRel.nominationPosition
 			) AND
-			coNominatedMaterial.uuid <> material.uuid
+			coNominatedMaterial.uuid <> material.uuid AND
+			NOT (material)-[:HAS_SUB_MATERIAL]-(coNominatedMaterial)
 
 	WITH
 		material,
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -731,6 +839,7 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -759,6 +868,10 @@ const getShowQuery = () => `
 			model: 'NOMINATION',
 			isWinner: COALESCE(nomineeRel.isWinner, false),
 			type: COALESCE(nomineeRel.customType, CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
+			recipientMaterial: CASE recipientMaterial WHEN NULL
+				THEN null
+				ELSE recipientMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+			END,
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			coMaterials: coNominatedMaterials
@@ -791,9 +904,13 @@ const getShowQuery = () => `
 		productions,
 		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS awards
 
-	OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedSubsequentVersionMaterial:Material)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..1]-(:Material)
+		<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..1]-(nominatedSubsequentVersionMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
 
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(subsequentVersionMaterialAward:Award)
 
@@ -815,6 +932,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -845,6 +963,7 @@ const getShowQuery = () => `
 				productions,
 				awards,
 				nominatedSubsequentVersionMaterial,
+				nominatedSubsequentVersionSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -862,6 +981,7 @@ const getShowQuery = () => `
 				productions,
 				awards,
 				nominatedSubsequentVersionMaterial,
+				nominatedSubsequentVersionSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -878,6 +998,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -895,6 +1016,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -928,6 +1050,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -947,6 +1070,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -994,6 +1118,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1012,6 +1137,7 @@ const getShowQuery = () => `
 		productions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1051,7 +1177,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedSubsequentVersionMaterial WHEN NULL
 				THEN null
-				ELSE nominatedSubsequentVersionMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedSubsequentVersionMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSubsequentVersionSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSubsequentVersionSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedSubsequentVersionMaterials
 
@@ -1110,9 +1246,12 @@ const getShowQuery = () => `
 			ceremonies
 		}) AS subsequentVersionMaterialAwards
 
-	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(nominatedSourcingMaterial:Material)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..1]-(:Material)
+		<-[:USES_SOURCE_MATERIAL]-(:Material)-[:HAS_SUB_MATERIAL*0..1]-(nominatedSourcingMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+
+	OPTIONAL MATCH (nominatedSourcingMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSourcingSurMaterial:Material)
 
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(sourcingMaterialAward:Award)
 
@@ -1135,6 +1274,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1166,6 +1306,7 @@ const getShowQuery = () => `
 				awards,
 				subsequentVersionMaterialAwards,
 				nominatedSourcingMaterial,
+				nominatedSourcingSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1184,6 +1325,7 @@ const getShowQuery = () => `
 				awards,
 				subsequentVersionMaterialAwards,
 				nominatedSourcingMaterial,
+				nominatedSourcingSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1201,6 +1343,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1219,6 +1362,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1253,6 +1397,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1273,6 +1418,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1321,6 +1467,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1340,6 +1487,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1380,7 +1528,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedSourcingMaterial WHEN NULL
 				THEN null
-				ELSE nominatedSourcingMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedSourcingMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSourcingSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSourcingSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedSourcingMaterials
 
@@ -1442,16 +1600,24 @@ const getShowQuery = () => `
 		]) AS writingCredits,
 		HEAD([
 			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isOriginalVersion |
-			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+			relatedMaterial { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 		]) AS originalVersionMaterial,
 		[
 			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubsequentVersion |
-			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+			relatedMaterial { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 		] AS subsequentVersionMaterials,
 		[
 			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSourcingMaterial |
-			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+			relatedMaterial { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 		] AS sourcingMaterials,
+		HEAD([
+			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSurMaterial |
+			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+		]) AS surMaterial,
+		[
+			relatedMaterial IN relatedMaterials WHERE relatedMaterial.isSubMaterial |
+			relatedMaterial { .model, .uuid, .name, .format, .year, .writingCredits }
+		] AS subMaterials,
 		characterGroups,
 		[
 			production IN productions WHERE NOT production.usesSourcingMaterial |
@@ -1468,6 +1634,7 @@ const getShowQuery = () => `
 
 const getListQuery = () => `
 	MATCH (material:Material)
+		WHERE NOT (material)-[:HAS_SUB_MATERIAL]->(:Material)
 
 	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
@@ -1475,10 +1642,17 @@ const getListQuery = () => `
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
-	WITH material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
+	OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
+	WITH material, entityRel, entity, entitySurMaterial, sourceMaterialWriterRel, sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
-	WITH material, entityRel, entity, sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
+	WITH
+		material,
+		entityRel,
+		entity,
+		entitySurMaterial,
+		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
 				THEN null
@@ -1486,7 +1660,7 @@ const getListQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH material, entityRel, entity,
+	WITH material, entityRel, entity, entitySurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -1509,6 +1683,10 @@ const getListQuery = () => `
 					.name,
 					.format,
 					.year,
+					surMaterial: CASE entitySurMaterial WHEN NULL
+						THEN null
+						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -1517,15 +1695,7 @@ const getListQuery = () => `
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
 
-	WITH material, writingCreditName, entities
-		ORDER BY material.year DESC, material.name
-
-	RETURN
-		'MATERIAL' AS model,
-		material.uuid AS uuid,
-		material.name AS name,
-		material.format AS format,
-		material.year AS year,
+	WITH material,
 		COLLECT(
 			CASE SIZE(entities) WHEN 0
 				THEN null
@@ -1536,6 +1706,21 @@ const getListQuery = () => `
 				}
 			END
 		) AS writingCredits
+
+	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
+	RETURN
+		'MATERIAL' AS model,
+		material.uuid AS uuid,
+		material.name AS name,
+		material.format AS format,
+		material.year AS year,
+		CASE surMaterial WHEN NULL
+			THEN null
+			ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+		END AS surMaterial,
+		writingCredits
+		ORDER BY material.year DESC, material.name
 
 	LIMIT 100
 `;

@@ -2,6 +2,7 @@ const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
 	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
+		WHERE NOT (person)<-[:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL*1..2]-(:Material)<-[:HAS_SUB_MATERIAL]-(material)
 
 	WITH person, COLLECT(DISTINCT(material)) AS materials
 
@@ -18,6 +19,8 @@ const getShowQuery = () => `
 		OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 			WHERE entity:Person OR entity:Company OR entity:Material
 
+		OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
 		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 			WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
@@ -30,6 +33,7 @@ const getShowQuery = () => `
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			sourceMaterialWriterRel,
 			sourceMaterialWriter
 			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -43,6 +47,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
 				CASE sourceMaterialWriter WHEN NULL
@@ -67,6 +72,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			entityRel,
 			entity,
+			entitySurMaterial,
 			COLLECT(
 				CASE SIZE(sourceMaterialWriters) WHEN 0
 					THEN null
@@ -96,6 +102,10 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
+						surMaterial: CASE entitySurMaterial WHEN NULL
+							THEN null
+							ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+						END,
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
@@ -117,6 +127,8 @@ const getShowQuery = () => `
 			) AS writingCredits
 			ORDER BY material.year DESC, material.name
 
+		OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
 		WITH person,
 			COLLECT(
 				CASE material WHEN NULL
@@ -127,6 +139,10 @@ const getShowQuery = () => `
 						.name,
 						.format,
 						.year,
+						surMaterial: CASE surMaterial WHEN NULL
+							THEN null
+							ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+						END,
 						writingCredits,
 						creditType,
 						hasDirectCredit,
@@ -908,6 +924,8 @@ const getShowQuery = () => `
 				entityRel.nominationPosition = nominatedMaterialRel.nominationPosition
 			)
 
+	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+
 	WITH
 		person,
 		materials,
@@ -924,7 +942,8 @@ const getShowQuery = () => `
 		coNominatedEntities,
 		nominatedProductions,
 		nominatedMaterialRel,
-		nominatedMaterial
+		nominatedMaterial,
+		nominatedSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -945,7 +964,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedMaterials
 		ORDER BY entityRel.nominationPosition
@@ -1009,6 +1038,9 @@ const getShowQuery = () => `
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
+	OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(subsequentVersionMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -1031,6 +1063,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1063,6 +1096,7 @@ const getShowQuery = () => `
 				crewProductions,
 				awards,
 				nominatedSubsequentVersionMaterial,
+				nominatedSubsequentVersionSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1082,6 +1116,7 @@ const getShowQuery = () => `
 				crewProductions,
 				awards,
 				nominatedSubsequentVersionMaterial,
+				nominatedSubsequentVersionSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1100,6 +1135,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1119,6 +1155,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1159,6 +1196,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1180,6 +1218,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1219,6 +1258,8 @@ const getShowQuery = () => `
 			) AND
 			nominatedMaterialRel.uuid <> nominatedSubsequentVersionMaterial.uuid
 
+	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+
 	WITH
 		person,
 		materials,
@@ -1228,6 +1269,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1236,7 +1278,8 @@ const getShowQuery = () => `
 		nominatedEntities,
 		nominatedProductions,
 		nominatedMaterialRel,
-		nominatedMaterial
+		nominatedMaterial,
+		nominatedSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -1248,6 +1291,7 @@ const getShowQuery = () => `
 		crewProductions,
 		awards,
 		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1258,7 +1302,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
@@ -1283,7 +1337,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedSubsequentVersionMaterial WHEN NULL
 				THEN null
-				ELSE nominatedSubsequentVersionMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedSubsequentVersionMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSubsequentVersionSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSubsequentVersionSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedSubsequentVersionMaterials
 
@@ -1360,6 +1424,8 @@ const getShowQuery = () => `
 				TYPE(rel) = 'USES_SOURCE_MATERIAL'
 		))
 
+	OPTIONAL MATCH (nominatedSourcingMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSourcingSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(sourcingMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -1383,6 +1449,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1416,6 +1483,7 @@ const getShowQuery = () => `
 				awards,
 				subsequentVersionMaterialAwards,
 				nominatedSourcingMaterial,
+				nominatedSourcingSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1436,6 +1504,7 @@ const getShowQuery = () => `
 				awards,
 				subsequentVersionMaterialAwards,
 				nominatedSourcingMaterial,
+				nominatedSourcingSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1455,6 +1524,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1475,6 +1545,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1516,6 +1587,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1538,6 +1610,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1577,6 +1650,8 @@ const getShowQuery = () => `
 			) AND
 			nominatedMaterialRel.uuid <> nominatedSourcingMaterial.uuid
 
+	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+
 	WITH
 		person,
 		materials,
@@ -1587,6 +1662,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1595,7 +1671,8 @@ const getShowQuery = () => `
 		nominatedEntities,
 		nominatedProductions,
 		nominatedMaterialRel,
-		nominatedMaterial
+		nominatedMaterial,
+		nominatedSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -1608,6 +1685,7 @@ const getShowQuery = () => `
 		awards,
 		subsequentVersionMaterialAwards,
 		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1618,7 +1696,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
@@ -1644,7 +1732,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedSourcingMaterial WHEN NULL
 				THEN null
-				ELSE nominatedSourcingMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedSourcingMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSourcingSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSourcingSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedSourcingMaterials
 
@@ -1715,6 +1813,8 @@ const getShowQuery = () => `
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
+	OPTIONAL MATCH (nominatedRightsGrantorMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(rightsGrantorMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -1739,6 +1839,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1773,6 +1874,7 @@ const getShowQuery = () => `
 				subsequentVersionMaterialAwards,
 				sourcingMaterialAwards,
 				nominatedRightsGrantorMaterial,
+				nominatedRightsGrantorSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1794,6 +1896,7 @@ const getShowQuery = () => `
 				subsequentVersionMaterialAwards,
 				sourcingMaterialAwards,
 				nominatedRightsGrantorMaterial,
+				nominatedRightsGrantorSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -1814,6 +1917,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1835,6 +1939,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1877,6 +1982,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1900,6 +2006,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1939,6 +2046,8 @@ const getShowQuery = () => `
 			) AND
 			nominatedMaterialRel.uuid <> nominatedRightsGrantorMaterial.uuid
 
+	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+
 	WITH
 		person,
 		materials,
@@ -1950,6 +2059,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1958,7 +2068,8 @@ const getShowQuery = () => `
 		nominatedEntities,
 		nominatedProductions,
 		nominatedMaterialRel,
-		nominatedMaterial
+		nominatedMaterial,
+		nominatedSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -1972,6 +2083,7 @@ const getShowQuery = () => `
 		subsequentVersionMaterialAwards,
 		sourcingMaterialAwards,
 		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -1982,7 +2094,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
@@ -2009,7 +2131,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedRightsGrantorMaterial WHEN NULL
 				THEN null
-				ELSE nominatedRightsGrantorMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedRightsGrantorMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedRightsGrantorSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedRightsGrantorSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedRightsGrantorMaterials
 
@@ -2077,21 +2209,21 @@ const getShowQuery = () => `
 				material.hasDirectCredit AND
 				NOT material.isSubsequentVersion AND
 				material.creditType IS NULL |
-			material { .model, .uuid, .name, .format, .year, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits, .surMaterial }
 		] AS materials,
 		[
 			material IN materials WHERE material.isSubsequentVersion |
-			material { .model, .uuid, .name, .format, .year, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits, .surMaterial }
 		] AS subsequentVersionMaterials,
 		[
 			material IN materials WHERE
 				material.isSourcingMaterial OR
 				material.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
-			material { .model, .uuid, .name, .format, .year, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits, .surMaterial }
 		] AS sourcingMaterials,
 		[
 			material IN materials WHERE material.creditType = 'RIGHTS_GRANTOR' |
-			material { .model, .uuid, .name, .format, .year, .writingCredits }
+			material { .model, .uuid, .name, .format, .year, .writingCredits, .surMaterial }
 		] AS rightsGrantorMaterials,
 		producerProductions,
 		castMemberProductions,

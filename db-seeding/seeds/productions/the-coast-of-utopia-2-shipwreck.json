@@ -1,0 +1,426 @@
+{
+	"name": "Shipwreck",
+	"startDate": "2002-07-08",
+	"pressDate": "2002-08-03",
+	"endDate": "2002-11-23",
+	"material": {
+		"name": "Shipwreck"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Simon Day",
+			"roles": [
+				{
+					"name": "Nicholas Ogarev"
+				}
+			]
+		},
+		{
+			"name": "Eve Best",
+			"roles": [
+				{
+					"name": "Natalie Herzen"
+				}
+			]
+		},
+		{
+			"name": "Guy Henry",
+			"roles": [
+				{
+					"name": "Ivan Turgenev"
+				}
+			]
+		},
+		{
+			"name": "Lewis Crutch",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Freddie Hale",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Thomas Moll",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Greg Sheffield",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Janet Spencer-Turner",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Stephen Dillane",
+			"roles": [
+				{
+					"name": "Alexander Herzen"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Timothy Granovsky"
+				}
+			]
+		},
+		{
+			"name": "Paul Ritter",
+			"roles": [
+				{
+					"name": "Nicholas Ketscher"
+				},
+				{
+					"name": "Karl Marx"
+				},
+				{
+					"name": "Franz Otto"
+				}
+			]
+		},
+		{
+			"name": "Sam Troughton",
+			"roles": [
+				{
+					"name": "Konstantin Aksakov"
+				}
+			]
+		},
+		{
+			"name": "Richard Hollis",
+			"roles": [
+				{
+					"name": "Policeman"
+				}
+			]
+		},
+		{
+			"name": "Will Keen",
+			"roles": [
+				{
+					"name": "Vissarion Belinsky"
+				}
+			]
+		},
+		{
+			"name": "Janine Duvitski",
+			"roles": [
+				{
+					"name": "Madame Haag"
+				}
+			]
+		},
+		{
+			"name": "Padraig Goodall",
+			"roles": [
+				{
+					"name": "Kolya Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Matthew Thomas-Davies",
+			"roles": [
+				{
+					"name": "Kolya Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "David Perkins",
+			"roles": [
+				{
+					"name": "Kolya Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Raymond Coulthard",
+			"roles": [
+				{
+					"name": "George Herwegh"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Emmerson",
+			"roles": [
+				{
+					"name": "Emma Herwegh"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Nicholas Sazonov"
+				}
+			]
+		},
+		{
+			"name": "Thomas Arnold",
+			"roles": [
+				{
+					"name": "Jean-Marie"
+				}
+			]
+		},
+		{
+			"name": "Douglas Henshall",
+			"roles": [
+				{
+					"name": "Michael Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Dominic Barklem",
+			"roles": [
+				{
+					"name": "Shop Boy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alexander Green",
+			"roles": [
+				{
+					"name": "Shop Boy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "William Green",
+			"roles": [
+				{
+					"name": "Shop Boy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ashley Jones",
+			"roles": [
+				{
+					"name": "Shop Boy",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Lucy Whybrow",
+			"roles": [
+				{
+					"name": "Natalie (Natasha) Tuchkov"
+				}
+			]
+		},
+		{
+			"name": "Martin Chamberlain",
+			"roles": [
+				{
+					"name": "Benoit"
+				}
+			]
+		},
+		{
+			"name": "John Nolan",
+			"roles": [
+				{
+					"name": "Blue Blouse"
+				}
+			]
+		},
+		{
+			"name": "Felicity Dean",
+			"roles": [
+				{
+					"name": "Maria Ogarev"
+				}
+			]
+		},
+		{
+			"name": "Jack James",
+			"roles": [
+				{
+					"name": "Rocca"
+				}
+			]
+		},
+		{
+			"name": "Clemmie Hotton",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alice Knight",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Harriet Lunnon",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Casi Toy",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Anna Maxwell Martin",
+			"roles": [
+				{
+					"name": "Maria Fomm"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Leonty Ibayev"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Trevor Nunn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "William Dudley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Hersey"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choregrapher",
+			"entities": [
+				{
+					"name": "David Bolger"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				}
+			]
+		},
+		{
+			"name": "Musical Directors",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				},
+				{
+					"name": "Mark Bousie"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Stephen Rayne"
+				}
+			]
+		}
+	]
+}

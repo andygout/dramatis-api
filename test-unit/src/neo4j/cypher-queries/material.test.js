@@ -39,6 +39,7 @@ describe('Cypher Queries Material module', () => {
 						differentiator: COALESCE(originalVersionMaterial.differentiator, '')
 					} AS originalVersionMaterial,
 					writingCredits,
+					subMaterials,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
@@ -85,6 +86,12 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
+				OPTIONAL MATCH (material)-[subMaterialRel:HAS_SUB_MATERIAL]->(:Material)
+
+				DELETE subMaterialRel
+
+				WITH DISTINCT material
+
 				OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 				DELETE characterRel
@@ -114,6 +121,7 @@ describe('Cypher Queries Material module', () => {
 						differentiator: COALESCE(originalVersionMaterial.differentiator, '')
 					} AS originalVersionMaterial,
 					writingCredits,
+					subMaterials,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null

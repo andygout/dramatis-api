@@ -24,6 +24,7 @@ describe('Material model', () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([])
 			},
 			isValidYearModule: {
@@ -218,6 +219,41 @@ describe('Material model', () => {
 
 		});
 
+		describe('sub-materials property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({ name: 'The Coast of Utopia' });
+				expect(instance.subMaterials).to.deep.equal([]);
+
+			});
+
+			it('assigns array of sub-materials if included in props, retaining those with empty or whitespace-only string names', () => {
+
+				const props = {
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage'
+						},
+						{
+							name: ''
+						},
+						{
+							name: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.subMaterials.length).to.equal(3);
+				expect(instance.subMaterials[0] instanceof MaterialBase).to.be.true;
+				expect(instance.subMaterials[1] instanceof MaterialBase).to.be.true;
+				expect(instance.subMaterials[2] instanceof MaterialBase).to.be.true;
+
+			});
+
+		});
+
 		describe('characterGroups property', () => {
 
 			it('assigns empty array if absent from props', () => {
@@ -267,6 +303,11 @@ describe('Material model', () => {
 						name: 'version by'
 					}
 				],
+				subMaterials: [
+					{
+						name: 'The Murder of Gonzago'
+					}
+				],
 				characterGroups: [
 					{
 						name: 'Court of Elsinore'
@@ -280,6 +321,10 @@ describe('Material model', () => {
 			spy(instance, 'validateYear');
 			spy(instance.originalVersionMaterial, 'validateName');
 			spy(instance.originalVersionMaterial, 'validateDifferentiator');
+			spy(instance.subMaterials[0], 'validateName');
+			spy(instance.subMaterials[0], 'validateDifferentiator');
+			spy(instance.subMaterials[0], 'validateNoAssociationWithSelf');
+			spy(instance.subMaterials[0], 'validateUniquenessInGroup');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
@@ -290,6 +335,11 @@ describe('Material model', () => {
 				instance.originalVersionMaterial.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.writingCredits[0].runInputValidations,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.subMaterials[0].validateName,
+				instance.subMaterials[0].validateDifferentiator,
+				instance.subMaterials[0].validateNoAssociationWithSelf,
+				instance.subMaterials[0].validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.characterGroups[0].runInputValidations
 			);
@@ -321,6 +371,22 @@ describe('Material model', () => {
 						differentiator: '1'
 					}
 				}
+			)).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+				instance.subMaterials
+			)).to.be.true;
+			expect(instance.subMaterials[0].validateName.calledOnce).to.be.true;
+			expect(instance.subMaterials[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
+			expect(instance.subMaterials[0].validateDifferentiator.calledOnce).to.be.true;
+			expect(instance.subMaterials[0].validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledWithExactly(
+				'The Tragedy of Hamlet, Prince of Denmark', '1'
+			)).to.be.true;
+			expect(instance.subMaterials[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.subMaterials[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false }
 			)).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledOnce).to.be.true;
 			expect(instance.characterGroups[0].runInputValidations.calledWithExactly(

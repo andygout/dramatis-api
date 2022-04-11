@@ -1649,6 +1649,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Hairspray',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -1700,6 +1701,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Garply',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -1742,6 +1744,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Saint Joan',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -1791,6 +1794,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Parade',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -1853,6 +1857,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Garply',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -2014,6 +2019,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'A Disappearing Number',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -2031,6 +2037,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'The Reporter',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -2048,6 +2055,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Vernon God Little',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4174,6 +4182,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'The Chalk Garden',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4225,6 +4234,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Piaf',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4267,6 +4277,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Ivanov',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4329,6 +4340,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Waldo',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4391,6 +4403,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Waldo',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4565,6 +4578,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'England People Very Nice',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4582,6 +4596,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Jerusalem',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]
@@ -4599,6 +4614,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										name: 'Our Class',
 										format: null,
 										year: null,
+										surMaterial: null,
 										writingCredits: []
 									}
 								]

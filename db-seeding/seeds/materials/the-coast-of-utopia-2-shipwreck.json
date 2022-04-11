@@ -1,0 +1,112 @@
+{
+	"name": "Shipwreck",
+	"format": "play",
+	"year": 2002,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alexander Herzen"
+				},
+				{
+					"name": "Natalie Herzen"
+				},
+				{
+					"name": "Tata Herzen"
+				},
+				{
+					"name": "Sasha Herzen"
+				},
+				{
+					"name": "Kolya Herzen"
+				},
+				{
+					"name": "Nicholas Ogarev"
+				},
+				{
+					"name": "Ivan Turgenev"
+				},
+				{
+					"name": "Timothy Granovsky"
+				},
+				{
+					"name": "Nicholas Ketscher"
+				},
+				{
+					"name": "Konstantin Aksakov"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "The Coast of Utopia"
+				},
+				{
+					"name": "Policeman"
+				},
+				{
+					"name": "Vissarion Belinsky"
+				},
+				{
+					"name": "George Herwegh"
+				},
+				{
+					"name": "Emma Herwegh"
+				},
+				{
+					"name": "Madame Haag"
+				},
+				{
+					"name": "Nicholas Sazonov"
+				},
+				{
+					"name": "Michael Bakunin"
+				},
+				{
+					"name": "Jean-Marie"
+				},
+				{
+					"name": "Karl Marx"
+				},
+				{
+					"name": "Shop Boy"
+				},
+				{
+					"name": "Natalie (Natasha) Tuchkov"
+				},
+				{
+					"name": "Benoit"
+				},
+				{
+					"name": "Maria Ogarev"
+				},
+				{
+					"name": "Franz Otto"
+				},
+				{
+					"name": "Rocca"
+				},
+				{
+					"name": "Leonty Ibayev"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "The Coast of Utopia"
+				},
+				{
+					"name": "Revolutionaries"
+				},
+				{
+					"name": "Street People"
+				}
+			]
+		}
+	]
+}

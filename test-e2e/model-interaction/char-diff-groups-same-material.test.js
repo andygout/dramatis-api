@@ -218,6 +218,7 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					format: 'play',
 					year: 2014,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{
@@ -297,6 +298,7 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					format: 'play',
 					year: 2014,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{
@@ -367,6 +369,7 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					format: 'play',
 					year: 2014,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{
@@ -446,6 +449,7 @@ describe('Character with multiple appearances in the same material in different 
 					name: '3 Winters',
 					format: 'play',
 					year: 2014,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{

@@ -58,6 +58,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -98,6 +99,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -138,6 +140,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -178,6 +181,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -218,6 +222,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -265,6 +270,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -313,6 +319,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -363,6 +370,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -419,6 +427,7 @@ describe('Input validation failures: Material instance', () => {
 							entities: []
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -488,6 +497,7 @@ describe('Input validation failures: Material instance', () => {
 							entities: []
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -555,6 +565,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -623,6 +634,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -691,6 +703,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -760,6 +773,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -828,6 +842,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -897,6 +912,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -1002,6 +1018,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -1075,6 +1092,278 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					],
+					subMaterials: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('sub-material name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [
+						{
+							uuid: undefined,
+							name: ABOVE_MAX_LENGTH_STRING,
+							differentiator: '',
+							errors: {
+								name: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('sub-material differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage',
+							differentiator: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [
+						{
+							uuid: undefined,
+							name: 'Voyage',
+							differentiator: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								differentiator: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('material instance assigns itself as a sub-material', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'The Coast of Utopia'
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [
+						{
+							uuid: undefined,
+							name: 'The Coast of Utopia',
+							differentiator: '',
+							errors: {
+								name: [
+									'Instance cannot form association with itself'
+								],
+								differentiator: [
+									'Instance cannot form association with itself'
+								]
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('duplicate sub-material', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage'
+						},
+						{
+							name: 'Shipwreck',
+							differentiator: '1'
+						},
+						{
+							name: 'Voyage'
+						},
+						{
+							name: 'Shipwreck',
+							differentiator: '2'
+						}
+					]
+				};
+
+				const instance = new Material(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					differentiator: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [
+						{
+							uuid: undefined,
+							name: 'Voyage',
+							differentiator: '',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								],
+								differentiator: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							uuid: undefined,
+							name: 'Shipwreck',
+							differentiator: '1',
+							errors: {}
+						},
+						{
+							uuid: undefined,
+							name: 'Voyage',
+							differentiator: '',
+							errors: {
+								name: [
+									'This item has been duplicated within the group'
+								],
+								differentiator: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							uuid: undefined,
+							name: 'Shipwreck',
+							differentiator: '2',
+							errors: {}
+						}
+					],
 					characterGroups: []
 				};
 
@@ -1120,6 +1409,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
@@ -1178,6 +1468,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: 'Rosmersholm residents',
@@ -1246,6 +1537,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1315,6 +1607,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1384,6 +1677,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1453,6 +1747,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1522,6 +1817,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1601,6 +1897,7 @@ describe('Input validation failures: Material instance', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							name: '',

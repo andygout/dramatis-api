@@ -310,6 +310,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -351,6 +352,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -412,6 +414,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				format: 'play',
 				year: 1867,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -510,6 +513,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -535,6 +539,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -571,6 +576,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -628,6 +634,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -685,6 +692,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -736,6 +744,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -793,6 +802,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -865,6 +875,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -890,6 +901,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -926,6 +938,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -983,6 +996,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1040,6 +1054,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1091,6 +1106,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1148,6 +1164,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1219,6 +1236,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				name: 'Peer Gynt',
 				format: 'play',
 				year: 2007,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -1290,6 +1308,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1348,6 +1367,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1385,6 +1405,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1429,6 +1450,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 2008,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1486,6 +1508,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2007,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1543,6 +1566,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1579,6 +1603,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Ghosts',
 					format: 'play',
 					year: 1881,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1604,6 +1629,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 					name: 'Peer Gynt',
 					format: 'play',
 					year: 1867,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
