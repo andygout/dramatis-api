@@ -9,12 +9,15 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
+	OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
 	WITH
 		character,
 		materialRel,
 		material,
 		entityRel,
 		entity,
+		entitySurMaterial,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -25,6 +28,7 @@ const getShowQuery = () => `
 		material,
 		entityRel,
 		entity,
+		entitySurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -33,7 +37,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH character, materialRel, material, entityRel, entity,
+	WITH character, materialRel, material, entityRel, entity, entitySurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -56,6 +60,10 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
+					surMaterial: CASE entitySurMaterial WHEN NULL
+						THEN null
+						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -86,6 +94,8 @@ const getShowQuery = () => `
 		) AS depictions
 		ORDER BY material.year DESC, material.name
 
+	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
 	WITH character,
 		COLLECT(
 			CASE material WHEN NULL
@@ -96,6 +106,10 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
+					surMaterial: CASE surMaterial WHEN NULL
+						THEN null
+						ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+					END,
 					writingCredits,
 					depictions
 				}

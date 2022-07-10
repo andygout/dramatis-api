@@ -1,0 +1,332 @@
+{
+	"name": "Voyage",
+	"startDate": "2002-06-27",
+	"pressDate": "2002-08-03",
+	"endDate": "2002-11-23",
+	"material": {
+		"name": "Voyage"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Alexander Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Felicity Dean",
+			"roles": [
+				{
+					"name": "Varvara Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Eve Best",
+			"roles": [
+				{
+					"name": "Liubov Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Emmerson",
+			"roles": [
+				{
+					"name": "Varenka Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Lucy Whybrow",
+			"roles": [
+				{
+					"name": "Tatiana Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Anna Maxwell Martin",
+			"roles": [
+				{
+					"name": "Alexandra Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Scott Malden",
+			"roles": [
+				{
+					"name": "Miss Chamberlain"
+				}
+			]
+		},
+		{
+			"name": "Jack James",
+			"roles": [
+				{
+					"name": "Baron Renne"
+				},
+				{
+					"name": "Pushkin"
+				},
+				{
+					"name": "Police Commissioner"
+				}
+			]
+		},
+		{
+			"name": "John Nolan",
+			"roles": [
+				{
+					"name": "Semyon"
+				}
+			]
+		},
+		{
+			"name": "Douglas Henshall",
+			"roles": [
+				{
+					"name": "Michael Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Raymond Coulthard",
+			"roles": [
+				{
+					"name": "Nicholas Stankevich"
+				}
+			]
+		},
+		{
+			"name": "Janet Spencer-Turner",
+			"roles": [
+				{
+					"name": "Masha"
+				}
+			]
+		},
+		{
+			"name": "Will Keen",
+			"roles": [
+				{
+					"name": "Vissarion Belinsky"
+				}
+			]
+		},
+		{
+			"name": "Guy Henry",
+			"roles": [
+				{
+					"name": "Ivan Turgenev"
+				}
+			]
+		},
+		{
+			"name": "Stephen Dillane",
+			"roles": [
+				{
+					"name": "Alexander Herzen"
+				}
+			]
+		},
+		{
+			"name": "Janine Duvitski",
+			"roles": [
+				{
+					"name": "Mrs Beyer"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Nicholas Sazonov"
+				}
+			]
+		},
+		{
+			"name": "Simon Day",
+			"roles": [
+				{
+					"name": "Nicholas Ogarev"
+				}
+			]
+		},
+		{
+			"name": "Paul Ritter",
+			"roles": [
+				{
+					"name": "Nicholas Ketscher"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Nicholas Polevoy"
+				}
+			]
+		},
+		{
+			"name": "Rachel Ferjani",
+			"roles": [
+				{
+					"name": "Natalie Beyer"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Peter Chaadaev"
+				}
+			]
+		},
+		{
+			"name": "Sam Troughton",
+			"roles": [
+				{
+					"name": "Stephan Shevyrev"
+				}
+			]
+		},
+		{
+			"name": "David Verrey",
+			"roles": [
+				{
+					"name": "Dyakov"
+				}
+			]
+		},
+		{
+			"name": "Jasmine Hyde",
+			"roles": [
+				{
+					"name": "Katya"
+				}
+			]
+		},
+		{
+			"name": "Martin Chamberlain",
+			"roles": [
+				{
+					"name": "Doctor"
+				}
+			]
+		},
+		{
+			"name": "Richard Hollis",
+			"roles": [
+				{
+					"name": "A Ginger Cat"
+				}
+			]
+		},
+		{
+			"name": "Thomas Arnold"
+		},
+		{
+			"name": "Sarah Manton"
+		},
+		{
+			"name": "Kemal Sylvester"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Trevor Nunn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "William Dudley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Hersey"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choregrapher",
+			"entities": [
+				{
+					"name": "David Bolger"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				}
+			]
+		},
+		{
+			"name": "Musical Directors",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				},
+				{
+					"name": "Mark Bousie"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Stephen Rayne"
+				}
+			]
+		}
+	]
+}

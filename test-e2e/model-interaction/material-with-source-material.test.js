@@ -405,6 +405,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -432,6 +433,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -461,6 +463,7 @@ describe('Materials with source material', () => {
 					name: 'The Donkey Show',
 					format: 'musical',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -488,6 +491,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -613,6 +617,7 @@ describe('Materials with source material', () => {
 							name: 'A Midsummer Night\'s Dream',
 							format: 'play',
 							year: 1595,
+							surMaterial: null,
 							writingCredits: [
 								{
 									model: 'WRITING_CREDIT',
@@ -702,6 +707,7 @@ describe('Materials with source material', () => {
 					name: 'Othello',
 					format: 'play',
 					year: 1603,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -729,6 +735,7 @@ describe('Materials with source material', () => {
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -793,6 +800,7 @@ describe('Materials with source material', () => {
 							name: 'A Moorish Captain',
 							format: 'tale',
 							year: 1565,
+							surMaterial: null,
 							writingCredits: [
 								{
 									model: 'WRITING_CREDIT',
@@ -835,6 +843,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -862,6 +871,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -891,6 +901,7 @@ describe('Materials with source material', () => {
 					name: 'The Donkey Show',
 					format: 'musical',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -918,6 +929,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -947,6 +959,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -988,6 +1001,7 @@ describe('Materials with source material', () => {
 					name: 'Othello',
 					format: 'play',
 					year: 1603,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1015,6 +1029,7 @@ describe('Materials with source material', () => {
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1059,6 +1074,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1086,6 +1102,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1130,6 +1147,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1186,6 +1204,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1213,6 +1232,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1242,6 +1262,7 @@ describe('Materials with source material', () => {
 					name: 'The Donkey Show',
 					format: 'musical',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1269,6 +1290,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1298,6 +1320,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1339,6 +1362,7 @@ describe('Materials with source material', () => {
 					name: 'Othello',
 					format: 'play',
 					year: 1603,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1366,6 +1390,7 @@ describe('Materials with source material', () => {
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1410,6 +1435,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1437,6 +1463,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1481,6 +1508,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1536,6 +1564,7 @@ describe('Materials with source material', () => {
 				name: 'The Indian Boy',
 				format: 'play',
 				year: 2006,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -1563,6 +1592,7 @@ describe('Materials with source material', () => {
 								name: 'A Midsummer Night\'s Dream',
 								format: 'play',
 								year: 1595,
+								surMaterial: null,
 								writingCredits: [
 									{
 										model: 'WRITING_CREDIT',
@@ -1605,6 +1635,7 @@ describe('Materials with source material', () => {
 				name: 'Shakespeare\'s Villains',
 				format: 'play',
 				year: 1998,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -1659,6 +1690,7 @@ describe('Materials with source material', () => {
 				name: 'Othello',
 				format: 'play',
 				year: 1603,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -1686,6 +1718,7 @@ describe('Materials with source material', () => {
 								name: 'A Moorish Captain',
 								format: 'tale',
 								year: 1565,
+								surMaterial: null,
 								writingCredits: [
 									{
 										model: 'WRITING_CREDIT',
@@ -1729,6 +1762,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1756,6 +1790,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1801,6 +1836,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1843,6 +1879,7 @@ describe('Materials with source material', () => {
 					name: 'Othello',
 					format: 'play',
 					year: 1603,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1870,6 +1907,7 @@ describe('Materials with source material', () => {
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1918,6 +1956,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy',
 					format: 'play',
 					year: 2006,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1945,6 +1984,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1974,6 +2014,7 @@ describe('Materials with source material', () => {
 					name: 'The Donkey Show',
 					format: 'musical',
 					year: 2000,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -2001,6 +2042,7 @@ describe('Materials with source material', () => {
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -2030,6 +2072,7 @@ describe('Materials with source material', () => {
 					name: 'Shakespeare\'s Villains',
 					format: 'play',
 					year: 1998,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -2071,6 +2114,7 @@ describe('Materials with source material', () => {
 					name: 'Othello',
 					format: 'play',
 					year: 1603,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -2098,6 +2142,7 @@ describe('Materials with source material', () => {
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -2127,6 +2172,7 @@ describe('Materials with source material', () => {
 					name: 'A Midsummer Night\'s Dream',
 					format: 'play',
 					year: 1595,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -2152,6 +2198,7 @@ describe('Materials with source material', () => {
 					name: 'A Moorish Captain',
 					format: 'tale',
 					year: 1565,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',

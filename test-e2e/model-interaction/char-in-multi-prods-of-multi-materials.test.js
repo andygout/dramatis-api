@@ -357,6 +357,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 2',
 					format: 'play',
 					year: 1599,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: []
 				},
@@ -366,6 +367,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 1',
 					format: 'play',
 					year: 1597,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: []
 				},
@@ -375,6 +377,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
 					year: 1597,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: []
 				}

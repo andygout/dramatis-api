@@ -384,11 +384,15 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominee)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
 	OPTIONAL MATCH (nominee)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
+
+	OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 
 	WITH
 		ceremony,
@@ -399,9 +403,12 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surMaterial,
 		entityRel,
 		entity,
-		sourceMaterialWriterRel, sourceMaterialWriter
+		entitySurMaterial,
+		sourceMaterialWriterRel,
+		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
@@ -413,8 +420,10 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surMaterial,
 		entityRel,
 		entity,
+		entitySurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -432,8 +441,10 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surMaterial,
 		entityRel,
 		entity,
+		entitySurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -455,6 +466,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surMaterial,
 		entityRel.credit AS writingCreditName,
 		[entity IN COLLECT(
 			CASE entity WHEN NULL
@@ -465,6 +477,10 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
+					surMaterial: CASE entitySurMaterial WHEN NULL
+						THEN null
+						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -482,6 +498,10 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		CASE surMaterial WHEN NULL
+			THEN null
+			ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+		END AS surMaterial,
 		COLLECT(
 			CASE SIZE(entities) WHEN 0
 				THEN null
@@ -515,6 +535,7 @@ const getShowQuery = () => `
 			END,
 			.format,
 			.year,
+			surMaterial,
 			writingCredits
 		}) AS nominees
 
@@ -562,6 +583,7 @@ const getShowQuery = () => `
 					.venue,
 					.format,
 					.year,
+					.surMaterial,
 					.writingCredits
 				}
 			END
@@ -569,7 +591,7 @@ const getShowQuery = () => `
 			WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 			WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue }
-			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year, .writingCredits }
+			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 		END] AS nominees
 
 	WITH

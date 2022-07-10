@@ -1,4 +1,4 @@
-import { getDuplicateNameIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidYear } from '../lib/is-valid-year';
 import MaterialBase from './MaterialBase';
 import { CharacterGroup, WritingCredit } from '.';
@@ -14,6 +14,7 @@ export default class Material extends MaterialBase {
 			year,
 			originalVersionMaterial,
 			writingCredits,
+			subMaterials,
 			characterGroups
 		} = props;
 
@@ -25,6 +26,10 @@ export default class Material extends MaterialBase {
 
 		this.writingCredits = writingCredits
 			? writingCredits.map(writingCredit => new WritingCredit(writingCredit))
+			: [];
+
+		this.subMaterials = subMaterials
+			? subMaterials.map(subMaterial => new MaterialBase(subMaterial))
 			: [];
 
 		this.characterGroups = characterGroups
@@ -57,6 +62,20 @@ export default class Material extends MaterialBase {
 				subject: { name: this.name, differentiator: this.differentiator }
 			})
 		);
+
+		const duplicateSubMaterialIndices = getDuplicateBaseInstanceIndices(this.subMaterials);
+
+		this.subMaterials.forEach((subMaterial, index) => {
+
+			subMaterial.validateName({ isRequired: false });
+
+			subMaterial.validateDifferentiator();
+
+			subMaterial.validateNoAssociationWithSelf(this.name, this.differentiator);
+
+			subMaterial.validateUniquenessInGroup({ isDuplicate: duplicateSubMaterialIndices.includes(index) });
+
+		});
 
 		const duplicateCharacterGroupIndices = getDuplicateNameIndices(this.characterGroups);
 

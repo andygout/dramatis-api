@@ -442,6 +442,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 2',
 					format: 'play',
 					year: 1599,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{
@@ -457,6 +458,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry V',
 					format: 'play',
 					year: 1599,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: []
 				},
@@ -466,6 +468,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'Henry IV, Part 1',
 					format: 'play',
 					year: 1597,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{
@@ -481,6 +484,7 @@ describe('Character with variant depiction and portrayal names', () => {
 					name: 'The Merry Wives of Windsor',
 					format: 'play',
 					year: 1597,
+					surMaterial: null,
 					writingCredits: [],
 					depictions: [
 						{

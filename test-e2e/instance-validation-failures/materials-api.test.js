@@ -62,6 +62,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -107,6 +108,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -157,6 +159,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							model: 'CHARACTER_GROUP',
@@ -236,6 +239,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -287,6 +291,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 
@@ -343,6 +348,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: [
 						{
 							model: 'CHARACTER_GROUP',
@@ -432,6 +438,7 @@ describe('Instance validation failures: Materials API', () => {
 						errors: {}
 					},
 					writingCredits: [],
+					subMaterials: [],
 					characterGroups: []
 				};
 

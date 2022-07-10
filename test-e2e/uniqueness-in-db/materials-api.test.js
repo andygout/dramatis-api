@@ -76,6 +76,14 @@ describe('Uniqueness in database: Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -133,6 +141,7 @@ describe('Uniqueness in database: Materials API', () => {
 					errors: {}
 				},
 				writingCredits: [],
+				subMaterials: [],
 				characterGroups: []
 			};
 
@@ -181,6 +190,14 @@ describe('Uniqueness in database: Materials API', () => {
 								errors: {}
 							}
 						]
+					}
+				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				],
 				characterGroups: [
@@ -242,6 +259,7 @@ describe('Uniqueness in database: Materials API', () => {
 					errors: {}
 				},
 				writingCredits: [],
+				subMaterials: [],
 				characterGroups: []
 			};
 
@@ -290,6 +308,14 @@ describe('Uniqueness in database: Materials API', () => {
 								errors: {}
 							}
 						]
+					}
+				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				],
 				characterGroups: [
@@ -355,6 +381,14 @@ describe('Uniqueness in database: Materials API', () => {
 								errors: {}
 							}
 						]
+					}
+				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				],
 				characterGroups: [
@@ -946,6 +980,134 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
+			expect(await countNodesWithLabel('Material')).to.equal(3);
+
+		});
+
+	});
+
+	describe('Material sub-material uniqueness in database', () => {
+
+		const THE_COAST_OF_UTOPIA_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedMaterialVoyage1 = {
+			model: 'MATERIAL',
+			name: 'Voyage',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedMaterialVoyage2 = {
+			model: 'MATERIAL',
+			name: 'Voyage',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Material',
+				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+				name: 'The Coast of Utopia'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates material and creates sub-material that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Material')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
+				.send({
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage'
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage1);
+			expect(await countNodesWithLabel('Material')).to.equal(2);
+
+		});
+
+		it('updates material and creates sub-material that has same name as existing sub-material but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Material')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
+				.send({
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage',
+							differentiator: '1'
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage2);
+			expect(await countNodesWithLabel('Material')).to.equal(3);
+
+		});
+
+		it('updates material and uses existing sub-material that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Material')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
+				.send({
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage'
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage1);
+			expect(await countNodesWithLabel('Material')).to.equal(3);
+
+		});
+
+		it('updates material and uses existing sub-material that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Material')).to.equal(3);
+
+			const response = await chai.request(app)
+				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
+				.send({
+					name: 'The Coast of Utopia',
+					subMaterials: [
+						{
+							name: 'Voyage',
+							differentiator: '1'
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage2);
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
 		});

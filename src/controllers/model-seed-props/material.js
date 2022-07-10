@@ -6,6 +6,9 @@ export default {
 			]
 		}
 	],
+	subMaterials: [
+		{}
+	],
 	characterGroups: [
 		{
 			characters: [

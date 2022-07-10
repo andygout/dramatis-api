@@ -1,0 +1,561 @@
+{
+	"name": "Salvage",
+	"startDate": "2002-07-19",
+	"pressDate": "2002-08-03",
+	"endDate": "2002-11-23",
+	"material": {
+		"name": "Salvage"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Stephen Dillane",
+			"roles": [
+				{
+					"name": "Alexander Herzen"
+				}
+			]
+		},
+		{
+			"name": "Dominic Barklem",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alexander Green",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "William Green",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ashley Jones",
+			"roles": [
+				{
+					"name": "Sasha Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Anna Maxwell Martin",
+			"roles": [
+				{
+					"name": "Maria Fomm"
+				},
+				{
+					"name": "Olga Herzen",
+					"qualifier": "older",
+					"isAlternate": true
+				},
+				{
+					"name": "Tata Herzen",
+					"qualifier": "adult"
+				}
+			]
+		},
+		{
+			"name": "Alexandra Thomas-Davies",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				},
+				{
+					"name": "Liza",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Francesca Markham",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				},
+				{
+					"name": "Liza",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Samantha Thompson",
+			"roles": [
+				{
+					"name": "Tata Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				},
+				{
+					"name": "Liza",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Gottfried Kinkel"
+				},
+				{
+					"name": "Pavel Vetoshnikov"
+				}
+			]
+		},
+		{
+			"name": "Felicity Dean",
+			"roles": [
+				{
+					"name": "Joanna Kinkel"
+				}
+			]
+		},
+		{
+			"name": "Eve Best",
+			"roles": [
+				{
+					"name": "Malwida von Meysenbug"
+				}
+			]
+		},
+		{
+			"name": "Sam Troughton",
+			"roles": [
+				{
+					"name": "Captain Peks"
+				},
+				{
+					"name": "Sasha Herzen",
+					"qualifier": "adult"
+				},
+				{
+					"name": "Doctor"
+				}
+			]
+		},
+		{
+			"name": "Jack James",
+			"roles": [
+				{
+					"name": "Alphonse de Ville"
+				},
+				{
+					"name": "Semlov"
+				}
+			]
+		},
+		{
+			"name": "David Verrey",
+			"roles": [
+				{
+					"name": "Alexandre Ledru-Rollin"
+				}
+			]
+		},
+		{
+			"name": "Martin Chamberlain",
+			"roles": [
+				{
+					"name": "Lajos Kossuth"
+				},
+				{
+					"name": "Perotkin"
+				}
+			]
+		},
+		{
+			"name": "Richard Hollis",
+			"roles": [
+				{
+					"name": "Giuseppe Mazzini"
+				},
+				{
+					"name": "Czerniecki"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Ernest Jones"
+				}
+			]
+		},
+		{
+			"name": "Paul Ritter",
+			"roles": [
+				{
+					"name": "Karl Marx"
+				}
+			]
+		},
+		{
+			"name": "John Nolan",
+			"roles": [
+				{
+					"name": "Arnold Ruge"
+				},
+				{
+					"name": "Zenkowicz"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Stanislaw Worcell"
+				}
+			]
+		},
+		{
+			"name": "Will Keen",
+			"roles": [
+				{
+					"name": "Louis Blanc"
+				}
+			]
+		},
+		{
+			"name": "Janine Duvitski",
+			"roles": [
+				{
+					"name": "Mrs Blainey"
+				}
+			]
+		},
+		{
+			"name": "Clemmie Hooton",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alice Knight",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Harriet Lunnon",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Casi Toy",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "child",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Janet Spencer-Turner",
+			"roles": [
+				{
+					"name": "Parlourmaid"
+				}
+			]
+		},
+		{
+			"name": "Sarah Manton",
+			"roles": [
+				{
+					"name": "A Polish émigré"
+				}
+			]
+		},
+		{
+			"name": "Douglas Henshall",
+			"roles": [
+				{
+					"name": "Michael Bakunin"
+				}
+			]
+		},
+		{
+			"name": "Jennifer Scott Malden",
+			"roles": [
+				{
+					"name": "Emily Jones"
+				}
+			]
+		},
+		{
+			"name": "Kemal Sylvester",
+			"roles": [
+				{
+					"name": "Tchorzewski"
+				}
+			]
+		},
+		{
+			"name": "Simon Day",
+			"roles": [
+				{
+					"name": "Nicholas Ogarev"
+				}
+			]
+		},
+		{
+			"name": "Lucy Whybrow",
+			"roles": [
+				{
+					"name": "Natalie Ogarev"
+				}
+			]
+		},
+		{
+			"name": "Guy Henry",
+			"roles": [
+				{
+					"name": "Ivan Turgenev"
+				}
+			]
+		},
+		{
+			"name": "Madeleine Edis",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "older",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ruth Jones",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "older",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Charlotte Nott-Macaire",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "older",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Charlotte Emmerson",
+			"roles": [
+				{
+					"name": "Mary Sutherland"
+				}
+			]
+		},
+		{
+			"name": "Raymond Coulthard",
+			"roles": [
+				{
+					"name": "Nicholas Chernyshevsky"
+				}
+			]
+		},
+		{
+			"name": "Lewis Crutch",
+			"roles": [
+				{
+					"name": "Henry Sutherland",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Freddie Hale",
+			"roles": [
+				{
+					"name": "Henry Sutherland",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Thomas Moll",
+			"roles": [
+				{
+					"name": "Henry Sutherland",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Greg Sheffield",
+			"roles": [
+				{
+					"name": "Henry Sutherland",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Sleptsov"
+				}
+			]
+		},
+		{
+			"name": "Thomas Arnold",
+			"roles": [
+				{
+					"name": "Korf"
+				}
+			]
+		},
+		{
+			"name": "Rachel Ferjani",
+			"roles": [
+				{
+					"name": "Teresina"
+				}
+			]
+		},
+		{
+			"name": "Jasmine Hyde",
+			"roles": [
+				{
+					"name": "Olga Herzen",
+					"qualifier": "adult"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Trevor Nunn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "William Dudley"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Hersey"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choregrapher",
+			"entities": [
+				{
+					"name": "David Bolger"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				}
+			]
+		},
+		{
+			"name": "Musical Directors",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				},
+				{
+					"name": "Mark Bousie"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Stephen Rayne"
+				}
+			]
+		}
+	]
+}

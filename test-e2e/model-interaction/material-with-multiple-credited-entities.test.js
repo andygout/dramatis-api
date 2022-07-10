@@ -137,6 +137,7 @@ describe('Materials with entities credited multiple times', () => {
 					name: 'Xyzzy',
 					format: 'play',
 					year: 2015,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -193,6 +194,7 @@ describe('Materials with entities credited multiple times', () => {
 					name: 'Xyzzy',
 					format: 'play',
 					year: 2015,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',

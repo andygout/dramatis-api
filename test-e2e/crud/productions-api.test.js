@@ -1522,6 +1522,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'The Tragedy of Hamlet, Prince of Denmark',
 					format: null,
 					year: null,
+					surMaterial: null,
 					writingCredits: []
 				},
 				venue: {
@@ -3439,6 +3440,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'The Tragedy of King Richard III',
 					format: null,
 					year: null,
+					surMaterial: null,
 					writingCredits: []
 				},
 				venue: {

@@ -1,0 +1,140 @@
+{
+	"name": "Salvage",
+	"format": "play",
+	"year": 2002,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alexander Herzen"
+				},
+				{
+					"name": "Sasha Herzen"
+				},
+				{
+					"name": "Tata Herzen"
+				},
+				{
+					"name": "Olga Herzen"
+				},
+				{
+					"name": "Maria Fomm"
+				},
+				{
+					"name": "Gottfried Kinkel"
+				},
+				{
+					"name": "Joanna Kinkel"
+				},
+				{
+					"name": "Malwida von Meysenbug"
+				},
+				{
+					"name": "Arnold Ruge"
+				},
+				{
+					"name": "Karl Marx"
+				},
+				{
+					"name": "Ernest Jones"
+				},
+				{
+					"name": "Alexandre Ledru-Rollin"
+				},
+				{
+					"name": "Louis Blanc"
+				},
+				{
+					"name": "Stanislaw Worcell"
+				},
+				{
+					"name": "Giuseppe Mazzini"
+				},
+				{
+					"name": "Lajos Kossuth"
+				},
+				{
+					"name": "Captain Peks"
+				},
+				{
+					"name": "Alphonse de Ville"
+				},
+				{
+					"name": "Parlourmaid"
+				},
+				{
+					"name": "Zenkowicz"
+				},
+				{
+					"name": "Emily Jones"
+				},
+				{
+					"name": "Ciernecki"
+				},
+				{
+					"name": "Tchorzewski"
+				},
+				{
+					"name": "Michael Bakunin"
+				},
+				{
+					"name": "Nicholas Ogarev"
+				},
+				{
+					"name": "Natalie Ogarev"
+				},
+				{
+					"name": "Mrs Blainey"
+				},
+				{
+					"name": "A Polish émigré"
+				},
+				{
+					"name": "Ivan Turgenev"
+				},
+				{
+					"name": "Mary Sutherland"
+				},
+				{
+					"name": "Henry Sutherland"
+				},
+				{
+					"name": "Nicholas Chernyshevsky"
+				},
+				{
+					"name": "Doctor"
+				},
+				{
+					"name": "Perotkin"
+				},
+				{
+					"name": "Semlov"
+				},
+				{
+					"name": "Korf"
+				},
+				{
+					"name": "Pavel Vetoshnikov"
+				},
+				{
+					"name": "Sleptsov"
+				},
+				{
+					"name": "Liza"
+				},
+				{
+					"name": "Teresina"
+				}
+			]
+		}
+	]
+}

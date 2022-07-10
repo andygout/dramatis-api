@@ -170,6 +170,7 @@ describe('Material with multiple productions', () => {
 				name: 'Twelfth Night',
 				format: 'play',
 				year: 1602,
+				surMaterial: null,
 				writingCredits: []
 			};
 
@@ -191,6 +192,7 @@ describe('Material with multiple productions', () => {
 				name: 'Twelfth Night',
 				format: 'play',
 				year: 1602,
+				surMaterial: null,
 				writingCredits: []
 			};
 
@@ -212,6 +214,7 @@ describe('Material with multiple productions', () => {
 				name: 'Twelfth Night',
 				format: 'play',
 				year: 1602,
+				surMaterial: null,
 				writingCredits: []
 			};
 

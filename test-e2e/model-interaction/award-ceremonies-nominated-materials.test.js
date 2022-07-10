@@ -1182,6 +1182,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Piyo',
 									format: 'musical',
 									year: 2008,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1279,6 +1280,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Wibble',
 									format: 'play',
 									year: 2009,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1306,6 +1308,7 @@ describe('Award ceremonies with nominated materials', () => {
 													name: 'Waldo',
 													format: 'novel',
 													year: 1974,
+													surMaterial: null,
 													writingCredits: [
 														{
 															name: 'by',
@@ -1375,6 +1378,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Xyzzy',
 									format: 'play',
 									year: 2008,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1477,6 +1481,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Hoge',
 									format: 'play',
 									year: 2008,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1545,6 +1550,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Plugh',
 									format: 'play',
 									year: 2009,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1626,6 +1632,7 @@ describe('Award ceremonies with nominated materials', () => {
 									name: 'Wibble',
 									format: 'play',
 									year: 2009,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -1653,6 +1660,7 @@ describe('Award ceremonies with nominated materials', () => {
 													name: 'Waldo',
 													format: 'novel',
 													year: 1974,
+													surMaterial: null,
 													writingCredits: [
 														{
 															model: 'WRITING_CREDIT',
@@ -1753,7 +1761,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: TOTO_MATERIAL_UUID,
 													name: 'Toto',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -1821,7 +1830,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: FRED_MATERIAL_UUID,
 													name: 'Fred',
 													format: 'play',
-													year: 2010
+													year: 2010,
+													surMaterial: null
 												}
 											]
 										}
@@ -1904,7 +1914,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: TOTO_MATERIAL_UUID,
 													name: 'Toto',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -1972,7 +1983,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: FRED_MATERIAL_UUID,
 													name: 'Fred',
 													format: 'play',
-													year: 2010
+													year: 2010,
+													surMaterial: null
 												}
 											]
 										}
@@ -2042,7 +2054,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'musical',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2086,7 +2099,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: THUD_MATERIAL_UUID,
 													name: 'Thud',
 													format: 'play',
-													year: 2007
+													year: 2007,
+													surMaterial: null
 												}
 											]
 										}
@@ -2154,7 +2168,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'musical',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2198,7 +2213,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: THUD_MATERIAL_UUID,
 													name: 'Thud',
 													format: 'play',
-													year: 2007
+													year: 2007,
+													surMaterial: null
 												}
 											]
 										}
@@ -2268,7 +2284,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'musical',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2336,7 +2353,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'musical',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2419,7 +2437,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										},
@@ -2454,7 +2473,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -2498,7 +2518,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: GRAULT_MATERIAL_UUID,
 													name: 'Grault',
 													format: 'play',
-													year: 2007
+													year: 2007,
+													surMaterial: null
 												}
 											]
 										}
@@ -2566,7 +2587,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -2614,7 +2636,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2697,7 +2720,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										},
@@ -2745,7 +2769,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -2813,7 +2838,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -2861,7 +2887,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -2931,7 +2958,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -2999,7 +3027,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3071,7 +3100,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3139,7 +3169,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3212,7 +3243,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3280,7 +3312,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3364,7 +3397,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3432,7 +3466,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3515,7 +3550,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3583,7 +3619,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3666,7 +3703,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3734,7 +3772,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2009
+													year: 2009,
+													surMaterial: null
 												}
 											]
 										}
@@ -3817,7 +3856,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: TOTO_MATERIAL_UUID,
 													name: 'Toto',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -3875,7 +3915,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -3943,7 +3984,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4016,7 +4058,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4084,7 +4127,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4170,7 +4214,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4225,7 +4270,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4311,7 +4357,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}
@@ -4366,7 +4413,8 @@ describe('Award ceremonies with nominated materials', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2008
+													year: 2008,
+													surMaterial: null
 												}
 											]
 										}

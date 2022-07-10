@@ -676,10 +676,20 @@ const getShowQuery = () => `
 	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
+	OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
-	WITH production, venue, material, entityRel, entity, sourceMaterialWriterRel, sourceMaterialWriter
+	WITH
+		production,
+		venue,
+		material,
+		entityRel,
+		entity,
+		entitySurMaterial,
+		sourceMaterialWriterRel,
+		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
@@ -688,6 +698,7 @@ const getShowQuery = () => `
 		material,
 		entityRel,
 		entity,
+		entitySurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -696,7 +707,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH production, venue, material, entityRel, entity,
+	WITH production, venue, material, entityRel, entity, entitySurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -719,6 +730,10 @@ const getShowQuery = () => `
 					.name,
 					.format,
 					.year,
+					surMaterial: CASE entitySurMaterial WHEN NULL
+						THEN null
+						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
@@ -750,13 +765,26 @@ const getShowQuery = () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, venue, material, writingCredits, castMember, role, character
+	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
+	WITH DISTINCT production, venue, material, surMaterial, writingCredits, castMember, role, character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, venue, castMember,
 		CASE material WHEN NULL
 			THEN null
-			ELSE material { model: 'MATERIAL', .uuid, .name, .format, .year, writingCredits }
+			ELSE material {
+				model: 'MATERIAL',
+				.uuid,
+				.name,
+				.format,
+				.year,
+				surMaterial: CASE surMaterial WHEN NULL
+					THEN null
+					ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+				END,
+				writingCredits
+			}
 		END AS material,
 		COLLECT(
 			CASE role.roleName WHEN NULL
@@ -1169,6 +1197,8 @@ const getShowQuery = () => `
 				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
 			)
 
+	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+
 	WITH
 		production,
 		material,
@@ -1185,7 +1215,8 @@ const getShowQuery = () => `
 		nominatedEntities,
 		coNominatedProductions,
 		nominatedMaterialRel,
-		nominatedMaterial
+		nominatedMaterial,
+		nominatedSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -1206,7 +1237,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE nominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE nominatedSurMaterial WHEN NULL
+						THEN null
+						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition

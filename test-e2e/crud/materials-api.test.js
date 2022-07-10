@@ -50,6 +50,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -134,6 +142,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -192,6 +208,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								errors: {}
 							}
 						]
+					}
+				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				],
 				characterGroups: [
@@ -258,6 +282,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -298,6 +330,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				originalVersionMaterial: null,
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
+				surMaterial: null,
+				subMaterials: [],
 				writingCredits: [],
 				characterGroups: [],
 				productions: [],
@@ -333,6 +367,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					errors: {}
 				},
 				writingCredits: [],
+				subMaterials: [],
 				characterGroups: []
 			};
 
@@ -346,23 +381,29 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const MATERIAL_UUID = '9';
-		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID = '10';
-		const HENRIK_IBSEN_PERSON_UUID = '11';
-		const IBSEN_THEATRE_COMPANY_UUID = '12';
-		const DAVID_ELDRIDGE_PERSON_UUID = '13';
-		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID = '14';
-		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '15';
-		const GUNHILD_BORKMAN_CHARACTER_UUID = '16';
-		const ERHART_BORKMAN_CHARACTER_UUID = '17';
-		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '26';
-		const ANTON_CHEKHOV_PERSON_UUID = '27';
-		const CHEKHOV_THEATRE_COMPANY_UUID = '28';
-		const BENEDICT_ANDREWS_PERSON_UUID = '29';
-		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '30';
-		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '31';
-		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '32';
-		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '33';
+		const MATERIAL_UUID = '12';
+		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID = '13';
+		const HENRIK_IBSEN_PERSON_UUID = '14';
+		const IBSEN_THEATRE_COMPANY_UUID = '15';
+		const DAVID_ELDRIDGE_PERSON_UUID = '16';
+		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID = '17';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_1_MATERIAL_UUID = '18';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_2_MATERIAL_UUID = '19';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_3_MATERIAL_UUID = '20';
+		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '21';
+		const GUNHILD_BORKMAN_CHARACTER_UUID = '22';
+		const ERHART_BORKMAN_CHARACTER_UUID = '23';
+		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '35';
+		const ANTON_CHEKHOV_PERSON_UUID = '36';
+		const CHEKHOV_THEATRE_COMPANY_UUID = '37';
+		const BENEDICT_ANDREWS_PERSON_UUID = '38';
+		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '39';
+		const THREE_SISTERS_SUB_MATERIAL_1_MATERIAL_UUID = '40';
+		const THREE_SISTERS_SUB_MATERIAL_2_MATERIAL_UUID = '41';
+		const THREE_SISTERS_SUB_MATERIAL_3_MATERIAL_UUID = '42';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '43';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '44';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '45';
 
 		before(async () => {
 
@@ -430,6 +471,21 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 									differentiator: '3'
 								}
 							]
+						}
+					],
+					// Contrivance for purposes of test.
+					subMaterials: [
+						{
+							name: 'John Gabriel Borkman sub-material #1',
+							differentiator: '1'
+						},
+						{
+							name: 'John Gabriel Borkman sub-material #2',
+							differentiator: '1'
+						},
+						{
+							name: 'John Gabriel Borkman sub-material #3',
+							differentiator: '1'
 						}
 					],
 					characterGroups: [
@@ -555,6 +611,32 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #1',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #2',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #3',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -615,7 +697,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			expect(await countNodesWithLabel('Material')).to.equal(6);
 
 		});
 
@@ -637,6 +719,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'John Gabriel Borkman',
 					format: null,
 					year: null,
+					surMaterial: null,
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
@@ -679,9 +762,37 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								name: 'John Gabriel Borkman',
 								format: null,
 								year: null,
+								surMaterial: null,
 								writingCredits: []
 							}
 						]
+					}
+				],
+				surMaterial: null,
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						uuid: JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_1_MATERIAL_UUID,
+						name: 'John Gabriel Borkman sub-material #1',
+						format: null,
+						year: null,
+						writingCredits: []
+					},
+					{
+						model: 'MATERIAL',
+						uuid: JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_2_MATERIAL_UUID,
+						name: 'John Gabriel Borkman sub-material #2',
+						format: null,
+						year: null,
+						writingCredits: []
+					},
+					{
+						model: 'MATERIAL',
+						uuid: JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_3_MATERIAL_UUID,
+						name: 'John Gabriel Borkman sub-material #3',
+						format: null,
+						year: null,
+						writingCredits: []
 					}
 				],
 				characterGroups: [
@@ -824,6 +935,32 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #1',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #2',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #3',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -889,7 +1026,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('updates material', async () => {
 
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			expect(await countNodesWithLabel('Material')).to.equal(6);
 
 			const response = await chai.request(app)
 				.put(`/materials/${MATERIAL_UUID}`)
@@ -937,6 +1074,21 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 									differentiator: '3'
 								}
 							]
+						}
+					],
+					// Contrivance for purposes of test.
+					subMaterials: [
+						{
+							name: 'Three Sisters sub-material #1',
+							differentiator: '1'
+						},
+						{
+							name: 'Three Sisters sub-material #2',
+							differentiator: '1'
+						},
+						{
+							name: 'Three Sisters sub-material #3',
+							differentiator: '1'
 						}
 					],
 					characterGroups: [
@@ -1062,6 +1214,34 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: 'Three Sisters sub-material #1',
+						differentiator: '1',
+						errors: {}
+					},
+
+					{
+						model: 'MATERIAL',
+						name: 'Three Sisters sub-material #2',
+						differentiator: '1',
+						errors: {}
+					},
+
+					{
+						model: 'MATERIAL',
+						name: 'Three Sisters sub-material #3',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1122,7 +1302,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(5);
+			expect(await countNodesWithLabel('Material')).to.equal(11);
 
 		});
 
@@ -1144,6 +1324,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Three Sisters',
 					format: null,
 					year: null,
+					surMaterial: null,
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
@@ -1186,9 +1367,37 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								name: 'Three Sisters',
 								format: null,
 								year: null,
+								surMaterial: null,
 								writingCredits: []
 							}
 						]
+					}
+				],
+				surMaterial: null,
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						uuid: THREE_SISTERS_SUB_MATERIAL_1_MATERIAL_UUID,
+						name: 'Three Sisters sub-material #1',
+						format: null,
+						year: null,
+						writingCredits: []
+					},
+					{
+						model: 'MATERIAL',
+						uuid: THREE_SISTERS_SUB_MATERIAL_2_MATERIAL_UUID,
+						name: 'Three Sisters sub-material #2',
+						format: null,
+						year: null,
+						writingCredits: []
+					},
+					{
+						model: 'MATERIAL',
+						uuid: THREE_SISTERS_SUB_MATERIAL_3_MATERIAL_UUID,
+						name: 'Three Sisters sub-material #3',
+						format: null,
+						year: null,
+						writingCredits: []
 					}
 				],
 				characterGroups: [
@@ -1232,7 +1441,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('updates material to remove all associations prior to deletion', async () => {
 
-			expect(await countNodesWithLabel('Material')).to.equal(5);
+			expect(await countNodesWithLabel('Material')).to.equal(11);
 
 			const response = await chai.request(app)
 				.put(`/materials/${MATERIAL_UUID}`)
@@ -1271,6 +1480,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1292,13 +1509,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(5);
+			expect(await countNodesWithLabel('Material')).to.equal(11);
 
 		});
 
 		it('deletes material', async () => {
 
-			expect(await countNodesWithLabel('Material')).to.equal(5);
+			expect(await countNodesWithLabel('Material')).to.equal(11);
 
 			const response = await chai.request(app)
 				.delete(`/materials/${MATERIAL_UUID}`);
@@ -1317,12 +1534,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					errors: {}
 				},
 				writingCredits: [],
+				subMaterials: [],
 				characterGroups: []
 			};
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(4);
+			expect(await countNodesWithLabel('Material')).to.equal(10);
 
 		});
 
@@ -1404,6 +1622,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'A Word from Our Sponsor',
 					format: 'play',
 					year: 1995,
+					surMaterial: null,
 					writingCredits: []
 				},
 				{
@@ -1412,6 +1631,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Communicating Doors',
 					format: 'play',
 					year: 1994,
+					surMaterial: null,
 					writingCredits: []
 				},
 				{
@@ -1420,6 +1640,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Haunting Julia',
 					format: 'play',
 					year: 1994,
+					surMaterial: null,
 					writingCredits: []
 				},
 				{
@@ -1428,6 +1649,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'The Musical Jigsaw Play',
 					format: 'play',
 					year: 1994,
+					surMaterial: null,
 					writingCredits: []
 				},
 				{
@@ -1436,6 +1658,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Dreams from a Summer House',
 					format: 'play',
 					year: 1992,
+					surMaterial: null,
 					writingCredits: []
 				}
 			];

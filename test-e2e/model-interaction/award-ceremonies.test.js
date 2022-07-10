@@ -1674,6 +1674,7 @@ describe('Award ceremonies', () => {
 									name: 'Garply',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -1722,6 +1723,7 @@ describe('Award ceremonies', () => {
 									name: 'Plugh',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -1820,6 +1822,7 @@ describe('Award ceremonies', () => {
 									name: 'Garply',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -1888,6 +1891,7 @@ describe('Award ceremonies', () => {
 									name: 'Fred',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								},
 								{
@@ -1896,6 +1900,7 @@ describe('Award ceremonies', () => {
 									name: 'Waldo',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2126,6 +2131,7 @@ describe('Award ceremonies', () => {
 									name: 'Fred',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2143,6 +2149,7 @@ describe('Award ceremonies', () => {
 									name: 'Garply',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								},
 								{
@@ -2151,6 +2158,7 @@ describe('Award ceremonies', () => {
 									name: 'Waldo',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2168,6 +2176,7 @@ describe('Award ceremonies', () => {
 									name: 'Plugh',
 									format: 'play',
 									year: 2019,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2345,6 +2354,7 @@ describe('Award ceremonies', () => {
 									name: 'Wibble',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2423,6 +2433,7 @@ describe('Award ceremonies', () => {
 									name: 'Xyzzy',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								},
 								{
@@ -2431,6 +2442,7 @@ describe('Award ceremonies', () => {
 									name: 'Hoge',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2512,6 +2524,7 @@ describe('Award ceremonies', () => {
 									name: 'Wibble',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2550,6 +2563,7 @@ describe('Award ceremonies', () => {
 									name: 'Piyo',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2662,6 +2676,7 @@ describe('Award ceremonies', () => {
 									name: 'Thud',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2679,6 +2694,7 @@ describe('Award ceremonies', () => {
 									name: 'Wibble',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2696,6 +2712,7 @@ describe('Award ceremonies', () => {
 									name: 'Xyzzy',
 									format: 'play',
 									year: 2017,
+									surMaterial: null,
 									writingCredits: []
 								}
 							]
@@ -2813,7 +2830,8 @@ describe('Award ceremonies', () => {
 													uuid: GRAULT_MATERIAL_UUID,
 													name: 'Grault',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										},
@@ -2869,14 +2887,16 @@ describe('Award ceremonies', () => {
 													uuid: PLUGH_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												},
 												{
 													model: 'MATERIAL',
 													uuid: FRED_MATERIAL_UUID,
 													name: 'Fred',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -2927,7 +2947,8 @@ describe('Award ceremonies', () => {
 													uuid: GRAULT_MATERIAL_UUID,
 													name: 'Grault',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -2983,7 +3004,8 @@ describe('Award ceremonies', () => {
 													uuid: TOTO_MATERIAL_UUID,
 													name: 'Toto',
 													format: 'play',
-													year: 2018
+													year: 2018,
+													surMaterial: null
 												}
 											]
 										}
@@ -3096,14 +3118,16 @@ describe('Award ceremonies', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												},
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -3171,7 +3195,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										},
@@ -3214,7 +3239,8 @@ describe('Award ceremonies', () => {
 													uuid: PLUGH_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -3314,7 +3340,8 @@ describe('Award ceremonies', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -3404,14 +3431,16 @@ describe('Award ceremonies', () => {
 													uuid: PLUGH_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												},
 												{
 													model: 'MATERIAL',
 													uuid: FRED_MATERIAL_UUID,
 													name: 'Fred',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -3466,7 +3495,8 @@ describe('Award ceremonies', () => {
 													uuid: FUGA_MATERIAL_UUID,
 													name: 'Fuga',
 													format: 'play',
-													year: 2018
+													year: 2018,
+													surMaterial: null
 												}
 											]
 										}
@@ -3536,7 +3566,8 @@ describe('Award ceremonies', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -3598,7 +3629,8 @@ describe('Award ceremonies', () => {
 													uuid: PLUGH_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -3657,7 +3689,8 @@ describe('Award ceremonies', () => {
 													uuid: PIYO_MATERIAL_UUID,
 													name: 'Piyo',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										},
@@ -3716,7 +3749,8 @@ describe('Award ceremonies', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -3831,7 +3865,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -3909,7 +3944,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -3976,7 +4012,8 @@ describe('Award ceremonies', () => {
 													uuid: TUTU_MATERIAL_UUID,
 													name: 'Tutu',
 													format: 'play',
-													year: 2018
+													year: 2018,
+													surMaterial: null
 												}
 											]
 										}
@@ -4125,7 +4162,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -4238,7 +4276,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -4400,7 +4439,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -4514,7 +4554,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -4587,7 +4628,8 @@ describe('Award ceremonies', () => {
 													uuid: TUTU_MATERIAL_UUID,
 													name: 'Tutu',
 													format: 'play',
-													year: 2018
+													year: 2018,
+													surMaterial: null
 												}
 											]
 										}
@@ -4734,7 +4776,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -4846,7 +4889,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5006,7 +5050,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -5120,7 +5165,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5197,7 +5243,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5344,7 +5391,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -5456,7 +5504,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5616,7 +5665,8 @@ describe('Award ceremonies', () => {
 													uuid: WIBBLE_MATERIAL_UUID,
 													name: 'Wibble',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -5717,7 +5767,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5795,7 +5846,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -5865,7 +5917,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										},
@@ -5945,7 +5998,8 @@ describe('Award ceremonies', () => {
 													uuid: GARPLY_MATERIAL_UUID,
 													name: 'Garply',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -6072,14 +6126,16 @@ describe('Award ceremonies', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												},
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -6182,7 +6238,8 @@ describe('Award ceremonies', () => {
 													uuid: XYZZY_MATERIAL_UUID,
 													name: 'Xyzzy',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -6257,6 +6314,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -6339,6 +6397,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Prize Recipient',
+											recipientMaterial: null,
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -6375,6 +6434,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6435,6 +6495,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
+											recipientMaterial: null,
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -6463,6 +6524,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6508,6 +6570,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -6603,6 +6666,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientMaterial: null,
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -6654,6 +6718,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6737,6 +6802,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'First Place',
+											recipientMaterial: null,
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -6765,6 +6831,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientMaterial: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6827,6 +6894,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientMaterial: null,
 											entities: [],
 											productions: [],
 											coMaterials: [

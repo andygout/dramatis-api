@@ -116,6 +116,7 @@ describe('Materials with rights grantor credits', () => {
 					name: 'The Ladykillers',
 					format: 'play',
 					year: 2011,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -138,6 +139,7 @@ describe('Materials with rights grantor credits', () => {
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
 									year: 1955,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
@@ -193,6 +195,7 @@ describe('Materials with rights grantor credits', () => {
 					name: 'The Ladykillers',
 					format: 'play',
 					year: 2011,
+					surMaterial: null,
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -215,6 +218,7 @@ describe('Materials with rights grantor credits', () => {
 									name: 'The Ladykillers',
 									format: 'motion picture screenplay',
 									year: 1955,
+									surMaterial: null,
 									writingCredits: [
 										{
 											model: 'WRITING_CREDIT',
