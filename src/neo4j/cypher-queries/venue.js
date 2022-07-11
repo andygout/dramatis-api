@@ -96,15 +96,13 @@ const getShowQuery = () => `
 			END
 		) AS subVenues
 
-	OPTIONAL MATCH path=
-		(venue)-[:HAS_SUB_VENUE*0..1]->(subVenueForProduction:Venue)<-[:PLAYS_AT]-(production:Production)
+	OPTIONAL MATCH (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction:Venue)<-[:PLAYS_AT]-(production:Production)
 
 	WITH
 		venue,
 		surVenue,
 		subVenues,
-		subVenueForProduction,
-		LENGTH(path) AS venueToProductionPathLength,
+		venueLinkedToProduction,
 		production
 		ORDER BY production.startDate DESC, production.name
 
@@ -124,8 +122,8 @@ const getShowQuery = () => `
 					.name,
 					.startDate,
 					.endDate,
-					subVenue: CASE venueToProductionPathLength WHEN 2
-						THEN subVenueForProduction { model: 'VENUE', .uuid, .name }
+					subVenue: CASE WHEN venue <> venueLinkedToProduction
+						THEN venueLinkedToProduction { model: 'VENUE', .uuid, .name }
 						ELSE null
 					END
 				}

@@ -553,7 +553,7 @@ const getShowQuery = () => `
 			END
 		) AS characterGroups
 
-	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL|PRODUCTION_OF*1..2]-(production:Production)
+	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
 
 	WITH
 		material,
@@ -615,7 +615,8 @@ const getShowQuery = () => `
 		characterGroups,
 		productions
 
-	OPTIONAL MATCH path=(material)-[:HAS_NOMINEE|HAS_SUB_MATERIAL*1..2]-(category:AwardCeremonyCategory)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..1]-(materialLinkedToCategory:Material)
+		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
 	WITH
@@ -623,12 +624,12 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
+		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
-		HEAD([rel IN RELATIONSHIPS(path) WHERE TYPE(rel) = 'HAS_NOMINEE']) AS nomineeRel,
-		CASE SIZE([node in NODES(path) WHERE HEAD(LABELS(node)) = "Material"]) WHEN 2
-			THEN LAST([node in NODES(path) WHERE HEAD(LABELS(node)) = "Material"])
+		CASE WHEN material <> materialLinkedToCategory
+			THEN materialLinkedToCategory
 			ELSE null
 		END AS recipientMaterial
 
