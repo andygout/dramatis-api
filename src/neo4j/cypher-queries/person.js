@@ -1,8 +1,9 @@
 const getShowQuery = () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL*1..2]-(material:Material)
-		WHERE NOT (person)<-[:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL*1..2]-(:Material)<-[:HAS_SUB_MATERIAL]-(material)
+	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
+		WHERE NOT (person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
+			<-[:HAS_SUB_MATERIAL]-(material)
 
 	WITH person, COLLECT(DISTINCT(material)) AS materials
 
@@ -667,7 +668,8 @@ const getShowQuery = () => `
 			END
 		) AS crewProductions
 
-	OPTIONAL MATCH path=(person)<-[:HAS_NOMINEE|HAS_WRITING_ENTITY*1..2]-(category:AwardCeremonyCategory)
+	OPTIONAL MATCH path=(person)
+		<-[:HAS_WRITING_ENTITY*0..1]-()<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 	WHERE
 		(NONE(rel IN RELATIONSHIPS(path)
@@ -682,10 +684,10 @@ const getShowQuery = () => `
 		castMemberProductions,
 		creativeProductions,
 		crewProductions,
+		nomineeRel,
 		category,
 		categoryRel,
-		ceremony,
-		HEAD([rel IN RELATIONSHIPS(path) WHERE TYPE(rel) = 'HAS_NOMINEE']) AS nomineeRel
+		ceremony
 
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
@@ -1414,15 +1416,13 @@ const getShowQuery = () => `
 			ceremonies
 		}) AS subsequentVersionMaterialAwards
 
-	OPTIONAL MATCH path=(person)<-[:USES_SOURCE_MATERIAL|HAS_WRITING_ENTITY*1..2]-(nominatedSourcingMaterial:Material)
+	OPTIONAL MATCH path=(person)
+		<-[writingRel:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(nominatedSourcingMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 	WHERE
-		(ANY(rel IN RELATIONSHIPS(path)
-			WHERE
-				rel.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' OR
-				TYPE(rel) = 'USES_SOURCE_MATERIAL'
-		))
+		writingRel.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' OR
+		ANY(rel IN RELATIONSHIPS(path) WHERE TYPE(rel) = 'USES_SOURCE_MATERIAL')
 
 	OPTIONAL MATCH (nominatedSourcingMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSourcingSurMaterial:Material)
 
