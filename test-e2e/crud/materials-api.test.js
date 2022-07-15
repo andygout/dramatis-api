@@ -327,12 +327,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				differentiator: null,
 				format: null,
 				year: null,
+				writingCredits: [],
 				originalVersionMaterial: null,
 				subsequentVersionMaterials: [],
 				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [],
-				writingCredits: [],
 				characterGroups: [],
 				productions: [],
 				sourcingMaterialProductions: [],
@@ -444,7 +444,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 									name: 'Henrik Ibsen',
 									differentiator: '1'
 								},
-								// Contrivance for purposes of test.
 								{
 									model: 'COMPANY',
 									name: 'Ibsen Theatre Company',
@@ -461,7 +460,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'based on',
 							entities: [
@@ -473,7 +471,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							]
 						}
 					],
-					// Contrivance for purposes of test.
 					subMaterials: [
 						{
 							name: 'John Gabriel Borkman sub-material #1',
@@ -713,17 +710,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				differentiator: '2',
 				format: 'play',
 				year: 2007,
-				originalVersionMaterial: {
-					model: 'MATERIAL',
-					uuid: JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID,
-					name: 'John Gabriel Borkman',
-					format: null,
-					year: null,
-					surMaterial: null,
-					writingCredits: []
-				},
-				subsequentVersionMaterials: [],
-				sourcingMaterials: [],
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -768,6 +754,17 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				originalVersionMaterial: {
+					model: 'MATERIAL',
+					uuid: JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'John Gabriel Borkman',
+					format: null,
+					year: null,
+					surMaterial: null,
+					writingCredits: []
+				},
+				subsequentVersionMaterials: [],
+				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [
 					{
@@ -1047,7 +1044,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 									name: 'Anton Chekhov',
 									differentiator: '1'
 								},
-								// Contrivance for purposes of test.
 								{
 									model: 'COMPANY',
 									name: 'Chekhov Theatre Company',
@@ -1064,7 +1060,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'based on',
 							entities: [
@@ -1076,7 +1071,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 							]
 						}
 					],
-					// Contrivance for purposes of test.
 					subMaterials: [
 						{
 							name: 'Three Sisters sub-material #1',
@@ -1318,17 +1312,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				differentiator: '2',
 				format: 'play',
 				year: 2012,
-				originalVersionMaterial: {
-					model: 'MATERIAL',
-					uuid: THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID,
-					name: 'Three Sisters',
-					format: null,
-					year: null,
-					surMaterial: null,
-					writingCredits: []
-				},
-				subsequentVersionMaterials: [],
-				sourcingMaterials: [],
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -1373,6 +1356,17 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						]
 					}
 				],
+				originalVersionMaterial: {
+					model: 'MATERIAL',
+					uuid: THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Three Sisters',
+					format: null,
+					year: null,
+					surMaterial: null,
+					writingCredits: []
+				},
+				subsequentVersionMaterials: [],
+				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [
 					{

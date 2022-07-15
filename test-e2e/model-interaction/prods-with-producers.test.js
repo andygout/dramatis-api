@@ -88,7 +88,6 @@ describe('Productions with producer', () => {
 					name: 'Wyndham\'s Theatre'
 				},
 				producerCredits: [
-					// Contrivance for purposes of test.
 					{
 						entities: [
 							{
@@ -96,7 +95,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company with multiple producer credits for same production.
 					{
 						name: 'in association with',
 						entities: [
@@ -106,7 +104,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'in partnership with',
 						entities: [
@@ -116,7 +113,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'in a co-production with',
 						entities: [
@@ -176,7 +172,6 @@ describe('Productions with producer', () => {
 					name: 'Jerwood Theatre Downstairs'
 				},
 				producerCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'producing by',
 						entities: [
@@ -185,7 +180,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing person with multiple producer credits for same production.
 					{
 						name: 'associate producing by',
 						entities: [
@@ -194,7 +188,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'partnership producing by',
 						entities: [
@@ -204,7 +197,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'co-producing by',
 						entities: [
@@ -264,7 +256,6 @@ describe('Productions with producer', () => {
 					name: 'Jerwood Theatre Upstairs'
 				},
 				producerCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'producing services by',
 						entities: [
@@ -273,7 +264,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company and credited member with multiple producer credits for same production.
 					{
 						name: 'associate producing services by',
 						entities: [
@@ -288,7 +278,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'partnership producing services by',
 						entities: [
@@ -298,7 +287,6 @@ describe('Productions with producer', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'co-producing services by',
 						entities: [
@@ -357,7 +345,6 @@ describe('Productions with producer', () => {
 					name: 'The Site'
 				},
 				producerCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'co-producing services by',
 						entities: [

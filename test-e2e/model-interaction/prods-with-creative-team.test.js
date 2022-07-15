@@ -96,7 +96,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company with multiple creative credits for same production.
 					{
 						name: 'Designer',
 						entities: [
@@ -115,7 +114,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Video Designers',
 						entities: [
@@ -183,7 +181,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company and credited member with multiple creative credits for same production.
 					{
 						name: 'Design by',
 						entities: [
@@ -198,7 +195,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Sound Design by',
 						entities: [
@@ -208,7 +204,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Video Design by',
 						entities: [
@@ -276,7 +271,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing person with multiple creative credits for same production.
 					{
 						name: 'Design',
 						entities: [
@@ -285,7 +279,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Sound Design',
 						entities: [
@@ -295,7 +288,6 @@ describe('Productions with creative team', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Video Design',
 						entities: [
@@ -355,7 +347,6 @@ describe('Productions with creative team', () => {
 					name: 'Cottesloe Theatre'
 				},
 				creativeCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'Video Design by',
 						entities: [

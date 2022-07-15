@@ -18,8 +18,8 @@ describe('Materials with rights grantor credits', () => {
 	const STUDIOCANAL_COMPANY_UUID = '16';
 	const ALISON_MEESE_PERSON_UUID = '17';
 
-	let alisonMeesePerson;
 	let studioCanalCompany;
+	let alisonMeesePerson;
 
 	const sandbox = createSandbox();
 
@@ -82,7 +82,6 @@ describe('Materials with rights grantor credits', () => {
 								model: 'COMPANY',
 								name: 'StudioCanal'
 							},
-							// Contrivance for purposes of test.
 							{
 								name: 'Alison Meese'
 							}
@@ -107,7 +106,7 @@ describe('Materials with rights grantor credits', () => {
 
 	describe('StudioCanal (company)', () => {
 
-		it('includes materials for which they have a rights grantor credit (in which their uuid is nullified)', () => {
+		it('includes materials for which it has a rights grantor credit (in which its uuid is nullified)', () => {
 
 			const expectedRightsGrantorMaterials = [
 				{

@@ -185,7 +185,7 @@ describe('Materials with entities credited multiple times', () => {
 
 	describe('Company', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{

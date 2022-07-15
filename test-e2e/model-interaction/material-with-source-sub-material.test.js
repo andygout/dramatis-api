@@ -41,7 +41,6 @@ describe('Materials with source sub-material', () => {
 
 		await purgeDatabase();
 
-		// Contrivance for purposes of test.
 		await chai.request(app)
 			.post('/materials')
 			.send({
@@ -612,7 +611,7 @@ describe('Materials with source sub-material', () => {
 
 	describe('Royal Shakespeare Company (company)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding sur-material', () => {
+		it('includes materials it has written (in which its uuid is nullified), with corresponding sur-material', () => {
 
 			const expectedMaterials = [
 				{

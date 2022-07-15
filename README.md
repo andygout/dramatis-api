@@ -56,6 +56,12 @@ or
 - In a separate CLI tab run `$ npm run e2e-test`.
 - The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`.
 
+## A note on data used for tests
+For the purposes of providing focused and sufficient test coverage, the data used for tests is a mixture of:
+- real data, e.g. entirely from a real-life production
+- real data with contrived elements, e.g. a real-life play whose credits include made-up entities
+- wholly contrived data, e.g. a made-up awards ceremony that nominates made-up entities
+
 ## Endpoints
 Using venue model as an example.
 

@@ -53,7 +53,6 @@ describe('Material with sub-materials', () => {
 							{
 								name: 'Tom Stoppard'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Sträussler Group'
@@ -84,7 +83,6 @@ describe('Material with sub-materials', () => {
 							{
 								name: 'Tom Stoppard'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Sträussler Group'
@@ -115,7 +113,6 @@ describe('Material with sub-materials', () => {
 							{
 								name: 'Tom Stoppard'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Sträussler Group'
@@ -146,7 +143,6 @@ describe('Material with sub-materials', () => {
 							{
 								name: 'Tom Stoppard'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Sträussler Group'

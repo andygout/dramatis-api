@@ -26,7 +26,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = '56';
 	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = '64';
 
-	let peerGyntOriginalMaterial;
+	let peerGyntOriginalVersionMaterial;
 	let peerGyntSubsequentVersion2Material;
 	let henrikIbsenPerson;
 	let gerryBammanPerson;
@@ -58,7 +58,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Henrik Ibsen'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
@@ -94,7 +93,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Henrik Ibsen'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
@@ -138,7 +136,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Henrik Ibsen'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
@@ -151,7 +148,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Gerry Bamman'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Bamman Theatre Company'
@@ -194,7 +190,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							{
 								name: 'Henrik Ibsen'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Ibsen Theatre Company'
@@ -204,7 +199,6 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				]
 			});
 
-		// Contrivance for purposes of test.
 		await chai.request(app)
 			.post('/materials')
 			.send({
@@ -267,7 +261,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				}
 			});
 
-		peerGyntOriginalMaterial = await chai.request(app)
+		peerGyntOriginalVersionMaterial = await chai.request(app)
 			.get(`/materials/${PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 		peerGyntSubsequentVersion2Material = await chai.request(app)
@@ -369,7 +363,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				}
 			];
 
-			const { subsequentVersionMaterials } = peerGyntOriginalMaterial.body;
+			const { subsequentVersionMaterials } = peerGyntOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
 
@@ -396,7 +390,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 				}
 			];
 
-			const { writingCredits } = peerGyntOriginalMaterial.body;
+			const { writingCredits } = peerGyntOriginalVersionMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
 
@@ -866,7 +860,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Ibsen Theatre Company (company)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified)', () => {
+		it('includes materials it has written (in which its uuid is nullified)', () => {
 
 			const expectedMaterials = [
 				{
@@ -929,7 +923,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 		});
 
-		it('includes subsequent versions of materials they originally wrote (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes subsequent versions of materials it originally wrote (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -1097,7 +1091,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Bamman Theatre Company (company)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{

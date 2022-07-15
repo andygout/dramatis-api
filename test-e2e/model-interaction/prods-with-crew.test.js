@@ -88,7 +88,6 @@ describe('Productions with crew', () => {
 					name: 'Almeida Theatre'
 				},
 				crewCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'Production Manager',
 						entities: [
@@ -97,7 +96,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervisor',
 						entities: [
@@ -107,7 +105,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operator',
 						entities: [
@@ -117,7 +114,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Stage Managers',
 						entities: [
@@ -177,7 +173,6 @@ describe('Productions with crew', () => {
 					name: 'Olivier Theatre'
 				},
 				crewCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'Production Management by',
 						entities: [
@@ -186,7 +181,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing company and credited member with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervision by',
 						entities: [
@@ -201,7 +195,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operation by',
 						entities: [
@@ -211,7 +204,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management by',
 						entities: [
@@ -271,7 +263,6 @@ describe('Productions with crew', () => {
 					name: 'Lyttelton Theatre'
 				},
 				crewCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'Production Management',
 						entities: [
@@ -280,7 +271,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of testing person with multiple crew credits for same production.
 					{
 						name: 'Rigging Supervision',
 						entities: [
@@ -289,7 +279,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Sound Operation',
 						entities: [
@@ -299,7 +288,6 @@ describe('Productions with crew', () => {
 							}
 						]
 					},
-					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management',
 						entities: [
@@ -359,7 +347,6 @@ describe('Productions with crew', () => {
 					name: 'Cottesloe Theatre'
 				},
 				crewCredits: [
-					// Contrivance for purposes of test.
 					{
 						name: 'Stage Management by',
 						entities: [

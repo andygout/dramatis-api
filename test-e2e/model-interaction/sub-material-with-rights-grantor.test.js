@@ -166,7 +166,7 @@ describe('Sub-materials with rights grantor credits', () => {
 
 	describe('C S Lewis Society (company)', () => {
 
-		it('includes materials for which they have a rights grantor credit (in which their uuid is nullified), with corresponding sur-material', () => {
+		it('includes materials for which it has a rights grantor credit (in which its uuid is nullified), with corresponding sur-material', () => {
 
 			const expectedRightsGrantorMaterials = [
 				{

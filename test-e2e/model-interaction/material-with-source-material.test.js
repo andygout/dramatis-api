@@ -75,7 +75,6 @@ describe('Materials with source material', () => {
 							{
 								name: 'William Shakespeare'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The King\'s Men'
@@ -127,7 +126,6 @@ describe('Materials with source material', () => {
 							{
 								name: 'Rona Munro'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'Royal Shakespeare Company'
@@ -167,7 +165,6 @@ describe('Materials with source material', () => {
 							{
 								name: 'Steven Berkoff'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'East Productions'
@@ -181,7 +178,6 @@ describe('Materials with source material', () => {
 							{
 								name: 'William Shakespeare'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The King\'s Men'
@@ -209,7 +205,6 @@ describe('Materials with source material', () => {
 				writingCredits: [
 					{
 						entities: [
-							// Contrivance for purposes of test.
 							{
 								model: 'PERSON',
 								name: 'William Shakespeare'
@@ -396,7 +391,7 @@ describe('Materials with source material', () => {
 
 	describe('A Midsummer Night\'s Dream (material)', () => {
 
-		it('includes materials that used it as source material (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials that used it as source material (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedSourcingMaterials = [
 				{
@@ -1426,7 +1421,7 @@ describe('Materials with source material', () => {
 
 	describe('Royal Shakespeare Company (company)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1499,7 +1494,7 @@ describe('Materials with source material', () => {
 
 	describe('East Productions (company)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{

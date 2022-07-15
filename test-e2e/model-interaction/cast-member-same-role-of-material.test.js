@@ -52,9 +52,9 @@ describe('Cast member performing same role in different productions of same mate
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
-				startDate: '1962-04-10', // Contrivance because date unavailable.
+				startDate: '1962-04-10',
 				pressDate: '1962-04-17',
-				endDate: '1962-07-20', // Contrivance because date unavailable.
+				endDate: '1962-07-20',
 				material: {
 					name: 'A Midsummer Night\'s Dream'
 				},

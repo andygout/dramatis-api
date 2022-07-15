@@ -38,7 +38,7 @@ describe('Cast member with multiple production credits', () => {
 			.post('/productions')
 			.send({
 				name: 'The Greeks',
-				startDate: '1980-01-26', // Contrivance because date unavailable.
+				startDate: '1980-01-26',
 				pressDate: '1980-02-02',
 				endDate: '1980-03-29',
 				venue: {

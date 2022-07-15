@@ -135,7 +135,6 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		// Contrivance for purposes of testing distinct variant named depictions.
 		await chai.request(app)
 			.post('/materials')
 			.send({

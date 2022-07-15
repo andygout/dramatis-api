@@ -516,7 +516,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID
 										}
 									],
-									// Contrivance for purposes of test.
 									materials: [
 										{
 											name: 'Hairspray',
@@ -524,7 +523,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										}
 									]
 								},
-								// Contrivance for purposes of test.
 								{
 									entities: [
 										{
@@ -565,7 +563,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID
 										}
 									],
-									// Contrivance for purposes of test.
 									materials: [
 										{
 											name: 'Saint Joan',
@@ -596,7 +593,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: PARADE_DONMAR_PRODUCTION_UUID
 										}
 									],
-									// Contrivance for purposes of test.
 									materials: [
 										{
 											name: 'Parade',
@@ -604,7 +600,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										}
 									]
 								},
-								// Contrivance for purposes of test.
 								{
 									entities: [
 										{
@@ -676,7 +671,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 						},
 						{
 							name: 'Best Revival',
-							// Contrivance for purposes of test.
 							nominations: [
 								{
 									productions: [
@@ -3022,7 +3016,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 						name: 'Evening Standard Theatre Awards',
 						differentiator: '2'
 					},
-					// Contrivance for purposes of test.
 					categories: [
 						{
 							name: 'Best Lighting Design',

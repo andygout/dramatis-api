@@ -61,9 +61,9 @@ describe('Cast member performing different roles in different productions of sam
 			.post('/productions')
 			.send({
 				name: 'King Lear',
-				startDate: '1982-06-20', // Contrivance because date unavailable.
+				startDate: '1982-06-20',
 				pressDate: '1982-06-28',
-				endDate: '1982-08-28', // Contrivance because date unavailable.
+				endDate: '1982-08-28',
 				material: {
 					name: 'The Tragedy of King Lear'
 				},
