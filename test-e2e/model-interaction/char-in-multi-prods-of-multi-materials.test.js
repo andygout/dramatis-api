@@ -150,7 +150,6 @@ describe('Character in multiple productions of multiple materials', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				// Contrivance for purposes of test.
 				name: 'The Merry Wives of Windsor',
 				startDate: '2005-09-04',
 				pressDate: '2005-09-11',
@@ -238,7 +237,6 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
-						// Contrivance for purposes of test.
 						name: 'Roger Allam',
 						roles: [
 							{
@@ -253,9 +251,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
-				startDate: '2000-04-12', // Contrivance because date unavailable.
+				startDate: '2000-04-12',
 				pressDate: '2000-04-19',
-				endDate: '2000-06-15', // Contrivance because date unavailable.
+				endDate: '2000-06-15',
 				venue: {
 					name: 'Swan Theatre'
 				},
@@ -264,7 +262,6 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
-						// Contrivance for purposes of test.
 						name: 'Richard Cordery',
 						roles: [
 							{
@@ -279,9 +276,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
-				startDate: '2000-06-22', // Contrivance because date unavailable.
+				startDate: '2000-06-22',
 				pressDate: '2000-06-29',
-				endDate: '2000-09-15', // Contrivance because date unavailable.
+				endDate: '2000-09-15',
 				material: {
 					name: 'Henry IV, Part 2'
 				},
@@ -290,7 +287,6 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				cast: [
 					{
-						// Contrivance for purposes of test.
 						name: 'Richard Cordery',
 						roles: [
 							{

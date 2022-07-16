@@ -649,7 +649,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						}
 					],
 					producerCredits: [
-						// Contrivance for purposes of test.
 						{
 							name: 'executive produced by',
 							entities: [
@@ -659,7 +658,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'in association with',
 							entities: [
@@ -670,7 +668,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'associate produced by',
 							entities: [
@@ -704,7 +701,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'co-produced by',
 							entities: [
@@ -742,7 +738,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Sound Designers',
 							entities: [
@@ -756,7 +751,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Lighting Designers',
 							entities: [
@@ -777,7 +771,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Video Designers',
 							entities: [
@@ -805,7 +798,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Deputy Stage Managers',
 							entities: [
@@ -829,7 +821,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Design Assistants',
 							entities: [
@@ -850,7 +841,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Sound Design Assistants',
 							entities: [
@@ -2520,7 +2510,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'in association with',
 							entities: [
@@ -2531,7 +2520,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'associate produced by',
 							entities: [
@@ -2565,7 +2553,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'co-produced by',
 							entities: [
@@ -2648,7 +2635,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Fight Directors',
 							entities: [
@@ -2666,14 +2652,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									name: 'Hildegard Bechtler',
 									differentiator: '1'
 								},
-								// Contrivance for purposes of test.
 								{
 									name: 'Chloe Lamford',
 									differentiator: '1'
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Sound Designers',
 							entities: [
@@ -2694,7 +2678,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Video Designers',
 							entities: [
@@ -2713,7 +2696,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						}
 					],
 					crewCredits: [
-						// Contrivance for purposes of test.
 						{
 							name: 'Production Manager',
 							entities: [
@@ -2723,7 +2705,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Deputy Stage Managers',
 							entities: [
@@ -2747,7 +2728,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Design Assistants',
 							entities: [
@@ -2768,7 +2748,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						},
-						// Contrivance for purposes of test.
 						{
 							name: 'Sound Design Assistants',
 							entities: [
@@ -3937,7 +3916,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
-					// Contrivance for purposes of test.
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',
@@ -3962,7 +3940,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
-					// Contrivance for purposes of test.
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',

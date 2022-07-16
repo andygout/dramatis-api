@@ -7,7 +7,6 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-// Contrived data for purposes of tests.
 describe('Award ceremonies with nominated sub-materials', () => {
 
 	chai.use(chaiHttp);

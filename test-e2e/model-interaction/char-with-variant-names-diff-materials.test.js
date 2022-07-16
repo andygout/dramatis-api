@@ -244,7 +244,7 @@ describe('Character with variant names from productions of different materials',
 			.send({
 				name: 'Hamletmachine',
 				startDate: '2017-07-07',
-				endDate: '2017-07-28', // Contrivance because date unavailable.
+				endDate: '2017-07-28',
 				material: {
 					name: 'Hamletmachine'
 				},

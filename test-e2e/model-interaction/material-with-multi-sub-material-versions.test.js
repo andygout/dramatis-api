@@ -48,7 +48,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Aeschylus'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Fathers of Tragedy'
@@ -71,7 +70,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Aeschylus'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Fathers of Tragedy'
@@ -104,7 +102,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Aeschylus'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Fathers of Tragedy'
@@ -117,7 +114,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Robert Icke'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Great Hope Company'
@@ -140,7 +136,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Aeschylus'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Fathers of Tragedy'
@@ -153,7 +148,6 @@ describe('Materials with multiple sub-material versions', () => {
 							{
 								name: 'Robert Icke'
 							},
-							// Contrivance for purposes of test.
 							{
 								model: 'COMPANY',
 								name: 'The Great Hope Company'
@@ -340,7 +334,7 @@ describe('Materials with multiple sub-material versions', () => {
 
 	describe('The Fathers of Tragedy (company)', () => {
 
-		it('includes subsequent versions of materials they originally wrote (in which their uuid is nullified), with corresponding sur-material', () => {
+		it('includes subsequent versions of materials it originally wrote (in which its uuid is nullified), with corresponding sur-material', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
