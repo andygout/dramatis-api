@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:16.8.0
+      - image: cimg/node:18.7.0
       - image: neo4j:4.4.2
         environment:
           NEO4J_AUTH: none
