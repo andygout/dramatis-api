@@ -27,7 +27,11 @@
   ],
   "engines": {
     "node": "18.7.0",
-    "npm": "8.17.1"
+    "npm": "8.17.0"
+  },
+  "volta": {
+    "node": "18.7.0",
+    "npm": "8.17.0"
   },
   "dependencies": {
     "directly": "^2.0.4",
