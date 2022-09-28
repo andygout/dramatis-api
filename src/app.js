@@ -36,3 +36,4 @@ process.on('SIGINT', shutDown);
 
 // Export for end-to-end tests.
 export default app;
+export { shutDown };
