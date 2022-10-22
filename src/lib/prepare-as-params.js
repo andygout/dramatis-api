@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 
 import neo4j from 'neo4j-driver';
 
-import { isObjectWithKeys } from './is-object-with-keys';
+import isObjectWithKeys from './is-object-with-keys';
 
 const CHARACTER_GROUPS = 'characterGroups';
 const CREATIVE_CREDITS = 'creativeCredits';
