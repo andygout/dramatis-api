@@ -53,14 +53,7 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE sourceMaterialWriter WHEN NULL
 					THEN null
-					ELSE sourceMaterialWriter {
-						model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))),
-						uuid: CASE sourceMaterialWriter.uuid WHEN company.uuid
-							THEN null
-							ELSE sourceMaterialWriter.uuid
-						END,
-						.name
-					}
+					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 				END
 			) AS sourceMaterialWriters
 
@@ -99,7 +92,7 @@ const getShowQuery = () => `
 					THEN null
 					ELSE entity {
 						model: TOUPPER(HEAD(LABELS(entity))),
-						uuid: CASE entity.uuid WHEN company.uuid THEN null ELSE entity.uuid END,
+						.uuid,
 						.name,
 						.format,
 						.year,
@@ -186,12 +179,7 @@ const getShowQuery = () => `
 		[entity IN COLLECT(
 			CASE entity WHEN NULL
 				THEN null
-				ELSE entity {
-					model: TOUPPER(HEAD(LABELS(entity))),
-					uuid: CASE entity.uuid WHEN company.uuid THEN null ELSE entity.uuid END,
-					.name,
-					members: creditedMembers
-				}
+				ELSE entity { model: TOUPPER(HEAD(LABELS(entity))), .uuid, .name, members: creditedMembers }
 			END
 		) | CASE entity.model WHEN 'COMPANY'
 			THEN entity
@@ -934,12 +922,7 @@ const getShowQuery = () => `
 		[nominatedEntity IN COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
-				ELSE nominatedEntity {
-					.model,
-					uuid: CASE nominatedEntity.uuid WHEN company.uuid THEN null ELSE nominatedEntity.uuid END,
-					.name,
-					members: nominatedMembers
-				}
+				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
 		) | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
@@ -1309,12 +1292,7 @@ const getShowQuery = () => `
 		[nominatedEntity IN COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
-				ELSE nominatedEntity {
-					.model,
-					uuid: CASE nominatedEntity.uuid WHEN company.uuid THEN null ELSE nominatedEntity.uuid END,
-					.name,
-					members: nominatedMembers
-				}
+				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
 		) | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
@@ -1689,12 +1667,7 @@ const getShowQuery = () => `
 		[nominatedEntity IN COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
-				ELSE nominatedEntity {
-					.model,
-					uuid: CASE nominatedEntity.uuid WHEN company.uuid THEN null ELSE nominatedEntity.uuid END,
-					.name,
-					members: nominatedMembers
-				}
+				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
 		) | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity

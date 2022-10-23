@@ -273,7 +273,7 @@ describe('Materials with multiple sub-material versions', () => {
 
 	describe('Aeschylus (person)', () => {
 
-		it('includes subsequent versions of materials they originally wrote (in which their uuid is nullified), with corresponding sur-material', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -294,7 +294,7 @@ describe('Materials with multiple sub-material versions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: AESCHYLUS_PERSON_UUID,
 									name: 'Aeschylus'
 								},
 								{
@@ -334,7 +334,7 @@ describe('Materials with multiple sub-material versions', () => {
 
 	describe('The Fathers of Tragedy (company)', () => {
 
-		it('includes subsequent versions of materials it originally wrote (in which its uuid is nullified), with corresponding sur-material', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -360,7 +360,7 @@ describe('Materials with multiple sub-material versions', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
 									name: 'The Fathers of Tragedy'
 								}
 							]

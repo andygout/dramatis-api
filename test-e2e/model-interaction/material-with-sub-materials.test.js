@@ -616,7 +616,7 @@ describe('Material with sub-materials', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: TOM_STOPPARD_PERSON_UUID,
 									name: 'Tom Stoppard'
 								},
 								{
@@ -646,7 +646,7 @@ describe('Material with sub-materials', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: TOM_STOPPARD_PERSON_UUID,
 									name: 'Tom Stoppard'
 								},
 								{
@@ -676,7 +676,7 @@ describe('Material with sub-materials', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: TOM_STOPPARD_PERSON_UUID,
 									name: 'Tom Stoppard'
 								},
 								{
@@ -726,7 +726,7 @@ describe('Material with sub-materials', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
 									name: 'The Sträussler Group'
 								}
 							]
@@ -756,7 +756,7 @@ describe('Material with sub-materials', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
 									name: 'The Sträussler Group'
 								}
 							]
@@ -786,7 +786,7 @@ describe('Material with sub-materials', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
 									name: 'The Sträussler Group'
 								}
 							]
