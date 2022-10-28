@@ -498,7 +498,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Henrik Ibsen (person)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified)', () => {
+		it('includes materials they have written', () => {
 
 			const expectedMaterials = [
 				{
@@ -515,7 +515,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
@@ -541,7 +541,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
@@ -561,7 +561,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 		});
 
-		it('includes subsequent versions of materials they originally wrote (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -578,7 +578,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
@@ -636,7 +636,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
@@ -694,7 +694,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: HENRIK_IBSEN_PERSON_UUID,
 									name: 'Henrik Ibsen'
 								},
 								{
@@ -729,7 +729,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Gerry Bamman (person)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials they have written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -762,7 +762,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
@@ -820,7 +820,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: GERRY_BAMMAN_PERSON_UUID,
 									name: 'Gerry Bamman'
 								},
 								{
@@ -860,7 +860,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Ibsen Theatre Company (company)', () => {
 
-		it('includes materials it has written (in which its uuid is nullified)', () => {
+		it('includes materials it has written', () => {
 
 			const expectedMaterials = [
 				{
@@ -882,7 +882,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
@@ -908,7 +908,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
@@ -923,7 +923,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 		});
 
-		it('includes subsequent versions of materials it originally wrote (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -945,7 +945,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
@@ -1003,7 +1003,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
@@ -1061,7 +1061,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
 									name: 'Ibsen Theatre Company'
 								}
 							]
@@ -1091,7 +1091,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 
 	describe('Bamman Theatre Company (company)', () => {
 
-		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1129,7 +1129,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{
@@ -1187,7 +1187,7 @@ describe('Materials with multiple versions and multiple writer credits', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
 									name: 'Bamman Theatre Company'
 								},
 								{

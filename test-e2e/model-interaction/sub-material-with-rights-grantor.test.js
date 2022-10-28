@@ -166,94 +166,7 @@ describe('Sub-materials with rights grantor credits', () => {
 
 	describe('C S Lewis Society (company)', () => {
 
-		it('includes materials for which it has a rights grantor credit (in which its uuid is nullified), with corresponding sur-material', () => {
-
-			const expectedRightsGrantorMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
-					name: 'The Lion, the Witch and the Wardrobe',
-					format: 'play',
-					year: 2017,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
-						name: 'The Chronicles of Narnia'
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: ADAM_PECK_PERSON_UUID,
-									name: 'Adam Peck'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'based on',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
-									name: 'The Lion, the Witch and the Wardrobe',
-									format: 'novel',
-									year: 1950,
-									surMaterial: {
-										model: 'MATERIAL',
-										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
-										name: 'The Chronicles of Narnia'
-									},
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: C_S_LEWIS_PERSON_UUID,
-													name: 'C S Lewis'
-												}
-											]
-										}
-									]
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by special arrangement with',
-							entities: [
-								{
-									model: 'COMPANY',
-									uuid: null,
-									name: 'C S Lewis Society'
-								},
-								{
-									model: 'PERSON',
-									uuid: SARAH_SELDEN_PERSON_UUID,
-									name: 'Sarah Selden'
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { rightsGrantorMaterials } = cSLewisSocietyCompany.body;
-
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
-		});
-
-	});
-
-	describe('Sarah Selden (person)', () => {
-
-		it('includes materials for which they have a rights grantor credit (in which their uuid is nullified), with corresponding sur-material', () => {
+		it('includes materials for which it has a rights grantor credit, with corresponding sur-material', () => {
 
 			const expectedRightsGrantorMaterials = [
 				{
@@ -321,7 +234,94 @@ describe('Sub-materials with rights grantor credits', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { rightsGrantorMaterials } = cSLewisSocietyCompany.body;
+
+			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+
+		});
+
+	});
+
+	describe('Sarah Selden (person)', () => {
+
+		it('includes materials for which they have a rights grantor credit, with corresponding sur-material', () => {
+
+			const expectedRightsGrantorMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia'
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia'
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
 									name: 'Sarah Selden'
 								}
 							]

@@ -391,7 +391,7 @@ describe('Materials with source material', () => {
 
 	describe('A Midsummer Night\'s Dream (material)', () => {
 
-		it('includes materials that used it as source material (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes materials that used it as source material, with corresponding writers', () => {
 
 			const expectedSourcingMaterials = [
 				{
@@ -424,7 +424,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'MATERIAL',
-									uuid: null,
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
@@ -482,7 +482,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'MATERIAL',
-									uuid: null,
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
 									name: 'A Midsummer Night\'s Dream',
 									format: 'play',
 									year: 1595,
@@ -726,7 +726,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'MATERIAL',
-									uuid: null,
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
 									name: 'A Moorish Captain',
 									format: 'tale',
 									year: 1565,
@@ -874,7 +874,7 @@ describe('Materials with source material', () => {
 											entities: [
 												{
 													model: 'PERSON',
-													uuid: null,
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
 												},
 												{
@@ -932,7 +932,7 @@ describe('Materials with source material', () => {
 											entities: [
 												{
 													model: 'PERSON',
-													uuid: null,
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
 												},
 												{
@@ -978,7 +978,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
 								},
 								{
@@ -1004,7 +1004,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 									name: 'William Shakespeare'
 								},
 								{
@@ -1032,7 +1032,7 @@ describe('Materials with source material', () => {
 											entities: [
 												{
 													model: 'PERSON',
-													uuid: null,
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
 													name: 'William Shakespeare'
 												},
 												{
@@ -1060,7 +1060,7 @@ describe('Materials with source material', () => {
 
 	describe('Rona Munro (person)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials they have written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1077,7 +1077,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: RONA_MUNRO_PERSON_UUID,
 									name: 'Rona Munro'
 								},
 								{
@@ -1133,7 +1133,7 @@ describe('Materials with source material', () => {
 
 	describe('Steven Berkoff (person)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials they have written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1150,7 +1150,7 @@ describe('Materials with source material', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
 									name: 'Steven Berkoff'
 								},
 								{
@@ -1240,7 +1240,7 @@ describe('Materials with source material', () => {
 												},
 												{
 													model: 'COMPANY',
-													uuid: null,
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
 													name: 'The King\'s Men'
 												}
 											]
@@ -1298,7 +1298,7 @@ describe('Materials with source material', () => {
 												},
 												{
 													model: 'COMPANY',
-													uuid: null,
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
 													name: 'The King\'s Men'
 												}
 											]
@@ -1344,7 +1344,7 @@ describe('Materials with source material', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
 									name: 'The King\'s Men'
 								}
 							]
@@ -1370,7 +1370,7 @@ describe('Materials with source material', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
 									name: 'The King\'s Men'
 								}
 							]
@@ -1398,7 +1398,7 @@ describe('Materials with source material', () => {
 												},
 												{
 													model: 'COMPANY',
-													uuid: null,
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
 													name: 'The King\'s Men'
 												}
 											]
@@ -1421,7 +1421,7 @@ describe('Materials with source material', () => {
 
 	describe('Royal Shakespeare Company (company)', () => {
 
-		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1443,7 +1443,7 @@ describe('Materials with source material', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
 									name: 'Royal Shakespeare Company'
 								}
 							]
@@ -1494,7 +1494,7 @@ describe('Materials with source material', () => {
 
 	describe('East Productions (company)', () => {
 
-		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -1516,7 +1516,7 @@ describe('Materials with source material', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
 									name: 'East Productions'
 								}
 							]

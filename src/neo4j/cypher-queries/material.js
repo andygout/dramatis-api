@@ -400,14 +400,7 @@ const getShowQuery = () => `
 			COLLECT(
 				CASE sourceMaterialWriter WHEN NULL
 					THEN null
-					ELSE sourceMaterialWriter {
-						model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))),
-						uuid: CASE sourceMaterialWriter.uuid WHEN material.uuid
-							THEN null
-							ELSE sourceMaterialWriter.uuid
-						END,
-						.name
-					}
+					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 				END
 			) AS sourceMaterialWriters
 
@@ -451,7 +444,7 @@ const getShowQuery = () => `
 					THEN null
 					ELSE entity {
 						model: TOUPPER(HEAD(LABELS(entity))),
-						uuid: CASE entity.uuid WHEN material.uuid THEN null ELSE entity.uuid END,
+						.uuid,
 						.name,
 						.format,
 						.year,
@@ -1149,13 +1142,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial {
-					model: 'MATERIAL',
-					uuid: CASE nominatedMaterial.uuid WHEN material.uuid THEN null ELSE nominatedMaterial.uuid END,
-					.name,
-					.format,
-					.year
-				}
+				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
@@ -1499,13 +1486,7 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
-				ELSE nominatedMaterial {
-					model: 'MATERIAL',
-					uuid: CASE nominatedMaterial.uuid WHEN material.uuid THEN null ELSE nominatedMaterial.uuid END,
-					.name,
-					.format,
-					.year
-				}
+				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
 			END
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition

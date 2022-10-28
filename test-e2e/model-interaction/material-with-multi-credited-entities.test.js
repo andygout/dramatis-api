@@ -128,7 +128,7 @@ describe('Materials with entities credited multiple times', () => {
 
 	describe('Person', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding writers', () => {
+		it('includes materials they have written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -145,7 +145,7 @@ describe('Materials with entities credited multiple times', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: FERDINAND_FOO_PERSON_UUID,
 									name: 'Ferdinand Foo'
 								},
 								{
@@ -161,7 +161,7 @@ describe('Materials with entities credited multiple times', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: FERDINAND_FOO_PERSON_UUID,
 									name: 'Ferdinand Foo'
 								},
 								{
@@ -185,7 +185,7 @@ describe('Materials with entities credited multiple times', () => {
 
 	describe('Company', () => {
 
-		it('includes materials it has written (in which its uuid is nullified), with corresponding writers', () => {
+		it('includes materials it has written, with corresponding writers', () => {
 
 			const expectedMaterials = [
 				{
@@ -207,7 +207,7 @@ describe('Materials with entities credited multiple times', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
 									name: 'Stagecraft Ltd'
 								}
 							]
@@ -223,7 +223,7 @@ describe('Materials with entities credited multiple times', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
 									name: 'Stagecraft Ltd'
 								}
 							]

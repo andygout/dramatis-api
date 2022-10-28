@@ -220,7 +220,7 @@ describe('Materials with source sub-material', () => {
 
 	describe('Bring Up the Bodies (novel) (material)', () => {
 
-		it('includes materials that used it as source material (in which its uuid is nullified), with corresponding sur-material', () => {
+		it('includes materials that used it as source material, with corresponding sur-material', () => {
 
 			const expectedSourcingMaterials = [
 				{
@@ -257,7 +257,7 @@ describe('Materials with source sub-material', () => {
 							entities: [
 								{
 									model: 'MATERIAL',
-									uuid: null,
+									uuid: BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID,
 									name: 'Bring Up the Bodies',
 									format: 'novel',
 									year: 2012,
@@ -421,7 +421,7 @@ describe('Materials with source sub-material', () => {
 											entities: [
 												{
 													model: 'PERSON',
-													uuid: null,
+													uuid: HILARY_MANTEL_PERSON_UUID,
 													name: 'Hilary Mantel'
 												},
 												{
@@ -449,7 +449,7 @@ describe('Materials with source sub-material', () => {
 
 	describe('Mike Poulton (person)', () => {
 
-		it('includes materials they have written (in which their uuid is nullified), with corresponding sur-materials', () => {
+		it('includes materials they have written, with corresponding sur-materials', () => {
 
 			const expectedMaterials = [
 				{
@@ -470,7 +470,7 @@ describe('Materials with source sub-material', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: MIKE_POULTON_PERSON_UUID,
 									name: 'Mike Poulton'
 								},
 								{
@@ -588,7 +588,7 @@ describe('Materials with source sub-material', () => {
 												},
 												{
 													model: 'COMPANY',
-													uuid: null,
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
 													name: 'The Mantel Group'
 												}
 											]
@@ -611,7 +611,7 @@ describe('Materials with source sub-material', () => {
 
 	describe('Royal Shakespeare Company (company)', () => {
 
-		it('includes materials it has written (in which its uuid is nullified), with corresponding sur-material', () => {
+		it('includes materials it has written, with corresponding sur-material', () => {
 
 			const expectedMaterials = [
 				{
@@ -637,7 +637,7 @@ describe('Materials with source sub-material', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
 									name: 'Royal Shakespeare Company'
 								}
 							]

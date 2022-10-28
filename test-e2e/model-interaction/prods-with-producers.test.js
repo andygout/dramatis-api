@@ -896,7 +896,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
@@ -1015,7 +1015,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
@@ -1137,7 +1137,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ROBERT_FOX_PERSON_UUID,
 									name: 'Robert Fox'
 								}
 							]
@@ -1283,7 +1283,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
@@ -1339,7 +1339,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
@@ -1432,7 +1432,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
@@ -1517,7 +1517,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								},
 								{
@@ -1688,7 +1688,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: null,
+									uuid: ERIC_ABRAHAM_PERSON_UUID,
 									name: 'Eric Abraham'
 								}
 							]
@@ -1810,7 +1810,7 @@ describe('Productions with producer', () => {
 									members: [
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
@@ -1868,7 +1868,7 @@ describe('Productions with producer', () => {
 									members: [
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										}
 									]
@@ -1930,7 +1930,7 @@ describe('Productions with producer', () => {
 										},
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
@@ -2015,7 +2015,7 @@ describe('Productions with producer', () => {
 										},
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
@@ -2132,7 +2132,7 @@ describe('Productions with producer', () => {
 									members: [
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: MATTHEW_BYAM_SHAW_PERSON_UUID,
 											name: 'Matthew Byam Shaw'
 										},
 										{
@@ -2267,7 +2267,7 @@ describe('Productions with producer', () => {
 									members: [
 										{
 											model: 'PERSON',
-											uuid: null,
+											uuid: ROGER_CHAPMAN_PERSON_UUID,
 											name: 'Roger Chapman'
 										},
 										{
@@ -2357,7 +2357,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									members: []
 								}
@@ -2483,7 +2483,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									members: []
 								}
@@ -2587,7 +2587,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									members: []
 								}
@@ -2599,7 +2599,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID,
 									name: 'Sonia Friedman Productions',
 									members: []
 								}
@@ -2756,7 +2756,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									members: [
 										{
@@ -2876,7 +2876,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									members: [
 										{
@@ -2961,7 +2961,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									members: [
 										{
@@ -3072,7 +3072,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: ROYAL_COURT_THEATRE_COMPANY_UUID,
 									name: 'Royal Court Theatre',
 									members: [
 										{
@@ -3244,7 +3244,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									members: [
 										{
@@ -3302,7 +3302,7 @@ describe('Productions with producer', () => {
 							entities: [
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									members: [
 										{
@@ -3359,7 +3359,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									members: [
 										{
@@ -3444,7 +3444,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									members: [
 										{
@@ -3566,7 +3566,7 @@ describe('Productions with producer', () => {
 								},
 								{
 									model: 'COMPANY',
-									uuid: null,
+									uuid: PLAYFUL_PRODUCTIONS_COMPANY_UUID,
 									name: 'Playful Productions',
 									members: [
 										{
