@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const directly = require('directly');
-const nodeFetch = require('node-fetch');
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -16,7 +15,7 @@ async function performFetch (url, instance) {
 		body: JSON.stringify(instance)
 	}
 
-	const response = await nodeFetch(url, settings);
+	const response = await fetch(url, settings);
 
 	if (response.status !== 200) throw new Error(response.statusText);
 
