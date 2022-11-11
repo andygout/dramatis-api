@@ -374,7 +374,7 @@ const getShowQuery = () => `
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
 			CASE surMaterialRel WHEN NULL THEN false ELSE true END AS isSurMaterial,
 			CASE subMaterialRel WHEN NULL THEN false ELSE true END AS isSubMaterial,
-			subMaterialRel.position AS relatedMaterialPosition,
+			subMaterialRel.position AS subMaterialPosition,
 			entityRel,
 			entity,
 			entitySurMaterial,
@@ -391,7 +391,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			isSurMaterial,
 			isSubMaterial,
-			relatedMaterialPosition,
+			subMaterialPosition,
 			entityRel,
 			entity,
 			entitySurMaterial,
@@ -412,7 +412,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			isSurMaterial,
 			isSubMaterial,
-			relatedMaterialPosition,
+			subMaterialPosition,
 			entityRel,
 			entity,
 			entitySurMaterial,
@@ -437,7 +437,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			isSurMaterial,
 			isSubMaterial,
-			relatedMaterialPosition,
+			subMaterialPosition,
 			entityRel.credit AS writingCreditName,
 			[entity IN COLLECT(
 				CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
@@ -468,7 +468,7 @@ const getShowQuery = () => `
 			isSourcingMaterial,
 			isSurMaterial,
 			isSubMaterial,
-			relatedMaterialPosition,
+			subMaterialPosition,
 			COLLECT(
 				CASE SIZE(entities) WHEN 0
 					THEN null
@@ -479,7 +479,7 @@ const getShowQuery = () => `
 					}
 				END
 			) AS writingCredits
-			ORDER BY relatedMaterialPosition, relatedMaterial.year DESC, relatedMaterial.name
+			ORDER BY subMaterialPosition, relatedMaterial.year DESC, relatedMaterial.name
 
 		OPTIONAL MATCH (relatedMaterial)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
