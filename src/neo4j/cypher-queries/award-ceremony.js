@@ -380,19 +380,19 @@ const getShowQuery = () => `
 			nominee:Production OR
 			nominee:Material
 
-	OPTIONAL MATCH (nominee)-[:PLAYS_AT]->(venue:Venue)
+	OPTIONAL MATCH (nominee:Production)-[:PLAYS_AT]->(venue:Venue)
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (nominee)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
-	OPTIONAL MATCH (nominee)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
+	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
-	OPTIONAL MATCH (entity)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 
 	WITH
 		ceremony,
