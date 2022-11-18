@@ -11,30 +11,31 @@ describe('Materials with source material', () => {
 
 	chai.use(chaiHttp);
 
-	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = '4';
-	const WILLIAM_SHAKESPEARE_PERSON_UUID = '6';
-	const THE_KINGS_MEN_COMPANY_UUID = '7';
-	const THE_DONKEY_SHOW_MATERIAL_UUID = '13';
-	const DIANE_PAULUS_PERSON_UUID = '15';
-	const RANDY_WEINER_PERSON_UUID = '16';
-	const THE_INDIAN_BOY_MATERIAL_UUID = '24';
-	const RONA_MUNRO_PERSON_UUID = '26';
-	const ROYAL_SHAKESPEARE_COMPANY_UUID = '27';
-	const THE_INDIAN_BOY_CHARACTER_UUID = '29';
-	const SHAKESPEARES_VILLAINS_MATERIAL_UUID = '37';
-	const STEVEN_BERKOFF_PERSON_UUID = '39';
-	const EAST_PRODUCTIONS_COMPANY_UUID = '40';
-	const IAGO_CHARACTER_UUID = '43';
-	const A_MOORISH_CAPTAIN_MATERIAL_UUID = '48';
-	const OTHELLO_MATERIAL_UUID = '58';
-	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = '64';
-	const NOVELLO_THEATRE_VENUE_UUID = '66';
-	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = '67';
-	const HANOVER_GRAND_VENUE_UUID = '69';
-	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '70';
-	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '72';
-	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '73';
-	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = '76';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '2';
+	const THE_CUBE_VENUE_UUID = '3';
+	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = '8';
+	const WILLIAM_SHAKESPEARE_PERSON_UUID = '10';
+	const THE_KINGS_MEN_COMPANY_UUID = '11';
+	const THE_DONKEY_SHOW_MATERIAL_UUID = '17';
+	const DIANE_PAULUS_PERSON_UUID = '19';
+	const RANDY_WEINER_PERSON_UUID = '20';
+	const THE_INDIAN_BOY_MATERIAL_UUID = '28';
+	const RONA_MUNRO_PERSON_UUID = '30';
+	const ROYAL_SHAKESPEARE_COMPANY_UUID = '31';
+	const THE_INDIAN_BOY_CHARACTER_UUID = '33';
+	const SHAKESPEARES_VILLAINS_MATERIAL_UUID = '41';
+	const STEVEN_BERKOFF_PERSON_UUID = '43';
+	const EAST_PRODUCTIONS_COMPANY_UUID = '44';
+	const IAGO_CHARACTER_UUID = '47';
+	const A_MOORISH_CAPTAIN_MATERIAL_UUID = '52';
+	const OTHELLO_MATERIAL_UUID = '62';
+	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = '68';
+	const NOVELLO_THEATRE_VENUE_UUID = '70';
+	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = '71';
+	const HANOVER_GRAND_VENUE_UUID = '73';
+	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '74';
+	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '77';
+	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = '80';
 
 	let aMidsummerNightsDreamMaterial;
 	let theIndianBoyMaterial;
@@ -62,6 +63,17 @@ describe('Materials with source material', () => {
 		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
 
 		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'Royal Shakespeare Theatre',
+				subVenues: [
+					{
+						name: 'The Cube'
+					}
+				]
+			});
 
 		await chai.request(app)
 			.post('/materials')
@@ -299,7 +311,7 @@ describe('Materials with source material', () => {
 					name: 'The Indian Boy'
 				},
 				venue: {
-					name: 'Royal Shakespeare Theatre'
+					name: 'The Cube'
 				}
 			});
 
@@ -553,9 +565,13 @@ describe('Materials with source material', () => {
 					endDate: '2006-11-11',
 					venue: {
 						model: 'VENUE',
-						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
-						name: 'Royal Shakespeare Theatre',
-						surVenue: null
+						uuid: THE_CUBE_VENUE_UUID,
+						name: 'The Cube',
+						surVenue: {
+							model: 'VENUE',
+							uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+							name: 'Royal Shakespeare Theatre'
+						}
 					}
 				},
 				{
