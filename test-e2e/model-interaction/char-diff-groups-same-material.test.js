@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Character with multiple appearances in the same material in different groups', () => {
+describe('Character with multiple appearances in different character groups of the same material', () => {
 
 	chai.use(chaiHttp);
 

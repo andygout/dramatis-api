@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Productions with producer', () => {
+describe('Productions with producers', () => {
 
 	chai.use(chaiHttp);
 

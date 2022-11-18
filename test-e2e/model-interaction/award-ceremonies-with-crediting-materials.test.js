@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Award ceremonies with nominated materials', () => {
+describe('Award ceremonies with crediting materials', () => {
 
 	chai.use(chaiHttp);
 

@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Materials with entities credited multiple times', () => {
+describe('Material with entities credited multiple times', () => {
 
 	chai.use(chaiHttp);
 
