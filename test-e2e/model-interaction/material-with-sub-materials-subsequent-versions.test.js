@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Materials with multiple sub-material versions', () => {
+describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	chai.use(chaiHttp);
 

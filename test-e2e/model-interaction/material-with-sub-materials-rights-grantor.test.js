@@ -7,7 +7,7 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Sub-materials with rights grantor credits', () => {
+describe('Material with sub-materials and rights grantor credits thereof', () => {
 
 	chai.use(chaiHttp);
 
