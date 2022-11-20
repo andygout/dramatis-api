@@ -204,6 +204,7 @@ describe('Character with multiple appearances in the same material under differe
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -268,6 +269,7 @@ describe('Character with multiple appearances in the same material under differe
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -315,6 +317,7 @@ describe('Character with multiple appearances in the same material under differe
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -478,6 +481,7 @@ describe('Character with multiple appearances in the same material under differe
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -522,6 +526,7 @@ describe('Character with multiple appearances in the same material under differe
 						name: 'Royal Court Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

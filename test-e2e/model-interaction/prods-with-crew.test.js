@@ -891,6 +891,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -912,6 +913,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -937,6 +939,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -977,6 +980,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1058,6 +1062,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1141,6 +1146,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1222,6 +1228,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1318,6 +1325,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1398,6 +1406,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1474,6 +1483,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1554,6 +1564,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1660,6 +1671,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1755,6 +1767,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1776,6 +1789,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1807,6 +1821,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1847,6 +1862,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -1927,6 +1943,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2003,6 +2020,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2083,6 +2101,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2178,6 +2197,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2258,6 +2278,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2334,6 +2355,7 @@ describe('Productions with crew', () => {
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
@@ -2414,6 +2436,7 @@ describe('Productions with crew', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',

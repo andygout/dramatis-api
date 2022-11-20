@@ -23,6 +23,18 @@ export default class ProductionIdentifier extends Entity {
 
 	}
 
+	validateNoAssociationWithSelf (associationUuid) {
+
+		const hasAssociationWithSelf = this.uuid === associationUuid;
+
+		if (hasAssociationWithSelf) {
+
+			this.addPropertyError('uuid', 'Instance cannot form association with itself');
+
+		}
+
+	}
+
 	async runDatabaseValidations () {
 
 		if (this.uuid) {

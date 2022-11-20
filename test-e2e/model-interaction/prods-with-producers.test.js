@@ -889,6 +889,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1008,6 +1009,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1130,6 +1132,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1265,6 +1268,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1384,6 +1388,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1510,6 +1515,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1591,6 +1597,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1726,6 +1733,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1845,6 +1853,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -1971,6 +1980,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2052,6 +2062,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2187,6 +2198,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2328,6 +2340,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2447,6 +2460,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2569,6 +2583,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2704,6 +2719,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2823,6 +2839,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -2949,6 +2966,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -3030,6 +3048,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -3165,6 +3184,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -3284,6 +3304,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -3410,6 +3431,7 @@ describe('Productions with producers', () => {
 							name: 'Royal Court Theatre'
 						}
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',
@@ -3491,6 +3513,7 @@ describe('Productions with producers', () => {
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					producerCredits: [
 						{
 							model: 'PRODUCER_CREDIT',

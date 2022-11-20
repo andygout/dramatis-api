@@ -216,7 +216,8 @@ describe('Venue with sub-venues', () => {
 						model: 'VENUE',
 						name: 'Olivier Theatre',
 						uuid: OLIVIER_THEATRE_VENUE_UUID
-					}
+					},
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -224,7 +225,8 @@ describe('Venue with sub-venues', () => {
 					name: 'Richard II',
 					startDate: '1995-05-26',
 					endDate: '1996-02-17',
-					subVenue: null
+					subVenue: null,
+					surProduction: null
 				}
 			];
 
@@ -261,7 +263,8 @@ describe('Venue with sub-venues', () => {
 					name: 'Mother Courage and Her Children',
 					startDate: '2009-09-16',
 					endDate: '2009-12-08',
-					subVenue: null
+					subVenue: null,
+					surProduction: null
 				}
 			];
 
@@ -294,6 +297,7 @@ describe('Venue with sub-venues', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -333,6 +337,7 @@ describe('Venue with sub-venues', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -375,7 +380,8 @@ describe('Venue with sub-venues', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
-					}
+					},
+					surProduction: null
 				}
 			];
 
@@ -403,7 +409,8 @@ describe('Venue with sub-venues', () => {
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				}
 			];
 
@@ -478,6 +485,7 @@ describe('Venue with sub-venues', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -500,6 +508,7 @@ describe('Venue with sub-venues', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -582,7 +591,8 @@ describe('Venue with sub-venues', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
-					}
+					},
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -595,7 +605,8 @@ describe('Venue with sub-venues', () => {
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				}
 			];
 

@@ -2,7 +2,15 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '../../../src/models';
+import {
+	CastMember,
+	CreativeCredit,
+	CrewCredit,
+	MaterialBase,
+	ProducerCredit,
+	ProductionIdentifier,
+	VenueBase
+} from '../../../src/models';
 
 describe('Production model', () => {
 
@@ -38,6 +46,12 @@ describe('Production model', () => {
 
 	};
 
+	const ProductionIdentifierStub = function () {
+
+		return createStubInstance(ProductionIdentifier);
+
+	};
+
 	const VenueBaseStub = function () {
 
 		return createStubInstance(VenueBase);
@@ -49,7 +63,8 @@ describe('Production model', () => {
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
-				getDuplicateNameIndices: stub().returns([])
+				getDuplicateNameIndices: stub().returns([]),
+				getDuplicateProductionIdentifierIndices: stub().returns([])
 			},
 			models: {
 				CastMember: CastMemberStub,
@@ -57,6 +72,7 @@ describe('Production model', () => {
 				CrewCredit: CrewCreditStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
+				ProductionIdentifier: ProductionIdentifierStub,
 				VenueBase: VenueBaseStub
 			}
 		};
@@ -242,6 +258,40 @@ describe('Production model', () => {
 
 		});
 
+		describe('sub-productions property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({});
+				expect(instance.subProductions).to.deep.equal([]);
+
+			});
+
+			it('assigns array of sub-productions if included in props, retaining those with empty or whitespace-only string uuids', () => {
+
+				const props = {
+					subProductions: [
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						},
+						{
+							uuid: ''
+						},
+						{
+							uuid: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.subProductions.length).to.equal(3);
+				expect(instance.subProductions[0] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.subProductions[1] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.subProductions[2] instanceof ProductionIdentifier).to.be.true;
+
+			});
+
+		});
+
 		describe('producerCredits property', () => {
 
 			it('assigns empty array if absent from props', () => {
@@ -389,7 +439,13 @@ describe('Production model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
+				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Hamlet',
+				subProductions: [
+					{
+						uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+					}
+				],
 				producerCredits: [
 					{
 						name: 'Produced by'
@@ -422,6 +478,10 @@ describe('Production model', () => {
 				instance.material.validateDifferentiator,
 				instance.venue.validateName,
 				instance.venue.validateDifferentiator,
+				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
+				instance.subProductions[0].validateUuid,
+				instance.subProductions[0].validateNoAssociationWithSelf,
+				instance.subProductions[0].validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.producerCredits[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
@@ -443,6 +503,20 @@ describe('Production model', () => {
 			expect(instance.venue.validateName.calledWithExactly({ isRequired: false })).to.be.true;
 			expect(instance.venue.validateDifferentiator.calledOnce).to.be.true;
 			expect(instance.venue.validateDifferentiator.calledWithExactly()).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledOnce).to.be.true;
+			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledWithExactly(
+				instance.subProductions
+			)).to.be.true;
+			expect(instance.subProductions[0].validateUuid.calledOnce).to.be.true;
+			expect(instance.subProductions[0].validateUuid.calledWithExactly()).to.be.true;
+			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
+			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledWithExactly(
+				'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			)).to.be.true;
+			expect(instance.subProductions[0].validateUniquenessInGroup.calledOnce).to.be.true;
+			expect(instance.subProductions[0].validateUniquenessInGroup.calledWithExactly(
+				{ isDuplicate: false, properties: new Set(['uuid']) }
+			)).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledThrice).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
 				instance.producerCredits
@@ -846,6 +920,26 @@ describe('Production model', () => {
 				});
 
 			});
+
+		});
+
+	});
+
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated sub-productions\' runDatabaseValidations method', async () => {
+
+			const props = {
+				subProductions: [
+					{
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+					}
+				]
+			};
+			const instance = createInstance(props);
+			await instance.runDatabaseValidations();
+			expect(instance.subProductions[0].runDatabaseValidations.calledOnce).to.be.true;
+			expect(instance.subProductions[0].runDatabaseValidations.calledWithExactly()).to.be.true;
 
 		});
 

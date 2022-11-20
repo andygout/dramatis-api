@@ -400,6 +400,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -424,6 +425,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -448,6 +450,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -472,6 +475,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -496,6 +500,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -520,6 +525,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -544,6 +550,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Swan Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -568,6 +575,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Swan Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -592,6 +600,7 @@ describe('Character in multiple productions of multiple materials', () => {
 						name: 'Swan Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',

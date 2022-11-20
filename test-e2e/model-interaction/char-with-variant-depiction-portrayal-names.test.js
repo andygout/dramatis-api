@@ -550,6 +550,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -582,6 +583,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -614,6 +616,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -646,6 +649,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -678,6 +682,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -710,6 +715,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -757,6 +763,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -789,6 +796,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -836,6 +844,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -868,6 +877,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -915,6 +925,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -947,6 +958,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -1393,6 +1405,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -1422,6 +1435,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -1451,6 +1465,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -1495,6 +1510,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -1524,6 +1540,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -1568,6 +1585,7 @@ describe('Character with variant depiction and portrayal names', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

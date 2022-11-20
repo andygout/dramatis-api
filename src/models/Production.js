@@ -1,7 +1,19 @@
-import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
+import {
+	getDuplicateBaseInstanceIndices,
+	getDuplicateNameIndices,
+	getDuplicateProductionIdentifierIndices
+} from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
 import Entity from './Entity';
-import { CastMember, CreativeCredit, CrewCredit, MaterialBase, ProducerCredit, VenueBase } from '.';
+import {
+	CastMember,
+	CreativeCredit,
+	CrewCredit,
+	MaterialBase,
+	ProducerCredit,
+	ProductionIdentifier,
+	VenueBase
+} from '.';
 import { MODELS } from '../utils/constants';
 
 export default class Production extends Entity {
@@ -16,6 +28,7 @@ export default class Production extends Entity {
 			endDate,
 			material,
 			venue,
+			subProductions,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -31,6 +44,10 @@ export default class Production extends Entity {
 		this.material = new MaterialBase(material);
 
 		this.venue = new VenueBase(venue);
+
+		this.subProductions = subProductions
+			? subProductions.map(subProduction => new ProductionIdentifier(subProduction))
+			: [];
 
 		this.producerCredits = producerCredits
 			? producerCredits.map(producerCredit => new ProducerCredit(producerCredit))
@@ -69,6 +86,20 @@ export default class Production extends Entity {
 		this.venue.validateName({ isRequired: false });
 
 		this.venue.validateDifferentiator();
+
+		const duplicateSubProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.subProductions);
+
+		this.subProductions.forEach((subProduction, index) => {
+
+			subProduction.validateUuid();
+
+			subProduction.validateNoAssociationWithSelf(this.uuid);
+
+			subProduction.validateUniquenessInGroup(
+				{ isDuplicate: duplicateSubProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }
+			);
+
+		});
 
 		const duplicateProducerCreditIndices = getDuplicateNameIndices(this.producerCredits);
 
@@ -129,6 +160,12 @@ export default class Production extends Entity {
 			this.addPropertyError('endDate', 'End date must not be before press date');
 
 		}
+
+	}
+
+	async runDatabaseValidations () {
+
+		for (const subProduction of this.subProductions) await subProduction.runDatabaseValidations();
 
 	}
 

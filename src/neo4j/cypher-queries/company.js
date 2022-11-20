@@ -202,7 +202,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, production, producerCredits, venue, surVenue
+	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	WITH company, materials, production, producerCredits, venue, surVenue, surProduction
 		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH company, materials,
@@ -226,6 +228,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END,
 					producerCredits
 				}
@@ -316,7 +322,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, producerProductions, production, venue, surVenue,
+	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	WITH company, materials, producerProductions, production, venue, surVenue, surProduction,
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: creativeRel.credit,
@@ -346,6 +354,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END,
 					creativeCredits
 				}
@@ -438,7 +450,9 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	WITH company, materials, producerProductions, creativeProductions, production, venue, surVenue,
+	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	WITH company, materials, producerProductions, creativeProductions, production, venue, surVenue, surProduction,
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: crewRel.credit,
@@ -468,6 +482,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END,
 					crewCredits
 				}
@@ -629,6 +647,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominatedProduction)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	WITH
 		company,
 		materials,
@@ -645,7 +665,8 @@ const getShowQuery = () => `
 		nominatedProductionRel,
 		nominatedProduction,
 		venue,
-		surVenue
+		surVenue,
+		surProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
@@ -681,6 +702,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END
 				}
 			END
@@ -940,6 +965,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominatedProduction)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	WITH
 		company,
 		materials,
@@ -958,7 +985,8 @@ const getShowQuery = () => `
 		nominatedProductionRel,
 		nominatedProduction,
 		venue,
-		surVenue
+		surVenue,
+		surProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
@@ -996,6 +1024,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END
 				}
 			END
@@ -1310,6 +1342,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominatedProduction)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	WITH
 		company,
 		materials,
@@ -1329,7 +1363,8 @@ const getShowQuery = () => `
 		nominatedProductionRel,
 		nominatedProduction,
 		venue,
-		surVenue
+		surVenue,
+		surProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
@@ -1368,6 +1403,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END
 				}
 			END
@@ -1685,6 +1724,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominatedProduction)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	WITH
 		company,
 		materials,
@@ -1705,7 +1746,8 @@ const getShowQuery = () => `
 		nominatedProductionRel,
 		nominatedProduction,
 		venue,
-		surVenue
+		surVenue,
+		surProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
@@ -1745,6 +1787,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END
 				}
 			END

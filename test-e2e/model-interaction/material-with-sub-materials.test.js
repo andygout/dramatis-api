@@ -198,7 +198,12 @@ describe('Material with sub-materials', () => {
 				},
 				venue: {
 					name: 'Olivier Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: VOYAGE_OLIVIER_PRODUCTION_UUID
+					}
+				]
 			});
 
 		theCoastOfUtopiaMaterial = await chai.request(app)

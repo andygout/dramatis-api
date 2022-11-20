@@ -169,6 +169,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -193,6 +194,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -232,6 +234,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -256,6 +259,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -381,6 +385,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -418,6 +423,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -440,6 +446,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -477,6 +484,7 @@ describe('Cast member performing different roles in different productions of sam
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

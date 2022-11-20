@@ -97,13 +97,18 @@ const getShowQuery = () => `
 		) AS subVenues
 
 	OPTIONAL MATCH (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction:Venue)<-[:PLAYS_AT]-(production:Production)
+		WHERE NOT (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction)<-[:PLAYS_AT]-(:Production)
+			<-[:HAS_SUB_PRODUCTION]-(production)
+
+	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
 	WITH
 		venue,
 		surVenue,
 		subVenues,
 		venueLinkedToProduction,
-		production
+		production,
+		surProduction
 		ORDER BY production.startDate DESC, production.name
 
 	RETURN
@@ -125,6 +130,10 @@ const getShowQuery = () => `
 					subVenue: CASE WHEN venue <> venueLinkedToProduction
 						THEN venueLinkedToProduction { model: 'VENUE', .uuid, .name }
 						ELSE null
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END
 				}
 			END

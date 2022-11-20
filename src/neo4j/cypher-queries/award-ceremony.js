@@ -384,6 +384,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (nominee:Production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
@@ -403,6 +405,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surProduction,
 		surMaterial,
 		entityRel,
 		entity,
@@ -420,6 +423,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surProduction,
 		surMaterial,
 		entityRel,
 		entity,
@@ -441,6 +445,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surProduction,
 		surMaterial,
 		entityRel,
 		entity,
@@ -466,6 +471,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surProduction,
 		surMaterial,
 		entityRel.credit AS writingCreditName,
 		[entity IN COLLECT(
@@ -498,6 +504,7 @@ const getShowQuery = () => `
 		nominee,
 		venue,
 		surVenue,
+		surProduction,
 		CASE surMaterial WHEN NULL
 			THEN null
 			ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
@@ -532,6 +539,10 @@ const getShowQuery = () => `
 						ELSE surVenue { model: 'VENUE', .uuid, .name }
 					END
 				}
+			END,
+			surProduction: CASE surProduction WHEN NULL
+				THEN null
+				ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 			END,
 			.format,
 			.year,
@@ -581,6 +592,7 @@ const getShowQuery = () => `
 					.startDate,
 					.endDate,
 					.venue,
+					.surProduction,
 					.format,
 					.year,
 					.surMaterial,
@@ -590,7 +602,7 @@ const getShowQuery = () => `
 		) | CASE nominee.model
 			WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 			WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
-			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue }
+			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 		END] AS nominees
 

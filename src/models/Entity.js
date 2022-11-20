@@ -18,10 +18,6 @@ const DIFFERENTIATOR_EXEMPT_MODELS = new Set([
 	MODELS.PRODUCTION_IDENTIFIER
 ]);
 
-const DATABASE_VALIDATION_EXEMPT_MODELS = new Set([
-	MODELS.PRODUCTION
-]);
-
 export default class Entity extends Base {
 
 	constructor (props = {}) {
@@ -73,8 +69,6 @@ export default class Entity extends Base {
 	}
 
 	async runDatabaseValidations () {
-
-		if (DATABASE_VALIDATION_EXEMPT_MODELS.has(this.model)) return;
 
 		await this.validateUniquenessInDatabase();
 

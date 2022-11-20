@@ -145,6 +145,7 @@ describe('Different characters with the same name from the same material', () =>
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -192,6 +193,7 @@ describe('Different characters with the same name from the same material', () =>
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -231,6 +233,7 @@ describe('Different characters with the same name from the same material', () =>
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -361,6 +364,7 @@ describe('Different characters with the same name from the same material', () =>
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -405,6 +409,7 @@ describe('Different characters with the same name from the same material', () =>
 						name: 'Barbican',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

@@ -98,7 +98,8 @@ describe('Venue with multiple productions', () => {
 					name: 'Red',
 					startDate: '2009-12-03',
 					endDate: '2010-02-06',
-					subVenue: null
+					subVenue: null,
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -106,7 +107,8 @@ describe('Venue with multiple productions', () => {
 					name: 'Life is a Dream',
 					startDate: '2009-10-08',
 					endDate: '2009-11-28',
-					subVenue: null
+					subVenue: null,
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -114,7 +116,8 @@ describe('Venue with multiple productions', () => {
 					name: 'A Streetcar Named Desire',
 					startDate: '2009-07-23',
 					endDate: '2009-10-03',
-					subVenue: null
+					subVenue: null,
+					surProduction: null
 				}
 			];
 

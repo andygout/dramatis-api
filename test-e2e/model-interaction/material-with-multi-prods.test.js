@@ -122,7 +122,8 @@ describe('Material with multiple productions', () => {
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -135,7 +136,8 @@ describe('Material with multiple productions', () => {
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -148,7 +150,8 @@ describe('Material with multiple productions', () => {
 						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 						name: 'Donmar Warehouse',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				}
 			];
 
