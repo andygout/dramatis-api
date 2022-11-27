@@ -371,7 +371,27 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
+
+				const instance = {
+					productions: [
+						{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.productions.length).to.equal(1);
+				expect(result.productions[0]).to.not.have.property('name');
+				expect(result.productions[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
@@ -683,7 +703,29 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an absent name property or empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
+
+				const instance = {
+					foo: {
+						productions: [
+							{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.foo.productions.length).to.equal(1);
+				expect(result.foo.productions[0]).to.not.have.property('name');
+				expect(result.foo.productions[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
@@ -1033,7 +1075,32 @@ describe('Prepare As Params module', () => {
 
 		});
 
-		context('object is in array where items are permitted an absent name property empty string name value (providing they have named children)', () => {
+		context('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
+
+				const instance = {
+					foos: [
+						{
+							name: 'Foobar',
+							productions: [
+								{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.foos[0].productions.length).to.equal(1);
+				expect(result.foos[0].productions[0]).to.not.have.property('name');
+				expect(result.foos[0].productions[0]).to.not.have.property('position');
+
+			});
+
+		});
+
+		context('object is in array where items are permitted an absent name property empty string name value providing they have named children', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', () => {
 
