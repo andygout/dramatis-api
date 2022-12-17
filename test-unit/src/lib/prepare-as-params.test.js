@@ -378,6 +378,9 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					productions: [
 						{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+					],
+					subProductions: [
+						{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }
 					]
 				};
 				const result = prepareAsParams(instance);
@@ -386,6 +389,9 @@ describe('Prepare As Params module', () => {
 				expect(result.productions.length).to.equal(1);
 				expect(result.productions[0]).to.not.have.property('name');
 				expect(result.productions[0]).to.not.have.property('position');
+				expect(result.subProductions.length).to.equal(1);
+				expect(result.subProductions[0]).to.not.have.property('name');
+				expect(result.subProductions[0]).to.not.have.property('position');
 
 			});
 
@@ -520,6 +526,26 @@ describe('Prepare As Params module', () => {
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.calledThrice).to.be.true;
 				expect(result.cast.length).to.equal(3);
+
+			});
+
+		});
+
+		context('object is in array where items require a uuid', () => {
+
+			it('retains objects only if they have a non-empty uuid value', () => {
+
+				const instance = {
+					subProductions: [
+						{ uuid: '' },
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: '' }
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.subProductions.length).to.equal(1);
 
 			});
 
@@ -711,6 +737,9 @@ describe('Prepare As Params module', () => {
 					foo: {
 						productions: [
 							{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+						],
+						subProductions: [
+							{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }
 						]
 					}
 				};
@@ -720,6 +749,9 @@ describe('Prepare As Params module', () => {
 				expect(result.foo.productions.length).to.equal(1);
 				expect(result.foo.productions[0]).to.not.have.property('name');
 				expect(result.foo.productions[0]).to.not.have.property('position');
+				expect(result.foo.subProductions.length).to.equal(1);
+				expect(result.foo.subProductions[0]).to.not.have.property('name');
+				expect(result.foo.subProductions[0]).to.not.have.property('position');
 
 			});
 
@@ -860,6 +892,28 @@ describe('Prepare As Params module', () => {
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.calledThrice).to.be.true;
 				expect(result.production.cast.length).to.equal(3);
+
+			});
+
+		});
+
+		context('object is in array where items require a uuid', () => {
+
+			it('retains objects only if they have a non-empty uuid value', () => {
+
+				const instance = {
+					production: {
+						subProductions: [
+							{ uuid: '' },
+							{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+							{ uuid: '' }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.production.subProductions.length).to.equal(1);
 
 			});
 
@@ -1085,6 +1139,9 @@ describe('Prepare As Params module', () => {
 							name: 'Foobar',
 							productions: [
 								{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
+							],
+							subProductions: [
+								{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }
 							]
 						}
 					]
@@ -1095,6 +1152,9 @@ describe('Prepare As Params module', () => {
 				expect(result.foos[0].productions.length).to.equal(1);
 				expect(result.foos[0].productions[0]).to.not.have.property('name');
 				expect(result.foos[0].productions[0]).to.not.have.property('position');
+				expect(result.foos[0].subProductions.length).to.equal(1);
+				expect(result.foos[0].subProductions[0]).to.not.have.property('name');
+				expect(result.foos[0].subProductions[0]).to.not.have.property('position');
 
 			});
 
@@ -1244,6 +1304,30 @@ describe('Prepare As Params module', () => {
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.calledThrice).to.be.true;
 				expect(result.productions[0].cast.length).to.equal(3);
+
+			});
+
+		});
+
+		context('object is in array where items require a uuid', () => {
+
+			it('retains objects only if they have a non-empty uuid value', () => {
+
+				const instance = {
+					productions: [
+						{
+							subProductions: [
+								{ uuid: '' },
+								{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+								{ uuid: '' }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
+				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.productions[0].subProductions.length).to.equal(1);
 
 			});
 

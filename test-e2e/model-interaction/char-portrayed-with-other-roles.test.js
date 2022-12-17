@@ -140,6 +140,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -201,6 +202,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -262,6 +264,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -323,6 +326,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',

@@ -390,6 +390,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'Teatro San Nicolò',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -414,6 +415,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'Theatre Royal Haymarket',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -438,6 +440,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -462,6 +465,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'La Jolla Playhouse',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -673,6 +677,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -710,6 +715,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'Theatre Royal Haymarket',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -747,6 +753,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'La Jolla Playhouse',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -784,6 +791,7 @@ describe('Character with variant names from productions of different materials',
 						name: 'Teatro San Nicolò',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

@@ -149,6 +149,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Chichester Festival Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -185,6 +186,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Prince of Wales Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -214,6 +216,7 @@ describe('Cast member with multiple production credits', () => {
 						name: 'Aldwych Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

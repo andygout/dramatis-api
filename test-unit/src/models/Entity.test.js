@@ -852,6 +852,7 @@ describe('Entity model', () => {
 							differentiator: '',
 							errors: {}
 						},
+						subProductions: [],
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
@@ -972,6 +973,7 @@ describe('Entity model', () => {
 							differentiator: '',
 							errors: {}
 						},
+						subProductions: [],
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],

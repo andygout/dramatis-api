@@ -194,6 +194,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -243,6 +244,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -307,6 +309,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -356,6 +359,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -534,6 +538,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -578,6 +583,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Crucible Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -622,6 +628,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -666,6 +673,7 @@ describe('Roles with alternating cast', () => {
 						name: 'Vaudeville Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

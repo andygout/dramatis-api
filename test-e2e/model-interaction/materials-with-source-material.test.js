@@ -544,7 +544,8 @@ describe('Materials with source material', () => {
 						uuid: NOVELLO_THEATRE_VENUE_UUID,
 						name: 'Novello Theatre',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				}
 			];
 
@@ -572,7 +573,8 @@ describe('Materials with source material', () => {
 							uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
 							name: 'Royal Shakespeare Theatre'
 						}
-					}
+					},
+					surProduction: null
 				},
 				{
 					model: 'PRODUCTION',
@@ -585,7 +587,8 @@ describe('Materials with source material', () => {
 						uuid: HANOVER_GRAND_VENUE_UUID,
 						name: 'Hanover Grand',
 						surVenue: null
-					}
+					},
+					surProduction: null
 				}
 			];
 

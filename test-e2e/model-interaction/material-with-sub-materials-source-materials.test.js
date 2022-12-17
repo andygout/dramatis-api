@@ -21,6 +21,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const THOMAS_CROMWELL_CHARACTER_UUID = '29';
 	const THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID = '36';
 	const BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID = '42';
+	const SWAN_THEATRE_VENUE_UUID = '44';
+	const THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID = '45';
 
 	let bringUpTheBodiesNovelMaterial;
 	let bringUpTheBodiesPlayMaterial;
@@ -186,6 +188,27 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Wolf Hall Trilogy',
+				startDate: '2013-12-19',
+				pressDate: '2014-01-08',
+				endDate: '2014-03-29',
+				material: {
+					name: 'The Wolf Hall Trilogy',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Swan Theatre'
+				},
+				subProductions: [
+					{
+						uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID
+					}
+				]
+			});
+
 		bringUpTheBodiesNovelMaterial = await chai.request(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
@@ -294,6 +317,35 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = bringUpTheBodiesNovelMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of material that used it as source material, including the sur-production', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2013-12-19',
+					endDate: '2014-03-29',
+					venue: {
+						model: 'VENUE',
+						uuid: SWAN_THEATRE_VENUE_UUID,
+						name: 'Swan Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy'
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = bringUpTheBodiesNovelMaterial.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
 
 		});
 

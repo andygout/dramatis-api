@@ -1,4 +1,7 @@
 export default {
+	subProductions: [
+		{}
+	],
 	producerCredits: [
 		{
 			entities: [

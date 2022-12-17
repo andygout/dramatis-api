@@ -36,6 +36,7 @@ describe('Cypher Queries Production module', () => {
 					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
+					subProductions,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -67,6 +68,7 @@ describe('Cypher Queries Production module', () => {
 				MATCH (production:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (production)-[relationship]-()
+					WHERE NOT (production)<-[relationship:HAS_SUB_PRODUCTION]-(:Production)
 
 				DELETE relationship
 
@@ -92,6 +94,7 @@ describe('Cypher Queries Production module', () => {
 					production.endDate AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
+					subProductions,
 					producerCredits,
 					cast,
 					creativeCredits,

@@ -174,6 +174,8 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
+	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
 	WITH
 		character,
 		variantNamedDepictions,
@@ -182,6 +184,7 @@ const getShowQuery = () => `
 		production,
 		venue,
 		surVenue,
+		surProduction,
 		person,
 		role,
 		otherRole,
@@ -196,6 +199,7 @@ const getShowQuery = () => `
 		production,
 		venue,
 		surVenue,
+		surProduction,
 		person,
 		role,
 		COLLECT(DISTINCT(
@@ -212,7 +216,15 @@ const getShowQuery = () => `
 		)) AS otherRoles
 		ORDER BY role.castMemberPosition
 
-	WITH character, variantNamedDepictions, materials, variantNamedPortrayals, production, venue, surVenue,
+	WITH
+		character,
+		variantNamedDepictions,
+		materials,
+		variantNamedPortrayals,
+		production,
+		venue,
+		surVenue,
+		surProduction,
 		COLLECT(person {
 			model: 'PERSON',
 			.uuid,
@@ -252,6 +264,10 @@ const getShowQuery = () => `
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
+					END,
+					surProduction: CASE surProduction WHEN NULL
+						THEN null
+						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
 					END,
 					performers
 				}

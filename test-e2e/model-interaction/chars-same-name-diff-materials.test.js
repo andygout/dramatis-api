@@ -198,6 +198,7 @@ describe('Different characters with the same name from different materials', () 
 						name: 'Novello Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -237,6 +238,7 @@ describe('Different characters with the same name from different materials', () 
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -417,6 +419,7 @@ describe('Different characters with the same name from different materials', () 
 						name: 'Novello Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -454,6 +457,7 @@ describe('Different characters with the same name from different materials', () 
 						name: 'Shakespeare\'s Globe',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

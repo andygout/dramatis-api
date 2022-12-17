@@ -10,6 +10,7 @@ const CREW_CREDITS = 'crewCredits';
 const NOMINATIONS = 'nominations';
 const PRODUCER_CREDITS = 'producerCredits';
 const PRODUCTIONS = 'productions';
+const SUB_PRODUCTIONS = 'subProductions';
 const WRITING_CREDITS = 'writingCredits';
 
 const EMPTY_NAME_EXCEPTION_KEYS = new Set([
@@ -17,6 +18,7 @@ const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	NOMINATIONS,
 	PRODUCER_CREDITS,
 	PRODUCTIONS, // Excepted from having empty name only in the context of being an association of another subject.
+	SUB_PRODUCTIONS,
 	WRITING_CREDITS
 ]);
 
@@ -27,6 +29,10 @@ const REQUIRES_NAMED_CHILDREN_KEYS = new Set([
 	NOMINATIONS,
 	PRODUCER_CREDITS,
 	WRITING_CREDITS
+]);
+
+const REQUIRES_NON_EMPTY_UUID_KEYS = new Set([
+	SUB_PRODUCTIONS
 ]);
 
 export const prepareAsParams = instance => {
@@ -48,6 +54,10 @@ export const prepareAsParams = instance => {
 				item['materials']?.some(child => Boolean(child.name))
 			)
 		);
+
+	const hasUuidIfRequired = key => item =>
+		!REQUIRES_NON_EMPTY_UUID_KEYS.has(key) ||
+		Boolean(item.uuid);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
 
@@ -79,6 +89,7 @@ export const prepareAsParams = instance => {
 					value
 						.filter(hasNameOrIsExempt(key))
 						.filter(hasNamedChildrenIfRequired(key))
+						.filter(hasUuidIfRequired(key))
 						.map(applyPositionPropertyAndRecurseObject)
 						.filter(Boolean);
 

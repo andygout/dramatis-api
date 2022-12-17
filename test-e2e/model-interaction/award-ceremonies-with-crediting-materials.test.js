@@ -1158,7 +1158,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 											name: 'Royal Court Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1171,7 +1172,8 @@ describe('Award ceremonies with crediting materials', () => {
 										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 										name: 'Wyndham\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1256,7 +1258,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 											name: 'Royal Court Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1269,7 +1272,8 @@ describe('Award ceremonies with crediting materials', () => {
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 										name: 'Duke of York\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1354,7 +1358,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1367,7 +1372,8 @@ describe('Award ceremonies with crediting materials', () => {
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 										name: 'Duke of York\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1457,7 +1463,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 											name: 'Royal Court Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1470,7 +1477,8 @@ describe('Award ceremonies with crediting materials', () => {
 										uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 										name: 'Noël Coward Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1539,7 +1547,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1608,7 +1617,8 @@ describe('Award ceremonies with crediting materials', () => {
 											uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 											name: 'Royal Court Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1621,7 +1631,8 @@ describe('Award ceremonies with crediting materials', () => {
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 										name: 'Duke of York\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1738,7 +1749,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -1751,7 +1763,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: GIELGUD_THEATRE_VENUE_UUID,
 														name: 'Gielgud Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -1807,7 +1820,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -1820,7 +1834,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -1891,7 +1906,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -1904,7 +1920,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: GIELGUD_THEATRE_VENUE_UUID,
 														name: 'Gielgud Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -1960,7 +1977,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -1973,7 +1991,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2044,7 +2063,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2089,7 +2109,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2145,7 +2166,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2158,7 +2180,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2203,7 +2226,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2274,7 +2298,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2330,7 +2355,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2343,7 +2369,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2414,7 +2441,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2427,7 +2455,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2463,7 +2492,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2508,7 +2538,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: GIELGUD_THEATRE_VENUE_UUID,
 														name: 'Gielgud Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2564,7 +2595,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2577,7 +2609,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2626,7 +2659,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2697,7 +2731,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2710,7 +2745,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2746,7 +2782,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2759,7 +2796,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2815,7 +2853,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2828,7 +2867,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2877,7 +2917,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2947,7 +2988,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3003,7 +3045,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3016,7 +3059,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3089,7 +3133,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3145,7 +3190,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3158,7 +3204,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3232,7 +3279,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3288,7 +3336,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3301,7 +3350,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3373,7 +3423,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3386,7 +3437,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3442,7 +3494,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3455,7 +3508,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3526,7 +3580,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3539,7 +3594,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3595,7 +3651,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3608,7 +3665,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3679,7 +3737,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3692,7 +3751,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3748,7 +3808,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3761,7 +3822,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3833,7 +3895,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3846,7 +3909,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: GIELGUD_THEATRE_VENUE_UUID,
 														name: 'Gielgud Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3904,7 +3968,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -3960,7 +4025,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3973,7 +4039,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4047,7 +4114,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4103,7 +4171,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4116,7 +4185,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 														name: 'Duke of York\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4190,7 +4260,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4203,7 +4274,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4259,7 +4331,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4333,7 +4406,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4346,7 +4420,8 @@ describe('Award ceremonies with crediting materials', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],
@@ -4402,7 +4477,8 @@ describe('Award ceremonies with crediting materials', () => {
 															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
 															name: 'Royal Court Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [],

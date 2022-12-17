@@ -137,6 +137,7 @@ describe('Cast member performing same role in different productions of same mate
 						name: 'Rose Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -161,6 +162,7 @@ describe('Cast member performing same role in different productions of same mate
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -258,6 +260,7 @@ describe('Cast member performing same role in different productions of same mate
 						name: 'Rose Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -280,6 +283,7 @@ describe('Cast member performing same role in different productions of same mate
 						name: 'Royal Shakespeare Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

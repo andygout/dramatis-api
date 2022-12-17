@@ -66,6 +66,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -118,6 +119,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -179,6 +181,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -243,6 +246,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -298,6 +302,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -354,6 +359,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -409,6 +415,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -465,6 +472,214 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('sub-production uuid value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subProductions: [
+						{
+							uuid: ABOVE_MAX_LENGTH_STRING
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							uuid: ABOVE_MAX_LENGTH_STRING,
+							errors: {
+								uuid: [
+									'Value is too long'
+								]
+							}
+						}
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('production instance assigns itself as a sub-production', () => {
+
+		// N.B. Only tested for update method; for create method the production instance will not yet have a uuid value.
+		it('assigns appropriate error (update method)', async () => {
+
+			const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+			const instanceProps = {
+				uuid: PRODUCTION_UUID,
+				name: 'The Coast of Utopia',
+				subProductions: [
+					{
+						uuid: PRODUCTION_UUID
+					}
+				]
+			};
+
+			const instance = new Production(instanceProps);
+
+			const result = await instance.update();
+
+			const expectedResponseBody = {
+				uuid: PRODUCTION_UUID,
+				name: 'The Coast of Utopia',
+				startDate: '',
+				pressDate: '',
+				endDate: '',
+				hasErrors: true,
+				errors: {},
+				material: {
+					uuid: undefined,
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
+				venue: {
+					uuid: undefined,
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
+				subProductions: [
+					{
+						uuid: PRODUCTION_UUID,
+						errors: {
+							uuid: [
+								'Instance cannot form association with itself'
+							]
+						}
+					}
+				],
+				producerCredits: [],
+				cast: [],
+				creativeCredits: [],
+				crewCredits: []
+			};
+
+			expect(result).to.deep.equal(expectedResponseBody);
+
+		});
+
+	});
+
+	context('duplicate sub-productions', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'The Coast of Utopia',
+					subProductions: [
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						},
+						{
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+						},
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'The Coast of Utopia',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							errors: {
+								uuid: [
+									'This item has been duplicated within the group'
+								]
+							}
+						},
+						{
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+							errors: {}
+						},
+						{
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							errors: {
+								uuid: [
+									'This item has been duplicated within the group'
+								]
+							}
+						}
+					],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -518,6 +733,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
@@ -584,6 +800,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [
 						{
 							name: 'produced by',
@@ -661,6 +878,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [
 						{
 							name: 'produced by',
@@ -737,6 +955,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -813,6 +1032,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -891,6 +1111,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -987,6 +1208,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -1128,6 +1350,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -1217,6 +1440,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -1307,6 +1531,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -1386,6 +1611,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1453,6 +1679,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1529,6 +1756,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1630,6 +1858,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1710,6 +1939,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1790,6 +2020,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1871,6 +2102,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -1951,6 +2183,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -2031,6 +2264,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -2121,6 +2355,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [
 						{
@@ -2241,6 +2476,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2307,6 +2543,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2384,6 +2621,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2459,6 +2697,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2535,6 +2774,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2611,6 +2851,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2689,6 +2930,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2785,6 +3027,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -2926,6 +3169,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -3015,6 +3259,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -3105,6 +3350,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [
@@ -3183,6 +3429,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3249,6 +3496,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3326,6 +3574,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3401,6 +3650,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3477,6 +3727,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3553,6 +3804,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3631,6 +3883,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3727,6 +3980,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3868,6 +4122,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -3957,6 +4212,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -4047,6 +4303,7 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					subProductions: [],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],

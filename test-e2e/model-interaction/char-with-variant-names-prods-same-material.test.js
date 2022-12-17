@@ -244,6 +244,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -276,6 +277,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -308,6 +310,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Novello Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -505,6 +508,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Almeida Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -549,6 +553,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Novello Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -593,6 +598,7 @@ describe('Character with variant names from productions of the same material', (
 						name: 'Wyndham\'s Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

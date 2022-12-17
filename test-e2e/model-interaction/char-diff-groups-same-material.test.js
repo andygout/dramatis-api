@@ -256,6 +256,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -336,6 +337,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -407,6 +409,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -482,6 +485,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					performers: [
 						{
 							model: 'PERSON',
@@ -698,6 +702,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -735,6 +740,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -772,6 +778,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -809,6 +816,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -846,6 +854,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',
@@ -883,6 +892,7 @@ describe('Character with multiple appearances in different character groups of t
 						name: 'National Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					roles: [
 						{
 							model: 'CHARACTER',

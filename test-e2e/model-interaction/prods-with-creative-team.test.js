@@ -891,6 +891,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -916,6 +917,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -937,6 +939,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -977,6 +980,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1058,6 +1062,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1141,6 +1146,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1222,6 +1228,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1318,6 +1325,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1409,6 +1417,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1485,6 +1494,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1565,6 +1575,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1660,6 +1671,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1755,6 +1767,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1780,6 +1793,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1801,6 +1815,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1847,6 +1862,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -1927,6 +1943,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2003,6 +2020,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2083,6 +2101,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2178,6 +2197,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2270,6 +2290,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2346,6 +2367,7 @@ describe('Productions with creative team', () => {
 						name: 'Barbican Theatre',
 						surVenue: null
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
@@ -2426,6 +2448,7 @@ describe('Productions with creative team', () => {
 							name: 'National Theatre'
 						}
 					},
+					surProduction: null,
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',

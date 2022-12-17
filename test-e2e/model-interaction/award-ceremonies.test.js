@@ -1650,7 +1650,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1663,7 +1664,8 @@ describe('Award ceremonies', () => {
 										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 										name: 'Wyndham\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1712,7 +1714,8 @@ describe('Award ceremonies', () => {
 										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 										name: 'Playhouse Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1798,7 +1801,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1811,7 +1815,8 @@ describe('Award ceremonies', () => {
 										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 										name: 'Wyndham\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -1850,7 +1855,8 @@ describe('Award ceremonies', () => {
 										uuid: OLD_VIC_THEATRE_VENUE_UUID,
 										name: 'Old Vic Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1867,7 +1873,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -1880,7 +1887,8 @@ describe('Award ceremonies', () => {
 										uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 										name: 'Noël Coward Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -2045,7 +2053,8 @@ describe('Award ceremonies', () => {
 										uuid: OLD_VIC_THEATRE_VENUE_UUID,
 										name: 'Old Vic Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2071,7 +2080,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -2084,7 +2094,8 @@ describe('Award ceremonies', () => {
 										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 										name: 'Wyndham\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2106,7 +2117,8 @@ describe('Award ceremonies', () => {
 										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 										name: 'Playhouse Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2343,7 +2355,8 @@ describe('Award ceremonies', () => {
 										uuid: OLD_VIC_THEATRE_VENUE_UUID,
 										name: 'Old Vic Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -2396,7 +2409,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -2409,7 +2423,8 @@ describe('Award ceremonies', () => {
 										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 										name: 'Playhouse Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -2422,7 +2437,8 @@ describe('Award ceremonies', () => {
 										uuid: ALMEIDA_THEATRE_VENUE_UUID,
 										name: 'Almeida Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -2513,7 +2529,8 @@ describe('Award ceremonies', () => {
 										uuid: OLD_VIC_THEATRE_VENUE_UUID,
 										name: 'Old Vic Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -2552,7 +2569,8 @@ describe('Award ceremonies', () => {
 										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
 										name: 'Harold Pinter Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: [
@@ -2590,7 +2608,8 @@ describe('Award ceremonies', () => {
 										uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
 										name: 'Harold Pinter Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2612,7 +2631,8 @@ describe('Award ceremonies', () => {
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
 										name: 'Duke of York\'s Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2638,7 +2658,8 @@ describe('Award ceremonies', () => {
 											uuid: NATIONAL_THEATRE_VENUE_UUID,
 											name: 'National Theatre'
 										}
-									}
+									},
+									surProduction: null
 								},
 								{
 									model: 'PRODUCTION',
@@ -2651,7 +2672,8 @@ describe('Award ceremonies', () => {
 										uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 										name: 'Playhouse Theatre',
 										surVenue: null
-									}
+									},
+									surProduction: null
 								}
 							],
 							materials: []
@@ -2820,7 +2842,8 @@ describe('Award ceremonies', () => {
 														uuid: ALMEIDA_THEATRE_VENUE_UUID,
 														name: 'Almeida Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2864,7 +2887,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -2877,7 +2901,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2937,7 +2962,8 @@ describe('Award ceremonies', () => {
 														uuid: ALMEIDA_THEATRE_VENUE_UUID,
 														name: 'Almeida Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -2994,7 +3020,8 @@ describe('Award ceremonies', () => {
 														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 														name: 'Noël Coward Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3082,7 +3109,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3095,7 +3123,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3108,7 +3137,8 @@ describe('Award ceremonies', () => {
 														uuid: ALMEIDA_THEATRE_VENUE_UUID,
 														name: 'Almeida Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3172,7 +3202,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3185,7 +3216,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3229,7 +3261,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3317,7 +3350,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3330,7 +3364,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3408,7 +3443,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3421,7 +3457,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3485,7 +3522,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3556,7 +3594,8 @@ describe('Award ceremonies', () => {
 														uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
 														name: 'Harold Pinter Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3619,7 +3658,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3679,7 +3719,8 @@ describe('Award ceremonies', () => {
 														uuid: HAROLD_PINTER_THEATRE_VENUE_UUID,
 														name: 'Harold Pinter Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3726,7 +3767,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -3739,7 +3781,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3855,7 +3898,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -3934,7 +3978,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4002,7 +4047,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4152,7 +4198,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4253,7 +4300,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4266,7 +4314,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4416,7 +4465,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4429,7 +4479,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4544,7 +4595,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4618,7 +4670,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4766,7 +4819,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -4866,7 +4920,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -4879,7 +4934,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5027,7 +5083,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -5040,7 +5097,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5155,7 +5213,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5233,7 +5292,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5381,7 +5441,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5481,7 +5542,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -5494,7 +5556,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5642,7 +5705,8 @@ describe('Award ceremonies', () => {
 														uuid: OLD_VIC_THEATRE_VENUE_UUID,
 														name: 'Old Vic Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -5655,7 +5719,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5708,6 +5773,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5781,6 +5847,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
+											recipientProduction: null,
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5809,6 +5876,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -5860,6 +5928,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'First Place',
+											recipientProduction: null,
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5888,6 +5957,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -5907,7 +5977,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -5925,6 +5996,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5988,7 +6060,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -6012,6 +6085,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
+											recipientProduction: null,
 											entities: [],
 											coProductions: [
 												{
@@ -6025,7 +6099,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: []
@@ -6069,6 +6144,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6103,7 +6179,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6116,7 +6193,8 @@ describe('Award ceremonies', () => {
 														uuid: ALMEIDA_THEATRE_VENUE_UUID,
 														name: 'Almeida Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -6148,6 +6226,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
+											recipientProduction: null,
 											entities: [],
 											coProductions: [
 												{
@@ -6165,7 +6244,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: []
@@ -6194,6 +6274,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
+											recipientProduction: null,
 											entities: [
 												{
 													model: 'PERSON',
@@ -6228,7 +6309,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: [
@@ -6252,6 +6334,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
+											recipientProduction: null,
 											entities: [],
 											coProductions: [
 												{
@@ -6269,7 +6352,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											materials: []
@@ -6381,7 +6465,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: []
@@ -6479,7 +6564,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: []
@@ -6547,7 +6633,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6560,7 +6647,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: []
@@ -6637,7 +6725,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6650,7 +6739,8 @@ describe('Award ceremonies', () => {
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 														name: 'Wyndham\'s Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: []
@@ -6752,7 +6842,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6765,7 +6856,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6778,7 +6870,8 @@ describe('Award ceremonies', () => {
 														uuid: ALMEIDA_THEATRE_VENUE_UUID,
 														name: 'Almeida Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: [
@@ -6865,7 +6958,8 @@ describe('Award ceremonies', () => {
 															uuid: NATIONAL_THEATRE_VENUE_UUID,
 															name: 'National Theatre'
 														}
-													}
+													},
+													surProduction: null
 												},
 												{
 													model: 'PRODUCTION',
@@ -6878,7 +6972,8 @@ describe('Award ceremonies', () => {
 														uuid: PLAYHOUSE_THEATRE_VENUE_UUID,
 														name: 'Playhouse Theatre',
 														surVenue: null
-													}
+													},
+													surProduction: null
 												}
 											],
 											coMaterials: []

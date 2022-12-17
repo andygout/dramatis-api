@@ -1633,7 +1633,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: SHAFTESBURY_THEATRE_VENUE_UUID,
 											name: 'Shaftesbury Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -1672,7 +1673,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -1685,7 +1687,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 											name: 'Wyndham\'s Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -1728,7 +1731,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: OLIVIER_THEATRE_VENUE_UUID,
 											name: 'Olivier Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -1778,7 +1782,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 											name: 'Donmar Warehouse',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -1828,7 +1833,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -1841,7 +1847,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 											name: 'Wyndham\'s Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -1932,7 +1939,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: LYTTELTON_THEATRE_VENUE_UUID,
 											name: 'Lyttelton Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -1945,7 +1953,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 											name: 'Wyndham\'s Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
@@ -1967,7 +1976,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: ALMEIDA_THEATRE_VENUE_UUID,
 											name: 'Almeida Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
@@ -1989,7 +1999,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: OLIVIER_THEATRE_VENUE_UUID,
 											name: 'Olivier Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
@@ -4165,7 +4176,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 											name: 'Donmar Warehouse',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -4204,7 +4216,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 											name: 'Donmar Warehouse',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -4217,7 +4230,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 											name: 'Vaudeville Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -4260,7 +4274,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 											name: 'Wyndham\'s Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -4310,7 +4325,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -4323,7 +4339,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 											name: 'Noël Coward Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -4373,7 +4390,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -4386,7 +4404,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 											name: 'Noël Coward Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: [
@@ -4477,7 +4496,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: OLD_VIC_THEATRE_VENUE_UUID,
 											name: 'Old Vic Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
@@ -4499,7 +4519,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 											name: 'Donmar Warehouse',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -4512,7 +4533,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: VAUDEVILLE_THEATRE_VENUE_UUID,
 											name: 'Vaudeville Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
@@ -4534,7 +4556,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: DORFMAN_THEATRE_VENUE_UUID,
 											name: 'Dorfman Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									},
 									{
 										model: 'PRODUCTION',
@@ -4547,7 +4570,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 											uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
 											name: 'Noël Coward Theatre',
 											surVenue: null
-										}
+										},
+										surProduction: null
 									}
 								],
 								materials: []
