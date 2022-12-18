@@ -3,6 +3,10 @@
 	"differentiator": "2",
 	"format": "play",
 	"year": 2009,
+	"originalVersionMaterial": {
+		"name": "A Doll's House",
+		"differentiator": "1"
+	},
 	"writingCredits": [
 		{
 			"entities": [

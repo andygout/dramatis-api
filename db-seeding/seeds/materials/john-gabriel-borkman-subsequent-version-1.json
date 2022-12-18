@@ -3,6 +3,10 @@
 	"differentiator": "2",
 	"format": "play",
 	"year": 2007,
+	"originalVersionMaterial": {
+		"name": "John Gabriel Borkman",
+		"differentiator": "1"
+	},
 	"writingCredits": [
 		{
 			"entities": [
