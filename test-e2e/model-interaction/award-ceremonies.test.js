@@ -6490,7 +6490,8 @@ describe('Award ceremonies', () => {
 													uuid: PLUGH_MATERIAL_UUID,
 													name: 'Plugh',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -6764,7 +6765,8 @@ describe('Award ceremonies', () => {
 													uuid: WALDO_MATERIAL_UUID,
 													name: 'Waldo',
 													format: 'play',
-													year: 2019
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -6880,7 +6882,8 @@ describe('Award ceremonies', () => {
 													uuid: HOGE_MATERIAL_UUID,
 													name: 'Hoge',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}
@@ -6997,7 +7000,8 @@ describe('Award ceremonies', () => {
 													uuid: THUD_MATERIAL_UUID,
 													name: 'Thud',
 													format: 'play',
-													year: 2017
+													year: 2017,
+													surMaterial: null
 												}
 											]
 										}

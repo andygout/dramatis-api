@@ -825,6 +825,8 @@ const getShowQuery = () => `
 			coNominatedMaterial.uuid <> material.uuid AND
 			NOT (material)-[:HAS_SUB_MATERIAL]-(coNominatedMaterial)
 
+	OPTIONAL MATCH (coNominatedMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurMaterial:Material)
+
 	WITH
 		material,
 		relatedMaterials,
@@ -839,7 +841,8 @@ const getShowQuery = () => `
 		nominatedEntities,
 		nominatedProductions,
 		coNominatedMaterialRel,
-		coNominatedMaterial
+		coNominatedMaterial,
+		coNominatedMaterialSurMaterial
 		ORDER BY coNominatedMaterialRel.materialPosition
 
 	WITH
@@ -858,7 +861,17 @@ const getShowQuery = () => `
 		COLLECT(
 			CASE coNominatedMaterial WHEN NULL
 				THEN null
-				ELSE coNominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
+				ELSE coNominatedMaterial {
+					model: 'MATERIAL',
+					.uuid,
+					.name,
+					.format,
+					.year,
+					surMaterial: CASE coNominatedMaterialSurMaterial WHEN NULL
+						THEN null
+						ELSE coNominatedMaterialSurMaterial { model: 'MATERIAL', .uuid, .name }
+					END
+				}
 			END
 		) AS coNominatedMaterials
 		ORDER BY nomineeRel.nominationPosition
