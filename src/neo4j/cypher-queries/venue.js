@@ -97,8 +97,10 @@ const getShowQuery = () => `
 		) AS subVenues
 
 	OPTIONAL MATCH (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction:Venue)<-[:PLAYS_AT]-(production:Production)
-		WHERE NOT (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction)<-[:PLAYS_AT]-(:Production)
-			<-[:HAS_SUB_PRODUCTION]-(production)
+		WHERE NOT EXISTS(
+			(venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction)
+			<-[:PLAYS_AT]-(:Production)<-[:HAS_SUB_PRODUCTION]-(production)
+		)
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
@@ -142,7 +144,7 @@ const getShowQuery = () => `
 
 const getListQuery = () => `
 	MATCH (venue:Venue)
-		WHERE NOT (:Venue)-[:HAS_SUB_VENUE]->(venue)
+		WHERE NOT EXISTS((:Venue)-[:HAS_SUB_VENUE]->(venue))
 
 	OPTIONAL MATCH (venue)-[subVenueRel:HAS_SUB_VENUE]->(subVenue:Venue)
 

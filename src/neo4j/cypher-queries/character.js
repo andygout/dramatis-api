@@ -51,7 +51,7 @@ const getShowQuery = () => `
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 	WITH character, materialRel, material, entityRel.credit AS writingCreditName,
-		[entity IN COLLECT(
+		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
@@ -67,7 +67,10 @@ const getShowQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'MATERIAL'
+		) AS entities
+
+	WITH character, materialRel, material, writingCreditName,
+		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -117,7 +120,7 @@ const getShowQuery = () => `
 		) AS materials
 
 	OPTIONAL MATCH (character)<-[variantNamedDepiction:DEPICTS]-(:Material)
-		WHERE EXISTS(variantNamedDepiction.displayName)
+		WHERE variantNamedDepiction.displayName IS NOT NULL
 
 	WITH character, materials, variantNamedDepiction
 		ORDER BY variantNamedDepiction.displayName

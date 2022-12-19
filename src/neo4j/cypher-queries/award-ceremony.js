@@ -308,12 +308,22 @@ const getEditQuery = () => `
 		nomineeRel.nominationPosition AS nominationPosition,
 		nomineeRel.isWinner AS isWinner,
 		nomineeRel.customType AS customType,
-		[nominee IN COLLECT(
+		COLLECT(
 			CASE nominee WHEN NULL
 				THEN null
 				ELSE nominee { .model, .uuid, .name, .differentiator, members: nominatedMembers }
 			END
-		) | CASE nominee.model
+		) AS nominees
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nominationPosition,
+		isWinner,
+		customType,
+		[nominee IN nominees | CASE nominee.model
 			WHEN 'COMPANY' THEN nominee { .model, .name, .differentiator, .members }
 			WHEN 'PERSON' THEN nominee { .model, .name, .differentiator }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid }
@@ -474,7 +484,7 @@ const getShowQuery = () => `
 		surProduction,
 		surMaterial,
 		entityRel.credit AS writingCreditName,
-		[entity IN COLLECT(
+		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
@@ -490,7 +500,21 @@ const getShowQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'MATERIAL'
+		) AS entities
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nomineeRel,
+		nominee,
+		venue,
+		surVenue,
+		surProduction,
+		surMaterial,
+		writingCreditName,
+		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -581,7 +605,7 @@ const getShowQuery = () => `
 		nomineeRel.nominationPosition AS nominationPosition,
 		nomineeRel.isWinner AS isWinner,
 		nomineeRel.customType AS customType,
-		[nominee IN COLLECT(
+		COLLECT(
 			CASE nominee WHEN NULL
 				THEN null
 				ELSE nominee {
@@ -599,7 +623,17 @@ const getShowQuery = () => `
 					.writingCredits
 				}
 			END
-		) | CASE nominee.model
+		) AS nominees
+
+	WITH
+		ceremony,
+		award,
+		categoryRel,
+		category,
+		nominationPosition,
+		isWinner,
+		customType,
+		[nominee IN nominees | CASE nominee.model
 			WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 			WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
 			WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
