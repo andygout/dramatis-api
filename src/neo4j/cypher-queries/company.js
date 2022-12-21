@@ -2,8 +2,8 @@ const getShowQuery = () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
-		WHERE NOT (company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
-			<-[:HAS_SUB_MATERIAL]-(material)
+		WHERE NOT EXISTS((company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
+			<-[:HAS_SUB_MATERIAL]-(material))
 
 	WITH company, COLLECT(DISTINCT(material)) AS materials
 
@@ -87,7 +87,7 @@ const getShowQuery = () => `
 			isSubsequentVersion,
 			isSourcingMaterial,
 			entityRel.credit AS writingCreditName,
-			[entity IN COLLECT(
+			COLLECT(
 				CASE entity WHEN NULL
 					THEN null
 					ELSE entity {
@@ -103,7 +103,17 @@ const getShowQuery = () => `
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
-			) | CASE entity.model WHEN 'MATERIAL'
+			) AS entities
+
+		WITH
+			company,
+			material,
+			creditType,
+			hasDirectCredit,
+			isSubsequentVersion,
+			isSourcingMaterial,
+			writingCreditName,
+			[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 				THEN entity
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
@@ -153,7 +163,7 @@ const getShowQuery = () => `
 			(entity:Person OR entity:Company) AND
 			entityRel.creditedCompanyUuid IS NULL
 
-	UNWIND (CASE WHEN entityRel IS NOT NULL AND EXISTS(entityRel.creditedMemberUuids)
+	UNWIND (CASE WHEN entityRel IS NOT NULL AND entityRel.creditedMemberUuids IS NOT NULL
 		THEN [uuid IN entityRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS creditedMemberUuid
@@ -176,12 +186,15 @@ const getShowQuery = () => `
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 	WITH company, materials, production, entityRel.credit AS producerCreditName,
-		[entity IN COLLECT(
+		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity { model: TOUPPER(HEAD(LABELS(entity))), .uuid, .name, members: creditedMembers }
 			END
-		) | CASE entity.model WHEN 'COMPANY'
+		) AS entities
+
+	WITH company, materials, production, producerCreditName,
+		[entity IN entities | CASE entity.model WHEN 'COMPANY'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
@@ -240,7 +253,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (company)<-[creativeRel:HAS_CREATIVE_ENTITY]-(production:Production)
 
-	UNWIND (CASE WHEN creativeRel IS NOT NULL AND EXISTS(creativeRel.creditedMemberUuids)
+	UNWIND (CASE WHEN creativeRel IS NOT NULL AND creativeRel.creditedMemberUuids IS NOT NULL
 		THEN creativeRel.creditedMemberUuids
 		ELSE [null]
 	END) AS creditedMemberUuid
@@ -262,7 +275,7 @@ const getShowQuery = () => `
 			(creativeRel.creditPosition IS NULL OR creativeRel.creditPosition = coCreditedEntityRel.creditPosition) AND
 			coCreditedEntity.uuid <> company.uuid
 
-	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND EXISTS(coCreditedEntityRel.creditedMemberUuids)
+	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND coCreditedEntityRel.creditedMemberUuids IS NOT NULL
 		THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS coCreditedCompanyCreditedMemberUuid
@@ -302,7 +315,7 @@ const getShowQuery = () => `
 			ORDER BY coCreditedEntityRel.entityPosition
 
 	WITH company, materials, producerProductions, creativeRel, production, creditedMembers,
-		[coCreditedEntity IN COLLECT(
+		COLLECT(
 			CASE coCreditedEntity WHEN NULL
 				THEN null
 				ELSE coCreditedEntity {
@@ -312,11 +325,14 @@ const getShowQuery = () => `
 					members: coCreditedCompanyCreditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'COMPANY'
+		) AS coCreditedEntities
+		ORDER BY creativeRel.creditPosition
+
+	WITH company, materials, producerProductions, creativeRel, production, creditedMembers,
+		[coCreditedEntity IN coCreditedEntities | CASE coCreditedEntity.model WHEN 'COMPANY'
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
-		ORDER BY creativeRel.creditPosition
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
@@ -366,7 +382,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (company)<-[crewRel:HAS_CREW_ENTITY]-(production:Production)
 
-	UNWIND (CASE WHEN crewRel IS NOT NULL AND EXISTS(crewRel.creditedMemberUuids)
+	UNWIND (CASE WHEN crewRel IS NOT NULL AND crewRel.creditedMemberUuids IS NOT NULL
 		THEN crewRel.creditedMemberUuids
 		ELSE [null]
 	END) AS creditedMemberUuid
@@ -388,7 +404,7 @@ const getShowQuery = () => `
 			(crewRel.creditPosition IS NULL OR crewRel.creditPosition = coCreditedEntityRel.creditPosition) AND
 			coCreditedEntity.uuid <> company.uuid
 
-	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND EXISTS(coCreditedEntityRel.creditedMemberUuids)
+	UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND coCreditedEntityRel.creditedMemberUuids IS NOT NULL
 		THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
 		ELSE [null]
 	END) AS coCreditedCompanyCreditedMemberUuid
@@ -430,7 +446,7 @@ const getShowQuery = () => `
 			ORDER BY coCreditedEntityRel.entityPosition
 
 	WITH company, materials, producerProductions, creativeProductions, crewRel, production, creditedMembers,
-		[coCreditedEntity IN COLLECT(
+		COLLECT(
 			CASE coCreditedEntity WHEN NULL
 				THEN null
 				ELSE coCreditedEntity {
@@ -440,11 +456,14 @@ const getShowQuery = () => `
 					members: coCreditedCompanyCreditedMembers
 				}
 			END
-		) | CASE coCreditedEntity.model WHEN 'COMPANY'
+		) AS coCreditedEntities
+		ORDER BY crewRel.creditPosition
+
+	WITH company, materials, producerProductions, creativeProductions, crewRel, production, creditedMembers,
+		[coCreditedEntity IN coCreditedEntities | CASE coCreditedEntity.model WHEN 'COMPANY'
 			THEN coCreditedEntity
 			ELSE coCreditedEntity { .model, .uuid, .name }
 		END] AS coCreditedEntities
-		ORDER BY crewRel.creditPosition
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
@@ -498,8 +517,11 @@ const getShowQuery = () => `
 	WHERE
 		(NONE(rel IN RELATIONSHIPS(path)
 			WHERE COALESCE(rel.creditType IN ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'], false)
-		)) AND NOT
-		(company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_NOMINEE]-(category)
+		)) AND
+		NOT EXISTS(
+			(company)<-[:HAS_WRITING_ENTITY]-(:Material)
+			<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_NOMINEE]-(category)
+		)
 
 	WITH
 		company,
@@ -514,7 +536,7 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
-	UNWIND (CASE WHEN nomineeRel IS NOT NULL AND EXISTS(nomineeRel.nominatedMemberUuids)
+	UNWIND (CASE WHEN nomineeRel IS NOT NULL AND nomineeRel.nominatedMemberUuids IS NOT NULL
 		THEN nomineeRel.nominatedMemberUuids
 		ELSE [null]
 	END) AS nominatedMemberUuid
@@ -562,7 +584,7 @@ const getShowQuery = () => `
 			) AND
 			coNominatedEntity.uuid <> company.uuid
 
-	UNWIND (CASE WHEN coNominatedEntityRel IS NOT NULL AND EXISTS(coNominatedEntityRel.nominatedMemberUuids)
+	UNWIND (CASE WHEN coNominatedEntityRel IS NOT NULL AND coNominatedEntityRel.nominatedMemberUuids IS NOT NULL
 		THEN [uuid IN coNominatedEntityRel.nominatedMemberUuids]
 		ELSE [null]
 	END) AS coNominatedCompanyNominatedMemberUuid
@@ -621,7 +643,7 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		award,
-		[coNominatedEntity IN COLLECT(
+		COLLECT(
 			CASE coNominatedEntity WHEN NULL
 				THEN null
 				ELSE coNominatedEntity {
@@ -631,7 +653,21 @@ const getShowQuery = () => `
 					members: coNominatedCompanyNominatedMembers
 				}
 			END
-		) | CASE coNominatedEntity.model WHEN 'COMPANY'
+		) AS coNominatedEntities
+
+	WITH
+		company,
+		materials,
+		producerProductions,
+		creativeProductions,
+		crewProductions,
+		nominatedMembers,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		[coNominatedEntity IN coNominatedEntities | CASE coNominatedEntity.model WHEN 'COMPANY'
 			THEN coNominatedEntity
 			ELSE coNominatedEntity { .model, .uuid, .name }
 		END] AS coNominatedEntities
@@ -944,12 +980,28 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		subsequentVersionMaterialAward,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		company,
+		materials,
+		producerProductions,
+		creativeProductions,
+		crewProductions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities
@@ -1321,12 +1373,29 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		sourcingMaterialAward,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		company,
+		materials,
+		producerProductions,
+		creativeProductions,
+		crewProductions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities
@@ -1703,12 +1772,30 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		rightsGrantorMaterialAward,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		company,
+		materials,
+		producerProductions,
+		creativeProductions,
+		crewProductions,
+		awards,
+		subsequentVersionMaterialAwards,
+		sourcingMaterialAwards,
+		nominatedRightsGrantorMaterial,
+		nominatedRightsGrantorSurMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		rightsGrantorMaterialAward,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities

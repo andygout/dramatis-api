@@ -439,7 +439,7 @@ const getShowQuery = () => `
 			isSubMaterial,
 			subMaterialPosition,
 			entityRel.credit AS writingCreditName,
-			[entity IN COLLECT(
+			COLLECT(
 				CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 					THEN null
 					ELSE entity {
@@ -455,7 +455,19 @@ const getShowQuery = () => `
 						writingCredits: sourceMaterialWritingCredits
 					}
 				END
-			) | CASE entity.model WHEN 'MATERIAL'
+			) AS entities
+
+		WITH
+			material,
+			relatedMaterial,
+			isOriginalVersion,
+			isSubsequentVersion,
+			isSourcingMaterial,
+			isSurMaterial,
+			isSubMaterial,
+			subMaterialPosition,
+			writingCreditName,
+			[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 				THEN entity
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
@@ -733,12 +745,25 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		award,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		material,
+		relatedMaterials,
+		characterGroups,
+		productions,
+		recipientMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		award,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities
@@ -823,7 +848,7 @@ const getShowQuery = () => `
 				nomineeRel.nominationPosition = coNominatedMaterialRel.nominationPosition
 			) AND
 			coNominatedMaterial.uuid <> material.uuid AND
-			NOT (material)-[:HAS_SUB_MATERIAL]-(coNominatedMaterial)
+			NOT EXISTS((material)-[:HAS_SUB_MATERIAL]-(coNominatedMaterial))
 
 	OPTIONAL MATCH (coNominatedMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurMaterial:Material)
 
@@ -1043,12 +1068,27 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		subsequentVersionMaterialAward,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		material,
+		relatedMaterials,
+		characterGroups,
+		productions,
+		awards,
+		nominatedSubsequentVersionMaterial,
+		nominatedSubsequentVersionSurMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		subsequentVersionMaterialAward,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities
@@ -1136,8 +1176,8 @@ const getShowQuery = () => `
 				nomineeRel.nominationPosition IS NULL OR
 				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
 			) AND
-			nominatedMaterial.uuid <> nominatedSubsequentVersionMaterial.uuid AND NOT
-			(material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedMaterial)
+			nominatedMaterial.uuid <> nominatedSubsequentVersionMaterial.uuid AND
+			NOT EXISTS((material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedMaterial))
 
 	WITH
 		material,
@@ -1390,12 +1430,28 @@ const getShowQuery = () => `
 		categoryRel,
 		ceremony,
 		sourcingMaterialAward,
-		[nominatedEntity IN COLLECT(
+		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
-		) | CASE nominatedEntity.model WHEN 'COMPANY'
+		) AS nominatedEntities
+
+	WITH
+		material,
+		relatedMaterials,
+		characterGroups,
+		productions,
+		awards,
+		subsequentVersionMaterialAwards,
+		nominatedSourcingMaterial,
+		nominatedSourcingSurMaterial,
+		nomineeRel,
+		category,
+		categoryRel,
+		ceremony,
+		sourcingMaterialAward,
+		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
 		END] AS nominatedEntities
@@ -1485,8 +1541,8 @@ const getShowQuery = () => `
 				nomineeRel.nominationPosition IS NULL OR
 				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
 			) AND
-			nominatedMaterial.uuid <> nominatedSourcingMaterial.uuid AND NOT
-			(material)<-[:USES_SOURCE_MATERIAL]-(nominatedMaterial)
+			nominatedMaterial.uuid <> nominatedSourcingMaterial.uuid AND
+			NOT EXISTS((material)<-[:USES_SOURCE_MATERIAL]-(nominatedMaterial))
 
 	WITH
 		material,
@@ -1657,7 +1713,7 @@ const getShowQuery = () => `
 
 const getListQuery = () => `
 	MATCH (material:Material)
-		WHERE NOT (material)-[:HAS_SUB_MATERIAL]->(:Material)
+		WHERE NOT EXISTS((material)-[:HAS_SUB_MATERIAL]->(:Material))
 
 	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
@@ -1697,7 +1753,7 @@ const getListQuery = () => `
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 	WITH material, entityRel.credit AS writingCreditName,
-		[entity IN COLLECT(
+		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
 				ELSE entity {
@@ -1713,7 +1769,10 @@ const getListQuery = () => `
 					writingCredits: sourceMaterialWritingCredits
 				}
 			END
-		) | CASE entity.model WHEN 'MATERIAL'
+		) AS entities
+
+	WITH material, writingCreditName,
+		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities

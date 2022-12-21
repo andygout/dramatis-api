@@ -68,7 +68,7 @@ describe('Cypher Queries Production module', () => {
 				MATCH (production:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (production)-[relationship]-()
-					WHERE NOT (production)<-[relationship:HAS_SUB_PRODUCTION]-(:Production)
+					WHERE NOT EXISTS((production)<-[relationship:HAS_SUB_PRODUCTION]-(:Production))
 
 				DELETE relationship
 
