@@ -32,6 +32,7 @@ const REQUIRES_NAMED_CHILDREN_KEYS = new Set([
 ]);
 
 const REQUIRES_NON_EMPTY_UUID_KEYS = new Set([
+	PRODUCTIONS,
 	SUB_PRODUCTIONS
 ]);
 
@@ -57,6 +58,7 @@ export const prepareAsParams = instance => {
 
 	const hasUuidIfRequired = key => item =>
 		!REQUIRES_NON_EMPTY_UUID_KEYS.has(key) ||
+		!Object.prototype.hasOwnProperty.call(item, 'uuid') ||
 		Boolean(item.uuid);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
