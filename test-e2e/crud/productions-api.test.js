@@ -23,10 +23,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
+				name: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
-				name: '',
 				errors: {},
 				material: {
 					model: 'MATERIAL',
