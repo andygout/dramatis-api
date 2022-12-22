@@ -102,7 +102,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 
 	describe('attempt to update instance', () => {
 
-		const TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
