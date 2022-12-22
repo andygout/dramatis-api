@@ -1183,43 +1183,6 @@ const getShowQuery = () => `
 
 	OPTIONAL MATCH (productionLinkedToCategoryVenue)<-[:HAS_SUB_VENUE]-(productionLinkedToCategorySurVenue:Venue)
 
-	WITH
-		production,
-		material,
-		venue,
-		surProduction,
-		subProductions,
-		cast,
-		producerCredits,
-		creativeCredits,
-		crewCredits,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		CASE WHEN production <> productionLinkedToCategory
-			THEN productionLinkedToCategory {
-				model: 'PRODUCTION',
-				.uuid,
-				.name,
-				.startDate,
-				.endDate,
-				venue: CASE productionLinkedToCategoryVenue WHEN NULL
-					THEN null
-					ELSE productionLinkedToCategoryVenue {
-						model: 'VENUE',
-						.uuid,
-						.name,
-						surVenue: CASE productionLinkedToCategorySurVenue WHEN NULL
-							THEN null
-							ELSE productionLinkedToCategorySurVenue { model: 'VENUE', .uuid, .name }
-						END
-					}
-				END
-			}
-			ELSE null
-		END AS recipientProduction
-
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -1243,13 +1206,34 @@ const getShowQuery = () => `
 		producerCredits,
 		creativeCredits,
 		crewCredits,
-		recipientProduction,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
 		award,
 		nominatedEntityRel,
+		CASE WHEN production <> productionLinkedToCategory
+			THEN productionLinkedToCategory {
+				model: 'PRODUCTION',
+				.uuid,
+				.name,
+				.startDate,
+				.endDate,
+				venue: CASE productionLinkedToCategoryVenue WHEN NULL
+					THEN null
+					ELSE productionLinkedToCategoryVenue {
+						model: 'VENUE',
+						.uuid,
+						.name,
+						surVenue: CASE productionLinkedToCategorySurVenue WHEN NULL
+							THEN null
+							ELSE productionLinkedToCategorySurVenue { model: 'VENUE', .uuid, .name }
+						END
+					}
+				END
+			}
+			ELSE null
+		END AS recipientProduction,
 		COLLECT(nominatedEntity {
 			model: TOUPPER(HEAD(LABELS(nominatedEntity))),
 			.uuid,

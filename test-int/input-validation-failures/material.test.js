@@ -1279,7 +1279,7 @@ describe('Input validation failures: Material instance', () => {
 
 	});
 
-	context('duplicate sub-material', () => {
+	context('duplicate sub-materials', () => {
 
 		for (const method of methods) {
 

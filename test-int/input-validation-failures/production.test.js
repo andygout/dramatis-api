@@ -134,7 +134,7 @@ describe('Input validation failures: Production instance', () => {
 
 	});
 
-	context('startDate, pressDate, and endDate values with invalid date format', () => {
+	context('start date, press date, and end date values with invalid date format', () => {
 
 		for (const method of methods) {
 
@@ -196,7 +196,7 @@ describe('Input validation failures: Production instance', () => {
 
 	});
 
-	context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+	context('start date, press date, and end date with valid date format with start date after press date and press date after end date', () => {
 
 		for (const method of methods) {
 

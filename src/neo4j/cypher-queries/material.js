@@ -631,20 +631,6 @@ const getShowQuery = () => `
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
-	WITH
-		material,
-		relatedMaterials,
-		characterGroups,
-		productions,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		CASE WHEN material <> materialLinkedToCategory
-			THEN materialLinkedToCategory
-			ELSE null
-		END AS recipientMaterial
-
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -663,13 +649,16 @@ const getShowQuery = () => `
 		relatedMaterials,
 		characterGroups,
 		productions,
-		recipientMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
 		award,
 		nominatedEntityRel,
+		CASE WHEN material <> materialLinkedToCategory
+			THEN materialLinkedToCategory
+			ELSE null
+		END AS recipientMaterial,
 		COLLECT(nominatedEntity {
 			model: TOUPPER(HEAD(LABELS(nominatedEntity))),
 			.uuid,
@@ -1789,7 +1778,7 @@ const getListQuery = () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 	RETURN
 		'MATERIAL' AS model,

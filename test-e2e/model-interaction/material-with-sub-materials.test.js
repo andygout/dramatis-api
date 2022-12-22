@@ -192,6 +192,7 @@ describe('Material with sub-materials', () => {
 			.send({
 				name: 'The Coast of Utopia',
 				startDate: '2002-06-27',
+				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
 				material: {
 					name: 'The Coast of Utopia'
@@ -476,7 +477,7 @@ describe('Material with sub-materials', () => {
 
 	describe('Ivan Turgenev (character)', () => {
 
-		it('includes materials in which character was portrayed, but with no sur-material as does not apply', () => {
+		it('includes materials in which character was depicted, but with no sur-material as does not apply', () => {
 
 			const expectedMaterials = [
 				{
@@ -511,6 +512,45 @@ describe('Material with sub-materials', () => {
 			const { materials } = ivanTurgunevCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
+	describe('The Coast of Utopia at Olivier Theatre (production)', () => {
+
+		it('includes the material (but with no sur-material as does not apply)', () => {
+
+			const expectedMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+				name: 'The Coast of Utopia',
+				format: 'trilogy of plays',
+				year: 2002,
+				surMaterial: null,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: TOM_STOPPARD_PERSON_UUID,
+								name: 'Tom Stoppard'
+							},
+							{
+								model: 'COMPANY',
+								uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+								name: 'The Sträussler Group'
+							}
+						]
+					}
+				]
+			};
+
+			const { material } = theCoastOfUtopiaOlivierProduction.body;
+
+			expect(material).to.deep.equal(expectedMaterial);
 
 		});
 
@@ -559,48 +599,9 @@ describe('Material with sub-materials', () => {
 
 	});
 
-	describe('The Coast of Utopia at Olivier Theatre (production)', () => {
-
-		it('includes the material (but with no sur-material as does not apply)', () => {
-
-			const expectedMaterial = {
-				model: 'MATERIAL',
-				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-				name: 'The Coast of Utopia',
-				format: 'trilogy of plays',
-				year: 2002,
-				surMaterial: null,
-				writingCredits: [
-					{
-						model: 'WRITING_CREDIT',
-						name: 'by',
-						entities: [
-							{
-								model: 'PERSON',
-								uuid: TOM_STOPPARD_PERSON_UUID,
-								name: 'Tom Stoppard'
-							},
-							{
-								model: 'COMPANY',
-								uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-								name: 'The Sträussler Group'
-							}
-						]
-					}
-				]
-			};
-
-			const { material } = theCoastOfUtopiaOlivierProduction.body;
-
-			expect(material).to.deep.equal(expectedMaterial);
-
-		});
-
-	});
-
 	describe('Tom Stoppard (person)', () => {
 
-		it('includes in their material credits, where applicable, its sur-material; will exclude credited sur-materials where any of its sub-materials is also a credit as they will appear by virtue of that association', () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -705,7 +706,7 @@ describe('Material with sub-materials', () => {
 
 	describe('The Sträussler Group (company)', () => {
 
-		it('includes in their material credits, where applicable, its sur-material; will exclude credited sur-materials where any of its sub-materials is also a credit as they will appear by virtue of that association', () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -810,7 +811,7 @@ describe('Material with sub-materials', () => {
 
 	describe('materials list', () => {
 
-		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials as these will be referenced by their sub-materials', async () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials as these will be included via sub-material association', async () => {
 
 			const response = await chai.request(app)
 				.get('/materials');

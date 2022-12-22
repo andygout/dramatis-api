@@ -23,10 +23,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
+				name: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
-				name: '',
 				errors: {},
 				material: {
 					model: 'MATERIAL',
@@ -676,62 +676,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID
 						}
 					],
-					cast: [
-						{
-							name: 'Rory Kinnear',
-							differentiator: '1',
-							roles: [
-								{
-									name: 'Hamlet',
-									characterName: 'Hamlet, Prince of Denmark',
-									characterDifferentiator: '1',
-									qualifier: 'foo'
-								}
-							]
-						},
-						{
-							name: 'James Laurenson',
-							differentiator: '1',
-							roles: [
-								{
-									name: 'Ghost',
-									characterName: 'Ghost of King Hamlet',
-									characterDifferentiator: '1',
-									qualifier: 'bar'
-								},
-								{
-									name: 'First Player',
-									characterName: 'Player King',
-									characterDifferentiator: '1',
-									qualifier: 'baz'
-								}
-							]
-						},
-						{
-							name: 'Michael Sheldon',
-							differentiator: '1',
-							roles: [
-								{
-									name: 'Third Player',
-									characterName: 'Lucianus',
-									characterDifferentiator: '1',
-									qualifier: 'qux'
-								},
-								{
-									name: 'Ambassador of the English',
-									characterName: 'English Ambassador',
-									characterDifferentiator: '1',
-									qualifier: 'quux',
-									isAlternate: true
-								}
-							]
-						},
-						{
-							name: 'Leo Staar',
-							differentiator: '1',
-							roles: []
-						}
-					],
 					producerCredits: [
 						{
 							name: 'executive produced by',
@@ -800,6 +744,62 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									]
 								}
 							]
+						}
+					],
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Hamlet',
+									characterName: 'Hamlet, Prince of Denmark',
+									characterDifferentiator: '1',
+									qualifier: 'foo'
+								}
+							]
+						},
+						{
+							name: 'James Laurenson',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Ghost',
+									characterName: 'Ghost of King Hamlet',
+									characterDifferentiator: '1',
+									qualifier: 'bar'
+								},
+								{
+									name: 'First Player',
+									characterName: 'Player King',
+									characterDifferentiator: '1',
+									qualifier: 'baz'
+								}
+							]
+						},
+						{
+							name: 'Michael Sheldon',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Third Player',
+									characterName: 'Lucianus',
+									characterDifferentiator: '1',
+									qualifier: 'qux'
+								},
+								{
+									name: 'Ambassador of the English',
+									characterName: 'English Ambassador',
+									characterDifferentiator: '1',
+									qualifier: 'quux',
+									isAlternate: true
+								}
+							]
+						},
+						{
+							name: 'Leo Staar',
+							differentiator: '1',
+							roles: []
 						}
 					],
 					creativeCredits: [

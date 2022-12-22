@@ -15,22 +15,20 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '3';
 	const SUB_HOGE_MATERIAL_UUID = '6';
 	const SUR_HOGE_MATERIAL_UUID = '11';
-	const SUB_WALDO_MATERIAL_UUID = '16';
-	const SUR_WALDO_MATERIAL_UUID = '21';
-	const SUB_WIBBLE_MATERIAL_UUID = '27';
-	const SUR_WIBBLE_MATERIAL_UUID = '34';
-	const SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID = '38';
-	const NOËL_COWARD_THEATRE_VENUE_UUID = '40';
-	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '41';
-	const SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '44';
-	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '47';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '57';
-	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '58';
-	const CONOR_CORGE_PERSON_UUID = '59';
-	const STAGECRAFT_LTD_COMPANY_UUID = '60';
-	const FERDINAND_FOO_PERSON_UUID = '61';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '71';
-	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '72';
+	const SUB_WIBBLE_MATERIAL_UUID = '16';
+	const SUR_WIBBLE_MATERIAL_UUID = '21';
+	const SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID = '24';
+	const NOËL_COWARD_THEATRE_VENUE_UUID = '26';
+	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '27';
+	const SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '30';
+	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '33';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '43';
+	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '44';
+	const CONOR_CORGE_PERSON_UUID = '45';
+	const STAGECRAFT_LTD_COMPANY_UUID = '46';
+	const FERDINAND_FOO_PERSON_UUID = '47';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '57';
+	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '58';
 
 	let laurenceOlivierAwards2020AwardCeremony;
 	let eveningStandardTheatreAwards2019AwardCeremony;
@@ -89,41 +87,9 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Waldo',
-				format: 'novel',
-				year: '2017'
-			});
-
-		await chai.request(app)
-			.post('/materials')
-			.send({
-				name: 'Sur-Waldo',
-				format: 'trilogy of novels',
-				year: '2017',
-				subMaterials: [
-					{
-						name: 'Sub-Waldo'
-					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/materials')
-			.send({
 				name: 'Sub-Wibble',
 				format: 'play',
-				year: '2019',
-				writingCredits: [
-					{
-						name: 'adapted from',
-						entities: [
-							{
-								model: 'MATERIAL',
-								name: 'Sub-Waldo'
-							}
-						]
-					}
-				]
+				year: '2019'
 			});
 
 		await chai.request(app)
@@ -132,17 +98,6 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				name: 'Sur-Wibble',
 				format: 'trilogy of plays',
 				year: '2019',
-				writingCredits: [
-					{
-						name: 'adapted from',
-						entities: [
-							{
-								model: 'MATERIAL',
-								name: 'Sur-Waldo'
-							}
-						]
-					}
-				],
 				subMaterials: [
 					{
 						name: 'Sub-Wibble'
@@ -441,27 +396,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 										uuid: SUR_WIBBLE_MATERIAL_UUID,
 										name: 'Sur-Wibble'
 									},
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'adapted from',
-											entities: [
-												{
-													model: 'MATERIAL',
-													uuid: SUB_WALDO_MATERIAL_UUID,
-													name: 'Sub-Waldo',
-													format: 'novel',
-													year: 2017,
-													surMaterial: {
-														model: 'MATERIAL',
-														uuid: SUR_WALDO_MATERIAL_UUID,
-														name: 'Sur-Waldo'
-													},
-													writingCredits: []
-												}
-											]
-										}
-									]
+									writingCredits: []
 								}
 							]
 						}
@@ -560,23 +495,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									format: 'trilogy of plays',
 									year: 2019,
 									surMaterial: null,
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'adapted from',
-											entities: [
-												{
-													model: 'MATERIAL',
-													uuid: SUR_WALDO_MATERIAL_UUID,
-													name: 'Sur-Waldo',
-													format: 'trilogy of novels',
-													year: 2017,
-													surMaterial: null,
-													writingCredits: []
-												}
-											]
-										}
-									]
+									writingCredits: []
 								}
 							]
 						}
