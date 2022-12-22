@@ -192,6 +192,7 @@ describe('Material with sub-materials', () => {
 			.send({
 				name: 'The Coast of Utopia',
 				startDate: '2002-06-27',
+				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
 				material: {
 					name: 'The Coast of Utopia'
