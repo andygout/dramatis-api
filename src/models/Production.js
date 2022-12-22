@@ -93,7 +93,7 @@ export default class Production extends Entity {
 
 			subProduction.validateUuid();
 
-			subProduction.validateNoAssociationWithSelf(this.uuid);
+			subProduction.validateNoAssociationWithSelf({ uuid: this.uuid });
 
 			subProduction.validateUniquenessInGroup(
 				{ isDuplicate: duplicateSubProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }

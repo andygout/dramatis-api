@@ -382,7 +382,7 @@ describe('Material model', () => {
 			expect(instance.subMaterials[0].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
 			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledWithExactly(
-				'The Tragedy of Hamlet, Prince of Denmark', '1'
+				{ name: 'The Tragedy of Hamlet, Prince of Denmark', differentiator: '1' }
 			)).to.be.true;
 			expect(instance.subMaterials[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.subMaterials[0].validateUniquenessInGroup.calledWithExactly(

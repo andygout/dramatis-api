@@ -52,7 +52,9 @@ export default class WritingCredit extends Base {
 
 			if (entity.model === MODELS.MATERIAL) {
 
-				entity.validateNoAssociationWithSelf(opts.subject.name, opts.subject.differentiator);
+				entity.validateNoAssociationWithSelf(
+					{ name: opts.subject.name, differentiator: opts.subject.differentiator }
+				);
 
 			}
 

@@ -231,29 +231,91 @@ describe('Entity model', () => {
 
 		context('valid data', () => {
 
-			context('association has name value of empty string', () => {
+			context('name and differentiator comparison', () => {
 
-				it('will not add properties to errors property', () => {
+				context('association has name value of empty string', () => {
 
-					const instance = new Entity({ name: 'National Theatre' });
-					instance.differentiator = '';
-					spy(instance, 'addPropertyError');
-					instance.validateNoAssociationWithSelf('', '');
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					it('will not add properties to errors property', () => {
+
+						const instance = new Entity({ name: 'National Theatre' });
+						instance.differentiator = '';
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
+
+				});
+
+				context('association name and differentiator combination different to instance name and differentiator combination', () => {
+
+					it('will not add properties to errors property', () => {
+
+						const instance = new Entity({ name: 'Olivier Theatre' });
+						instance.differentiator = '';
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
+
+				});
+
+				context('instance and association have empty name and differentiator values', () => {
+
+					it('will not add properties to errors property', () => {
+
+						const instance = new Entity({ name: '', differentiator: '' });
+						instance.differentiator = '';
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
+
+				});
+
+				context('instance and association have matching non-empty differentiator value but empty name value', () => {
+
+					it('will not add properties to errors property', () => {
+
+						const instance = new Entity({ name: '', differentiator: '1' });
+						instance.differentiator = '';
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
 
 				});
 
 			});
 
-			context('association name and differentiator combination different to instance name and differentiator combination', () => {
+			context('uuid comparison', () => {
 
-				it('will not add properties to errors property', () => {
+				context('association has not yet been assigned uuid value', () => {
 
-					const instance = new Entity({ name: 'Olivier Theatre' });
-					instance.differentiator = '';
-					spy(instance, 'addPropertyError');
-					instance.validateNoAssociationWithSelf('National Theatre', '');
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					it('will not add properties to errors property', () => {
+
+						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ uuid: undefined });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
+
+				});
+
+				context('association uuid different to instance uuid', () => {
+
+					it('will not add properties to errors property', () => {
+
+						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+						spy(instance, 'addPropertyError');
+						instance.validateNoAssociationWithSelf({ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' });
+						expect(instance.addPropertyError.notCalled).to.be.true;
+
+					});
 
 				});
 
@@ -263,21 +325,42 @@ describe('Entity model', () => {
 
 		context('invalid data', () => {
 
-			it('adds properties whose values are arrays to errors property', () => {
+			context('name and differentiator comparison', () => {
 
-				const instance = new Entity({ name: 'National Theatre' });
-				instance.differentiator = '';
-				spy(instance, 'addPropertyError');
-				instance.validateNoAssociationWithSelf('National Theatre', '');
-				expect(instance.addPropertyError.calledTwice).to.be.true;
-				expect(instance.addPropertyError.firstCall.calledWithExactly(
-					'name',
-					'Instance cannot form association with itself'
-				)).to.be.true;
-				expect(instance.addPropertyError.secondCall.calledWithExactly(
-					'differentiator',
-					'Instance cannot form association with itself'
-				)).to.be.true;
+				it('adds properties whose values are arrays to errors property', () => {
+
+					const instance = new Entity({ name: 'National Theatre' });
+					instance.differentiator = '';
+					spy(instance, 'addPropertyError');
+					instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
+					expect(instance.addPropertyError.calledTwice).to.be.true;
+					expect(instance.addPropertyError.firstCall.calledWithExactly(
+						'name',
+						'Instance cannot form association with itself'
+					)).to.be.true;
+					expect(instance.addPropertyError.secondCall.calledWithExactly(
+						'differentiator',
+						'Instance cannot form association with itself'
+					)).to.be.true;
+
+				});
+
+			});
+
+			context('uuid comparison', () => {
+
+				it('adds properties whose values are arrays to errors property', () => {
+
+					const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+					spy(instance, 'addPropertyError');
+					instance.validateNoAssociationWithSelf({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+					expect(instance.addPropertyError.calledOnce).to.be.true;
+					expect(instance.addPropertyError.calledWithExactly(
+						'uuid',
+						'Instance cannot form association with itself'
+					)).to.be.true;
+
+				});
 
 			});
 
