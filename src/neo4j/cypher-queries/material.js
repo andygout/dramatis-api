@@ -1789,7 +1789,7 @@ const getListQuery = () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 	RETURN
 		'MATERIAL' AS model,
