@@ -536,15 +536,21 @@ describe('Prepare As Params module', () => {
 			it('retains objects only if they have a non-empty uuid value', () => {
 
 				const instance = {
-					subProductions: [
+					productions: [
 						{ uuid: '' },
 						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: '' }
+					],
+					subProductions: [
+						{ uuid: '' },
+						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' },
 						{ uuid: '' }
 					]
 				};
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.productions.length).to.equal(1);
 				expect(result.subProductions.length).to.equal(1);
 
 			});
@@ -902,7 +908,12 @@ describe('Prepare As Params module', () => {
 			it('retains objects only if they have a non-empty uuid value', () => {
 
 				const instance = {
-					production: {
+					foo: {
+						productions: [
+							{ uuid: '' },
+							{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+							{ uuid: '' }
+						],
 						subProductions: [
 							{ uuid: '' },
 							{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
@@ -913,7 +924,8 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
-				expect(result.production.subProductions.length).to.equal(1);
+				expect(result.foo.productions.length).to.equal(1);
+				expect(result.foo.subProductions.length).to.equal(1);
 
 			});
 
@@ -1314,11 +1326,20 @@ describe('Prepare As Params module', () => {
 			it('retains objects only if they have a non-empty uuid value', () => {
 
 				const instance = {
+					nominations: [
+						{
+							productions: [
+								{ uuid: '' },
+								{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+								{ uuid: '' }
+							]
+						}
+					],
 					productions: [
 						{
 							subProductions: [
 								{ uuid: '' },
-								{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+								{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' },
 								{ uuid: '' }
 							]
 						}
@@ -1327,6 +1348,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				expect(stubs.cryptoRandomUUID.notCalled).to.be.true;
 				expect(stubs.neo4jInt.notCalled).to.be.true;
+				expect(result.nominations[0].productions.length).to.equal(1);
 				expect(result.productions[0].subProductions.length).to.equal(1);
 
 			});
