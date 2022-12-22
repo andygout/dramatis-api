@@ -73,7 +73,7 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingSubProduction:Production { uuid: subProductionParam.uuid })
 
-				FOREACH (item IN CASE subProductionParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE existingSubProduction WHEN NULL THEN [] ELSE [1] END |
 					CREATE (production)-[:HAS_SUB_PRODUCTION { position: subProductionParam.position }]->
 						(existingSubProduction)
 				)
