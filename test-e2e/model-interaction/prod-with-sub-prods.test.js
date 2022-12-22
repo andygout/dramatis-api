@@ -727,6 +727,53 @@ describe('Production with sub-productions', () => {
 
 	});
 
+	describe('The Coast of Utopia (material)', () => {
+
+		it('includes its productions (but with no sur-productions as does not apply)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'The Coast of Utopia',
+					startDate: '2006-10-17',
+					endDate: '2007-05-13',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+					name: 'The Coast of Utopia',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: null
+				}
+			];
+
+			const { productions } = theCoastOfUtopiaMaterial.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
 	describe('Voyage (material)', () => {
 
 		it('includes its productions and their sur-productions', () => {
@@ -775,53 +822,6 @@ describe('Production with sub-productions', () => {
 			];
 
 			const { productions } = voyageMaterial.body;
-
-			expect(productions).to.deep.equal(expectedProductions);
-
-		});
-
-	});
-
-	describe('The Coast of Utopia (material)', () => {
-
-		it('includes its productions (but with no sur-productions as does not apply)', () => {
-
-			const expectedProductions = [
-				{
-					model: 'PRODUCTION',
-					uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-					name: 'The Coast of Utopia',
-					startDate: '2006-10-17',
-					endDate: '2007-05-13',
-					venue: {
-						model: 'VENUE',
-						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
-						name: 'Vivian Beaumont Theatre',
-						surVenue: null
-					},
-					surProduction: null
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-					name: 'The Coast of Utopia',
-					startDate: '2002-06-27',
-					endDate: '2002-11-23',
-					venue: {
-						model: 'VENUE',
-						uuid: OLIVIER_THEATRE_VENUE_UUID,
-						name: 'Olivier Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: NATIONAL_THEATRE_VENUE_UUID,
-							name: 'National Theatre'
-						}
-					},
-					surProduction: null
-				}
-			];
-
-			const { productions } = theCoastOfUtopiaMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

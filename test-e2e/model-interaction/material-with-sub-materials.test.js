@@ -517,6 +517,45 @@ describe('Material with sub-materials', () => {
 
 	});
 
+	describe('The Coast of Utopia at Olivier Theatre (production)', () => {
+
+		it('includes the material (but with no sur-material as does not apply)', () => {
+
+			const expectedMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+				name: 'The Coast of Utopia',
+				format: 'trilogy of plays',
+				year: 2002,
+				surMaterial: null,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: TOM_STOPPARD_PERSON_UUID,
+								name: 'Tom Stoppard'
+							},
+							{
+								model: 'COMPANY',
+								uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+								name: 'The Sträussler Group'
+							}
+						]
+					}
+				]
+			};
+
+			const { material } = theCoastOfUtopiaOlivierProduction.body;
+
+			expect(material).to.deep.equal(expectedMaterial);
+
+		});
+
+	});
+
 	describe('Voyage at Olivier Theatre (production)', () => {
 
 		it('includes the material and its sur-material', () => {
@@ -553,45 +592,6 @@ describe('Material with sub-materials', () => {
 			};
 
 			const { material } = voyageOlivierProduction.body;
-
-			expect(material).to.deep.equal(expectedMaterial);
-
-		});
-
-	});
-
-	describe('The Coast of Utopia at Olivier Theatre (production)', () => {
-
-		it('includes the material (but with no sur-material as does not apply)', () => {
-
-			const expectedMaterial = {
-				model: 'MATERIAL',
-				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-				name: 'The Coast of Utopia',
-				format: 'trilogy of plays',
-				year: 2002,
-				surMaterial: null,
-				writingCredits: [
-					{
-						model: 'WRITING_CREDIT',
-						name: 'by',
-						entities: [
-							{
-								model: 'PERSON',
-								uuid: TOM_STOPPARD_PERSON_UUID,
-								name: 'Tom Stoppard'
-							},
-							{
-								model: 'COMPANY',
-								uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-								name: 'The Sträussler Group'
-							}
-						]
-					}
-				]
-			};
-
-			const { material } = theCoastOfUtopiaOlivierProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
 
