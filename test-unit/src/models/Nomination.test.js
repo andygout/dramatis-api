@@ -355,7 +355,6 @@ describe('Nomination model', () => {
 			expect(instance.productions[0].validateUniquenessInGroup.calledWithExactly(
 				{ isDuplicate: false, properties: new Set(['uuid']) }
 			)).to.be.true;
-
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
 			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
 				instance.materials
