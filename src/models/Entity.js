@@ -18,6 +18,11 @@ const DIFFERENTIATOR_EXEMPT_MODELS = new Set([
 	MODELS.PRODUCTION_IDENTIFIER
 ]);
 
+const ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS = new Set([
+	'uuid',
+	'name'
+]);
+
 export default class Entity extends Base {
 
 	constructor (props = {}) {
@@ -52,17 +57,18 @@ export default class Entity extends Base {
 
 	}
 
-	validateNoAssociationWithSelf (associationName, associationDifferentiator) {
+	validateNoAssociationWithSelf (association) {
 
-		const hasAssociationWithSelf =
-			Boolean(associationName) &&
-			this.name === associationName &&
-			this.differentiator === associationDifferentiator;
+		const hasAssociationWithSelf = Object.entries(association).every(([key, value]) =>
+			(ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS.has(key) ? Boolean(value) : true) &&
+			this[key] === value
+		);
 
 		if (hasAssociationWithSelf) {
 
-			this.addPropertyError('name', 'Instance cannot form association with itself');
-			this.addPropertyError('differentiator', 'Instance cannot form association with itself');
+			for (const key of Object.keys(association)) {
+				this.addPropertyError(key, 'Instance cannot form association with itself');
+			}
 
 		}
 

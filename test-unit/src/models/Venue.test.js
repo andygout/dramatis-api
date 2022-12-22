@@ -107,7 +107,7 @@ describe('Venue model', () => {
 			expect(instance.subVenues[0].validateDifferentiator.calledWithExactly()).to.be.true;
 			expect(instance.subVenues[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
 			expect(instance.subVenues[0].validateNoAssociationWithSelf.calledWithExactly(
-				'National Theatre', ''
+				{ name: 'National Theatre', differentiator: '' }
 			)).to.be.true;
 			expect(instance.subVenues[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.subVenues[0].validateUniquenessInGroup.calledWithExactly(

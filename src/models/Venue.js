@@ -29,7 +29,7 @@ export default class Venue extends VenueBase {
 
 			subVenue.validateDifferentiator();
 
-			subVenue.validateNoAssociationWithSelf(this.name, this.differentiator);
+			subVenue.validateNoAssociationWithSelf({ name: this.name, differentiator: this.differentiator });
 
 			subVenue.validateUniquenessInGroup({ isDuplicate: duplicateSubVenueIndices.includes(index) });
 

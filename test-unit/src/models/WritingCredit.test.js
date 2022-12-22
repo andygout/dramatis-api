@@ -227,7 +227,7 @@ describe('WritingCredit model', () => {
 			expect(instance.entities[2].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
 			expect(instance.entities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
 			expect(instance.entities[2].validateNoAssociationWithSelf.calledWithExactly(
-				'The Indian Boy', '1'
+				{ name: 'The Indian Boy', differentiator: '1' }
 			)).to.be.true;
 
 		});

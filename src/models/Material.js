@@ -52,7 +52,9 @@ export default class Material extends MaterialBase {
 
 		this.originalVersionMaterial.validateDifferentiator();
 
-		this.originalVersionMaterial.validateNoAssociationWithSelf(this.name, this.differentiator);
+		this.originalVersionMaterial.validateNoAssociationWithSelf(
+			{ name: this.name, differentiator: this.differentiator }
+		);
 
 		const duplicateWritingCreditIndices = getDuplicateNameIndices(this.writingCredits);
 
@@ -71,7 +73,7 @@ export default class Material extends MaterialBase {
 
 			subMaterial.validateDifferentiator();
 
-			subMaterial.validateNoAssociationWithSelf(this.name, this.differentiator);
+			subMaterial.validateNoAssociationWithSelf({ name: this.name, differentiator: this.differentiator });
 
 			subMaterial.validateUniquenessInGroup({ isDuplicate: duplicateSubMaterialIndices.includes(index) });
 

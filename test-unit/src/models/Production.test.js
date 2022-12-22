@@ -511,7 +511,7 @@ describe('Production model', () => {
 			expect(instance.subProductions[0].validateUuid.calledWithExactly()).to.be.true;
 			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
 			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledWithExactly(
-				'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+				{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			)).to.be.true;
 			expect(instance.subProductions[0].validateUniquenessInGroup.calledOnce).to.be.true;
 			expect(instance.subProductions[0].validateUniquenessInGroup.calledWithExactly(
