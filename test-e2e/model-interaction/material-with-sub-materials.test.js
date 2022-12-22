@@ -477,7 +477,7 @@ describe('Material with sub-materials', () => {
 
 	describe('Ivan Turgenev (character)', () => {
 
-		it('includes materials in which character was portrayed, but with no sur-material as does not apply', () => {
+		it('includes materials in which character was depicted, but with no sur-material as does not apply', () => {
 
 			const expectedMaterials = [
 				{
@@ -601,7 +601,7 @@ describe('Material with sub-materials', () => {
 
 	describe('Tom Stoppard (person)', () => {
 
-		it('includes in their material credits, where applicable, its sur-material; will exclude credited sur-materials where any of its sub-materials is also a credit as they will appear by virtue of that association', () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -706,7 +706,7 @@ describe('Material with sub-materials', () => {
 
 	describe('The Sträussler Group (company)', () => {
 
-		it('includes in their material credits, where applicable, its sur-material; will exclude credited sur-materials where any of its sub-materials is also a credit as they will appear by virtue of that association', () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -811,7 +811,7 @@ describe('Material with sub-materials', () => {
 
 	describe('materials list', () => {
 
-		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials as these will be referenced by their sub-materials', async () => {
+		it('includes materials and, where applicable, corresponding sur-materials; will exclude sur-materials as these will be included via sub-material association', async () => {
 
 			const response = await chai.request(app)
 				.get('/materials');
