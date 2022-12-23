@@ -742,25 +742,9 @@ const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 const getShowQuery = () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
-
-	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
-
-	WITH production,
-		CASE venue WHEN NULL
-			THEN null
-			ELSE venue {
-				model: 'VENUE',
-				.uuid,
-				.name,
-				surVenue: CASE surVenue WHEN NULL
-					THEN null
-					ELSE surVenue { model: 'VENUE', .uuid, .name }
-				END
-			}
-		END AS venue
-
 	OPTIONAL MATCH (production)-[materialRel:PRODUCTION_OF]->(material:Material)
+
+	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
@@ -772,8 +756,8 @@ const getShowQuery = () => `
 
 	WITH
 		production,
-		venue,
 		material,
+		surMaterial,
 		entityRel,
 		entity,
 		entitySurMaterial,
@@ -783,8 +767,8 @@ const getShowQuery = () => `
 
 	WITH
 		production,
-		venue,
 		material,
+		surMaterial,
 		entityRel,
 		entity,
 		entitySurMaterial,
@@ -796,7 +780,7 @@ const getShowQuery = () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH production, venue, material, entityRel, entity, entitySurMaterial,
+	WITH production, material, surMaterial, entityRel, entity, entitySurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -809,7 +793,7 @@ const getShowQuery = () => `
 		) AS sourceMaterialWritingCredits
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	WITH production, venue, material, entityRel.credit AS writingCreditName,
+	WITH production, material, surMaterial, entityRel.credit AS writingCreditName,
 		COLLECT(
 			CASE entity WHEN NULL
 				THEN null
@@ -828,13 +812,13 @@ const getShowQuery = () => `
 			END
 		) AS entities
 
-	WITH production, venue, material, writingCreditName,
+	WITH production, material, surMaterial, writingCreditName,
 		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
 
-	WITH production, venue, material,
+	WITH production, material, surMaterial,
 		COLLECT(
 			CASE SIZE(entities) WHEN 0
 				THEN null
@@ -846,23 +830,7 @@ const getShowQuery = () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
-
-	OPTIONAL MATCH (castMember)<-[role]-(production)-[materialRel]->
-		(material)-[characterRel:DEPICTS]->(character:Character)
-		WHERE
-			(
-				role.roleName IN [character.name, characterRel.displayName] OR
-				role.characterName IN [character.name, characterRel.displayName]
-			) AND
-			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
-
-	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
-
-	WITH DISTINCT production, venue, material, surMaterial, writingCredits, castMember, role, character
-		ORDER BY role.castMemberPosition, role.rolePosition
-
-	WITH production, venue, castMember,
+	WITH production,
 		CASE material WHEN NULL
 			THEN null
 			ELSE material {
@@ -877,27 +845,25 @@ const getShowQuery = () => `
 				END,
 				writingCredits
 			}
-		END AS material,
-		COLLECT(
-			CASE role.roleName WHEN NULL
-				THEN { name: 'Performer' }
-				ELSE role {
-					model: 'CHARACTER',
-					uuid: character.uuid,
-					name: role.roleName,
-					.qualifier,
-					isAlternate: COALESCE(role.isAlternate, false)
-				}
-			END
-		) AS roles
+		END AS material
 
-	WITH production, material, venue,
-		COLLECT(
-			CASE castMember WHEN NULL
-				THEN null
-				ELSE castMember { model: 'PERSON', .uuid, .name, roles }
-			END
-		) AS cast
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	WITH production, material,
+		CASE venue WHEN NULL
+			THEN null
+			ELSE venue {
+				model: 'VENUE',
+				.uuid,
+				.name,
+				surVenue: CASE surVenue WHEN NULL
+					THEN null
+					ELSE surVenue { model: 'VENUE', .uuid, .name }
+				END
+			}
+		END AS venue
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
@@ -909,7 +875,6 @@ const getShowQuery = () => `
 		production,
 		venue,
 		material,
-		cast,
 		CASE surProduction WHEN NULL
 			THEN null
 			ELSE surProduction {
@@ -944,14 +909,13 @@ const getShowQuery = () => `
 		material,
 		venue,
 		surProduction,
-		cast,
 		subProductionRel,
 		subProduction,
 		subProductionVenue,
 		subProductionSurVenue
 		ORDER BY subProduction.startDate DESC, subProductionRel.position
 
-	WITH production, material, venue, cast, surProduction,
+	WITH production, material, venue, surProduction,
 		COLLECT(
 			CASE subProduction WHEN NULL
 				THEN null
@@ -982,7 +946,7 @@ const getShowQuery = () => `
 			(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
 			producerEntity:Company
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerEntityRel,
+	WITH production, material, venue, surProduction, subProductions, producerEntityRel,
 		COLLECT(producerEntity {
 			model: TOUPPER(HEAD(LABELS(producerEntity))),
 			.uuid,
@@ -1000,16 +964,16 @@ const getShowQuery = () => `
 					producerEntityRel.creditPosition IS NULL OR
 					producerEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-			WITH production, material, venue, surProduction, subProductions, cast, producerEntityRel, producerEntity, creditedMember
+			WITH production, material, venue, surProduction, subProductions, producerEntityRel, producerEntity, creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, surProduction, subProductions, cast, producerEntityRel, producerEntity,
+			WITH production, material, venue, surProduction, subProductions, producerEntityRel, producerEntity,
 				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerEntityRel, producerEntity, creditedMembers
+	WITH production, material, venue, surProduction, subProductions, producerEntityRel, producerEntity, creditedMembers
 		ORDER BY producerEntityRel.creditPosition, producerEntityRel.entityPosition
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerEntityRel.credit AS producerCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerEntityRel.credit AS producerCreditName,
 		COLLECT(
 			CASE producerEntity WHEN NULL
 				THEN null
@@ -1017,13 +981,13 @@ const getShowQuery = () => `
 			END
 		) AS producerEntities
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerCreditName,
 		[producerEntity IN producerEntities | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
 			ELSE producerEntity { .model, .uuid, .name }
 		END] AS producerEntities
 
-	WITH production, material, venue, surProduction, subProductions, cast,
+	WITH production, material, venue, surProduction, subProductions,
 		COLLECT(
 			CASE SIZE(producerEntities) WHEN 0
 				THEN null
@@ -1035,12 +999,48 @@ const getShowQuery = () => `
 			END
 		) AS producerCredits
 
+	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
+
+	OPTIONAL MATCH (castMember)<-[role]-(production)-[:PRODUCTION_OF]->
+		(:Material)-[characterRel:DEPICTS]->(character:Character)
+		WHERE
+			(
+				role.roleName IN [character.name, characterRel.displayName] OR
+				role.characterName IN [character.name, characterRel.displayName]
+			) AND
+			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
+
+	WITH DISTINCT production, material, venue, surProduction, subProductions, producerCredits, castMember, role, character
+		ORDER BY role.castMemberPosition, role.rolePosition
+
+	WITH production, material, venue, surProduction, subProductions, producerCredits, castMember,
+		COLLECT(
+			CASE role.roleName WHEN NULL
+				THEN { name: 'Performer' }
+				ELSE role {
+					model: 'CHARACTER',
+					uuid: character.uuid,
+					name: role.roleName,
+					.qualifier,
+					isAlternate: COALESCE(role.isAlternate, false)
+				}
+			END
+		) AS roles
+
+	WITH production, material, venue, surProduction, subProductions, producerCredits,
+		COLLECT(
+			CASE castMember WHEN NULL
+				THEN null
+				ELSE castMember { model: 'PERSON', .uuid, .name, roles }
+			END
+		) AS cast
+
 	OPTIONAL MATCH (production)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 		WHERE
 			(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 			creativeEntity:Company
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeEntityRel,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel,
 		COLLECT(creativeEntity {
 			model: TOUPPER(HEAD(LABELS(creativeEntity))),
 			.uuid,
@@ -1058,16 +1058,16 @@ const getShowQuery = () => `
 					creativeEntityRel.creditPosition IS NULL OR
 					creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-			WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeEntityRel, creativeEntity, creditedMember
+			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeEntityRel, creativeEntity,
+			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity,
 				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeEntityRel, creativeEntity, creditedMembers
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMembers
 		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeEntityRel.credit AS creativeCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel.credit AS creativeCreditName,
 		COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
@@ -1075,13 +1075,13 @@ const getShowQuery = () => `
 			END
 		) AS creativeEntities
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCreditName,
 		[creativeEntity IN creativeEntities | CASE creativeEntity.model WHEN 'COMPANY'
 			THEN creativeEntity
 			ELSE creativeEntity { .model, .uuid, .name }
 		END] AS creativeEntities
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast,
 		COLLECT(
 			CASE SIZE(creativeEntities) WHEN 0
 				THEN null
@@ -1098,7 +1098,7 @@ const getShowQuery = () => `
 			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 			crewEntity:Company
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewEntityRel,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel,
 		COLLECT(crewEntity {
 			model: TOUPPER(HEAD(LABELS(crewEntity))),
 			.uuid,
@@ -1119,31 +1119,35 @@ const getShowQuery = () => `
 			WITH
 				production,
 				material,
-				venue, surProduction, subProductions,
-				cast,
+				venue,
+				surProduction,
+				subProductions,
 				producerCredits,
+				cast,
 				creativeCredits,
 				crewEntityRel,
 				crewEntity,
 				creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewEntityRel, crewEntity,
+			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel, crewEntity,
 				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
 	WITH
 		production,
 		material,
-		venue, surProduction, subProductions,
-		cast,
+		venue,
+		surProduction,
+		subProductions,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewEntityRel,
 		crewEntity,
 		creditedMembers
 		ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewEntityRel.credit AS crewCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
 		COLLECT(
 			CASE crewEntity WHEN NULL
 				THEN null
@@ -1151,19 +1155,13 @@ const getShowQuery = () => `
 			END
 		) AS crewEntities
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewCreditName,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewCreditName,
 		[crewEntity IN crewEntities | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity
 			ELSE crewEntity { .model, .uuid, .name }
 		END] AS crewEntities
 
-	WITH
-		production,
-		material,
-		venue, surProduction, subProductions,
-		cast,
-		producerCredits,
-		creativeCredits,
+	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits,
 		COLLECT(
 			CASE SIZE(crewEntities) WHEN 0
 				THEN null
@@ -1202,8 +1200,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		nomineeRel,
@@ -1257,8 +1255,8 @@ const getShowQuery = () => `
 				venue,
 				surProduction,
 				subProductions,
-				cast,
 				producerCredits,
+				cast,
 				creativeCredits,
 				crewCredits,
 				recipientProduction,
@@ -1278,8 +1276,8 @@ const getShowQuery = () => `
 				venue,
 				surProduction,
 				subProductions,
-				cast,
 				producerCredits,
+				cast,
 				creativeCredits,
 				crewCredits,
 				recipientProduction,
@@ -1298,8 +1296,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1319,8 +1317,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1342,8 +1340,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1378,8 +1376,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1402,8 +1400,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1457,8 +1455,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1480,8 +1478,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		recipientProduction,
@@ -1516,8 +1514,8 @@ const getShowQuery = () => `
 		venue,
 		surProduction,
 		subProductions,
-		cast,
 		producerCredits,
+		cast,
 		creativeCredits,
 		crewCredits,
 		category,
@@ -1535,11 +1533,11 @@ const getShowQuery = () => `
 		}) AS nominations
 		ORDER BY categoryRel.position
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewCredits, ceremony, award,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewCredits, ceremony, award,
 		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
 		ORDER BY ceremony.name DESC
 
-	WITH production, material, venue, surProduction, subProductions, cast, producerCredits, creativeCredits, crewCredits, award,
+	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewCredits, award,
 		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
 		ORDER BY award.name
 
@@ -1551,7 +1549,9 @@ const getShowQuery = () => `
 		production.pressDate AS pressDate,
 		production.endDate AS endDate,
 		material,
-		venue, surProduction, subProductions,
+		venue,
+		surProduction,
+		subProductions,
 		producerCredits,
 		cast,
 		creativeCredits,
