@@ -831,7 +831,7 @@ describe('Production with sub-productions', () => {
 
 	describe('National Theatre (venue)', () => {
 
-		it('includes productions at this venue, including the sur-production and the specific sub-venue', () => {
+		it('includes productions at this venue, including the specific sub-venue and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
@@ -897,7 +897,7 @@ describe('Production with sub-productions', () => {
 
 	describe('Olivier Theatre (venue)', () => {
 
-		it('includes productions at this venue, including the sur-production', () => {
+		it('includes productions at this venue and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
