@@ -102,17 +102,18 @@ describe('CompanyWithMembers model', () => {
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0].validateUniquenessInGroup
 			);
-			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.members[0].validateName.calledOnce).to.be.true;
-			expect(instance.members[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.members[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.members[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledOnce).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledWithExactly(
+			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
+			assert.calledOnce(instance.members[0].validateName);
+			assert.calledWithExactly(instance.members[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.members[0].validateDifferentiator);
+			assert.calledWithExactly(instance.members[0].validateDifferentiator);
+			assert.calledOnce(stubs.getDuplicateEntityInfoModule.isEntityInArray);
+			assert.calledWithExactly(
+				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0], []
-			)).to.be.true;
-			expect(instance.members[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.members[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
+			);
+			assert.calledOnce(instance.members[0].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.members[0].validateUniquenessInGroup, { isDuplicate: false });
 
 		});
 

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { spy } from 'sinon';
+import { assert, spy } from 'sinon';
 
 import Role from '../../../src/models/Role';
 
@@ -172,10 +172,11 @@ describe('Role model', () => {
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterName();
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly(
-				'characterName', { isRequired: false })
-			).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'characterName', { isRequired: false }
+			);
 
 		});
 
@@ -188,10 +189,11 @@ describe('Role model', () => {
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterDifferentiator();
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly(
-				'characterDifferentiator', { isRequired: false })
-			).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'characterDifferentiator', { isRequired: false }
+			);
 
 		});
 
@@ -208,7 +210,7 @@ describe('Role model', () => {
 					const instance = new Role({ name: 'Hamlet', characterName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -221,7 +223,7 @@ describe('Role model', () => {
 					const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -234,7 +236,7 @@ describe('Role model', () => {
 					const instance = new Role({ name: '', characterName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -249,11 +251,11 @@ describe('Role model', () => {
 				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
 				spy(instance, 'addPropertyError');
 				instance.validateRoleNameCharacterNameDisparity();
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'characterName',
-					'Character name is only required if different from role name'
-				)).to.be.true;
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
+					'characterName', 'Character name is only required if different from role name'
+				);
 
 			});
 

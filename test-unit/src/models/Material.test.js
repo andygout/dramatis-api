@@ -343,27 +343,30 @@ describe('Material model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.characterGroups[0].runInputValidations
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.validateFormat.calledOnce).to.be.true;
-			expect(instance.validateFormat.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.validateYear.calledOnce).to.be.true;
-			expect(instance.validateYear.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.originalVersionMaterial.validateName.calledOnce).to.be.true;
-			expect(instance.originalVersionMaterial.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.originalVersionMaterial.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.originalVersionMaterial.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledTwice).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices
-				.firstCall.calledWithExactly(instance.writingCredits)
-			).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices
-				.secondCall.calledWithExactly(instance.characterGroups)
-			).to.be.true;
-			expect(instance.writingCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.writingCredits[0].runInputValidations.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnce(instance.validateDifferentiator);
+			assert.calledWithExactly(instance.validateDifferentiator);
+			assert.calledOnce(instance.validateFormat);
+			assert.calledWithExactly(instance.validateFormat, { isRequired: false });
+			assert.calledOnce(instance.validateYear);
+			assert.calledWithExactly(instance.validateYear, { isRequired: false });
+			assert.calledOnce(instance.originalVersionMaterial.validateName);
+			assert.calledWithExactly(instance.originalVersionMaterial.validateName, { isRequired: false });
+			assert.calledOnce(instance.originalVersionMaterial.validateDifferentiator);
+			assert.calledWithExactly(instance.originalVersionMaterial.validateDifferentiator);
+			assert.calledTwice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.firstCall,
+				instance.writingCredits
+			);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.secondCall,
+				instance.characterGroups
+			);
+			assert.calledOnce(instance.writingCredits[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.writingCredits[0].runInputValidations,
 				{
 					isDuplicate: false,
 					subject: {
@@ -371,27 +374,31 @@ describe('Material model', () => {
 						differentiator: '1'
 					}
 				}
-			)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subMaterials
-			)).to.be.true;
-			expect(instance.subMaterials[0].validateName.calledOnce).to.be.true;
-			expect(instance.subMaterials[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.subMaterials[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.subMaterials[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.subMaterials[0].validateNoAssociationWithSelf.calledWithExactly(
+			);
+			assert.calledOnce(instance.subMaterials[0].validateName);
+			assert.calledWithExactly(instance.subMaterials[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.subMaterials[0].validateDifferentiator);
+			assert.calledWithExactly(instance.subMaterials[0].validateDifferentiator);
+			assert.calledOnce(instance.subMaterials[0].validateNoAssociationWithSelf);
+			assert.calledWithExactly(
+				instance.subMaterials[0].validateNoAssociationWithSelf,
 				{ name: 'The Tragedy of Hamlet, Prince of Denmark', differentiator: '1' }
-			)).to.be.true;
-			expect(instance.subMaterials[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.subMaterials[0].validateUniquenessInGroup.calledWithExactly(
+			);
+			assert.calledOnce(instance.subMaterials[0].validateUniquenessInGroup);
+			assert.calledWithExactly(
+				instance.subMaterials[0].validateUniquenessInGroup,
 				{ isDuplicate: false }
-			)).to.be.true;
-			expect(instance.characterGroups[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.characterGroups[0].runInputValidations.calledWithExactly(
+			);
+			assert.calledOnce(instance.characterGroups[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.characterGroups[0].runInputValidations,
 				{ isDuplicate: false }
-			)).to.be.true;
+			);
 
 		});
 
@@ -404,8 +411,11 @@ describe('Material model', () => {
 			const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: 'play' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateFormat({ isRequired: false });
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly('format', { isRequired: false })).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'format', { isRequired: false }
+			);
 
 		});
 
@@ -420,8 +430,8 @@ describe('Material model', () => {
 				const instance = createInstance({ name: 'The Caretaker', year: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateYear();
-				expect(stubs.isValidYearModule.isValidYear.notCalled).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
+				assert.notCalled(stubs.isValidYearModule.isValidYear);
+				assert.notCalled(instance.addPropertyError);
 
 			});
 
@@ -434,12 +444,13 @@ describe('Material model', () => {
 				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 				spy(instance, 'addPropertyError');
 				instance.validateYear();
-				expect(stubs.isValidYearModule.isValidYear.calledOnce).to.be.true;
-				expect(stubs.isValidYearModule.isValidYear.calledWithExactly('Nineteen Fifty-Nine')).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
+				assert.calledOnce(stubs.isValidYearModule.isValidYear);
+				assert.calledWithExactly(stubs.isValidYearModule.isValidYear, 'Nineteen Fifty-Nine');
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
 					'year', 'Value must be a valid year'
-				)).to.be.true;
+				);
 
 			});
 
@@ -452,9 +463,9 @@ describe('Material model', () => {
 				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
 				spy(instance, 'addPropertyError');
 				instance.validateYear();
-				expect(stubs.isValidYearModule.isValidYear.calledOnce).to.be.true;
-				expect(stubs.isValidYearModule.isValidYear.calledWithExactly(1959)).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
+				assert.calledOnce(stubs.isValidYearModule.isValidYear);
+				assert.calledWithExactly(stubs.isValidYearModule.isValidYear, 1959);
+				assert.notCalled(instance.addPropertyError);
 
 			});
 

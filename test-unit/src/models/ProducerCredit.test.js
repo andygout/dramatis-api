@@ -137,37 +137,41 @@ describe('ProducerCredit model', () => {
 				instance.entities[1].validateUniquenessInGroup,
 				instance.entities[1].runInputValidations
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledOnce).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnce(instance.validateUniquenessInGroup);
+			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(stubs.getDuplicateEntityInfoModule.getDuplicateEntities);
+			assert.calledWithExactly(
+				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.entities
-			)).to.be.true;
-			expect(instance.entities[0].validateName.calledOnce).to.be.true;
-			expect(instance.entities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.calledTwice).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0).calledWithExactly(
+			);
+			assert.calledOnce(instance.entities[0].validateName);
+			assert.calledWithExactly(instance.entities[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.entities[0].validateDifferentiator);
+			assert.calledWithExactly(instance.entities[0].validateDifferentiator);
+			assert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
+			assert.calledWithExactly(
+				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0),
 				instance.entities[0], 'getDuplicateEntities response'
-			)).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.entities[1].validateName.calledOnce).to.be.true;
-			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[1].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1).calledWithExactly(
+			);
+			assert.calledOnce(instance.entities[0].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(instance.entities[1].validateName);
+			assert.calledWithExactly(instance.entities[1].validateName, { isRequired: false });
+			assert.calledOnce(instance.entities[1].validateDifferentiator);
+			assert.calledWithExactly(instance.entities[1].validateDifferentiator);
+			assert.calledWithExactly(
+				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1),
 				instance.entities[1], 'getDuplicateEntities response'
-			)).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.entities[1].runInputValidations.calledOnce).to.be.true;
-			expect(instance.entities[1].runInputValidations.calledWithExactly(
+			);
+			assert.calledOnce(instance.entities[1].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(instance.entities[1].runInputValidations);
+			assert.calledWithExactly(
+				instance.entities[1].runInputValidations,
 				{ duplicateEntities: 'getDuplicateEntities response' }
-			)).to.be.true;
+			);
 
 		});
 

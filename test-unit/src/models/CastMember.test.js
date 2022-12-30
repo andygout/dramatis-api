@@ -110,28 +110,29 @@ describe('CastMember model', () => {
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateUniquenessInGroup
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly(instance.roles)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnce(instance.validateDifferentiator);
+			assert.calledWithExactly(instance.validateDifferentiator);
+			assert.calledOnce(instance.validateUniquenessInGroup);
+			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
+			assert.calledWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateRoleIndices,
 				instance.roles
-			)).to.be.true;
-			expect(instance.roles[0].validateName.calledOnce).to.be.true;
-			expect(instance.roles[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.roles[0].validateCharacterName.calledOnce).to.be.true;
-			expect(instance.roles[0].validateCharacterName.calledWithExactly()).to.be.true;
-			expect(instance.roles[0].validateQualifier.calledOnce).to.be.true;
-			expect(instance.roles[0].validateQualifier.calledWithExactly()).to.be.true;
-			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledOnce).to.be.true;
-			expect(instance.roles[0].validateRoleNameCharacterNameDisparity.calledWithExactly()).to.be.true;
-			expect(instance.roles[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.roles[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
+			);
+			assert.calledOnce(instance.roles[0].validateName);
+			assert.calledWithExactly(instance.roles[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.roles[0].validateCharacterName);
+			assert.calledWithExactly(instance.roles[0].validateCharacterName);
+			assert.calledOnce(instance.roles[0].validateQualifier);
+			assert.calledWithExactly(instance.roles[0].validateQualifier);
+			assert.calledOnce(instance.roles[0].validateRoleNameCharacterNameDisparity);
+			assert.calledWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
+			assert.calledOnce(instance.roles[0].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
 
 		});
 

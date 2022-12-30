@@ -116,8 +116,11 @@ describe('Base model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateName({ isRequired: false });
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly('name', { isRequired: false })).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'name', { isRequired: false }
+			);
 
 		});
 
@@ -129,8 +132,11 @@ describe('Base model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateQualifier();
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly('qualifier', { isRequired: false })).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'qualifier', { isRequired: false }
+			);
 
 		});
 
@@ -144,9 +150,12 @@ describe('Base model', () => {
 
 				spy(instance, 'addPropertyError');
 				instance.validateStringForProperty('name', { isRequired: false });
-				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, { isRequired: false })).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
+				assert.calledOnce(stubs.validateString);
+				assert.calledWithExactly(
+					stubs.validateString,
+					instance.name, { isRequired: false }
+				);
+				assert.notCalled(instance.addPropertyError);
 
 			});
 
@@ -163,10 +172,16 @@ describe('Base model', () => {
 					stubs.validateString,
 					instance.addPropertyError
 				);
-				expect(stubs.validateString.calledOnce).to.be.true;
-				expect(stubs.validateString.calledWithExactly(instance.name, { isRequired: true })).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly('name', 'Value is too short')).to.be.true;
+				assert.calledOnce(stubs.validateString);
+				assert.calledWithExactly(
+					stubs.validateString,
+					instance.name, { isRequired: true }
+				);
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
+					'name', 'Value is too short'
+				);
 
 			});
 
@@ -183,7 +198,7 @@ describe('Base model', () => {
 				spy(instance, 'addPropertyError');
 				const opts = { isDuplicate: false };
 				instance.validateUniquenessInGroup(opts);
-				expect(instance.addPropertyError.notCalled).to.be.true;
+				assert.notCalled(instance.addPropertyError);
 
 			});
 
@@ -198,10 +213,11 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -215,13 +231,15 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'underlyingName', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -235,13 +253,15 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'characterName', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -255,13 +275,15 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'differentiator', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -275,13 +297,15 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'characterDifferentiator', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -295,13 +319,15 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'qualifier', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -314,10 +340,11 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -334,18 +361,22 @@ describe('Base model', () => {
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
 					expect(instance.addPropertyError.callCount).to.equal(4);
-					expect(instance.addPropertyError.firstCall.calledWithExactly(
+					assert.calledWithExactly(
+						instance.addPropertyError.firstCall,
 						'name', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.secondCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.secondCall,
 						'differentiator', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.thirdCall.calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.thirdCall,
 						'characterDifferentiator', 'This item has been duplicated within the group'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(3).calledWithExactly(
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(3),
 						'qualifier', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -359,10 +390,11 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true, properties: new Set(['uuid']) };
 					instance.validateUniquenessInGroup(opts);
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
 						'uuid', 'This item has been duplicated within the group'
-					)).to.be.true;
+					);
 
 				});
 
@@ -383,7 +415,7 @@ describe('Base model', () => {
 					const instance = new Base({ name: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -396,7 +428,7 @@ describe('Base model', () => {
 					const instance = new Base({ name: 'Foo' });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 				});
 
 			});
@@ -408,7 +440,7 @@ describe('Base model', () => {
 					const instance = new Base({ name: 'Foo' });
 					spy(instance, 'addPropertyError');
 					instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -423,11 +455,11 @@ describe('Base model', () => {
 				const instance = new Base({ name: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'name',
-					'Name is required if named children exist'
-				)).to.be.true;
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
+					'name', 'Name is required if named children exist'
+				);
 
 			});
 

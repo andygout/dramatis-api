@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import { createStubInstance, stub } from 'sinon';
+import { assert, createStubInstance, stub } from 'sinon';
 
 import { Venue } from '../../../src/models';
 
@@ -54,10 +54,11 @@ describe('Venues controller', () => {
 		it('calls sendJsonResponse module', () => {
 
 			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
-			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
-			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
+			assert.calledOnce(stubs.sendJsonResponseModule.sendJsonResponse);
+			assert.calledWithExactly(
+				stubs.sendJsonResponseModule.sendJsonResponse,
 				stubs.response, stubs.models.Venue() // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 
 		});
 
@@ -68,10 +69,11 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('createRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Venue(), 'CREATE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -83,10 +85,11 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('editRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Venue(), 'EDIT' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -98,10 +101,11 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('updateRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Venue(), 'UPDATE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -113,10 +117,11 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('deleteRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Venue(), 'DELETE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -128,10 +133,11 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('showRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Venue(), 'SHOW' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -143,10 +149,11 @@ describe('Venues controller', () => {
 		it('calls callStaticListMethod module', async () => {
 
 			const result = await callFunction('listRoute');
-			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callStaticListMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response, stubs.next, stubs.models.Venue, 'VENUE'
-			)).to.be.true;
+			);
 			expect(result).to.equal('callStaticListMethod response');
 
 		});
