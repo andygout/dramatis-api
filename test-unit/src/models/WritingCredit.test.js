@@ -199,36 +199,38 @@ describe('WritingCredit model', () => {
 				instance.entities[2].validateUniquenessInGroup,
 				instance.entities[2].validateNoAssociationWithSelf
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
 				instance.entities
-			)).to.be.true;
-			expect(instance.entities[0].validateName.calledOnce).to.be.true;
-			expect(instance.entities[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.entities[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[0].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.entities[0].validateNoAssociationWithSelf.notCalled).to.be.true;
-			expect(instance.entities[1].validateName.calledOnce).to.be.true;
-			expect(instance.entities[1].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.entities[1].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[1].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[1].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.entities[1].validateNoAssociationWithSelf.notCalled).to.be.true;
-			expect(instance.entities[2].validateName.calledOnce).to.be.true;
-			expect(instance.entities[2].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.entities[2].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.entities[2].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.entities[2].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.entities[2].validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.entities[2].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.entities[2].validateNoAssociationWithSelf.calledWithExactly(
+			);
+			assert.calledOnce(instance.entities[0].validateName);
+			assert.calledWithExactly(instance.entities[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.entities[0].validateDifferentiator);
+			assert.calledWithExactly(instance.entities[0].validateDifferentiator);
+			assert.calledOnce(instance.entities[0].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.notCalled(instance.entities[0].validateNoAssociationWithSelf);
+			assert.calledOnce(instance.entities[1].validateName);
+			assert.calledWithExactly(instance.entities[1].validateName, { isRequired: false });
+			assert.calledOnce(instance.entities[1].validateDifferentiator);
+			assert.calledWithExactly(instance.entities[1].validateDifferentiator);
+			assert.calledOnce(instance.entities[1].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			assert.notCalled(instance.entities[1].validateNoAssociationWithSelf);
+			assert.calledOnce(instance.entities[2].validateName);
+			assert.calledWithExactly(instance.entities[2].validateName, { isRequired: false });
+			assert.calledOnce(instance.entities[2].validateDifferentiator);
+			assert.calledWithExactly(instance.entities[2].validateDifferentiator);
+			assert.calledOnce(instance.entities[2].validateUniquenessInGroup);
+			assert.calledWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(instance.entities[2].validateNoAssociationWithSelf);
+			assert.calledWithExactly(
+				instance.entities[2].validateNoAssociationWithSelf,
 				{ name: 'The Indian Boy', differentiator: '1' }
-			)).to.be.true;
+			);
 
 		});
 

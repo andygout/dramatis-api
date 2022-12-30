@@ -95,24 +95,26 @@ describe('Venue model', () => {
 				instance.subVenues[0].validateNoAssociationWithSelf,
 				instance.subVenues[0].validateUniquenessInGroup
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateBaseInstanceIndices.calledWithExactly(instance.subVenues)).to.be.true;
-			expect(instance.subVenues[0].validateName.calledOnce).to.be.true;
-			expect(instance.subVenues[0].validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.subVenues[0].validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.subVenues[0].validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.subVenues[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.subVenues[0].validateNoAssociationWithSelf.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnce(instance.validateDifferentiator);
+			assert.calledWithExactly(instance.validateDifferentiator);
+			assert.calledOnce(stubs.getDuplicateBaseInstanceIndices);
+			assert.calledWithExactly(stubs.getDuplicateBaseInstanceIndices, instance.subVenues);
+			assert.calledOnce(instance.subVenues[0].validateName);
+			assert.calledWithExactly(instance.subVenues[0].validateName, { isRequired: false });
+			assert.calledOnce(instance.subVenues[0].validateDifferentiator);
+			assert.calledWithExactly(instance.subVenues[0].validateDifferentiator);
+			assert.calledOnce(instance.subVenues[0].validateNoAssociationWithSelf);
+			assert.calledWithExactly(
+				instance.subVenues[0].validateNoAssociationWithSelf,
 				{ name: 'National Theatre', differentiator: '' }
-			)).to.be.true;
-			expect(instance.subVenues[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.subVenues[0].validateUniquenessInGroup.calledWithExactly(
+			);
+			assert.calledOnce(instance.subVenues[0].validateUniquenessInGroup);
+			assert.calledWithExactly(
+				instance.subVenues[0].validateUniquenessInGroup,
 				{ isDuplicate: false }
-			)).to.be.true;
+			);
 
 		});
 

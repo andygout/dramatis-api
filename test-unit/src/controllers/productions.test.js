@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import proxyquire from 'proxyquire';
-import { createStubInstance, stub } from 'sinon';
+import { assert, createStubInstance, stub } from 'sinon';
 
 import { Production } from '../../../src/models';
 
@@ -54,11 +54,11 @@ describe('Productions controller', () => {
 		it('calls sendJsonResponse module', () => {
 
 			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
-			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledOnce).to.be.true;
-			expect(stubs.sendJsonResponseModule.sendJsonResponse.calledWithExactly(
-				stubs.response,
-				stubs.models.Production() // eslint-disable-line new-cap
-			)).to.be.true;
+			assert.calledOnce(stubs.sendJsonResponseModule.sendJsonResponse);
+			assert.calledWithExactly(
+				stubs.sendJsonResponseModule.sendJsonResponse,
+				stubs.response, stubs.models.Production() // eslint-disable-line new-cap
+			);
 
 		});
 
@@ -69,10 +69,11 @@ describe('Productions controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('createRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Production(), 'CREATE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -84,10 +85,11 @@ describe('Productions controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('editRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Production(), 'EDIT' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -99,10 +101,11 @@ describe('Productions controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('updateRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Production(), 'UPDATE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -114,10 +117,11 @@ describe('Productions controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('deleteRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Production(), 'DELETE' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -129,10 +133,11 @@ describe('Productions controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('showRoute');
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callInstanceMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Production(), 'SHOW' // eslint-disable-line new-cap
-			)).to.be.true;
+			);
 			expect(result).to.equal('callInstanceMethod response');
 
 		});
@@ -144,10 +149,11 @@ describe('Productions controller', () => {
 		it('calls callStaticListMethod module', async () => {
 
 			const result = await callFunction('listRoute');
-			expect(stubs.callClassMethodsModule.callStaticListMethod.calledOnce).to.be.true;
-			expect(stubs.callClassMethodsModule.callStaticListMethod.calledWithExactly(
+			assert.calledOnce(stubs.callClassMethodsModule.callStaticListMethod);
+			assert.calledWithExactly(
+				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response, stubs.next, stubs.models.Production, 'PRODUCTION'
-			)).to.be.true;
+			);
 			expect(result).to.equal('callStaticListMethod response');
 
 		});

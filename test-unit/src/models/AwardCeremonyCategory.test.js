@@ -57,14 +57,14 @@ describe('AwardCeremonyCategory model', () => {
 				instance.validateNamePresenceIfNamedChildren,
 				instance.nominations[0].runInputValidations
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.validateUniquenessInGroup.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(instance.validateNamePresenceIfNamedChildren.calledOnce).to.be.true;
-			expect(instance.validateNamePresenceIfNamedChildren.calledWithExactly([])).to.be.true;
-			expect(instance.nominations[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.nominations[0].runInputValidations.calledWithExactly()).to.be.true;
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnce(instance.validateUniquenessInGroup);
+			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
+			assert.calledWithExactly(instance.validateNamePresenceIfNamedChildren, []);
+			assert.calledOnce(instance.nominations[0].runInputValidations);
+			assert.calledWithExactly(instance.nominations[0].runInputValidations);
 
 		});
 
@@ -80,8 +80,8 @@ describe('AwardCeremonyCategory model', () => {
 			const instance = new AwardCeremonyCategory(props);
 			spy(instance.nominations[0], 'runDatabaseValidations');
 			await instance.runDatabaseValidations();
-			expect(instance.nominations[0].runDatabaseValidations.calledOnce).to.be.true;
-			expect(instance.nominations[0].runDatabaseValidations.calledWithExactly()).to.be.true;
+			assert.calledOnce(instance.nominations[0].runDatabaseValidations);
+			assert.calledWithExactly(instance.nominations[0].runDatabaseValidations);
 
 		});
 

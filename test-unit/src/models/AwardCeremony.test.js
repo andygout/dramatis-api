@@ -152,18 +152,19 @@ describe('AwardCeremony model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories[0].runInputValidations
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.award.validateName.calledOnce).to.be.true;
-			expect(instance.award.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.award.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.award.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnce(instance.award.validateName);
+			assert.calledWithExactly(instance.award.validateName, { isRequired: false });
+			assert.calledOnce(instance.award.validateDifferentiator);
+			assert.calledWithExactly(instance.award.validateDifferentiator);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories
-			)).to.be.true;
-			expect(instance.categories[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.categories[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
+			);
+			assert.calledOnce(instance.categories[0].runInputValidations);
+			assert.calledWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
 
 		});
 
@@ -184,10 +185,10 @@ describe('AwardCeremony model', () => {
 			const instance = createInstance(props);
 			spy(instance, 'validateAwardContextualUniquenessInDatabase');
 			await instance.runDatabaseValidations();
-			expect(instance.validateAwardContextualUniquenessInDatabase.calledOnce).to.be.true;
-			expect(instance.validateAwardContextualUniquenessInDatabase.calledWithExactly()).to.be.true;
-			expect(instance.categories[0].runDatabaseValidations.calledOnce).to.be.true;
-			expect(instance.categories[0].runDatabaseValidations.calledWithExactly()).to.be.true;
+			assert.calledOnce(instance.validateAwardContextualUniquenessInDatabase);
+			assert.calledWithExactly(instance.validateAwardContextualUniquenessInDatabase);
+			assert.calledOnce(instance.categories[0].runDatabaseValidations);
+			assert.calledWithExactly(instance.categories[0].runDatabaseValidations);
 
 		});
 
@@ -208,13 +209,13 @@ describe('AwardCeremony model', () => {
 					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledWithExactly(instance)).to.be.true;
-				expect(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery.calledWithExactly())
-					.to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledWithExactly(
+				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
+				assert.calledWithExactly(
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getAwardContextualDuplicateRecordCountQuery response',
 						params: {
@@ -226,9 +227,9 @@ describe('AwardCeremony model', () => {
 							}
 						}
 					}
-				)).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
-				expect(instance.award.addPropertyError.notCalled).to.be.true;
+				);
+				assert.notCalled(instance.addPropertyError);
+				assert.notCalled(instance.award.addPropertyError);
 
 			});
 
@@ -248,13 +249,13 @@ describe('AwardCeremony model', () => {
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledOnce).to.be.true;
-				expect(stubs.prepareAsParamsModule.prepareAsParams.calledWithExactly(instance)).to.be.true;
-				expect(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery.calledOnce).to.be.true;
-				expect(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery.calledWithExactly())
-					.to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledOnce).to.be.true;
-				expect(stubs.neo4jQueryModule.neo4jQuery.calledWithExactly(
+				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
+				assert.calledWithExactly(
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getAwardContextualDuplicateRecordCountQuery response',
 						params: {
@@ -266,18 +267,21 @@ describe('AwardCeremony model', () => {
 							}
 						}
 					}
-				)).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
+				);
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
 					'name', 'Award ceremony already exists for given award'
-				)).to.be.true;
-				expect(instance.award.addPropertyError.calledTwice).to.be.true;
-				expect(instance.award.addPropertyError.firstCall.calledWithExactly(
+				);
+				assert.calledTwice(instance.award.addPropertyError);
+				assert.calledWithExactly(
+					instance.award.addPropertyError.firstCall,
 					'name', 'Award ceremony already exists for given award'
-				)).to.be.true;
-				expect(instance.award.addPropertyError.secondCall.calledWithExactly(
+				);
+				assert.calledWithExactly(
+					instance.award.addPropertyError.secondCall,
 					'differentiator', 'Award ceremony already exists for given award'
-				)).to.be.true;
+				);
 
 			});
 

@@ -1,5 +1,4 @@
-import { expect } from 'chai';
-import { spy, stub } from 'sinon';
+import { assert, spy, stub } from 'sinon';
 
 import { ProductionIdentifier } from '../../../src/models';
 
@@ -12,8 +11,8 @@ describe('ProductionIdentifier model', () => {
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUuid();
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly('uuid', { isRequired: false })).to.be.true;
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
 
 		});
 
@@ -29,9 +28,9 @@ describe('ProductionIdentifier model', () => {
 				stub(instance, 'confirmExistenceInDatabase').resolves();
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
-				expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
-				expect(instance.confirmExistenceInDatabase.calledWithExactly({ model: 'PRODUCTION' })).to.be.true;
-				expect(instance.addPropertyError.notCalled).to.be.true;
+				assert.calledOnce(instance.confirmExistenceInDatabase);
+				assert.calledWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+				assert.notCalled(instance.addPropertyError);
 
 			});
 
@@ -45,13 +44,13 @@ describe('ProductionIdentifier model', () => {
 				stub(instance, 'confirmExistenceInDatabase').rejects(new Error('Not Found'));
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
-				expect(instance.confirmExistenceInDatabase.calledOnce).to.be.true;
-				expect(instance.confirmExistenceInDatabase.calledWithExactly({ model: 'PRODUCTION' })).to.be.true;
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'uuid',
-					'Production with this UUID does not exist'
-				)).to.be.true;
+				assert.calledOnce(instance.confirmExistenceInDatabase);
+				assert.calledWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
+					'uuid', 'Production with this UUID does not exist'
+				);
 
 			});
 

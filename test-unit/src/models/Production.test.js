@@ -491,58 +491,73 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.crewCredits[0].runInputValidations
 			);
-			expect(instance.validateName.calledOnce).to.be.true;
-			expect(instance.validateName.calledWithExactly({ isRequired: true })).to.be.true;
-			expect(instance.validateDates.calledOnce).to.be.true;
-			expect(instance.validateDates.calledWithExactly()).to.be.true;
-			expect(instance.material.validateName.calledOnce).to.be.true;
-			expect(instance.material.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.material.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.material.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(instance.venue.validateName.calledOnce).to.be.true;
-			expect(instance.venue.validateName.calledWithExactly({ isRequired: false })).to.be.true;
-			expect(instance.venue.validateDifferentiator.calledOnce).to.be.true;
-			expect(instance.venue.validateDifferentiator.calledWithExactly()).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices.calledWithExactly(
+			assert.calledOnce(instance.validateName);
+			assert.calledWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnce(instance.validateDates);
+			assert.calledWithExactly(instance.validateDates);
+			assert.calledOnce(instance.material.validateName);
+			assert.calledWithExactly(instance.material.validateName, { isRequired: false });
+			assert.calledOnce(instance.material.validateDifferentiator);
+			assert.calledWithExactly(instance.material.validateDifferentiator);
+			assert.calledOnce(instance.venue.validateName);
+			assert.calledWithExactly(instance.venue.validateName, { isRequired: false });
+			assert.calledOnce(instance.venue.validateDifferentiator);
+			assert.calledWithExactly(instance.venue.validateDifferentiator);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
 				instance.subProductions
-			)).to.be.true;
-			expect(instance.subProductions[0].validateUuid.calledOnce).to.be.true;
-			expect(instance.subProductions[0].validateUuid.calledWithExactly()).to.be.true;
-			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledOnce).to.be.true;
-			expect(instance.subProductions[0].validateNoAssociationWithSelf.calledWithExactly(
+			);
+			assert.calledOnce(instance.subProductions[0].validateUuid);
+			assert.calledWithExactly(instance.subProductions[0].validateUuid);
+			assert.calledOnce(instance.subProductions[0].validateNoAssociationWithSelf);
+			assert.calledWithExactly(
+				instance.subProductions[0].validateNoAssociationWithSelf,
 				{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			)).to.be.true;
-			expect(instance.subProductions[0].validateUniquenessInGroup.calledOnce).to.be.true;
-			expect(instance.subProductions[0].validateUniquenessInGroup.calledWithExactly(
+			);
+			assert.calledOnce(instance.subProductions[0].validateUniquenessInGroup);
+			assert.calledWithExactly(
+				instance.subProductions[0].validateUniquenessInGroup,
 				{ isDuplicate: false, properties: new Set(['uuid']) }
-			)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.calledThrice).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0).calledWithExactly(
+			);
+			assert.calledThrice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0),
 				instance.producerCredits
-			)).to.be.true;
-			expect(instance.producerCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.producerCredits[0].runInputValidations.calledWithExactly(
+			);
+			assert.calledOnce(instance.producerCredits[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.producerCredits[0].runInputValidations,
 				{ isDuplicate: false }
-			)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.calledOnce).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.getCall(0).calledWithExactly(
+			);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.getCall(0),
 				instance.cast
-			)).to.be.true;
-			expect(instance.cast[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.cast[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1).calledWithExactly(
-				instance.creativeCredits
-			)).to.be.true;
-			expect(instance.creativeCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.creativeCredits[0].runInputValidations.calledWithExactly(
+			);
+			assert.calledOnce(instance.cast[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.cast[0].runInputValidations,
 				{ isDuplicate: false }
-			)).to.be.true;
-			expect(stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(2).calledWithExactly(
+			);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1),
+				instance.creativeCredits
+			);
+			assert.calledOnce(instance.creativeCredits[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.creativeCredits[0].runInputValidations,
+				{ isDuplicate: false }
+			);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(2),
 				instance.crewCredits
-			)).to.be.true;
-			expect(instance.crewCredits[0].runInputValidations.calledOnce).to.be.true;
-			expect(instance.crewCredits[0].runInputValidations.calledWithExactly({ isDuplicate: false })).to.be.true;
+			);
+			assert.calledOnce(instance.crewCredits[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.crewCredits[0].runInputValidations,
+				{ isDuplicate: false }
+			);
 
 		});
 
@@ -559,7 +574,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -572,7 +587,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -585,7 +600,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -598,7 +613,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -611,7 +626,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', endDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -624,7 +639,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -637,7 +652,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -650,7 +665,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -667,7 +682,7 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -680,7 +695,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', pressDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -693,7 +708,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -706,7 +721,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-09-30', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -719,7 +734,7 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '', pressDate: '', endDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -737,7 +752,7 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -755,7 +770,7 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -772,11 +787,11 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
-						'startDate',
-						'Value must be in date format'
-					)).to.be.true;
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
+						'startDate', 'Value must be in date format'
+					);
 
 				});
 
@@ -789,11 +804,11 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
-						'pressDate',
-						'Value must be in date format'
-					)).to.be.true;
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
+						'pressDate', 'Value must be in date format'
+					);
 
 				});
 
@@ -806,11 +821,11 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', endDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledOnce).to.be.true;
-					expect(instance.addPropertyError.calledWithExactly(
-						'endDate',
-						'Value must be in date format'
-					)).to.be.true;
+					assert.calledOnce(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError,
+						'endDate', 'Value must be in date format'
+					);
 
 				});
 
@@ -823,15 +838,15 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2011-01-26', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.getCall(0).calledWithExactly(
-						'startDate',
-						'Start date must not be after end date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(1).calledWithExactly(
-						'endDate',
-						'End date must not be before start date'
-					)).to.be.true;
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(0),
+						'startDate', 'Start date must not be after end date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(1),
+						'endDate', 'End date must not be before start date'
+					);
 
 				});
 
@@ -844,15 +859,15 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-10-07', pressDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.getCall(0).calledWithExactly(
-						'startDate',
-						'Start date must not be after press date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(1).calledWithExactly(
-						'pressDate',
-						'Press date must not be before start date'
-					)).to.be.true;
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(0),
+						'startDate', 'Start date must not be after press date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(1),
+						'pressDate', 'Press date must not be before start date'
+					);
 
 				});
 
@@ -865,15 +880,15 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2011-01-26', endDate: '2010-10-07' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
-					expect(instance.addPropertyError.calledTwice).to.be.true;
-					expect(instance.addPropertyError.getCall(0).calledWithExactly(
-						'pressDate',
-						'Press date must not be after end date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(1).calledWithExactly(
-						'endDate',
-						'End date must not be before press date'
-					)).to.be.true;
+					assert.calledTwice(instance.addPropertyError);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(0),
+						'pressDate', 'Press date must not be after end date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(1),
+						'endDate', 'End date must not be before press date'
+					);
 
 				});
 
@@ -892,30 +907,30 @@ describe('Production model', () => {
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
 					expect(instance.addPropertyError.callCount).to.equal(6);
-					expect(instance.addPropertyError.getCall(0).calledWithExactly(
-						'startDate',
-						'Start date must not be after end date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(1).calledWithExactly(
-						'endDate',
-						'End date must not be before start date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(2).calledWithExactly(
-						'startDate',
-						'Start date must not be after press date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(3).calledWithExactly(
-						'pressDate',
-						'Press date must not be before start date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(4).calledWithExactly(
-						'pressDate',
-						'Press date must not be after end date'
-					)).to.be.true;
-					expect(instance.addPropertyError.getCall(5).calledWithExactly(
-						'endDate',
-						'End date must not be before press date'
-					)).to.be.true;
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(0),
+						'startDate', 'Start date must not be after end date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(1),
+						'endDate', 'End date must not be before start date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(2),
+						'startDate', 'Start date must not be after press date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(3),
+						'pressDate', 'Press date must not be before start date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(4),
+						'pressDate', 'Press date must not be after end date'
+					);
+					assert.calledWithExactly(
+						instance.addPropertyError.getCall(5),
+						'endDate', 'End date must not be before press date'
+					);
 
 				});
 
@@ -938,8 +953,8 @@ describe('Production model', () => {
 			};
 			const instance = createInstance(props);
 			await instance.runDatabaseValidations();
-			expect(instance.subProductions[0].runDatabaseValidations.calledOnce).to.be.true;
-			expect(instance.subProductions[0].runDatabaseValidations.calledWithExactly()).to.be.true;
+			assert.calledOnce(instance.subProductions[0].runDatabaseValidations);
+			assert.calledWithExactly(instance.subProductions[0].runDatabaseValidations);
 
 		});
 

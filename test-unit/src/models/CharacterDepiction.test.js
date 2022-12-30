@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { spy } from 'sinon';
+import { assert, spy } from 'sinon';
 
 import CharacterDepiction from '../../../src/models/CharacterDepiction';
 
@@ -94,10 +94,11 @@ describe('CharacterDepiction model', () => {
 			const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUnderlyingName();
-			expect(instance.validateStringForProperty.calledOnce).to.be.true;
-			expect(instance.validateStringForProperty.calledWithExactly(
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
 				'underlyingName', { isRequired: false }
-			)).to.be.true;
+			);
 
 		});
 
@@ -114,7 +115,7 @@ describe('CharacterDepiction model', () => {
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateCharacterNameUnderlyingNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -127,7 +128,7 @@ describe('CharacterDepiction model', () => {
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 					spy(instance, 'addPropertyError');
 					instance.validateCharacterNameUnderlyingNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -140,7 +141,7 @@ describe('CharacterDepiction model', () => {
 					const instance = new CharacterDepiction({ name: '', underlyingName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateCharacterNameUnderlyingNameDisparity();
-					expect(instance.addPropertyError.notCalled).to.be.true;
+					assert.notCalled(instance.addPropertyError);
 
 				});
 
@@ -155,11 +156,11 @@ describe('CharacterDepiction model', () => {
 				const instance = new CharacterDepiction({ name: 'King Henry V', underlyingName: 'King Henry V' });
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterNameUnderlyingNameDisparity();
-				expect(instance.addPropertyError.calledOnce).to.be.true;
-				expect(instance.addPropertyError.calledWithExactly(
-					'underlyingName',
-					'Underlying name is only required if different from character name'
-				)).to.be.true;
+				assert.calledOnce(instance.addPropertyError);
+				assert.calledWithExactly(
+					instance.addPropertyError,
+					'underlyingName', 'Underlying name is only required if different from character name'
+				);
 
 			});
 
