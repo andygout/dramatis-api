@@ -53,12 +53,13 @@ describe('People controller', () => {
 
 		it('calls sendJsonResponse module', () => {
 
-			expect(callFunction('newRoute')).to.equal('sendJsonResponse response');
+			const result = callFunction('newRoute');
 			assert.calledOnce(stubs.sendJsonResponseModule.sendJsonResponse);
 			assert.calledWithExactly(
 				stubs.sendJsonResponseModule.sendJsonResponse,
 				stubs.response, stubs.models.Person() // eslint-disable-line new-cap
 			);
+			expect(result).to.equal('sendJsonResponse response');
 
 		});
 
