@@ -19,7 +19,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('responds with data required to prepare new award ceremony', async () => {
 
 			const response = await chai.request(app)
-				.get('/awards/ceremonies/new');
+				.get('/award-ceremonies/new');
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -101,7 +101,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
 			const response = await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2020'
 				});
@@ -166,7 +166,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('gets data required to edit specific award ceremony', async () => {
 
 			const response = await chai.request(app)
-				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}/edit`);
+				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -229,7 +229,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2019'
 				});
@@ -294,7 +294,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('shows award ceremony', async () => {
 
 			const response = await chai.request(app)
-				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
+				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -314,7 +314,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 			const response = await chai.request(app)
-				.delete(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
+				.delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -493,7 +493,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const response = await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2008',
 					award: {
@@ -1594,7 +1594,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('shows award ceremony (post-creation)', async () => {
 
 			const response = await chai.request(app)
-				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
+				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -2083,7 +2083,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('gets data required to edit specific award ceremony', async () => {
 
 			const response = await chai.request(app)
-				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}/edit`);
+				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -3020,7 +3020,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2009',
 					award: {
@@ -4137,7 +4137,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('shows award ceremony (post-update)', async () => {
 
 			const response = await chai.request(app)
-				.get(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
+				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -4656,7 +4656,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2009'
 				});
@@ -4723,7 +4723,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 			const response = await chai.request(app)
-				.delete(`/awards/ceremonies/${AWARD_CEREMONY_UUID}`);
+				.delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -4766,7 +4766,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			await purgeDatabase();
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2019',
 					award: {
@@ -4775,7 +4775,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2020',
 					award: {
@@ -4784,7 +4784,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2018',
 					award: {
@@ -4793,7 +4793,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2019',
 					award: {
@@ -4802,7 +4802,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2020',
 					award: {
@@ -4811,7 +4811,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 				});
 
 			await chai.request(app)
-				.post('/awards/ceremonies')
+				.post('/award-ceremonies')
 				.send({
 					name: '2018',
 					award: {
@@ -4830,7 +4830,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		it('lists all award ceremonies ordered by name then award name', async () => {
 
 			const response = await chai.request(app)
-				.get('/awards/ceremonies');
+				.get('/award-ceremonies');
 
 			const expectedResponseBody = [
 				{

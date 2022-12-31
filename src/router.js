@@ -15,14 +15,6 @@ import {
 
 const router = new Router();
 
-router.get('/awards/ceremonies/new', awardCeremoniesController.newRoute);
-router.post('/awards/ceremonies', awardCeremoniesController.createRoute);
-router.get('/awards/ceremonies/:uuid/edit', awardCeremoniesController.editRoute);
-router.put('/awards/ceremonies/:uuid', awardCeremoniesController.updateRoute);
-router.delete('/awards/ceremonies/:uuid', awardCeremoniesController.deleteRoute);
-router.get('/awards/ceremonies/:uuid', awardCeremoniesController.showRoute);
-router.get('/awards/ceremonies', awardCeremoniesController.listRoute);
-
 router.get('/awards/new', awardsController.newRoute);
 router.post('/awards', awardsController.createRoute);
 router.get('/awards/:uuid/edit', awardsController.editRoute);
@@ -30,6 +22,14 @@ router.put('/awards/:uuid', awardsController.updateRoute);
 router.delete('/awards/:uuid', awardsController.deleteRoute);
 router.get('/awards/:uuid', awardsController.showRoute);
 router.get('/awards', awardsController.listRoute);
+
+router.get('/award-ceremonies/new', awardCeremoniesController.newRoute);
+router.post('/award-ceremonies', awardCeremoniesController.createRoute);
+router.get('/award-ceremonies/:uuid/edit', awardCeremoniesController.editRoute);
+router.put('/award-ceremonies/:uuid', awardCeremoniesController.updateRoute);
+router.delete('/award-ceremonies/:uuid', awardCeremoniesController.deleteRoute);
+router.get('/award-ceremonies/:uuid', awardCeremoniesController.showRoute);
+router.get('/award-ceremonies', awardCeremoniesController.listRoute);
 
 router.get('/characters/new', charactersController.newRoute);
 router.post('/characters', charactersController.createRoute);

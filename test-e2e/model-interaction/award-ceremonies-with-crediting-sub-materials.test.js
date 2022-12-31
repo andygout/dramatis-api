@@ -699,7 +699,7 @@ describe('Award ceremonies with crediting sub-materials', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2010',
 				award: {
@@ -777,7 +777,7 @@ describe('Award ceremonies with crediting sub-materials', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2009',
 				award: {
@@ -855,10 +855,10 @@ describe('Award ceremonies with crediting sub-materials', () => {
 			});
 
 		wordsmithAward2010AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`);
 
 		playwritingPrize2009AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID}`);
 
 		johnDoePerson = await chai.request(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);

@@ -408,7 +408,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2020',
 				award: {
@@ -678,7 +678,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2018',
 				award: {
@@ -871,7 +871,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2018',
 				award: {
@@ -965,7 +965,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2019',
 				award: {
@@ -1096,7 +1096,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2017',
 				award: {
@@ -1372,7 +1372,7 @@ describe('Award ceremonies', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2019',
 				award: {
@@ -1568,10 +1568,10 @@ describe('Award ceremonies', () => {
 			});
 
 		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
 
 		eveningStandardTheatreAwards2017AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_SEVENTEEN_AWARD_CEREMONY_UUID}`);
 
 		laurenceOlivierAwardsAward = await chai.request(app)
 			.get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);

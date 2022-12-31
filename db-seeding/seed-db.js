@@ -66,7 +66,7 @@ async function seedDatabase () {
 
 	console.log('Seeding Neo4j database: Production seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('award-ceremonies', 'awards/ceremonies');
+	await seedInstances('award-ceremonies', 'award-ceremonies');
 
 	console.log('Seeding Neo4j database: Award ceremony seeds sown'); // eslint-disable-line no-console
 
