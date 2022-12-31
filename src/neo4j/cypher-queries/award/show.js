@@ -1,4 +1,4 @@
-const getShowQuery = () => `
+export default () => `
 	MATCH (award:Award { uuid: $uuid })
 
 	OPTIONAL MATCH (award)-[:PRESENTED_AT]->(ceremony:AwardCeremony)
@@ -18,7 +18,3 @@ const getShowQuery = () => `
 			END
 		) AS ceremonies
 `;
-
-export {
-	getShowQuery
-};

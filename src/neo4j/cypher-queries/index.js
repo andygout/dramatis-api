@@ -24,7 +24,15 @@ import {
 	getShowQuery as getProductionShowQuery,
 	getListQuery as getProductionListQuery
 } from './production';
-import * as sharedQueries from './shared';
+import {
+	getExistenceQuery as getSharedExistenceQuery,
+	getDuplicateRecordCountQuery as getSharedDuplicateRecordCountQuery,
+	getCreateQuery as getSharedCreateQuery,
+	getEditQuery as getSharedEditQuery,
+	getUpdateQuery as getSharedUpdateQuery,
+	getDeleteQuery as getSharedDeleteQuery,
+	getListQuery as getSharedListQuery
+} from './shared';
 import {
 	getCreateQuery as getVenueCreateQuery,
 	getEditQuery as getVenueEditQuery,
@@ -71,6 +79,16 @@ const getListQueries = {
 	[MODELS.MATERIAL]: getMaterialListQuery,
 	[MODELS.PRODUCTION]: getProductionListQuery,
 	[MODELS.VENUE]: getVenueListQuery
+};
+
+const sharedQueries = {
+	getExistenceQuery: getSharedExistenceQuery,
+	getDuplicateRecordCountQuery: getSharedDuplicateRecordCountQuery,
+	getCreateQuery: getSharedCreateQuery,
+	getEditQuery: getSharedEditQuery,
+	getUpdateQuery: getSharedUpdateQuery,
+	getDeleteQuery: getSharedDeleteQuery,
+	getListQuery: getSharedListQuery
 };
 
 export {
