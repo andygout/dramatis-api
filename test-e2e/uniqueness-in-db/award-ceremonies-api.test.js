@@ -60,7 +60,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Award')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
 					award: {
@@ -79,7 +79,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Award')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
 					award: {
@@ -99,7 +99,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Award')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
 					award: {
@@ -118,7 +118,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Award')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
 					award: {
@@ -180,7 +180,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -210,7 +210,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -241,7 +241,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -271,7 +271,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -360,7 +360,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -391,7 +391,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -423,7 +423,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -454,7 +454,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -528,7 +528,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -564,7 +564,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -601,7 +601,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [
@@ -637,7 +637,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
 			const response = await chai.request(app)
-				.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
+				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
 					categories: [

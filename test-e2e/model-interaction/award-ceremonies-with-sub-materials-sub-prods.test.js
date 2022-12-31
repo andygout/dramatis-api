@@ -160,7 +160,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2020',
 				award: {
@@ -208,7 +208,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 			});
 
 		await chai.request(app)
-			.post('/awards/ceremonies')
+			.post('/award-ceremonies')
 			.send({
 				name: '2019',
 				award: {
@@ -257,10 +257,10 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 			});
 
 		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
 
 		eveningStandardTheatreAwards2019AwardCeremony = await chai.request(app)
-			.get(`/awards/ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
 
 		conorCorgePerson = await chai.request(app)
 			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);

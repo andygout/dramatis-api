@@ -23,7 +23,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 			it('responds with 404 Not Found error', async () => {
 
 				const response = await chai.request(app)
-					.get(`/awards/ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}/edit`);
+					.get(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}/edit`);
 
 				expect(response).to.have.status(404);
 				expect(response.text).to.equal('Not Found');
@@ -37,7 +37,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 			it('responds with 404 Not Found error', async () => {
 
 				const response = await chai.request(app)
-					.put(`/awards/ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`)
+					.put(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`)
 					.send({ name: '2020' });
 
 				expect(response).to.have.status(404);
@@ -52,7 +52,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 			it('responds with 404 Not Found error', async () => {
 
 				const response = await chai.request(app)
-					.get(`/awards/ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
+					.get(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
 
 				expect(response).to.have.status(404);
 				expect(response.text).to.equal('Not Found');
@@ -66,7 +66,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 			it('responds with 404 Not Found error', async () => {
 
 				const response = await chai.request(app)
-					.delete(`/awards/ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
+					.delete(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
 
 				expect(response).to.have.status(404);
 				expect(response.text).to.equal('Not Found');

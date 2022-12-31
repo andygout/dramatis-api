@@ -27,7 +27,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
 				const response = await chai.request(app)
-					.post('/awards/ceremonies')
+					.post('/award-ceremonies')
 					.send({
 						name: '2020',
 						award: {
@@ -138,7 +138,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 				const response = await chai.request(app)
-					.put(`/awards/ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
+					.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',
 						award: {

@@ -53,7 +53,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 				const response = await chai.request(app)
-					.post('/awards/ceremonies')
+					.post('/award-ceremonies')
 					.send({
 						name: ''
 					});
@@ -91,7 +91,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 				const response = await chai.request(app)
-					.post('/awards/ceremonies')
+					.post('/award-ceremonies')
 					.send({
 						name: '2020',
 						award: {
@@ -139,7 +139,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 				const response = await chai.request(app)
-					.post('/awards/ceremonies')
+					.post('/award-ceremonies')
 					.send({
 						name: '2020',
 						award: {
@@ -243,7 +243,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(2);
 
 				const response = await chai.request(app)
-					.put(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
+					.put(`/award-ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: ''
 					});
@@ -287,7 +287,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(2);
 
 				const response = await chai.request(app)
-					.put(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
+					.put(`/award-ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',
 						award: {
@@ -341,7 +341,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(2);
 
 				const response = await chai.request(app)
-					.put(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
+					.put(`/award-ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',
 						award: {
@@ -444,7 +444,7 @@ describe('Instance validation failures: Award ceremonies API', () => {
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
 				const response = await chai.request(app)
-					.delete(`/awards/ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
+					.delete(`/award-ceremonies/${TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'AWARD_CEREMONY',
