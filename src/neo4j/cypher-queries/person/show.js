@@ -1,4 +1,4 @@
-const getShowQuery = () => `
+export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
 	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
@@ -2363,7 +2363,3 @@ const getShowQuery = () => `
 		sourcingMaterialAwards,
 		COLLECT(rightsGrantorMaterialAward { model: 'AWARD', .uuid, .name, ceremonies }) AS rightsGrantorMaterialAwards
 `;
-
-export {
-	getShowQuery
-};

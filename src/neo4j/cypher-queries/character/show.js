@@ -1,4 +1,4 @@
-const getShowQuery = () => `
+export default () => `
 	MATCH (character:Character { uuid: $uuid })
 
 	OPTIONAL MATCH (character)<-[materialRel:DEPICTS]-(material:Material)
@@ -277,7 +277,3 @@ const getShowQuery = () => `
 			END
 		) AS productions
 `;
-
-export {
-	getShowQuery
-};
