@@ -2,13 +2,13 @@ import getAwardContextualDuplicateRecordCountQuery from './award-contextual-dupl
 import { getCreateQuery, getUpdateQuery } from './create-update';
 import getEditQuery from './edit';
 import getListQuery from './list';
-import getShowQuery from './show';
+import getShowQueries from './show';
 
 export {
 	getAwardContextualDuplicateRecordCountQuery,
 	getCreateQuery,
 	getEditQuery,
 	getUpdateQuery,
-	getShowQuery,
+	getShowQueries,
 	getListQuery
 };

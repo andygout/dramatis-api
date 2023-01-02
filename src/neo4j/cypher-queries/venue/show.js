@@ -1,4 +1,4 @@
-export default () => `
+export default () => [`
 	MATCH (venue:Venue { uuid: $uuid })
 
 	OPTIONAL MATCH (surVenue:Venue)-[:HAS_SUB_VENUE]->(venue)
@@ -66,4 +66,4 @@ export default () => `
 				}
 			END
 		) AS productions
-`;
+`];

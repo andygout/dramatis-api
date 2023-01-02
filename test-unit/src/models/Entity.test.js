@@ -35,9 +35,12 @@ describe('Entity model', () => {
 				PRODUCTION: sandbox.stub(cypherQueries.getUpdateQueries, 'PRODUCTION')
 			},
 			getShowQueries: {
+				PRODUCTION:
+					sandbox.stub(cypherQueries.getShowQueries, 'PRODUCTION')
+						.returns(['showProductionQuery', 'showProductionAwardsQuery']),
 				VENUE:
 					sandbox.stub(cypherQueries.getShowQueries, 'VENUE')
-						.returns('getShowVenueQuery response')
+						.returns(['showVenueQuery'])
 			},
 			sharedQueries: {
 				getExistenceQuery:
@@ -1098,18 +1101,45 @@ describe('Entity model', () => {
 
 	describe('show method', () => {
 
-		it('gets show data', async () => {
+		context('model requires single show query', () => {
 
-			instance.model = 'VENUE';
-			const result = await instance.show();
-			assert.calledOnce(stubs.getShowQueries.VENUE);
-			assert.calledWithExactly(stubs.getShowQueries.VENUE);
-			assert.calledOnce(stubs.neo4jQuery);
-			assert.calledWithExactly(
-				stubs.neo4jQuery,
-				{ query: 'getShowVenueQuery response', params: { uuid: instance.uuid } }
-			);
-			expect(result).to.deep.equal(neo4jQueryMockResponse);
+			it('gets show data', async () => {
+
+				instance.model = 'VENUE';
+				const result = await instance.show();
+				assert.calledOnce(stubs.getShowQueries.VENUE);
+				assert.calledWithExactly(stubs.getShowQueries.VENUE);
+				assert.calledOnce(stubs.neo4jQuery);
+				assert.calledWithExactly(
+					stubs.neo4jQuery,
+					{ query: 'showVenueQuery', params: { uuid: instance.uuid } }
+				);
+				expect(result).to.deep.equal(neo4jQueryMockResponse);
+
+			});
+
+		});
+
+		context('model requires multiple show queries', () => {
+
+			it('gets show data', async () => {
+
+				instance.model = 'PRODUCTION';
+				const result = await instance.show();
+				assert.calledOnce(stubs.getShowQueries.PRODUCTION);
+				assert.calledWithExactly(stubs.getShowQueries.PRODUCTION);
+				assert.calledTwice(stubs.neo4jQuery);
+				assert.calledWithExactly(
+					stubs.neo4jQuery.getCall(0),
+					{ query: 'showProductionQuery', params: { uuid: instance.uuid } }
+				);
+				assert.calledWithExactly(
+					stubs.neo4jQuery.getCall(1),
+					{ query: 'showProductionAwardsQuery', params: { uuid: instance.uuid } }
+				);
+				expect(result).to.deep.equal(neo4jQueryMockResponse);
+
+			});
 
 		});
 
