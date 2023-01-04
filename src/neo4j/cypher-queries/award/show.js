@@ -1,4 +1,4 @@
-export default () => `
+export default () => [`
 	MATCH (award:Award { uuid: $uuid })
 
 	OPTIONAL MATCH (award)-[:PRESENTED_AT]->(ceremony:AwardCeremony)
@@ -17,4 +17,4 @@ export default () => `
 				ELSE ceremony { model: 'AWARD_CEREMONY', .uuid, .name }
 			END
 		) AS ceremonies
-`;
+`];

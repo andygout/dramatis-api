@@ -1,5 +1,5 @@
-import getShowQuery from './show';
+import getShowQueries from './show';
 
 export {
-	getShowQuery
+	getShowQueries
 };

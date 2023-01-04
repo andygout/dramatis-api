@@ -1,27 +1,27 @@
-import { getShowQuery as getAwardShowQuery } from './award';
+import { getShowQueries as getAwardShowQueries } from './award';
 import {
 	getAwardContextualDuplicateRecordCountQuery,
 	getCreateQuery as getAwardCeremonyCreateQuery,
 	getEditQuery as getAwardCeremonyEditQuery,
 	getUpdateQuery as getAwardCeremonyUpdateQuery,
-	getShowQuery as getAwardCeremonyShowQuery,
+	getShowQueries as getAwardCeremonyShowQueries,
 	getListQuery as getAwardCeremonyListQuery
 } from './award-ceremony';
-import { getShowQuery as getCharacterShowQuery } from './character';
-import { getShowQuery as getCompanyShowQuery } from './company';
+import { getShowQueries as getCharacterShowQueries } from './character';
+import { getShowQueries as getCompanyShowQueries } from './company';
 import {
 	getCreateQuery as getMaterialCreateQuery,
 	getEditQuery as getMaterialEditQuery,
 	getUpdateQuery as getMaterialUpdateQuery,
-	getShowQuery as getMaterialShowQuery,
+	getShowQueries as getMaterialShowQueries,
 	getListQuery as getMaterialListQuery
 } from './material';
-import { getShowQuery as getPersonShowQuery } from './person';
+import { getShowQueries as getPersonShowQueries } from './person';
 import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
 	getUpdateQuery as getProductionUpdateQuery,
-	getShowQuery as getProductionShowQuery,
+	getShowQueries as getProductionShowQueries,
 	getListQuery as getProductionListQuery
 } from './production';
 import {
@@ -37,7 +37,7 @@ import {
 	getCreateQuery as getVenueCreateQuery,
 	getEditQuery as getVenueEditQuery,
 	getUpdateQuery as getVenueUpdateQuery,
-	getShowQuery as getVenueShowQuery,
+	getShowQueries as getVenueShowQueries,
 	getListQuery as getVenueListQuery
 } from './venue';
 import { MODELS } from '../../utils/constants';
@@ -64,14 +64,14 @@ const getUpdateQueries = {
 };
 
 const getShowQueries = {
-	[MODELS.AWARD]: getAwardShowQuery,
-	[MODELS.AWARD_CEREMONY]: getAwardCeremonyShowQuery,
-	[MODELS.CHARACTER]: getCharacterShowQuery,
-	[MODELS.COMPANY]: getCompanyShowQuery,
-	[MODELS.PERSON]: getPersonShowQuery,
-	[MODELS.MATERIAL]: getMaterialShowQuery,
-	[MODELS.PRODUCTION]: getProductionShowQuery,
-	[MODELS.VENUE]: getVenueShowQuery
+	[MODELS.AWARD]: getAwardShowQueries,
+	[MODELS.AWARD_CEREMONY]: getAwardCeremonyShowQueries,
+	[MODELS.CHARACTER]: getCharacterShowQueries,
+	[MODELS.COMPANY]: getCompanyShowQueries,
+	[MODELS.MATERIAL]: getMaterialShowQueries,
+	[MODELS.PERSON]: getPersonShowQueries,
+	[MODELS.PRODUCTION]: getProductionShowQueries,
+	[MODELS.VENUE]: getVenueShowQueries
 };
 
 const getListQueries = {

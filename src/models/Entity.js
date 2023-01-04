@@ -203,12 +203,20 @@ export default class Entity extends Base {
 
 	}
 
-	show () {
+	async show () {
 
-		return neo4jQuery({
-			query: getShowQueries[this.model](),
-			params: { uuid: this.uuid }
-		});
+		const showQueryPromises =
+			getShowQueries[this.model]()
+				.map(showQuery =>
+					neo4jQuery({
+						query: showQuery,
+						params: { uuid: this.uuid }
+					})
+				);
+
+		const showQueryResponses = await Promise.all(showQueryPromises);
+
+		return Object.assign({}, ...showQueryResponses);
 
 	}
 
