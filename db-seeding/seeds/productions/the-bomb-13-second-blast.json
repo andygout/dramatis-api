@@ -1,0 +1,30 @@
+{
+	"uuid": "57e74a5a-a272-4e24-9c2e-dbb06323517f",
+	"name": "Second Blast: Present Dangers (1992-2012)",
+	"startDate": "2012-02-16",
+	"pressDate": "2012-02-20",
+	"endDate": "2012-04-01",
+	"material": {
+		"name": "Second Blast: Present Dangers (1992-2012)"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "8acba3ff-5c59-431e-9f4f-c3e088d2b3b2"
+		},
+		{
+			"uuid": "a898787a-9721-4c1a-b4e1-e7e093b9aa96"
+		},
+		{
+			"uuid": "e6a367b5-1c97-409c-84e9-24c45cd31c36"
+		},
+		{
+			"uuid": "814c141d-7483-40ff-92cd-e5945171f7d7"
+		},
+		{
+			"uuid": "5cb24891-5788-41cc-ad41-b404b5869557"
+		}
+	]
+}

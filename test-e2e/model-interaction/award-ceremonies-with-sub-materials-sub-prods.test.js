@@ -381,7 +381,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_HOGE_MATERIAL_UUID,
-										name: 'Sur-Hoge'
+										name: 'Sur-Hoge',
+										surMaterial: null
 									},
 									writingCredits: []
 								},
@@ -394,7 +395,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_WIBBLE_MATERIAL_UUID,
-										name: 'Sur-Wibble'
+										name: 'Sur-Wibble',
+										surMaterial: null
 									},
 									writingCredits: []
 								}
@@ -693,7 +695,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -705,7 +708,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -906,7 +910,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -918,7 +923,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -1117,7 +1123,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -1129,7 +1136,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -1322,7 +1330,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -1334,7 +1343,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -1527,7 +1537,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -1539,7 +1550,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -1728,7 +1740,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -1740,7 +1753,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -1929,7 +1943,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												},
 												{
@@ -1941,7 +1956,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -2152,7 +2168,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												}
 											]
@@ -2363,7 +2380,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												}
 											]

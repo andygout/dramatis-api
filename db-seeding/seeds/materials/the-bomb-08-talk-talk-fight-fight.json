@@ -1,0 +1,23 @@
+{
+	"name": "Talk Talk Fight Fight",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Ryan Craig"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Baroness Ashton"
+				}
+			]
+		}
+	]
+}

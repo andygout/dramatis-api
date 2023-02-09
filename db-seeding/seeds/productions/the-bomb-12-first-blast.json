@@ -1,0 +1,30 @@
+{
+	"uuid": "1f0dc480-c76c-42de-aaf3-7bd99ca3f0e6",
+	"name": "First Blast: Proliferation (1940-1992)",
+	"startDate": "2012-02-09",
+	"pressDate": "2012-02-20",
+	"endDate": "2012-04-01",
+	"material": {
+		"name": "First Blast: Proliferation (1940-1992)"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "fe508161-1661-4a0e-9cd3-b6fcab7d66df"
+		},
+		{
+			"uuid": "2957de3a-1ef8-4c1d-9ac6-d9930d463212"
+		},
+		{
+			"uuid": "84ed2e59-dcc6-4d94-8ddd-65ffdbb3f3a5"
+		},
+		{
+			"uuid": "61f4a9ff-7dfa-4d75-b1a1-07af12c2b036"
+		},
+		{
+			"uuid": "8ee8ac7a-736c-4b9a-b1a4-93b986a52cec"
+		}
+	]
+}

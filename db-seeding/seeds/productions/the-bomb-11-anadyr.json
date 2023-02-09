@@ -1,0 +1,32 @@
+{
+	"uuid": "117fb60d-b80e-4688-959a-200c241ce277",
+	"name": "ANADYR'",
+	"startDate": "2012-03-12",
+	"endDate": "2012-03-12",
+	"material": {
+		"name": "ANADYR'"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Kent"
+				}
+			]
+		}
+	]
+}

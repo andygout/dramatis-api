@@ -11,6 +11,8 @@ export default () => `
 
 	OPTIONAL MATCH (nominatedSourcingMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSourcingSurMaterial:Material)
 
+	OPTIONAL MATCH (nominatedSourcingSurMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSourcingSurSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(sourcingMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -27,6 +29,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -53,6 +56,7 @@ export default () => `
 			WITH
 				nominatedSourcingMaterial,
 				nominatedSourcingSurMaterial,
+				nominatedSourcingSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -66,6 +70,7 @@ export default () => `
 			WITH
 				nominatedSourcingMaterial,
 				nominatedSourcingSurMaterial,
+				nominatedSourcingSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -78,6 +83,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -91,6 +97,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -106,6 +113,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -132,6 +140,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -148,6 +157,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -196,6 +206,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -211,6 +222,7 @@ export default () => `
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
+		nominatedSourcingSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -257,7 +269,15 @@ export default () => `
 					.year,
 					surMaterial: CASE nominatedSourcingSurMaterial WHEN NULL
 						THEN null
-						ELSE nominatedSourcingSurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE nominatedSourcingSurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE nominatedSourcingSurSurMaterial WHEN NULL
+								THEN null
+								ELSE nominatedSourcingSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

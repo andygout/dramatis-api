@@ -1,0 +1,318 @@
+{
+	"uuid": "8ee8ac7a-736c-4b9a-b1a4-93b986a52cec",
+	"name": "Little Russians",
+	"startDate": "2012-02-09",
+	"pressDate": "2012-02-20",
+	"endDate": "2012-04-01",
+	"material": {
+		"name": "Little Russians"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Tariq Jordan",
+			"roles": [
+				{
+					"name": "Yuri"
+				}
+			]
+		},
+		{
+			"name": "Simon Rouse"
+		},
+		{
+			"name": "Rick Warden",
+			"roles": [
+				{
+					"name": "Andrei"
+				}
+			]
+		},
+		{
+			"name": "Natalie Armin",
+			"roles": [
+				{
+					"name": "Irina"
+				}
+			]
+		},
+		{
+			"name": "Daniel Rabin",
+			"roles": [
+				{
+					"name": "Dennis"
+				}
+			]
+		},
+		{
+			"name": "Simon Chandler",
+			"roles": [
+				{
+					"name": "Vladimir"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Kent"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Polly Sullivan"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"entities": [
+				{
+					"name": "Douglas O'Connell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Howard Harrison"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Tara Robinson"
+				}
+			]
+		},
+		{
+			"name": "Associate Lighting Designers",
+			"entities": [
+				{
+					"name": "Jack Knowles"
+				},
+				{
+					"name": "Charlie Hayday"
+				}
+			]
+		},
+		{
+			"name": "Associate Costume Designer",
+			"entities": [
+				{
+					"name": "Sydney Florence"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Jack Bradley"
+				}
+			]
+		},
+		{
+			"name": "Casting Directors",
+			"entities": [
+				{
+					"name": "Suzanne Crowley"
+				},
+				{
+					"name": "Gilly Poole"
+				}
+			]
+		},
+		{
+			"name": "Verbatim edited by",
+			"entities": [
+				{
+					"name": "Richard Norton-Taylor"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Majella Hurley"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Shaz McGee"
+				}
+			]
+		},
+		{
+			"name": "Company Stage Manager",
+			"entities": [
+				{
+					"name": "Lizzie Chapman"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Charlotte Padgham"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Julia Blom"
+				},
+				{
+					"name": "Helen Stone"
+				}
+			]
+		},
+		{
+			"name": "Wardrobe Mistress",
+			"entities": [
+				{
+					"name": "Anna Bliss Scully"
+				}
+			]
+		},
+		{
+			"name": "Costume Assistants",
+			"entities": [
+				{
+					"name": "Megan Cassidy"
+				},
+				{
+					"name": "Elizabeth Harkin"
+				},
+				{
+					"name": "Daisy Marcuzzi"
+				},
+				{
+					"name": "Hannah Mason"
+				},
+				{
+					"name": "Johanna Pan"
+				},
+				{
+					"name": "Hannah Spearing"
+				}
+			]
+		},
+		{
+			"name": "Wigs",
+			"entities": [
+				{
+					"name": "John Lee"
+				}
+			]
+		},
+		{
+			"name": "Facial Hair Creation",
+			"entities": [
+				{
+					"name": "Leanne Lashbrook"
+				}
+			]
+		},
+		{
+			"name": "Press Representative",
+			"entities": [
+				{
+					"name": "John Lee"
+				}
+			]
+		},
+		{
+			"name": "Production Electrician",
+			"entities": [
+				{
+					"name": "Chrlie Hayday"
+				}
+			]
+		},
+		{
+			"name": "Chief Electrician",
+			"entities": [
+				{
+					"name": "Andy Furby"
+				}
+			]
+		},
+		{
+			"name": "Tricycle crew",
+			"entities": [
+				{
+					"name": "Leo Flint"
+				},
+				{
+					"name": "Aidan Lesser"
+				},
+				{
+					"name": "Paul Kizintas"
+				},
+				{
+					"name": "Ben Jones"
+				},
+				{
+					"name": "Elz"
+				},
+				{
+					"name": "Alex Melkis"
+				},
+				{
+					"name": "Dario Fusco"
+				}
+			]
+		},
+		{
+			"name": "Set built by",
+			"entities": [
+				{
+					"name": "Russell Carr"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Andy Stubbs Scenic Productions"
+				}
+			]
+		}
+	]
+}

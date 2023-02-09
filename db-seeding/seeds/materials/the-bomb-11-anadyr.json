@@ -1,0 +1,22 @@
+{
+	"name": "ANADYR'",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Elena Gremina"
+				}
+			]
+		},
+		{
+			"name": "translated from the Russian by",
+			"entities": [
+				{
+					"name": "Sasha Dugdale"
+				}
+			]
+		}
+	]
+}

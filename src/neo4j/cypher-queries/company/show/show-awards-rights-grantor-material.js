@@ -8,6 +8,9 @@ export default () => `
 
 	OPTIONAL MATCH (nominatedRightsGrantorMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurMaterial:Material)
 
+	OPTIONAL MATCH (nominatedRightsGrantorSurMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(rightsGrantorMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -24,6 +27,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -50,6 +54,7 @@ export default () => `
 			WITH
 				nominatedRightsGrantorMaterial,
 				nominatedRightsGrantorSurMaterial,
+				nominatedRightsGrantorSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -63,6 +68,7 @@ export default () => `
 			WITH
 				nominatedRightsGrantorMaterial,
 				nominatedRightsGrantorSurMaterial,
+				nominatedRightsGrantorSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -75,6 +81,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -88,6 +95,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -103,6 +111,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -129,6 +138,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -145,6 +155,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -193,6 +204,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -208,6 +220,7 @@ export default () => `
 	WITH
 		nominatedRightsGrantorMaterial,
 		nominatedRightsGrantorSurMaterial,
+		nominatedRightsGrantorSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -254,7 +267,15 @@ export default () => `
 					.year,
 					surMaterial: CASE nominatedRightsGrantorSurMaterial WHEN NULL
 						THEN null
-						ELSE nominatedRightsGrantorSurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE nominatedRightsGrantorSurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE nominatedRightsGrantorSurSurMaterial WHEN NULL
+								THEN null
+								ELSE nominatedRightsGrantorSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

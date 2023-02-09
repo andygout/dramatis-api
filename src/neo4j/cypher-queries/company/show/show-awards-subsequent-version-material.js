@@ -9,6 +9,9 @@ export default () => `
 	OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
 		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
 
+	OPTIONAL MATCH (nominatedSubsequentVersionSurMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurSurMaterial:Material)
+
 	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(subsequentVersionMaterialAward:Award)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -25,6 +28,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -51,6 +55,7 @@ export default () => `
 			WITH
 				nominatedSubsequentVersionMaterial,
 				nominatedSubsequentVersionSurMaterial,
+				nominatedSubsequentVersionSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -64,6 +69,7 @@ export default () => `
 			WITH
 				nominatedSubsequentVersionMaterial,
 				nominatedSubsequentVersionSurMaterial,
+				nominatedSubsequentVersionSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
@@ -76,6 +82,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -89,6 +96,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -104,6 +112,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -130,6 +139,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -146,6 +156,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -194,6 +205,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -209,6 +221,7 @@ export default () => `
 	WITH
 		nominatedSubsequentVersionMaterial,
 		nominatedSubsequentVersionSurMaterial,
+		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
@@ -256,7 +269,15 @@ export default () => `
 					.year,
 					surMaterial: CASE nominatedSubsequentVersionSurMaterial WHEN NULL
 						THEN null
-						ELSE nominatedSubsequentVersionSurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE nominatedSubsequentVersionSurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE nominatedSubsequentVersionSurSurMaterial WHEN NULL
+								THEN null
+								ELSE nominatedSubsequentVersionSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END
 				}
 			END
