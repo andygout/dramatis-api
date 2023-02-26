@@ -1,0 +1,32 @@
+{
+	"name": "There Was a Man, There Was No Man",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Colin Teevan"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Amira"
+				},
+				{
+					"name": "Meir"
+				},
+				{
+					"name": "Gully"
+				},
+				{
+					"name": "Mahmoud"
+				}
+			]
+		}
+	]
+}

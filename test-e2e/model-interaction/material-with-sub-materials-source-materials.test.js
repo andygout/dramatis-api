@@ -255,7 +255,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -287,7 +288,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -385,7 +387,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-								name: 'The Wolf Hall Trilogy'
+								name: 'The Wolf Hall Trilogy',
+								surMaterial: null
 							},
 							writingCredits: [
 								{
@@ -432,7 +435,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -464,7 +468,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -513,7 +518,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -545,7 +551,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -594,7 +601,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -626,7 +634,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -675,7 +684,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -707,7 +717,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -755,7 +766,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				surMaterial: {
 					model: 'MATERIAL',
 					uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-					name: 'The Wolf Hall Trilogy'
+					name: 'The Wolf Hall Trilogy',
+					surMaterial: null
 				},
 				writingCredits: [
 					{
@@ -787,7 +799,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-									name: 'The Wolf Hall Trilogy'
+									name: 'The Wolf Hall Trilogy',
+									surMaterial: null
 								},
 								writingCredits: [
 									{
@@ -835,7 +848,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -867,7 +881,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -920,7 +935,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -952,7 +968,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy'
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -986,7 +1003,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
 					},
 					writingCredits: [
 						{

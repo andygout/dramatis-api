@@ -1,0 +1,23 @@
+{
+	"name": "The Bomb: A Partial History",
+	"startDate": "2012-02-09",
+	"pressDate": "2012-02-20",
+	"endDate": "2012-04-01",
+	"material": {
+		"name": "The Bomb: A Partial History"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "1f0dc480-c76c-42de-aaf3-7bd99ca3f0e6"
+		},
+		{
+			"uuid": "57e74a5a-a272-4e24-9c2e-dbb06323517f"
+		},
+		{
+			"uuid": "117fb60d-b80e-4688-959a-200c241ce277"
+		}
+	]
+}

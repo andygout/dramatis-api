@@ -1,0 +1,35 @@
+{
+	"name": "Little Russians",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "John Donnelly"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Yuri"
+				},
+				{
+					"name": "Andrei"
+				},
+				{
+					"name": "Vladimir"
+				},
+				{
+					"name": "Irina"
+				},
+				{
+					"name": "Dennis"
+				}
+			]
+		}
+	]
+}

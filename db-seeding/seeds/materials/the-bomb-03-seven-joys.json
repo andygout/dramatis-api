@@ -1,0 +1,35 @@
+{
+	"name": "Seven Joys",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lee Blessing"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Cal"
+				},
+				{
+					"name": "Harry"
+				},
+				{
+					"name": "Slava"
+				},
+				{
+					"name": "Marianne"
+				},
+				{
+					"name": "Wei"
+				}
+			]
+		}
+	]
+}

@@ -773,7 +773,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'John Gabriel Borkman sub-material #1',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					},
 					{
 						model: 'MATERIAL',
@@ -781,7 +782,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'John Gabriel Borkman sub-material #2',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					},
 					{
 						model: 'MATERIAL',
@@ -789,7 +791,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'John Gabriel Borkman sub-material #3',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					}
 				],
 				characterGroups: [
@@ -1375,7 +1378,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'Three Sisters sub-material #1',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					},
 					{
 						model: 'MATERIAL',
@@ -1383,7 +1387,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'Three Sisters sub-material #2',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					},
 					{
 						model: 'MATERIAL',
@@ -1391,7 +1396,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: 'Three Sisters sub-material #3',
 						format: null,
 						year: null,
-						writingCredits: []
+						writingCredits: [],
+						subMaterials: []
 					}
 				],
 				characterGroups: [

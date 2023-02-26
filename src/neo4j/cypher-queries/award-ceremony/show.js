@@ -20,6 +20,8 @@ export default () => [`
 
 	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
+	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
 	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
@@ -27,6 +29,8 @@ export default () => [`
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
 	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
+	OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
 
 	WITH
 		ceremony,
@@ -39,9 +43,11 @@ export default () => [`
 		surVenue,
 		surProduction,
 		surMaterial,
+		surSurMaterial,
 		entityRel,
 		entity,
 		entitySurMaterial,
+		entitySurSurMaterial,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -57,9 +63,11 @@ export default () => [`
 		surVenue,
 		surProduction,
 		surMaterial,
+		surSurMaterial,
 		entityRel,
 		entity,
 		entitySurMaterial,
+		entitySurSurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -79,9 +87,11 @@ export default () => [`
 		surVenue,
 		surProduction,
 		surMaterial,
+		surSurMaterial,
 		entityRel,
 		entity,
 		entitySurMaterial,
+		entitySurSurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -105,6 +115,7 @@ export default () => [`
 		surVenue,
 		surProduction,
 		surMaterial,
+		surSurMaterial,
 		entityRel.credit AS writingCreditName,
 		COLLECT(
 			CASE entity WHEN NULL
@@ -117,7 +128,15 @@ export default () => [`
 					.year,
 					surMaterial: CASE entitySurMaterial WHEN NULL
 						THEN null
-						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE entitySurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE entitySurSurMaterial WHEN NULL
+								THEN null
+								ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
@@ -135,6 +154,7 @@ export default () => [`
 		surVenue,
 		surProduction,
 		surMaterial,
+		surSurMaterial,
 		writingCreditName,
 		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
@@ -153,7 +173,15 @@ export default () => [`
 		surProduction,
 		CASE surMaterial WHEN NULL
 			THEN null
-			ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+			ELSE surMaterial {
+				model: 'MATERIAL',
+				.uuid,
+				.name,
+				surMaterial: CASE surSurMaterial WHEN NULL
+					THEN null
+					ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
+				END
+			}
 		END AS surMaterial,
 		COLLECT(
 			CASE SIZE(entities) WHEN 0

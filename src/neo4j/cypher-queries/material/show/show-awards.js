@@ -1,7 +1,7 @@
 export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
-	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..1]-(materialLinkedToCategory:Material)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(materialLinkedToCategory:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
@@ -187,9 +187,11 @@ export default () => `
 				nomineeRel.nominationPosition = coNominatedMaterialRel.nominationPosition
 			) AND
 			coNominatedMaterial.uuid <> material.uuid AND
-			NOT EXISTS((material)-[:HAS_SUB_MATERIAL]-(coNominatedMaterial))
+			NOT EXISTS((material)-[:HAS_SUB_MATERIAL*1..2]-(coNominatedMaterial))
 
 	OPTIONAL MATCH (coNominatedMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurMaterial:Material)
+
+	OPTIONAL MATCH (coNominatedMaterialSurMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurSurMaterial:Material)
 
 	WITH
 		recipientMaterial,
@@ -202,7 +204,8 @@ export default () => `
 		nominatedProductions,
 		coNominatedMaterialRel,
 		coNominatedMaterial,
-		coNominatedMaterialSurMaterial
+		coNominatedMaterialSurMaterial,
+		coNominatedMaterialSurSurMaterial
 		ORDER BY coNominatedMaterialRel.materialPosition
 
 	WITH
@@ -225,7 +228,15 @@ export default () => `
 					.year,
 					surMaterial: CASE coNominatedMaterialSurMaterial WHEN NULL
 						THEN null
-						ELSE coNominatedMaterialSurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE coNominatedMaterialSurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE coNominatedMaterialSurSurMaterial WHEN NULL
+								THEN null
+								ELSE coNominatedMaterialSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

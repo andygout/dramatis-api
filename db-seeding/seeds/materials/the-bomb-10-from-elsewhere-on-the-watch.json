@@ -1,0 +1,29 @@
+{
+	"name": "From Elsewhere: On the Watch…",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Zinnie Harris"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Rudolf"
+				},
+				{
+					"name": "Otto"
+				},
+				{
+					"name": "Clerk"
+				}
+			]
+		}
+	]
+}

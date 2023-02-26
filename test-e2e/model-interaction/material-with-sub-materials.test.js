@@ -267,7 +267,8 @@ describe('Material with sub-materials', () => {
 								}
 							]
 						}
-					]
+					],
+					subMaterials: []
 				},
 				{
 					model: 'MATERIAL',
@@ -292,7 +293,8 @@ describe('Material with sub-materials', () => {
 								}
 							]
 						}
-					]
+					],
+					subMaterials: []
 				},
 				{
 					model: 'MATERIAL',
@@ -317,7 +319,8 @@ describe('Material with sub-materials', () => {
 								}
 							]
 						}
-					]
+					],
+					subMaterials: []
 				}
 			];
 
@@ -339,6 +342,7 @@ describe('Material with sub-materials', () => {
 				name: 'The Coast of Utopia',
 				format: 'trilogy of plays',
 				year: 2002,
+				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -381,7 +385,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -412,7 +417,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -443,7 +449,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -569,7 +576,8 @@ describe('Material with sub-materials', () => {
 				surMaterial: {
 					model: 'MATERIAL',
 					uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-					name: 'The Coast of Utopia'
+					name: 'The Coast of Utopia',
+					surMaterial: null
 				},
 				writingCredits: [
 					{
@@ -613,7 +621,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -643,7 +652,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -673,7 +683,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -718,7 +729,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -748,7 +760,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -778,7 +791,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -826,7 +840,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -856,7 +871,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -886,7 +902,8 @@ describe('Material with sub-materials', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{

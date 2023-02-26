@@ -1,0 +1,35 @@
+{
+	"name": "Calculated Risk",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Ron Hutchinson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Clement Attlee"
+				},
+				{
+					"name": "James Byrnes"
+				},
+				{
+					"name": "William Penney"
+				},
+				{
+					"name": "Field Marshall Grierson"
+				},
+				{
+					"name": "Ernest Bevin"
+				}
+			]
+		}
+	]
+}

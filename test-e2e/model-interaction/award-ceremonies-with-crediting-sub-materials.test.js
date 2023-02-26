@@ -970,7 +970,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_FRED_MATERIAL_UUID,
-										name: 'Sur-Fred'
+										name: 'Sur-Fred',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -1050,7 +1051,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-										name: 'Sur-Plugh'
+										name: 'Sur-Plugh',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -1146,7 +1148,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_WIBBLE_MATERIAL_UUID,
-										name: 'Sur-Wibble'
+										name: 'Sur-Wibble',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -1178,7 +1181,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WALDO_MATERIAL_UUID,
-														name: 'Sur-Waldo'
+														name: 'Sur-Waldo',
+														surMaterial: null
 													},
 													writingCredits: [
 														{
@@ -1262,7 +1266,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: SUR_HOGE_MATERIAL_UUID,
-										name: 'Sur-Hoge'
+										name: 'Sur-Hoge',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -1818,7 +1823,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_FRED_MATERIAL_UUID,
-														name: 'Sur-Fred'
+														name: 'Sur-Fred',
+														surMaterial: null
 													}
 												}
 											]
@@ -1987,7 +1993,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_FRED_MATERIAL_UUID,
-														name: 'Sur-Fred'
+														name: 'Sur-Fred',
+														surMaterial: null
 													}
 												}
 											]
@@ -2156,7 +2163,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Sur-Plugh'
+														name: 'Sur-Plugh',
+														surMaterial: null
 													}
 												}
 											]
@@ -2325,7 +2333,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Sur-Plugh'
+														name: 'Sur-Plugh',
+														surMaterial: null
 													}
 												}
 											]
@@ -2496,7 +2505,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Sur-Plugh'
+														name: 'Sur-Plugh',
+														surMaterial: null
 													}
 												}
 											]
@@ -2668,7 +2678,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Sur-Plugh'
+														name: 'Sur-Plugh',
+														surMaterial: null
 													}
 												}
 											]
@@ -2838,7 +2849,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -3007,7 +3019,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -3176,7 +3189,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -3345,7 +3359,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_WIBBLE_MATERIAL_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surMaterial: null
 													}
 												}
 											]
@@ -3516,7 +3531,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												}
 											]
@@ -3688,7 +3704,8 @@ describe('Award ceremonies with crediting sub-materials', () => {
 													surMaterial: {
 														model: 'MATERIAL',
 														uuid: SUR_HOGE_MATERIAL_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surMaterial: null
 													}
 												}
 											]

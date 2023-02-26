@@ -192,6 +192,8 @@ export default () => `
 
 	OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
 
+	OPTIONAL MATCH (nominatedSurMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurSurMaterial:Material)
+
 	WITH
 		nomineeRel,
 		category,
@@ -203,7 +205,8 @@ export default () => `
 		nominatedProductions,
 		nominatedMaterialRel,
 		nominatedMaterial,
-		nominatedSurMaterial
+		nominatedSurMaterial,
+		nominatedSurSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
 	WITH
@@ -226,7 +229,15 @@ export default () => `
 					.year,
 					surMaterial: CASE nominatedSurMaterial WHEN NULL
 						THEN null
-						ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE nominatedSurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE nominatedSurSurMaterial WHEN NULL
+								THEN null
+								ELSE nominatedSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

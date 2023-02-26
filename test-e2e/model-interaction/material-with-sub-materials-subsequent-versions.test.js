@@ -197,7 +197,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
-						name: 'The Oresteia'
+						name: 'The Oresteia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -241,7 +242,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				surMaterial: {
 					model: 'MATERIAL',
 					uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
-					name: 'The Oresteia'
+					name: 'The Oresteia',
+					surMaterial: null
 				},
 				writingCredits: [
 					{
@@ -285,7 +287,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
-						name: 'The Oresteia'
+						name: 'The Oresteia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -346,7 +349,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
-						name: 'The Oresteia'
+						name: 'The Oresteia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{

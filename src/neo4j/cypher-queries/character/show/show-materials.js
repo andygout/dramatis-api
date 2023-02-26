@@ -11,6 +11,8 @@ export default () => `
 
 	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 
+	OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
+
 	WITH
 		character,
 		materialRel,
@@ -18,6 +20,7 @@ export default () => `
 		entityRel,
 		entity,
 		entitySurMaterial,
+		entitySurSurMaterial,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -29,6 +32,7 @@ export default () => `
 		entityRel,
 		entity,
 		entitySurMaterial,
+		entitySurSurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -37,7 +41,7 @@ export default () => `
 			END
 		) AS sourceMaterialWriters
 
-	WITH character, materialRel, material, entityRel, entity, entitySurMaterial,
+	WITH character, materialRel, material, entityRel, entity, entitySurMaterial, entitySurSurMaterial,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -62,7 +66,15 @@ export default () => `
 					.year,
 					surMaterial: CASE entitySurMaterial WHEN NULL
 						THEN null
-						ELSE entitySurMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE entitySurMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE entitySurSurMaterial WHEN NULL
+								THEN null
+								ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END,
 					writingCredits: sourceMaterialWritingCredits
 				}
@@ -99,6 +111,8 @@ export default () => `
 
 	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
+	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
 	WITH character,
 		COLLECT(
 			CASE material WHEN NULL
@@ -111,7 +125,15 @@ export default () => `
 					.year,
 					surMaterial: CASE surMaterial WHEN NULL
 						THEN null
-						ELSE surMaterial { model: 'MATERIAL', .uuid, .name }
+						ELSE surMaterial {
+							model: 'MATERIAL',
+							.uuid,
+							.name,
+							surMaterial: CASE surSurMaterial WHEN NULL
+								THEN null
+								ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
+							END
+						}
 					END,
 					writingCredits,
 					depictions

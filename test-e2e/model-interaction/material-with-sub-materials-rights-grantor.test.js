@@ -178,7 +178,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
-						name: 'The Chronicles of Narnia'
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -205,7 +206,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
-										name: 'The Chronicles of Narnia'
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
 									},
 									writingCredits: [
 										{
@@ -265,7 +267,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
-						name: 'The Chronicles of Narnia'
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
 					},
 					writingCredits: [
 						{
@@ -292,7 +295,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
-										name: 'The Chronicles of Narnia'
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
 									},
 									writingCredits: [
 										{

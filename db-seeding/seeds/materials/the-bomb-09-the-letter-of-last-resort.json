@@ -1,0 +1,27 @@
+{
+	"name": "The Letter of Last Resort",
+	"format": "play",
+	"year": 2012,
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "David Greig"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "The Prime Minister"
+				},
+				{
+					"name": "John",
+					"differentiator": "The Letter of Last Resort"
+				}
+			]
+		}
+	]
+}
