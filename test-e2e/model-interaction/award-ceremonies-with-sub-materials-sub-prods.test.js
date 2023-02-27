@@ -345,7 +345,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-										name: 'Sur-Hoge'
+										name: 'Sur-Hoge',
+										surProduction: null
 									}
 								},
 								{
@@ -367,7 +368,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-										name: 'Sur-Wibble'
+										name: 'Sur-Wibble',
+										surProduction: null
 									}
 								}
 							],
@@ -659,7 +661,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -681,7 +684,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -874,7 +878,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -896,7 +901,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1087,7 +1093,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -1109,7 +1116,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1316,7 +1324,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1523,7 +1532,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1726,7 +1736,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												}
 											],
@@ -1929,7 +1940,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												}
 											],
@@ -2132,7 +2144,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -2154,7 +2167,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -2344,7 +2358,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -2366,7 +2381,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],

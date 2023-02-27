@@ -58,7 +58,9 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	WITH person, production, producerCredits, venue, surVenue, surProduction
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH person, production, producerCredits, venue, surVenue, surProduction, surSurProduction
 		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH person,
@@ -85,7 +87,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					producerCredits
 				}
@@ -100,6 +110,8 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:DEPICTS]->(character:Character)
 		WHERE
 			(
@@ -108,10 +120,19 @@ export default () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT person, producerProductions, production, venue, surVenue, surProduction, role, character
+	WITH DISTINCT
+		person,
+		producerProductions,
+		production,
+		venue,
+		surVenue,
+		surProduction,
+		surSurProduction,
+		role,
+		character
 		ORDER BY role.rolePosition
 
-	WITH person, producerProductions, production, venue, surVenue, surProduction,
+	WITH person, producerProductions, production, venue, surVenue, surProduction, surSurProduction,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -150,7 +171,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					roles
 				}
@@ -299,7 +328,17 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	WITH person, producerProductions, castMemberProductions, production, venue, surVenue, surProduction,
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH
+		person,
+		producerProductions,
+		castMemberProductions,
+		production,
+		venue,
+		surVenue,
+		surProduction,
+		surSurProduction,
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: entityRel.credit,
@@ -332,7 +371,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					creativeCredits
 				}
@@ -484,6 +531,8 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	WITH
 		producerProductions,
 		castMemberProductions,
@@ -492,6 +541,7 @@ export default () => `
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: entityRel.credit,
@@ -527,7 +577,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					crewCredits
 				}

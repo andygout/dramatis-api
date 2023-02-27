@@ -340,7 +340,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
-						name: 'The Wolf Hall Trilogy'
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
 					}
 				}
 			];

@@ -137,6 +137,8 @@ export default () => `
 
 	OPTIONAL MATCH (nominatedProduction)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	WITH
 		nominatedSourcingMaterial,
 		nominatedSourcingSurMaterial,
@@ -151,7 +153,8 @@ export default () => `
 		nominatedProduction,
 		venue,
 		surVenue,
-		surProduction
+		surProduction,
+		surSurProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
 	WITH
@@ -187,7 +190,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

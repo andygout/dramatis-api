@@ -154,6 +154,8 @@ export default () => `
 
 	OPTIONAL MATCH (surProductionVenue)-[:HAS_SUB_VENUE]-(surProductionSurVenue:Venue)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	WITH
 		production,
 		venue,
@@ -177,6 +179,10 @@ export default () => `
 							ELSE surProductionSurVenue { model: 'VENUE', .uuid, .name }
 						END
 					}
+				END,
+				surProduction: CASE surSurProduction WHEN NULL
+					THEN null
+					ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 				END
 			}
 		END AS surProduction
@@ -187,6 +193,12 @@ export default () => `
 
 	OPTIONAL MATCH (subProductionVenue)-[:HAS_SUB_VENUE]-(subProductionSurVenue:Venue)
 
+	OPTIONAL MATCH (subProduction)-[subSubProductionRel:HAS_SUB_PRODUCTION]->(subSubProduction:Production)
+
+	OPTIONAL MATCH (subSubProduction)-[:PLAYS_AT]->(subSubProductionVenue:Venue)
+
+	OPTIONAL MATCH (subSubProductionVenue)-[:HAS_SUB_VENUE]-(subSubProductionSurVenue:Venue)
+
 	WITH
 		production,
 		material,
@@ -195,7 +207,46 @@ export default () => `
 		subProductionRel,
 		subProduction,
 		subProductionVenue,
-		subProductionSurVenue
+		subProductionSurVenue,
+		subSubProductionRel,
+		subSubProduction,
+		subSubProductionVenue,
+		subSubProductionSurVenue
+		ORDER BY subSubProduction.startDate DESC, subSubProductionRel.position
+
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductionRel,
+		subProduction,
+		subProductionVenue,
+		subProductionSurVenue,
+		COLLECT(
+			CASE subSubProduction WHEN NULL
+				THEN null
+				ELSE subSubProduction {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					.startDate,
+					.endDate,
+					venue: CASE subSubProductionVenue WHEN NULL
+						THEN null
+						ELSE subSubProductionVenue {
+							model: 'VENUE',
+							.uuid,
+							.name,
+							surVenue: CASE subSubProductionSurVenue WHEN NULL
+								THEN null
+								ELSE subSubProductionSurVenue { model: 'VENUE', .uuid, .name }
+							END
+						}
+					END
+				}
+			END
+		) AS subSubProductions
 		ORDER BY subProduction.startDate DESC, subProductionRel.position
 
 	WITH production, material, venue, surProduction,
@@ -219,7 +270,8 @@ export default () => `
 								ELSE subProductionSurVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
-					END
+					END,
+					subProductions: subSubProductions
 				}
 			END
 		) AS subProductions

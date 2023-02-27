@@ -571,7 +571,8 @@ describe('Production with sub-productions', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
-					}
+					},
+					subProductions: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -588,7 +589,8 @@ describe('Production with sub-productions', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
-					}
+					},
+					subProductions: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -605,7 +607,8 @@ describe('Production with sub-productions', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
-					}
+					},
+					subProductions: []
 				}
 			];
 
@@ -636,7 +639,8 @@ describe('Production with sub-productions', () => {
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre'
 					}
-				}
+				},
+				surProduction: null
 			};
 
 			const { surProduction } = voyageOlivierProduction.body;
@@ -663,7 +667,8 @@ describe('Production with sub-productions', () => {
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
-					}
+					},
+					subProductions: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -676,7 +681,8 @@ describe('Production with sub-productions', () => {
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
-					}
+					},
+					subProductions: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -689,7 +695,8 @@ describe('Production with sub-productions', () => {
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
-					}
+					},
+					subProductions: []
 				}
 			];
 
@@ -716,7 +723,8 @@ describe('Production with sub-productions', () => {
 					uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 					name: 'Vivian Beaumont Theatre',
 					surVenue: null
-				}
+				},
+				surProduction: null
 			};
 
 			const { surProduction } = voyageVivianBeaumontProduction.body;
@@ -794,7 +802,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -816,7 +825,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				}
 			];
@@ -848,7 +858,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -865,7 +876,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -882,7 +894,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				}
 			];
@@ -910,7 +923,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -923,7 +937,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -936,7 +951,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				}
 			];
@@ -973,7 +989,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1020,7 +1037,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1067,7 +1085,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1129,7 +1148,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1176,7 +1196,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1223,7 +1244,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1285,7 +1307,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1332,7 +1355,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1379,7 +1403,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -1441,7 +1466,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					roles: [
 						{
@@ -1472,7 +1498,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					roles: [
 						{
@@ -1503,7 +1530,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					roles: [
 						{
@@ -1549,7 +1577,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1592,7 +1621,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1635,7 +1665,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1693,7 +1724,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1735,7 +1767,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1777,7 +1810,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1834,7 +1868,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1875,7 +1910,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1916,7 +1952,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -1972,7 +2009,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2015,7 +2053,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2058,7 +2097,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2116,7 +2156,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2158,7 +2199,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2200,7 +2242,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2257,7 +2300,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2298,7 +2342,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2339,7 +2384,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -2395,7 +2441,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					performers: [
 						{
@@ -2428,7 +2475,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					performers: [
 						{
@@ -2461,7 +2509,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					},
 					performers: [
 						{
@@ -2508,7 +2557,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -2526,7 +2576,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -2544,7 +2595,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -2566,7 +2618,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -2588,7 +2641,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				},
 				{
@@ -2610,7 +2664,8 @@ describe('Production with sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
-						name: 'The Coast of Utopia'
+						name: 'The Coast of Utopia',
+						surProduction: null
 					}
 				}
 			];
