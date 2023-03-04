@@ -18,6 +18,8 @@ export default () => [`
 
 	OPTIONAL MATCH (nominee:Production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
@@ -42,6 +44,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		surMaterial,
 		surSurMaterial,
 		entityRel,
@@ -62,6 +65,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		surMaterial,
 		surSurMaterial,
 		entityRel,
@@ -86,6 +90,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		surMaterial,
 		surSurMaterial,
 		entityRel,
@@ -114,6 +119,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		surMaterial,
 		surSurMaterial,
 		entityRel.credit AS writingCreditName,
@@ -153,6 +159,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		surMaterial,
 		surSurMaterial,
 		writingCreditName,
@@ -171,6 +178,7 @@ export default () => [`
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		CASE surMaterial WHEN NULL
 			THEN null
 			ELSE surMaterial {
@@ -216,7 +224,15 @@ export default () => [`
 			END,
 			surProduction: CASE surProduction WHEN NULL
 				THEN null
-				ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+				ELSE surProduction {
+					model: 'PRODUCTION',
+					.uuid,
+					.name,
+					surProduction: CASE surSurProduction WHEN NULL
+						THEN null
+						ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+					END
+				}
 			END,
 			.format,
 			.year,

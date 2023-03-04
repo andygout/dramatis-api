@@ -53,12 +53,15 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	WITH
 		variantNamedPortrayals,
 		production,
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		person,
 		role,
 		otherRole,
@@ -71,6 +74,7 @@ export default () => `
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		person,
 		role,
 		COLLECT(DISTINCT(
@@ -93,6 +97,7 @@ export default () => `
 		venue,
 		surVenue,
 		surProduction,
+		surSurProduction,
 		COLLECT(person {
 			model: 'PERSON',
 			.uuid,
@@ -129,7 +134,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					performers
 				}

@@ -8,6 +8,8 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	RETURN
 		'PRODUCTION' AS model,
 		production.uuid AS uuid,
@@ -28,7 +30,15 @@ export default () => `
 		END AS venue,
 		CASE surProduction WHEN NULL
 			THEN null
-			ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+			ELSE surProduction {
+				model: 'PRODUCTION',
+				.uuid,
+				.name,
+				surProduction: CASE surSurProduction WHEN NULL
+					THEN null
+					ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+				END
+			}
 		END AS surProduction
 
 	ORDER BY production.startDate DESC, production.name, venue.name

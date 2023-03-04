@@ -62,7 +62,9 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	WITH company, production, producerCredits, venue, surVenue, surProduction
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH company, production, producerCredits, venue, surVenue, surProduction, surSurProduction
 		ORDER BY production.startDate DESC, production.name, venue.name
 
 	WITH company,
@@ -89,7 +91,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					producerCredits
 				}
@@ -183,7 +193,9 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	WITH company, producerProductions, production, venue, surVenue, surProduction,
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH company, producerProductions, production, venue, surVenue, surProduction, surSurProduction,
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: creativeRel.credit,
@@ -216,7 +228,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					creativeCredits
 				}
@@ -310,7 +330,9 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	WITH producerProductions, creativeProductions, production, venue, surVenue, surProduction,
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH producerProductions, creativeProductions, production, venue, surVenue, surProduction, surSurProduction,
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: crewRel.credit,
@@ -345,7 +367,15 @@ export default () => `
 					END,
 					surProduction: CASE surProduction WHEN NULL
 						THEN null
-						ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE surProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE surSurProduction WHEN NULL
+								THEN null
+								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END,
 					crewCredits
 				}

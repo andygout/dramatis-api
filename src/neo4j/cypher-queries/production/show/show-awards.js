@@ -1,7 +1,7 @@
 export default () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*0..1]-(productionLinkedToCategory:Production)
+	OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*0..2]-(productionLinkedToCategory:Production)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
@@ -128,13 +128,16 @@ export default () => `
 				nomineeRel.nominationPosition = coNominatedProductionRel.nominationPosition
 			) AND
 			coNominatedProduction.uuid <> production.uuid AND
-			NOT EXISTS((production)-[:HAS_SUB_PRODUCTION]-(coNominatedProduction))
+			NOT EXISTS((production)-[:HAS_SUB_PRODUCTION*1..2]-(coNominatedProduction))
 
 	OPTIONAL MATCH (coNominatedProduction)-[:PLAYS_AT]->(coNominatedProductionVenue:Venue)
 
 	OPTIONAL MATCH (coNominatedProductionVenue)<-[:HAS_SUB_VENUE]-(coNominatedProductionSurVenue:Venue)
 
 	OPTIONAL MATCH (coNominatedProduction)<-[:HAS_SUB_PRODUCTION]-(coNominatedProductionSurProduction:Production)
+
+	OPTIONAL MATCH (coNominatedProductionSurProduction)
+		<-[:HAS_SUB_PRODUCTION]-(coNominatedProductionSurSurProduction:Production)
 
 	WITH
 		recipientProduction,
@@ -148,7 +151,8 @@ export default () => `
 		coNominatedProduction,
 		coNominatedProductionVenue,
 		coNominatedProductionSurVenue,
-		coNominatedProductionSurProduction
+		coNominatedProductionSurProduction,
+		coNominatedProductionSurSurProduction
 		ORDER BY coNominatedProductionRel.productionPosition
 
 	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, award, nominatedEntities,
@@ -175,7 +179,15 @@ export default () => `
 					END,
 					surProduction: CASE coNominatedProductionSurProduction WHEN NULL
 						THEN null
-						ELSE coNominatedProductionSurProduction { model: 'PRODUCTION', .uuid, .name }
+						ELSE coNominatedProductionSurProduction {
+							model: 'PRODUCTION',
+							.uuid,
+							.name,
+							surProduction: CASE coNominatedProductionSurSurProduction WHEN NULL
+								THEN null
+								ELSE coNominatedProductionSurSurProduction{ model: 'PRODUCTION', .uuid, .name }
+							END
+						}
 					END
 				}
 			END

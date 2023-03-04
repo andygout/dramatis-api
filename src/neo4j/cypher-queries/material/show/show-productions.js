@@ -13,6 +13,8 @@ export default () => `
 
 		OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
+		OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
 
 		WITH
@@ -20,6 +22,7 @@ export default () => `
 			venue,
 			surVenue,
 			surProduction,
+			surSurProduction,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
 			ORDER BY production.startDate DESC, production.name, venue.name
 
@@ -48,7 +51,15 @@ export default () => `
 						END,
 						surProduction: CASE surProduction WHEN NULL
 							THEN null
-							ELSE surProduction { model: 'PRODUCTION', .uuid, .name }
+							ELSE surProduction {
+								model: 'PRODUCTION',
+								.uuid,
+								.name,
+								surProduction: CASE surSurProduction WHEN NULL
+									THEN null
+									ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
+								END
+							}
 						END
 					}
 				END

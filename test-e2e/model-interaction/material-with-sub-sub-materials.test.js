@@ -35,6 +35,10 @@ describe('Material with sub-sub-materials', () => {
 	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '101';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '106';
 	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '109';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '112';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '115';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '118';
+	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '121';
 	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '124';
 
 	let theGreatGameAfghanistanMaterial;
@@ -352,7 +356,12 @@ describe('Material with sub-sub-materials', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		await chai.request(app)
@@ -382,7 +391,12 @@ describe('Material with sub-sub-materials', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		await chai.request(app)
@@ -412,7 +426,12 @@ describe('Material with sub-sub-materials', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		await chai.request(app)
@@ -427,7 +446,18 @@ describe('Material with sub-sub-materials', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID
+					},
+					{
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID
+					},
+					{
+						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		theGreatGameAfghanistanMaterial = await chai.request(app)

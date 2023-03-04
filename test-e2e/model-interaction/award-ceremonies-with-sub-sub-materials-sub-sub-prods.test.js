@@ -474,7 +474,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-										name: 'Mid-Hoge'
+										name: 'Mid-Hoge',
+										surProduction: {
+											model: 'PRODUCTION',
+											uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+											name: 'Sur-Hoge'
+										}
 									}
 								},
 								{
@@ -496,7 +501,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-										name: 'Mid-Wibble'
+										name: 'Mid-Wibble',
+										surProduction: {
+											model: 'PRODUCTION',
+											uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+											name: 'Sur-Wibble'
+										}
 									}
 								}
 							],
@@ -698,7 +708,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-										name: 'Sur-Hoge'
+										name: 'Sur-Hoge',
+										surProduction: null
 									}
 								},
 								{
@@ -720,7 +731,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 									surProduction: {
 										model: 'PRODUCTION',
 										uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-										name: 'Sur-Wibble'
+										name: 'Sur-Wibble',
+										surProduction: null
 									}
 								}
 							],
@@ -821,7 +833,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -843,7 +856,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1023,7 +1037,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -1045,7 +1064,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -1155,7 +1179,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -1177,7 +1202,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1355,7 +1381,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -1377,7 +1408,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -1486,7 +1522,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -1508,7 +1545,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1684,7 +1722,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -1706,7 +1749,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -1838,7 +1886,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -1868,6 +1917,101 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 														name: 'Sur-Wibble',
 														surMaterial: null
 													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Evening Standard Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											recipientProduction: {
+												model: 'PRODUCTION',
+												uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+												name: 'Sur-Hoge',
+												startDate: '2019-05-01',
+												endDate: '2019-05-31',
+												venue: {
+													model: 'VENUE',
+													uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+													name: 'Noël Coward Theatre',
+													surVenue: null
+												}
+											},
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												},
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														}
+													]
+												}
+											],
+											coProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: null
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_HOGE_MATERIAL_UUID,
+													name: 'Sur-Hoge',
+													format: 'collection of plays',
+													year: 2019,
+													surMaterial: null
+												},
+												{
+													model: 'MATERIAL',
+													uuid: SUR_WIBBLE_MATERIAL_UUID,
+													name: 'Sur-Wibble',
+													format: 'trilogy of trilogies of plays',
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -1935,7 +2079,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -2055,7 +2204,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -2259,7 +2409,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -2391,7 +2546,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -2512,6 +2668,128 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 							]
 						}
 					]
+				},
+				{
+					model: 'AWARD',
+					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
+					name: 'Laurence Olivier Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							name: '2020',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											recipientProduction: {
+												model: 'PRODUCTION',
+												uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+												name: 'Sub-Hoge',
+												startDate: '2019-05-01',
+												endDate: '2019-05-31',
+												venue: {
+													model: 'VENUE',
+													uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+													name: 'Noël Coward Theatre',
+													surVenue: null
+												}
+											},
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												},
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														}
+													]
+												}
+											],
+											coProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
+													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_HOGE_MATERIAL_UUID,
+													name: 'Sub-Hoge',
+													format: 'play',
+													year: 2019,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: MID_HOGE_MATERIAL_UUID,
+														name: 'Mid-Hoge',
+														surMaterial: {
+															model: 'MATERIAL',
+															uuid: SUR_HOGE_MATERIAL_UUID,
+															name: 'Sur-Hoge'
+														}
+													}
+												},
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_MATERIAL_UUID,
+													name: 'Sub-Wibble',
+													format: 'play',
+													year: 2019,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: MID_WIBBLE_MATERIAL_UUID,
+														name: 'Mid-Wibble',
+														surMaterial: {
+															model: 'MATERIAL',
+															uuid: SUR_WIBBLE_MATERIAL_UUID,
+															name: 'Sur-Wibble'
+														}
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -2598,7 +2876,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												}
 											],
@@ -2628,6 +2907,101 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 														name: 'Sur-Wibble',
 														surMaterial: null
 													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Evening Standard Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											recipientProduction: {
+												model: 'PRODUCTION',
+												uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+												name: 'Sur-Wibble',
+												startDate: '2019-06-01',
+												endDate: '2019-06-30',
+												venue: {
+													model: 'VENUE',
+													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+													name: 'Jerwood Theatre Upstairs',
+													surVenue: {
+														model: 'VENUE',
+														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+														name: 'Royal Court Theatre'
+													}
+												}
+											},
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												},
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														}
+													]
+												}
+											],
+											coProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sur-Hoge',
+													startDate: '2019-05-01',
+													endDate: '2019-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_HOGE_MATERIAL_UUID,
+													name: 'Sur-Hoge',
+													format: 'collection of plays',
+													year: 2019,
+													surMaterial: null
+												},
+												{
+													model: 'MATERIAL',
+													uuid: SUR_WIBBLE_MATERIAL_UUID,
+													name: 'Sur-Wibble',
+													format: 'trilogy of trilogies of plays',
+													year: 2019,
+													surMaterial: null
 												}
 											]
 										}
@@ -2691,7 +3065,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												}
 											],
@@ -2807,7 +3186,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												}
 											],
@@ -3011,7 +3391,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												}
 											],
@@ -3143,7 +3528,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												}
 											],
@@ -3260,6 +3646,128 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 							]
 						}
 					]
+				},
+				{
+					model: 'AWARD',
+					uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
+					name: 'Laurence Olivier Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							name: '2020',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											recipientProduction: {
+												model: 'PRODUCTION',
+												uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+												name: 'Sub-Wibble',
+												startDate: '2019-06-01',
+												endDate: '2019-06-30',
+												venue: {
+													model: 'VENUE',
+													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+													name: 'Jerwood Theatre Upstairs',
+													surVenue: {
+														model: 'VENUE',
+														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+														name: 'Royal Court Theatre'
+													}
+												}
+											},
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CONOR_CORGE_PERSON_UUID,
+													name: 'Conor Corge'
+												},
+												{
+													model: 'COMPANY',
+													uuid: STAGECRAFT_LTD_COMPANY_UUID,
+													name: 'Stagecraft Ltd',
+													members: [
+														{
+															model: 'PERSON',
+															uuid: FERDINAND_FOO_PERSON_UUID,
+															name: 'Ferdinand Foo'
+														}
+													]
+												}
+											],
+											coProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge',
+													startDate: '2019-05-01',
+													endDate: '2019-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
+													}
+												}
+											],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_HOGE_MATERIAL_UUID,
+													name: 'Sub-Hoge',
+													format: 'play',
+													year: 2019,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: MID_HOGE_MATERIAL_UUID,
+														name: 'Mid-Hoge',
+														surMaterial: {
+															model: 'MATERIAL',
+															uuid: SUR_HOGE_MATERIAL_UUID,
+															name: 'Sur-Hoge'
+														}
+													}
+												},
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_MATERIAL_UUID,
+													name: 'Sub-Wibble',
+													format: 'play',
+													year: 2019,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: MID_WIBBLE_MATERIAL_UUID,
+														name: 'Mid-Wibble',
+														surMaterial: {
+															model: 'MATERIAL',
+															uuid: SUR_WIBBLE_MATERIAL_UUID,
+															name: 'Sur-Wibble'
+														}
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -3336,7 +3844,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -3358,7 +3867,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -3533,7 +4043,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -3555,7 +4070,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -3654,7 +4174,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -3676,7 +4197,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -3857,7 +4379,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -3879,7 +4406,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],
@@ -3984,7 +4516,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Sur-Hoge'
+														name: 'Sur-Hoge',
+														surProduction: null
 													}
 												},
 												{
@@ -4006,7 +4539,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Sur-Wibble'
+														name: 'Sur-Wibble',
+														surProduction: null
 													}
 												}
 											],
@@ -4181,7 +4715,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-														name: 'Mid-Hoge'
+														name: 'Mid-Hoge',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+															name: 'Sur-Hoge'
+														}
 													}
 												},
 												{
@@ -4203,7 +4742,12 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 													surProduction: {
 														model: 'PRODUCTION',
 														uuid: MID_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-														name: 'Mid-Wibble'
+														name: 'Mid-Wibble',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+															name: 'Sur-Wibble'
+														}
 													}
 												}
 											],

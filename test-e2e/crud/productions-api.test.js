@@ -1635,7 +1635,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Hamlet sub-material #1',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -1643,7 +1644,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Hamlet sub-material #2',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -1651,7 +1653,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Hamlet sub-material #3',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					}
 				],
 				producerCredits: [
@@ -3624,7 +3627,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Richard III sub-material #1',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -3632,7 +3636,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Richard III sub-material #2',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -3640,7 +3645,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Richard III sub-material #3',
 						startDate: null,
 						endDate: null,
-						venue: null
+						venue: null,
+						subProductions: []
 					}
 				],
 				producerCredits: [

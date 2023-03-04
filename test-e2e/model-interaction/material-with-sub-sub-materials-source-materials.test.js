@@ -23,6 +23,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 	const THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID = '44';
 	const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = '52';
 	const GODBLOG_BUSH_THEATRE_PRODUCTION_UUID = '56';
+	const BUSH_THEATRE_VENUE_UUID = '58';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = '59';
+	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = '62';
 
 	let genesisReligiousTextMaterial;
 	let godblogPlayMaterial;
@@ -230,7 +233,12 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				venue: {
 					name: 'Bush Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		await chai.request(app)
@@ -245,7 +253,12 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				venue: {
 					name: 'Bush Theatre'
-				}
+				},
+				subProductions: [
+					{
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID
+					}
+				]
 			});
 
 		genesisReligiousTextMaterial = await chai.request(app)
@@ -366,6 +379,40 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = genesisReligiousTextMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of material that used it as source material, including the sur-production and sur-sur-production', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-10',
+					endDate: '2011-10-28',
+					venue: {
+						model: 'VENUE',
+						uuid: BUSH_THEATRE_VENUE_UUID,
+						name: 'Bush Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = genesisReligiousTextMaterial.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
 
 		});
 
