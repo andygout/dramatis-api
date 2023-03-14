@@ -505,89 +505,6 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	});
 
-	describe('Mike Poulton (person)', () => {
-
-		it('includes materials they have written, with corresponding sur-materials', () => {
-
-			const expectedMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID,
-					name: 'Bring Up the Bodies',
-					format: 'play',
-					year: 2013,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
-						name: 'The Wolf Hall Trilogy',
-						surMaterial: null
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: MIKE_POULTON_PERSON_UUID,
-									name: 'Mike Poulton'
-								},
-								{
-									model: 'COMPANY',
-									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
-									name: 'Royal Shakespeare Company'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'adapted from',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID,
-									name: 'Bring Up the Bodies',
-									format: 'novel',
-									year: 2012,
-									surMaterial: {
-										model: 'MATERIAL',
-										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
-										name: 'The Wolf Hall Trilogy',
-										surMaterial: null
-									},
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: HILARY_MANTEL_PERSON_UUID,
-													name: 'Hilary Mantel'
-												},
-												{
-													model: 'COMPANY',
-													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
-													name: 'The Mantel Group'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { materials } = mikePoultonPerson.body;
-
-			expect(materials).to.deep.equal(expectedMaterials);
-
-		});
-
-	});
-
 	describe('The Mantel Group (company)', () => {
 
 		it('includes materials that used their work as source material, with corresponding sur-material', () => {
@@ -666,6 +583,89 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theMantelGroupCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+	});
+
+	describe('Mike Poulton (person)', () => {
+
+		it('includes materials they have written, with corresponding sur-materials', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID,
+					name: 'Bring Up the Bodies',
+					format: 'play',
+					year: 2013,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: MIKE_POULTON_PERSON_UUID,
+									name: 'Mike Poulton'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID,
+									name: 'Bring Up the Bodies',
+									format: 'novel',
+									year: 2012,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: HILARY_MANTEL_PERSON_UUID,
+													name: 'Hilary Mantel'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+													name: 'The Mantel Group'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = mikePoultonPerson.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
 
 		});
 
