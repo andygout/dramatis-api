@@ -29,7 +29,7 @@ describe('Material with sub-sub-materials', () => {
 	const HONEY_MATERIAL_UUID = '67';
 	const BEN_OCKRENT_PERSON_UUID = '69';
 	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '75';
-	const ON_THE_SIDE_OF_THE_ANGELS = '83';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '83';
 	const RICHARD_BEAN_PERSON_UUID = '85';
 	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '91';
 	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '101';
@@ -705,7 +705,7 @@ describe('Material with sub-sub-materials', () => {
 						},
 						{
 							model: 'MATERIAL',
-							uuid: ON_THE_SIDE_OF_THE_ANGELS,
+							uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
 							name: 'On the Side of the Angels',
 							format: 'play',
 							year: 2009,
@@ -1552,7 +1552,7 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS,
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
 					name: 'On the Side of the Angels',
 					format: 'play',
 					year: 2009,
