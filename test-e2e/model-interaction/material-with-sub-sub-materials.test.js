@@ -43,7 +43,7 @@ describe('Material with sub-sub-materials', () => {
 
 	let theGreatGameAfghanistanMaterial;
 	let partOneInvasionsAndIndependenceMaterial;
-	let buglesAtTheGateOfJalalabadMaterial;
+	let buglesAtTheGatesOfJalalabadMaterial;
 	let barCharacter;
 	let theGreatGameAfghanistanTricycleProduction;
 	let partOneInvasionsAndIndependenceTricycleProduction;
@@ -466,7 +466,7 @@ describe('Material with sub-sub-materials', () => {
 		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
 			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID}`);
 
-		buglesAtTheGateOfJalalabadMaterial = await chai.request(app)
+		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
 
 		barCharacter = await chai.request(app)
@@ -854,7 +854,7 @@ describe('Material with sub-sub-materials', () => {
 				writingCredits: []
 			};
 
-			const { surMaterial } = buglesAtTheGateOfJalalabadMaterial.body;
+			const { surMaterial } = buglesAtTheGatesOfJalalabadMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
 
