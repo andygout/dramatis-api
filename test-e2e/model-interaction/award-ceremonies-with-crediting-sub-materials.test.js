@@ -2199,7 +2199,7 @@ describe('Award ceremonies with crediting sub-materials', () => {
 
 	});
 
-	describe('Sur-Plugh (play, 1899) (material): subsequent versions have nominations', () => {
+	describe('Sur-Plugh (collection of plays, 1899) (material): subsequent versions have nominations', () => {
 
 		it('includes awards of its subsequent versions (and their respective sub-materials) and its sub-materials\' subsequent versions', () => {
 
