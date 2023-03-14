@@ -590,7 +590,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	describe('Mike Poulton (person)', () => {
 
-		it('includes materials they have written, with corresponding sur-materials', () => {
+		it('includes materials they have written, with corresponding sur-material', () => {
 
 			const expectedMaterials = [
 				{

@@ -674,7 +674,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 	describe('Jeanette Winterson (person)', () => {
 
-		it('includes materials they have written, with corresponding sur-materials and sur-sur-materials', () => {
+		it('includes materials they have written, with corresponding sur-material and sur-sur-materials', () => {
 
 			const expectedMaterials = [
 				{
