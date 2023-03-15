@@ -1,8 +1,6 @@
 export default () => [`
 	MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
-
 	OPTIONAL MATCH (ceremony)-[categoryRel:PRESENTS_CATEGORY]->(category:AwardCeremonyCategory)
 
 	OPTIONAL MATCH (category)-[nomineeRel:HAS_NOMINEE]->(nominee)
@@ -12,66 +10,32 @@ export default () => [`
 			nominee:Production OR
 			nominee:Material
 
-	OPTIONAL MATCH (nominee:Production)-[:PLAYS_AT]->(venue:Venue)
-
-	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
-
-	OPTIONAL MATCH (nominee:Production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
-
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
-
-	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
-
-	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
-
 	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
 		WHERE entity:Person OR entity:Company OR entity:Material
 
 	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
 		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
 
-	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
-
-	OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
-
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nomineeRel,
 		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		surMaterial,
-		surSurMaterial,
 		entityRel,
 		entity,
-		entitySurMaterial,
-		entitySurSurMaterial,
 		sourceMaterialWriterRel,
 		sourceMaterialWriter
 		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nomineeRel,
 		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		surMaterial,
-		surSurMaterial,
 		entityRel,
 		entity,
-		entitySurMaterial,
-		entitySurSurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
 			CASE sourceMaterialWriter WHEN NULL
@@ -80,23 +44,7 @@ export default () => [`
 			END
 		) AS sourceMaterialWriters
 
-	WITH
-		ceremony,
-		award,
-		categoryRel,
-		category,
-		nomineeRel,
-		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		surMaterial,
-		surSurMaterial,
-		entityRel,
-		entity,
-		entitySurMaterial,
-		entitySurSurMaterial,
+	WITH ceremony, categoryRel, category, nomineeRel, nominee, entityRel, entity,
 		COLLECT(
 			CASE SIZE(sourceMaterialWriters) WHEN 0
 				THEN null
@@ -109,19 +57,16 @@ export default () => [`
 		) AS sourceMaterialWritingCredits
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
+	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+
+	OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
+
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nomineeRel,
 		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		surMaterial,
-		surSurMaterial,
 		entityRel.credit AS writingCreditName,
 		COLLECT(
 			CASE entity WHEN NULL
@@ -149,36 +94,22 @@ export default () => [`
 			END
 		) AS entities
 
-	WITH
-		ceremony,
-		award,
-		categoryRel,
-		category,
-		nomineeRel,
-		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		surMaterial,
-		surSurMaterial,
-		writingCreditName,
+	WITH ceremony, categoryRel, category, nomineeRel, nominee, writingCreditName,
 		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 			THEN entity
 			ELSE entity { .model, .uuid, .name }
 		END] AS entities
 
+	OPTIONAL MATCH (nominee:Material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
+	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nomineeRel,
 		nominee,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
 		CASE surMaterial WHEN NULL
 			THEN null
 			ELSE surMaterial {
@@ -202,7 +133,15 @@ export default () => [`
 			END
 		) AS writingCredits
 
-	WITH ceremony, award, categoryRel, category, nomineeRel,
+	OPTIONAL MATCH (nominee:Production)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	OPTIONAL MATCH (nominee:Production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH ceremony, categoryRel, category, nomineeRel,
 		COLLECT(nominee {
 			model: TOUPPER(HEAD(LABELS(nominee))),
 			.uuid,
@@ -250,13 +189,13 @@ export default () => [`
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedMemberRel.nominationPosition
 
-			WITH ceremony, award, categoryRel, category, nomineeRel, nominee, nominatedMember
+			WITH ceremony, categoryRel, category, nomineeRel, nominee, nominatedMember
 				ORDER BY nominatedMemberRel.memberPosition
 
-			WITH ceremony, award, categoryRel, category, nomineeRel, nominee,
+			WITH ceremony, categoryRel, category, nomineeRel, nominee,
 				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
 
-	WITH ceremony, award, categoryRel, category, nomineeRel, nominee, nominatedMembers
+	WITH ceremony, categoryRel, category, nomineeRel, nominee, nominatedMembers
 		ORDER BY
 			nomineeRel.nominationPosition,
 			nomineeRel.entityPosition,
@@ -265,7 +204,6 @@ export default () => [`
 
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nomineeRel.nominationPosition AS nominationPosition,
@@ -293,7 +231,6 @@ export default () => [`
 
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		nominationPosition,
@@ -308,7 +245,6 @@ export default () => [`
 
 	WITH
 		ceremony,
-		award,
 		categoryRel,
 		category,
 		isWinner,
@@ -317,7 +253,7 @@ export default () => [`
 		[nominee IN nominees WHERE nominee.model = 'PRODUCTION'] AS nomineeProductions,
 		[nominee IN nominees WHERE nominee.model = 'MATERIAL'] AS nomineeMaterials
 
-	WITH ceremony, award, categoryRel, category,
+	WITH ceremony, categoryRel, category,
 		COLLECT(
 			CASE WHEN SIZE(nomineeEntities) = 0 AND SIZE(nomineeProductions) = 0 AND SIZE(nomineeMaterials) = 0
 				THEN null
@@ -332,6 +268,8 @@ export default () => [`
 			END
 		) AS nominations
 		ORDER BY categoryRel.position
+
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
 	RETURN
 		'AWARD_CEREMONY' AS model,
