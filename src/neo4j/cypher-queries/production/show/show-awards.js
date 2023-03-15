@@ -9,8 +9,6 @@ export default () => `
 
 	OPTIONAL MATCH (productionLinkedToCategoryVenue)<-[:HAS_SUB_VENUE]-(productionLinkedToCategorySurVenue:Venue)
 
-	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
-
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE
 			(
@@ -22,14 +20,7 @@ export default () => `
 				nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 			)
 
-	WITH
-		production,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		award,
-		nominatedEntityRel,
+	WITH production, nomineeRel, category, categoryRel, ceremony, nominatedEntityRel,
 		CASE WHEN production <> productionLinkedToCategory
 			THEN productionLinkedToCategory {
 				model: 'PRODUCTION',
@@ -76,7 +67,6 @@ export default () => `
 				category,
 				categoryRel,
 				ceremony,
-				award,
 				nominatedEntityRel,
 				nominatedEntity,
 				nominatedMember
@@ -89,7 +79,6 @@ export default () => `
 				category,
 				categoryRel,
 				ceremony,
-				award,
 				nominatedEntityRel,
 				nominatedEntity,
 				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
@@ -101,13 +90,12 @@ export default () => `
 		category,
 		categoryRel,
 		ceremony,
-		award,
 		nominatedEntityRel,
 		nominatedEntity,
 		nominatedMembers
 		ORDER BY nominatedEntityRel.nominationPosition, nominatedEntityRel.entityPosition
 
-	WITH production, recipientProduction, nomineeRel, category, categoryRel, ceremony, award,
+	WITH production, recipientProduction, nomineeRel, category, categoryRel, ceremony,
 		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
@@ -115,7 +103,7 @@ export default () => `
 			END
 		) AS nominatedEntities
 
-	WITH production, recipientProduction, nomineeRel, category, categoryRel, ceremony, award,
+	WITH production, recipientProduction, nomineeRel, category, categoryRel, ceremony,
 		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
@@ -145,7 +133,6 @@ export default () => `
 		category,
 		categoryRel,
 		ceremony,
-		award,
 		nominatedEntities,
 		coNominatedProductionRel,
 		coNominatedProduction,
@@ -155,7 +142,7 @@ export default () => `
 		coNominatedProductionSurSurProduction
 		ORDER BY coNominatedProductionRel.productionPosition
 
-	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, award, nominatedEntities,
+	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
 		COLLECT(
 			CASE coNominatedProduction WHEN NULL
 				THEN null
@@ -210,7 +197,6 @@ export default () => `
 		category,
 		categoryRel,
 		ceremony,
-		award,
 		nominatedEntities,
 		coNominatedProductions,
 		nominatedMaterialRel,
@@ -219,15 +205,7 @@ export default () => `
 		nominatedSurSurMaterial
 		ORDER BY nominatedMaterialRel.materialPosition
 
-	WITH
-		recipientProduction,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		award,
-		nominatedEntities,
-		coNominatedProductions,
+	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, nominatedEntities, coNominatedProductions,
 		COLLECT(
 			CASE nominatedMaterial WHEN NULL
 				THEN null
@@ -254,7 +232,7 @@ export default () => `
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition
 
-	WITH category, categoryRel, ceremony, award,
+	WITH category, categoryRel, ceremony,
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(nomineeRel.isWinner, false),
@@ -266,12 +244,12 @@ export default () => `
 		}) AS nominations
 		ORDER BY categoryRel.position
 
-	WITH ceremony, award,
-		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
+	WITH ceremony, COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
 		ORDER BY ceremony.name DESC
 
-	WITH award,
-		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
+
+	WITH award, COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
 		ORDER BY award.name
 
 	RETURN

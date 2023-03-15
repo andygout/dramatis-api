@@ -6,14 +6,6 @@ export default () => `
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
-	OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
-		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
-
-	OPTIONAL MATCH (nominatedSubsequentVersionSurMaterial)
-		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurSurMaterial:Material)
-
-	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(subsequentVersionMaterialAward:Award)
-
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE
 			(
@@ -25,17 +17,7 @@ export default () => `
 				nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 			)
 
-	WITH
-		material,
-		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		subsequentVersionMaterialAward,
-		nominatedEntityRel,
+	WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntityRel,
 		COLLECT(nominatedEntity {
 			model: TOUPPER(HEAD(LABELS(nominatedEntity))),
 			.uuid,
@@ -56,13 +38,10 @@ export default () => `
 			WITH
 				material,
 				nominatedSubsequentVersionMaterial,
-				nominatedSubsequentVersionSurMaterial,
-				nominatedSubsequentVersionSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
 				ceremony,
-				subsequentVersionMaterialAward,
 				nominatedEntityRel,
 				nominatedEntity,
 				nominatedMember
@@ -71,13 +50,10 @@ export default () => `
 			WITH
 				material,
 				nominatedSubsequentVersionMaterial,
-				nominatedSubsequentVersionSurMaterial,
-				nominatedSubsequentVersionSurSurMaterial,
 				nomineeRel,
 				category,
 				categoryRel,
 				ceremony,
-				subsequentVersionMaterialAward,
 				nominatedEntityRel,
 				nominatedEntity,
 				COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
@@ -85,28 +61,16 @@ export default () => `
 	WITH
 		material,
 		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
-		subsequentVersionMaterialAward,
 		nominatedEntityRel,
 		nominatedEntity,
 		nominatedMembers
 		ORDER BY nominatedEntityRel.nominationPosition, nominatedEntityRel.entityPosition
 
-	WITH
-		material,
-		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		subsequentVersionMaterialAward,
+	WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony,
 		COLLECT(
 			CASE nominatedEntity WHEN NULL
 				THEN null
@@ -114,16 +78,7 @@ export default () => `
 			END
 		) AS nominatedEntities
 
-	WITH
-		material,
-		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		subsequentVersionMaterialAward,
+	WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony,
 		[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 			THEN nominatedEntity
 			ELSE nominatedEntity { .model, .uuid, .name }
@@ -147,13 +102,10 @@ export default () => `
 	WITH
 		material,
 		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
-		subsequentVersionMaterialAward,
 		nominatedEntities,
 		nominatedProductionRel,
 		nominatedProduction,
@@ -163,17 +115,7 @@ export default () => `
 		surSurProduction
 		ORDER BY nominatedProductionRel.productionPosition
 
-	WITH
-		material,
-		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
-		nomineeRel,
-		category,
-		categoryRel,
-		ceremony,
-		subsequentVersionMaterialAward,
-		nominatedEntities,
+	WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
 		COLLECT(
 			CASE nominatedProduction WHEN NULL
 				THEN null
@@ -222,13 +164,10 @@ export default () => `
 
 	WITH
 		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
-		subsequentVersionMaterialAward,
 		nominatedEntities,
 		nominatedProductions,
 		nominatedMaterialRel,
@@ -237,13 +176,10 @@ export default () => `
 
 	WITH
 		nominatedSubsequentVersionMaterial,
-		nominatedSubsequentVersionSurMaterial,
-		nominatedSubsequentVersionSurSurMaterial,
 		nomineeRel,
 		category,
 		categoryRel,
 		ceremony,
-		subsequentVersionMaterialAward,
 		nominatedEntities,
 		nominatedProductions,
 		COLLECT(
@@ -254,13 +190,18 @@ export default () => `
 		) AS nominatedMaterials
 		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
 
+	OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
+
+	OPTIONAL MATCH (nominatedSubsequentVersionSurMaterial)
+		<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurSurMaterial:Material)
+
 	WITH
 		nomineeRel.isWinner AS isWinner,
 		nomineeRel.customType AS customType,
 		category,
 		categoryRel,
 		ceremony,
-		subsequentVersionMaterialAward,
 		nominatedEntities,
 		nominatedProductions,
 		nominatedMaterials,
@@ -289,11 +230,7 @@ export default () => `
 			END
 		) AS nominatedSubsequentVersionMaterials
 
-	WITH
-		category,
-		categoryRel,
-		ceremony,
-		subsequentVersionMaterialAward,
+	WITH category, categoryRel, ceremony,
 		COLLECT({
 			model: 'NOMINATION',
 			isWinner: COALESCE(isWinner, false),
@@ -305,22 +242,14 @@ export default () => `
 		}) AS nominations
 		ORDER BY categoryRel.position
 
-	WITH
-		ceremony,
-		subsequentVersionMaterialAward,
-		COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
+	WITH ceremony, COLLECT(category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }) AS categories
 		ORDER BY ceremony.name DESC
 
-	WITH
-		subsequentVersionMaterialAward,
-		COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
-		ORDER BY subsequentVersionMaterialAward.name
+	OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
+
+	WITH award, COLLECT(ceremony { model: 'AWARD_CEREMONY', .uuid, .name, categories }) AS ceremonies
+		ORDER BY award.name
 
 	RETURN
-		COLLECT(subsequentVersionMaterialAward {
-			model: 'AWARD',
-			.uuid,
-			.name,
-			ceremonies
-		}) AS subsequentVersionMaterialAwards
+		COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS subsequentVersionMaterialAwards
 `;
