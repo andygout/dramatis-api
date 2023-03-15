@@ -299,7 +299,15 @@ export default () => `
 					producerEntityRel.creditPosition IS NULL OR
 					producerEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-			WITH production, material, venue, surProduction, subProductions, producerEntityRel, producerEntity, creditedMember
+			WITH
+				production,
+				material,
+				venue,
+				surProduction,
+				subProductions,
+				producerEntityRel,
+				producerEntity,
+				creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
 			WITH production, material, venue, surProduction, subProductions, producerEntityRel, producerEntity,
@@ -345,7 +353,16 @@ export default () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT production, material, venue, surProduction, subProductions, producerCredits, castMember, role, character
+	WITH DISTINCT
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		castMember,
+		role,
+		character
 		ORDER BY role.castMemberPosition, role.rolePosition
 
 	WITH production, material, venue, surProduction, subProductions, producerCredits, castMember,
@@ -393,16 +410,53 @@ export default () => `
 					creativeEntityRel.creditPosition IS NULL OR
 					creativeEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMember
+			WITH
+				production,
+				material,
+				venue,
+				surProduction,
+				subProductions,
+				producerCredits,
+				cast,
+				creativeEntityRel,
+				creativeEntity,
+				creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity,
+			WITH
+				production,
+				material,
+				venue,
+				surProduction,
+				subProductions,
+				producerCredits,
+				cast,
+				creativeEntityRel,
+				creativeEntity,
 				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
-	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity, creditedMembers
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeEntityRel,
+		creativeEntity,
+		creditedMembers
 		ORDER BY creativeEntityRel.creditPosition, creativeEntityRel.entityPosition
 
-	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeEntityRel.credit AS creativeCreditName,
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeEntityRel.credit AS creativeCreditName,
 		COLLECT(
 			CASE creativeEntity WHEN NULL
 				THEN null
@@ -433,7 +487,16 @@ export default () => `
 			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 			crewEntity:Company
 
-	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel,
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeCredits,
+		crewEntityRel,
 		COLLECT(crewEntity {
 			model: TOUPPER(HEAD(LABELS(crewEntity))),
 			.uuid,
@@ -465,7 +528,17 @@ export default () => `
 				creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel, crewEntity,
+			WITH
+				production,
+				material,
+				venue,
+				surProduction,
+				subProductions,
+				producerCredits,
+				cast,
+				creativeCredits,
+				crewEntityRel,
+				crewEntity,
 				COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
 	WITH
@@ -482,7 +555,16 @@ export default () => `
 		creditedMembers
 		ORDER BY crewEntityRel.creditPosition, crewEntityRel.entityPosition
 
-	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewEntityRel.credit AS crewCreditName,
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeCredits,
+		crewEntityRel.credit AS crewCreditName,
 		COLLECT(
 			CASE crewEntity WHEN NULL
 				THEN null
@@ -490,7 +572,16 @@ export default () => `
 			END
 		) AS crewEntities
 
-	WITH production, material, venue, surProduction, subProductions, producerCredits, cast, creativeCredits, crewCreditName,
+	WITH
+		production,
+		material,
+		venue,
+		surProduction,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeCredits,
+		crewCreditName,
 		[crewEntity IN crewEntities | CASE crewEntity.model WHEN 'COMPANY'
 			THEN crewEntity
 			ELSE crewEntity { .model, .uuid, .name }

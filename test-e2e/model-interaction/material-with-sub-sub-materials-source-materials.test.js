@@ -581,97 +581,6 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 	});
 
-	describe('Jeanette Winterson (person)', () => {
-
-		it('includes materials they have written, with corresponding sur-materials and sur-sur-materials', () => {
-
-			const expectedMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: GODBLOG_PLAY_MATERIAL_UUID,
-					name: 'Godblog',
-					format: 'play',
-					year: 2011,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
-						name: 'The Books of the Old Testament',
-						surMaterial: {
-							model: 'MATERIAL',
-							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
-							name: 'Sixty-Six Books'
-						}
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: JEANETTE_WINTERSON_PERSON_UUID,
-									name: 'Jeanette Winterson'
-								},
-								{
-									model: 'COMPANY',
-									uuid: ONLY_FRUITS_COMPANY_UUID,
-									name: 'Only Fruits'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'written in response to',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
-									name: 'Genesis',
-									format: 'religious text',
-									year: 1611,
-									surMaterial: {
-										model: 'MATERIAL',
-										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
-										name: 'The Old Testament',
-										surMaterial: {
-											model: 'MATERIAL',
-											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
-											name: 'The Bible: King James Version'
-										}
-									},
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: RICHARD_BANCROFT_PERSON_UUID,
-													name: 'Richard Bancroft'
-												},
-												{
-													model: 'COMPANY',
-													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
-													name: 'The Canterbury Editors'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { materials } = jeanetteWintersonPerson.body;
-
-			expect(materials).to.deep.equal(expectedMaterials);
-
-		});
-
-	});
-
 	describe('The Canterbury Editors (company)', () => {
 
 		it('includes materials that used their work as source material, with corresponding sur-material and sur-sur-material', () => {
@@ -758,6 +667,97 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theCanterburyEditorsCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+	});
+
+	describe('Jeanette Winterson (person)', () => {
+
+		it('includes materials they have written, with corresponding sur-material and sur-sur-materials', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: GODBLOG_PLAY_MATERIAL_UUID,
+					name: 'Godblog',
+					format: 'play',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+						name: 'The Books of the Old Testament',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+							name: 'Sixty-Six Books'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JEANETTE_WINTERSON_PERSON_UUID,
+									name: 'Jeanette Winterson'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ONLY_FRUITS_COMPANY_UUID,
+									name: 'Only Fruits'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'written in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'Genesis',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Old Testament',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+											name: 'The Bible: King James Version'
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = jeanetteWintersonPerson.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
 
 		});
 

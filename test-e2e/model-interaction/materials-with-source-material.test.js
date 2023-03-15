@@ -1077,136 +1077,6 @@ describe('Materials with source material', () => {
 
 	});
 
-	describe('Rona Munro (person)', () => {
-
-		it('includes materials they have written, with corresponding writers', () => {
-
-			const expectedMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
-					name: 'The Indian Boy',
-					format: 'play',
-					year: 2006,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: RONA_MUNRO_PERSON_UUID,
-									name: 'Rona Munro'
-								},
-								{
-									model: 'COMPANY',
-									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
-									name: 'Royal Shakespeare Company'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'inspired by',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
-									format: 'play',
-									year: 1595,
-									surMaterial: null,
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-													name: 'William Shakespeare'
-												},
-												{
-													model: 'COMPANY',
-													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { materials } = ronaMunroPerson.body;
-
-			expect(materials).to.deep.equal(expectedMaterials);
-
-		});
-
-	});
-
-	describe('Steven Berkoff (person)', () => {
-
-		it('includes materials they have written, with corresponding writers', () => {
-
-			const expectedMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
-					format: 'play',
-					year: 1998,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: STEVEN_BERKOFF_PERSON_UUID,
-									name: 'Steven Berkoff'
-								},
-								{
-									model: 'COMPANY',
-									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
-									name: 'East Productions'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'based on works by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { materials } = stevenBerkoffPerson.body;
-
-			expect(materials).to.deep.equal(expectedMaterials);
-
-		});
-
-	});
-
 	describe('The King\'s Men (company)', () => {
 
 		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
@@ -1438,6 +1308,79 @@ describe('Materials with source material', () => {
 
 	});
 
+	describe('Rona Munro (person)', () => {
+
+		it('includes materials they have written, with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					year: 2006,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: 'A Midsummer Night\'s Dream',
+									format: 'play',
+									year: 1595,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: 'The King\'s Men'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = ronaMunroPerson.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
 	describe('Royal Shakespeare Company (company)', () => {
 
 		it('includes materials it has written, with corresponding writers', () => {
@@ -1504,6 +1447,63 @@ describe('Materials with source material', () => {
 			];
 
 			const { materials } = royalShakespeareCompany.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
+	describe('Steven Berkoff (person)', () => {
+
+		it('includes materials they have written, with corresponding writers', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: 'Shakespeare\'s Villains',
+					format: 'play',
+					year: 1998,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on works by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { materials } = stevenBerkoffPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
 

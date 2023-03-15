@@ -29,7 +29,7 @@ describe('Material with sub-sub-materials', () => {
 	const HONEY_MATERIAL_UUID = '67';
 	const BEN_OCKRENT_PERSON_UUID = '69';
 	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '75';
-	const ON_THE_SIDE_OF_THE_ANGELS = '83';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '83';
 	const RICHARD_BEAN_PERSON_UUID = '85';
 	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '91';
 	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '101';
@@ -43,7 +43,7 @@ describe('Material with sub-sub-materials', () => {
 
 	let theGreatGameAfghanistanMaterial;
 	let partOneInvasionsAndIndependenceMaterial;
-	let buglesAtTheGateOfJalalabadMaterial;
+	let buglesAtTheGatesOfJalalabadMaterial;
 	let barCharacter;
 	let theGreatGameAfghanistanTricycleProduction;
 	let partOneInvasionsAndIndependenceTricycleProduction;
@@ -466,7 +466,7 @@ describe('Material with sub-sub-materials', () => {
 		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
 			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID}`);
 
-		buglesAtTheGateOfJalalabadMaterial = await chai.request(app)
+		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
 
 		barCharacter = await chai.request(app)
@@ -705,7 +705,7 @@ describe('Material with sub-sub-materials', () => {
 						},
 						{
 							model: 'MATERIAL',
-							uuid: ON_THE_SIDE_OF_THE_ANGELS,
+							uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
 							name: 'On the Side of the Angels',
 							format: 'play',
 							year: 2009,
@@ -854,7 +854,7 @@ describe('Material with sub-sub-materials', () => {
 				writingCredits: []
 			};
 
-			const { surMaterial } = buglesAtTheGateOfJalalabadMaterial.body;
+			const { surMaterial } = buglesAtTheGatesOfJalalabadMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
 
@@ -1084,7 +1084,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('Ferdinand Foo (person)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-materials and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
+		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
 
 			const expectedMaterials = [
 				{
@@ -1204,7 +1204,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('Fictioneers Ltd (company)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-materials and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
+		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
 
 			const expectedMaterials = [
 				{
@@ -1324,7 +1324,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('materials list', () => {
 
-		it('includes materials and, where applicable, corresponding sur-materials and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
+		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
 
 			const response = await chai.request(app)
 				.get('/materials');
@@ -1552,7 +1552,7 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS,
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
 					name: 'On the Side of the Angels',
 					format: 'play',
 					year: 2009,
