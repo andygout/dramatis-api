@@ -59,25 +59,25 @@ async function seedInstances (directoryName, modelUrlRoute) {
 
 async function seedDatabase () {
 
-	console.log('Seeding Neo4j database: Commenced'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: 🟢 Commenced'); // eslint-disable-line no-console
 
 	await seedInstances('venues', 'venues');
 
-	console.log('Seeding Neo4j database: Venue seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Venue seeds sown'); // eslint-disable-line no-console
 
 	await seedInstances('materials', 'materials');
 
-	console.log('Seeding Neo4j database: Material seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Material seeds sown'); // eslint-disable-line no-console
 
 	await seedInstances('productions', 'productions');
 
-	console.log('Seeding Neo4j database: Production seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Production seeds sown'); // eslint-disable-line no-console
 
 	await seedInstances('award-ceremonies', 'award-ceremonies');
 
-	console.log('Seeding Neo4j database: Award ceremony seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Award ceremony seeds sown'); // eslint-disable-line no-console
 
-	console.log('Seeding Neo4j database: Complete'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Complete'); // eslint-disable-line no-console
 
 	return;
 
