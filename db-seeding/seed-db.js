@@ -5,7 +5,14 @@ const directly = require('directly');
 
 const BASE_URL = 'http://localhost:3000';
 
-async function performFetch (url, instance, filenamePathSlug) {
+const PLURALISED_MODEL_TO_EMOJI_MAP = {
+	'award-ceremonies': '🏆',
+	'materials': '📖',
+	'productions': '🎭',
+	'venues': '🏛️'
+}
+
+async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 
 	const settings = {
 		headers: {
@@ -19,7 +26,7 @@ async function performFetch (url, instance, filenamePathSlug) {
 
 	if (response.status !== 200) throw new Error(response.statusText);
 
-	console.log(`Seeding Neo4j database: ${filenamePathSlug}`); // eslint-disable-line no-console
+	console.log(`Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`); // eslint-disable-line no-console
 
 	return;
 
@@ -48,7 +55,12 @@ async function seedInstances (pluralisedModel) {
 
 					const url = `${BASE_URL}/${modelUrlRoute}`;
 
-					return performFetch(url, instance, filenamePathSlug);
+					return performFetch(
+						url,
+						instance,
+						PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel],
+						filenamePathSlug
+					);
 
 				} catch (error) {
 
