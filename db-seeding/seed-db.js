@@ -25,7 +25,10 @@ async function performFetch (url, instance, filenamePathSlug) {
 
 };
 
-async function seedInstances (directoryName, modelUrlRoute) {
+async function seedInstances (pluralisedModel) {
+
+	const directoryName = pluralisedModel;
+	const modelUrlRoute = pluralisedModel;
 
 	const directoryPath = path.join(__dirname, `seeds/${directoryName}`);
 
@@ -65,19 +68,19 @@ async function seedDatabase () {
 
 	console.log('Seeding Neo4j database: 🟢 Commenced'); // eslint-disable-line no-console
 
-	await seedInstances('venues', 'venues');
+	await seedInstances('venues');
 
 	console.log('Seeding Neo4j database: ✅ Venue seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('materials', 'materials');
+	await seedInstances('materials');
 
 	console.log('Seeding Neo4j database: ✅ Material seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('productions', 'productions');
+	await seedInstances('productions');
 
 	console.log('Seeding Neo4j database: ✅ Production seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('award-ceremonies', 'award-ceremonies');
+	await seedInstances('award-ceremonies');
 
 	console.log('Seeding Neo4j database: ✅ Award ceremony seeds sown'); // eslint-disable-line no-console
 
