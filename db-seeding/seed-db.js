@@ -25,9 +25,9 @@ async function performFetch (url, instance) {
 
 async function seedInstances (directoryName, modelUrlRoute) {
 
-	const seedsPath = path.join(__dirname, `seeds/${directoryName}`);
+	const directoryPath = path.join(__dirname, `seeds/${directoryName}`);
 
-	const seedFilenames = fs.readdirSync(seedsPath);
+	const seedFilenames = fs.readdirSync(directoryPath);
 
 	const createInstanceFunctions =
 		seedFilenames
@@ -35,7 +35,7 @@ async function seedInstances (directoryName, modelUrlRoute) {
 
 				try {
 
-					const rawData = fs.readFileSync(`${seedsPath}/${filename}`);
+					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
 
 					const instance = JSON.parse(rawData);
 
