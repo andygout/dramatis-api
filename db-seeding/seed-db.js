@@ -5,7 +5,7 @@ const directly = require('directly');
 
 const BASE_URL = 'http://localhost:3000';
 
-async function performFetch (url, instance) {
+async function performFetch (url, instance, filenamePathSlug) {
 
 	const settings = {
 		headers: {
@@ -18,6 +18,8 @@ async function performFetch (url, instance) {
 	const response = await fetch(url, settings);
 
 	if (response.status !== 200) throw new Error(response.statusText);
+
+	console.log(`Seeding Neo4j database: ${filenamePathSlug}`); // eslint-disable-line no-console
 
 	return;
 
@@ -33,6 +35,8 @@ async function seedInstances (directoryName, modelUrlRoute) {
 		seedFilenames
 			.map(filename => () => {
 
+				const filenamePathSlug = `${directoryName}/${filename}`;
+
 				try {
 
 					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
@@ -41,11 +45,11 @@ async function seedInstances (directoryName, modelUrlRoute) {
 
 					const url = `${BASE_URL}/${modelUrlRoute}`;
 
-					return performFetch(url, instance);
+					return performFetch(url, instance, filenamePathSlug);
 
 				} catch (error) {
 
-					throw new Error(`${directoryName}/${filename}: ${error.message}`);
+					throw new Error(`${filenamePathSlug}: ${error.message}`);
 
 				}
 
