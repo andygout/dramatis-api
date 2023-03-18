@@ -5,7 +5,14 @@ const directly = require('directly');
 
 const BASE_URL = 'http://localhost:3000';
 
-async function performFetch (url, instance) {
+const PLURALISED_MODEL_TO_EMOJI_MAP = {
+	'award-ceremonies': '🏆',
+	'materials': '📖',
+	'productions': '🎭',
+	'venues': '🏛️'
+}
+
+async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 
 	const settings = {
 		headers: {
@@ -19,28 +26,47 @@ async function performFetch (url, instance) {
 
 	if (response.status !== 200) throw new Error(response.statusText);
 
+	console.log(`Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`); // eslint-disable-line no-console
+
 	return;
 
 };
 
-async function seedInstances (directoryName, modelUrlRoute) {
+async function seedInstances (pluralisedModel) {
 
-	const seedsPath = path.join(__dirname, `seeds/${directoryName}`);
+	const directoryName = pluralisedModel;
+	const modelUrlRoute = pluralisedModel;
 
-	const seedFilenames = fs.readdirSync(seedsPath);
+	const directoryPath = path.join(__dirname, `seeds/${directoryName}`);
+
+	const seedFilenames = fs.readdirSync(directoryPath);
 
 	const createInstanceFunctions =
 		seedFilenames
-			.map(filename => async () => {
-				const rawData = fs.readFileSync(`${seedsPath}/${filename}`);
+			.map(filename => () => {
 
-				const instance = JSON.parse(rawData);
+				const filenamePathSlug = `${directoryName}/${filename}`;
 
-				const url = `${BASE_URL}/${modelUrlRoute}`;
+				try {
 
-				await performFetch(url, instance);
+					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
 
-				return;
+					const instance = JSON.parse(rawData);
+
+					const url = `${BASE_URL}/${modelUrlRoute}`;
+
+					return performFetch(
+						url,
+						instance,
+						PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel],
+						filenamePathSlug
+					);
+
+				} catch (error) {
+
+					throw new Error(`${filenamePathSlug}: ${error.message}`);
+
+				}
 
 			});
 
@@ -52,25 +78,25 @@ async function seedInstances (directoryName, modelUrlRoute) {
 
 async function seedDatabase () {
 
-	console.log('Seeding Neo4j database: Commenced'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: 🟢 Commenced'); // eslint-disable-line no-console
 
-	await seedInstances('venues', 'venues');
+	await seedInstances('venues');
 
-	console.log('Seeding Neo4j database: Venue seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Venue seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('materials', 'materials');
+	await seedInstances('materials');
 
-	console.log('Seeding Neo4j database: Material seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Material seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('productions', 'productions');
+	await seedInstances('productions');
 
-	console.log('Seeding Neo4j database: Production seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Production seeds sown'); // eslint-disable-line no-console
 
-	await seedInstances('award-ceremonies', 'award-ceremonies');
+	await seedInstances('award-ceremonies');
 
-	console.log('Seeding Neo4j database: Award ceremony seeds sown'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Award ceremony seeds sown'); // eslint-disable-line no-console
 
-	console.log('Seeding Neo4j database: Complete'); // eslint-disable-line no-console
+	console.log('Seeding Neo4j database: ✅ Complete'); // eslint-disable-line no-console
 
 	return;
 
