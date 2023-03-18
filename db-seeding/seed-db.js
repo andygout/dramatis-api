@@ -32,13 +32,22 @@ async function seedInstances (directoryName, modelUrlRoute) {
 	const createInstanceFunctions =
 		seedFilenames
 			.map(filename => () => {
-				const rawData = fs.readFileSync(`${seedsPath}/${filename}`);
 
-				const instance = JSON.parse(rawData);
+				try {
 
-				const url = `${BASE_URL}/${modelUrlRoute}`;
+					const rawData = fs.readFileSync(`${seedsPath}/${filename}`);
 
-				return performFetch(url, instance);
+					const instance = JSON.parse(rawData);
+
+					const url = `${BASE_URL}/${modelUrlRoute}`;
+
+					return performFetch(url, instance);
+
+				} catch (error) {
+
+					throw new Error(`${directoryName}/${filename}: ${error.message}`);
+
+				}
 
 			});
 
