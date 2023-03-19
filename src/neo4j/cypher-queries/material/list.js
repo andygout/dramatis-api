@@ -94,9 +94,9 @@ export default () => `
 			END
 		) AS writingCredits
 
-	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
-	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+	OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
 
 	RETURN
 		'MATERIAL' AS model,
@@ -117,7 +117,11 @@ export default () => `
 			}
 		END AS surMaterial,
 		writingCredits
-		ORDER BY material.year DESC, material.name
+		ORDER BY
+			material.year DESC,
+			COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+			surSurMaterialRel.position DESC,
+			surMaterialRel.position DESC
 
 	LIMIT 100
 `;

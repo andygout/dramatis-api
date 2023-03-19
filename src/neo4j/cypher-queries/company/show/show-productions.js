@@ -60,12 +60,26 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
-	WITH company, production, producerCredits, venue, surVenue, surProduction, surSurProduction
-		ORDER BY production.startDate DESC, production.name, venue.name
+	WITH
+		company,
+		production,
+		producerCredits,
+		venue,
+		surVenue,
+		surProduction,
+		surProductionRel,
+		surSurProduction,
+		surSurProductionRel
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	WITH company,
 		COLLECT(
@@ -191,18 +205,32 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
-	WITH company, producerProductions, production, venue, surVenue, surProduction, surSurProduction,
+	WITH
+		company,
+		producerProductions,
+		production,
+		venue,
+		surVenue,
+		surProduction,
+		surProductionRel,
+		surSurProduction,
+		surSurProductionRel,
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: creativeRel.credit,
 			members: creditedMembers,
 			coEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	WITH company, producerProductions,
 		COLLECT(
@@ -328,18 +356,32 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
-	WITH producerProductions, creativeProductions, production, venue, surVenue, surProduction, surSurProduction,
+	WITH
+		producerProductions,
+		creativeProductions,
+		production,
+		venue,
+		surVenue,
+		surProduction,
+		surProductionRel,
+		surSurProduction,
+		surSurProductionRel,
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: crewRel.credit,
 			members: creditedMembers,
 			coEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	RETURN
 		producerProductions,

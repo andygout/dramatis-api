@@ -2294,8 +2294,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: {
@@ -2305,8 +2305,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2316,8 +2316,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: {
@@ -2327,74 +2327,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre'
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre'
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre'
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2448,8 +2382,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: {
@@ -2459,8 +2393,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2470,8 +2404,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: {
@@ -2481,8 +2415,74 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre'
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre'
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre'
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2507,15 +2507,15 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2525,69 +2525,15 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: null,
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: null,
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					subVenue: null,
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2633,15 +2579,15 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2651,15 +2597,69 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: null,
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: null,
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					subVenue: null,
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2684,8 +2684,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -2700,8 +2700,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -2736,8 +2736,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -2752,164 +2752,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3048,8 +2892,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3064,8 +2908,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3100,8 +2944,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3116,8 +2960,164 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3167,8 +3167,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3183,8 +3183,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3219,8 +3219,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3235,164 +3235,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3531,8 +3375,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3547,8 +3391,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3583,8 +3427,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3599,8 +3443,164 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3650,8 +3650,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3666,8 +3666,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -3702,8 +3702,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -3718,164 +3718,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4014,8 +3858,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4030,8 +3874,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4066,8 +3910,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4082,8 +3926,164 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4133,8 +4133,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4149,8 +4149,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4169,8 +4169,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4185,116 +4185,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					roles: [
-						{
-							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
-							qualifier: null,
-							isAlternate: false
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					roles: [
-						{
-							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
-							qualifier: null,
-							isAlternate: false
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					roles: [
-						{
-							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
-							qualifier: null,
-							isAlternate: false
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4385,8 +4277,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4401,8 +4293,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4421,8 +4313,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4437,8 +4329,116 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: BAR_CHARACTER_UUID,
+							name: 'Bar',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: BAR_CHARACTER_UUID,
+							name: 'Bar',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: BAR_CHARACTER_UUID,
+							name: 'Bar',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4472,8 +4472,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4488,8 +4488,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4520,8 +4520,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4536,152 +4536,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4808,8 +4664,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4824,8 +4680,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4856,8 +4712,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4872,8 +4728,152 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4919,8 +4919,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4935,8 +4935,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4966,8 +4966,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -4982,149 +4982,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5248,8 +5107,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5264,8 +5123,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5295,8 +5154,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5311,8 +5170,149 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: JACK_KNOWLES_PERSON_UUID,
+									name: 'Jack Knowles'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: JACK_KNOWLES_PERSON_UUID,
+									name: 'Jack Knowles'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: JACK_KNOWLES_PERSON_UUID,
+									name: 'Jack Knowles'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5357,8 +5357,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5373,8 +5373,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5403,8 +5403,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5419,146 +5419,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5679,8 +5541,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5695,8 +5557,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5725,8 +5587,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5741,8 +5603,146 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Lighting Design Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Lighting Design Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Lighting Design Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5786,8 +5786,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5802,8 +5802,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5834,8 +5834,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5850,152 +5850,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6122,8 +5978,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6138,8 +5994,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6170,8 +6026,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6186,8 +6042,152 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6233,8 +6233,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6249,8 +6249,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6280,8 +6280,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6296,149 +6296,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6562,8 +6421,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6578,8 +6437,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6609,8 +6468,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6625,8 +6484,149 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+									name: 'Charlotte Padgham'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+									name: 'Charlotte Padgham'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+									name: 'Charlotte Padgham'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6671,8 +6671,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6687,8 +6687,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6717,8 +6717,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -6733,146 +6733,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6993,8 +6855,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7009,8 +6871,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7039,8 +6901,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7055,8 +6917,146 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Stage Management Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Stage Management Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Stage Management Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7100,8 +7100,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7116,8 +7116,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7138,8 +7138,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7154,122 +7154,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					performers: [
-						{
-							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
-							qualifier: null,
-							isAlternate: false,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					performers: [
-						{
-							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
-							qualifier: null,
-							isAlternate: false,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					performers: [
-						{
-							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
-							qualifier: null,
-							isAlternate: false,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7366,8 +7252,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7382,8 +7268,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7404,8 +7290,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7420,8 +7306,122 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roleName: 'Bar',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roleName: 'Bar',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roleName: 'Bar',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7460,8 +7460,8 @@ describe('Production with sub-sub-productions', () => {
 			const expectedResponseBody = [
 				{
 					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7476,8 +7476,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7487,8 +7487,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7503,89 +7503,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
-					name: 'Campaign',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7649,131 +7568,143 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
-					startDate: '2010-10-22',
-					endDate: '2010-11-07',
-					venue: {
-						model: 'VENUE',
-						uuid: RODA_THEATRE_VENUE_UUID,
-						name: 'Roda Theatre',
-						surVenue: {
-							model: 'VENUE',
-							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
-							name: 'Berkeley Repertory Theatre'
-						}
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
-					name: 'Black Tulips',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surProduction: {
-							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
 					name: 'Blood and Gifts',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
 					venue: {
 						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
 					}
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
 					venue: {
 						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
 					}
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
 					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7784,8 +7715,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7795,8 +7726,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7807,8 +7738,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7864,8 +7795,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7876,8 +7807,8 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7887,8 +7818,8 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Black Tulips',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7899,8 +7830,77 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,

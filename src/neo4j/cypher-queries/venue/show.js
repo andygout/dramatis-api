@@ -28,9 +28,9 @@ export default () => [`
 			<-[:PLAYS_AT]-(:Production)<-[:HAS_SUB_PRODUCTION]-(production)
 		)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 	WITH
 		venue,
@@ -39,8 +39,14 @@ export default () => [`
 		venueLinkedToProduction,
 		production,
 		surProduction,
-		surSurProduction
-		ORDER BY production.startDate DESC, production.name
+		surProductionRel,
+		surSurProduction,
+		surSurProductionRel
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC
 
 	RETURN
 		'VENUE' AS model,

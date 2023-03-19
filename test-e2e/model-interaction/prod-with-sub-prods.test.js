@@ -558,9 +558,9 @@ describe('Production with sub-productions', () => {
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
-					name: 'Salvage',
-					startDate: '2002-07-19',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
 					endDate: '2002-11-23',
 					venue: {
 						model: 'VENUE',
@@ -594,9 +594,9 @@ describe('Production with sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
-					name: 'Voyage',
-					startDate: '2002-06-27',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
 					endDate: '2002-11-23',
 					venue: {
 						model: 'VENUE',
@@ -658,10 +658,10 @@ describe('Production with sub-productions', () => {
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-					name: 'Salvage',
-					startDate: '2007-01-31',
-					endDate: '2007-05-13',
+					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2006-10-17',
+					endDate: '2007-05-12',
 					venue: {
 						model: 'VENUE',
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
@@ -686,10 +686,10 @@ describe('Production with sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
-					name: 'Voyage',
-					startDate: '2006-10-17',
-					endDate: '2007-05-12',
+					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2007-01-31',
+					endDate: '2007-05-13',
 					venue: {
 						model: 'VENUE',
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,

@@ -56,12 +56,26 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
-	WITH person, production, producerCredits, venue, surVenue, surProduction, surSurProduction
-		ORDER BY production.startDate DESC, production.name, venue.name
+	WITH
+		person,
+		production,
+		producerCredits,
+		venue,
+		surVenue,
+		surProduction,
+		surProductionRel,
+		surSurProduction,
+		surSurProductionRel
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	WITH person,
 		COLLECT(
@@ -108,10 +122,6 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
-
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
-
 	OPTIONAL MATCH (production)-[:PRODUCTION_OF]->(:Material)-[characterRel:DEPICTS]->(character:Character)
 		WHERE
 			(
@@ -120,19 +130,23 @@ export default () => `
 			) AND
 			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
-	WITH DISTINCT
+	WITH DISTINCT person, producerProductions, production, venue, surVenue, role, character
+		ORDER BY role.rolePosition
+
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
+	WITH
 		person,
 		producerProductions,
 		production,
 		venue,
 		surVenue,
 		surProduction,
+		surProductionRel,
 		surSurProduction,
-		role,
-		character
-		ORDER BY role.rolePosition
-
-	WITH person, producerProductions, production, venue, surVenue, surProduction, surSurProduction,
+		surSurProductionRel,
 		COLLECT(
 			CASE role.roleName WHEN NULL
 				THEN { name: 'Performer' }
@@ -145,7 +159,12 @@ export default () => `
 				}
 			END
 		) AS roles
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	WITH person, producerProductions,
 		COLLECT(
@@ -326,9 +345,9 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 	WITH
 		person,
@@ -338,14 +357,21 @@ export default () => `
 		venue,
 		surVenue,
 		surProduction,
+		surProductionRel,
 		surSurProduction,
+		surSurProductionRel,
 		COLLECT({
 			model: 'CREATIVE_CREDIT',
 			name: entityRel.credit,
 			employerCompany: creditedEmployerCompany,
 			coEntities: coCreditedEntities
 		}) AS creativeCredits
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	WITH person, producerProductions, castMemberProductions,
 		COLLECT(
@@ -529,9 +555,9 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 	WITH
 		producerProductions,
@@ -541,14 +567,21 @@ export default () => `
 		venue,
 		surVenue,
 		surProduction,
+		surProductionRel,
 		surSurProduction,
+		surSurProductionRel,
 		COLLECT({
 			model: 'CREW_CREDIT',
 			name: entityRel.credit,
 			employerCompany: creditedEmployerCompany,
 			coEntities: coCreditedEntities
 		}) AS crewCredits
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	RETURN
 		producerProductions,

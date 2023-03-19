@@ -212,7 +212,7 @@ export default () => `
 		subSubProduction,
 		subSubProductionVenue,
 		subSubProductionSurVenue
-		ORDER BY subSubProduction.startDate DESC, subSubProductionRel.position
+		ORDER BY subSubProductionRel.position
 
 	WITH
 		production,
@@ -247,7 +247,7 @@ export default () => `
 				}
 			END
 		) AS subSubProductions
-		ORDER BY subProduction.startDate DESC, subProductionRel.position
+		ORDER BY subProductionRel.position
 
 	WITH production, material, venue, surProduction,
 		COLLECT(

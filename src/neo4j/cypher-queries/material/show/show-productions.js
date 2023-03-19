@@ -11,9 +11,9 @@ export default () => `
 
 		OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-		OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+		OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-		OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+		OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
 
@@ -22,9 +22,16 @@ export default () => `
 			venue,
 			surVenue,
 			surProduction,
+			surProductionRel,
 			surSurProduction,
+			surSurProductionRel,
 			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
-			ORDER BY production.startDate DESC, production.name, venue.name
+			ORDER BY
+				production.startDate DESC,
+				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				surSurProductionRel.position DESC,
+				surProductionRel.position DESC,
+				venue.name
 
 		WITH
 			COLLECT(
