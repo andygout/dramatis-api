@@ -6,9 +6,9 @@ export default () => `
 
 	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 	RETURN
 		'PRODUCTION' AS model,
@@ -40,8 +40,12 @@ export default () => `
 				END
 			}
 		END AS surProduction
-
-	ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	LIMIT 100
 `;

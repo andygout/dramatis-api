@@ -47,36 +47,10 @@ export default () => `
 				otherCharacter.differentiator = otherRole.characterDifferentiator
 			)
 
-	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
-
-	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
-
-	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION]-(surProduction:Production)
-
-	OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
-
-	WITH
-		variantNamedPortrayals,
-		production,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		person,
-		role,
-		otherRole,
-		otherCharacter
+	WITH variantNamedPortrayals, production, person, role, otherRole, otherCharacter
 		ORDER BY otherRole.rolePosition
 
-	WITH
-		variantNamedPortrayals,
-		production,
-		venue,
-		surVenue,
-		surProduction,
-		surSurProduction,
-		person,
-		role,
+	WITH variantNamedPortrayals, production, person, role,
 		COLLECT(DISTINCT(
 			CASE otherRole WHEN NULL
 				THEN null
@@ -91,13 +65,23 @@ export default () => `
 		)) AS otherRoles
 		ORDER BY role.castMemberPosition
 
+	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
+
+	OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
+
+	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
+
+	OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
+
 	WITH
 		variantNamedPortrayals,
 		production,
 		venue,
 		surVenue,
 		surProduction,
+		surProductionRel,
 		surSurProduction,
+		surSurProductionRel,
 		COLLECT(person {
 			model: 'PERSON',
 			.uuid,
@@ -107,7 +91,12 @@ export default () => `
 			isAlternate: COALESCE(role.isAlternate, false),
 			otherRoles
 		}) AS performers
-		ORDER BY production.startDate DESC, production.name, venue.name
+		ORDER BY
+			production.startDate DESC,
+			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			surSurProductionRel.position DESC,
+			surProductionRel.position DESC,
+			venue.name
 
 	RETURN
 		variantNamedPortrayals,

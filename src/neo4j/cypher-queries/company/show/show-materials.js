@@ -131,7 +131,21 @@ export default () => `
 				ELSE entity { .model, .uuid, .name }
 			END] AS entities
 
-		WITH company, material, creditType, hasDirectCredit, isSubsequentVersion, isSourcingMaterial,
+		OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
+		OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
+		WITH
+			company,
+			material,
+			creditType,
+			hasDirectCredit,
+			isSubsequentVersion,
+			isSourcingMaterial,
+			surMaterial,
+			surMaterialRel,
+			surSurMaterial,
+			surSurMaterialRel,
 			COLLECT(
 				CASE SIZE(entities) WHEN 0
 					THEN null
@@ -142,11 +156,11 @@ export default () => `
 					}
 				END
 			) AS writingCredits
-			ORDER BY material.year DESC, material.name
-
-		OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
-
-		OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+			ORDER BY
+				material.year DESC,
+				COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+				surSurMaterialRel.position DESC,
+				surMaterialRel.position DESC
 
 		WITH company,
 			COLLECT(

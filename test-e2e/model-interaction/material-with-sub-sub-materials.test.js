@@ -869,14 +869,14 @@ describe('Material with sub-sub-materials', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -941,14 +941,14 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1089,14 +1089,14 @@ describe('Material with sub-sub-materials', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1159,14 +1159,14 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1209,14 +1209,14 @@ describe('Material with sub-sub-materials', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1279,14 +1279,14 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1332,14 +1332,14 @@ describe('Material with sub-sub-materials', () => {
 			const expectedResponseBody = [
 				{
 					model: 'MATERIAL',
-					uuid: BLACK_TULIPS_MATERIAL_UUID,
-					name: 'Black Tulips',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
+					name: 'On the Side of the Angels',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1353,8 +1353,8 @@ describe('Material with sub-sub-materials', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: DAVID_EDGAR_PERSON_UUID,
-									name: 'David Edgar'
+									uuid: RICHARD_BEAN_PERSON_UUID,
+									name: 'Richard Bean'
 								}
 							]
 						}
@@ -1362,44 +1362,14 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
-					name: 'Blood and Gifts',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-						surMaterial: {
-							model: 'MATERIAL',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: J_T_ROGERS_PERSON_UUID,
-									name: 'J T Rogers'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
-					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
-					name: 'Bugles at the Gates of Jalalabad',
-					format: 'play',
-					year: 2009,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1420,66 +1390,6 @@ describe('Material with sub-sub-materials', () => {
 									model: 'COMPANY',
 									uuid: FICTIONEERS_LTD_COMPANY_UUID,
 									name: 'Fictioneers Ltd'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
-					uuid: CAMPAIGN_MATERIAL_UUID,
-					name: 'Campaign',
-					format: 'play',
-					year: 2009,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surMaterial: {
-							model: 'MATERIAL',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: AMIT_GUPTA_PERSON_UUID,
-									name: 'Amit Gupta'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
-					uuid: DURANDS_LINE_MATERIAL_UUID,
-					name: 'Durand\'s Line',
-					format: 'play',
-					year: 2009,
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
-						surMaterial: {
-							model: 'MATERIAL',
-							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-							name: 'The Great Game: Afghanistan'
-						}
-					},
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: RON_HUTCHINSON_PERSON_UUID,
-									name: 'Ron Hutchinson'
 								}
 							]
 						}
@@ -1552,14 +1462,14 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
-					name: 'On the Side of the Angels',
+					uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
+					name: 'Blood and Gifts',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -1573,8 +1483,8 @@ describe('Material with sub-sub-materials', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: RICHARD_BEAN_PERSON_UUID,
-									name: 'Richard Bean'
+									uuid: J_T_ROGERS_PERSON_UUID,
+									name: 'J T Rogers'
 								}
 							]
 						}
@@ -1582,14 +1492,104 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
-					name: 'The Night Is Darkest Before the Dawn',
+					uuid: BLACK_TULIPS_MATERIAL_UUID,
+					name: 'Black Tulips',
 					format: 'play',
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: DAVID_EDGAR_PERSON_UUID,
+									name: 'David Edgar'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: CAMPAIGN_MATERIAL_UUID,
+					name: 'Campaign',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AMIT_GUPTA_PERSON_UUID,
+									name: 'Amit Gupta'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: DURANDS_LINE_MATERIAL_UUID,
+					name: 'Durand\'s Line',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: RON_HUTCHINSON_PERSON_UUID,
+									name: 'Ron Hutchinson'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,

@@ -107,11 +107,17 @@ export default () => `
 				ELSE materialRel { .displayName, .qualifier, .group }
 			END
 		) AS depictions
-		ORDER BY material.year DESC, material.name
 
-	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
-	OPTIONAL MATCH (surMaterial)<-[:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+	OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
+	WITH character, material, writingCredits, depictions, surMaterial, surSurMaterial
+		ORDER BY
+			material.year DESC,
+			COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+			surSurMaterialRel.position DESC,
+			surMaterialRel.position DESC
 
 	WITH character,
 		COLLECT(
