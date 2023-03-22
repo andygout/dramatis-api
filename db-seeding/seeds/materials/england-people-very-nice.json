@@ -1,0 +1,91 @@
+{
+	"name": "England People Very Nice",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Richard Bean"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Norfolk Danny"
+				},
+				{
+					"name": "Carlo"
+				},
+				{
+					"name": "Aaron",
+					"differentiator": "England People Very Nice"
+				},
+				{
+					"name": "Mushi"
+				},
+				{
+					"name": "The boy lover"
+				},
+				{
+					"name": "Camille"
+				},
+				{
+					"name": "Mary"
+				},
+				{
+					"name": "Ruth",
+					"differentiator": "Calendar Girls"
+				},
+				{
+					"name": "Deborah"
+				},
+				{
+					"name": "The girl lover"
+				},
+				{
+					"name": "Ida"
+				},
+				{
+					"name": "Laurie"
+				},
+				{
+					"name": "Rennie"
+				},
+				{
+					"name": "Yayah"
+				},
+				{
+					"name": "Philippa"
+				},
+				{
+					"name": "Elmar"
+				},
+				{
+					"name": "Taher"
+				},
+				{
+					"name": "Sanya"
+				},
+				{
+					"name": "Iqbal"
+				},
+				{
+					"name": "Officer Kelly"
+				},
+				{
+					"name": "Officer Parker"
+				},
+				{
+					"name": "Tatyana"
+				},
+				{
+					"name": "Ginny"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"name": "Whipping It Up",
+	"format": "play",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Steve Thompson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alastair"
+				},
+				{
+					"name": "Guy"
+				},
+				{
+					"name": "Tim"
+				},
+				{
+					"name": "Maggie"
+				},
+				{
+					"name": "Fulton"
+				},
+				{
+					"name": "Delia"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,134 @@
+{
+	"uuid": "aa0d868f-072f-4b91-b562-bc382f78b61f",
+	"name": "The Crimson Hotel",
+	"startDate": "2007-07-26",
+	"pressDate": "2007-07-31",
+	"endDate": "2007-09-08",
+	"material": {
+		"name": "The Crimson Hotel"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Lyndsey Marshal",
+			"roles": [
+				{
+					"name": "Lucienne"
+				}
+			]
+		},
+		{
+			"name": "Peter Capaldi",
+			"roles": [
+				{
+					"name": "Pilou"
+				}
+			]
+		},
+		{
+			"name": "John Hodgkinson",
+			"roles": [
+				{
+					"name": "Dodine"
+				}
+			]
+		},
+		{
+			"name": "Judith Scott",
+			"roles": [
+				{
+					"name": "Bibette"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Douglas Hodge"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Vicki Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Carolyn Downing"
+				}
+			]
+		},
+		{
+			"name": "Composers",
+			"entities": [
+				{
+					"name": "Stu Barker"
+				},
+				{
+					"name": "Douglas Hodge"
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"entities": [
+				{
+					"name": "Carolina Valdés"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Alex Sims"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Gracie Harris"
+				}
+			]
+		}
+	]
+}

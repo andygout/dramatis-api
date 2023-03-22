@@ -1,0 +1,140 @@
+{
+	"uuid": "a84658d2-d58f-4add-bef0-530d899d84a3",
+	"name": "The Female of the Species",
+	"startDate": "2008-07-10",
+	"pressDate": "2008-07-16",
+	"endDate": "2008-10-04",
+	"material": {
+		"name": "The Female of the Species"
+	},
+	"venue": {
+		"name": "Vaudeville Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"name": "David Richenthal"
+				},
+				{
+					"name": "Mary Beth O'Connor"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Nimax Theatres",
+					"members": [
+						{
+							"name": "Nica Burns"
+						},
+						{
+							"name": "Max Weitzenhoffer"
+						}
+					]
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Eileen Atkins",
+			"roles": [
+				{
+					"name": "Margot",
+					"characterName": "Margot Mason"
+				}
+			]
+		},
+		{
+			"name": "Anna Maxwell Martin",
+			"roles": [
+				{
+					"name": "Molly",
+					"characterName": "Molly Rivers"
+				}
+			]
+		},
+		{
+			"name": "Sophie Thompson",
+			"roles": [
+				{
+					"name": "Tess",
+					"characterName": "Tess Thornton"
+				}
+			]
+		},
+		{
+			"name": "Paul Chahidi",
+			"roles": [
+				{
+					"name": "Bryan",
+					"characterName": "Bryan Thornton"
+				}
+			]
+		},
+		{
+			"name": "Con O'Neill",
+			"roles": [
+				{
+					"name": "Frank"
+				}
+			]
+		},
+		{
+			"name": "Sam Kelly",
+			"roles": [
+				{
+					"name": "Theo",
+					"characterName": "Theo Reynolds"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Roger Michell"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mark Thompson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Whiteside"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

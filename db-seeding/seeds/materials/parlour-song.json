@@ -1,0 +1,30 @@
+{
+	"name": "Parlour Song",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jez Butterworth"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Dale"
+				},
+				{
+					"name": "Ned",
+					"differentiator": "Parlour Song"
+				},
+				{
+					"name": "Joy"
+				}
+			]
+		}
+	]
+}

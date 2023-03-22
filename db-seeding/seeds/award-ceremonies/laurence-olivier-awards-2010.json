@@ -216,6 +216,61 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Comedy",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "b4946df7-063b-430e-bbf3-82fe056f2ea0"
+						}
+					],
+					"materials": [
+						{
+							"name": "Calendar Girls",
+							"differentiator": "2"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "e59e0923-ec85-468d-8c51-a9abcb0afd70"
+						}
+					],
+					"materials": [
+						{
+							"name": "England People Very Nice"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "87c383b4-6b2c-4772-a5a2-6320686739d3"
+						}
+					],
+					"materials": [
+						{
+							"name": "Parlour Song"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "36017da2-5a4e-4ed1-a4a2-4e04b4e24531"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Priory"
+						}
+					]
+				}
+			]
 		}
 	]
 }

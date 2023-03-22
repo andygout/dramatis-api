@@ -1,0 +1,126 @@
+{
+	"uuid": "2439fa34-c973-43c8-b030-8dcbb2c88f22",
+	"name": "Gladly Otherwise",
+	"startDate": "2007-07-26",
+	"pressDate": "2007-07-31",
+	"endDate": "2007-09-08",
+	"material": {
+		"name": "Gladly Otherwise"
+	},
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Judith Scott",
+			"roles": [
+				{
+					"name": "Mrs Brandywine"
+				}
+			]
+		},
+		{
+			"name": "Peter Capaldi",
+			"roles": [
+				{
+					"name": "Mr Brandywine"
+				}
+			]
+		},
+		{
+			"name": "John Hodgkinson",
+			"roles": [
+				{
+					"name": "Man"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Douglas Hodge"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Vicki Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Carolyn Downing"
+				}
+			]
+		},
+		{
+			"name": "Composers",
+			"entities": [
+				{
+					"name": "Stu Barker"
+				},
+				{
+					"name": "Douglas Hodge"
+				}
+			]
+		},
+		{
+			"name": "Movement",
+			"entities": [
+				{
+					"name": "Carolina Valdés"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Alex Sims"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Gracie Harris"
+				}
+			]
+		}
+	]
+}

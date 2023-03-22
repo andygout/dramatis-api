@@ -1,0 +1,126 @@
+{
+	"uuid": "87c383b4-6b2c-4772-a5a2-6320686739d3",
+	"name": "Parlour Song",
+	"startDate": "2009-03-19",
+	"pressDate": "2009-03-26",
+	"endDate": "2009-05-09",
+	"material": {
+		"name": "Parlour Song"
+	},
+	"venue": {
+		"name": "Almeida Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Almeida Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Andrew Lincoln",
+			"roles": [
+				{
+					"name": "Dale"
+				}
+			]
+		},
+		{
+			"name": "Toby Jones",
+			"roles": [
+				{
+					"name": "Ned"
+				}
+			]
+		},
+		{
+			"name": "Amanda Drew",
+			"roles": [
+				{
+					"name": "Joy"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ian Rickson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Jeremy Herbert"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Composer",
+			"entities": [
+				{
+					"name": "Stephen Warbeck"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"entities": [
+				{
+					"name": "Jeremy Herbert"
+				},
+				{
+					"name": "Steven Williams"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Fiona Weir"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Penny Dyer"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Lootie Johansen-Bibby"
+				}
+			]
+		}
+	]
+}
