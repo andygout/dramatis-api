@@ -1,0 +1,152 @@
+{
+	"uuid": "763878c6-14ff-4f8e-9d51-20b426c77f8b",
+	"name": "Whipping It Up",
+	"startDate": "2007-02-22",
+	"pressDate": "2007-03-01",
+	"endDate": "2007-04-28",
+	"material": {
+		"name": "Whipping It Up"
+	},
+	"venue": {
+		"name": "New Amabassadors Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Act Productions"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Ambassador Theatre Group"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Bush Theatre Productions"
+				},
+				{
+					"name": "Matthew Byam Shaw"
+				},
+				{
+					"name": "Mark Goucher"
+				},
+				{
+					"name": "Lee Menzies"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Wimpole Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Robert Bathurst",
+			"roles": [
+				{
+					"name": "Alastair"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Rowe",
+			"roles": [
+				{
+					"name": "Guy"
+				}
+			]
+		},
+		{
+			"name": "Lee Ross",
+			"roles": [
+				{
+					"name": "Tim"
+				}
+			]
+		},
+		{
+			"name": "Kellie Bright",
+			"roles": [
+				{
+					"name": "Maggie"
+				}
+			]
+		},
+		{
+			"name": "Richard Wilson",
+			"roles": [
+				{
+					"name": "Fulton"
+				}
+			]
+		},
+		{
+			"name": "Helen Schlesinger",
+			"roles": [
+				{
+					"name": "Delia"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tamara Harvey"
+				}
+			]
+		},
+		{
+			"name": "Original Director",
+			"entities": [
+				{
+					"name": "Terry Johnson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tim Shortall"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Simon Corder"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Fergus O'Hare"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Seb Billings"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Imogen Kinchin"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"name": "The Priory",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Michael Wynne"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Kate"
+				},
+				{
+					"name": "Daniel",
+					"differentiator": "The Priory"
+				},
+				{
+					"name": "Ben",
+					"differentiator": "The Priory"
+				},
+				{
+					"name": "Laura"
+				},
+				{
+					"name": "Carl"
+				},
+				{
+					"name": "Rebecca"
+				},
+				{
+					"name": "Adam"
+				}
+			]
+		}
+	]
+}

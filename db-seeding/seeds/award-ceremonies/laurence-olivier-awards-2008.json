@@ -191,6 +191,61 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Comedy",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "aa0d868f-072f-4b91-b562-bc382f78b61f"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Crimson Hotel"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "5b6332a9-9d55-4223-8313-637e66f79809"
+						}
+					],
+					"materials": [
+						{
+							"name": "Elling",
+							"differentiator": "3"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "80fe797f-1408-4b0c-bcd4-7a288ed4d847"
+						}
+					],
+					"materials": [
+						{
+							"name": "Rafta, Rafta…"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "763878c6-14ff-4f8e-9d51-20b426c77f8b"
+						}
+					],
+					"materials": [
+						{
+							"name": "Whipping It Up"
+						}
+					]
+				}
+			]
 		}
 	]
 }

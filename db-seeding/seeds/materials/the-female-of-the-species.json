@@ -1,0 +1,38 @@
+{
+	"name": "The Female of the Species",
+	"format": "play",
+	"year": "2008",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Joanna Murray-Smith"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Margot Mason"
+				},
+				{
+					"name": "Molly Rivers"
+				},
+				{
+					"name": "Tess Thornton"
+				},
+				{
+					"name": "Bryan Thornton"
+				},
+				{
+					"name": "Frank"
+				},
+				{
+					"name": "Theo Reynolds"
+				}
+			]
+		}
+	]
+}

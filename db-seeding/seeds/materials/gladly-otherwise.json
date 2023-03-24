@@ -1,0 +1,29 @@
+{
+	"name": "Gladly Otherwise",
+	"format": "play",
+	"year": "2007",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "N F Simpson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Mrs Brandywine"
+				},
+				{
+					"name": "Mr Brandywine"
+				},
+				{
+					"name": "Man"
+				}
+			]
+		}
+	]
+}

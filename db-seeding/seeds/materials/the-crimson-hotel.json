@@ -1,0 +1,32 @@
+{
+	"name": "The Crimson Hotel",
+	"format": "play",
+	"year": "2007",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Michael Frayn"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Lucienne"
+				},
+				{
+					"name": "Pilou"
+				},
+				{
+					"name": "Dodine"
+				},
+				{
+					"name": "Bibette"
+				}
+			]
+		}
+	]
+}

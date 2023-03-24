@@ -1,0 +1,132 @@
+{
+	"uuid": "55166aff-587f-48c7-b1b7-bad1722853f7",
+	"name": "Fat Pig",
+	"startDate": "2008-05-16",
+	"pressDate": "2008-05-27",
+	"endDate": "2008-09-06",
+	"material": {
+		"name": "Fat Pig"
+	},
+	"venue": {
+		"name": "Studio 1"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Ambassador Theatre Group",
+					"members": [
+						{
+							"name": "Howard Panter"
+						}
+					]
+				},
+				{
+					"name": "Barry Weissler"
+				},
+				{
+					"name": "Fran Weissler"
+				},
+				{
+					"name": "Michael Watt"
+				},
+				{
+					"name": "Anna Waterhouse"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bozeman Group LLC"
+				},
+				{
+					"name": "Jay Harris"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Robert Webb",
+			"roles": [
+				{
+					"name": "Tom"
+				}
+			]
+		},
+		{
+			"name": "Ella Smith",
+			"roles": [
+				{
+					"name": "Helen"
+				}
+			]
+		},
+		{
+			"name": "Kris Marshall",
+			"roles": [
+				{
+					"name": "Carter"
+				}
+			]
+		},
+		{
+			"name": "Joanna Page",
+			"roles": [
+				{
+					"name": "Jeannie"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Neil LaBute"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Johanna Town"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Fergus O'Hare"
+				}
+			]
+		},
+		{
+			"name": "Casting Directors",
+			"entities": [
+				{
+					"name": "Neil Rutherford"
+				},
+				{
+					"name": "Stuart Burt"
+				}
+			]
+		}
+	]
+}

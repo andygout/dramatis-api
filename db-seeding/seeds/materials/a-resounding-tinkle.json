@@ -1,0 +1,29 @@
+{
+	"name": "A Resounding Tinkle",
+	"format": "play",
+	"year": "1957",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "N F Simpson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bro Paradock"
+				},
+				{
+					"name": "Middie Paradock"
+				},
+				{
+					"name": "Uncle Ted"
+				}
+			]
+		}
+	]
+}

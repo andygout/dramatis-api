@@ -1,0 +1,32 @@
+{
+	"name": "Fat Pig",
+	"format": "play",
+	"year": "2004",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Neil LaBute"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Helen"
+				},
+				{
+					"name": "Tom"
+				},
+				{
+					"name": "Carter"
+				},
+				{
+					"name": "Jeannie"
+				}
+			]
+		}
+	]
+}

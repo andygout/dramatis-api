@@ -1,0 +1,76 @@
+{
+	"name": "Calendar Girls",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"name": "by",
+			"entities": [
+				{
+					"name": "Tim Firth"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Calendar Girls",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Cora"
+				},
+				{
+					"name": "Chris"
+				},
+				{
+					"name": "Annie"
+				},
+				{
+					"name": "Jessie"
+				},
+				{
+					"name": "Celia"
+				},
+				{
+					"name": "Ruth",
+					"differentiator": "Calendar Girls"
+				},
+				{
+					"name": "Marie"
+				},
+				{
+					"name": "Brenda Hulse"
+				},
+				{
+					"name": "John",
+					"differentiator": "Calendar Girls"
+				},
+				{
+					"name": "Rod"
+				},
+				{
+					"name": "Lady Cravenshire"
+				},
+				{
+					"name": "Lawrence"
+				},
+				{
+					"name": "Liam"
+				},
+				{
+					"name": "Elaine"
+				}
+			]
+		}
+	]
+}

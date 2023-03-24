@@ -1,0 +1,20 @@
+{
+	"name": "Absurdia",
+	"startDate": "2007-07-26",
+	"pressDate": "2007-07-31",
+	"endDate": "2007-09-08",
+	"venue": {
+		"name": "Donmar Warehouse"
+	},
+	"subProductions": [
+		{
+			"uuid": "94e000e5-a170-4226-8558-b17ea8956c38"
+		},
+		{
+			"uuid": "2439fa34-c973-43c8-b030-8dcbb2c88f22"
+		},
+		{
+			"uuid": "aa0d868f-072f-4b91-b562-bc382f78b61f"
+		}
+	]
+}

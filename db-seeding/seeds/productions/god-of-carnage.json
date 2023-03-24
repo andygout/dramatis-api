@@ -1,0 +1,110 @@
+{
+	"uuid": "53bb5e95-7250-4889-ae5a-586f93f697ae",
+	"name": "God of Carnage",
+	"startDate": "2008-03-07",
+	"pressDate": "2008-03-25",
+	"endDate": "2008-06-14",
+	"material": {
+		"name": "God of Carnage"
+	},
+	"venue": {
+		"name": "Gielgud Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"name": "David Pugh"
+				},
+				{
+					"name": "Dafydd Rogers"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ralph Fiennes",
+			"roles": [
+				{
+					"name": "Alain Reille"
+				}
+			]
+		},
+		{
+			"name": "Tamsin Greig",
+			"roles": [
+				{
+					"name": "Annette Reille"
+				}
+			]
+		},
+		{
+			"name": "Janet McTeer",
+			"roles": [
+				{
+					"name": "Véronique Vallon"
+				}
+			]
+		},
+		{
+			"name": "Ken Stott",
+			"roles": [
+				{
+					"name": "Michel Vallon"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matthew Warchus"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mark Thompson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Hugh Vanstone"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Gary Yershon"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Simon Baker"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Rachel Russell"
+				}
+			]
+		}
+	]
+}

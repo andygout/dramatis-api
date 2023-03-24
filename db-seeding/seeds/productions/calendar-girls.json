@@ -1,0 +1,205 @@
+{
+	"uuid": "b4946df7-063b-430e-bbf3-82fe056f2ea0",
+	"name": "Calendar Girls",
+	"startDate": "2009-04-04",
+	"pressDate": "2009-04-14",
+	"endDate": "2010-01-09",
+	"material": {
+		"name": "Calendar Girls",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Noël Coward Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		},
+		{
+			"name": "presented in association with",
+			"entities": [
+				{
+					"name": "David Pugh"
+				},
+				{
+					"name": "Dafydd Rogers"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Elaine C Smith",
+			"roles": [
+				{
+					"name": "Cora"
+				}
+			]
+		},
+		{
+			"name": "Lynda Bellingham",
+			"roles": [
+				{
+					"name": "Chris"
+				}
+			]
+		},
+		{
+			"name": "Patricia Hodge",
+			"roles": [
+				{
+					"name": "Annie"
+				}
+			]
+		},
+		{
+			"name": "Siân Phillips",
+			"roles": [
+				{
+					"name": "Jessie"
+				}
+			]
+		},
+		{
+			"name": "Gaynor Faye",
+			"roles": [
+				{
+					"name": "Celia"
+				}
+			]
+		},
+		{
+			"name": "Julia Hills",
+			"roles": [
+				{
+					"name": "Ruth"
+				}
+			]
+		},
+		{
+			"name": "Brigit Forsyth",
+			"roles": [
+				{
+					"name": "Marie"
+				}
+			]
+		},
+		{
+			"name": "Joan Blackburn",
+			"roles": [
+				{
+					"name": "Brenda Hulse"
+				},
+				{
+					"name": "Lady Cravenshire"
+				}
+			]
+		},
+		{
+			"name": "Gary Lilburn",
+			"roles": [
+				{
+					"name": "John"
+				}
+			]
+		},
+		{
+			"name": "Gerard McDermot",
+			"roles": [
+				{
+					"name": "Rod"
+				}
+			]
+		},
+		{
+			"name": "Carl Prekopp",
+			"roles": [
+				{
+					"name": "Lawrence"
+				},
+				{
+					"name": "Liam"
+				}
+			]
+		},
+		{
+			"name": "Abby Francis",
+			"roles": [
+				{
+					"name": "Elaine"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Hamish McColl"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Robert Jones"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Emma Williams"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Malcolm Rippeth"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Steve Parry"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Jake Brunger"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Sarah Bird"
+				}
+			]
+		}
+	]
+}

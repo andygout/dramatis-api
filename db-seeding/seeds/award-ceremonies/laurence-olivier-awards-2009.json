@@ -166,6 +166,48 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Best New Comedy",
+			"nominations": [
+				{
+					"productions": [
+						{
+							"uuid": "55166aff-587f-48c7-b1b7-bad1722853f7"
+						}
+					],
+					"materials": [
+						{
+							"name": "Fat Pig"
+						}
+					]
+				},
+				{
+					"productions": [
+						{
+							"uuid": "a84658d2-d58f-4add-bef0-530d899d84a3"
+						}
+					],
+					"materials": [
+						{
+							"name": "The Female of the Species"
+						}
+					]
+				},
+				{
+					"isWinner": true,
+					"productions": [
+						{
+							"uuid": "53bb5e95-7250-4889-ae5a-586f93f697ae"
+						}
+					],
+					"materials": [
+						{
+							"name": "God of Carnage"
+						}
+					]
+				}
+			]
 		}
 	]
 }

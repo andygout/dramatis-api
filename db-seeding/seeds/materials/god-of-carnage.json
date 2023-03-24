@@ -1,0 +1,40 @@
+{
+	"name": "God of Carnage",
+	"format": "play",
+	"year": "2008",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Yasmina Reza"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Christopher Hampton"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Véronique Vallon"
+				},
+				{
+					"name": "Michel Vallon"
+				},
+				{
+					"name": "Annette Reille"
+				},
+				{
+					"name": "Alain Reille"
+				}
+			]
+		}
+	]
+}
