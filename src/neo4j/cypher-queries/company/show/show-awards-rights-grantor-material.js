@@ -2,7 +2,8 @@ export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH (company)
-		<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]-(nominatedRightsGrantorMaterial:Material)
+		<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]
+		-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 

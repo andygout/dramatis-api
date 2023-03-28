@@ -2,7 +2,8 @@ export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH path=(company)
-		<-[writingRel:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(nominatedSourcingMaterial:Material)
+		<-[writingRel:HAS_WRITING_ENTITY]-(:Material)-[:HAS_SUB_MATERIAL*0..1]-(:Material)
+		<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)-[:HAS_SUB_MATERIAL*0..1]-(nominatedSourcingMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 	WHERE

@@ -2,15 +2,18 @@ export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH path=(company)
-		<-[:HAS_WRITING_ENTITY*0..1]-()<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
+		<-[:HAS_WRITING_ENTITY*0..1]-()-[:HAS_SUB_MATERIAL*0..2]-()
+		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 	WHERE
 		(NONE(rel IN RELATIONSHIPS(path)
 			WHERE COALESCE(rel.creditType IN ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'], false)
 		)) AND
 		NOT EXISTS(
-			(company)<-[:HAS_WRITING_ENTITY]-(:Material)
-			<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_NOMINEE]-(category)
+			(company)
+			<-[:HAS_WRITING_ENTITY]-(:Material)
+			<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
+			<-[:HAS_NOMINEE]-(category)
 		)
 
 	WITH company, nomineeRel, category, categoryRel, ceremony
