@@ -1,8 +1,8 @@
 export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
-	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..1]-(:Material)
-		<-[:USES_SOURCE_MATERIAL]-(:Material)-[:HAS_SUB_MATERIAL*0..1]-(nominatedSourcingMaterial:Material)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
+		<-[:USES_SOURCE_MATERIAL]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedSourcingMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 
