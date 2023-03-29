@@ -1,7 +1,8 @@
 export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY]-(:Material)
+	OPTIONAL MATCH (person)
+		<-[:HAS_WRITING_ENTITY]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
 		<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
