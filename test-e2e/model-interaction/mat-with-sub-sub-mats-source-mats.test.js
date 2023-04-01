@@ -29,6 +29,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 	let genesisReligiousTextMaterial;
 	let godblogPlayMaterial;
+	let theBooksOfTheOldTestamentPlaysMaterial;
 	let richardBancroftPerson;
 	let jeanetteWintersonPerson;
 	let theCanterburyEditorsCompany;
@@ -267,6 +268,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 		godblogPlayMaterial = await chai.request(app)
 			.get(`/materials/${GODBLOG_PLAY_MATERIAL_UUID}`);
 
+		theBooksOfTheOldTestamentPlaysMaterial = await chai.request(app)
+			.get(`/materials/${THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID}`);
+
 		richardBancroftPerson = await chai.request(app)
 			.get(`/people/${RICHARD_BANCROFT_PERSON_UUID}`);
 
@@ -485,6 +489,121 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { writingCredits } = godblogPlayMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+
+		});
+
+		it('includes writers and source material (with corresponding sur-material) of this material\'s sur-material', () => {
+
+			const expectedSurMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+				name: 'The Books of the Old Testament',
+				format: 'sub-collection of plays',
+				year: 2011,
+				surMaterial: {
+					model: 'MATERIAL',
+					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+					name: 'Sixty-Six Books'
+				},
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'written in response to',
+						entities: [
+							{
+								model: 'MATERIAL',
+								uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+								name: 'The Old Testament',
+								format: 'religious text',
+								year: 1611,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'The Bible: King James Version',
+									surMaterial: null
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: RICHARD_BANCROFT_PERSON_UUID,
+												name: 'Richard Bancroft'
+											},
+											{
+												model: 'COMPANY',
+												uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+												name: 'The Canterbury Editors'
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			};
+
+			const { surMaterial } = godblogPlayMaterial.body;
+
+			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+
+		});
+
+	});
+
+	describe('The Books of the Old Testament (sub-collection of plays) (material)', () => {
+
+		it('includes writers and source material of this material\'s sur-material', () => {
+
+			const expectedSurMaterial = {
+				model: 'MATERIAL',
+				uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+				name: 'Sixty-Six Books',
+				format: 'collection of plays',
+				year: 2011,
+				surMaterial: null,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'written in response to',
+						entities: [
+							{
+								model: 'MATERIAL',
+								uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+								name: 'The Bible: King James Version',
+								format: 'religious text',
+								year: 1611,
+								surMaterial: null,
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: RICHARD_BANCROFT_PERSON_UUID,
+												name: 'Richard Bancroft'
+											},
+											{
+												model: 'COMPANY',
+												uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+												name: 'The Canterbury Editors'
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			};
+
+			const { surMaterial } = theBooksOfTheOldTestamentPlaysMaterial.body;
+
+			expect(surMaterial).to.deep.equal(expectedSurMaterial);
 
 		});
 
