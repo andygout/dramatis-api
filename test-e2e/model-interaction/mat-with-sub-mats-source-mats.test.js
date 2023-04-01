@@ -420,6 +420,73 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		});
 
+		it('includes writers and source material of this material\'s sur-material', () => {
+
+			const expectedSurMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+				name: 'The Wolf Hall Trilogy',
+				format: 'trilogy of plays',
+				year: 2021,
+				surMaterial: null,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: MIKE_POULTON_PERSON_UUID,
+								name: 'Mike Poulton'
+							},
+							{
+								model: 'COMPANY',
+								uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+								name: 'Royal Shakespeare Company'
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: 'adapted from',
+						entities: [
+							{
+								model: 'MATERIAL',
+								uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+								name: 'The Wolf Hall Trilogy',
+								format: 'trilogy of novels',
+								year: 2020,
+								surMaterial: null,
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: HILARY_MANTEL_PERSON_UUID,
+												name: 'Hilary Mantel'
+											},
+											{
+												model: 'COMPANY',
+												uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+												name: 'The Mantel Group'
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			};
+
+			const { surMaterial } = bringUpTheBodiesPlayMaterial.body;
+
+			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+
+		});
+
 	});
 
 	describe('Hilary Mantel (person)', () => {
