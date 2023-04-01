@@ -13,28 +13,45 @@ describe('Production with sub-productions', () => {
 
 	const NATIONAL_THEATRE_VENUE_UUID = '2';
 	const OLIVIER_THEATRE_VENUE_UUID = '3';
-	const VOYAGE_MATERIAL_UUID = '7';
-	const ALEXANDER_HERZEN_CHARACTER_UUID = '9';
-	const THE_COAST_OF_UTOPIA_MATERIAL_UUID = '27';
-	const VOYAGE_OLIVIER_PRODUCTION_UUID = '32';
-	const TREVOR_NUNN_PERSON_UUID = '35';
-	const NATIONAL_THEATRE_COMPANY_UUID = '36';
-	const NICK_STARR_PERSON_UUID = '37';
-	const STEPHEN_DILLANE_PERSON_UUID = '38';
-	const STEVEN_EDIS_PERSON_UUID = '39';
-	const MUSICAL_DIRECTION_LTD_COMPANY_UUID = '40';
-	const MARK_BOUSIE_PERSON_UUID = '41';
-	const FIONA_BARDSLEY_PERSON_UUID = '42';
-	const STAGE_MANAGEMENT_LTD_COMPANY_UUID = '43';
-	const SUE_MILLIN_PERSON_UUID = '44';
-	const SHIPWRECK_OLIVIER_PRODUCTION_UUID = '45';
-	const SALVAGE_OLIVIER_PRODUCTION_UUID = '58';
-	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '71';
-	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '74';
-	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = '76';
-	const SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID = '77';
-	const SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '80';
-	const THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID = '83';
+	const VOYAGE_MATERIAL_UUID = '9';
+	const TOM_STOPPARD_JR_PERSON_UUID = '11';
+	const THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID = '12';
+	const ALEXANDER_HERZEN_JR_CHARACTER_UUID = '13';
+	const SHIPWRECK_MATERIAL_UUID = '19';
+	const SALVAGE_MATERIAL_UUID = '29';
+	const THE_COAST_OF_UTOPIA_MATERIAL_UUID = '42';
+	const TOM_STOPPARD_SR_PERSON_UUID = '44';
+	const THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID = '45';
+	const ALEXANDER_HERZEN_SR_CHARACTER_UUID = '49';
+	const VOYAGE_OLIVIER_PRODUCTION_UUID = '50';
+	const TREVOR_NUNN_JR_PERSON_UUID = '53';
+	const SUB_NATIONAL_THEATRE_COMPANY_UUID = '54';
+	const NICK_STARR_JR_PERSON_UUID = '55';
+	const STEPHEN_DILLANE_JR_PERSON_UUID = '56';
+	const STEVEN_EDIS_JR_PERSON_UUID = '57';
+	const SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '58';
+	const MARK_BOUSIE_JR_PERSON_UUID = '59';
+	const FIONA_BARDSLEY_JR_PERSON_UUID = '60';
+	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '61';
+	const SUE_MILLIN_JR_PERSON_UUID = '62';
+	const SHIPWRECK_OLIVIER_PRODUCTION_UUID = '63';
+	const SALVAGE_OLIVIER_PRODUCTION_UUID = '76';
+	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '89';
+	const TREVOR_NUNN_SR_PERSON_UUID = '92';
+	const SUR_NATIONAL_THEATRE_COMPANY_UUID = '93';
+	const NICK_STARR_SR_PERSON_UUID = '94';
+	const STEPHEN_DILLANE_SR_PERSON_UUID = '95';
+	const STEVEN_EDIS_SR_PERSON_UUID = '96';
+	const SUR_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '97';
+	const MARK_BOUSIE_SR_PERSON_UUID = '98';
+	const FIONA_BARDSLEY_SR_PERSON_UUID = '99';
+	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '100';
+	const SUE_MILLIN_SR_PERSON_UUID = '101';
+	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '102';
+	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = '104';
+	const SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID = '105';
+	const SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '108';
+	const THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID = '111';
 
 	let theCoastOfUtopiaOlivierProduction;
 	let voyageOlivierProduction;
@@ -44,17 +61,17 @@ describe('Production with sub-productions', () => {
 	let voyageMaterial;
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;
-	let trevorNunnPerson;
-	let nationalTheatreCompany;
-	let nickStarrPerson;
-	let stephenDillanePerson;
-	let stevenEdisPerson;
-	let musicalDirectionLtdCompany;
-	let markBousiePerson;
-	let fionaBardsleyPerson;
-	let stageManagementLtdCompany;
-	let sueMillinPerson;
-	let alexanderHerzenCharacter;
+	let trevorNunnJrPerson;
+	let subNationalTheatreCompany;
+	let nickStarrJrPerson;
+	let stephenDillaneJrPerson;
+	let stevenEdisJrPerson;
+	let subMusicalDirectionLtdCompany;
+	let markBousieJrPerson;
+	let fionaBardsleyJrPerson;
+	let subStageManagementLtdCompany;
+	let sueMillinJrPerson;
+	let alexanderHerzenJrCharacter;
 
 	const sandbox = createSandbox();
 
@@ -83,11 +100,24 @@ describe('Production with sub-productions', () => {
 				name: 'Voyage',
 				format: 'play',
 				year: '2002',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Tom Stoppard Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'The Sub-Sträussler Group'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
@@ -100,11 +130,24 @@ describe('Production with sub-productions', () => {
 				name: 'Shipwreck',
 				format: 'play',
 				year: '2002',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Tom Stoppard Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'The Sub-Sträussler Group'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
@@ -117,11 +160,24 @@ describe('Production with sub-productions', () => {
 				name: 'Salvage',
 				format: 'play',
 				year: '2002',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Tom Stoppard Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'The Sub-Sträussler Group'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
@@ -134,6 +190,19 @@ describe('Production with sub-productions', () => {
 				name: 'The Coast of Utopia',
 				format: 'trilogy of plays',
 				year: '2002',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Tom Stoppard Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'The Sur-Sträussler Group'
+							}
+						]
+					}
+				],
 				subMaterials: [
 					{
 						name: 'Voyage'
@@ -143,6 +212,15 @@ describe('Production with sub-productions', () => {
 					},
 					{
 						name: 'Salvage'
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Alexander Herzen Sr'
+							}
+						]
 					}
 				]
 			});
@@ -164,14 +242,14 @@ describe('Production with sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Trevor Nunn'
+								name: 'Trevor Nunn Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'National Theatre Company',
+								name: 'Sub-National Theatre Company',
 								members: [
 									{
-										name: 'Nick Starr'
+										name: 'Nick Starr Jr'
 									}
 								]
 							}
@@ -180,27 +258,27 @@ describe('Production with sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Stephen Dillane',
+						name: 'Stephen Dillane Jr',
 						roles: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Musical Directors',
+						name: 'Junior Musical Directors',
 						entities: [
 							{
-								name: 'Steven Edis'
+								name: 'Steven Edis Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Musical Direction Ltd',
+								name: 'Sub-Musical Direction Ltd',
 								members: [
 									{
-										name: 'Mark Bousie'
+										name: 'Mark Bousie Jr'
 									}
 								]
 							}
@@ -209,17 +287,17 @@ describe('Production with sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Fiona Bardsley'
+								name: 'Fiona Bardsley Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Sue Millin'
+										name: 'Sue Millin Jr'
 									}
 								]
 							}
@@ -245,14 +323,14 @@ describe('Production with sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Trevor Nunn'
+								name: 'Trevor Nunn Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'National Theatre Company',
+								name: 'Sub-National Theatre Company',
 								members: [
 									{
-										name: 'Nick Starr'
+										name: 'Nick Starr Jr'
 									}
 								]
 							}
@@ -261,27 +339,27 @@ describe('Production with sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Stephen Dillane',
+						name: 'Stephen Dillane Jr',
 						roles: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Musical Directors',
+						name: 'Junior Musical Directors',
 						entities: [
 							{
-								name: 'Steven Edis'
+								name: 'Steven Edis Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Musical Direction Ltd',
+								name: 'Sub-Musical Direction Ltd',
 								members: [
 									{
-										name: 'Mark Bousie'
+										name: 'Mark Bousie Jr'
 									}
 								]
 							}
@@ -290,17 +368,17 @@ describe('Production with sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Fiona Bardsley'
+								name: 'Fiona Bardsley Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Sue Millin'
+										name: 'Sue Millin Jr'
 									}
 								]
 							}
@@ -326,14 +404,14 @@ describe('Production with sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Trevor Nunn'
+								name: 'Trevor Nunn Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'National Theatre Company',
+								name: 'Sub-National Theatre Company',
 								members: [
 									{
-										name: 'Nick Starr'
+										name: 'Nick Starr Jr'
 									}
 								]
 							}
@@ -342,27 +420,27 @@ describe('Production with sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Stephen Dillane',
+						name: 'Stephen Dillane Jr',
 						roles: [
 							{
-								name: 'Alexander Herzen'
+								name: 'Alexander Herzen Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Musical Directors',
+						name: 'Junior Musical Directors',
 						entities: [
 							{
-								name: 'Steven Edis'
+								name: 'Steven Edis Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Musical Direction Ltd',
+								name: 'Sub-Musical Direction Ltd',
 								members: [
 									{
-										name: 'Mark Bousie'
+										name: 'Mark Bousie Jr'
 									}
 								]
 							}
@@ -371,17 +449,17 @@ describe('Production with sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Fiona Bardsley'
+								name: 'Fiona Bardsley Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Sue Millin'
+										name: 'Sue Millin Jr'
 									}
 								]
 							}
@@ -412,6 +490,72 @@ describe('Production with sub-productions', () => {
 					},
 					{
 						uuid: SALVAGE_OLIVIER_PRODUCTION_UUID
+					}
+				],
+				producerCredits: [
+					{
+						entities: [
+							{
+								name: 'Trevor Nunn Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-National Theatre Company',
+								members: [
+									{
+										name: 'Nick Starr Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						name: 'Stephen Dillane Sr',
+						roles: [
+							{
+								name: 'Alexander Herzen Sr'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						name: 'Senior Musical Directors',
+						entities: [
+							{
+								name: 'Steven Edis Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Musical Direction Ltd',
+								members: [
+									{
+										name: 'Mark Bousie Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						name: 'Senior Stage Managers',
+						entities: [
+							{
+								name: 'Fiona Bardsley Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Stage Management Ltd',
+								members: [
+									{
+										name: 'Sue Millin Sr'
+									}
+								]
+							}
+						]
 					}
 				]
 			});
@@ -510,38 +654,38 @@ describe('Production with sub-productions', () => {
 		olivierTheatreVenue = await chai.request(app)
 			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		trevorNunnPerson = await chai.request(app)
-			.get(`/people/${TREVOR_NUNN_PERSON_UUID}`);
+		trevorNunnJrPerson = await chai.request(app)
+			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
 
-		nationalTheatreCompany = await chai.request(app)
-			.get(`/companies/${NATIONAL_THEATRE_COMPANY_UUID}`);
+		subNationalTheatreCompany = await chai.request(app)
+			.get(`/companies/${SUB_NATIONAL_THEATRE_COMPANY_UUID}`);
 
-		nickStarrPerson = await chai.request(app)
-			.get(`/people/${NICK_STARR_PERSON_UUID}`);
+		nickStarrJrPerson = await chai.request(app)
+			.get(`/people/${NICK_STARR_JR_PERSON_UUID}`);
 
-		stephenDillanePerson = await chai.request(app)
-			.get(`/people/${STEPHEN_DILLANE_PERSON_UUID}`);
+		stephenDillaneJrPerson = await chai.request(app)
+			.get(`/people/${STEPHEN_DILLANE_JR_PERSON_UUID}`);
 
-		stevenEdisPerson = await chai.request(app)
-			.get(`/people/${STEVEN_EDIS_PERSON_UUID}`);
+		stevenEdisJrPerson = await chai.request(app)
+			.get(`/people/${STEVEN_EDIS_JR_PERSON_UUID}`);
 
-		musicalDirectionLtdCompany = await chai.request(app)
-			.get(`/companies/${MUSICAL_DIRECTION_LTD_COMPANY_UUID}`);
+		subMusicalDirectionLtdCompany = await chai.request(app)
+			.get(`/companies/${SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID}`);
 
-		markBousiePerson = await chai.request(app)
-			.get(`/people/${MARK_BOUSIE_PERSON_UUID}`);
+		markBousieJrPerson = await chai.request(app)
+			.get(`/people/${MARK_BOUSIE_JR_PERSON_UUID}`);
 
-		fionaBardsleyPerson = await chai.request(app)
-			.get(`/people/${FIONA_BARDSLEY_PERSON_UUID}`);
+		fionaBardsleyJrPerson = await chai.request(app)
+			.get(`/people/${FIONA_BARDSLEY_JR_PERSON_UUID}`);
 
-		stageManagementLtdCompany = await chai.request(app)
-			.get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
+		subStageManagementLtdCompany = await chai.request(app)
+			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		sueMillinPerson = await chai.request(app)
-			.get(`/people/${SUE_MILLIN_PERSON_UUID}`);
+		sueMillinJrPerson = await chai.request(app)
+			.get(`/people/${SUE_MILLIN_JR_PERSON_UUID}`);
 
-		alexanderHerzenCharacter = await chai.request(app)
-			.get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
+		alexanderHerzenJrCharacter = await chai.request(app)
+			.get(`/characters/${ALEXANDER_HERZEN_JR_CHARACTER_UUID}`);
 
 	});
 
@@ -561,7 +705,39 @@ describe('Production with sub-productions', () => {
 					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
 					name: 'Voyage',
 					startDate: '2002-06-27',
+					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
+					material: {
+						model: 'MATERIAL',
+						uuid: VOYAGE_MATERIAL_UUID,
+						name: 'Voyage',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
@@ -572,14 +748,137 @@ describe('Production with sub-productions', () => {
 							name: 'National Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+									name: 'Alexander Herzen Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Musical Directors',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
 					name: 'Shipwreck',
 					startDate: '2002-07-08',
+					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
+					material: {
+						model: 'MATERIAL',
+						uuid: SHIPWRECK_MATERIAL_UUID,
+						name: 'Shipwreck',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
@@ -590,14 +889,137 @@ describe('Production with sub-productions', () => {
 							name: 'National Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+									name: 'Alexander Herzen Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Musical Directors',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
 					name: 'Salvage',
 					startDate: '2002-07-19',
+					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
+					material: {
+						model: 'MATERIAL',
+						uuid: SALVAGE_MATERIAL_UUID,
+						name: 'Salvage',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: OLIVIER_THEATRE_VENUE_UUID,
@@ -608,7 +1030,98 @@ describe('Production with sub-productions', () => {
 							name: 'National Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+									name: 'Alexander Herzen Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Musical Directors',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -629,7 +1142,34 @@ describe('Production with sub-productions', () => {
 				uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
 				startDate: '2002-06-27',
+				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
+				material: {
+					model: 'MATERIAL',
+					uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+					name: 'The Coast of Utopia',
+					format: 'trilogy of plays',
+					year: 2002,
+					surMaterial: null,
+					writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_SR_PERSON_UUID,
+										name: 'Tom Stoppard Sr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sur-Sträussler Group'
+									}
+								]
+							}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: OLIVIER_THEATRE_VENUE_UUID,
@@ -640,7 +1180,98 @@ describe('Production with sub-productions', () => {
 						name: 'National Theatre'
 					}
 				},
-				surProduction: null
+				surProduction: null,
+				producerCredits: [
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'produced by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: TREVOR_NUNN_SR_PERSON_UUID,
+								name: 'Trevor Nunn Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_NATIONAL_THEATRE_COMPANY_UUID,
+								name: 'Sur-National Theatre Company',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: NICK_STARR_SR_PERSON_UUID,
+										name: 'Nick Starr Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						model: 'PERSON',
+						uuid: STEPHEN_DILLANE_SR_PERSON_UUID,
+						name: 'Stephen Dillane Sr',
+						roles: [
+							{
+								model: 'CHARACTER',
+								uuid: ALEXANDER_HERZEN_SR_CHARACTER_UUID,
+								name: 'Alexander Herzen Sr',
+								qualifier: null,
+								isAlternate: false
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Senior Musical Directors',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: STEVEN_EDIS_SR_PERSON_UUID,
+								name: 'Steven Edis Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+								name: 'Sur-Musical Direction Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: MARK_BOUSIE_SR_PERSON_UUID,
+										name: 'Mark Bousie Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'CREW_CREDIT',
+						name: 'Senior Stage Managers',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: FIONA_BARDSLEY_SR_PERSON_UUID,
+								name: 'Fiona Bardsley Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sur-Stage Management Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: SUE_MILLIN_SR_PERSON_UUID,
+										name: 'Sue Millin Sr'
+									}
+								]
+							}
+						]
+					}
+				]
 			};
 
 			const { surProduction } = voyageOlivierProduction.body;
@@ -661,42 +1292,150 @@ describe('Production with sub-productions', () => {
 					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Voyage',
 					startDate: '2006-10-17',
+					pressDate: '2006-11-27',
 					endDate: '2007-05-12',
+					material: {
+						model: 'MATERIAL',
+						uuid: VOYAGE_MATERIAL_UUID,
+						name: 'Voyage',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Shipwreck',
 					startDate: '2006-12-05',
+					pressDate: '2006-12-21',
 					endDate: '2007-05-12',
+					material: {
+						model: 'MATERIAL',
+						uuid: SHIPWRECK_MATERIAL_UUID,
+						name: 'Shipwreck',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Salvage',
 					startDate: '2007-01-31',
+					pressDate: '2007-02-18',
 					endDate: '2007-05-13',
+					material: {
+						model: 'MATERIAL',
+						uuid: SALVAGE_MATERIAL_UUID,
+						name: 'Salvage',
+						format: 'play',
+						year: 2002,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+							name: 'The Coast of Utopia',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_JR_PERSON_UUID,
+										name: 'Tom Stoppard Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sub-Sträussler Group'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				}
 			];
 
@@ -717,14 +1456,45 @@ describe('Production with sub-productions', () => {
 				uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
 				startDate: '2006-10-17',
+				pressDate: null,
 				endDate: '2007-05-13',
+				material: {
+					model: 'MATERIAL',
+					uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+					name: 'The Coast of Utopia',
+					format: 'trilogy of plays',
+					year: 2002,
+					surMaterial: null,
+					writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: TOM_STOPPARD_SR_PERSON_UUID,
+										name: 'Tom Stoppard Sr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
+										name: 'The Sur-Sträussler Group'
+									}
+								]
+							}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
 					name: 'Vivian Beaumont Theatre',
 					surVenue: null
 				},
-				surProduction: null
+				surProduction: null,
+				producerCredits: [],
+				cast: [],
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			const { surProduction } = voyageVivianBeaumontProduction.body;
@@ -965,7 +1735,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Trevor Nunn (person)', () => {
+	describe('Trevor Nunn Jr (person)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
 
@@ -999,18 +1769,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1047,18 +1817,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1095,18 +1865,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1116,7 +1886,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = trevorNunnPerson.body;
+			const { producerProductions } = trevorNunnJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -1124,7 +1894,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('National Theatre Company (company)', () => {
+	describe('Sub-National Theatre Company (company)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
 
@@ -1158,18 +1928,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1206,18 +1976,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1254,18 +2024,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1275,7 +2045,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = nationalTheatreCompany.body;
+			const { producerProductions } = subNationalTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -1283,10 +2053,9 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Nick Starr (person)', () => {
+	describe('Nick Starr Jr (person)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1317,18 +2086,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1365,18 +2134,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1413,18 +2182,18 @@ describe('Production with sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: TREVOR_NUNN_PERSON_UUID,
-									name: 'Trevor Nunn'
+									uuid: TREVOR_NUNN_JR_PERSON_UUID,
+									name: 'Trevor Nunn Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: NATIONAL_THEATRE_COMPANY_UUID,
-									name: 'National Theatre Company',
+									uuid: SUB_NATIONAL_THEATRE_COMPANY_UUID,
+									name: 'Sub-National Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: NICK_STARR_PERSON_UUID,
-											name: 'Nick Starr'
+											uuid: NICK_STARR_JR_PERSON_UUID,
+											name: 'Nick Starr Jr'
 										}
 									]
 								}
@@ -1434,7 +2203,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = nickStarrPerson.body;
+			const { producerProductions } = nickStarrJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -1442,7 +2211,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Stephen Dillane (person)', () => {
+	describe('Stephen Dillane Jr (person)', () => {
 
 		it('includes productions for which they have a cast credit, including the sur-production', () => {
 
@@ -1472,8 +2241,8 @@ describe('Production with sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
-							name: 'Alexander Herzen',
+							uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+							name: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -1504,8 +2273,8 @@ describe('Production with sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
-							name: 'Alexander Herzen',
+							uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+							name: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -1536,8 +2305,8 @@ describe('Production with sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
-							name: 'Alexander Herzen',
+							uuid: ALEXANDER_HERZEN_JR_CHARACTER_UUID,
+							name: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -1545,7 +2314,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { castMemberProductions } = stephenDillanePerson.body;
+			const { castMemberProductions } = stephenDillaneJrPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
@@ -1553,7 +2322,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Steven Edis (person)', () => {
+	describe('Steven Edis Jr (person)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
 
@@ -1583,18 +2352,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-									name: 'Musical Direction Ltd',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: MARK_BOUSIE_PERSON_UUID,
-											name: 'Mark Bousie'
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
 										}
 									]
 								}
@@ -1627,18 +2396,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-									name: 'Musical Direction Ltd',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: MARK_BOUSIE_PERSON_UUID,
-											name: 'Mark Bousie'
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
 										}
 									]
 								}
@@ -1671,18 +2440,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-									name: 'Musical Direction Ltd',
+									uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+									name: 'Sub-Musical Direction Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: MARK_BOUSIE_PERSON_UUID,
-											name: 'Mark Bousie'
+											uuid: MARK_BOUSIE_JR_PERSON_UUID,
+											name: 'Mark Bousie Jr'
 										}
 									]
 								}
@@ -1692,7 +2461,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = stevenEdisPerson.body;
+			const { creativeProductions } = stevenEdisJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -1700,7 +2469,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Musical Direction Ltd (company)', () => {
+	describe('Sub-Musical Direction Ltd (company)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
 
@@ -1730,19 +2499,19 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: MARK_BOUSIE_PERSON_UUID,
-									name: 'Mark Bousie'
+									uuid: MARK_BOUSIE_JR_PERSON_UUID,
+									name: 'Mark Bousie Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1773,19 +2542,19 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: MARK_BOUSIE_PERSON_UUID,
-									name: 'Mark Bousie'
+									uuid: MARK_BOUSIE_JR_PERSON_UUID,
+									name: 'Mark Bousie Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1816,19 +2585,19 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: MARK_BOUSIE_PERSON_UUID,
-									name: 'Mark Bousie'
+									uuid: MARK_BOUSIE_JR_PERSON_UUID,
+									name: 'Mark Bousie Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1836,7 +2605,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = musicalDirectionLtdCompany.body;
+			const { creativeProductions } = subMusicalDirectionLtdCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -1844,7 +2613,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Mark Bousie (person)', () => {
+	describe('Mark Bousie Jr (person)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
 
@@ -1874,18 +2643,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-								name: 'Musical Direction Ltd',
+								uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+								name: 'Sub-Musical Direction Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1916,18 +2685,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-								name: 'Musical Direction Ltd',
+								uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+								name: 'Sub-Musical Direction Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1958,18 +2727,18 @@ describe('Production with sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Musical Directors',
+							name: 'Junior Musical Directors',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: MUSICAL_DIRECTION_LTD_COMPANY_UUID,
-								name: 'Musical Direction Ltd',
+								uuid: SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID,
+								name: 'Sub-Musical Direction Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: STEVEN_EDIS_PERSON_UUID,
-									name: 'Steven Edis'
+									uuid: STEVEN_EDIS_JR_PERSON_UUID,
+									name: 'Steven Edis Jr'
 								}
 							]
 						}
@@ -1977,7 +2746,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = markBousiePerson.body;
+			const { creativeProductions } = markBousieJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -1985,7 +2754,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Fiona Bardsley (person)', () => {
+	describe('Fiona Bardsley Jr (person)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
 
@@ -2015,18 +2784,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: SUE_MILLIN_PERSON_UUID,
-											name: 'Sue Millin'
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
 										}
 									]
 								}
@@ -2059,18 +2828,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: SUE_MILLIN_PERSON_UUID,
-											name: 'Sue Millin'
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
 										}
 									]
 								}
@@ -2103,18 +2872,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: SUE_MILLIN_PERSON_UUID,
-											name: 'Sue Millin'
+											uuid: SUE_MILLIN_JR_PERSON_UUID,
+											name: 'Sue Millin Jr'
 										}
 									]
 								}
@@ -2124,7 +2893,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = fionaBardsleyPerson.body;
+			const { crewProductions } = fionaBardsleyJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -2132,7 +2901,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Stage Management Ltd (company)', () => {
+	describe('Sub-Stage Management Ltd (company)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
 
@@ -2162,19 +2931,19 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: SUE_MILLIN_PERSON_UUID,
-									name: 'Sue Millin'
+									uuid: SUE_MILLIN_JR_PERSON_UUID,
+									name: 'Sue Millin Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2205,19 +2974,19 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: SUE_MILLIN_PERSON_UUID,
-									name: 'Sue Millin'
+									uuid: SUE_MILLIN_JR_PERSON_UUID,
+									name: 'Sue Millin Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2248,19 +3017,19 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: SUE_MILLIN_PERSON_UUID,
-									name: 'Sue Millin'
+									uuid: SUE_MILLIN_JR_PERSON_UUID,
+									name: 'Sue Millin Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2268,7 +3037,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = stageManagementLtdCompany.body;
+			const { crewProductions } = subStageManagementLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -2276,7 +3045,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Sue Millin (person)', () => {
+	describe('Sue Millin Jr (person)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
 
@@ -2306,18 +3075,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2348,18 +3117,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2390,18 +3159,18 @@ describe('Production with sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: FIONA_BARDSLEY_PERSON_UUID,
-									name: 'Fiona Bardsley'
+									uuid: FIONA_BARDSLEY_JR_PERSON_UUID,
+									name: 'Fiona Bardsley Jr'
 								}
 							]
 						}
@@ -2409,7 +3178,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = sueMillinPerson.body;
+			const { crewProductions } = sueMillinJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -2417,7 +3186,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Alexander Herzen (character)', () => {
+	describe('Alexander Herzen Jr (character)', () => {
 
 		it('includes productions in which character was portrayed, including the sur-production', () => {
 
@@ -2447,9 +3216,9 @@ describe('Production with sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: STEPHEN_DILLANE_PERSON_UUID,
-							name: 'Stephen Dillane',
-							roleName: 'Alexander Herzen',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roleName: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -2481,9 +3250,9 @@ describe('Production with sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: STEPHEN_DILLANE_PERSON_UUID,
-							name: 'Stephen Dillane',
-							roleName: 'Alexander Herzen',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roleName: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -2515,9 +3284,9 @@ describe('Production with sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: STEPHEN_DILLANE_PERSON_UUID,
-							name: 'Stephen Dillane',
-							roleName: 'Alexander Herzen',
+							uuid: STEPHEN_DILLANE_JR_PERSON_UUID,
+							name: 'Stephen Dillane Jr',
+							roleName: 'Alexander Herzen Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -2526,7 +3295,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { productions } = alexanderHerzenCharacter.body;
+			const { productions } = alexanderHerzenJrCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
