@@ -13,47 +13,85 @@ describe('Production with sub-sub-productions', () => {
 
 	const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = '2';
 	const RODA_THEATRE_VENUE_UUID = '3';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = '7';
-	const BAR_CHARACTER_UUID = '9';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID = '27';
-	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '93';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = '98';
-	const NICOLAS_KENT_PERSON_UUID = '101';
-	const TRICYCLE_THEATRE_COMPANY_UUID = '102';
-	const ZOË_INGENHAAG_PERSON_UUID = '103';
-	const RICK_WARDEN_PERSON_UUID = '104';
-	const HOWARD_HARRISON_PERSON_UUID = '105';
-	const LIGHTING_DESIGN_LTD_COMPANY_UUID = '106';
-	const JACK_KNOWLES_PERSON_UUID = '107';
-	const LIZZIE_CHAPMAN_PERSON_UUID = '108';
-	const STAGE_MANAGEMENT_LTD_COMPANY_UUID = '109';
-	const CHARLOTTE_PADGHAM_PERSON_UUID = '110';
-	const DURANDS_LINE_RODA_PRODUCTION_UUID = '111';
-	const CAMPAIGN_RODA_PRODUCTION_UUID = '124';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID = '137';
-	const BLACK_TULIPS_RODA_PRODUCTION_UUID = '140';
-	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = '153';
-	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = '166';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID = '179';
-	const HONEY_RODA_PRODUCTION_UUID = '182';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = '195';
-	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = '208';
-	const PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID = '221';
-	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = '224';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '227';
-	const TRICYCLE_THEATRE_VENUE_UUID = '229';
-	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '230';
-	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '233';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '236';
-	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '239';
-	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '242';
-	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '245';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '248';
-	const HONEY_TRICYCLE_PRODUCTION_UUID = '251';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '254';
-	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '257';
-	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '260';
-	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '263';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = '9';
+	const FERDINAND_FOO_JR_PERSON_UUID = '11';
+	const SUB_INKISTS_LTD_COMPANY_UUID = '12';
+	const BAR_JR_CHARACTER_UUID = '13';
+	const DURANDS_LINE_MATERIAL_UUID = '19';
+	const CAMPAIGN_MATERIAL_UUID = '29';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID = '42';
+	const FERDINAND_FOO_PERSON_UUID = '44';
+	const MID_INKISTS_LTD_COMPANY_UUID = '45';
+	const BAR_CHARACTER_UUID = '49';
+	const BLACK_TULIPS_MATERIAL_UUID = '55';
+	const BLOOD_AND_GIFTS_MATERIAL_UUID = '65';
+	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = '75';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID = '88';
+	const HONEY_MATERIAL_UUID = '101';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '111';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '121';
+	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '134';
+	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '150';
+	const FERDINAND_FOO_SR_PERSON_UUID = '152';
+	const SUR_INKISTS_LTD_COMPANY_UUID = '153';
+	const BAR_SR_CHARACTER_UUID = '157';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = '158';
+	const NICOLAS_KENT_JR_PERSON_UUID = '161';
+	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = '162';
+	const ZOË_INGENHAAG_JR_PERSON_UUID = '163';
+	const RICK_WARDEN_JR_PERSON_UUID = '164';
+	const HOWARD_HARRISON_JR_PERSON_UUID = '165';
+	const SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID = '166';
+	const JACK_KNOWLES_JR_PERSON_UUID = '167';
+	const LIZZIE_CHAPMAN_JR_PERSON_UUID = '168';
+	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '169';
+	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = '170';
+	const DURANDS_LINE_RODA_PRODUCTION_UUID = '171';
+	const CAMPAIGN_RODA_PRODUCTION_UUID = '184';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID = '197';
+	const NICOLAS_KENT_PERSON_UUID = '200';
+	const MID_TRICYCLE_THEATRE_COMPANY_UUID = '201';
+	const ZOË_INGENHAAG_PERSON_UUID = '202';
+	const RICK_WARDEN_PERSON_UUID = '203';
+	const HOWARD_HARRISON_PERSON_UUID = '204';
+	const MID_LIGHTING_DESIGN_LTD_COMPANY_UUID = '205';
+	const JACK_KNOWLES_PERSON_UUID = '206';
+	const LIZZIE_CHAPMAN_PERSON_UUID = '207';
+	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '208';
+	const CHARLOTTE_PADGHAM_PERSON_UUID = '209';
+	const BLACK_TULIPS_RODA_PRODUCTION_UUID = '210';
+	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = '223';
+	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = '236';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID = '249';
+	const HONEY_RODA_PRODUCTION_UUID = '262';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = '275';
+	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = '288';
+	const PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID = '301';
+	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = '314';
+	const NICOLAS_KENT_SR_PERSON_UUID = '317';
+	const SUR_TRICYCLE_THEATRE_COMPANY_UUID = '318';
+	const ZOË_INGENHAAG_SR_PERSON_UUID = '319';
+	const RICK_WARDEN_SR_PERSON_UUID = '320';
+	const HOWARD_HARRISON_SR_PERSON_UUID = '321';
+	const SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID = '322';
+	const JACK_KNOWLES_SR_PERSON_UUID = '323';
+	const LIZZIE_CHAPMAN_SR_PERSON_UUID = '324';
+	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '325';
+	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = '326';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '327';
+	const TRICYCLE_THEATRE_VENUE_UUID = '329';
+	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '330';
+	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '333';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '336';
+	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '339';
+	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '342';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '345';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '348';
+	const HONEY_TRICYCLE_PRODUCTION_UUID = '351';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '354';
+	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '357';
+	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '360';
+	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '363';
 
 	let theGreatGameAfghanistanRodaProduction;
 	let partOneInvasionsAndIndependenceRodaProduction;
@@ -66,17 +104,17 @@ describe('Production with sub-sub-productions', () => {
 	let buglesAtTheGatesOfJalalabadMaterial;
 	let berkeleyRepertoryTheatreVenue;
 	let rodaTheatreVenue;
-	let nicolasKentPerson;
-	let tricycleTheatreCompany;
-	let zoëIngenhaagPerson;
-	let rickWardenPerson;
-	let howardHarrisonPerson;
-	let lightingDesignLtdCompany;
-	let jackKnowlesPerson;
-	let lizzieChapmanPerson;
-	let stageManagementLtdCompany;
-	let charlottePadghamPerson;
-	let barCharacter;
+	let nicolasKentJrPerson;
+	let subTricycleTheatreCompany;
+	let zoëIngenhaagJrPerson;
+	let rickWardenJrPerson;
+	let howardHarrisonJrPerson;
+	let subLightingDesignLtdCompany;
+	let jackKnowlesJrPerson;
+	let lizzieChapmanJrPerson;
+	let subStageManagementLtdCompany;
+	let charlottePadghamJrPerson;
+	let barJrCharacter;
 
 	const sandbox = createSandbox();
 
@@ -105,11 +143,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Bugles at the Gates of Jalalabad',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -122,11 +173,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Durand\'s Line',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -139,11 +203,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Campaign',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -156,6 +233,19 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Part One - Invasions and Independence 1842-1930',
 				format: 'sub-collection of plays',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Inkists Ltd'
+							}
+						]
+					}
+				],
 				subMaterials: [
 					{
 						name: 'Bugles at the Gates of Jalalabad'
@@ -166,6 +256,15 @@ describe('Production with sub-sub-productions', () => {
 					{
 						name: 'Campaign'
 					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Bar'
+							}
+						]
+					}
 				]
 			});
 
@@ -175,11 +274,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Black Tulips',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -192,11 +304,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Blood and Gifts',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -209,11 +334,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Miniskirts of Kabul',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -226,6 +364,19 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 				format: 'sub-collection of plays',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Inkists Ltd'
+							}
+						]
+					}
+				],
 				subMaterials: [
 					{
 						name: 'Black Tulips'
@@ -236,6 +387,15 @@ describe('Production with sub-sub-productions', () => {
 					{
 						name: 'Miniskirts of Kabul'
 					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Bar'
+							}
+						]
+					}
 				]
 			});
 
@@ -245,11 +405,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'Honey',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -262,11 +435,24 @@ describe('Production with sub-sub-productions', () => {
 				name: 'The Night Is Darkest Before the Dawn',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
@@ -279,6 +465,60 @@ describe('Production with sub-sub-productions', () => {
 				name: 'On the Side of the Angels',
 				format: 'play',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Inkists Ltd'
+							}
+						]
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Bar Jr'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Part Three - Enduring Freedom 1996-2009',
+				format: 'sub-collection of plays',
+				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Inkists Ltd'
+							}
+						]
+					}
+				],
+				subMaterials: [
+					{
+						name: 'Honey'
+					},
+					{
+						name: 'The Night Is Darkest Before the Dawn'
+					},
+					{
+						name: 'On the Side of the Angels'
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -293,28 +533,22 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
-				format: 'sub-collection of plays',
-				year: '2009',
-				subMaterials: [
-					{
-						name: 'Honey'
-					},
-					{
-						name: 'The Night Is Darkest Before the Dawn'
-					},
-					{
-						name: 'On the Side of the Angels'
-					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/materials')
-			.send({
 				name: 'The Great Game: Afghanistan',
 				format: 'collection of plays',
 				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Ferdinand Foo Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Inkists Ltd'
+							}
+						]
+					}
+				],
 				subMaterials: [
 					{
 						name: 'Part One - Invasions and Independence 1842-1930'
@@ -324,6 +558,15 @@ describe('Production with sub-sub-productions', () => {
 					},
 					{
 						name: 'Part Three - Enduring Freedom 1996-2009'
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Bar Sr'
+							}
+						]
 					}
 				]
 			});
@@ -345,14 +588,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -361,27 +604,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -390,17 +633,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -426,14 +669,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -442,27 +685,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -471,17 +714,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -507,14 +750,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -523,27 +766,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -552,17 +795,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -594,22 +837,7 @@ describe('Production with sub-sub-productions', () => {
 					{
 						uuid: CAMPAIGN_RODA_PRODUCTION_UUID
 					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/productions')
-			.send({
-				name: 'Black Tulips',
-				startDate: '2010-10-22',
-				pressDate: '2010-10-25',
-				endDate: '2010-11-07',
-				material: {
-					name: 'Black Tulips'
-				},
-				venue: {
-					name: 'Roda Theatre'
-				},
+				],
 				producerCredits: [
 					{
 						entities: [
@@ -618,7 +846,7 @@ describe('Production with sub-sub-productions', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Mid-Tricycle Theatre Company',
 								members: [
 									{
 										name: 'Zoë Ingenhaag'
@@ -640,14 +868,14 @@ describe('Production with sub-sub-productions', () => {
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Mid-level Lighting Designers',
 						entities: [
 							{
 								name: 'Howard Harrison'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Mid-Lighting Design Ltd',
 								members: [
 									{
 										name: 'Jack Knowles'
@@ -659,17 +887,98 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Mid-level Stage Managers',
 						entities: [
 							{
 								name: 'Lizzie Chapman'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Mid-Stage Management Ltd',
 								members: [
 									{
 										name: 'Charlotte Padgham'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Black Tulips',
+				startDate: '2010-10-22',
+				pressDate: '2010-10-25',
+				endDate: '2010-11-07',
+				material: {
+					name: 'Black Tulips'
+				},
+				venue: {
+					name: 'Roda Theatre'
+				},
+				producerCredits: [
+					{
+						entities: [
+							{
+								name: 'Nicolas Kent Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Tricycle Theatre Company',
+								members: [
+									{
+										name: 'Zoë Ingenhaag Jr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						name: 'Rick Warden Jr',
+						roles: [
+							{
+								name: 'Bar Jr'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						name: 'Junior Lighting Designers',
+						entities: [
+							{
+								name: 'Howard Harrison Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Lighting Design Ltd',
+								members: [
+									{
+										name: 'Jack Knowles Jr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						name: 'Junior Stage Managers',
+						entities: [
+							{
+								name: 'Lizzie Chapman Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Stage Management Ltd',
+								members: [
+									{
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -695,14 +1004,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -711,27 +1020,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -740,17 +1049,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -776,14 +1085,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -792,27 +1101,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -821,17 +1130,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -863,22 +1172,7 @@ describe('Production with sub-sub-productions', () => {
 					{
 						uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID
 					}
-				]
-			});
-
-		await chai.request(app)
-			.post('/productions')
-			.send({
-				name: 'Honey',
-				startDate: '2010-10-22',
-				pressDate: '2010-10-25',
-				endDate: '2010-11-07',
-				material: {
-					name: 'Honey'
-				},
-				venue: {
-					name: 'Roda Theatre'
-				},
+				],
 				producerCredits: [
 					{
 						entities: [
@@ -887,7 +1181,7 @@ describe('Production with sub-sub-productions', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Mid-Tricycle Theatre Company',
 								members: [
 									{
 										name: 'Zoë Ingenhaag'
@@ -909,14 +1203,14 @@ describe('Production with sub-sub-productions', () => {
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Mid-level Lighting Designers',
 						entities: [
 							{
 								name: 'Howard Harrison'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Mid-Lighting Design Ltd',
 								members: [
 									{
 										name: 'Jack Knowles'
@@ -928,17 +1222,98 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Mid-level Stage Managers',
 						entities: [
 							{
 								name: 'Lizzie Chapman'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Mid-Stage Management Ltd',
 								members: [
 									{
 										name: 'Charlotte Padgham'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Honey',
+				startDate: '2010-10-22',
+				pressDate: '2010-10-25',
+				endDate: '2010-11-07',
+				material: {
+					name: 'Honey'
+				},
+				venue: {
+					name: 'Roda Theatre'
+				},
+				producerCredits: [
+					{
+						entities: [
+							{
+								name: 'Nicolas Kent Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Tricycle Theatre Company',
+								members: [
+									{
+										name: 'Zoë Ingenhaag Jr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						name: 'Rick Warden Jr',
+						roles: [
+							{
+								name: 'Bar Jr'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						name: 'Junior Lighting Designers',
+						entities: [
+							{
+								name: 'Howard Harrison Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Lighting Design Ltd',
+								members: [
+									{
+										name: 'Jack Knowles Jr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						name: 'Junior Stage Managers',
+						entities: [
+							{
+								name: 'Lizzie Chapman Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Stage Management Ltd',
+								members: [
+									{
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -964,14 +1339,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -980,27 +1355,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -1009,17 +1384,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -1045,14 +1420,14 @@ describe('Production with sub-sub-productions', () => {
 					{
 						entities: [
 							{
-								name: 'Nicolas Kent'
+								name: 'Nicolas Kent Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Tricycle Theatre Company',
+								name: 'Sub-Tricycle Theatre Company',
 								members: [
 									{
-										name: 'Zoë Ingenhaag'
+										name: 'Zoë Ingenhaag Jr'
 									}
 								]
 							}
@@ -1061,27 +1436,27 @@ describe('Production with sub-sub-productions', () => {
 				],
 				cast: [
 					{
-						name: 'Rick Warden',
+						name: 'Rick Warden Jr',
 						roles: [
 							{
-								name: 'Bar'
+								name: 'Bar Jr'
 							}
 						]
 					}
 				],
 				creativeCredits: [
 					{
-						name: 'Lighting Designers',
+						name: 'Junior Lighting Designers',
 						entities: [
 							{
-								name: 'Howard Harrison'
+								name: 'Howard Harrison Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Lighting Design Ltd',
+								name: 'Sub-Lighting Design Ltd',
 								members: [
 									{
-										name: 'Jack Knowles'
+										name: 'Jack Knowles Jr'
 									}
 								]
 							}
@@ -1090,17 +1465,17 @@ describe('Production with sub-sub-productions', () => {
 				],
 				crewCredits: [
 					{
-						name: 'Stage Managers',
+						name: 'Junior Stage Managers',
 						entities: [
 							{
-								name: 'Lizzie Chapman'
+								name: 'Lizzie Chapman Jr'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stage Management Ltd',
+								name: 'Sub-Stage Management Ltd',
 								members: [
 									{
-										name: 'Charlotte Padgham'
+										name: 'Charlotte Padgham Jr'
 									}
 								]
 							}
@@ -1132,6 +1507,72 @@ describe('Production with sub-sub-productions', () => {
 					{
 						uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID
 					}
+				],
+				producerCredits: [
+					{
+						entities: [
+							{
+								name: 'Nicolas Kent'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Tricycle Theatre Company',
+								members: [
+									{
+										name: 'Zoë Ingenhaag'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						name: 'Rick Warden',
+						roles: [
+							{
+								name: 'Bar'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						name: 'Mid-level Lighting Designers',
+						entities: [
+							{
+								name: 'Howard Harrison'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Lighting Design Ltd',
+								members: [
+									{
+										name: 'Jack Knowles'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						name: 'Mid-level Stage Managers',
+						entities: [
+							{
+								name: 'Lizzie Chapman'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Mid-Stage Management Ltd',
+								members: [
+									{
+										name: 'Charlotte Padgham'
+									}
+								]
+							}
+						]
+					}
 				]
 			});
 
@@ -1157,6 +1598,72 @@ describe('Production with sub-sub-productions', () => {
 					},
 					{
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID
+					}
+				],
+				producerCredits: [
+					{
+						entities: [
+							{
+								name: 'Nicolas Kent Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Tricycle Theatre Company',
+								members: [
+									{
+										name: 'Zoë Ingenhaag Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						name: 'Rick Warden Sr',
+						roles: [
+							{
+								name: 'Bar Sr'
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						name: 'Senior Lighting Designers',
+						entities: [
+							{
+								name: 'Howard Harrison Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Lighting Design Ltd',
+								members: [
+									{
+										name: 'Jack Knowles Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						name: 'Senior Stage Managers',
+						entities: [
+							{
+								name: 'Lizzie Chapman Sr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sur-Stage Management Ltd',
+								members: [
+									{
+										name: 'Charlotte Padgham Sr'
+									}
+								]
+							}
+						]
 					}
 				]
 			});
@@ -1433,38 +1940,38 @@ describe('Production with sub-sub-productions', () => {
 		rodaTheatreVenue = await chai.request(app)
 			.get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
 
-		nicolasKentPerson = await chai.request(app)
-			.get(`/people/${NICOLAS_KENT_PERSON_UUID}`);
+		nicolasKentJrPerson = await chai.request(app)
+			.get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
 
-		tricycleTheatreCompany = await chai.request(app)
-			.get(`/companies/${TRICYCLE_THEATRE_COMPANY_UUID}`);
+		subTricycleTheatreCompany = await chai.request(app)
+			.get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagPerson = await chai.request(app)
-			.get(`/people/${ZOË_INGENHAAG_PERSON_UUID}`);
+		zoëIngenhaagJrPerson = await chai.request(app)
+			.get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
 
-		rickWardenPerson = await chai.request(app)
-			.get(`/people/${RICK_WARDEN_PERSON_UUID}`);
+		rickWardenJrPerson = await chai.request(app)
+			.get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
 
-		howardHarrisonPerson = await chai.request(app)
-			.get(`/people/${HOWARD_HARRISON_PERSON_UUID}`);
+		howardHarrisonJrPerson = await chai.request(app)
+			.get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
 
-		lightingDesignLtdCompany = await chai.request(app)
-			.get(`/companies/${LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
+		subLightingDesignLtdCompany = await chai.request(app)
+			.get(`/companies/${SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesPerson = await chai.request(app)
-			.get(`/people/${JACK_KNOWLES_PERSON_UUID}`);
+		jackKnowlesJrPerson = await chai.request(app)
+			.get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
 
-		lizzieChapmanPerson = await chai.request(app)
-			.get(`/people/${LIZZIE_CHAPMAN_PERSON_UUID}`);
+		lizzieChapmanJrPerson = await chai.request(app)
+			.get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
 
-		stageManagementLtdCompany = await chai.request(app)
-			.get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
+		subStageManagementLtdCompany = await chai.request(app)
+			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamPerson = await chai.request(app)
-			.get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
+		charlottePadghamJrPerson = await chai.request(app)
+			.get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
 
-		barCharacter = await chai.request(app)
-			.get(`/characters/${BAR_CHARACTER_UUID}`);
+		barJrCharacter = await chai.request(app)
+			.get(`/characters/${BAR_JR_CHARACTER_UUID}`);
 
 	});
 
@@ -1484,7 +1991,39 @@ describe('Production with sub-sub-productions', () => {
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence 1842-1930',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1501,7 +2040,43 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
 							name: 'Bugles at the Gates of Jalalabad',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+								name: 'Bugles at the Gates of Jalalabad',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1511,14 +2086,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
 							name: 'Durand\'s Line',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: DURANDS_LINE_MATERIAL_UUID,
+								name: 'Durand\'s Line',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1528,14 +2230,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
 							name: 'Campaign',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: CAMPAIGN_MATERIAL_UUID,
+								name: 'Campaign',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1545,7 +2374,189 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Mid-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_CHARACTER_UUID,
+									name: 'Bar',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Mid-level Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Mid-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Mid-level Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Mid-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
 						}
 					]
 				},
@@ -1554,7 +2565,39 @@ describe('Production with sub-sub-productions', () => {
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1571,7 +2614,43 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
 							name: 'Black Tulips',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: BLACK_TULIPS_MATERIAL_UUID,
+								name: 'Black Tulips',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1581,14 +2660,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
 							name: 'Blood and Gifts',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
+								name: 'Blood and Gifts',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1598,14 +2804,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
 							name: 'Miniskirts of Kabul',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
+								name: 'Miniskirts of Kabul',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1615,7 +2948,189 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Mid-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_CHARACTER_UUID,
+									name: 'Bar',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Mid-level Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Mid-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Mid-level Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Mid-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
 						}
 					]
 				},
@@ -1624,7 +3139,39 @@ describe('Production with sub-sub-productions', () => {
 					uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom 1996-2009',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1641,7 +3188,43 @@ describe('Production with sub-sub-productions', () => {
 							uuid: HONEY_RODA_PRODUCTION_UUID,
 							name: 'Honey',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: HONEY_MATERIAL_UUID,
+								name: 'Honey',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1651,14 +3234,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
 							name: 'The Night Is Darkest Before the Dawn',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+								name: 'The Night Is Darkest Before the Dawn',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1668,14 +3378,141 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
 							name: 'On the Side of the Angels',
 							startDate: '2010-10-22',
+							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
+							material: {
+								model: 'MATERIAL',
+								uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
+								name: 'On the Side of the Angels',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: RODA_THEATRE_VENUE_UUID,
@@ -1685,7 +3522,189 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
-							}
+							},
+							producerCredits: [
+								{
+									model: 'PRODUCER_CREDIT',
+									name: 'produced by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: NICOLAS_KENT_JR_PERSON_UUID,
+											name: 'Nicolas Kent Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+											name: 'Sub-Tricycle Theatre Company',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+													name: 'Zoë Ingenhaag Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							cast: [
+								{
+									model: 'PERSON',
+									uuid: RICK_WARDEN_JR_PERSON_UUID,
+									name: 'Rick Warden Jr',
+									roles: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_JR_CHARACTER_UUID,
+											name: 'Bar Jr',
+											qualifier: null,
+											isAlternate: false
+										}
+									]
+								}
+							],
+							creativeCredits: [
+								{
+									model: 'CREATIVE_CREDIT',
+									name: 'Junior Lighting Designers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+											name: 'Howard Harrison Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+											name: 'Sub-Lighting Design Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: JACK_KNOWLES_JR_PERSON_UUID,
+													name: 'Jack Knowles Jr'
+												}
+											]
+										}
+									]
+								}
+							],
+							crewCredits: [
+								{
+									model: 'CREW_CREDIT',
+									name: 'Junior Stage Managers',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+											name: 'Lizzie Chapman Jr'
+										},
+										{
+											model: 'COMPANY',
+											uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+											name: 'Sub-Stage Management Ltd',
+											members: [
+												{
+													model: 'PERSON',
+													uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+													name: 'Charlotte Padgham Jr'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Mid-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_CHARACTER_UUID,
+									name: 'Bar',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Mid-level Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Mid-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Mid-level Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Mid-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
 						}
 					]
 				}
@@ -1708,7 +3727,34 @@ describe('Production with sub-sub-productions', () => {
 				uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
 				name: 'The Great Game: Afghanistan',
 				startDate: '2010-10-22',
+				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
+				material: {
+					model: 'MATERIAL',
+					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+					name: 'The Great Game: Afghanistan',
+					format: 'collection of plays',
+					year: 2009,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_SR_PERSON_UUID,
+									name: 'Ferdinand Foo Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUR_INKISTS_LTD_COMPANY_UUID,
+									name: 'Sur-Inkists Ltd'
+								}
+							]
+						}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: RODA_THEATRE_VENUE_UUID,
@@ -1719,7 +3765,98 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Berkeley Repertory Theatre'
 					}
 				},
-				surProduction: null
+				surProduction: null,
+				producerCredits: [
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'produced by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: NICOLAS_KENT_SR_PERSON_UUID,
+								name: 'Nicolas Kent Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_TRICYCLE_THEATRE_COMPANY_UUID,
+								name: 'Sur-Tricycle Theatre Company',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: ZOË_INGENHAAG_SR_PERSON_UUID,
+										name: 'Zoë Ingenhaag Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						model: 'PERSON',
+						uuid: RICK_WARDEN_SR_PERSON_UUID,
+						name: 'Rick Warden Sr',
+						roles: [
+							{
+								model: 'CHARACTER',
+								uuid: BAR_SR_CHARACTER_UUID,
+								name: 'Bar Sr',
+								qualifier: null,
+								isAlternate: false
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Senior Lighting Designers',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: HOWARD_HARRISON_SR_PERSON_UUID,
+								name: 'Howard Harrison Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sur-Lighting Design Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: JACK_KNOWLES_SR_PERSON_UUID,
+										name: 'Jack Knowles Sr'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'CREW_CREDIT',
+						name: 'Senior Stage Managers',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: LIZZIE_CHAPMAN_SR_PERSON_UUID,
+								name: 'Lizzie Chapman Sr'
+							},
+							{
+								model: 'COMPANY',
+								uuid: SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sur-Stage Management Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: CHARLOTTE_PADGHAM_SR_PERSON_UUID,
+										name: 'Charlotte Padgham Sr'
+									}
+								]
+							}
+						]
+					}
+				]
 			};
 
 			const { surProduction } = partOneInvasionsAndIndependenceRodaProduction.body;
@@ -1736,7 +3873,43 @@ describe('Production with sub-sub-productions', () => {
 					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
 					name: 'Bugles at the Gates of Jalalabad',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+						name: 'Bugles at the Gates of Jalalabad',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1747,14 +3920,141 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_JR_CHARACTER_UUID,
+									name: 'Bar Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
 					name: 'Durand\'s Line',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: DURANDS_LINE_MATERIAL_UUID,
+						name: 'Durand\'s Line',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1765,14 +4065,141 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_JR_CHARACTER_UUID,
+									name: 'Bar Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: CAMPAIGN_MATERIAL_UUID,
+						name: 'Campaign',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: RODA_THEATRE_VENUE_UUID,
@@ -1783,7 +4210,98 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_JR_CHARACTER_UUID,
+									name: 'Bar Jr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Junior Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Junior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
+										}
+									]
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -1804,7 +4322,39 @@ describe('Production with sub-sub-productions', () => {
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
 				name: 'Part One - Invasions and Independence 1842-1930',
 				startDate: '2010-10-22',
+				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
+				material: {
+					model: 'MATERIAL',
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					name: 'Part One - Invasions and Independence 1842-1930',
+					format: 'sub-collection of plays',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_INKISTS_LTD_COMPANY_UUID,
+									name: 'Mid-Inkists Ltd'
+								}
+							]
+						}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: RODA_THEATRE_VENUE_UUID,
@@ -1818,8 +4368,229 @@ describe('Production with sub-sub-productions', () => {
 				surProduction: {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
-					name: 'The Great Game: Afghanistan'
-				}
+					name: 'The Great Game: Afghanistan',
+					startDate: '2010-10-22',
+					pressDate: '2010-10-25',
+					endDate: '2010-11-07',
+					material: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						format: 'collection of plays',
+						year: 2009,
+						surMaterial: null,
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_SR_PERSON_UUID,
+										name: 'Ferdinand Foo Sr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUR_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sur-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_SR_PERSON_UUID,
+									name: 'Nicolas Kent Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUR_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sur-Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_SR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Sr'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_SR_PERSON_UUID,
+							name: 'Rick Warden Sr',
+							roles: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_SR_CHARACTER_UUID,
+									name: 'Bar Sr',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					],
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Senior Lighting Designers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_SR_PERSON_UUID,
+									name: 'Howard Harrison Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sur-Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_SR_PERSON_UUID,
+											name: 'Jack Knowles Sr'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Senior Stage Managers',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_SR_PERSON_UUID,
+									name: 'Lizzie Chapman Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sur-Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_SR_PERSON_UUID,
+											name: 'Charlotte Padgham Sr'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				producerCredits: [
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'produced by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: NICOLAS_KENT_PERSON_UUID,
+								name: 'Nicolas Kent'
+							},
+							{
+								model: 'COMPANY',
+								uuid: MID_TRICYCLE_THEATRE_COMPANY_UUID,
+								name: 'Mid-Tricycle Theatre Company',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: ZOË_INGENHAAG_PERSON_UUID,
+										name: 'Zoë Ingenhaag'
+									}
+								]
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						model: 'PERSON',
+						uuid: RICK_WARDEN_PERSON_UUID,
+						name: 'Rick Warden',
+						roles: [
+							{
+								model: 'CHARACTER',
+								uuid: BAR_CHARACTER_UUID,
+								name: 'Bar',
+								qualifier: null,
+								isAlternate: false
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Mid-level Lighting Designers',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: HOWARD_HARRISON_PERSON_UUID,
+								name: 'Howard Harrison'
+							},
+							{
+								model: 'COMPANY',
+								uuid: MID_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Mid-Lighting Design Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: JACK_KNOWLES_PERSON_UUID,
+										name: 'Jack Knowles'
+									}
+								]
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'CREW_CREDIT',
+						name: 'Mid-level Stage Managers',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+								name: 'Lizzie Chapman'
+							},
+							{
+								model: 'COMPANY',
+								uuid: MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Mid-Stage Management Ltd',
+								members: [
+									{
+										model: 'PERSON',
+										uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+										name: 'Charlotte Padgham'
+									}
+								]
+							}
+						]
+					}
+				]
 			};
 
 			const { surProduction } = buglesAtTheGatesOfJalalabadRodaProduction.body;
@@ -1840,7 +4611,39 @@ describe('Production with sub-sub-productions', () => {
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence 1842-1930',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						name: 'Part One - Invasions and Independence 1842-1930',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
@@ -1853,48 +4656,204 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
 							name: 'Bugles at the Gates of Jalalabad',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+								name: 'Bugles at the Gates of Jalalabad',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
 							name: 'Durand\'s Line',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: DURANDS_LINE_MATERIAL_UUID,
+								name: 'Durand\'s Line',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 							name: 'Campaign',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: CAMPAIGN_MATERIAL_UUID,
+								name: 'Campaign',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									name: 'Part One - Invasions and Independence 1842-1930',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						}
-					]
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
@@ -1907,48 +4866,204 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
 							name: 'Black Tulips',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: BLACK_TULIPS_MATERIAL_UUID,
+								name: 'Black Tulips',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
 							name: 'Blood and Gifts',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
+								name: 'Blood and Gifts',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 							name: 'Miniskirts of Kabul',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
+								name: 'Miniskirts of Kabul',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						}
-					]
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom 1996-2009',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						name: 'Part Three - Enduring Freedom 1996-2009',
+						format: 'sub-collection of plays',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan',
+							surMaterial: null
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_PERSON_UUID,
+										name: 'Ferdinand Foo'
+									},
+									{
+										model: 'COMPANY',
+										uuid: MID_INKISTS_LTD_COMPANY_UUID,
+										name: 'Mid-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
@@ -1961,41 +5076,165 @@ describe('Production with sub-sub-productions', () => {
 							uuid: HONEY_TRICYCLE_PRODUCTION_UUID,
 							name: 'Honey',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: HONEY_MATERIAL_UUID,
+								name: 'Honey',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Night Is Darkest Before the Dawn',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+								name: 'The Night Is Darkest Before the Dawn',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						},
 						{
 							model: 'PRODUCTION',
 							uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
 							name: 'On the Side of the Angels',
 							startDate: '2009-04-17',
+							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
+							material: {
+								model: 'MATERIAL',
+								uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
+								name: 'On the Side of the Angels',
+								format: 'play',
+								year: 2009,
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									name: 'Part Three - Enduring Freedom 1996-2009',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+										name: 'The Great Game: Afghanistan'
+									}
+								},
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: FERDINAND_FOO_JR_PERSON_UUID,
+												name: 'Ferdinand Foo Jr'
+											},
+											{
+												model: 'COMPANY',
+												uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+												name: 'Sub-Inkists Ltd'
+											}
+										]
+									}
+								]
+							},
 							venue: {
 								model: 'VENUE',
 								uuid: TRICYCLE_THEATRE_VENUE_UUID,
 								name: 'Tricycle Theatre',
 								surVenue: null
-							}
+							},
+							producerCredits: [],
+							cast: [],
+							creativeCredits: [],
+							crewCredits: []
 						}
-					]
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				}
 			];
 
@@ -2016,14 +5255,45 @@ describe('Production with sub-sub-productions', () => {
 				uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 				name: 'The Great Game: Afghanistan',
 				startDate: '2009-04-17',
+				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
+				material: {
+					model: 'MATERIAL',
+					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+					name: 'The Great Game: Afghanistan',
+					format: 'collection of plays',
+					year: 2009,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_SR_PERSON_UUID,
+									name: 'Ferdinand Foo Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SUR_INKISTS_LTD_COMPANY_UUID,
+									name: 'Sur-Inkists Ltd'
+								}
+							]
+						}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: TRICYCLE_THEATRE_VENUE_UUID,
 					name: 'Tricycle Theatre',
 					surVenue: null
 				},
-				surProduction: null
+				surProduction: null,
+				producerCredits: [],
+				cast: [],
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			const { surProduction } = partOneInvasionsAndIndependenceTricycleProduction.body;
@@ -2040,42 +5310,162 @@ describe('Production with sub-sub-productions', () => {
 					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
 					name: 'Bugles at the Gates of Jalalabad',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+						name: 'Bugles at the Gates of Jalalabad',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
 					name: 'Durand\'s Line',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: DURANDS_LINE_MATERIAL_UUID,
+						name: 'Durand\'s Line',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				},
 				{
 					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: CAMPAIGN_MATERIAL_UUID,
+						name: 'Campaign',
+						format: 'play',
+						year: 2009,
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							name: 'Part One - Invasions and Independence 1842-1930',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+								name: 'The Great Game: Afghanistan'
+							}
+						},
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_JR_PERSON_UUID,
+										name: 'Ferdinand Foo Jr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUB_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sub-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
 					venue: {
 						model: 'VENUE',
 						uuid: TRICYCLE_THEATRE_VENUE_UUID,
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
-					subProductions: []
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
 				}
 			];
 
@@ -2096,7 +5486,39 @@ describe('Production with sub-sub-productions', () => {
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
 				name: 'Part One - Invasions and Independence 1842-1930',
 				startDate: '2009-04-17',
+				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
+				material: {
+					model: 'MATERIAL',
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					name: 'Part One - Invasions and Independence 1842-1930',
+					format: 'sub-collection of plays',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: MID_INKISTS_LTD_COMPANY_UUID,
+									name: 'Mid-Inkists Ltd'
+								}
+							]
+						}
+					]
+				},
 				venue: {
 					model: 'VENUE',
 					uuid: TRICYCLE_THEATRE_VENUE_UUID,
@@ -2106,8 +5528,51 @@ describe('Production with sub-sub-productions', () => {
 				surProduction: {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'The Great Game: Afghanistan'
-				}
+					name: 'The Great Game: Afghanistan',
+					startDate: '2009-04-17',
+					pressDate: '2009-04-24',
+					endDate: '2009-06-14',
+					material: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						format: 'collection of plays',
+						year: 2009,
+						surMaterial: null,
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: FERDINAND_FOO_SR_PERSON_UUID,
+										name: 'Ferdinand Foo Sr'
+									},
+									{
+										model: 'COMPANY',
+										uuid: SUR_INKISTS_LTD_COMPANY_UUID,
+										name: 'Sur-Inkists Ltd'
+									}
+								]
+							}
+						]
+					},
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				},
+				producerCredits: [],
+				cast: [],
+				creativeCredits: [],
+				crewCredits: []
 			};
 
 			const { surProduction } = buglesAtTheGatesOfJalalabadTricycleProduction.body;
@@ -2677,7 +6142,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Nicolas Kent (person)', () => {
+	describe('Nicolas Kent Jr (person)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
 
@@ -2715,18 +6180,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -2767,18 +6232,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -2819,18 +6284,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -2871,18 +6336,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -2923,18 +6388,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -2975,18 +6440,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3027,18 +6492,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3079,18 +6544,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3131,18 +6596,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3152,7 +6617,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = nicolasKentPerson.body;
+			const { producerProductions } = nicolasKentJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -3160,7 +6625,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Tricycle Theatre Company (company)', () => {
+	describe('Sub-Tricycle Theatre Company (company)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
 
@@ -3198,18 +6663,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3250,18 +6715,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3302,18 +6767,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3354,18 +6819,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3406,18 +6871,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3458,18 +6923,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3510,18 +6975,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3562,18 +7027,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3614,18 +7079,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3635,7 +7100,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = tricycleTheatreCompany.body;
+			const { producerProductions } = subTricycleTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -3643,7 +7108,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Zoë Ingenhaag (person)', () => {
+	describe('Zoë Ingenhaag Jr (person)', () => {
 
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
 
@@ -3681,18 +7146,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3733,18 +7198,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3785,18 +7250,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3837,18 +7302,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3889,18 +7354,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3941,18 +7406,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -3993,18 +7458,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -4045,18 +7510,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -4097,18 +7562,18 @@ describe('Production with sub-sub-productions', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
+									uuid: NICOLAS_KENT_JR_PERSON_UUID,
+									name: 'Nicolas Kent Jr'
 								},
 								{
 									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
+									uuid: SUB_TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Sub-Tricycle Theatre Company',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
+											uuid: ZOË_INGENHAAG_JR_PERSON_UUID,
+											name: 'Zoë Ingenhaag Jr'
 										}
 									]
 								}
@@ -4118,7 +7583,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { producerProductions } = zoëIngenhaagPerson.body;
+			const { producerProductions } = zoëIngenhaagJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
 
@@ -4126,7 +7591,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Rick Warden (person)', () => {
+	describe('Rick Warden Jr (person)', () => {
 
 		it('includes productions for which they have a cast credit, including the sur-production and sur-sur-production', () => {
 
@@ -4160,8 +7625,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4196,8 +7661,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4232,8 +7697,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4268,8 +7733,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4304,8 +7769,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4340,8 +7805,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4376,8 +7841,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4412,8 +7877,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4448,8 +7913,8 @@ describe('Production with sub-sub-productions', () => {
 					roles: [
 						{
 							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
+							uuid: BAR_JR_CHARACTER_UUID,
+							name: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false
 						}
@@ -4457,7 +7922,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { castMemberProductions } = rickWardenPerson.body;
+			const { castMemberProductions } = rickWardenJrPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 
@@ -4465,7 +7930,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Howard Harrison (person)', () => {
+	describe('Howard Harrison Jr (person)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
 
@@ -4499,18 +7964,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4547,18 +8012,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4595,18 +8060,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4643,18 +8108,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4691,18 +8156,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4739,18 +8204,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4787,18 +8252,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4835,18 +8300,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4883,18 +8348,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
+									uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Sub-Lighting Design Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
+											uuid: JACK_KNOWLES_JR_PERSON_UUID,
+											name: 'Jack Knowles Jr'
 										}
 									]
 								}
@@ -4904,7 +8369,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = howardHarrisonPerson.body;
+			const { creativeProductions } = howardHarrisonJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -4912,7 +8377,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Lighting Design Ltd (company)', () => {
+	describe('Sub-Lighting Design Ltd (company)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
 
@@ -4946,19 +8411,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -4993,19 +8458,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5040,19 +8505,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5087,19 +8552,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5134,19 +8599,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5181,19 +8646,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5228,19 +8693,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5275,19 +8740,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5322,19 +8787,19 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
+									uuid: JACK_KNOWLES_JR_PERSON_UUID,
+									name: 'Jack Knowles Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5342,7 +8807,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = lightingDesignLtdCompany.body;
+			const { creativeProductions } = subLightingDesignLtdCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -5350,7 +8815,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Jack Knowles (person)', () => {
+	describe('Jack Knowles Jr (person)', () => {
 
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
 
@@ -5384,18 +8849,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5430,18 +8895,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5476,18 +8941,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5522,18 +8987,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5568,18 +9033,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5614,18 +9079,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5660,18 +9125,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5706,18 +9171,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5752,18 +9217,18 @@ describe('Production with sub-sub-productions', () => {
 					creativeCredits: [
 						{
 							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
+							name: 'Junior Lighting Designers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
+								uuid: SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Sub-Lighting Design Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
+									uuid: HOWARD_HARRISON_JR_PERSON_UUID,
+									name: 'Howard Harrison Jr'
 								}
 							]
 						}
@@ -5771,7 +9236,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { creativeProductions } = jackKnowlesPerson.body;
+			const { creativeProductions } = jackKnowlesJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
 
@@ -5779,7 +9244,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Lizzie Chapman (person)', () => {
+	describe('Lizzie Chapman Jr (person)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
 
@@ -5813,18 +9278,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -5861,18 +9326,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -5909,18 +9374,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -5957,18 +9422,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6005,18 +9470,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6053,18 +9518,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6101,18 +9566,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6149,18 +9614,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6197,18 +9662,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: null,
 							coEntities: [
 								{
 									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
+									uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Sub-Stage Management Ltd',
 									members: [
 										{
 											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
+											uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+											name: 'Charlotte Padgham Jr'
 										}
 									]
 								}
@@ -6218,7 +9683,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = lizzieChapmanPerson.body;
+			const { crewProductions } = lizzieChapmanJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -6226,7 +9691,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Stage Management Ltd (company)', () => {
+	describe('Sub-Stage Management Ltd (company)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
 
@@ -6260,19 +9725,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6307,19 +9772,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6354,19 +9819,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6401,19 +9866,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6448,19 +9913,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6495,19 +9960,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6542,19 +10007,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6589,19 +10054,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6636,19 +10101,19 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							members: [
 								{
 									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
+									uuid: CHARLOTTE_PADGHAM_JR_PERSON_UUID,
+									name: 'Charlotte Padgham Jr'
 								}
 							],
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6656,7 +10121,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = stageManagementLtdCompany.body;
+			const { crewProductions } = subStageManagementLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -6664,7 +10129,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Charlotte Padgham (person)', () => {
+	describe('Charlotte Padgham Jr (person)', () => {
 
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
 
@@ -6698,18 +10163,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6744,18 +10209,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6790,18 +10255,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6836,18 +10301,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6882,18 +10347,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6928,18 +10393,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -6974,18 +10439,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -7020,18 +10485,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -7066,18 +10531,18 @@ describe('Production with sub-sub-productions', () => {
 					crewCredits: [
 						{
 							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
+							name: 'Junior Stage Managers',
 							employerCompany: {
 								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
+								uuid: SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Sub-Stage Management Ltd',
 								coMembers: []
 							},
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
+									uuid: LIZZIE_CHAPMAN_JR_PERSON_UUID,
+									name: 'Lizzie Chapman Jr'
 								}
 							]
 						}
@@ -7085,7 +10550,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { crewProductions } = charlottePadghamPerson.body;
+			const { crewProductions } = charlottePadghamJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
 
@@ -7093,7 +10558,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Bar (character)', () => {
+	describe('Bar Jr (character)', () => {
 
 		it('includes productions in which character was portrayed, including the sur-production and sur-sur-production', () => {
 
@@ -7127,9 +10592,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7165,9 +10630,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7203,9 +10668,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7241,9 +10706,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7279,9 +10744,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7317,9 +10782,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7355,9 +10820,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7393,9 +10858,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7431,9 +10896,9 @@ describe('Production with sub-sub-productions', () => {
 					performers: [
 						{
 							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
+							uuid: RICK_WARDEN_JR_PERSON_UUID,
+							name: 'Rick Warden Jr',
+							roleName: 'Bar Jr',
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: []
@@ -7442,7 +10907,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { productions } = barCharacter.body;
+			const { productions } = barJrCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

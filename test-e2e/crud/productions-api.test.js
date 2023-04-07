@@ -1634,27 +1634,45 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
 						name: 'Hamlet sub-material #1',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					},
 					{
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
 						name: 'Hamlet sub-material #2',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					},
 					{
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
 						name: 'Hamlet sub-material #3',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					}
 				],
 				producerCredits: [
@@ -3626,27 +3644,45 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID,
 						name: 'Richard III sub-material #1',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					},
 					{
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID,
 						name: 'Richard III sub-material #2',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					},
 					{
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID,
 						name: 'Richard III sub-material #3',
 						startDate: null,
+						pressDate: null,
 						endDate: null,
+						material: null,
 						venue: null,
-						subProductions: []
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: []
 					}
 				],
 				producerCredits: [
