@@ -26,7 +26,8 @@
 		{
 			"characters": [
 				{
-					"name": "Joey"
+					"name": "Joey",
+					"differentiator": "War Horse"
 				},
 				{
 					"name": "Alice",

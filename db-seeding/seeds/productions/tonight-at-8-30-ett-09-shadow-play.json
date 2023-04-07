@@ -1,0 +1,90 @@
+{
+	"uuid": "4c7e07ce-5f0e-484e-8228-d9a8a97f86bf",
+	"name": "Shadow Play",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Shadow Play"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Olivia Poulet",
+			"roles": [
+				{
+					"name": "Victoria Gayforth",
+					"characterName": "Victoria (Vicky) Gayforth"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Simon Gayforth"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Miss Martha Cunningham",
+					"characterName": "Martha Cunningham"
+				}
+			]
+		},
+		{
+			"name": "Orlando Wells",
+			"roles": [
+				{
+					"name": "George Cunningham"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Besterman",
+			"roles": [
+				{
+					"name": "Miss Lena",
+					"characterName": "Lena"
+				}
+			]
+		},
+		{
+			"name": "Shereen Martin",
+			"roles": [
+				{
+					"name": "Sibyl Heston"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Michael Doyle"
+				}
+			]
+		},
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "A Young Man"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Hodge"
+				}
+			]
+		}
+	]
+}

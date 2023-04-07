@@ -1,0 +1,23 @@
+{
+	"name": "Capernaum",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Steve Waters"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Gospel According to St Mark"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name": "Soho Theatre",
+	"subVenues": [
+		{
+			"name": "Theatre"
+		},
+		{
+			"name": "Soho Upstairs"
+		}
+	]
+}

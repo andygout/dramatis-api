@@ -1,0 +1,20 @@
+{
+	"name": "Angels in America",
+	"startDate": "2017-04-11",
+	"pressDate": "2017-05-04",
+	"endDate": "2017-08-19",
+	"material": {
+		"name": "Angels in America"
+	},
+	"venue": {
+		"name": "Lyttelton Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "2f1126a3-864f-4bd5-b5c9-9a21482bf990"
+		},
+		{
+			"uuid": "4ea42855-2708-4ca2-93b8-5c229e617224"
+		}
+	]
+}

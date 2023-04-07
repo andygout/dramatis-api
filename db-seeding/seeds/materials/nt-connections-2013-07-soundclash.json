@@ -1,0 +1,47 @@
+{
+	"name": "Soundclash",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lenny Henry"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Lil Kid"
+				},
+				{
+					"name": "Deej"
+				},
+				{
+					"name": "DJ Emperor"
+				},
+				{
+					"name": "Vox"
+				},
+				{
+					"name": "Lox"
+				},
+				{
+					"name": "Sings"
+				},
+				{
+					"name": "Big Sis"
+				},
+				{
+					"name": "Deej's Crew"
+				},
+				{
+					"name": "DJ Emperor's Crew"
+				}
+			]
+		}
+	]
+}

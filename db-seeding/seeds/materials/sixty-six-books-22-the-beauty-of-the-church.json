@@ -1,0 +1,23 @@
+{
+	"name": "The Beauty of the Church",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Carol Ann Duffy"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Song of Solomon"
+				}
+			]
+		}
+	]
+}

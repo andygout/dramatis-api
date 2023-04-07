@@ -1,0 +1,30 @@
+{
+	"uuid": "803b99a8-7c84-487c-9bd6-4a4f8cd8d9a5",
+	"name": "Now",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Now"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "a7745ebf-5723-41b2-9293-1e167f7cbe96"
+		},
+		{
+			"uuid": "6abfa4f8-128f-4b19-9656-fb9bd802951e"
+		},
+		{
+			"uuid": "9d690f61-1919-4be4-bbbf-242752890778"
+		},
+		{
+			"uuid": "86af3e8e-ea3a-400d-9874-227906b385ec"
+		},
+		{
+			"uuid": "8601740f-498f-4a41-bf86-f2e73aa621b8"
+		}
+	]
+}

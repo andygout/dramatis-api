@@ -1,0 +1,283 @@
+{
+	"name": "Part One",
+	"format": "play",
+	"year": "2003",
+	"writingCredits": [
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "His Dark Materials",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "adapted for the stage by",
+			"entities": [
+				{
+					"name": "Nicholas Wright"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Between the Worlds",
+			"characters": [
+				{
+					"name": "Lord Asriel"
+				},
+				{
+					"name": "Stelmaria"
+				},
+				{
+					"name": "Jopari"
+				},
+				{
+					"name": "Thorold"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Jordan College",
+			"characters": [
+				{
+					"name": "Lyra Belacqua"
+				},
+				{
+					"name": "Pantalaimon"
+				},
+				{
+					"name": "Roger Parslow"
+				},
+				{
+					"name": "Salcilia"
+				},
+				{
+					"name": "The Master"
+				},
+				{
+					"name": "Professor Hopcraft"
+				},
+				{
+					"name": "Mrs Lonsdale"
+				},
+				{
+					"name": "Cawson"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - London",
+			"characters": [
+				{
+					"name": "Mrs Coulter"
+				},
+				{
+					"name": "The Golden Monkey"
+				},
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Daisy",
+					"differentiator": "His Dark Materials"
+				},
+				{
+					"name": "Jessie",
+					"differentiator": "His Dark Materials"
+				},
+				{
+					"name": "Lily"
+				},
+				{
+					"name": "Stallholder"
+				},
+				{
+					"name": "Top-Hatted Man"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - The Church",
+			"characters": [
+				{
+					"name": "The President"
+				},
+				{
+					"name": "Fra Pavel"
+				},
+				{
+					"name": "Brother Jasper"
+				},
+				{
+					"name": "Perpetua"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Gyptians",
+			"characters": [
+				{
+					"name": "Lord Faa"
+				},
+				{
+					"name": "Farder Coram"
+				},
+				{
+					"name": "Tony Costa"
+				},
+				{
+					"name": "Billy Costa"
+				},
+				{
+					"name": "Ben",
+					"differentiator": "His Dark Materials"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Trollesund",
+			"characters": [
+				{
+					"name": "Lee Scoresby"
+				},
+				{
+					"name": "Hester"
+				},
+				{
+					"name": "Mayor"
+				},
+				{
+					"name": "Bear-keeper"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Witches",
+			"characters": [
+				{
+					"name": "Serafina Pekkala"
+				},
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Pipistrelle"
+				},
+				{
+					"name": "Caitlin"
+				},
+				{
+					"name": "Grendella"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Bolvangar",
+			"characters": [
+				{
+					"name": "Dr Sargent"
+				},
+				{
+					"name": "Dr Cade"
+				},
+				{
+					"name": "Dr West"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "His Dark Materials"
+				}
+			]
+		},
+		{
+			"name": "Lyra's World - Bears",
+			"characters": [
+				{
+					"name": "Iorek Byrnison"
+				},
+				{
+					"name": "Iofur Raknison"
+				}
+			]
+		},
+		{
+			"name": "Cittàgazze",
+			"characters": [
+				{
+					"name": "Angelica"
+				},
+				{
+					"name": "Paolo"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				},
+				{
+					"name": "Tullio"
+				}
+			]
+		},
+		{
+			"name": "Our World",
+			"characters": [
+				{
+					"name": "Will Parry"
+				},
+				{
+					"name": "Librarian"
+				},
+				{
+					"name": "Library Assistant"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Scholars"
+				},
+				{
+					"name": "Students"
+				},
+				{
+					"name": "Stolen Children"
+				},
+				{
+					"name": "Party Guests",
+					"differentiator": "His Dark Materials"
+				},
+				{
+					"name": "Gyptians"
+				},
+				{
+					"name": "Trollesunders"
+				},
+				{
+					"name": "Witches"
+				},
+				{
+					"name": "Clerics"
+				},
+				{
+					"name": "Bears"
+				},
+				{
+					"name": "Tartar Guards"
+				},
+				{
+					"name": "Cliff-ghasts"
+				}
+			]
+		}
+	]
+}

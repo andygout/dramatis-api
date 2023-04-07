@@ -1,0 +1,27 @@
+{
+	"name": "Doris Day",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "E V Crowe"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Anna"
+				},
+				{
+					"name": "Daisy",
+					"differentiator": "Doris Day"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,41 @@
+{
+	"name": "You, Me and Wii",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Sue Townsend"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Courtney"
+				},
+				{
+					"name": "Kerry",
+					"differentiator": "You, Me and Wii"
+				},
+				{
+					"name": "Sheila"
+				},
+				{
+					"name": "Vincent",
+					"differentiator": "You, Me and Wii"
+				},
+				{
+					"name": "Selina",
+					"differentiator": "You, Me and Wii"
+				},
+				{
+					"name": "Mark"
+				}
+			]
+		}
+	]
+}

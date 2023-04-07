@@ -1,0 +1,23 @@
+{
+	"name": "Falling Away",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Christopher Shinn"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "2 Thessalonians"
+				}
+			]
+		}
+	]
+}

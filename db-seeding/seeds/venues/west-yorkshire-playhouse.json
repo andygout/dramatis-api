@@ -1,0 +1,12 @@
+{
+	"name": "West Yorkshire Playhouse",
+	"subVenues": [
+		{
+			"name": "Quarry Theatre"
+		},
+		{
+			"name": "Courtyard Theatre",
+			"differentiator": "1"
+		}
+	]
+}

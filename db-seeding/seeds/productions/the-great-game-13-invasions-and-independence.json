@@ -1,0 +1,27 @@
+{
+	"uuid": "28fe0e33-2132-4f9c-bea1-2c60a14dccad",
+	"name": "Invasions and Independence (1842-1930)",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Invasions and Independence (1842-1930)"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "c8fdd8ce-6d1c-48e2-8776-38190a7c57c8"
+		},
+		{
+			"uuid": "c447c041-2b5e-432b-b583-cb1356cbe488"
+		},
+		{
+			"uuid": "b0762533-5291-4016-9108-cab0d53e5fb3"
+		},
+		{
+			"uuid": "824cfab7-279e-47bf-8990-dad6d1ba99de"
+		}
+	]
+}

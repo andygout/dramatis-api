@@ -1,0 +1,46 @@
+{
+	"name": "Forty-Five Minutes",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anya Reiss"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nathan"
+				},
+				{
+					"name": "Darrel"
+				},
+				{
+					"name": "Alex",
+					"differentiator": "Forty-Five Minutes"
+				},
+				{
+					"name": "Georgie"
+				},
+				{
+					"name": "Trent"
+				},
+				{
+					"name": "Lara"
+				},
+				{
+					"name": "Louise",
+					"differentiator": "Forty-Five Minutes"
+				},
+				{
+					"name": "Michael"
+				}
+			]
+		}
+	]
+}

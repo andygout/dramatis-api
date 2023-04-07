@@ -1,0 +1,152 @@
+{
+	"name": "The Great Game: Afghanistan",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "The Great Game: Afghanistan"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "28fe0e33-2132-4f9c-bea1-2c60a14dccad"
+		},
+		{
+			"uuid": "a8528422-29c9-4561-b46c-80d32ca24d6b"
+		},
+		{
+			"uuid": "91d1073d-5abf-482d-87bd-62b9e53b0e5d"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sagar Arya"
+		},
+		{
+			"name": "Daniel Betts"
+		},
+		{
+			"name": "Paul Bhattacharjee"
+		},
+		{
+			"name": "Sheena Bhattessa"
+		},
+		{
+			"name": "Lolita Chakrabarti"
+		},
+		{
+			"name": "Michael Cochrane"
+		},
+		{
+			"name": "Vincent Ebrahim"
+		},
+		{
+			"name": "Nabil Elouahabi"
+		},
+		{
+			"name": "Tom McKay"
+		},
+		{
+			"name": "Danny Rahim"
+		},
+		{
+			"name": "Jemma Redgrave"
+		},
+		{
+			"name": "Jemima Rooper"
+		},
+		{
+			"name": "Hugh Skinner"
+		},
+		{
+			"name": "Ramon Tikaram"
+		},
+		{
+			"name": "Rick Warden"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Nicolas Kent"
+				},
+				{
+					"name": "Indhu Rubasingham"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Pamela Howard"
+				},
+				{
+					"name": "Miriam Nabarro"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Sydney Florence"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"entities": [
+				{
+					"name": "Carl B Hamilton"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Bret Yount"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Rachel Grunwald"
+				}
+			]
+		}
+	]
+}

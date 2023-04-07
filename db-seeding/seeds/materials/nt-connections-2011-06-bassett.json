@@ -1,0 +1,69 @@
+{
+	"name": "Bassett",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "James Graham"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Vicki"
+				},
+				{
+					"name": "Sarah",
+					"differentiator": "Bassett"
+				},
+				{
+					"name": "Joanne",
+					"differentiator": "Bassett"
+				},
+				{
+					"name": "Graeme"
+				},
+				{
+					"name": "Jonathan"
+				},
+				{
+					"name": "Kelly"
+				},
+				{
+					"name": "Spencer"
+				},
+				{
+					"name": "Shanti"
+				},
+				{
+					"name": "Leo"
+				},
+				{
+					"name": "Rachel"
+				},
+				{
+					"name": "Russell"
+				},
+				{
+					"name": "Amid"
+				},
+				{
+					"name": "Aimee"
+				},
+				{
+					"name": "Zoe",
+					"differentiator": "Bassett"
+				},
+				{
+					"name": "Lucy",
+					"differentiator": "Bassett"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"name": "The Foundation",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Caroline Bird"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Leviticus"
+				}
+			]
+		}
+	]
+}

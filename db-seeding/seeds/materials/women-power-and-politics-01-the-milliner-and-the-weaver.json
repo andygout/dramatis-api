@@ -1,0 +1,29 @@
+{
+	"name": "The Milliner and the Weaver",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Marie Jones"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Henrietta Girvan"
+				},
+				{
+					"name": "Elspeth Smith"
+				},
+				{
+					"name": "Thomas Girvan"
+				}
+			]
+		}
+	]
+}

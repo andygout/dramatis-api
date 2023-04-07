@@ -1,0 +1,23 @@
+{
+	"name": "In the Land of Uz",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Neil LaBute"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Job"
+				}
+			]
+		}
+	]
+}

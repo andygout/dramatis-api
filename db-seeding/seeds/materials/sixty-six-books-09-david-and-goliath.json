@@ -1,0 +1,23 @@
+{
+	"name": "David and Goliath",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Andrew Motion"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Samuel"
+				}
+			]
+		}
+	]
+}

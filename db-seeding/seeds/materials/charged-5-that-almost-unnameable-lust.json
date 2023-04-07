@@ -1,0 +1,32 @@
+{
+	"name": "That Almost Unnameable Lust",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rebecca Lenkiewicz"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Katherine",
+					"differentiator": "That Almost Unnameable Lust"
+				},
+				{
+					"name": "Liz",
+					"differentiator": "That Almost Unnameable Lust"
+				},
+				{
+					"name": "Writer",
+					"differentiator": "That Almost Unnameable Lust"
+				}
+			]
+		}
+	]
+}

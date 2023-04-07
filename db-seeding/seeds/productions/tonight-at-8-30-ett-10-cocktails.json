@@ -1,0 +1,21 @@
+{
+	"uuid": "b03c8381-cd4b-43d2-84a2-cd4b27a488ec",
+	"name": "Cocktails",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "26e92d44-7ab9-4290-bdb9-e5e82f9bf64a"
+		},
+		{
+			"uuid": "1424333d-59a9-4619-9215-b06b2173cd90"
+		},
+		{
+			"uuid": "987a181d-30d4-4545-881d-a1970cf56547"
+		}
+	]
+}

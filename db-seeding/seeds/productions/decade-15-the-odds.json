@@ -1,0 +1,13 @@
+{
+	"uuid": "b99e5e6b-bba2-4757-b468-aafcf05b46c2",
+	"name": "The Odds",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "The Odds"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

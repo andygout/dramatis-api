@@ -1,0 +1,31 @@
+{
+	"uuid": "936ebdfd-dd6b-479e-80d7-a58f2825f182",
+	"name": "David and Goliath",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "David and Goliath"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rob Hastie"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,88 @@
+{
+	"uuid": "3f854438-739f-4d2f-b7d8-825828a6e90c",
+	"name": "Shadow Play",
+	"startDate": "2006-07-20",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Shadow Play"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"cast": [
+		{
+			"name": "Josefina Gabriele",
+			"roles": [
+				{
+					"name": "Victoria Gayforth",
+					"characterName": "Victoria (Vicky) Gayforth"
+				}
+			]
+		},
+		{
+			"name": "Tamzin Griffin",
+			"roles": [
+				{
+					"name": "Martha Cunningham"
+				}
+			]
+		},
+		{
+			"name": "Susan Wooldridge",
+			"roles": [
+				{
+					"name": "Lena"
+				}
+			]
+		},
+		{
+			"name": "Alexander Hanson",
+			"roles": [
+				{
+					"name": "Simon Gayforth"
+				}
+			]
+		},
+		{
+			"name": "Madeleine Worrall",
+			"roles": [
+				{
+					"name": "Sibyl Heston"
+				}
+			]
+		},
+		{
+			"name": "Richard Hansell",
+			"roles": [
+				{
+					"name": "Michael Doyle"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Bond",
+			"roles": [
+				{
+					"name": "A Young Man"
+				}
+			]
+		},
+		{
+			"name": "Nigel Anthony",
+			"roles": [
+				{
+					"name": "George Cunningham"
+				}
+			]
+		},
+		{
+			"name": "Peter Moreton",
+			"roles": [
+				{
+					"name": "Hodge"
+				}
+			]
+		}
+	]
+}

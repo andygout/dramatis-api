@@ -1,0 +1,83 @@
+{
+	"uuid": "ece672de-8c3a-4615-93e5-457c58b233a3",
+	"name": "Fatal Light",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "Fatal Light"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"cast": [
+		{
+			"name": "Isabella Mason",
+			"roles": [
+				{
+					"name": "Aine"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Scroggs",
+			"roles": [
+				{
+					"name": "Jay"
+				}
+			]
+		},
+		{
+			"name": "Ony Uhiara",
+			"roles": [
+				{
+					"name": "Kerry"
+				}
+			]
+		},
+		{
+			"name": "Ashley McGuire",
+			"roles": [
+				{
+					"name": "Maggie"
+				}
+			]
+		},
+		{
+			"name": "Emma Noakes",
+			"roles": [
+				{
+					"name": "Policewoman"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Lucy Morrison"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Claire Essex"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Teya Lanzon"
+				}
+			]
+		}
+	]
+}

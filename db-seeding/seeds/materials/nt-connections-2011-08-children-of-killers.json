@@ -1,0 +1,45 @@
+{
+	"name": "Children of Killers",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Katori Hall"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Emmanuel"
+				},
+				{
+					"name": "Mama"
+				},
+				{
+					"name": "Bosco"
+				},
+				{
+					"name": "Vincent",
+					"differentiator": "Children of Killers"
+				},
+				{
+					"name": "Esperance"
+				},
+				{
+					"name": "Felicite"
+				},
+				{
+					"name": "Innocent"
+				},
+				{
+					"name": "Chorus of Ghosts"
+				}
+			]
+		}
+	]
+}

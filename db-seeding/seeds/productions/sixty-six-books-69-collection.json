@@ -1,0 +1,185 @@
+{
+	"name": "Sixty-Six Books",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Sixty-Six Books"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "c8be3fd6-2027-458a-acda-06f4d7fd6f27"
+		},
+		{
+			"uuid": "15138767-2015-4237-b463-c94df00d50a1"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bush Theatre"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "King James Bible Trust"
+				}
+			]
+		},
+		{
+			"name": "supported by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Lottery"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Arts Council England"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Foyle Foundation"
+				},
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Southbank Centre"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Coordinators",
+			"entities": [
+				{
+					"name": "Josie Rourke"
+				},
+				{
+					"name": "Christopher Haydon"
+				},
+				{
+					"name": "Rachel Holmes"
+				},
+				{
+					"name": "Ben Power"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Will Evans"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Sam Chandley"
+				}
+			]
+		},
+		{
+			"name": "Associate Director",
+			"entities": [
+				{
+					"name": "Rob Hastie"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Josh Seymour"
+				}
+			]
+		},
+		{
+			"name": "Assistant Lighting Designer",
+			"entities": [
+				{
+					"name": "Nic Farman"
+				}
+			]
+		},
+		{
+			"name": "Assistant Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Meehan"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Company Stage Manager",
+			"entities": [
+				{
+					"name": "Helen Gaynor"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Managers",
+			"entities": [
+				{
+					"name": "Rachel Gillard"
+				},
+				{
+					"name": "Rachael Miller"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Elisabeth Donaghy"
+				},
+				{
+					"name": "Kathryn Linnell"
+				},
+				{
+					"name": "Phillip Richardson"
+				},
+				{
+					"name": "Penny Salway"
+				}
+			]
+		},
+		{
+			"name": "Stage Management Intern",
+			"entities": [
+				{
+					"name": "Ingeborg Ugland"
+				}
+			]
+		}
+	]
+}

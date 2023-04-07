@@ -30,13 +30,15 @@
 					"name": "Cora"
 				},
 				{
-					"name": "Chris"
+					"name": "Chris",
+					"differentiator": "Calendar Girls"
 				},
 				{
 					"name": "Annie"
 				},
 				{
-					"name": "Jessie"
+					"name": "Jessie",
+					"differentiator": "Calendar Girls"
 				},
 				{
 					"name": "Celia"
@@ -65,7 +67,8 @@
 					"name": "Lawrence"
 				},
 				{
-					"name": "Liam"
+					"name": "Liam",
+					"differentiator": "Calendar Girls"
 				},
 				{
 					"name": "Elaine"

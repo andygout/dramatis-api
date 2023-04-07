@@ -1,0 +1,45 @@
+{
+	"name": "I'm Spilling My Heart Out Here",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Stacey Gregg"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Dom"
+				},
+				{
+					"name": "Osh"
+				},
+				{
+					"name": "Harley"
+				},
+				{
+					"name": "Wilson"
+				},
+				{
+					"name": "Karen"
+				},
+				{
+					"name": "Jody"
+				},
+				{
+					"name": "Alexa"
+				},
+				{
+					"name": "Sean",
+					"differentiator": "I'm Spilling My Heart Out Here"
+				}
+			]
+		}
+	]
+}

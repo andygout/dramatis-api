@@ -1,0 +1,23 @@
+{
+	"name": "Cetacean",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nick Laird"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Jonah"
+				}
+			]
+		}
+	]
+}

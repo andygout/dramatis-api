@@ -1,0 +1,38 @@
+{
+	"name": "Red Peppers",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "George Pepper"
+				},
+				{
+					"name": "Lily Pepper"
+				},
+				{
+					"name": "Alf"
+				},
+				{
+					"name": "Bert Bentley"
+				},
+				{
+					"name": "Mr Edwards"
+				},
+				{
+					"name": "Mabel Grace"
+				}
+			]
+		}
+	]
+}

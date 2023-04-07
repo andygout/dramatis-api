@@ -1,0 +1,23 @@
+{
+	"name": "Snow in Sheffield",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Helen Mort"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Peter"
+				}
+			]
+		}
+	]
+}

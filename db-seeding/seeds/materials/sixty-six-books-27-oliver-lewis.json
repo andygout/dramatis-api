@@ -1,0 +1,23 @@
+{
+	"name": "Oliver Lewis",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jack Thorne"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Daniel"
+				}
+			]
+		}
+	]
+}

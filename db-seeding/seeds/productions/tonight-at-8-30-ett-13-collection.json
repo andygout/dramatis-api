@@ -1,0 +1,194 @@
+{
+	"name": "Tonight at 8.30",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Tonight at 8.30"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "b03c8381-cd4b-43d2-84a2-cd4b27a488ec"
+		},
+		{
+			"uuid": "fe001777-1dd2-49a8-bb15-1635e952f201"
+		},
+		{
+			"uuid": "c1e764c4-98b7-45a2-947c-22486bc53688"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Nuffield"
+				},
+				{
+					"model": "COMPANY",
+					"name": "English Touring Theatre"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Blanche McIntyre"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Robert Innes Hopkins"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Johanna Town"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Gregory Clarke"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Michael Haslam"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Bill Deamer"
+				}
+			]
+		},
+		{
+			"name": "Assistant Choreographer",
+			"entities": [
+				{
+					"name": "Kylie Anne Cruikshanks"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Natasha Jenkins"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anna Cooper"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Felix Davies"
+				}
+			]
+		},
+		{
+			"name": "Company Stage Manager",
+			"entities": [
+				{
+					"name": "Patricia Davenport"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Karen Habens"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Chris Peterson"
+				}
+			]
+		},
+		{
+			"name": "Tour Technician",
+			"entities": [
+				{
+					"name": "Liam Cleary"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Chrissy Maddison"
+				}
+			]
+		},
+		{
+			"name": "Wardrobe and Wigs Mistress",
+			"entities": [
+				{
+					"name": "Daphne Bates"
+				}
+			]
+		},
+		{
+			"name": "Relights",
+			"entities": [
+				{
+					"name": "Tim Bray"
+				}
+			]
+		},
+		{
+			"name": "Scenic Art",
+			"entities": [
+				{
+					"name": "Gerard Strong"
+				}
+			]
+		},
+		{
+			"name": "Scenery Construction",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Scenic Workshop"
+				}
+			]
+		}
+	]
+}

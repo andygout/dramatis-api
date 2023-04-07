@@ -1,0 +1,39 @@
+{
+	"uuid": "a9fa3f9b-ab78-41e6-8aae-c90be52b9ba8",
+	"name": "Capernaum",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Capernaum"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Robin Soans"
+		},
+		{
+			"name": "John Ramm"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tamara Harvey"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

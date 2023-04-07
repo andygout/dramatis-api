@@ -1,0 +1,23 @@
+{
+	"name": "Flare",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Adam Foulds"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Micah"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,67 @@
+{
+	"uuid": "f1d644b1-23ee-427f-8b68-860a4db7ff56",
+	"name": "Taken",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "Taken"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"cast": [
+		{
+			"name": "Beatie Edney",
+			"roles": [
+				{
+					"name": "Della"
+				}
+			]
+		},
+		{
+			"name": "Janet Henfrey",
+			"roles": [
+				{
+					"name": "Nana Nola"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Oldfield",
+			"roles": [
+				{
+					"name": "Nola"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Caroline Steinbeis"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Rebecca Carnell"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Dayna Moyes"
+				}
+			]
+		}
+	]
+}

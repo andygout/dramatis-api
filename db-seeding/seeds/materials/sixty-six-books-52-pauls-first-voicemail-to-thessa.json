@@ -1,0 +1,23 @@
+{
+	"name": "Paul's First Voicemail to Thessa",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "D C Jackson"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Thessalonians"
+				}
+			]
+		}
+	]
+}

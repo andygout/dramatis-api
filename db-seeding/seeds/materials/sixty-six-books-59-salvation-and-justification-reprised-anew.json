@@ -1,0 +1,23 @@
+{
+	"name": "Salvation and Justification Reprised Anew",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Brian Chikwava"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "James"
+				}
+			]
+		}
+	]
+}

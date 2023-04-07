@@ -1,0 +1,42 @@
+{
+	"uuid": "49bd3eb9-a915-4fb5-b83f-a6419377a518",
+	"name": "Concerning Faith",
+	"startDate": "2011-10-13",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Concerning Faith"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Patrick Drury"
+		},
+		{
+			"name": "William Gaunt"
+		},
+		{
+			"name": "Christopher Ravenscroft"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Philip Franks"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

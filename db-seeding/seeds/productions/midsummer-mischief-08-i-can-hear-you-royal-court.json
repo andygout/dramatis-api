@@ -1,0 +1,104 @@
+{
+	"uuid": "f06b45f8-6fbc-4db8-9f38-5908196025f6",
+	"name": "I Can Hear You",
+	"startDate": "2014-07-16",
+	"endDate": "2014-07-17",
+	"material": {
+		"name": "I Can Hear You"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Upstairs"
+	},
+	"cast": [
+		{
+			"name": "Robert Boulter",
+			"roles": [
+				{
+					"name": "Tommy"
+				}
+			]
+		},
+		{
+			"name": "John Bowe",
+			"roles": [
+				{
+					"name": "David"
+				}
+			]
+		},
+		{
+			"name": "Scarlett Brookes",
+			"roles": [
+				{
+					"name": "Ellie"
+				}
+			]
+		},
+		{
+			"name": "Ruth Gemmell",
+			"roles": [
+				{
+					"name": "Ruth"
+				}
+			]
+		},
+		{
+			"name": "Mimi Ndiweni",
+			"roles": [
+				{
+					"name": "Sandra"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jo McInnes"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Max Dorey"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Robin Griggs"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Jon Lawrence"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Pippa Hill"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Anthony Ekundaye Lennon"
+				}
+			]
+		}
+	]
+}

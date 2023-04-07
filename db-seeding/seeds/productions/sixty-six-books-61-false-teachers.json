@@ -1,0 +1,39 @@
+{
+	"uuid": "fd970e21-b0fc-4f78-b35d-abd882f4d046",
+	"name": "False Teachers",
+	"startDate": "2011-10-13",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "False Teachers"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Jamie Samuel"
+		},
+		{
+			"name": "Divian Ladwa"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nessah Muthy"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

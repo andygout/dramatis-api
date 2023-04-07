@@ -1,0 +1,23 @@
+{
+	"uuid": "d4cdb101-5c51-42e0-9630-d5aec92c244c",
+	"name": "Cetacean",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Cetacean"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"creativeCredits": [
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"uuid": "fda8676a-e04a-4e39-a382-6d7af096a56d",
+	"name": "Speed Date",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "Speed Date"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

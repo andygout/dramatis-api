@@ -1,0 +1,44 @@
+{
+	"name": "We Were Dancing",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Louise Charteris"
+				},
+				{
+					"name": "Hubert Charteris"
+				},
+				{
+					"name": "Karl Sandys"
+				},
+				{
+					"name": "Clara Bethel"
+				},
+				{
+					"name": "George Davies"
+				},
+				{
+					"name": "Eva Blake"
+				},
+				{
+					"name": "Major Blake"
+				},
+				{
+					"name": "Ippaga"
+				}
+			]
+		}
+	]
+}

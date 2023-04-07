@@ -1,0 +1,26 @@
+{
+	"name": "His Dark Materials",
+	"differentiator": "1",
+	"format": "novels",
+	"year": "2000",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Philip Pullman"
+				}
+			]
+		}
+	],
+	"subMaterials": [
+		{
+			"name": "Northern Lights"
+		},
+		{
+			"name": "The Subtle Knife"
+		},
+		{
+			"name": "The Amber Spyglass"
+		}
+	]
+}

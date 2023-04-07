@@ -1,0 +1,388 @@
+{
+	"uuid": "44d2dae3-94a2-4332-9ec4-1287bc65c524",
+	"name": "Part Two",
+	"startDate": "2004-11-30",
+	"pressDate": "2004-12-08",
+	"endDate": "2005-04-02",
+	"material": {
+		"name": "Part Two"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Elaine Symons",
+			"roles": [
+				{
+					"name": "Lyra Belacqua"
+				}
+			]
+		},
+		{
+			"name": "Jamie Harding",
+			"roles": [
+				{
+					"name": "Pantalaimon"
+				},
+				{
+					"name": "Lyra's Death"
+				}
+			]
+		},
+		{
+			"name": "Michael Legge",
+			"roles": [
+				{
+					"name": "Will Parry"
+				}
+			]
+		},
+		{
+			"name": "Ian Gelder",
+			"roles": [
+				{
+					"name": "President of the Consistorial Court"
+				}
+			]
+		},
+		{
+			"name": "Elliot Levey",
+			"roles": [
+				{
+					"name": "Brother Jasper"
+				},
+				{
+					"name": "Kaisa"
+				}
+			]
+		},
+		{
+			"name": "Victoria Moseley",
+			"roles": [
+				{
+					"name": "Perpetua"
+				},
+				{
+					"name": "Harpy",
+					"characterName": "Harpies"
+				},
+				{
+					"name": "Kirjava"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Boatman"
+				}
+			]
+		},
+		{
+			"name": "Lesley Manville",
+			"roles": [
+				{
+					"name": "Mrs Coulter"
+				}
+			]
+		},
+		{
+			"name": "Leo Kay",
+			"roles": [
+				{
+					"name": "The Golden Monkey"
+				}
+			]
+		},
+		{
+			"name": "Adjoa Andoh",
+			"roles": [
+				{
+					"name": "Serafina Pekkala"
+				}
+			]
+		},
+		{
+			"name": "Helen Murton",
+			"roles": [
+				{
+					"name": "Pipistrelle"
+				},
+				{
+					"name": "Hannah",
+					"characterName": "The Jones"
+				},
+				{
+					"name": "Harpy",
+					"characterName": "Harpies"
+				}
+			]
+		},
+		{
+			"name": "Vanessa Earl",
+			"roles": [
+				{
+					"name": "Caitlin"
+				},
+				{
+					"name": "Lady Salmakia"
+				}
+			]
+		},
+		{
+			"name": "Emma Manton",
+			"roles": [
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Stelmaria"
+				}
+			]
+		},
+		{
+			"name": "Michelle Dockery",
+			"roles": [
+				{
+					"name": "Grendella"
+				},
+				{
+					"name": "Angelica"
+				}
+			]
+		},
+		{
+			"name": "David Killick",
+			"roles": [
+				{
+					"name": "Giacomo Paradisi"
+				},
+				{
+					"name": "Old Mother Jones' Death",
+					"characterName": "The Jones' Deaths"
+				}
+			]
+		},
+		{
+			"name": "Marc Buchner",
+			"roles": [
+				{
+					"name": "Paolo"
+				}
+			]
+		},
+		{
+			"name": "David Harewood",
+			"roles": [
+				{
+					"name": "Lord Asriel"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Lord Roke"
+				}
+			]
+		},
+		{
+			"name": "Alan Perrin",
+			"roles": [
+				{
+					"name": "Chevalier Tialys"
+				},
+				{
+					"name": "Perkins"
+				}
+			]
+		},
+		{
+			"name": "Rachel Sanders",
+			"roles": [
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "No-Name"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Jopari"
+				}
+			]
+		},
+		{
+			"name": "Samuel Roukin",
+			"roles": [
+				{
+					"name": "Balthamos"
+				}
+			]
+		},
+		{
+			"name": "Pascal Langdale",
+			"roles": [
+				{
+					"name": "Baruch"
+				}
+			]
+		},
+		{
+			"name": "Alistair Petrie",
+			"roles": [
+				{
+					"name": "Iorek Byrnison"
+				}
+			]
+		},
+		{
+			"name": "Don Gallagher",
+			"roles": [
+				{
+					"name": "Jeptha Jones",
+					"characterName": "The Jones"
+				}
+			]
+		},
+		{
+			"name": "Samantha Lawson",
+			"roles": [
+				{
+					"name": "Harpy",
+					"characterName": "Harpies"
+				}
+			]
+		},
+		{
+			"name": "Darren Hart",
+			"roles": [
+				{
+					"name": "Roger Parslow"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Hytner"
+				},
+				{
+					"name": "Matt Wilde"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Giles Cadle"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Jon Morrell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Aletta Collins"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Jonathan Dove"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Mark Bousie"
+				}
+			]
+		},
+		{
+			"name": "Puppet Designer",
+			"entities": [
+				{
+					"name": "Michael Curry"
+				}
+			]
+		},
+		{
+			"name": "Video Graphics Designers",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Gray Circle",
+					"members": [
+						{
+							"name": "Thomas Gray"
+						},
+						{
+							"name": "Yuri Tanaka"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

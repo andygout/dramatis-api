@@ -1,0 +1,51 @@
+{
+	"name": "Mobile Phone Show",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jim Cartwright"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Phone Loner"
+				},
+				{
+					"name": "Presenter"
+				},
+				{
+					"name": "Brains"
+				},
+				{
+					"name": "Georgie"
+				},
+				{
+					"name": "Sammie"
+				},
+				{
+					"name": "Billie"
+				},
+				{
+					"name": "BB"
+				},
+				{
+					"name": "TJ"
+				},
+				{
+					"name": "Texters"
+				},
+				{
+					"name": "Chorus",
+					"differentiator": "Mobile Phone Show"
+				}
+			]
+		}
+	]
+}

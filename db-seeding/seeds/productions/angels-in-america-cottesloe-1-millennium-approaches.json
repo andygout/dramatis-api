@@ -1,0 +1,313 @@
+{
+	"uuid": "d43773d8-de44-4cff-a2b5-9cc523482e71",
+	"name": "Millennium Approaches",
+	"startDate": "1992-01-17",
+	"pressDate": "1992-01-23",
+	"endDate": "1992-11-07",
+	"material": {
+		"name": "Millennium Approaches"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nancy Crane",
+			"roles": [
+				{
+					"name": "The Voice"
+				}
+			]
+		},
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "Mr Lies"
+				}
+			]
+		},
+		{
+			"name": "Jeffrey Chiswick",
+			"roles": [
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Martin Heller"
+				},
+				{
+					"name": "Prior 1"
+				}
+			]
+		},
+		{
+			"name": "Henry Goodman",
+			"roles": [
+				{
+					"name": "Roy M Cohn"
+				},
+				{
+					"name": "Prior 2"
+				}
+			]
+		},
+		{
+			"name": "Nick Reding",
+			"roles": [
+				{
+					"name": "Eskimo",
+					"characterName": "The Eskimo"
+				},
+				{
+					"name": "Joseph Porter Pitt"
+				}
+			]
+		},
+		{
+			"name": "Felicity Montagu",
+			"roles": [
+				{
+					"name": "Harper Amaty Pitt"
+				}
+			]
+		},
+		{
+			"name": "Marcus D'Amico",
+			"roles": [
+				{
+					"name": "Louis Ironson"
+				}
+			]
+		},
+		{
+			"name": "Sean Chapman",
+			"roles": [
+				{
+					"name": "Prior Walter"
+				},
+				{
+					"name": "Man in the Park",
+					"characterName": "The Man in the Park"
+				}
+			]
+		},
+		{
+			"name": "Rosemary Martin",
+			"roles": [
+				{
+					"name": "Ethel Rosenberg"
+				},
+				{
+					"name": "Hannah Porter Pitt"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Declan Donnellan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Nick Ormerod"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mick Hughes"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Paddy Cunneen"
+				}
+			]
+		},
+		{
+			"name": "Director of Movement",
+			"entities": [
+				{
+					"name": "Jane Gibson"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Joan Washington"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"entities": [
+				{
+					"name": "Patsy Rodenburg"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Freya Edwards"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Jason Barnes"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Angie Burns"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"entities": [
+				{
+					"name": "John Haynes"
+				}
+			]
+		},
+		{
+			"name": "Staff Directors",
+			"entities": [
+				{
+					"name": "Kenneth Mackintosh"
+				},
+				{
+					"name": "Fiona Laird"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Andrew Eastcott"
+				},
+				{
+					"name": "Paul Greaves"
+				},
+				{
+					"name": "Emma B Lloyd"
+				}
+			]
+		},
+		{
+			"name": "Music Programming Consultant",
+			"entities": [
+				{
+					"name": "Duncan Chave"
+				}
+			]
+		},
+		{
+			"name": "Programme Designer",
+			"entities": [
+				{
+					"name": "Shima Hyde"
+				}
+			]
+		},
+		{
+			"name": "Designer of Poster and Programme Cover",
+			"entities": [
+				{
+					"name": "Michael Mayhew"
+				}
+			]
+		},
+		{
+			"name": "Stage Managers",
+			"entities": [
+				{
+					"name": "David Milling"
+				},
+				{
+					"name": "Ernest Hall"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Bray"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Managers",
+			"entities": [
+				{
+					"name": "Liz Ryder"
+				},
+				{
+					"name": "Angela Bissett"
+				},
+				{
+					"name": "Helen Bower"
+				}
+			]
+		},
+		{
+			"name": "Research Advisor",
+			"entities": [
+				{
+					"name": "Derek Wax"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Miles King"
+				}
+			]
+		}
+	]
+}

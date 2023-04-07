@@ -1,0 +1,23 @@
+{
+	"name": "The Middle Man",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anthony Weigh"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Hebrews"
+				}
+			]
+		}
+	]
+}

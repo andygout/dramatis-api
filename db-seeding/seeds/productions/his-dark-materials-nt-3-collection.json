@@ -1,0 +1,21 @@
+{
+	"name": "His Dark Materials",
+	"startDate": "2003-12-04",
+	"pressDate": "2003-12-20",
+	"endDate": "2004-03-20",
+	"material": {
+		"name": "His Dark Materials",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "822a4392-913f-4a59-b564-715ecffe37e3"
+		},
+		{
+			"uuid": "00d11b13-e1c8-47ae-a141-ba7c9ebf572b"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"uuid": "2bdc1212-0633-4aa8-bc2d-388ade8cc5c4",
+	"name": "Epic",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "Epic"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

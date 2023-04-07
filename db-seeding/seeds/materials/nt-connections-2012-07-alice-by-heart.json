@@ -1,0 +1,135 @@
+{
+	"name": "Alice by Heart",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Steven Sater"
+				},
+				{
+					"name": "Duncan Sheik"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alice",
+					"differentiator": "Alice by Heart"
+				},
+				{
+					"name": "Angus",
+					"differentiator": "Alice by Heart"
+				},
+				{
+					"name": "March Hare"
+				},
+				{
+					"name": "Knave of Hearts"
+				},
+				{
+					"name": "Dodgy"
+				},
+				{
+					"name": "Duchess"
+				},
+				{
+					"name": "Alfred Hallam"
+				},
+				{
+					"name": "White Rabbit"
+				},
+				{
+					"name": "Queen of Hearts"
+				},
+				{
+					"name": "Harold Pudding"
+				},
+				{
+					"name": "Mad Hatter"
+				},
+				{
+					"name": "Knave of Clubs"
+				},
+				{
+					"name": "Dodo"
+				},
+				{
+					"name": "Lory"
+				},
+				{
+					"name": "Buxby"
+				},
+				{
+					"name": "Duck"
+				},
+				{
+					"name": "ARP Warden"
+				},
+				{
+					"name": "Mouse"
+				},
+				{
+					"name": "Tabitha"
+				},
+				{
+					"name": "Cheshire Cat"
+				},
+				{
+					"name": "Nigel",
+					"differentiator": "Alice by Heart"
+				},
+				{
+					"name": "Eaglet"
+				},
+				{
+					"name": "Dormouse"
+				},
+				{
+					"name": "Ada"
+				},
+				{
+					"name": "Little Queen of Hearts"
+				},
+				{
+					"name": "Crab"
+				},
+				{
+					"name": "Mabel"
+				},
+				{
+					"name": "Magpie"
+				},
+				{
+					"name": "Ace of Diamonds"
+				},
+				{
+					"name": "Canary"
+				},
+				{
+					"name": "Caterpillars"
+				},
+				{
+					"name": "Red Cross Nurses"
+				},
+				{
+					"name": "Mock Alices"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Alice by Heart"
+				},
+				{
+					"name": "Cards"
+				},
+				{
+					"name": "Children"
+				}
+			]
+		}
+	]
+}

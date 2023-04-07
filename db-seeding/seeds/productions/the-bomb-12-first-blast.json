@@ -26,5 +26,15 @@
 		{
 			"uuid": "8ee8ac7a-736c-4b9a-b1a4-93b986a52cec"
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Chief Electrician",
+			"entities": [
+				{
+					"name": "Andy Furby"
+				}
+			]
+		}
 	]
 }

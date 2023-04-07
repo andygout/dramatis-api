@@ -1,0 +1,54 @@
+{
+	"uuid": "d6f1b9b7-a6b0-476d-a69f-5558584466c9",
+	"name": "In the Land of Uz",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "In the Land of Uz"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Carrie Quinlan"
+		},
+		{
+			"name": "John Cummins"
+		},
+		{
+			"name": "James Hillier"
+		},
+		{
+			"name": "Pandora Colin"
+		},
+		{
+			"name": "Emma Amos"
+		},
+		{
+			"name": "Peter Bankolé"
+		},
+		{
+			"name": "Lily Bevan"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rob Hastie"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

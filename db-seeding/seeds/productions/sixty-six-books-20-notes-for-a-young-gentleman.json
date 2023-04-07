@@ -1,0 +1,39 @@
+{
+	"uuid": "ad331fb0-469f-4da5-aa9d-9a3aa9890a29",
+	"name": "Notes for a Young Gentleman",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Notes for a Young Gentleman"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Peter Sandys-Clark"
+		},
+		{
+			"name": "Ben Righton"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Philip Franks"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

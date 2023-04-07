@@ -1,0 +1,36 @@
+{
+	"uuid": "6893e4d1-6715-4cef-85ec-ecc4a3df5b43",
+	"name": "Beardy",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Beardy"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Obi Abili"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Róisín McBrinn"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Hebe George"
+				}
+			]
+		}
+	]
+}

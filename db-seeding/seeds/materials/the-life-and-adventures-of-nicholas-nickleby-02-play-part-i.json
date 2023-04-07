@@ -1,0 +1,25 @@
+{
+	"name": "Part I",
+	"format": "play",
+	"year": "1980",
+	"writingCredits": [
+		{
+			"name": "adapted for the stage by",
+			"entities": [
+				{
+					"name": "David Edgar"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Life and Adventures of Nicholas Nickleby",
+					"differentiator": "1"
+				}
+			]
+		}
+	]
+}

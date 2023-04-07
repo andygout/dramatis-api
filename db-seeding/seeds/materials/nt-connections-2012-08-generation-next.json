@@ -1,0 +1,48 @@
+{
+	"name": "Generation Next",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Meera Syal"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nina"
+				},
+				{
+					"name": "Rikki"
+				},
+				{
+					"name": "Anita"
+				},
+				{
+					"name": "Kiran"
+				},
+				{
+					"name": "Vip"
+				},
+				{
+					"name": "Vikram"
+				},
+				{
+					"name": "Sally"
+				},
+				{
+					"name": "Raj",
+					"differentiator": "Generation Next"
+				},
+				{
+					"name": "Dave"
+				}
+			]
+		}
+	]
+}

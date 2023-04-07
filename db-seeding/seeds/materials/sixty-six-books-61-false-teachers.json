@@ -1,0 +1,23 @@
+{
+	"name": "False Teachers",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Suhayla El Bushra"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "2 Peter"
+				}
+			]
+		}
+	]
+}

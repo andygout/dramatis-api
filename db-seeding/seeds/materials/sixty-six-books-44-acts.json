@@ -1,0 +1,23 @@
+{
+	"name": "Acts",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lachlan Mackinnon"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Acts of the Apostles"
+				}
+			]
+		}
+	]
+}

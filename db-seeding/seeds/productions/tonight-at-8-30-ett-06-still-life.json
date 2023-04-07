@@ -1,0 +1,93 @@
+{
+	"uuid": "82c0685e-79af-438c-ae43-1975af8277eb",
+	"name": "Still Life",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Still Life"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Shereen Martin",
+			"roles": [
+				{
+					"name": "Laura Jesson"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Myrtle Bagot"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Besterman",
+			"roles": [
+				{
+					"name": "Beryl Waters"
+				}
+			]
+		},
+		{
+			"name": "Orlando Wells",
+			"roles": [
+				{
+					"name": "Stanley"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Albert Godby"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Alec Harvey"
+				}
+			]
+		},
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "Bill"
+				},
+				{
+					"name": "Young Man"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Johnnie"
+				}
+			]
+		},
+		{
+			"name": "Olivia Poulet",
+			"roles": [
+				{
+					"name": "Mildred"
+				},
+				{
+					"name": "Dolly Messiter"
+				}
+			]
+		}
+	]
+}

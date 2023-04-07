@@ -1,0 +1,32 @@
+{
+	"name": "Fumed Oak",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Henry Gow"
+				},
+				{
+					"name": "Doris Gow"
+				},
+				{
+					"name": "Elsie Gow"
+				},
+				{
+					"name": "Mrs Rockett"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"name": "Without Love",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Matt Charman"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Corinthians"
+				}
+			]
+		}
+	]
+}

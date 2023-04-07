@@ -1,0 +1,340 @@
+{
+	"uuid": "4ab87bf3-b49b-497a-8bb1-a1d07d024580",
+	"name": "Part Two",
+	"startDate": "2009-03-13",
+	"pressDate": "2009-03-26",
+	"endDate": "2009-04-18",
+	"material": {
+		"name": "Part Two"
+	},
+	"venue": {
+		"name": "The House"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Birmingham Repertory Theatre Company"
+				},
+				{
+					"model": "COMPANY",
+					"name": "West Yorkshire Playhouse"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Centreline UK Ltd"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Amy McAllister",
+			"roles": [
+				{
+					"name": "Lyra Belacqua"
+				}
+			]
+		},
+		{
+			"name": "Gerard Casey",
+			"roles": [
+				{
+					"name": "Pantalaimon"
+				},
+				{
+					"name": "Lyra's Death"
+				}
+			]
+		},
+		{
+			"name": "Nick Barber",
+			"roles": [
+				{
+					"name": "Will Parry"
+				}
+			]
+		},
+		{
+			"name": "Timothy Keightley",
+			"roles": [
+				{
+					"name": "President of the Consistorial Court"
+				},
+				{
+					"name": "Old Mother Jones' Death",
+					"characterName": "The Jones' Deaths"
+				}
+			]
+		},
+		{
+			"name": "Daniel Brocklebank",
+			"roles": [
+				{
+					"name": "Brother Jasper"
+				},
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Baruch"
+				},
+				{
+					"name": "Jeptha Jones",
+					"characterName": "The Jones"
+				}
+			]
+		},
+		{
+			"name": "Minnie Crowe",
+			"roles": [
+				{
+					"name": "Perpetua"
+				},
+				{
+					"name": "Pipistrelle"
+				},
+				{
+					"name": "Angelica"
+				},
+				{
+					"name": "Kirjava"
+				}
+			]
+		},
+		{
+			"name": "Emma Manton",
+			"roles": [
+				{
+					"name": "Serafina Pekkala"
+				},
+				{
+					"name": "Stelmaria"
+				},
+				{
+					"name": "Hannah Jones",
+					"characterName": "The Jones"
+				}
+			]
+		},
+		{
+			"name": "Josie Daxter",
+			"roles": [
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Lady Salmakia"
+				},
+				{
+					"name": "Jeptha's Death",
+					"characterName": "The Jones' Deaths"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Asprey",
+			"roles": [
+				{
+					"name": "Grendella"
+				},
+				{
+					"name": "Mrs Coulter"
+				}
+			]
+		},
+		{
+			"name": "Christopher Ettridge",
+			"roles": [
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Boatman"
+				}
+			]
+		},
+		{
+			"name": "Ben Thompson",
+			"roles": [
+				{
+					"name": "The Golden Monkey"
+				},
+				{
+					"name": "Balthamos"
+				},
+				{
+					"name": "Hannah's Death",
+					"characterName": "The Jones' Deaths"
+				}
+			]
+		},
+		{
+			"name": "John Hodgkinson",
+			"roles": [
+				{
+					"name": "Lord Asriel"
+				}
+			]
+		},
+		{
+			"name": "Ian Conningham",
+			"roles": [
+				{
+					"name": "Lord Roke"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Asbury",
+			"roles": [
+				{
+					"name": "Chevalier Tialys"
+				},
+				{
+					"name": "Jopari"
+				}
+			]
+		},
+		{
+			"name": "Emma Pallant",
+			"roles": [
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "Old Mother Jones",
+					"characterName": "The Jones"
+				},
+				{
+					"name": "No-Name"
+				}
+			]
+		},
+		{
+			"name": "Thomas Aldridge",
+			"roles": [
+				{
+					"name": "Paolo"
+				},
+				{
+					"name": "Roger Parslow"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Lumb",
+			"roles": [
+				{
+					"name": "Iorek Byrnison"
+				},
+				{
+					"name": "Perkins"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Rachel Kavanaugh"
+				},
+				{
+					"name": "Sarah Esdaile"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ruari Murchison"
+				}
+			]
+		},
+		{
+			"name": "Puppetry",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Blind Summit",
+					"members": [
+						{
+							"name": "Mark Down"
+						},
+						{
+							"name": "Nick Barnes"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Malcolm Rippeth"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Dan Hoole"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Toby Sedgwick"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Catherine Jayes"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Kate Walters"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Tim Ford"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Kay Magson"
+				}
+			]
+		}
+	]
+}

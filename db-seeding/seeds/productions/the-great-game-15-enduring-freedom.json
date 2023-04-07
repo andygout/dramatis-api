@@ -1,0 +1,27 @@
+{
+	"uuid": "91d1073d-5abf-482d-87bd-62b9e53b0e5d",
+	"name": "Enduring Freedom (1996-2009)",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Enduring Freedom (1996-2009)"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "dee4be33-d8d3-4fd5-a5bd-bf6a29f6a583"
+		},
+		{
+			"uuid": "a3ec8243-af4d-4af6-9018-966b9cd8a43d"
+		},
+		{
+			"uuid": "8e9821b1-012e-4a60-8290-3ebc9c68dad4"
+		},
+		{
+			"uuid": "09304c50-8736-4de3-9e86-8225c8905abc"
+		}
+	]
+}

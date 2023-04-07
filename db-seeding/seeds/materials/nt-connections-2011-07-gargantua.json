@@ -1,0 +1,47 @@
+{
+	"name": "Gargantua",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Carl Grose"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Prime Minister"
+				},
+				{
+					"name": "Pippa Wellard"
+				},
+				{
+					"name": "Jeff Creams"
+				},
+				{
+					"name": "Robin Wilt"
+				},
+				{
+					"name": "General Malahyde"
+				},
+				{
+					"name": "Professor Swann"
+				},
+				{
+					"name": "Arnie"
+				},
+				{
+					"name": "Lionel"
+				},
+				{
+					"name": "Dr Lucky"
+				}
+			]
+		}
+	]
+}

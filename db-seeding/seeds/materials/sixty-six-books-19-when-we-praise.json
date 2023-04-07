@@ -1,0 +1,23 @@
+{
+	"name": "When We Praise",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Kwame Kwei-Armah"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Psalms"
+				}
+			]
+		}
+	]
+}

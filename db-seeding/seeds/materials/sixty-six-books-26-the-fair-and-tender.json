@@ -1,0 +1,23 @@
+{
+	"name": "The Fair & Tender",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Owen Sheets"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Ezekiel"
+				}
+			]
+		}
+	]
+}

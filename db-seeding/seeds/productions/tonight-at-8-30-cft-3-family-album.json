@@ -1,0 +1,87 @@
+{
+	"uuid": "3928e9dd-af27-4a9d-973f-67bc64caf581",
+	"name": "Family Album",
+	"startDate": "2006-07-13",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Family Album"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"cast": [
+		{
+			"name": "Madeleine Worrall",
+			"roles": [
+				{
+					"name": "Emily Valance"
+				}
+			]
+		},
+		{
+			"name": "Richard Hansell",
+			"roles": [
+				{
+					"name": "Richard Featherways"
+				}
+			]
+		},
+		{
+			"name": "Susan Wooldridge",
+			"roles": [
+				{
+					"name": "Lavinia Featherways"
+				}
+			]
+		},
+		{
+			"name": "Alexander Hanson",
+			"roles": [
+				{
+					"name": "Jasper Featherways"
+				}
+			]
+		},
+		{
+			"name": "Josefina Gabriele",
+			"roles": [
+				{
+					"name": "Jane Featherways"
+				}
+			]
+		},
+		{
+			"name": "Tamzin Griffin",
+			"roles": [
+				{
+					"name": "Harriet Winter"
+				}
+			]
+		},
+		{
+			"name": "Peter Moreton",
+			"roles": [
+				{
+					"name": "Charles Winter"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Bond",
+			"roles": [
+				{
+					"name": "Edward Valance"
+				}
+			]
+		},
+		{
+			"name": "Nigel Anthony",
+			"roles": [
+				{
+					"name": "Burrows"
+				}
+			]
+		}
+	]
+}

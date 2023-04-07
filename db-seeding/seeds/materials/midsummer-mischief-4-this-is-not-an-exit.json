@@ -1,0 +1,32 @@
+{
+	"name": "This Is Not an Exit",
+	"format": "play",
+	"year": "2014",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Abi Zakarian"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Gulch"
+				},
+				{
+					"name": "Nora"
+				},
+				{
+					"name": "Blanche"
+				},
+				{
+					"name": "Ripley"
+				}
+			]
+		}
+	]
+}

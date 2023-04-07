@@ -1,0 +1,88 @@
+{
+	"name": "The New Testament",
+	"format": "division of religious texts",
+	"year": "1611",
+	"subMaterials": [
+		{
+			"name": "The Gospel According to St Matthew"
+		},
+		{
+			"name": "The Gospel According to St Mark"
+		},
+		{
+			"name": "The Gospel According to St Luke"
+		},
+		{
+			"name": "The Gospel According to St John"
+		},
+		{
+			"name": "The Acts of the Apostles"
+		},
+		{
+			"name": "Romans"
+		},
+		{
+			"name": "1 Corinthians"
+		},
+		{
+			"name": "2 Corinthians"
+		},
+		{
+			"name": "Galatians"
+		},
+		{
+			"name": "Ephesians"
+		},
+		{
+			"name": "Philippians"
+		},
+		{
+			"name": "Colossians"
+		},
+		{
+			"name": "1 Thessalonians"
+		},
+		{
+			"name": "2 Thessalonians"
+		},
+		{
+			"name": "1 Timothy"
+		},
+		{
+			"name": "2 Timothy"
+		},
+		{
+			"name": "Titus"
+		},
+		{
+			"name": "Philemon"
+		},
+		{
+			"name": "Hebrews"
+		},
+		{
+			"name": "James"
+		},
+		{
+			"name": "1 Peter"
+		},
+		{
+			"name": "2 Peter"
+		},
+		{
+			"name": "1 John"
+		},
+		{
+			"name": "2 John"
+		},
+		{
+			"name": "3 John"
+		},
+		{
+			"name": "Jude"
+		},
+		{
+			"name": "Revelation"
+		}
+	]
+}

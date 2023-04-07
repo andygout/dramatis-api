@@ -1,0 +1,39 @@
+{
+	"uuid": "8c465140-7a58-4458-8ad8-ad1d2ac5e3a9",
+	"name": "The End of the Alphabet",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The End of the Alphabet"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Nicholas Burns"
+		},
+		{
+			"name": "Amanda Hale"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tamara Harvey"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

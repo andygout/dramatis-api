@@ -1,0 +1,23 @@
+{
+	"name": "Habaccuc Dreams",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Trevor Griffiths"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Habakkuk"
+				}
+			]
+		}
+	]
+}

@@ -26,5 +26,15 @@
 		{
 			"uuid": "5cb24891-5788-41cc-ad41-b404b5869557"
 		}
+	],
+	"crewCredits": [
+		{
+			"name": "Chief Electrician",
+			"entities": [
+				{
+					"name": "Hadyn Williams"
+				}
+			]
+		}
 	]
 }

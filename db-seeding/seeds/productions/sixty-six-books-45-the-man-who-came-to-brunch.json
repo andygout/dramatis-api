@@ -1,0 +1,39 @@
+{
+	"uuid": "1aeed54b-2e99-4ef4-989d-152f36b16b0c",
+	"name": "The Man Who Came to Brunch",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Man Who Came to Brunch"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Helen Anderson"
+		},
+		{
+			"name": "Sarah Solemani"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Róisín McBrinn"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Hebe George"
+				}
+			]
+		}
+	]
+}

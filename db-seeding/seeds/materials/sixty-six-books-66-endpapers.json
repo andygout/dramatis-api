@@ -1,0 +1,23 @@
+{
+	"name": "Endpapers",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Kate Mosse"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Revelation"
+				}
+			]
+		}
+	]
+}

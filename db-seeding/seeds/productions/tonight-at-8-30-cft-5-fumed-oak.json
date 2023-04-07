@@ -1,0 +1,47 @@
+{
+	"uuid": "1243ddb7-d7cc-474e-bd45-3235df1c84c9",
+	"name": "Fumed Oak",
+	"startDate": "2006-07-20",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Fumed Oak"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"cast": [
+		{
+			"name": "Madeleine Worrall",
+			"roles": [
+				{
+					"name": "Elsie Gow"
+				}
+			]
+		},
+		{
+			"name": "Josefina Gabriele",
+			"roles": [
+				{
+					"name": "Doris Gow"
+				}
+			]
+		},
+		{
+			"name": "Susan Wooldridge",
+			"roles": [
+				{
+					"name": "Mrs Rockett"
+				}
+			]
+		},
+		{
+			"name": "Alexander Hanson",
+			"roles": [
+				{
+					"name": "Henry Gow"
+				}
+			]
+		}
+	]
+}

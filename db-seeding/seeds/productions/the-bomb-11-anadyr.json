@@ -8,25 +8,5 @@
 	},
 	"venue": {
 		"name": "Tricycle Theatre"
-	},
-	"producerCredits": [
-		{
-			"entities": [
-				{
-					"model": "COMPANY",
-					"name": "Tricycle Theatre Company"
-				}
-			]
-		}
-	],
-	"creativeCredits": [
-		{
-			"name": "Director",
-			"entities": [
-				{
-					"name": "Nicolas Kent"
-				}
-			]
-		}
-	]
+	}
 }

@@ -1,0 +1,112 @@
+{
+	"uuid": "8a8c491c-4ee7-42e9-bd2b-139aae9f19c3",
+	"name": "Forty-Five Minutes",
+	"startDate": "2013-07-03",
+	"endDate": "2013-07-03",
+	"material": {
+		"name": "Forty-Five Minutes"
+	},
+	"venue": {
+		"name": "The Shed"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Cockburn School"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nathan Pearson",
+			"roles": [
+				{
+					"name": "Nathan"
+				}
+			]
+		},
+		{
+			"name": "Ben Bradley",
+			"roles": [
+				{
+					"name": "Darrel"
+				}
+			]
+		},
+		{
+			"name": "Hannah Quinn",
+			"roles": [
+				{
+					"name": "Alex"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Ellis",
+			"roles": [
+				{
+					"name": "Georgie"
+				}
+			]
+		},
+		{
+			"name": "Keaton Crowther",
+			"roles": [
+				{
+					"name": "Trent"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Coleman",
+			"roles": [
+				{
+					"name": "Lara"
+				}
+			]
+		},
+		{
+			"name": "Annie Aspin",
+			"roles": [
+				{
+					"name": "Louise"
+				}
+			]
+		},
+		{
+			"name": "Joe Ellis",
+			"roles": [
+				{
+					"name": "Michael"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Co-Directors",
+			"entities": [
+				{
+					"name": "Andy Russell"
+				},
+				{
+					"name": "Carmel Bradley"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technical Support",
+			"entities": [
+				{
+					"name": "Andy Newell"
+				}
+
+			]
+		}
+	]
+}

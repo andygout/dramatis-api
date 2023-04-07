@@ -1,0 +1,42 @@
+{
+	"uuid": "6c4d3d24-5276-4008-b5fd-ae16328166c2",
+	"name": "The Milliner and the Weaver",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "The Milliner and the Weaver"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Niamh Cusack",
+			"roles": [
+				{
+					"name": "Henrietta",
+					"characterName": "Henrietta Girvan"
+				}
+			]
+		},
+		{
+			"name": "Stella Gonet",
+			"roles": [
+				{
+					"name": "Elspeth",
+					"characterName": "Elspeth Smith"
+				}
+			]
+		},
+		{
+			"name": "Felix Scott",
+			"roles": [
+				{
+					"name": "Thomas",
+					"characterName": "Thomas Girvan"
+				}
+			]
+		}
+	]
+}

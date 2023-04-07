@@ -1,0 +1,13 @@
+{
+	"uuid": "fe81cf6d-14b2-4272-ad68-c1adb3c01955",
+	"name": "My Name is Tania Head",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "My Name is Tania Head"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

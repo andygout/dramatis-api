@@ -1,0 +1,39 @@
+{
+	"uuid": "d2c1e579-f5e4-4afc-a66c-49a8d3836605",
+	"name": "God is Jealous",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "God is Jealous"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kate Burdette"
+		},
+		{
+			"name": "Rob Ostlere"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Abbey Wright"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

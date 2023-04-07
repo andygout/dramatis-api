@@ -1,0 +1,21 @@
+{
+	"uuid": "c1e764c4-98b7-45a2-947c-22486bc53688",
+	"name": "Dancing",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "9c5f8ee5-faf8-4b4b-8501-7bea0243a023"
+		},
+		{
+			"uuid": "0cbb9951-ecde-4f9b-a639-7762deb595f2"
+		},
+		{
+			"uuid": "4c7e07ce-5f0e-484e-8228-d9a8a97f86bf"
+		}
+	]
+}

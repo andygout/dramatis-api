@@ -1,0 +1,165 @@
+{
+	"name": "Midsummer Mischief",
+	"startDate": "2014-06-14",
+	"endDate": "2014-07-20",
+	"material": {
+		"name": "Midsummer Mischief"
+	},
+	"venue": {
+		"name": "Courtyard Theatre",
+		"differentiator": "2"
+	},
+	"subProductions": [
+		{
+			"uuid": "22728ad0-2309-46a7-87b1-68991b7e7fa3"
+		},
+		{
+			"uuid": "16837dae-2fc8-440c-bfee-9736017a2811"
+		},
+		{
+			"uuid": "08e2dd2b-18ac-48c9-a23a-e2786d18e909"
+		},
+		{
+			"uuid": "5faf678f-051f-4846-a139-c3c642706912"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company",
+					"members": [
+						{
+							"name": "Claire Birch"
+						}
+					]
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Literary Manager",
+			"entities": [
+				{
+					"name": "Pippa Hill"
+				}
+			]
+		},
+		{
+			"name": "Literary Projects Coordinator",
+			"entities": [
+				{
+					"name": "Réjane Collard"
+				}
+			]
+		},
+		{
+			"name": "Literary Assistant",
+			"entities": [
+				{
+					"name": "Collette McCarthy"
+				}
+			]
+		},
+		{
+			"name": "Company Text and Voice Work",
+			"entities": [
+				{
+					"name": "Nia Lynn"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Hannah Miller"
+				},
+				{
+					"name": "Annelie Powell"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "David Tanqueray"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Gayle Woodsend"
+				}
+			]
+		},
+		{
+			"name": "Company Manager",
+			"entities": [
+				{
+					"name": "Julia Wade"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Rachel Harris"
+				},
+				{
+					"name": "Martha Mamo"
+				}
+			]
+		},
+		{
+			"name": "Overview Design",
+			"entities": [
+				{
+					"name": "Tom Piper"
+				}
+			]
+		},
+		{
+			"name": "Studio Design and Build",
+			"entities": [
+				{
+					"name": "Tom Piper"
+				},
+				{
+					"name": "Peter Bailey"
+				},
+				{
+					"name": "Julian Cree"
+				},
+				{
+					"name": "David Tanqueray"
+				}
+			]
+		},
+		{
+			"name": "Technicians",
+			"entities": [
+				{
+					"name": "Delfina Angiolini"
+				},
+				{
+					"name": "Jon Lawrence"
+				},
+				{
+					"name": "Tim Owen"
+				},
+				{
+					"name": "Sarah Ware"
+				}
+			]
+		}
+	]
+}

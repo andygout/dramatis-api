@@ -1,0 +1,503 @@
+{
+	"uuid": "822a4392-913f-4a59-b564-715ecffe37e3",
+	"name": "Part One",
+	"startDate": "2003-12-04",
+	"pressDate": "2003-12-20",
+	"endDate": "2004-03-20",
+	"material": {
+		"name": "Part One"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Anna Maxwell Martin",
+			"roles": [
+				{
+					"name": "Lyra Belacqua"
+				}
+			]
+		},
+		{
+			"name": "Samuel Barnett",
+			"roles": [
+				{
+					"name": "Pantalaimon"
+				},
+				{
+					"name": "Ghost Child",
+					"characterName": "Stolen Children"
+				},
+				{
+					"name": "Lyra's Death"
+				}
+			]
+		},
+		{
+			"name": "Dominic Cooper",
+			"roles": [
+				{
+					"name": "Will Parry"
+				},
+				{
+					"name": "Tartar Guard",
+					"characterName": "Tartar Guards"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Professor Hopcraft"
+				},
+				{
+					"name": "Dr Sargent"
+				},
+				{
+					"name": "Top-Hatted Man"
+				},
+				{
+					"name": "Jopari"
+				}
+			]
+		},
+		{
+			"name": "Timothy Dalton",
+			"roles": [
+				{
+					"name": "Lord Asriel"
+				}
+			]
+		},
+		{
+			"name": "Emily Mytton",
+			"roles": [
+				{
+					"name": "Stelmaria"
+				},
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Mrs Coulter's Party Guest",
+					"characterName": "Party Guests"
+				}
+			]
+		},
+		{
+			"name": "Patricia Hodge",
+			"roles": [
+				{
+					"name": "Mrs Coulter"
+				}
+			]
+		},
+		{
+			"name": "Tim McMullan",
+			"roles": [
+				{
+					"name": "Fra Pavel"
+				},
+				{
+					"name": "Lee Scoresby"
+				}
+			]
+		},
+		{
+			"name": "Russell Tovey",
+			"roles": [
+				{
+					"name": "Roger Parslow"
+				},
+				{
+					"name": "Tartar Guard",
+					"characterName": "Tartar Guards"
+				}
+			]
+		},
+		{
+			"name": "Jamie Harding",
+			"roles": [
+				{
+					"name": "Billy Costa"
+				},
+				{
+					"name": "Paolo"
+				}
+			]
+		},
+		{
+			"name": "Richard Youman",
+			"roles": [
+				{
+					"name": "Tony Costa"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Boatman"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Retired General"
+				},
+				{
+					"name": "Thorold"
+				}
+			]
+		},
+		{
+			"name": "Katy Odey",
+			"roles": [
+				{
+					"name": "Mrs Coulter's Party Guest",
+					"characterName": "Party Guests"
+				},
+				{
+					"name": "Caitlin"
+				},
+				{
+					"name": "Mrs Lonsdale"
+				},
+				{
+					"name": "Sister Clara"
+				}
+			]
+		},
+		{
+			"name": "Niamh Cusack",
+			"roles": [
+				{
+					"name": "Serafina Pekkala"
+				}
+			]
+		},
+		{
+			"name": "Cecilia Noble",
+			"roles": [
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "Sister Betty"
+				},
+				{
+					"name": "Mrs Coulter's Party Guest",
+					"characterName": "Party Guests"
+				}
+			]
+		},
+		{
+			"name": "Ben Wright",
+			"roles": [
+				{
+					"name": "Tullio"
+				},
+				{
+					"name": "Librarian Assistant",
+					"characterName": "Library Assistant"
+				},
+				{
+					"name": "The Golden Monkey"
+				}
+			]
+		},
+		{
+			"name": "Inika Leigh Wright",
+			"roles": [
+				{
+					"name": "Librarian"
+				},
+				{
+					"name": "Lily"
+				},
+				{
+					"name": "Tortured Witch",
+					"characterName": "Witches"
+				}
+			]
+		},
+		{
+			"name": "Helen Murton",
+			"roles": [
+				{
+					"name": "Daisy"
+				},
+				{
+					"name": "Pipistrelle"
+				}
+			]
+		},
+		{
+			"name": "Katie Wimpenny",
+			"roles": [
+				{
+					"name": "Jessie"
+				},
+				{
+					"name": "Angelica"
+				},
+				{
+					"name": "Grendella"
+				}
+			]
+		},
+		{
+			"name": "Stephen Greif",
+			"roles": [
+				{
+					"name": "John Faa",
+					"characterName": "Lord Faa"
+				},
+				{
+					"name": "President of the Consistorial Court",
+					"characterName": "The President"
+				},
+				{
+					"name": "Bear Patrol",
+					"characterName": "Bears"
+				}
+			]
+		},
+		{
+			"name": "Patrick Godfrey",
+			"roles": [
+				{
+					"name": "Farder Coram"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				},
+				{
+					"name": "Master of Jordan College",
+					"characterName": "The Master"
+				}
+			]
+		},
+		{
+			"name": "Danny Sapani",
+			"roles": [
+				{
+					"name": "Iorek Byrnison"
+				}
+			]
+		},
+		{
+			"name": "Ben Whishaw",
+			"roles": [
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Brother Jasper"
+				}
+			]
+		},
+		{
+			"name": "Helena Lymbery",
+			"roles": [
+				{
+					"name": "Hester"
+				},
+				{
+					"name": "Salcilia"
+				}
+			]
+		},
+		{
+			"name": "Andrew Westfield",
+			"roles": [
+				{
+					"name": "Dr West"
+				},
+				{
+					"name": "Lord Boreal's Butler"
+				},
+				{
+					"name": "Professor of Astronomy"
+				},
+				{
+					"name": "Bear Patrol",
+					"characterName": "Bears"
+				}
+			]
+		},
+		{
+			"name": "Akbar Kurtha",
+			"roles": [
+				{
+					"name": "Dr Cade"
+				},
+				{
+					"name": "Bear-keeper"
+				}
+			]
+		},
+		{
+			"name": "Daniel Tuite",
+			"roles": [
+				{
+					"name": "Cleric",
+					"characterName": "Clerics"
+				},
+				{
+					"name": "Mayor"
+				},
+				{
+					"name": "Cawson"
+				},
+				{
+					"name": "Mrs Coulter's Party Guest",
+					"characterName": "Party Guests"
+				}
+			]
+		},
+		{
+			"name": "Jason Thorpe",
+			"roles": [
+				{
+					"name": "Cleric",
+					"characterName": "Clerics"
+				},
+				{
+					"name": "Ben"
+				}
+			]
+		},
+		{
+			"name": "Chris Larkin",
+			"roles": [
+				{
+					"name": "Iofur Raknison"
+				},
+				{
+					"name": "Jopari"
+				},
+				{
+					"name": "Stallholder"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Hytner"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Giles Cadle"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Jon Morrell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Aletta Collins"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Jonathan Dove"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Steve Edis"
+				}
+			]
+		},
+		{
+			"name": "Puppet Designer",
+			"entities": [
+				{
+					"name": "Michael Curry"
+				}
+			]
+		},
+		{
+			"name": "Video Graphics Designers",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Gray Circle",
+					"members": [
+						{
+							"name": "Thomas Gray"
+						},
+						{
+							"name": "Yuri Tanaka"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

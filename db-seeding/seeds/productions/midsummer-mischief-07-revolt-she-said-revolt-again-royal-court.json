@@ -1,0 +1,76 @@
+{
+	"uuid": "767090b1-43ed-40af-906c-5685b661d295",
+	"name": "Revolt. She Said. Revolt Again.",
+	"startDate": "2014-07-15",
+	"endDate": "2014-07-17",
+	"material": {
+		"name": "Revolt. She Said. Revolt Again."
+	},
+	"venue": {
+		"name": "Jerwood Theatre Upstairs"
+	},
+	"cast": [
+		{
+			"name": "Robert Boulter"
+		},
+		{
+			"name": "Scarlett Brookes"
+		},
+		{
+			"name": "Ruth Gemmell"
+		},
+		{
+			"name": "Mimi Ndiweni"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Erica Whyman"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Madeleine Girling"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Claire Gerrens"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Jonathan Ruddick"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Sarah Dickenson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Joseph Wilde"
+				}
+			]
+		}
+	]
+}

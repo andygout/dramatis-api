@@ -1,0 +1,35 @@
+{
+	"name": "The Lioness",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rebecca Lenkiewicz"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Queen Elizabeth I"
+				},
+				{
+					"name": "Neuzer"
+				},
+				{
+					"name": "John Knox"
+				},
+				{
+					"name": "Essex"
+				},
+				{
+					"name": "Courtiers"
+				}
+			]
+		}
+	]
+}

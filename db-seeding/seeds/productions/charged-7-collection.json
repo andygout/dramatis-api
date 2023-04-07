@@ -1,0 +1,120 @@
+{
+	"name": "Charged",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "Charged"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "7069a9da-e64a-456a-bf62-80041ad313f6"
+		},
+		{
+			"uuid": "ece672de-8c3a-4615-93e5-457c58b233a3"
+		},
+		{
+			"uuid": "f1d644b1-23ee-427f-8b68-860a4db7ff56"
+		},
+		{
+			"uuid": "d9405919-1899-42bf-8c89-749c70b403bd"
+		},
+		{
+			"uuid": "b62722aa-4882-4fcc-a15d-c5511c6394f9"
+		},
+		{
+			"uuid": "ce7b2448-42af-475f-9c75-18c700e8276f"
+		}
+	],
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Clean Break"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Soho Theatre"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Soutra Gilmour"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Johanna Town"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Emma Laxton"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Alison de Burgh"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Mary Howland"
+				}
+			]
+		},
+		{
+			"name": "Casting Consultant",
+			"entities": [
+				{
+					"name": "Nadine Rennie"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Sian Harris"
+				}
+			]
+		},
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Bo Barton"
+				}
+			]
+		}
+	]
+}

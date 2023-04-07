@@ -1,0 +1,85 @@
+{
+	"name": "Cloud Busting",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Helen Blakeman"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Cloud Busting",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Sam",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Davey",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Morgan"
+				},
+				{
+					"name": "Alex",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Jay",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Claudia"
+				},
+				{
+					"name": "Casey"
+				},
+				{
+					"name": "Sam's Mum"
+				},
+				{
+					"name": "Rebecca",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Miss Mackie"
+				},
+				{
+					"name": "Alicia"
+				},
+				{
+					"name": "Davey's Mum"
+				},
+				{
+					"name": "Oliver"
+				},
+				{
+					"name": "Man",
+					"differentiator": "Cloud Busting"
+				},
+				{
+					"name": "Headteacher"
+				},
+				{
+					"name": "Hoody Boy"
+				}
+			]
+		}
+	]
+}

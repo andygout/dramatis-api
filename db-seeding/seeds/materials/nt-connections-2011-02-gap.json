@@ -1,0 +1,70 @@
+{
+	"name": "Gap",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Alia Bano"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Hailey"
+				},
+				{
+					"name": "Sam",
+					"differentiator": "Gap"
+				},
+				{
+					"name": "Amy",
+					"differentiator": "Gap"
+				},
+				{
+					"name": "Jay",
+					"differentiator": "Gap"
+				},
+				{
+					"name": "Matt",
+					"differentiator": "Gap"
+				},
+				{
+					"name": "Tony",
+					"differentiator": "Gap"
+				},
+				{
+					"name": "Kat"
+				},
+				{
+					"name": "Rob"
+				},
+				{
+					"name": "Al"
+				},
+				{
+					"name": "Poppy"
+				},
+				{
+					"name": "Tiny"
+				},
+				{
+					"name": "Pothead"
+				},
+				{
+					"name": "Ginge"
+				},
+				{
+					"name": "Dee"
+				},
+				{
+					"name": "Bronte"
+				}
+			]
+		}
+	]
+}

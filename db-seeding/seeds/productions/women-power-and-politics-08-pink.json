@@ -1,0 +1,47 @@
+{
+	"uuid": "86af3e8e-ea3a-400d-9874-227906b385ec",
+	"name": "Pink",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Pink"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Heather Craney",
+			"roles": [
+				{
+					"name": "Kim"
+				}
+			]
+		},
+		{
+			"name": "Amy Loughton",
+			"roles": [
+				{
+					"name": "Amy"
+				}
+			]
+		},
+		{
+			"name": "Tom Mannion",
+			"roles": [
+				{
+					"name": "Bodyguard"
+				}
+			]
+		},
+		{
+			"name": "Stella Gonet",
+			"roles": [
+				{
+					"name": "Bridget"
+				}
+			]
+		}
+	]
+}

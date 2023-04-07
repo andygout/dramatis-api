@@ -1,0 +1,47 @@
+{
+	"name": "Hands Across the Sea",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Walters"
+				},
+				{
+					"name": "Lady Maureen Gilpin (Piggie)"
+				},
+				{
+					"name": "Cdr Peter Gilpin, R.N."
+				},
+				{
+					"name": "Lt Cdr Alastair Corbett, R.N."
+				},
+				{
+					"name": "Mrs Wadhurst"
+				},
+				{
+					"name": "Mr Wadhurst"
+				},
+				{
+					"name": "Mr Burnham"
+				},
+				{
+					"name": "The Hon Clare Wedderburn"
+				},
+				{
+					"name": "Major Gosling"
+				}
+			]
+		}
+	]
+}

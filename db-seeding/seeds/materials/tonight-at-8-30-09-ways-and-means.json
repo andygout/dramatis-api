@@ -1,0 +1,47 @@
+{
+	"name": "Ways and Means",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Stella Cartwright"
+				},
+				{
+					"name": "Toby Cartwright"
+				},
+				{
+					"name": "Gaston"
+				},
+				{
+					"name": "Lord Chapworth"
+				},
+				{
+					"name": "Olive Lloyd-Ransome"
+				},
+				{
+					"name": "Princess Elena Krassiloff"
+				},
+				{
+					"name": "Murdoch"
+				},
+				{
+					"name": "Nannie"
+				},
+				{
+					"name": "Stevens"
+				}
+			]
+		}
+	]
+}

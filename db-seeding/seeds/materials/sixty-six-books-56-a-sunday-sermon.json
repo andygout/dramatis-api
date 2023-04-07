@@ -1,0 +1,23 @@
+{
+	"name": "A Sunday Sermon",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anya Reiss"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Titus"
+				}
+			]
+		}
+	]
+}

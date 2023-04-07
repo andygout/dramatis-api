@@ -1,0 +1,53 @@
+{
+	"name": "Star Chamber",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Jimmie Horlick"
+				},
+				{
+					"name": "J M Farmer"
+				},
+				{
+					"name": "Hester More"
+				},
+				{
+					"name": "Johnny Bolton"
+				},
+				{
+					"name": "Julian Breed"
+				},
+				{
+					"name": "Violet Vibart"
+				},
+				{
+					"name": "Maurice Searle"
+				},
+				{
+					"name": "Dame Rose Maitland"
+				},
+				{
+					"name": "Elise Brodie"
+				},
+				{
+					"name": "Xenia James"
+				},
+				{
+					"name": "Press Photographer"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,395 @@
+{
+	"uuid": "db852a80-105b-4b22-bf40-aa39fcc43f1b",
+	"name": "Part One",
+	"startDate": "2009-03-13",
+	"pressDate": "2009-03-26",
+	"endDate": "2009-04-18",
+	"material": {
+		"name": "Part One"
+	},
+	"venue": {
+		"name": "The House"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Birmingham Repertory Theatre Company"
+				},
+				{
+					"model": "COMPANY",
+					"name": "West Yorkshire Playhouse"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Centreline UK Ltd"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Amy McAllister",
+			"roles": [
+				{
+					"name": "Lyra Belacqua"
+				}
+			]
+		},
+		{
+			"name": "Gerard Carey",
+			"roles": [
+				{
+					"name": "Pantalaimon"
+				}
+			]
+		},
+		{
+			"name": "Nick Barber",
+			"roles": [
+				{
+					"name": "Will Parry"
+				},
+				{
+					"name": "Tony Costa"
+				}
+			]
+		},
+		{
+			"name": "Emma Pallant",
+			"roles": [
+				{
+					"name": "Mrs Lonsdale"
+				},
+				{
+					"name": "Nurse"
+				},
+				{
+					"name": "Disgruntled Bear",
+					"characterName": "Bears"
+				},
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "Librarian"
+				}
+			]
+		},
+		{
+			"name": "Minnie Crowe",
+			"roles": [
+				{
+					"name": "Billy Costa"
+				},
+				{
+					"name": "Daisy"
+				},
+				{
+					"name": "Pipistrelle"
+				},
+				{
+					"name": "Angelica"
+				},
+				{
+					"name": "Perpetua"
+				}
+			]
+		},
+		{
+			"name": "Thomas Aldridge",
+			"roles": [
+				{
+					"name": "Roger Parslow"
+				},
+				{
+					"name": "Ben"
+				},
+				{
+					"name": "Paolo"
+				}
+			]
+		},
+		{
+			"name": "Josie Daxter",
+			"roles": [
+				{
+					"name": "Salcilia"
+				},
+				{
+					"name": "Hester"
+				},
+				{
+					"name": "Jessie"
+				},
+				{
+					"name": "Tortured Witch",
+					"characterName": "Witches"
+				},
+				{
+					"name": "Grimhild"
+				}
+			]
+		},
+		{
+			"name": "Timothy Kightley",
+			"roles": [
+				{
+					"name": "Master of Jordan College",
+					"characterName": "The Master"
+				},
+				{
+					"name": "Farder Coram"
+				},
+				{
+					"name": "President of the Consistorial Court",
+					"characterName": "The President"
+				}
+			]
+		},
+		{
+			"name": "Ian Conningham",
+			"roles": [
+				{
+					"name": "Fra Pavel"
+				},
+				{
+					"name": "Bear Keeper",
+					"characterName": "Bear-keeper"
+				},
+				{
+					"name": "Dr Cade"
+				},
+				{
+					"name": "Chief Bear",
+					"characterName": "Bears"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				}
+			]
+		},
+		{
+			"name": "Christopher Ettridge",
+			"roles": [
+				{
+					"name": "Professor Hopcraft"
+				},
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Stall Holder",
+					"characterName": "Stallholder"
+				},
+				{
+					"name": "Mayor"
+				},
+				{
+					"name": "Dr Sargent"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Lumb",
+			"roles": [
+				{
+					"name": "Cawson"
+				},
+				{
+					"name": "Iorek Byrnison"
+				},
+				{
+					"name": "Dr West"
+				}
+			]
+		},
+		{
+			"name": "John Hodgkinson",
+			"roles": [
+				{
+					"name": "Lord Asriel"
+				},
+				{
+					"name": "Top-Hatted Man"
+				},
+				{
+					"name": "Lee Scoresby"
+				}
+			]
+		},
+		{
+			"name": "Emma Manton",
+			"roles": [
+				{
+					"name": "Stelmaria"
+				},
+				{
+					"name": "Lily"
+				},
+				{
+					"name": "Serafina Pekkala"
+				}
+			]
+		},
+		{
+			"name": "Daniel Brocklebank",
+			"roles": [
+				{
+					"name": "Thorold"
+				},
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Brother Jasper"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Asprey",
+			"roles": [
+				{
+					"name": "Mrs Coulter"
+				},
+				{
+					"name": "Grendella"
+				}
+			]
+		},
+		{
+			"name": "Ben Thompson",
+			"roles": [
+				{
+					"name": "The Golden Monkey"
+				},
+				{
+					"name": "Stupid Bear",
+					"characterName": "Bears"
+				},
+				{
+					"name": "Assistant",
+					"characterName": "Library Assistant"
+				},
+				{
+					"name": "Tullio"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Asbury",
+			"roles": [
+				{
+					"name": "John Faa",
+					"characterName": "Lord Faa"
+				},
+				{
+					"name": "Iofur Raknison"
+				},
+				{
+					"name": "Jopari"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Rachel Kavanaugh"
+				},
+				{
+					"name": "Sarah Esdaile"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ruari Murchison"
+				}
+			]
+		},
+		{
+			"name": "Puppetry",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Blind Summit",
+					"members": [
+						{
+							"name": "Mark Down"
+						},
+						{
+							"name": "Nick Barnes"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Malcolm Rippeth"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Dan Hoole"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Toby Sedgwick"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Catherine Jayes"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Kate Walters"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Tim Ford"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Kay Magson"
+				}
+			]
+		}
+	]
+}

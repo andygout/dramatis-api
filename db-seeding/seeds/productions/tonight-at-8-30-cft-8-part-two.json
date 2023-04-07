@@ -1,0 +1,21 @@
+{
+	"uuid": "0fe54ad7-48ee-4ca8-96f6-d50ef3b3e4af",
+	"name": "Part Two",
+	"startDate": "2006-07-20",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "07d472f2-7450-41b8-980b-0e8cdfc90d5f"
+		},
+		{
+			"uuid": "1243ddb7-d7cc-474e-bd45-3235df1c84c9"
+		},
+		{
+			"uuid": "3f854438-739f-4d2f-b7d8-825828a6e90c"
+		}
+	]
+}

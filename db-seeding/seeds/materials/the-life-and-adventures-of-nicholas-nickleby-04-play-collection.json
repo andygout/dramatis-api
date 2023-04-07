@@ -1,0 +1,432 @@
+{
+	"name": "The Life and Adventures of Nicholas Nickleby",
+	"differentiator": "2",
+	"format": "play",
+	"year": "1980",
+	"writingCredits": [
+		{
+			"name": "adapted for the stage by",
+			"entities": [
+				{
+					"name": "David Edgar"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Life and Adventures of Nicholas Nickleby",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"subMaterials": [
+		{
+			"name": "Part I"
+		},
+		{
+			"name": "Part II"
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Nickleby Family",
+			"characters": [
+				{
+					"name": "Nicholas Nickleby"
+				},
+				{
+					"name": "Kate Nickleby"
+				},
+				{
+					"name": "Ralph Nickleby"
+				},
+				{
+					"name": "Mrs Nickleby"
+				}
+			]
+		},
+		{
+			"name": "London",
+			"characters": [
+				{
+					"name": "Newman Noggs"
+				},
+				{
+					"name": "Hannah",
+					"differentiator": "The Life and Adventures of Nicholas Nickleby"
+				},
+				{
+					"name": "Miss La Creevy"
+				},
+				{
+					"name": "Sir Matthew Pupker"
+				},
+				{
+					"name": "Mr Bonney"
+				},
+				{
+					"name": "Irate Gentleman"
+				},
+				{
+					"name": "Flunkey #1"
+				},
+				{
+					"name": "Mr Snawley"
+				},
+				{
+					"name": "Snawley Major"
+				},
+				{
+					"name": "Snawley Minor"
+				},
+				{
+					"name": "Belling"
+				},
+				{
+					"name": "William",
+					"differentiator": "The Life and Adventures of Nicholas Nickleby"
+				},
+				{
+					"name": "Waitresses"
+				},
+				{
+					"name": "Coachman"
+				},
+				{
+					"name": "Mr Mantalini"
+				},
+				{
+					"name": "Madame Mantalini"
+				},
+				{
+					"name": "Flunkey #2"
+				},
+				{
+					"name": "Miss Knag"
+				},
+				{
+					"name": "Rich Ladies"
+				},
+				{
+					"name": "Milliners"
+				}
+			]
+		},
+		{
+			"name": "Yorkshire",
+			"characters": [
+				{
+					"name": "Mr Squeers"
+				},
+				{
+					"name": "Mrs Squeers"
+				},
+				{
+					"name": "Smike"
+				},
+				{
+					"name": "Phib"
+				},
+				{
+					"name": "Fanny Squeers"
+				},
+				{
+					"name": "Young Wackford Squeers"
+				},
+				{
+					"name": "John Browdie"
+				},
+				{
+					"name": "Tilda Price"
+				}
+			]
+		},
+		{
+			"name": "Yorkshire - Boys",
+			"characters": [
+				{
+					"name": "Tomkins"
+				},
+				{
+					"name": "Coates"
+				},
+				{
+					"name": "Graymarsh"
+				},
+				{
+					"name": "Jennings"
+				},
+				{
+					"name": "Mobbs"
+				},
+				{
+					"name": "Bolder"
+				},
+				{
+					"name": "Piltcher"
+				},
+				{
+					"name": "Jackson"
+				},
+				{
+					"name": "Cobbey"
+				},
+				{
+					"name": "Peters"
+				},
+				{
+					"name": "Sprouter"
+				},
+				{
+					"name": "Roberts"
+				}
+			]
+		},
+		{
+			"name": "London again",
+			"characters": [
+				{
+					"name": "Mr Kenwigs"
+				},
+				{
+					"name": "Mrs Kenwigs"
+				},
+				{
+					"name": "Morleena Kenwigs"
+				},
+				{
+					"name": "Mr Lillyvick"
+				},
+				{
+					"name": "Miss Petowker"
+				},
+				{
+					"name": "Mr Crowl"
+				},
+				{
+					"name": "George"
+				},
+				{
+					"name": "Mr Cutler"
+				},
+				{
+					"name": "Mrs Cutler"
+				},
+				{
+					"name": "Mrs Kenwigs' Sister"
+				},
+				{
+					"name": "Lady From Downstairs"
+				},
+				{
+					"name": "Miss Green"
+				},
+				{
+					"name": "Benjamin"
+				},
+				{
+					"name": "Pugstyles"
+				},
+				{
+					"name": "Old Lord"
+				},
+				{
+					"name": "Young Fiancée"
+				},
+				{
+					"name": "Landlord"
+				}
+			]
+		},
+		{
+			"name": "Portsmouth",
+			"characters": [
+				{
+					"name": "Mr Vincent Crummles"
+				},
+				{
+					"name": "Mrs Crummles"
+				},
+				{
+					"name": "The Infant Phenomenon"
+				},
+				{
+					"name": "Master Percy Crummles"
+				},
+				{
+					"name": "Master Crummles"
+				},
+				{
+					"name": "Mrs Grudden"
+				},
+				{
+					"name": "Miss Snevellicci"
+				},
+				{
+					"name": "Mr Folair"
+				},
+				{
+					"name": "Mr Lenville"
+				},
+				{
+					"name": "Miss Ledrook"
+				},
+				{
+					"name": "Miss Bravassa"
+				},
+				{
+					"name": "Mr Wagstaff"
+				},
+				{
+					"name": "Mr Blightey"
+				},
+				{
+					"name": "Miss Belvawney"
+				},
+				{
+					"name": "Miss Gazingi"
+				},
+				{
+					"name": "Mr Pailey"
+				},
+				{
+					"name": "Mr Hetherington"
+				},
+				{
+					"name": "Mr Bane"
+				},
+				{
+					"name": "Mr Fluggers"
+				},
+				{
+					"name": "Mrs Lenville"
+				},
+				{
+					"name": "Mr Curdle"
+				},
+				{
+					"name": "Mrs Curdle"
+				},
+				{
+					"name": "Mr Snevellicci"
+				},
+				{
+					"name": "Mrs Snevellicci"
+				}
+			]
+		},
+		{
+			"name": "London again (again)",
+			"characters": [
+				{
+					"name": "Scaley"
+				},
+				{
+					"name": "Tix"
+				},
+				{
+					"name": "Sir Mulberry Hawk"
+				},
+				{
+					"name": "Lord Frederick Verisopht"
+				},
+				{
+					"name": "Mr Pluck"
+				},
+				{
+					"name": "Mr Pyke"
+				},
+				{
+					"name": "Mr Snobb"
+				},
+				{
+					"name": "Colonel Chowser"
+				},
+				{
+					"name": "Brooker"
+				},
+				{
+					"name": "Mr Wititterley"
+				},
+				{
+					"name": "Mrs Wititterley"
+				},
+				{
+					"name": "Alphonse"
+				},
+				{
+					"name": "Opera Singers"
+				},
+				{
+					"name": "Charles Cheeryble"
+				},
+				{
+					"name": "Ned Cheeryble"
+				},
+				{
+					"name": "Tim Linkinwater"
+				},
+				{
+					"name": "The Man Next Door"
+				},
+				{
+					"name": "Keeper"
+				},
+				{
+					"name": "Frank Cheeryble"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "The Life and Adventures of Nicholas Nickleby"
+				},
+				{
+					"name": "Madeline Bray"
+				},
+				{
+					"name": "Arthur Gride"
+				},
+				{
+					"name": "Walter Bray"
+				},
+				{
+					"name": "Peg Sliderskew"
+				},
+				{
+					"name": "Hawk's Rival"
+				},
+				{
+					"name": "Captain Adams"
+				},
+				{
+					"name": "Westwood"
+				},
+				{
+					"name": "Croupier"
+				},
+				{
+					"name": "Casino Proprietor"
+				},
+				{
+					"name": "Surgeon"
+				},
+				{
+					"name": "Umpire"
+				},
+				{
+					"name": "Policeman",
+					"differentiator": "The Life and Adventures of Nicholas Nickleby"
+				},
+				{
+					"name": "Mrs Snawley"
+				},
+				{
+					"name": "Young Woman"
+				}
+			]
+		}
+	]
+}

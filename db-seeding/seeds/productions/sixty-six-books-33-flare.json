@@ -1,0 +1,36 @@
+{
+	"uuid": "a801b90d-4102-4895-a9a2-fb66b04dd15c",
+	"name": "Flare",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Flare"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Hattie Morahan"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Mark Rosenblatt"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Claire Harrison"
+				}
+			]
+		}
+	]
+}

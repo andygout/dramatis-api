@@ -1,0 +1,21 @@
+{
+	"name": "His Dark Materials",
+	"startDate": "2009-03-13",
+	"pressDate": "2009-03-26",
+	"endDate": "2009-04-18",
+	"material": {
+		"name": "His Dark Materials",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "The House"
+	},
+	"subProductions": [
+		{
+			"uuid": "db852a80-105b-4b22-bf40-aa39fcc43f1b"
+		},
+		{
+			"uuid": "4ab87bf3-b49b-497a-8bb1-a1d07d024580"
+		}
+	]
+}

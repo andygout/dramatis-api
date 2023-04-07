@@ -1,0 +1,22 @@
+{
+	"name": "Angels in America",
+	"format": "two-part play",
+	"year": "1992",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tony Kushner"
+				}
+			]
+		}
+	],
+	"subMaterials": [
+		{
+			"name": "Millennium Approaches"
+		},
+		{
+			"name": "Perestroika"
+		}
+	]
+}

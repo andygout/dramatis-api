@@ -1,0 +1,27 @@
+{
+	"uuid": "791f6110-fa0c-4e51-9eb1-818432f0c83a",
+	"name": "Then",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Then"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "6c4d3d24-5276-4008-b5fd-ae16328166c2"
+		},
+		{
+			"uuid": "a67d322a-0fe9-41c4-a693-c880f8ee7c21"
+		},
+		{
+			"uuid": "f777d3b0-6473-4c16-b238-0eea59ed4611"
+		},
+		{
+			"uuid": "b6350af8-6f5d-4d2b-a2d5-7b8c2114b60a"
+		}
+	]
+}

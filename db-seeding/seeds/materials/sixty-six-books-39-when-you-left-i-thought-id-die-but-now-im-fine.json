@@ -1,0 +1,23 @@
+{
+	"name": "When You Left I Thought I'd Die But Now I'm Fine",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Molly Naylor"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Malachi"
+				}
+			]
+		}
+	]
+}

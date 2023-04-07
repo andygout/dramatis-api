@@ -1,0 +1,58 @@
+{
+	"name": "What Are They Like?",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lucinda Coxon"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Roberta"
+				},
+				{
+					"name": "Frances"
+				},
+				{
+					"name": "Steph"
+				},
+				{
+					"name": "Grace",
+					"differentiator": "What Are They Like?"
+				},
+				{
+					"name": "Nick"
+				},
+				{
+					"name": "Gary"
+				},
+				{
+					"name": "Johnny"
+				},
+				{
+					"name": "Indira"
+				},
+				{
+					"name": "Alison"
+				},
+				{
+					"name": "Patrick"
+				},
+				{
+					"name": "Sarah",
+					"differentiator": "What Are They Like?"
+				},
+				{
+					"name": "Meera"
+				}
+			]
+		}
+	]
+}

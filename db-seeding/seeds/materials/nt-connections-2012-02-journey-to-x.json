@@ -1,0 +1,55 @@
+{
+	"name": "Journey to X",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nancy Harris"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Penny"
+				},
+				{
+					"name": "Sarah",
+					"differentiator": "Journey to X"
+				},
+				{
+					"name": "Louise",
+					"differentiator": "Journey to X"
+				},
+				{
+					"name": "Tara"
+				},
+				{
+					"name": "Joey",
+					"differentiator": "Journey to X"
+				},
+				{
+					"name": "Davey",
+					"differentiator": "Journey to X"
+				},
+				{
+					"name": "Ellis"
+				},
+				{
+					"name": "Liam",
+					"differentiator": "Journey to X"
+				},
+				{
+					"name": "Bruce"
+				},
+				{
+					"name": "Vince"
+				}
+			]
+		}
+	]
+}

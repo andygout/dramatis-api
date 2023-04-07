@@ -1,0 +1,42 @@
+{
+	"uuid": "d487af31-3c17-49f5-bf48-2ae05b5013f5",
+	"name": "The Suleman",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Suleman"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Charles Mnene"
+		},
+		{
+			"name": "Javone Prince"
+		},
+		{
+			"name": "Jade Anouka"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gbolahan Obisesan"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+	"name": "The Enemy",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Mike Bartlett"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "John",
+					"differentiator": "The Enemy"
+				},
+				{
+					"name": "Man",
+					"differentiator": "The Enemy"
+				}
+			]
+		}
+	]
+}

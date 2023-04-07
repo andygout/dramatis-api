@@ -51,7 +51,8 @@
 					"name": "Lawyer #2"
 				},
 				{
-					"name": "Reporter"
+					"name": "Reporter",
+					"differentiator": "Enron"
 				},
 				{
 					"name": "Congresswoman"

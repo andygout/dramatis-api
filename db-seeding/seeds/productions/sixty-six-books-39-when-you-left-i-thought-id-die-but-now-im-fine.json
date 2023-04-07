@@ -1,0 +1,42 @@
+{
+	"uuid": "509dc28b-c975-4d0c-a3a9-f78b8dc8dd74",
+	"name": "When You Left I Thought I'd Die But Now I'm Fine",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "When You Left I Thought I'd Die But Now I'm Fine"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Ian Bailey"
+		},
+		{
+			"name": "Shannon Tarbet"
+		},
+		{
+			"name": "Phoebe Waller-Bridge"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Hannah Ashwell-Dickenson"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Claire Harrison"
+				}
+			]
+		}
+	]
+}

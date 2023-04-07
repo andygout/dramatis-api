@@ -1,0 +1,148 @@
+{
+	"uuid": "cb95141a-9e2b-4f13-b038-e1e6b070b046",
+	"name": "Gargantua",
+	"startDate": "2011-07-04",
+	"endDate": "2011-07-04",
+	"material": {
+		"name": "Gargantua"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Winstanley College"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Andrew Pacey",
+			"roles": [
+				{
+					"name": "Prime Minister"
+				}
+			]
+		},
+		{
+			"name": "Larner Taylor",
+			"roles": [
+				{
+					"name": "Pippa Wellard"
+				}
+			]
+		},
+		{
+			"name": "Lewis Gorse",
+			"roles": [
+				{
+					"name": "Jeff Creams"
+				}
+			]
+		},
+		{
+			"name": "Greg Wilde",
+			"roles": [
+				{
+					"name": "Robin Wilt"
+				}
+			]
+		},
+		{
+			"name": "Simon Murtagh",
+			"roles": [
+				{
+					"name": "General Malahyde"
+				}
+			]
+		},
+		{
+			"name": "Tarek Slater",
+			"roles": [
+				{
+					"name": "Professor Swann"
+				}
+			]
+		},
+		{
+			"name": "Matthew Brown",
+			"roles": [
+				{
+					"name": "Arnie"
+				}
+			]
+		},
+		{
+			"name": "Gareth Davies",
+			"roles": [
+				{
+					"name": "Lionel"
+				}
+			]
+		},
+		{
+			"name": "Ben Mackenzie",
+			"roles": [
+				{
+					"name": "Dr Lucky"
+				}
+			]
+		},
+		{
+			"name": "Abigail Mills",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Leida Boto",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jane Heath"
+				}
+			]
+		},
+		{
+			"name": "Puppet and Media Designer",
+			"entities": [
+				{
+					"name": "Michael Frost"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Steve Unsworth"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technical Manager",
+			"entities": [
+				{
+					"name": "Jose Jacob"
+				}
+			]
+		}
+	]
+}

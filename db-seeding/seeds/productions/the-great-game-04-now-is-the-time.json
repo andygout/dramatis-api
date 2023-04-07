@@ -1,0 +1,13 @@
+{
+	"uuid": "824cfab7-279e-47bf-8990-dad6d1ba99de",
+	"name": "Now is the Time",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Now is the Time"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	}
+}

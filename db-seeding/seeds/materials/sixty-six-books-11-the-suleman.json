@@ -1,0 +1,23 @@
+{
+	"name": "The Suleman",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Roy Williams"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Kings"
+				}
+			]
+		}
+	]
+}

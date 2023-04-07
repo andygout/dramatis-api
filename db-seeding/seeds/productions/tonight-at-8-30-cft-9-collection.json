@@ -1,0 +1,105 @@
+{
+	"uuid": "",
+	"name": "Tonight at 8.30",
+	"startDate": "2006-07-20",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Tonight at 8.30"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "5bbf1296-6b0c-4622-9cdf-880a78824981"
+		},
+		{
+			"uuid": "0fe54ad7-48ee-4ca8-96f6-d50ef3b3e4af"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Lucy Bailey"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Dick Bird"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Giuseppe di Iorio"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Nick Lidster"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Leah Hausman"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Django Bates"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Matthew Scott"
+				}
+			]
+		},
+		{
+			"name": "Fights",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Thomas Hescott"
+				}
+			]
+		}
+	]
+}

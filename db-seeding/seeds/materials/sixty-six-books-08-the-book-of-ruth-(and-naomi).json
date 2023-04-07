@@ -1,0 +1,23 @@
+{
+	"name": "The Book of Ruth (and Naomi)",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Stella Duffy"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Ruth"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"name": "The Preacher, or How Ecclesiastes Changed My Life",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nancy Kricorian"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Ecclesiastes"
+				}
+			]
+		}
+	]
+}

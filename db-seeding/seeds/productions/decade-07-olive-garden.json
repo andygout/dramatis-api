@@ -1,0 +1,13 @@
+{
+	"uuid": "cb989a17-2966-438e-8240-0586683916cf",
+	"name": "Olive Garden",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "Olive Garden"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

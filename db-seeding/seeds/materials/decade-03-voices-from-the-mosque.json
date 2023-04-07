@@ -1,0 +1,23 @@
+{
+	"name": "Voices from the Mosque",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Alecky Blythe"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Teenage Muslim"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,188 @@
+{
+	"uuid": "0f296ad4-c9d9-419c-8545-449cbcc9f1b0",
+	"name": "Bassett",
+	"startDate": "2011-06-29",
+	"endDate": "2011-06-29",
+	"material": {
+		"name": "Bassett"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "CAST Ensemble Youth Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sophie Biernacki",
+			"roles": [
+				{
+					"name": "Vicki"
+				}
+			]
+		},
+		{
+			"name": "Alexa Chapman",
+			"roles": [
+				{
+					"name": "Sarah"
+				}
+			]
+		},
+		{
+			"name": "Florence Dale",
+			"roles": [
+				{
+					"name": "Joanne"
+				}
+			]
+		},
+		{
+			"name": "Harry Gibson",
+			"roles": [
+				{
+					"name": "Graeme"
+				}
+			]
+		},
+		{
+			"name": "Matt Guenzel",
+			"roles": [
+				{
+					"name": "Jonathan"
+				}
+			]
+		},
+		{
+			"name": "Chloe Harris",
+			"roles": [
+				{
+					"name": "Kelly"
+				}
+			]
+		},
+		{
+			"name": "Ryan House",
+			"roles": [
+				{
+					"name": "Spencer"
+				}
+			]
+		},
+		{
+			"name": "Chelsea Leivers",
+			"roles": [
+				{
+					"name": "Shanti"
+				}
+			]
+		},
+		{
+			"name": "Tom Murton",
+			"roles": [
+				{
+					"name": "Leo"
+				}
+			]
+		},
+		{
+			"name": "Phoebe Ord",
+			"roles": [
+				{
+					"name": "Rachel"
+				}
+			]
+		},
+		{
+			"name": "Julian Raine",
+			"roles": [
+				{
+					"name": "Russell"
+				}
+			]
+		},
+		{
+			"name": "Deepak Aujla",
+			"roles": [
+				{
+					"name": "Amid"
+				}
+			]
+		},
+		{
+			"name": "Olivia Royston",
+			"roles": [
+				{
+					"name": "Aimee"
+				}
+			]
+		},
+		{
+			"name": "Ellen Turner-Atwel",
+			"roles": [
+				{
+					"name": "Zoe"
+				}
+			]
+		},
+		{
+			"name": "Hope Ward-Brown",
+			"roles": [
+				{
+					"name": "Lucy"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Laura Jones"
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"entities": [
+				{
+					"name": "George Hudson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Laura Smith"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technical Manager and Sound Coordinator",
+			"entities": [
+				{
+					"name": "Benjamin Jones"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager and Lighting",
+			"entities": [
+				{
+					"name": "Edward Hingley"
+				}
+			]
+		}
+	]
+}
