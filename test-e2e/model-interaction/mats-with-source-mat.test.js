@@ -36,6 +36,7 @@ describe('Materials with source material', () => {
 	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = '74';
 	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = '77';
 	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = '80';
+	const DONMAR_WAREHOUSE_VENUE_UUID = '82';
 
 	let aMidsummerNightsDreamMaterial;
 	let theIndianBoyMaterial;
@@ -841,6 +842,31 @@ describe('Materials with source material', () => {
 			const { writingCredits } = othelloMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+
+		});
+
+		it('includes productions of material', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID,
+					name: 'Othello',
+					startDate: '2007-11-30',
+					endDate: '2008-02-23',
+					venue: {
+						model: 'VENUE',
+						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
+						name: 'Donmar Warehouse',
+						surVenue: null
+					},
+					surProduction: null
+				}
+			];
+
+			const { productions } = othelloMaterial.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

@@ -3,7 +3,7 @@ export default () => `
 
 	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
 
-	WITH COLLECT(production) AS productions
+	WITH material, COLLECT(production) AS productions
 
 	UNWIND (CASE productions WHEN [] THEN [null] ELSE productions END) AS production
 
