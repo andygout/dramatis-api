@@ -1,0 +1,15 @@
+{
+	"name": "The Life and Adventures of Nicholas Nickleby",
+	"differentiator": "1",
+	"format": "novel",
+	"year": "1839",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Charles Dickens"
+				}
+			]
+		}
+	]
+}

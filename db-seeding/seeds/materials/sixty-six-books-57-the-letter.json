@@ -1,0 +1,23 @@
+{
+	"name": "The Letter",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Kamila Shamsie"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Philemon"
+				}
+			]
+		}
+	]
+}

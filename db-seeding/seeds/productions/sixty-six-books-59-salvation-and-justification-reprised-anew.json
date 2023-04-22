@@ -1,0 +1,36 @@
+{
+	"uuid": "77d32273-4d01-4729-bbfe-9e0b4366a16b",
+	"name": "Salvation and Justification Reprised Anew",
+	"startDate": "2011-10-13",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Salvation and Justification Reprised Anew"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Jonjo O'Neill"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Longhurst"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

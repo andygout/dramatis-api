@@ -1,0 +1,23 @@
+{
+	"name": "Hadassah",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jackie Kay"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Esther"
+				}
+			]
+		}
+	]
+}

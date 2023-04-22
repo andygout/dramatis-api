@@ -1,0 +1,23 @@
+{
+	"name": "Lazarus",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rowan Williams"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Gospel According to St John"
+				}
+			]
+		}
+	]
+}

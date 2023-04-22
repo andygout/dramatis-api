@@ -1,0 +1,59 @@
+{
+	"uuid": "7069a9da-e64a-456a-bf62-80041ad313f6",
+	"name": "Dream Pill",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "Dream Pill"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"cast": [
+		{
+			"name": "Danielle Vitalis",
+			"roles": [
+				{
+					"name": "Bola"
+				}
+			]
+		},
+		{
+			"name": "Samantha Pearl",
+			"roles": [
+				{
+					"name": "Tunde"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tessa Walker"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Sarah Tryfan"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Chloe R Brown"
+				}
+			]
+		}
+	]
+}

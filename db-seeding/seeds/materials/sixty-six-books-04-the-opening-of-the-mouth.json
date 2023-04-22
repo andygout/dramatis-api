@@ -1,0 +1,23 @@
+{
+	"name": "The Opening of the Mouth",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Neil Bartlett"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Numbers"
+				}
+			]
+		}
+	]
+}

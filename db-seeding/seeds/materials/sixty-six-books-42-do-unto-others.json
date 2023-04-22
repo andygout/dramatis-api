@@ -1,0 +1,23 @@
+{
+	"name": "Do Unto Others",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Billy Bragg"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Gospel According to St Luke"
+				}
+			]
+		}
+	]
+}

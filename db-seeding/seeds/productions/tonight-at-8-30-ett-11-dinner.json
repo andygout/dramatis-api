@@ -1,0 +1,21 @@
+{
+	"uuid": "fe001777-1dd2-49a8-bb15-1635e952f201",
+	"name": "Dinner",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "6cdd767a-6145-453d-ab9b-1acf6794ff33"
+		},
+		{
+			"uuid": "f5e0a61a-7ade-4e88-92e5-74b5b8f498d4"
+		},
+		{
+			"uuid": "82c0685e-79af-438c-ae43-1975af8277eb"
+		}
+	]
+}

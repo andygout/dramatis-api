@@ -1,0 +1,330 @@
+{
+	"uuid": "156ca3d3-e202-403b-b5a4-4ccf06c2485b",
+	"name": "Perestroika",
+	"startDate": "1993-11-12",
+	"pressDate": "1993-11-20",
+	"endDate": "1994-07-02",
+	"material": {
+		"name": "Perestroika"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Stephen Dillane",
+			"roles": [
+				{
+					"name": "Prior Walter"
+				}
+			]
+		},
+		{
+			"name": "Jason Isaacs",
+			"roles": [
+				{
+					"name": "Louis Ironson"
+				},
+				{
+					"name": "Australia",
+					"characterName": "The Angel Australia"
+				},
+				{
+					"name": "Sarah Ironson"
+				}
+			]
+		},
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Mr Lies"
+				},
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "Oceania",
+					"characterName": "The Angel Oceania"
+				},
+				{
+					"name": "Caleb",
+					"characterName": "The Offstage Voice of Caleb"
+				}
+			]
+		},
+		{
+			"name": "Susan Engel",
+			"roles": [
+				{
+					"name": "Hannah Porter Pitt"
+				},
+				{
+					"name": "Asiatica",
+					"characterName": "The Angel Asiatica"
+				},
+				{
+					"name": "Ethel Rosenberg"
+				}
+			]
+		},
+		{
+			"name": "Harry Towb",
+			"roles": [
+				{
+					"name": "Aleksii Antedilluvianovich Preplapsarianov"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				}
+			]
+		},
+		{
+			"name": "David Schofield",
+			"roles": [
+				{
+					"name": "Roy M Cohn"
+				}
+			]
+		},
+		{
+			"name": "Daniel Craig",
+			"roles": [
+				{
+					"name": "Mormon Father",
+					"characterName": "The Mormon Father"
+				},
+				{
+					"name": "Europa",
+					"characterName": "The Angel Europa"
+				},
+				{
+					"name": "Joseph Porter Pitt"
+				}
+			]
+		},
+		{
+			"name": "Nancy Crane",
+			"roles": [
+				{
+					"name": "Orrin",
+					"characterName": "The Offstage Voice of Orrin"
+				},
+				{
+					"name": "The Angel"
+				},
+				{
+					"name": "Mormon Mother",
+					"characterName": "The Mormon Mother"
+				},
+				{
+					"name": "Voice at the Mormon Visitor's Centre"
+				},
+				{
+					"name": "Emily"
+				}
+			]
+		},
+		{
+			"name": "Clare Holman",
+			"roles": [
+				{
+					"name": "Africanii",
+					"characterName": "The Angel Africanii"
+				},
+				{
+					"name": "Harper Amaty Pitt"
+				},
+				{
+					"name": "Angel"
+				}
+			]
+		},
+		{
+			"name": "Robin Houston",
+			"roles": [
+				{
+					"name": "Recorded Newsreader"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Declan Donnellan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Nick Ormerod"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mick Hughes"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Paddy Cunneen"
+				}
+			]
+		},
+		{
+			"name": "Director of Movement",
+			"entities": [
+				{
+					"name": "Jane Gibson"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Joan Washington"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"entities": [
+				{
+					"name": "Patsy Rodenburg"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Freya Edwards"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Jason Barnes"
+				},
+				{
+					"name": "Miles King"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Angie Burns"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"entities": [
+				{
+					"name": "John Haynes"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Laura Hibbs"
+				}
+			]
+		},
+		{
+			"name": "Music Programming Consultant",
+			"entities": [
+				{
+					"name": "Duncan Chave"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Andrew Eastcott"
+				},
+				{
+					"name": "Kelly Garth"
+				}
+			]
+		},
+		{
+			"name": "Stage Management",
+			"entities": [
+				{
+					"name": "David Milling"
+				}
+			]
+		},
+		{
+			"name": "Staff Directors",
+			"entities": [
+				{
+					"name": "Fiona Laird"
+				},
+				{
+					"name": "Kenneth Mackintosh"
+				}
+			]
+		},
+		{
+			"name": "Programme Designer",
+			"entities": [
+				{
+					"name": "Shima Hyde"
+				}
+			]
+		},
+		{
+			"name": "Designer of Poster and Programme Cover",
+			"entities": [
+				{
+					"name": "Michael Mayhew"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"entities": [
+				{
+					"name": "Iain Dewar"
+				}
+			]
+		}
+	]
+}

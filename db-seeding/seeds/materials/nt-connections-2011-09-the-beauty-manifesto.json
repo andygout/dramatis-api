@@ -1,0 +1,48 @@
+{
+	"name": "The Beauty Manifesto",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nell Leyshon"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Chloe",
+					"differentiator": "The Beauty Manifesto"
+				},
+				{
+					"name": "Robert",
+					"differentiator": "The Beauty Manifesto"
+				},
+				{
+					"name": "Paloma"
+				},
+				{
+					"name": "Silas"
+				},
+				{
+					"name": "Sam",
+					"differentiator": "The Beauty Manifesto"
+				},
+				{
+					"name": "Ella",
+					"differentiator": "The Beauty Manifesto"
+				},
+				{
+					"name": "Alexis"
+				},
+				{
+					"name": "Ambassadors"
+				}
+			]
+		}
+	]
+}

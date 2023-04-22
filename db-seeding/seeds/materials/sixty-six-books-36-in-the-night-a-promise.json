@@ -1,0 +1,23 @@
+{
+	"name": "In the night, a promise",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Helen Edmundson"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Zephaniah"
+				}
+			]
+		}
+	]
+}

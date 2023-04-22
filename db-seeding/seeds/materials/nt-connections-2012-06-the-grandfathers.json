@@ -1,0 +1,41 @@
+{
+	"name": "The Grandfathers",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rory Mullarkey"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Tol"
+				},
+				{
+					"name": "Dim"
+				},
+				{
+					"name": "Kol"
+				},
+				{
+					"name": "Kost"
+				},
+				{
+					"name": "Lev"
+				},
+				{
+					"name": "Val"
+				},
+				{
+					"name": "Stas"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"name": "King James Bible",
+	"format": "collection of religious texts",
+	"year": "1611",
+	"subMaterials": [
+		{
+			"name": "The Old Testament"
+		},
+		{
+			"name": "The New Testament"
+		}
+	]
+}

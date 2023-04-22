@@ -1,0 +1,23 @@
+{
+	"name": "The Loss of All Things",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Chris Goode"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Philippians"
+				}
+			]
+		}
+	]
+}

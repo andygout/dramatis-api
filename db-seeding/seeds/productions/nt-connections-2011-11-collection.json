@@ -1,0 +1,50 @@
+{
+	"name": "National Theatre Connections 2011",
+	"startDate": "2011-06-29",
+	"endDate": "2011-07-04",
+	"material": {
+		"name": "National Theatre Connections 2011"
+	},
+	"subProductions": [
+		{
+			"uuid": "0f296ad4-c9d9-419c-8545-449cbcc9f1b0"
+		},
+		{
+			"uuid": "581d0fb4-38bb-498c-be6d-7bd74875b2b7"
+		},
+		{
+			"uuid": "c1649e8c-1cca-494b-b210-98d440ad813b"
+		},
+		{
+			"uuid": "24650e5e-614b-461b-9efb-a5a9322dc33d"
+		},
+		{
+			"uuid": "aa5f7657-e197-403f-86ff-571a1b86b901"
+		},
+		{
+			"uuid": "8e0b4594-8254-4a14-b6e4-c0a444b847ad"
+		},
+		{
+			"uuid": "53168f42-6153-4c44-8d04-77d00275bade"
+		},
+		{
+			"uuid": "f6dc50fa-1b96-49a0-b8a3-2be0e4001ac7"
+		},
+		{
+			"uuid": "a4f693d5-f36b-495e-af41-57eca392ba02"
+		},
+		{
+			"uuid": "cb95141a-9e2b-4f13-b038-e1e6b070b046"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	]
+}

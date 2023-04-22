@@ -1,0 +1,13 @@
+{
+	"uuid": "792aada5-4ca1-482f-860c-7527d6dba4c4",
+	"name": "Everyone",
+	"startDate": "2011-09-01",
+	"pressDate": "2011-09-08",
+	"endDate": "2011-10-15",
+	"material": {
+		"name": "Everyone"
+	},
+	"venue": {
+		"name": "Commodity Quay"
+	}
+}

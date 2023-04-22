@@ -1,0 +1,39 @@
+{
+	"uuid": "48e12c5b-a005-40b5-a709-a5aa391da721",
+	"name": "Ephesus-Shmephesus",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Ephesus-Shmephesus"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Samuel Barnett"
+		},
+		{
+			"name": "Beverley Klein"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Mark Rosenblatt"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Claire Harrison"
+				}
+			]
+		}
+	]
+}

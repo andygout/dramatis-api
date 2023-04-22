@@ -1,0 +1,31 @@
+{
+	"uuid": "7900d601-966e-4f68-8e19-98f37778f96d",
+	"name": "When We Praise",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "When We Praise"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Christopher Haydon"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

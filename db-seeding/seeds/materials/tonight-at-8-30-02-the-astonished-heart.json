@@ -1,0 +1,41 @@
+{
+	"name": "The Astonished Heart",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Barbara Faber"
+				},
+				{
+					"name": "Christian Faber"
+				},
+				{
+					"name": "Leonora Vail"
+				},
+				{
+					"name": "Tim Verney"
+				},
+				{
+					"name": "Susan Birch"
+				},
+				{
+					"name": "Ernest"
+				},
+				{
+					"name": "Sir Reginald French"
+				}
+			]
+		}
+	]
+}

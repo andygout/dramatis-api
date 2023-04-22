@@ -1,0 +1,23 @@
+{
+	"name": "The Strange Wife",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Naomi Foyle"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Ezra"
+				}
+			]
+		}
+	]
+}

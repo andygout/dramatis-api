@@ -1,0 +1,42 @@
+{
+	"name": "The Ritual",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Samir Yazbek"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Marcia"
+				},
+				{
+					"name": "Joel"
+				},
+				{
+					"name": "Ana"
+				},
+				{
+					"name": "Mauro"
+				},
+				{
+					"name": "Lia"
+				},
+				{
+					"name": "Celso"
+				},
+				{
+					"name": "Bianca",
+					"differentiator": "The Ritual"
+				}
+			]
+		}
+	]
+}

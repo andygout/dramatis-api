@@ -1,0 +1,39 @@
+{
+	"uuid": "86c5f0d7-5d38-4890-b05a-295a6d391844",
+	"name": "The Transgressor",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Transgressor"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Aiden Kelly"
+		},
+		{
+			"name": "Owen Sharpe"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Róisín McBrinn"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Hebe George"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,44 @@
+{
+	"uuid": "e9089923-1573-4e72-a4b4-9fbd034b48aa",
+	"name": "Halter-Neck",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Halter-Neck"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Arthur Darvill"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Josie Rourke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Cook"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

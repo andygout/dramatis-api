@@ -1,0 +1,42 @@
+{
+	"uuid": "cdc5327e-7e80-4e53-b3f2-7b3d8a3127e7",
+	"name": "The Loss of All Things",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Loss of All Things"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Gareth Kieran Jones"
+		},
+		{
+			"name": "Christian Roe"
+		},
+		{
+			"name": "Rick Warden"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Chris Goode"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

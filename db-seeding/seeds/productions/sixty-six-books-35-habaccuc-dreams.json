@@ -1,0 +1,36 @@
+{
+	"uuid": "e07d08ca-cdd5-41db-aa86-ce80ef5c9538",
+	"name": "Habaccuc Dreams",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Habaccuc Dreams"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Nigel Cooke"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Richard Twyman"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

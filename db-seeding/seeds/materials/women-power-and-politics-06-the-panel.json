@@ -1,0 +1,38 @@
+{
+	"name": "The Panel",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Zinnie Harris"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Chris",
+					"differentiator": "The Panel"
+				},
+				{
+					"name": "Maurice"
+				},
+				{
+					"name": "Bill",
+					"differentiator": "The Panel"
+				},
+				{
+					"name": "Jason"
+				},
+				{
+					"name": "David",
+					"differentiator": "The Panel"
+				}
+			]
+		}
+	]
+}

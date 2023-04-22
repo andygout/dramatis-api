@@ -1,0 +1,462 @@
+{
+	"uuid": "2e83f602-8a8c-421d-84c7-77ca9be46d24",
+	"name": "Part One",
+	"startDate": "2004-11-20",
+	"pressDate": "2004-12-08",
+	"endDate": "2005-04-02",
+	"material": {
+		"name": "Part One"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Elaine Symons",
+			"roles": [
+				{
+					"name": "Lyra Belacqua"
+				}
+			]
+		},
+		{
+			"name": "Jamie Harding",
+			"roles": [
+				{
+					"name": "Pantalaimon"
+				}
+			]
+		},
+		{
+			"name": "Michael Legge",
+			"roles": [
+				{
+					"name": "Will Parry"
+				}
+			]
+		},
+		{
+			"name": "David Killick",
+			"roles": [
+				{
+					"name": "Master of Jordan College",
+					"characterName": "The Master"
+				},
+				{
+					"name": "Farder Coram"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				}
+			]
+		},
+		{
+			"name": "Iain Mitchell",
+			"roles": [
+				{
+					"name": "Professor Hopcraft"
+				},
+				{
+					"name": "Top-Hatted Man"
+				},
+				{
+					"name": "Dr Sargent"
+				},
+				{
+					"name": "Jopari"
+				}
+			]
+		},
+		{
+			"name": "Don Gallagher",
+			"roles": [
+				{
+					"name": "Professor Tonkin"
+				},
+				{
+					"name": "Stallholder"
+				},
+				{
+					"name": "Mayor"
+				},
+				{
+					"name": "Iofur Raknison"
+				}
+			]
+		},
+		{
+			"name": "David Harewood",
+			"roles": [
+				{
+					"name": "Lord Asriel"
+				}
+			]
+		},
+		{
+			"name": "Emma Manton",
+			"roles": [
+				{
+					"name": "Stelmaria"
+				}
+			]
+		},
+		{
+			"name": "Samuel Roukin",
+			"roles": [
+				{
+					"name": "Thorold"
+				}
+			]
+		},
+		{
+			"name": "Lesley Manville",
+			"roles": [
+				{
+					"name": "Mrs Coulter"
+				}
+			]
+		},
+		{
+			"name": "Leo Kay",
+			"roles": [
+				{
+					"name": "The Golden Monkey"
+				},
+				{
+					"name": "Tullio"
+				},
+				{
+					"name": "Assistant",
+					"characterName": "Library Assistant"
+				}
+			]
+		},
+		{
+			"name": "Nick Sampson",
+			"roles": [
+				{
+					"name": "Fra Pavel"
+				}
+			]
+		},
+		{
+			"name": "Alan Perrin",
+			"roles": [
+				{
+					"name": "Cawson"
+				},
+				{
+					"name": "Lee Scoresby"
+				}
+			]
+		},
+		{
+			"name": "Vanessa Earl",
+			"roles": [
+				{
+					"name": "Mrs Lonsdale"
+				},
+				{
+					"name": "Sister Clara"
+				},
+				{
+					"name": "Caitlin"
+				}
+			]
+		},
+		{
+			"name": "Darren Hart",
+			"roles": [
+				{
+					"name": "Roger Parslow"
+				}
+			]
+		},
+		{
+			"name": "Victoria Moseley",
+			"roles": [
+				{
+					"name": "Salcilia"
+				},
+				{
+					"name": "Hester"
+				},
+				{
+					"name": "Perpetua"
+				}
+			]
+		},
+		{
+			"name": "Marc Buchner",
+			"roles": [
+				{
+					"name": "Billy Costa"
+				},
+				{
+					"name": "Paolo"
+				}
+			]
+		},
+		{
+			"name": "Harry Peacock",
+			"roles": [
+				{
+					"name": "Tony Costa"
+				},
+				{
+					"name": "Bear Patrol",
+					"characterName": "Bears"
+				}
+			]
+		},
+		{
+			"name": "John Carlisle",
+			"roles": [
+				{
+					"name": "Lord Boreal"
+				}
+			]
+		},
+		{
+			"name": "Helen Murton",
+			"roles": [
+				{
+					"name": "Daisy"
+				},
+				{
+					"name": "Pipistrelle"
+				}
+			]
+		},
+		{
+			"name": "Michelle Dockery",
+			"roles": [
+				{
+					"name": "Jessie"
+				},
+				{
+					"name": "Grendella"
+				},
+				{
+					"name": "Angelica"
+				}
+			]
+		},
+		{
+			"name": "Samantha Lawson",
+			"roles": [
+				{
+					"name": "Lily"
+				},
+				{
+					"name": "Tortured Witch",
+					"characterName": "Witches"
+				},
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Librarian"
+				}
+			]
+		},
+		{
+			"name": "Pascal Langdale",
+			"roles": [
+				{
+					"name": "Ben"
+				},
+				{
+					"name": "Bear Patrol",
+					"characterName": "Bears"
+				}
+			]
+		},
+		{
+			"name": "Ian Gelder",
+			"roles": [
+				{
+					"name": "John Faa",
+					"characterName": "Lord Faa"
+				},
+				{
+					"name": "Bear Patrol",
+					"characterName": "Bears"
+				},
+				{
+					"name": "President of the Consistorial Court",
+					"characterName": "The President"
+				}
+			]
+		},
+		{
+			"name": "Alistair Petrie",
+			"roles": [
+				{
+					"name": "Iorek Byrnison"
+				}
+			]
+		},
+		{
+			"name": "Chiké Okonkwo",
+			"roles": [
+				{
+					"name": "Bear-keeper"
+				},
+				{
+					"name": "Dr Cade"
+				}
+			]
+		},
+		{
+			"name": "Elliot Levey",
+			"roles": [
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Brother Jasper"
+				}
+			]
+		},
+		{
+			"name": "Rachel Sanders",
+			"roles": [
+				{
+					"name": "Sister Betty"
+				},
+				{
+					"name": "Ruta Skadi"
+				}
+			]
+		},
+		{
+			"name": "Dodger Phillips",
+			"roles": [
+				{
+					"name": "Dr West"
+				}
+			]
+		},
+		{
+			"name": "Adjoa Andoh",
+			"roles": [
+				{
+					"name": "Serafina Pekkala"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nicholas Hytner"
+				},
+				{
+					"name": "Matt Wilde"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Giles Cadle"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Jon Morrell"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Aletta Collins"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Jonathan Dove"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Mark Bousie"
+				}
+			]
+		},
+		{
+			"name": "Puppet Designer",
+			"entities": [
+				{
+					"name": "Michael Curry"
+				}
+			]
+		},
+		{
+			"name": "Video Graphics Designers",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Gray Circle",
+					"members": [
+						{
+							"name": "Thomas Gray"
+						},
+						{
+							"name": "Yuri Tanaka"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

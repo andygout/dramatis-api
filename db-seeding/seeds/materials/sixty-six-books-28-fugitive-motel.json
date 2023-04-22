@@ -1,0 +1,23 @@
+{
+	"name": "Fugitive Motel",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nick Payne"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Hosea"
+				}
+			]
+		}
+	]
+}

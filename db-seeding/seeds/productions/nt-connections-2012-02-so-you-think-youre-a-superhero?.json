@@ -1,0 +1,266 @@
+{
+	"uuid": "719e5aa5-7e53-4938-9def-2d646a0e84af",
+	"name": "So You Think You're a Superhero?",
+	"startDate": "2012-06-20",
+	"endDate": "2012-06-20",
+	"material": {
+		"name": "So You Think You're a Superhero?"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Thomas Tallis School, London"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Bea Dyer",
+			"roles": [
+				{
+					"name": "Zeeboy"
+				}
+			]
+		},
+		{
+			"name": "Joe Powley",
+			"roles": [
+				{
+					"name": "Gary B"
+				}
+			]
+		},
+		{
+			"name": "Andi Penny",
+			"roles": [
+				{
+					"name": "General Zero"
+				}
+			]
+		},
+		{
+			"name": "Annie Powell",
+			"roles": [
+				{
+					"name": "Queen Zola"
+				}
+			]
+		},
+		{
+			"name": "Chloe Wheeler",
+			"roles": [
+				{
+					"name": "Zen"
+				}
+			]
+		},
+		{
+			"name": "D'Nai Thomas-Small",
+			"roles": [
+				{
+					"name": "Sparkles"
+				}
+			]
+		},
+		{
+			"name": "Ruby Dollner",
+			"roles": [
+				{
+					"name": "Smiley"
+				}
+			]
+		},
+		{
+			"name": "Ryan Sweet",
+			"roles": [
+				{
+					"name": "Spikey"
+				}
+			]
+		},
+		{
+			"name": "Helen Smyth",
+			"roles": [
+				{
+					"name": "Slow Boy"
+				}
+			]
+		},
+		{
+			"name": "Ellie Gregson",
+			"roles": [
+				{
+					"name": "Sorted"
+				}
+			]
+		},
+		{
+			"name": "Thabang Mokori",
+			"roles": [
+				{
+					"name": "Reporter"
+				}
+			]
+		},
+		{
+			"name": "Peter Osei-Tutu",
+			"roles": [
+				{
+					"name": "Camera Operator"
+				}
+			]
+		},
+		{
+			"name": "Bethany Fenwick",
+			"roles": [
+				{
+					"name": "Mindy"
+				}
+			]
+		},
+		{
+			"name": "Edie Holland",
+			"roles": [
+				{
+					"name": "Lippy Lilly"
+				}
+			]
+		},
+		{
+			"name": "Amina Scott Dooman",
+			"roles": [
+				{
+					"name": "Kalina"
+				}
+			]
+		},
+		{
+			"name": "Bryn Holder",
+			"roles": [
+				{
+					"name": "Marvel"
+				}
+			]
+		},
+		{
+			"name": "Erin Williamson",
+			"roles": [
+				{
+					"name": "Beryl"
+				}
+			]
+		},
+		{
+			"name": "Mille Barnes",
+			"roles": [
+				{
+					"name": "Referee 1"
+				}
+			]
+		},
+		{
+			"name": "Ellen Sharman",
+			"roles": [
+				{
+					"name": "Referee 2"
+				}
+			]
+		},
+		{
+			"name": "Betty Welch",
+			"roles": [
+				{
+					"name": "Olympic Hero 1"
+				}
+			]
+		},
+		{
+			"name": "Carmen Thandi",
+			"roles": [
+				{
+					"name": "Olympic Hero 2"
+				}
+			]
+		},
+		{
+			"name": "Rachel Adeyemo",
+			"roles": [
+				{
+					"name": "Olympic Hero 3"
+				}
+			]
+		},
+		{
+			"name": "Shay Westlake",
+			"roles": [
+				{
+					"name": "Olympic Hero 4"
+				}
+			]
+		},
+		{
+			"name": "Ed Beaumont",
+			"roles": [
+				{
+					"name": "Crush"
+				}
+			]
+		},
+		{
+			"name": "Scarlett Mollett",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Emmanuel Byyoke",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Evie Tosswell",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Shona Carter"
+				},
+				{
+					"name": "Kerri West"
+				},
+				{
+					"name": "Mekala Oxley"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technician",
+			"entities": [
+				{
+					"name": "Andrew South"
+				}
+			]
+		}
+	]
+}

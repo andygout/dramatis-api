@@ -1,0 +1,23 @@
+{
+	"name": "Beardy",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tom Wells"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Judges"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,42 @@
+{
+	"uuid": "b7067c47-28ee-40c3-b865-1db0c9be619b",
+	"name": "The Strange Wife",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Strange Wife"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "John Lightbody"
+		},
+		{
+			"name": "Leonard Felton"
+		},
+		{
+			"name": "Sasha Behar"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Charlotte Westenra"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Hebe George"
+				}
+			]
+		}
+	]
+}

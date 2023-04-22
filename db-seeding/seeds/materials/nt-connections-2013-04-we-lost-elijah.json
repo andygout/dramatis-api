@@ -1,0 +1,51 @@
+{
+	"name": "We Lost Elijah",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Ryan Craig"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Kara"
+				},
+				{
+					"name": "Grace",
+					"differentiator": "We Lost Elijah"
+				},
+				{
+					"name": "Maxwell"
+				},
+				{
+					"name": "Titus"
+				},
+				{
+					"name": "Malachi"
+				},
+				{
+					"name": "Elijah"
+				},
+				{
+					"name": "Becky"
+				},
+				{
+					"name": "Holly"
+				},
+				{
+					"name": "Shana"
+				},
+				{
+					"name": "Rioters"
+				}
+			]
+		}
+	]
+}

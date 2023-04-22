@@ -1,0 +1,47 @@
+{
+	"name": "Family Album",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Jasper Featherways"
+				},
+				{
+					"name": "Jane Featherways"
+				},
+				{
+					"name": "Lavinia Featherways"
+				},
+				{
+					"name": "Richard Featherways"
+				},
+				{
+					"name": "Charles Winter"
+				},
+				{
+					"name": "Harriet Winter"
+				},
+				{
+					"name": "Edward Valance"
+				},
+				{
+					"name": "Emily Valance"
+				},
+				{
+					"name": "Burrows"
+				}
+			]
+		}
+	]
+}

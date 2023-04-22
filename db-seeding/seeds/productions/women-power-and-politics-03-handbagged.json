@@ -1,0 +1,63 @@
+{
+	"uuid": "f777d3b0-6473-4c16-b238-0eea59ed4611",
+	"name": "Handbagged",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Handbagged"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Stella Gonet",
+			"roles": [
+				{
+					"name": "T"
+				}
+			]
+		},
+		{
+			"name": "Kika Markham",
+			"roles": [
+				{
+					"name": "Q"
+				}
+			]
+		},
+		{
+			"name": "Heather Craney",
+			"roles": [
+				{
+					"name": "Mags"
+				}
+			]
+		},
+		{
+			"name": "Claire Cox",
+			"roles": [
+				{
+					"name": "Liz"
+				}
+			]
+		},
+		{
+			"name": "Tom Mannion",
+			"roles": [
+				{
+					"name": "Ron"
+				}
+			]
+		},
+		{
+			"name": "Simon Chandler",
+			"roles": [
+				{
+					"name": "Shea"
+				}
+			]
+		}
+	]
+}

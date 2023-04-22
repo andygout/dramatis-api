@@ -1,0 +1,39 @@
+{
+	"uuid": "e3be8fe4-e30f-45ff-b6bb-741fb37b4d78",
+	"name": "The House Next Door",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The House Next Door"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Mariah Gale"
+		},
+		{
+			"name": "Louise Brealey"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tamara Harvey"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,632 @@
+{
+	"uuid": "2f1126a3-864f-4bd5-b5c9-9a21482bf990",
+	"name": "Millennium Approaches",
+	"startDate": "2017-04-11",
+	"pressDate": "2017-05-04",
+	"endDate": "2017-08-19",
+	"material": {
+		"name": "Millennium Approaches"
+	},
+	"venue": {
+		"name": "Lyttelton Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Susan Brown",
+			"roles": [
+				{
+					"name": "Hannah Pitt",
+					"characterName": "Hannah Porter Pitt"
+				},
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Ethel Rosenberg"
+				}
+			]
+		},
+		{
+			"name": "Andrew Garfield",
+			"roles": [
+				{
+					"name": "Prior Walter"
+				},
+				{
+					"name": "The Man in the Park"
+				}
+			]
+		},
+		{
+			"name": "Denise Gough",
+			"roles": [
+				{
+					"name": "Harper Pitt",
+					"characterName": "Harper Amaty Pitt"
+				},
+				{
+					"name": "Martin Heller"
+				}
+			]
+		},
+		{
+			"name": "Nathan Lane",
+			"roles": [
+				{
+					"name": "Roy M Cohn"
+				},
+				{
+					"name": "Prior 2"
+				}
+			]
+		},
+		{
+			"name": "Amanda Lawrence",
+			"roles": [
+				{
+					"name": "The Angel"
+				},
+				{
+					"name": "Emily"
+				},
+				{
+					"name": "Sister Ella Chapter"
+				},
+				{
+					"name": "A Homeless Woman"
+				}
+			]
+		},
+		{
+			"name": "James McArdle",
+			"roles": [
+				{
+					"name": "Louis Ironson"
+				}
+			]
+		},
+		{
+			"name": "Nathan Stewart-Jarrett",
+			"roles": [
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "Mr Lies"
+				}
+			]
+		},
+		{
+			"name": "Russell Tovey",
+			"roles": [
+				{
+					"name": "Joseph Pitt",
+					"characterName": "Joseph Porter Pitt"
+				},
+				{
+					"name": "Prior 1"
+				},
+				{
+					"name": "The Eskimo"
+				}
+			]
+		},
+		{
+			"name": "Stuart Angell",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		},
+		{
+			"name": "Laura Caldow",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		},
+		{
+			"name": "Claire Lambert",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		},
+		{
+			"name": "Becky Namgauds",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		},
+		{
+			"name": "Stan West",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		},
+		{
+			"name": "Lewis Wilkins",
+			"roles": [
+				{
+					"name": "Angel Shadow"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Marianne Elliott"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Ian MacNeill"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Nicky Gillibrand"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Choreographer and Movement",
+			"entities": [
+				{
+					"name": "Robby Graham"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Kate Waters"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Adrian Sutton"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ian Dickinson"
+				}
+			]
+		},
+		{
+			"name": "Puppetry Director and Movement",
+			"entities": [
+				{
+					"name": "Finn Caldwell"
+				}
+			]
+		},
+		{
+			"name": "Puppetry Designers",
+			"entities": [
+				{
+					"name": "Finn Caldwell"
+				},
+				{
+					"name": "Nick Barnes"
+				}
+			]
+		},
+		{
+			"name": "Illusions",
+			"entities": [
+				{
+					"name": "Chris Fisher"
+				}
+			]
+		},
+		{
+			"name": "Aerial Director",
+			"entities": [
+				{
+					"name": "Gwen Hales"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"entities": [
+				{
+					"name": "Jeanette Nelson"
+				},
+				{
+					"name": "Charmian Hoare"
+				}
+			]
+		},
+		{
+			"name": "Company Dialect Work",
+			"entities": [
+				{
+					"name": "Charmian Hoare"
+				},
+				{
+					"name": "Hazel Holder"
+				}
+			]
+		},
+		{
+			"name": "Associate Director",
+			"entities": [
+				{
+					"name": "Harry Mackrill"
+				}
+			]
+		},
+		{
+			"name": "Associate Set Designer",
+			"entities": [
+				{
+					"name": "James Gaffney"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Charlotte Bevan"
+				},
+				{
+					"name": "Jim Carnahan"
+				},
+				{
+					"name": "Jacob Sparrow"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Staff Director",
+			"entities": [
+				{
+					"name": "Miranda Cromwell"
+				}
+			]
+		},
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Tariq Rifaat"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Shane Thom"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Nik Haffenden"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Jo Phipps"
+				},
+				{
+					"name": "Abbie Procter"
+				}
+			]
+		},
+		{
+			"name": "Deputy Production Manager",
+			"entities": [
+				{
+					"name": "Anthony Newton"
+				}
+			]
+		},
+		{
+			"name": "Project Draughting",
+			"entities": [
+				{
+					"name": "Alan Bain"
+				}
+			]
+		},
+		{
+			"name": "Digital Art",
+			"entities": [
+				{
+					"name": "Daniel Radley-Bennett"
+				}
+			]
+		},
+		{
+			"name": "Digital Drawing",
+			"entities": [
+				{
+					"name": "Janet Williamson"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Deborah Andrews"
+				}
+			]
+		},
+		{
+			"name": "Costume Design Assistant",
+			"entities": [
+				{
+					"name": "Rosey Morling"
+				}
+			]
+		},
+		{
+			"name": "Costume Buyer",
+			"entities": [
+				{
+					"name": "Fiona Parker"
+				}
+			]
+		},
+		{
+			"name": "Wigs, Hair & Make-up Supervisor",
+			"entities": [
+				{
+					"name": "Sarah Louise Packham"
+				}
+			]
+		},
+		{
+			"name": "Prop Supervisors",
+			"entities": [
+				{
+					"name": "Rebecca Johnston"
+				},
+				{
+					"name": "Eleanor Smith"
+				}
+			]
+		},
+		{
+			"name": "Lighting Supervisors",
+			"entities": [
+				{
+					"name": "Laurence Clayton"
+				},
+				{
+					"name": "Neill Pollard"
+				}
+			]
+		},
+		{
+			"name": "Lighting Programmers",
+			"entities": [
+				{
+					"name": "Jane Dutton"
+				},
+				{
+					"name": "Laura Choules"
+				},
+				{
+					"name": "Karin Anderson"
+				}
+			]
+		},
+		{
+			"name": "Music Associate",
+			"entities": [
+				{
+					"name": "Matthew Gough"
+				}
+			]
+		},
+		{
+			"name": "Video Supervisors",
+			"entities": [
+				{
+					"name": "Matthew Morgans"
+				}
+			]
+		},
+		{
+			"name": "Production Sound Engineers",
+			"entities": [
+				{
+					"name": "Alex Twiselton"
+				},
+				{
+					"name": "Joel Price"
+				}
+			]
+		},
+		{
+			"name": "Sound Operators",
+			"entities": [
+				{
+					"name": "Jamie McIntyre"
+				},
+				{
+					"name": "Clio Nonis"
+				}
+			]
+		},
+		{
+			"name": "Stage Supervisors",
+			"entities": [
+				{
+					"name": "Dave Tuff"
+				},
+				{
+					"name": "Ken Pederson"
+				}
+			]
+		},
+		{
+			"name": "Rigging Supervisors",
+			"entities": [
+				{
+					"name": "Barry Peavot"
+				},
+				{
+					"name": "Matthew Wheeler"
+				}
+			]
+		},
+		{
+			"name": "Aerial Rigging Supervisor",
+			"entities": [
+				{
+					"name": "Neill Shimmens"
+				}
+			]
+		},
+		{
+			"name": "Flying Supervisors",
+			"entities": [
+				{
+					"name": "Danny O'Neill"
+				},
+				{
+					"name": "Ian Jolly"
+				}
+			]
+		},
+		{
+			"name": "Flyman",
+			"entities": [
+				{
+					"name": "Suresh Chawla"
+				}
+			]
+		},
+		{
+			"name": "Automation Supervisors",
+			"entities": [
+				{
+					"name": "Richard Kent"
+				},
+				{
+					"name": "Richard Wilcox"
+				}
+			]
+		},
+		{
+			"name": "Automation Programmers",
+			"entities": [
+				{
+					"name": "Richard Booth"
+				},
+				{
+					"name": "Jo Colley"
+				}
+			]
+		},
+		{
+			"name": "Armourers and Special Effects",
+			"entities": [
+				{
+					"name": "Paul Wanklin"
+				},
+				{
+					"name": "Steve Dart"
+				}
+			]
+		},
+		{
+			"name": "Construction Supervisors",
+			"entities": [
+				{
+					"name": "Dave Cotton"
+				},
+				{
+					"name": "Barrie Nield"
+				}
+			]
+		},
+		{
+			"name": "Scenic Art Supervisor",
+			"entities": [
+				{
+					"name": "Sarah Kier"
+				},
+				{
+					"name": "Ian Cooper"
+				}
+			]
+		},
+		{
+			"name": "Project Producer",
+			"entities": [
+				{
+					"name": "Christine Gettins"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"entities": [
+				{
+					"name": "Helen Maybanks"
+				}
+			]
+		}
+	]
+}

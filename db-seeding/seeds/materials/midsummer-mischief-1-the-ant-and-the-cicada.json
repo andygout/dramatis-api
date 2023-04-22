@@ -1,0 +1,39 @@
+{
+	"name": "The Ant and the Cicada",
+	"format": "play",
+	"year": "2014",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Timberlake Wertenbaker"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Selina",
+					"differentiator": "The Ant and the Cicada"
+				},
+				{
+					"name": "Alex",
+					"differentiator": "The Ant and the Cicada"
+				},
+				{
+					"name": "Zoe",
+					"differentiator": "The Ant and the Cicada"
+				},
+				{
+					"name": "Irina",
+					"differentiator": "The Ant and the Cicada"
+				},
+				{
+					"name": "The Students"
+				}
+			]
+		}
+	]
+}

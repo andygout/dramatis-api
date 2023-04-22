@@ -1,0 +1,26 @@
+{
+	"name": "Dream Pill",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rebecca Prichard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bola"
+				},
+				{
+					"name": "Tunde"
+				}
+			]
+		}
+	]
+}

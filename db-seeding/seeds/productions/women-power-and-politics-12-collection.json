@@ -1,0 +1,80 @@
+{
+	"name": "Women, Power & Politics",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Women, Power & Politics"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "791f6110-fa0c-4e51-9eb1-818432f0c83a"
+		},
+		{
+			"uuid": "803b99a8-7c84-487c-9bd6-4a4f8cd8d9a5"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Indhu Rubasingham"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rosa Maggiora"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Matt Eagland"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Associate Director",
+			"entities": [
+				{
+					"name": "Amy Hodge"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Rachel Taylor"
+				}
+			]
+		}
+	]
+}

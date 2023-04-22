@@ -1,0 +1,36 @@
+{
+	"uuid": "c4fcdcd3-378a-4219-b6ee-bad47fe8af8b",
+	"name": "Amos the Shepherd Curses the Rulers of Ancient Israel",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Amos the Shepherd Curses the Rulers of Ancient Israel"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Harold Finley"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Chris Goode"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

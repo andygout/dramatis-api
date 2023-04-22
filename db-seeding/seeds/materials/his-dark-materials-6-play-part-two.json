@@ -1,0 +1,217 @@
+{
+	"name": "Part Two",
+	"format": "play",
+	"year": "2003",
+	"writingCredits": [
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "His Dark Materials",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "adapted for the stage by",
+			"entities": [
+				{
+					"name": "Nicholas Wright"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Between the Worlds",
+			"characters": [
+				{
+					"name": "Lyra Belacqua"
+				},
+				{
+					"name": "Pantalaimon"
+				},
+				{
+					"name": "Will Parry"
+				}
+			]
+		},
+		{
+			"name": "Geneva",
+			"characters": [
+				{
+					"name": "President of the Consistorial Court"
+				},
+				{
+					"name": "Brother Jasper"
+				},
+				{
+					"name": "Perpetua"
+				},
+				{
+					"name": "Fra Pavel"
+				},
+				{
+					"name": "Church Council"
+				}
+			]
+		},
+		{
+			"name": "Oxford",
+			"characters": [
+				{
+					"name": "Lord Boreal"
+				},
+				{
+					"name": "Mrs Coulter"
+				},
+				{
+					"name": "The Golden Monkey"
+				},
+				{
+					"name": "Lee Scoresby"
+				},
+				{
+					"name": "Hester"
+				}
+			]
+		},
+		{
+			"name": "Cittàgazze",
+			"characters": [
+				{
+					"name": "Serafina Pekkala"
+				},
+				{
+					"name": "Kaisa"
+				},
+				{
+					"name": "Pipistrelle"
+				},
+				{
+					"name": "Caitlin"
+				},
+				{
+					"name": "Grimhild"
+				},
+				{
+					"name": "Grendella"
+				},
+				{
+					"name": "Giacomo Paradisi"
+				},
+				{
+					"name": "Angelica"
+				},
+				{
+					"name": "Paolo"
+				}
+			]
+		},
+		{
+			"name": "Lord Asriel's Fortress",
+			"characters": [
+				{
+					"name": "Lord Asriel"
+				},
+				{
+					"name": "Stelmaria"
+				},
+				{
+					"name": "Thorold"
+				},
+				{
+					"name": "Lord Roke"
+				},
+				{
+					"name": "Chevalier Tialys"
+				},
+				{
+					"name": "Lady Salmakia"
+				}
+			]
+		},
+		{
+			"name": "Cittàgazze Mountains",
+			"characters": [
+				{
+					"name": "Ruta Skadi"
+				},
+				{
+					"name": "Jopari"
+				},
+				{
+					"name": "Balthamos"
+				},
+				{
+					"name": "Baruch"
+				}
+			]
+		},
+		{
+			"name": "Northern Mountains",
+			"characters": [
+				{
+					"name": "Iorek Byrnison"
+				}
+			]
+		},
+		{
+			"name": "Land of the Dead",
+			"characters": [
+				{
+					"name": "Perkins"
+				},
+				{
+					"name": "Boatman"
+				},
+				{
+					"name": "The Jones"
+				},
+				{
+					"name": "The Jones' Deaths"
+				},
+				{
+					"name": "The Dead"
+				},
+				{
+					"name": "No-Name"
+				},
+				{
+					"name": "Roger Parslow"
+				},
+				{
+					"name": "Lyra's Death"
+				}
+			]
+		},
+		{
+			"name": "Unknown World",
+			"characters": [
+				{
+					"name": "Kirjava"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Witches"
+				},
+				{
+					"name": "Lord Asriel's Forces"
+				},
+				{
+					"name": "Church Forces"
+				},
+				{
+					"name": "Bears"
+				},
+				{
+					"name": "Harpies"
+				}
+			]
+		}
+	]
+}

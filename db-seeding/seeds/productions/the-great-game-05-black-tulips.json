@@ -1,0 +1,13 @@
+{
+	"uuid": "cd878e71-2d4b-4de4-b33c-de7f606989ec",
+	"name": "Black Tulips",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Black Tulips"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	}
+}

@@ -1,0 +1,112 @@
+{
+	"name": "Perestroika",
+	"format": "play",
+	"year": "1992",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tony Kushner"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "The Angel"
+				},
+				{
+					"name": "Prior Walter"
+				},
+				{
+					"name": "Harper Amaty Pitt"
+				},
+				{
+					"name": "Joseph Porter Pitt"
+				},
+				{
+					"name": "Hannah Porter Pitt"
+				},
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "Roy M Cohn"
+				},
+				{
+					"name": "Louis Ironson"
+				},
+				{
+					"name": "Aleksii Antedilluvianovich Preplapsarianov"
+				},
+				{
+					"name": "Mr Lies"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Ethel Rosenberg"
+				},
+				{
+					"name": "Emily"
+				}
+			]
+		},
+		{
+			"name": "Diorama Room of the Mormon Visitor's Center",
+			"characters": [
+				{
+					"name": "The Mormon Father"
+				},
+				{
+					"name": "The Offstage Voice of Caleb"
+				},
+				{
+					"name": "The Offstage Voice of Orrin"
+				},
+				{
+					"name": "The Mormon Mother"
+				}
+			]
+		},
+		{
+			"name": "The Continental Principalities",
+			"characters": [
+				{
+					"name": "The Angel Europa"
+				},
+				{
+					"name": "The Angel Africanii"
+				},
+				{
+					"name": "The Angel Oceania"
+				},
+				{
+					"name": "The Angel Asiatica"
+				},
+				{
+					"name": "The Angel Australia"
+				},
+				{
+					"name": "The Angel Antarctica"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				},
+				{
+					"name": "Sarah Ironson"
+				},
+				{
+					"name": "Taped Voice"
+				}
+			]
+		}
+	]
+}

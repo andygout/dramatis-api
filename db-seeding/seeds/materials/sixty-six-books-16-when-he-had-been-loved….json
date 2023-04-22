@@ -1,0 +1,23 @@
+{
+	"name": "When he had been loved…",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Mandla Langa"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Nehemiah"
+				}
+			]
+		}
+	]
+}

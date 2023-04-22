@@ -1,0 +1,36 @@
+{
+	"uuid": "4c53c0bb-deaa-4ef7-be1d-b99c1d273d9a",
+	"name": "The Preacher, or How Ecclesiastes Changed My Life",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Preacher, or How Ecclesiastes Changed My Life"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Becci Gemmell"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Abbey Wright"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

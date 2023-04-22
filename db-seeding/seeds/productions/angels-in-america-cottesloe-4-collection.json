@@ -1,0 +1,22 @@
+{
+	"name": "Angels in America",
+	"startDate": "1992-01-17",
+	"endDate": "1994-07-02",
+	"material": {
+		"name": "Angels in America"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "d43773d8-de44-4cff-a2b5-9cc523482e71"
+		},
+		{
+			"uuid": "de00b367-e5d6-4cc6-8b30-3e4aeef9ff5e"
+		},
+		{
+			"uuid": "156ca3d3-e202-403b-b5a4-4ccf06c2485b"
+		}
+	]
+}

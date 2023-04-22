@@ -1,0 +1,96 @@
+{
+	"uuid": "15138767-2015-4237-b463-c94df00d50a1",
+	"name": "The Books of the New Testament",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Books of the New Testament"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "77fedba8-4a96-422e-ab55-39367d201d5d"
+		},
+		{
+			"uuid": "a9fa3f9b-ab78-41e6-8aae-c90be52b9ba8"
+		},
+		{
+			"uuid": "b46fed54-537d-417f-b85c-bc8850aae189"
+		},
+		{
+			"uuid": "12e63840-47e2-4b73-94bb-7d94e5e0af01"
+		},
+		{
+			"uuid": "38dbb35e-adc4-4674-80b9-dbee6b782155"
+		},
+		{
+			"uuid": "1aeed54b-2e99-4ef4-989d-152f36b16b0c"
+		},
+		{
+			"uuid": "0febf7a6-3f76-4394-bd17-8fbe9f2cd60e"
+		},
+		{
+			"uuid": "e1caaa09-f19d-4653-adab-1c7172719f85"
+		},
+		{
+			"uuid": "86c5f0d7-5d38-4890-b05a-295a6d391844"
+		},
+		{
+			"uuid": "48e12c5b-a005-40b5-a709-a5aa391da721"
+		},
+		{
+			"uuid": "cdc5327e-7e80-4e53-b3f2-7b3d8a3127e7"
+		},
+		{
+			"uuid": "16227943-3086-49a5-8e5c-a7b89430c641"
+		},
+		{
+			"uuid": "01077579-2766-4b76-ba46-37bf4d4372a0"
+		},
+		{
+			"uuid": "f12cfc6e-ed72-4810-a366-12eeb5cdb50f"
+		},
+		{
+			"uuid": "49bd3eb9-a915-4fb5-b83f-a6419377a518"
+		},
+		{
+			"uuid": "94b4d135-b416-4da5-b7c5-d262907566bd"
+		},
+		{
+			"uuid": "1996816f-73b4-4505-9717-0252814a9f9a"
+		},
+		{
+			"uuid": "864cc905-95c0-4f80-875a-727e8424faa3"
+		},
+		{
+			"uuid": "874f1394-576b-4591-a1b9-96b1b726c5fa"
+		},
+		{
+			"uuid": "77d32273-4d01-4729-bbfe-9e0b4366a16b"
+		},
+		{
+			"uuid": "4ce3ba31-e586-4791-a9c4-d5c5c9208808"
+		},
+		{
+			"uuid": "fd970e21-b0fc-4f78-b35d-abd882f4d046"
+		},
+		{
+			"uuid": "3836181d-795e-4ca8-8753-3227c9c72c9b"
+		},
+		{
+			"uuid": "884f597d-01f3-4f71-8e8e-e2bdcb98ca1b"
+		},
+		{
+			"uuid": "740c244f-37c6-4f27-a2a5-31f2d97ee889"
+		},
+		{
+			"uuid": "37576930-62bc-4745-9d5e-0ceb4ed48535"
+		},
+		{
+			"uuid": "6c5376e6-90ba-4d77-9b4a-2fc7dfd1ca5b"
+		}
+	]
+}

@@ -1,0 +1,543 @@
+{
+	"name": "The Life and Adventures of Nicholas Nickleby",
+	"startDate": "2007-12-05",
+	"pressDate": "2007-12-08",
+	"endDate": "2008-01-27",
+	"material": {
+		"name": "The Life and Adventures of Nicholas Nickleby",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Gielgud Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "60fcdded-09bf-43f8-8013-2e47de2abdf1"
+		},
+		{
+			"uuid": "3c01b112-8f55-43a2-8496-8fa9b3759920"
+		}
+	],
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Daniel Weyman",
+			"roles": [
+				{
+					"name": "Nicholas Nickleby"
+				}
+			]
+		},
+		{
+			"name": "Hannah Yelland",
+			"roles": [
+				{
+					"name": "Kate Nickleby"
+				},
+				{
+					"name": "Jennings"
+				},
+				{
+					"name": "Miss Bravassa"
+				}
+			]
+		},
+		{
+			"name": "Abigail McKern",
+			"roles": [
+				{
+					"name": "Mrs Nickleby"
+				},
+				{
+					"name": "Coates"
+				},
+				{
+					"name": "Mrs Curdle"
+				},
+				{
+					"name": "Mrs Snevellicci"
+				}
+			]
+		},
+		{
+			"name": "David Yelland",
+			"roles": [
+				{
+					"name": "Ralph Nickleby"
+				},
+				{
+					"name": "Gambling House Proprietor",
+					"characterName": "Casino Proprietor"
+				}
+			]
+		},
+		{
+			"name": "Peter Moreton",
+			"roles": [
+				{
+					"name": "Sir Matthew Pupker"
+				},
+				{
+					"name": "Mr Snawley"
+				},
+				{
+					"name": "Mr Lenville"
+				},
+				{
+					"name": "Opera Singer",
+					"characterName": "Opera Singers"
+				}
+			]
+		},
+		{
+			"name": "Richard Bremmer",
+			"roles": [
+				{
+					"name": "Newman Noggs"
+				},
+				{
+					"name": "Handsaw"
+				}
+			]
+		},
+		{
+			"name": "Alison Fiske",
+			"roles": [
+				{
+					"name": "Miss La Creevy"
+				},
+				{
+					"name": "Peg Sliderskew"
+				}
+			]
+		},
+		{
+			"name": "Emma Manton",
+			"roles": [
+				{
+					"name": "Hannah"
+				},
+				{
+					"name": "Tilda Price"
+				},
+				{
+					"name": "Rich Lady's Daughter",
+					"characterName": "Rich Ladies"
+				},
+				{
+					"name": "Miss Belvawney"
+				},
+				{
+					"name": "Opera Singer",
+					"characterName": "Opera Singers"
+				}
+			]
+		},
+		{
+			"name": "Wayne Carter",
+			"roles": [
+				{
+					"name": "William"
+				},
+				{
+					"name": "Jackson"
+				},
+				{
+					"name": "Mr Wagstaff"
+				},
+				{
+					"name": "Mr Pluck"
+				},
+				{
+					"name": "Mr Charles Cheeryble",
+					"characterName": "Charles Cheeryble"
+				},
+				{
+					"name": "Police Officer",
+					"characterName": "Policeman"
+				}
+			]
+		},
+		{
+			"name": "Pip Donaghy",
+			"roles": [
+				{
+					"name": "Wackford Squeers",
+					"characterName": "Mr Squeers"
+				},
+				{
+					"name": "Sir Mulberry Hawk"
+				}
+			]
+		},
+		{
+			"name": "Matthew Spencer",
+			"roles": [
+				{
+					"name": "Snawley Snr",
+					"characterName": "Snawley Major"
+				},
+				{
+					"name": "Master P Crummles",
+					"characterName": "Master Percy Crummles"
+				},
+				{
+					"name": "Mr Pyke"
+				}
+			]
+		},
+		{
+			"name": "Rob Kendrick",
+			"roles": [
+				{
+					"name": "Snawley Jr",
+					"characterName": "Snawley Minor"
+				},
+				{
+					"name": "Master Crummles"
+				}
+			]
+		},
+		{
+			"name": "Christopher Logan",
+			"roles": [
+				{
+					"name": "Belling"
+				},
+				{
+					"name": "Mr Bane"
+				},
+				{
+					"name": "Mr Tix",
+					"characterName": "Tix"
+				},
+				{
+					"name": "Alphonse"
+				},
+				{
+					"name": "Wilbur"
+				},
+				{
+					"name": "Angry Fellow",
+					"characterName": "Irate Gentleman"
+				},
+				{
+					"name": "Messenger"
+				}
+			]
+		},
+		{
+			"name": "David Dawson",
+			"roles": [
+				{
+					"name": "Smike"
+				},
+				{
+					"name": "Croupier"
+				}
+			]
+		},
+		{
+			"name": "Veronica Roberts",
+			"roles": [
+				{
+					"name": "Mrs Squeers"
+				},
+				{
+					"name": "Rich Lady",
+					"characterName": "Rich Ladies"
+				},
+				{
+					"name": "Mrs Crummles"
+				},
+				{
+					"name": "Mrs Snawley"
+				}
+			]
+		},
+		{
+			"name": "Zoë Waites",
+			"roles": [
+				{
+					"name": "Fanny Squeers"
+				},
+				{
+					"name": "Miss Snevellicci"
+				},
+				{
+					"name": "Madeline Bray"
+				}
+			]
+		},
+		{
+			"name": "David Nellist",
+			"roles": [
+				{
+					"name": "Young Wackford",
+					"characterName": "Young Wackford Squeers"
+				},
+				{
+					"name": "Mr Pailey"
+				},
+				{
+					"name": "Ned Cheeryble"
+				}
+			]
+		},
+		{
+			"name": "Philippa Stanton",
+			"roles": [
+				{
+					"name": "Phib"
+				},
+				{
+					"name": "Mobbs"
+				},
+				{
+					"name": "Old Lord's Fiancée",
+					"characterName": "Young Fiancée"
+				},
+				{
+					"name": "Infant Phenomenon",
+					"characterName": "The Infant Phenomenon"
+				},
+				{
+					"name": "Opera Singer",
+					"characterName": "Opera Singers"
+				},
+				{
+					"name": "Young Woman"
+				}
+			]
+		},
+		{
+			"name": "Simon Roberts",
+			"roles": [
+				{
+					"name": "Cobbey"
+				},
+				{
+					"name": "Brooker"
+				},
+				{
+					"name": "Mr Mantalini"
+				},
+				{
+					"name": "Mr Folair"
+				},
+				{
+					"name": "Col Chowser",
+					"characterName": "Colonel Chowser"
+				},
+				{
+					"name": "Minister"
+				}
+			]
+		},
+		{
+			"name": "Roses Urquart",
+			"roles": [
+				{
+					"name": "Bolder"
+				},
+				{
+					"name": "Mrs Lenville"
+				},
+				{
+					"name": "Wanda"
+				}
+			]
+		},
+		{
+			"name": "Philip Battley",
+			"roles": [
+				{
+					"name": "Graymarsh"
+				},
+				{
+					"name": "Mr Scaley",
+					"characterName": "Scaley"
+				},
+				{
+					"name": "Mr Snobb"
+				},
+				{
+					"name": "Mr Wititterley"
+				},
+				{
+					"name": "Frank Cheeryble"
+				}
+			]
+		},
+		{
+			"name": "Sarah Lawrie",
+			"roles": [
+				{
+					"name": "Peters"
+				},
+				{
+					"name": "Miss Ledrook"
+				}
+			]
+		},
+		{
+			"name": "Tricia Kelly",
+			"roles": [
+				{
+					"name": "Sprouter"
+				},
+				{
+					"name": "Miss Knag"
+				},
+				{
+					"name": "Mrs Grudden"
+				}
+			]
+		},
+		{
+			"name": "Bob Barrett",
+			"roles": [
+				{
+					"name": "John Browdie"
+				},
+				{
+					"name": "Mr Hetherington"
+				},
+				{
+					"name": "Mr Curdle"
+				},
+				{
+					"name": "Lord Frederick Verisopht"
+				},
+				{
+					"name": "Police Officer",
+					"characterName": "Policeman"
+				}
+			]
+		},
+		{
+			"name": "Jane Bertish",
+			"roles": [
+				{
+					"name": "Madame Mantalini"
+				},
+				{
+					"name": "Mrs Wititterley"
+				}
+			]
+		},
+		{
+			"name": "Brian Poyser",
+			"roles": [
+				{
+					"name": "Old Lord"
+				},
+				{
+					"name": "Landlord"
+				},
+				{
+					"name": "Mr Fluggers"
+				},
+				{
+					"name": "Mr Snevellicci"
+				},
+				{
+					"name": "Tim Linkinwater"
+				},
+				{
+					"name": "Walter Bray"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Coy",
+			"roles": [
+				{
+					"name": "Crummles",
+					"characterName": "Mr Vincent Crummles"
+				},
+				{
+					"name": "Arthur Gride"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Jonathan Church"
+				},
+				{
+					"name": "Philip Franks"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Simon Higlett"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Jonathan"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Shona Morris"
+				}
+			]
+		},
+		{
+			"name": "Music and Lyrics",
+			"entities": [
+				{
+					"name": "Stephen Oliver"
+				}
+			]
+		},
+		{
+			"name": "Orchestrations and Additional Music",
+			"entities": [
+				{
+					"name": "Matthew Scott"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Paul Frankish"
+				}
+			]
+		}
+	]
+}

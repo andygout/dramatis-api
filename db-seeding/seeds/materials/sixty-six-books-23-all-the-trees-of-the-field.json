@@ -1,0 +1,23 @@
+{
+	"name": "All the trees of the field",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Ian McHugh"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Isaiah"
+				}
+			]
+		}
+	]
+}

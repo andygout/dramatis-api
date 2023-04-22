@@ -1,0 +1,42 @@
+{
+	"uuid": "38dbb35e-adc4-4674-80b9-dbee6b782155",
+	"name": "Acts",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Acts"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Geraldine Alexander"
+		},
+		{
+			"name": "Michele Austin"
+		},
+		{
+			"name": "Kelly Hunter"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gbolahan Obisesan"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Tori Jennings"
+				}
+			]
+		}
+	]
+}

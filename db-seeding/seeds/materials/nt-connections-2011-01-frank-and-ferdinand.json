@@ -1,0 +1,46 @@
+{
+	"name": "Frank & Ferdinand",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Samuel Adamson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Gendarmerie"
+				},
+				{
+					"name": "Otto",
+					"differentiator": "Frank & Ferdinand"
+				},
+				{
+					"name": "Um-Alosius"
+				},
+				{
+					"name": "Sarah",
+					"differentiator": "Frank & Ferdinand"
+				},
+				{
+					"name": "Flora"
+				},
+				{
+					"name": "Student 1"
+				},
+				{
+					"name": "Student 2"
+				},
+				{
+					"name": "Student 3"
+				}
+			]
+		}
+	]
+}

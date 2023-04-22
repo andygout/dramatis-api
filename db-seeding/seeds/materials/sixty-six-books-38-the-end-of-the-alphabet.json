@@ -1,0 +1,23 @@
+{
+	"name": "The End of the Alphabet",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Elinor Cook"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Zechariah"
+				}
+			]
+		}
+	]
+}

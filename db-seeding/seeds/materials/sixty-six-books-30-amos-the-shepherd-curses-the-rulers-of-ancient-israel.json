@@ -1,0 +1,23 @@
+{
+	"name": "Amos the Shepherd Curses the Rulers of Ancient Israel",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Michael Rosen"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Amos"
+				}
+			]
+		}
+	]
+}

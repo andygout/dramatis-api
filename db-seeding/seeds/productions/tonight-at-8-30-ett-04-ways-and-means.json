@@ -1,0 +1,88 @@
+{
+	"uuid": "6cdd767a-6145-453d-ab9b-1acf6794ff33",
+	"name": "Ways and Means",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Ways and Means"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kirsty Besterman",
+			"roles": [
+				{
+					"name": "Stella Cartwright"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Toby Cartwright"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Olive Lloyd-Ransome"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Lord Chapworth"
+				}
+			]
+		},
+		{
+			"name": "Olivia Poulet",
+			"roles": [
+				{
+					"name": "Nanny",
+					"characterName": "Nannie"
+				}
+			]
+		},
+		{
+			"name": "Orlando Wells",
+			"roles": [
+				{
+					"name": "Murdoch"
+				}
+			]
+		},
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "Stevens"
+				}
+			]
+		},
+		{
+			"name": "Shereen Martin",
+			"roles": [
+				{
+					"name": "Princess Elena Krassiloff"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Gaston"
+				}
+			]
+		}
+	]
+}

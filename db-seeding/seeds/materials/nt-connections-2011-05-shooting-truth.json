@@ -1,0 +1,71 @@
+{
+	"name": "Shooting Truth",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Molly Davies"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Liam",
+					"differentiator": "Shooting Truth"
+				},
+				{
+					"name": "Alice",
+					"differentiator": "Shooting Truth"
+				},
+				{
+					"name": "Luke"
+				},
+				{
+					"name": "Sid"
+				},
+				{
+					"name": "Leanne"
+				},
+				{
+					"name": "Sadie"
+				},
+				{
+					"name": "Jake",
+					"differentiator": "Shooting Truth"
+				},
+				{
+					"name": "Freya"
+				},
+				{
+					"name": "Gran"
+				},
+				{
+					"name": "Len"
+				},
+				{
+					"name": "Sal"
+				},
+				{
+					"name": "Marley"
+				},
+				{
+					"name": "Billy",
+					"differentiator": "Shooting Truth"
+				},
+				{
+					"name": "Lou",
+					"differentiator": "Shooting Truth"
+				},
+				{
+					"name": "Joan",
+					"differentiator": "Shooting Truth"
+				}
+			]
+		}
+	]
+}

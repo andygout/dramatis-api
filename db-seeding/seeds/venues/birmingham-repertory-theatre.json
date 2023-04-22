@@ -1,0 +1,11 @@
+{
+	"name": "Birmingham Repertory Theatre",
+	"subVenues": [
+		{
+			"name": "The House"
+		},
+		{
+			"name": "The Studio"
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"name": "The Wood Orchid",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Wena Poon"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "2 Corinthians"
+				}
+			]
+		}
+	]
+}

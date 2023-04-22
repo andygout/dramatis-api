@@ -1,0 +1,23 @@
+{
+	"name": "God is Jealous",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Moira Buffini"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Nahum"
+				}
+			]
+		}
+	]
+}

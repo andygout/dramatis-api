@@ -1,0 +1,44 @@
+{
+	"uuid": "d1ace3ed-2975-44e2-be3d-3005bf296317",
+	"name": "The Beauty of the Church",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Beauty of the Church"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Juliet Stevenson"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Josie Rourke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Cook"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

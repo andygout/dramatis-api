@@ -1,0 +1,83 @@
+{
+	"name": "Millennium Approaches",
+	"format": "play",
+	"year": "1991",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tony Kushner"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Roy M Cohn"
+				},
+				{
+					"name": "Joseph Porter Pitt"
+				},
+				{
+					"name": "Harper Amaty Pitt"
+				},
+				{
+					"name": "Louis Ironson"
+				},
+				{
+					"name": "Prior Walter"
+				},
+				{
+					"name": "Hannah Porter Pitt"
+				},
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "The Angel"
+				},
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				},
+				{
+					"name": "Mr Lies"
+				},
+				{
+					"name": "The Man in the Park"
+				},
+				{
+					"name": "The Voice"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Emily"
+				},
+				{
+					"name": "Martin Heller"
+				},
+				{
+					"name": "Sister Ella Chapter"
+				},
+				{
+					"name": "Prior 1"
+				},
+				{
+					"name": "Prior 2"
+				},
+				{
+					"name": "The Eskimo"
+				},
+				{
+					"name": "A Homeless Woman"
+				},
+				{
+					"name": "Ethel Rosenberg"
+				}
+			]
+		}
+	]
+}

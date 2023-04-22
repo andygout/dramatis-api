@@ -1,0 +1,39 @@
+{
+	"uuid": "9d690f61-1919-4be4-bbbf-242752890778",
+	"name": "Playing the Game",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Playing the Game"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Lara Rossi",
+			"roles": [
+				{
+					"name": "Jenny"
+				}
+			]
+		},
+		{
+			"name": "Amy Loughton",
+			"roles": [
+				{
+					"name": "Akousa"
+				}
+			]
+		},
+		{
+			"name": "Claire Cox",
+			"roles": [
+				{
+					"name": "Charlene"
+				}
+			]
+		}
+	]
+}

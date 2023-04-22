@@ -1,0 +1,75 @@
+{
+	"name": "Don't Feed the Animals",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jemma Kennedy"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Zack"
+				},
+				{
+					"name": "Pozzo"
+				},
+				{
+					"name": "Pip"
+				},
+				{
+					"name": "Missy"
+				},
+				{
+					"name": "Tinkerbelle"
+				},
+				{
+					"name": "Diz"
+				},
+				{
+					"name": "Billy",
+					"differentiator": "Don't Feed the Animals"
+				},
+				{
+					"name": "Spike"
+				},
+				{
+					"name": "Raj",
+					"differentiator": "Don't Feed the Animals"
+				},
+				{
+					"name": "Midge"
+				},
+				{
+					"name": "Lulu"
+				},
+				{
+					"name": "Chloe",
+					"differentiator": "Don't Feed the Animals"
+				},
+				{
+					"name": "Alex",
+					"differentiator": "Don't Feed the Animals"
+				},
+				{
+					"name": "Pedro"
+				},
+				{
+					"name": "Girl"
+				},
+				{
+					"name": "Charlie"
+				},
+				{
+					"name": "Ensemble"
+				}
+			]
+		}
+	]
+}

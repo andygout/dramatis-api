@@ -1,0 +1,23 @@
+{
+	"name": "Uncool Religion",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Zukiswa Wanner"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Colossians"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,104 @@
+{
+	"uuid": "573e04a6-ff27-4879-8166-2327e95c1165",
+	"name": "This Is Not an Exit",
+	"startDate": "2014-07-16",
+	"endDate": "2014-07-17",
+	"material": {
+		"name": "This Is Not an Exit"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Upstairs"
+	},
+	"cast": [
+		{
+			"name": "Scarlett Brookes",
+			"roles": [
+				{
+					"name": "Gulch"
+				}
+			]
+		},
+		{
+			"name": "Ruth Gemmell",
+			"roles": [
+				{
+					"name": "Nora"
+				}
+			]
+		},
+		{
+			"name": "Julie Legrand",
+			"roles": [
+				{
+					"name": "Blanche"
+				}
+			]
+		},
+		{
+			"name": "Mimi Ndiweni",
+			"roles": [
+				{
+					"name": "Ripley"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jo McInnes"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Max Dorey"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Robin Griggs"
+				}
+			]
+		},
+		{
+			"name": "Composer",
+			"entities": [
+				{
+					"name": "Johanna Groot Bluemink"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Jon Lawrence"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Sarah Dickenson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Anthony Ekundaye Lennon"
+				}
+			]
+		}
+	]
+}

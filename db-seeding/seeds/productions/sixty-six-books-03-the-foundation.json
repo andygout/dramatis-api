@@ -1,0 +1,36 @@
+{
+	"uuid": "44bfac9a-b80a-490d-8c04-f43dc065fade",
+	"name": "The Foundation",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Foundation"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kathryn Pogson"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Peter Gill"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Cook"
+				}
+			]
+		}
+	]
+}

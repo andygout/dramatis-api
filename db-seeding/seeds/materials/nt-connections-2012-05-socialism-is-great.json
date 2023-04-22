@@ -1,0 +1,59 @@
+{
+	"name": "Socialism is Great",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anders Lustgarten"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Johnny"
+				},
+				{
+					"name": "Lotus"
+				},
+				{
+					"name": "Sange"
+				},
+				{
+					"name": "Zhang"
+				},
+				{
+					"name": "Li"
+				},
+				{
+					"name": "Xiamei"
+				},
+				{
+					"name": "Girl 1"
+				},
+				{
+					"name": "Girl 2"
+				},
+				{
+					"name": "Factory Girl"
+				},
+				{
+					"name": "Xiamei's Mum"
+				},
+				{
+					"name": "Li's Dad"
+				},
+				{
+					"name": "Zhang's Dad"
+				},
+				{
+					"name": "Ensemble"
+				}
+			]
+		}
+	]
+}

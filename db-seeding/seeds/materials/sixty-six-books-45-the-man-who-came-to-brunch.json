@@ -1,0 +1,23 @@
+{
+	"name": "The Man Who Came to Brunch",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Amy Rosenthal"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Romans"
+				}
+			]
+		}
+	]
+}

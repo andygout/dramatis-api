@@ -1,0 +1,36 @@
+{
+	"uuid": "62aa363e-53ce-4ddb-9432-a0f34d5e0ac9",
+	"name": "Hadassah",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Hadassah"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Ony Uhiara"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Longhurst"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

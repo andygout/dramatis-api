@@ -1,0 +1,23 @@
+{
+	"name": "The Goat at Midnight",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anne Carson"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Jude"
+				}
+			]
+		}
+	]
+}

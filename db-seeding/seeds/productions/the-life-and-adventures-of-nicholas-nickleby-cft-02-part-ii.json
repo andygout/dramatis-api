@@ -1,0 +1,13 @@
+{
+	"uuid": "a6c671cd-51bd-4530-90fd-6eeda52d0f74",
+	"name": "Part II",
+	"startDate": "2006-07-08",
+	"pressDate": "2006-07-20",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Part II"
+	},
+	"venue": {
+		"name": "Festival Theatre"
+	}
+}

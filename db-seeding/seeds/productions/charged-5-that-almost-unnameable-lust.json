@@ -1,0 +1,67 @@
+{
+	"uuid": "b62722aa-4882-4fcc-a15d-c5511c6394f9",
+	"name": "That Almost Unnameable Lust",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "That Almost Unnameable Lust"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"cast": [
+		{
+			"name": "Janet Henfrey",
+			"roles": [
+				{
+					"name": "Katherine"
+				}
+			]
+		},
+		{
+			"name": "Beatie Edney",
+			"roles": [
+				{
+					"name": "Liz"
+				}
+			]
+		},
+		{
+			"name": "Renecca Oldfield",
+			"roles": [
+				{
+					"name": "Writer"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Caroline Steinbeis"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Rebecca Carnell"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Dayna Moyes"
+				}
+			]
+		}
+	]
+}

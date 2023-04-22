@@ -1,0 +1,73 @@
+{
+	"uuid": "9e53df86-d59e-45ba-b915-1f795ef9818c",
+	"name": "The Astonished Heart",
+	"startDate": "2006-07-13",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "The Astonished Heart"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"cast": [
+		{
+			"name": "Josefina Gabriele",
+			"roles": [
+				{
+					"name": "Barbara Faber"
+				}
+			]
+		},
+		{
+			"name": "Richard Hansell",
+			"roles": [
+				{
+					"name": "Tim Verney"
+				}
+			]
+		},
+		{
+			"name": "Tamzin Griffin",
+			"roles": [
+				{
+					"name": "Susan",
+					"characterName": "Susan Birch"
+				}
+			]
+		},
+		{
+			"name": "Peter Moreton",
+			"roles": [
+				{
+					"name": "Ernest"
+				}
+			]
+		},
+		{
+			"name": "Nigel Anthony",
+			"roles": [
+				{
+					"name": "Sir Reginald",
+					"characterName": "Sir Reginald French"
+				}
+			]
+		},
+		{
+			"name": "Madeleine Worrall",
+			"roles": [
+				{
+					"name": "Leonora Vail"
+				}
+			]
+		},
+		{
+			"name": "Alexander Hanson",
+			"roles": [
+				{
+					"name": "Christian Faber"
+				}
+			]
+		}
+	]
+}

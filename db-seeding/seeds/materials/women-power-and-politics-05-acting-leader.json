@@ -1,0 +1,26 @@
+{
+	"name": "Acting Leader",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Joy Wilkinson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Margaret Beckett"
+				},
+				{
+					"name": "Woman"
+				}
+			]
+		}
+	]
+}

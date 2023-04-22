@@ -1,0 +1,39 @@
+{
+	"uuid": "b46fed54-537d-417f-b85c-bc8850aae189",
+	"name": "Do Unto Others",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Do Unto Others"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Billy Bragg"
+		},
+		{
+			"name": "Arthur Darvill"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Christopher Haydon"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

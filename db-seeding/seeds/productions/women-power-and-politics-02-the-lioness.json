@@ -1,0 +1,65 @@
+{
+	"uuid": "a67d322a-0fe9-41c4-a693-c880f8ee7c21",
+	"name": "The Lioness",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "The Lioness"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Niamh Cusack",
+			"roles": [
+				{
+					"name": "Queen Elizabeth I"
+				}
+			]
+		},
+		{
+			"name": "Simon Chandler",
+			"roles": [
+				{
+					"name": "Neuzer"
+				}
+			]
+		},
+		{
+			"name": "Tom Mannion",
+			"roles": [
+				{
+					"name": "John Knox"
+				}
+			]
+		},
+		{
+			"name": "Oliver Chris",
+			"roles": [
+				{
+					"name": "Essex"
+				}
+			]
+		},
+		{
+			"name": "John Hollingworth",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		},
+		{
+			"name": "Felix Scott",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		}
+	]
+}

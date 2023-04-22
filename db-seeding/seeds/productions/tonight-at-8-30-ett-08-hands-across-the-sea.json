@@ -1,0 +1,80 @@
+{
+	"uuid": "0cbb9951-ecde-4f9b-a639-7762deb595f2",
+	"name": "Hands Across the Sea",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Hands Across the Sea"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kirsty Besterman",
+			"roles": [
+				{
+					"name": "Lady Maureen Gilpin (Piggie)"
+				}
+			]
+		},
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "Cdr Peter Gilpin, R.N."
+				}
+			]
+		},
+		{
+			"name": "Shereen Martin",
+			"roles": [
+				{
+					"name": "The Hon Clare Wedderburn"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Lt Cdr Alastair Corbett, R.N."
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Major Gosling (Bogey)",
+					"characterName": "Major Gosling"
+				}
+			]
+		},
+		{
+			"name": "Olivia Poulet",
+			"roles": [
+				{
+					"name": "Mrs Wadhurst"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Mr Burnham"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Walters"
+				}
+			]
+		}
+	]
+}

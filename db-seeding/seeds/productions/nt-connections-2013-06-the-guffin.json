@@ -1,0 +1,162 @@
+{
+	"uuid": "124488fe-ed56-4793-94dc-a82a04b7aae5",
+	"name": "The Guffin",
+	"startDate": "2013-07-05",
+	"endDate": "2013-07-05",
+	"material": {
+		"name": "The Guffin"
+	},
+	"venue": {
+		"name": "The Shed"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "PACE Youth Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Anna Spence",
+			"roles": [
+				{
+					"name": "Jay"
+				}
+			]
+		},
+		{
+			"name": "Chloe Lupton",
+			"roles": [
+				{
+					"name": "Kavi"
+				}
+			]
+		},
+		{
+			"name": "Scott Mackie",
+			"roles": [
+				{
+					"name": "Lax"
+				}
+			]
+		},
+		{
+			"name": "Blair Stobie",
+			"roles": [
+				{
+					"name": "Sat"
+				}
+			]
+		},
+		{
+			"name": "Heather MacInnes",
+			"roles": [
+				{
+					"name": "Mal"
+				}
+			]
+		},
+		{
+			"name": "Robbie Noble",
+			"roles": [
+				{
+					"name": "Gau"
+				}
+			]
+		},
+		{
+			"name": "Mark Inglis",
+			"roles": [
+				{
+					"name": "Dan"
+				}
+			]
+		},
+		{
+			"name": "Laura Murray",
+			"roles": [
+				{
+					"name": "Girj"
+				}
+			]
+		},
+		{
+			"name": "Scott Kerr",
+			"roles": [
+				{
+					"name": "Skeggy"
+				}
+			]
+		},
+		{
+			"name": "Cameron McNee",
+			"roles": [
+				{
+					"name": "Dump"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Mhairi Gilbert"
+				}
+			]
+		},
+		{
+			"name": "Lighting Director",
+			"entities": [
+				{
+					"name": "Neil Smith"
+				}
+			]
+		},
+		{
+			"name": "Musical Designer",
+			"entities": [
+				{
+					"name": "Alan Orr"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Management",
+			"entities": [
+				{
+					"name": "Andrew Lupton"
+				},
+				{
+					"name": "Garth Finch"
+				},
+				{
+					"name": "Nathan McGregor"
+				}
+			]
+		},
+		{
+			"name": "Production Assistant",
+			"entities": [
+				{
+					"name": "Pauline Ramsay"
+				}
+			]
+		},
+		{
+			"name": "Event Coordinator",
+			"entities": [
+				{
+					"name": "Colleen Lupton"
+				}
+			]
+		}
+	]
+}

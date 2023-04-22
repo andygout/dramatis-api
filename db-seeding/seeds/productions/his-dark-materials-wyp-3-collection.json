@@ -1,0 +1,20 @@
+{
+	"name": "His Dark Materials",
+	"startDate": "2009-05-25",
+	"endDate": "2009-06-20",
+	"material": {
+		"name": "His Dark Materials",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Quarry Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "a0615a29-2cbf-4d10-8052-c22578e768be"
+		},
+		{
+			"uuid": "8a394a1f-aed7-4d03-be8e-e6fce6d4ffbb"
+		}
+	]
+}

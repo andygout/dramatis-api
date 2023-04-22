@@ -1,0 +1,36 @@
+{
+	"uuid": "f0fbf085-1858-49fc-98d4-4a48bf2a1ff1",
+	"name": "The Crossing",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Crossing"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Polly Frame"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Christopher Haydon"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

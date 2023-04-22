@@ -1,0 +1,26 @@
+{
+	"name": "Ephesus-Shmephesus",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Laurence Marks"
+				},
+				{
+					"name": "Maurice Gran"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Ephesians"
+				}
+			]
+		}
+	]
+}

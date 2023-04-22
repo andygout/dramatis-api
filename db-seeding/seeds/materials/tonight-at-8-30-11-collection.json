@@ -1,0 +1,46 @@
+{
+	"name": "Tonight at 8.30",
+	"format": "cycle of ten one-act plays",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"subMaterials": [
+		{
+			"name": "We Were Dancing"
+		},
+		{
+			"name": "The Astonished Heart"
+		},
+		{
+			"name": "Red Peppers"
+		},
+		{
+			"name": "Hands Across the Sea"
+		},
+		{
+			"name": "Fumed Oak"
+		},
+		{
+			"name": "Shadow Play"
+		},
+		{
+			"name": "Family Album"
+		},
+		{
+			"name": "Star Chamber"
+		},
+		{
+			"name": "Ways and Means"
+		},
+		{
+			"name": "Still Life"
+		}
+	]
+}

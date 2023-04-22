@@ -1,0 +1,39 @@
+{
+	"uuid": "30270e33-82de-4945-adbe-6ea04625126a",
+	"name": "The Book of Ruth (and Naomi)",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Book of Ruth (and Naomi)"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kate Duchêne"
+		},
+		{
+			"name": "Tanya Moodie"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Philip Wilson"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,34 @@
+{
+	"name": "His Dark Materials",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2003",
+	"writingCredits": [
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "His Dark Materials",
+					"differentiator": "1"
+				}
+			]
+		},
+		{
+			"name": "adapted for the stage by",
+			"entities": [
+				{
+					"name": "Nicholas Wright"
+				}
+			]
+		}
+	],
+	"subMaterials": [
+		{
+			"name": "Part One"
+		},
+		{
+			"name": "Part Two"
+		}
+	]
+}

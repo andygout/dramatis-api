@@ -1,0 +1,21 @@
+{
+	"uuid": "5bbf1296-6b0c-4622-9cdf-880a78824981",
+	"name": "Part One",
+	"startDate": "2006-07-13",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "44d76970-7fac-4862-9b41-0b1dd4c44615"
+		},
+		{
+			"uuid": "9e53df86-d59e-45ba-b915-1f795ef9818c"
+		},
+		{
+			"uuid": "3928e9dd-af27-4a9d-973f-67bc64caf581"
+		}
+	]
+}

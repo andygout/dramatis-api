@@ -1,0 +1,56 @@
+{
+	"name": "Prince of Denmark",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Michael Lesslie"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Reynaldo"
+				},
+				{
+					"name": "Osric"
+				},
+				{
+					"name": "Ophelia"
+				},
+				{
+					"name": "Hamlet"
+				},
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "Marcellus"
+				},
+				{
+					"name": "Horatio"
+				},
+				{
+					"name": "Player Prince"
+				},
+				{
+					"name": "Players"
+				},
+				{
+					"name": "Guards"
+				}
+			]
+		}
+	]
+}

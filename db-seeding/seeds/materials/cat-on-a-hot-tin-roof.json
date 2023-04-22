@@ -15,7 +15,8 @@
 		{
 			"characters": [
 				{
-					"name": "Margaret"
+					"name": "Margaret",
+					"differentiator": "Cat on a Hot Tin Roof"
 				},
 				{
 					"name": "Brick"
@@ -57,7 +58,8 @@
 					"name": "Trixie"
 				},
 				{
-					"name": "Daisy"
+					"name": "Daisy",
+					"differentiator": "Cat on a Hot Tin Roof"
 				},
 				{
 					"name": "Brightie"

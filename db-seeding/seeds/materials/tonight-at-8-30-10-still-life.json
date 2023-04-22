@@ -1,0 +1,54 @@
+{
+	"name": "Still Life",
+	"format": "play",
+	"year": "1936",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Noël Coward"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alec Harvey"
+				},
+				{
+					"name": "Laura Jesson"
+				},
+				{
+					"name": "Myrtle Bagot"
+				},
+				{
+					"name": "Beryl Waters"
+				},
+				{
+					"name": "Young Man"
+				},
+				{
+					"name": "Stanley"
+				},
+				{
+					"name": "Albert Godby"
+				},
+				{
+					"name": "Bill",
+					"differentiator": "Still Life"
+				},
+				{
+					"name": "Johnnie"
+				},
+				{
+					"name": "Mildred"
+				},
+				{
+					"name": "Dolly Messiter"
+				}
+			]
+		}
+	]
+}

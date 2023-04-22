@@ -1,0 +1,23 @@
+{
+	"name": "Notes for a Young Gentleman",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Toby Litt"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Proverbs"
+				}
+			]
+		}
+	]
+}

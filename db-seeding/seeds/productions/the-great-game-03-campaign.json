@@ -1,0 +1,13 @@
+{
+	"uuid": "b0762533-5291-4016-9108-cab0d53e5fb3",
+	"name": "Campaign",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Campaign"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	}
+}

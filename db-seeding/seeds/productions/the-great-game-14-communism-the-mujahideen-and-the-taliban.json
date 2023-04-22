@@ -1,0 +1,27 @@
+{
+	"uuid": "a8528422-29c9-4561-b46c-80d32ca24d6b",
+	"name": "Communism, the Mujahideen and the Taliban (1979-1996)",
+	"startDate": "2009-04-17",
+	"pressDate": "2009-04-22",
+	"endDate": "2009-06-14",
+	"material": {
+		"name": "Communism, the Mujahideen and the Taliban (1979-1996)"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"subProductions": [
+		{
+			"uuid": "cd878e71-2d4b-4de4-b33c-de7f606989ec"
+		},
+		{
+			"uuid": "a10f5c18-155d-45a2-8470-468851b22dc5"
+		},
+		{
+			"uuid": "f9dfc214-c064-45e8-8308-12ad656641be"
+		},
+		{
+			"uuid": "3c811c72-f6fd-4c59-8779-3222feff4a25"
+		}
+	]
+}

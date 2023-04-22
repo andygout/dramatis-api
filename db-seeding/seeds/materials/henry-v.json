@@ -16,7 +16,8 @@
 			"name": "The English",
 			"characters": [
 				{
-					"name": "Chorus"
+					"name": "Chorus",
+					"differentiator": "Henry V"
 				},
 				{
 					"name": "King Henry V"
@@ -126,7 +127,8 @@
 					"name": "Louis, Duke of Guyenne and Dauphin of France"
 				},
 				{
-					"name": "Katherine"
+					"name": "Katherine",
+					"differentiator": "Henry V"
 				},
 				{
 					"name": "Alice",

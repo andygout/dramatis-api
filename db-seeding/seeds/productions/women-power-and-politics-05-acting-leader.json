@@ -1,0 +1,31 @@
+{
+	"uuid": "a7745ebf-5723-41b2-9293-1e167f7cbe96",
+	"name": "Acting Leader",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Acting Leader"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Niamh Cusack",
+			"roles": [
+				{
+					"name": "Margaret Beckett"
+				}
+			]
+		},
+		{
+			"name": "Lara Rossi",
+			"roles": [
+				{
+					"name": "Woman"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,91 @@
+{
+	"uuid": "07d472f2-7450-41b8-980b-0e8cdfc90d5f",
+	"name": "Hands Across the Sea",
+	"startDate": "2006-07-20",
+	"pressDate": "2006-07-26",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Hands Across the Sea"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"cast": [
+		{
+			"name": "Madeleine Worrall",
+			"roles": [
+				{
+					"name": "Walters"
+				}
+			]
+		},
+		{
+			"name": "Josefina Gabriele",
+			"roles": [
+				{
+					"name": "Lady Maureen Gilpin",
+					"characterName": "Lady Maureen Gilpin (Piggie)"
+				}
+			]
+		},
+		{
+			"name": "Alexander Hanson",
+			"roles": [
+				{
+					"name": "Pete Gilpin",
+					"characterName": "Cdr Peter Gilpin, R.N."
+				}
+			]
+		},
+		{
+			"name": "Peter Moreton",
+			"roles": [
+				{
+					"name": "Lt Cdr Alastair Corbett, R.N."
+				}
+			]
+		},
+		{
+			"name": "Susan Wooldridge",
+			"roles": [
+				{
+					"name": "Mrs Wadhurst"
+				}
+			]
+		},
+		{
+			"name": "Nigel Anthony",
+			"roles": [
+				{
+					"name": "Mr Wadhurst"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Bond",
+			"roles": [
+				{
+					"name": "Mr Burnham"
+				}
+			]
+		},
+		{
+			"name": "Tamzin Griffin",
+			"roles": [
+				{
+					"name": "Hon Clare Wedderburn",
+					"characterName": "The Hon Clare Wedderburn"
+				}
+			]
+		},
+		{
+			"name": "Richard Hansell",
+			"roles": [
+				{
+					"name": "Major (Bogey) Gosling",
+					"characterName": "Major Gosling"
+				}
+			]
+		}
+	]
+}

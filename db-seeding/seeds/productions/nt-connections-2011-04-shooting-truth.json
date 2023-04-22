@@ -1,0 +1,207 @@
+{
+	"uuid": "24650e5e-614b-461b-9efb-a5a9322dc33d",
+	"name": "Shooting Truth",
+	"startDate": "2011-06-30",
+	"endDate": "2011-06-30",
+	"material": {
+		"name": "Shooting Truth"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "TYKES"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sam Chamberlain",
+			"roles": [
+				{
+					"name": "Liam"
+				}
+			]
+		},
+		{
+			"name": "Fenella Gilson",
+			"roles": [
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Callum Naish",
+			"roles": [
+				{
+					"name": "Luke"
+				}
+			]
+		},
+		{
+			"name": "John Brantigan",
+			"roles": [
+				{
+					"name": "Sid"
+				}
+			]
+		},
+		{
+			"name": "Zoe Hyde",
+			"roles": [
+				{
+					"name": "Leanne"
+				}
+			]
+		},
+		{
+			"name": "Maxine Woolgar",
+			"roles": [
+				{
+					"name": "Sadie"
+				}
+			]
+		},
+		{
+			"name": "Toby Waterworth",
+			"roles": [
+				{
+					"name": "Jake"
+				}
+			]
+		},
+		{
+			"name": "Grace Bouchard",
+			"roles": [
+				{
+					"name": "Freya"
+				}
+			]
+		},
+		{
+			"name": "Camille Beardmore",
+			"roles": [
+				{
+					"name": "Gran"
+				}
+			]
+		},
+		{
+			"name": "Tom Chudley-Evans",
+			"roles": [
+				{
+					"name": "Len"
+				}
+			]
+		},
+		{
+			"name": "Lizzie-Ellen Jones",
+			"roles": [
+				{
+					"name": "Sal"
+				}
+			]
+		},
+		{
+			"name": "Shannon Hurley",
+			"roles": [
+				{
+					"name": "Marley"
+				}
+			]
+		},
+		{
+			"name": "Oli Bates",
+			"roles": [
+				{
+					"name": "Billy"
+				}
+			]
+		},
+		{
+			"name": "Alex Taylor",
+			"roles": [
+				{
+					"name": "Lou"
+				}
+			]
+		},
+		{
+			"name": "Annie Salter",
+			"roles": [
+				{
+					"name": "Joan"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Leigh Toney",
+			"entities": [
+				{
+					"name": "Director"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Wardrobe",
+			"entities": [
+				{
+					"name": "Charlotte Bouchard"
+				}
+			]
+		},
+		{
+			"name": "Technical Coordinator",
+			"entities": [
+				{
+					"name": "Richard Baker"
+				}
+			]
+		},
+		{
+			"name": "Lighting Operator",
+			"entities": [
+				{
+					"name": "Arthur Minty"
+				}
+			]
+		},
+		{
+			"name": "Video Operator",
+			"entities": [
+				{
+					"name": "Sophie Margrie"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"entities": [
+				{
+					"name": "Daisy Nickless"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Niamh Tucker"
+				},
+				{
+					"name": "Amelia Jackson"
+				}
+			]
+		}
+	]
+}

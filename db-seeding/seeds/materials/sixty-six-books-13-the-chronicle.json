@@ -1,0 +1,23 @@
+{
+	"name": "The Chronicle",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Salena Godden"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "1 Chronicles"
+				}
+			]
+		}
+	]
+}

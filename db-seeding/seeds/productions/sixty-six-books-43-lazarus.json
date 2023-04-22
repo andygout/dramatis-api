@@ -1,0 +1,50 @@
+{
+	"uuid": "12e63840-47e2-4b73-94bb-7d94e5e0af01",
+	"name": "Lazarus",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Lazarus"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Daniel Easton"
+		},
+		{
+			"name": "Bill Paterson"
+		},
+		{
+			"name": "Helen Schlesinger"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Josie Rourke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Cook"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Guy Burnett"
+				}
+			]
+		}
+	]
+}

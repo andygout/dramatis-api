@@ -1,0 +1,37 @@
+{
+	"name": "I Can Hear You",
+	"format": "play",
+	"year": "2014",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "E V Crowe"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Tommy"
+				},
+				{
+					"name": "David",
+					"differentiator": "I Can Hear You"
+				},
+				{
+					"name": "Ellie"
+				},
+				{
+					"name": "Ruth",
+					"differentiator": "I Can Hear You"
+				},
+				{
+					"name": "Sandra"
+				}
+			]
+		}
+	]
+}

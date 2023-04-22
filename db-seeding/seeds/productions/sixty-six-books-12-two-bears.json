@@ -1,0 +1,42 @@
+{
+	"uuid": "cfedc3f9-8961-4ad6-a2ac-475a37fc8465",
+	"name": "Two Bears",
+	"startDate": "2011-10-10",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Two Bears"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Hannah Barrie"
+		},
+		{
+			"name": "Alex MacQueen"
+		},
+		{
+			"name": "Claire Price"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Richard Twyman"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

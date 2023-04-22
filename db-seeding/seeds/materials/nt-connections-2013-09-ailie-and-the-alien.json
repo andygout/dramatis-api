@@ -1,0 +1,60 @@
+{
+	"name": "Ailie and the Alien",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Morna Pearson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Claire"
+				},
+				{
+					"name": "Ailie"
+				},
+				{
+					"name": "Beth"
+				},
+				{
+					"name": "Igor"
+				},
+				{
+					"name": "Darren",
+					"differentiator": "Ailie and the Alien"
+				},
+				{
+					"name": "Finn"
+				},
+				{
+					"name": "Harrison"
+				},
+				{
+					"name": "Ericson"
+				},
+				{
+					"name": "Geography Teacher"
+				},
+				{
+					"name": "PE Teacher"
+				},
+				{
+					"name": "Mother Alien"
+				},
+				{
+					"name": "Father Alien"
+				},
+				{
+					"name": "Sister Alien"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,84 @@
+{
+	"uuid": "d9405919-1899-42bf-8c89-749c70b403bd",
+	"name": "Dancing Bears",
+	"startDate": "2011-11-10",
+	"pressDate": "2011-11-12",
+	"endDate": "2011-11-27",
+	"material": {
+		"name": "Dancing Bears"
+	},
+	"venue": {
+		"name": "Theatre"
+	},
+	"cast": [
+		{
+			"name": "Emmanuella Cole",
+			"roles": [
+				{
+					"name": "Aaron"
+				}
+			]
+		},
+		{
+			"name": "Danielle Vitalis",
+			"roles": [
+				{
+					"name": "Angry"
+				},
+				{
+					"name": "Babymother"
+				}
+			]
+		},
+		{
+			"name": "Ony Uhiara",
+			"roles": [
+				{
+					"name": "Dean"
+				},
+				{
+					"name": "Razor Kay"
+				}
+			]
+		},
+		{
+			"name": "Samantha Pearl",
+			"roles": [
+				{
+					"name": "Retard"
+				},
+				{
+					"name": "Charity"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tessa Walker"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Sarah Tryfan"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Chloe R Brown"
+				}
+			]
+		}
+	]
+}

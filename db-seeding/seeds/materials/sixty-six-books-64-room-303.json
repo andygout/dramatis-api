@@ -1,0 +1,23 @@
+{
+	"name": "Room 303",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Enda Walsh"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "3 John"
+				}
+			]
+		}
+	]
+}

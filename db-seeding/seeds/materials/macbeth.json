@@ -51,7 +51,8 @@
 					"name": "Lennox"
 				},
 				{
-					"name": "Angus"
+					"name": "Angus",
+					"differentiator": "Macbeth"
 				},
 				{
 					"name": "Menteith"

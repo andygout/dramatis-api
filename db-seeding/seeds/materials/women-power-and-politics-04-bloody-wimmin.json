@@ -1,0 +1,71 @@
+{
+	"name": "Bloody Wimmin",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Lucy Kirkwood"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Helen",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "Little Girl"
+				},
+				{
+					"name": "Reporter",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "Graham"
+				},
+				{
+					"name": "Margaret",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "Hannah",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "Lorraine"
+				},
+				{
+					"name": "Bob"
+				},
+				{
+					"name": "Jack"
+				},
+				{
+					"name": "Dan",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "Liv"
+				},
+				{
+					"name": "Lou",
+					"differentiator": "Bloody Wimmin"
+				},
+				{
+					"name": "James"
+				},
+				{
+					"name": "Sophie"
+				},
+				{
+					"name": "Lillian"
+				}
+			]
+		}
+	]
+}

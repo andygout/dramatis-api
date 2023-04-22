@@ -1,0 +1,120 @@
+{
+	"uuid": "b6350af8-6f5d-4d2b-a2d5-7b8c2114b60a",
+	"name": "Bloody Wimmin",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "Bloody Wimmin"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Claire Cox",
+			"roles": [
+				{
+					"name": "Helen"
+				}
+			]
+		},
+		{
+			"name": "Amy Loughton",
+			"roles": [
+				{
+					"name": "Little Girl"
+				},
+				{
+					"name": "Hannah"
+				},
+				{
+					"name": "Liv"
+				}
+			]
+		},
+		{
+			"name": "Heather Craney",
+			"roles": [
+				{
+					"name": "Reporter"
+				},
+				{
+					"name": "Lou"
+				}
+			]
+		},
+		{
+			"name": "Felix Scott",
+			"roles": [
+				{
+					"name": "Graham"
+				}
+			]
+		},
+		{
+			"name": "Niamh Cusack",
+			"roles": [
+				{
+					"name": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "Stella Gonet",
+			"roles": [
+				{
+					"name": "Lorraine"
+				}
+			]
+		},
+		{
+			"name": "Oliver Chris",
+			"roles": [
+				{
+					"name": "Bob"
+				}
+			]
+		},
+		{
+			"name": "Simon Chandler",
+			"roles": [
+				{
+					"name": "Jack"
+				}
+			]
+		},
+		{
+			"name": "Tom Mannion",
+			"roles": [
+				{
+					"name": "Dan"
+				}
+			]
+		},
+		{
+			"name": "John Hollingworth",
+			"roles": [
+				{
+					"name": "James"
+				}
+			]
+		},
+		{
+			"name": "Lara Rossi",
+			"roles": [
+				{
+					"name": "Sophie"
+				}
+			]
+		},
+		{
+			"name": "Kika Markham",
+			"roles": [
+				{
+					"name": "Lillian"
+				}
+			]
+		}
+	]
+}

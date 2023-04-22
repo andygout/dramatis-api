@@ -1,0 +1,39 @@
+{
+	"uuid": "b4c97f3f-d731-415a-a93b-e3444e296ed5",
+	"name": "Oliver Lewis",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Oliver Lewis"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Dominic Mafham"
+		},
+		{
+			"name": "Miranda Raison"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Joe Murphy"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Hebe George"
+				}
+			]
+		}
+	]
+}

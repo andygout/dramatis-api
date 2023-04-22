@@ -1,0 +1,23 @@
+{
+	"name": "The Rules",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Maha Khan Philips"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Deuteronomy"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"name": "Fatal Light",
+	"format": "play",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Chloë Moss"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Aine"
+				},
+				{
+					"name": "Jay",
+					"differentiator": "Fatal Light"
+				},
+				{
+					"name": "Kerry",
+					"differentiator": "Fatal Light"
+				},
+				{
+					"name": "Maggie",
+					"differentiator": "Fatal Light"
+				},
+				{
+					"name": "Policewoman"
+				}
+			]
+		}
+	]
+}

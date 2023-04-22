@@ -1,0 +1,31 @@
+{
+	"uuid": "16227943-3086-49a5-8e5c-a7b89430c641",
+	"name": "Uncool Religion",
+	"startDate": "2011-10-12",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "Uncool Religion"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Olly Hawes"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Cook"
+				}
+			]
+		}
+	]
+}

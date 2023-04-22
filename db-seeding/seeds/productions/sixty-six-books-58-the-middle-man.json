@@ -1,0 +1,39 @@
+{
+	"uuid": "874f1394-576b-4591-a1b9-96b1b726c5fa",
+	"name": "The Middle Man",
+	"startDate": "2011-10-13",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Middle Man"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Shaun Dingwall"
+		},
+		{
+			"name": "Syrus Lowe"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rob Hastie"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Sarah Booth"
+				}
+			]
+		}
+	]
+}

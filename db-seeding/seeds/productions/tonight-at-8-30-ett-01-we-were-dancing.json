@@ -1,0 +1,79 @@
+{
+	"uuid": "26e92d44-7ab9-4290-bdb9-e5e82f9bf64a",
+	"name": "We Were Dancing",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "We Were Dancing"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Kirsty Besterman",
+			"roles": [
+				{
+					"name": "Louise Charteris"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Hubert Charteris"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Karl Sandys"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Clara Bethel"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "George Davies"
+				}
+			]
+		},
+		{
+			"name": "Shereen Martin",
+			"roles": [
+				{
+					"name": "Eva Blake"
+				}
+			]
+		},
+		{
+			"name": "Orlando Wells",
+			"roles": [
+				{
+					"name": "Major Blake"
+				}
+			]
+		},
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "Ippaga"
+				}
+			]
+		}
+	]
+}

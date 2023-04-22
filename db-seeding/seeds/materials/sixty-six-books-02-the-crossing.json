@@ -1,0 +1,23 @@
+{
+	"name": "The Crossing",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anne Michaels"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Exodus"
+				}
+			]
+		}
+	]
+}

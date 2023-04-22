@@ -1,0 +1,45 @@
+{
+	"uuid": "a4f9d261-7d9d-4f7c-98f4-ddf749d66e8e",
+	"name": "The Fair & Tender",
+	"startDate": "2011-10-11",
+	"pressDate": "2011-10-14",
+	"endDate": "2011-10-28",
+	"material": {
+		"name": "The Fair & Tender"
+	},
+	"venue": {
+		"name": "Bush Theatre"
+	},
+	"cast": [
+		{
+			"name": "Sean Chapman"
+		},
+		{
+			"name": "Katie McGuinness"
+		},
+		{
+			"name": "Bettrys Jones"
+		},
+		{
+			"name": "Abby Ford"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Abbey Wright"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Natalie Moggridge"
+				}
+			]
+		}
+	]
+}

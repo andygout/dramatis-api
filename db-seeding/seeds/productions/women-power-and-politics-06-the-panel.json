@@ -1,0 +1,55 @@
+{
+	"uuid": "6abfa4f8-128f-4b19-9656-fb9bd802951e",
+	"name": "The Panel",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "The Panel"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Oliver Chris",
+			"roles": [
+				{
+					"name": "Chris"
+				}
+			]
+		},
+		{
+			"name": "Tom Mannion",
+			"roles": [
+				{
+					"name": "Maurice"
+				}
+			]
+		},
+		{
+			"name": "Felix Scott",
+			"roles": [
+				{
+					"name": "Bill"
+				}
+			]
+		},
+		{
+			"name": "John Hollingworth",
+			"roles": [
+				{
+					"name": "Jason"
+				}
+			]
+		},
+		{
+			"name": "Simon Chandler",
+			"roles": [
+				{
+					"name": "David"
+				}
+			]
+		}
+	]
+}

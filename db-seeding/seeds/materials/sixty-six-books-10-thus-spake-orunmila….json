@@ -1,0 +1,23 @@
+{
+	"name": "Thus Spake Orunmila…",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Wole Soyinka"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "2 Samuel"
+				}
+			]
+		}
+	]
+}

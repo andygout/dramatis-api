@@ -1,0 +1,52 @@
+{
+	"name": "The Guffin",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Howard Brenton"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Jay",
+					"differentiator": "The Guffin"
+				},
+				{
+					"name": "Kavi"
+				},
+				{
+					"name": "Lax"
+				},
+				{
+					"name": "Sat"
+				},
+				{
+					"name": "Mal"
+				},
+				{
+					"name": "Gau"
+				},
+				{
+					"name": "Dan",
+					"differentiator": "The Guffin"
+				},
+				{
+					"name": "Girj"
+				},
+				{
+					"name": "Skeggy"
+				},
+				{
+					"name": "Dump"
+				}
+			]
+		}
+	]
+}

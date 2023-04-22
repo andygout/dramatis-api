@@ -1,0 +1,97 @@
+{
+	"name": "So You Think You're a Superhero?",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Paven Virk"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Zeeboy"
+				},
+				{
+					"name": "Gary B"
+				},
+				{
+					"name": "General Zero"
+				},
+				{
+					"name": "Queen Zola"
+				},
+				{
+					"name": "Zen"
+				},
+				{
+					"name": "Sparkles"
+				},
+				{
+					"name": "Smiley"
+				},
+				{
+					"name": "Spikey"
+				},
+				{
+					"name": "Slow Boy"
+				},
+				{
+					"name": "Sorted"
+				},
+				{
+					"name": "Reporter",
+					"differentiator": "So You Think You're a Superhero?"
+				},
+				{
+					"name": "Camera Operator"
+				},
+				{
+					"name": "Mindy"
+				},
+				{
+					"name": "Lippy Lilly"
+				},
+				{
+					"name": "Kalina"
+				},
+				{
+					"name": "Marvel"
+				},
+				{
+					"name": "Beryl"
+				},
+				{
+					"name": "Referee 1"
+				},
+				{
+					"name": "Referee 2"
+				},
+				{
+					"name": "Olympic Hero 1"
+				},
+				{
+					"name": "Olympic Hero 2"
+				},
+				{
+					"name": "Olympic Hero 3"
+				},
+				{
+					"name": "Olympic Hero 4"
+				},
+				{
+					"name": "Crush"
+				},
+				{
+					"name": "Chorus",
+					"differentiator": "So You Think You're a Superhero?"
+				}
+			]
+		}
+	]
+}

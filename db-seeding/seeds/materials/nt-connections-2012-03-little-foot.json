@@ -1,0 +1,43 @@
+{
+	"name": "Little Foot",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Craig Higginson"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Wizard"
+				},
+				{
+					"name": "Moby"
+				},
+				{
+					"name": "Mercedes"
+				},
+				{
+					"name": "Braai"
+				},
+				{
+					"name": "Little Foot"
+				},
+				{
+					"name": "Rebecca",
+					"differentiator": "Little Foot"
+				},
+				{
+					"name": "Chorus",
+					"differentiator": "Little Foot"
+				}
+			]
+		}
+	]
+}

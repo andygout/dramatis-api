@@ -1,0 +1,63 @@
+{
+	"uuid": "987a181d-30d4-4545-881d-a1970cf56547",
+	"name": "Red Peppers",
+	"startDate": "2014-04-24",
+	"pressDate": "2014-05-10",
+	"endDate": "2014-05-24",
+	"material": {
+		"name": "Red Peppers"
+	},
+	"venue": {
+		"name": "Nuffield Theatre"
+	},
+	"cast": [
+		{
+			"name": "Daniel Crossley",
+			"roles": [
+				{
+					"name": "George Pepper"
+				}
+			]
+		},
+		{
+			"name": "Amy Cudden",
+			"roles": [
+				{
+					"name": "Lily Pepper"
+				}
+			]
+		},
+		{
+			"name": "Peter Singh",
+			"roles": [
+				{
+					"name": "Bert Bentley"
+				}
+			]
+		},
+		{
+			"name": "Gyuri Sarossy",
+			"roles": [
+				{
+					"name": "Mr Edwards"
+				}
+			]
+		},
+		{
+			"name": "Olivia Poulet",
+			"roles": [
+				{
+					"name": "Mabel Grace"
+				}
+			]
+		},
+		{
+			"name": "Rupert Young",
+			"roles": [
+				{
+					"name": "Alf"
+				}
+			]
+		}
+	]
+}

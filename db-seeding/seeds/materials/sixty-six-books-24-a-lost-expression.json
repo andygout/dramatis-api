@@ -1,0 +1,23 @@
+{
+	"name": "A Lost Expression",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Luke Kennard"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Jeremiah"
+				}
+			]
+		}
+	]
+}

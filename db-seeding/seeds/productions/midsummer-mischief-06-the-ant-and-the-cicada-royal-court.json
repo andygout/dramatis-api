@@ -1,0 +1,114 @@
+{
+	"uuid": "9fa29fb3-56d4-45c1-bc0a-f151b79e2d9b",
+	"name": "The Ant And the Cicada",
+	"startDate": "2014-07-15",
+	"endDate": "2014-07-17",
+	"material": {
+		"name": "The Ant and the Cicada"
+	},
+	"venue": {
+		"name": "Jerwood Theatre Upstairs"
+	},
+	"cast": [
+		{
+			"name": "Robert Boulter",
+			"roles": [
+				{
+					"name": "Student",
+					"characterName": "The Students"
+				}
+			]
+		},
+		{
+			"name": "John Bowe",
+			"roles": [
+				{
+					"name": "Alex"
+				}
+			]
+		},
+		{
+			"name": "Scarlett Brookes",
+			"roles": [
+				{
+					"name": "Student",
+					"characterName": "The Students"
+				}
+			]
+		},
+		{
+			"name": "Ruth Gemmell",
+			"roles": [
+				{
+					"name": "Selina"
+				}
+			]
+		},
+		{
+			"name": "Julie Legrand",
+			"roles": [
+				{
+					"name": "Zoe"
+				}
+			]
+		},
+		{
+			"name": "Mimi Ndiweni",
+			"roles": [
+				{
+					"name": "Irina"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Erica Whyman"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Madeleine Girling"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Claire Gerrens"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Jonathan Ruddick"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Pippa Hill"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Joseph Wilde"
+				}
+			]
+		}
+	]
+}

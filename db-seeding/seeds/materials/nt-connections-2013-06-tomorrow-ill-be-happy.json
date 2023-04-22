@@ -1,0 +1,49 @@
+{
+	"name": "Tomorrow I'll Be Happy",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Jonathan Harvey"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Darren",
+					"differentiator": "Tomorrow I'll Be Happy"
+				},
+				{
+					"name": "Marcus"
+				},
+				{
+					"name": "Dior"
+				},
+				{
+					"name": "Scott"
+				},
+				{
+					"name": "Troy"
+				},
+				{
+					"name": "Siddie"
+				},
+				{
+					"name": "Joanne",
+					"differentiator": "Tomorrow I'll Be Happy"
+				},
+				{
+					"name": "Cyprus"
+				},
+				{
+					"name": "Jadenne"
+				}
+			]
+		}
+	]
+}

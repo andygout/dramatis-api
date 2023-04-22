@@ -1,0 +1,23 @@
+{
+	"name": "The House Next Door",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nancy Harris"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Obadiah"
+				}
+			]
+		}
+	]
+}

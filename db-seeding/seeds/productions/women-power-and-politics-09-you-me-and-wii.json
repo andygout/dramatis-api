@@ -1,0 +1,63 @@
+{
+	"uuid": "8601740f-498f-4a41-bf86-f2e73aa621b8",
+	"name": "You, Me and Wii",
+	"startDate": "2010-06-04",
+	"pressDate": "2010-06-11",
+	"endDate": "2010-07-17",
+	"material": {
+		"name": "You, Me and Wii"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"cast": [
+		{
+			"name": "Felix Scott",
+			"roles": [
+				{
+					"name": "Vincent"
+				}
+			]
+		},
+		{
+			"name": "Kika Markham",
+			"roles": [
+				{
+					"name": "Sheila"
+				}
+			]
+		},
+		{
+			"name": "Heather Craney",
+			"roles": [
+				{
+					"name": "Kerry"
+				}
+			]
+		},
+		{
+			"name": "Amy Loughton",
+			"roles": [
+				{
+					"name": "Courtney"
+				}
+			]
+		},
+		{
+			"name": "Claire Cox",
+			"roles": [
+				{
+					"name": "Selina"
+				}
+			]
+		},
+		{
+			"name": "John Hollingworth",
+			"roles": [
+				{
+					"name": "Mark"
+				}
+			]
+		}
+	]
+}

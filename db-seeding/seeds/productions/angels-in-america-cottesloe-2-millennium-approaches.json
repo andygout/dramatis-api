@@ -1,0 +1,288 @@
+{
+	"uuid": "de00b367-e5d6-4cc6-8b30-3e4aeef9ff5e",
+	"name": "Millennium Approaches",
+	"startDate": "1993-11-12",
+	"pressDate": "1993-11-20",
+	"endDate": "1994-07-02",
+	"material": {
+		"name": "Millennium Approaches"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nancy Crane",
+			"roles": [
+				{
+					"name": "The Voice"
+				}
+			]
+		},
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Belize"
+				},
+				{
+					"name": "Mr Lies"
+				}
+			]
+		},
+		{
+			"name": "Harry Towb",
+			"roles": [
+				{
+					"name": "Rabbi Isidor Chemelwitz"
+				},
+				{
+					"name": "Henry"
+				},
+				{
+					"name": "Martin Heller"
+				},
+				{
+					"name": "Prior 1"
+				}
+			]
+		},
+		{
+			"name": "David Schofield",
+			"roles": [
+				{
+					"name": "Roy M Cohn"
+				},
+				{
+					"name": "Prior 2"
+				}
+			]
+		},
+		{
+			"name": "Daniel Craig",
+			"roles": [
+				{
+					"name": "Eskimo",
+					"characterName": "The Eskimo"
+				},
+				{
+					"name": "Joseph Porter Pitt"
+				}
+			]
+		},
+		{
+			"name": "Clare Holman",
+			"roles": [
+				{
+					"name": "Harper Amaty Pitt"
+				}
+			]
+		},
+		{
+			"name": "Jason Isaacs",
+			"roles": [
+				{
+					"name": "Louis Ironson"
+				}
+			]
+		},
+		{
+			"name": "Stephen Dillane",
+			"roles": [
+				{
+					"name": "Man in the Park",
+					"characterName": "The Man in the Park"
+				},
+				{
+					"name": "Prior Walter"
+				}
+			]
+		},
+		{
+			"name": "Susan Engel",
+			"roles": [
+				{
+					"name": "Ethel Rosenberg"
+				},
+				{
+					"name": "Hannah Porter Pitt"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Declan Donnellan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Nick Ormerod"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mick Hughes"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Paddy Cunneen"
+				}
+			]
+		},
+		{
+			"name": "Director of Movement",
+			"entities": [
+				{
+					"name": "Jane Gibson"
+				}
+			]
+		},
+		{
+			"name": "Dialect Coach",
+			"entities": [
+				{
+					"name": "Joan Washington"
+				}
+			]
+		},
+		{
+			"name": "Company Voice Work",
+			"entities": [
+				{
+					"name": "Patsy Rodenburg"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Freya Edwards"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Jason Barnes"
+				},
+				{
+					"name": "Miles King"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Angie Burns"
+				}
+			]
+		},
+		{
+			"name": "Production Photographer",
+			"entities": [
+				{
+					"name": "John Haynes"
+				}
+			]
+		},
+		{
+			"name": "Design Assistant",
+			"entities": [
+				{
+					"name": "Laura Hibbs"
+				}
+			]
+		},
+		{
+			"name": "Music Programming Consultant",
+			"entities": [
+				{
+					"name": "Duncan Chave"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Andrew Eastcott"
+				},
+				{
+					"name": "Kelly Garth"
+				}
+			]
+		},
+		{
+			"name": "Stage Management",
+			"entities": [
+				{
+					"name": "David Milling"
+				}
+			]
+		},
+		{
+			"name": "Staff Directors",
+			"entities": [
+				{
+					"name": "Fiona Laird"
+				},
+				{
+					"name": "Kenneth Mackintosh"
+				}
+			]
+		},
+		{
+			"name": "Programme Designer",
+			"entities": [
+				{
+					"name": "Shima Hyde"
+				}
+			]
+		},
+		{
+			"name": "Designer of Poster and Programme Cover",
+			"entities": [
+				{
+					"name": "Michael Mayhew"
+				}
+			]
+		},
+		{
+			"name": "Assistant to the Lighting Designer",
+			"entities": [
+				{
+					"name": "Iain Dewar"
+				}
+			]
+		}
+	]
+}
