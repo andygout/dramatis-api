@@ -73,8 +73,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	WITH person,
@@ -162,8 +162,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	WITH person, producerProductions,
@@ -369,8 +369,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	WITH person, producerProductions, castMemberProductions,
@@ -579,8 +579,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	RETURN

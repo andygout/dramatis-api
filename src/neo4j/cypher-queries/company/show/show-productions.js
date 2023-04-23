@@ -77,8 +77,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	WITH company,
@@ -228,8 +228,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	WITH company, producerProductions,
@@ -379,8 +379,8 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
+			COALESCE(surSurProductionRel.position, -1) DESC,
+			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name
 
 	RETURN
