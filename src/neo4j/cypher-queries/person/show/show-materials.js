@@ -4,7 +4,7 @@ export default () => `
 	OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
 		WHERE NOT EXISTS(
 			(person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
-			<-[:HAS_SUB_MATERIAL]-(material)
+			<-[:HAS_SUB_MATERIAL*1..2]-(material)
 		)
 
 	WITH person, COLLECT(DISTINCT(material)) AS materials
