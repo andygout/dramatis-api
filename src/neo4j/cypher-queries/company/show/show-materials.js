@@ -2,8 +2,10 @@ export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
-		WHERE NOT EXISTS((company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
-			<-[:HAS_SUB_MATERIAL]-(material))
+		WHERE NOT EXISTS(
+			(company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)
+			<-[:HAS_SUB_MATERIAL*1..2]-(material)
+		)
 
 	WITH company, COLLECT(DISTINCT(material)) AS materials
 

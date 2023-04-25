@@ -25,7 +25,7 @@ export default () => [`
 	OPTIONAL MATCH (venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction:Venue)<-[:PLAYS_AT]-(production:Production)
 		WHERE NOT EXISTS(
 			(venue)-[:HAS_SUB_VENUE*0..1]->(venueLinkedToProduction)
-			<-[:PLAYS_AT]-(:Production)<-[:HAS_SUB_PRODUCTION]-(production)
+			<-[:PLAYS_AT]-(:Production)<-[:HAS_SUB_PRODUCTION*1..2]-(production)
 		)
 
 	OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
