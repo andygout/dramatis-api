@@ -116,8 +116,8 @@ export default () => `
 		ORDER BY
 			material.year DESC,
 			COALESCE(surSurMaterial.name, surMaterial.name, material.name),
-			surSurMaterialRel.position DESC,
-			surMaterialRel.position DESC
+			COALESCE(surSurMaterialRel.position, -1) DESC,
+			COALESCE(surMaterialRel.position, -1) DESC
 
 	WITH character,
 		COLLECT(
