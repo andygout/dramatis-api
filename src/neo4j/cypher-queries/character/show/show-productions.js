@@ -94,6 +94,7 @@ export default () => `
 		ORDER BY
 			production.startDate DESC,
 			COALESCE(surSurProduction.name, surProduction.name, production.name),
+			COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 			COALESCE(surSurProductionRel.position, -1) DESC,
 			COALESCE(surProductionRel.position, -1) DESC,
 			venue.name

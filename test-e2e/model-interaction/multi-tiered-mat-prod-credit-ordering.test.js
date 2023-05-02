@@ -1903,6 +1903,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -2047,6 +2091,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -2162,94 +2250,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -2521,6 +2521,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -2665,6 +2709,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -2780,94 +2868,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -3139,6 +3139,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -3283,6 +3327,50 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					producerCredits: [
+						{
+							model: 'PRODUCER_CREDIT',
+							name: 'produced by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: NICOLAS_KENT_PERSON_UUID,
+									name: 'Nicolas Kent'
+								},
+								{
+									model: 'COMPANY',
+									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
+									name: 'Tricycle Theatre Company',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: ZOË_INGENHAAG_PERSON_UUID,
+											name: 'Zoë Ingenhaag'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -3398,94 +3486,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					producerCredits: [
-						{
-							model: 'PRODUCER_CREDIT',
-							name: 'produced by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: NICOLAS_KENT_PERSON_UUID,
-									name: 'Nicolas Kent'
-								},
-								{
-									model: 'COMPANY',
-									uuid: TRICYCLE_THEATRE_COMPANY_UUID,
-									name: 'Tricycle Theatre Company',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: ZOË_INGENHAAG_PERSON_UUID,
-											name: 'Zoë Ingenhaag'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					producerCredits: [
 						{
@@ -3709,6 +3709,34 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: BAR_CHARACTER_UUID,
+							name: 'Bar',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -3805,6 +3833,34 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: BAR_CHARACTER_UUID,
+							name: 'Bar',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -3888,62 +3944,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					roles: [
-						{
-							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
-							qualifier: null,
-							isAlternate: false
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					roles: [
-						{
-							model: 'CHARACTER',
-							uuid: BAR_CHARACTER_UUID,
-							name: 'Bar',
-							qualifier: null,
-							isAlternate: false
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					roles: [
 						{
@@ -4155,6 +4155,46 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -4287,6 +4327,46 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+									name: 'Lighting Design Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: JACK_KNOWLES_PERSON_UUID,
+											name: 'Jack Knowles'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -4394,86 +4474,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-									name: 'Lighting Design Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: JACK_KNOWLES_PERSON_UUID,
-											name: 'Jack Knowles'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -4718,6 +4718,45 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: JACK_KNOWLES_PERSON_UUID,
+									name: 'Jack Knowles'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -4847,6 +4886,45 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: JACK_KNOWLES_PERSON_UUID,
+									name: 'Jack Knowles'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -4952,84 +5030,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: JACK_KNOWLES_PERSON_UUID,
-									name: 'Jack Knowles'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -5268,6 +5268,44 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Lighting Design Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -5394,6 +5432,44 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					creativeCredits: [
+						{
+							model: 'CREATIVE_CREDIT',
+							name: 'Lighting Designers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
+								name: 'Lighting Design Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: HOWARD_HARRISON_PERSON_UUID,
+									name: 'Howard Harrison'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -5497,82 +5573,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					creativeCredits: [
-						{
-							model: 'CREATIVE_CREDIT',
-							name: 'Lighting Designers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: LIGHTING_DESIGN_LTD_COMPANY_UUID,
-								name: 'Lighting Design Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: HOWARD_HARRISON_PERSON_UUID,
-									name: 'Howard Harrison'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					creativeCredits: [
 						{
@@ -5814,6 +5814,46 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -5946,6 +5986,46 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: null,
+							coEntities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+									name: 'Stage Management Ltd',
+									members: [
+										{
+											model: 'PERSON',
+											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+											name: 'Charlotte Padgham'
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -6053,86 +6133,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: null,
-							coEntities: [
-								{
-									model: 'COMPANY',
-									uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-									name: 'Stage Management Ltd',
-									members: [
-										{
-											model: 'PERSON',
-											uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-											name: 'Charlotte Padgham'
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -6377,6 +6377,45 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+									name: 'Charlotte Padgham'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -6506,6 +6545,45 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							members: [
+								{
+									model: 'PERSON',
+									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
+									name: 'Charlotte Padgham'
+								}
+							],
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -6611,84 +6689,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							members: [
-								{
-									model: 'PERSON',
-									uuid: CHARLOTTE_PADGHAM_PERSON_UUID,
-									name: 'Charlotte Padgham'
-								}
-							],
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -6927,6 +6927,44 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Stage Management Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -7053,6 +7091,44 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					crewCredits: [
+						{
+							model: 'CREW_CREDIT',
+							name: 'Stage Managers',
+							employerCompany: {
+								model: 'COMPANY',
+								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
+								name: 'Stage Management Ltd',
+								coMembers: []
+							},
+							coEntities: [
+								{
+									model: 'PERSON',
+									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
+									name: 'Lizzie Chapman'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -7156,82 +7232,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					crewCredits: [
-						{
-							model: 'CREW_CREDIT',
-							name: 'Stage Managers',
-							employerCompany: {
-								model: 'COMPANY',
-								uuid: STAGE_MANAGEMENT_LTD_COMPANY_UUID,
-								name: 'Stage Management Ltd',
-								coMembers: []
-							},
-							coEntities: [
-								{
-									model: 'PERSON',
-									uuid: LIZZIE_CHAPMAN_PERSON_UUID,
-									name: 'Lizzie Chapman'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					crewCredits: [
 						{
@@ -7398,6 +7398,21 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'MATERIAL',
+					uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					format: 'sub-collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					depictions: []
+				},
+				{
+					model: 'MATERIAL',
 					uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
 					name: 'Miniskirts of Kabul',
 					format: 'play',
@@ -7455,6 +7470,21 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'MATERIAL',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					format: 'sub-collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					depictions: []
+				},
+				{
+					model: 'MATERIAL',
 					uuid: CAMPAIGN_MATERIAL_UUID,
 					name: 'Campaign',
 					format: 'play',
@@ -7507,36 +7537,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					depictions: []
-				},
-				{
-					model: 'MATERIAL',
-					uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					format: 'sub-collection of plays',
-					year: 2009,
-					writingCredits: [],
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-						name: 'The Great Game: Afghanistan',
-						surMaterial: null
-					},
-					depictions: []
-				},
-				{
-					model: 'MATERIAL',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					format: 'sub-collection of plays',
-					year: 2009,
-					writingCredits: [],
-					surMaterial: {
-						model: 'MATERIAL',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-						name: 'The Great Game: Afghanistan',
-						surMaterial: null
 					},
 					depictions: []
 				},
@@ -7680,6 +7680,36 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Three - Enduring Freedom 1996-2009',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roleName: 'Bar',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 					name: 'Miniskirts of Kabul',
 					startDate: '2009-04-17',
@@ -7782,6 +7812,36 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+						name: 'The Great Game: Afghanistan',
+						surProduction: null
+					},
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: RICK_WARDEN_PERSON_UUID,
+							name: 'Rick Warden',
+							roleName: 'Bar',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
 					startDate: '2009-04-17',
@@ -7869,66 +7929,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Great Game: Afghanistan'
 						}
-					},
-					performers: [
-						{
-							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
-							qualifier: null,
-							isAlternate: false,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
-					},
-					performers: [
-						{
-							model: 'PERSON',
-							uuid: RICK_WARDEN_PERSON_UUID,
-							name: 'Rick Warden',
-							roleName: 'Bar',
-							qualifier: null,
-							isAlternate: false,
-							otherRoles: []
-						}
-					]
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
-					startDate: '2009-04-17',
-					endDate: '2009-06-14',
-					venue: {
-						model: 'VENUE',
-						uuid: TRICYCLE_THEATRE_VENUE_UUID,
-						name: 'Tricycle Theatre',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'The Great Game: Afghanistan',
-						surProduction: null
 					},
 					performers: [
 						{
@@ -8083,6 +8083,25 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Mid-Wibble: Section III',
+					startDate: '2009-05-01',
+					endDate: '2009-05-31',
+					venue: {
+						model: 'VENUE',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: SUB_WIBBLE_PART_VI_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Sub-Wibble: Part VI',
 					startDate: '2009-05-01',
@@ -8152,6 +8171,25 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Mid-Wibble: Section II',
+					startDate: '2009-05-01',
+					endDate: '2009-05-31',
+					venue: {
+						model: 'VENUE',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: SUB_WIBBLE_PART_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Sub-Wibble: Part III',
 					startDate: '2009-05-01',
@@ -8217,44 +8255,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 							name: 'Sur-Wibble'
 						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Mid-Wibble: Section III',
-					startDate: '2009-05-01',
-					endDate: '2009-05-31',
-					venue: {
-						model: 'VENUE',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-						name: 'Sur-Wibble',
-						surProduction: null
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Mid-Wibble: Section II',
-					startDate: '2009-05-01',
-					endDate: '2009-05-31',
-					venue: {
-						model: 'VENUE',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-						name: 'Sur-Wibble',
-						surProduction: null
 					}
 				},
 				{
@@ -8376,6 +8376,25 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Mid-Wibble: Section III',
+					startDate: '2009-05-01',
+					endDate: '2009-05-31',
+					venue: {
+						model: 'VENUE',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: SUB_WIBBLE_PART_VI_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Sub-Wibble: Part VI',
 					startDate: '2009-05-01',
@@ -8445,6 +8464,25 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+					name: 'Mid-Wibble: Section II',
+					startDate: '2009-05-01',
+					endDate: '2009-05-31',
+					venue: {
+						model: 'VENUE',
+						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+						name: 'Jerwood Theatre Upstairs',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: SUB_WIBBLE_PART_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 					name: 'Sub-Wibble: Part III',
 					startDate: '2009-05-01',
@@ -8510,44 +8548,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 							uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
 							name: 'Sur-Wibble'
 						}
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Mid-Wibble: Section III',
-					startDate: '2009-05-01',
-					endDate: '2009-05-31',
-					venue: {
-						model: 'VENUE',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-						name: 'Sur-Wibble',
-						surProduction: null
-					}
-				},
-				{
-					model: 'PRODUCTION',
-					uuid: MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-					name: 'Mid-Wibble: Section II',
-					startDate: '2009-05-01',
-					endDate: '2009-05-31',
-					venue: {
-						model: 'VENUE',
-						uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-						name: 'Jerwood Theatre Upstairs',
-						surVenue: null
-					},
-					surProduction: {
-						model: 'PRODUCTION',
-						uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-						name: 'Sur-Wibble',
-						surProduction: null
 					}
 				},
 				{
