@@ -268,7 +268,23 @@ describe('Material with sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
+									name: 'Alexander Herzen',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'MATERIAL',
@@ -294,7 +310,23 @@ describe('Material with sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
+									name: 'Alexander Herzen',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'MATERIAL',
@@ -320,7 +352,23 @@ describe('Material with sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: ALEXANDER_HERZEN_CHARACTER_UUID,
+									name: 'Alexander Herzen',
+									qualifier: null
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -342,7 +390,6 @@ describe('Material with sub-materials', () => {
 				name: 'The Coast of Utopia',
 				format: 'trilogy of plays',
 				year: 2002,
-				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -357,6 +404,23 @@ describe('Material with sub-materials', () => {
 								model: 'COMPANY',
 								uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
 								name: 'The Sträussler Group'
+							}
+						]
+					}
+				],
+				originalVersionMaterial: null,
+				surMaterial: null,
+				characterGroups: [
+					{
+						model: 'CHARACTER_GROUP',
+						name: null,
+						position: null,
+						characters: [
+							{
+								model: 'CHARACTER',
+								uuid: IVAN_TURGENEV_CHARACTER_UUID,
+								name: 'Ivan Turgenev',
+								qualifier: null
 							}
 						]
 					}

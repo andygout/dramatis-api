@@ -774,7 +774,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					},
 					{
 						model: 'MATERIAL',
@@ -783,7 +785,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					},
 					{
 						model: 'MATERIAL',
@@ -792,7 +796,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					}
 				],
 				characterGroups: [
@@ -1379,7 +1385,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					},
 					{
 						model: 'MATERIAL',
@@ -1388,7 +1396,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					},
 					{
 						model: 'MATERIAL',
@@ -1397,7 +1407,9 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						format: null,
 						year: null,
 						writingCredits: [],
-						subMaterials: []
+						originalVersionMaterial: null,
+						subMaterials: [],
+						characterGroups: []
 					}
 				],
 				characterGroups: [

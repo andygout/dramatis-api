@@ -428,7 +428,6 @@ describe('Material with sub-materials and source materials thereof', () => {
 				name: 'The Wolf Hall Trilogy',
 				format: 'trilogy of plays',
 				year: 2021,
-				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -478,7 +477,10 @@ describe('Material with sub-materials and source materials thereof', () => {
 							}
 						]
 					}
-				]
+				],
+				originalVersionMaterial: null,
+				surMaterial: null,
+				characterGroups: []
 			};
 
 			const { surMaterial } = bringUpTheBodiesPlayMaterial.body;

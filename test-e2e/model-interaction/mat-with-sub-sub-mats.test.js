@@ -507,6 +507,7 @@ describe('Material with sub-sub-materials', () => {
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
+					originalVersionMaterial: null,
 					subMaterials: [
 						{
 							model: 'MATERIAL',
@@ -531,6 +532,22 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
+							],
+							originalVersionMaterial: null,
+							characterGroups: [
+								{
+									model: 'CHARACTER_GROUP',
+									name: null,
+									position: null,
+									characters: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_CHARACTER_UUID,
+											name: 'Bar',
+											qualifier: null
+										}
+									]
+								}
 							]
 						},
 						{
@@ -551,7 +568,9 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						},
 						{
 							model: 'MATERIAL',
@@ -571,9 +590,12 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						}
-					]
+					],
+					characterGroups: []
 				},
 				{
 					model: 'MATERIAL',
@@ -582,6 +604,7 @@ describe('Material with sub-sub-materials', () => {
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
+					originalVersionMaterial: null,
 					subMaterials: [
 						{
 							model: 'MATERIAL',
@@ -601,7 +624,9 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						},
 						{
 							model: 'MATERIAL',
@@ -621,7 +646,9 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						},
 						{
 							model: 'MATERIAL',
@@ -646,9 +673,26 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
+							],
+							originalVersionMaterial: null,
+							characterGroups: [
+								{
+									model: 'CHARACTER_GROUP',
+									name: null,
+									position: null,
+									characters: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_CHARACTER_UUID,
+											name: 'Bar',
+											qualifier: null
+										}
+									]
+								}
 							]
 						}
-					]
+					],
+					characterGroups: []
 				},
 				{
 					model: 'MATERIAL',
@@ -657,6 +701,7 @@ describe('Material with sub-sub-materials', () => {
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
+					originalVersionMaterial: null,
 					subMaterials: [
 						{
 							model: 'MATERIAL',
@@ -676,7 +721,9 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						},
 						{
 							model: 'MATERIAL',
@@ -701,6 +748,22 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
+							],
+							originalVersionMaterial: null,
+							characterGroups: [
+								{
+									model: 'CHARACTER_GROUP',
+									name: null,
+									position: null,
+									characters: [
+										{
+											model: 'CHARACTER',
+											uuid: BAR_CHARACTER_UUID,
+											name: 'Bar',
+											qualifier: null
+										}
+									]
+								}
 							]
 						},
 						{
@@ -721,9 +784,12 @@ describe('Material with sub-sub-materials', () => {
 										}
 									]
 								}
-							]
+							],
+							originalVersionMaterial: null,
+							characterGroups: []
 						}
-					]
+					],
+					characterGroups: []
 				}
 			];
 
@@ -745,8 +811,10 @@ describe('Material with sub-sub-materials', () => {
 				name: 'The Great Game: Afghanistan',
 				format: 'collection of plays',
 				year: 2009,
+				writingCredits: [],
+				originalVersionMaterial: null,
 				surMaterial: null,
-				writingCredits: []
+				characterGroups: []
 			};
 
 			const { surMaterial } = partOneInvasionsAndIndependenceMaterial.body;
@@ -782,7 +850,23 @@ describe('Material with sub-sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: BAR_CHARACTER_UUID,
+									name: 'Bar',
+									qualifier: null
+								}
+							]
+						}
+					]
 				},
 				{
 					model: 'MATERIAL',
@@ -803,7 +887,9 @@ describe('Material with sub-sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: []
 				},
 				{
 					model: 'MATERIAL',
@@ -824,7 +910,9 @@ describe('Material with sub-sub-materials', () => {
 							]
 						}
 					],
-					subMaterials: []
+					originalVersionMaterial: null,
+					subMaterials: [],
+					characterGroups: []
 				}
 			];
 
@@ -846,12 +934,19 @@ describe('Material with sub-sub-materials', () => {
 				name: 'Part One - Invasions and Independence 1842-1930',
 				format: 'sub-collection of plays',
 				year: 2009,
+				writingCredits: [],
+				originalVersionMaterial: null,
 				surMaterial: {
 					model: 'MATERIAL',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
-					name: 'The Great Game: Afghanistan'
+					name: 'The Great Game: Afghanistan',
+					format: 'collection of plays',
+					year: 2009,
+					writingCredits: [],
+					originalVersionMaterial: null,
+					characterGroups: []
 				},
-				writingCredits: []
+				characterGroups: []
 			};
 
 			const { surMaterial } = buglesAtTheGatesOfJalalabadMaterial.body;
