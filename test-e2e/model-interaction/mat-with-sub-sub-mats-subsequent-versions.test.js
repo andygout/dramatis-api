@@ -24,6 +24,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	let richardIIOriginalVersionMaterial;
 	let richardIISubsequentVersionMaterial;
+	let theFirstHenriadSubsequentVersionMaterial;
+	let theHenriadSubsequentVersionMaterial;
 	let williamShakespearePerson;
 	let theKingsMenCompany;
 
@@ -160,6 +162,10 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				differentiator: '2',
 				format: 'sub-group of plays',
 				year: '2009',
+				originalVersionMaterial: {
+					name: 'The First Henriad',
+					differentiator: '1'
+				},
 				writingCredits: [
 					{
 						entities: [
@@ -200,6 +206,10 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				differentiator: '2',
 				format: 'group of plays',
 				year: '2009',
+				originalVersionMaterial: {
+					name: 'The Henriad',
+					differentiator: '1'
+				},
 				writingCredits: [
 					{
 						entities: [
@@ -238,6 +248,12 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 		richardIISubsequentVersionMaterial = await chai.request(app)
 			.get(`/materials/${RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
+
+		theFirstHenriadSubsequentVersionMaterial = await chai.request(app)
+			.get(`/materials/${THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
+
+		theHenriadSubsequentVersionMaterial = await chai.request(app)
+			.get(`/materials/${THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
 		williamShakespearePerson = await chai.request(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
@@ -346,6 +362,498 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { originalVersionMaterial } = richardIISubsequentVersionMaterial.body;
 
 			expect(originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterial);
+
+		});
+
+		it('includes its sur-material and sur-sur-material with their corresponding original versions', () => {
+
+			const expectedSurMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+				name: 'The First Henriad',
+				format: 'sub-group of plays',
+				year: 2009,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+								name: 'William Shakespeare'
+							},
+							{
+								model: 'COMPANY',
+								uuid: THE_KINGS_MEN_COMPANY_UUID,
+								name: 'The King\'s Men'
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: 'adapted for young people by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: CARL_HEAP_PERSON_UUID,
+								name: 'Carl Heap'
+							},
+							{
+								model: 'COMPANY',
+								uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+								name: 'Beggars Belief Theatre Company'
+							}
+						]
+					}
+				],
+				originalVersionMaterial: {
+					model: 'MATERIAL',
+					uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The First Henriad',
+					format: 'sub-group of plays',
+					year: 1599,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Henriad',
+						surMaterial: null
+					}
+				},
+				surMaterial: {
+					model: 'MATERIAL',
+					uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'The Henriad',
+					format: 'group of plays',
+					year: 2009,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Henriad',
+						format: 'group of plays',
+						year: 1599,
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+										name: 'William Shakespeare'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_KINGS_MEN_COMPANY_UUID,
+										name: 'The King\'s Men'
+									}
+								]
+							}
+						],
+						surMaterial: null
+					},
+					characterGroups: []
+				},
+				characterGroups: []
+
+			};
+
+			const { surMaterial } = richardIISubsequentVersionMaterial.body;
+
+			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+
+		});
+
+	});
+
+	describe('The First Henriad (subsequent version) (material)', () => {
+
+		it('includes its sur-material with its corresponding original version', () => {
+
+			const expectedSurMaterial = {
+				model: 'MATERIAL',
+				uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+				name: 'The Henriad',
+				format: 'group of plays',
+				year: 2009,
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: 'by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+								name: 'William Shakespeare'
+							},
+							{
+								model: 'COMPANY',
+								uuid: THE_KINGS_MEN_COMPANY_UUID,
+								name: 'The King\'s Men'
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: 'adapted for young people by',
+						entities: [
+							{
+								model: 'PERSON',
+								uuid: CARL_HEAP_PERSON_UUID,
+								name: 'Carl Heap'
+							},
+							{
+								model: 'COMPANY',
+								uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+								name: 'Beggars Belief Theatre Company'
+							}
+						]
+					}
+				],
+				originalVersionMaterial: {
+					model: 'MATERIAL',
+					uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The Henriad',
+					format: 'group of plays',
+					year: 1599,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						}
+					],
+					surMaterial: null
+				},
+				surMaterial: null,
+				characterGroups: []
+
+			};
+
+			const { surMaterial } = theFirstHenriadSubsequentVersionMaterial.body;
+
+			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+
+		});
+
+		it('includes its sub-materials with their corresponding original versions', () => {
+
+			const expectedSubMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Richard II',
+					format: 'play',
+					year: 2009,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						uuid: RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'Richard II',
+						format: 'play',
+						year: 1595,
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+										name: 'William Shakespeare'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_KINGS_MEN_COMPANY_UUID,
+										name: 'The King\'s Men'
+									}
+								]
+							}
+						],
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+							name: 'The First Henriad',
+							surMaterial: {
+								model: 'MATERIAL',
+								uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+								name: 'The Henriad'
+							}
+						}
+					},
+					subMaterials: [],
+					characterGroups: []
+
+				}
+			];
+
+			const { subMaterials } = theFirstHenriadSubsequentVersionMaterial.body;
+
+			expect(subMaterials).to.deep.equal(expectedSubMaterials);
+
+		});
+
+	});
+
+	describe('The Henriad (subsequent version) (material)', () => {
+
+		it('includes its sub-materials and sub-sub-materials with their corresponding original versions', () => {
+
+			const expectedSubMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'The First Henriad',
+					format: 'sub-group of plays',
+					year: 2009,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: 'The King\'s Men'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The First Henriad',
+						format: 'sub-group of plays',
+						year: 1599,
+						writingCredits: [
+							{
+								model: 'WRITING_CREDIT',
+								name: 'by',
+								entities: [
+									{
+										model: 'PERSON',
+										uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+										name: 'William Shakespeare'
+									},
+									{
+										model: 'COMPANY',
+										uuid: THE_KINGS_MEN_COMPANY_UUID,
+										name: 'The King\'s Men'
+									}
+								]
+							}
+						],
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+							name: 'The Henriad',
+							surMaterial: null
+						}
+					},
+					subMaterials: [
+						{
+							model: 'MATERIAL',
+							uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+							name: 'Richard II',
+							format: 'play',
+							year: 2009,
+							writingCredits: [
+								{
+									model: 'WRITING_CREDIT',
+									name: 'by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+											name: 'William Shakespeare'
+										},
+										{
+											model: 'COMPANY',
+											uuid: THE_KINGS_MEN_COMPANY_UUID,
+											name: 'The King\'s Men'
+										}
+									]
+								},
+								{
+									model: 'WRITING_CREDIT',
+									name: 'adapted for young people by',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: CARL_HEAP_PERSON_UUID,
+											name: 'Carl Heap'
+										},
+										{
+											model: 'COMPANY',
+											uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+											name: 'Beggars Belief Theatre Company'
+										}
+									]
+								}
+							],
+							originalVersionMaterial: {
+								model: 'MATERIAL',
+								uuid: RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID,
+								name: 'Richard II',
+								format: 'play',
+								year: 1595,
+								writingCredits: [
+									{
+										model: 'WRITING_CREDIT',
+										name: 'by',
+										entities: [
+											{
+												model: 'PERSON',
+												uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+												name: 'William Shakespeare'
+											},
+											{
+												model: 'COMPANY',
+												uuid: THE_KINGS_MEN_COMPANY_UUID,
+												name: 'The King\'s Men'
+											}
+										]
+									}
+								],
+								surMaterial: {
+									model: 'MATERIAL',
+									uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+									name: 'The First Henriad',
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+										name: 'The Henriad'
+									}
+								}
+							},
+							characterGroups: []
+						}
+					],
+					characterGroups: []
+
+				}
+			];
+
+			const { subMaterials } = theHenriadSubsequentVersionMaterial.body;
+
+			expect(subMaterials).to.deep.equal(expectedSubMaterials);
 
 		});
 

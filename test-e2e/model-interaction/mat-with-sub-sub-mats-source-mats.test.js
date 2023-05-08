@@ -500,11 +500,6 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				name: 'The Books of the Old Testament',
 				format: 'sub-collection of plays',
 				year: 2011,
-				surMaterial: {
-					model: 'MATERIAL',
-					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
-					name: 'Sixty-Six Books'
-				},
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -543,7 +538,52 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 							}
 						]
 					}
-				]
+				],
+				originalVersionMaterial: null,
+				surMaterial: {
+					model: 'MATERIAL',
+					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+					name: 'Sixty-Six Books',
+					format: 'collection of plays',
+					year: 2011,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'written in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'The Bible: King James Version',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					originalVersionMaterial: null,
+					characterGroups: []
+				},
+				characterGroups: []
 			};
 
 			const { surMaterial } = godblogPlayMaterial.body;
@@ -564,7 +604,6 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				name: 'Sixty-Six Books',
 				format: 'collection of plays',
 				year: 2011,
-				surMaterial: null,
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
@@ -598,7 +637,10 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 							}
 						]
 					}
-				]
+				],
+				originalVersionMaterial: null,
+				surMaterial: null,
+				characterGroups: []
 			};
 
 			const { surMaterial } = theBooksOfTheOldTestamentPlaysMaterial.body;
