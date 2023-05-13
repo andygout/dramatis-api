@@ -473,4 +473,33 @@ describe('Material model', () => {
 
 	});
 
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated sub-materials\' runDatabaseValidations method', async () => {
+
+			const props = {
+				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+				name: 'The Coast of Utopia',
+				subMaterials: [
+					{
+						name: 'Voyage'
+					}
+				]
+			};
+			const instance = createInstance(props);
+			stub(instance, 'validateUniquenessInDatabase');
+			stub(instance.subMaterials[0], 'runSubMaterialDatabaseValidations');
+			await instance.runDatabaseValidations();
+			assert.calledOnce(instance.validateUniquenessInDatabase);
+			assert.calledWithExactly(instance.validateUniquenessInDatabase);
+			assert.calledOnce(instance.subMaterials[0].runSubMaterialDatabaseValidations);
+			assert.calledWithExactly(
+				instance.subMaterials[0].runSubMaterialDatabaseValidations,
+				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+			);
+
+		});
+
+	});
+
 });

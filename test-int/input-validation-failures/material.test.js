@@ -19,7 +19,17 @@ describe('Input validation failures: Material instance', () => {
 
 	beforeEach(() => {
 
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ duplicateRecordCount: 0 });
+		// Stub with a contrived resolution that ensures various
+		// neo4jQuery function calls all pass database validation.
+		sandbox
+			.stub(neo4jQueryModule, 'neo4jQuery')
+			.resolves({
+				duplicateRecordCount: 0,
+				isAssignedToSurMaterial: false,
+				isSurSurMaterial: false,
+				isSurMaterialOfSubjectMaterial: false,
+				isSubjectMaterialASubSubMaterial: false
+			});
 
 	});
 

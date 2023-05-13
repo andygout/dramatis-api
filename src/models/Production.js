@@ -165,7 +165,9 @@ export default class Production extends Entity {
 
 	async runDatabaseValidations () {
 
-		for (const subProduction of this.subProductions) await subProduction.runDatabaseValidations();
+		for (const subProduction of this.subProductions) {
+			await subProduction.runSubProductionDatabaseValidations({ subjectProductionUuid: this.uuid });
+		}
 
 	}
 

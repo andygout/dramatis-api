@@ -10,6 +10,9 @@ import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
 describe('Instance validation failures: Productions API', () => {
 
+	const STRING_MAX_LENGTH = 1000;
+	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
@@ -57,6 +60,137 @@ describe('Instance validation failures: Productions API', () => {
 						errors: {}
 					},
 					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Production')).to.equal(0);
+
+			});
+
+		});
+
+		context('instance has database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Production')).to.equal(0);
+
+				const response = await chai.request(app)
+					.post('/productions')
+					.send({
+						name: 'Macbeth',
+						subProductions: [
+							{
+								uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'PRODUCTION',
+					name: 'Macbeth',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							model: 'PRODUCTION_IDENTIFIER',
+							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							errors: {
+								uuid: [
+									'Production with this UUID does not exist'
+								]
+							}
+						}
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Production')).to.equal(0);
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Production')).to.equal(0);
+
+				const response = await chai.request(app)
+					.post('/productions')
+					.send({
+						name: 'Macbeth',
+						material: {
+							name: ABOVE_MAX_LENGTH_STRING
+						},
+						subProductions: [
+							{
+								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'PRODUCTION',
+					name: 'Macbeth',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'MATERIAL',
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					},
+					venue: {
+						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							model: 'PRODUCTION_IDENTIFIER',
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+							errors: {
+								uuid: [
+									'Production with this UUID does not exist'
+								]
+							}
+						}
+					],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -141,6 +275,139 @@ describe('Instance validation failures: Productions API', () => {
 					name: 'Macbeth',
 					uuid: MACBETH_PRODUCTION_UUID
 				})).to.be.true;
+
+			});
+
+		});
+
+		context('instance has database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Production')).to.equal(1);
+
+				const response = await chai.request(app)
+					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
+					.send({
+						name: 'Macbeth',
+						subProductions: [
+							{
+								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'PRODUCTION',
+					uuid: MACBETH_PRODUCTION_UUID,
+					name: 'Macbeth',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							model: 'PRODUCTION_IDENTIFIER',
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+							errors: {
+								uuid: [
+									'Production with this UUID does not exist'
+								]
+							}
+						}
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Production')).to.equal(1);
+
+			});
+
+		});
+
+		context('instance has both input and database validation failures', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Production')).to.equal(1);
+
+				const response = await chai.request(app)
+					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
+					.send({
+						name: 'Macbeth',
+						material: {
+							name: ABOVE_MAX_LENGTH_STRING
+						},
+						subProductions: [
+							{
+								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'PRODUCTION',
+					uuid: MACBETH_PRODUCTION_UUID,
+					name: 'Macbeth',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						model: 'MATERIAL',
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					},
+					venue: {
+						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [
+						{
+							model: 'PRODUCTION_IDENTIFIER',
+							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+							errors: {
+								uuid: [
+									'Production with this UUID does not exist'
+								]
+							}
+						}
+					],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Production')).to.equal(1);
 
 			});
 

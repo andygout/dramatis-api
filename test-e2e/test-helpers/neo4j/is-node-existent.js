@@ -4,10 +4,13 @@ export default async opts => {
 
 	const { label, name, uuid } = opts;
 
-	const params = { name, uuid };
+	const params = {
+		...(name && { name }),
+		...(uuid && { uuid })
+	};
 
 	const query = `
-		MATCH (n:${label} { name: $name, uuid: $uuid })
+		MATCH (n:${label} { ${Object.keys(params).map(key => `${key}: $${key}`).join(', ')} })
 
 		RETURN
 			CASE COUNT(n) WHEN 1
