@@ -7,7 +7,8 @@ import {
 	getUpdateQueries,
 	getShowQueries,
 	getListQueries,
-	sharedQueries
+	sharedQueries,
+	validationQueries
 } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 import { MODELS } from '../utils/constants';
@@ -82,7 +83,7 @@ export default class Entity extends Base {
 
 	async validateUniquenessInDatabase () {
 
-		const { getDuplicateRecordCountQuery } = sharedQueries;
+		const { getDuplicateRecordCountQuery } = validationQueries;
 
 		const preparedParams = prepareAsParams(this);
 
@@ -114,7 +115,7 @@ export default class Entity extends Base {
 
 	async confirmExistenceInDatabase (opts = {}) {
 
-		const { getExistenceQuery } = sharedQueries;
+		const { getExistenceQuery } = validationQueries;
 
 		await neo4jQuery({
 			query: getExistenceQuery(opts.model || this.model),
