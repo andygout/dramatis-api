@@ -43,12 +43,6 @@ describe('Entity model', () => {
 						.returns(['showVenueQuery'])
 			},
 			sharedQueries: {
-				getExistenceQuery:
-					sandbox.stub(cypherQueries.sharedQueries, 'getExistenceQuery')
-						.returns('getExistenceQuery response'),
-				getDuplicateRecordCountQuery:
-					sandbox.stub(cypherQueries.sharedQueries, 'getDuplicateRecordCountQuery')
-						.returns('getDuplicateRecordCountQuery response'),
 				getCreateQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getCreateQuery').returns('getCreateQuery response'),
 				getEditQuery:
@@ -59,6 +53,14 @@ describe('Entity model', () => {
 					sandbox.stub(cypherQueries.sharedQueries, 'getDeleteQuery').returns('getDeleteQuery response'),
 				getListQuery:
 					sandbox.stub(cypherQueries.sharedQueries, 'getListQuery').returns('getListQuery response')
+			},
+			validationQueries: {
+				getExistenceQuery:
+					sandbox.stub(cypherQueries.validationQueries, 'getExistenceQuery')
+						.returns('getExistenceQuery response'),
+				getDuplicateRecordCountQuery:
+					sandbox.stub(cypherQueries.validationQueries, 'getDuplicateRecordCountQuery')
+						.returns('getDuplicateRecordCountQuery response')
 			},
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
@@ -418,13 +420,13 @@ describe('Entity model', () => {
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParams,
-					stubs.sharedQueries.getDuplicateRecordCountQuery,
+					stubs.validationQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery
 				);
 				assert.calledOnce(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.sharedQueries.getDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getDuplicateRecordCountQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCountQuery);
+				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCountQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
@@ -457,14 +459,14 @@ describe('Entity model', () => {
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParams,
-					stubs.sharedQueries.getDuplicateRecordCountQuery,
+					stubs.validationQueries.getDuplicateRecordCountQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
 				assert.calledOnce(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.sharedQueries.getDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getDuplicateRecordCountQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCountQuery);
+				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCountQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
@@ -516,11 +518,11 @@ describe('Entity model', () => {
 				stubs.neo4jQuery.resolves({ exists: true });
 				await instance.confirmExistenceInDatabase();
 				assert.callOrder(
-					stubs.sharedQueries.getExistenceQuery,
+					stubs.validationQueries.getExistenceQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.sharedQueries.getExistenceQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getExistenceQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getExistenceQuery);
+				assert.calledWithExactly(stubs.validationQueries.getExistenceQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
@@ -539,11 +541,11 @@ describe('Entity model', () => {
 				stubs.neo4jQuery.resolves({ exists: true });
 				await instance.confirmExistenceInDatabase({ model });
 				assert.callOrder(
-					stubs.sharedQueries.getExistenceQuery,
+					stubs.validationQueries.getExistenceQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.sharedQueries.getExistenceQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getExistenceQuery, model);
+				assert.calledOnce(stubs.validationQueries.getExistenceQuery);
+				assert.calledWithExactly(stubs.validationQueries.getExistenceQuery, model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,

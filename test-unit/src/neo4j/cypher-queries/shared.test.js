@@ -5,45 +5,6 @@ import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespa
 
 describe('Cypher Queries Shared module', () => {
 
-	describe('getExistenceQuery function', () => {
-
-		it('returns requisite query', () => {
-
-			const result = cypherQueriesShared.getExistenceQuery('VENUE');
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Venue { uuid: $uuid })
-
-				RETURN n
-			`));
-
-		});
-
-	});
-
-	describe('getDuplicateRecordCountQuery function', () => {
-
-		it('returns requisite query', () => {
-
-			const result = cypherQueriesShared.getDuplicateRecordCountQuery('VENUE', undefined);
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
-				MATCH (n:Venue { name: $name })
-					WHERE
-						(
-							($differentiator IS NULL AND n.differentiator IS NULL) OR
-							$differentiator = n.differentiator
-						) AND
-						(
-							$uuid IS NULL OR
-							$uuid <> n.uuid
-						)
-
-				RETURN SIGN(COUNT(n)) AS duplicateRecordCount
-			`));
-
-		});
-
-	});
-
 	describe('getCreateQuery function', () => {
 
 		it('returns requisite query', () => {

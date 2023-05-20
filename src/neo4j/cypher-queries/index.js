@@ -25,8 +25,6 @@ import {
 	getListQuery as getProductionListQuery
 } from './production';
 import {
-	getExistenceQuery as getSharedExistenceQuery,
-	getDuplicateRecordCountQuery as getSharedDuplicateRecordCountQuery,
 	getCreateQuery as getSharedCreateQuery,
 	getEditQuery as getSharedEditQuery,
 	getUpdateQuery as getSharedUpdateQuery,
@@ -34,6 +32,8 @@ import {
 	getListQuery as getSharedListQuery
 } from './shared';
 import {
+	getDuplicateRecordCountQuery as getSharedDuplicateRecordCountQuery,
+	getExistenceQuery as getSharedExistenceQuery,
 	getSubMaterialChecksQuery as getSharedSubMaterialChecksQuery,
 	getSubProductionChecksQuery as getSharedSubProductionChecksQuery
 } from './validation';
@@ -86,8 +86,6 @@ const getListQueries = {
 };
 
 const sharedQueries = {
-	getExistenceQuery: getSharedExistenceQuery,
-	getDuplicateRecordCountQuery: getSharedDuplicateRecordCountQuery,
 	getCreateQuery: getSharedCreateQuery,
 	getEditQuery: getSharedEditQuery,
 	getUpdateQuery: getSharedUpdateQuery,
@@ -96,6 +94,8 @@ const sharedQueries = {
 };
 
 const validationQueries = {
+	getDuplicateRecordCountQuery: getSharedDuplicateRecordCountQuery,
+	getExistenceQuery: getSharedExistenceQuery,
 	getSubMaterialChecksQuery: getSharedSubMaterialChecksQuery,
 	getSubProductionChecksQuery: getSharedSubProductionChecksQuery
 };
