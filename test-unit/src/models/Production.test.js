@@ -945,16 +945,20 @@ describe('Production model', () => {
 		it('calls associated sub-productions\' runDatabaseValidations method', async () => {
 
 			const props = {
+				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				subProductions: [
 					{
-						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				]
 			};
 			const instance = createInstance(props);
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.subProductions[0].runDatabaseValidations);
-			assert.calledWithExactly(instance.subProductions[0].runDatabaseValidations);
+			assert.calledOnce(instance.subProductions[0].runSubProductionDatabaseValidations);
+			assert.calledWithExactly(
+				instance.subProductions[0].runSubProductionDatabaseValidations,
+				{ subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+			);
 
 		});
 

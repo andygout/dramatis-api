@@ -100,4 +100,14 @@ export default class Material extends MaterialBase {
 
 	}
 
+	async runDatabaseValidations () {
+
+		await this.validateUniquenessInDatabase();
+
+		for (const subMaterial of this.subMaterials) {
+			await subMaterial.runSubMaterialDatabaseValidations({ subjectMaterialUuid: this.uuid });
+		}
+
+	}
+
 }

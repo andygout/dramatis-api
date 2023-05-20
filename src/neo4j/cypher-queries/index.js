@@ -34,6 +34,10 @@ import {
 	getListQuery as getSharedListQuery
 } from './shared';
 import {
+	getSubMaterialChecksQuery as getSharedSubMaterialChecksQuery,
+	getSubProductionChecksQuery as getSharedSubProductionChecksQuery
+} from './validation';
+import {
 	getCreateQuery as getVenueCreateQuery,
 	getEditQuery as getVenueEditQuery,
 	getUpdateQuery as getVenueUpdateQuery,
@@ -91,6 +95,11 @@ const sharedQueries = {
 	getListQuery: getSharedListQuery
 };
 
+const validationQueries = {
+	getSubMaterialChecksQuery: getSharedSubMaterialChecksQuery,
+	getSubProductionChecksQuery: getSharedSubProductionChecksQuery
+};
+
 export {
 	getAwardContextualDuplicateRecordCountQuery,
 	getCreateQueries,
@@ -98,5 +107,6 @@ export {
 	getUpdateQueries,
 	getShowQueries,
 	getListQueries,
-	sharedQueries
+	sharedQueries,
+	validationQueries
 };
