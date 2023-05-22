@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CompanyWithMembers, MaterialBase, Person, ProductionIdentifier } from '../../../src/models';
+import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person } from '../../../src/models';
 
 describe('Nomination model', () => {
 
@@ -20,15 +20,15 @@ describe('Nomination model', () => {
 
 	};
 
-	const PersonStub = function () {
+	const NominatedProductionIdentifierStub = function () {
 
-		return createStubInstance(Person);
+		return createStubInstance(NominatedProductionIdentifier);
 
 	};
 
-	const ProductionIdentifierStub = function () {
+	const PersonStub = function () {
 
-		return createStubInstance(ProductionIdentifier);
+		return createStubInstance(Person);
 
 	};
 
@@ -46,8 +46,8 @@ describe('Nomination model', () => {
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
 				MaterialBase: MaterialBaseStub,
-				Person: PersonStub,
-				ProductionIdentifier: ProductionIdentifierStub
+				NominatedProductionIdentifier: NominatedProductionIdentifierStub,
+				Person: PersonStub
 			}
 		};
 
@@ -223,9 +223,9 @@ describe('Nomination model', () => {
 				};
 				const instance = createInstance(props);
 				expect(instance.productions.length).to.equal(3);
-				expect(instance.productions[0] instanceof ProductionIdentifier).to.be.true;
-				expect(instance.productions[1] instanceof ProductionIdentifier).to.be.true;
-				expect(instance.productions[2] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.productions[0] instanceof NominatedProductionIdentifier).to.be.true;
+				expect(instance.productions[1] instanceof NominatedProductionIdentifier).to.be.true;
+				expect(instance.productions[2] instanceof NominatedProductionIdentifier).to.be.true;
 
 			});
 

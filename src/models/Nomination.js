@@ -1,7 +1,7 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
 import { getDuplicateBaseInstanceIndices, getDuplicateProductionIdentifierIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { CompanyWithMembers, MaterialBase, Person, ProductionIdentifier } from '.';
+import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person } from '.';
 import { MODELS } from '../utils/constants';
 
 export default class Nomination extends Base {
@@ -28,7 +28,7 @@ export default class Nomination extends Base {
 			: [];
 
 		this.productions = productions
-			? productions.map(production => new ProductionIdentifier(production))
+			? productions.map(production => new NominatedProductionIdentifier(production))
 			: [];
 
 		this.materials = materials
@@ -63,11 +63,11 @@ export default class Nomination extends Base {
 
 		const duplicateProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.productions);
 
-		this.productions.forEach((production, index) => {
+		this.productions.forEach((nominatedProductionIdentifier, index) => {
 
-			production.validateUuid();
+			nominatedProductionIdentifier.validateUuid();
 
-			production.validateUniquenessInGroup(
+			nominatedProductionIdentifier.validateUniquenessInGroup(
 				{ isDuplicate: duplicateProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }
 			);
 
@@ -95,7 +95,9 @@ export default class Nomination extends Base {
 
 	async runDatabaseValidations () {
 
-		for (const production of this.productions) await production.runDatabaseValidations();
+		for (const nominatedProductionIdentifier of this.productions) {
+			await nominatedProductionIdentifier.runDatabaseValidations();
+		}
 
 	}
 

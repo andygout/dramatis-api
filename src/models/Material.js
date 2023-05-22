@@ -1,7 +1,7 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidYear } from '../lib/is-valid-year';
 import MaterialBase from './MaterialBase';
-import { CharacterGroup, WritingCredit } from '.';
+import { CharacterGroup, SubMaterial, WritingCredit } from '.';
 
 export default class Material extends MaterialBase {
 
@@ -29,7 +29,7 @@ export default class Material extends MaterialBase {
 			: [];
 
 		this.subMaterials = subMaterials
-			? subMaterials.map(subMaterial => new MaterialBase(subMaterial))
+			? subMaterials.map(subMaterial => new SubMaterial(subMaterial))
 			: [];
 
 		this.characterGroups = characterGroups
@@ -105,7 +105,7 @@ export default class Material extends MaterialBase {
 		await this.validateUniquenessInDatabase();
 
 		for (const subMaterial of this.subMaterials) {
-			await subMaterial.runSubMaterialDatabaseValidations({ subjectMaterialUuid: this.uuid });
+			await subMaterial.runDatabaseValidations({ subjectMaterialUuid: this.uuid });
 		}
 
 	}

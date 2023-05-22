@@ -11,7 +11,7 @@ import {
 	CrewCredit,
 	MaterialBase,
 	ProducerCredit,
-	ProductionIdentifier,
+	SubProductionIdentifier,
 	VenueBase
 } from '.';
 import { MODELS } from '../utils/constants';
@@ -46,7 +46,7 @@ export default class Production extends Entity {
 		this.venue = new VenueBase(venue);
 
 		this.subProductions = subProductions
-			? subProductions.map(subProduction => new ProductionIdentifier(subProduction))
+			? subProductions.map(subProduction => new SubProductionIdentifier(subProduction))
 			: [];
 
 		this.producerCredits = producerCredits
@@ -89,13 +89,13 @@ export default class Production extends Entity {
 
 		const duplicateSubProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.subProductions);
 
-		this.subProductions.forEach((subProduction, index) => {
+		this.subProductions.forEach((subProductionIdentifier, index) => {
 
-			subProduction.validateUuid();
+			subProductionIdentifier.validateUuid();
 
-			subProduction.validateNoAssociationWithSelf({ uuid: this.uuid });
+			subProductionIdentifier.validateNoAssociationWithSelf({ uuid: this.uuid });
 
-			subProduction.validateUniquenessInGroup(
+			subProductionIdentifier.validateUniquenessInGroup(
 				{ isDuplicate: duplicateSubProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }
 			);
 
@@ -165,8 +165,8 @@ export default class Production extends Entity {
 
 	async runDatabaseValidations () {
 
-		for (const subProduction of this.subProductions) {
-			await subProduction.runSubProductionDatabaseValidations({ subjectProductionUuid: this.uuid });
+		for (const subProductionIdentifier of this.subProductions) {
+			await subProductionIdentifier.runDatabaseValidations({ subjectProductionUuid: this.uuid });
 		}
 
 	}

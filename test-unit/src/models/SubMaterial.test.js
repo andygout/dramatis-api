@@ -1,10 +1,10 @@
 import { assert, createSandbox, spy } from 'sinon';
 
-import { MaterialBase } from '../../../src/models';
+import { SubMaterial } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
-describe('MaterialBase model', () => {
+describe('SubMaterial model', () => {
 
 	let stubs;
 	let instance;
@@ -24,7 +24,7 @@ describe('MaterialBase model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
-		instance = new MaterialBase({ name: 'Foobar', differentiator: '1' });
+		instance = new SubMaterial({ name: 'Foobar', differentiator: '1' });
 
 	});
 
@@ -34,7 +34,7 @@ describe('MaterialBase model', () => {
 
 	});
 
-	describe('validateUniquenessInDatabase method', () => {
+	describe('runDatabaseValidations method', () => {
 
 		context('valid data', () => {
 
@@ -47,7 +47,7 @@ describe('MaterialBase model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 				spy(instance, 'addPropertyError');
-				await instance.runSubMaterialDatabaseValidations({
+				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
@@ -85,7 +85,7 @@ describe('MaterialBase model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 				spy(instance, 'addPropertyError');
-				await instance.runSubMaterialDatabaseValidations({
+				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
@@ -132,7 +132,7 @@ describe('MaterialBase model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 				spy(instance, 'addPropertyError');
-				await instance.runSubMaterialDatabaseValidations({
+				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
@@ -179,7 +179,7 @@ describe('MaterialBase model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 				spy(instance, 'addPropertyError');
-				await instance.runSubMaterialDatabaseValidations({
+				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
@@ -226,7 +226,7 @@ describe('MaterialBase model', () => {
 					isSubjectMaterialASubSubMaterial: true
 				});
 				spy(instance, 'addPropertyError');
-				await instance.runSubMaterialDatabaseValidations({
+				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
