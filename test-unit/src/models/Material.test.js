@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterGroup, MaterialBase, WritingCredit } from '../../../src/models';
+import { CharacterGroup, MaterialBase, SubMaterial, WritingCredit } from '../../../src/models';
 
 describe('Material model', () => {
 
@@ -11,6 +11,12 @@ describe('Material model', () => {
 	const CharacterGroupStub = function () {
 
 		return createStubInstance(CharacterGroup);
+
+	};
+
+	const SubMaterialStub = function () {
+
+		return createStubInstance(SubMaterial);
 
 	};
 
@@ -32,6 +38,7 @@ describe('Material model', () => {
 			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
+				SubMaterial: SubMaterialStub,
 				WritingCredit: WritingCreditStub
 			}
 		};
@@ -246,9 +253,9 @@ describe('Material model', () => {
 				};
 				const instance = createInstance(props);
 				expect(instance.subMaterials.length).to.equal(3);
-				expect(instance.subMaterials[0] instanceof MaterialBase).to.be.true;
-				expect(instance.subMaterials[1] instanceof MaterialBase).to.be.true;
-				expect(instance.subMaterials[2] instanceof MaterialBase).to.be.true;
+				expect(instance.subMaterials[0] instanceof SubMaterial).to.be.true;
+				expect(instance.subMaterials[1] instanceof SubMaterial).to.be.true;
+				expect(instance.subMaterials[2] instanceof SubMaterial).to.be.true;
 
 			});
 
@@ -321,10 +328,6 @@ describe('Material model', () => {
 			spy(instance, 'validateYear');
 			spy(instance.originalVersionMaterial, 'validateName');
 			spy(instance.originalVersionMaterial, 'validateDifferentiator');
-			spy(instance.subMaterials[0], 'validateName');
-			spy(instance.subMaterials[0], 'validateDifferentiator');
-			spy(instance.subMaterials[0], 'validateNoAssociationWithSelf');
-			spy(instance.subMaterials[0], 'validateUniquenessInGroup');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
@@ -488,13 +491,12 @@ describe('Material model', () => {
 			};
 			const instance = createInstance(props);
 			stub(instance, 'validateUniquenessInDatabase');
-			stub(instance.subMaterials[0], 'runSubMaterialDatabaseValidations');
 			await instance.runDatabaseValidations();
 			assert.calledOnce(instance.validateUniquenessInDatabase);
 			assert.calledWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnce(instance.subMaterials[0].runSubMaterialDatabaseValidations);
+			assert.calledOnce(instance.subMaterials[0].runDatabaseValidations);
 			assert.calledWithExactly(
-				instance.subMaterials[0].runSubMaterialDatabaseValidations,
+				instance.subMaterials[0].runDatabaseValidations,
 				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
 

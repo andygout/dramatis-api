@@ -8,7 +8,7 @@ import {
 	CrewCredit,
 	MaterialBase,
 	ProducerCredit,
-	ProductionIdentifier,
+	SubProductionIdentifier,
 	VenueBase
 } from '../../../src/models';
 
@@ -46,9 +46,9 @@ describe('Production model', () => {
 
 	};
 
-	const ProductionIdentifierStub = function () {
+	const SubProductionIdentifierStub = function () {
 
-		return createStubInstance(ProductionIdentifier);
+		return createStubInstance(SubProductionIdentifier);
 
 	};
 
@@ -72,7 +72,7 @@ describe('Production model', () => {
 				CrewCredit: CrewCreditStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
-				ProductionIdentifier: ProductionIdentifierStub,
+				SubProductionIdentifier: SubProductionIdentifierStub,
 				VenueBase: VenueBaseStub
 			}
 		};
@@ -284,9 +284,9 @@ describe('Production model', () => {
 				};
 				const instance = createInstance(props);
 				expect(instance.subProductions.length).to.equal(3);
-				expect(instance.subProductions[0] instanceof ProductionIdentifier).to.be.true;
-				expect(instance.subProductions[1] instanceof ProductionIdentifier).to.be.true;
-				expect(instance.subProductions[2] instanceof ProductionIdentifier).to.be.true;
+				expect(instance.subProductions[0] instanceof SubProductionIdentifier).to.be.true;
+				expect(instance.subProductions[1] instanceof SubProductionIdentifier).to.be.true;
+				expect(instance.subProductions[2] instanceof SubProductionIdentifier).to.be.true;
 
 			});
 
@@ -954,9 +954,9 @@ describe('Production model', () => {
 			};
 			const instance = createInstance(props);
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.subProductions[0].runSubProductionDatabaseValidations);
+			assert.calledOnce(instance.subProductions[0].runDatabaseValidations);
 			assert.calledWithExactly(
-				instance.subProductions[0].runSubProductionDatabaseValidations,
+				instance.subProductions[0].runDatabaseValidations,
 				{ subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
 

@@ -11,12 +11,15 @@ import CreativeCredit from './CreativeCredit';
 import CrewCredit from './CrewCredit';
 import Material from './Material';
 import MaterialBase from './MaterialBase';
+import NominatedProductionIdentifier from './NominatedProductionIdentifier';
 import Nomination from './Nomination';
 import Person from './Person';
 import ProducerCredit from './ProducerCredit';
 import Production from './Production';
 import ProductionIdentifier from './ProductionIdentifier';
 import Role from './Role';
+import SubMaterial from './SubMaterial';
+import SubProductionIdentifier from './SubProductionIdentifier';
 import Venue from './Venue';
 import VenueBase from './VenueBase';
 import WritingCredit from './WritingCredit';
@@ -35,12 +38,15 @@ export {
 	CrewCredit,
 	Material,
 	MaterialBase,
+	NominatedProductionIdentifier,
 	Nomination,
 	Person,
 	ProducerCredit,
 	Production,
 	ProductionIdentifier,
 	Role,
+	SubMaterial,
+	SubProductionIdentifier,
 	Venue,
 	VenueBase,
 	WritingCredit
