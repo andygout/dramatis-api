@@ -35,7 +35,8 @@ import {
 	getDuplicateRecordCountQuery as getSharedDuplicateRecordCountQuery,
 	getExistenceQuery as getSharedExistenceQuery,
 	getSubMaterialChecksQuery as getSharedSubMaterialChecksQuery,
-	getSubProductionChecksQuery as getSharedSubProductionChecksQuery
+	getSubProductionChecksQuery as getSharedSubProductionChecksQuery,
+	getSubVenueChecksQuery as getSubVenueValidationChecksQuery
 } from './validation';
 import {
 	getCreateQuery as getVenueCreateQuery,
@@ -97,7 +98,8 @@ const validationQueries = {
 	getDuplicateRecordCountQuery: getSharedDuplicateRecordCountQuery,
 	getExistenceQuery: getSharedExistenceQuery,
 	getSubMaterialChecksQuery: getSharedSubMaterialChecksQuery,
-	getSubProductionChecksQuery: getSharedSubProductionChecksQuery
+	getSubProductionChecksQuery: getSharedSubProductionChecksQuery,
+	getSubVenueChecksQuery: getSubVenueValidationChecksQuery
 };
 
 export {

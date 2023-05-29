@@ -196,12 +196,12 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const VENUE_UUID = '4';
-		const OLIVIER_THEATRE_VENUE_UUID = '5';
-		const LYTTELTON_THEATRE_VENUE_UUID = '6';
-		const DORFMAN_THEATRE_VENUE_UUID = '7';
-		const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '10';
-		const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '11';
+		const VENUE_UUID = '7';
+		const OLIVIER_THEATRE_VENUE_UUID = '8';
+		const LYTTELTON_THEATRE_VENUE_UUID = '9';
+		const DORFMAN_THEATRE_VENUE_UUID = '10';
+		const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '24';
+		const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '25';
 
 		before(async () => {
 
@@ -364,7 +364,72 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		});
 
-		it('updates venue', async () => {
+		it('updates venue (with existing data)', async () => {
+
+			expect(await countNodesWithLabel('Venue')).to.equal(4);
+
+			const response = await chai.request(app)
+				.put(`/venues/${VENUE_UUID}`)
+				.send({
+					name: 'National Theatre',
+					differentiator: '1',
+					subVenues: [
+						{
+							name: 'Olivier Theatre',
+							differentiator: '1'
+						},
+						{
+							name: 'Lyttelton Theatre',
+							differentiator: '1'
+						},
+						{
+							name: 'Dorfman Theatre',
+							differentiator: '1'
+						}
+					]
+				});
+
+			const expectedResponseBody = {
+				model: 'VENUE',
+				uuid: VENUE_UUID,
+				name: 'National Theatre',
+				differentiator: '1',
+				errors: {},
+				subVenues: [
+					{
+						model: 'VENUE',
+						name: 'Olivier Theatre',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'VENUE',
+						name: 'Lyttelton Theatre',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'VENUE',
+						name: 'Dorfman Theatre',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Venue')).to.equal(4);
+
+		});
+
+		it('updates venue (with new data)', async () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
 

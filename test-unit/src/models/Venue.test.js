@@ -1,29 +1,46 @@
 import { expect } from 'chai';
-import { assert, createSandbox, spy } from 'sinon';
+import proxyquire from 'proxyquire';
+import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import * as getDuplicateIndicesModule from '../../../src/lib/get-duplicate-indices';
-import { Venue, VenueBase } from '../../../src/models';
+import { SubVenue } from '../../../src/models';
 
 describe('Venue model', () => {
 
 	let stubs;
 
-	const sandbox = createSandbox();
+	const SubVenueStub = function () {
+
+		return createStubInstance(SubVenue);
+
+	};
 
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateBaseInstanceIndices:
-				sandbox.stub(getDuplicateIndicesModule, 'getDuplicateBaseInstanceIndices').returns([])
+			getDuplicateIndicesModule: {
+				getDuplicateBaseInstanceIndices: stub().returns([])
+			},
+			models: {
+				SubVenue: SubVenueStub
+			}
 		};
 
 	});
 
-	afterEach(() => {
+	const createSubject = () =>
 
-		sandbox.restore();
+		proxyquire('../../../src/models/Venue', {
+			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'.': stubs.models
+		}).default;
 
-	});
+	const createInstance = props => {
+
+		const Venue = createSubject();
+
+		return new Venue(props);
+
+	};
 
 	describe('constructor method', () => {
 
@@ -31,7 +48,7 @@ describe('Venue model', () => {
 
 			it('assigns empty array if absent from props', () => {
 
-				const instance = new Venue({ name: 'National Theatre' });
+				const instance = createInstance({ name: 'National Theatre' });
 				expect(instance.subVenues).to.deep.equal([]);
 
 			});
@@ -52,11 +69,11 @@ describe('Venue model', () => {
 						}
 					]
 				};
-				const instance = new Venue(props);
+				const instance = createInstance(props);
 				expect(instance.subVenues.length).to.equal(3);
-				expect(instance.subVenues[0] instanceof VenueBase).to.be.true;
-				expect(instance.subVenues[1] instanceof VenueBase).to.be.true;
-				expect(instance.subVenues[2] instanceof VenueBase).to.be.true;
+				expect(instance.subVenues[0] instanceof SubVenue).to.be.true;
+				expect(instance.subVenues[1] instanceof SubVenue).to.be.true;
+				expect(instance.subVenues[2] instanceof SubVenue).to.be.true;
 
 			});
 
@@ -78,18 +95,14 @@ describe('Venue model', () => {
 					}
 				]
 			};
-			const instance = new Venue(props);
+			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
-			spy(instance.subVenues[0], 'validateName');
-			spy(instance.subVenues[0], 'validateDifferentiator');
-			spy(instance.subVenues[0], 'validateNoAssociationWithSelf');
-			spy(instance.subVenues[0], 'validateUniquenessInGroup');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
-				stubs.getDuplicateBaseInstanceIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subVenues[0].validateName,
 				instance.subVenues[0].validateDifferentiator,
 				instance.subVenues[0].validateNoAssociationWithSelf,
@@ -99,8 +112,11 @@ describe('Venue model', () => {
 			assert.calledWithExactly(instance.validateName, { isRequired: true });
 			assert.calledOnce(instance.validateDifferentiator);
 			assert.calledWithExactly(instance.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateBaseInstanceIndices);
-			assert.calledWithExactly(stubs.getDuplicateBaseInstanceIndices, instance.subVenues);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
+				instance.subVenues
+			);
 			assert.calledOnce(instance.subVenues[0].validateName);
 			assert.calledWithExactly(instance.subVenues[0].validateName, { isRequired: false });
 			assert.calledOnce(instance.subVenues[0].validateDifferentiator);
@@ -114,6 +130,34 @@ describe('Venue model', () => {
 			assert.calledWithExactly(
 				instance.subVenues[0].validateUniquenessInGroup,
 				{ isDuplicate: false }
+			);
+
+		});
+
+	});
+
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated sub-venues\' runDatabaseValidations method', async () => {
+
+			const props = {
+				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+				name: 'National Theatre',
+				subVenues: [
+					{
+						name: 'Olivier Theatre'
+					}
+				]
+			};
+			const instance = createInstance(props);
+			stub(instance, 'validateUniquenessInDatabase');
+			await instance.runDatabaseValidations();
+			assert.calledOnce(instance.validateUniquenessInDatabase);
+			assert.calledWithExactly(instance.validateUniquenessInDatabase);
+			assert.calledOnce(instance.subVenues[0].runDatabaseValidations);
+			assert.calledWithExactly(
+				instance.subVenues[0].runDatabaseValidations,
+				{ subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
 
 		});
