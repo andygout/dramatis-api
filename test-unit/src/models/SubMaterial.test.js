@@ -1,5 +1,6 @@
 import { assert, createSandbox, spy } from 'sinon';
 
+import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
 import { SubMaterial } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
@@ -16,6 +17,10 @@ describe('SubMaterial model', () => {
 	beforeEach(() => {
 
 		stubs = {
+			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns({
+				name: 'NAME_VALUE',
+				differentiator: 'DIFFERENTIATOR_VALUE'
+			}),
 			validationQueries: {
 				getSubMaterialChecksQuery:
 					sandbox.stub(cypherQueries.validationQueries, 'getSubMaterialChecksQuery')
@@ -24,7 +29,7 @@ describe('SubMaterial model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
-		instance = new SubMaterial({ name: 'Foobar', differentiator: '1' });
+		instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
 	});
 
@@ -51,9 +56,12 @@ describe('SubMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
+					stubs.prepareAsParams,
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery
 				);
+				assert.calledOnce(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnce(stubs.neo4jQuery);
@@ -62,8 +70,8 @@ describe('SubMaterial model', () => {
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
-							name: 'Foobar',
-							differentiator: '1',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
 							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					}
@@ -89,10 +97,13 @@ describe('SubMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
+					stubs.prepareAsParams,
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
+				assert.calledOnce(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnce(stubs.neo4jQuery);
@@ -101,8 +112,8 @@ describe('SubMaterial model', () => {
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
-							name: 'Foobar',
-							differentiator: '1',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
 							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					}
@@ -136,10 +147,13 @@ describe('SubMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
+					stubs.prepareAsParams,
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
+				assert.calledOnce(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnce(stubs.neo4jQuery);
@@ -148,8 +162,8 @@ describe('SubMaterial model', () => {
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
-							name: 'Foobar',
-							differentiator: '1',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
 							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					}
@@ -183,10 +197,13 @@ describe('SubMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
+					stubs.prepareAsParams,
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
+				assert.calledOnce(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnce(stubs.neo4jQuery);
@@ -195,8 +212,8 @@ describe('SubMaterial model', () => {
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
-							name: 'Foobar',
-							differentiator: '1',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
 							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					}
@@ -230,10 +247,13 @@ describe('SubMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
+					stubs.prepareAsParams,
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
+				assert.calledOnce(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnce(stubs.neo4jQuery);
@@ -242,8 +262,8 @@ describe('SubMaterial model', () => {
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
-							name: 'Foobar',
-							differentiator: '1',
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
 							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					}
