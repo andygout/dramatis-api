@@ -1,3 +1,4 @@
+import { prepareAsParams } from '../lib/prepare-as-params';
 import MaterialBase from './MaterialBase';
 import { validationQueries } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
@@ -16,6 +17,8 @@ export default class SubMaterial extends MaterialBase {
 
 			const { getSubMaterialChecksQuery } = validationQueries;
 
+			const preparedParams = prepareAsParams(this);
+
 			const {
 				isAssignedToSurMaterial,
 				isSurSurMaterial,
@@ -24,8 +27,8 @@ export default class SubMaterial extends MaterialBase {
 			} = await neo4jQuery({
 				query: getSubMaterialChecksQuery(),
 				params: {
-					name: this.name,
-					differentiator: this.differentiator || null,
+					name: preparedParams.name,
+					differentiator: preparedParams.differentiator,
 					subjectMaterialUuid
 				}
 			});
