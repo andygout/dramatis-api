@@ -65,17 +65,17 @@ describe('Cypher Queries Validation module', () => {
 					-[:HAS_SUB_MATERIAL]->(:Material)
 					-[subSubMaterialRel:HAS_SUB_MATERIAL]->(:Material)
 
-				OPTIONAL MATCH (m)-[subjectMaterialSubMaterialRel:HAS_SUB_MATERIAL]->(subjectMaterial)
+				OPTIONAL MATCH (m)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
 
 				OPTIONAL MATCH (subjectMaterial)
 					<-[:HAS_SUB_MATERIAL]-(:Material)
-					<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(:Material)
+					<-[subjectMaterialSurSurMaterialRel:HAS_SUB_MATERIAL]-(:Material)
 
 				RETURN
 					TOBOOLEAN(COUNT(surMaterialRel)) AS isAssignedToSurMaterial,
 					TOBOOLEAN(COUNT(subSubMaterialRel)) AS isSurSurMaterial,
-					TOBOOLEAN(COUNT(subjectMaterialSubMaterialRel)) AS isSurMaterialOfSubjectMaterial,
-					TOBOOLEAN(COUNT(surSurMaterialRel)) AS isSubjectMaterialASubSubMaterial
+					TOBOOLEAN(COUNT(subMaterialRelWithSubjectMaterial)) AS isSurMaterialOfSubjectMaterial,
+					TOBOOLEAN(COUNT(subjectMaterialSurSurMaterialRel)) AS isSubjectMaterialASubSubMaterial
 			`));
 
 		});
@@ -98,18 +98,18 @@ describe('Cypher Queries Validation module', () => {
 					-[:HAS_SUB_PRODUCTION]->(:Production)
 					-[subSubProductionRel:HAS_SUB_PRODUCTION]->(:Production)
 
-				OPTIONAL MATCH (p)-[subjectProductionSubProductionRel:HAS_SUB_PRODUCTION]->(subjectProduction)
+				OPTIONAL MATCH (p)-[subProductionRelWithSubjectProduction:HAS_SUB_PRODUCTION]->(subjectProduction)
 
 				OPTIONAL MATCH (subjectProduction)
 					<-[:HAS_SUB_PRODUCTION]-(:Production)
-					<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(:Production)
+					<-[subjectProductionSurSurProductionRel:HAS_SUB_PRODUCTION]-(:Production)
 
 				RETURN
 					TOBOOLEAN(COUNT(p)) AS exists,
 					TOBOOLEAN(COUNT(surProductionRel)) AS isAssignedToSurProduction,
 					TOBOOLEAN(COUNT(subSubProductionRel)) AS isSurSurProduction,
-					TOBOOLEAN(COUNT(subjectProductionSubProductionRel)) AS isSurProductionOfSubjectProduction,
-					TOBOOLEAN(COUNT(surSurProductionRel)) AS isSubjectProductionASubSubProduction
+					TOBOOLEAN(COUNT(subProductionRelWithSubjectProduction)) AS isSurProductionOfSubjectProduction,
+					TOBOOLEAN(COUNT(subjectProductionSurSurProductionRel)) AS isSubjectProductionASubSubProduction
 			`));
 
 		});
