@@ -14,15 +14,15 @@ export default () => `
 		-[:HAS_SUB_MATERIAL]->(:Material)
 		-[subSubMaterialRel:HAS_SUB_MATERIAL]->(:Material)
 
-	OPTIONAL MATCH (m)-[subjectMaterialSubMaterialRel:HAS_SUB_MATERIAL]->(subjectMaterial)
+	OPTIONAL MATCH (m)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
 
 	OPTIONAL MATCH (subjectMaterial)
 		<-[:HAS_SUB_MATERIAL]-(:Material)
-		<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(:Material)
+		<-[subjectMaterialSurSurMaterialRel:HAS_SUB_MATERIAL]-(:Material)
 
 	RETURN
 		TOBOOLEAN(COUNT(surMaterialRel)) AS isAssignedToSurMaterial,
 		TOBOOLEAN(COUNT(subSubMaterialRel)) AS isSurSurMaterial,
-		TOBOOLEAN(COUNT(subjectMaterialSubMaterialRel)) AS isSurMaterialOfSubjectMaterial,
-		TOBOOLEAN(COUNT(surSurMaterialRel)) AS isSubjectMaterialASubSubMaterial
+		TOBOOLEAN(COUNT(subMaterialRelWithSubjectMaterial)) AS isSurMaterialOfSubjectMaterial,
+		TOBOOLEAN(COUNT(subjectMaterialSurSurMaterialRel)) AS isSubjectMaterialASubSubMaterial
 `;
