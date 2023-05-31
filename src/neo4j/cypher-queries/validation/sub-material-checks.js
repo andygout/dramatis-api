@@ -8,7 +8,10 @@ export default () => `
 
 	OPTIONAL MATCH (subjectMaterial:Material { uuid: $subjectMaterialUuid })
 
-	OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(:Material)
+	OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+		WHERE
+			$subjectMaterialUuid IS NULL OR
+			$subjectMaterialUuid <> surMaterial.uuid
 
 	OPTIONAL MATCH (m)
 		-[:HAS_SUB_MATERIAL]->(:Material)
