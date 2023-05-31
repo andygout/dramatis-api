@@ -59,7 +59,10 @@ describe('Cypher Queries Validation module', () => {
 
 				OPTIONAL MATCH (subjectMaterial:Material { uuid: $subjectMaterialUuid })
 
-				OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(:Material)
+				OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+					WHERE
+						$subjectMaterialUuid IS NULL OR
+						$subjectMaterialUuid <> surMaterial.uuid
 
 				OPTIONAL MATCH (m)
 					-[:HAS_SUB_MATERIAL]->(:Material)
@@ -92,7 +95,10 @@ describe('Cypher Queries Validation module', () => {
 
 				OPTIONAL MATCH (subjectProduction:Production { uuid: $subjectProductionUuid })
 
-				OPTIONAL MATCH (p)<-[surProductionRel:HAS_SUB_PRODUCTION]-(:Production)
+				OPTIONAL MATCH (p)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
+					WHERE
+						$subjectProductionUuid IS NULL OR
+						$subjectProductionUuid <> surProduction.uuid
 
 				OPTIONAL MATCH (p)
 					-[:HAS_SUB_PRODUCTION]->(:Production)

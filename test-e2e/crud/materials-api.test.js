@@ -393,17 +393,17 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = '24';
 		const GUNHILD_BORKMAN_CHARACTER_UUID = '25';
 		const ERHART_BORKMAN_CHARACTER_UUID = '26';
-		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '41';
-		const ANTON_CHEKHOV_PERSON_UUID = '42';
-		const CHEKHOV_THEATRE_COMPANY_UUID = '43';
-		const BENEDICT_ANDREWS_PERSON_UUID = '44';
-		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '45';
-		const THREE_SISTERS_SUB_MATERIAL_1_MATERIAL_UUID = '46';
-		const THREE_SISTERS_SUB_MATERIAL_2_MATERIAL_UUID = '47';
-		const THREE_SISTERS_SUB_MATERIAL_3_MATERIAL_UUID = '48';
-		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '49';
-		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '50';
-		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '51';
+		const THREE_SISTERS_ORIGINAL_VERSION_MATERIAL_UUID = '66';
+		const ANTON_CHEKHOV_PERSON_UUID = '67';
+		const CHEKHOV_THEATRE_COMPANY_UUID = '68';
+		const BENEDICT_ANDREWS_PERSON_UUID = '69';
+		const THREE_SISTERS_SOURCE_MATERIAL_MATERIAL_UUID = '70';
+		const THREE_SISTERS_SUB_MATERIAL_1_MATERIAL_UUID = '71';
+		const THREE_SISTERS_SUB_MATERIAL_2_MATERIAL_UUID = '72';
+		const THREE_SISTERS_SUB_MATERIAL_3_MATERIAL_UUID = '73';
+		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '74';
+		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = '75';
+		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = '76';
 
 		before(async () => {
 
@@ -1030,7 +1030,284 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		});
 
-		it('updates material', async () => {
+		it('updates material (with existing data)', async () => {
+
+			expect(await countNodesWithLabel('Material')).to.equal(6);
+
+			const response = await chai.request(app)
+				.put(`/materials/${MATERIAL_UUID}`)
+				.send({
+					name: 'John Gabriel Borkman',
+					differentiator: '2',
+					format: 'play',
+					year: 2007,
+					originalVersionMaterial: {
+						name: 'John Gabriel Borkman',
+						differentiator: '1'
+					},
+					writingCredits: [
+						{
+							name: '',
+							entities: [
+								{
+									name: 'Henrik Ibsen',
+									differentiator: '1'
+								},
+								{
+									model: 'COMPANY',
+									name: 'Ibsen Theatre Company',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'version by',
+							entities: [
+								{
+									name: 'David Eldridge',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									name: 'John Gabriel Borkman',
+									differentiator: '3'
+								}
+							]
+						}
+					],
+					subMaterials: [
+						{
+							name: 'John Gabriel Borkman sub-material #1',
+							differentiator: '1'
+						},
+						{
+							name: 'John Gabriel Borkman sub-material #2',
+							differentiator: '1'
+						},
+						{
+							name: 'John Gabriel Borkman sub-material #3',
+							differentiator: '1'
+						}
+					],
+					characterGroups: [
+						{
+							name: 'The Borkmans',
+							characters: [
+								{
+									name: 'John Gabriel Borkman',
+									underlyingName: 'Mr John Gabriel Borkman',
+									differentiator: '1',
+									qualifier: 'foo'
+								},
+								{
+									name: 'Gunhild Borkman',
+									underlyingName: 'Mrs Gunhild Borkman',
+									differentiator: '1',
+									qualifier: 'bar'
+								},
+								{
+									name: 'Erhart Borkman',
+									underlyingName: 'Mr Erhart Borkman',
+									differentiator: '1',
+									qualifier: 'baz'
+								}
+							]
+						}
+					]
+				});
+
+			const expectedResponseBody = {
+				model: 'MATERIAL',
+				uuid: MATERIAL_UUID,
+				name: 'John Gabriel Borkman',
+				differentiator: '2',
+				format: 'play',
+				year: 2007,
+				errors: {},
+				originalVersionMaterial: {
+					model: 'MATERIAL',
+					name: 'John Gabriel Borkman',
+					differentiator: '1',
+					errors: {}
+				},
+				writingCredits: [
+					{
+						model: 'WRITING_CREDIT',
+						name: '',
+						creditType: null,
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Henrik Ibsen',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'COMPANY',
+								name: 'Ibsen Theatre Company',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: 'version by',
+						creditType: null,
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'David Eldridge',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: 'based on',
+						creditType: null,
+						errors: {},
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'John Gabriel Borkman',
+								differentiator: '3',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'WRITING_CREDIT',
+						name: '',
+						creditType: null,
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
+				subMaterials: [
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #1',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #2',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: 'John Gabriel Borkman sub-material #3',
+						differentiator: '1',
+						errors: {}
+					},
+					{
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				],
+				characterGroups: [
+					{
+						model: 'CHARACTER_GROUP',
+						name: 'The Borkmans',
+						errors: {},
+						characters: [
+							{
+								model: 'CHARACTER',
+								name: 'John Gabriel Borkman',
+								underlyingName: 'Mr John Gabriel Borkman',
+								differentiator: '1',
+								qualifier: 'foo',
+								errors: {}
+							},
+							{
+								model: 'CHARACTER',
+								name: 'Gunhild Borkman',
+								underlyingName: 'Mrs Gunhild Borkman',
+								differentiator: '1',
+								qualifier: 'bar',
+								errors: {}
+							},
+							{
+								model: 'CHARACTER',
+								name: 'Erhart Borkman',
+								underlyingName: 'Mr Erhart Borkman',
+								differentiator: '1',
+								qualifier: 'baz',
+								errors: {}
+							},
+							{
+								model: 'CHARACTER',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CHARACTER_GROUP',
+						name: '',
+						errors: {},
+						characters: [
+							{
+								model: 'CHARACTER',
+								name: '',
+								underlyingName: '',
+								differentiator: '',
+								qualifier: '',
+								errors: {}
+							}
+						]
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Material')).to.equal(6);
+
+		});
+
+		it('updates material (with new data)', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(6);
 

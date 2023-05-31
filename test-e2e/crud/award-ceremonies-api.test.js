@@ -373,38 +373,38 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const A_DISAPPEARING_NUMBER_MATERIAL_UUID = '59';
 		const THE_REPORTER_MATERIAL_UUID = '60';
 		const VERNON_GOD_LITTLE_MATERIAL_UUID = '61';
-		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '62';
-		const PIAF_DONMAR_PRODUCTION_UUID = '65';
-		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '68';
-		const VAUDEVILLE_THEATRE_VENUE_UUID = '70';
-		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '71';
-		const WALDO_DORFMAN_PRODUCTION_UUID = '74';
-		const DORFMAN_THEATRE_VENUE_UUID = '76';
-		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '77';
-		const NOËL_COWARD_THEATRE_VENUE_UUID = '79';
-		const FRED_OLD_VIC_PRODUCTION_UUID = '80';
-		const OLD_VIC_THEATRE_VENUE_UUID = '82';
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '104';
-		const PAULE_CONSTABLE_PERSON_UUID = '105';
-		const THE_CHALK_GARDEN_MATERIAL_UUID = '106';
-		const ILLUMINATIONS_LTD_COMPANY_UUID = '107';
-		const PIAF_MATERIAL_UUID = '108';
-		const NEIL_AUSTIN_PERSON_UUID = '109';
-		const MARK_HENDERSON_PERSON_UUID = '110';
-		const IVANOV_MATERIAL_UUID = '111';
-		const LIMELIGHT_LTD_COMPANY_UUID = '112';
-		const KEVIN_ADAMS_PERSON_UUID = '113';
-		const JON_CLARK_PERSON_UUID = '114';
-		const WALDO_MATERIAL_UUID = '115';
-		const STAGE_SUN_LTD_COMPANY_UUID = '116';
-		const HOWARD_HARRISON_PERSON_UUID = '117';
-		const RAFAEL_AMARGO_PERSON_UUID = '118';
-		const STEVEN_HOGGETT_PERSON_UUID = '119';
-		const LYNNE_PAGE_PERSON_UUID = '120';
-		const KATE_PRINCE_PERSON_UUID = '121';
-		const ENGLAND_PEOPLE_VERY_NICE_MATERIAL_UUID = '122';
-		const JERUSALEM_MATERIAL_UUID = '123';
-		const OUR_CLASS_MATERIAL_UUID = '124';
+		const THE_CHALK_GARDEN_DONMAR_PRODUCTION_UUID = '104';
+		const PIAF_DONMAR_PRODUCTION_UUID = '107';
+		const PIAF_VAUDEVILLE_PRODUCTION_UUID = '110';
+		const VAUDEVILLE_THEATRE_VENUE_UUID = '112';
+		const IVANOV_WYNDHAMS_PRODUCTION_UUID = '113';
+		const WALDO_DORFMAN_PRODUCTION_UUID = '116';
+		const DORFMAN_THEATRE_VENUE_UUID = '118';
+		const WALDO_NOËL_COWARD_PRODUCTION_UUID = '119';
+		const NOËL_COWARD_THEATRE_VENUE_UUID = '121';
+		const FRED_OLD_VIC_PRODUCTION_UUID = '122';
+		const OLD_VIC_THEATRE_VENUE_UUID = '124';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '146';
+		const PAULE_CONSTABLE_PERSON_UUID = '147';
+		const THE_CHALK_GARDEN_MATERIAL_UUID = '148';
+		const ILLUMINATIONS_LTD_COMPANY_UUID = '149';
+		const PIAF_MATERIAL_UUID = '150';
+		const NEIL_AUSTIN_PERSON_UUID = '151';
+		const MARK_HENDERSON_PERSON_UUID = '152';
+		const IVANOV_MATERIAL_UUID = '153';
+		const LIMELIGHT_LTD_COMPANY_UUID = '154';
+		const KEVIN_ADAMS_PERSON_UUID = '155';
+		const JON_CLARK_PERSON_UUID = '156';
+		const WALDO_MATERIAL_UUID = '157';
+		const STAGE_SUN_LTD_COMPANY_UUID = '158';
+		const HOWARD_HARRISON_PERSON_UUID = '159';
+		const RAFAEL_AMARGO_PERSON_UUID = '160';
+		const STEVEN_HOGGETT_PERSON_UUID = '161';
+		const LYNNE_PAGE_PERSON_UUID = '162';
+		const KATE_PRINCE_PERSON_UUID = '163';
+		const ENGLAND_PEOPLE_VERY_NICE_MATERIAL_UUID = '164';
+		const JERUSALEM_MATERIAL_UUID = '165';
+		const OUR_CLASS_MATERIAL_UUID = '166';
 
 		before(async () => {
 
@@ -2938,7 +2938,1110 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 		});
 
-		it('updates award ceremony', async () => {
+		it('updates award ceremony (with existing data)', async () => {
+
+			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
+				.send({
+					name: '2008',
+					award: {
+						name: 'Laurence Olivier Awards',
+						differentiator: '1'
+					},
+					categories: [
+						{
+							name: 'Best Sound Design',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Steve C Kennedy',
+											differentiator: '1'
+										}
+									],
+									productions: [
+										{
+											uuid: HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Hairspray',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Soundwaves Ltd',
+											differentiator: '1'
+										}
+									],
+									productions: [
+										{
+											uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
+										},
+										{
+											uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Garply',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									isWinner: true,
+									entities: [
+										{
+											name: 'Paul Arditti',
+											differentiator: '1'
+										},
+										{
+											name: 'Jocelyn Pook',
+											differentiator: '1'
+										}
+									],
+									productions: [
+										{
+											uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Saint Joan',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Autograph',
+											differentiator: '1',
+											members: [
+												{
+													name: 'Terry Jardine',
+													differentiator: '1'
+												},
+												{
+													name: 'Nick Lidster',
+													differentiator: '1'
+												}
+											]
+										}
+									],
+									productions: [
+										{
+											uuid: PARADE_DONMAR_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Parade',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											model: 'COMPANY',
+											name: 'Audio Creative Ltd',
+											differentiator: '1',
+											members: [
+												{
+													name: 'Terry Jardine',
+													differentiator: '1'
+												}
+											]
+										},
+										{
+											name: 'Simon Baker',
+											differentiator: '1'
+										}
+									],
+									productions: [
+										{
+											uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
+										},
+										{
+											uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
+										}
+									],
+									materials: [
+										{
+											name: 'Garply',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Best Director',
+							nominations: [
+								{
+									entities: [
+										{
+											name: 'Rob Ashford',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									entities: [
+										{
+											name: 'Marianne Elliott',
+											differentiator: '1'
+										},
+										{
+											name: 'Tom Morris',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									isWinner: true,
+									entities: [
+										{
+											name: 'Rupert Goold',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Best Revival',
+							nominations: [
+								{
+									productions: [
+										{
+											uuid: GARPLY_LYTTELTON_PRODUCTION_UUID
+										},
+										{
+											uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID
+										}
+									]
+								},
+								{
+									isWinner: true,
+									productions: [
+										{
+											uuid: GRAULT_ALMEIDA_PRODUCTION_UUID
+										}
+									]
+								},
+								{
+									productions: [
+										{
+											uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Best New Play',
+							nominations: [
+								{
+									isWinner: true,
+									materials: [
+										{
+											name: 'A Disappearing Number',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									customType: 'Special Commendation',
+									materials: [
+										{
+											name: 'The Reporter',
+											differentiator: '1'
+										}
+									]
+								},
+								{
+									customType: 'Finalist',
+									materials: [
+										{
+											name: 'Vernon God Little',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Best New Dance Production'
+						}
+					]
+				});
+
+			const expectedResponseBody = {
+				model: 'AWARD_CEREMONY',
+				uuid: AWARD_CEREMONY_UUID,
+				name: '2008',
+				errors: {},
+				award: {
+					model: 'AWARD',
+					name: 'Laurence Olivier Awards',
+					differentiator: '1',
+					errors: {}
+				},
+				categories: [
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Sound Design',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Steve C Kennedy',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Hairspray',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Soundwaves Ltd',
+										differentiator: '1',
+										errors: {},
+										members: [
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Paul Arditti',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Jocelyn Pook',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Saint Joan',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Autograph',
+										differentiator: '1',
+										errors: {},
+										members: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: 'Nick Lidster',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: PARADE_DONMAR_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Parade',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'COMPANY',
+										name: 'Audio Creative Ltd',
+										differentiator: '1',
+										errors: {},
+										members: [
+											{
+												model: 'PERSON',
+												name: 'Terry Jardine',
+												differentiator: '1',
+												errors: {}
+											},
+											{
+												model: 'PERSON',
+												name: '',
+												differentiator: '',
+												errors: {}
+											}
+										]
+									},
+									{
+										model: 'PERSON',
+										name: 'Simon Baker',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Garply',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Director',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rob Ashford',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Marianne Elliott',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Tom Morris',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: 'Rupert Goold',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best Revival',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_LYTTELTON_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GARPLY_WYNDHAMS_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: GRAULT_ALMEIDA_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: SAINT_JOAN_OLIVIER_PRODUCTION_UUID,
+										errors: {}
+									},
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Play',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: true,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'A Disappearing Number',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: 'Special Commendation',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'The Reporter',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: 'Finalist',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: 'Vernon God Little',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: 'Best New Dance Production',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					},
+					{
+						model: 'AWARD_CEREMONY_CATEGORY',
+						name: '',
+						errors: {},
+						nominations: [
+							{
+								model: 'NOMINATION',
+								isWinner: false,
+								customType: '',
+								errors: {},
+								entities: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								],
+								productions: [
+									{
+										model: 'PRODUCTION_IDENTIFIER',
+										uuid: '',
+										errors: {}
+									}
+								],
+								materials: [
+									{
+										model: 'MATERIAL',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							}
+						]
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
+
+		});
+
+		it('updates award ceremony (with new data)', async () => {
 
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 

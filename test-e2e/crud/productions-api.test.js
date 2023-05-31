@@ -566,33 +566,33 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '43';
 		const MOLLY_EINCHCOMB_PERSON_UUID = '44';
 		const MATTHEW_HELLYER_PERSON_UUID = '45';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '46';
-		const ALMEIDA_THEATRE_VENUE_UUID = '47';
-		const DENISE_WOOD_PERSON_UUID = '48';
-		const TIATA_FAHODZI_COMPANY_UUID = '49';
-		const REBECCA_FRECKNALL_PERSON_UUID = '50';
-		const SIMEON_BLAKE_HALL_PERSON_UUID = '51';
-		const ALMEIDA_THEATRE_COMPANY_UUID = '52';
-		const RUPERT_GOOLD_PERSON_UUID = '53';
-		const ROBERT_ICKE_PERSON_UUID = '54';
-		const HEADLONG_THEATRE_COMPANY_UUID = '55';
-		const RALPH_FIENNES_PERSON_UUID = '56';
-		const TOM_CANTON_PERSON_UUID = '57';
-		const MARK_HADFIELD_PERSON_UUID = '58';
-		const JOSH_COLLINS_PERSON_UUID = '59';
-		const RC_ANNIE_LTD_COMPANY_UUID = '60';
-		const HILDEGARD_BECHTLER_PERSON_UUID = '61';
-		const CHLOE_LAMFORD_PERSON_UUID = '62';
-		const AUTOGRAPH_COMPANY_UUID = '63';
-		const ANDREW_BRUCE_PERSON_UUID = '64';
-		const NICK_LIDSTER_PERSON_UUID = '65';
-		const ANNA_ANDERSON_PERSON_UUID = '66';
-		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '67';
-		const CHERYL_FIRTH_PERSON_UUID = '68';
-		const TOM_LEGGAT_PERSON_UUID = '69';
-		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '70';
-		const COLIN_FALCONER_PERSON_UUID = '71';
-		const ALEX_LOWDE_PERSON_UUID = '72';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '73';
+		const ALMEIDA_THEATRE_VENUE_UUID = '74';
+		const DENISE_WOOD_PERSON_UUID = '75';
+		const TIATA_FAHODZI_COMPANY_UUID = '76';
+		const REBECCA_FRECKNALL_PERSON_UUID = '77';
+		const SIMEON_BLAKE_HALL_PERSON_UUID = '78';
+		const ALMEIDA_THEATRE_COMPANY_UUID = '79';
+		const RUPERT_GOOLD_PERSON_UUID = '80';
+		const ROBERT_ICKE_PERSON_UUID = '81';
+		const HEADLONG_THEATRE_COMPANY_UUID = '82';
+		const RALPH_FIENNES_PERSON_UUID = '83';
+		const TOM_CANTON_PERSON_UUID = '84';
+		const MARK_HADFIELD_PERSON_UUID = '85';
+		const JOSH_COLLINS_PERSON_UUID = '86';
+		const RC_ANNIE_LTD_COMPANY_UUID = '87';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '88';
+		const CHLOE_LAMFORD_PERSON_UUID = '89';
+		const AUTOGRAPH_COMPANY_UUID = '90';
+		const ANDREW_BRUCE_PERSON_UUID = '91';
+		const NICK_LIDSTER_PERSON_UUID = '92';
+		const ANNA_ANDERSON_PERSON_UUID = '93';
+		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '94';
+		const CHERYL_FIRTH_PERSON_UUID = '95';
+		const TOM_LEGGAT_PERSON_UUID = '96';
+		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '97';
+		const COLIN_FALCONER_PERSON_UUID = '98';
+		const ALEX_LOWDE_PERSON_UUID = '99';
 
 		before(async () => {
 
@@ -2657,7 +2657,961 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		});
 
-		it('updates production', async () => {
+		it('updates production (with existing data)', async () => {
+
+			expect(await countNodesWithLabel('Production')).to.equal(7);
+
+			const response = await chai.request(app)
+				.put(`/productions/${PRODUCTION_UUID}`)
+				.send({
+					name: 'Hamlet',
+					startDate: '2010-09-30',
+					pressDate: '2010-10-07',
+					endDate: '2011-01-26',
+					material: {
+						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						differentiator: '1'
+					},
+					venue: {
+						name: 'National Theatre',
+						differentiator: '1'
+					},
+					subProductions: [
+						{
+							uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID
+						},
+						{
+							uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID
+						},
+						{
+							uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID
+						}
+					],
+					producerCredits: [
+						{
+							name: 'executive produced by',
+							entities: [
+								{
+									name: 'Lisa Burger',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'in association with',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'Fuel Theatre',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'associate produced by',
+							entities: [
+								{
+									name: 'Simon Godwin',
+									differentiator: '1'
+								},
+								{
+									name: 'Tom Morris',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'produced by',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'National Theatre Company',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Nicholas Hytner',
+											differentiator: '1'
+										},
+										{
+											name: 'Nick Starr',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'co-produced by',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'London Theatre Company',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Nicholas Hytner',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					],
+					cast: [
+						{
+							name: 'Rory Kinnear',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Hamlet',
+									characterName: 'Hamlet, Prince of Denmark',
+									characterDifferentiator: '1',
+									qualifier: 'foo'
+								}
+							]
+						},
+						{
+							name: 'James Laurenson',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Ghost',
+									characterName: 'Ghost of King Hamlet',
+									characterDifferentiator: '1',
+									qualifier: 'bar'
+								},
+								{
+									name: 'First Player',
+									characterName: 'Player King',
+									characterDifferentiator: '1',
+									qualifier: 'baz'
+								}
+							]
+						},
+						{
+							name: 'Michael Sheldon',
+							differentiator: '1',
+							roles: [
+								{
+									name: 'Third Player',
+									characterName: 'Lucianus',
+									characterDifferentiator: '1',
+									qualifier: 'qux'
+								},
+								{
+									name: 'Ambassador of the English',
+									characterName: 'English Ambassador',
+									characterDifferentiator: '1',
+									qualifier: 'quux',
+									isAlternate: true
+								}
+							]
+						},
+						{
+							name: 'Leo Staar',
+							differentiator: '1',
+							roles: []
+						}
+					],
+					creativeCredits: [
+						{
+							name: 'Director',
+							entities: [
+								{
+									name: 'Nicholas Hytner',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Designers',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'Handspring Puppet Company',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Sound Designers',
+							entities: [
+								{
+									name: 'Ben Ringham',
+									differentiator: '1'
+								},
+								{
+									name: 'Max Ringham',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Lighting Designers',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: '59 Productions',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Leo Warner',
+											differentiator: '1'
+										},
+										{
+											name: 'Mark Grimmer',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Video Designers',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: '59 Productions',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Leo Warner',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					],
+					crewCredits: [
+						{
+							name: 'Production Manager',
+							entities: [
+								{
+									name: 'Igor',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Deputy Stage Managers',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'Crew Deputies Ltd',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Assistant Stage Managers',
+							entities: [
+								{
+									name: 'Sara Gunter',
+									differentiator: '1'
+								},
+								{
+									name: 'Julia Wickham',
+									differentiator: '1'
+								}
+							]
+						},
+						{
+							name: 'Design Assistants',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'Crew Assistants Ltd',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Molly Einchcomb',
+											differentiator: '1'
+										},
+										{
+											name: 'Matthew Hellyer',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						},
+						{
+							name: 'Sound Design Assistants',
+							entities: [
+								{
+									model: 'COMPANY',
+									name: 'Crew Assistants Ltd',
+									differentiator: '1',
+									members: [
+										{
+											name: 'Molly Einchcomb',
+											differentiator: '1'
+										}
+									]
+								}
+							]
+						}
+					]
+				});
+
+			const expectedResponseBody = {
+				model: 'PRODUCTION',
+				uuid: PRODUCTION_UUID,
+				name: 'Hamlet',
+				startDate: '2010-09-30',
+				pressDate: '2010-10-07',
+				endDate: '2011-01-26',
+				errors: {},
+				material: {
+					model: 'MATERIAL',
+					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					differentiator: '1',
+					errors: {}
+				},
+				venue: {
+					model: 'VENUE',
+					name: 'National Theatre',
+					differentiator: '1',
+					errors: {}
+				},
+				subProductions: [
+					{
+						model: 'PRODUCTION_IDENTIFIER',
+						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						errors: {}
+					},
+					{
+						model: 'PRODUCTION_IDENTIFIER',
+						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						errors: {}
+					},
+					{
+						model: 'PRODUCTION_IDENTIFIER',
+						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						errors: {}
+					},
+					{
+						model: 'PRODUCTION_IDENTIFIER',
+						uuid: '',
+						errors: {}
+					}
+				],
+				producerCredits: [
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'executive produced by',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Lisa Burger',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'in association with',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'Fuel Theatre',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'associate produced by',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Simon Godwin',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: 'Tom Morris',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'produced by',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'National Theatre Company',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Nick Starr',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PRODUCER_CREDIT',
+						name: 'co-produced by',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'London Theatre Company',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Nicholas Hytner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PRODUCER_CREDIT',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
+				cast: [
+					{
+						model: 'PERSON',
+						name: 'Rory Kinnear',
+						differentiator: '1',
+						errors: {},
+						roles: [
+							{
+								model: 'ROLE',
+								name: 'Hamlet',
+								characterName: 'Hamlet, Prince of Denmark',
+								characterDifferentiator: '1',
+								qualifier: 'foo',
+								isAlternate: false,
+								errors: {}
+							},
+							{
+								model: 'ROLE',
+								name: '',
+								characterName: '',
+								characterDifferentiator: '',
+								qualifier: '',
+								isAlternate: false,
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PERSON',
+						name: 'James Laurenson',
+						differentiator: '1',
+						errors: {},
+						roles: [
+							{
+								model: 'ROLE',
+								name: 'Ghost',
+								characterName: 'Ghost of King Hamlet',
+								characterDifferentiator: '1',
+								qualifier: 'bar',
+								isAlternate: false,
+								errors: {}
+							},
+							{
+								model: 'ROLE',
+								name: 'First Player',
+								characterName: 'Player King',
+								characterDifferentiator: '1',
+								qualifier: 'baz',
+								isAlternate: false,
+								errors: {}
+							},
+							{
+								model: 'ROLE',
+								name: '',
+								characterName: '',
+								characterDifferentiator: '',
+								qualifier: '',
+								isAlternate: false,
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PERSON',
+						name: 'Michael Sheldon',
+						differentiator: '1',
+						errors: {},
+						roles: [
+							{
+								model: 'ROLE',
+								name: 'Third Player',
+								characterName: 'Lucianus',
+								characterDifferentiator: '1',
+								qualifier: 'qux',
+								isAlternate: false,
+								errors: {}
+							},
+							{
+								model: 'ROLE',
+								name: 'Ambassador of the English',
+								characterName: 'English Ambassador',
+								characterDifferentiator: '1',
+								qualifier: 'quux',
+								isAlternate: true,
+								errors: {}
+							},
+							{
+								model: 'ROLE',
+								name: '',
+								characterName: '',
+								characterDifferentiator: '',
+								qualifier: '',
+								isAlternate: false,
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PERSON',
+						name: 'Leo Staar',
+						differentiator: '1',
+						errors: {},
+						roles: [
+							{
+								model: 'ROLE',
+								name: '',
+								characterName: '',
+								characterDifferentiator: '',
+								qualifier: '',
+								isAlternate: false,
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'PERSON',
+						name: '',
+						differentiator: '',
+						errors: {},
+						roles: [
+							{
+								model: 'ROLE',
+								name: '',
+								characterName: '',
+								characterDifferentiator: '',
+								qualifier: '',
+								isAlternate: false,
+								errors: {}
+							}
+						]
+					}
+				],
+				creativeCredits: [
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Director',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Nicholas Hytner',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Designers',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'Handspring Puppet Company',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Sound Designers',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Ben Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: 'Max Ringham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Lighting Designers',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Mark Grimmer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREATIVE_CREDIT',
+						name: 'Video Designers',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: '59 Productions',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Leo Warner',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREATIVE_CREDIT',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				],
+				crewCredits: [
+					{
+						model: 'CREW_CREDIT',
+						name: 'Production Manager',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Igor',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREW_CREDIT',
+						name: 'Deputy Stage Managers',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'Crew Deputies Ltd',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREW_CREDIT',
+						name: 'Assistant Stage Managers',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: 'Sara Gunter',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: 'Julia Wickham',
+								differentiator: '1',
+								errors: {}
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREW_CREDIT',
+						name: 'Design Assistants',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: 'Matthew Hellyer',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREW_CREDIT',
+						name: 'Sound Design Assistants',
+						errors: {},
+						entities: [
+							{
+								model: 'COMPANY',
+								name: 'Crew Assistants Ltd',
+								differentiator: '1',
+								errors: {},
+								members: [
+									{
+										model: 'PERSON',
+										name: 'Molly Einchcomb',
+										differentiator: '1',
+										errors: {}
+									},
+									{
+										model: 'PERSON',
+										name: '',
+										differentiator: '',
+										errors: {}
+									}
+								]
+							},
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					},
+					{
+						model: 'CREW_CREDIT',
+						name: '',
+						errors: {},
+						entities: [
+							{
+								model: 'PERSON',
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						]
+					}
+				]
+			};
+
+			expect(response).to.have.status(200);
+			expect(response.body).to.deep.equal(expectedResponseBody);
+			expect(await countNodesWithLabel('Production')).to.equal(7);
+
+		});
+
+		it('updates production (with new data)', async () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
