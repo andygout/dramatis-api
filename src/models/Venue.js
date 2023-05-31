@@ -1,5 +1,6 @@
 import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import VenueBase from './VenueBase';
+import { SubVenue } from '.';
 
 export default class Venue extends VenueBase {
 
@@ -10,7 +11,7 @@ export default class Venue extends VenueBase {
 		const { subVenues } = props;
 
 		this.subVenues = subVenues
-			? subVenues.map(subVenue => new VenueBase(subVenue))
+			? subVenues.map(subVenue => new SubVenue(subVenue))
 			: [];
 
 	}
@@ -34,6 +35,16 @@ export default class Venue extends VenueBase {
 			subVenue.validateUniquenessInGroup({ isDuplicate: duplicateSubVenueIndices.includes(index) });
 
 		});
+
+	}
+
+	async runDatabaseValidations () {
+
+		await this.validateUniquenessInDatabase();
+
+		for (const subVenue of this.subVenues) {
+			await subVenue.runDatabaseValidations({ subjectVenueUuid: this.uuid });
+		}
 
 	}
 

@@ -20,6 +20,7 @@ import ProductionIdentifier from './ProductionIdentifier';
 import Role from './Role';
 import SubMaterial from './SubMaterial';
 import SubProductionIdentifier from './SubProductionIdentifier';
+import SubVenue from './SubVenue';
 import Venue from './Venue';
 import VenueBase from './VenueBase';
 import WritingCredit from './WritingCredit';
@@ -47,6 +48,7 @@ export {
 	Role,
 	SubMaterial,
 	SubProductionIdentifier,
+	SubVenue,
 	Venue,
 	VenueBase,
 	WritingCredit
