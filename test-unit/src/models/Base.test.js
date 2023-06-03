@@ -81,10 +81,10 @@ describe('Base model', () => {
 
 				context('model is Nomination', () => {
 
-					it('does not assign differentiator property', () => {
+					it('does not assign name property', () => {
 
-						const instance = new Nomination({ differentiator: '1' });
-						expect(instance).to.not.have.property('differentiator');
+						const instance = new Nomination({ name: '1' });
+						expect(instance).to.not.have.property('name');
 
 					});
 
@@ -92,13 +92,13 @@ describe('Base model', () => {
 
 				context('model is ProductionIdentifier', () => {
 
-					it('does not assign differentiator property', () => {
+					it('does not assign name property', () => {
 
 						const instance = new ProductionIdentifier({
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							differentiator: '1'
+							name: '1'
 						});
-						expect(instance).to.not.have.property('differentiator');
+						expect(instance).to.not.have.property('name');
 
 					});
 
