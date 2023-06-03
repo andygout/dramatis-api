@@ -32,11 +32,11 @@ import {
 	getListQuery as getSharedListQuery
 } from './shared';
 import {
-	getDuplicateRecordCountQuery as getSharedDuplicateRecordCountQuery,
-	getExistenceQuery as getSharedExistenceQuery,
-	getSubMaterialChecksQuery as getSharedSubMaterialChecksQuery,
-	getSubProductionChecksQuery as getSharedSubProductionChecksQuery,
-	getSubVenueChecksQuery as getSubVenueValidationChecksQuery
+	getDuplicateRecordCountQuery,
+	getExistenceQuery,
+	getSubMaterialChecksQuery,
+	getSubProductionChecksQuery,
+	getSubVenueChecksQuery
 } from './validation';
 import {
 	getCreateQuery as getVenueCreateQuery,
@@ -95,11 +95,11 @@ const sharedQueries = {
 };
 
 const validationQueries = {
-	getDuplicateRecordCountQuery: getSharedDuplicateRecordCountQuery,
-	getExistenceQuery: getSharedExistenceQuery,
-	getSubMaterialChecksQuery: getSharedSubMaterialChecksQuery,
-	getSubProductionChecksQuery: getSharedSubProductionChecksQuery,
-	getSubVenueChecksQuery: getSubVenueValidationChecksQuery
+	getDuplicateRecordCountQuery,
+	getExistenceQuery,
+	getSubMaterialChecksQuery,
+	getSubProductionChecksQuery,
+	getSubVenueChecksQuery
 };
 
 export {
