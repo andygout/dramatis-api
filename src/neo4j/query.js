@@ -3,12 +3,12 @@ import { getDriver } from './get-driver';
 
 const driver = getDriver();
 
-export const neo4jQuery = async (queryData, queryOpts = {}) => {
+export const neo4jQuery = async (queryData, opts = {}) => {
 
 	const { query, params } = queryData;
 
-	const isOptionalResult = Boolean(queryOpts.isOptionalResult);
-	const isArrayResult = Boolean(queryOpts.isArrayResult);
+	const isOptionalResult = Boolean(opts.isOptionalResult);
+	const isArrayResult = Boolean(opts.isArrayResult);
 
 	const session = driver.session();
 
