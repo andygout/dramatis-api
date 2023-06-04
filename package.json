@@ -50,6 +50,7 @@
     "chai-http": "4.3.0",
     "eslint": "8.24.0",
     "eslint-plugin-no-only-tests": "3.0.0",
+    "jsonlint": "^1.6.3",
     "lintspaces-cli": "0.7.1",
     "mocha": "10.0.0",
     "node-mocks-http": "1.11.0",

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const directly = require('directly');
+const jsonlint = require('jsonlint');
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -51,7 +52,9 @@ async function seedInstances (pluralisedModel) {
 
 					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
 
-					const instance = JSON.parse(rawData);
+					// Parse with jsonlint rather than JSON.parse() because
+					// its errors specify the line of parse errors.
+					const instance = jsonlint.parse(rawData.toString());
 
 					const url = `${BASE_URL}/${modelUrlRoute}`;
 
