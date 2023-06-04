@@ -37,7 +37,7 @@ describe('Cypher Queries Validation module', () => {
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
-				RETURN n
+				RETURN TOBOOLEAN(COUNT(n)) AS isExistent
 			`));
 
 		});

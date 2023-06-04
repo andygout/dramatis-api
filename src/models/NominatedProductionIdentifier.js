@@ -13,22 +13,10 @@ export default class NominatedProductionIdentifier extends ProductionIdentifier 
 
 		if (this.uuid) {
 
-			try {
+			const isExistent = await this.confirmExistenceInDatabase({ model: MODELS.PRODUCTION });
 
-				await this.confirmExistenceInDatabase({ model: MODELS.PRODUCTION });
-
-			} catch (error) {
-
-				if (error.message === 'Not Found') {
-
-					this.addPropertyError('uuid', 'Production with this UUID does not exist');
-
-				} else {
-
-					throw error;
-
-				}
-
+			if (!isExistent) {
+				this.addPropertyError('uuid', 'Production with this UUID does not exist');
 			}
 
 		}

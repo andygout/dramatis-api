@@ -117,10 +117,12 @@ export default class Entity extends Base {
 
 		const { getExistenceQuery } = validationQueries;
 
-		await neo4jQuery({
+		const { isExistent } = await neo4jQuery({
 			query: getExistenceQuery(opts.model || this.model),
 			params: { uuid: this.uuid }
 		});
+
+		return isExistent;
 
 	}
 
@@ -166,7 +168,9 @@ export default class Entity extends Base {
 
 	async update () {
 
-		await this.confirmExistenceInDatabase();
+		const isExistent = await this.confirmExistenceInDatabase();
+
+		if (!isExistent) throw new Error('Not Found');
 
 		const { getUpdateQuery } = sharedQueries;
 
