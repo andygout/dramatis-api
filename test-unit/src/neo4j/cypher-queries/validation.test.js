@@ -111,7 +111,7 @@ describe('Cypher Queries Validation module', () => {
 					<-[subjectProductionSurSurProductionRel:HAS_SUB_PRODUCTION]-(:Production)
 
 				RETURN
-					TOBOOLEAN(COUNT(p)) AS exists,
+					TOBOOLEAN(COUNT(p)) AS isExistent,
 					TOBOOLEAN(COUNT(surProductionRel)) AS isAssignedToSurProduction,
 					TOBOOLEAN(COUNT(subSubProductionRel)) AS isSurSurProduction,
 					TOBOOLEAN(COUNT(subProductionRelWithSubjectProduction)) AS isSurProductionOfSubjectProduction,

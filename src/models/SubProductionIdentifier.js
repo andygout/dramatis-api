@@ -17,7 +17,7 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 			const { getSubProductionChecksQuery } = validationQueries;
 
 			const {
-				exists,
+				isExistent,
 				isAssignedToSurProduction,
 				isSurSurProduction,
 				isSurProductionOfSubjectProduction,
@@ -27,7 +27,7 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 				params: { uuid: this.uuid, subjectProductionUuid }
 			});
 
-			if (!exists) {
+			if (!isExistent) {
 				this.addPropertyError('uuid', 'Production with this UUID does not exist');
 			}
 

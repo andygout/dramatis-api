@@ -41,7 +41,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: true,
+					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
@@ -79,7 +79,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: false,
+					isExistent: false,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
@@ -122,7 +122,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: true,
+					isExistent: true,
 					isAssignedToSurProduction: true,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
@@ -165,7 +165,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: true,
+					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: true,
 					isSurProductionOfSubjectProduction: false,
@@ -208,7 +208,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: true,
+					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: true,
@@ -251,7 +251,7 @@ describe('SubProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				stubs.neo4jQuery.resolves({
-					exists: true,
+					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,

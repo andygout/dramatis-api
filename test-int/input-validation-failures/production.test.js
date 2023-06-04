@@ -25,7 +25,6 @@ describe('Input validation failures: Production instance', () => {
 			.resolves({
 				isExistent: true,
 				duplicateRecordCount: 0,
-				exists: true,
 				isAssignedToSurProduction: false,
 				isSurSurProduction: false,
 				isSurProductionOfSubjectProduction: false,
