@@ -7,24 +7,24 @@ export default () => `
 
 	WITH
 		production,
-		[production] + COLLECT(surProduction) + COLLECT(subProduction) AS relatedProductions
+		[production] + COLLECT(surProduction) + COLLECT(subProduction) AS collectionProductions
 
-	UNWIND (CASE relatedProductions WHEN [] THEN [null] ELSE relatedProductions END) AS relatedProduction
+	UNWIND (CASE collectionProductions WHEN [] THEN [null] ELSE collectionProductions END) AS collectionProduction
 
-		OPTIONAL MATCH (relatedProduction)-[surProductionRel:HAS_SUB_PRODUCTION]->(production)
+		OPTIONAL MATCH (collectionProduction)-[surProductionRel:HAS_SUB_PRODUCTION]->(production)
 
-		OPTIONAL MATCH (relatedProduction)-[surSurProductionRel:HAS_SUB_PRODUCTION]->
+		OPTIONAL MATCH (collectionProduction)-[surSurProductionRel:HAS_SUB_PRODUCTION]->
 			(:Production)-[:HAS_SUB_PRODUCTION]->(production)
 
-		OPTIONAL MATCH (relatedProduction)<-[subProductionRel:HAS_SUB_PRODUCTION]-(production)
+		OPTIONAL MATCH (collectionProduction)<-[subProductionRel:HAS_SUB_PRODUCTION]-(production)
 
-		OPTIONAL MATCH (relatedProduction)<-[subSubProductionRel:HAS_SUB_PRODUCTION]-
+		OPTIONAL MATCH (collectionProduction)<-[subSubProductionRel:HAS_SUB_PRODUCTION]-
 			(subSubProductionSurProduction:Production)<-[:HAS_SUB_PRODUCTION]-(production)
 
 		WITH
 			production,
-			relatedProduction,
-			CASE WHEN production = relatedProduction THEN true ELSE false END AS isSubjectProduction,
+			collectionProduction,
+			CASE WHEN production = collectionProduction THEN true ELSE false END AS isSubjectProduction,
 			CASE surProductionRel WHEN NULL THEN false ELSE true END AS isSurProduction,
 			CASE surSurProductionRel WHEN NULL THEN false ELSE true END AS isSurSurProduction,
 			CASE subProductionRel WHEN NULL THEN false ELSE true END AS isSubProduction,
@@ -33,7 +33,7 @@ export default () => `
 			subSubProductionRel.position AS subSubProductionPosition,
 			subSubProductionSurProduction.uuid AS subSubProductionSurProductionUuid
 
-		OPTIONAL MATCH (relatedProduction)-[materialRel:PRODUCTION_OF]->(material:Material)
+		OPTIONAL MATCH (collectionProduction)-[:PRODUCTION_OF]->(material:Material)
 
 		OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
@@ -51,7 +51,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -73,7 +73,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -99,7 +99,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -129,7 +129,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -170,7 +170,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -190,7 +190,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -215,7 +215,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -248,13 +248,13 @@ export default () => `
 				}
 			END AS material
 
-		OPTIONAL MATCH (relatedProduction)-[:PLAYS_AT]->(venue:Venue)
+		OPTIONAL MATCH (collectionProduction)-[:PLAYS_AT]->(venue:Venue)
 
 		OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -277,14 +277,14 @@ export default () => `
 				}
 			END AS venue
 
-		OPTIONAL MATCH (relatedProduction)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
+		OPTIONAL MATCH (collectionProduction)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
 			WHERE
 				(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
 				producerEntity:Company
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -307,7 +307,7 @@ export default () => `
 
 			UNWIND (COALESCE(producerEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-				OPTIONAL MATCH (relatedProduction)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
+				OPTIONAL MATCH (collectionProduction)-[creditedMemberRel:HAS_PRODUCER_ENTITY]->
 					(creditedMember:Person { uuid: creditedMemberUuid })
 					WHERE
 						producerEntityRel.creditPosition IS NULL OR
@@ -315,7 +315,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -333,7 +333,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -350,7 +350,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -368,7 +368,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -389,7 +389,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -408,7 +408,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -430,9 +430,9 @@ export default () => `
 				END
 			) AS producerCredits
 
-		OPTIONAL MATCH (relatedProduction)-[role:HAS_CAST_MEMBER]->(castMember:Person)
+		OPTIONAL MATCH (collectionProduction)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
-		OPTIONAL MATCH (castMember)<-[role]-(relatedProduction)-[:PRODUCTION_OF]->
+		OPTIONAL MATCH (castMember)<-[role]-(collectionProduction)-[:PRODUCTION_OF]->
 			(:Material)-[characterRel:DEPICTS]->(character:Character)
 			WHERE
 				(
@@ -443,7 +443,7 @@ export default () => `
 
 		WITH DISTINCT
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -462,7 +462,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -490,7 +490,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -509,14 +509,14 @@ export default () => `
 					END
 				) AS cast
 
-		OPTIONAL MATCH (relatedProduction)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
+		OPTIONAL MATCH (collectionProduction)-[creativeEntityRel:HAS_CREATIVE_ENTITY]->(creativeEntity)
 			WHERE
 				(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 				creativeEntity:Company
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -541,7 +541,7 @@ export default () => `
 
 			UNWIND (COALESCE(creativeEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-				OPTIONAL MATCH (relatedProduction)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
+				OPTIONAL MATCH (collectionProduction)-[creditedMemberRel:HAS_CREATIVE_ENTITY]->
 					(creditedMember:Person { uuid: creditedMemberUuid })
 					WHERE
 						creativeEntityRel.creditPosition IS NULL OR
@@ -549,7 +549,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -569,7 +569,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -588,7 +588,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -608,7 +608,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -631,7 +631,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -652,7 +652,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -676,14 +676,14 @@ export default () => `
 				END
 			) AS creativeCredits
 
-		OPTIONAL MATCH (relatedProduction)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
+		OPTIONAL MATCH (collectionProduction)-[crewEntityRel:HAS_CREW_ENTITY]->(crewEntity)
 			WHERE
 				(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 				crewEntity:Company
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -709,7 +709,7 @@ export default () => `
 
 			UNWIND (COALESCE(crewEntity.creditedMemberUuids, [null])) AS creditedMemberUuid
 
-				OPTIONAL MATCH (relatedProduction)-[creditedMemberRel:HAS_CREW_ENTITY]->
+				OPTIONAL MATCH (collectionProduction)-[creditedMemberRel:HAS_CREW_ENTITY]->
 					(creditedMember:Person { uuid: creditedMemberUuid })
 					WHERE
 						crewEntityRel.creditPosition IS NULL OR
@@ -717,7 +717,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -738,7 +738,7 @@ export default () => `
 
 				WITH
 					production,
-					relatedProduction,
+					collectionProduction,
 					isSubjectProduction,
 					isSurProduction,
 					isSurSurProduction,
@@ -758,7 +758,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -779,7 +779,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -803,7 +803,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -825,7 +825,7 @@ export default () => `
 
 		WITH
 			production,
-			relatedProduction,
+			collectionProduction,
 			isSubjectProduction,
 			isSurProduction,
 			isSurSurProduction,
@@ -853,7 +853,7 @@ export default () => `
 
 		WITH production,
 			COLLECT(
-				relatedProduction {
+				collectionProduction {
 					model: 'PRODUCTION',
 					.uuid,
 					.name,
@@ -873,18 +873,12 @@ export default () => `
 					creativeCredits,
 					crewCredits
 				}
-			) AS relatedProductions
+			) AS collectionProductions
 
 		WITH production,
 			HEAD([
-				relatedProduction IN relatedProductions WHERE relatedProduction.isSubjectProduction |
-				relatedProduction {
-					.model,
-					.uuid,
-					.name,
-					.startDate,
-					.pressDate,
-					.endDate,
+				collectionProduction IN collectionProductions WHERE collectionProduction.isSubjectProduction |
+				collectionProduction {
 					.material,
 					.venue,
 					.producerCredits,
@@ -894,8 +888,8 @@ export default () => `
 				}
 			]) AS subjectProduction,
 			HEAD([
-				relatedProduction IN relatedProductions WHERE relatedProduction.isSurProduction |
-				relatedProduction {
+				collectionProduction IN collectionProductions WHERE collectionProduction.isSurProduction |
+				collectionProduction {
 					.model,
 					.uuid,
 					.name,
@@ -905,7 +899,7 @@ export default () => `
 					.material,
 					.venue,
 					surProduction: HEAD([
-						surSurProduction IN relatedProductions WHERE surSurProduction.isSurSurProduction |
+						surSurProduction IN collectionProductions WHERE surSurProduction.isSurSurProduction |
 							surSurProduction {
 								.model,
 								.uuid,
@@ -928,8 +922,8 @@ export default () => `
 				}
 			]) AS surProduction,
 			[
-				relatedProduction IN relatedProductions WHERE relatedProduction.isSubProduction |
-				relatedProduction {
+				collectionProduction IN collectionProductions WHERE collectionProduction.isSubProduction |
+				collectionProduction {
 					.model,
 					.uuid,
 					.name,
@@ -939,10 +933,10 @@ export default () => `
 					.material,
 					.venue,
 					subProductions: [
-						subSubProduction IN relatedProductions
+						subSubProduction IN collectionProductions
 							WHERE
 								subSubProduction.isSubSubProduction AND
-								subSubProduction.subSubProductionSurProductionUuid = relatedProduction.uuid |
+								subSubProduction.subSubProductionSurProductionUuid = collectionProduction.uuid |
 							subSubProduction {
 								.model,
 								.uuid,
