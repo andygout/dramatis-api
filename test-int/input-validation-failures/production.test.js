@@ -23,6 +23,7 @@ describe('Input validation failures: Production instance', () => {
 		sandbox
 			.stub(neo4jQueryModule, 'neo4jQuery')
 			.resolves({
+				isExistent: true,
 				duplicateRecordCount: 0,
 				exists: true,
 				isAssignedToSurProduction: false,

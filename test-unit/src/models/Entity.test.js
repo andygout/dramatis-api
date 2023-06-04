@@ -515,7 +515,7 @@ describe('Entity model', () => {
 			it('confirms existence of instance in database using model value of instance', async () => {
 
 				const instance = new Person({ name: 'Antony Sher' });
-				stubs.neo4jQuery.resolves({ exists: true });
+				stubs.neo4jQuery.resolves({ isExistent: true });
 				await instance.confirmExistenceInDatabase();
 				assert.callOrder(
 					stubs.validationQueries.getExistenceQuery,
@@ -538,7 +538,7 @@ describe('Entity model', () => {
 			it('confirms existence of instance in database using provided model value', async () => {
 
 				const model = 'PRODUCTION';
-				stubs.neo4jQuery.resolves({ exists: true });
+				stubs.neo4jQuery.resolves({ isExistent: true });
 				await instance.confirmExistenceInDatabase({ model });
 				assert.callOrder(
 					stubs.validationQueries.getExistenceQuery,
@@ -551,6 +551,32 @@ describe('Entity model', () => {
 					stubs.neo4jQuery,
 					{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
 				);
+
+			});
+
+		});
+
+		context('instance is found in database', () => {
+
+			it('returns the isExistent value from the database response', async () => {
+
+				const model = 'PRODUCTION';
+				stubs.neo4jQuery.resolves({ isExistent: true });
+				const result = await instance.confirmExistenceInDatabase({ model });
+				expect(result).to.equal(true);
+
+			});
+
+		});
+
+		context('instance is not found in database', () => {
+
+			it('returns the isExistent value from the database response', async () => {
+
+				const model = 'PRODUCTION';
+				stubs.neo4jQuery.resolves({ isExistent: false });
+				const result = await instance.confirmExistenceInDatabase({ model });
+				expect(result).to.equal(false);
 
 			});
 
@@ -817,6 +843,26 @@ describe('Entity model', () => {
 
 	describe('update method', () => {
 
+		context('instance does not exist', () => {
+
+			it('throws a Not Found error and does not call the createUpdate method', async () => {
+
+				instance.model = 'PRODUCTION';
+				stub(instance, 'confirmExistenceInDatabase').returns(false);
+				spy(instance, 'createUpdate');
+				try {
+					await instance.update();
+				} catch (error) {
+					expect(error.message).to.equal('Not Found');
+					assert.calledOnce(instance.confirmExistenceInDatabase);
+					assert.calledWithExactly(instance.confirmExistenceInDatabase);
+					assert.notCalled(instance.createUpdate);
+				}
+
+			});
+
+		});
+
 		context('instance exists', () => {
 
 			context('instance requires a model-specific query', () => {
@@ -824,7 +870,7 @@ describe('Entity model', () => {
 				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
 					instance.model = 'PRODUCTION';
-					spy(instance, 'confirmExistenceInDatabase');
+					stub(instance, 'confirmExistenceInDatabase').returns(true);
 					spy(instance, 'createUpdate');
 					await instance.update();
 					assert.calledOnce(instance.confirmExistenceInDatabase);
@@ -840,7 +886,7 @@ describe('Entity model', () => {
 
 				it('calls createUpdate method with function to get shared update query as argument', async () => {
 
-					spy(instance, 'confirmExistenceInDatabase');
+					stub(instance, 'confirmExistenceInDatabase').returns(true);
 					spy(instance, 'createUpdate');
 					await instance.update();
 					assert.calledOnce(instance.confirmExistenceInDatabase);

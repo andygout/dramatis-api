@@ -24,6 +24,7 @@ describe('Input validation failures: Material instance', () => {
 		sandbox
 			.stub(neo4jQueryModule, 'neo4jQuery')
 			.resolves({
+				isExistent: true,
 				duplicateRecordCount: 0,
 				isAssignedToSurMaterial: false,
 				isSurSurMaterial: false,

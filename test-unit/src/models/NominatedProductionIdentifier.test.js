@@ -6,12 +6,12 @@ describe('NominatedProductionIdentifier model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		context('confirmExistenceInDatabase method resolves (i.e. production uuid exists in database)', () => {
+		context('confirmExistenceInDatabase method resolves with true (i.e. production uuid exists in database)', () => {
 
 			it('will not call addPropertyError method', async () => {
 
 				const instance = new NominatedProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
-				stub(instance, 'confirmExistenceInDatabase').resolves();
+				stub(instance, 'confirmExistenceInDatabase').resolves(true);
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
 				assert.calledOnce(instance.confirmExistenceInDatabase);
@@ -22,12 +22,12 @@ describe('NominatedProductionIdentifier model', () => {
 
 		});
 
-		context('confirmExistenceInDatabase method throws a \'Not Found\' error (i.e. production uuid does not exist in database)', () => {
+		context('confirmExistenceInDatabase method resolves with false (i.e. production uuid does not exist in database)', () => {
 
 			it('will call addPropertyError method', async () => {
 
 				const instance = new NominatedProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
-				stub(instance, 'confirmExistenceInDatabase').rejects(new Error('Not Found'));
+				stub(instance, 'confirmExistenceInDatabase').resolves(false);
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
 				assert.calledOnce(instance.confirmExistenceInDatabase);
