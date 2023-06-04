@@ -12,15 +12,11 @@ export default async opts => {
 	const query = `
 		MATCH (n:${label} { ${Object.keys(params).map(key => `${key}: $${key}`).join(', ')} })
 
-		RETURN
-			CASE COUNT(n) WHEN 1
-				THEN true
-				ELSE false
-			END AS exists
+		RETURN TOBOOLEAN(COUNT(n)) AS isExistent
 	`;
 
-	const { exists } = await neo4jQuery({ query, params });
+	const { isExistent } = await neo4jQuery({ query, params });
 
-	return exists;
+	return isExistent;
 
 };

@@ -4,6 +4,7 @@ export default async () => {
 
 	const query = `
 		MATCH (n)
+
 		DETACH DELETE n
 	`;
 

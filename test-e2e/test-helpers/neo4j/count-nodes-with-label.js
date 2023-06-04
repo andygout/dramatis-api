@@ -4,6 +4,7 @@ export default async label => {
 
 	const query = `
 		MATCH (n:${label})
+
 		RETURN COUNT(n) AS count
 	`;
 
