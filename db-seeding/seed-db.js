@@ -27,7 +27,12 @@ async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 
 	if (response.status !== 200) throw new Error(response.statusText);
 
-	console.log(`Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`); // eslint-disable-line no-console
+	const responseJson = await response.json();
+
+	const resultIndicator = responseJson.hasErrors ? '❌' : '✅';
+
+	// eslint-disable-next-line no-console
+	console.log(`${resultIndicator} Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
 
 	return;
 
@@ -81,25 +86,31 @@ async function seedInstances (pluralisedModel) {
 
 async function seedDatabase () {
 
-	console.log('Seeding Neo4j database: 🟢 Commenced'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log('🟢 Seeding Neo4j database: Commenced');
 
 	await seedInstances('venues');
 
-	console.log('Seeding Neo4j database: ✅ Venue seeds sown'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['venues']} Venue seeds sown`);
 
 	await seedInstances('materials');
 
-	console.log('Seeding Neo4j database: ✅ Material seeds sown'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['materials']} Material seeds sown`);
 
 	await seedInstances('productions');
 
-	console.log('Seeding Neo4j database: ✅ Production seeds sown'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['productions']} Production seeds sown`);
 
 	await seedInstances('award-ceremonies');
 
-	console.log('Seeding Neo4j database: ✅ Award ceremony seeds sown'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['award-ceremonies']} Award ceremony seeds sown`);
 
-	console.log('Seeding Neo4j database: ✅ Complete'); // eslint-disable-line no-console
+	// eslint-disable-next-line no-console
+	console.log(`🆗 Seeding Neo4j database: Complete`);
 
 	return;
 
