@@ -21,6 +21,17 @@ describe('Character with multiple appearances in the same material under differe
 	const ALICE_EVE_PERSON_UUID = '15';
 	const BRIAN_COX_PERSON_UUID = '16';
 	const SINEAD_CUSACK_PERSON_UUID = '17';
+	const HANDBAGGED_MATERIAL_UUID = '23';
+	const MARGARET_THATCHER_CHARACTER_UUID = '25';
+	const QUEEN_ELIZABETH_II_CHARACTER_UUID = '26';
+	const RONALD_REAGAN_CHARACTER_UUID = '27';
+	const HANDBAGGED_TRICYCLE_PRODUCTION_UUID = '28';
+	const TRICYCLE_THEATRE_VENUE_UUID = '30';
+	const STELLA_GONET_PERSON_UUID = '31';
+	const KIKA_MARKHAM_PERSON_UUID = '32';
+	const HEATHER_CRANEY_PERSON_UUID = '33';
+	const CLAIRE_COX_PERSON_UUID = '34';
+	const TOM_MANNION_PERSON_UUID = '35';
 
 	let esmeCharacter;
 	let aliceCharacter;
@@ -29,6 +40,11 @@ describe('Character with multiple appearances in the same material under differe
 	let rockNRollRoyalCourtProduction;
 	let aliceEvePerson;
 	let sineadCusackPerson;
+	let queenElizabethIICharacter;
+	let handbaggedMaterial;
+	let handbaggedTricycleProduction;
+	let kikaMarkhamPerson;
+	let claireCoxPerson;
 
 	const sandbox = createSandbox();
 
@@ -126,6 +142,101 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Handbagged',
+				format: 'play',
+				year: '2010',
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'T',
+								underlyingName: 'Margaret Thatcher',
+								qualifier: 'older'
+							},
+							{
+								name: 'Q',
+								underlyingName: 'Queen Elizabeth II',
+								qualifier: 'older'
+							},
+							{
+								name: 'Mags',
+								underlyingName: 'Margaret Thatcher',
+								qualifier: 'younger'
+							},
+							{
+								name: 'Liz',
+								underlyingName: 'Queen Elizabeth II',
+								qualifier: 'younger'
+							},
+							{
+								name: 'Ron',
+								underlyingName: 'Ronald Reagan'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Handbagged',
+				startDate: '2010-06-04',
+				pressDate: '2010-06-11',
+				endDate: '2010-07-17',
+				material: {
+					name: 'Handbagged'
+				},
+				venue: {
+					name: 'Tricycle Theatre'
+				},
+				cast: [
+					{
+						name: 'Stella Gonet',
+						roles: [
+							{
+								name: 'T'
+							}
+						]
+					},
+					{
+						name: 'Kika Markham',
+						roles: [
+							{
+								name: 'Q'
+							}
+						]
+					},
+					{
+						name: 'Heather Craney',
+						roles: [
+							{
+								name: 'Mags'
+							}
+						]
+					},
+					{
+						name: 'Claire Cox',
+						roles: [
+							{
+								name: 'Liz'
+							}
+						]
+					},
+					{
+						name: 'Tom Mannion',
+						roles: [
+							{
+								name: 'Ron'
+							}
+						]
+					}
+				]
+			});
+
 		esmeCharacter = await chai.request(app)
 			.get(`/characters/${ESME_CHARACTER_UUID}`);
 
@@ -146,6 +257,21 @@ describe('Character with multiple appearances in the same material under differe
 
 		sineadCusackPerson = await chai.request(app)
 			.get(`/people/${SINEAD_CUSACK_PERSON_UUID}`);
+
+		queenElizabethIICharacter = await chai.request(app)
+			.get(`/characters/${QUEEN_ELIZABETH_II_CHARACTER_UUID}`);
+
+		handbaggedMaterial = await chai.request(app)
+			.get(`/materials/${HANDBAGGED_MATERIAL_UUID}`);
+
+		handbaggedTricycleProduction = await chai.request(app)
+			.get(`/productions/${HANDBAGGED_TRICYCLE_PRODUCTION_UUID}`);
+
+		kikaMarkhamPerson = await chai.request(app)
+			.get(`/people/${KIKA_MARKHAM_PERSON_UUID}`);
+
+		claireCoxPerson = await chai.request(app)
+			.get(`/people/${CLAIRE_COX_PERSON_UUID}`);
 
 	});
 
@@ -547,6 +673,293 @@ describe('Character with multiple appearances in the same material under differe
 			];
 
 			const { castMemberProductions } = sineadCusackPerson.body;
+
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+
+		});
+
+	});
+
+	describe('Queen Elizabeth II (character)', () => {
+
+		it('includes materials in which character is depicted, including the qualifiers used', () => {
+
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: HANDBAGGED_MATERIAL_UUID,
+					name: 'Handbagged',
+					format: 'play',
+					year: 2010,
+					surMaterial: null,
+					writingCredits: [],
+					depictions: [
+						{
+							displayName: 'Q',
+							qualifier: 'older',
+							group: null
+						},
+						{
+							displayName: 'Liz',
+							qualifier: 'younger',
+							group: null
+						}
+					]
+				}
+			];
+
+			const { materials } = queenElizabethIICharacter.body;
+
+			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+		it('includes productions in which character was portrayed, including by which performer', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HANDBAGGED_TRICYCLE_PRODUCTION_UUID,
+					name: 'Handbagged',
+					startDate: '2010-06-04',
+					endDate: '2010-07-17',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: KIKA_MARKHAM_PERSON_UUID,
+							name: 'Kika Markham',
+							roleName: 'Q',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						},
+						{
+							model: 'PERSON',
+							uuid: CLAIRE_COX_PERSON_UUID,
+							name: 'Claire Cox',
+							roleName: 'Liz',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				}
+			];
+
+			const { productions } = queenElizabethIICharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Handbagged (material)', () => {
+
+		it('includes Queen Elizabeth II in its characters with an entry for each qualifier', () => {
+
+			const expectedCharacters = [
+				{
+					model: 'CHARACTER',
+					uuid: MARGARET_THATCHER_CHARACTER_UUID,
+					name: 'T',
+					qualifier: 'older'
+				},
+				{
+					model: 'CHARACTER',
+					uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+					name: 'Q',
+					qualifier: 'older'
+				},
+				{
+					model: 'CHARACTER',
+					uuid: MARGARET_THATCHER_CHARACTER_UUID,
+					name: 'Mags',
+					qualifier: 'younger'
+				},
+				{
+					model: 'CHARACTER',
+					uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+					name: 'Liz',
+					qualifier: 'younger'
+				},
+				{
+					model: 'CHARACTER',
+					uuid: RONALD_REAGAN_CHARACTER_UUID,
+					name: 'Ron',
+					qualifier: null
+				}
+			];
+
+			const { characterGroups: [{ characters }] } = handbaggedMaterial.body;
+
+			expect(characters).to.deep.equal(expectedCharacters);
+
+		});
+
+	});
+
+	describe('Handbagged at Tricycle Theatre (production)', () => {
+
+		it('includes the portrayers of Queen Elizabeth II in its cast with their corresponding display names', () => {
+
+			const expectedCast = [
+				{
+					model: 'PERSON',
+					uuid: STELLA_GONET_PERSON_UUID,
+					name: 'Stella Gonet',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: MARGARET_THATCHER_CHARACTER_UUID,
+							name: 'T',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PERSON',
+					uuid: KIKA_MARKHAM_PERSON_UUID,
+					name: 'Kika Markham',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+							name: 'Q',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PERSON',
+					uuid: HEATHER_CRANEY_PERSON_UUID,
+					name: 'Heather Craney',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: MARGARET_THATCHER_CHARACTER_UUID,
+							name: 'Mags',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PERSON',
+					uuid: CLAIRE_COX_PERSON_UUID,
+					name: 'Claire Cox',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+							name: 'Liz',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PERSON',
+					uuid: TOM_MANNION_PERSON_UUID,
+					name: 'Tom Mannion',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: RONALD_REAGAN_CHARACTER_UUID,
+							name: 'Ron',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { cast } = handbaggedTricycleProduction.body;
+
+			expect(cast).to.deep.equal(expectedCast);
+
+		});
+
+	});
+
+	describe('Kika Markham (person)', () => {
+
+		it('includes in their production credits their portrayal of Queen Elizabeth II with its corresponding display name (i.e. Q)', () => {
+
+			const expectedCastMemberProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HANDBAGGED_TRICYCLE_PRODUCTION_UUID,
+					name: 'Handbagged',
+					startDate: '2010-06-04',
+					endDate: '2010-07-17',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+							name: 'Q',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { castMemberProductions } = kikaMarkhamPerson.body;
+
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+
+		});
+
+	});
+
+	describe('Claire Cox (person)', () => {
+
+		it('includes in their production credits their portrayal of Queen Elizabeth II with its corresponding display name (i.e. Liz)', () => {
+
+			const expectedCastMemberProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HANDBAGGED_TRICYCLE_PRODUCTION_UUID,
+					name: 'Handbagged',
+					startDate: '2010-06-04',
+					endDate: '2010-07-17',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: QUEEN_ELIZABETH_II_CHARACTER_UUID,
+							name: 'Liz',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { castMemberProductions } = claireCoxPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 

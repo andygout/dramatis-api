@@ -15,23 +15,32 @@
 		{
 			"characters": [
 				{
-					"name": "T"
+					"name": "T",
+					"underlyingName": "Margaret Thatcher",
+					"qualifier": "older"
 				},
 				{
-					"name": "Q"
+					"name": "Q",
+					"underlyingName": "Queen Elizabeth II",
+					"qualifier": "older"
 				},
 				{
-					"name": "Mags"
+					"name": "Mags",
+					"underlyingName": "Margaret Thatcher",
+					"qualifier": "younger"
 				},
 				{
 					"name": "Liz",
-					"differentiator": "Handbagged"
+					"underlyingName": "Queen Elizabeth II",
+					"qualifier": "younger"
 				},
 				{
-					"name": "Ron"
+					"name": "Ron",
+					"underlyingName": "Ronald Reagan"
 				},
 				{
-					"name": "Shea"
+					"name": "Shea",
+					"underlyingName": "Michael Shea"
 				}
 			]
 		}
