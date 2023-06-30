@@ -27,7 +27,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 					ceremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 					COLLECT(
-						CASE category WHEN NULL
+						CASE WHEN category IS NULL
 							THEN null
 							ELSE category { .name, nominations }
 						END
@@ -84,7 +84,7 @@ describe('Cypher Queries Award Ceremony module', () => {
 					ceremony.name AS name,
 					{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 					COLLECT(
-						CASE category WHEN NULL
+						CASE WHEN category IS NULL
 							THEN null
 							ELSE category { .name, nominations }
 						END

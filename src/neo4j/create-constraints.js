@@ -16,7 +16,7 @@ const CONSTRAINABLE_MODELS = new Set([
 
 const createConstraint = async model => {
 
-	const createConstraintQuery = `CREATE CONSTRAINT ON (node:${model}) ASSERT node.uuid IS UNIQUE`;
+	const createConstraintQuery = `CREATE CONSTRAINT FOR (node:${model}) REQUIRE node.uuid IS UNIQUE`;
 
 	try {
 

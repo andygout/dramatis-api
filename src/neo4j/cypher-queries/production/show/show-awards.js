@@ -28,13 +28,13 @@ export default () => `
 				.name,
 				.startDate,
 				.endDate,
-				venue: CASE productionLinkedToCategoryVenue WHEN NULL
+				venue: CASE WHEN productionLinkedToCategoryVenue IS NULL
 					THEN null
 					ELSE productionLinkedToCategoryVenue {
 						model: 'VENUE',
 						.uuid,
 						.name,
-						surVenue: CASE productionLinkedToCategorySurVenue WHEN NULL
+						surVenue: CASE WHEN productionLinkedToCategorySurVenue IS NULL
 							THEN null
 							ELSE productionLinkedToCategorySurVenue { model: 'VENUE', .uuid, .name }
 						END
@@ -97,7 +97,7 @@ export default () => `
 
 	WITH production, recipientProduction, nomineeRel, category, categoryRel, ceremony,
 		COLLECT(
-			CASE nominatedEntity WHEN NULL
+			CASE WHEN nominatedEntity IS NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
@@ -144,7 +144,7 @@ export default () => `
 
 	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
 		COLLECT(
-			CASE coNominatedProduction WHEN NULL
+			CASE WHEN coNominatedProduction IS NULL
 				THEN null
 				ELSE coNominatedProduction {
 					model: 'PRODUCTION',
@@ -152,25 +152,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE coNominatedProductionVenue WHEN NULL
+					venue: CASE WHEN coNominatedProductionVenue IS NULL
 						THEN null
 						ELSE coNominatedProductionVenue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE coNominatedProductionSurVenue WHEN NULL
+							surVenue: CASE WHEN coNominatedProductionSurVenue IS NULL
 								THEN null
 								ELSE coNominatedProductionSurVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE coNominatedProductionSurProduction WHEN NULL
+					surProduction: CASE WHEN coNominatedProductionSurProduction IS NULL
 						THEN null
 						ELSE coNominatedProductionSurProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE coNominatedProductionSurSurProduction WHEN NULL
+							surProduction: CASE WHEN coNominatedProductionSurSurProduction IS NULL
 								THEN null
 								ELSE coNominatedProductionSurSurProduction{ model: 'PRODUCTION', .uuid, .name }
 							END
@@ -207,7 +207,7 @@ export default () => `
 
 	WITH recipientProduction, nomineeRel, category, categoryRel, ceremony, nominatedEntities, coNominatedProductions,
 		COLLECT(
-			CASE nominatedMaterial WHEN NULL
+			CASE WHEN nominatedMaterial IS NULL
 				THEN null
 				ELSE nominatedMaterial {
 					model: 'MATERIAL',
@@ -215,13 +215,13 @@ export default () => `
 					.name,
 					.format,
 					.year,
-					surMaterial: CASE nominatedSurMaterial WHEN NULL
+					surMaterial: CASE WHEN nominatedSurMaterial IS NULL
 						THEN null
 						ELSE nominatedSurMaterial {
 							model: 'MATERIAL',
 							.uuid,
 							.name,
-							surMaterial: CASE nominatedSurSurMaterial WHEN NULL
+							surMaterial: CASE WHEN nominatedSurSurMaterial IS NULL
 								THEN null
 								ELSE nominatedSurSurMaterial { model: 'MATERIAL', .uuid, .name }
 							END
@@ -237,7 +237,7 @@ export default () => `
 			model: 'NOMINATION',
 			isWinner: COALESCE(nomineeRel.isWinner, false),
 			type: COALESCE(nomineeRel.customType, CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
-			recipientProduction: CASE recipientProduction WHEN NULL THEN null ELSE recipientProduction END,
+			recipientProduction: CASE WHEN recipientProduction IS NULL THEN null ELSE recipientProduction END,
 			entities: nominatedEntities,
 			coProductions: coNominatedProductions,
 			materials: nominatedMaterials

@@ -72,7 +72,7 @@ export default () => `
 
 	WITH material, nominatedSourcingMaterial, nomineeRel, category, categoryRel, ceremony,
 		COLLECT(
-			CASE nominatedEntity WHEN NULL
+			CASE WHEN nominatedEntity IS NULL
 				THEN null
 				ELSE nominatedEntity { .model, .uuid, .name, members: nominatedMembers }
 			END
@@ -117,7 +117,7 @@ export default () => `
 
 	WITH material, nominatedSourcingMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
 		COLLECT(
-			CASE nominatedProduction WHEN NULL
+			CASE WHEN nominatedProduction IS NULL
 				THEN null
 				ELSE nominatedProduction {
 					model: 'PRODUCTION',
@@ -125,25 +125,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE venue WHEN NULL
+					venue: CASE WHEN venue IS NULL
 						THEN null
 						ELSE venue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE surVenue WHEN NULL
+							surVenue: CASE WHEN surVenue IS NULL
 								THEN null
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END
@@ -183,7 +183,7 @@ export default () => `
 		nominatedEntities,
 		nominatedProductions,
 		COLLECT(
-			CASE nominatedMaterial WHEN NULL
+			CASE WHEN nominatedMaterial IS NULL
 				THEN null
 				ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
 			END
@@ -204,7 +204,7 @@ export default () => `
 		nominatedProductions,
 		nominatedMaterials,
 		COLLECT(
-			CASE nominatedSourcingMaterial WHEN NULL
+			CASE WHEN nominatedSourcingMaterial IS NULL
 				THEN null
 				ELSE nominatedSourcingMaterial {
 					model: 'MATERIAL',
@@ -212,13 +212,13 @@ export default () => `
 					.name,
 					.format,
 					.year,
-					surMaterial: CASE nominatedSourcingSurMaterial WHEN NULL
+					surMaterial: CASE WHEN nominatedSourcingSurMaterial IS NULL
 						THEN null
 						ELSE nominatedSourcingSurMaterial {
 							model: 'MATERIAL',
 							.uuid,
 							.name,
-							surMaterial: CASE nominatedSourcingSurSurMaterial WHEN NULL
+							surMaterial: CASE WHEN nominatedSourcingSurSurMaterial IS NULL
 								THEN null
 								ELSE nominatedSourcingSurSurMaterial { model: 'MATERIAL', .uuid, .name }
 							END

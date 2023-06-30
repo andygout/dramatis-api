@@ -32,7 +32,7 @@ export default () => `
 
 	WITH company, production, entityRel.credit AS producerCreditName,
 		COLLECT(
-			CASE entity WHEN NULL
+			CASE WHEN entity IS NULL
 				THEN null
 				ELSE entity { model: TOUPPER(HEAD(LABELS(entity))), .uuid, .name, members: creditedMembers }
 			END
@@ -84,7 +84,7 @@ export default () => `
 
 	WITH company,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE WHEN production IS NULL
 				THEN null
 				ELSE production {
 					model: 'PRODUCTION',
@@ -92,25 +92,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE venue WHEN NULL
+					venue: CASE WHEN venue IS NULL
 						THEN null
 						ELSE venue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE surVenue WHEN NULL
+							surVenue: CASE WHEN surVenue IS NULL
 								THEN null
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END
@@ -184,7 +184,7 @@ export default () => `
 
 	WITH company, producerProductions, creativeRel, production, creditedMembers,
 		COLLECT(
-			CASE coCreditedEntity WHEN NULL
+			CASE WHEN coCreditedEntity IS NULL
 				THEN null
 				ELSE coCreditedEntity {
 					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
@@ -236,7 +236,7 @@ export default () => `
 
 	WITH company, producerProductions,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE WHEN production IS NULL
 				THEN null
 				ELSE production {
 					model: 'PRODUCTION',
@@ -244,25 +244,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE venue WHEN NULL
+					venue: CASE WHEN venue IS NULL
 						THEN null
 						ELSE venue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE surVenue WHEN NULL
+							surVenue: CASE WHEN surVenue IS NULL
 								THEN null
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END
@@ -336,7 +336,7 @@ export default () => `
 
 	WITH producerProductions, creativeProductions, crewRel, production, creditedMembers,
 		COLLECT(
-			CASE coCreditedEntity WHEN NULL
+			CASE WHEN coCreditedEntity IS NULL
 				THEN null
 				ELSE coCreditedEntity {
 					model: TOUPPER(HEAD(LABELS(coCreditedEntity))),
@@ -390,7 +390,7 @@ export default () => `
 		producerProductions,
 		creativeProductions,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE WHEN production IS NULL
 				THEN null
 				ELSE production {
 					model: 'PRODUCTION',
@@ -398,25 +398,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE venue WHEN NULL
+					venue: CASE WHEN venue IS NULL
 						THEN null
 						ELSE venue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE surVenue WHEN NULL
+							surVenue: CASE WHEN surVenue IS NULL
 								THEN null
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END

@@ -12,7 +12,7 @@ export default () => [`
 		award.name AS name,
 		award.differentiator AS differentiator,
 		COLLECT(
-			CASE ceremony WHEN NULL
+			CASE WHEN ceremony IS NULL
 				THEN null
 				ELSE ceremony { model: 'AWARD_CEREMONY', .uuid, .name }
 			END

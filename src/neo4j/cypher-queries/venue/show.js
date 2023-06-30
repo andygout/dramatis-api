@@ -4,7 +4,7 @@ export default () => [`
 	OPTIONAL MATCH (surVenue:Venue)-[:HAS_SUB_VENUE]->(venue)
 
 	WITH venue,
-		CASE surVenue WHEN NULL
+		CASE WHEN surVenue IS NULL
 			THEN null
 			ELSE surVenue { model: 'VENUE', .uuid, .name }
 		END AS surVenue
@@ -16,7 +16,7 @@ export default () => [`
 
 	WITH venue, surVenue,
 		COLLECT(
-			CASE subVenue WHEN NULL
+			CASE WHEN subVenue IS NULL
 				THEN null
 				ELSE subVenue { model: 'VENUE', .uuid, .name }
 			END
@@ -56,7 +56,7 @@ export default () => [`
 		surVenue,
 		subVenues,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE WHEN production IS NULL
 				THEN null
 				ELSE production {
 					model: 'PRODUCTION',
@@ -68,13 +68,13 @@ export default () => [`
 						THEN venueLinkedToProduction { model: 'VENUE', .uuid, .name }
 						ELSE null
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END

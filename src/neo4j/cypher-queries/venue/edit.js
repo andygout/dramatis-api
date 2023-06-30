@@ -11,7 +11,7 @@ export default () => `
 		venue.name AS name,
 		venue.differentiator AS differentiator,
 		COLLECT(
-			CASE subVenue WHEN NULL
+			CASE WHEN subVenue IS NULL
 				THEN null
 				ELSE subVenue { .name, .differentiator }
 			END

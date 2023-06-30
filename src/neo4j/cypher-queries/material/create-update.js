@@ -68,7 +68,7 @@ const getCreateUpdateQuery = action => {
 				) OR
 				$originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator
 
-		FOREACH (item IN CASE $originalVersionMaterial.name WHEN NULL THEN [] ELSE [1] END |
+		FOREACH (item IN CASE WHEN $originalVersionMaterial.name IS NULL THEN [] ELSE [1] END |
 			MERGE (originalVersionMaterial:Material {
 				uuid: COALESCE(existingOriginalVersionMaterial.uuid, $originalVersionMaterial.uuid),
 				name: $originalVersionMaterial.name
@@ -93,7 +93,7 @@ const getCreateUpdateQuery = action => {
 						(writingPersonParam.differentiator IS NULL AND existingWritingPerson.differentiator IS NULL) OR
 						writingPersonParam.differentiator = existingWritingPerson.differentiator
 
-				FOREACH (item IN CASE writingPersonParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN writingPersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (writingPerson:Person {
 						uuid: COALESCE(existingWritingPerson.uuid, writingPersonParam.uuid),
 						name: writingPersonParam.name
@@ -125,7 +125,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						writingCompanyParam.differentiator = existingWritingCompany.differentiator
 
-				FOREACH (item IN CASE writingCompanyParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN writingCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (writingCompany:Company {
 						uuid: COALESCE(existingWritingCompany.uuid, writingCompanyParam.uuid),
 						name: writingCompanyParam.name
@@ -157,7 +157,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						sourceMaterialParam.differentiator = existingSourceMaterial.differentiator
 
-				FOREACH (item IN CASE sourceMaterialParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN sourceMaterialParam IS NULL THEN [] ELSE [1] END |
 					MERGE (sourceMaterial:Material {
 						uuid: COALESCE(existingSourceMaterial.uuid, sourceMaterialParam.uuid),
 						name: sourceMaterialParam.name
@@ -181,7 +181,7 @@ const getCreateUpdateQuery = action => {
 						(subMaterialParam.differentiator IS NULL AND existingSubMaterial.differentiator IS NULL) OR
 						subMaterialParam.differentiator = existingSubMaterial.differentiator
 
-				FOREACH (item IN CASE subMaterialParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN subMaterialParam IS NULL THEN [] ELSE [1] END |
 					MERGE (subMaterial:Material {
 						uuid: COALESCE(existingSubMaterial.uuid, subMaterialParam.uuid),
 						name: subMaterialParam.name
@@ -210,7 +210,7 @@ const getCreateUpdateQuery = action => {
 						(characterParam.differentiator IS NULL AND existingCharacter.differentiator IS NULL) OR
 						characterParam.differentiator = existingCharacter.differentiator
 
-				FOREACH (item IN CASE characterParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN characterParam IS NULL THEN [] ELSE [1] END |
 					MERGE (character:Character {
 						uuid: COALESCE(existingCharacter.uuid, characterParam.uuid),
 						name: COALESCE(characterParam.underlyingName, characterParam.name)
@@ -221,7 +221,7 @@ const getCreateUpdateQuery = action => {
 						[:DEPICTS {
 							groupPosition: characterGroup.position,
 							characterPosition: characterParam.position,
-							displayName: CASE characterParam.underlyingName WHEN NULL
+							displayName: CASE WHEN characterParam.underlyingName IS NULL
 								THEN null
 								ELSE characterParam.name
 							END,

@@ -15,7 +15,7 @@ export default () => `
 		entityRel.credit AS writingCreditName,
 		entityRel.creditType AS writingCreditType,
 		COLLECT(
-			CASE entity WHEN NULL
+			CASE WHEN entity IS NULL
 				THEN null
 				ELSE entity { model: TOUPPER(HEAD(LABELS(entity))), .name, .differentiator }
 			END
@@ -40,7 +40,7 @@ export default () => `
 
 	WITH material, originalVersionMaterial, writingCredits,
 		COLLECT(
-			CASE subMaterial WHEN NULL
+			CASE WHEN subMaterial IS NULL
 				THEN null
 				ELSE subMaterial { .name, .differentiator, .format, .year }
 			END
@@ -53,11 +53,11 @@ export default () => `
 
 	WITH material, originalVersionMaterial, writingCredits, subMaterials, characterRel.group AS characterGroupName,
 		COLLECT(
-			CASE character WHEN NULL
+			CASE WHEN character IS NULL
 				THEN null
 				ELSE character {
 					name: COALESCE(characterRel.displayName, character.name),
-					underlyingName: CASE characterRel.displayName WHEN NULL THEN null ELSE character.name END,
+					underlyingName: CASE WHEN characterRel.displayName IS NULL THEN null ELSE character.name END,
 					.differentiator,
 					qualifier: characterRel.qualifier,
 					group: characterRel.group

@@ -30,7 +30,7 @@ export default () => `
 		entitySurSurMaterial,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
-			CASE sourceMaterialWriter WHEN NULL
+			CASE WHEN sourceMaterialWriter IS NULL
 				THEN null
 				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
@@ -51,7 +51,7 @@ export default () => `
 
 	WITH material, entityRel.credit AS writingCreditName,
 		COLLECT(
-			CASE entity WHEN NULL
+			CASE WHEN entity IS NULL
 				THEN null
 				ELSE entity {
 					model: TOUPPER(HEAD(LABELS(entity))),
@@ -59,13 +59,13 @@ export default () => `
 					.name,
 					.format,
 					.year,
-					surMaterial: CASE entitySurMaterial WHEN NULL
+					surMaterial: CASE WHEN entitySurMaterial IS NULL
 						THEN null
 						ELSE entitySurMaterial {
 							model: 'MATERIAL',
 							.uuid,
 							.name,
-							surMaterial: CASE entitySurSurMaterial WHEN NULL
+							surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 								THEN null
 								ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 							END
@@ -104,13 +104,13 @@ export default () => `
 		material.name AS name,
 		material.format AS format,
 		material.year AS year,
-		CASE surMaterial WHEN NULL
+		CASE WHEN surMaterial IS NULL
 			THEN null
 			ELSE surMaterial {
 				model: 'MATERIAL',
 				.uuid,
 				.name,
-				surMaterial: CASE surSurMaterial WHEN NULL
+				surMaterial: CASE WHEN surSurMaterial IS NULL
 					THEN null
 					ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 				END

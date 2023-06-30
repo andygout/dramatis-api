@@ -51,7 +51,7 @@ export default () => `
 
 	WITH variantNamedPortrayals, production, person, role,
 		COLLECT(DISTINCT(
-			CASE otherRole WHEN NULL
+			CASE WHEN otherRole IS NULL
 				THEN null
 				ELSE {
 					model: 'CHARACTER',
@@ -101,7 +101,7 @@ export default () => `
 	RETURN
 		variantNamedPortrayals,
 		COLLECT(
-			CASE production WHEN NULL
+			CASE WHEN production IS NULL
 				THEN null
 				ELSE production {
 					model: 'PRODUCTION',
@@ -109,25 +109,25 @@ export default () => `
 					.name,
 					.startDate,
 					.endDate,
-					venue: CASE venue WHEN NULL
+					venue: CASE WHEN venue IS NULL
 						THEN null
 						ELSE venue {
 							model: 'VENUE',
 							.uuid,
 							.name,
-							surVenue: CASE surVenue WHEN NULL
+							surVenue: CASE WHEN surVenue IS NULL
 								THEN null
 								ELSE surVenue { model: 'VENUE', .uuid, .name }
 							END
 						}
 					END,
-					surProduction: CASE surProduction WHEN NULL
+					surProduction: CASE WHEN surProduction IS NULL
 						THEN null
 						ELSE surProduction {
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							surProduction: CASE surSurProduction WHEN NULL
+							surProduction: CASE WHEN surSurProduction IS NULL
 								THEN null
 								ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 							END

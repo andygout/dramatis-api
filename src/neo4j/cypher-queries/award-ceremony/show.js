@@ -38,7 +38,7 @@ export default () => [`
 		entity,
 		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 		COLLECT(
-			CASE sourceMaterialWriter WHEN NULL
+			CASE WHEN sourceMaterialWriter IS NULL
 				THEN null
 				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 			END
@@ -69,7 +69,7 @@ export default () => [`
 		nominee,
 		entityRel.credit AS writingCreditName,
 		COLLECT(
-			CASE entity WHEN NULL
+			CASE WHEN entity IS NULL
 				THEN null
 				ELSE entity {
 					model: TOUPPER(HEAD(LABELS(entity))),
@@ -77,13 +77,13 @@ export default () => [`
 					.name,
 					.format,
 					.year,
-					surMaterial: CASE entitySurMaterial WHEN NULL
+					surMaterial: CASE WHEN entitySurMaterial IS NULL
 						THEN null
 						ELSE entitySurMaterial {
 							model: 'MATERIAL',
 							.uuid,
 							.name,
-							surMaterial: CASE entitySurSurMaterial WHEN NULL
+							surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 								THEN null
 								ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 							END
@@ -110,13 +110,13 @@ export default () => [`
 		category,
 		nomineeRel,
 		nominee,
-		CASE surMaterial WHEN NULL
+		CASE WHEN surMaterial IS NULL
 			THEN null
 			ELSE surMaterial {
 				model: 'MATERIAL',
 				.uuid,
 				.name,
-				surMaterial: CASE surSurMaterial WHEN NULL
+				surMaterial: CASE WHEN surSurMaterial IS NULL
 					THEN null
 					ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 				END
@@ -149,25 +149,25 @@ export default () => [`
 			.startDate,
 			.endDate,
 			nominatedMemberUuids: nomineeRel.nominatedMemberUuids,
-			venue: CASE venue WHEN NULL
+			venue: CASE WHEN venue IS NULL
 				THEN null
 				ELSE venue {
 					model: 'VENUE',
 					.uuid,
 					.name,
-					surVenue: CASE surVenue WHEN NULL
+					surVenue: CASE WHEN surVenue IS NULL
 						THEN null
 						ELSE surVenue { model: 'VENUE', .uuid, .name }
 					END
 				}
 			END,
-			surProduction: CASE surProduction WHEN NULL
+			surProduction: CASE WHEN surProduction IS NULL
 				THEN null
 				ELSE surProduction {
 					model: 'PRODUCTION',
 					.uuid,
 					.name,
-					surProduction: CASE surSurProduction WHEN NULL
+					surProduction: CASE WHEN surSurProduction IS NULL
 						THEN null
 						ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 					END
@@ -210,7 +210,7 @@ export default () => [`
 		nomineeRel.isWinner AS isWinner,
 		nomineeRel.customType AS customType,
 		COLLECT(
-			CASE nominee WHEN NULL
+			CASE WHEN nominee IS NULL
 				THEN null
 				ELSE nominee {
 					.model,
@@ -275,9 +275,9 @@ export default () => [`
 		'AWARD_CEREMONY' AS model,
 		ceremony.uuid AS uuid,
 		ceremony.name AS name,
-		CASE award WHEN NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award,
+		CASE WHEN award IS NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award,
 		COLLECT(
-			CASE category WHEN NULL
+			CASE WHEN category IS NULL
 				THEN null
 				ELSE category { model: 'AWARD_CEREMONY_CATEGORY', .name, nominations }
 			END

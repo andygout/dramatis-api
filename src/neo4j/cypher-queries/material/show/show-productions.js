@@ -25,7 +25,7 @@ export default () => `
 			surProductionRel,
 			surSurProduction,
 			surSurProductionRel,
-			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS usesSourcingMaterial
+			CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS usesSourcingMaterial
 			ORDER BY
 				production.startDate DESC,
 				COALESCE(surSurProduction.name, surProduction.name, production.name),
@@ -36,7 +36,7 @@ export default () => `
 
 		WITH
 			COLLECT(
-				CASE production WHEN NULL
+				CASE WHEN production IS NULL
 					THEN null
 					ELSE production {
 						model: 'PRODUCTION',
@@ -45,25 +45,25 @@ export default () => `
 						.startDate,
 						.endDate,
 						usesSourcingMaterial,
-						venue: CASE venue WHEN NULL
+						venue: CASE WHEN venue IS NULL
 							THEN null
 							ELSE venue {
 								model: 'VENUE',
 								.uuid,
 								.name,
-								surVenue: CASE surVenue WHEN NULL
+								surVenue: CASE WHEN surVenue IS NULL
 									THEN null
 									ELSE surVenue { model: 'VENUE', .uuid, .name }
 								END
 							}
 						END,
-						surProduction: CASE surProduction WHEN NULL
+						surProduction: CASE WHEN surProduction IS NULL
 							THEN null
 							ELSE surProduction {
 								model: 'PRODUCTION',
 								.uuid,
 								.name,
-								surProduction: CASE surSurProduction WHEN NULL
+								surProduction: CASE WHEN surSurProduction IS NULL
 									THEN null
 									ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 								END

@@ -11,7 +11,7 @@ export default () => `
 		ORDER BY subProductionRel.position
 
 	WITH production, material, venue,
-		COLLECT(CASE subProduction WHEN NULL THEN null ELSE subProduction { .uuid } END) + [{}] AS subProductions
+		COLLECT(CASE WHEN subProduction IS NULL THEN null ELSE subProduction { .uuid } END) + [{}] AS subProductions
 
 	OPTIONAL MATCH (production)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
 		WHERE
@@ -47,7 +47,7 @@ export default () => `
 
 	WITH production, material, venue, subProductions, producerEntityRel.credit AS producerCreditName,
 		COLLECT(
-			CASE producerEntity WHEN NULL
+			CASE WHEN producerEntity IS NULL
 				THEN null
 				ELSE producerEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
@@ -74,7 +74,7 @@ export default () => `
 
 	WITH production, material, venue, subProductions, producerCredits, castMember,
 		COLLECT(
-			CASE role.roleName WHEN NULL
+			CASE WHEN role.roleName IS NULL
 				THEN null
 				ELSE {
 					name: role.roleName,
@@ -88,7 +88,7 @@ export default () => `
 
 	WITH production, material, venue, subProductions, producerCredits,
 		COLLECT(
-			CASE castMember WHEN NULL
+			CASE WHEN castMember IS NULL
 				THEN null
 				ELSE castMember { .name, .differentiator, roles: roles }
 			END
@@ -153,7 +153,7 @@ export default () => `
 		cast,
 		creativeEntityRel.credit AS creativeCreditName,
 		COLLECT(
-			CASE creativeEntity WHEN NULL
+			CASE WHEN creativeEntity IS NULL
 				THEN null
 				ELSE creativeEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
@@ -251,7 +251,7 @@ export default () => `
 		creativeCredits,
 		crewEntityRel.credit AS crewCreditName,
 		COLLECT(
-			CASE crewEntity WHEN NULL
+			CASE WHEN crewEntity IS NULL
 				THEN null
 				ELSE crewEntity { .model, .name, .differentiator, members: creditedMembers }
 			END
