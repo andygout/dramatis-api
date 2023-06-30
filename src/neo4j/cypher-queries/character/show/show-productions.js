@@ -23,13 +23,13 @@ export default () => `
 				character.name IN [role.roleName, role.characterName] OR
 				characterDepiction.displayName IN [role.roleName, role.characterName]
 			) AND
-			(role.characterDifferentiator IS NULL OR character.differentiator = role.characterDifferentiator)
+			(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
 	OPTIONAL MATCH (production)-[otherRole:HAS_CAST_MEMBER]->(person)
 		WHERE
 			otherRole.roleName <> character.name AND
 			(otherRole.characterName IS NULL OR otherRole.characterName <> character.name) AND
-			(characterDepiction.displayName IS NULL OR otherRole.roleName <> characterDepiction.displayName) AND
+			(characterDepiction.displayName IS NULL OR characterDepiction.displayName <> otherRole.roleName) AND
 			(
 				(otherRole.characterName IS NULL OR characterDepiction.displayName IS NULL) OR
 				otherRole.characterName <> characterDepiction.displayName
@@ -43,7 +43,7 @@ export default () => `
 			) AND
 			(
 				otherRole.characterDifferentiator IS NULL OR
-				otherCharacter.differentiator = otherRole.characterDifferentiator
+				otherRole.characterDifferentiator = otherCharacter.differentiator
 			)
 
 	WITH variantNamedPortrayals, production, person, role, otherRole, otherCharacter
