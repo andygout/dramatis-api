@@ -563,23 +563,31 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
 			const instance = {
 				characters: [
-					applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
-					applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' }),
-					applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }),
-					applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
-					applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' }),
-					applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
+					applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+					applyModelGetter({ uuid: '', name: 'Bar', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'younger' }),
+					applyModelGetter({ uuid: '', name: 'Brandon Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Qux', underlyingName: 'Quincy Qux', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Quux', underlyingName: 'Clara Qux', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+					applyModelGetter({ uuid: '', name: 'Beatrice', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'older' }),
+					applyModelGetter({ uuid: '', name: 'Baz', underlyingName: 'Brandon Baz', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Quincy Qux', underlyingName: '', differentiator: '', qualifier: '' }),
+					applyModelGetter({ uuid: '', name: 'Clara Quux', underlyingName: '', differentiator: '1', qualifier: '' })
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(4);
-			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.characters[0].uuid).to.equal(result.characters[3].uuid);
-			expect(result.characters[1].uuid).to.equal(result.characters[4].uuid);
-			expect(result.characters[2].uuid).not.to.equal(result.characters[5].uuid);
+			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(10);
+			expect(result.characters[0].uuid).to.equal(result.characters[5].uuid);
+			expect(result.characters[1].uuid).to.equal(result.characters[6].uuid);
+			expect(result.characters[2].uuid).to.equal(result.characters[7].uuid);
+			expect(result.characters[3].uuid).to.equal(result.characters[8].uuid);
+			expect(result.characters[4].uuid).to.not.equal(result.characters[9].uuid);
 
 		});
 
@@ -937,25 +945,33 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
 			const instance = {
 				production: {
 					cast: [
-						applyModelGetter({ uuid: '', name: 'Foo', differentiator: '' }),
-						applyModelGetter({ uuid: '', name: 'Bar', differentiator: '1' }),
-						applyModelGetter({ uuid: '', name: 'Baz', differentiator: '' }),
-						applyModelGetter({ uuid: '', name: 'Foo', differentiator: '' }),
-						applyModelGetter({ uuid: '', name: 'Bar', differentiator: '1' }),
-						applyModelGetter({ uuid: '', name: 'Baz', differentiator: '1' })
+						applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+						applyModelGetter({ uuid: '', name: 'Bar', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'younger' }),
+						applyModelGetter({ uuid: '', name: 'Brandon Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+						applyModelGetter({ uuid: '', name: 'Qux', underlyingName: 'Quincy Qux', differentiator: '', qualifier: '' }),
+						applyModelGetter({ uuid: '', name: 'Quux', underlyingName: 'Clara Qux', differentiator: '', qualifier: '' }),
+						applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+						applyModelGetter({ uuid: '', name: 'Beatrice', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'older' }),
+						applyModelGetter({ uuid: '', name: 'Baz', underlyingName: 'Brandon Baz', differentiator: '', qualifier: '' }),
+						applyModelGetter({ uuid: '', name: 'Quincy Qux', underlyingName: '', differentiator: '', qualifier: '' }),
+						applyModelGetter({ uuid: '', name: 'Clara Quux', underlyingName: '', differentiator: '1', qualifier: '' })
 					]
 				}
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(4);
-			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.production.cast[0].uuid).to.equal(result.production.cast[3].uuid);
-			expect(result.production.cast[1].uuid).to.equal(result.production.cast[4].uuid);
-			expect(result.production.cast[2].uuid).not.to.equal(result.production.cast[5].uuid);
+			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(10);
+			expect(result.production.cast[0].uuid).to.equal(result.production.cast[5].uuid);
+			expect(result.production.cast[1].uuid).to.equal(result.production.cast[6].uuid);
+			expect(result.production.cast[2].uuid).to.equal(result.production.cast[7].uuid);
+			expect(result.production.cast[3].uuid).to.equal(result.production.cast[8].uuid);
+			expect(result.production.cast[4].uuid).to.not.equal(result.production.cast[9].uuid);
 
 		});
 
@@ -1361,28 +1377,36 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
 			const instance = {
 				characterGroups: [
 					{
 						characters: [
-							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
-							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'younger' }),
-							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' }),
-							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
-							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '1', qualifier: 'older' }),
-							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
+							applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Brandon Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Qux', underlyingName: 'Quincy Qux', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Quux', underlyingName: 'Clara Qux', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Beatrice', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: 'Brandon Baz', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Quincy Qux', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Clara Quux', underlyingName: '', differentiator: '1', qualifier: '' })
 						]
 					}
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(4);
-			expect(stubs.neo4jInt.callCount).to.equal(6);
-			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[3].uuid);
-			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[4].uuid);
-			expect(result.characterGroups[0].characters[2].uuid).not.to.equal(
-				result.characterGroups[0].characters[5].uuid
+			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(10);
+			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[5].uuid);
+			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[6].uuid);
+			expect(result.characterGroups[0].characters[2].uuid).to.equal(result.characterGroups[0].characters[7].uuid);
+			expect(result.characterGroups[0].characters[3].uuid).to.equal(result.characterGroups[0].characters[8].uuid);
+			expect(result.characterGroups[0].characters[4].uuid).not.to.equal(
+				result.characterGroups[0].characters[9].uuid
 			);
 
 		});
@@ -1393,33 +1417,41 @@ describe('Prepare As Params module', () => {
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd');
+				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
+				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
+				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
 			const instance = {
 				characterGroups: [
 					{
 						name: 'Montagues',
 						characters: [
-							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' }),
-							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' }),
-							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '', qualifier: '' })
+							applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'younger' }),
+							applyModelGetter({ uuid: '', name: 'Brandon Baz', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Qux', underlyingName: 'Quincy Qux', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Quux', underlyingName: 'Clara Qux', differentiator: '', qualifier: '' })
 						]
 					},
 					{
 						name: 'Capulets',
 						characters: [
-							applyModelGetter({ uuid: '', name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' }),
-							applyModelGetter({ uuid: '', name: 'Bar', underlyingName: '', differentiator: '', qualifier: '' }),
-							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: '', differentiator: '1', qualifier: '' })
+							applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Beatrice', underlyingName: 'Beatrice Bar', differentiator: '1', qualifier: 'older' }),
+							applyModelGetter({ uuid: '', name: 'Baz', underlyingName: 'Brandon Baz', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Quincy Qux', underlyingName: '', differentiator: '', qualifier: '' }),
+							applyModelGetter({ uuid: '', name: 'Clara Quux', underlyingName: '', differentiator: '1', qualifier: '' })
 						]
 					}
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(4);
-			expect(stubs.neo4jInt.callCount).to.equal(8);
+			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.neo4jInt.callCount).to.equal(12);
 			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[1].characters[0].uuid);
 			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[1].characters[1].uuid);
-			expect(result.characterGroups[0].characters[2].uuid).not.to.equal(result.characterGroups[1].characters[2].uuid);
+			expect(result.characterGroups[0].characters[2].uuid).to.equal(result.characterGroups[1].characters[2].uuid);
+			expect(result.characterGroups[0].characters[3].uuid).to.equal(result.characterGroups[1].characters[3].uuid);
+			expect(result.characterGroups[0].characters[4].uuid).not.to.equal(result.characterGroups[1].characters[4].uuid);
 
 		});
 

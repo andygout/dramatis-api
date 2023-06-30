@@ -103,11 +103,17 @@ export const prepareAsParams = instance => {
 
 				if (requiresUuidValue) {
 
-					const instanceWithShareableUuid = recordedInstances.find(recordedInstance =>
-						instance.model === recordedInstance.model &&
-						instance.name === recordedInstance.name &&
-						instance.differentiator === recordedInstance.differentiator
-					);
+					const instanceWithShareableUuid = recordedInstances.find(recordedInstance => {
+						const instanceNameForComparison = instance.underlyingName || instance.name;
+						const recordedInstanceNameForComparison = recordedInstance.underlyingName || recordedInstance.name;
+
+						const isInstanceWithShareableUuid =
+							instance.model === recordedInstance.model &&
+							instanceNameForComparison === recordedInstanceNameForComparison &&
+							instance.differentiator === recordedInstance.differentiator;
+
+						return isInstanceWithShareableUuid;
+					});
 
 					accumulator[key] = instanceWithShareableUuid?.uuid || randomUUID({ disableEntropyCache: true });
 
@@ -117,6 +123,7 @@ export const prepareAsParams = instance => {
 							model: instance.model,
 							uuid: accumulator[key],
 							name: instance.name,
+							underlyingName: instance.underlyingName,
 							differentiator: instance.differentiator
 						});
 
