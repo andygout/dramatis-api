@@ -35,8 +35,7 @@ export default () => `
 				otherRole.characterName <> characterDepiction.displayName
 			)
 
-	OPTIONAL MATCH (person)<-[otherRole]-(production)-[productionRel]->
-		(materialForProduction)-[otherCharacterDepiction:DEPICTS]->(otherCharacter:Character)
+	OPTIONAL MATCH (materialForProduction)-[otherCharacterDepiction:DEPICTS]->(otherCharacter:Character)
 		WHERE
 			(
 				otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
