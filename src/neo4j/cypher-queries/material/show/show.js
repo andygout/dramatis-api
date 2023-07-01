@@ -7,7 +7,12 @@ export default () => `
 
 	WITH
 		material,
-		[material] + COLLECT(surMaterial) + COLLECT(subMaterial) AS collectionMaterials
+		COLLECT(surMaterial) AS surMaterials,
+		COLLECT(subMaterial) AS subMaterials
+
+	WITH
+		material,
+		[material] + surMaterials + subMaterials AS collectionMaterials
 
 	UNWIND (CASE collectionMaterials WHEN [] THEN [null] ELSE collectionMaterials END) AS collectionMaterial
 
@@ -25,11 +30,11 @@ export default () => `
 			material,
 			collectionMaterial,
 			CASE WHEN material = collectionMaterial THEN true ELSE false END AS isSubjectMaterial,
-			CASE surMaterialRel WHEN NULL THEN false ELSE true END AS isSurMaterial,
-			CASE surSurMaterialRel WHEN NULL THEN false ELSE true END AS isSurSurMaterial,
-			CASE subMaterialRel WHEN NULL THEN false ELSE true END AS isSubMaterial,
+			CASE WHEN surMaterialRel IS NULL THEN false ELSE true END AS isSurMaterial,
+			CASE WHEN surSurMaterialRel IS NULL THEN false ELSE true END AS isSurSurMaterial,
+			CASE WHEN subMaterialRel IS NULL THEN false ELSE true END AS isSubMaterial,
 			subMaterialRel.position AS subMaterialPosition,
-			CASE subSubMaterialRel WHEN NULL THEN false ELSE true END AS isSubSubMaterial,
+			CASE WHEN subSubMaterialRel IS NULL THEN false ELSE true END AS isSubSubMaterial,
 			subSubMaterialRel.position AS subSubMaterialPosition,
 			subSubMaterialSurMaterial.uuid AS subSubMaterialSurMaterialUuid
 
@@ -74,7 +79,7 @@ export default () => `
 				subSubMaterialPosition,
 				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
-				CASE originalVersionRel WHEN NULL THEN false ELSE true END AS isOriginalVersion,
+				CASE WHEN originalVersionRel IS NULL THEN false ELSE true END AS isOriginalVersion,
 				entityRel,
 				entity,
 				entitySurMaterial,
@@ -102,7 +107,7 @@ export default () => `
 				entitySurSurMaterial,
 				sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 				COLLECT(
-					CASE sourceMaterialWriter WHEN NULL
+					CASE WHEN sourceMaterialWriter IS NULL
 						THEN null
 						ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 					END
@@ -160,13 +165,13 @@ export default () => `
 							.name,
 							.format,
 							.year,
-							surMaterial: CASE entitySurMaterial WHEN NULL
+							surMaterial: CASE WHEN entitySurMaterial IS NULL
 								THEN null
 								ELSE entitySurMaterial {
 									model: 'MATERIAL',
 									.uuid,
 									.name,
-									surMaterial: CASE entitySurSurMaterial WHEN NULL
+									surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 										THEN null
 										ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 									END
@@ -237,7 +242,7 @@ export default () => `
 				subSubMaterialPosition,
 				subSubMaterialSurMaterialUuid,
 				COLLECT(
-					CASE relatedMaterial WHEN NULL
+					CASE WHEN relatedMaterial IS NULL
 						THEN null
 						ELSE relatedMaterial {
 							model: 'MATERIAL',
@@ -245,13 +250,13 @@ export default () => `
 							.name,
 							.format,
 							.year,
-							surMaterial: CASE surMaterial WHEN NULL
+							surMaterial: CASE WHEN surMaterial IS NULL
 								THEN null
 								ELSE surMaterial {
 									model: 'MATERIAL',
 									.uuid,
 									.name,
-									surMaterial: CASE surSurMaterial WHEN NULL
+									surMaterial: CASE WHEN surSurMaterial IS NULL
 										THEN null
 										ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 									END
@@ -318,7 +323,7 @@ export default () => `
 			characterRel.group AS characterGroupName,
 			characterRel.groupPosition AS characterGroupPosition,
 			COLLECT(
-				CASE character WHEN NULL
+				CASE WHEN character IS NULL
 					THEN null
 					ELSE character {
 						model: 'CHARACTER',

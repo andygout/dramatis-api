@@ -36,7 +36,7 @@ const getCreateUpdateQuery = action => {
 				($award.differentiator IS NULL AND existingAward.differentiator IS NULL) OR
 				$award.differentiator = existingAward.differentiator
 
-		FOREACH (item IN CASE $award.name WHEN NULL THEN [] ELSE [1] END |
+		FOREACH (item IN CASE WHEN $award.name IS NULL THEN [] ELSE [1] END |
 			MERGE (award:Award {
 				uuid: COALESCE(existingAward.uuid, $award.uuid),
 				name: $award.name
@@ -50,7 +50,7 @@ const getCreateUpdateQuery = action => {
 
 		UNWIND (CASE $categories WHEN [] THEN [{ nominations: [] }] ELSE $categories END) AS categoryParam
 
-			FOREACH (item IN CASE categoryParam.name WHEN NULL THEN [] ELSE [1] END |
+			FOREACH (item IN CASE WHEN categoryParam.name IS NULL THEN [] ELSE [1] END |
 				CREATE (:AwardCeremonyCategory { name: categoryParam.name })
 					<-[:PRESENTS_CATEGORY { position: categoryParam.position }]-(ceremony)
 			)
@@ -79,7 +79,7 @@ const getCreateUpdateQuery = action => {
 							) OR
 							nomineePersonParam.differentiator = existingNomineePerson.differentiator
 
-					FOREACH (item IN CASE nomineePersonParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN nomineePersonParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineePerson:Person {
 							uuid: COALESCE(existingNomineePerson.uuid, nomineePersonParam.uuid),
 							name: nomineePersonParam.name
@@ -111,7 +111,7 @@ const getCreateUpdateQuery = action => {
 							) OR
 							nomineeCompanyParam.differentiator = existingNomineeCompany.differentiator
 
-					FOREACH (item IN CASE nomineeCompanyParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN nomineeCompanyParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineeCompany:Company {
 							uuid: COALESCE(existingNomineeCompany.uuid, nomineeCompanyParam.uuid),
 							name: nomineeCompanyParam.name
@@ -161,7 +161,7 @@ const getCreateUpdateQuery = action => {
 							ELSE []
 						END | SET nominatedCompanyRel.nominatedMemberUuids = [])
 
-						FOREACH (item IN CASE nominatedMemberParam WHEN NULL THEN [] ELSE [1] END |
+						FOREACH (item IN CASE WHEN nominatedMemberParam IS NULL THEN [] ELSE [1] END |
 							MERGE (nominatedMember:Person {
 								uuid: COALESCE(existingPerson.uuid, nominatedMemberParam.uuid),
 								name: nominatedMemberParam.name
@@ -189,7 +189,7 @@ const getCreateUpdateQuery = action => {
 
 					OPTIONAL MATCH (existingNomineeProduction:Production { uuid: nomineeProductionParam.uuid })
 
-					FOREACH (item IN CASE existingNomineeProduction WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN existingNomineeProduction IS NULL THEN [] ELSE [1] END |
 						CREATE (category)-
 							[:HAS_NOMINEE {
 								nominationPosition: nomination.position,
@@ -215,7 +215,7 @@ const getCreateUpdateQuery = action => {
 							) OR
 							nomineeMaterialParam.differentiator = existingNomineeMaterial.differentiator
 
-					FOREACH (item IN CASE nomineeMaterialParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN nomineeMaterialParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineeMaterial:Material {
 							uuid: COALESCE(existingNomineeMaterial.uuid, nomineeMaterialParam.uuid),
 							name: nomineeMaterialParam.name

@@ -3,18 +3,16 @@ export default () => `
 
 	OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial)
 
-	WITH
-		material,
-		COLLECT(subsequentVersionMaterial) AS subsequentVersionMaterials
-
 	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 
 	WITH
 		material,
-		[material] +
-		subsequentVersionMaterials +
-		COLLECT(sourcingMaterial)
-			AS relatedMaterials
+		COLLECT(subsequentVersionMaterial) AS subsequentVersionMaterials,
+		COLLECT(sourcingMaterial) AS sourcingMaterials
+
+	WITH
+		material,
+		[material] + subsequentVersionMaterials + sourcingMaterials AS relatedMaterials
 
 	UNWIND (CASE relatedMaterials WHEN [] THEN [null] ELSE relatedMaterials END) AS relatedMaterial
 
@@ -37,13 +35,13 @@ export default () => `
 		WITH
 			material,
 			relatedMaterial,
-			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
-			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
+			CASE WHEN subsequentVersionRel IS NULL THEN false ELSE true END AS isSubsequentVersion,
+			CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS isSourcingMaterial,
 			entityRel,
 			entity,
 			entitySurMaterial,
 			entitySurSurMaterial,
-			CASE originalVersionWritingEntityRel WHEN NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
+			CASE WHEN originalVersionWritingEntityRel IS NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel,
 			sourceMaterialWriter
 			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
@@ -60,7 +58,7 @@ export default () => `
 			isOriginalVersionWritingEntity,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
-				CASE sourceMaterialWriter WHEN NULL
+				CASE WHEN sourceMaterialWriter IS NULL
 					THEN null
 					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 				END
@@ -103,13 +101,13 @@ export default () => `
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE entitySurMaterial WHEN NULL
+						surMaterial: CASE WHEN entitySurMaterial IS NULL
 							THEN null
 							ELSE entitySurMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE entitySurSurMaterial WHEN NULL
+								surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 									THEN null
 									ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END
@@ -154,7 +152,7 @@ export default () => `
 
 		WITH material,
 			COLLECT(
-				CASE relatedMaterial WHEN NULL
+				CASE WHEN relatedMaterial IS NULL
 					THEN null
 					ELSE relatedMaterial {
 						model: 'MATERIAL',
@@ -162,13 +160,13 @@ export default () => `
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE surMaterial WHEN NULL
+						surMaterial: CASE WHEN surMaterial IS NULL
 							THEN null
 							ELSE surMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE surSurMaterial WHEN NULL
+								surMaterial: CASE WHEN surSurMaterial IS NULL
 									THEN null
 									ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END

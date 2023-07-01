@@ -33,9 +33,9 @@ export default () => `
 			person,
 			material,
 			writerRel.creditType AS creditType,
-			CASE writerRel WHEN NULL THEN false ELSE true END AS hasDirectCredit,
-			CASE subsequentVersionRel WHEN NULL THEN false ELSE true END AS isSubsequentVersion,
-			CASE sourcingMaterialRel WHEN NULL THEN false ELSE true END AS isSourcingMaterial,
+			CASE WHEN writerRel IS NULL THEN false ELSE true END AS hasDirectCredit,
+			CASE WHEN subsequentVersionRel IS NULL THEN false ELSE true END AS isSubsequentVersion,
+			CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS isSourcingMaterial,
 			entityRel,
 			entity,
 			entitySurMaterial,
@@ -57,7 +57,7 @@ export default () => `
 			entitySurSurMaterial,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
-				CASE sourceMaterialWriter WHEN NULL
+				CASE WHEN sourceMaterialWriter IS NULL
 					THEN null
 					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 				END
@@ -95,7 +95,7 @@ export default () => `
 			isSourcingMaterial,
 			entityRel.credit AS writingCreditName,
 			COLLECT(
-				CASE entity WHEN NULL
+				CASE WHEN entity IS NULL
 					THEN null
 					ELSE entity {
 						model: TOUPPER(HEAD(LABELS(entity))),
@@ -103,13 +103,13 @@ export default () => `
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE entitySurMaterial WHEN NULL
+						surMaterial: CASE WHEN entitySurMaterial IS NULL
 							THEN null
 							ELSE entitySurMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE entitySurSurMaterial WHEN NULL
+								surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 									THEN null
 									ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END
@@ -166,7 +166,7 @@ export default () => `
 
 		WITH person,
 			COLLECT(
-				CASE material WHEN NULL
+				CASE WHEN material IS NULL
 					THEN null
 					ELSE material {
 						model: 'MATERIAL',
@@ -174,13 +174,13 @@ export default () => `
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE surMaterial WHEN NULL
+						surMaterial: CASE WHEN surMaterial IS NULL
 							THEN null
 							ELSE surMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE surSurMaterial WHEN NULL
+								surMaterial: CASE WHEN surSurMaterial IS NULL
 									THEN null
 									ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END

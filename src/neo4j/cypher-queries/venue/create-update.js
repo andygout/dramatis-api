@@ -32,7 +32,7 @@ const getCreateUpdateQuery = action => {
 					(subVenueParam.differentiator IS NULL AND existingVenue.differentiator IS NULL) OR
 					subVenueParam.differentiator = existingVenue.differentiator
 
-			FOREACH (item IN CASE subVenueParam WHEN NULL THEN [] ELSE [1] END |
+			FOREACH (item IN CASE WHEN subVenueParam IS NULL THEN [] ELSE [1] END |
 				MERGE (subVenue:Venue {
 					uuid: COALESCE(existingVenue.uuid, subVenueParam.uuid),
 					name: subVenueParam.name

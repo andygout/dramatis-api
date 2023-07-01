@@ -7,7 +7,12 @@ export default () => `
 
 	WITH
 		production,
-		[production] + COLLECT(surProduction) + COLLECT(subProduction) AS collectionProductions
+		COLLECT(surProduction) AS surProductions,
+		COLLECT(subProduction) AS subProductions
+
+	WITH
+		production,
+		[production] + surProductions + subProductions AS collectionProductions
 
 	UNWIND (CASE collectionProductions WHEN [] THEN [null] ELSE collectionProductions END) AS collectionProduction
 
@@ -25,11 +30,11 @@ export default () => `
 			production,
 			collectionProduction,
 			CASE WHEN production = collectionProduction THEN true ELSE false END AS isSubjectProduction,
-			CASE surProductionRel WHEN NULL THEN false ELSE true END AS isSurProduction,
-			CASE surSurProductionRel WHEN NULL THEN false ELSE true END AS isSurSurProduction,
-			CASE subProductionRel WHEN NULL THEN false ELSE true END AS isSubProduction,
+			CASE WHEN surProductionRel IS NULL THEN false ELSE true END AS isSurProduction,
+			CASE WHEN surSurProductionRel IS NULL THEN false ELSE true END AS isSurSurProduction,
+			CASE WHEN subProductionRel IS NULL THEN false ELSE true END AS isSubProduction,
 			subProductionRel.position AS subProductionPosition,
-			CASE subSubProductionRel WHEN NULL THEN false ELSE true END AS isSubSubProduction,
+			CASE WHEN subSubProductionRel IS NULL THEN false ELSE true END AS isSubSubProduction,
 			subSubProductionRel.position AS subSubProductionPosition,
 			subSubProductionSurProduction.uuid AS subSubProductionSurProductionUuid
 
@@ -91,7 +96,7 @@ export default () => `
 			entitySurSurMaterial,
 			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
 			COLLECT(
-				CASE sourceMaterialWriter WHEN NULL
+				CASE WHEN sourceMaterialWriter IS NULL
 					THEN null
 					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
 				END
@@ -143,7 +148,7 @@ export default () => `
 			surSurMaterial,
 			entityRel.credit AS writingCreditName,
 			COLLECT(
-				CASE entity WHEN NULL
+				CASE WHEN entity IS NULL
 					THEN null
 					ELSE entity {
 						model: TOUPPER(HEAD(LABELS(entity))),
@@ -151,13 +156,13 @@ export default () => `
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE entitySurMaterial WHEN NULL
+						surMaterial: CASE WHEN entitySurMaterial IS NULL
 							THEN null
 							ELSE entitySurMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE entitySurSurMaterial WHEN NULL
+								surMaterial: CASE WHEN entitySurSurMaterial IS NULL
 									THEN null
 									ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END
@@ -224,7 +229,7 @@ export default () => `
 			isSubSubProduction,
 			subSubProductionPosition,
 			subSubProductionSurProductionUuid,
-			CASE material WHEN NULL
+			CASE WHEN material IS NULL
 				THEN null
 				ELSE material {
 					model: 'MATERIAL',
@@ -232,13 +237,13 @@ export default () => `
 					.name,
 					.format,
 					.year,
-					surMaterial: CASE surMaterial WHEN NULL
+					surMaterial: CASE WHEN surMaterial IS NULL
 						THEN null
 						ELSE surMaterial {
 							model: 'MATERIAL',
 							.uuid,
 							.name,
-							surMaterial: CASE surSurMaterial WHEN NULL
+							surMaterial: CASE WHEN surSurMaterial IS NULL
 								THEN null
 								ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
 							END
@@ -264,13 +269,13 @@ export default () => `
 			subSubProductionPosition,
 			subSubProductionSurProductionUuid,
 			material,
-			CASE venue WHEN NULL
+			CASE WHEN venue IS NULL
 				THEN null
 				ELSE venue {
 					model: 'VENUE',
 					.uuid,
 					.name,
-					surVenue: CASE surVenue WHEN NULL
+					surVenue: CASE WHEN surVenue IS NULL
 						THEN null
 						ELSE surVenue { model: 'VENUE', .uuid, .name }
 					END
@@ -381,7 +386,7 @@ export default () => `
 			venue,
 			producerEntityRel.credit AS producerCreditName,
 			COLLECT(
-				CASE producerEntity WHEN NULL
+				CASE WHEN producerEntity IS NULL
 					THEN null
 					ELSE producerEntity { .model, .uuid, .name, members: creditedMembers }
 				END
@@ -476,7 +481,7 @@ export default () => `
 			producerCredits,
 			castMember,
 				COLLECT(
-					CASE role.roleName WHEN NULL
+					CASE WHEN role.roleName IS NULL
 						THEN { name: 'Performer' }
 						ELSE role {
 							model: 'CHARACTER',
@@ -503,7 +508,7 @@ export default () => `
 			venue,
 			producerCredits,
 				COLLECT(
-					CASE castMember WHEN NULL
+					CASE WHEN castMember IS NULL
 						THEN null
 						ELSE castMember { model: 'PERSON', .uuid, .name, roles }
 					END
@@ -623,7 +628,7 @@ export default () => `
 			cast,
 			creativeEntityRel.credit AS creativeCreditName,
 			COLLECT(
-				CASE creativeEntity WHEN NULL
+				CASE WHEN creativeEntity IS NULL
 					THEN null
 					ELSE creativeEntity { .model, .uuid, .name, members: creditedMembers }
 				END
@@ -795,7 +800,7 @@ export default () => `
 			creativeCredits,
 			crewEntityRel.credit AS crewCreditName,
 			COLLECT(
-				CASE crewEntity WHEN NULL
+				CASE WHEN crewEntity IS NULL
 					THEN null
 					ELSE crewEntity { .model, .uuid, .name, members: creditedMembers }
 				END

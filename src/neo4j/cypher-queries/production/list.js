@@ -16,25 +16,25 @@ export default () => `
 		production.name AS name,
 		production.startDate AS startDate,
 		production.endDate AS endDate,
-		CASE venue WHEN NULL
+		CASE WHEN venue IS NULL
 			THEN null
 			ELSE venue {
 				model: 'VENUE',
 				.uuid,
 				.name,
-				surVenue: CASE surVenue WHEN NULL
+				surVenue: CASE WHEN surVenue IS NULL
 					THEN null
 					ELSE surVenue { model: 'VENUE', .uuid, .name }
 				END
 			}
 		END AS venue,
-		CASE surProduction WHEN NULL
+		CASE WHEN surProduction IS NULL
 			THEN null
 			ELSE surProduction {
 				model: 'PRODUCTION',
 				.uuid,
 				.name,
-				surProduction: CASE surSurProduction WHEN NULL
+				surProduction: CASE WHEN surSurProduction IS NULL
 					THEN null
 					ELSE surSurProduction { model: 'PRODUCTION', .uuid, .name }
 				END

@@ -41,7 +41,7 @@ const getCreateUpdateQuery = action => {
 				($material.differentiator IS NULL AND existingMaterial.differentiator IS NULL) OR
 				$material.differentiator = existingMaterial.differentiator
 
-		FOREACH (item IN CASE $material.name WHEN NULL THEN [] ELSE [1] END |
+		FOREACH (item IN CASE WHEN $material.name IS NULL THEN [] ELSE [1] END |
 			MERGE (material:Material {
 				uuid: COALESCE(existingMaterial.uuid, $material.uuid),
 				name: $material.name
@@ -58,7 +58,7 @@ const getCreateUpdateQuery = action => {
 				($venue.differentiator IS NULL AND existingVenue.differentiator IS NULL) OR
 				$venue.differentiator = existingVenue.differentiator
 
-		FOREACH (item IN CASE $venue.name WHEN NULL THEN [] ELSE [1] END |
+		FOREACH (item IN CASE WHEN $venue.name IS NULL THEN [] ELSE [1] END |
 			MERGE (venue:Venue {
 				uuid: COALESCE(existingVenue.uuid, $venue.uuid),
 				name: $venue.name
@@ -74,7 +74,7 @@ const getCreateUpdateQuery = action => {
 
 				OPTIONAL MATCH (existingSubProduction:Production { uuid: subProductionParam.uuid })
 
-				FOREACH (item IN CASE existingSubProduction WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN existingSubProduction IS NULL THEN [] ELSE [1] END |
 					CREATE (production)-[:HAS_SUB_PRODUCTION { position: subProductionParam.position }]->
 						(existingSubProduction)
 				)
@@ -97,7 +97,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						producerPersonParam.differentiator = existingProducerPerson.differentiator
 
-				FOREACH (item IN CASE producerPersonParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN producerPersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (producerPerson:Person {
 						uuid: COALESCE(existingProducerPerson.uuid, producerPersonParam.uuid),
 						name: producerPersonParam.name
@@ -128,7 +128,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						producerCompanyParam.differentiator = existingProducerCompany.differentiator
 
-				FOREACH (item IN CASE producerCompanyParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN producerCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (producerCompany:Company {
 						uuid: COALESCE(existingProducerCompany.uuid, producerCompanyParam.uuid),
 						name: producerCompanyParam.name
@@ -170,7 +170,7 @@ const getCreateUpdateQuery = action => {
 						SET producerCompanyRel.creditedMemberUuids = []
 					)
 
-					FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN creditedMemberParam IS NULL THEN [] ELSE [1] END |
 						MERGE (creditedMember:Person {
 							uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
 							name: creditedMemberParam.name
@@ -197,7 +197,7 @@ const getCreateUpdateQuery = action => {
 					(castMemberParam.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
 					castMemberParam.differentiator = existingPerson.differentiator
 
-			FOREACH (item IN CASE castMemberParam WHEN NULL THEN [] ELSE [1] END |
+			FOREACH (item IN CASE WHEN castMemberParam IS NULL THEN [] ELSE [1] END |
 				MERGE (castMember:Person {
 					uuid: COALESCE(existingPerson.uuid, castMemberParam.uuid),
 					name: castMemberParam.name
@@ -236,7 +236,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						creativePersonParam.differentiator = existingCreativePerson.differentiator
 
-				FOREACH (item IN CASE creativePersonParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN creativePersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (creativePerson:Person {
 						uuid: COALESCE(existingCreativePerson.uuid, creativePersonParam.uuid),
 						name: creativePersonParam.name
@@ -267,7 +267,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
 
-				FOREACH (item IN CASE creativeCompanyParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN creativeCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (creativeCompany:Company {
 						uuid: COALESCE(existingCreativeCompany.uuid, creativeCompanyParam.uuid),
 						name: creativeCompanyParam.name
@@ -309,7 +309,7 @@ const getCreateUpdateQuery = action => {
 						SET creativeCompanyRel.creditedMemberUuids = []
 					)
 
-					FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN creditedMemberParam IS NULL THEN [] ELSE [1] END |
 						MERGE (creditedMember:Person {
 							uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
 							name: creditedMemberParam.name
@@ -345,7 +345,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						crewPersonParam.differentiator = existingCrewPerson.differentiator
 
-				FOREACH (item IN CASE crewPersonParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN crewPersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (crewPerson:Person {
 						uuid: COALESCE(existingCrewPerson.uuid, crewPersonParam.uuid),
 						name: crewPersonParam.name
@@ -376,7 +376,7 @@ const getCreateUpdateQuery = action => {
 						) OR
 						crewCompanyParam.differentiator = existingCrewCompany.differentiator
 
-				FOREACH (item IN CASE crewCompanyParam WHEN NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN crewCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (crewCompany:Company {
 						uuid: COALESCE(existingCrewCompany.uuid, crewCompanyParam.uuid),
 						name: crewCompanyParam.name
@@ -418,7 +418,7 @@ const getCreateUpdateQuery = action => {
 						SET crewCompanyRel.creditedMemberUuids = []
 					)
 
-					FOREACH (item IN CASE creditedMemberParam WHEN NULL THEN [] ELSE [1] END |
+					FOREACH (item IN CASE WHEN creditedMemberParam IS NULL THEN [] ELSE [1] END |
 						MERGE (creditedMember:Person {
 							uuid: COALESCE(existingPerson.uuid, creditedMemberParam.uuid),
 							name: creditedMemberParam.name

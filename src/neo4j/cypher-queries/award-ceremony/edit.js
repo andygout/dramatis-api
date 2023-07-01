@@ -53,7 +53,7 @@ export default () => `
 		nomineeRel.isWinner AS isWinner,
 		nomineeRel.customType AS customType,
 		COLLECT(
-			CASE nominee WHEN NULL
+			CASE WHEN nominee IS NULL
 				THEN null
 				ELSE nominee { .model, .uuid, .name, .differentiator, members: nominatedMembers }
 			END
@@ -105,7 +105,7 @@ export default () => `
 		ceremony.name AS name,
 		{ name: COALESCE(award.name, ''), differentiator: COALESCE(award.differentiator, '') } AS award,
 		COLLECT(
-			CASE category WHEN NULL
+			CASE WHEN category IS NULL
 				THEN null
 				ELSE category { .name, nominations }
 			END

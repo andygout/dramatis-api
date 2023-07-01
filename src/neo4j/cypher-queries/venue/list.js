@@ -12,7 +12,7 @@ export default () => `
 		venue.uuid AS uuid,
 		venue.name AS name,
 		COLLECT(
-			CASE subVenue WHEN NULL
+			CASE WHEN subVenue IS NULL
 				THEN null
 				ELSE subVenue { model: 'VENUE', .uuid, .name }
 			END

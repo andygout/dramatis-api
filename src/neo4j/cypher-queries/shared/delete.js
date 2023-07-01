@@ -14,7 +14,7 @@ export default model => {
 			-[]-(undeleteableInstanceAssociate)
 
 		UNWIND
-			CASE undeleteableInstanceAssociate WHEN NULL
+			CASE WHEN undeleteableInstanceAssociate IS NULL
 				THEN [null]
 				ELSE LABELS(undeleteableInstanceAssociate)
 			END AS associateLabel

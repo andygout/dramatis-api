@@ -15,7 +15,7 @@ const INDEXABLE_MODELS = new Set([
 
 const createIndex = async model => {
 
-	const createIndexQuery = `CREATE INDEX ON :${model}(name)`;
+	const createIndexQuery = `CREATE INDEX FOR (n:${model}) ON (n.name)`;
 
 	try {
 
