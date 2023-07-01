@@ -38,6 +38,7 @@ describe('Character with variant depiction and portrayal names', () => {
 	const IAN_HOGG_PERSON_UUID = '65';
 
 	let kingHenryVCharacter;
+	let sirJohnFalstaffCharacter;
 	let messengerCharacter;
 	let attendantCharacter;
 	let soldierCharacter;
@@ -376,6 +377,9 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		kingHenryVCharacter = await chai.request(app)
 			.get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
+
+		sirJohnFalstaffCharacter = await chai.request(app)
+			.get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
 		messengerCharacter = await chai.request(app)
 			.get(`/characters/${MESSENGER_CHARACTER_UUID}`);
@@ -741,6 +745,30 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { productions } = kingHenryVCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Sir John Falstaff (character)', () => {
+
+		it('includes no variant named depictions where none exist', () => {
+
+			const expectedVariantNamedDepictions = [];
+
+			const { variantNamedDepictions } = sirJohnFalstaffCharacter.body;
+
+			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+
+		});
+
+		it('includes no variant named portrayals where none exist', () => {
+
+			const expectedVariantNamedPortrayals = [];
+
+			const { variantNamedPortrayals } = sirJohnFalstaffCharacter.body;
+
+			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
 
 		});
 
