@@ -22,8 +22,7 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[writerRel:HAS_WRITING_ENTITY]->(entity)
-				WHERE entity:Person OR entity:Company
+			OPTIONAL MATCH (material)-[writerRel:HAS_WRITING_ENTITY]->(entity:Person|Company)
 
 			DELETE writerRel
 

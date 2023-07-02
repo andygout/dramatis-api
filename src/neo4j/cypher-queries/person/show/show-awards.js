@@ -64,9 +64,8 @@ export default () => `
 		COALESCE(nominatedEmployerCompany, person) AS entity,
 		COALESCE(nominatedCompanyRel, nomineeRel) AS entityRel
 
-	OPTIONAL MATCH (category)-[coNominatedEntityRel:HAS_NOMINEE]->(coNominatedEntity)
+	OPTIONAL MATCH (category)-[coNominatedEntityRel:HAS_NOMINEE]->(coNominatedEntity:Person|Company)
 		WHERE
-			(coNominatedEntity:Person OR coNominatedEntity:Company) AND
 			coNominatedEntityRel.nominatedCompanyUuid IS NULL AND
 			(
 				entityRel.nominationPosition IS NULL OR
