@@ -33,7 +33,7 @@ import {
 } from './shared';
 import {
 	getDuplicateRecordCheckQuery,
-	getExistenceQuery,
+	getExistenceCheckQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery
@@ -96,7 +96,7 @@ const sharedQueries = {
 
 const validationQueries = {
 	getDuplicateRecordCheckQuery,
-	getExistenceQuery,
+	getExistenceCheckQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery

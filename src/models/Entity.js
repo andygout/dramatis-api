@@ -115,10 +115,10 @@ export default class Entity extends Base {
 
 	async confirmExistenceInDatabase (opts = {}) {
 
-		const { getExistenceQuery } = validationQueries;
+		const { getExistenceCheckQuery } = validationQueries;
 
 		const { isExistent } = await neo4jQuery({
-			query: getExistenceQuery(opts.model || this.model),
+			query: getExistenceCheckQuery(opts.model || this.model),
 			params: { uuid: this.uuid }
 		});
 
