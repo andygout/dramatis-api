@@ -3,10 +3,8 @@ export default () => `
 
 	OPTIONAL MATCH (person)<-[:HAS_PRODUCER_ENTITY]-(production:Production)
 
-	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY]->(entity)
-		WHERE
-			(entity:Person OR entity:Company) AND
-			entityRel.creditedCompanyUuid IS NULL
+	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY WHERE entityRel.creditedCompanyUuid IS NULL]->
+		(entity:Person|Company)
 
 	UNWIND (CASE WHEN entityRel IS NOT NULL AND entityRel.creditedMemberUuids IS NOT NULL
 		THEN [uuid IN entityRel.creditedMemberUuids]
@@ -262,9 +260,8 @@ export default () => `
 		COALESCE(creditedEmployerCompany, person) AS entity,
 		COALESCE(creativeCompanyRel, creativeRel) AS entityRel
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity:Person|Company)
 		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(
 				entityRel.creditPosition IS NULL OR
@@ -473,9 +470,8 @@ export default () => `
 		COALESCE(creditedEmployerCompany, person) AS entity,
 		COALESCE(crewCompanyRel, crewRel) AS entityRel
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity:Person|Company)
 		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(
 				entityRel.creditPosition IS NULL OR

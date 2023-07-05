@@ -35,9 +35,8 @@ export default () => `
 		WITH company, nomineeRel, category, categoryRel, ceremony,
 			COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
 
-	OPTIONAL MATCH (category)-[coNominatedEntityRel:HAS_NOMINEE]->(coNominatedEntity)
+	OPTIONAL MATCH (category)-[coNominatedEntityRel:HAS_NOMINEE]->(coNominatedEntity:Person|Company)
 		WHERE
-			(coNominatedEntity:Person OR coNominatedEntity:Company) AND
 			coNominatedEntityRel.nominatedCompanyUuid IS NULL AND
 			(
 				nomineeRel.nominationPosition IS NULL OR

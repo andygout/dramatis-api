@@ -3,10 +3,8 @@ export default () => `
 
 	OPTIONAL MATCH (company)<-[:HAS_PRODUCER_ENTITY]-(production:Production)
 
-	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY]->(entity)
-		WHERE
-			(entity:Person OR entity:Company) AND
-			entityRel.creditedCompanyUuid IS NULL
+	OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY WHERE entityRel.creditedCompanyUuid IS NULL]->
+		(entity:Person|Company)
 
 	UNWIND (CASE WHEN entityRel IS NOT NULL AND entityRel.creditedMemberUuids IS NOT NULL
 		THEN [uuid IN entityRel.creditedMemberUuids]
@@ -138,9 +136,8 @@ export default () => `
 		WITH company, producerProductions, creativeRel, production,
 			COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREATIVE_ENTITY]->(coCreditedEntity:Person|Company)
 		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(creativeRel.creditPosition IS NULL OR creativeRel.creditPosition = coCreditedEntityRel.creditPosition) AND
 			coCreditedEntity.uuid <> company.uuid
@@ -290,9 +287,8 @@ export default () => `
 		WITH company, producerProductions, creativeProductions, crewRel, production,
 			COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
 
-	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity)
+	OPTIONAL MATCH (production)-[coCreditedEntityRel:HAS_CREW_ENTITY]->(coCreditedEntity:Person|Company)
 		WHERE
-			(coCreditedEntity:Person OR coCreditedEntity:Company) AND
 			coCreditedEntityRel.creditedCompanyUuid IS NULL AND
 			(crewRel.creditPosition IS NULL OR crewRel.creditPosition = coCreditedEntityRel.creditPosition) AND
 			coCreditedEntity.uuid <> company.uuid

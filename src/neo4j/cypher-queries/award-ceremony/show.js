@@ -10,11 +10,10 @@ export default () => [`
 			nominee:Production OR
 			nominee:Material
 
-	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
-		WHERE entity:Person OR entity:Company OR entity:Material
+	OPTIONAL MATCH (nominee:Material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
+		(entity:Person|Company|Material)
 
-	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter)
-		WHERE sourceMaterialWriter:Person OR sourceMaterialWriter:Company
+	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter:Person|Company)
 
 	WITH
 		ceremony,

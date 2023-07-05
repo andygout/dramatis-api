@@ -3,8 +3,7 @@ export default () => `
 
 	OPTIONAL MATCH (material)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial:Material)
 
-	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity)
-		WHERE entity:Person OR entity:Company OR entity:Material
+	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
 
 	WITH material, originalVersionMaterial, entityRel, entity
 		ORDER BY entityRel.creditPosition, entityRel.entityPosition
