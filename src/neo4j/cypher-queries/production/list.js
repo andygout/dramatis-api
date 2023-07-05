@@ -40,12 +40,13 @@ export default () => `
 				END
 			}
 		END AS surProduction
-		ORDER BY
-			production.startDate DESC,
-			COALESCE(surSurProduction.name, surProduction.name, production.name),
-			surSurProductionRel.position DESC,
-			surProductionRel.position DESC,
-			venue.name
+
+	ORDER BY
+		production.startDate DESC,
+		COALESCE(surSurProduction.name, surProduction.name, production.name),
+		surSurProductionRel.position DESC,
+		surProductionRel.position DESC,
+		venue.name
 
 	LIMIT 100
 `;

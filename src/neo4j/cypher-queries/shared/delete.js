@@ -35,17 +35,17 @@ export default model => {
 
 			DETACH DELETE deletableInstance
 
-			RETURN
-				CASE WHEN isDeleted
-					THEN deletableInstanceName
-					ELSE undeletableInstance.name
-				END AS name,
-				CASE WHEN isDeleted
-					THEN deletableInstancedifferentiator
-					ELSE undeletableInstance.differentiator
-				END AS differentiator,
-				isDeleted,
-				associatedModels
+		RETURN
+			CASE WHEN isDeleted
+				THEN deletableInstanceName
+				ELSE undeletableInstance.name
+			END AS name,
+			CASE WHEN isDeleted
+				THEN deletableInstancedifferentiator
+				ELSE undeletableInstance.differentiator
+			END AS differentiator,
+			isDeleted,
+			associatedModels
 	`;
 
 };

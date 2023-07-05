@@ -18,7 +18,8 @@ export default () => `
 			END
 		) AS subVenues
 
-	ORDER BY venue.name
+	ORDER BY
+		venue.name
 
 	LIMIT 100
 `;

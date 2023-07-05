@@ -9,7 +9,8 @@ export default () => `
 		ceremony.name AS name,
 		CASE WHEN award IS NULL THEN null ELSE award { model: 'AWARD', .uuid, .name } END AS award
 
-	ORDER BY ceremony.name DESC, award.name
+	ORDER BY
+		ceremony.name DESC, award.name
 
 	LIMIT 100
 `;

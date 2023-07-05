@@ -8,7 +8,8 @@ export default model => `
 		n.uuid AS uuid,
 		n.name AS name
 
-	ORDER BY n.name
+	ORDER BY
+		n.name
 
 	LIMIT 100
 `;
