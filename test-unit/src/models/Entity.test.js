@@ -58,9 +58,9 @@ describe('Entity model', () => {
 				getExistenceQuery:
 					sandbox.stub(cypherQueries.validationQueries, 'getExistenceQuery')
 						.returns('getExistenceQuery response'),
-				getDuplicateRecordCountQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getDuplicateRecordCountQuery')
-						.returns('getDuplicateRecordCountQuery response')
+				getDuplicateRecordCheckQuery:
+					sandbox.stub(cypherQueries.validationQueries, 'getDuplicateRecordCheckQuery')
+						.returns('getDuplicateRecordCheckQuery response')
 			},
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
@@ -415,23 +415,23 @@ describe('Entity model', () => {
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
-				stubs.neo4jQuery.resolves({ duplicateRecordCount: 0 });
+				stubs.neo4jQuery.resolves({ isDuplicateRecord: false });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParams,
-					stubs.validationQueries.getDuplicateRecordCountQuery,
+					stubs.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQuery
 				);
 				assert.calledOnce(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCountQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCheckQuery);
+				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
 					{
-						query: 'getDuplicateRecordCountQuery response',
+						query: 'getDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',
@@ -454,24 +454,24 @@ describe('Entity model', () => {
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
-				stubs.neo4jQuery.resolves({ duplicateRecordCount: 1 });
+				stubs.neo4jQuery.resolves({ isDuplicateRecord: true });
 				spy(instance, 'addPropertyError');
 				await instance.validateUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParams,
-					stubs.validationQueries.getDuplicateRecordCountQuery,
+					stubs.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
 				assert.calledOnce(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCountQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCheckQuery);
+				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
 					{
-						query: 'getDuplicateRecordCountQuery response',
+						query: 'getDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',
@@ -625,7 +625,7 @@ describe('Entity model', () => {
 				assert.calledWithExactly(
 					stubs.neo4jQuery.firstCall,
 					{
-						query: 'getDuplicateRecordCountQuery response',
+						query: 'getDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',
@@ -680,7 +680,7 @@ describe('Entity model', () => {
 				assert.calledWithExactly(
 					stubs.neo4jQuery.firstCall,
 					{
-						query: 'getDuplicateRecordCountQuery response',
+						query: 'getDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',
@@ -736,7 +736,7 @@ describe('Entity model', () => {
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
 					{
-						query: 'getDuplicateRecordCountQuery response',
+						query: 'getDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',

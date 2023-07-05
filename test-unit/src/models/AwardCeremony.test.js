@@ -41,8 +41,8 @@ describe('AwardCeremony model', () => {
 				AwardCeremonyCategory: AwardCeremonyCategoryStub
 			},
 			cypherQueriesModule: {
-				getAwardContextualDuplicateRecordCountQuery: stub()
-					.returns('getAwardContextualDuplicateRecordCountQuery response')
+				getAwardContextualDuplicateRecordCheckQuery: stub()
+					.returns('getAwardContextualDuplicateRecordCheckQuery response')
 			},
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' })
@@ -201,23 +201,23 @@ describe('AwardCeremony model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const instance = createInstance();
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ duplicateRecordCount: 0 });
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
 				spy(instance, 'addPropertyError');
 				await instance.validateAwardContextualUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
-					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery,
+					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
+				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
 				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
-						query: 'getAwardContextualDuplicateRecordCountQuery response',
+						query: 'getAwardContextualDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',
@@ -240,24 +240,24 @@ describe('AwardCeremony model', () => {
 			it('will call addPropertyError method', async () => {
 
 				const instance = createInstance();
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ duplicateRecordCount: 1 });
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
 				spy(instance, 'addPropertyError');
 				await instance.validateAwardContextualUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
-					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery,
+					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
 				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
-				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCountQuery);
+				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
+				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
 				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
-						query: 'getAwardContextualDuplicateRecordCountQuery response',
+						query: 'getAwardContextualDuplicateRecordCheckQuery response',
 						params: {
 							uuid: 'UUID_VALUE',
 							name: 'NAME_VALUE',

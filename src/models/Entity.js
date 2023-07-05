@@ -83,12 +83,12 @@ export default class Entity extends Base {
 
 	async validateUniquenessInDatabase () {
 
-		const { getDuplicateRecordCountQuery } = validationQueries;
+		const { getDuplicateRecordCheckQuery } = validationQueries;
 
 		const preparedParams = prepareAsParams(this);
 
-		const { duplicateRecordCount } = await neo4jQuery({
-			query: getDuplicateRecordCountQuery(this.model),
+		const { isDuplicateRecord } = await neo4jQuery({
+			query: getDuplicateRecordCheckQuery(this.model),
 			params: {
 				uuid: preparedParams.uuid,
 				name: preparedParams.name,
@@ -96,7 +96,7 @@ export default class Entity extends Base {
 			}
 		});
 
-		if (duplicateRecordCount > 0) {
+		if (isDuplicateRecord) {
 
 			const uniquenessErrorMessage = 'Name and differentiator combination already exists';
 

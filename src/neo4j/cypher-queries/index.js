@@ -1,6 +1,6 @@
 import { getShowQueries as getAwardShowQueries } from './award';
 import {
-	getAwardContextualDuplicateRecordCountQuery,
+	getAwardContextualDuplicateRecordCheckQuery,
 	getCreateQuery as getAwardCeremonyCreateQuery,
 	getEditQuery as getAwardCeremonyEditQuery,
 	getUpdateQuery as getAwardCeremonyUpdateQuery,
@@ -32,7 +32,7 @@ import {
 	getListQuery as getSharedListQuery
 } from './shared';
 import {
-	getDuplicateRecordCountQuery,
+	getDuplicateRecordCheckQuery,
 	getExistenceQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
@@ -95,7 +95,7 @@ const sharedQueries = {
 };
 
 const validationQueries = {
-	getDuplicateRecordCountQuery,
+	getDuplicateRecordCheckQuery,
 	getExistenceQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
@@ -103,7 +103,7 @@ const validationQueries = {
 };
 
 export {
-	getAwardContextualDuplicateRecordCountQuery,
+	getAwardContextualDuplicateRecordCheckQuery,
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,

@@ -25,7 +25,7 @@ describe('Input validation failures: Material instance', () => {
 			.stub(neo4jQueryModule, 'neo4jQuery')
 			.resolves({
 				isExistent: true,
-				duplicateRecordCount: 0,
+				isDuplicate: false,
 				isAssignedToSurMaterial: false,
 				isSurSurMaterial: false,
 				isSurMaterialOfSubjectMaterial: false,
