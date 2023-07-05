@@ -115,11 +115,12 @@ export default () => `
 			}
 		END AS surMaterial,
 		writingCredits
-		ORDER BY
-			material.year DESC,
-			COALESCE(surSurMaterial.name, surMaterial.name, material.name),
-			surSurMaterialRel.position DESC,
-			surMaterialRel.position DESC
+
+	ORDER BY
+		material.year DESC,
+		COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+		surSurMaterialRel.position DESC,
+		surMaterialRel.position DESC
 
 	LIMIT 100
 `;

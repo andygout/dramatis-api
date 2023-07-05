@@ -12,5 +12,6 @@ export default model => `
 				$uuid <> n.uuid
 			)
 
-	RETURN TOBOOLEAN(COUNT(n)) AS isDuplicateRecord
+	RETURN
+		TOBOOLEAN(COUNT(n)) AS isDuplicateRecord
 `;
