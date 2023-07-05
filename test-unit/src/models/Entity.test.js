@@ -55,9 +55,9 @@ describe('Entity model', () => {
 					sandbox.stub(cypherQueries.sharedQueries, 'getListQuery').returns('getListQuery response')
 			},
 			validationQueries: {
-				getExistenceQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getExistenceQuery')
-						.returns('getExistenceQuery response'),
+				getExistenceCheckQuery:
+					sandbox.stub(cypherQueries.validationQueries, 'getExistenceCheckQuery')
+						.returns('getExistenceCheckQuery response'),
 				getDuplicateRecordCheckQuery:
 					sandbox.stub(cypherQueries.validationQueries, 'getDuplicateRecordCheckQuery')
 						.returns('getDuplicateRecordCheckQuery response')
@@ -518,15 +518,15 @@ describe('Entity model', () => {
 				stubs.neo4jQuery.resolves({ isExistent: true });
 				await instance.confirmExistenceInDatabase();
 				assert.callOrder(
-					stubs.validationQueries.getExistenceQuery,
+					stubs.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.validationQueries.getExistenceQuery);
-				assert.calledWithExactly(stubs.validationQueries.getExistenceQuery, instance.model);
+				assert.calledOnce(stubs.validationQueries.getExistenceCheckQuery);
+				assert.calledWithExactly(stubs.validationQueries.getExistenceCheckQuery, instance.model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
-					{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
+					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
 				);
 
 			});
@@ -541,15 +541,15 @@ describe('Entity model', () => {
 				stubs.neo4jQuery.resolves({ isExistent: true });
 				await instance.confirmExistenceInDatabase({ model });
 				assert.callOrder(
-					stubs.validationQueries.getExistenceQuery,
+					stubs.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.validationQueries.getExistenceQuery);
-				assert.calledWithExactly(stubs.validationQueries.getExistenceQuery, model);
+				assert.calledOnce(stubs.validationQueries.getExistenceCheckQuery);
+				assert.calledWithExactly(stubs.validationQueries.getExistenceCheckQuery, model);
 				assert.calledOnce(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery,
-					{ query: 'getExistenceQuery response', params: { uuid: instance.uuid } }
+					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
 				);
 
 			});

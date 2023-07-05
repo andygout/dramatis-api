@@ -29,11 +29,11 @@ describe('Cypher Queries Validation module', () => {
 
 	});
 
-	describe('getExistenceQuery function', () => {
+	describe('getExistenceCheckQuery function', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesValidation.getExistenceQuery('VENUE');
+			const result = cypherQueriesValidation.getExistenceCheckQuery('VENUE');
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
