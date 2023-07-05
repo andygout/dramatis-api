@@ -10,5 +10,5 @@ export default () => `
 				$award.differentiator = award.differentiator
 			)
 
-	RETURN SIGN(COUNT(ceremony)) AS duplicateRecordCount
+	RETURN TOBOOLEAN(COUNT(ceremony)) AS isDuplicateRecord
 `;

@@ -5,11 +5,11 @@ import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespa
 
 describe('Cypher Queries Validation module', () => {
 
-	describe('getDuplicateRecordCountQuery function', () => {
+	describe('getDuplicateRecordCheckQuery function', () => {
 
 		it('returns requisite query', () => {
 
-			const result = cypherQueriesValidation.getDuplicateRecordCountQuery('VENUE', undefined);
+			const result = cypherQueriesValidation.getDuplicateRecordCheckQuery('VENUE', undefined);
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { name: $name })
 					WHERE
@@ -22,7 +22,7 @@ describe('Cypher Queries Validation module', () => {
 							$uuid <> n.uuid
 						)
 
-				RETURN SIGN(COUNT(n)) AS duplicateRecordCount
+				RETURN TOBOOLEAN(COUNT(n)) AS isDuplicateRecord
 			`));
 
 		});

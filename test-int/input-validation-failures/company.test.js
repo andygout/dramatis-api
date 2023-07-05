@@ -20,7 +20,7 @@ describe('Input validation failures: Company instance', () => {
 
 		// Stub with a contrived resolution that ensures various
 		// neo4jQuery function calls all pass database validation.
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ isExistent: true, duplicateRecordCount: 0 });
+		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ isExistent: true, isDuplicateRecord: false });
 
 	});
 

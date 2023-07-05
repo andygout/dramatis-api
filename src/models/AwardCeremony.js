@@ -2,7 +2,7 @@ import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Entity from './Entity';
 import { Award, AwardCeremonyCategory } from '.';
-import { getAwardContextualDuplicateRecordCountQuery } from '../neo4j/cypher-queries';
+import { getAwardContextualDuplicateRecordCheckQuery } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 import { MODELS } from '../utils/constants';
 
@@ -56,8 +56,8 @@ export default class AwardCeremony extends Entity {
 
 		const preparedParams = prepareAsParams(this);
 
-		const { duplicateRecordCount } = await neo4jQuery({
-			query: getAwardContextualDuplicateRecordCountQuery(),
+		const { isDuplicateRecord } = await neo4jQuery({
+			query: getAwardContextualDuplicateRecordCheckQuery(),
 			params: {
 				uuid: preparedParams.uuid,
 				name: preparedParams.name,
@@ -68,7 +68,7 @@ export default class AwardCeremony extends Entity {
 			}
 		});
 
-		if (duplicateRecordCount > 0) {
+		if (isDuplicateRecord) {
 
 			const uniquenessErrorMessage = 'Award ceremony already exists for given award';
 

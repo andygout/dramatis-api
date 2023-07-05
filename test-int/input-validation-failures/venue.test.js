@@ -24,7 +24,7 @@ describe('Input validation failures: Venue instance', () => {
 			.stub(neo4jQueryModule, 'neo4jQuery')
 			.resolves({
 				isExistent: true,
-				duplicateRecordCount: 0,
+				isDuplicateRecord: false,
 				isAssignedToSurVenue: false,
 				isSurVenue: false,
 				isSubjectVenueASubVenue: false
