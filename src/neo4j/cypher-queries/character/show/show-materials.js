@@ -1,162 +1,172 @@
 export default () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	OPTIONAL MATCH (character)<-[materialRel:DEPICTS]-(material:Material)
+	CALL {
+		WITH character
 
-	OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
+		OPTIONAL MATCH (character)
+			<-[variantNamedDepiction:DEPICTS WHERE variantNamedDepiction.displayName IS NOT NULL]-(:Material)
 
-	OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->(sourceMaterialWriter:Person|Company)
+		WITH variantNamedDepiction
+			ORDER BY variantNamedDepiction.displayName
 
-	OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
+		RETURN
+			COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
+	}
 
-	OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
+	CALL {
+		WITH character
 
-	WITH
-		character,
-		materialRel,
-		material,
-		entityRel,
-		entity,
-		entitySurMaterial,
-		entitySurSurMaterial,
-		sourceMaterialWriterRel,
-		sourceMaterialWriter
-		ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
+		OPTIONAL MATCH (character)<-[materialRel:DEPICTS]-(material:Material)
 
-	WITH
-		character,
-		materialRel,
-		material,
-		entityRel,
-		entity,
-		entitySurMaterial,
-		entitySurSurMaterial,
-		sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
-		COLLECT(
-			CASE WHEN sourceMaterialWriter IS NULL
-				THEN null
-				ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
-			END
-		) AS sourceMaterialWriters
+		OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
 
-	WITH character, materialRel, material, entityRel, entity, entitySurMaterial, entitySurSurMaterial,
-		COLLECT(
-			CASE SIZE(sourceMaterialWriters) WHEN 0
-				THEN null
-				ELSE {
-					model: 'WRITING_CREDIT',
-					name: COALESCE(sourceMaterialWritingCreditName, 'by'),
-					entities: sourceMaterialWriters
-				}
-			END
-		) AS sourceMaterialWritingCredits
-		ORDER BY entityRel.creditPosition, entityRel.entityPosition
+		OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->
+			(sourceMaterialWriter:Person|Company)
 
-	WITH character, materialRel, material, entityRel.credit AS writingCreditName,
-		COLLECT(
-			CASE WHEN entity IS NULL
-				THEN null
-				ELSE entity {
-					model: TOUPPER(HEAD(LABELS(entity))),
-					.uuid,
-					.name,
-					.format,
-					.year,
-					surMaterial: CASE WHEN entitySurMaterial IS NULL
-						THEN null
-						ELSE entitySurMaterial {
-							model: 'MATERIAL',
-							.uuid,
-							.name,
-							surMaterial: CASE WHEN entitySurSurMaterial IS NULL
-								THEN null
-								ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
-							END
-						}
-					END,
-					writingCredits: sourceMaterialWritingCredits
-				}
-			END
-		) AS entities
+		OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 
-	WITH character, materialRel, material, writingCreditName,
-		[entity IN entities | CASE entity.model WHEN 'MATERIAL'
-			THEN entity
-			ELSE entity { .model, .uuid, .name }
-		END] AS entities
+		OPTIONAL MATCH (entitySurMaterial)<-[:HAS_SUB_MATERIAL]-(entitySurSurMaterial:Material)
 
-	WITH character, materialRel, material,
-		COLLECT(
-			CASE SIZE(entities) WHEN 0
-				THEN null
-				ELSE {
-					model: 'WRITING_CREDIT',
-					name: COALESCE(writingCreditName, 'by'),
-					entities: entities
-				}
-			END
-		) AS writingCredits
-		ORDER BY materialRel.groupPosition, materialRel.characterPosition
+		WITH
+			materialRel,
+			material,
+			entityRel,
+			entity,
+			entitySurMaterial,
+			entitySurSurMaterial,
+			sourceMaterialWriterRel,
+			sourceMaterialWriter
+			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
-	WITH character, material, writingCredits,
-		COLLECT(
-			CASE WHEN ALL(x IN ['displayName', 'qualifier', 'group'] WHERE materialRel[x] IS NULL)
-				THEN null
-				ELSE materialRel { .displayName, .qualifier, .group }
-			END
-		) AS depictions
+		WITH
+			materialRel,
+			material,
+			entityRel,
+			entity,
+			entitySurMaterial,
+			entitySurSurMaterial,
+			sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
+			COLLECT(
+				CASE WHEN sourceMaterialWriter IS NULL
+					THEN null
+					ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+				END
+			) AS sourceMaterialWriters
 
-	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+		WITH materialRel, material, entityRel, entity, entitySurMaterial, entitySurSurMaterial,
+			COLLECT(
+				CASE SIZE(sourceMaterialWriters) WHEN 0
+					THEN null
+					ELSE {
+						model: 'WRITING_CREDIT',
+						name: COALESCE(sourceMaterialWritingCreditName, 'by'),
+						entities: sourceMaterialWriters
+					}
+				END
+			) AS sourceMaterialWritingCredits
+			ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-	OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+		WITH materialRel, material, entityRel.credit AS writingCreditName,
+			COLLECT(
+				CASE WHEN entity IS NULL
+					THEN null
+					ELSE entity {
+						model: TOUPPER(HEAD(LABELS(entity))),
+						.uuid,
+						.name,
+						.format,
+						.year,
+						surMaterial: CASE WHEN entitySurMaterial IS NULL
+							THEN null
+							ELSE entitySurMaterial {
+								model: 'MATERIAL',
+								.uuid,
+								.name,
+								surMaterial: CASE WHEN entitySurSurMaterial IS NULL
+									THEN null
+									ELSE entitySurSurMaterial { model: 'MATERIAL', .uuid, .name }
+								END
+							}
+						END,
+						writingCredits: sourceMaterialWritingCredits
+					}
+				END
+			) AS entities
 
-	WITH character, material, writingCredits, depictions, surMaterial, surSurMaterial
-		ORDER BY
-			material.year DESC,
-			COALESCE(surSurMaterial.name, surMaterial.name, material.name),
-			COALESCE(surSurMaterialRel.position, surMaterialRel.position, -1) DESC,
-			COALESCE(surSurMaterialRel.position, -1) DESC,
-			COALESCE(surMaterialRel.position, -1) DESC
+		WITH materialRel, material, writingCreditName,
+			[entity IN entities | CASE entity.model WHEN 'MATERIAL'
+				THEN entity
+				ELSE entity { .model, .uuid, .name }
+			END] AS entities
 
-	WITH character,
-		COLLECT(
-			CASE WHEN material IS NULL
-				THEN null
-				ELSE material {
-					model: 'MATERIAL',
-					.uuid,
-					.name,
-					.format,
-					.year,
-					surMaterial: CASE WHEN surMaterial IS NULL
-						THEN null
-						ELSE surMaterial {
-							model: 'MATERIAL',
-							.uuid,
-							.name,
-							surMaterial: CASE WHEN surSurMaterial IS NULL
-								THEN null
-								ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
-							END
-						}
-					END,
-					writingCredits,
-					depictions
-				}
-			END
-		) AS materials
+		WITH materialRel, material,
+			COLLECT(
+				CASE SIZE(entities) WHEN 0
+					THEN null
+					ELSE {
+						model: 'WRITING_CREDIT',
+						name: COALESCE(writingCreditName, 'by'),
+						entities: entities
+					}
+				END
+			) AS writingCredits
+			ORDER BY materialRel.groupPosition, materialRel.characterPosition
 
-	OPTIONAL MATCH (character)
-		<-[variantNamedDepiction:DEPICTS WHERE variantNamedDepiction.displayName IS NOT NULL]-(:Material)
+		WITH material, writingCredits,
+			COLLECT(
+				CASE WHEN ALL(x IN ['displayName', 'qualifier', 'group'] WHERE materialRel[x] IS NULL)
+					THEN null
+					ELSE materialRel { .displayName, .qualifier, .group }
+				END
+			) AS depictions
 
-	WITH character, materials, variantNamedDepiction
-		ORDER BY variantNamedDepiction.displayName
+		OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+
+		OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
+
+		WITH material, writingCredits, depictions, surMaterial, surSurMaterial
+			ORDER BY
+				material.year DESC,
+				COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+				COALESCE(surSurMaterialRel.position, surMaterialRel.position, -1) DESC,
+				COALESCE(surSurMaterialRel.position, -1) DESC,
+				COALESCE(surMaterialRel.position, -1) DESC
+
+		RETURN
+			COLLECT(
+				CASE WHEN material IS NULL
+					THEN null
+					ELSE material {
+						model: 'MATERIAL',
+						.uuid,
+						.name,
+						.format,
+						.year,
+						surMaterial: CASE WHEN surMaterial IS NULL
+							THEN null
+							ELSE surMaterial {
+								model: 'MATERIAL',
+								.uuid,
+								.name,
+								surMaterial: CASE WHEN surSurMaterial IS NULL
+									THEN null
+									ELSE surSurMaterial { model: 'MATERIAL', .uuid, .name }
+								END
+							}
+						END,
+						writingCredits,
+						depictions
+					}
+				END
+			) AS materials
+	}
 
 	RETURN
 		'CHARACTER' AS model,
 		character.uuid AS uuid,
 		character.name AS name,
 		character.differentiator AS differentiator,
-		materials,
-		COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
+		variantNamedDepictions,
+		materials
 `;
