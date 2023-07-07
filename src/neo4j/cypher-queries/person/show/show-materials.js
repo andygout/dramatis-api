@@ -29,7 +29,6 @@ export default () => `
 			(sourceMaterialWriter:Person|Company)
 
 		WITH
-			person,
 			material,
 			writerRel.creditType AS creditType,
 			CASE WHEN writerRel IS NULL THEN false ELSE true END AS hasDirectCredit,
@@ -44,7 +43,6 @@ export default () => `
 			ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition
 
 		WITH
-			person,
 			material,
 			creditType,
 			hasDirectCredit,
@@ -63,7 +61,6 @@ export default () => `
 			) AS sourceMaterialWriters
 
 		WITH
-			person,
 			material,
 			creditType,
 			hasDirectCredit,
@@ -86,7 +83,6 @@ export default () => `
 			ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
 		WITH
-			person,
 			material,
 			creditType,
 			hasDirectCredit,
@@ -120,7 +116,6 @@ export default () => `
 			) AS entities
 
 		WITH
-			person,
 			material,
 			creditType,
 			hasDirectCredit,
@@ -137,7 +132,6 @@ export default () => `
 		OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
 
 		WITH
-			person,
 			material,
 			creditType,
 			hasDirectCredit,
@@ -163,7 +157,7 @@ export default () => `
 				surSurMaterialRel.position DESC,
 				surMaterialRel.position DESC
 
-		WITH person,
+		WITH
 			COLLECT(
 				CASE WHEN material IS NULL
 					THEN null
@@ -195,10 +189,6 @@ export default () => `
 			) AS materials
 
 	RETURN
-		'PERSON' AS model,
-		person.uuid AS uuid,
-		person.name AS name,
-		person.differentiator AS differentiator,
 		[
 			material IN materials WHERE
 				material.hasDirectCredit AND

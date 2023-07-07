@@ -286,7 +286,6 @@ export default () => [`
 			) AS categories
 	}
 
-
 	RETURN
 		'AWARD_CEREMONY' AS model,
 		ceremony.uuid AS uuid,
