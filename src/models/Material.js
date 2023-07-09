@@ -79,11 +79,7 @@ export default class Material extends MaterialBase {
 
 		});
 
-		const duplicateCharacterGroupIndices = getDuplicateNameIndices(this.characterGroups);
-
-		this.characterGroups.forEach((characterGroup, index) =>
-			characterGroup.runInputValidations({ isDuplicate: duplicateCharacterGroupIndices.includes(index) })
-		);
+		this.characterGroups.forEach(characterGroup => characterGroup.runInputValidations());
 
 	}
 

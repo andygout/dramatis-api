@@ -23,11 +23,9 @@ export default class CharacterGroup extends Base {
 
 	}
 
-	runInputValidations (opts) {
+	runInputValidations () {
 
 		this.validateName({ isRequired: false });
-
-		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
 
 		const duplicateCharacterIndices = getDuplicateCharacterIndices(this.characters);
 
