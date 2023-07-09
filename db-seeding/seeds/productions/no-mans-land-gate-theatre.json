@@ -1,30 +1,22 @@
 {
-	"uuid": "42714861-a8e0-4f78-b336-04f4b78448ea",
 	"name": "No Man's Land",
-	"startDate": "2008-09-27",
-	"pressDate": "2008-10-07",
-	"endDate": "2009-01-03",
+	"startDate": "2008-08-21",
+	"pressDate": "2008-08-26",
+	"endDate": "2008-09-20",
 	"material": {
 		"name": "No Man's Land"
 	},
 	"venue": {
-		"name": "Duke of York's Theatre"
+		"name": "Gate Theatre",
+		"differentiator": "2"
 	},
 	"producerCredits": [
 		{
-			"name": "presented by",
 			"entities": [
 				{
 					"model": "COMPANY",
-					"name": "Sonia Friedman Productions"
-				}
-			]
-		},
-		{
-			"entities": [
-				{
-					"model": "COMPANY",
-					"name": "Gate Theatre (Dublin)"
+					"name": "Gate Theatre",
+					"differentiator": "2"
 				}
 			]
 		}

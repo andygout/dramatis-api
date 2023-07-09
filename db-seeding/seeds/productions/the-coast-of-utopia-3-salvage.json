@@ -166,7 +166,8 @@
 					"qualifier": "adult"
 				},
 				{
-					"name": "Doctor"
+					"name": "Doctor",
+					"differentiator": "Salvage"
 				}
 			]
 		},

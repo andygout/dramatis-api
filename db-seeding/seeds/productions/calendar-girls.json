@@ -155,6 +155,7 @@
 		},
 		{
 			"name": "Costume Designer",
+			"differentiator": "1",
 			"entities": [
 				{
 					"name": "Emma Williams"

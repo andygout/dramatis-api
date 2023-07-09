@@ -1,0 +1,92 @@
+{
+	"name": "Love Story",
+	"differentiator": "3",
+	"format": "musical",
+	"year": "2010",
+	"writingCredits": [
+		{
+			"name": "music by",
+			"entities": [
+				{
+					"name": "Howard Goodall"
+				}
+			]
+		},
+		{
+			"name": "book and lyrics by",
+			"entities": [
+				{
+					"name": "Stephen Clark"
+				}
+			]
+		},
+		{
+			"name": "additional lyrics by",
+			"entities": [
+				{
+					"name": "Howard Goodall"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Love Story",
+					"differentiator": "1"
+				},
+				{
+					"model": "MATERIAL",
+					"name": "Love Story",
+					"differentiator": "2"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Oliver Barrett IV"
+				},
+				{
+					"name": "Jenny Cavilleri"
+				},
+				{
+					"name": "Phil Cavilleri"
+				},
+				{
+					"name": "Oliver Barrett III"
+				},
+				{
+					"name": "Alison Barrett"
+				},
+				{
+					"name": "Matt",
+					"differentiator": "Love Story"
+				},
+				{
+					"name": "Doctor",
+					"differentiator": "Love Story"
+				},
+				{
+					"name": "Tony",
+					"differentiator": "Love Story"
+				},
+				{
+					"name": "Dr Ackerman"
+				},
+				{
+					"name": "Waitress"
+				},
+				{
+					"name": "Secretary"
+				},
+				{
+					"name": "Jenny's Mother"
+				}
+			]
+		}
+	]
+}
