@@ -12,5 +12,5 @@ export default () => `
 	ORDER BY
 		ceremony.name DESC, award.name
 
-	LIMIT 100
+	LIMIT 1000
 `;

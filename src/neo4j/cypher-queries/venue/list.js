@@ -21,5 +21,5 @@ export default () => `
 	ORDER BY
 		venue.name
 
-	LIMIT 100
+	LIMIT 1000
 `;

@@ -11,5 +11,5 @@ export default model => `
 	ORDER BY
 		n.name
 
-	LIMIT 100
+	LIMIT 1000
 `;

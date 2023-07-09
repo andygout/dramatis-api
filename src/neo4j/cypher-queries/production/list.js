@@ -48,5 +48,5 @@ export default () => `
 		surProductionRel.position DESC,
 		venue.name
 
-	LIMIT 100
+	LIMIT 1000
 `;
