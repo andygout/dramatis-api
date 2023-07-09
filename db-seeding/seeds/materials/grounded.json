@@ -1,0 +1,24 @@
+{
+	"name": "Grounded",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "George Brant"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "The Pilot"
+				}
+			]
+		}
+	]
+}

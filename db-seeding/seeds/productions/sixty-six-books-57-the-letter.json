@@ -5,7 +5,8 @@
 	"pressDate": "2011-10-14",
 	"endDate": "2011-10-28",
 	"material": {
-		"name": "The Letter"
+		"name": "The Letter",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Bush Theatre"

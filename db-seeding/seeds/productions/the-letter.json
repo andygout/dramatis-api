@@ -1,0 +1,179 @@
+{
+	"name": "The Letter",
+	"startDate": "2007-04-19",
+	"pressDate": "2007-05-01",
+	"endDate": "2007-08-11",
+	"material": {
+		"name": "The Letter",
+		"differentiator": "1"
+	},
+	"venue": {
+		"name": "Wyndham's Theatre"
+	},
+	"producerCredits": [
+		{
+			"name": "presented by",
+			"entities": [
+				{
+					"name": "Bill Kenwright"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Chris McCalphy",
+			"roles": [
+				{
+					"name": "Geoffrey Hammond"
+				}
+			]
+		},
+		{
+			"name": "Jenny Seagrove",
+			"roles": [
+				{
+					"name": "Leslie Crosbie"
+				}
+			]
+		},
+		{
+			"name": "Jamie Zubairi",
+			"roles": [
+				{
+					"name": "Head Boy"
+				}
+			]
+		},
+		{
+			"name": "Andrew Joshi",
+			"roles": [
+				{
+					"name": "Hassan"
+				}
+			]
+		},
+		{
+			"name": "Peter Sandys-Clarke",
+			"roles": [
+				{
+					"name": "John Withers"
+				}
+			]
+		},
+		{
+			"name": "Andrew Charleson",
+			"roles": [
+				{
+					"name": "Robert Crosbie"
+				}
+			]
+		},
+		{
+			"name": "Anthony Andrews",
+			"roles": [
+				{
+					"name": "Howard Joyce"
+				}
+			]
+		},
+		{
+			"name": "Jason Chan",
+			"roles": [
+				{
+					"name": "Ong Chi Seng"
+				}
+			]
+		},
+		{
+			"name": "Sioned Jones",
+			"roles": [
+				{
+					"name": "Mrs Parker"
+				}
+			]
+		},
+		{
+			"name": "Jon David Yu",
+			"roles": [
+				{
+					"name": "Chung Hi"
+				}
+			]
+		},
+		{
+			"name": "Liz Sutherland",
+			"roles": [
+				{
+					"name": "Chinese Woman"
+				}
+			]
+		},
+		{
+			"name": "Karen Ascoe",
+			"roles": [
+				{
+					"name": "Dorothy Joyce"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Alan Strachan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Paul Farnsworth"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Brigid Guy"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jason Taylor"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ian Horrocks-Taylor"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Catherine Jayes"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Tom Littler"
+				}
+			]
+		}
+	]
+}

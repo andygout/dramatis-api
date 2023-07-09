@@ -1,0 +1,36 @@
+{
+	"name": "The Letter",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1927",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "W Somerset Maugham"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Leslie Crosbie"
+				},
+				{
+					"name": "Robert Crosbie"
+				},
+				{
+					"name": "Geoffrey Hammond"
+				},
+				{
+					"name": "Howard Joyce"
+				},
+				{
+					"name": "Ong Chi Seng"
+				}
+			]
+		}
+	]
+}

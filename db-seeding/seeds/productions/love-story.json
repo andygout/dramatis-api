@@ -1,0 +1,186 @@
+{
+	"name": "Love Story",
+	"startDate": "2010-05-29",
+	"pressDate": "2010-06-07",
+	"endDate": "2010-06-26",
+	"material": {
+		"name": "Love Story",
+		"differentiator": "3"
+	},
+	"venue": {
+		"name": "Minerva Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Michael Xavier",
+			"roles": [
+				{
+					"name": "Oliver Barrett IV"
+				}
+			]
+		},
+		{
+			"name": "Emma Williams",
+			"differentiator": "2",
+			"roles": [
+				{
+					"name": "Jenny Cavilleri"
+				}
+			]
+		},
+		{
+			"name": "Peter Polycarpou",
+			"roles": [
+				{
+					"name": "Phil Cavilleri"
+				}
+			]
+		},
+		{
+			"name": "Rob Edwards",
+			"roles": [
+				{
+					"name": "Oliver Barrett III"
+				}
+			]
+		},
+		{
+			"name": "Claire Carrie",
+			"roles": [
+				{
+					"name": "Alison Barrett"
+				}
+			]
+		},
+		{
+			"name": "Jos Slovick",
+			"roles": [
+				{
+					"name": "Matt"
+				}
+			]
+		},
+		{
+			"name": "Keiron Crook",
+			"roles": [
+				{
+					"name": "Doctor"
+				},
+				{
+					"name": "Tony"
+				}
+			]
+		},
+		{
+			"name": "Simeon Truby",
+			"roles": [
+				{
+					"name": "Dr Ackerman"
+				}
+			]
+		},
+		{
+			"name": "Lillie Flynn",
+			"roles": [
+				{
+					"name": "Waitress"
+				},
+				{
+					"name": "Secretary"
+				}
+			]
+		},
+		{
+			"name": "Julia Worsley",
+			"roles": [
+				{
+					"name": "Jenny's Mother"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rachel Kavanaugh"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Howard Harrison"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Matt McKenzie"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Nick Winston"
+				}
+			]
+		},
+		{
+			"name": "Orchestrations",
+			"entities": [
+				{
+					"name": "Howard Goodall"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Stephen Ridley"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Tom Attenborough"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Pippa Ailion"
+				}
+			]
+		}
+	]
+}
