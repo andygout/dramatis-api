@@ -139,7 +139,7 @@ describe('Cypher Queries Shared module', () => {
 				ORDER BY
 					n.name
 
-				LIMIT 100
+				LIMIT 1000
 			`));
 
 		});

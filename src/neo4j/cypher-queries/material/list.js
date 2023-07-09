@@ -122,5 +122,5 @@ export default () => `
 		surSurMaterialRel.position DESC,
 		surMaterialRel.position DESC
 
-	LIMIT 100
+	LIMIT 1000
 `;
