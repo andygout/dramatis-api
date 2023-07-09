@@ -94,11 +94,9 @@ describe('CharacterGroup model', () => {
 			};
 			const instance = createInstance(props);
 			spy(instance, 'validateName');
-			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(
 				instance.validateName,
-				instance.validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
 				instance.characters[0].validateUnderlyingName,

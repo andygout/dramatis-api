@@ -343,7 +343,6 @@ describe('Material model', () => {
 				instance.subMaterials[0].validateDifferentiator,
 				instance.subMaterials[0].validateNoAssociationWithSelf,
 				instance.subMaterials[0].validateUniquenessInGroup,
-				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.characterGroups[0].runInputValidations
 			);
 			assert.calledOnce(instance.validateName);
@@ -358,14 +357,10 @@ describe('Material model', () => {
 			assert.calledWithExactly(instance.originalVersionMaterial.validateName, { isRequired: false });
 			assert.calledOnce(instance.originalVersionMaterial.validateDifferentiator);
 			assert.calledWithExactly(instance.originalVersionMaterial.validateDifferentiator);
-			assert.calledTwice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
 			assert.calledWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.firstCall,
+				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.writingCredits
-			);
-			assert.calledWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.secondCall,
-				instance.characterGroups
 			);
 			assert.calledOnce(instance.writingCredits[0].runInputValidations);
 			assert.calledWithExactly(
@@ -398,10 +393,7 @@ describe('Material model', () => {
 				{ isDuplicate: false }
 			);
 			assert.calledOnce(instance.characterGroups[0].runInputValidations);
-			assert.calledWithExactly(
-				instance.characterGroups[0].runInputValidations,
-				{ isDuplicate: false }
-			);
+			assert.calledWithExactly(instance.characterGroups[0].runInputValidations);
 
 		});
 
