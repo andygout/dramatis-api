@@ -29,7 +29,7 @@ describe('Database validation failures: Productions API', () => {
 				const response = await chai.request(app)
 					.post('/productions')
 					.send({
-						name: 'The Coast of Utopia',
+						name: 'Sur-Grault',
 						subProductions: [
 							{
 								uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
@@ -39,7 +39,7 @@ describe('Database validation failures: Productions API', () => {
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
-					name: 'The Coast of Utopia',
+					name: 'Sur-Grault',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -76,7 +76,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
+				expect(await countNodesWithLabel('Production')).to.equal(0);
 
 			});
 
@@ -293,7 +293,7 @@ describe('Database validation failures: Productions API', () => {
 
 		context('sub-production uuid does not exist in database', () => {
 
-			const THE_COAST_OF_UTOPIA_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+			const SUR_GRAULT_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 			before(async () => {
 
@@ -301,8 +301,8 @@ describe('Database validation failures: Productions API', () => {
 
 				await createNode({
 					label: 'Production',
-					uuid: THE_COAST_OF_UTOPIA_PRODUCTION_UUID,
-					name: 'The Coast of Utopia'
+					uuid: SUR_GRAULT_PRODUCTION_UUID,
+					name: 'Sur-Grault'
 				});
 
 			});
@@ -312,9 +312,9 @@ describe('Database validation failures: Productions API', () => {
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
 				const response = await chai.request(app)
-					.put(`/productions/${THE_COAST_OF_UTOPIA_PRODUCTION_UUID}`)
+					.put(`/productions/${SUR_GRAULT_PRODUCTION_UUID}`)
 					.send({
-						name: 'The Coast of Utopia',
+						name: 'Sur-Grault',
 						subProductions: [
 							{
 								uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
@@ -324,8 +324,8 @@ describe('Database validation failures: Productions API', () => {
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
-					uuid: THE_COAST_OF_UTOPIA_PRODUCTION_UUID,
-					name: 'The Coast of Utopia',
+					uuid: SUR_GRAULT_PRODUCTION_UUID,
+					name: 'Sur-Grault',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -365,8 +365,8 @@ describe('Database validation failures: Productions API', () => {
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 				expect(await isNodeExistent({
 					label: 'Production',
-					name: 'The Coast of Utopia',
-					uuid: THE_COAST_OF_UTOPIA_PRODUCTION_UUID
+					name: 'Sur-Grault',
+					uuid: SUR_GRAULT_PRODUCTION_UUID
 				})).to.be.true;
 
 			});

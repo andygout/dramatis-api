@@ -230,7 +230,7 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				writingCredits: [
@@ -361,7 +361,7 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+				name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				writingCredits: [
@@ -492,7 +492,7 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
+				name: 'Part Three - Enduring Freedom (1996-2009)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				writingCredits: [
@@ -551,13 +551,13 @@ describe('Production with sub-sub-productions', () => {
 				],
 				subMaterials: [
 					{
-						name: 'Part One - Invasions and Independence 1842-1930'
+						name: 'Part One - Invasions and Independence (1842-1930)'
 					},
 					{
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996'
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)'
 					},
 					{
-						name: 'Part Three - Enduring Freedom 1996-2009'
+						name: 'Part Three - Enduring Freedom (1996-2009)'
 					}
 				],
 				characterGroups: [
@@ -817,12 +817,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
-					name: 'Part One - Invasions and Independence 1842-1930'
+					name: 'Part One - Invasions and Independence (1842-1930)'
 				},
 				venue: {
 					name: 'Roda Theatre'
@@ -1152,12 +1152,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+				name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996'
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)'
 				},
 				venue: {
 					name: 'Roda Theatre'
@@ -1487,12 +1487,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
+				name: 'Part Three - Enduring Freedom (1996-2009)',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
-					name: 'Part Three - Enduring Freedom 1996-2009'
+					name: 'Part Three - Enduring Freedom (1996-2009)'
 				},
 				venue: {
 					name: 'Roda Theatre'
@@ -1716,12 +1716,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part One - Invasions and Independence 1842-1930'
+					name: 'Part One - Invasions and Independence (1842-1930)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1787,12 +1787,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+				name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996'
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1858,12 +1858,12 @@ describe('Production with sub-sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
+				name: 'Part Three - Enduring Freedom (1996-2009)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part Three - Enduring Freedom 1996-2009'
+					name: 'Part Three - Enduring Freedom (1996-2009)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1989,14 +1989,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -2051,7 +2051,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -2195,7 +2195,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -2339,7 +2339,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -2563,14 +2563,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -2625,7 +2625,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -2769,7 +2769,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -2913,7 +2913,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -3137,14 +3137,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -3199,7 +3199,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -3343,7 +3343,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -3487,7 +3487,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -3718,7 +3718,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Part One - Invasions and Independence 1842-1930 at Roda Theatre (production with sur-production and sub-productions that have a sur-venue)', () => {
+	describe('Part One - Invasions and Independence (1842-1930) at Roda Theatre (production with sur-production and sub-productions that have a sur-venue)', () => {
 
 		it('includes The Great Game at Roda Theatre as its sur-production', () => {
 
@@ -3884,7 +3884,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4029,7 +4029,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4174,7 +4174,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4315,19 +4315,19 @@ describe('Production with sub-sub-productions', () => {
 
 	describe('Bugles at the Gates of Jalalabad at Roda Theatre', () => {
 
-		it('includes Part One - Invasions and Independence 1842-1930 at Roda Theatre as its sur-production and The Great Game: Afghanistan at Roda Theatre as its sur-sur-production', () => {
+		it('includes Part One - Invasions and Independence (1842-1930) at Roda Theatre as its sur-production and The Great Game: Afghanistan at Roda Theatre as its sur-sur-production', () => {
 
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
 					model: 'MATERIAL',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
 					surMaterial: {
@@ -4609,14 +4609,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -4667,7 +4667,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4720,7 +4720,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4773,7 +4773,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-									name: 'Part One - Invasions and Independence 1842-1930',
+									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4819,14 +4819,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -4877,7 +4877,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4930,7 +4930,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -4983,7 +4983,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-									name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5029,14 +5029,14 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
 						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						format: 'sub-collection of plays',
 						year: 2009,
 						surMaterial: {
@@ -5087,7 +5087,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5140,7 +5140,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5193,7 +5193,7 @@ describe('Production with sub-sub-productions', () => {
 								surMaterial: {
 									model: 'MATERIAL',
 									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-									name: 'Part Three - Enduring Freedom 1996-2009',
+									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
 										uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5246,7 +5246,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Part One - Invasions and Independence 1842-1930 at Tricycle Theatre (production with sur-production and sub-productions that do not have a sur-venue)', () => {
+	describe('Part One - Invasions and Independence (1842-1930) at Tricycle Theatre (production with sur-production and sub-productions that do not have a sur-venue)', () => {
 
 		it('includes The Great Game at Tricycle Theatre as its sur-production', () => {
 
@@ -5321,7 +5321,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5375,7 +5375,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5429,7 +5429,7 @@ describe('Production with sub-sub-productions', () => {
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-							name: 'Part One - Invasions and Independence 1842-1930',
+							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
 								uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -5479,19 +5479,19 @@ describe('Production with sub-sub-productions', () => {
 
 	describe('Bugles at the Gates of Jalalabad at Tricycle Theatre', () => {
 
-		it('includes Part One - Invasions and Independence 1842-1930 at Tricycle Theatre as its sur-production and The Great Game: Afghanistan at Tricycle Theatre as its sur-sur-production', () => {
+		it('includes Part One - Invasions and Independence (1842-1930) at Tricycle Theatre as its sur-production and The Great Game: Afghanistan at Tricycle Theatre as its sur-sur-production', () => {
 
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
 					model: 'MATERIAL',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
 					surMaterial: {
@@ -5630,7 +5630,7 @@ describe('Production with sub-sub-productions', () => {
 
 	});
 
-	describe('Part One - Invasions and Independence 1842-1930 (material)', () => {
+	describe('Part One - Invasions and Independence (1842-1930) (material)', () => {
 
 		it('includes its productions and their sur-productions', () => {
 
@@ -5638,7 +5638,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -5661,7 +5661,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5711,7 +5711,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5734,7 +5734,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5771,7 +5771,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5793,7 +5793,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5815,7 +5815,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5837,7 +5837,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5859,7 +5859,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5881,7 +5881,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5903,7 +5903,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5925,7 +5925,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5947,7 +5947,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5980,7 +5980,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -5998,7 +5998,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6016,7 +6016,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6034,7 +6034,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6052,7 +6052,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6070,7 +6070,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6088,7 +6088,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6106,7 +6106,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6124,7 +6124,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6166,7 +6166,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6218,7 +6218,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6270,7 +6270,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6322,7 +6322,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6374,7 +6374,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6426,7 +6426,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6478,7 +6478,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6530,7 +6530,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6582,7 +6582,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6649,7 +6649,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6701,7 +6701,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6753,7 +6753,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6805,7 +6805,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6857,7 +6857,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6909,7 +6909,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -6961,7 +6961,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7013,7 +7013,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7065,7 +7065,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7132,7 +7132,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7184,7 +7184,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7236,7 +7236,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7288,7 +7288,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7340,7 +7340,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7392,7 +7392,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7444,7 +7444,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7496,7 +7496,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7548,7 +7548,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7615,7 +7615,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7651,7 +7651,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7687,7 +7687,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7723,7 +7723,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7759,7 +7759,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7795,7 +7795,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7831,7 +7831,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7867,7 +7867,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7903,7 +7903,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -7954,7 +7954,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8002,7 +8002,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8050,7 +8050,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8098,7 +8098,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8146,7 +8146,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8194,7 +8194,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8242,7 +8242,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8290,7 +8290,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8338,7 +8338,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8401,7 +8401,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8448,7 +8448,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8495,7 +8495,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8542,7 +8542,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8589,7 +8589,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8636,7 +8636,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8683,7 +8683,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8730,7 +8730,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8777,7 +8777,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8839,7 +8839,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8885,7 +8885,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8931,7 +8931,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -8977,7 +8977,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9023,7 +9023,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9069,7 +9069,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9115,7 +9115,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9161,7 +9161,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9207,7 +9207,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9268,7 +9268,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9316,7 +9316,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9364,7 +9364,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9412,7 +9412,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9460,7 +9460,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9508,7 +9508,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9556,7 +9556,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9604,7 +9604,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9652,7 +9652,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9715,7 +9715,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9762,7 +9762,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9809,7 +9809,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9856,7 +9856,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9903,7 +9903,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9950,7 +9950,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -9997,7 +9997,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10044,7 +10044,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10091,7 +10091,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10153,7 +10153,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10199,7 +10199,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10245,7 +10245,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10291,7 +10291,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10337,7 +10337,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10383,7 +10383,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10429,7 +10429,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10475,7 +10475,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10521,7 +10521,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10582,7 +10582,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10620,7 +10620,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10658,7 +10658,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10696,7 +10696,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10734,7 +10734,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10772,7 +10772,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10810,7 +10810,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10848,7 +10848,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10886,7 +10886,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10942,7 +10942,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10969,7 +10969,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -10996,7 +10996,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11023,7 +11023,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11050,7 +11050,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11077,7 +11077,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11104,7 +11104,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11131,7 +11131,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11158,7 +11158,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -11181,7 +11181,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11204,7 +11204,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11227,7 +11227,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11250,7 +11250,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11273,7 +11273,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11296,7 +11296,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11319,7 +11319,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11342,7 +11342,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -11365,7 +11365,7 @@ describe('Production with sub-sub-productions', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
