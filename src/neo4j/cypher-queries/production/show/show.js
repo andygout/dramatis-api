@@ -16,28 +16,6 @@ export default () => `
 
 	UNWIND (CASE collectionProductions WHEN [] THEN [null] ELSE collectionProductions END) AS collectionProduction
 
-		OPTIONAL MATCH (collectionProduction)-[surProductionRel:HAS_SUB_PRODUCTION]->(production)
-
-		OPTIONAL MATCH (collectionProduction)-[surSurProductionRel:HAS_SUB_PRODUCTION]->
-			(:Production)-[:HAS_SUB_PRODUCTION]->(production)
-
-		OPTIONAL MATCH (collectionProduction)<-[subProductionRel:HAS_SUB_PRODUCTION]-(production)
-
-		OPTIONAL MATCH (collectionProduction)<-[subSubProductionRel:HAS_SUB_PRODUCTION]-
-			(subSubProductionSurProduction:Production)<-[:HAS_SUB_PRODUCTION]-(production)
-
-		WITH
-			production,
-			collectionProduction,
-			CASE WHEN production = collectionProduction THEN true ELSE false END AS isSubjectProduction,
-			CASE WHEN surProductionRel IS NULL THEN false ELSE true END AS isSurProduction,
-			CASE WHEN surSurProductionRel IS NULL THEN false ELSE true END AS isSurSurProduction,
-			CASE WHEN subProductionRel IS NULL THEN false ELSE true END AS isSubProduction,
-			subProductionRel.position AS subProductionPosition,
-			CASE WHEN subSubProductionRel IS NULL THEN false ELSE true END AS isSubSubProduction,
-			subSubProductionRel.position AS subSubProductionPosition,
-			subSubProductionSurProduction.uuid AS subSubProductionSurProductionUuid
-
 		OPTIONAL MATCH (collectionProduction)-[:PRODUCTION_OF]->(material:Material)
 
 		OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL]-(surMaterial:Material)
@@ -56,14 +34,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -78,14 +48,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -104,14 +66,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -134,14 +88,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -175,14 +121,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -195,14 +133,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			surMaterial,
 			surSurMaterial,
@@ -220,14 +150,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			CASE WHEN material IS NULL
 				THEN null
 				ELSE material {
@@ -259,14 +181,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			CASE WHEN venue IS NULL
 				THEN null
@@ -289,14 +203,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerEntityRel,
@@ -320,14 +226,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerEntityRel,
@@ -338,14 +236,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerEntityRel,
@@ -355,14 +245,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerEntityRel,
@@ -373,14 +255,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerEntityRel.credit AS producerCreditName,
@@ -394,14 +268,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCreditName,
@@ -413,14 +279,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			COLLECT(
@@ -448,14 +306,6 @@ export default () => `
 		WITH DISTINCT
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -467,14 +317,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -495,14 +337,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -521,14 +355,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -554,14 +380,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerCredits,
@@ -574,14 +392,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerCredits,
@@ -593,14 +403,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -613,14 +415,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -636,14 +430,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -657,14 +443,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -688,14 +466,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -722,14 +492,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerCredits,
@@ -743,14 +505,6 @@ export default () => `
 				WITH
 					production,
 					collectionProduction,
-					isSubjectProduction,
-					isSurProduction,
-					isSurSurProduction,
-					isSubProduction,
-					subProductionPosition,
-					isSubSubProduction,
-					subSubProductionPosition,
-					subSubProductionSurProductionUuid,
 					material,
 					venue,
 					producerCredits,
@@ -763,14 +517,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -784,14 +530,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -808,14 +546,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -830,14 +560,6 @@ export default () => `
 		WITH
 			production,
 			collectionProduction,
-			isSubjectProduction,
-			isSurProduction,
-			isSurSurProduction,
-			isSubProduction,
-			subProductionPosition,
-			isSubSubProduction,
-			subSubProductionPosition,
-			subSubProductionSurProductionUuid,
 			material,
 			venue,
 			producerCredits,
@@ -853,7 +575,33 @@ export default () => `
 					}
 				END
 			) AS crewCredits
-			ORDER BY subProductionPosition, subSubProductionPosition
+
+		OPTIONAL MATCH (collectionProduction)-[surProductionRel:HAS_SUB_PRODUCTION]->(production)
+
+		OPTIONAL MATCH (collectionProduction)-[surSurProductionRel:HAS_SUB_PRODUCTION]->
+			(:Production)-[:HAS_SUB_PRODUCTION]->(production)
+
+		OPTIONAL MATCH (collectionProduction)<-[subProductionRel:HAS_SUB_PRODUCTION]-(production)
+
+		OPTIONAL MATCH (collectionProduction)<-[subSubProductionRel:HAS_SUB_PRODUCTION]-
+			(subSubProductionSurProduction:Production)<-[:HAS_SUB_PRODUCTION]-(production)
+
+		WITH
+			production,
+			collectionProduction,
+			CASE WHEN production = collectionProduction THEN true ELSE false END AS isSubjectProduction,
+			CASE WHEN surProductionRel IS NULL THEN false ELSE true END AS isSurProduction,
+			CASE WHEN surSurProductionRel IS NULL THEN false ELSE true END AS isSurSurProduction,
+			CASE WHEN subProductionRel IS NULL THEN false ELSE true END AS isSubProduction,
+			CASE WHEN subSubProductionRel IS NULL THEN false ELSE true END AS isSubSubProduction,
+			subSubProductionSurProduction.uuid AS subSubProductionSurProductionUuid,
+			material,
+			venue,
+			producerCredits,
+			cast,
+			creativeCredits,
+			crewCredits
+			ORDER BY subProductionRel.position, subSubProductionRel.position
 
 		WITH production,
 			COLLECT(

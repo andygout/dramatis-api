@@ -16,41 +16,11 @@ export default () => `
 
 	UNWIND (CASE collectionMaterials WHEN [] THEN [null] ELSE collectionMaterials END) AS collectionMaterial
 
-		OPTIONAL MATCH (collectionMaterial)-[surMaterialRel:HAS_SUB_MATERIAL]->(material)
-
-		OPTIONAL MATCH (collectionMaterial)-[surSurMaterialRel:HAS_SUB_MATERIAL]->
-			(:Material)-[:HAS_SUB_MATERIAL]->(material)
-
-		OPTIONAL MATCH (collectionMaterial)<-[subMaterialRel:HAS_SUB_MATERIAL]-(material)
-
-		OPTIONAL MATCH (collectionMaterial)<-[subSubMaterialRel:HAS_SUB_MATERIAL]-
-			(subSubMaterialSurMaterial:Material)<-[:HAS_SUB_MATERIAL]-(material)
-
-		WITH
-			material,
-			collectionMaterial,
-			CASE WHEN material = collectionMaterial THEN true ELSE false END AS isSubjectMaterial,
-			CASE WHEN surMaterialRel IS NULL THEN false ELSE true END AS isSurMaterial,
-			CASE WHEN surSurMaterialRel IS NULL THEN false ELSE true END AS isSurSurMaterial,
-			CASE WHEN subMaterialRel IS NULL THEN false ELSE true END AS isSubMaterial,
-			subMaterialRel.position AS subMaterialPosition,
-			CASE WHEN subSubMaterialRel IS NULL THEN false ELSE true END AS isSubSubMaterial,
-			subSubMaterialRel.position AS subSubMaterialPosition,
-			subSubMaterialSurMaterial.uuid AS subSubMaterialSurMaterialUuid
-
 		OPTIONAL MATCH (collectionMaterial)-[:SUBSEQUENT_VERSION_OF]->(originalVersionMaterial)
 
 		WITH
 			material,
 			collectionMaterial,
-			isSubjectMaterial,
-			isSurMaterial,
-			isSurSurMaterial,
-			isSubMaterial,
-			subMaterialPosition,
-			isSubSubMaterial,
-			subSubMaterialPosition,
-			subSubMaterialSurMaterialUuid,
 			[collectionMaterial, originalVersionMaterial] AS relatedMaterials
 
 		UNWIND (CASE relatedMaterials WHEN [] THEN [null] ELSE relatedMaterials END) AS relatedMaterial
@@ -70,14 +40,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				CASE WHEN originalVersionRel IS NULL THEN false ELSE true END AS isOriginalVersion,
 				entityRel,
@@ -91,14 +53,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				isOriginalVersion,
 				entityRel,
@@ -116,14 +70,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				isOriginalVersion,
 				entityRel,
@@ -145,14 +91,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				isOriginalVersion,
 				entityRel.credit AS writingCreditName,
@@ -185,14 +123,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				isOriginalVersion,
 				writingCreditName,
@@ -204,14 +134,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				relatedMaterial,
 				isOriginalVersion,
 				COLLECT(
@@ -233,14 +155,6 @@ export default () => `
 			WITH
 				material,
 				collectionMaterial,
-				isSubjectMaterial,
-				isSurMaterial,
-				isSurSurMaterial,
-				isSubMaterial,
-				subMaterialPosition,
-				isSubSubMaterial,
-				subSubMaterialPosition,
-				subSubMaterialSurMaterialUuid,
 				COLLECT(
 					CASE WHEN relatedMaterial IS NULL
 						THEN null
@@ -271,14 +185,6 @@ export default () => `
 		WITH
 			material,
 			collectionMaterial,
-			isSubjectMaterial,
-			isSurMaterial,
-			isSurSurMaterial,
-			isSubMaterial,
-			subMaterialPosition,
-			isSubSubMaterial,
-			subSubMaterialPosition,
-			subSubMaterialSurMaterialUuid,
 			HEAD([
 				relatedMaterial IN relatedMaterials
 					WHERE relatedMaterial.uuid = collectionMaterial.uuid | relatedMaterial.writingCredits
@@ -293,14 +199,6 @@ export default () => `
 		WITH
 			material,
 			collectionMaterial,
-			isSubjectMaterial,
-			isSurMaterial,
-			isSurSurMaterial,
-			isSubMaterial,
-			subMaterialPosition,
-			isSubSubMaterial,
-			subSubMaterialPosition,
-			subSubMaterialSurMaterialUuid,
 			writingCredits,
 			originalVersionMaterial,
 			characterRel,
@@ -310,14 +208,6 @@ export default () => `
 		WITH
 			material,
 			collectionMaterial,
-			isSubjectMaterial,
-			isSurMaterial,
-			isSurSurMaterial,
-			isSubMaterial,
-			subMaterialPosition,
-			isSubSubMaterial,
-			subSubMaterialPosition,
-			subSubMaterialSurMaterialUuid,
 			writingCredits,
 			originalVersionMaterial,
 			characterRel.group AS characterGroupName,
@@ -337,14 +227,6 @@ export default () => `
 		WITH
 			material,
 			collectionMaterial,
-			isSubjectMaterial,
-			isSurMaterial,
-			isSurSurMaterial,
-			isSubMaterial,
-			subMaterialPosition,
-			isSubSubMaterial,
-			subSubMaterialPosition,
-			subSubMaterialSurMaterialUuid,
 			writingCredits,
 			originalVersionMaterial,
 			COLLECT(
@@ -358,7 +240,30 @@ export default () => `
 					}
 				END
 			) AS characterGroups
-			ORDER BY subMaterialPosition, subSubMaterialPosition
+
+		OPTIONAL MATCH (collectionMaterial)-[surMaterialRel:HAS_SUB_MATERIAL]->(material)
+
+		OPTIONAL MATCH (collectionMaterial)-[surSurMaterialRel:HAS_SUB_MATERIAL]->
+			(:Material)-[:HAS_SUB_MATERIAL]->(material)
+
+		OPTIONAL MATCH (collectionMaterial)<-[subMaterialRel:HAS_SUB_MATERIAL]-(material)
+
+		OPTIONAL MATCH (collectionMaterial)<-[subSubMaterialRel:HAS_SUB_MATERIAL]-
+			(subSubMaterialSurMaterial:Material)<-[:HAS_SUB_MATERIAL]-(material)
+
+		WITH
+			material,
+			collectionMaterial,
+			CASE WHEN material = collectionMaterial THEN true ELSE false END AS isSubjectMaterial,
+			CASE WHEN surMaterialRel IS NULL THEN false ELSE true END AS isSurMaterial,
+			CASE WHEN surSurMaterialRel IS NULL THEN false ELSE true END AS isSurSurMaterial,
+			CASE WHEN subMaterialRel IS NULL THEN false ELSE true END AS isSubMaterial,
+			CASE WHEN subSubMaterialRel IS NULL THEN false ELSE true END AS isSubSubMaterial,
+			subSubMaterialSurMaterial.uuid AS subSubMaterialSurMaterialUuid,
+			writingCredits,
+			originalVersionMaterial,
+			characterGroups
+			ORDER BY subMaterialRel.position, subSubMaterialRel.position
 
 		WITH material,
 			COLLECT(
