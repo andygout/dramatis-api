@@ -144,7 +144,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -223,7 +223,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+				name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -302,7 +302,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
+				name: 'Part Three - Enduring Freedom (1996-2009)',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -335,13 +335,13 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				year: '2009',
 				subMaterials: [
 					{
-						name: 'Part One - Invasions and Independence 1842-1930'
+						name: 'Part One - Invasions and Independence (1842-1930)'
 					},
 					{
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996'
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)'
 					},
 					{
-						name: 'Part Three - Enduring Freedom 1996-2009'
+						name: 'Part Three - Enduring Freedom (1996-2009)'
 					}
 				],
 				characterGroups: [
@@ -601,12 +601,12 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part One - Invasions and Independence 1842-1930',
+				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part One - Invasions and Independence 1842-1930'
+					name: 'Part One - Invasions and Independence (1842-1930)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -936,12 +936,12 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+				name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996'
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1271,12 +1271,12 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Part Three - Enduring Freedom 1996-2009',
+				name: 'Part Three - Enduring Freedom (1996-2009)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Part Three - Enduring Freedom 1996-2009'
+					name: 'Part Three - Enduring Freedom (1996-2009)'
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1772,7 +1772,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -1820,7 +1820,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -1868,7 +1868,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -1904,7 +1904,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -1960,7 +1960,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2008,7 +2008,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2056,7 +2056,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2092,7 +2092,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2148,7 +2148,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2196,7 +2196,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2244,7 +2244,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2280,7 +2280,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2390,7 +2390,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2438,7 +2438,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2486,7 +2486,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2522,7 +2522,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2578,7 +2578,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2626,7 +2626,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2674,7 +2674,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2710,7 +2710,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2766,7 +2766,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2814,7 +2814,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2862,7 +2862,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -2898,7 +2898,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3008,7 +3008,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3056,7 +3056,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3104,7 +3104,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3140,7 +3140,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3196,7 +3196,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3244,7 +3244,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3292,7 +3292,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3328,7 +3328,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3384,7 +3384,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3432,7 +3432,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3480,7 +3480,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3516,7 +3516,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3626,7 +3626,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3658,7 +3658,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3690,7 +3690,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3710,7 +3710,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3750,7 +3750,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3782,7 +3782,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3814,7 +3814,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3834,7 +3834,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3874,7 +3874,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3906,7 +3906,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3938,7 +3938,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -3958,7 +3958,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4036,7 +4036,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4080,7 +4080,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4124,7 +4124,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4156,7 +4156,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4208,7 +4208,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4252,7 +4252,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4296,7 +4296,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4328,7 +4328,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4380,7 +4380,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4424,7 +4424,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4468,7 +4468,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4500,7 +4500,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4602,7 +4602,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4645,7 +4645,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4688,7 +4688,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4719,7 +4719,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4770,7 +4770,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4813,7 +4813,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4856,7 +4856,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4887,7 +4887,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4938,7 +4938,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -4981,7 +4981,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5024,7 +5024,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5055,7 +5055,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5155,7 +5155,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5197,7 +5197,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5239,7 +5239,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5269,7 +5269,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5319,7 +5319,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5361,7 +5361,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5403,7 +5403,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5433,7 +5433,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5483,7 +5483,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5525,7 +5525,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5567,7 +5567,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5597,7 +5597,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5695,7 +5695,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5739,7 +5739,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5783,7 +5783,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5815,7 +5815,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5867,7 +5867,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5911,7 +5911,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5955,7 +5955,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5987,7 +5987,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6039,7 +6039,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6083,7 +6083,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6127,7 +6127,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6159,7 +6159,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6261,7 +6261,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6304,7 +6304,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6347,7 +6347,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6378,7 +6378,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6429,7 +6429,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6472,7 +6472,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6515,7 +6515,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6546,7 +6546,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6597,7 +6597,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6640,7 +6640,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6683,7 +6683,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6714,7 +6714,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6814,7 +6814,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6856,7 +6856,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6898,7 +6898,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6928,7 +6928,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6978,7 +6978,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7020,7 +7020,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7062,7 +7062,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7092,7 +7092,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7142,7 +7142,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7184,7 +7184,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7226,7 +7226,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7256,7 +7256,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7349,7 +7349,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7368,7 +7368,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7387,7 +7387,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7399,7 +7399,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'MATERIAL',
 					uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -7421,7 +7421,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7440,7 +7440,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7459,7 +7459,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7471,7 +7471,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'MATERIAL',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -7493,7 +7493,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7512,7 +7512,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7531,7 +7531,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surMaterial: {
 						model: 'MATERIAL',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
@@ -7543,7 +7543,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'MATERIAL',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -7591,7 +7591,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7625,7 +7625,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7659,7 +7659,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Three - Enduring Freedom 1996-2009',
+						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7681,7 +7681,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Three - Enduring Freedom 1996-2009',
+					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7723,7 +7723,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7757,7 +7757,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7791,7 +7791,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7813,7 +7813,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part Two - Communism, the Mujahideen and the Taliban 1979-1996',
+					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7855,7 +7855,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7889,7 +7889,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7923,7 +7923,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					surProduction: {
 						model: 'PRODUCTION',
 						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-						name: 'Part One - Invasions and Independence 1842-1930',
+						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -7945,7 +7945,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Part One - Invasions and Independence 1842-1930',
+					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {

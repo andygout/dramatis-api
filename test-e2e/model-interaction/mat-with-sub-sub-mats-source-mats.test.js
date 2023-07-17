@@ -72,7 +72,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			.post('/materials')
 			.send({
 				name: 'The Old Testament',
-				format: 'religious text',
+				format: 'division of religious texts',
 				year: '1611',
 				writingCredits: [
 					{
@@ -98,7 +98,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			.post('/materials')
 			.send({
 				name: 'The Bible: King James Version',
-				format: 'religious text',
+				format: 'collection of religious texts',
 				year: '1611',
 				writingCredits: [
 					{
@@ -139,7 +139,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						]
 					},
 					{
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
@@ -167,7 +167,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				year: '2011',
 				writingCredits: [
 					{
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
@@ -191,7 +191,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				year: '2011',
 				writingCredits: [
 					{
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
@@ -337,7 +337,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -445,7 +445,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'WRITING_CREDIT',
-					name: 'written in response to',
+					name: 'in response to',
 					entities: [
 						{
 							model: 'MATERIAL',
@@ -503,13 +503,13 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
 								uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
 								name: 'The Old Testament',
-								format: 'religious text',
+								format: 'division of religious texts',
 								year: 1611,
 								surMaterial: {
 									model: 'MATERIAL',
@@ -549,13 +549,13 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
 									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
 									name: 'The Bible: King James Version',
-									format: 'religious text',
+									format: 'collection of religious texts',
 									year: 1611,
 									surMaterial: null,
 									writingCredits: [
@@ -607,13 +607,13 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				writingCredits: [
 					{
 						model: 'WRITING_CREDIT',
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
 								uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
 								name: 'The Bible: King James Version',
-								format: 'religious text',
+								format: 'collection of religious texts',
 								year: 1611,
 								surMaterial: null,
 								writingCredits: [
@@ -691,7 +691,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -782,7 +782,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -873,7 +873,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -964,7 +964,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -1054,7 +1054,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					},
 					{
 						model: 'WRITING_CREDIT',
-						name: 'written in response to',
+						name: 'in response to',
 						entities: [
 							{
 								model: 'MATERIAL',
@@ -1144,7 +1144,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
@@ -1239,7 +1239,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						},
 						{
 							model: 'WRITING_CREDIT',
-							name: 'written in response to',
+							name: 'in response to',
 							entities: [
 								{
 									model: 'MATERIAL',
