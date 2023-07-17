@@ -2,10 +2,19 @@ export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
 	OPTIONAL MATCH (person)
-		<-[:HAS_WRITING_ENTITY]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
-		<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
+		<-[:HAS_WRITING_ENTITY]-(creditingMaterial:Material)-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
+		<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
+			-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+		WHERE
+			(
+				(creditingMaterial)-[:HAS_SUB_MATERIAL*0..2]->(originalVersionMaterial) AND
+				(subsequentVersionMaterial)-[:HAS_SUB_MATERIAL*0..2]->(nominatedSubsequentVersionMaterial)
+			) OR (
+				(creditingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial) AND
+				(subsequentVersionMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial)
+			)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE

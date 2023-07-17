@@ -4,6 +4,10 @@ export default () => `
 	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(materialLinkedToCategory:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+ 		WHERE (
+			(material)-[:HAS_SUB_MATERIAL*0..2]->(materialLinkedToCategory) OR
+			(material)<-[:HAS_SUB_MATERIAL*0..2]-(materialLinkedToCategory)
+		)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE

@@ -15,20 +15,24 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '4';
 	const SUB_HOGE_MATERIAL_UUID = '7';
 	const SUR_HOGE_MATERIAL_UUID = '13';
-	const SUB_WIBBLE_MATERIAL_UUID = '18';
-	const SUR_WIBBLE_MATERIAL_UUID = '24';
-	const SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID = '27';
-	const NOËL_COWARD_THEATRE_VENUE_UUID = '29';
-	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '30';
-	const SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '33';
-	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '36';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '46';
-	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '47';
-	const CONOR_CORGE_PERSON_UUID = '48';
-	const STAGECRAFT_LTD_COMPANY_UUID = '49';
-	const FERDINAND_FOO_PERSON_UUID = '50';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '60';
-	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '61';
+	const SUB_WIBBLE_PART_I_MATERIAL_UUID = '18';
+	const SUB_WIBBLE_PART_II_MATERIAL_UUID = '22';
+	const SUR_WIBBLE_MATERIAL_UUID = '30';
+	const SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID = '34';
+	const NOËL_COWARD_THEATRE_VENUE_UUID = '36';
+	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '37';
+	const SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '40';
+	const SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '43';
+	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '46';
+	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '56';
+	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '57';
+	const CONOR_CORGE_PERSON_UUID = '58';
+	const STAGECRAFT_LTD_COMPANY_UUID = '59';
+	const FERDINAND_FOO_PERSON_UUID = '60';
+	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '70';
+	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '71';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '80';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '81';
 
 	let laurenceOlivierAwards2020AwardCeremony;
 	let eveningStandardTheatreAwards2019AwardCeremony;
@@ -37,9 +41,9 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 	let ferdinandFooPerson;
 	let subHogeNoëlCowardProduction;
 	let surHogeNoëlCowardProduction;
-	let subWibbleJerwoodTheatreUpstairsProduction;
+	let subWibblePartIJerwoodTheatreUpstairsProduction;
 	let surWibbleJerwoodTheatreUpstairsProduction;
-	let subWibbleMaterial;
+	let subWibblePartIMaterial;
 	let surWibbleMaterial;
 
 	const sandbox = createSandbox();
@@ -87,7 +91,15 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Wibble',
+				name: 'Sub-Wibble: Part I',
+				format: 'play',
+				year: '2019'
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Wibble: Part II',
 				format: 'play',
 				year: '2019'
 			});
@@ -100,7 +112,10 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				year: '2019',
 				subMaterials: [
 					{
-						name: 'Sub-Wibble'
+						name: 'Sub-Wibble: Part I'
+					},
+					{
+						name: 'Sub-Wibble: Part II'
 					}
 				]
 			});
@@ -135,7 +150,18 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Wibble',
+				name: 'Sub-Wibble: Part I',
+				startDate: '2019-06-01',
+				endDate: '2019-06-30',
+				venue: {
+					name: 'Jerwood Theatre Upstairs'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sub-Wibble: Part II',
 				startDate: '2019-06-01',
 				endDate: '2019-06-30',
 				venue: {
@@ -154,7 +180,10 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				},
 				subProductions: [
 					{
-						uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+						uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+					},
+					{
+						uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
 					}
 				]
 			});
@@ -190,7 +219,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 										uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID
 									},
 									{
-										uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+										uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
 									}
 								],
 								materials: [
@@ -198,7 +227,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 										name: 'Sub-Hoge'
 									},
 									{
-										name: 'Sub-Wibble'
+										name: 'Sub-Wibble: Part I'
 									}
 								]
 							}
@@ -256,6 +285,35 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/award-ceremonies')
+			.send({
+				name: '2019',
+				award: {
+					name: 'Critics\' Circle Theatre Awards'
+				},
+				categories: [
+					{
+						name: 'Most Remarkable Role',
+						nominations: [
+							{
+								isWinner: true,
+								productions: [
+									{
+										uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+									}
+								],
+								materials: [
+									{
+										name: 'Sub-Wibble: Part II'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
 		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
 			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
 
@@ -277,14 +335,14 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		surHogeNoëlCowardProduction = await chai.request(app)
 			.get(`/productions/${SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		subWibbleJerwoodTheatreUpstairsProduction = await chai.request(app)
-			.get(`/productions/${SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
+		subWibblePartIJerwoodTheatreUpstairsProduction = await chai.request(app)
+			.get(`/productions/${SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
 		surWibbleJerwoodTheatreUpstairsProduction = await chai.request(app)
 			.get(`/productions/${SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
-		subWibbleMaterial = await chai.request(app)
-			.get(`/materials/${SUB_WIBBLE_MATERIAL_UUID}`);
+		subWibblePartIMaterial = await chai.request(app)
+			.get(`/materials/${SUB_WIBBLE_PART_I_MATERIAL_UUID}`);
 
 		surWibbleMaterial = await chai.request(app)
 			.get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
@@ -351,8 +409,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 								},
 								{
 									model: 'PRODUCTION',
-									uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-									name: 'Sub-Wibble',
+									uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+									name: 'Sub-Wibble: Part I',
 									startDate: '2019-06-01',
 									endDate: '2019-06-30',
 									venue: {
@@ -390,8 +448,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 								},
 								{
 									model: 'MATERIAL',
-									uuid: SUB_WIBBLE_MATERIAL_UUID,
-									name: 'Sub-Wibble',
+									uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+									name: 'Sub-Wibble: Part I',
 									format: 'play',
 									year: 2019,
 									surMaterial: {
@@ -667,8 +725,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -705,8 +763,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -884,8 +942,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -922,8 +980,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1099,8 +1157,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -1137,8 +1195,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1307,8 +1365,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											coProductions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -1345,8 +1403,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1515,8 +1573,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											coProductions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -1553,8 +1611,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1582,7 +1640,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 	});
 
-	describe('Sub-Wibble at Jerwood Theatre Upstairs (production)', () => {
+	describe('Sub-Wibble: Part I at Jerwood Theatre Upstairs (production)', () => {
 
 		it('includes its and its sur-production\'s award nominations, in the latter case specifying the recipient', () => {
 
@@ -1757,8 +1815,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1778,7 +1836,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				}
 			];
 
-			const { awards } = subWibbleJerwoodTheatreUpstairsProduction.body;
+			const { awards } = subWibblePartIJerwoodTheatreUpstairsProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
 
@@ -1791,6 +1849,65 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		it('includes its and its sub-productions\' award nominations, in the latter case specifying the recipient', () => {
 
 			const expectedAwards = [
+				{
+					model: 'AWARD',
+					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Critics\' Circle Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											recipientProduction: {
+												model: 'PRODUCTION',
+												uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+												name: 'Sub-Wibble: Part II',
+												startDate: '2019-06-01',
+												endDate: '2019-06-30',
+												venue: {
+													model: 'VENUE',
+													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+													name: 'Jerwood Theatre Upstairs',
+													surVenue: {
+														model: 'VENUE',
+														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+														name: 'Royal Court Theatre'
+													}
+												}
+											},
+											entities: [],
+											coProductions: [],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part II',
+													format: 'play',
+													year: 2019,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
@@ -1890,8 +2007,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											type: 'Nomination',
 											recipientProduction: {
 												model: 'PRODUCTION',
-												uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-												name: 'Sub-Wibble',
+												uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+												name: 'Sub-Wibble: Part I',
 												startDate: '2019-06-01',
 												endDate: '2019-06-30',
 												venue: {
@@ -1961,8 +2078,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2019,
 													surMaterial: {
@@ -1990,7 +2107,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 	});
 
-	describe('Sub-Wibble (play) (material)', () => {
+	describe('Sub-Wibble: Part I (play) (material)', () => {
 
 		it('includes its and its sur-material\'s award nominations, in the latter case specifying the recipient', () => {
 
@@ -2150,8 +2267,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
@@ -2196,7 +2313,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				}
 			];
 
-			const { awards } = subWibbleMaterial.body;
+			const { awards } = subWibblePartIMaterial.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
 
@@ -2209,6 +2326,65 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 		it('includes its and its sub-materials\' award nominations, in the latter case specifying the recipient', () => {
 
 			const expectedAwards = [
+				{
+					model: 'AWARD',
+					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
+					name: 'Critics\' Circle Theatre Awards',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							name: '2019',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Role',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											recipientMaterial: {
+												model: 'MATERIAL',
+												uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+												name: 'Sub-Wibble: Part II',
+												format: 'play',
+												year: 2019
+											},
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part II',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+														name: 'Sur-Wibble',
+														surProduction: null
+													}
+												}
+											],
+											coMaterials: []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'AWARD',
 					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
@@ -2318,8 +2494,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											type: 'Nomination',
 											recipientMaterial: {
 												model: 'MATERIAL',
-												uuid: SUB_WIBBLE_MATERIAL_UUID,
-												name: 'Sub-Wibble',
+												uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+												name: 'Sub-Wibble: Part I',
 												format: 'play',
 												year: 2019
 											},
@@ -2364,8 +2540,8 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2019-06-01',
 													endDate: '2019-06-30',
 													venue: {
