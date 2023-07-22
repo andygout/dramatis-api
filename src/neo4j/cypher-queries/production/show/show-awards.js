@@ -1,17 +1,17 @@
 export default () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*0..2]-(productionLinkedToCategory:Production)
+	OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*0..2]-(nominatedProduction:Production)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
  		WHERE (
-			(production)-[:HAS_SUB_PRODUCTION*0..2]->(productionLinkedToCategory) OR
-			(production)<-[:HAS_SUB_PRODUCTION*0..2]-(productionLinkedToCategory)
+			(production)-[:HAS_SUB_PRODUCTION*0..2]->(nominatedProduction) OR
+			(production)<-[:HAS_SUB_PRODUCTION*0..2]-(nominatedProduction)
 		)
 
-	OPTIONAL MATCH (productionLinkedToCategory)-[:PLAYS_AT]->(productionLinkedToCategoryVenue:Venue)
+	OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(nominatedProductionVenue:Venue)
 
-	OPTIONAL MATCH (productionLinkedToCategoryVenue)<-[:HAS_SUB_VENUE]-(productionLinkedToCategorySurVenue:Venue)
+	OPTIONAL MATCH (nominatedProductionVenue)<-[:HAS_SUB_VENUE]-(nominatedProductionSurVenue:Venue)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE
@@ -25,22 +25,22 @@ export default () => `
 			)
 
 	WITH production, nomineeRel, category, categoryRel, ceremony, nominatedEntityRel,
-		CASE WHEN production <> productionLinkedToCategory
-			THEN productionLinkedToCategory {
+		CASE WHEN production <> nominatedProduction
+			THEN nominatedProduction {
 				model: 'PRODUCTION',
 				.uuid,
 				.name,
 				.startDate,
 				.endDate,
-				venue: CASE WHEN productionLinkedToCategoryVenue IS NULL
+				venue: CASE WHEN nominatedProductionVenue IS NULL
 					THEN null
-					ELSE productionLinkedToCategoryVenue {
+					ELSE nominatedProductionVenue {
 						model: 'VENUE',
 						.uuid,
 						.name,
-						surVenue: CASE WHEN productionLinkedToCategorySurVenue IS NULL
+						surVenue: CASE WHEN nominatedProductionSurVenue IS NULL
 							THEN null
-							ELSE productionLinkedToCategorySurVenue { model: 'VENUE', .uuid, .name }
+							ELSE nominatedProductionSurVenue { model: 'VENUE', .uuid, .name }
 						END
 					}
 				END
