@@ -2,19 +2,22 @@ export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
 	OPTIONAL MATCH path=(company)
-		<-[:HAS_WRITING_ENTITY*0..1]-()-[:HAS_SUB_MATERIAL*0..2]-()
+		<-[:HAS_WRITING_ENTITY*0..1]-(creditingMaterial)-[:HAS_SUB_MATERIAL*0..2]-(nominatedMaterial)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
-	WHERE
-		(NONE(rel IN RELATIONSHIPS(path)
-			WHERE COALESCE(rel.creditType IN ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'], false)
-		)) AND
-		NOT EXISTS(
-			(company)
-			<-[:HAS_WRITING_ENTITY]-(:Material)
-			<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
-			<-[:HAS_NOMINEE]-(category)
-		)
+		WHERE
+			(NONE(rel IN RELATIONSHIPS(path)
+				WHERE COALESCE(rel.creditType IN ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'], false)
+			)) AND
+			NOT EXISTS(
+				(company)
+				<-[:HAS_WRITING_ENTITY]-(:Material)
+				<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
+				<-[:HAS_NOMINEE]-(category)
+			) AND (
+				(creditingMaterial)-[:HAS_SUB_MATERIAL*0..2]->(nominatedMaterial) OR
+				(creditingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedMaterial)
+			)
 
 	WITH company, nomineeRel, category, categoryRel, ceremony
 

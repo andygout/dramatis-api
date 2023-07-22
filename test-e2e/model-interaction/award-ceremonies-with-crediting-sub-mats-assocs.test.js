@@ -7,72 +7,86 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import purgeDatabase from '../test-helpers/neo4j/purge-database';
 
-describe('Award ceremonies with crediting sub-materials (with person/company nominations gained through associations to sur and sub-materials)', () => {
+describe('Award ceremonies with crediting sub-materials (with person/company/material nominations gained through associations to sur and sub-materials)', () => {
 
 	chai.use(chaiHttp);
 
-	const SUB_FRED_MATERIAL_UUID = '4';
+	const SUB_FRED_PART_I_MATERIAL_UUID = '4';
 	const JOHN_DOE_JR_PERSON_UUID = '6';
 	const SUB_PLAYWRIGHTS_LTD_COMPANY_UUID = '7';
-	const SUR_FRED_MATERIAL_UUID = '14';
-	const JOHN_DOE_SR_PERSON_UUID = '16';
-	const SUR_PLAYWRIGHTS_LTD_COMPANY_UUID = '17';
-	const FRANCIS_FLOB_JR_PERSON_UUID = '25';
-	const SUB_CURTAIN_UP_LTD_COMPANY_UUID = '26';
-	const FRANCIS_FLOB_SR_PERSON_UUID = '35';
-	const SUR_CURTAIN_UP_LTD_COMPANY_UUID = '36';
-	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '44';
-	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '58';
-	const JANE_ROE_JR_PERSON_UUID = '71';
-	const SUB_FICTIONEERS_LTD_COMPANY_UUID = '72';
-	const JANE_ROE_SR_PERSON_UUID = '81';
-	const SUR_FICTIONEERS_LTD_COMPANY_UUID = '82';
-	const SUB_WIBBLE_MATERIAL_UUID = '89';
-	const SUR_WIBBLE_MATERIAL_UUID = '101';
-	const SUB_HOGE_MATERIAL_UUID = '113';
-	const SUB_CINERIGHTS_LTD_COMPANY_UUID = '117';
-	const TALYSE_TATA_JR_PERSON_UUID = '118';
-	const SUR_HOGE_MATERIAL_UUID = '127';
-	const SUR_CINERIGHTS_LTD_COMPANY_UUID = '131';
-	const TALYSE_TATA_SR_PERSON_UUID = '132';
-	const NATIONAL_THEATRE_VENUE_UUID = '139';
-	const OLIVIER_THEATRE_VENUE_UUID = '140';
-	const LYTTELTON_THEATRE_VENUE_UUID = '141';
-	const ROYAL_COURT_THEATRE_VENUE_UUID = '147';
-	const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '148';
-	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '149';
-	const SUB_FRED_LYTTELTON_PRODUCTION_UUID = '150';
-	const SUR_FRED_LYTTELTON_PRODUCTION_UUID = '153';
-	const SUB_FRED_NOËL_COWARD_PRODUCTION_UUID = '156';
-	const NOËL_COWARD_THEATRE_VENUE_UUID = '158';
-	const SUR_FRED_NOËL_COWARD_PRODUCTION_UUID = '159';
-	const SUB_PLUGH_OLIVIER_PRODUCTION_UUID = '162';
-	const SUR_PLUGH_OLIVIER_PRODUCTION_UUID = '165';
-	const SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID = '168';
-	const WYNDHAMS_THEATRE_VENUE_UUID = '170';
-	const SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID = '171';
-	const SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '174';
-	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '177';
-	const SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID = '180';
-	const DUKE_OF_YORKS_THEATRE_VENUE_UUID = '182';
-	const SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID = '183';
-	const SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '186';
-	const SUR_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '189';
-	const SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID = '192';
-	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '195';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '204';
-	const WORDSMITH_AWARD_UUID = '205';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '216';
-	const PLAYWRITING_PRIZE_AWARD_UUID = '217';
+	const SUB_FRED_PART_II_MATERIAL_UUID = '10';
+	const SUR_FRED_MATERIAL_UUID = '20';
+	const JOHN_DOE_SR_PERSON_UUID = '22';
+	const SUR_PLAYWRIGHTS_LTD_COMPANY_UUID = '23';
+	const SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID = '30';
+	const FRANCIS_FLOB_JR_PERSON_UUID = '32';
+	const SUB_CURTAIN_UP_LTD_COMPANY_UUID = '33';
+	const SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = '46';
+	const FRANCIS_FLOB_SR_PERSON_UUID = '48';
+	const SUR_CURTAIN_UP_LTD_COMPANY_UUID = '49';
+	const SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID = '58';
+	const SUB_PLUGH_PART_II_SUBSEQUENT_VERSION_MATERIAL_UUID = '66';
+	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '78';
+	const SUB_WALDO_PART_I_MATERIAL_UUID = '90';
+	const JANE_ROE_JR_PERSON_UUID = '92';
+	const SUB_FICTIONEERS_LTD_COMPANY_UUID = '93';
+	const SUR_WALDO_MATERIAL_UUID = '106';
+	const JANE_ROE_SR_PERSON_UUID = '108';
+	const SUR_FICTIONEERS_LTD_COMPANY_UUID = '109';
+	const SUB_WIBBLE_PART_I_MATERIAL_UUID = '117';
+	const SUB_WIBBLE_PART_II_MATERIAL_UUID = '124';
+	const SUR_WIBBLE_MATERIAL_UUID = '135';
+	const SUB_HOGE_PART_I_MATERIAL_UUID = '148';
+	const SUB_CINERIGHTS_LTD_COMPANY_UUID = '152';
+	const TALYSE_TATA_JR_PERSON_UUID = '153';
+	const SUB_HOGE_PART_II_MATERIAL_UUID = '156';
+	const SUR_HOGE_MATERIAL_UUID = '168';
+	const SUR_CINERIGHTS_LTD_COMPANY_UUID = '172';
+	const TALYSE_TATA_SR_PERSON_UUID = '173';
+	const NATIONAL_THEATRE_VENUE_UUID = '181';
+	const OLIVIER_THEATRE_VENUE_UUID = '182';
+	const LYTTELTON_THEATRE_VENUE_UUID = '183';
+	const ROYAL_COURT_THEATRE_VENUE_UUID = '189';
+	const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '190';
+	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '191';
+	const SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID = '192';
+	const SUR_FRED_LYTTELTON_PRODUCTION_UUID = '195';
+	const SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID = '198';
+	const NOËL_COWARD_THEATRE_VENUE_UUID = '200';
+	const SUR_FRED_NOËL_COWARD_PRODUCTION_UUID = '201';
+	const SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID = '204';
+	const SUR_PLUGH_OLIVIER_PRODUCTION_UUID = '207';
+	const SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID = '210';
+	const WYNDHAMS_THEATRE_VENUE_UUID = '212';
+	const SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID = '213';
+	const SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '216';
+	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '219';
+	const SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID = '222';
+	const DUKE_OF_YORKS_THEATRE_VENUE_UUID = '224';
+	const SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID = '225';
+	const SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '228';
+	const SUR_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID = '231';
+	const SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID = '234';
+	const SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID = '237';
+	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '246';
+	const WORDSMITH_AWARD_UUID = '247';
+	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '258';
+	const PLAYWRITING_PRIZE_AWARD_UUID = '259';
+	const SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '270';
+	const SCRIPTING_SHIELD_AWARD_UUID = '271';
 
 	let johnDoeJrPerson;
 	let johnDoeSrPerson;
 	let subPlaywrightsLtdCompany;
 	let surPlaywrightsLtdCompany;
+	let subPlughPartIOriginalVersionMaterial;
+	let surPlughOriginalVersionMaterial;
 	let francisFlobJrPerson;
 	let francisFlobSrPerson;
 	let subCurtainUpLtdCompany;
 	let surCurtainUpLtdCompany;
+	let subWaldoPartIMaterial;
+	let surWaldoMaterial;
 	let janeRoeJrPerson;
 	let janeRoeSrPerson;
 	let subFictioneersLtdCompany;
@@ -95,7 +109,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Fred',
+				name: 'Sub-Fred: Part I',
 				format: 'play',
 				year: '2010',
 				writingCredits: [
@@ -111,6 +125,14 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Fred: Part II',
+				format: 'play',
+				year: '2010'
 			});
 
 		await chai.request(app)
@@ -134,7 +156,10 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Fred'
+						name: 'Sub-Fred: Part I'
+					},
+					{
+						name: 'Sub-Fred: Part II'
 					}
 				]
 			});
@@ -142,7 +167,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Plugh',
+				name: 'Sub-Plugh: Part I',
 				differentiator: '1',
 				format: 'play',
 				year: '1899',
@@ -159,6 +184,15 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Plugh: Part II',
+				differentiator: '1',
+				format: 'play',
+				year: '1899'
 			});
 
 		await chai.request(app)
@@ -183,7 +217,11 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Plugh',
+						name: 'Sub-Plugh: Part I',
+						differentiator: '1'
+					},
+					{
+						name: 'Sub-Plugh: Part II',
 						differentiator: '1'
 					}
 				]
@@ -192,12 +230,12 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Plugh',
+				name: 'Sub-Plugh: Part I',
 				differentiator: '2',
 				format: 'play',
 				year: '2009',
 				originalVersionMaterial: {
-					name: 'Sub-Plugh',
+					name: 'Sub-Plugh: Part I',
 					differentiator: '1'
 				},
 				writingCredits: [
@@ -225,6 +263,19 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Plugh: Part II',
+				differentiator: '2',
+				format: 'play',
+				year: '2009',
+				originalVersionMaterial: {
+					name: 'Sub-Plugh: Part II',
+					differentiator: '1'
+				}
 			});
 
 		await chai.request(app)
@@ -265,7 +316,11 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Plugh',
+						name: 'Sub-Plugh: Part I',
+						differentiator: '2'
+					},
+					{
+						name: 'Sub-Plugh: Part II',
 						differentiator: '2'
 					}
 				]
@@ -274,7 +329,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Waldo',
+				name: 'Sub-Waldo: Part I',
 				format: 'novel',
 				year: '1974',
 				writingCredits: [
@@ -290,6 +345,14 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Waldo: Part II',
+				format: 'novel',
+				year: '1974'
 			});
 
 		await chai.request(app)
@@ -313,7 +376,10 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Waldo'
+						name: 'Sub-Waldo: Part I'
+					},
+					{
+						name: 'Sub-Waldo: Part II'
 					}
 				]
 			});
@@ -321,7 +387,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Wibble',
+				name: 'Sub-Wibble: Part I',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -341,11 +407,19 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						entities: [
 							{
 								model: 'MATERIAL',
-								name: 'Sub-Waldo'
+								name: 'Sub-Waldo: Part I'
 							}
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Wibble: Part II',
+				format: 'play',
+				year: '2009'
 			});
 
 		await chai.request(app)
@@ -378,7 +452,10 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Wibble'
+						name: 'Sub-Wibble: Part I'
+					},
+					{
+						name: 'Sub-Wibble: Part II'
 					}
 				]
 			});
@@ -386,7 +463,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Sub-Hoge',
+				name: 'Sub-Hoge: Part I',
 				format: 'play',
 				year: '2008',
 				writingCredits: [
@@ -415,6 +492,14 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 						]
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Hoge: Part II',
+				format: 'play',
+				year: '2008'
 			});
 
 		await chai.request(app)
@@ -451,7 +536,10 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				],
 				subMaterials: [
 					{
-						name: 'Sub-Hoge'
+						name: 'Sub-Hoge: Part I'
+					},
+					{
+						name: 'Sub-Hoge: Part II'
 					}
 				]
 			});
@@ -487,7 +575,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Fred',
+				name: 'Sub-Fred: Part I',
 				startDate: '2010-02-01',
 				endDate: '2010-02-28',
 				venue: {
@@ -506,7 +594,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID
+						uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID
 					}
 				]
 			});
@@ -514,7 +602,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Fred',
+				name: 'Sub-Fred: Part I',
 				startDate: '2010-03-01',
 				endDate: '2010-03-31',
 				venue: {
@@ -533,7 +621,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID
+						uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID
 					}
 				]
 			});
@@ -541,7 +629,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Plugh',
+				name: 'Sub-Plugh: Part I',
 				startDate: '2009-07-01',
 				endDate: '2009-07-31',
 				venue: {
@@ -560,7 +648,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID
+						uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID
 					}
 				]
 			});
@@ -568,7 +656,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Plugh',
+				name: 'Sub-Plugh: Part I',
 				startDate: '2009-08-01',
 				endDate: '2009-08-31',
 				venue: {
@@ -587,7 +675,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID
+						uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID
 					}
 				]
 			});
@@ -595,7 +683,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Wibble',
+				name: 'Sub-Wibble: Part I',
 				startDate: '2009-05-01',
 				endDate: '2009-05-31',
 				venue: {
@@ -614,7 +702,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+						uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
 					}
 				]
 			});
@@ -622,7 +710,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Wibble',
+				name: 'Sub-Wibble: Part I',
 				startDate: '2009-06-01',
 				endDate: '2009-06-30',
 				venue: {
@@ -641,7 +729,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID
+						uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID
 					}
 				]
 			});
@@ -649,7 +737,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Hoge',
+				name: 'Sub-Hoge: Part I',
 				startDate: '2008-05-01',
 				endDate: '2008-05-31',
 				venue: {
@@ -668,7 +756,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+						uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
 					}
 				]
 			});
@@ -676,7 +764,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Hoge',
+				name: 'Sub-Hoge: Part I',
 				startDate: '2008-06-01',
 				endDate: '2008-06-30',
 				venue: {
@@ -695,7 +783,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				subProductions: [
 					{
-						uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID
+						uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID
 					}
 				]
 			});
@@ -714,30 +802,30 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 							{
 								productions: [
 									{
-										uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID
+										uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID
 									},
 									{
-										uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID
+										uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID
 									}
 								],
 								materials: [
 									{
-										name: 'Sub-Fred'
+										name: 'Sub-Fred: Part I'
 									}
 								]
 							},
 							{
 								productions: [
 									{
-										uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID
+										uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID
 									},
 									{
-										uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID
+										uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID
 									}
 								],
 								materials: [
 									{
-										name: 'Sub-Plugh',
+										name: 'Sub-Plugh: Part I',
 										differentiator: '2'
 									}
 								]
@@ -745,15 +833,15 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 							{
 								productions: [
 									{
-										uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
+										uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID
 									},
 									{
-										uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID
+										uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID
 									}
 								],
 								materials: [
 									{
-										name: 'Sub-Wibble'
+										name: 'Sub-Wibble: Part I'
 									}
 								]
 							},
@@ -761,15 +849,15 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 								isWinner: true,
 								productions: [
 									{
-										uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
+										uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID
 									},
 									{
-										uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID
+										uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID
 									}
 								],
 								materials: [
 									{
-										name: 'Sub-Hoge'
+										name: 'Sub-Hoge: Part I'
 									}
 								]
 							}
@@ -856,6 +944,52 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				]
 			});
 
+		await chai.request(app)
+			.post('/award-ceremonies')
+			.send({
+				name: '2009',
+				award: {
+					name: 'Scripting Shield'
+				},
+				categories: [
+					{
+						name: 'Most Notable Play',
+						nominations: [
+							{
+								materials: [
+									{
+										name: 'Sub-Fred: Part II'
+									}
+								]
+							},
+							{
+								isWinner: true,
+								materials: [
+									{
+										name: 'Sub-Plugh: Part II',
+										differentiator: '2'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Sub-Wibble: Part II'
+									}
+								]
+							},
+							{
+								materials: [
+									{
+										name: 'Sub-Hoge: Part II'
+									}
+								]
+							}
+						]
+					}
+				]
+			});
+
 		johnDoeJrPerson = await chai.request(app)
 			.get(`/people/${JOHN_DOE_JR_PERSON_UUID}`);
 
@@ -868,6 +1002,12 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 		surPlaywrightsLtdCompany = await chai.request(app)
 			.get(`/companies/${SUR_PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
+		subPlughPartIOriginalVersionMaterial = await chai.request(app)
+			.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+
+		surPlughOriginalVersionMaterial = await chai.request(app)
+			.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+
 		francisFlobJrPerson = await chai.request(app)
 			.get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
@@ -879,6 +1019,12 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 
 		surCurtainUpLtdCompany = await chai.request(app)
 			.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
+
+		subWaldoPartIMaterial = await chai.request(app)
+			.get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
+
+		surWaldoMaterial = await chai.request(app)
+			.get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 		janeRoeJrPerson = await chai.request(app)
 			.get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
@@ -1011,8 +1157,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-02-01',
 													endDate: '2010-02-28',
 													venue: {
@@ -1034,8 +1180,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-03-01',
 													endDate: '2010-03-31',
 													venue: {
@@ -1055,8 +1201,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											materials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_FRED_MATERIAL_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_MATERIAL_UUID,
+													name: 'Sub-Fred: Part I',
 													format: 'play',
 													year: 2010,
 													surMaterial: {
@@ -1162,6 +1308,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											employerCompany: null,
+											coEntities: [],
+											productions: [],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_FRED_PART_II_MATERIAL_UUID,
+													name: 'Sub-Fred: Part II',
+													format: 'play',
+													year: 2010,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_FRED_MATERIAL_UUID,
+														name: 'Sur-Fred',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -1183,8 +1372,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-02-01',
 													endDate: '2010-02-28',
 													venue: {
@@ -1206,8 +1395,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-03-01',
 													endDate: '2010-03-31',
 													venue: {
@@ -1227,8 +1416,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											materials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_FRED_MATERIAL_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_MATERIAL_UUID,
+													name: 'Sub-Fred: Part I',
 													format: 'play',
 													year: 2010,
 													surMaterial: {
@@ -1355,8 +1544,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-02-01',
 													endDate: '2010-02-28',
 													venue: {
@@ -1378,8 +1567,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-03-01',
 													endDate: '2010-03-31',
 													venue: {
@@ -1399,8 +1588,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											materials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_FRED_MATERIAL_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_MATERIAL_UUID,
+													name: 'Sub-Fred: Part I',
 													format: 'play',
 													year: 2010,
 													surMaterial: {
@@ -1506,6 +1695,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											members: [],
+											coEntities: [],
+											productions: [],
+											materials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_FRED_PART_II_MATERIAL_UUID,
+													name: 'Sub-Fred: Part II',
+													format: 'play',
+													year: 2010,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_FRED_MATERIAL_UUID,
+														name: 'Sur-Fred',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -1527,8 +1759,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_LYTTELTON_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_LYTTELTON_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-02-01',
 													endDate: '2010-02-28',
 													venue: {
@@ -1550,8 +1782,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_FRED_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Fred: Part I',
 													startDate: '2010-03-01',
 													endDate: '2010-03-31',
 													venue: {
@@ -1571,8 +1803,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											materials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_FRED_MATERIAL_UUID,
-													name: 'Sub-Fred',
+													uuid: SUB_FRED_PART_I_MATERIAL_UUID,
+													name: 'Sub-Fred: Part I',
 													format: 'play',
 													year: 2010,
 													surMaterial: {
@@ -1595,6 +1827,393 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 			const { awards } = surPlaywrightsLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
+
+		});
+
+	});
+
+	describe('Sub-Plugh: Part I (play, 1899) (material): subsequent versions have nominations', () => {
+
+		it('includes awards of its subsequent versions (and their respective sur-material) and its sur-material\'s subsequent versions', () => {
+
+			const expectedSubsequentVersionMaterialAwards = [
+				{
+					model: 'AWARD',
+					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
+					name: 'Playwriting Prize',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: null
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sur-Plugh',
+													format: 'collection of plays',
+													year: 2009,
+													surMaterial: null
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: WORDSMITH_AWARD_UUID,
+					name: 'Wordsmith Award',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							name: '2010',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { subsequentVersionMaterialAwards } = subPlughPartIOriginalVersionMaterial.body;
+
+			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+
+		});
+
+	});
+
+	describe('Sur-Plugh (collection of plays, 1899) (material): subsequent versions have nominations', () => {
+
+		it('includes awards of its subsequent versions (and their respective sub-materials) and its sub-materials\' subsequent versions', () => {
+
+			const expectedSubsequentVersionMaterialAwards = [
+				{
+					model: 'AWARD',
+					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
+					name: 'Playwriting Prize',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: null
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sur-Plugh',
+													format: 'collection of plays',
+													year: 2009,
+													surMaterial: null
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: WORDSMITH_AWARD_UUID,
+					name: 'Wordsmith Award',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							name: '2010',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
+
+			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
 
 		});
 
@@ -1700,8 +2319,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-07-01',
 													endDate: '2009-07-31',
 													venue: {
@@ -1723,8 +2342,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-08-01',
 													endDate: '2009-08-31',
 													venue: {
@@ -1745,8 +2364,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											subsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -1855,6 +2474,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -1875,8 +2537,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-07-01',
 													endDate: '2009-07-31',
 													venue: {
@@ -1898,8 +2560,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-08-01',
 													endDate: '2009-08-31',
 													venue: {
@@ -1920,8 +2582,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											subsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2050,8 +2712,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-07-01',
 													endDate: '2009-07-31',
 													venue: {
@@ -2073,8 +2735,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-08-01',
 													endDate: '2009-08-31',
 													venue: {
@@ -2095,8 +2757,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											subsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2205,6 +2867,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -2225,8 +2930,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_OLIVIER_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-07-01',
 													endDate: '2009-07-31',
 													venue: {
@@ -2248,8 +2953,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
 													startDate: '2009-08-01',
 													endDate: '2009-08-31',
 													venue: {
@@ -2270,8 +2975,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											subsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sub-Plugh',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2295,6 +3000,393 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+
+		});
+
+	});
+
+	describe('Sub-Waldo: Part I (novel, 1974) (material): materials that used it as source material have nominations', () => {
+
+		it('includes awards of materials (and their respective sur-material) that used it or its sur-material as source material', () => {
+
+			const expectedSourcingMaterialAwards = [
+				{
+					model: 'AWARD',
+					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
+					name: 'Playwriting Prize',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: null
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_WIBBLE_MATERIAL_UUID,
+													name: 'Sur-Wibble',
+													format: 'trilogy of plays',
+													year: 2009,
+													surMaterial: null
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: WORDSMITH_AWARD_UUID,
+					name: 'Wordsmith Award',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							name: '2010',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+														name: 'Sur-Wibble',
+														surProduction: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+														name: 'Sur-Wibble',
+														surProduction: null
+													}
+												}
+											],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterialAwards } = subWaldoPartIMaterial.body;
+
+			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+
+		});
+
+	});
+
+	describe('Sur-Waldo (trilogy of novels, 1974) (material): materials that used it as source material have nominations', () => {
+
+		it('includes awards of materials (and their respective sub-materials) that used it or its sub-materials as source material', () => {
+
+			const expectedSourcingMaterialAwards = [
+				{
+					model: 'AWARD',
+					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
+					name: 'Playwriting Prize',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: null
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_WIBBLE_MATERIAL_UUID,
+													name: 'Sur-Wibble',
+													format: 'trilogy of plays',
+													year: 2009,
+													surMaterial: null
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: WORDSMITH_AWARD_UUID,
+					name: 'Wordsmith Award',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							name: '2010',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
+													startDate: '2009-05-01',
+													endDate: '2009-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+														name: 'Sur-Wibble',
+														surProduction: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
+													startDate: '2009-06-01',
+													endDate: '2009-06-30',
+													venue: {
+														model: 'VENUE',
+														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
+														name: 'Duke of York\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
+														name: 'Sur-Wibble',
+														surProduction: null
+													}
+												}
+											],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterialAwards } = surWaldoMaterial.body;
+
+			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
 
 		});
 
@@ -2398,8 +3490,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-05-01',
 													endDate: '2009-05-31',
 													venue: {
@@ -2421,8 +3513,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-06-01',
 													endDate: '2009-06-30',
 													venue: {
@@ -2443,8 +3535,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											sourcingMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2550,6 +3642,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -2570,8 +3705,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-05-01',
 													endDate: '2009-05-31',
 													venue: {
@@ -2593,8 +3728,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-06-01',
 													endDate: '2009-06-30',
 													venue: {
@@ -2615,8 +3750,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											sourcingMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2742,8 +3877,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-05-01',
 													endDate: '2009-05-31',
 													venue: {
@@ -2765,8 +3900,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-06-01',
 													endDate: '2009-06-30',
 													venue: {
@@ -2787,8 +3922,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											sourcingMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -2894,6 +4029,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [],
+											materials: [],
+											sourcingMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part II',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_WIBBLE_MATERIAL_UUID,
+														name: 'Sur-Wibble',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -2914,8 +4092,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-05-01',
 													endDate: '2009-05-31',
 													venue: {
@@ -2937,8 +4115,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_WIBBLE_DUKE_OF_YORKS_PRODUCTION_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_DUKE_OF_YORKS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
 													startDate: '2009-06-01',
 													endDate: '2009-06-30',
 													venue: {
@@ -2959,8 +4137,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											sourcingMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_WIBBLE_MATERIAL_UUID,
-													name: 'Sub-Wibble',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
 													format: 'play',
 													year: 2009,
 													surMaterial: {
@@ -3088,8 +4266,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-05-01',
 													endDate: '2008-05-31',
 													venue: {
@@ -3111,8 +4289,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-06-01',
 													endDate: '2008-06-30',
 													venue: {
@@ -3133,8 +4311,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											rightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_HOGE_MATERIAL_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part I',
 													format: 'play',
 													year: 2008,
 													surMaterial: {
@@ -3243,6 +4421,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [],
+											materials: [],
+											rightsGrantorMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_HOGE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part II',
+													format: 'play',
+													year: 2008,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_HOGE_MATERIAL_UUID,
+														name: 'Sur-Hoge',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -3263,8 +4484,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-05-01',
 													endDate: '2008-05-31',
 													venue: {
@@ -3286,8 +4507,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-06-01',
 													endDate: '2008-06-30',
 													venue: {
@@ -3308,8 +4529,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											rightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_HOGE_MATERIAL_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part I',
 													format: 'play',
 													year: 2008,
 													surMaterial: {
@@ -3438,8 +4659,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-05-01',
 													endDate: '2008-05-31',
 													venue: {
@@ -3461,8 +4682,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-06-01',
 													endDate: '2008-06-30',
 													venue: {
@@ -3483,8 +4704,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											rightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_HOGE_MATERIAL_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part I',
 													format: 'play',
 													year: 2008,
 													surMaterial: {
@@ -3593,6 +4814,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 				},
 				{
 					model: 'AWARD',
+					uuid: SCRIPTING_SHIELD_AWARD_UUID,
+					name: 'Scripting Shield',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Notable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [],
+											materials: [],
+											rightsGrantorMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_HOGE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part II',
+													format: 'play',
+													year: 2008,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_HOGE_MATERIAL_UUID,
+														name: 'Sur-Hoge',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
 					uuid: WORDSMITH_AWARD_UUID,
 					name: 'Wordsmith Award',
 					ceremonies: [
@@ -3613,8 +4877,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											productions: [
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-05-01',
 													endDate: '2008-05-31',
 													venue: {
@@ -3636,8 +4900,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 												},
 												{
 													model: 'PRODUCTION',
-													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge: Part I',
 													startDate: '2008-06-01',
 													endDate: '2008-06-30',
 													venue: {
@@ -3658,8 +4922,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company nom
 											rightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
-													uuid: SUB_HOGE_MATERIAL_UUID,
-													name: 'Sub-Hoge',
+													uuid: SUB_HOGE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Hoge: Part I',
 													format: 'play',
 													year: 2008,
 													surMaterial: {

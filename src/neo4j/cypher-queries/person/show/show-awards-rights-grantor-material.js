@@ -3,9 +3,12 @@ export default () => `
 
 	OPTIONAL MATCH (person)
 		<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]
-		-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
+		-(material:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
+		WHERE
+			(material)-[:HAS_SUB_MATERIAL*0..2]->(nominatedRightsGrantorMaterial:Material) OR
+			(material)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 		WHERE
