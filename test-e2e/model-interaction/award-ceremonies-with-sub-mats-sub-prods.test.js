@@ -108,7 +108,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
-				format: 'trilogy of plays',
+				format: 'collection of plays',
 				year: '2019',
 				subMaterials: [
 					{
@@ -554,7 +554,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 									model: 'MATERIAL',
 									uuid: SUR_WIBBLE_MATERIAL_UUID,
 									name: 'Sur-Wibble',
-									format: 'trilogy of plays',
+									format: 'collection of plays',
 									year: 2019,
 									surMaterial: null,
 									writingCredits: []
@@ -658,7 +658,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -876,7 +876,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -1092,7 +1092,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -1312,7 +1312,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -1508,7 +1508,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -1728,7 +1728,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -1975,7 +1975,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2019,
 													surMaterial: null
 												}
@@ -2134,7 +2134,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 												model: 'MATERIAL',
 												uuid: SUR_WIBBLE_MATERIAL_UUID,
 												name: 'Sur-Wibble',
-												format: 'trilogy of plays',
+												format: 'collection of plays',
 												year: 2019
 											},
 											entities: [
@@ -2321,7 +2321,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 	});
 
-	describe('Sur-Wibble (trilogy of plays) (material)', () => {
+	describe('Sur-Wibble (collection of plays) (material)', () => {
 
 		it('includes its and its sub-materials\' award nominations, in the latter case specifying the recipient', () => {
 

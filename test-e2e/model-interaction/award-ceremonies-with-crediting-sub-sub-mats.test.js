@@ -402,7 +402,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Mid-Waldo',
-				format: 'sub-trilogy of novels',
+				format: 'sub-collection of novels',
 				year: '1974',
 				writingCredits: [
 					{
@@ -428,7 +428,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
-				format: 'trilogy of trilogies of novels',
+				format: 'collection of novels',
 				year: '1974',
 				writingCredits: [
 					{
@@ -484,7 +484,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble',
-				format: 'sub-trilogy of plays',
+				format: 'sub-collection of plays',
 				year: '2009',
 				writingCredits: [
 					{
@@ -519,7 +519,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
-				format: 'trilogy of trilogies of plays',
+				format: 'collection of plays',
 				year: '2009',
 				writingCredits: [
 					{
@@ -1988,7 +1988,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 									model: 'MATERIAL',
 									uuid: SUR_WIBBLE_MATERIAL_UUID,
 									name: 'Sur-Wibble',
-									format: 'trilogy of trilogies of plays',
+									format: 'collection of plays',
 									year: 2009,
 									surMaterial: null,
 									writingCredits: [
@@ -2016,7 +2016,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WALDO_MATERIAL_UUID,
 													name: 'Sur-Waldo',
-													format: 'trilogy of trilogies of novels',
+													format: 'collection of novels',
 													year: 1974,
 													surMaterial: null,
 													writingCredits: [
@@ -2385,7 +2385,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 									model: 'MATERIAL',
 									uuid: MID_WIBBLE_MATERIAL_UUID,
 									name: 'Mid-Wibble',
-									format: 'sub-trilogy of plays',
+									format: 'sub-collection of plays',
 									year: 2009,
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2418,7 +2418,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: MID_WALDO_MATERIAL_UUID,
 													name: 'Mid-Waldo',
-													format: 'sub-trilogy of novels',
+													format: 'sub-collection of novels',
 													year: 1974,
 													surMaterial: {
 														model: 'MATERIAL',
@@ -3722,7 +3722,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: MID_WIBBLE_MATERIAL_UUID,
 													name: 'Mid-Wibble',
-													format: 'sub-trilogy of plays',
+													format: 'sub-collection of plays',
 													year: 2009,
 													surMaterial: {
 														model: 'MATERIAL',
@@ -3798,7 +3798,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of trilogies of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -3992,7 +3992,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: MID_WIBBLE_MATERIAL_UUID,
 													name: 'Mid-Wibble',
-													format: 'sub-trilogy of plays',
+													format: 'sub-collection of plays',
 													year: 2009,
 													surMaterial: {
 														model: 'MATERIAL',
@@ -4068,7 +4068,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of trilogies of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
