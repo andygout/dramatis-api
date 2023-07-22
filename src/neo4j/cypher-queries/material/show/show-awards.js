@@ -1,12 +1,12 @@
 export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
-	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(materialLinkedToCategory:Material)
+	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedMaterial:Material)
 		<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 		<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
  		WHERE (
-			(material)-[:HAS_SUB_MATERIAL*0..2]->(materialLinkedToCategory) OR
-			(material)<-[:HAS_SUB_MATERIAL*0..2]-(materialLinkedToCategory)
+			(material)-[:HAS_SUB_MATERIAL*0..2]->(nominatedMaterial) OR
+			(material)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedMaterial)
 		)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
@@ -27,8 +27,8 @@ export default () => `
 		categoryRel,
 		ceremony,
 		nominatedEntityRel,
-		CASE WHEN material <> materialLinkedToCategory
-			THEN materialLinkedToCategory
+		CASE WHEN material <> nominatedMaterial
+			THEN nominatedMaterial
 			ELSE null
 		END AS recipientMaterial,
 		COLLECT(nominatedEntity {
