@@ -359,7 +359,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
-				format: 'trilogy of novels',
+				format: 'collection of novels',
 				year: '1974',
 				writingCredits: [
 					{
@@ -426,7 +426,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
-				format: 'trilogy of plays',
+				format: 'collection of plays',
 				year: '2009',
 				writingCredits: [
 					{
@@ -3069,7 +3069,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -3177,7 +3177,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 	});
 
-	describe('Sur-Waldo (trilogy of novels, 1974) (material): materials that used it as source material have nominations', () => {
+	describe('Sur-Waldo (collection of novels, 1974) (material): materials that used it as source material have nominations', () => {
 
 		it('includes awards of materials (and their respective sub-materials) that used it or its sub-materials as source material', () => {
 
@@ -3241,7 +3241,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -3456,7 +3456,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -3628,7 +3628,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -3843,7 +3843,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
@@ -4015,7 +4015,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
 													name: 'Sur-Wibble',
-													format: 'trilogy of plays',
+													format: 'collection of plays',
 													year: 2009,
 													surMaterial: null
 												}
