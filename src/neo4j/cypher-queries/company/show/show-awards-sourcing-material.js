@@ -19,6 +19,9 @@ export default () => `
 				) OR (
 					(creditingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(sourceMaterial) AND
 					(sourcingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSourcingMaterial)
+				) OR (
+					(creditingMaterial)-[:HAS_SUB_MATERIAL*0..2]->(sourceMaterial) AND
+					(sourcingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSourcingMaterial)
 				)
 			)
 

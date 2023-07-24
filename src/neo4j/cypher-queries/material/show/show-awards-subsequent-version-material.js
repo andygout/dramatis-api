@@ -13,6 +13,9 @@ export default () => `
 			) OR (
 				(material)<-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial) AND
 				(subsequentVersionMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial)
+			) OR (
+				(material)-[:HAS_SUB_MATERIAL*0..2]->(originalVersionMaterial) AND
+				(subsequentVersionMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial)
 			)
 
 	OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
