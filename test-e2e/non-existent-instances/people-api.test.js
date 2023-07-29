@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
 import app from '../../src/app';
-import purgeDatabase from '../test-helpers/neo4j/purge-database';
+import { purgeDatabase } from '../test-helpers/neo4j';
 
 describe('Non-existent instances: People API', () => {
 

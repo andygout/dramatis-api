@@ -5,9 +5,7 @@ import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
 import app from '../../src/app';
-import createRelationship from '../test-helpers/neo4j/create-relationship';
-import deleteRelationship from '../test-helpers/neo4j/delete-relationship';
-import purgeDatabase from '../test-helpers/neo4j/purge-database';
+import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j';
 
 describe('Award ceremonies with crediting material collections loosely connected to source material/original version (with person/company/material nominations gained via associations to sur-sur and sub-sub-materials)', () => {
 

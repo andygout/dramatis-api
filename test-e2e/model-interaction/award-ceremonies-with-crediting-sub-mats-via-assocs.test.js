@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
 import app from '../../src/app';
-import purgeDatabase from '../test-helpers/neo4j/purge-database';
+import { purgeDatabase } from '../test-helpers/neo4j';
 
 describe('Award ceremonies with crediting sub-materials (with person/company/material nominations gained via associations to sur and sub-materials)', () => {
 

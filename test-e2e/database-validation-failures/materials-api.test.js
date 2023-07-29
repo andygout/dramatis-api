@@ -2,11 +2,13 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
 import app from '../../src/app';
-import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
-import createNode from '../test-helpers/neo4j/create-node';
-import createRelationship from '../test-helpers/neo4j/create-relationship';
-import isNodeExistent from '../test-helpers/neo4j/is-node-existent';
-import purgeDatabase from '../test-helpers/neo4j/purge-database';
+import {
+	countNodesWithLabel,
+	createNode,
+	createRelationship,
+	isNodeExistent,
+	purgeDatabase
+} from '../test-helpers/neo4j';
 
 describe('Database validation failures: Materials API', () => {
 
