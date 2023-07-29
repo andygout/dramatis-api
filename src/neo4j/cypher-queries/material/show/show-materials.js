@@ -2,8 +2,14 @@ export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
 	OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial)
+		WHERE NOT EXISTS(
+			(material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(subsequentVersionMaterial)
+		)
 
 	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
+		WHERE NOT EXISTS(
+			(material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(sourcingMaterial)
+		)
 
 	WITH
 		material,
