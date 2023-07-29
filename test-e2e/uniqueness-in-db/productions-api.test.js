@@ -5,9 +5,7 @@ import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
 import app from '../../src/app';
-import countNodesWithLabel from '../test-helpers/neo4j/count-nodes-with-label';
-import createNode from '../test-helpers/neo4j/create-node';
-import purgeDatabase from '../test-helpers/neo4j/purge-database';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
 
 describe('Uniqueness in database: Productions API', () => {
 
