@@ -3568,279 +3568,6 @@ describe('Award ceremonies with crediting sub-sub-materials (with person/company
 
 	});
 
-	describe('Francis Flob Jr (person): subsequent versions (and their associated sur-material and sur-sur-material) of their work have nominations', () => {
-
-		it('includes awards of subsequent versions (and their associated sur-material and sur-sur-material) of their work', () => {
-
-			const expectedAwards = [];
-
-			const expectedSubsequentVersionMaterialAwards = [
-				{
-					model: 'AWARD',
-					uuid: DRAMATISTS_MEDAL_AWARD_UUID,
-					name: 'Dramatists Medal',
-					ceremonies: [
-						{
-							model: 'AWARD_CEREMONY',
-							uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
-							name: '2008',
-							categories: [
-								{
-									model: 'AWARD_CEREMONY_CATEGORY',
-									name: 'Most Remarkable Play',
-									nominations: [
-										{
-											model: 'NOMINATION',
-											isWinner: false,
-											type: 'Nomination',
-											entities: [],
-											productions: [
-												{
-													model: 'PRODUCTION',
-													uuid: MID_PLUGH_SECTION_I_OLIVIER_PRODUCTION_UUID,
-													name: 'Mid-Plugh: Section I',
-													startDate: '2009-07-01',
-													endDate: '2009-07-31',
-													venue: {
-														model: 'VENUE',
-														uuid: OLIVIER_THEATRE_VENUE_UUID,
-														name: 'Olivier Theatre',
-														surVenue: {
-															model: 'VENUE',
-															uuid: NATIONAL_THEATRE_VENUE_UUID,
-															name: 'National Theatre'
-														}
-													},
-													surProduction: {
-														model: 'PRODUCTION',
-														uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
-														name: 'Sur-Plugh',
-														surProduction: null
-													}
-												},
-												{
-													model: 'PRODUCTION',
-													uuid: MID_PLUGH_SECTION_I_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Mid-Plugh: Section I',
-													startDate: '2009-08-01',
-													endDate: '2009-08-31',
-													venue: {
-														model: 'VENUE',
-														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
-														surVenue: null
-													},
-													surProduction: {
-														model: 'PRODUCTION',
-														uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-														name: 'Sur-Plugh',
-														surProduction: null
-													}
-												}
-											],
-											materials: [],
-											subsequentVersionMaterials: [
-												{
-													model: 'MATERIAL',
-													uuid: MID_PLUGH_SECTION_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Mid-Plugh: Section I',
-													format: 'sub-collection of plays',
-													year: 2009,
-													surMaterial: {
-														model: 'MATERIAL',
-														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Sur-Plugh',
-														surMaterial: null
-													}
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'AWARD',
-					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
-					name: 'Playwriting Prize',
-					ceremonies: [
-						{
-							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
-							name: '2009',
-							categories: [
-								{
-									model: 'AWARD_CEREMONY_CATEGORY',
-									name: 'Best Random Play',
-									nominations: [
-										{
-											model: 'NOMINATION',
-											isWinner: true,
-											type: 'Winner',
-											entities: [],
-											productions: [
-												{
-													model: 'PRODUCTION',
-													uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
-													name: 'Sur-Plugh',
-													startDate: '2009-07-01',
-													endDate: '2009-07-31',
-													venue: {
-														model: 'VENUE',
-														uuid: OLIVIER_THEATRE_VENUE_UUID,
-														name: 'Olivier Theatre',
-														surVenue: {
-															model: 'VENUE',
-															uuid: NATIONAL_THEATRE_VENUE_UUID,
-															name: 'National Theatre'
-														}
-													},
-													surProduction: null
-												},
-												{
-													model: 'PRODUCTION',
-													uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sur-Plugh',
-													startDate: '2009-08-01',
-													endDate: '2009-08-31',
-													venue: {
-														model: 'VENUE',
-														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
-														surVenue: null
-													},
-													surProduction: null
-												}
-											],
-											materials: [],
-											subsequentVersionMaterials: [
-												{
-													model: 'MATERIAL',
-													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sur-Plugh',
-													format: 'collection of plays',
-													year: 2009,
-													surMaterial: null
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					model: 'AWARD',
-					uuid: WORDSMITH_AWARD_UUID,
-					name: 'Wordsmith Award',
-					ceremonies: [
-						{
-							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
-							name: '2010',
-							categories: [
-								{
-									model: 'AWARD_CEREMONY_CATEGORY',
-									name: 'Best Miscellaneous Play',
-									nominations: [
-										{
-											model: 'NOMINATION',
-											isWinner: false,
-											type: 'Nomination',
-											entities: [],
-											productions: [
-												{
-													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
-													name: 'Sub-Plugh: Part I',
-													startDate: '2009-07-01',
-													endDate: '2009-07-31',
-													venue: {
-														model: 'VENUE',
-														uuid: OLIVIER_THEATRE_VENUE_UUID,
-														name: 'Olivier Theatre',
-														surVenue: {
-															model: 'VENUE',
-															uuid: NATIONAL_THEATRE_VENUE_UUID,
-															name: 'National Theatre'
-														}
-													},
-													surProduction: {
-														model: 'PRODUCTION',
-														uuid: MID_PLUGH_SECTION_I_OLIVIER_PRODUCTION_UUID,
-														name: 'Mid-Plugh: Section I',
-														surProduction: {
-															model: 'PRODUCTION',
-															uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
-															name: 'Sur-Plugh'
-														}
-													}
-												},
-												{
-													model: 'PRODUCTION',
-													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
-													name: 'Sub-Plugh: Part I',
-													startDate: '2009-08-01',
-													endDate: '2009-08-31',
-													venue: {
-														model: 'VENUE',
-														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
-														surVenue: null
-													},
-													surProduction: {
-														model: 'PRODUCTION',
-														uuid: MID_PLUGH_SECTION_I_WYNDHAMS_PRODUCTION_UUID,
-														name: 'Mid-Plugh: Section I',
-														surProduction: {
-															model: 'PRODUCTION',
-															uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
-															name: 'Sur-Plugh'
-														}
-													}
-												}
-											],
-											materials: [],
-											subsequentVersionMaterials: [
-												{
-													model: 'MATERIAL',
-													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
-													name: 'Sub-Plugh: Part I',
-													format: 'play',
-													year: 2009,
-													surMaterial: {
-														model: 'MATERIAL',
-														uuid: MID_PLUGH_SECTION_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
-														name: 'Mid-Plugh: Section I',
-														surMaterial: {
-															model: 'MATERIAL',
-															uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
-															name: 'Sur-Plugh'
-														}
-													}
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					]
-				}
-			];
-
-			const { awards, subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
-
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
-
-		});
-
-	});
-
 	describe('Sub-Plugh: Part I (play, 1899) (material): subsequent versions have nominations', () => {
 
 		it('includes awards of its subsequent versions (and their respective sur-material and sur-sur-material) and its sur-material\'s and sur-sur-material\'s subsequent versions', () => {
@@ -4782,6 +4509,279 @@ describe('Award ceremonies with crediting sub-sub-materials (with person/company
 
 			const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
 
+			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+
+		});
+
+	});
+
+	describe('Francis Flob Jr (person): subsequent versions (and their associated sur-material and sur-sur-material) of their work have nominations', () => {
+
+		it('includes awards of subsequent versions (and their associated sur-material and sur-sur-material) of their work', () => {
+
+			const expectedAwards = [];
+
+			const expectedSubsequentVersionMaterialAwards = [
+				{
+					model: 'AWARD',
+					uuid: DRAMATISTS_MEDAL_AWARD_UUID,
+					name: 'Dramatists Medal',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							name: '2008',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Most Remarkable Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: MID_PLUGH_SECTION_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Mid-Plugh: Section I',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: MID_PLUGH_SECTION_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Mid-Plugh: Section I',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+														name: 'Sur-Plugh',
+														surProduction: null
+													}
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: MID_PLUGH_SECTION_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Mid-Plugh: Section I',
+													format: 'sub-collection of plays',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Sur-Plugh',
+														surMaterial: null
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: PLAYWRITING_PRIZE_AWARD_UUID,
+					name: 'Playwriting Prize',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							name: '2009',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Random Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: true,
+											type: 'Winner',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: null
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sur-Plugh',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: null
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sur-Plugh',
+													format: 'collection of plays',
+													year: 2009,
+													surMaterial: null
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'AWARD',
+					uuid: WORDSMITH_AWARD_UUID,
+					name: 'Wordsmith Award',
+					ceremonies: [
+						{
+							model: 'AWARD_CEREMONY',
+							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							name: '2010',
+							categories: [
+								{
+									model: 'AWARD_CEREMONY_CATEGORY',
+									name: 'Best Miscellaneous Play',
+									nominations: [
+										{
+											model: 'NOMINATION',
+											isWinner: false,
+											type: 'Nomination',
+											entities: [],
+											productions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_OLIVIER_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-07-01',
+													endDate: '2009-07-31',
+													venue: {
+														model: 'VENUE',
+														uuid: OLIVIER_THEATRE_VENUE_UUID,
+														name: 'Olivier Theatre',
+														surVenue: {
+															model: 'VENUE',
+															uuid: NATIONAL_THEATRE_VENUE_UUID,
+															name: 'National Theatre'
+														}
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: MID_PLUGH_SECTION_I_OLIVIER_PRODUCTION_UUID,
+														name: 'Mid-Plugh: Section I',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_PLUGH_OLIVIER_PRODUCTION_UUID,
+															name: 'Sur-Plugh'
+														}
+													}
+												},
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_PLUGH_PART_I_WYNDHAMS_PRODUCTION_UUID,
+													name: 'Sub-Plugh: Part I',
+													startDate: '2009-08-01',
+													endDate: '2009-08-31',
+													venue: {
+														model: 'VENUE',
+														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+														name: 'Wyndham\'s Theatre',
+														surVenue: null
+													},
+													surProduction: {
+														model: 'PRODUCTION',
+														uuid: MID_PLUGH_SECTION_I_WYNDHAMS_PRODUCTION_UUID,
+														name: 'Mid-Plugh: Section I',
+														surProduction: {
+															model: 'PRODUCTION',
+															uuid: SUR_PLUGH_WYNDHAMS_PRODUCTION_UUID,
+															name: 'Sur-Plugh'
+														}
+													}
+												}
+											],
+											materials: [],
+											subsequentVersionMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_PLUGH_PART_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+													name: 'Sub-Plugh: Part I',
+													format: 'play',
+													year: 2009,
+													surMaterial: {
+														model: 'MATERIAL',
+														uuid: MID_PLUGH_SECTION_I_SUBSEQUENT_VERSION_MATERIAL_UUID,
+														name: 'Mid-Plugh: Section I',
+														surMaterial: {
+															model: 'MATERIAL',
+															uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+															name: 'Sur-Plugh'
+														}
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { awards, subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
+
+			expect(awards).to.deep.equal(expectedAwards);
 			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
 
 		});
