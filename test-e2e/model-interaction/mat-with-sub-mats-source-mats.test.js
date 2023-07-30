@@ -1130,7 +1130,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	});
 
-	describe('The Life and Adventures of Nicholas Nickleby (novel) (material)', () => {
+	describe('The Life and Adventures of Nicholas Nickleby (novel) (material): single source material is attached to multiple tiers of sourcing material', () => {
 
 		it('includes materials that used it as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
