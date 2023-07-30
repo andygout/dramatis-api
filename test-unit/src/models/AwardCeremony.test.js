@@ -41,8 +41,10 @@ describe('AwardCeremony model', () => {
 				AwardCeremonyCategory: AwardCeremonyCategoryStub
 			},
 			cypherQueriesModule: {
-				getAwardContextualDuplicateRecordCheckQuery: stub()
-					.returns('getAwardContextualDuplicateRecordCheckQuery response')
+				validationQueries: {
+					getAwardContextualDuplicateRecordCheckQuery: stub()
+						.returns('getAwardContextualDuplicateRecordCheckQuery response')
+				}
 			},
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' })
@@ -206,13 +208,17 @@ describe('AwardCeremony model', () => {
 				await instance.validateAwardContextualUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
-					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery,
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
-				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
+				assert.calledOnce(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
+				);
+				assert.calledWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
+				);
 				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -245,14 +251,18 @@ describe('AwardCeremony model', () => {
 				await instance.validateAwardContextualUniquenessInDatabase();
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
-					stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery,
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
 				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
-				assert.calledWithExactly(stubs.cypherQueriesModule.getAwardContextualDuplicateRecordCheckQuery);
+				assert.calledOnce(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
+				);
+				assert.calledWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
+				);
 				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
