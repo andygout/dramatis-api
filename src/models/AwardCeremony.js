@@ -2,7 +2,7 @@ import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices';
 import { prepareAsParams } from '../lib/prepare-as-params';
 import Entity from './Entity';
 import { Award, AwardCeremonyCategory } from '.';
-import { getAwardContextualDuplicateRecordCheckQuery } from '../neo4j/cypher-queries';
+import { validationQueries } from '../neo4j/cypher-queries';
 import { neo4jQuery } from '../neo4j/query';
 import { MODELS } from '../utils/constants';
 
@@ -53,6 +53,8 @@ export default class AwardCeremony extends Entity {
 	}
 
 	async validateAwardContextualUniquenessInDatabase () {
+
+		const { getAwardContextualDuplicateRecordCheckQuery } = validationQueries;
 
 		const preparedParams = prepareAsParams(this);
 
