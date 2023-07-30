@@ -19,12 +19,18 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 	const ROBERT_ICKE_PERSON_UUID = '29';
 	const THE_GREAT_HOPE_COMPANY_UUID = '30';
 	const THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID = '39';
+	const PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = '50';
+	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '60';
+	const BEATRICE_BAR_PERSON_UUID = '64';
+	const STAGECRAFT_LTD_COMPANY_UUID = '65';
+	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '74';
 
 	let agamemnonOriginalVersionMaterial;
 	let agamemnonSubsequentVersionMaterial;
 	let theOresteiaSubsequentVersionMaterial;
 	let aeschylusPerson;
 	let theFathersOfTragedyCompany;
+	let plughOriginalVersionMaterial;
 
 	const sandbox = createSandbox();
 
@@ -168,6 +174,106 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Plugh',
+				format: 'play',
+				year: '1899',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Francis Flob'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Curtain Up Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sub-Plugh',
+				format: 'play',
+				year: '2009',
+				originalVersionMaterial: {
+					name: 'Plugh'
+				},
+				writingCredits: [
+					{
+						name: 'after',
+						entities: [
+							{
+								name: 'Francis Flob'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Curtain Up Ltd'
+							}
+						]
+					},
+					{
+						name: 'version by',
+						entities: [
+							{
+								name: 'Beatrice Bar'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Stagecraft Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sur-Plugh',
+				format: 'play',
+				year: '2009',
+				originalVersionMaterial: {
+					name: 'Plugh'
+				},
+				writingCredits: [
+					{
+						name: 'after',
+						entities: [
+							{
+								name: 'Francis Flob'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Curtain Up Ltd'
+							}
+						]
+					},
+					{
+						name: 'version by',
+						entities: [
+							{
+								name: 'Beatrice Bar Jr'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Sub-Stagecraft Ltd'
+							}
+						]
+					}
+				],
+				subMaterials: [
+					{
+						name: 'Sub-Plugh'
+					}
+				]
+			});
+
 		agamemnonOriginalVersionMaterial = await chai.request(app)
 			.get(`/materials/${AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
@@ -182,6 +288,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		theFathersOfTragedyCompany = await chai.request(app)
 			.get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
+
+		plughOriginalVersionMaterial = await chai.request(app)
+			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 	});
 
@@ -452,7 +561,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('Aeschylus (person)', () => {
 
-		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -514,7 +623,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('The Fathers of Tragedy (company)', () => {
 
-		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -567,6 +676,52 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			];
 
 			const { subsequentVersionMaterials } = theFathersOfTragedyCompany.body;
+
+			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+	});
+
+	describe('Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version', () => {
+
+		it('includes subsequent versions of this material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+
+			const expectedSubsequentVersionMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Sub-Plugh',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'Sur-Plugh',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'version by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BEATRICE_BAR_PERSON_UUID,
+									name: 'Beatrice Bar'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { subsequentVersionMaterials } = plughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
 

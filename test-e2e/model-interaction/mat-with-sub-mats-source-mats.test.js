@@ -23,6 +23,16 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID = '44';
 	const SWAN_THEATRE_VENUE_UUID = '46';
 	const THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID = '47';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID = '54';
+	const CHARLES_DICKENS_PERSON_UUID = '56';
+	const DOMBEY_AND_SON_LTD_COMPANY_UUID = '57';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID = '63';
+	const DAVID_EDGAR_PERSON_UUID = '65';
+	const EDGAR_WORKS_LTD_COMPANY_UUID = '66';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID = '75';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID = '81';
+	const GIELGUD_THEATRE_VENUE_UUID = '83';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_THEATRE_PRODUCTION_UUID = '84';
 
 	let bringUpTheBodiesNovelMaterial;
 	let bringUpTheBodiesPlayMaterial;
@@ -32,6 +42,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 	let royalShakespeareCompany;
 	let bringUpTheBodiesSwanTheatreProduction;
 	let thomasCromwellCharacter;
+	let theLifeAndAdventuresOfNicholasNicklebyNovelMaterial;
 
 	const sandbox = createSandbox();
 
@@ -209,6 +220,134 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'The Life and Adventures of Nicholas Nickleby',
+				differentiator: '1',
+				format: 'novel',
+				year: '1839',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Charles Dickens'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Dombey and Son Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
+				format: 'play',
+				year: '1980',
+				writingCredits: [
+					{
+						name: 'adapted for the stage by',
+						entities: [
+							{
+								name: 'David Edgar'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Edgar Works Ltd'
+							}
+						]
+					},
+					{
+						name: 'from',
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'The Life and Adventures of Nicholas Nickleby',
+								differentiator: '1'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'The Life and Adventures of Nicholas Nickleby',
+				differentiator: '2',
+				format: 'play in two parts',
+				year: '1980',
+				writingCredits: [
+					{
+						name: 'adapted for the stage by',
+						entities: [
+							{
+								name: 'David Edgar'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Edgar Works Ltd'
+							}
+						]
+					},
+					{
+						name: 'from',
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'The Life and Adventures of Nicholas Nickleby',
+								differentiator: '1'
+							}
+						]
+					}
+				],
+				subMaterials: [
+					{
+						name: 'The Life and Adventures of Nicholas Nickleby: Part I'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
+				startDate: '2007-12-07',
+				pressDate: '2007-12-08',
+				endDate: '2008-01-27',
+				material: {
+					name: 'The Life and Adventures of Nicholas Nickleby: Part I'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Life and Adventures of Nicholas Nickleby',
+				startDate: '2007-12-07',
+				pressDate: '2007-12-08',
+				endDate: '2008-01-27',
+				material: {
+					name: 'The Life and Adventures of Nicholas Nickleby',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				},
+				subProductions: [
+					{
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID
+					}
+				]
+			});
+
 		bringUpTheBodiesNovelMaterial = await chai.request(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
@@ -232,6 +371,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		thomasCromwellCharacter = await chai.request(app)
 			.get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
+
+		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await chai.request(app)
+			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
 
 	});
 
@@ -493,7 +635,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	describe('Hilary Mantel (person)', () => {
 
-		it('includes materials that used their work as source material, with corresponding sur-material', () => {
+		it('includes materials that used their work as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSourcingMaterials = [
 				{
@@ -576,7 +718,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	describe('The Mantel Group (company)', () => {
 
-		it('includes materials that used their work as source material, with corresponding sur-material', () => {
+		it('includes materials that used their work as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSourcingMaterials = [
 				{
@@ -659,7 +801,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	describe('Mike Poulton (person)', () => {
 
-		it('includes materials they have written, with corresponding sur-material', () => {
+		it('includes materials they have written, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -742,7 +884,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	describe('Royal Shakespeare Company (company)', () => {
 
-		it('includes materials it has written, with corresponding sur-material', () => {
+		it('includes materials it has written, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -988,6 +1130,114 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	});
 
+	describe('The Life and Adventures of Nicholas Nickleby (novel) (material)', () => {
+
+		it('includes materials that used it as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+
+			const expectedSourcingMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID,
+					name: 'The Life and Adventures of Nicholas Nickleby: Part I',
+					format: 'play',
+					year: 1980,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID,
+						name: 'The Life and Adventures of Nicholas Nickleby',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for the stage by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: DAVID_EDGAR_PERSON_UUID,
+									name: 'David Edgar'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EDGAR_WORKS_LTD_COMPANY_UUID,
+									name: 'Edgar Works Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID,
+									name: 'The Life and Adventures of Nicholas Nickleby',
+									format: 'novel',
+									year: 1839,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CHARLES_DICKENS_PERSON_UUID,
+													name: 'Charles Dickens'
+												},
+												{
+													model: 'COMPANY',
+													uuid: DOMBEY_AND_SON_LTD_COMPANY_UUID,
+													name: 'Dombey and Son Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterials } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
+
+			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of material that used it as source material, including the sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID,
+					name: 'The Life and Adventures of Nicholas Nickleby: Part I',
+					startDate: '2007-12-07',
+					endDate: '2008-01-27',
+					venue: {
+						model: 'VENUE',
+						uuid: GIELGUD_THEATRE_VENUE_UUID,
+						name: 'Gielgud Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_THEATRE_PRODUCTION_UUID,
+						name: 'The Life and Adventures of Nicholas Nickleby',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
+	});
+
 	describe('materials list', () => {
 
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
@@ -1090,6 +1340,95 @@ describe('Material with sub-materials and source materials thereof', () => {
 									model: 'COMPANY',
 									uuid: THE_MANTEL_GROUP_COMPANY_UUID,
 									name: 'The Mantel Group'
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID,
+					name: 'The Life and Adventures of Nicholas Nickleby: Part I',
+					format: 'play',
+					year: 1980,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID,
+						name: 'The Life and Adventures of Nicholas Nickleby',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for the stage by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: DAVID_EDGAR_PERSON_UUID,
+									name: 'David Edgar'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EDGAR_WORKS_LTD_COMPANY_UUID,
+									name: 'Edgar Works Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID,
+									name: 'The Life and Adventures of Nicholas Nickleby',
+									format: 'novel',
+									year: 1839,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: CHARLES_DICKENS_PERSON_UUID,
+													name: 'Charles Dickens'
+												},
+												{
+													model: 'COMPANY',
+													uuid: DOMBEY_AND_SON_LTD_COMPANY_UUID,
+													name: 'Dombey and Son Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID,
+					name: 'The Life and Adventures of Nicholas Nickleby',
+					format: 'novel',
+					year: 1839,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CHARLES_DICKENS_PERSON_UUID,
+									name: 'Charles Dickens'
+								},
+								{
+									model: 'COMPANY',
+									uuid: DOMBEY_AND_SON_LTD_COMPANY_UUID,
+									name: 'Dombey and Son Ltd'
 								}
 							]
 						}

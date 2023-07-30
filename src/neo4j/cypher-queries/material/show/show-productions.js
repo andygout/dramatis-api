@@ -2,6 +2,10 @@ export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
 	OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
+		WHERE NOT EXISTS(
+			(material)<-[:USES_SOURCE_MATERIAL]-(:Material)
+			<-[:HAS_SUB_MATERIAL*1..2]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
+		)
 
 	WITH material, COLLECT(production) AS productions
 
