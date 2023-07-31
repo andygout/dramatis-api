@@ -28,7 +28,7 @@ export default () => `
 		ceremony,
 		nominatedEntityRel,
 		CASE WHEN material <> nominatedMaterial
-			THEN nominatedMaterial
+			THEN nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
 			ELSE null
 		END AS recipientMaterial,
 		COLLECT(nominatedEntity {
@@ -216,17 +216,25 @@ export default () => `
 				}
 			END
 		) AS coNominatedMaterials
-		ORDER BY nomineeRel.nominationPosition
+		ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
+
+	WITH
+		nomineeRel.isWinner AS isWinner,
+		nomineeRel.customType AS customType,
+		category,
+		categoryRel,
+		ceremony,
+		nominatedEntities,
+		nominatedProductions,
+		coNominatedMaterials,
+		COLLECT(recipientMaterial) AS recipientMaterials
 
 	WITH category, categoryRel, ceremony,
 		COLLECT({
 			model: 'NOMINATION',
-			isWinner: COALESCE(nomineeRel.isWinner, false),
-			type: COALESCE(nomineeRel.customType, CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
-			recipientMaterial: CASE WHEN recipientMaterial IS NULL
-				THEN null
-				ELSE recipientMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
-			END,
+			isWinner: COALESCE(isWinner, false),
+			type: COALESCE(customType, CASE WHEN isWinner THEN 'Winner' ELSE 'Nomination' END),
+			recipientMaterials: recipientMaterials,
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			coMaterials: coNominatedMaterials

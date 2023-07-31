@@ -5773,7 +5773,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'COMPANY',
@@ -5847,7 +5847,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5876,7 +5876,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -5928,7 +5928,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'First Place',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [],
 											coProductions: [],
 											materials: []
@@ -5957,7 +5957,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -5996,7 +5996,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'COMPANY',
@@ -6085,7 +6085,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [],
 											coProductions: [
 												{
@@ -6144,7 +6144,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6226,7 +6226,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [],
 											coProductions: [
 												{
@@ -6274,7 +6274,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6334,7 +6334,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [],
 											coProductions: [
 												{
@@ -6397,7 +6397,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Finalist',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'COMPANY',
@@ -6481,7 +6481,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Prize Recipient',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -6519,7 +6519,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6581,7 +6581,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Shortlisted',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -6610,7 +6610,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6658,7 +6658,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'COMPANY',
@@ -6756,7 +6756,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [],
 											productions: [],
 											coMaterials: [
@@ -6809,7 +6809,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Longlisted',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6897,7 +6897,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'First Place',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [],
 											productions: [],
 											coMaterials: []
@@ -6926,7 +6926,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -6991,7 +6991,7 @@ describe('Award ceremonies', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [],
 											productions: [],
 											coMaterials: [
