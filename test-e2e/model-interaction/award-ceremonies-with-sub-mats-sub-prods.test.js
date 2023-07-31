@@ -1247,19 +1247,21 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: {
-												model: 'PRODUCTION',
-												uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-												name: 'Sur-Hoge',
-												startDate: '2019-05-01',
-												endDate: '2019-05-31',
-												venue: {
-													model: 'VENUE',
-													uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
-													name: 'Noël Coward Theatre',
-													surVenue: null
+											recipientProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sur-Hoge',
+													startDate: '2019-05-01',
+													endDate: '2019-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
 												}
-											},
+											],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1342,7 +1344,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1455,7 +1457,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1538,19 +1540,21 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: {
-												model: 'PRODUCTION',
-												uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
-												name: 'Sub-Hoge',
-												startDate: '2019-05-01',
-												endDate: '2019-05-31',
-												venue: {
-													model: 'VENUE',
-													uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
-													name: 'Noël Coward Theatre',
-													surVenue: null
+											recipientProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID,
+													name: 'Sub-Hoge',
+													startDate: '2019-05-01',
+													endDate: '2019-05-31',
+													venue: {
+														model: 'VENUE',
+														uuid: NOËL_COWARD_THEATRE_VENUE_UUID,
+														name: 'Noël Coward Theatre',
+														surVenue: null
+													}
 												}
-											},
+											],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1663,23 +1667,25 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: {
-												model: 'PRODUCTION',
-												uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-												name: 'Sur-Wibble',
-												startDate: '2019-06-01',
-												endDate: '2019-06-30',
-												venue: {
-													model: 'VENUE',
-													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-													name: 'Jerwood Theatre Upstairs',
-													surVenue: {
+											recipientProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sur-Wibble',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
 														model: 'VENUE',
-														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
-														name: 'Royal Court Theatre'
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
 													}
 												}
-											},
+											],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1758,7 +1764,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -1867,23 +1873,25 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: {
-												model: 'PRODUCTION',
-												uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-												name: 'Sub-Wibble: Part II',
-												startDate: '2019-06-01',
-												endDate: '2019-06-30',
-												venue: {
-													model: 'VENUE',
-													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-													name: 'Jerwood Theatre Upstairs',
-													surVenue: {
+											recipientProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part II',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
 														model: 'VENUE',
-														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
-														name: 'Royal Court Theatre'
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
 													}
 												}
-											},
+											],
 											entities: [],
 											coProductions: [],
 											materials: [
@@ -1926,7 +1934,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientProduction: null,
+											recipientProductions: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -2005,23 +2013,25 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientProduction: {
-												model: 'PRODUCTION',
-												uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
-												name: 'Sub-Wibble: Part I',
-												startDate: '2019-06-01',
-												endDate: '2019-06-30',
-												venue: {
-													model: 'VENUE',
-													uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
-													name: 'Jerwood Theatre Upstairs',
-													surVenue: {
+											recipientProductions: [
+												{
+													model: 'PRODUCTION',
+													uuid: SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID,
+													name: 'Sub-Wibble: Part I',
+													startDate: '2019-06-01',
+													endDate: '2019-06-30',
+													venue: {
 														model: 'VENUE',
-														uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
-														name: 'Royal Court Theatre'
+														uuid: JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID,
+														name: 'Jerwood Theatre Upstairs',
+														surVenue: {
+															model: 'VENUE',
+															uuid: ROYAL_COURT_THEATRE_VENUE_UUID,
+															name: 'Royal Court Theatre'
+														}
 													}
 												}
-											},
+											],
 											entities: [
 												{
 													model: 'PERSON',
@@ -2130,13 +2140,15 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientMaterial: {
-												model: 'MATERIAL',
-												uuid: SUR_WIBBLE_MATERIAL_UUID,
-												name: 'Sur-Wibble',
-												format: 'collection of plays',
-												year: 2019
-											},
+											recipientMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUR_WIBBLE_MATERIAL_UUID,
+													name: 'Sur-Wibble',
+													format: 'collection of plays',
+													year: 2019
+												}
+											],
 											entities: [
 												{
 													model: 'PERSON',
@@ -2225,7 +2237,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -2344,13 +2356,15 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientMaterial: {
-												model: 'MATERIAL',
-												uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
-												name: 'Sub-Wibble: Part II',
-												format: 'play',
-												year: 2019
-											},
+											recipientMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_II_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part II',
+													format: 'play',
+													year: 2019
+												}
+											],
 											entities: [],
 											productions: [
 												{
@@ -2403,7 +2417,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: true,
 											type: 'Winner',
-											recipientMaterial: null,
+											recipientMaterials: [],
 											entities: [
 												{
 													model: 'PERSON',
@@ -2492,13 +2506,15 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 											model: 'NOMINATION',
 											isWinner: false,
 											type: 'Nomination',
-											recipientMaterial: {
-												model: 'MATERIAL',
-												uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
-												name: 'Sub-Wibble: Part I',
-												format: 'play',
-												year: 2019
-											},
+											recipientMaterials: [
+												{
+													model: 'MATERIAL',
+													uuid: SUB_WIBBLE_PART_I_MATERIAL_UUID,
+													name: 'Sub-Wibble: Part I',
+													format: 'play',
+													year: 2019
+												}
+											],
 											entities: [
 												{
 													model: 'PERSON',
