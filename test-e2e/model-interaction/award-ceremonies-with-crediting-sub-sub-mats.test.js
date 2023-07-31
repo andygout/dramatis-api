@@ -3173,7 +3173,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3249,7 +3249,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3338,7 +3338,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3446,7 +3446,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3522,7 +3522,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3611,7 +3611,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3717,7 +3717,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_WIBBLE_MATERIAL_UUID,
@@ -3793,7 +3793,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
@@ -3882,7 +3882,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_WIBBLE_MATERIAL_UUID,
@@ -3987,7 +3987,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_WIBBLE_MATERIAL_UUID,
@@ -4063,7 +4063,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_WIBBLE_MATERIAL_UUID,
@@ -4152,7 +4152,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_WIBBLE_MATERIAL_UUID,
@@ -4259,7 +4259,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_HOGE_MATERIAL_UUID,
@@ -4335,7 +4335,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_HOGE_MATERIAL_UUID,
@@ -4424,7 +4424,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_HOGE_MATERIAL_UUID,
@@ -4532,7 +4532,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: MID_HOGE_MATERIAL_UUID,
@@ -4608,7 +4608,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUR_HOGE_MATERIAL_UUID,
@@ -4697,7 +4697,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: SUB_HOGE_MATERIAL_UUID,

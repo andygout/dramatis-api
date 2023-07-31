@@ -2993,7 +2993,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3064,7 +3064,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3138,7 +3138,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3209,7 +3209,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3284,7 +3284,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3355,7 +3355,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											subsequentVersionMaterials: [
+											recipientSubsequentVersionMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -3442,7 +3442,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3513,7 +3513,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3599,7 +3599,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3670,7 +3670,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3756,7 +3756,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3827,7 +3827,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: WIBBLE_MATERIAL_UUID,
@@ -3973,7 +3973,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: XYZZY_MATERIAL_UUID,
@@ -4044,7 +4044,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: XYZZY_MATERIAL_UUID,
@@ -4119,7 +4119,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: XYZZY_MATERIAL_UUID,
@@ -4190,7 +4190,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											sourcingMaterials: [
+											recipientSourcingMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: XYZZY_MATERIAL_UUID,
@@ -4279,7 +4279,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,
@@ -4336,7 +4336,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,
@@ -4425,7 +4425,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,
@@ -4482,7 +4482,7 @@ describe('Award ceremonies with crediting materials', () => {
 												}
 											],
 											materials: [],
-											rightsGrantorMaterials: [
+											recipientRightsGrantorMaterials: [
 												{
 													model: 'MATERIAL',
 													uuid: HOGE_MATERIAL_UUID,

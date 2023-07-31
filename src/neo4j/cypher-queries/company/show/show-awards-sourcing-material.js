@@ -263,7 +263,7 @@ export default () => `
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
-			sourcingMaterials: nominatedSourcingMaterials
+			recipientSourcingMaterials: nominatedSourcingMaterials
 		}) AS nominations
 		ORDER BY categoryRel.position
 

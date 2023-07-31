@@ -260,7 +260,7 @@ export default () => `
 			entities: nominatedEntities,
 			productions: nominatedProductions,
 			materials: nominatedMaterials,
-			subsequentVersionMaterials: nominatedSubsequentVersionMaterials
+			recipientSubsequentVersionMaterials: nominatedSubsequentVersionMaterials
 		}) AS nominations
 		ORDER BY categoryRel.position
 
