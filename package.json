@@ -26,12 +26,12 @@
     "int-test"
   ],
   "engines": {
-    "node": "18.7.0",
-    "npm": "8.17.0"
+    "node": "20.5.0",
+    "npm": "9.8.1"
   },
   "volta": {
-    "node": "18.7.0",
-    "npm": "8.17.0"
+    "node": "20.5.0",
+    "npm": "9.8.1"
   },
   "dependencies": {
     "directly": "2.0.6",
