@@ -10,6 +10,7 @@ import {
 	materials as materialsController,
 	people as peopleController,
 	productions as productionsController,
+	seasons as seasonsController,
 	venues as venuesController
 } from './controllers';
 
@@ -70,6 +71,14 @@ router.put('/productions/:uuid', productionsController.updateRoute);
 router.delete('/productions/:uuid', productionsController.deleteRoute);
 router.get('/productions/:uuid', productionsController.showRoute);
 router.get('/productions', productionsController.listRoute);
+
+router.get('/seasons/new', seasonsController.newRoute);
+router.post('/seasons', seasonsController.createRoute);
+router.get('/seasons/:uuid/edit', seasonsController.editRoute);
+router.put('/seasons/:uuid', seasonsController.updateRoute);
+router.delete('/seasons/:uuid', seasonsController.deleteRoute);
+router.get('/seasons/:uuid', seasonsController.showRoute);
+router.get('/seasons', seasonsController.listRoute);
 
 router.get('/venues/new', venuesController.newRoute);
 router.post('/venues', venuesController.createRoute);
