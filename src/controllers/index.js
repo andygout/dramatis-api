@@ -5,6 +5,7 @@ import * as companies from './companies';
 import * as materials from './materials';
 import * as people from './people';
 import * as productions from './productions';
+import * as seasons from './seasons';
 import * as venues from './venues';
 
 export {
@@ -15,5 +16,6 @@ export {
 	materials,
 	people,
 	productions,
+	seasons,
 	venues
 };

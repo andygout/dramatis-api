@@ -23,6 +23,7 @@ import {
 	getShowQueries as getProductionShowQueries,
 	getListQuery as getProductionListQuery
 } from './production';
+import { getShowQueries as getSeasonShowQueries } from './season';
 import {
 	getCreateQuery as getSharedCreateQuery,
 	getEditQuery as getSharedEditQuery,
@@ -76,6 +77,7 @@ const getShowQueries = {
 	[MODELS.MATERIAL]: getMaterialShowQueries,
 	[MODELS.PERSON]: getPersonShowQueries,
 	[MODELS.PRODUCTION]: getProductionShowQueries,
+	[MODELS.SEASON]: getSeasonShowQueries,
 	[MODELS.VENUE]: getVenueShowQueries
 };
 

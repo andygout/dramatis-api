@@ -18,6 +18,7 @@ import ProducerCredit from './ProducerCredit';
 import Production from './Production';
 import ProductionIdentifier from './ProductionIdentifier';
 import Role from './Role';
+import Season from './Season';
 import SubMaterial from './SubMaterial';
 import SubProductionIdentifier from './SubProductionIdentifier';
 import SubVenue from './SubVenue';
@@ -46,6 +47,7 @@ export {
 	Production,
 	ProductionIdentifier,
 	Role,
+	Season,
 	SubMaterial,
 	SubProductionIdentifier,
 	SubVenue,
