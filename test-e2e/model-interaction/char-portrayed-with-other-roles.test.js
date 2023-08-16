@@ -17,7 +17,7 @@ describe('Character portrayed with other roles', () => {
 	const GEORDIE_CHARACTER_UUID = '13';
 	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = '14';
 	const NATIONAL_THEATRE_VENUE_UUID = '16';
-	const STEPHEN_HARPER_PERSON_UUID = '18';
+	const STEPHEN_HARPER_PERSON_UUID = '19';
 
 	let joeysMotherCharacter;
 	let drSchweykCharacter;

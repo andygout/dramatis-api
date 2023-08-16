@@ -225,11 +225,11 @@ describe('Instance validation failures: Seasons API', () => {
 			});
 
 			await createRelationship({
-				sourceLabel: 'Season',
-				sourceUuid: THE_DAVID_HARE_SEASON_UUID,
-				destinationLabel: 'Production',
-				destinationUuid: PLENTY_SHEFFIELD_THEATRES_PRODUCTION_UUID,
-				relationshipName: 'HAS_SEASON_PRODUCTION'
+				sourceLabel: 'Production',
+				sourceUuid: PLENTY_SHEFFIELD_THEATRES_PRODUCTION_UUID,
+				destinationLabel: 'Season',
+				destinationUuid: THE_DAVID_HARE_SEASON_UUID,
+				relationshipName: 'PART_OF_SEASON'
 			});
 
 		});

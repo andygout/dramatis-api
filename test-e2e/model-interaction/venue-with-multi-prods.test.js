@@ -13,8 +13,8 @@ describe('Venue with multiple productions', () => {
 
 	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
 	const DONMAR_WAREHOUSE_VENUE_UUID = '2';
-	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '3';
-	const RED_DONMAR_PRODUCTION_UUID = '6';
+	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '4';
+	const RED_DONMAR_PRODUCTION_UUID = '8';
 
 	let donmarWarehouseVenue;
 	let streetcarNamedDesireDonmarProduction;

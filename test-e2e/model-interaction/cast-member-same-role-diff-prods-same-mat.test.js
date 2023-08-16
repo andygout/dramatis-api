@@ -14,9 +14,9 @@ describe('Cast member performing same role in different productions of same mate
 	const TITANIA_CHARACTER_UUID = '5';
 	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
 	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '8';
-	const JUDI_DENCH_PERSON_UUID = '9';
-	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '10';
-	const ROSE_THEATRE_VENUE_UUID = '12';
+	const JUDI_DENCH_PERSON_UUID = '10';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '11';
+	const ROSE_THEATRE_VENUE_UUID = '13';
 
 	let titaniaCharacter;
 	let aMidsummerNightsDreamRoyalShakespeareProduction;

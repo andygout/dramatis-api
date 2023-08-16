@@ -39,6 +39,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -169,6 +175,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -269,6 +281,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				venue: {
 					model: 'VENUE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
+				season: {
+					model: 'SEASON',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -381,6 +399,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -474,6 +498,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				endDate: null,
 				material: null,
 				venue: null,
+				season: null,
 				surProduction: null,
 				subProductions: [],
 				producerCredits: [],
@@ -514,6 +539,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [],
 				producerCredits: [],
 				cast: [],
@@ -532,66 +563,68 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('CRUD with full range of attributes assigned values', () => {
 
 		const HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID = '0';
-		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = '3';
-		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = '6';
-		const RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID = '9';
-		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = '12';
-		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = '15';
-		const PRODUCTION_UUID = '18';
-		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = '19';
-		const NATIONAL_THEATRE_VENUE_UUID = '20';
-		const LISA_BURGER_PERSON_UUID = '21';
-		const FUEL_THEATRE_COMPANY_UUID = '22';
-		const SIMON_GODWIN_PERSON_UUID = '23';
-		const TOM_MORRIS_PERSON_UUID = '24';
-		const NATIONAL_THEATRE_COMPANY_UUID = '25';
-		const NICHOLAS_HYTNER_PERSON_UUID = '26';
-		const NICK_STARR_PERSON_UUID = '27';
-		const LONDON_THEATRE_COMPANY_UUID = '28';
-		const RORY_KINNEAR_PERSON_UUID = '29';
-		const JAMES_LAURENSON_PERSON_UUID = '30';
-		const MICHAEL_SHELDON_PERSON_UUID = '31';
-		const LEO_STAAR_PERSON_UUID = '32';
-		const HANDSPRING_PUPPET_COMPANY_UUID = '33';
-		const BEN_RINGHAM_PERSON_UUID = '34';
-		const MAX_RINGHAM_PERSON_UUID = '35';
-		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '36';
-		const LEO_WARNER_PERSON_UUID = '37';
-		const MARK_GRIMMER_PERSON_UUID = '38';
-		const IGOR_PERSON_UUID = '39';
-		const CREW_DEPUTIES_LTD_COMPANY_UUID = '40';
-		const SARA_GUNTER_PERSON_UUID = '41';
-		const JULIA_WICKHAM_PERSON_UUID = '42';
-		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '43';
-		const MOLLY_EINCHCOMB_PERSON_UUID = '44';
-		const MATTHEW_HELLYER_PERSON_UUID = '45';
-		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '73';
-		const ALMEIDA_THEATRE_VENUE_UUID = '74';
-		const DENISE_WOOD_PERSON_UUID = '75';
-		const TIATA_FAHODZI_COMPANY_UUID = '76';
-		const REBECCA_FRECKNALL_PERSON_UUID = '77';
-		const SIMEON_BLAKE_HALL_PERSON_UUID = '78';
-		const ALMEIDA_THEATRE_COMPANY_UUID = '79';
-		const RUPERT_GOOLD_PERSON_UUID = '80';
-		const ROBERT_ICKE_PERSON_UUID = '81';
-		const HEADLONG_THEATRE_COMPANY_UUID = '82';
-		const RALPH_FIENNES_PERSON_UUID = '83';
-		const TOM_CANTON_PERSON_UUID = '84';
-		const MARK_HADFIELD_PERSON_UUID = '85';
-		const JOSH_COLLINS_PERSON_UUID = '86';
-		const RC_ANNIE_LTD_COMPANY_UUID = '87';
-		const HILDEGARD_BECHTLER_PERSON_UUID = '88';
-		const CHLOE_LAMFORD_PERSON_UUID = '89';
-		const AUTOGRAPH_COMPANY_UUID = '90';
-		const ANDREW_BRUCE_PERSON_UUID = '91';
-		const NICK_LIDSTER_PERSON_UUID = '92';
-		const ANNA_ANDERSON_PERSON_UUID = '93';
-		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '94';
-		const CHERYL_FIRTH_PERSON_UUID = '95';
-		const TOM_LEGGAT_PERSON_UUID = '96';
-		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '97';
-		const COLIN_FALCONER_PERSON_UUID = '98';
-		const ALEX_LOWDE_PERSON_UUID = '99';
+		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = '4';
+		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = '8';
+		const RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID = '12';
+		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = '16';
+		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = '20';
+		const PRODUCTION_UUID = '24';
+		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = '25';
+		const NATIONAL_THEATRE_VENUE_UUID = '26';
+		const SHAKESPEAREAN_TRAGEDY_SEASON_UUID = '27';
+		const LISA_BURGER_PERSON_UUID = '28';
+		const FUEL_THEATRE_COMPANY_UUID = '29';
+		const SIMON_GODWIN_PERSON_UUID = '30';
+		const TOM_MORRIS_PERSON_UUID = '31';
+		const NATIONAL_THEATRE_COMPANY_UUID = '32';
+		const NICHOLAS_HYTNER_PERSON_UUID = '33';
+		const NICK_STARR_PERSON_UUID = '34';
+		const LONDON_THEATRE_COMPANY_UUID = '35';
+		const RORY_KINNEAR_PERSON_UUID = '36';
+		const JAMES_LAURENSON_PERSON_UUID = '37';
+		const MICHAEL_SHELDON_PERSON_UUID = '38';
+		const LEO_STAAR_PERSON_UUID = '39';
+		const HANDSPRING_PUPPET_COMPANY_UUID = '40';
+		const BEN_RINGHAM_PERSON_UUID = '41';
+		const MAX_RINGHAM_PERSON_UUID = '42';
+		const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '43';
+		const LEO_WARNER_PERSON_UUID = '44';
+		const MARK_GRIMMER_PERSON_UUID = '45';
+		const IGOR_PERSON_UUID = '46';
+		const CREW_DEPUTIES_LTD_COMPANY_UUID = '47';
+		const SARA_GUNTER_PERSON_UUID = '48';
+		const JULIA_WICKHAM_PERSON_UUID = '49';
+		const CREW_ASSISTANTS_LTD_COMPANY_UUID = '50';
+		const MOLLY_EINCHCOMB_PERSON_UUID = '51';
+		const MATTHEW_HELLYER_PERSON_UUID = '52';
+		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = '81';
+		const ALMEIDA_THEATRE_VENUE_UUID = '82';
+		const SHAKESPEAREAN_HISTORY_SEASON_UUID = '83';
+		const DENISE_WOOD_PERSON_UUID = '84';
+		const TIATA_FAHODZI_COMPANY_UUID = '85';
+		const REBECCA_FRECKNALL_PERSON_UUID = '86';
+		const SIMEON_BLAKE_HALL_PERSON_UUID = '87';
+		const ALMEIDA_THEATRE_COMPANY_UUID = '88';
+		const RUPERT_GOOLD_PERSON_UUID = '89';
+		const ROBERT_ICKE_PERSON_UUID = '90';
+		const HEADLONG_THEATRE_COMPANY_UUID = '91';
+		const RALPH_FIENNES_PERSON_UUID = '92';
+		const TOM_CANTON_PERSON_UUID = '93';
+		const MARK_HADFIELD_PERSON_UUID = '94';
+		const JOSH_COLLINS_PERSON_UUID = '95';
+		const RC_ANNIE_LTD_COMPANY_UUID = '96';
+		const HILDEGARD_BECHTLER_PERSON_UUID = '97';
+		const CHLOE_LAMFORD_PERSON_UUID = '98';
+		const AUTOGRAPH_COMPANY_UUID = '99';
+		const ANDREW_BRUCE_PERSON_UUID = '100';
+		const NICK_LIDSTER_PERSON_UUID = '101';
+		const ANNA_ANDERSON_PERSON_UUID = '102';
+		const DEPUTY_STAGE_MANAGERS_LTD_COMPANY_UUID = '103';
+		const CHERYL_FIRTH_PERSON_UUID = '104';
+		const TOM_LEGGAT_PERSON_UUID = '105';
+		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = '106';
+		const COLIN_FALCONER_PERSON_UUID = '107';
+		const ALEX_LOWDE_PERSON_UUID = '108';
 
 		before(async () => {
 
@@ -662,6 +695,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					venue: {
 						name: 'National Theatre',
+						differentiator: '1'
+					},
+					season: {
+						name: 'Shakespearean Tragedy Season',
 						differentiator: '1'
 					},
 					subProductions: [
@@ -960,6 +997,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				venue: {
 					model: 'VENUE',
 					name: 'National Theatre',
+					differentiator: '1',
+					errors: {}
+				},
+				season: {
+					model: 'SEASON',
+					name: 'Shakespearean Tragedy Season',
 					differentiator: '1',
 					errors: {}
 				},
@@ -1626,6 +1669,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'National Theatre',
 					surVenue: null
 				},
+				season: {
+					model: 'SEASON',
+					uuid: SHAKESPEAREAN_TRAGEDY_SEASON_UUID,
+					name: 'Shakespearean Tragedy Season'
+				},
 				surProduction: null,
 				subProductions: [
 					{
@@ -1637,6 +1685,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -1652,6 +1701,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -1667,6 +1717,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -2018,6 +2069,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				venue: {
 					model: 'VENUE',
 					name: 'National Theatre',
+					differentiator: '1',
+					errors: {}
+				},
+				season: {
+					model: 'SEASON',
+					name: 'Shakespearean Tragedy Season',
 					differentiator: '1',
 					errors: {}
 				},
@@ -2675,6 +2732,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'National Theatre',
 						differentiator: '1'
 					},
+					season: {
+						name: 'Shakespearean Tragedy Season',
+						differentiator: '1'
+					},
 					subProductions: [
 						{
 							uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID
@@ -2971,6 +3032,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				venue: {
 					model: 'VENUE',
 					name: 'National Theatre',
+					differentiator: '1',
+					errors: {}
+				},
+				season: {
+					model: 'SEASON',
+					name: 'Shakespearean Tragedy Season',
 					differentiator: '1',
 					errors: {}
 				},
@@ -3629,6 +3696,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Almeida Theatre',
 						differentiator: '1'
 					},
+					season: {
+						name: 'Shakespearean History Season',
+						differentiator: '1'
+					},
 					subProductions: [
 						{
 							uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID
@@ -3924,6 +3995,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				venue: {
 					model: 'VENUE',
 					name: 'Almeida Theatre',
+					differentiator: '1',
+					errors: {}
+				},
+				season: {
+					model: 'SEASON',
+					name: 'Shakespearean History Season',
 					differentiator: '1',
 					errors: {}
 				},
@@ -4590,6 +4667,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					name: 'Almeida Theatre',
 					surVenue: null
 				},
+				season: {
+					model: 'SEASON',
+					uuid: SHAKESPEAREAN_HISTORY_SEASON_UUID,
+					name: 'Shakespearean History Season'
+				},
 				surProduction: null,
 				subProductions: [
 					{
@@ -4601,6 +4683,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -4616,6 +4699,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -4631,6 +4715,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						endDate: null,
 						material: null,
 						venue: null,
+						season: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -4990,6 +5075,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -5095,6 +5186,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				season: {
+					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [],
 				producerCredits: [],
 				cast: [],
@@ -5114,13 +5211,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		const MACBETH_GIELGUD_PRODUCTION_UUID = '0';
 		const GIELGUD_THEATRE_VENUE_UUID = '2';
-		const HAMLET_NATIONAL_PRODUCTION_UUID = '3';
-		const NATIONAL_THEATRE_VENUE_UUID = '5';
-		const MACBETH_ALMEIDA_PRODUCTION_UUID = '6';
-		const ALMEIDA_THEATRE_VENUE_UUID = '8';
-		const HAMLET_WYNDHAMS_PRODUCTION_UUID = '9';
-		const WYNDHAMS_THEATRE_VENUE_UUID = '11';
-		const HAMLET_ALMEIDA_PRODUCTION_UUID = '12';
+		const HAMLET_NATIONAL_PRODUCTION_UUID = '4';
+		const NATIONAL_THEATRE_VENUE_UUID = '6';
+		const MACBETH_ALMEIDA_PRODUCTION_UUID = '8';
+		const ALMEIDA_THEATRE_VENUE_UUID = '10';
+		const HAMLET_WYNDHAMS_PRODUCTION_UUID = '12';
+		const WYNDHAMS_THEATRE_VENUE_UUID = '14';
+		const HAMLET_ALMEIDA_PRODUCTION_UUID = '16';
 
 		before(async () => {
 

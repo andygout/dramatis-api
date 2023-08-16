@@ -17,8 +17,8 @@ describe('Different characters with the same name from the same material', () =>
 	const CINNA_CHARACTER_2_UUID = '9';
 	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '10';
 	const BARBICAN_THEATRE_VENUE_UUID = '12';
-	const PAUL_SHEARER_PERSON_UUID = '13';
-	const LEO_WRINGER_PERSON_UUID = '14';
+	const PAUL_SHEARER_PERSON_UUID = '14';
+	const LEO_WRINGER_PERSON_UUID = '15';
 
 	let cinnaCharacter1;
 	let cinnaCharacter2;

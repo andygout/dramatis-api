@@ -20,8 +20,8 @@ describe('Venue with sub-venues', () => {
 	const RICHARD_II_MATERIAL_UUID = '20';
 	const KING_RICHARD_II_CHARACTER_UUID = '22';
 	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '23';
-	const FIONA_SHAW_PERSON_UUID = '26';
-	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '27';
+	const FIONA_SHAW_PERSON_UUID = '27';
+	const RICHARD_II_NATIONAL_PRODUCTION_UUID = '28';
 
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;

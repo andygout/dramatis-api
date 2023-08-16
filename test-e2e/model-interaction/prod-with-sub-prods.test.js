@@ -24,34 +24,35 @@ describe('Production with sub-productions', () => {
 	const THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID = '49';
 	const ALEXANDER_HERZEN_SR_CHARACTER_UUID = '53';
 	const VOYAGE_OLIVIER_PRODUCTION_UUID = '54';
-	const TREVOR_NUNN_JR_PERSON_UUID = '57';
-	const SUB_NATIONAL_THEATRE_COMPANY_UUID = '58';
-	const NICK_STARR_JR_PERSON_UUID = '59';
-	const STEPHEN_DILLANE_JR_PERSON_UUID = '60';
-	const STEVEN_EDIS_JR_PERSON_UUID = '61';
-	const SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '62';
-	const MARK_BOUSIE_JR_PERSON_UUID = '63';
-	const FIONA_BARDSLEY_JR_PERSON_UUID = '64';
-	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '65';
-	const SUE_MILLIN_JR_PERSON_UUID = '66';
-	const SHIPWRECK_OLIVIER_PRODUCTION_UUID = '67';
-	const SALVAGE_OLIVIER_PRODUCTION_UUID = '80';
-	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '93';
-	const TREVOR_NUNN_SR_PERSON_UUID = '96';
-	const SUR_NATIONAL_THEATRE_COMPANY_UUID = '97';
-	const NICK_STARR_SR_PERSON_UUID = '98';
-	const STEPHEN_DILLANE_SR_PERSON_UUID = '99';
-	const STEVEN_EDIS_SR_PERSON_UUID = '100';
-	const SUR_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '101';
-	const MARK_BOUSIE_SR_PERSON_UUID = '102';
-	const FIONA_BARDSLEY_SR_PERSON_UUID = '103';
-	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '104';
-	const SUE_MILLIN_SR_PERSON_UUID = '105';
-	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '106';
-	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = '108';
-	const SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID = '109';
-	const SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '112';
-	const THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID = '115';
+	const STOPPARD_SEASON_UUID = '57';
+	const TREVOR_NUNN_JR_PERSON_UUID = '58';
+	const SUB_NATIONAL_THEATRE_COMPANY_UUID = '59';
+	const NICK_STARR_JR_PERSON_UUID = '60';
+	const STEPHEN_DILLANE_JR_PERSON_UUID = '61';
+	const STEVEN_EDIS_JR_PERSON_UUID = '62';
+	const SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '63';
+	const MARK_BOUSIE_JR_PERSON_UUID = '64';
+	const FIONA_BARDSLEY_JR_PERSON_UUID = '65';
+	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '66';
+	const SUE_MILLIN_JR_PERSON_UUID = '67';
+	const SHIPWRECK_OLIVIER_PRODUCTION_UUID = '68';
+	const SALVAGE_OLIVIER_PRODUCTION_UUID = '82';
+	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '96';
+	const TREVOR_NUNN_SR_PERSON_UUID = '100';
+	const SUR_NATIONAL_THEATRE_COMPANY_UUID = '101';
+	const NICK_STARR_SR_PERSON_UUID = '102';
+	const STEPHEN_DILLANE_SR_PERSON_UUID = '103';
+	const STEVEN_EDIS_SR_PERSON_UUID = '104';
+	const SUR_MUSICAL_DIRECTION_LTD_COMPANY_UUID = '105';
+	const MARK_BOUSIE_SR_PERSON_UUID = '106';
+	const FIONA_BARDSLEY_SR_PERSON_UUID = '107';
+	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '108';
+	const SUE_MILLIN_SR_PERSON_UUID = '109';
+	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '110';
+	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = '112';
+	const SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID = '114';
+	const SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = '118';
+	const THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID = '122';
 
 	let theCoastOfUtopiaOlivierProduction;
 	let voyageOlivierProduction;
@@ -61,6 +62,7 @@ describe('Production with sub-productions', () => {
 	let voyageMaterial;
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;
+	let stoppardSeason;
 	let trevorNunnJrPerson;
 	let subNationalTheatreCompany;
 	let nickStarrJrPerson;
@@ -238,6 +240,9 @@ describe('Production with sub-productions', () => {
 				venue: {
 					name: 'Olivier Theatre'
 				},
+				season: {
+					name: 'Stoppard Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -318,6 +323,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Olivier Theatre'
+				},
+				season: {
+					name: 'Stoppard Season'
 				},
 				producerCredits: [
 					{
@@ -400,6 +408,9 @@ describe('Production with sub-productions', () => {
 				venue: {
 					name: 'Olivier Theatre'
 				},
+				season: {
+					name: 'Stoppard Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -480,6 +491,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Olivier Theatre'
+				},
+				season: {
+					name: 'Stoppard Season'
 				},
 				subProductions: [
 					{
@@ -654,6 +668,9 @@ describe('Production with sub-productions', () => {
 		olivierTheatreVenue = await chai.request(app)
 			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
+		stoppardSeason = await chai.request(app)
+			.get(`/seasons/${STOPPARD_SEASON_UUID}`);
+
 		trevorNunnJrPerson = await chai.request(app)
 			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
 
@@ -747,6 +764,11 @@ describe('Production with sub-productions', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
+					},
+					season: {
+						model: 'SEASON',
+						uuid: STOPPARD_SEASON_UUID,
+						name: 'Stoppard Season'
 					},
 					subProductions: [],
 					producerCredits: [
@@ -889,6 +911,11 @@ describe('Production with sub-productions', () => {
 							name: 'National Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: STOPPARD_SEASON_UUID,
+						name: 'Stoppard Season'
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -1029,6 +1056,11 @@ describe('Production with sub-productions', () => {
 							uuid: NATIONAL_THEATRE_VENUE_UUID,
 							name: 'National Theatre'
 						}
+					},
+					season: {
+						model: 'SEASON',
+						uuid: STOPPARD_SEASON_UUID,
+						name: 'Stoppard Season'
 					},
 					subProductions: [],
 					producerCredits: [
@@ -1179,6 +1211,11 @@ describe('Production with sub-productions', () => {
 						uuid: NATIONAL_THEATRE_VENUE_UUID,
 						name: 'National Theatre'
 					}
+				},
+				season: {
+					model: 'SEASON',
+					uuid: STOPPARD_SEASON_UUID,
+					name: 'Stoppard Season'
 				},
 				surProduction: null,
 				producerCredits: [
@@ -1331,6 +1368,7 @@ describe('Production with sub-productions', () => {
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1381,6 +1419,7 @@ describe('Production with sub-productions', () => {
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1431,6 +1470,7 @@ describe('Production with sub-productions', () => {
 						name: 'Vivian Beaumont Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1490,6 +1530,7 @@ describe('Production with sub-productions', () => {
 					name: 'Vivian Beaumont Theatre',
 					surVenue: null
 				},
+				season: null,
 				surProduction: null,
 				producerCredits: [],
 				cast: [],
@@ -1728,6 +1769,90 @@ describe('Production with sub-productions', () => {
 			];
 
 			const { productions } = olivierTheatreVenue.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Stoppard Season (season)', () => {
+
+		it('includes productions in this season and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { productions } = stoppardSeason.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

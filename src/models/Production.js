@@ -11,6 +11,7 @@ import {
 	CrewCredit,
 	MaterialBase,
 	ProducerCredit,
+	Season,
 	SubProductionIdentifier,
 	VenueBase
 } from '.';
@@ -28,6 +29,7 @@ export default class Production extends Entity {
 			endDate,
 			material,
 			venue,
+			season,
 			subProductions,
 			producerCredits,
 			cast,
@@ -44,6 +46,8 @@ export default class Production extends Entity {
 		this.material = new MaterialBase(material);
 
 		this.venue = new VenueBase(venue);
+
+		this.season = new Season(season);
 
 		this.subProductions = subProductions
 			? subProductions.map(subProduction => new SubProductionIdentifier(subProduction))
@@ -86,6 +90,10 @@ export default class Production extends Entity {
 		this.venue.validateName({ isRequired: false });
 
 		this.venue.validateDifferentiator();
+
+		this.season.validateName({ isRequired: false });
+
+		this.season.validateDifferentiator();
 
 		const duplicateSubProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.subProductions);
 

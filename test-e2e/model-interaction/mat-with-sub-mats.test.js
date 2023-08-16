@@ -20,7 +20,7 @@ describe('Material with sub-materials', () => {
 	const THE_COAST_OF_UTOPIA_MATERIAL_UUID = '41';
 	const IVAN_TURGENEV_CHARACTER_UUID = '48';
 	const VOYAGE_OLIVIER_PRODUCTION_UUID = '49';
-	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '52';
+	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '53';
 
 	let theCoastOfUtopiaMaterial;
 	let voyageMaterial;

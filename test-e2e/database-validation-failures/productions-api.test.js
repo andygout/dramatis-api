@@ -59,6 +59,12 @@ describe('Database validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					season: {
+						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION_IDENTIFIER',
@@ -146,6 +152,12 @@ describe('Database validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -260,6 +272,12 @@ describe('Database validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					season: {
+						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION_IDENTIFIER',
@@ -341,6 +359,12 @@ describe('Database validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -438,6 +462,12 @@ describe('Database validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -542,6 +572,12 @@ describe('Database validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -665,6 +701,12 @@ describe('Database validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					season: {
+						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION_IDENTIFIER',
@@ -780,6 +822,12 @@ describe('Database validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}

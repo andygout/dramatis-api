@@ -253,6 +253,126 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
+	describe('Production season uniqueness in database', () => {
+
+		const DETAINING_JUSTICE_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedSeasonNotBlackAndWhite1 = {
+			model: 'SEASON',
+			name: 'Not Black and White',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedSeasonNotBlackAndWhite2 = {
+			model: 'SEASON',
+			name: 'Not Black and White',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			let uuidCallCount = 0;
+
+			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: DETAINING_JUSTICE_PRODUCTION_UUID,
+				name: 'Detaining Justice'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates season that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Season')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Detaining Justice',
+					season: {
+						name: 'Not Black and White'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite1);
+			expect(await countNodesWithLabel('Season')).to.equal(1);
+
+		});
+
+		it('updates production and creates season that has same name as existing season but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Season')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Detaining Justice',
+					season: {
+						name: 'Not Black and White',
+						differentiator: '1'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite2);
+			expect(await countNodesWithLabel('Season')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing season that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Season')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Detaining Justice',
+					season: {
+						name: 'Not Black and White'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite1);
+			expect(await countNodesWithLabel('Season')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing season that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Season')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Detaining Justice',
+					season: {
+						name: 'Not Black and White',
+						differentiator: '1'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite2);
+			expect(await countNodesWithLabel('Season')).to.equal(2);
+
+		});
+
+	});
+
 	describe('Production producer entity (person) uniqueness in database', () => {
 
 		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
