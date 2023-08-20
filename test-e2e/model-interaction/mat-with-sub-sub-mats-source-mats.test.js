@@ -24,8 +24,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 	const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = '56';
 	const GODBLOG_BUSH_THEATRE_PRODUCTION_UUID = '60';
 	const BUSH_THEATRE_VENUE_UUID = '62';
-	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = '63';
-	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = '66';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = '64';
+	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = '68';
 
 	let genesisReligiousTextMaterial;
 	let godblogPlayMaterial;

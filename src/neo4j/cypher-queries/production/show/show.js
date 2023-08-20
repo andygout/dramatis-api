@@ -195,6 +195,22 @@ export default () => `
 				}
 			END AS venue
 
+		OPTIONAL MATCH (collectionProduction)-[:PART_OF_SEASON]->(season:Season)
+
+		WITH
+			production,
+			collectionProduction,
+			material,
+			venue,
+			CASE WHEN season IS NULL
+				THEN null
+				ELSE season {
+					model: 'SEASON',
+					.uuid,
+					.name
+				}
+			END AS season
+
 		OPTIONAL MATCH (collectionProduction)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
 			WHERE
 				(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
@@ -205,6 +221,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerEntityRel,
 			COLLECT(producerEntity {
 				model: TOUPPER(HEAD(LABELS(producerEntity))),
@@ -228,6 +245,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerEntityRel,
 					producerEntity,
 					creditedMember
@@ -238,6 +256,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerEntityRel,
 					producerEntity,
 					COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
@@ -247,6 +266,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerEntityRel,
 			producerEntity,
 			creditedMembers
@@ -257,6 +277,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerEntityRel.credit AS producerCreditName,
 			COLLECT(
 				CASE WHEN producerEntity IS NULL
@@ -270,6 +291,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCreditName,
 			[producerEntity IN producerEntities | CASE producerEntity.model WHEN 'COMPANY'
 				THEN producerEntity
@@ -281,6 +303,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			COLLECT(
 				CASE SIZE(producerEntities) WHEN 0
 					THEN null
@@ -308,6 +331,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			castMember,
 			role,
@@ -319,6 +343,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			castMember,
 				COLLECT(
@@ -339,6 +364,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 				COLLECT(
 					CASE WHEN castMember IS NULL
@@ -357,6 +383,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeEntityRel,
@@ -382,6 +409,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerCredits,
 					cast,
 					creativeEntityRel,
@@ -394,6 +422,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerCredits,
 					cast,
 					creativeEntityRel,
@@ -405,6 +434,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeEntityRel,
@@ -417,6 +447,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeEntityRel.credit AS creativeCreditName,
@@ -432,6 +463,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCreditName,
@@ -445,6 +477,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			COLLECT(
@@ -468,6 +501,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -494,6 +528,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -507,6 +542,7 @@ export default () => `
 					collectionProduction,
 					material,
 					venue,
+					season,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -519,6 +555,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -532,6 +569,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -548,6 +586,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -562,6 +601,7 @@ export default () => `
 			collectionProduction,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -597,6 +637,7 @@ export default () => `
 			subSubProductionSurProduction.uuid AS subSubProductionSurProductionUuid,
 			material,
 			venue,
+			season,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -620,6 +661,7 @@ export default () => `
 					subSubProductionSurProductionUuid,
 					material,
 					venue,
+					season,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -633,6 +675,7 @@ export default () => `
 				collectionProduction {
 					.material,
 					.venue,
+					.season,
 					.producerCredits,
 					.cast,
 					.creativeCredits,
@@ -650,6 +693,7 @@ export default () => `
 					.endDate,
 					.material,
 					.venue,
+					.season,
 					surProduction: HEAD([
 						surSurProduction IN collectionProductions WHERE surSurProduction.isSurSurProduction |
 							surSurProduction {
@@ -661,6 +705,7 @@ export default () => `
 								.endDate,
 								.material,
 								.venue,
+								.season,
 								.producerCredits,
 								.cast,
 								.creativeCredits,
@@ -684,6 +729,7 @@ export default () => `
 					.endDate,
 					.material,
 					.venue,
+					.season,
 					subProductions: [
 						subSubProduction IN collectionProductions
 							WHERE
@@ -698,6 +744,7 @@ export default () => `
 								.endDate,
 								.material,
 								.venue,
+								.season,
 								.producerCredits,
 								.cast,
 								.creativeCredits,
@@ -720,6 +767,7 @@ export default () => `
 		production.endDate AS endDate,
 		subjectProduction.material AS material,
 		subjectProduction.venue AS venue,
+		subjectProduction.season AS season,
 		surProduction,
 		subProductions,
 		subjectProduction.producerCredits AS producerCredits,

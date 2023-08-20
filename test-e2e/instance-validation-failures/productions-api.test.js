@@ -61,6 +61,12 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					season: {
+						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -109,6 +115,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -178,6 +190,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -262,6 +280,12 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					season: {
+						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -316,6 +340,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -386,6 +416,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -494,6 +530,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					venue: {
 						model: 'VENUE',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						model: 'SEASON',
 						name: '',
 						differentiator: '',
 						errors: {}

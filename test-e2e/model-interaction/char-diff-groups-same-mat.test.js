@@ -18,12 +18,12 @@ describe('Character with multiple appearances in different character groups of t
 	const ROSE_KING_CHARACTER_UUID = '11';
 	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '12';
 	const NATIONAL_THEATRE_VENUE_UUID = '14';
-	const SIOBHAN_FINNERAN_PERSON_UUID = '15';
-	const JO_HERBERT_PERSON_UUID = '16';
-	const JAMES_LAURENSON_PERSON_UUID = '17';
-	const JODIE_MCNEE_PERSON_UUID = '18';
-	const ALEX_PRICE_PERSON_UUID = '19';
-	const BEBE_SANDERS_PERSON_UUID = '20';
+	const SIOBHAN_FINNERAN_PERSON_UUID = '16';
+	const JO_HERBERT_PERSON_UUID = '17';
+	const JAMES_LAURENSON_PERSON_UUID = '18';
+	const JODIE_MCNEE_PERSON_UUID = '19';
+	const ALEX_PRICE_PERSON_UUID = '20';
+	const BEBE_SANDERS_PERSON_UUID = '21';
 
 	let alisaKosCharacter;
 	let mašaKosCharacter;

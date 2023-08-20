@@ -1,4 +1,4 @@
-export default () => [`
+export default () => `
 	MATCH (season:Season { uuid: $uuid })
 
 	RETURN
@@ -6,4 +6,4 @@ export default () => [`
 		season.uuid AS uuid,
 		season.name AS name,
 		season.differentiator AS differentiator
-`];
+`;

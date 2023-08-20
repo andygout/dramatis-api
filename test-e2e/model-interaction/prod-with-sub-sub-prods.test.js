@@ -36,62 +36,63 @@ describe('Production with sub-sub-productions', () => {
 	const SUR_INKISTS_LTD_COMPANY_UUID = '166';
 	const BAR_SR_CHARACTER_UUID = '170';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = '171';
-	const NICOLAS_KENT_JR_PERSON_UUID = '174';
-	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = '175';
-	const ZOË_INGENHAAG_JR_PERSON_UUID = '176';
-	const RICK_WARDEN_JR_PERSON_UUID = '177';
-	const HOWARD_HARRISON_JR_PERSON_UUID = '178';
-	const SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID = '179';
-	const JACK_KNOWLES_JR_PERSON_UUID = '180';
-	const LIZZIE_CHAPMAN_JR_PERSON_UUID = '181';
-	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '182';
-	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = '183';
-	const DURANDS_LINE_RODA_PRODUCTION_UUID = '184';
-	const CAMPAIGN_RODA_PRODUCTION_UUID = '197';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID = '210';
-	const NICOLAS_KENT_PERSON_UUID = '213';
-	const MID_TRICYCLE_THEATRE_COMPANY_UUID = '214';
-	const ZOË_INGENHAAG_PERSON_UUID = '215';
-	const RICK_WARDEN_PERSON_UUID = '216';
-	const HOWARD_HARRISON_PERSON_UUID = '217';
-	const MID_LIGHTING_DESIGN_LTD_COMPANY_UUID = '218';
-	const JACK_KNOWLES_PERSON_UUID = '219';
-	const LIZZIE_CHAPMAN_PERSON_UUID = '220';
-	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '221';
-	const CHARLOTTE_PADGHAM_PERSON_UUID = '222';
-	const BLACK_TULIPS_RODA_PRODUCTION_UUID = '223';
-	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = '236';
-	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = '249';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID = '262';
-	const HONEY_RODA_PRODUCTION_UUID = '275';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = '288';
-	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = '301';
-	const PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID = '314';
-	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = '327';
-	const NICOLAS_KENT_SR_PERSON_UUID = '330';
-	const SUR_TRICYCLE_THEATRE_COMPANY_UUID = '331';
-	const ZOË_INGENHAAG_SR_PERSON_UUID = '332';
-	const RICK_WARDEN_SR_PERSON_UUID = '333';
-	const HOWARD_HARRISON_SR_PERSON_UUID = '334';
-	const SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID = '335';
-	const JACK_KNOWLES_SR_PERSON_UUID = '336';
-	const LIZZIE_CHAPMAN_SR_PERSON_UUID = '337';
-	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '338';
-	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = '339';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '340';
-	const TRICYCLE_THEATRE_VENUE_UUID = '342';
-	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '343';
-	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '346';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '349';
-	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '352';
-	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '355';
-	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '358';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '361';
-	const HONEY_TRICYCLE_PRODUCTION_UUID = '364';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '367';
-	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '370';
-	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '373';
-	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '376';
+	const AFGHAN_HISTORY_SEASON_UUID = '174';
+	const NICOLAS_KENT_JR_PERSON_UUID = '175';
+	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = '176';
+	const ZOË_INGENHAAG_JR_PERSON_UUID = '177';
+	const RICK_WARDEN_JR_PERSON_UUID = '178';
+	const HOWARD_HARRISON_JR_PERSON_UUID = '179';
+	const SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID = '180';
+	const JACK_KNOWLES_JR_PERSON_UUID = '181';
+	const LIZZIE_CHAPMAN_JR_PERSON_UUID = '182';
+	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '183';
+	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = '184';
+	const DURANDS_LINE_RODA_PRODUCTION_UUID = '185';
+	const CAMPAIGN_RODA_PRODUCTION_UUID = '199';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID = '213';
+	const NICOLAS_KENT_PERSON_UUID = '217';
+	const MID_TRICYCLE_THEATRE_COMPANY_UUID = '218';
+	const ZOË_INGENHAAG_PERSON_UUID = '219';
+	const RICK_WARDEN_PERSON_UUID = '220';
+	const HOWARD_HARRISON_PERSON_UUID = '221';
+	const MID_LIGHTING_DESIGN_LTD_COMPANY_UUID = '222';
+	const JACK_KNOWLES_PERSON_UUID = '223';
+	const LIZZIE_CHAPMAN_PERSON_UUID = '224';
+	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '225';
+	const CHARLOTTE_PADGHAM_PERSON_UUID = '226';
+	const BLACK_TULIPS_RODA_PRODUCTION_UUID = '227';
+	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = '241';
+	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = '255';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID = '269';
+	const HONEY_RODA_PRODUCTION_UUID = '283';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = '297';
+	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = '311';
+	const PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID = '325';
+	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = '339';
+	const NICOLAS_KENT_SR_PERSON_UUID = '343';
+	const SUR_TRICYCLE_THEATRE_COMPANY_UUID = '344';
+	const ZOË_INGENHAAG_SR_PERSON_UUID = '345';
+	const RICK_WARDEN_SR_PERSON_UUID = '346';
+	const HOWARD_HARRISON_SR_PERSON_UUID = '347';
+	const SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID = '348';
+	const JACK_KNOWLES_SR_PERSON_UUID = '349';
+	const LIZZIE_CHAPMAN_SR_PERSON_UUID = '350';
+	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '351';
+	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = '352';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '353';
+	const TRICYCLE_THEATRE_VENUE_UUID = '355';
+	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '357';
+	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '361';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '365';
+	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '369';
+	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '373';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '377';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '381';
+	const HONEY_TRICYCLE_PRODUCTION_UUID = '385';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '389';
+	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '393';
+	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '397';
+	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '401';
 
 	let theGreatGameAfghanistanRodaProduction;
 	let partOneInvasionsAndIndependenceRodaProduction;
@@ -104,6 +105,7 @@ describe('Production with sub-sub-productions', () => {
 	let buglesAtTheGatesOfJalalabadMaterial;
 	let berkeleyRepertoryTheatreVenue;
 	let rodaTheatreVenue;
+	let afghanHistorySeason;
 	let nicolasKentJrPerson;
 	let subTricycleTheatreCompany;
 	let zoëIngenhaagJrPerson;
@@ -584,6 +586,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -664,6 +669,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				producerCredits: [
 					{
@@ -746,6 +754,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -826,6 +837,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				subProductions: [
 					{
@@ -919,6 +933,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -999,6 +1016,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				producerCredits: [
 					{
@@ -1081,6 +1101,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -1161,6 +1184,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				subProductions: [
 					{
@@ -1254,6 +1280,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -1334,6 +1363,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				producerCredits: [
 					{
@@ -1416,6 +1448,9 @@ describe('Production with sub-sub-productions', () => {
 				venue: {
 					name: 'Roda Theatre'
 				},
+				season: {
+					name: 'Afghan History Season'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -1496,6 +1531,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				subProductions: [
 					{
@@ -1588,6 +1626,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Roda Theatre'
+				},
+				season: {
+					name: 'Afghan History Season'
 				},
 				subProductions: [
 					{
@@ -1940,6 +1981,9 @@ describe('Production with sub-sub-productions', () => {
 		rodaTheatreVenue = await chai.request(app)
 			.get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
 
+		afghanHistorySeason = await chai.request(app)
+			.get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
+
 		nicolasKentJrPerson = await chai.request(app)
 			.get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
 
@@ -2034,6 +2078,11 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -2086,6 +2135,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -2231,6 +2285,11 @@ describe('Production with sub-sub-productions', () => {
 									name: 'Berkeley Repertory Theatre'
 								}
 							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
+							},
 							producerCredits: [
 								{
 									model: 'PRODUCER_CREDIT',
@@ -2374,6 +2433,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -2608,6 +2672,11 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -2660,6 +2729,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -2805,6 +2879,11 @@ describe('Production with sub-sub-productions', () => {
 									name: 'Berkeley Repertory Theatre'
 								}
 							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
+							},
 							producerCredits: [
 								{
 									model: 'PRODUCER_CREDIT',
@@ -2948,6 +3027,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -3182,6 +3266,11 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -3234,6 +3323,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -3379,6 +3473,11 @@ describe('Production with sub-sub-productions', () => {
 									name: 'Berkeley Repertory Theatre'
 								}
 							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
+							},
 							producerCredits: [
 								{
 									model: 'PRODUCER_CREDIT',
@@ -3522,6 +3621,11 @@ describe('Production with sub-sub-productions', () => {
 									uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 									name: 'Berkeley Repertory Theatre'
 								}
+							},
+							season: {
+								model: 'SEASON',
+								uuid: AFGHAN_HISTORY_SEASON_UUID,
+								name: 'Afghan History Season'
 							},
 							producerCredits: [
 								{
@@ -3765,6 +3869,11 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Berkeley Repertory Theatre'
 					}
 				},
+				season: {
+					model: 'SEASON',
+					uuid: AFGHAN_HISTORY_SEASON_UUID,
+					name: 'Afghan History Season'
+				},
 				surProduction: null,
 				producerCredits: [
 					{
@@ -3920,6 +4029,11 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -4065,6 +4179,11 @@ describe('Production with sub-sub-productions', () => {
 							name: 'Berkeley Repertory Theatre'
 						}
 					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -4209,6 +4328,11 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 							name: 'Berkeley Repertory Theatre'
 						}
+					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
 					},
 					subProductions: [],
 					producerCredits: [
@@ -4365,6 +4489,11 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Berkeley Repertory Theatre'
 					}
 				},
+				season: {
+					model: 'SEASON',
+					uuid: AFGHAN_HISTORY_SEASON_UUID,
+					name: 'Afghan History Season'
+				},
 				surProduction: {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4407,6 +4536,11 @@ describe('Production with sub-sub-productions', () => {
 							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
 							name: 'Berkeley Repertory Theatre'
 						}
+					},
+					season: {
+						model: 'SEASON',
+						uuid: AFGHAN_HISTORY_SEASON_UUID,
+						name: 'Afghan History Season'
 					},
 					producerCredits: [
 						{
@@ -4650,6 +4784,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -4699,6 +4834,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -4752,6 +4888,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -4805,6 +4942,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -4860,6 +4998,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -4909,6 +5048,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -4962,6 +5102,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5015,6 +5156,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5070,6 +5212,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -5119,6 +5262,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5172,6 +5316,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5225,6 +5370,7 @@ describe('Production with sub-sub-productions', () => {
 								name: 'Tricycle Theatre',
 								surVenue: null
 							},
+							season: null,
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5289,6 +5435,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Tricycle Theatre',
 					surVenue: null
 				},
+				season: null,
 				surProduction: null,
 				producerCredits: [],
 				cast: [],
@@ -5353,6 +5500,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5407,6 +5555,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5461,6 +5610,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5525,6 +5675,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Tricycle Theatre',
 					surVenue: null
 				},
+				season: null,
 				surProduction: {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5564,6 +5715,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Tricycle Theatre',
 						surVenue: null
 					},
+					season: null,
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -6135,6 +6287,264 @@ describe('Production with sub-sub-productions', () => {
 			];
 
 			const { productions } = rodaTheatreVenue.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Afghan History Season (season)', () => {
+
+		it('includes productions in this season and, where applicable, corresponding sur-productions and sur-sur-productions; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_RODA_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						name: 'Part Three - Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						name: 'Part One - Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				}
+			];
+
+			const { productions } = afghanHistorySeason.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

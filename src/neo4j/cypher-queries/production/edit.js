@@ -5,12 +5,14 @@ export default () => `
 
 	OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
+	OPTIONAL MATCH (production)-[:PART_OF_SEASON]->(season:Season)
+
 	OPTIONAL MATCH (production)-[subProductionRel:HAS_SUB_PRODUCTION]->(subProduction:Production)
 
-	WITH production, material, venue, subProductionRel, subProduction
+	WITH production, material, venue, season, subProductionRel, subProduction
 		ORDER BY subProductionRel.position
 
-	WITH production, material, venue,
+	WITH production, material, venue, season,
 		COLLECT(CASE WHEN subProduction IS NULL THEN null ELSE subProduction { .uuid } END) + [{}] AS subProductions
 
 	OPTIONAL MATCH (production)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
@@ -18,7 +20,7 @@ export default () => `
 			(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
 			producerEntity:Company
 
-	WITH production, material, venue, subProductions, producerEntityRel,
+	WITH production, material, venue, season, subProductions, producerEntityRel,
 		COLLECT(producerEntity {
 			model: TOUPPER(HEAD(LABELS(producerEntity))),
 			.name,
@@ -36,16 +38,16 @@ export default () => `
 					producerEntityRel.creditPosition IS NULL OR
 					producerEntityRel.creditPosition = creditedMemberRel.creditPosition
 
-			WITH production, material, venue, subProductions, producerEntityRel, producerEntity, creditedMember
+			WITH production, material, venue, season, subProductions, producerEntityRel, producerEntity, creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, subProductions, producerEntityRel, producerEntity,
+			WITH production, material, venue, season, subProductions, producerEntityRel, producerEntity,
 				COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
-	WITH production, material, venue, subProductions, producerEntityRel, producerEntity, creditedMembers
+	WITH production, material, venue, season, subProductions, producerEntityRel, producerEntity, creditedMembers
 		ORDER BY producerEntityRel.creditPosition, producerEntityRel.entityPosition
 
-	WITH production, material, venue, subProductions, producerEntityRel.credit AS producerCreditName,
+	WITH production, material, venue, season, subProductions, producerEntityRel.credit AS producerCreditName,
 		COLLECT(
 			CASE WHEN producerEntity IS NULL
 				THEN null
@@ -53,13 +55,13 @@ export default () => `
 			END
 		) AS producerEntities
 
-	WITH production, material, venue, subProductions, producerCreditName,
+	WITH production, material, venue, season, subProductions, producerCreditName,
 		[producerEntity IN producerEntities | CASE producerEntity.model WHEN 'COMPANY'
 			THEN producerEntity
 			ELSE producerEntity { .model, .name, .differentiator }
 		END] + [{}] AS producerEntities
 
-	WITH production, material, venue, subProductions,
+	WITH production, material, venue, season, subProductions,
 		COLLECT(
 			CASE WHEN producerCreditName IS NULL AND SIZE(producerEntities) = 1
 				THEN null
@@ -69,10 +71,10 @@ export default () => `
 
 	OPTIONAL MATCH (production)-[role:HAS_CAST_MEMBER]->(castMember:Person)
 
-	WITH production, material, venue, subProductions, producerCredits, role, castMember
+	WITH production, material, venue, season, subProductions, producerCredits, role, castMember
 		ORDER BY role.castMemberPosition, role.rolePosition
 
-	WITH production, material, venue, subProductions, producerCredits, castMember,
+	WITH production, material, venue, season, subProductions, producerCredits, castMember,
 		COLLECT(
 			CASE WHEN role.roleName IS NULL
 				THEN null
@@ -86,7 +88,7 @@ export default () => `
 			END
 		) + [{}] AS roles
 
-	WITH production, material, venue, subProductions, producerCredits,
+	WITH production, material, venue, season, subProductions, producerCredits,
 		COLLECT(
 			CASE WHEN castMember IS NULL
 				THEN null
@@ -99,7 +101,7 @@ export default () => `
 			(creativeEntity:Person AND creativeEntityRel.creditedCompanyUuid IS NULL) OR
 			creativeEntity:Company
 
-	WITH production, material, venue, subProductions, producerCredits, cast, creativeEntityRel,
+	WITH production, material, venue, season, subProductions, producerCredits, cast, creativeEntityRel,
 		COLLECT(creativeEntity {
 			model: TOUPPER(HEAD(LABELS(creativeEntity))),
 			.name,
@@ -121,6 +123,7 @@ export default () => `
 				production,
 				material,
 				venue,
+				season,
 				subProductions,
 				producerCredits,
 				cast,
@@ -129,13 +132,23 @@ export default () => `
 				creditedMember
 				ORDER BY creditedMemberRel.memberPosition
 
-			WITH production, material, venue, subProductions, producerCredits, cast, creativeEntityRel, creativeEntity,
+			WITH
+				production,
+				material,
+				venue,
+				season,
+				subProductions,
+				producerCredits,
+				cast,
+				creativeEntityRel,
+				creativeEntity,
 				COLLECT(creditedMember { .name, .differentiator }) + [{}] AS creditedMembers
 
 	WITH
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -148,6 +161,7 @@ export default () => `
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -163,6 +177,7 @@ export default () => `
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -172,7 +187,7 @@ export default () => `
 			ELSE creativeEntity { .model, .name, .differentiator }
 		END] + [{}] AS creativeEntities
 
-	WITH production, material, venue, subProductions, producerCredits, cast,
+	WITH production, material, venue, season, subProductions, producerCredits, cast,
 		COLLECT(
 			CASE WHEN creativeCreditName IS NULL AND SIZE(creativeEntities) = 1
 				THEN null
@@ -185,7 +200,7 @@ export default () => `
 			(crewEntity:Person AND crewEntityRel.creditedCompanyUuid IS NULL) OR
 			crewEntity:Company
 
-	WITH production, material, venue, subProductions, producerCredits, cast, creativeCredits, crewEntityRel,
+	WITH production, material, venue, season, subProductions, producerCredits, cast, creativeCredits, crewEntityRel,
 		COLLECT(crewEntity {
 			model: TOUPPER(HEAD(LABELS(crewEntity))),
 			.name,
@@ -207,6 +222,7 @@ export default () => `
 				production,
 				material,
 				venue,
+				season,
 				subProductions,
 				producerCredits,
 				cast,
@@ -220,6 +236,7 @@ export default () => `
 				production,
 				material,
 				venue,
+				season,
 				subProductions,
 				producerCredits,
 				cast,
@@ -232,6 +249,7 @@ export default () => `
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -245,6 +263,7 @@ export default () => `
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -261,6 +280,7 @@ export default () => `
 		production,
 		material,
 		venue,
+		season,
 		subProductions,
 		producerCredits,
 		cast,
@@ -279,6 +299,7 @@ export default () => `
 		production.endDate AS endDate,
 		{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 		{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
+		{ name: COALESCE(season.name, ''), differentiator: COALESCE(season.differentiator, '') } AS season,
 		subProductions,
 		producerCredits,
 		cast,

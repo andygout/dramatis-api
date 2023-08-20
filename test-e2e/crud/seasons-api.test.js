@@ -127,7 +127,8 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				model: 'SEASON',
 				uuid: SEASON_UUID,
 				name: 'The David Hare Season',
-				differentiator: null
+				differentiator: null,
+				productions: []
 			};
 
 			expect(response).to.have.status(200);

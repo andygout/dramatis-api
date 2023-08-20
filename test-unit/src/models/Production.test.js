@@ -8,6 +8,7 @@ import {
 	CrewCredit,
 	MaterialBase,
 	ProducerCredit,
+	Season,
 	SubProductionIdentifier,
 	VenueBase
 } from '../../../src/models';
@@ -46,6 +47,12 @@ describe('Production model', () => {
 
 	};
 
+	const SeasonStub = function () {
+
+		return createStubInstance(Season);
+
+	};
+
 	const SubProductionIdentifierStub = function () {
 
 		return createStubInstance(SubProductionIdentifier);
@@ -72,6 +79,7 @@ describe('Production model', () => {
 				CrewCredit: CrewCreditStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
+				Season: SeasonStub,
 				SubProductionIdentifier: SubProductionIdentifierStub,
 				VenueBase: VenueBaseStub
 			}
@@ -253,6 +261,29 @@ describe('Production model', () => {
 					}
 				});
 				expect(instance.venue instanceof VenueBase).to.be.true;
+
+			});
+
+		});
+
+		describe('season property', () => {
+
+			it('assigns instance if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.season instanceof Season).to.be.true;
+
+			});
+
+			it('assigns instance if included in props', () => {
+
+				const instance = createInstance({
+					name: 'Hamlet',
+					season: {
+						name: 'Shakesperean Tragedy Season'
+					}
+				});
+				expect(instance.season instanceof Season).to.be.true;
 
 			});
 
@@ -478,6 +509,8 @@ describe('Production model', () => {
 				instance.material.validateDifferentiator,
 				instance.venue.validateName,
 				instance.venue.validateDifferentiator,
+				instance.season.validateName,
+				instance.season.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
 				instance.subProductions[0].validateUuid,
 				instance.subProductions[0].validateNoAssociationWithSelf,
@@ -503,6 +536,10 @@ describe('Production model', () => {
 			assert.calledWithExactly(instance.venue.validateName, { isRequired: false });
 			assert.calledOnce(instance.venue.validateDifferentiator);
 			assert.calledWithExactly(instance.venue.validateDifferentiator);
+			assert.calledOnce(instance.season.validateName);
+			assert.calledWithExactly(instance.season.validateName, { isRequired: false });
+			assert.calledOnce(instance.season.validateDifferentiator);
+			assert.calledWithExactly(instance.season.validateDifferentiator);
 			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices);
 			assert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
