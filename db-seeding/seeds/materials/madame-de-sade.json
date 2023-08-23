@@ -1,0 +1,46 @@
+{
+	"name": "Madame de Sade",
+	"format": "play",
+	"year": "1965",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Yukio Mishima"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Donald Keene"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Renee, Madame de Sade"
+				},
+				{
+					"name": "Madame de Montreuil"
+				},
+				{
+					"name": "Anne"
+				},
+				{
+					"name": "Baroness de Simiane"
+				},
+				{
+					"name": "Comtesse de Saint-Fond"
+				},
+				{
+					"name": "Charlotte"
+				}
+			]
+		}
+	]
+}

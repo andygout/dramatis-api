@@ -1,0 +1,168 @@
+{
+	"name": "Racing Demon",
+	"startDate": "2011-02-10",
+	"pressDate": "2011-02-16",
+	"endDate": "2011-03-05",
+	"material": {
+		"name": "Racing Demon"
+	},
+	"venue": {
+		"name": "Crucible Theatre"
+	},
+	"season": {
+		"name": "The David Hare Season"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sheffield Theatres"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Malcolm Sinclair",
+			"roles": [
+				{
+					"name": "Rev Lionel Espy"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Coy",
+			"roles": [
+				{
+					"name": "Rt Rev Charlie Allen"
+				}
+			]
+		},
+		{
+			"name": "Emma Hamilton",
+			"roles": [
+				{
+					"name": "Frances Parnell"
+				}
+			]
+		},
+		{
+			"name": "Jamie Parker",
+			"roles": [
+				{
+					"name": "Rev Tony Ferris"
+				}
+			]
+		},
+		{
+			"name": "Estella Daniels",
+			"roles": [
+				{
+					"name": "Stella Marr"
+				}
+			]
+		},
+		{
+			"name": "Matthew Cottle",
+			"roles": [
+				{
+					"name": "Rev Donald 'Streaky' Bacon"
+				}
+			]
+		},
+		{
+			"name": "Ian Gelder",
+			"roles": [
+				{
+					"name": "Rev Harry Henderson"
+				}
+			]
+		},
+		{
+			"name": "Jane Wymark",
+			"roles": [
+				{
+					"name": "Heather Espy"
+				}
+			]
+		},
+		{
+			"name": "Paul Rattray",
+			"roles": [
+				{
+					"name": "Ewan Gilmour"
+				}
+			]
+		},
+		{
+			"name": "Mark Leadbetter",
+			"roles": [
+				{
+					"name": "Tommy Adair"
+				}
+			]
+		},
+		{
+			"name": "Mark Tandy",
+			"roles": [
+				{
+					"name": "Rt Rev Gilbert Heffernan"
+				}
+			]
+		},
+		{
+			"name": "Terry Doe",
+			"roles": [
+				{
+					"name": "Head Waiter"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Daniel Evans"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Rogers"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ben Ringham"
+				},
+				{
+					"name": "Max Ringham"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Jonathan Humphreys"
+				}
+			]
+		}
+	]
+}

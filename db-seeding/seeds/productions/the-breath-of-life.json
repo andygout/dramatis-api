@@ -1,0 +1,85 @@
+{
+	"name": "The Breath of Life",
+	"startDate": "2011-02-16",
+	"pressDate": "2011-02-21",
+	"endDate": "2011-03-26",
+	"material": {
+		"name": "The Breath of Life"
+	},
+	"venue": {
+		"name": "Lyceum Theatre"
+	},
+	"season": {
+		"name": "The David Hare Season"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sheffield Theatres"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Patricia Hodge",
+			"roles": [
+				{
+					"name": "Madeleine Palmer"
+				}
+			]
+		},
+		{
+			"name": "Isla Blair",
+			"roles": [
+				{
+					"name": "Frances Beale"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Peter Gill"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Alex Eales"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paul Pyant"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Christian Mason"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Gabrielle Jourdan"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,176 @@
+{
+	"name": "Seize the Day",
+	"startDate": "2009-10-22",
+	"pressDate": "2009-11-02",
+	"endDate": "2009-12-17",
+	"material": {
+		"name": "Seize the Day"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"season": {
+		"name": "Not Black and White"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Kobna Holdbrook-Smith",
+			"roles": [
+				{
+					"name": "Jeremy Charles"
+				}
+			]
+		},
+		{
+			"name": "John Boyega",
+			"roles": [
+				{
+					"name": "Sam"
+				}
+			]
+		},
+		{
+			"name": "Aml Ameen",
+			"roles": [
+				{
+					"name": "Lavelle"
+				}
+			]
+		},
+		{
+			"name": "Karl Collins",
+			"roles": [
+				{
+					"name": "Howard Jones"
+				}
+			]
+		},
+		{
+			"name": "Sharon Duncan-Brewster",
+			"roles": [
+				{
+					"name": "Susan"
+				}
+			]
+		},
+		{
+			"name": "Jaye Griffiths",
+			"roles": [
+				{
+					"name": "Jennifer Thompson"
+				}
+			]
+		},
+		{
+			"name": "Abhin Galeya",
+			"roles": [
+				{
+					"name": "Ravinder Persaud"
+				}
+			]
+		},
+		{
+			"name": "Amelia Lowdell",
+			"roles": [
+				{
+					"name": "Alice Charles"
+				}
+			]
+		},
+		{
+			"name": "Cecilia Noble",
+			"roles": [
+				{
+					"name": "Sheila"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Kwame Kwei-Armah"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rosa Maggiora"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Mesmer",
+					"members": [
+						{
+							"name": "Dick Straker"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Bret Yount"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Suzanne Crowley"
+				},
+				{
+					"name": "Gilly Poole"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Shaz McGee"
+				}
+			]
+		}
+	]
+}

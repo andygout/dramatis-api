@@ -1,0 +1,26 @@
+{
+	"name": "The Breath of Life",
+	"format": "play",
+	"year": "2002",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "David Hare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Madeleine Palmer"
+				},
+				{
+					"name": "Frances Beale"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,50 @@
+{
+	"name": "Seize the Day",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Kwame Kwei-Armah"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Jeremy Charles"
+				},
+				{
+					"name": "Sam",
+					"differentiator": "Seize the Day"
+				},
+				{
+					"name": "Lavelle"
+				},
+				{
+					"name": "Howard Jones"
+				},
+				{
+					"name": "Susan",
+					"differentiator": "Seize the Day"
+				},
+				{
+					"name": "Jennifer Thompson"
+				},
+				{
+					"name": "Ravinder Persaud"
+				},
+				{
+					"name": "Alice Charles"
+				},
+				{
+					"name": "Sheila",
+					"differentiator": "Seize the Day"
+				}
+			]
+		}
+	]
+}

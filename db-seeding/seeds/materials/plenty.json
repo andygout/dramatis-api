@@ -1,0 +1,63 @@
+{
+	"name": "Plenty",
+	"format": "play",
+	"year": "1978",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "David Hare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Susan Traherne"
+				},
+				{
+					"name": "Alice Park"
+				},
+				{
+					"name": "Raymond Brock"
+				},
+				{
+					"name": "Codename Lazar"
+				},
+				{
+					"name": "A Frenchman"
+				},
+				{
+					"name": "Sir Leonard Darwin"
+				},
+				{
+					"name": "Mick"
+				},
+				{
+					"name": "Louise",
+					"differentiator": "Plenty"
+				},
+				{
+					"name": "M Aung"
+				},
+				{
+					"name": "Mme Aung"
+				},
+				{
+					"name": "Dorcas Frey"
+				},
+				{
+					"name": "John Begley"
+				},
+				{
+					"name": "Sir Andrew Charleson"
+				},
+				{
+					"name": "Another Frenchman"
+				}
+			]
+		}
+	]
+}

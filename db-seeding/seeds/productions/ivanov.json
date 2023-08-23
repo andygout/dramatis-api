@@ -1,0 +1,225 @@
+{
+	"name": "Ivanov",
+	"startDate": "2008-09-12",
+	"pressDate": "2008-09-17",
+	"endDate": "2008-11-29",
+	"material": {
+		"name": "Ivanov",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Wyndham's Theatre"
+	},
+	"season": {
+		"name": "Donmar in the West End"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Kenneth Branagh",
+			"roles": [
+				{
+					"name": "Nikolai Ivanov"
+				}
+			]
+		},
+		{
+			"name": "Lorcan Cranitch",
+			"roles": [
+				{
+					"name": "Borkin"
+				}
+			]
+		},
+		{
+			"name": "Malcolm Sinclair",
+			"roles": [
+				{
+					"name": "Shabelsky"
+				}
+			]
+		},
+		{
+			"name": "Gina McKee",
+			"roles": [
+				{
+					"name": "Anna Petrovna"
+				}
+			]
+		},
+		{
+			"name": "Tom Hidleston",
+			"roles": [
+				{
+					"name": "Lvov"
+				}
+			]
+		},
+		{
+			"name": "Sylvestra Le Touzel",
+			"roles": [
+				{
+					"name": "Zinaida"
+				}
+			]
+		},
+		{
+			"name": "Lucy Briers",
+			"roles": [
+				{
+					"name": "Babakina"
+				}
+			]
+		},
+		{
+			"name": "Malcolm Ridley",
+			"roles": [
+				{
+					"name": "Yacob"
+				}
+			]
+		},
+		{
+			"name": "Ian Drysdale",
+			"roles": [
+				{
+					"name": "Anasim"
+				}
+			]
+		},
+		{
+			"name": "James Howard",
+			"roles": [
+				{
+					"name": "Nikander"
+				}
+			]
+		},
+		{
+			"name": "James Tucker",
+			"roles": [
+				{
+					"name": "Kosykh"
+				}
+			]
+		},
+		{
+			"name": "John Atterbury",
+			"roles": [
+				{
+					"name": "Yegorushka"
+				},
+				{
+					"name": "Pyotr"
+				}
+			]
+		},
+		{
+			"name": "Linda Broughton",
+			"roles": [
+				{
+					"name": "Avdotya"
+				}
+			]
+		},
+		{
+			"name": "Emma Beattie",
+			"roles": [
+				{
+					"name": "Natalia"
+				}
+			]
+		},
+		{
+			"name": "Kevin R McNally",
+			"roles": [
+				{
+					"name": "Lebedev"
+				}
+			]
+		},
+		{
+			"name": "Andrea Riseborough",
+			"roles": [
+				{
+					"name": "Sasha"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Battersby",
+			"roles": [
+				{
+					"name": "Gavrila"
+				}
+			]
+		},
+		{
+			"name": "Giovanna Falcone",
+			"roles": [
+				{
+					"name": "Lipa"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paule Constable"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Vicky Richardson"
+				}
+			]
+		}
+	]
+}
