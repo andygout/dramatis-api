@@ -1836,11 +1836,11 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const HAUNTING_JULIA_MATERIAL_UUID = '2';
-		const A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID = '6';
-		const THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID = '10';
-		const DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID = '14';
-		const COMMUNICATING_DOORS_MATERIAL_UUID = '18';
+		const HAUNTING_JULIA_MATERIAL_UUID = '1';
+		const A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID = '3';
+		const THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID = '5';
+		const DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID = '7';
+		const COMMUNICATING_DOORS_MATERIAL_UUID = '9';
 
 		before(async () => {
 

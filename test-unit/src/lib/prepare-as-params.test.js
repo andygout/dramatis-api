@@ -32,6 +32,7 @@ describe('Prepare As Params module', () => {
 
 		const instance = {
 			uuid: '',
+			name: 'Foo',
 			items: [
 				{
 					name: 'Foo',
@@ -77,33 +78,105 @@ describe('Prepare As Params module', () => {
 
 	context('top level properties', () => {
 
-		it('assigns value to uuid property if empty string', () => {
+		context('name property and value is present', () => {
 
-			const instance = { uuid: '' };
-			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { uuid: '', name: 'Foo' };
+				const result = prepareAsParams(instance);
+				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { uuid: undefined, name: 'Foo' };
+				const result = prepareAsParams(instance);
+				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
-		it('assigns value to uuid property if undefined', () => {
+		context('name property is present; its value is an empty string', () => {
 
-			const instance = { uuid: undefined };
-			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { uuid: '', name: '' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal(null);
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { uuid: undefined, name: '' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal(null);
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
-		it('will not assign value to uuid property if one already exists', () => {
+		context('name property is absent', () => {
 
-			const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
-			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { uuid: '' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal(null);
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { uuid: undefined };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal(null);
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
@@ -159,33 +232,105 @@ describe('Prepare As Params module', () => {
 
 	context('nested level properties', () => {
 
-		it('assigns value to uuid property if empty string', () => {
+		context('name property and value is present', () => {
 
-			const instance = { venue: { uuid: '' } };
-			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { venue: { uuid: '', name: 'Foo' } };
+				const result = prepareAsParams(instance);
+				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { venue: { uuid: undefined, name: 'Foo' } };
+				const result = prepareAsParams(instance);
+				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
-		it('assigns value to uuid property if undefined', () => {
+		context('name property is present; its value is an empty string', () => {
 
-			const instance = { venue: { uuid: undefined } };
-			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { venue: { uuid: '', name: '' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal(null);
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { venue: { uuid: undefined, name: '' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal(null);
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
-		it('will not assign value to uuid property if one already exists', () => {
+		context('name property is absent', () => {
 
-			const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
-			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
-			assert.notCalled(stubs.neo4jInt);
-			expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			it('assigns value to uuid property if empty string', () => {
+
+				const instance = { venue: { uuid: '' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal(null);
+
+			});
+
+			it('assigns value to uuid property if undefined', () => {
+
+				const instance = { venue: { uuid: undefined } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal(null);
+
+			});
+
+			it('will not assign value to uuid property if one already exists', () => {
+
+				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+
+			});
 
 		});
 
@@ -223,7 +368,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: { uuid: '' } };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.cryptoRandomUUID);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.venue).not.to.have.property('position');
 

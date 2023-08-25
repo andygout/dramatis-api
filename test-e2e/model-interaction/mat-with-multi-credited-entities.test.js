@@ -11,9 +11,9 @@ describe('Material with entities credited multiple times', () => {
 
 	chai.use(chaiHttp);
 
-	const XYZZY_MATERIAL_UUID = '4';
-	const FERDINAND_FOO_PERSON_UUID = '6';
-	const STAGECRAFT_LTD_COMPANY_UUID = '7';
+	const XYZZY_MATERIAL_UUID = '3';
+	const FERDINAND_FOO_PERSON_UUID = '4';
+	const STAGECRAFT_LTD_COMPANY_UUID = '5';
 
 	let material;
 	let person;

@@ -11,10 +11,10 @@ describe('Nameless writer groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const XYZZY_MATERIAL_UUID = '5';
-	const FERDINAND_FOO_PERSON_UUID = '7';
-	const BEATRICE_BAR_PERSON_UUID = '8';
-	const BRANDON_BAZ_PERSON_UUID = '9';
+	const XYZZY_MATERIAL_UUID = '4';
+	const FERDINAND_FOO_PERSON_UUID = '5';
+	const BEATRICE_BAR_PERSON_UUID = '6';
+	const BRANDON_BAZ_PERSON_UUID = '7';
 
 	let material;
 

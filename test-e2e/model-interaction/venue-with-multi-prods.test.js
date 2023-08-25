@@ -12,9 +12,9 @@ describe('Venue with multiple productions', () => {
 	chai.use(chaiHttp);
 
 	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
-	const DONMAR_WAREHOUSE_VENUE_UUID = '2';
-	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '4';
-	const RED_DONMAR_PRODUCTION_UUID = '8';
+	const DONMAR_WAREHOUSE_VENUE_UUID = '1';
+	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '2';
+	const RED_DONMAR_PRODUCTION_UUID = '4';
 
 	let donmarWarehouseVenue;
 	let streetcarNamedDesireDonmarProduction;

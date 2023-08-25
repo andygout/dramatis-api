@@ -11,10 +11,10 @@ describe('Nameless character groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const JULIUS_CAESAR_MATERIAL_UUID = '5';
-	const JULIUS_CAESAR_CHARACTER_UUID = '7';
-	const MARK_ANTONY_CHARACTER_UUID = '8';
-	const MESSENGER_CHARACTER_UUID = '9';
+	const JULIUS_CAESAR_MATERIAL_UUID = '4';
+	const JULIUS_CAESAR_CHARACTER_UUID = '5';
+	const MARK_ANTONY_CHARACTER_UUID = '6';
+	const MESSENGER_CHARACTER_UUID = '7';
 
 	let juliusCaesarMaterial;
 

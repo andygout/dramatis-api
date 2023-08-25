@@ -11,12 +11,12 @@ describe('Cast member performing same role in different productions of same mate
 
 	chai.use(chaiHttp);
 
-	const TITANIA_CHARACTER_UUID = '5';
-	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
-	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '8';
-	const JUDI_DENCH_PERSON_UUID = '10';
-	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '11';
-	const ROSE_THEATRE_VENUE_UUID = '13';
+	const TITANIA_CHARACTER_UUID = '3';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '4';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '6';
+	const JUDI_DENCH_PERSON_UUID = '7';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '8';
+	const ROSE_THEATRE_VENUE_UUID = '10';
 
 	let titaniaCharacter;
 	let aMidsummerNightsDreamRoyalShakespeareProduction;
