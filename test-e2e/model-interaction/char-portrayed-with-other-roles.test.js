@@ -11,13 +11,13 @@ describe('Character portrayed with other roles', () => {
 
 	chai.use(chaiHttp);
 
-	const JOEYS_MOTHER_CHARACTER_UUID = '10';
-	const DR_SCHWEYK_CHARACTER_UUID = '11';
-	const COCO_CHARACTER_UUID = '12';
-	const GEORDIE_CHARACTER_UUID = '13';
-	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = '14';
-	const NATIONAL_THEATRE_VENUE_UUID = '16';
-	const STEPHEN_HARPER_PERSON_UUID = '19';
+	const JOEYS_MOTHER_CHARACTER_UUID = '8';
+	const DR_SCHWEYK_CHARACTER_UUID = '9';
+	const COCO_CHARACTER_UUID = '10';
+	const GEORDIE_CHARACTER_UUID = '11';
+	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = '12';
+	const NATIONAL_THEATRE_VENUE_UUID = '14';
+	const STEPHEN_HARPER_PERSON_UUID = '16';
 
 	let joeysMotherCharacter;
 	let drSchweykCharacter;

@@ -99,7 +99,8 @@ export const prepareAsParams = instance => {
 
 				const requiresUuidValue =
 					key === 'uuid' &&
-					(value === undefined || !value.length);
+					(value === undefined || !value.length) &&
+					Boolean(instance.name);
 
 				if (requiresUuidValue) {
 
@@ -132,7 +133,7 @@ export const prepareAsParams = instance => {
 				}
 				else if (typeof value === 'number') accumulator[key] = neo4j.int(value);
 				else if (value === '' || (typeof value === 'boolean' && !value)) accumulator[key] = null;
-				else accumulator[key] = value;
+				else accumulator[key] = value || null;
 
 			}
 

@@ -15,8 +15,8 @@ describe('Uniqueness in database: Materials API', () => {
 
 	describe('Material uniqueness in database', () => {
 
-		const MATERIAL_1_UUID = '2';
-		const MATERIAL_2_UUID = '8';
+		const MATERIAL_1_UUID = '1';
+		const MATERIAL_2_UUID = '4';
 
 		before(async () => {
 

@@ -12,10 +12,10 @@ describe('Season with multiple productions', () => {
 	chai.use(chaiHttp);
 
 	const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = '0';
-	const TRICYCLE_THEATRE_VENUE_UUID = '2';
-	const NOT_BLACK_AND_WHITE_SEASON_UUID = '3';
-	const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = '4';
-	const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = '8';
+	const TRICYCLE_THEATRE_VENUE_UUID = '1';
+	const NOT_BLACK_AND_WHITE_SEASON_UUID = '2';
+	const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = '3';
+	const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = '6';
 
 	let notBlackAndWhiteSeason;
 	let categoryBTricycleProduction;

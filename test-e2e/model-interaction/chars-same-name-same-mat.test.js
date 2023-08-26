@@ -11,14 +11,14 @@ describe('Different characters with the same name from the same material', () =>
 
 	chai.use(chaiHttp);
 
-	const JULIUS_CAESAR_MATERIAL_UUID = '5';
-	const CINNA_CHARACTER_1_UUID = '7';
-	const VOLUMNIUS_CHARACTER_UUID = '8';
-	const CINNA_CHARACTER_2_UUID = '9';
-	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '10';
-	const BARBICAN_THEATRE_VENUE_UUID = '12';
-	const PAUL_SHEARER_PERSON_UUID = '14';
-	const LEO_WRINGER_PERSON_UUID = '15';
+	const JULIUS_CAESAR_MATERIAL_UUID = '4';
+	const CINNA_CHARACTER_1_UUID = '5';
+	const VOLUMNIUS_CHARACTER_UUID = '6';
+	const CINNA_CHARACTER_2_UUID = '7';
+	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '8';
+	const BARBICAN_THEATRE_VENUE_UUID = '10';
+	const PAUL_SHEARER_PERSON_UUID = '11';
+	const LEO_WRINGER_PERSON_UUID = '12';
 
 	let cinnaCharacter1;
 	let cinnaCharacter2;

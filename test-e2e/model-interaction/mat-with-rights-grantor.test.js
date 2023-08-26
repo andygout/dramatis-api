@@ -11,12 +11,12 @@ describe('Material with rights grantor credits', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID = '3';
-	const WILLIAM_ROSE_PERSON_UUID = '5';
-	const THE_LADYKILLERS_PLAY_MATERIAL_UUID = '12';
-	const GRAHAM_LINEHAN_PERSON_UUID = '14';
-	const STUDIOCANAL_COMPANY_UUID = '16';
-	const ALISON_MEESE_PERSON_UUID = '17';
+	const THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID = '2';
+	const WILLIAM_ROSE_PERSON_UUID = '3';
+	const THE_LADYKILLERS_PLAY_MATERIAL_UUID = '9';
+	const GRAHAM_LINEHAN_PERSON_UUID = '10';
+	const STUDIOCANAL_COMPANY_UUID = '12';
+	const ALISON_MEESE_PERSON_UUID = '13';
 
 	let studioCanalCompany;
 	let alisonMeesePerson;
