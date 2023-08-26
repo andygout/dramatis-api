@@ -1,9 +1,8 @@
-import crypto from 'crypto';
-
 import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
 import neo4j from 'neo4j-driver';
 
+import * as getRandomUuidModule from '../../../src/lib/get-random-uuid';
 import { prepareAsParams } from '../../../src/lib/prepare-as-params';
 import applyModelGetter from '../../test-helpers/apply-model-getter';
 
@@ -17,7 +16,8 @@ describe('Prepare As Params module', () => {
 
 		stubs = {
 			neo4jInt: sandbox.stub(neo4j, 'int').returnsArg(0),
-			cryptoRandomUUID: sandbox.stub(crypto, 'randomUUID').returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+			cryptoRandomUUID:
+				sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		};
 
 	});

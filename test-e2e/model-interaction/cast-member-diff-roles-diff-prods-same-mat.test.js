@@ -1,25 +1,25 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Cast member performing different roles in different productions of same material', () => {
 
 	chai.use(chaiHttp);
 
-	const KING_LEAR_CHARACTER_UUID = '4';
-	const FOOL_CHARACTER_UUID = '5';
-	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '6';
-	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '8';
-	const MICHAEL_GAMBON_PERSON_UUID = '9';
-	const ANTONY_SHER_PERSON_UUID = '10';
-	const KING_LEAR_BARBICAN_PRODUCTION_UUID = '11';
-	const BARBICAN_THEATRE_VENUE_UUID = '13';
-	const GRAHAM_TURNER_PERSON_UUID = '15';
+	const KING_LEAR_CHARACTER_UUID = 'KING_LEAR_CHARACTER_UUID';
+	const FOOL_CHARACTER_UUID = 'FOOL_CHARACTER_UUID';
+	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'KING_LEAR_PRODUCTION_UUID';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
+	const MICHAEL_GAMBON_PERSON_UUID = 'MICHAEL_GAMBON_PERSON_UUID';
+	const ANTONY_SHER_PERSON_UUID = 'ANTONY_SHER_PERSON_UUID';
+	const KING_LEAR_BARBICAN_PRODUCTION_UUID = 'KING_LEAR_2_PRODUCTION_UUID';
+	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
+	const GRAHAM_TURNER_PERSON_UUID = 'GRAHAM_TURNER_PERSON_UUID';
 
 	let kingLearCharacter;
 	let foolCharacter;
@@ -33,9 +33,9 @@ describe('Cast member performing different roles in different productions of sam
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -101,7 +101,7 @@ describe('Cast member performing different roles in different productions of sam
 					name: 'The Tragedy of King Lear'
 				},
 				venue: {
-					name: 'Barbican'
+					name: 'Barbican Theatre'
 				},
 				cast: [
 					{
@@ -166,7 +166,7 @@ describe('Cast member performing different roles in different productions of sam
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -231,7 +231,7 @@ describe('Cast member performing different roles in different productions of sam
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -420,7 +420,7 @@ describe('Cast member performing different roles in different productions of sam
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -481,7 +481,7 @@ describe('Cast member performing different roles in different productions of sam
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,

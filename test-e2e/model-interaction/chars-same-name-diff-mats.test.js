@@ -1,30 +1,30 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Different characters with the same name from different materials', () => {
 
 	chai.use(chaiHttp);
 
-	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = '3';
-	const LYSANDER_CHARACTER_UUID = '4';
-	const DEMETRIUS_CHARACTER_1_UUID = '5';
-	const TITUS_ANDRONICUS_MATERIAL_UUID = '9';
-	const DEMETRIUS_CHARACTER_2_UUID = '10';
-	const CHIRON_CHARACTER_UUID = '11';
-	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = '12';
-	const NOVELLO_THEATRE_VENUE_UUID = '14';
-	const OSCAR_PEARCE_PERSON_UUID = '15';
-	const TRYSTAN_GRAVELLE_PERSON_UUID = '16';
-	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = '17';
-	const SHAKESPEARES_GLOBE_VENUE_UUID = '19';
-	const RICHARD_RIDDELL_PERSON_UUID = '20';
-	const SAM_ALEXANDER_PERSON_UUID = '21';
+	const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID';
+	const LYSANDER_CHARACTER_UUID = 'LYSANDER_CHARACTER_UUID';
+	const DEMETRIUS_CHARACTER_1_UUID = 'DEMETRIUS_1_CHARACTER_UUID';
+	const TITUS_ANDRONICUS_MATERIAL_UUID = 'TITUS_ANDRONICUS_MATERIAL_UUID';
+	const DEMETRIUS_CHARACTER_2_UUID = 'DEMETRIUS_2_CHARACTER_UUID';
+	const CHIRON_CHARACTER_UUID = 'CHIRON_CHARACTER_UUID';
+	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';
+	const NOVELLO_THEATRE_VENUE_UUID = 'NOVELLO_THEATRE_VENUE_UUID';
+	const OSCAR_PEARCE_PERSON_UUID = 'OSCAR_PEARCE_PERSON_UUID';
+	const TRYSTAN_GRAVELLE_PERSON_UUID = 'TRYSTAN_GRAVELLE_PERSON_UUID';
+	const TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID = 'TITUS_ANDRONICUS_PRODUCTION_UUID';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = 'SHAKESPEARES_GLOBE_VENUE_UUID';
+	const RICHARD_RIDDELL_PERSON_UUID = 'RICHARD_RIDDELL_PERSON_UUID';
+	const SAM_ALEXANDER_PERSON_UUID = 'SAM_ALEXANDER_PERSON_UUID';
 
 	let demetriusCharacter1;
 	let demetriusCharacter2;
@@ -39,9 +39,9 @@ describe('Different characters with the same name from different materials', () 
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

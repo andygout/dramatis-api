@@ -1,7 +1,6 @@
-import { randomUUID } from 'crypto';
-
 import neo4j from 'neo4j-driver';
 
+import { getRandomUuid } from './get-random-uuid';
 import isObjectWithKeys from './is-object-with-keys';
 
 const CHARACTER_GROUPS = 'characterGroups';
@@ -116,7 +115,14 @@ export const prepareAsParams = instance => {
 						return isInstanceWithShareableUuid;
 					});
 
-					accumulator[key] = instanceWithShareableUuid?.uuid || randomUUID({ disableEntropyCache: true });
+					accumulator[key] =
+						instanceWithShareableUuid?.uuid ||
+						// Arguments given to create predictable uuid values in end-to-end tests.
+						getRandomUuid({
+							model: instance.model,
+							name: instance.name,
+							differentiator: instance.differentiator
+						});
 
 					if (!instanceWithShareableUuid) {
 

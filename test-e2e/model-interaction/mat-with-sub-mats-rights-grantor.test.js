@@ -1,24 +1,24 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-materials and rights grantor credits thereof', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID = '2';
-	const C_S_LEWIS_PERSON_UUID = '3';
-	const THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID = '8';
-	const THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID = '16';
-	const ADAM_PECK_PERSON_UUID = '17';
-	const C_S_LEWIS_SOCIETY_COMPANY_UUID = '19';
-	const SARAH_SELDEN_PERSON_UUID = '20';
-	const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = '26';
+	const THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_1_MATERIAL_UUID';
+	const C_S_LEWIS_PERSON_UUID = 'C_S_LEWIS_PERSON_UUID';
+	const THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_1_MATERIAL_UUID';
+	const THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_2_MATERIAL_UUID';
+	const ADAM_PECK_PERSON_UUID = 'ADAM_PECK_PERSON_UUID';
+	const C_S_LEWIS_SOCIETY_COMPANY_UUID = 'C_S_LEWIS_SOCIETY_COMPANY_UUID';
+	const SARAH_SELDEN_PERSON_UUID = 'SARAH_SELDEN_PERSON_UUID';
+	const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_2_MATERIAL_UUID';
 
 	let cSLewisSocietyCompany;
 	let sarahSeldenPerson;
@@ -27,9 +27,9 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

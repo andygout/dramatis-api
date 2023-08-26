@@ -1,21 +1,21 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Season with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = '0';
-	const TRICYCLE_THEATRE_VENUE_UUID = '1';
-	const NOT_BLACK_AND_WHITE_SEASON_UUID = '2';
-	const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = '3';
-	const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = '6';
+	const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = 'SEIZE_THE_DAY_PRODUCTION_UUID';
+	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+	const NOT_BLACK_AND_WHITE_SEASON_UUID = 'NOT_BLACK_AND_WHITE_SEASON_UUID';
+	const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = 'DETAINING_JUSTICE_PRODUCTION_UUID';
+	const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = 'CATEGORY_B_PRODUCTION_UUID';
 
 	let notBlackAndWhiteSeason;
 	let categoryBTricycleProduction;
@@ -26,9 +26,9 @@ describe('Season with multiple productions', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

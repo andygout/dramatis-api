@@ -1,98 +1,98 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Production with sub-sub-productions', () => {
 
 	chai.use(chaiHttp);
 
-	const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = '3';
-	const RODA_THEATRE_VENUE_UUID = '4';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = '9';
-	const FERDINAND_FOO_JR_PERSON_UUID = '10';
-	const SUB_INKISTS_LTD_COMPANY_UUID = '11';
-	const BAR_JR_CHARACTER_UUID = '12';
-	const DURANDS_LINE_MATERIAL_UUID = '17';
-	const CAMPAIGN_MATERIAL_UUID = '25';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID = '39';
-	const FERDINAND_FOO_PERSON_UUID = '40';
-	const MID_INKISTS_LTD_COMPANY_UUID = '41';
-	const BAR_CHARACTER_UUID = '45';
-	const BLACK_TULIPS_MATERIAL_UUID = '50';
-	const BLOOD_AND_GIFTS_MATERIAL_UUID = '58';
-	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = '66';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID = '80';
-	const HONEY_MATERIAL_UUID = '91';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '99';
-	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '107';
-	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '121';
-	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '138';
-	const FERDINAND_FOO_SR_PERSON_UUID = '139';
-	const SUR_INKISTS_LTD_COMPANY_UUID = '140';
-	const BAR_SR_CHARACTER_UUID = '144';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = '145';
-	const AFGHAN_HISTORY_SEASON_UUID = '148';
-	const NICOLAS_KENT_JR_PERSON_UUID = '149';
-	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = '150';
-	const ZOË_INGENHAAG_JR_PERSON_UUID = '151';
-	const RICK_WARDEN_JR_PERSON_UUID = '152';
-	const HOWARD_HARRISON_JR_PERSON_UUID = '153';
-	const SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID = '154';
-	const JACK_KNOWLES_JR_PERSON_UUID = '155';
-	const LIZZIE_CHAPMAN_JR_PERSON_UUID = '156';
-	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '157';
-	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = '158';
-	const DURANDS_LINE_RODA_PRODUCTION_UUID = '159';
-	const CAMPAIGN_RODA_PRODUCTION_UUID = '173';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID = '187';
-	const NICOLAS_KENT_PERSON_UUID = '191';
-	const MID_TRICYCLE_THEATRE_COMPANY_UUID = '192';
-	const ZOË_INGENHAAG_PERSON_UUID = '193';
-	const RICK_WARDEN_PERSON_UUID = '194';
-	const HOWARD_HARRISON_PERSON_UUID = '195';
-	const MID_LIGHTING_DESIGN_LTD_COMPANY_UUID = '196';
-	const JACK_KNOWLES_PERSON_UUID = '197';
-	const LIZZIE_CHAPMAN_PERSON_UUID = '198';
-	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '199';
-	const CHARLOTTE_PADGHAM_PERSON_UUID = '200';
-	const BLACK_TULIPS_RODA_PRODUCTION_UUID = '201';
-	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = '215';
-	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = '229';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID = '243';
-	const HONEY_RODA_PRODUCTION_UUID = '257';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = '271';
-	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = '285';
-	const PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID = '299';
-	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = '313';
-	const NICOLAS_KENT_SR_PERSON_UUID = '317';
-	const SUR_TRICYCLE_THEATRE_COMPANY_UUID = '318';
-	const ZOË_INGENHAAG_SR_PERSON_UUID = '319';
-	const RICK_WARDEN_SR_PERSON_UUID = '320';
-	const HOWARD_HARRISON_SR_PERSON_UUID = '321';
-	const SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID = '322';
-	const JACK_KNOWLES_SR_PERSON_UUID = '323';
-	const LIZZIE_CHAPMAN_SR_PERSON_UUID = '324';
-	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = '325';
-	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = '326';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '327';
-	const TRICYCLE_THEATRE_VENUE_UUID = '329';
-	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '330';
-	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '333';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '336';
-	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '339';
-	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '342';
-	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '345';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '348';
-	const HONEY_TRICYCLE_PRODUCTION_UUID = '351';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '354';
-	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '357';
-	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '360';
-	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '363';
+	const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = 'BERKELEY_REPERTORY_THEATRE_VENUE_UUID';
+	const RODA_THEATRE_VENUE_UUID = 'RODA_THEATRE_VENUE_UUID';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
+	const FERDINAND_FOO_JR_PERSON_UUID = 'FERDINAND_FOO_JR_PERSON_UUID';
+	const SUB_INKISTS_LTD_COMPANY_UUID = 'SUB_INKISTS_LTD_COMPANY_UUID';
+	const BAR_JR_CHARACTER_UUID = 'BAR_JR_CHARACTER_UUID';
+	const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
+	const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
+	const MID_INKISTS_LTD_COMPANY_UUID = 'MID_INKISTS_LTD_COMPANY_UUID';
+	const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
+	const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
+	const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
+	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
+	const HONEY_MATERIAL_UUID = 'HONEY_MATERIAL_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = 'THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID';
+	const FERDINAND_FOO_SR_PERSON_UUID = 'FERDINAND_FOO_SR_PERSON_UUID';
+	const SUR_INKISTS_LTD_COMPANY_UUID = 'SUR_INKISTS_LTD_COMPANY_UUID';
+	const BAR_SR_CHARACTER_UUID = 'BAR_SR_CHARACTER_UUID';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
+	const AFGHAN_HISTORY_SEASON_UUID = 'AFGHAN_HISTORY_SEASON_SEASON_UUID';
+	const NICOLAS_KENT_JR_PERSON_UUID = 'NICOLAS_KENT_JR_PERSON_UUID';
+	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = 'SUB_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
+	const ZOË_INGENHAAG_JR_PERSON_UUID = 'ZOE_INGENHAAG_JR_PERSON_UUID';
+	const RICK_WARDEN_JR_PERSON_UUID = 'RICK_WARDEN_JR_PERSON_UUID';
+	const HOWARD_HARRISON_JR_PERSON_UUID = 'HOWARD_HARRISON_JR_PERSON_UUID';
+	const SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID = 'SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID';
+	const JACK_KNOWLES_JR_PERSON_UUID = 'JACK_KNOWLES_JR_PERSON_UUID';
+	const LIZZIE_CHAPMAN_JR_PERSON_UUID = 'LIZZIE_CHAPMAN_JR_PERSON_UUID';
+	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
+	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = 'CHARLOTTE_PADGHAM_JR_PERSON_UUID';
+	const DURANDS_LINE_RODA_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_UUID';
+	const CAMPAIGN_RODA_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
+	const NICOLAS_KENT_PERSON_UUID = 'NICOLAS_KENT_PERSON_UUID';
+	const MID_TRICYCLE_THEATRE_COMPANY_UUID = 'MID_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
+	const ZOË_INGENHAAG_PERSON_UUID = 'ZOE_INGENHAAG_PERSON_UUID';
+	const RICK_WARDEN_PERSON_UUID = 'RICK_WARDEN_PERSON_UUID';
+	const HOWARD_HARRISON_PERSON_UUID = 'HOWARD_HARRISON_PERSON_UUID';
+	const MID_LIGHTING_DESIGN_LTD_COMPANY_UUID = 'MID_LIGHTING_DESIGN_LTD_COMPANY_UUID';
+	const JACK_KNOWLES_PERSON_UUID = 'JACK_KNOWLES_PERSON_UUID';
+	const LIZZIE_CHAPMAN_PERSON_UUID = 'LIZZIE_CHAPMAN_PERSON_UUID';
+	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
+	const CHARLOTTE_PADGHAM_PERSON_UUID = 'CHARLOTTE_PADGHAM_PERSON_UUID';
+	const BLACK_TULIPS_RODA_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_UUID';
+	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_UUID';
+	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
+	const HONEY_RODA_PRODUCTION_UUID = 'HONEY_PRODUCTION_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_PRODUCTION_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_UUID';
+	const NICOLAS_KENT_SR_PERSON_UUID = 'NICOLAS_KENT_SR_PERSON_UUID';
+	const SUR_TRICYCLE_THEATRE_COMPANY_UUID = 'SUR_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
+	const ZOË_INGENHAAG_SR_PERSON_UUID = 'ZOE_INGENHAAG_SR_PERSON_UUID';
+	const RICK_WARDEN_SR_PERSON_UUID = 'RICK_WARDEN_SR_PERSON_UUID';
+	const HOWARD_HARRISON_SR_PERSON_UUID = 'HOWARD_HARRISON_SR_PERSON_UUID';
+	const SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID = 'SUR_LIGHTING_DESIGN_LTD_COMPANY_UUID';
+	const JACK_KNOWLES_SR_PERSON_UUID = 'JACK_KNOWLES_SR_PERSON_UUID';
+	const LIZZIE_CHAPMAN_SR_PERSON_UUID = 'LIZZIE_CHAPMAN_SR_PERSON_UUID';
+	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
+	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = 'CHARLOTTE_PADGHAM_SR_PERSON_UUID';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_2_PRODUCTION_UUID';
+	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = 'DURANDS_LINE_2_PRODUCTION_UUID';
+	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = 'CAMPAIGN_2_PRODUCTION_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_2_PRODUCTION_UUID';
+	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = 'BLACK_TULIPS_2_PRODUCTION_UUID';
+	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_2_PRODUCTION_UUID';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_2_PRODUCTION_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_2_PRODUCTION_UUID';
+	const HONEY_TRICYCLE_PRODUCTION_UUID = 'HONEY_2_PRODUCTION_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_2_PRODUCTION_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_2_PRODUCTION_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_2_PRODUCTION_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_2_PRODUCTION_UUID';
 
 	let theGreatGameAfghanistanRodaProduction;
 	let partOneInvasionsAndIndependenceRodaProduction;
@@ -122,9 +122,9 @@ describe('Production with sub-sub-productions', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -1632,13 +1632,13 @@ describe('Production with sub-sub-productions', () => {
 				},
 				subProductions: [
 					{
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID
 					}
 				],
 				producerCredits: [
@@ -1937,13 +1937,13 @@ describe('Production with sub-sub-productions', () => {
 				},
 				subProductions: [
 					{
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID
 					}
 				]
 			});
@@ -1952,7 +1952,7 @@ describe('Production with sub-sub-productions', () => {
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID}`);
 
 		partOneInvasionsAndIndependenceRodaProduction = await chai.request(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID}`);
+			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID}`);
 
 		buglesAtTheGatesOfJalalabadRodaProduction = await chai.request(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID}`);
@@ -1961,7 +1961,7 @@ describe('Production with sub-sub-productions', () => {
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
 
 		partOneInvasionsAndIndependenceTricycleProduction = await chai.request(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID}`);
+			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
 
 		buglesAtTheGatesOfJalalabadTricycleProduction = await chai.request(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
@@ -1970,7 +1970,7 @@ describe('Production with sub-sub-productions', () => {
 			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
 
 		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
-			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID}`);
+			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
 
 		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
@@ -2032,14 +2032,14 @@ describe('Production with sub-sub-productions', () => {
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -2099,7 +2099,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2248,7 +2248,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2397,7 +2397,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2626,14 +2626,14 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -2693,7 +2693,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2842,7 +2842,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -2991,7 +2991,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -3220,14 +3220,14 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -3287,7 +3287,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -3436,7 +3436,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -3585,7 +3585,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -3992,7 +3992,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -4142,7 +4142,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -4292,7 +4292,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -4443,14 +4443,14 @@ describe('Production with sub-sub-productions', () => {
 
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
-				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
 					model: 'MATERIAL',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -4742,14 +4742,14 @@ describe('Production with sub-sub-productions', () => {
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -4801,7 +4801,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -4855,7 +4855,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -4909,7 +4909,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+									uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 									name: 'Part One - Invasions and Independence (1842-1930)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -4956,14 +4956,14 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -5015,7 +5015,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5069,7 +5069,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5123,7 +5123,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+									uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 									name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5170,14 +5170,14 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						format: 'sub-collection of plays',
 						year: 2009,
@@ -5229,7 +5229,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5283,7 +5283,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5337,7 +5337,7 @@ describe('Production with sub-sub-productions', () => {
 								year: 2009,
 								surMaterial: {
 									model: 'MATERIAL',
-									uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+									uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 									name: 'Part Three - Enduring Freedom (1996-2009)',
 									surMaterial: {
 										model: 'MATERIAL',
@@ -5467,7 +5467,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -5522,7 +5522,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -5577,7 +5577,7 @@ describe('Production with sub-sub-productions', () => {
 						year: 2009,
 						surMaterial: {
 							model: 'MATERIAL',
-							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+							uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 							name: 'Part One - Invasions and Independence (1842-1930)',
 							surMaterial: {
 								model: 'MATERIAL',
@@ -5633,14 +5633,14 @@ describe('Production with sub-sub-productions', () => {
 
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
-				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 				name: 'Part One - Invasions and Independence (1842-1930)',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
 					model: 'MATERIAL',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -5789,7 +5789,7 @@ describe('Production with sub-sub-productions', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
@@ -5812,7 +5812,7 @@ describe('Production with sub-sub-productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5862,7 +5862,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5885,7 +5885,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5922,7 +5922,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5944,7 +5944,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5966,7 +5966,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5988,7 +5988,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6010,7 +6010,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6032,7 +6032,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6054,7 +6054,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6076,7 +6076,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6098,7 +6098,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6131,7 +6131,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6149,7 +6149,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6167,7 +6167,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6185,7 +6185,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6203,7 +6203,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6221,7 +6221,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6239,7 +6239,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6257,7 +6257,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6275,7 +6275,7 @@ describe('Production with sub-sub-productions', () => {
 					subVenue: null,
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6317,7 +6317,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6344,7 +6344,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6371,7 +6371,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6398,7 +6398,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6425,7 +6425,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6452,7 +6452,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6479,7 +6479,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6506,7 +6506,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6533,7 +6533,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6575,7 +6575,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6627,7 +6627,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6679,7 +6679,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6731,7 +6731,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6783,7 +6783,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6835,7 +6835,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6887,7 +6887,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6939,7 +6939,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6991,7 +6991,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7058,7 +7058,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7110,7 +7110,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7162,7 +7162,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7214,7 +7214,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7266,7 +7266,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7318,7 +7318,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7370,7 +7370,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7422,7 +7422,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7474,7 +7474,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7541,7 +7541,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7593,7 +7593,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7645,7 +7645,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7697,7 +7697,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7749,7 +7749,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7801,7 +7801,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7853,7 +7853,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7905,7 +7905,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7957,7 +7957,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8024,7 +8024,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8060,7 +8060,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8096,7 +8096,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8132,7 +8132,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8168,7 +8168,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8204,7 +8204,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8240,7 +8240,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8276,7 +8276,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8312,7 +8312,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8363,7 +8363,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8411,7 +8411,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8459,7 +8459,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8507,7 +8507,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8555,7 +8555,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8603,7 +8603,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8651,7 +8651,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8699,7 +8699,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8747,7 +8747,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8810,7 +8810,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8857,7 +8857,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8904,7 +8904,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8951,7 +8951,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -8998,7 +8998,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9045,7 +9045,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9092,7 +9092,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9139,7 +9139,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9186,7 +9186,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9248,7 +9248,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9294,7 +9294,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9340,7 +9340,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9386,7 +9386,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9432,7 +9432,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9478,7 +9478,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9524,7 +9524,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9570,7 +9570,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9616,7 +9616,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9677,7 +9677,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9725,7 +9725,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9773,7 +9773,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9821,7 +9821,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9869,7 +9869,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9917,7 +9917,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -9965,7 +9965,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10013,7 +10013,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10061,7 +10061,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10124,7 +10124,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10171,7 +10171,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10218,7 +10218,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10265,7 +10265,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10312,7 +10312,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10359,7 +10359,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10406,7 +10406,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10453,7 +10453,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10500,7 +10500,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10562,7 +10562,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10608,7 +10608,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10654,7 +10654,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10700,7 +10700,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10746,7 +10746,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10792,7 +10792,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10838,7 +10838,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10884,7 +10884,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10930,7 +10930,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -10991,7 +10991,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11029,7 +11029,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11067,7 +11067,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11105,7 +11105,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11143,7 +11143,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11181,7 +11181,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11219,7 +11219,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11257,7 +11257,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11295,7 +11295,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11351,7 +11351,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11378,7 +11378,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11405,7 +11405,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_RODA_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11432,7 +11432,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11459,7 +11459,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11486,7 +11486,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_RODA_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11513,7 +11513,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11540,7 +11540,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11567,7 +11567,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_RODA_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11590,7 +11590,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11613,7 +11613,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11636,7 +11636,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11659,7 +11659,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11682,7 +11682,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11705,7 +11705,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11728,7 +11728,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11751,7 +11751,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -11774,7 +11774,7 @@ describe('Production with sub-sub-productions', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',

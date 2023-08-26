@@ -1,42 +1,42 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Productions with creative team', () => {
 
 	chai.use(chaiHttp);
 
-	const NATIONAL_THEATRE_VENUE_UUID = '7';
-	const OLIVIER_THEATRE_VENUE_UUID = '8';
-	const LYTTELTON_THEATRE_VENUE_UUID = '9';
-	const COTTESLOE_THEATRE_VENUE_UUID = '10';
-	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '11';
-	const BARBICAN_THEATRE_VENUE_UUID = '12';
-	const DEBORAH_WARNER_PERSON_UUID = '13';
-	const AUTOGRAPH_COMPANY_UUID = '14';
-	const MESMER_COMPANY_UUID = '15';
-	const DICK_STRAKER_PERSON_UUID = '16';
-	const IAN_WILLIAM_GALLOWAY_PERSON_UUID = '17';
-	const JOHN_O_CONNELL_PERSON_UUID = '18';
-	const AKHILA_KIRSHNAN_PERSON_UUID = '19';
-	const CINELUMA_COMPANY_UUID = '20';
-	const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '21';
-	const LEO_WARNER_PERSON_UUID = '22';
-	const MARK_GRIMMER_PERSON_UUID = '23';
-	const LYSANDER_ASHTON_PERSON_UUID = '24';
-	const NINA_DUNN_PERSON_UUID = '25';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = '26';
-	const DANIEL_DENTON_PERSON_UUID = '34';
-	const ANNA_JAMESON_PERSON_UUID = '37';
-	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = '41';
-	const BARBORA_ŠENOLTOVÁ_PERSON_UUID = '50';
-	const RICHARD_SLANEY_PERSON_UUID = '54';
-	const RICHARD_II_COTTESLOE_PRODUCTION_UUID = '56';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+	const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
+	const LYTTELTON_THEATRE_VENUE_UUID = 'LYTTELTON_THEATRE_VENUE_UUID';
+	const COTTESLOE_THEATRE_VENUE_UUID = 'COTTESLOE_THEATRE_VENUE_UUID';
+	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = 'JULIUS_CAESAR_PRODUCTION_UUID';
+	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
+	const DEBORAH_WARNER_PERSON_UUID = 'DEBORAH_WARNER_PERSON_UUID';
+	const AUTOGRAPH_COMPANY_UUID = 'AUTOGRAPH_COMPANY_UUID';
+	const MESMER_COMPANY_UUID = 'MESMER_COMPANY_UUID';
+	const DICK_STRAKER_PERSON_UUID = 'DICK_STRAKER_PERSON_UUID';
+	const IAN_WILLIAM_GALLOWAY_PERSON_UUID = 'IAN_WILLIAM_GALLOWAY_PERSON_UUID';
+	const JOHN_O_CONNELL_PERSON_UUID = 'JOHN_OCONNELL_PERSON_UUID';
+	const AKHILA_KRISHNAN_PERSON_UUID = 'AKHILA_KRISHNAN_PERSON_UUID';
+	const CINELUMA_COMPANY_UUID = 'CINELUMA_COMPANY_UUID';
+	const FIFTY_NINE_PRODUCTIONS_COMPANY_UUID = '59_PRODUCTIONS_COMPANY_UUID';
+	const LEO_WARNER_PERSON_UUID = 'LEO_WARNER_PERSON_UUID';
+	const MARK_GRIMMER_PERSON_UUID = 'MARK_GRIMMER_PERSON_UUID';
+	const LYSANDER_ASHTON_PERSON_UUID = 'LYSANDER_ASHTON_PERSON_UUID';
+	const NINA_DUNN_PERSON_UUID = 'NINA_DUNN_PERSON_UUID';
+	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID';
+	const DANIEL_DENTON_PERSON_UUID = 'DANIEL_DENTON_PERSON_UUID';
+	const ANNA_JAMESON_PERSON_UUID = 'ANNA_JAMESON_PERSON_UUID';
+	const HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID = 'HAPPY_DAYS_PRODUCTION_UUID';
+	const BARBORA_ŠENOLTOVÁ_PERSON_UUID = 'BARBORA_SENOLTOVA_PERSON_UUID';
+	const RICHARD_SLANEY_PERSON_UUID = 'RICHARD_SLANEY_PERSON_UUID';
+	const RICHARD_II_COTTESLOE_PRODUCTION_UUID = 'RICHARD_II_PRODUCTION_UUID';
 
 	let juliusCaesarBarbicanProduction;
 	let motherCourageAndHerChildrenOlivierProduction;
@@ -54,9 +54,9 @@ describe('Productions with creative team', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -504,7 +504,7 @@ describe('Productions with creative team', () => {
 						},
 						{
 							model: 'PERSON',
-							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							uuid: AKHILA_KRISHNAN_PERSON_UUID,
 							name: 'Akhila Krishnan'
 						},
 						{
@@ -659,7 +659,7 @@ describe('Productions with creative team', () => {
 						},
 						{
 							model: 'PERSON',
-							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							uuid: AKHILA_KRISHNAN_PERSON_UUID,
 							name: 'Akhila Krishnan'
 						}
 					]
@@ -725,7 +725,7 @@ describe('Productions with creative team', () => {
 						},
 						{
 							model: 'PERSON',
-							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							uuid: AKHILA_KRISHNAN_PERSON_UUID,
 							name: 'Akhila Krishnan'
 						},
 						{
@@ -855,7 +855,7 @@ describe('Productions with creative team', () => {
 						},
 						{
 							model: 'PERSON',
-							uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+							uuid: AKHILA_KRISHNAN_PERSON_UUID,
 							name: 'Akhila Krishnan'
 						}
 					]
@@ -1039,7 +1039,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1083,7 +1083,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -1177,7 +1177,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -1287,7 +1287,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1394,7 +1394,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1448,7 +1448,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -1541,7 +1541,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -1633,7 +1633,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1729,7 +1729,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1920,7 +1920,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -1974,7 +1974,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -2045,7 +2045,7 @@ describe('Productions with creative team', () => {
 							coEntities: [
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -2159,7 +2159,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -2267,7 +2267,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]
@@ -2321,7 +2321,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -2414,7 +2414,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								},
 								{
@@ -2506,7 +2506,7 @@ describe('Productions with creative team', () => {
 								},
 								{
 									model: 'PERSON',
-									uuid: AKHILA_KIRSHNAN_PERSON_UUID,
+									uuid: AKHILA_KRISHNAN_PERSON_UUID,
 									name: 'Akhila Krishnan'
 								}
 							]

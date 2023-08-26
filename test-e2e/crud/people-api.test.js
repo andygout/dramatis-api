@@ -1,11 +1,11 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
@@ -40,7 +40,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		before(async () => {
 
-			sandbox.stub(crypto, 'randomUUID').returns(PERSON_UUID);
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(PERSON_UUID);
 
 			await purgeDatabase();
 
@@ -171,15 +171,15 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const IAN_MCKELLEN_PERSON_UUID = '1';
-		const PATRICK_STEWART_PERSON_UUID = '3';
-		const MATTHEW_KELLY_PERSON_UUID = '5';
+		const IAN_MCKELLEN_PERSON_UUID = 'IAN_MCKELLEN_PERSON_UUID';
+		const PATRICK_STEWART_PERSON_UUID = 'PATRICK_STEWART_PERSON_UUID';
+		const MATTHEW_KELLY_PERSON_UUID = 'MATTHEW_KELLY_PERSON_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 

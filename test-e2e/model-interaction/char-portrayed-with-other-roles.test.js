@@ -1,23 +1,23 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Character portrayed with other roles', () => {
 
 	chai.use(chaiHttp);
 
-	const JOEYS_MOTHER_CHARACTER_UUID = '8';
-	const DR_SCHWEYK_CHARACTER_UUID = '9';
-	const COCO_CHARACTER_UUID = '10';
-	const GEORDIE_CHARACTER_UUID = '11';
-	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = '12';
-	const NATIONAL_THEATRE_VENUE_UUID = '14';
-	const STEPHEN_HARPER_PERSON_UUID = '16';
+	const JOEYS_MOTHER_CHARACTER_UUID = 'JOEYS_MOTHER_CHARACTER_UUID';
+	const DR_SCHWEYK_CHARACTER_UUID = 'DR_SCHWEYK_CHARACTER_UUID';
+	const COCO_CHARACTER_UUID = 'COCO_CHARACTER_UUID';
+	const GEORDIE_CHARACTER_UUID = 'GEORDIE_CHARACTER_UUID';
+	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = 'WAR_HORSE_PRODUCTION_UUID';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+	const STEPHEN_HARPER_PERSON_UUID = 'STEPHEN_HARPER_PERSON_UUID';
 
 	let joeysMotherCharacter;
 	let drSchweykCharacter;
@@ -28,9 +28,9 @@ describe('Character portrayed with other roles', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

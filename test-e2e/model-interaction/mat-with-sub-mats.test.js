@@ -1,26 +1,26 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-materials', () => {
 
 	chai.use(chaiHttp);
 
-	const VOYAGE_MATERIAL_UUID = '4';
-	const TOM_STOPPARD_PERSON_UUID = '5';
-	const THE_STRÄUSSLER_GROUP_COMPANY_UUID = '6';
-	const ALEXANDER_HERZEN_CHARACTER_UUID = '7';
-	const SHIPWRECK_MATERIAL_UUID = '12';
-	const SALVAGE_MATERIAL_UUID = '20';
-	const THE_COAST_OF_UTOPIA_MATERIAL_UUID = '34';
-	const IVAN_TURGENEV_CHARACTER_UUID = '40';
-	const VOYAGE_OLIVIER_PRODUCTION_UUID = '41';
-	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = '44';
+	const VOYAGE_MATERIAL_UUID = 'VOYAGE_MATERIAL_UUID';
+	const TOM_STOPPARD_PERSON_UUID = 'TOM_STOPPARD_PERSON_UUID';
+	const THE_STRÄUSSLER_GROUP_COMPANY_UUID = 'THE_STRAUSSLER_GROUP_COMPANY_UUID';
+	const ALEXANDER_HERZEN_CHARACTER_UUID = 'ALEXANDER_HERZEN_CHARACTER_UUID';
+	const SHIPWRECK_MATERIAL_UUID = 'SHIPWRECK_MATERIAL_UUID';
+	const SALVAGE_MATERIAL_UUID = 'SALVAGE_MATERIAL_UUID';
+	const THE_COAST_OF_UTOPIA_MATERIAL_UUID = 'THE_COAST_OF_UTOPIA_MATERIAL_UUID';
+	const IVAN_TURGENEV_CHARACTER_UUID = 'IVAN_TURGENEV_CHARACTER_UUID';
+	const VOYAGE_OLIVIER_PRODUCTION_UUID = 'VOYAGE_PRODUCTION_UUID';
+	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = 'THE_COAST_OF_UTOPIA_PRODUCTION_UUID';
 
 	let theCoastOfUtopiaMaterial;
 	let voyageMaterial;
@@ -35,9 +35,9 @@ describe('Material with sub-materials', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

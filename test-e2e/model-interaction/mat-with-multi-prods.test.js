@@ -1,23 +1,23 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const TWELFTH_NIGHT_MATERIAL_UUID = '1';
-	const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = '2';
-	const SHAKESPEARES_GLOBE_VENUE_UUID = '4';
-	const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = '5';
-	const DONMAR_WAREHOUSE_VENUE_UUID = '7';
-	const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = '8';
-	const NATIONAL_THEATRE_VENUE_UUID = '10';
+	const TWELFTH_NIGHT_MATERIAL_UUID = 'TWELFTH_NIGHT_MATERIAL_UUID';
+	const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = 'TWELFTH_NIGHT_PRODUCTION_UUID';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = 'SHAKESPEARES_GLOBE_VENUE_UUID';
+	const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = 'TWELFTH_NIGHT_OR_WHAT_YOU_WILL_PRODUCTION_UUID';
+	const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
+	const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = 'TWELFTH_NIGHT_2_PRODUCTION_UUID';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 
 	let twelfthNightMaterial;
 	let twelfthNightGlobeProduction;
@@ -28,9 +28,9 @@ describe('Material with multiple productions', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

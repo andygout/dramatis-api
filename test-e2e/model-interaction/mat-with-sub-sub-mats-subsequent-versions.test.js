@@ -1,26 +1,26 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-sub-materials and subsequent versions thereof', () => {
 
 	chai.use(chaiHttp);
 
-	const RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID = '3';
-	const WILLIAM_SHAKESPEARE_PERSON_UUID = '4';
-	const THE_KINGS_MEN_COMPANY_UUID = '5';
-	const THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = '11';
-	const THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = '20';
-	const RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID = '30';
-	const CARL_HEAP_PERSON_UUID = '34';
-	const BEGGARS_BELIEF_THEATRE_COMPANY_UUID = '35';
-	const THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = '44';
-	const THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = '59';
+	const RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID = 'RICHARD_II_1_MATERIAL_UUID';
+	const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
+	const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
+	const THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_FIRST_HENRIAD_1_MATERIAL_UUID';
+	const THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_HENRIAD_1_MATERIAL_UUID';
+	const RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID = 'RICHARD_II_2_MATERIAL_UUID';
+	const CARL_HEAP_PERSON_UUID = 'CARL_HEAP_PERSON_UUID';
+	const BEGGARS_BELIEF_THEATRE_COMPANY_UUID = 'BEGGARS_BELIEF_THEATRE_COMPANY_COMPANY_UUID';
+	const THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_FIRST_HENRIAD_2_MATERIAL_UUID';
+	const THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_HENRIAD_2_MATERIAL_UUID';
 
 	let richardIIOriginalVersionMaterial;
 	let richardIISubsequentVersionMaterial;
@@ -33,9 +33,9 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

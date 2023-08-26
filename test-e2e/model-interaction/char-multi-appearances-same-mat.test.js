@@ -1,37 +1,37 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Character with multiple appearances in the same material under different qualifiers', () => {
 
 	chai.use(chaiHttp);
 
-	const ROCK_N_ROLL_MATERIAL_UUID = '5';
-	const ESME_CHARACTER_UUID = '6';
-	const MAX_CHARACTER_UUID = '7';
-	const ELEANOR_CHARACTER_UUID = '8';
-	const ALICE_CHARACTER_UUID = '9';
-	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = '10';
-	const ROYAL_COURT_THEATRE_VENUE_UUID = '12';
-	const ALICE_EVE_PERSON_UUID = '13';
-	const BRIAN_COX_PERSON_UUID = '14';
-	const SINEAD_CUSACK_PERSON_UUID = '15';
-	const HANDBAGGED_MATERIAL_UUID = '20';
-	const MARGARET_THATCHER_CHARACTER_UUID = '21';
-	const QUEEN_ELIZABETH_II_CHARACTER_UUID = '22';
-	const RONALD_REAGAN_CHARACTER_UUID = '23';
-	const HANDBAGGED_TRICYCLE_PRODUCTION_UUID = '24';
-	const TRICYCLE_THEATRE_VENUE_UUID = '26';
-	const STELLA_GONET_PERSON_UUID = '27';
-	const KIKA_MARKHAM_PERSON_UUID = '28';
-	const HEATHER_CRANEY_PERSON_UUID = '29';
-	const CLAIRE_COX_PERSON_UUID = '30';
-	const TOM_MANNION_PERSON_UUID = '31';
+	const ROCK_N_ROLL_MATERIAL_UUID = 'ROCK_N_ROLL_MATERIAL_UUID';
+	const ESME_CHARACTER_UUID = 'ESME_CHARACTER_UUID';
+	const MAX_CHARACTER_UUID = 'MAX_CHARACTER_UUID';
+	const ELEANOR_CHARACTER_UUID = 'ELEANOR_CHARACTER_UUID';
+	const ALICE_CHARACTER_UUID = 'ALICE_CHARACTER_UUID';
+	const ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID = 'ROCK_N_ROLL_PRODUCTION_UUID';
+	const ROYAL_COURT_THEATRE_VENUE_UUID = 'ROYAL_COURT_THEATRE_VENUE_UUID';
+	const ALICE_EVE_PERSON_UUID = 'ALICE_EVE_PERSON_UUID';
+	const BRIAN_COX_PERSON_UUID = 'BRIAN_COX_PERSON_UUID';
+	const SINEAD_CUSACK_PERSON_UUID = 'SINEAD_CUSACK_PERSON_UUID';
+	const HANDBAGGED_MATERIAL_UUID = 'HANDBAGGED_MATERIAL_UUID';
+	const MARGARET_THATCHER_CHARACTER_UUID = 'T_CHARACTER_UUID';
+	const QUEEN_ELIZABETH_II_CHARACTER_UUID = 'Q_CHARACTER_UUID';
+	const RONALD_REAGAN_CHARACTER_UUID = 'RON_CHARACTER_UUID';
+	const HANDBAGGED_TRICYCLE_PRODUCTION_UUID = 'HANDBAGGED_PRODUCTION_UUID';
+	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+	const STELLA_GONET_PERSON_UUID = 'STELLA_GONET_PERSON_UUID';
+	const KIKA_MARKHAM_PERSON_UUID = 'KIKA_MARKHAM_PERSON_UUID';
+	const HEATHER_CRANEY_PERSON_UUID = 'HEATHER_CRANEY_PERSON_UUID';
+	const CLAIRE_COX_PERSON_UUID = 'CLAIRE_COX_PERSON_UUID';
+	const TOM_MANNION_PERSON_UUID = 'TOM_MANNION_PERSON_UUID';
 
 	let esmeCharacter;
 	let aliceCharacter;
@@ -50,9 +50,9 @@ describe('Character with multiple appearances in the same material under differe
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

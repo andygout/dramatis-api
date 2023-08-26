@@ -1,29 +1,29 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Character with multiple appearances in different character groups of the same material', () => {
 
 	chai.use(chaiHttp);
 
-	const THREE_WINTERS_MATERIAL_UUID = '5';
-	const ALISA_KOS_CHARACTER_UUID = '6';
-	const MAŠA_KOS_CHARACTER_UUID = '7';
-	const ALEKSANDER_KING_CHARACTER_UUID = '8';
-	const ROSE_KING_CHARACTER_UUID = '9';
-	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '10';
-	const NATIONAL_THEATRE_VENUE_UUID = '12';
-	const SIOBHAN_FINNERAN_PERSON_UUID = '13';
-	const JO_HERBERT_PERSON_UUID = '14';
-	const JAMES_LAURENSON_PERSON_UUID = '15';
-	const JODIE_MCNEE_PERSON_UUID = '16';
-	const ALEX_PRICE_PERSON_UUID = '17';
-	const BEBE_SANDERS_PERSON_UUID = '18';
+	const THREE_WINTERS_MATERIAL_UUID = '3_WINTERS_MATERIAL_UUID';
+	const ALISA_KOS_CHARACTER_UUID = 'ALISA_KOS_CHARACTER_UUID';
+	const MAŠA_KOS_CHARACTER_UUID = 'MASA_KOS_CHARACTER_UUID';
+	const ALEKSANDER_KING_CHARACTER_UUID = 'ALEKSANDER_KING_CHARACTER_UUID';
+	const ROSE_KING_CHARACTER_UUID = 'ROSE_KING_CHARACTER_UUID';
+	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '3_WINTERS_PRODUCTION_UUID';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+	const SIOBHAN_FINNERAN_PERSON_UUID = 'SIOBHAN_FINNERAN_PERSON_UUID';
+	const JO_HERBERT_PERSON_UUID = 'JO_HERBERT_PERSON_UUID';
+	const JAMES_LAURENSON_PERSON_UUID = 'JAMES_LAURENSON_PERSON_UUID';
+	const JODIE_MCNEE_PERSON_UUID = 'JODIE_MCNEE_PERSON_UUID';
+	const ALEX_PRICE_PERSON_UUID = 'ALEX_PRICE_PERSON_UUID';
+	const BEBE_SANDERS_PERSON_UUID = 'BEBE_SANDERS_PERSON_UUID';
 
 	let alisaKosCharacter;
 	let mašaKosCharacter;
@@ -42,9 +42,9 @@ describe('Character with multiple appearances in different character groups of t
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
