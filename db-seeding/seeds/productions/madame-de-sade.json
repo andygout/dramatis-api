@@ -1,0 +1,141 @@
+{
+	"name": "Madame de Sade",
+	"startDate": "2009-03-13",
+	"pressDate": "2009-03-18",
+	"endDate": "2009-05-23",
+	"material": {
+		"name": "Madame de Sade"
+	},
+	"venue": {
+		"name": "Wyndham's Theatre"
+	},
+	"season": {
+		"name": "Donmar in the West End"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Donmar Warehouse"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Frances Barber",
+			"roles": [
+				{
+					"name": "Comtesse de Saint-Fond"
+				}
+			]
+		},
+		{
+			"name": "Deborah Findlay",
+			"roles": [
+				{
+					"name": "Baroness de Simiane"
+				}
+			]
+		},
+		{
+			"name": "Jenny Galloway",
+			"roles": [
+				{
+					"name": "Charlotte"
+				}
+			]
+		},
+		{
+			"name": "Judi Dench",
+			"roles": [
+				{
+					"name": "Madame de Montreuil"
+				}
+			]
+		},
+		{
+			"name": "Fiona Button",
+			"roles": [
+				{
+					"name": "Anne"
+				}
+			]
+		},
+		{
+			"name": "Rosamund Pike",
+			"roles": [
+				{
+					"name": "Renee, Madame de Sade"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Grandage"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Christopher Oram"
+				}
+			]
+		},
+		{
+			"name": "Wigs and Hair",
+			"entities": [
+				{
+					"name": "Richard Mawbey"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Adam Cork"
+				}
+			]
+		},
+		{
+			"name": "Video and Projections",
+			"entities": [
+				{
+					"name": "Lorna Heavey"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Anne McNulty"
+				}
+			]
+		},
+		{
+			"name": "Casting Assistant",
+			"entities": [
+				{
+					"name": "Vicky Richardson"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,56 @@
+{
+	"name": "Detaining Justice",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Bola Agbaje"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alfred"
+				},
+				{
+					"name": "Justice"
+				},
+				{
+					"name": "Passer-by"
+				},
+				{
+					"name": "Mr Cole"
+				},
+				{
+					"name": "Grace",
+					"differentiator": "Detaining Justice"
+				},
+				{
+					"name": "Ben",
+					"differentiator": "Detaining Justice"
+				},
+				{
+					"name": "Pra"
+				},
+				{
+					"name": "Abeni"
+				},
+				{
+					"name": "Chi Chi"
+				},
+				{
+					"name": "Javon"
+				},
+				{
+					"name": "Guards",
+					"differentiator": "Detaining Justice"
+				}
+			]
+		}
+	]
+}

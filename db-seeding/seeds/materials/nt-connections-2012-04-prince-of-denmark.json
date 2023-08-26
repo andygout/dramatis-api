@@ -48,7 +48,8 @@
 					"name": "Players"
 				},
 				{
-					"name": "Guards"
+					"name": "Guards",
+					"differentiator": "Prince of Denmark"
 				}
 			]
 		}

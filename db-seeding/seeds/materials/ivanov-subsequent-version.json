@@ -1,0 +1,96 @@
+{
+	"name": "Ivanov",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2008",
+	"originalVersionMaterial": {
+		"name": "Ivanov",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		},
+		{
+			"name": "in a version by",
+			"entities": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nikolai Ivanov"
+				},
+				{
+					"name": "Borkin",
+					"underlyingName": "Michael Borkin"
+				},
+				{
+					"name": "Shabelsky",
+					"underlyingName": "Count Matthew Shabelsky"
+				},
+				{
+					"name": "Anna Petrovna"
+				},
+				{
+					"name": "Lvov",
+					"underlyingName": "Eugene Lvov"
+				},
+				{
+					"name": "Zinaida"
+				},
+				{
+					"name": "Babakina",
+					"underlyingName": "Martha Babakina"
+				},
+				{
+					"name": "Yacob"
+				},
+				{
+					"name": "Anasim"
+				},
+				{
+					"name": "Nikander"
+				},
+				{
+					"name": "Kosykh",
+					"underlyingName": "Dmitry Kosykh"
+				},
+				{
+					"name": "Yegorushka"
+				},
+				{
+					"name": "Pyotr"
+				},
+				{
+					"name": "Avdotya"
+				},
+				{
+					"name": "Natalia"
+				},
+				{
+					"name": "Lebedev",
+					"underlyingName": "Paul Lebedev"
+				},
+				{
+					"name": "Sasha"
+				},
+				{
+					"name": "Gavrila"
+				},
+				{
+					"name": "Lipa"
+				}
+			]
+		}
+	]
+}

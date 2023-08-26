@@ -1,0 +1,178 @@
+{
+	"name": "Detaining Justice",
+	"startDate": "2009-10-25",
+	"pressDate": "2009-11-30",
+	"endDate": "2009-12-15",
+	"material": {
+		"name": "Detaining Justice"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"season": {
+		"name": "Not Black and White"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jimmy Akingbola",
+			"roles": [
+				{
+					"name": "Alfred"
+				}
+			]
+		},
+		{
+			"name": "Aml Ameen",
+			"roles": [
+				{
+					"name": "Justice"
+				}
+			]
+		},
+		{
+			"name": "John Boyega",
+			"roles": [
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				},
+				{
+					"name": "Passer-by"
+				}
+			]
+		},
+		{
+			"name": "Karl Collins",
+			"roles": [
+				{
+					"name": "Mr Cole"
+				}
+			]
+		},
+		{
+			"name": "Sharon Duncan-Brewster",
+			"roles": [
+				{
+					"name": "Grace"
+				}
+			]
+		},
+		{
+			"name": "Abhin Galeya",
+			"roles": [
+				{
+					"name": "Ben"
+				}
+			]
+		},
+		{
+			"name": "Kobna Holdbrook-Smith",
+			"roles": [
+				{
+					"name": "Pra"
+				}
+			]
+		},
+		{
+			"name": "Cecilia Noble",
+			"roles": [
+				{
+					"name": "Abeni"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Scroggs",
+			"roles": [
+				{
+					"name": "Chi Chi"
+				}
+			]
+		},
+		{
+			"name": "Robert Whitelock",
+			"roles": [
+				{
+					"name": "Javon"
+				},
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Indhu Rubasingham"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rosa Maggiora"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Bret Yount"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Suzanne Crowley"
+				},
+				{
+					"name": "Gilly Poole"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Shaz McGee"
+				}
+			]
+		}
+	]
+}

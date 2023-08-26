@@ -1,0 +1,170 @@
+{
+	"name": "Category B",
+	"startDate": "2009-10-08",
+	"pressDate": "2009-10-12",
+	"endDate": "2009-12-19",
+	"material": {
+		"name": "Category B"
+	},
+	"venue": {
+		"name": "Tricycle Theatre"
+	},
+	"season": {
+		"name": "Not Black and White"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tricycle Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sharon Duncan-Brewster",
+			"roles": [
+				{
+					"name": "Angela"
+				}
+			]
+		},
+		{
+			"name": "Kobna Holdbrook-Smith",
+			"roles": [
+				{
+					"name": "David"
+				}
+			]
+		},
+		{
+			"name": "Aml Ameen",
+			"roles": [
+				{
+					"name": "Rio"
+				}
+			]
+		},
+		{
+			"name": "Robert Whitelock",
+			"roles": [
+				{
+					"name": "Andy"
+				}
+			]
+		},
+		{
+			"name": "Jimmy Akingbola",
+			"roles": [
+				{
+					"name": "Saul"
+				}
+			]
+		},
+		{
+			"name": "Abhin Galeya",
+			"roles": [
+				{
+					"name": "Riz"
+				}
+			]
+		},
+		{
+			"name": "Karl Collins",
+			"roles": [
+				{
+					"name": "Errol"
+				}
+			]
+		},
+		{
+			"name": "Jaye Griffiths",
+			"roles": [
+				{
+					"name": "Chandra"
+				}
+			]
+		},
+		{
+			"name": "John Boyega",
+			"roles": [
+				{
+					"name": "Reece"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Paulette Randall"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rosa Maggiora"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Lishman"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Bret Yount"
+				}
+			]
+		},
+		{
+			"name": "Costume Supervisor",
+			"entities": [
+				{
+					"name": "Sydney Florence"
+				}
+			]
+		},
+		{
+			"name": "Casting",
+			"entities": [
+				{
+					"name": "Suzanne Crowley"
+				},
+				{
+					"name": "Gilly Poole"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Shaz McGee"
+				}
+			]
+		}
+	]
+}

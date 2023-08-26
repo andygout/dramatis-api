@@ -1,0 +1,175 @@
+{
+	"name": "Plenty",
+	"startDate": "2011-02-04",
+	"pressDate": "2011-02-08",
+	"endDate": "2011-02-26",
+	"material": {
+		"name": "Plenty"
+	},
+	"venue": {
+		"name": "Studio Theatre"
+	},
+	"season": {
+		"name": "The David Hare Season"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sheffield Theatres"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Hattie Morahan",
+			"roles": [
+				{
+					"name": "Susan Traherne"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Bushell",
+			"roles": [
+				{
+					"name": "Alice Park"
+				}
+			]
+		},
+		{
+			"name": "Edward Bennett",
+			"roles": [
+				{
+					"name": "Raymond Brock"
+				}
+			]
+		},
+		{
+			"name": "David Bark-Jones",
+			"roles": [
+				{
+					"name": "Lazar",
+					"characterName": "Codename Lazar"
+				}
+			]
+		},
+		{
+			"name": "Youssef Kerkour",
+			"roles": [
+				{
+					"name": "A Frenchman"
+				},
+				{
+					"name": "Another Frenchman"
+				}
+			]
+		},
+		{
+			"name": "Bruce Alexander",
+			"roles": [
+				{
+					"name": "Sir Leonard Darwin"
+				}
+			]
+		},
+		{
+			"name": "Jack Ryder",
+			"roles": [
+				{
+					"name": "Mick"
+				},
+				{
+					"name": "John Begley"
+				}
+			]
+		},
+		{
+			"name": "Laura Carmichael",
+			"roles": [
+				{
+					"name": "Dorcas Frey"
+				},
+				{
+					"name": "Louise"
+				}
+			]
+		},
+		{
+			"name": "Junix Inocian",
+			"roles": [
+				{
+					"name": "M Aung"
+				}
+			]
+		},
+		{
+			"name": "Lucy Sheen",
+			"roles": [
+				{
+					"name": "Mme Aung"
+				}
+			]
+		},
+		{
+			"name": "Simon Coates",
+			"roles": [
+				{
+					"name": "Sir Andrew Charleson"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Thea Sharrock"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lucy Osbourne"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Farncombe"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Gibbons"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Adrian Johnston"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Toby Whale"
+				}
+			]
+		}
+	]
+}

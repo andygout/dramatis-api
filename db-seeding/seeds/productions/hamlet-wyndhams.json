@@ -10,6 +10,9 @@
 	"venue": {
 		"name": "Wyndham's Theatre"
 	},
+	"season": {
+		"name": "Donmar in the West End"
+	},
 	"producerCredits": [
 		{
 			"entities": [

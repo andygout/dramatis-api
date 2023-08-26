@@ -1,0 +1,48 @@
+{
+	"name": "Category B",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Roy Williams"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Angela"
+				},
+				{
+					"name": "Rio"
+				},
+				{
+					"name": "Andy"
+				},
+				{
+					"name": "Errol"
+				},
+				{
+					"name": "Saul"
+				},
+				{
+					"name": "David",
+					"differentiator": "Category B"
+				},
+				{
+					"name": "Chandra"
+				},
+				{
+					"name": "Reece"
+				},
+				{
+					"name": "Riz"
+				}
+			]
+		}
+	]
+}

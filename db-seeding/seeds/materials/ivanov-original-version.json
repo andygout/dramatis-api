@@ -1,0 +1,51 @@
+{
+	"name": "Ivanov",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1887",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Anton Chekhov"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Nikolai Ivanov"
+				},
+				{
+					"name": "Anna Petrovna"
+				},
+				{
+					"name": "Paul Lebedev"
+				},
+				{
+					"name": "Zinaida"
+				},
+				{
+					"name": "Sasha"
+				},
+				{
+					"name": "Eugene Lvov"
+				},
+				{
+					"name": "Count Matthew Shabelsky"
+				},
+				{
+					"name": "Martha Babakina"
+				},
+				{
+					"name": "Michael Borkin"
+				},
+				{
+					"name": "Dmitry Kosykh"
+				}
+			]
+		}
+	]
+}

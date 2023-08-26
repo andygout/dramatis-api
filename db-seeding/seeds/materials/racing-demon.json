@@ -1,0 +1,56 @@
+{
+	"name": "Racing Demon",
+	"format": "play",
+	"year": "1990",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "David Hare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Rev Lionel Espy"
+				},
+				{
+					"name": "Rt Rev Charlie Allen"
+				},
+				{
+					"name": "Frances Parnell"
+				},
+				{
+					"name": "Rev Tony Ferris"
+				},
+				{
+					"name": "Stella Marr"
+				},
+				{
+					"name": "Rev Donald 'Streaky' Bacon"
+				},
+				{
+					"name": "Rev Harry Henderson"
+				},
+				{
+					"name": "Heather Espy"
+				},
+				{
+					"name": "Ewan Gilmour"
+				},
+				{
+					"name": "Tommy Adair"
+				},
+				{
+					"name": "Rt Rev Gilbert Heffernan"
+				},
+				{
+					"name": "Head Waiter"
+				}
+			]
+		}
+	]
+}
