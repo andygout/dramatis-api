@@ -435,10 +435,6 @@ describe('Uniqueness in database: Materials API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
-
 			await purgeDatabase();
 
 			await createNode({
@@ -558,10 +554,6 @@ describe('Uniqueness in database: Materials API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -702,10 +694,6 @@ describe('Uniqueness in database: Materials API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -850,10 +838,6 @@ describe('Uniqueness in database: Materials API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -1003,10 +987,6 @@ describe('Uniqueness in database: Materials API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
-
 			await purgeDatabase();
 
 			await createNode({
@@ -1134,10 +1114,6 @@ describe('Uniqueness in database: Materials API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 

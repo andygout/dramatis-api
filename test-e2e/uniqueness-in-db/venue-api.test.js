@@ -251,10 +251,6 @@ describe('Uniqueness in database: Venues API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
-
 			await purgeDatabase();
 
 			await createNode({
