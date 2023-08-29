@@ -2,7 +2,6 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
 
@@ -31,10 +30,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -151,10 +146,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
@@ -332,10 +323,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
-
 			await purgeDatabase();
 
 			await createNode({
@@ -499,10 +486,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		};
 
 		before(async () => {
-
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
 
 			await purgeDatabase();
 
