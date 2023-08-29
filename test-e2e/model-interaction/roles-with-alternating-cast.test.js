@@ -1,26 +1,26 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Roles with alternating cast', () => {
 
 	chai.use(chaiHttp);
 
-	const AUSTIN_CHARACTER_UUID = '4';
-	const LEE_CHARACTER_UUID = '5';
-	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = '6';
-	const CRUCIBLE_THEATRE_VENUE_UUID = '8';
-	const NIGEL_HARMAN_PERSON_UUID = '9';
-	const JOHN_LIGHT_PERSON_UUID = '10';
-	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = '11';
-	const VAUDEVILLE_THEATRE_VENUE_UUID = '13';
-	const KIT_HARINGTON_PERSON_UUID = '14';
-	const JOHNNY_FLYNN_PERSON_UUID = '15';
+	const AUSTIN_CHARACTER_UUID = 'AUSTIN_CHARACTER_UUID';
+	const LEE_CHARACTER_UUID = 'LEE_CHARACTER_UUID';
+	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = 'TRUE_WEST_PRODUCTION_UUID';
+	const CRUCIBLE_THEATRE_VENUE_UUID = 'CRUCIBLE_THEATRE_VENUE_UUID';
+	const NIGEL_HARMAN_PERSON_UUID = 'NIGEL_HARMAN_PERSON_UUID';
+	const JOHN_LIGHT_PERSON_UUID = 'JOHN_LIGHT_PERSON_UUID';
+	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = 'TRUE_WEST_2_PRODUCTION_UUID';
+	const VAUDEVILLE_THEATRE_VENUE_UUID = 'VAUDEVILLE_THEATRE_VENUE_UUID';
+	const KIT_HARINGTON_PERSON_UUID = 'KIT_HARINGTON_PERSON_UUID';
+	const JOHNNY_FLYNN_PERSON_UUID = 'JOHNNY_FLYNN_PERSON_UUID';
 
 	let austinCharacter;
 	let leeCharacter;
@@ -35,9 +35,9 @@ describe('Roles with alternating cast', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

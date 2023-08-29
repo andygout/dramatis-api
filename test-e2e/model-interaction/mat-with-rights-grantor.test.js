@@ -1,22 +1,22 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with rights grantor credits', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID = '2';
-	const WILLIAM_ROSE_PERSON_UUID = '3';
-	const THE_LADYKILLERS_PLAY_MATERIAL_UUID = '9';
-	const GRAHAM_LINEHAN_PERSON_UUID = '10';
-	const STUDIOCANAL_COMPANY_UUID = '12';
-	const ALISON_MEESE_PERSON_UUID = '13';
+	const THE_LADYKILLERS_SCREENPLAY_MATERIAL_UUID = 'THE_LADYKILLERS_1_MATERIAL_UUID';
+	const WILLIAM_ROSE_PERSON_UUID = 'WILLIAM_ROSE_PERSON_UUID';
+	const THE_LADYKILLERS_PLAY_MATERIAL_UUID = 'THE_LADYKILLERS_2_MATERIAL_UUID';
+	const GRAHAM_LINEHAN_PERSON_UUID = 'GRAHAM_LINEHAN_PERSON_UUID';
+	const STUDIOCANAL_COMPANY_UUID = 'STUDIOCANAL_COMPANY_UUID';
+	const ALISON_MEESE_PERSON_UUID = 'ALISON_MEESE_PERSON_UUID';
 
 	let studioCanalCompany;
 	let alisonMeesePerson;
@@ -25,9 +25,9 @@ describe('Material with rights grantor credits', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

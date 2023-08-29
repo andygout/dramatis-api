@@ -1,19 +1,19 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with entities credited multiple times', () => {
 
 	chai.use(chaiHttp);
 
-	const XYZZY_MATERIAL_UUID = '3';
-	const FERDINAND_FOO_PERSON_UUID = '4';
-	const STAGECRAFT_LTD_COMPANY_UUID = '5';
+	const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
+	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
+	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
 
 	let material;
 	let person;
@@ -23,9 +23,9 @@ describe('Material with entities credited multiple times', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

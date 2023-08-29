@@ -1,45 +1,45 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-sub-materials', () => {
 
 	chai.use(chaiHttp);
 
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = '4';
-	const FERDINAND_FOO_PERSON_UUID = '5';
-	const FICTIONEERS_LTD_COMPANY_UUID = '6';
-	const BAR_CHARACTER_UUID = '7';
-	const DURANDS_LINE_MATERIAL_UUID = '10';
-	const RON_HUTCHINSON_PERSON_UUID = '11';
-	const CAMPAIGN_MATERIAL_UUID = '14';
-	const AMIT_GUPTA_PERSON_UUID = '15';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID = '23';
-	const BLACK_TULIPS_MATERIAL_UUID = '29';
-	const DAVID_EDGAR_PERSON_UUID = '30';
-	const BLOOD_AND_GIFTS_MATERIAL_UUID = '33';
-	const J_T_ROGERS_PERSON_UUID = '34';
-	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = '39';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID = '50';
-	const HONEY_MATERIAL_UUID = '56';
-	const BEN_OCKRENT_PERSON_UUID = '57';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '62';
-	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '68';
-	const RICHARD_BEAN_PERSON_UUID = '69';
-	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '77';
-	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '88';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '92';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '95';
-	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '98';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '101';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '104';
-	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '107';
-	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '110';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
+	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
+	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
+	const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
+	const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
+	const RON_HUTCHINSON_PERSON_UUID = 'RON_HUTCHINSON_PERSON_UUID';
+	const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
+	const AMIT_GUPTA_PERSON_UUID = 'AMIT_GUPTA_PERSON_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+	const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
+	const DAVID_EDGAR_PERSON_UUID = 'DAVID_EDGAR_PERSON_UUID';
+	const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
+	const J_T_ROGERS_PERSON_UUID = 'J_T_ROGERS_PERSON_UUID';
+	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
+	const HONEY_MATERIAL_UUID = 'HONEY_MATERIAL_UUID';
+	const BEN_OCKRENT_PERSON_UUID = 'BEN_OCKRENT_PERSON_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
+	const RICHARD_BEAN_PERSON_UUID = 'RICHARD_BEAN_PERSON_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = 'THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_UUID';
 
 	let theGreatGameAfghanistanMaterial;
 	let partOneInvasionsAndIndependenceMaterial;
@@ -55,9 +55,9 @@ describe('Material with sub-sub-materials', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -449,13 +449,13 @@ describe('Material with sub-sub-materials', () => {
 				},
 				subProductions: [
 					{
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID
 					}
 				]
 			});
@@ -464,7 +464,7 @@ describe('Material with sub-sub-materials', () => {
 			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
 
 		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
-			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID}`);
+			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
 
 		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
@@ -476,7 +476,7 @@ describe('Material with sub-sub-materials', () => {
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
 
 		partOneInvasionsAndIndependenceTricycleProduction = await chai.request(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID}`);
+			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
 
 		buglesAtTheGateOfJalalabadTricycleProduction = await chai.request(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
@@ -502,7 +502,7 @@ describe('Material with sub-sub-materials', () => {
 			const expectedSubMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -599,7 +599,7 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -696,7 +696,7 @@ describe('Material with sub-sub-materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -930,7 +930,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
-				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 				name: 'Part One - Invasions and Independence (1842-1930)',
 				format: 'sub-collection of plays',
 				year: 2009,
@@ -970,7 +970,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1006,7 +1006,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1042,7 +1042,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1108,7 +1108,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const expectedMaterial = {
 				model: 'MATERIAL',
-				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 				name: 'Part One - Invasions and Independence (1842-1930)',
 				format: 'sub-collection of plays',
 				year: 2009,
@@ -1141,7 +1141,7 @@ describe('Material with sub-sub-materials', () => {
 				year: 2009,
 				surMaterial: {
 					model: 'MATERIAL',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					surMaterial: {
 						model: 'MATERIAL',
@@ -1190,7 +1190,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1225,7 +1225,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1260,7 +1260,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1310,7 +1310,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1345,7 +1345,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1380,7 +1380,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1433,7 +1433,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1463,7 +1463,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1498,7 +1498,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1528,7 +1528,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1563,7 +1563,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1593,7 +1593,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1623,7 +1623,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1653,7 +1653,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -1683,7 +1683,7 @@ describe('Material with sub-sub-materials', () => {
 					year: 2009,
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',

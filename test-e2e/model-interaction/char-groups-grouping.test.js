@@ -1,20 +1,20 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Nameless character groups grouping', () => {
 
 	chai.use(chaiHttp);
 
-	const JULIUS_CAESAR_MATERIAL_UUID = '4';
-	const JULIUS_CAESAR_CHARACTER_UUID = '5';
-	const MARK_ANTONY_CHARACTER_UUID = '6';
-	const MESSENGER_CHARACTER_UUID = '7';
+	const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
+	const JULIUS_CAESAR_CHARACTER_UUID = 'JULIUS_CAESAR_CHARACTER_UUID';
+	const MARK_ANTONY_CHARACTER_UUID = 'MARK_ANTONY_CHARACTER_UUID';
+	const MESSENGER_CHARACTER_UUID = 'MESSENGER_CHARACTER_UUID';
 
 	let juliusCaesarMaterial;
 
@@ -22,9 +22,9 @@ describe('Nameless character groups grouping', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

@@ -1,32 +1,32 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Character with variant names from productions of the same material', () => {
 
 	chai.use(chaiHttp);
 
-	const HAMLET_CHARACTER_UUID = '6';
-	const CLAUDIUS_CHARACTER_UUID = '7';
-	const GHOST_CHARACTER_UUID = '8';
-	const FIRST_PLAYER_CHARACTER_UUID = '9';
-	const HAMLET_ALMEIDA_PRODUCTION_UUID = '10';
-	const ALMEIDA_THEATRE_VENUE_UUID = '12';
-	const ANDREW_SCOTT_PERSON_UUID = '13';
-	const DAVID_RINTOUL_PERSON_UUID = '14';
-	const HAMLET_NOVELLO_PRODUCTION_UUID = '15';
-	const NOVELLO_THEATRE_VENUE_UUID = '17';
-	const DAVID_TENNANT_PERSON_UUID = '18';
-	const PATRICK_STEWART_PERSON_UUID = '19';
-	const HAMLET_WYNDHAMS_PRODUCTION_UUID = '20';
-	const WYNDHAMS_THEATRE_VENUE_UUID = '22';
-	const JUDE_LAW_PERSON_UUID = '23';
-	const PETER_EYRE_PERSON_UUID = '24';
+	const HAMLET_CHARACTER_UUID = 'HAMLET_CHARACTER_UUID';
+	const CLAUDIUS_CHARACTER_UUID = 'CLAUDIUS_CHARACTER_UUID';
+	const GHOST_CHARACTER_UUID = 'GHOST_CHARACTER_UUID';
+	const FIRST_PLAYER_CHARACTER_UUID = 'FIRST_PLAYER_CHARACTER_UUID';
+	const HAMLET_ALMEIDA_PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
+	const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
+	const ANDREW_SCOTT_PERSON_UUID = 'ANDREW_SCOTT_PERSON_UUID';
+	const DAVID_RINTOUL_PERSON_UUID = 'DAVID_RINTOUL_PERSON_UUID';
+	const HAMLET_NOVELLO_PRODUCTION_UUID = 'HAMLET_2_PRODUCTION_UUID';
+	const NOVELLO_THEATRE_VENUE_UUID = 'NOVELLO_THEATRE_VENUE_UUID';
+	const DAVID_TENNANT_PERSON_UUID = 'DAVID_TENNANT_PERSON_UUID';
+	const PATRICK_STEWART_PERSON_UUID = 'PATRICK_STEWART_PERSON_UUID';
+	const HAMLET_WYNDHAMS_PRODUCTION_UUID = 'HAMLET_3_PRODUCTION_UUID';
+	const WYNDHAMS_THEATRE_VENUE_UUID = 'WYNDHAMS_THEATRE_VENUE_UUID';
+	const JUDE_LAW_PERSON_UUID = 'JUDE_LAW_PERSON_UUID';
+	const PETER_EYRE_PERSON_UUID = 'PETER_EYRE_PERSON_UUID';
 
 	let ghostCharacter;
 	let hamletAlmeidaProduction;
@@ -40,9 +40,9 @@ describe('Character with variant names from productions of the same material', (
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

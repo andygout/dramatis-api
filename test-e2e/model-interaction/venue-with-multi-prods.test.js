@@ -1,20 +1,20 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Venue with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = '0';
-	const DONMAR_WAREHOUSE_VENUE_UUID = '1';
-	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = '2';
-	const RED_DONMAR_PRODUCTION_UUID = '4';
+	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = 'A_STREETCAR_NAMED_DESIRE_PRODUCTION_UUID';
+	const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
+	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = 'LIFE_IS_A_DREAM_PRODUCTION_UUID';
+	const RED_DONMAR_PRODUCTION_UUID = 'RED_PRODUCTION_UUID';
 
 	let donmarWarehouseVenue;
 	let streetcarNamedDesireDonmarProduction;
@@ -25,9 +25,9 @@ describe('Venue with multiple productions', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

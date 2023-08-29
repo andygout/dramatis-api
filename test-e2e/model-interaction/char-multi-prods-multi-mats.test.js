@@ -1,35 +1,35 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Character in multiple productions of multiple materials', () => {
 
 	chai.use(chaiHttp);
 
-	const HENRY_IV_PART_1_MATERIAL_UUID = '2';
-	const SIR_JOHN_FALSTAFF_CHARACTER_UUID = '3';
-	const HENRY_IV_PART_2_MATERIAL_UUID = '6';
-	const THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID = '10';
-	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = '12';
-	const NATIONAL_THEATRE_VENUE_UUID = '14';
-	const MICHAEL_GAMBON_PERSON_UUID = '15';
-	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = '16';
-	const THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID = '20';
-	const HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID = '24';
-	const SHAKESPEARES_GLOBE_VENUE_UUID = '26';
-	const ROGER_ALLAM_PERSON_UUID = '27';
-	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = '28';
-	const THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID = '32';
-	const HENRY_IV_PART_1_SWAN_PRODUCTION_UUID = '36';
-	const SWAN_THEATRE_VENUE_UUID = '38';
-	const RICHARD_CORDERY_PERSON_UUID = '39';
-	const HENRY_IV_PART_2_SWAN_PRODUCTION_UUID = '40';
-	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = '44';
+	const HENRY_IV_PART_1_MATERIAL_UUID = 'HENRY_IV_PART_1_MATERIAL_UUID';
+	const SIR_JOHN_FALSTAFF_CHARACTER_UUID = 'SIR_JOHN_FALSTAFF_CHARACTER_UUID';
+	const HENRY_IV_PART_2_MATERIAL_UUID = 'HENRY_IV_PART_2_MATERIAL_UUID';
+	const THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID = 'THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID';
+	const HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID = 'HENRY_IV_PART_1_PRODUCTION_UUID';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+	const MICHAEL_GAMBON_PERSON_UUID = 'MICHAEL_GAMBON_PERSON_UUID';
+	const HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID = 'HENRY_IV_PART_2_PRODUCTION_UUID';
+	const THE_MERRY_WIVES_OF_WINDSOR_NATIONAL_PRODUCTION_UUID = 'THE_MERRY_WIVES_OF_WINDSOR_PRODUCTION_UUID';
+	const HENRY_IV_PART_1_GLOBE_PRODUCTION_UUID = 'HENRY_IV_PART_1_2_PRODUCTION_UUID';
+	const SHAKESPEARES_GLOBE_VENUE_UUID = 'SHAKESPEARES_GLOBE_VENUE_UUID';
+	const ROGER_ALLAM_PERSON_UUID = 'ROGER_ALLAM_PERSON_UUID';
+	const HENRY_IV_PART_2_GLOBE_PRODUCTION_UUID = 'HENRY_IV_PART_2_2_PRODUCTION_UUID';
+	const THE_MERRY_WIVES_OF_WINDSOR_GLOBE_PRODUCTION_UUID = 'THE_MERRY_WIVES_OF_WINDSOR_2_PRODUCTION_UUID';
+	const HENRY_IV_PART_1_SWAN_PRODUCTION_UUID = 'HENRY_IV_PART_1_3_PRODUCTION_UUID';
+	const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
+	const RICHARD_CORDERY_PERSON_UUID = 'RICHARD_CORDERY_PERSON_UUID';
+	const HENRY_IV_PART_2_SWAN_PRODUCTION_UUID = 'HENRY_IV_PART_2_3_PRODUCTION_UUID';
+	const THE_MERRY_WIVES_OF_WINDSOR_SWAN_PRODUCTION_UUID = 'THE_MERRY_WIVES_OF_WINDSOR_3_PRODUCTION_UUID';
 
 	let sirJohnFalstaffCharacter;
 	let henryIVPart1Material;
@@ -40,9 +40,9 @@ describe('Character in multiple productions of multiple materials', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

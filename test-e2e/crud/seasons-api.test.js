@@ -1,11 +1,11 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
@@ -40,7 +40,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 		before(async () => {
 
-			sandbox.stub(crypto, 'randomUUID').returns(SEASON_UUID);
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(SEASON_UUID);
 
 			await purgeDatabase();
 
@@ -160,15 +160,15 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const THE_DAVID_HARE_SEASON_UUID = '1';
-		const NOT_BLACK_AND_WHITE_SEASON_UUID = '3';
-		const DONMAR_IN_THE_WEST_END_SEASON_UUID = '5';
+		const THE_DAVID_HARE_SEASON_UUID = 'THE_DAVID_HARE_SEASON_SEASON_UUID';
+		const NOT_BLACK_AND_WHITE_SEASON_UUID = 'NOT_BLACK_AND_WHITE_SEASON_UUID';
+		const DONMAR_IN_THE_WEST_END_SEASON_UUID = 'DONMAR_IN_THE_WEST_END_SEASON_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 

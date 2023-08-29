@@ -1,70 +1,70 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Ordering of multi-tiered materials/productions credits', () => {
 
 	chai.use(chaiHttp);
 
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = '2';
-	const BAR_CHARACTER_UUID = '3';
-	const DURANDS_LINE_MATERIAL_UUID = '6';
-	const CAMPAIGN_MATERIAL_UUID = '10';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID = '20';
-	const BLACK_TULIPS_MATERIAL_UUID = '27';
-	const BLOOD_AND_GIFTS_MATERIAL_UUID = '31';
-	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = '35';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID = '45';
-	const HONEY_MATERIAL_UUID = '52';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = '56';
-	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = '60';
-	const PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID = '70';
-	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = '83';
-	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = '88';
-	const TRICYCLE_THEATRE_VENUE_UUID = '90';
-	const NICOLAS_KENT_PERSON_UUID = '91';
-	const TRICYCLE_THEATRE_COMPANY_UUID = '92';
-	const ZOË_INGENHAAG_PERSON_UUID = '93';
-	const RICK_WARDEN_PERSON_UUID = '94';
-	const HOWARD_HARRISON_PERSON_UUID = '95';
-	const LIGHTING_DESIGN_LTD_COMPANY_UUID = '96';
-	const JACK_KNOWLES_PERSON_UUID = '97';
-	const LIZZIE_CHAPMAN_PERSON_UUID = '98';
-	const STAGE_MANAGEMENT_LTD_COMPANY_UUID = '99';
-	const CHARLOTTE_PADGHAM_PERSON_UUID = '100';
-	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = '101';
-	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = '114';
-	const PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID = '127';
-	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = '140';
-	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = '153';
-	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = '166';
-	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID = '179';
-	const HONEY_TRICYCLE_PRODUCTION_UUID = '192';
-	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = '205';
-	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = '218';
-	const PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID = '231';
-	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = '244';
-	const WALDO_MATERIAL_UUID = '258';
-	const WIBBLE_MATERIAL_UUID = '261';
-	const SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '263';
-	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '265';
-	const SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '266';
-	const SUB_WIBBLE_PART_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '269';
-	const MID_WIBBLE_SECTION_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '272';
-	const SUB_WIBBLE_PART_IV_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '275';
-	const SUB_WIBBLE_PART_V_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '278';
-	const SUB_WIBBLE_PART_VI_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '281';
-	const MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '284';
-	const SUB_WIBBLE_PART_VII_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '287';
-	const SUB_WIBBLE_PART_VIII_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '290';
-	const SUB_WIBBLE_PART_IX_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '293';
-	const MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '296';
-	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = '299';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
+	const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
+	const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
+	const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+	const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
+	const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
+	const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
+	const HONEY_MATERIAL_UUID = 'HONEY_MATERIAL_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = 'THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID';
+	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
+	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+	const NICOLAS_KENT_PERSON_UUID = 'NICOLAS_KENT_PERSON_UUID';
+	const TRICYCLE_THEATRE_COMPANY_UUID = 'TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
+	const ZOË_INGENHAAG_PERSON_UUID = 'ZOE_INGENHAAG_PERSON_UUID';
+	const RICK_WARDEN_PERSON_UUID = 'RICK_WARDEN_PERSON_UUID';
+	const HOWARD_HARRISON_PERSON_UUID = 'HOWARD_HARRISON_PERSON_UUID';
+	const LIGHTING_DESIGN_LTD_COMPANY_UUID = 'LIGHTING_DESIGN_LTD_COMPANY_UUID';
+	const JACK_KNOWLES_PERSON_UUID = 'JACK_KNOWLES_PERSON_UUID';
+	const LIZZIE_CHAPMAN_PERSON_UUID = 'LIZZIE_CHAPMAN_PERSON_UUID';
+	const STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'STAGE_MANAGEMENT_LTD_COMPANY_UUID';
+	const CHARLOTTE_PADGHAM_PERSON_UUID = 'CHARLOTTE_PADGHAM_PERSON_UUID';
+	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_UUID';
+	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_UUID';
+	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
+	const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_UUID';
+	const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_UUID';
+	const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
+	const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
+	const HONEY_TRICYCLE_PRODUCTION_UUID = 'HONEY_PRODUCTION_UUID';
+	const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
+	const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_PRODUCTION_UUID';
+	const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
+	const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_UUID';
+	const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
+	const WIBBLE_MATERIAL_UUID = 'WIBBLE_MATERIAL_UUID';
+	const SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_I_PRODUCTION_UUID';
+	const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID';
+	const SUB_WIBBLE_PART_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_II_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_III_PRODUCTION_UUID';
+	const MID_WIBBLE_SECTION_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'MID_WIBBLE_SECTION_I_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_IV_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_IV_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_V_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_V_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_VI_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_VI_PRODUCTION_UUID';
+	const MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'MID_WIBBLE_SECTION_II_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_VII_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_VII_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_VIII_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_VIII_PRODUCTION_UUID';
+	const SUB_WIBBLE_PART_IX_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUB_WIBBLE_PART_IX_PRODUCTION_UUID';
+	const MID_WIBBLE_SECTION_III_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'MID_WIBBLE_SECTION_III_PRODUCTION_UUID';
+	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUR_WIBBLE_PRODUCTION_UUID';
 
 	let nicolasKentPerson;
 	let tricycleTheatreCompany;
@@ -84,9 +84,9 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -1375,13 +1375,13 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				subProductions: [
 					{
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID
 					},
 					{
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID
 					}
 				],
 				producerCredits: [
@@ -1771,7 +1771,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -1819,7 +1819,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -1867,7 +1867,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -1903,7 +1903,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -1959,7 +1959,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2007,7 +2007,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2055,7 +2055,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2091,7 +2091,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -2147,7 +2147,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2195,7 +2195,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2243,7 +2243,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2279,7 +2279,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -2389,7 +2389,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2437,7 +2437,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2485,7 +2485,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2521,7 +2521,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -2577,7 +2577,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2625,7 +2625,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2673,7 +2673,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2709,7 +2709,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -2765,7 +2765,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2813,7 +2813,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2861,7 +2861,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -2897,7 +2897,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3007,7 +3007,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3055,7 +3055,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3103,7 +3103,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3139,7 +3139,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3195,7 +3195,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3243,7 +3243,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3291,7 +3291,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3327,7 +3327,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3383,7 +3383,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3431,7 +3431,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3479,7 +3479,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3515,7 +3515,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3625,7 +3625,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3657,7 +3657,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3689,7 +3689,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3709,7 +3709,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3749,7 +3749,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3781,7 +3781,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3813,7 +3813,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3833,7 +3833,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -3873,7 +3873,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3905,7 +3905,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3937,7 +3937,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -3957,7 +3957,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4035,7 +4035,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4079,7 +4079,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4123,7 +4123,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4155,7 +4155,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4207,7 +4207,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4251,7 +4251,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4295,7 +4295,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4327,7 +4327,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4379,7 +4379,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4423,7 +4423,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4467,7 +4467,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4499,7 +4499,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4601,7 +4601,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4644,7 +4644,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4687,7 +4687,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4718,7 +4718,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4769,7 +4769,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4812,7 +4812,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4855,7 +4855,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4886,7 +4886,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -4937,7 +4937,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -4980,7 +4980,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5023,7 +5023,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5054,7 +5054,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5154,7 +5154,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5196,7 +5196,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5238,7 +5238,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5268,7 +5268,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5318,7 +5318,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5360,7 +5360,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5402,7 +5402,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5432,7 +5432,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5482,7 +5482,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5524,7 +5524,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5566,7 +5566,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5596,7 +5596,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5694,7 +5694,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5738,7 +5738,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5782,7 +5782,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5814,7 +5814,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -5866,7 +5866,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5910,7 +5910,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5954,7 +5954,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -5986,7 +5986,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6038,7 +6038,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6082,7 +6082,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6126,7 +6126,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6158,7 +6158,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6260,7 +6260,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6303,7 +6303,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6346,7 +6346,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6377,7 +6377,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6428,7 +6428,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6471,7 +6471,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6514,7 +6514,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6545,7 +6545,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6596,7 +6596,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6639,7 +6639,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6682,7 +6682,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6713,7 +6713,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6813,7 +6813,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6855,7 +6855,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6897,7 +6897,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -6927,7 +6927,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -6977,7 +6977,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7019,7 +7019,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7061,7 +7061,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7091,7 +7091,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -7141,7 +7141,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7183,7 +7183,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7225,7 +7225,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7255,7 +7255,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -7348,7 +7348,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7367,7 +7367,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7386,7 +7386,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7398,7 +7398,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: PART_THREE_ENDURING_FREEDOM_MATERIAL_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -7420,7 +7420,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7439,7 +7439,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7458,7 +7458,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7470,7 +7470,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_MATERIAL_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -7492,7 +7492,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7511,7 +7511,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7530,7 +7530,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					writingCredits: [],
 					surMaterial: {
 						model: 'MATERIAL',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surMaterial: {
 							model: 'MATERIAL',
@@ -7542,7 +7542,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_MATERIAL_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					format: 'sub-collection of plays',
 					year: 2009,
@@ -7590,7 +7590,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7624,7 +7624,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7658,7 +7658,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Three - Enduring Freedom (1996-2009)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7680,7 +7680,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_THREE_ENDURING_FREEDOM_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three - Enduring Freedom (1996-2009)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -7722,7 +7722,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7756,7 +7756,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7790,7 +7790,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7812,7 +7812,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two - Communism, the Mujahideen and the Taliban (1979-1996)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
@@ -7854,7 +7854,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7888,7 +7888,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7922,7 +7922,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 						name: 'Part One - Invasions and Independence (1842-1930)',
 						surProduction: {
 							model: 'PRODUCTION',
@@ -7944,7 +7944,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_TRICYCLE_PRODUCTION_UUID,
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One - Invasions and Independence (1842-1930)',
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',

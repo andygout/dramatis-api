@@ -1,26 +1,26 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-sub-materials and rights grantor credits thereof', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID = '2';
-	const J_R_R_TOLKIEN_PERSON_UUID = '3';
-	const THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID = '8';
-	const TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID = '15';
-	const THE_FELLOWSHIP_OF_THE_RINGS_PLAY_MATERIAL_UUID = '23';
-	const SHAUN_MCKENNA_PERSON_UUID = '24';
-	const THE_TOLKIEN_ESTATE_COMPANY_UUID = '26';
-	const BAILLIE_TOLKIEN_PERSON_UUID = '27';
-	const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = '33';
-	const TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID = '42';
+	const THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RING_1_MATERIAL_UUID';
+	const J_R_R_TOLKIEN_PERSON_UUID = 'J_R_R_TOLKIEN_PERSON_UUID';
+	const THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_1_MATERIAL_UUID';
+	const TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID = 'TOLKIENS_LEGENDARIUM_1_MATERIAL_UUID';
+	const THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RING_2_MATERIAL_UUID';
+	const SHAUN_MCKENNA_PERSON_UUID = 'SHAUN_MCKENNA_PERSON_UUID';
+	const THE_TOLKIEN_ESTATE_COMPANY_UUID = 'THE_TOLKIEN_ESTATE_COMPANY_UUID';
+	const BAILLIE_TOLKIEN_PERSON_UUID = 'BAILLIE_TOLKIEN_PERSON_UUID';
+	const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_2_MATERIAL_UUID';
+	const TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID = 'TOLKIENS_LEGENDARIUM_2_MATERIAL_UUID';
 
 	let theTolkienEstateCompany;
 	let baillieTolkienPerson;
@@ -29,9 +29,9 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -231,7 +231,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: THE_FELLOWSHIP_OF_THE_RINGS_PLAY_MATERIAL_UUID,
+					uuid: THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID,
 					name: 'The Fellowship of the Ring',
 					format: 'play',
 					year: 2007,
@@ -328,7 +328,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: THE_FELLOWSHIP_OF_THE_RINGS_PLAY_MATERIAL_UUID,
+					uuid: THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID,
 					name: 'The Fellowship of the Ring',
 					format: 'play',
 					year: 2007,

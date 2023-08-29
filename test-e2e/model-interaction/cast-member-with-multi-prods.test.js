@@ -1,23 +1,23 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Cast member with multiple production credits', () => {
 
 	chai.use(chaiHttp);
 
-	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = '0';
-	const ALDWYCH_THEATRE_VENUE_UUID = '1';
-	const SUSANNAH_FELLOWS_PERSON_UUID = '2';
-	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = '3';
-	const PRINCE_OF_WALES_THEATRE_VENUE_UUID = '4';
-	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = '6';
-	const CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID = '7';
+	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = 'THE_GREEKS_PRODUCTION_UUID';
+	const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
+	const SUSANNAH_FELLOWS_PERSON_UUID = 'SUSANNAH_FELLOWS_PERSON_UUID';
+	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = 'CITY_OF_ANGELS_PRODUCTION_UUID';
+	const PRINCE_OF_WALES_THEATRE_VENUE_UUID = 'PRINCE_OF_WALES_THEATRE_VENUE_UUID';
+	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = 'ENRON_PRODUCTION_UUID';
+	const CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID = 'CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID';
 
 	let susannahFellowsPerson;
 	let theGreeksAldwychProduction;
@@ -28,9 +28,9 @@ describe('Cast member with multiple production credits', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

@@ -1,24 +1,24 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Different characters with the same name from the same material', () => {
 
 	chai.use(chaiHttp);
 
-	const JULIUS_CAESAR_MATERIAL_UUID = '4';
-	const CINNA_CHARACTER_1_UUID = '5';
-	const VOLUMNIUS_CHARACTER_UUID = '6';
-	const CINNA_CHARACTER_2_UUID = '7';
-	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = '8';
-	const BARBICAN_THEATRE_VENUE_UUID = '10';
-	const PAUL_SHEARER_PERSON_UUID = '11';
-	const LEO_WRINGER_PERSON_UUID = '12';
+	const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
+	const CINNA_CHARACTER_1_UUID = 'CINNA_1_CHARACTER_UUID';
+	const VOLUMNIUS_CHARACTER_UUID = 'VOLUMNIUS_CHARACTER_UUID';
+	const CINNA_CHARACTER_2_UUID = 'CINNA_2_CHARACTER_UUID';
+	const JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID = 'JULIUS_CAESAR_PRODUCTION_UUID';
+	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
+	const PAUL_SHEARER_PERSON_UUID = 'PAUL_SHEARER_PERSON_UUID';
+	const LEO_WRINGER_PERSON_UUID = 'LEO_WRINGER_PERSON_UUID';
 
 	let cinnaCharacter1;
 	let cinnaCharacter2;
@@ -32,9 +32,9 @@ describe('Different characters with the same name from the same material', () =>
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
@@ -72,7 +72,7 @@ describe('Different characters with the same name from the same material', () =>
 					name: 'Julius Caesar'
 				},
 				venue: {
-					name: 'Barbican'
+					name: 'Barbican Theatre'
 				},
 				cast: [
 					{
@@ -142,7 +142,7 @@ describe('Different characters with the same name from the same material', () =>
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -190,7 +190,7 @@ describe('Different characters with the same name from the same material', () =>
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -230,7 +230,7 @@ describe('Different characters with the same name from the same material', () =>
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -361,7 +361,7 @@ describe('Different characters with the same name from the same material', () =>
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,
@@ -406,7 +406,7 @@ describe('Different characters with the same name from the same material', () =>
 					venue: {
 						model: 'VENUE',
 						uuid: BARBICAN_THEATRE_VENUE_UUID,
-						name: 'Barbican',
+						name: 'Barbican Theatre',
 						surVenue: null
 					},
 					surProduction: null,

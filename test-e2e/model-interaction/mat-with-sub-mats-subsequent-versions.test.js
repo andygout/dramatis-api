@@ -1,29 +1,29 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	chai.use(chaiHttp);
 
-	const AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID = '3';
-	const AESCHYLUS_PERSON_UUID = '4';
-	const THE_FATHERS_OF_TRAGEDY_COMPANY_UUID = '5';
-	const THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID = '11';
-	const AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID = '21';
-	const ROBERT_ICKE_PERSON_UUID = '25';
-	const THE_GREAT_HOPE_COMPANY_UUID = '26';
-	const THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID = '35';
-	const PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = '45';
-	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '54';
-	const BEATRICE_BAR_PERSON_UUID = '58';
-	const STAGECRAFT_LTD_COMPANY_UUID = '59';
-	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = '68';
+	const AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID = 'AGAMEMNON_1_MATERIAL_UUID';
+	const AESCHYLUS_PERSON_UUID = 'AESCHYLUS_PERSON_UUID';
+	const THE_FATHERS_OF_TRAGEDY_COMPANY_UUID = 'THE_FATHERS_OF_TRAGEDY_COMPANY_UUID';
+	const THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_ORESTEIA_1_MATERIAL_UUID';
+	const AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID = 'AGAMEMNON_2_MATERIAL_UUID';
+	const ROBERT_ICKE_PERSON_UUID = 'ROBERT_ICKE_PERSON_UUID';
+	const THE_GREAT_HOPE_COMPANY_UUID = 'THE_GREAT_HOPE_COMPANY_COMPANY_UUID';
+	const THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_ORESTEIA_2_MATERIAL_UUID';
+	const PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
+	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUB_PLUGH_MATERIAL_UUID';
+	const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
+	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
+	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUR_PLUGH_MATERIAL_UUID';
 
 	let agamemnonOriginalVersionMaterial;
 	let agamemnonSubsequentVersionMaterial;
@@ -36,9 +36,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

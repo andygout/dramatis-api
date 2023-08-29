@@ -1,11 +1,11 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
@@ -40,7 +40,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 		before(async () => {
 
-			sandbox.stub(crypto, 'randomUUID').returns(COMPANY_UUID);
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(COMPANY_UUID);
 
 			await purgeDatabase();
 
@@ -170,15 +170,15 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const NATIONAL_THEATRE_COMPANY_UUID = '1';
-		const ROYAL_SHAKESPEARE_COMPANY_UUID = '3';
-		const ALMEIDA_THEATRE_COMPANY_UUID = '5';
+		const NATIONAL_THEATRE_COMPANY_UUID = 'NATIONAL_THEATRE_COMPANY_COMPANY_UUID';
+		const ROYAL_SHAKESPEARE_COMPANY_UUID = 'ROYAL_SHAKESPEARE_COMPANY_COMPANY_UUID';
+		const ALMEIDA_THEATRE_COMPANY_UUID = 'ALMEIDA_THEATRE_COMPANY_COMPANY_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 

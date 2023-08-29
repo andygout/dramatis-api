@@ -1,30 +1,30 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with subsequent versions', () => {
 
 	chai.use(chaiHttp);
 
-	const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = '4';
-	const HENRIK_IBSEN_PERSON_UUID = '5';
-	const IBSEN_THEATRE_COMPANY_UUID = '6';
-	const PEER_GYNT_CHARACTER_UUID = '7';
-	const PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID = '14';
-	const FRANK_MCGUINNESS_PERSON_UUID = '18';
-	const PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID = '29';
-	const GERRY_BAMMAN_PERSON_UUID = '33';
-	const BAMMAN_THEATRE_COMPANY_UUID = '34';
-	const IRENE_B_BERMAN_PERSON_UUID = '35';
-	const BALTASAR_KORMÁKUR_PERSON_UUID = '36';
-	const GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID = '41';
-	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = '52';
-	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = '60';
+	const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = 'PEER_GYNT_1_MATERIAL_UUID';
+	const HENRIK_IBSEN_PERSON_UUID = 'HENRIK_IBSEN_PERSON_UUID';
+	const IBSEN_THEATRE_COMPANY_UUID = 'IBSEN_THEATRE_COMPANY_COMPANY_UUID';
+	const PEER_GYNT_CHARACTER_UUID = 'PEER_GYNT_CHARACTER_UUID';
+	const PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID = 'PEER_GYNT_2_MATERIAL_UUID';
+	const FRANK_MCGUINNESS_PERSON_UUID = 'FRANK_MCGUINNESS_PERSON_UUID';
+	const PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID = 'PEER_GYNT_3_MATERIAL_UUID';
+	const GERRY_BAMMAN_PERSON_UUID = 'GERRY_BAMMAN_PERSON_UUID';
+	const BAMMAN_THEATRE_COMPANY_UUID = 'BAMMAN_THEATRE_COMPANY_COMPANY_UUID';
+	const IRENE_B_BERMAN_PERSON_UUID = 'IRENE_B_BERMAN_PERSON_UUID';
+	const BALTASAR_KORMÁKUR_PERSON_UUID = 'BALTASAR_KORMAKUR_PERSON_UUID';
+	const GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID = 'GHOSTS_1_MATERIAL_UUID';
+	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = 'GHOSTS_2_MATERIAL_UUID';
+	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = 'PEER_GYNT_PRODUCTION_UUID';
 
 	let peerGyntOriginalVersionMaterial;
 	let peerGyntSubsequentVersion2Material;
@@ -39,9 +39,9 @@ describe('Material with subsequent versions', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

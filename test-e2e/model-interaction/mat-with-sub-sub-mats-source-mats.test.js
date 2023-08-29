@@ -1,31 +1,31 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Material with sub-sub-materials and source materials thereof', () => {
 
 	chai.use(chaiHttp);
 
-	const GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID = '3';
-	const RICHARD_BANCROFT_PERSON_UUID = '4';
-	const THE_CANTERBURY_EDITORS_COMPANY_UUID = '5';
-	const THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID = '11';
-	const THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID = '20';
-	const GODBLOG_PLAY_MATERIAL_UUID = '29';
-	const JEANETTE_WINTERSON_PERSON_UUID = '30';
-	const ONLY_FRUITS_COMPANY_UUID = '31';
-	const GOD_CHARACTER_UUID = '33';
-	const THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID = '38';
-	const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = '45';
-	const GODBLOG_BUSH_THEATRE_PRODUCTION_UUID = '48';
-	const BUSH_THEATRE_VENUE_UUID = '50';
-	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = '51';
-	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = '54';
+	const GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID = 'GENESIS_MATERIAL_UUID';
+	const RICHARD_BANCROFT_PERSON_UUID = 'RICHARD_BANCROFT_PERSON_UUID';
+	const THE_CANTERBURY_EDITORS_COMPANY_UUID = 'THE_CANTERBURY_EDITORS_COMPANY_UUID';
+	const THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID = 'THE_OLD_TESTAMENT_MATERIAL_UUID';
+	const THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID = 'THE_BIBLE_KING_JAMES_VERSION_MATERIAL_UUID';
+	const GODBLOG_PLAY_MATERIAL_UUID = 'GODBLOG_MATERIAL_UUID';
+	const JEANETTE_WINTERSON_PERSON_UUID = 'JEANETTE_WINTERSON_PERSON_UUID';
+	const ONLY_FRUITS_COMPANY_UUID = 'ONLY_FRUITS_COMPANY_UUID';
+	const GOD_CHARACTER_UUID = 'GOD_CHARACTER_UUID';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_MATERIAL_UUID';
+	const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = 'SIXTY_SIX_BOOKS_MATERIAL_UUID';
+	const GODBLOG_BUSH_THEATRE_PRODUCTION_UUID = 'GODBLOG_PRODUCTION_UUID';
+	const BUSH_THEATRE_VENUE_UUID = 'BUSH_THEATRE_VENUE_UUID';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_UUID';
+	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_UUID';
 
 	let genesisReligiousTextMaterial;
 	let godblogPlayMaterial;
@@ -41,9 +41,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 

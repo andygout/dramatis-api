@@ -1,11 +1,11 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
@@ -48,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		before(async () => {
 
-			sandbox.stub(crypto, 'randomUUID').returns(VENUE_UUID);
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(VENUE_UUID);
 
 			await purgeDatabase();
 
@@ -195,18 +195,18 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const VENUE_UUID = '7';
-		const OLIVIER_THEATRE_VENUE_UUID = '8';
-		const LYTTELTON_THEATRE_VENUE_UUID = '9';
-		const DORFMAN_THEATRE_VENUE_UUID = '10';
-		const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = '24';
-		const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = '25';
+		const VENUE_UUID = 'NATIONAL_THEATRE_1_VENUE_UUID';
+		const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_1_VENUE_UUID';
+		const LYTTELTON_THEATRE_VENUE_UUID = 'LYTTELTON_THEATRE_1_VENUE_UUID';
+		const DORFMAN_THEATRE_VENUE_UUID = 'DORFMAN_THEATRE_1_VENUE_UUID';
+		const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_DOWNSTAIRS_1_VENUE_UUID';
+		const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_UPSTAIRS_1_VENUE_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 
@@ -572,15 +572,15 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const DONMAR_WAREHOUSE_VENUE_UUID = '1';
-		const NATIONAL_THEATRE_VENUE_UUID = '3';
-		const ALMEIDA_THEATRE_VENUE_UUID = '5';
+		const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
+		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 

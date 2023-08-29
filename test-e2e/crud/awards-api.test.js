@@ -1,11 +1,11 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
@@ -40,7 +40,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 		before(async () => {
 
-			sandbox.stub(crypto, 'randomUUID').returns(AWARD_UUID);
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(AWARD_UUID);
 
 			await purgeDatabase();
 
@@ -160,15 +160,15 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 	describe('GET list endpoint', () => {
 
-		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = '1';
-		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = '3';
-		const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = '5';
+		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = 'EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID';
+		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'LAURENCE_OLIVIER_AWARDS_AWARD_UUID';
+		const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = 'CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
+			const stubUuidCounts = {};
 
-			sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 			await purgeDatabase();
 

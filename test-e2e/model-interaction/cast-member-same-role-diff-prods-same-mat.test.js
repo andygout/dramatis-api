@@ -1,22 +1,22 @@
-import crypto from 'crypto';
-
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { createSandbox } from 'sinon';
 
+import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
+import { getStubUuid } from '../test-helpers';
 
 describe('Cast member performing same role in different productions of same material', () => {
 
 	chai.use(chaiHttp);
 
-	const TITANIA_CHARACTER_UUID = '3';
-	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = '4';
-	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = '6';
-	const JUDI_DENCH_PERSON_UUID = '7';
-	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = '8';
-	const ROSE_THEATRE_VENUE_UUID = '10';
+	const TITANIA_CHARACTER_UUID = 'TITANIA_QUEEN_OF_THE_FAIRIES_CHARACTER_UUID';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
+	const JUDI_DENCH_PERSON_UUID = 'JUDI_DENCH_PERSON_UUID';
+	const A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_2_PRODUCTION_UUID';
+	const ROSE_THEATRE_VENUE_UUID = 'ROSE_THEATRE_VENUE_UUID';
 
 	let titaniaCharacter;
 	let aMidsummerNightsDreamRoyalShakespeareProduction;
@@ -27,9 +27,9 @@ describe('Cast member performing same role in different productions of same mate
 
 	before(async () => {
 
-		let uuidCallCount = 0;
+		const stubUuidCounts = {};
 
-		sandbox.stub(crypto, 'randomUUID').callsFake(() => (uuidCallCount++).toString());
+		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
 
