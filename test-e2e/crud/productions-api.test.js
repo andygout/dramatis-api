@@ -560,12 +560,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID = 'HAMLET_SUB_MATERIAL_#1_PRODUCTION_UUID';
-		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = 'HAMLET_SUB_MATERIAL_#2_PRODUCTION_UUID';
-		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = 'HAMLET_SUB_MATERIAL_#3_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID = 'RICHARD_III_SUB_MATERIAL_#1_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = 'RICHARD_III_SUB_MATERIAL_#2_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = 'RICHARD_III_SUB_MATERIAL_#3_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#1_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#2_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#3_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#1_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#2_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#3_PRODUCTION_UUID';
 		const PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
 		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = 'THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_1_MATERIAL_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_1_VENUE_UUID';
@@ -635,37 +635,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Hamlet sub-material #1'
+					name: 'Hamlet sub-production #1'
 				});
 
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Hamlet sub-material #2'
+					name: 'Hamlet sub-production #2'
 				});
 
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Hamlet sub-material #3'
+					name: 'Hamlet sub-production #3'
 				});
 
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Richard III sub-material #1'
+					name: 'Richard III sub-production #1'
 				});
 
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Richard III sub-material #2'
+					name: 'Richard III sub-production #2'
 				});
 
 			await chai.request(app)
 				.post('/productions')
 				.send({
-					name: 'Richard III sub-material #3'
+					name: 'Richard III sub-production #3'
 				});
 
 		});
@@ -1677,7 +1677,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
-						name: 'Hamlet sub-material #1',
+						name: 'Hamlet sub-production #1',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -1693,7 +1693,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
-						name: 'Hamlet sub-material #2',
+						name: 'Hamlet sub-production #2',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -1709,7 +1709,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
-						name: 'Hamlet sub-material #3',
+						name: 'Hamlet sub-production #3',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -4675,7 +4675,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID,
-						name: 'Richard III sub-material #1',
+						name: 'Richard III sub-production #1',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -4691,7 +4691,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID,
-						name: 'Richard III sub-material #2',
+						name: 'Richard III sub-production #2',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -4707,7 +4707,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					{
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID,
-						name: 'Richard III sub-material #3',
+						name: 'Richard III sub-production #3',
 						startDate: null,
 						pressDate: null,
 						endDate: null,
