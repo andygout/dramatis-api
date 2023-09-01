@@ -8,6 +8,7 @@ import {
 } from './award-ceremony';
 import { getShowQueries as getCharacterShowQueries } from './character';
 import { getShowQueries as getCompanyShowQueries } from './company';
+import { getShowQueries as getFestivalShowQueries } from './festival';
 import {
 	getCreateQuery as getMaterialCreateQuery,
 	getEditQuery as getMaterialEditQuery,
@@ -74,6 +75,7 @@ const getShowQueries = {
 	[MODELS.AWARD_CEREMONY]: getAwardCeremonyShowQueries,
 	[MODELS.CHARACTER]: getCharacterShowQueries,
 	[MODELS.COMPANY]: getCompanyShowQueries,
+	[MODELS.FESTIVAL]: getFestivalShowQueries,
 	[MODELS.MATERIAL]: getMaterialShowQueries,
 	[MODELS.PERSON]: getPersonShowQueries,
 	[MODELS.PRODUCTION]: getProductionShowQueries,
