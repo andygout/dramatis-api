@@ -7,6 +7,7 @@ import {
 	awardCeremonies as awardCeremoniesController,
 	characters as charactersController,
 	companies as companiesController,
+	festivals as festivalsController,
 	materials as materialsController,
 	people as peopleController,
 	productions as productionsController,
@@ -47,6 +48,14 @@ router.put('/companies/:uuid', companiesController.updateRoute);
 router.delete('/companies/:uuid', companiesController.deleteRoute);
 router.get('/companies/:uuid', companiesController.showRoute);
 router.get('/companies', companiesController.listRoute);
+
+router.get('/festivals/new', festivalsController.newRoute);
+router.post('/festivals', festivalsController.createRoute);
+router.get('/festivals/:uuid/edit', festivalsController.editRoute);
+router.put('/festivals/:uuid', festivalsController.updateRoute);
+router.delete('/festivals/:uuid', festivalsController.deleteRoute);
+router.get('/festivals/:uuid', festivalsController.showRoute);
+router.get('/festivals', festivalsController.listRoute);
 
 router.get('/materials/new', materialsController.newRoute);
 router.post('/materials', materialsController.createRoute);
