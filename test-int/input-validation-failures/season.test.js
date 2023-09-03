@@ -97,7 +97,7 @@ describe('Input validation failures: Season instance', () => {
 			it(`assigns appropriate error (${method} method)`, async () => {
 
 				const instance = new Season({
-					name: 'Laurence Olivier Seasons',
+					name: 'Not Black and White',
 					differentiator: ABOVE_MAX_LENGTH_STRING
 				});
 
@@ -105,7 +105,7 @@ describe('Input validation failures: Season instance', () => {
 
 				const expectedResponseBody = {
 					uuid: undefined,
-					name: 'Laurence Olivier Seasons',
+					name: 'Not Black and White',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
 					errors: {
