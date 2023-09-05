@@ -2,7 +2,13 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 
 import app from '../../src/app';
-import { countNodesWithLabel, createNode, isNodeExistent, purgeDatabase } from '../test-helpers/neo4j';
+import {
+	countNodesWithLabel,
+	createNode,
+	createRelationship,
+	isNodeExistent,
+	purgeDatabase
+} from '../test-helpers/neo4j';
 
 describe('Instance validation failures: Festivals API', () => {
 
@@ -190,6 +196,69 @@ describe('Instance validation failures: Festivals API', () => {
 					name: 'Globe to Globe',
 					uuid: GLOBE_TO_GLOBE_FESTIVAL_UUID
 				})).to.be.true;
+
+			});
+
+		});
+
+	});
+
+	describe('attempt to delete instance', () => {
+
+		const GLOBE_TO_GLOBE_FESTIVAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const MEASURE_FOR_MEASURE_GLOBE_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+
+		before(async () => {
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Festival',
+				uuid: GLOBE_TO_GLOBE_FESTIVAL_UUID,
+				name: 'Globe to Globe'
+			});
+
+			await createNode({
+				label: 'Production',
+				uuid: MEASURE_FOR_MEASURE_GLOBE_PRODUCTION_UUID,
+				name: 'Measure for Measure'
+			});
+
+			await createRelationship({
+				sourceLabel: 'Production',
+				sourceUuid: MEASURE_FOR_MEASURE_GLOBE_PRODUCTION_UUID,
+				destinationLabel: 'Festival',
+				destinationUuid: GLOBE_TO_GLOBE_FESTIVAL_UUID,
+				relationshipName: 'PART_OF_FESTIVAL'
+			});
+
+		});
+
+		context('instance has associations', () => {
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Festival')).to.equal(1);
+
+				const response = await chai.request(app)
+					.delete(`/festivals/${GLOBE_TO_GLOBE_FESTIVAL_UUID}`);
+
+				const expectedResponseBody = {
+					model: 'FESTIVAL',
+					uuid: GLOBE_TO_GLOBE_FESTIVAL_UUID,
+					name: 'Globe to Globe',
+					differentiator: null,
+					hasErrors: true,
+					errors: {
+						associations: [
+							'Production'
+						]
+					}
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Festival')).to.equal(1);
 
 			});
 

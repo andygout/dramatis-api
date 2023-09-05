@@ -45,6 +45,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					model: 'FESTIVAL',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -179,6 +185,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					model: 'FESTIVAL',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -285,6 +297,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				season: {
 					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
 					name: '',
 					differentiator: '',
 					errors: {}
@@ -403,6 +421,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					model: 'FESTIVAL',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -497,6 +521,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				material: null,
 				venue: null,
 				season: null,
+				festival: null,
 				surProduction: null,
 				subProductions: [],
 				producerCredits: [],
@@ -543,6 +568,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					model: 'FESTIVAL',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [],
 				producerCredits: [],
 				cast: [],
@@ -570,6 +601,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = 'THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_1_MATERIAL_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_1_VENUE_UUID';
 		const SHAKESPEAREAN_TRAGEDY_SEASON_UUID = 'SHAKESPEAREAN_TRAGEDY_SEASON_1_SEASON_UUID';
+		const THE_COMPLETE_WORKS_FESTIVAL_UUID = 'THE_COMPLETE_WORKS_1_FESTIVAL_UUID';
 		const LISA_BURGER_PERSON_UUID = 'LISA_BURGER_1_PERSON_UUID';
 		const FUEL_THEATRE_COMPANY_UUID = 'FUEL_THEATRE_1_COMPANY_UUID';
 		const SIMON_GODWIN_PERSON_UUID = 'SIMON_GODWIN_1_PERSON_UUID';
@@ -598,6 +630,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = 'THE_TRAGEDY_OF_KING_RICHARD_III_1_MATERIAL_UUID';
 		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_1_VENUE_UUID';
 		const SHAKESPEAREAN_HISTORY_SEASON_UUID = 'SHAKESPEAREAN_HISTORY_SEASON_1_SEASON_UUID';
+		const GLOBE_TO_GLOBE_FESTIVAL_UUID = 'GLOBE_TO_GLOBE_1_FESTIVAL_UUID';
 		const DENISE_WOOD_PERSON_UUID = 'DENISE_WOOD_1_PERSON_UUID';
 		const TIATA_FAHODZI_COMPANY_UUID = 'TIATA_FAHODZI_1_COMPANY_UUID';
 		const REBECCA_FRECKNALL_PERSON_UUID = 'REBECCA_FRECKNALL_1_PERSON_UUID';
@@ -697,6 +730,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					season: {
 						name: 'Shakespearean Tragedy Season',
+						differentiator: '1'
+					},
+					festival: {
+						name: 'The Complete Works',
 						differentiator: '1'
 					},
 					subProductions: [
@@ -1001,6 +1038,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				season: {
 					model: 'SEASON',
 					name: 'Shakespearean Tragedy Season',
+					differentiator: '1',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
+					name: 'The Complete Works',
 					differentiator: '1',
 					errors: {}
 				},
@@ -1672,6 +1715,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					uuid: SHAKESPEAREAN_TRAGEDY_SEASON_UUID,
 					name: 'Shakespearean Tragedy Season'
 				},
+				festival: {
+					model: 'FESTIVAL',
+					uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
+					name: 'The Complete Works'
+				},
 				surProduction: null,
 				subProductions: [
 					{
@@ -1684,6 +1732,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -1700,6 +1749,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -1716,6 +1766,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -2073,6 +2124,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				season: {
 					model: 'SEASON',
 					name: 'Shakespearean Tragedy Season',
+					differentiator: '1',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
+					name: 'The Complete Works',
 					differentiator: '1',
 					errors: {}
 				},
@@ -2734,6 +2791,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Shakespearean Tragedy Season',
 						differentiator: '1'
 					},
+					festival: {
+						name: 'The Complete Works',
+						differentiator: '1'
+					},
 					subProductions: [
 						{
 							uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID
@@ -3036,6 +3097,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				season: {
 					model: 'SEASON',
 					name: 'Shakespearean Tragedy Season',
+					differentiator: '1',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
+					name: 'The Complete Works',
 					differentiator: '1',
 					errors: {}
 				},
@@ -3698,6 +3765,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Shakespearean History Season',
 						differentiator: '1'
 					},
+					festival: {
+						name: 'Globe to Globe',
+						differentiator: '1'
+					},
 					subProductions: [
 						{
 							uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID
@@ -3999,6 +4070,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				season: {
 					model: 'SEASON',
 					name: 'Shakespearean History Season',
+					differentiator: '1',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
+					name: 'Globe to Globe',
 					differentiator: '1',
 					errors: {}
 				},
@@ -4670,6 +4747,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					uuid: SHAKESPEAREAN_HISTORY_SEASON_UUID,
 					name: 'Shakespearean History Season'
 				},
+				festival: {
+					model: 'FESTIVAL',
+					uuid: GLOBE_TO_GLOBE_FESTIVAL_UUID,
+					name: 'Globe to Globe'
+				},
 				surProduction: null,
 				subProductions: [
 					{
@@ -4682,6 +4764,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -4698,6 +4781,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -4714,6 +4798,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						material: null,
 						venue: null,
 						season: null,
+						festival: null,
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -5079,6 +5164,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					model: 'FESTIVAL',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
@@ -5186,6 +5277,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				season: {
 					model: 'SEASON',
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
+				festival: {
+					model: 'FESTIVAL',
 					name: '',
 					differentiator: '',
 					errors: {}

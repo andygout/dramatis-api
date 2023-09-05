@@ -25,6 +25,7 @@ describe('Production with sub-productions', () => {
 	const ALEXANDER_HERZEN_SR_CHARACTER_UUID = 'ALEXANDER_HERZEN_SR_CHARACTER_UUID';
 	const VOYAGE_OLIVIER_PRODUCTION_UUID = 'VOYAGE_PRODUCTION_UUID';
 	const STOPPARD_SEASON_UUID = 'STOPPARD_SEASON_SEASON_UUID';
+	const STOPPARD_FESTIVAL_UUID = 'STOPPARD_FESTIVAL_FESTIVAL_UUID';
 	const TREVOR_NUNN_JR_PERSON_UUID = 'TREVOR_NUNN_JR_PERSON_UUID';
 	const SUB_NATIONAL_THEATRE_COMPANY_UUID = 'SUB_NATIONAL_THEATRE_COMPANY_COMPANY_UUID';
 	const NICK_STARR_JR_PERSON_UUID = 'NICK_STARR_JR_PERSON_UUID';
@@ -63,6 +64,7 @@ describe('Production with sub-productions', () => {
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;
 	let stoppardSeason;
+	let stoppardFestival;
 	let trevorNunnJrPerson;
 	let subNationalTheatreCompany;
 	let nickStarrJrPerson;
@@ -243,6 +245,9 @@ describe('Production with sub-productions', () => {
 				season: {
 					name: 'Stoppard Season'
 				},
+				festival: {
+					name: 'Stoppard Festival'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -326,6 +331,9 @@ describe('Production with sub-productions', () => {
 				},
 				season: {
 					name: 'Stoppard Season'
+				},
+				festival: {
+					name: 'Stoppard Festival'
 				},
 				producerCredits: [
 					{
@@ -411,6 +419,9 @@ describe('Production with sub-productions', () => {
 				season: {
 					name: 'Stoppard Season'
 				},
+				festival: {
+					name: 'Stoppard Festival'
+				},
 				producerCredits: [
 					{
 						entities: [
@@ -494,6 +505,9 @@ describe('Production with sub-productions', () => {
 				},
 				season: {
 					name: 'Stoppard Season'
+				},
+				festival: {
+					name: 'Stoppard Festival'
 				},
 				subProductions: [
 					{
@@ -671,6 +685,9 @@ describe('Production with sub-productions', () => {
 		stoppardSeason = await chai.request(app)
 			.get(`/seasons/${STOPPARD_SEASON_UUID}`);
 
+		stoppardFestival = await chai.request(app)
+			.get(`/festivals/${STOPPARD_FESTIVAL_UUID}`);
+
 		trevorNunnJrPerson = await chai.request(app)
 			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
 
@@ -769,6 +786,11 @@ describe('Production with sub-productions', () => {
 						model: 'SEASON',
 						uuid: STOPPARD_SEASON_UUID,
 						name: 'Stoppard Season'
+					},
+					festival: {
+						model: 'FESTIVAL',
+						uuid: STOPPARD_FESTIVAL_UUID,
+						name: 'Stoppard Festival'
 					},
 					subProductions: [],
 					producerCredits: [
@@ -916,6 +938,11 @@ describe('Production with sub-productions', () => {
 						uuid: STOPPARD_SEASON_UUID,
 						name: 'Stoppard Season'
 					},
+					festival: {
+						model: 'FESTIVAL',
+						uuid: STOPPARD_FESTIVAL_UUID,
+						name: 'Stoppard Festival'
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -1061,6 +1088,11 @@ describe('Production with sub-productions', () => {
 						model: 'SEASON',
 						uuid: STOPPARD_SEASON_UUID,
 						name: 'Stoppard Season'
+					},
+					festival: {
+						model: 'FESTIVAL',
+						uuid: STOPPARD_FESTIVAL_UUID,
+						name: 'Stoppard Festival'
 					},
 					subProductions: [],
 					producerCredits: [
@@ -1217,6 +1249,11 @@ describe('Production with sub-productions', () => {
 					uuid: STOPPARD_SEASON_UUID,
 					name: 'Stoppard Season'
 				},
+				festival: {
+					model: 'FESTIVAL',
+					uuid: STOPPARD_FESTIVAL_UUID,
+					name: 'Stoppard Festival'
+				},
 				surProduction: null,
 				producerCredits: [
 					{
@@ -1369,6 +1406,7 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
+					festival: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1420,6 +1458,7 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
+					festival: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1471,6 +1510,7 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
+					festival: null,
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1531,6 +1571,7 @@ describe('Production with sub-productions', () => {
 					surVenue: null
 				},
 				season: null,
+				festival: null,
 				surProduction: null,
 				producerCredits: [],
 				cast: [],
@@ -1853,6 +1894,90 @@ describe('Production with sub-productions', () => {
 			];
 
 			const { productions } = stoppardSeason.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Stoppard Festival (festival)', () => {
+
+		it('includes productions in this festival and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { productions } = stoppardFestival.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 
