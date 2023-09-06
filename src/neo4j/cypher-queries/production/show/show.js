@@ -211,6 +211,23 @@ export default () => `
 				}
 			END AS season
 
+		OPTIONAL MATCH (collectionProduction)-[:PART_OF_FESTIVAL]->(festival:Festival)
+
+		WITH
+			production,
+			collectionProduction,
+			material,
+			venue,
+			season,
+			CASE WHEN festival IS NULL
+				THEN null
+				ELSE festival {
+					model: 'FESTIVAL',
+					.uuid,
+					.name
+				}
+			END AS festival
+
 		OPTIONAL MATCH (collectionProduction)-[producerEntityRel:HAS_PRODUCER_ENTITY]->(producerEntity)
 			WHERE
 				(producerEntity:Person AND producerEntityRel.creditedCompanyUuid IS NULL) OR
@@ -222,6 +239,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerEntityRel,
 			COLLECT(producerEntity {
 				model: TOUPPER(HEAD(LABELS(producerEntity))),
@@ -246,6 +264,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerEntityRel,
 					producerEntity,
 					creditedMember
@@ -257,6 +276,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerEntityRel,
 					producerEntity,
 					COLLECT(creditedMember { model: 'PERSON', .uuid, .name }) AS creditedMembers
@@ -267,6 +287,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerEntityRel,
 			producerEntity,
 			creditedMembers
@@ -278,6 +299,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerEntityRel.credit AS producerCreditName,
 			COLLECT(
 				CASE WHEN producerEntity IS NULL
@@ -292,6 +314,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCreditName,
 			[producerEntity IN producerEntities | CASE producerEntity.model WHEN 'COMPANY'
 				THEN producerEntity
@@ -304,6 +327,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			COLLECT(
 				CASE SIZE(producerEntities) WHEN 0
 					THEN null
@@ -332,6 +356,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			castMember,
 			role,
@@ -344,6 +369,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			castMember,
 				COLLECT(
@@ -365,6 +391,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 				COLLECT(
 					CASE WHEN castMember IS NULL
@@ -384,6 +411,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeEntityRel,
@@ -410,6 +438,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerCredits,
 					cast,
 					creativeEntityRel,
@@ -423,6 +452,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerCredits,
 					cast,
 					creativeEntityRel,
@@ -435,6 +465,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeEntityRel,
@@ -448,6 +479,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeEntityRel.credit AS creativeCreditName,
@@ -464,6 +496,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCreditName,
@@ -478,6 +511,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			COLLECT(
@@ -502,6 +536,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -529,6 +564,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -543,6 +579,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -556,6 +593,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -570,6 +608,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -587,6 +626,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -602,6 +642,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -638,6 +679,7 @@ export default () => `
 			material,
 			venue,
 			season,
+			festival,
 			producerCredits,
 			cast,
 			creativeCredits,
@@ -662,6 +704,7 @@ export default () => `
 					material,
 					venue,
 					season,
+					festival,
 					producerCredits,
 					cast,
 					creativeCredits,
@@ -676,6 +719,7 @@ export default () => `
 					.material,
 					.venue,
 					.season,
+					.festival,
 					.producerCredits,
 					.cast,
 					.creativeCredits,
@@ -694,6 +738,7 @@ export default () => `
 					.material,
 					.venue,
 					.season,
+					.festival,
 					surProduction: HEAD([
 						surSurProduction IN collectionProductions WHERE surSurProduction.isSurSurProduction |
 							surSurProduction {
@@ -706,6 +751,7 @@ export default () => `
 								.material,
 								.venue,
 								.season,
+								.festival,
 								.producerCredits,
 								.cast,
 								.creativeCredits,
@@ -730,6 +776,7 @@ export default () => `
 					.material,
 					.venue,
 					.season,
+					.festival,
 					subProductions: [
 						subSubProduction IN collectionProductions
 							WHERE
@@ -745,6 +792,7 @@ export default () => `
 								.material,
 								.venue,
 								.season,
+								.festival,
 								.producerCredits,
 								.cast,
 								.creativeCredits,
@@ -768,6 +816,7 @@ export default () => `
 		subjectProduction.material AS material,
 		subjectProduction.venue AS venue,
 		subjectProduction.season AS season,
+		subjectProduction.festival AS festival,
 		surProduction,
 		subProductions,
 		subjectProduction.producerCredits AS producerCredits,

@@ -6,6 +6,7 @@ import {
 	CastMember,
 	CreativeCredit,
 	CrewCredit,
+	Festival,
 	MaterialBase,
 	ProducerCredit,
 	Season,
@@ -32,6 +33,12 @@ describe('Production model', () => {
 	const CrewCreditStub = function () {
 
 		return createStubInstance(CrewCredit);
+
+	};
+
+	const FestivalStub = function () {
+
+		return createStubInstance(Festival);
 
 	};
 
@@ -77,6 +84,7 @@ describe('Production model', () => {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
 				CrewCredit: CrewCreditStub,
+				Festival: FestivalStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
 				Season: SeasonStub,
@@ -284,6 +292,29 @@ describe('Production model', () => {
 					}
 				});
 				expect(instance.season instanceof Season).to.be.true;
+
+			});
+
+		});
+
+		describe('festival property', () => {
+
+			it('assigns instance if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.festival instanceof Festival).to.be.true;
+
+			});
+
+			it('assigns instance if included in props', () => {
+
+				const instance = createInstance({
+					name: 'Hamlet',
+					festival: {
+						name: 'The Complete Works'
+					}
+				});
+				expect(instance.festival instanceof Festival).to.be.true;
 
 			});
 
@@ -511,6 +542,8 @@ describe('Production model', () => {
 				instance.venue.validateDifferentiator,
 				instance.season.validateName,
 				instance.season.validateDifferentiator,
+				instance.festival.validateName,
+				instance.festival.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
 				instance.subProductions[0].validateUuid,
 				instance.subProductions[0].validateNoAssociationWithSelf,
@@ -540,6 +573,10 @@ describe('Production model', () => {
 			assert.calledWithExactly(instance.season.validateName, { isRequired: false });
 			assert.calledOnce(instance.season.validateDifferentiator);
 			assert.calledWithExactly(instance.season.validateDifferentiator);
+			assert.calledOnce(instance.festival.validateName);
+			assert.calledWithExactly(instance.festival.validateName, { isRequired: false });
+			assert.calledOnce(instance.festival.validateDifferentiator);
+			assert.calledWithExactly(instance.festival.validateDifferentiator);
 			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices);
 			assert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,

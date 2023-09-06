@@ -1009,6 +1009,12 @@ describe('Entity model', () => {
 							differentiator: '',
 							errors: {}
 						},
+						festival: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
 						subProductions: [],
 						producerCredits: [],
 						cast: [],
@@ -1139,6 +1145,12 @@ describe('Entity model', () => {
 							errors: {}
 						},
 						season: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						festival: {
 							uuid: undefined,
 							name: '',
 							differentiator: '',

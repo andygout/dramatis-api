@@ -359,6 +359,122 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
+	describe('Production festival uniqueness in database', () => {
+
+		const MEASURE_FOR_MEASURE_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedFestivalGlobeToGlobe1 = {
+			model: 'FESTIVAL',
+			name: 'Globe to Globe',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedFestivalGlobeToGlobe2 = {
+			model: 'FESTIVAL',
+			name: 'Globe to Globe',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: MEASURE_FOR_MEASURE_PRODUCTION_UUID,
+				name: 'Measure for Measure'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates festival that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Festival')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Measure for Measure',
+					festival: {
+						name: 'Globe to Globe'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe1);
+			expect(await countNodesWithLabel('Festival')).to.equal(1);
+
+		});
+
+		it('updates production and creates festival that has same name as existing festival but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Festival')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Measure for Measure',
+					festival: {
+						name: 'Globe to Globe',
+						differentiator: '1'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe2);
+			expect(await countNodesWithLabel('Festival')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing festival that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Festival')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Measure for Measure',
+					festival: {
+						name: 'Globe to Globe'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe1);
+			expect(await countNodesWithLabel('Festival')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing festival that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Festival')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Measure for Measure',
+					festival: {
+						name: 'Globe to Globe',
+						differentiator: '1'
+					}
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe2);
+			expect(await countNodesWithLabel('Festival')).to.equal(2);
+
+		});
+
+	});
+
 	describe('Production producer entity (person) uniqueness in database', () => {
 
 		const GIRL_NO_7_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';

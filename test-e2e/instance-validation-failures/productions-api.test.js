@@ -67,6 +67,12 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						model: 'FESTIVAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -121,6 +127,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					season: {
 						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						model: 'FESTIVAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -196,6 +208,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					season: {
 						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						model: 'FESTIVAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -286,6 +304,12 @@ describe('Instance validation failures: Productions API', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						model: 'FESTIVAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -346,6 +370,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					season: {
 						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						model: 'FESTIVAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -422,6 +452,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					season: {
 						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						model: 'FESTIVAL',
 						name: '',
 						differentiator: '',
 						errors: {}
@@ -536,6 +572,12 @@ describe('Instance validation failures: Productions API', () => {
 					},
 					season: {
 						model: 'SEASON',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						model: 'FESTIVAL',
 						name: '',
 						differentiator: '',
 						errors: {}

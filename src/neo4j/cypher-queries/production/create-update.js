@@ -85,6 +85,23 @@ const getCreateUpdateQuery = action => {
 			CREATE (production)-[:PART_OF_SEASON]->(season)
 		)
 
+		WITH production
+
+		OPTIONAL MATCH (existingFestival:Festival { name: $festival.name })
+			WHERE
+				($festival.differentiator IS NULL AND existingFestival.differentiator IS NULL) OR
+				$festival.differentiator = existingFestival.differentiator
+
+		FOREACH (item IN CASE WHEN $festival.name IS NULL THEN [] ELSE [1] END |
+			MERGE (festival:Festival {
+				uuid: COALESCE(existingFestival.uuid, $festival.uuid),
+				name: $festival.name
+			})
+				ON CREATE SET festival.differentiator = $festival.differentiator
+
+			CREATE (production)-[:PART_OF_FESTIVAL]->(festival)
+		)
+
 		WITH DISTINCT production
 
 			UNWIND (CASE $subProductions WHEN [] THEN [null] ELSE $subProductions END) AS subProductionParam

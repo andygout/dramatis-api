@@ -83,6 +83,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -137,6 +143,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -205,6 +217,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -281,6 +299,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -338,6 +362,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -406,6 +436,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -463,6 +499,12 @@ describe('Input validation failures: Production instance', () => {
 						}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -531,6 +573,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -592,6 +640,12 @@ describe('Input validation failures: Production instance', () => {
 								'Value is too long'
 							]
 						}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					},
 					subProductions: [],
 					producerCredits: [],
@@ -656,6 +710,149 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('festival name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					festival: {
+						name: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('festival differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					festival: {
+						name: 'The Complete Works',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: 'The Complete Works',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
+							]
+						}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -711,6 +908,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -787,6 +990,12 @@ describe('Input validation failures: Production instance', () => {
 					differentiator: '',
 					errors: {}
 				},
+				festival: {
+					uuid: undefined,
+					name: '',
+					differentiator: '',
+					errors: {}
+				},
 				subProductions: [
 					{
 						uuid: PRODUCTION_UUID,
@@ -855,6 +1064,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -941,6 +1156,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -1009,6 +1230,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1098,6 +1325,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [
 						{
@@ -1176,6 +1409,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1264,6 +1503,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1344,6 +1589,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1447,6 +1698,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1600,6 +1857,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1691,6 +1954,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -1793,6 +2062,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1879,6 +2154,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [
@@ -1948,6 +2229,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2031,6 +2318,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2144,6 +2437,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [
@@ -2231,6 +2530,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [
@@ -2313,6 +2618,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2406,6 +2717,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [
@@ -2493,6 +2810,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [
@@ -2575,6 +2898,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2672,6 +3001,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2804,6 +3139,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -2872,6 +3213,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -2961,6 +3308,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -3038,6 +3391,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3126,6 +3485,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -3204,6 +3569,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3289,6 +3660,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3392,6 +3769,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3545,6 +3928,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -3636,6 +4025,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3738,6 +4133,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -3823,6 +4224,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -3891,6 +4298,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -3980,6 +4393,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -4057,6 +4476,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -4145,6 +4570,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -4223,6 +4654,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -4308,6 +4745,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -4411,6 +4854,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -4564,6 +5013,12 @@ describe('Input validation failures: Production instance', () => {
 						differentiator: '',
 						errors: {}
 					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -4655,6 +5110,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',
@@ -4752,6 +5213,12 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
 						uuid: undefined,
 						name: '',
 						differentiator: '',

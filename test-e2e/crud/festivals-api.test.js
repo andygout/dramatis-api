@@ -127,7 +127,8 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 				model: 'FESTIVAL',
 				uuid: FESTIVAL_UUID,
 				name: 'Globe to Globe',
-				differentiator: null
+				differentiator: null,
+				productions: []
 			};
 
 			expect(response).to.have.status(200);
