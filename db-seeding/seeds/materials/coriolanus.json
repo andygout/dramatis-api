@@ -66,13 +66,15 @@
 					"name": "Tullus Aufidius"
 				},
 				{
-					"name": "Lieutenant"
+					"name": "Lieutenant",
+					"differentiator": "Coriolanus"
 				},
 				{
 					"name": "Conspirators"
 				},
 				{
-					"name": "Adrian"
+					"name": "Adrian",
+					"differentiator": "Coriolanus"
 				},
 				{
 					"name": "A Citizen of Antium"
@@ -83,7 +85,6 @@
 				{
 					"name": "Volscian Senators"
 				},
-
 				{
 					"name": "Volscian Citizens"
 				},
@@ -95,7 +96,8 @@
 		{
 			"characters": [
 				{
-					"name": "Gentlewoman"
+					"name": "Gentlewoman",
+					"differentiator": "Coriolanus"
 				},
 				{
 					"name": "Patricians"

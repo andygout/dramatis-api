@@ -1,0 +1,342 @@
+{
+	"name": "Henry VI, Part 1",
+	"startDate": "2007-02-09",
+	"endDate": "2007-02-16",
+	"material": {
+		"name": "Henry VI, Part 1"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Chuk Iwuji",
+			"roles": [
+				{
+					"name": "King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Richard Cordery",
+			"roles": [
+				{
+					"name": "Humphrey Duke of Gloucester",
+					"characterName": "Humphrey of Lancaster, Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Tom Hodgkins",
+			"roles": [
+				{
+					"name": "Duke of Bedford",
+					"characterName": "John of Lancaster, Duke of Bedford"
+				}
+			]
+		},
+		{
+			"name": "Miles Richardson",
+			"roles": [
+				{
+					"name": "Duke of Exeter",
+					"characterName": "Thomas Beaufort, Duke of Exeter"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Freshwater",
+			"roles": [
+				{
+					"name": "Henry Beaufort",
+					"characterName": "Henry Beaufort, Bishop of Winchester"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Asbury",
+			"roles": [
+				{
+					"name": "Duke of Somerset",
+					"characterName": "John Beaufort, Duke of Somerset"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Streatfeild",
+			"roles": [
+				{
+					"name": "Earl of Suffolk",
+					"characterName": "William de la Pole, Earl of Suffolk"
+				}
+			]
+		},
+		{
+			"name": "Kieran Hill",
+			"roles": [
+				{
+					"name": "Mayor's officer",
+					"characterName": "Officer"
+				}
+			]
+		},
+		{
+			"name": "Clive Wood",
+			"roles": [
+				{
+					"name": "Richard Plantagenet"
+				}
+			]
+		},
+		{
+			"name": "Roger Watkins",
+			"roles": [
+				{
+					"name": "Edmund Mortimer",
+					"characterName": "Edmund Mortimer, Earl of March"
+				}
+			]
+		},
+		{
+			"name": "Keith Dunphy",
+			"roles": [
+				{
+					"name": "Young Clifford"
+				}
+			]
+		},
+		{
+			"name": "Patrice Naiambana",
+			"roles": [
+				{
+					"name": "Earl of Warwick",
+					"characterName": "Richard Beauchamp, Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Keith Bartlett",
+			"roles": [
+				{
+					"name": "Lord Talbot"
+				}
+			]
+		},
+		{
+			"name": "Lex Shrapnel",
+			"roles": [
+				{
+					"name": "John Talbot"
+				}
+			]
+		},
+		{
+			"name": "Julius D'Silva",
+			"roles": [
+				{
+					"name": "Sir William Lucy"
+				}
+			]
+		},
+		{
+			"name": "Paul Hamilton",
+			"roles": [
+				{
+					"name": "Alexander Eden"
+				}
+			]
+		},
+		{
+			"name": "Chris McGill",
+			"roles": [
+				{
+					"name": "Sir William Stafford"
+				}
+			]
+		},
+		{
+			"name": "John Mackay",
+			"roles": [
+				{
+					"name": "Charles the Dauphin"
+				}
+			]
+		},
+		{
+			"name": "James Tucker",
+			"roles": [
+				{
+					"name": "Reignier",
+					"characterName": "Reignier, Duke of Anjou"
+				}
+			]
+		},
+		{
+			"name": "Forbes Masson",
+			"roles": [
+				{
+					"name": "Duke of Alençon"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Bastard of Orléans"
+				}
+			]
+		},
+		{
+			"name": "Matt Costain",
+			"roles": [
+				{
+					"name": "Duke of Burgundy"
+				}
+			]
+		},
+		{
+			"name": "Katy Stephens",
+			"roles": [
+				{
+					"name": "Joan la Pucelle",
+					"characterName": "Joan la Pucelle, Joan of Arc"
+				},
+				{
+					"name": "Queen Margaret",
+					"characterName": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "Hannah Barrie",
+			"roles": [
+				{
+					"name": "Joan la Pucelle's friend"
+				}
+			]
+		},
+		{
+			"name": "Alexia Healy",
+			"roles": [
+				{
+					"name": "Joan la Pucelle's friend"
+				}
+			]
+		},
+		{
+			"name": "Ann Ogbomo",
+			"roles": [
+				{
+					"name": "Joan la Pucelle's friend"
+				}
+			]
+		},
+		{
+			"name": "Antony Bunsee",
+			"roles": [
+				{
+					"name": "Keeper"
+				}
+			]
+		},
+		{
+			"name": "Wela Frasier",
+			"roles": [
+				{
+					"name": "Keeper's assistant"
+				}
+			]
+		},
+		{
+			"name": "Maureen Beattie",
+			"roles": [
+				{
+					"name": "Eleanor Cobham"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Boyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Piper"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Heather Carson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Andrea J Cox"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "James Jones"
+				},
+				{
+					"name": "John Woolf"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Donnacadh O'Briain"
+				}
+			]
+		}
+	]
+}

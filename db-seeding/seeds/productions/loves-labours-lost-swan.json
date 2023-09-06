@@ -1,0 +1,251 @@
+{
+	"name": "Love's Labour's Lost",
+	"startDate": "2006-08-17",
+	"pressDate": "2006-08-17",
+	"endDate": "2006-08-26",
+	"material": {
+		"name": "Love's Labour's Lost"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Shakespeare Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Amir Arison",
+			"roles": [
+				{
+					"name": "King Ferdinand of Navarre"
+				}
+			]
+		},
+		{
+			"name": "Hank Stratton",
+			"roles": [
+				{
+					"name": "Berowne",
+					"characterName": "Lord Berowne"
+				}
+			]
+		},
+		{
+			"name": "Erik Steele",
+			"roles": [
+				{
+					"name": "Longaville",
+					"characterName": "Lord Longaville"
+				}
+			]
+		},
+		{
+			"name": "Aubrey Deeker",
+			"roles": [
+				{
+					"name": "Dumaine",
+					"characterName": "Lord Dumaine"
+				}
+			]
+		},
+		{
+			"name": "Claire Lautier",
+			"roles": [
+				{
+					"name": "Princess of France"
+				}
+			]
+		},
+		{
+			"name": "Sabrina LeBeauf",
+			"roles": [
+				{
+					"name": "Rosaline",
+					"characterName": "Lady Rosaline"
+				}
+			]
+		},
+		{
+			"name": "Angela Pierce",
+			"roles": [
+				{
+					"name": "Maria",
+					"characterName": "Lady Maria"
+				}
+			]
+		},
+		{
+			"name": "Colleen Delaney",
+			"roles": [
+				{
+					"name": "Katherine",
+					"characterName": "Lady Katharine"
+				}
+			]
+		},
+		{
+			"name": "Floyd King",
+			"roles": [
+				{
+					"name": "Boyet"
+				}
+			]
+		},
+		{
+			"name": "Geraint Wyn Davies",
+			"roles": [
+				{
+					"name": "Don Adriano de Armado"
+				}
+			]
+		},
+		{
+			"name": "Nick Choksi",
+			"roles": [
+				{
+					"name": "Moth"
+				}
+			]
+		},
+		{
+			"name": "Ted van Griethuysen",
+			"roles": [
+				{
+					"name": "Holofernes"
+				}
+			]
+		},
+		{
+			"name": "David Sabin",
+			"roles": [
+				{
+					"name": "Sir Nathaniel"
+				}
+			]
+		},
+		{
+			"name": "Rock Kohli",
+			"roles": [
+				{
+					"name": "Anthony Dull"
+				}
+			]
+		},
+		{
+			"name": "Michael Milligan",
+			"roles": [
+				{
+					"name": "Costard"
+				}
+			]
+		},
+		{
+			"name": "Jolly Abraham",
+			"roles": [
+				{
+					"name": "Jaquenetta"
+				}
+			]
+		},
+		{
+			"name": "James Rana",
+			"roles": [
+				{
+					"name": "Forester"
+				}
+			]
+		},
+		{
+			"name": "Emery Battis",
+			"roles": [
+				{
+					"name": "Monsieur Marcadé",
+					"characterName": "Marcadé"
+				}
+			]
+		},
+		{
+			"name": "Brian Q Silver",
+			"roles": [
+				{
+					"name": "Sitar player"
+				}
+			]
+		},
+		{
+			"name": "Jordan Coughtry"
+		},
+		{
+			"name": "Blake Ellis"
+		},
+		{
+			"name": "Kunal Nayyar"
+		},
+		{
+			"name": "Nicholas Urda"
+		},
+		{
+			"name": "Ryan Young"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Kahn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ralph Funicello"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Catherine Zuber"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Doubleday"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Martin Desjardins"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Adam Wernick"
+				}
+			]
+		}
+	]
+}

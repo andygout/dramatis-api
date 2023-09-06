@@ -1,0 +1,106 @@
+{
+	"name": "The Merry Wives of Windsor",
+	"format": "play",
+	"year": "1598",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "George Page"
+				},
+				{
+					"name": "Mistress Margaret Page"
+				},
+				{
+					"name": "Anne Page"
+				},
+				{
+					"name": "William Page"
+				},
+				{
+					"name": "Frank Ford"
+				},
+				{
+					"name": "Mistress Alice Ford"
+				},
+				{
+					"name": "John",
+					"differentiator": "The Merry Wives of Windsor"
+				},
+				{
+					"name": "Robert",
+					"differentiator": "The Merry Wives of Windsor"
+				},
+				{
+					"name": "Sir Hugh Evans"
+				},
+				{
+					"name": "Doctor Caius"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				},
+				{
+					"name": "John Rugby"
+				},
+				{
+					"name": "The Host of the Garter Inn"
+				},
+				{
+					"name": "Several children of Windsor"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Fenton"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Robin"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
+				},
+				{
+					"name": "Nym",
+					"underlyingName": "Corporal Nym"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Robert Shallow"
+				},
+				{
+					"name": "Abraham Slender"
+				},
+				{
+					"name": "Peter Simple"
+				}
+			]
+		}
+	]
+}

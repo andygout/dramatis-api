@@ -18,7 +18,8 @@
 					"name": "Miss Julie"
 				},
 				{
-					"name": "Jean"
+					"name": "Jean",
+					"differentiator": "Miss Julie"
 				},
 				{
 					"name": "Christine"

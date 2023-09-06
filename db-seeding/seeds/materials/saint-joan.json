@@ -22,7 +22,7 @@
 				},
 				{
 					"name": "Joan",
-					"differentiator": "Saint Joan"
+					"underlyingName": "Joan of Arc"
 				},
 				{
 					"name": "Bertrand de Poulengy"
@@ -46,10 +46,12 @@
 					"name": "Bishop of Beauvais"
 				},
 				{
-					"name": "Dauphin, Charles VII"
+					"name": "Dauphin, Charles VII",
+					"underlyingName": "King Charles VII of France"
 				},
 				{
-					"name": "Earl of Warwick"
+					"name": "Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, Earl of Warwick"
 				},
 				{
 					"name": "Dunois, Bastard of Orléans"
@@ -73,7 +75,8 @@
 					"name": "Brother John Lemaître, The Inquisitor"
 				},
 				{
-					"name": "Executioner"
+					"name": "Executioner",
+					"differentiator": "Saint Joan"
 				},
 				{
 					"name": "English Soldier"

@@ -1,0 +1,179 @@
+{
+	"name": "Hamlet",
+	"startDate": "2006-04-27",
+	"pressDate": "2006-05-03",
+	"endDate": "2006-05-06",
+	"material": {
+		"name": "Hamlet"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Baxter Theatre Centre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "John Kani",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Dorothy Ann Gould",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Vaneshran Arumugam",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Royston Stoffles",
+			"roles": [
+				{
+					"name": "Polonius"
+				}
+			]
+		},
+		{
+			"name": "Roshina Ratnam",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Clyde Berning",
+			"roles": [
+				{
+					"name": "Laertes"
+				}
+			]
+		},
+		{
+			"name": "Adam Neill",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Marcel Mayer",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Pauling",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "Tauriq Jenkins",
+			"roles": [
+				{
+					"name": "Osric"
+				},
+				{
+					"name": "Marcellus"
+				}
+			]
+		},
+		{
+			"name": "Mbulelo Grootboom",
+			"roles": [
+				{
+					"name": "Fortinbras"
+				}
+			]
+		},
+		{
+			"name": "Adrian Collins",
+			"roles": [
+				{
+					"name": "Player King"
+				},
+				{
+					"name": "Reynaldo"
+				}
+			]
+		},
+		{
+			"name": "Johan Baird",
+			"roles": [
+				{
+					"name": "Attendant"
+				}
+			]
+		},
+		{
+			"name": "Sonnyboy Setlhako",
+			"roles": [
+				{
+					"name": "Attendant"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Janet Suzman"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter Cazalet"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mannie Manim"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Christopher Kindo"
+				}
+			]
+		}
+	]
+}

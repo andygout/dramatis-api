@@ -112,7 +112,8 @@
 			"name": "Jennifer Kirby",
 			"roles": [
 				{
-					"name": "Katherine"
+					"name": "Katherine",
+					"characterName": "Princess Catherine"
 				}
 			]
 		},
@@ -154,7 +155,7 @@
 				},
 				{
 					"name": "Warwick",
-					"characterName": "Earl of Warwick"
+					"characterName": "Richard Beauchamp, Earl of Warwick"
 				},
 				{
 					"name": "Governor of Harfleur"

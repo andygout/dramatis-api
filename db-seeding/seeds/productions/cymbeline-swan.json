@@ -1,0 +1,146 @@
+{
+	"name": "Cymbeline",
+	"startDate": "2006-09-20",
+	"pressDate": "2006-09-21",
+	"endDate": "2006-09-30",
+	"material": {
+		"name": "Cymbeline"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Kneehigh Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Hayley Carmichael",
+			"roles": [
+				{
+					"name": "Imogen",
+					"characterName": "Princess Imogen"
+				}
+			]
+		},
+		{
+			"name": "Carl Grose",
+			"roles": [
+				{
+					"name": "Posthumus",
+					"characterName": "Posthumus Leonatus"
+				}
+			]
+		},
+		{
+			"name": "Craig Johnson",
+			"roles": [
+				{
+					"name": "Cloten",
+					"characterName": "Lord Cloten"
+				}
+			]
+		},
+		{
+			"name": "Dominic Lawton",
+			"roles": [
+				{
+					"name": "Brother",
+					"characterName": "Two brothers of Posthumus"
+				}
+			]
+		},
+		{
+			"name": "Robert Luckay",
+			"roles": [
+				{
+					"name": "Iachimo"
+				}
+			]
+		},
+		{
+			"name": "Emma Rice",
+			"roles": [
+				{
+					"name": "Queen"
+				}
+			]
+		},
+		{
+			"name": "Mike Shepherd",
+			"roles": [
+				{
+					"name": "Cymbeline",
+					"characterName": "Cymbeline, King of Britain"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Woodward",
+			"roles": [
+				{
+					"name": "Pisanio"
+				}
+			]
+		},
+		{
+			"name": "Marcello Magni",
+			"roles": [
+				{
+					"name": "Voice of Caesar"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Emma Rice"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Michael Vale"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Malcolm Rippeth"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Gregory Clarke"
+				}
+			]
+		},
+		{
+			"name": "Music and Musical Director",
+			"entities": [
+				{
+					"name": "Stu Barker"
+				}
+			]
+		}
+	]
+}

@@ -45,7 +45,8 @@
 					"name": "Fraz"
 				},
 				{
-					"name": "Officer"
+					"name": "Officer",
+					"differentiator": "Black Watch"
 				}
 			]
 		}

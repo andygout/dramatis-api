@@ -1,0 +1,175 @@
+{
+	"name": "Richard II",
+	"startDate": "2012-05-04",
+	"endDate": "2012-05-05",
+	"material": {
+		"name": "Richard II"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Ashtar Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sami Metwasi",
+			"roles": [
+				{
+					"name": "King Richard II"
+				}
+			]
+		},
+		{
+			"name": "Bayan Shbib",
+			"roles": [
+				{
+					"name": "Queen Isabel"
+				}
+			]
+		},
+		{
+			"name": "Hussein Nakhle",
+			"roles": [
+				{
+					"name": "John of Gaunt",
+					"characterName": "John of Gaunt, Duke of Lancaster"
+				}
+			]
+		},
+		{
+			"name": "Nicola Zreineh",
+			"roles": [
+				{
+					"name": "Bolingbroke",
+					"characterName": "Henry Bolingbroke, Duke of Hereford"
+				}
+			]
+		},
+		{
+			"name": "Iman Aoun",
+			"roles": [
+				{
+					"name": "Duchess of Gloucester"
+				},
+				{
+					"name": "Gardener's wife"
+				}
+			]
+		},
+		{
+			"name": "Amer Khalil",
+			"roles": [
+				{
+					"name": "Bagot"
+				}
+			]
+		},
+		{
+			"name": "Edward Muallem",
+			"roles": [
+				{
+					"name": "Henry Percy, Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Mohammed Eid",
+			"roles": [
+				{
+					"name": "Ross",
+					"characterName": "Lord Ross"
+				}
+			]
+		},
+		{
+			"name": "Iyad Hurani",
+			"roles": [
+				{
+					"name": "Percy",
+					"characterName": "Harry 'Hotspur' Percy"
+				}
+			]
+		},
+		{
+			"name": "Firas Farah",
+			"roles": [
+				{
+					"name": "Duke of Aumerle",
+					"characterName": "Duke of Aumerle, Earl of Rutland"
+				}
+			]
+		},
+		{
+			"name": "George Ibrahim",
+			"roles": [
+				{
+					"name": "Edmund of Langley, Duke of York"
+				}
+			]
+		},
+		{
+			"name": "Ihab Zahdeh",
+			"roles": [
+				{
+					"name": "Thomas Mowbray",
+					"characterName": "Thomas Mowbray, Duke of Norfolk"
+				},
+				{
+					"name": "Welsh captain",
+					"characterName": "Captain of the Welsh army"
+				},
+				{
+					"name": "Guard"
+				}
+			]
+		},
+		{
+			"name": "Raed Ayasa",
+			"roles": [
+				{
+					"name": "Green"
+				},
+				{
+					"name": "Gardener"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Conall Morrison"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Rajha Shakiry"
+				}
+			]
+		},
+		{
+			"name": "Music Excerpts",
+			"entities": [
+				{
+					"name": "Majaz Album"
+				}
+			]
+		}
+	]
+}

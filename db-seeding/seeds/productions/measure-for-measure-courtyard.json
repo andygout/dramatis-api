@@ -1,0 +1,258 @@
+{
+	"name": "Measure for Measure",
+	"startDate": "2006-09-13",
+	"endDate": "2006-09-16",
+	"material": {
+		"name": "Measure for Measure"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Theatre Royal Bath"
+				},
+				{
+					"model": "COMPANY",
+					"name": "The Peter Hall Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "James Laurenson",
+			"roles": [
+				{
+					"name": "Duke",
+					"characterName": "Vincentio, Duke of Vienna"
+				}
+			]
+		},
+		{
+			"name": "Barry Stanton",
+			"roles": [
+				{
+					"name": "Escalus"
+				}
+			]
+		},
+		{
+			"name": "Richard Dormer",
+			"roles": [
+				{
+					"name": "Angelo"
+				}
+			]
+		},
+		{
+			"name": "Michael Mears",
+			"roles": [
+				{
+					"name": "Lucio"
+				}
+			]
+		},
+		{
+			"name": "Annette Badland",
+			"roles": [
+				{
+					"name": "Mistress Overdone"
+				}
+			]
+		},
+		{
+			"name": "Teddy Kempner",
+			"roles": [
+				{
+					"name": "Pompey"
+				}
+			]
+		},
+		{
+			"name": "Ben Turner",
+			"roles": [
+				{
+					"name": "Claudio"
+				}
+			]
+		},
+		{
+			"name": "Susie Trayling",
+			"roles": [
+				{
+					"name": "Julietta",
+					"characterName": "Juliet"
+				}
+			]
+		},
+		{
+			"name": "Paul Bentall",
+			"roles": [
+				{
+					"name": "Provost"
+				}
+			]
+		},
+		{
+			"name": "Malcolm Ridley",
+			"roles": [
+				{
+					"name": "Friar Thomas"
+				},
+				{
+					"name": "Froth"
+				},
+				{
+					"name": "Barnardine"
+				}
+			]
+		},
+		{
+			"name": "Simon Thorp",
+			"roles": [
+				{
+					"name": "Friar Peter"
+				},
+				{
+					"name": "Justice"
+				},
+				{
+					"name": "Abhorson"
+				}
+			]
+		},
+		{
+			"name": "Andrea Riseborough",
+			"roles": [
+				{
+					"name": "Isabella"
+				}
+			]
+		},
+		{
+			"name": "Pauline Turner",
+			"roles": [
+				{
+					"name": "Francisca"
+				}
+			]
+		},
+		{
+			"name": "Edward Bennett",
+			"roles": [
+				{
+					"name": "Elbow"
+				}
+			]
+		},
+		{
+			"name": "Robert Gill",
+			"roles": [
+				{
+					"name": "Angelo's servant"
+				}
+			]
+		},
+		{
+			"name": "Andew Coppin",
+			"roles": [
+				{
+					"name": "Officer",
+					"characterName": "Officers"
+				}
+			]
+		},
+		{
+			"name": "Caitlin Mottram",
+			"roles": [
+				{
+					"name": "Mariana"
+				}
+			]
+		},
+		{
+			"name": "Peter Cadden",
+			"roles": [
+				{
+					"name": "Varrius"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Peter Hall"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Kevin Rigdon"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Trish Rigdon"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Gregory Clarke"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Mick Sands"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Rachel O'Riordan"
+				}
+			]
+		},
+		{
+			"name": "Casting Directors",
+			"entities": [
+				{
+					"name": "Gemma Hancock"
+				},
+				{
+					"name": "Sam Stevenson"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,188 @@
+{
+	"name": "The Two Noble Kinsmen",
+	"format": "play",
+	"year": "1614",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "John Fletcher"
+				},
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Theseus, Duke of Athens"
+				},
+				{
+					"name": "Hippolyta, Queen of the Amazons"
+				},
+				{
+					"name": "Emilia",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Pirithous"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Palamon"
+				},
+				{
+					"name": "Arcite"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Hymen"
+				},
+				{
+					"name": "Boy",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Artesius"
+				},
+				{
+					"name": "Three queens"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Valerius"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Herald",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Woman",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Six knights"
+				},
+				{
+					"name": "Servant",
+					"differentiator": "The Two Noble Kinsmen"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Gaoler",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Daughter of gaoler"
+				},
+				{
+					"name": "Wooer of gaoler's daughter"
+				},
+				{
+					"name": "Two friends of gaoler"
+				},
+				{
+					"name": "Brother of gaoler"
+				},
+				{
+					"name": "Doctor",
+					"differentiator": "The Two Noble Kinsmen"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Six countrymen"
+				},
+				{
+					"name": "Gerrold"
+				},
+				{
+					"name": "Nell"
+				},
+				{
+					"name": "Friz"
+				},
+				{
+					"name": "Maudlin"
+				},
+				{
+					"name": "Luce"
+				},
+				{
+					"name": "Barbary"
+				},
+				{
+					"name": "Taborer"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Speaker of the prologue and epilogue",
+					"differentiator": "The Two Noble Kinsmen"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Nymphs",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Countrymen"
+				},
+				{
+					"name": "Garland-bearer"
+				},
+				{
+					"name": "Hunters"
+				},
+				{
+					"name": "Maids"
+				},
+				{
+					"name": "Executioner",
+					"differentiator": "The Two Noble Kinsmen"
+				},
+				{
+					"name": "Guard of soldiers"
+				}
+			]
+		}
+	]
+}

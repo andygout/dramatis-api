@@ -1,0 +1,112 @@
+{
+	"name": "A Midsummer Night's Dream",
+	"format": "play",
+	"year": "1596",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Athenians",
+			"characters": [
+				{
+					"name": "Theseus, Duke of Athens"
+				},
+				{
+					"name": "Hippolyta, Queen of the Amazons"
+				},
+				{
+					"name": "Egeus"
+				},
+				{
+					"name": "Philostrate"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "A Midsummer Night's Dream"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "A Midsummer Night's Dream"
+				}
+			]
+		},
+		{
+			"name": "The Lovers",
+			"characters": [
+				{
+					"name": "Hermia"
+				},
+				{
+					"name": "Lysander"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "A Midsummer Night's Dream"
+				},
+				{
+					"name": "Helena",
+					"differentiator": "A Midsummer Night's Dream"
+				}
+			]
+		},
+		{
+			"name": "The Fairies",
+			"characters": [
+				{
+					"name": "Oberon, King of the Fairies"
+				},
+				{
+					"name": "Titania, Queen of the Fairies"
+				},
+				{
+					"name": "Puck"
+				},
+				{
+					"name": "Peaseblossom"
+				},
+				{
+					"name": "Cobweb"
+				},
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Mustardseed"
+				},
+				{
+					"name": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "The Mechanicals",
+			"characters": [
+				{
+					"name": "Peter Quince"
+				},
+				{
+					"name": "Nick Bottom"
+				},
+				{
+					"name": "Francis Flute"
+				},
+				{
+					"name": "Tom Snout"
+				},
+				{
+					"name": "Snug"
+				},
+				{
+					"name": "Robin Starveling"
+				}
+			]
+		}
+	]
+}

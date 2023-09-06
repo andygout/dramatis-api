@@ -1,0 +1,111 @@
+{
+	"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
+	"startDate": "2012-05-21",
+	"endDate": "2012-05-22",
+	"material": {
+		"name": "Coriolanus"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chiten"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Dai Ishida",
+			"roles": [
+				{
+					"name": "Caius Martius Coriolanus"
+				}
+			]
+		},
+		{
+			"name": "Saki Kohno",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Satoka Abe",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Shie Kubota",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Yohei Kobayashi",
+			"roles": [
+				{
+					"name": "Chorus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Motoi Miura"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Itaru Sugiyama"
+				},
+				{
+					"name": "Karasuya"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Kyoko Domoto"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Yasuhiro Fujiwara"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Toshihiro Dooka"
+				}
+			]
+		}
+	]
+}

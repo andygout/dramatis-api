@@ -1,0 +1,155 @@
+{
+	"name": "Hamlet (Hamletas)",
+	"startDate": "2012-06-02",
+	"endDate": "2012-06-03",
+	"material": {
+		"name": "Hamlet"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Teatras Meno Fortas (Fortress of Art)"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Vytautas Rumšas",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Dalia Zykuvienė–Storyk",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Andrius Mamontovas",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Povilas Budrys",
+			"roles": [
+				{
+					"name": "Polonius"
+				}
+			]
+		},
+		{
+			"name": "Viktorija Kuodytė",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Kęstutis Jakštas",
+			"roles": [
+				{
+					"name": "Laertes"
+				}
+			]
+		},
+		{
+			"name": "Simonas Dovidauskas",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Vidas Petkevičius",
+			"roles": [
+				{
+					"name": "Ghost",
+					"characterName": "King Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Margarita Žiemelytė",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Algirdas Dainavičius",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Vaidas Vilius",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Eimuntas Nekrošius"
+				}
+			]
+		},
+		{
+			"name": "Set and Costume Designer",
+			"entities": [
+				{
+					"name": "Nadežda Gultiajeva"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designers",
+			"entities": [
+				{
+					"name": "Audrius Jankauskas"
+				},
+				{
+					"name": "Romas Treinys"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Faustas Latėnas"
+				}
+			]
+		}
+	]
+}

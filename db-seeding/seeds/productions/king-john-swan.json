@@ -1,0 +1,377 @@
+{
+	"name": "King John",
+	"startDate": "2006-07-27",
+	"pressDate": "2006-08-03",
+	"endDate": "2006-10-10",
+	"material": {
+		"name": "King John"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Richard McCabe",
+			"roles": [
+				{
+					"name": "King John"
+				}
+			]
+		},
+		{
+			"name": "Ralph Davis",
+			"roles": [
+				{
+					"name": "Arthur",
+					"characterName": "Arthur, Duke of Brittaine",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jamie Thomas",
+			"roles": [
+				{
+					"name": "Arthur",
+					"characterName": "Arthur, Duke of Brittaine",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Sorcha Cusack",
+			"roles": [
+				{
+					"name": "Queen Eleanor"
+				}
+			]
+		},
+		{
+			"name": "Jonny Weir",
+			"roles": [
+				{
+					"name": "Earl of Pembrook",
+					"characterName": "Earl of Pembroke"
+				}
+			]
+		},
+		{
+			"name": "Patrick Robinson",
+			"roles": [
+				{
+					"name": "Earl of Salisbury"
+				}
+			]
+		},
+		{
+			"name": "Adam Rayner",
+			"roles": [
+				{
+					"name": "Earl of Essex"
+				}
+			]
+		},
+		{
+			"name": "Sam O'Mahoney-Adams",
+			"roles": [
+				{
+					"name": "Soldier in English Court"
+				},
+				{
+					"name": "English soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "English messenger"
+				}
+			]
+		},
+		{
+			"name": "Steven Beard",
+			"roles": [
+				{
+					"name": "Châtillon"
+				},
+				{
+					"name": "Executioner"
+				}
+			]
+		},
+		{
+			"name": "Joseph Millson",
+			"roles": [
+				{
+					"name": "Philip Faulconbridge",
+					"characterName": "Philip the Bastard"
+				}
+			]
+		},
+		{
+			"name": "Simon Bubb",
+			"roles": [
+				{
+					"name": "Robert Faulconbridge"
+				},
+				{
+					"name": "English soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Monk"
+				}
+			]
+		},
+		{
+			"name": "Eliza Hunt",
+			"roles": [
+				{
+					"name": "Lady Faulconbridge"
+				}
+			]
+		},
+		{
+			"name": "John Heffernan",
+			"roles": [
+				{
+					"name": "James Gurney"
+				},
+				{
+					"name": "Austrian soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Monk"
+				}
+			]
+		},
+		{
+			"name": "Tamsin Greig",
+			"roles": [
+				{
+					"name": "Constance"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Day",
+			"roles": [
+				{
+					"name": "King Philip of France",
+					"characterName": "King Philip II"
+				}
+			]
+		},
+		{
+			"name": "Rupert Evans",
+			"roles": [
+				{
+					"name": "Lewis the Dauphin"
+				}
+			]
+		},
+		{
+			"name": "Jamie Ballard",
+			"roles": [
+				{
+					"name": "Count Melun",
+					"characterName": "Viscount of Melun"
+				}
+			]
+		},
+		{
+			"name": "Shane Frater",
+			"roles": [
+				{
+					"name": "French soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Monk"
+				},
+				{
+					"name": "Executioner",
+					"characterName": "Executioners"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Lumb",
+			"roles": [
+				{
+					"name": "French herald"
+				},
+				{
+					"name": "French messenger"
+				}
+			]
+		},
+		{
+			"name": "Leon Tanner",
+			"roles": [
+				{
+					"name": "Archduke of Austria"
+				}
+			]
+		},
+		{
+			"name": "Chistopher Davies",
+			"roles": [
+				{
+					"name": "Austrian soldier"
+				},
+				{
+					"name": "Monk"
+				},
+				{
+					"name": "Peter of Pomfret"
+				}
+			]
+		},
+		{
+			"name": "Sam Cox",
+			"roles": [
+				{
+					"name": "Hubert"
+				}
+			]
+		},
+		{
+			"name": "Morven Christie",
+			"roles": [
+				{
+					"name": "Blanche",
+					"characterName": "Blanche of Castile"
+				}
+			]
+		},
+		{
+			"name": "Curtis Flowers",
+			"roles": [
+				{
+					"name": "English herald"
+				}
+			]
+		},
+		{
+			"name": "David Fielder",
+			"roles": [
+				{
+					"name": "Cardinal Pandulph"
+				}
+			]
+		},
+		{
+			"name": "Charles Hamblett",
+			"roles": [
+				{
+					"name": "Prince Henry",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "James Parris",
+			"roles": [
+				{
+					"name": "Prince Henry",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Amy Brown",
+			"roles": [
+				{
+					"name": "Isabella of Ancoulême"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Josie Rourke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Peter McKintosh"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Dominic Leclerc"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Jocelyn Pook"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Michael Tubbs"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Aleks Sims"
+				}
+			]
+		}
+	]
+}

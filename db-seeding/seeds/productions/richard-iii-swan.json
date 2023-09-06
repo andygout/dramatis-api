@@ -1,0 +1,182 @@
+{
+	"name": "Richard III",
+	"startDate": "2006-09-08",
+	"endDate": "2006-09-08",
+	"material": {
+		"name": "Richard III"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Academy of Dramatic Art"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ross Armstrong",
+			"roles": [
+				{
+					"name": "Richard III",
+					"characterName": "Richard, Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Matt Bannister",
+			"roles": [
+				{
+					"name": "King Edward",
+					"characterName": "King Edward IV"
+				},
+				{
+					"name": "Brakenbury",
+					"characterName": "Sir Robert Brackenbury, Lieutenant of the Tower"
+				},
+				{
+					"name": "Rivers",
+					"characterName": "Anthony Woodville, Earl Rivers"
+				},
+				{
+					"name": "Lord Mayor",
+					"characterName": "Lord Mayor of London"
+				}
+			]
+		},
+		{
+			"name": "Mark Edel-Hunt",
+			"roles": [
+				{
+					"name": "Clarence",
+					"characterName": "George, Duke of Clarence"
+				},
+				{
+					"name": "Cardinal",
+					"characterName": "Thomas Bourchier, Archbishop of Canterbury"
+				},
+				{
+					"name": "Young York",
+					"characterName": "Richard, Duke of York"
+				},
+				{
+					"name": "Richmond",
+					"characterName": "Henry, Earl of Richmond"
+				}
+			]
+		},
+		{
+			"name": "Louise Ford",
+			"roles": [
+				{
+					"name": "Lady Anne"
+				}
+			]
+		},
+		{
+			"name": "Annie Hemingway",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Syrus Lowe",
+			"roles": [
+				{
+					"name": "Second executioner",
+					"characterName": "Two murderers"
+				},
+				{
+					"name": "Clarence's son",
+					"characterName": "Edward Plantagenet"
+				},
+				{
+					"name": "Catesby",
+					"characterName": "Sir William Catesby"
+				}
+			]
+		},
+		{
+			"name": "John-Paul McLeod",
+			"roles": [
+				{
+					"name": "Edward",
+					"characterName": "Edward, Prince of Wales"
+				},
+				{
+					"name": "Stanley",
+					"characterName": "Lord Stanley, Earl of Derby"
+				},
+				{
+					"name": "First executioner",
+					"characterName": "Two murderers"
+				}
+			]
+		},
+		{
+			"name": "Wunmi Mosaku",
+			"roles": [
+				{
+					"name": "Queen Elizabeth"
+				}
+			]
+		},
+		{
+			"name": "Aidan O'Reilly",
+			"roles": [
+				{
+					"name": "Lord Buckingham",
+					"characterName": "Duke of Buckingham"
+				}
+			]
+		},
+		{
+			"name": "Jeany Spark",
+			"roles": [
+				{
+					"name": "Duchess of York"
+				}
+			]
+		},
+		{
+			"name": "Toby Wharton",
+			"roles": [
+				{
+					"name": "Hastings"
+				},
+				{
+					"name": "Tyrrell",
+					"characterName": "Sir James Tyrrell"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jennie Buckman"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mark Simmonds"
+				}
+			]
+		}
+	]
+}

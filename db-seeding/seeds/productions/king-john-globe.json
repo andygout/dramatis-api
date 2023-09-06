@@ -1,0 +1,111 @@
+{
+	"name": "King John (Թագավոր Ջոն - T’agavor Jon)",
+	"startDate": "2012-05-16",
+	"endDate": "2012-05-17",
+	"material": {
+		"name": "King John"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Gabriel Sundukyan National Academic Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Armen Marutyan",
+			"roles": [
+				{
+					"name": "King John"
+				}
+			]
+		},
+		{
+			"name": "Tigran Nersisyan",
+			"roles": [
+				{
+					"name": "Philip the Bastard"
+				}
+			]
+		},
+		{
+			"name": "Alla Vardanyan",
+			"roles": [
+				{
+					"name": "Lady Constance",
+					"characterName": "Constance"
+				}
+			]
+		},
+		{
+			"name": "Albert Safaryan",
+			"roles": [
+				{
+					"name": "Hubert"
+				}
+			]
+		},
+		{
+			"name": "Gnel Ulikhanyan",
+			"roles": [
+				{
+					"name": "Arthur, Duke of Brittaine"
+				}
+			]
+		},
+		{
+			"name": "Armen Margaryan",
+			"roles": [
+				{
+					"name": "Cardinal Pandulph"
+				}
+			]
+		},
+		{
+			"name": "Davit Gasparyan",
+			"roles": [
+				{
+					"name": "Louis the Dauphin",
+					"characterName": "Lewis the Dauphin"
+				}
+			]
+		},
+		{
+			"name": "Liana Arestakyan",
+			"roles": [
+				{
+					"name": "Blanche",
+					"characterName": "Blanche of Castile"
+				}
+			]
+		},
+		{
+			"name": "Nelly Kheranyan",
+			"roles": [
+				{
+					"name": "Queen Eleanor"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tigran Gasparyan"
+				}
+			]
+		}
+	]
+}

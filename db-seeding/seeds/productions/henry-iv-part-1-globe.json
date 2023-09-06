@@ -1,0 +1,117 @@
+{
+	"name": "Henry IV, Part 1 (Enrique IV, Primera Parte)",
+	"startDate": "2012-05-14",
+	"endDate": "2012-05-15",
+	"material": {
+		"name": "Henry IV, Part 1"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Compañí a Nacional de Teatro"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Marco Antonio Garcia",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Constantino Morán",
+			"roles": [
+				{
+					"name": "Prince Henry (Hal)",
+					"characterName": "Henry, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Roberto Soto",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "David Calderón",
+			"roles": [
+				{
+					"name": "Henry Percy (Hotspur)",
+					"characterName": "Harry Percy"
+				}
+			]
+		},
+		{
+			"name": "Gabriela Núñez",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				},
+				{
+					"name": "Lady Percy"
+				},
+				{
+					"name": "Lady Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Claudio Lafarga",
+			"roles": [
+				{
+					"name": "Poins",
+					"characterName": "Ned Poins"
+				}
+			]
+		},
+		{
+			"name": "Enrique Arreola",
+			"roles": [
+				{
+					"name": "Thomas Percy, Earl of Worcester"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Hugo Arrevillaga"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Mario Marín del Rio"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Juan Ernesto Diaz"
+				}
+			]
+		}
+	]
+}

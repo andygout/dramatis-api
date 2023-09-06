@@ -1,0 +1,384 @@
+{
+	"name": "Julius Caesar",
+	"startDate": "2005-04-14",
+	"pressDate": "2005-04-20",
+	"endDate": "2005-05-14",
+	"material": {
+		"name": "Julius Caesar"
+	},
+	"venue": {
+		"name": "Barbican Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Théâtre National du Chaillot"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Teatro Español"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Grand Théâtre de la Ville"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Young Vic Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Collings",
+			"roles": [
+				{
+					"name": "Flavius"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "Anthony Mark Barrow",
+			"roles": [
+				{
+					"name": "Carpenter"
+				},
+				{
+					"name": "Strato"
+				}
+			]
+		},
+		{
+			"name": "Daniel Weyman",
+			"roles": [
+				{
+					"name": "Marullus"
+				},
+				{
+					"name": "Lucilius"
+				}
+			]
+		},
+		{
+			"name": "Jim Hooper",
+			"roles": [
+				{
+					"name": "Cobbler"
+				},
+				{
+					"name": "Clitus"
+				}
+			]
+		},
+		{
+			"name": "John Shrapnel",
+			"roles": [
+				{
+					"name": "Julius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Struan Rodger",
+			"roles": [
+				{
+					"name": "Casca"
+				}
+			]
+		},
+		{
+			"name": "Ralph Fiennes",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Tim Potter",
+			"roles": [
+				{
+					"name": "Soothsayer"
+				},
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Anton Lesser",
+			"roles": [
+				{
+					"name": "Marcus Brutus"
+				}
+			]
+		},
+		{
+			"name": "Simon Russell Beale",
+			"roles": [
+				{
+					"name": "Caius Cassius"
+				}
+			]
+		},
+		{
+			"name": "Clifford Rose",
+			"roles": [
+				{
+					"name": "Cicero"
+				}
+			]
+		},
+		{
+			"name": "Paul Shearer",
+			"roles": [
+				{
+					"name": "Cinna",
+					"characterDifferentiator": "Julius Caesar #1"
+				},
+				{
+					"name": "Second Poet",
+					"characterName": "Poet"
+				},
+				{
+					"name": "Volumnius"
+				}
+			]
+		},
+		{
+			"name": "James Anthony Pearson",
+			"roles": [
+				{
+					"name": "Lucius"
+				}
+			]
+		},
+		{
+			"name": "John Kane",
+			"roles": [
+				{
+					"name": "Decius Brutus"
+				}
+			]
+		},
+		{
+			"name": "Michael Gardiner",
+			"roles": [
+				{
+					"name": "Metellus Cimber"
+				},
+				{
+					"name": "Dardanius"
+				}
+			]
+		},
+		{
+			"name": "Chris Jarman",
+			"roles": [
+				{
+					"name": "Trebonius"
+				},
+				{
+					"name": "Titinius"
+				}
+			]
+		},
+		{
+			"name": "Fiona Shaw",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Sean Baker",
+			"roles": [
+				{
+					"name": "Caius Ligarius"
+				}
+			]
+		},
+		{
+			"name": "Robert Demeger",
+			"roles": [
+				{
+					"name": "Servant to Julius Caesar"
+				},
+				{
+					"name": "Messala"
+				}
+			]
+		},
+		{
+			"name": "Ginny Holder",
+			"roles": [
+				{
+					"name": "Calphurnia"
+				}
+			]
+		},
+		{
+			"name": "Jimmy Gardner",
+			"roles": [
+				{
+					"name": "Publius"
+				}
+			]
+		},
+		{
+			"name": "John Rogan",
+			"roles": [
+				{
+					"name": "Artemidorus"
+				}
+			]
+		},
+		{
+			"name": "David Glover",
+			"roles": [
+				{
+					"name": "Popilius Lena"
+				}
+			]
+		},
+		{
+			"name": "Alex McIntosh",
+			"roles": [
+				{
+					"name": "Servant to Mark Antony"
+				},
+				{
+					"name": "Varro"
+				}
+			]
+		},
+		{
+			"name": "Rohan Siva",
+			"roles": [
+				{
+					"name": "Servant to Octavius Caesar"
+				},
+				{
+					"name": "Pindarus"
+				}
+			]
+		},
+		{
+			"name": "Joseph Kennedy",
+			"roles": [
+				{
+					"name": "Citizen",
+					"characterName": "Plebeians"
+				},
+				{
+					"name": "Young Cato"
+				}
+			]
+		},
+		{
+			"name": "Celia Meiras",
+			"roles": [
+				{
+					"name": "Citizen",
+					"characterName": "Plebeians"
+				},
+				{
+					"name": "Messenger"
+				}
+			]
+		},
+		{
+			"name": "Leo Wringer",
+			"roles": [
+				{
+					"name": "Cinna",
+					"characterDifferentiator": "Julius Caesar #2"
+				}
+			]
+		},
+		{
+			"name": "Oliver Kieran-Jones",
+			"roles": [
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Deborah Warner"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Pye"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Chloe Oblensky"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jean Kalman"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Joyce Henderson"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Mel Mercier"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "William Oldroyd"
+				},
+				{
+					"name": "Douglas Rintoul"
+				}
+			]
+		}
+	]
+}

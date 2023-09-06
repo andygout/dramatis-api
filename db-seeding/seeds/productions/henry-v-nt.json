@@ -94,7 +94,8 @@
 			"name": "Tony Devlin",
 			"roles": [
 				{
-					"name": "Earl of Warwick"
+					"name": "Earl of Warwick",
+					"characterName": "Richard Beauchamp, Earl of Warwick"
 				},
 				{
 					"name": "Captain Macmorris"
@@ -247,7 +248,7 @@
 			"roles": [
 				{
 					"name": "Catherine",
-					"characterName": "Katherine"
+					"characterName": "Princess Catherine"
 				}
 			]
 		},

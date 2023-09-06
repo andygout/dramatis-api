@@ -1,0 +1,238 @@
+{
+	"name": "The Two Noble Kinsmen",
+	"startDate": "2006-05-21",
+	"endDate": "2006-05-21",
+	"material": {
+		"name": "The Two Noble Kinsmen"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nick Barber",
+			"roles": [
+				{
+					"name": "Palamon"
+				}
+			]
+		},
+		{
+			"name": "Claire Benedict",
+			"roles": [
+				{
+					"name": "Second Queen",
+					"characterName": "Three queens"
+				},
+				{
+					"name": "Luce"
+				}
+			]
+		},
+		{
+			"name": "Daon Broni",
+			"roles": [
+				{
+					"name": "Arcite"
+				}
+			]
+		},
+		{
+			"name": "Dylan Charles",
+			"roles": [
+				{
+					"name": "Third Countryman",
+					"characterName": "Six countrymen"
+				}
+			]
+		},
+		{
+			"name": "Paola Dionisotti",
+			"roles": [
+				{
+					"name": "First Queen",
+					"characterName": "Three queens"
+				},
+				{
+					"name": "Friz"
+				}
+			]
+		},
+		{
+			"name": "Lisa Ellis",
+			"roles": [
+				{
+					"name": "Jailer's daughter",
+					"characterName": "Daughter of gaoler"
+				},
+				{
+					"name": "Third Queen",
+					"characterName": "Three queens"
+				}
+			]
+		},
+		{
+			"name": "Christopher Godwin",
+			"roles": [
+				{
+					"name": "The Schoolmaster",
+					"characterName": "Gerrold"
+				}
+			]
+		},
+		{
+			"name": "Mark Hadfield",
+			"roles": [
+				{
+					"name": "Pirithous"
+				},
+				{
+					"name": "Chaucer"
+				}
+			]
+		},
+		{
+			"name": "Michael Hadley",
+			"roles": [
+				{
+					"name": "Theseus",
+					"characterName": "Theseus, Duke of Athens"
+				}
+			]
+		},
+		{
+			"name": "Anna Hewson",
+			"roles": [
+				{
+					"name": "Emilia"
+				}
+			]
+		},
+		{
+			"name": "Edward Hughes",
+			"roles": [
+				{
+					"name": "Valerius"
+				}
+			]
+		},
+		{
+			"name": "Michael Jibson",
+			"roles": [
+				{
+					"name": "Fifth Countryman, dressed as a baboon",
+					"characterName": "Six countrymen"
+				}
+			]
+		},
+		{
+			"name": "Michael Matus",
+			"roles": [
+				{
+					"name": "Wooer",
+					"characterName": "Wooer of gaoler's daughter"
+				}
+			]
+		},
+		{
+			"name": "Barry McCarthy",
+			"roles": [
+				{
+					"name": "First Countryman",
+					"characterName": "Six countrymen"
+				}
+			]
+		},
+		{
+			"name": "Chu Omamabala",
+			"roles": [
+				{
+					"name": "Artesius"
+				}
+			]
+		},
+		{
+			"name": "Ian Pirie",
+			"roles": [
+				{
+					"name": "Fourth Countryman",
+					"characterName": "Six countrymen"
+				}
+			]
+		},
+		{
+			"name": "Joshua Richards",
+			"roles": [
+				{
+					"name": "Doctor"
+				},
+				{
+					"name": "Second Countryman",
+					"characterName": "Six countrymen"
+				}
+			]
+		},
+		{
+			"name": "Christopher Saul",
+			"roles": [
+				{
+					"name": "Jailer's brother",
+					"characterName": "Brother of gaoler"
+				},
+				{
+					"name": "Knight",
+					"characterName": "Six knights"
+				}
+			]
+		},
+		{
+			"name": "Katherine Tozer",
+			"roles": [
+				{
+					"name": "Hippolyta",
+					"characterName": "Hippolyta, Queen of the Amazons"
+				}
+			]
+		},
+		{
+			"name": "Darren Tunstall",
+			"roles": [
+				{
+					"name": "Jailer",
+					"characterName": "Gaoler"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "William Oldroyd"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Sylvia Hallett"
+				}
+			]
+		}
+	]
+}

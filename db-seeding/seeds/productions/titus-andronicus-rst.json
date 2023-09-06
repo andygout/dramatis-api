@@ -1,0 +1,498 @@
+{
+	"name": "Titus Andronicus",
+	"startDate": "2006-06-16",
+	"pressDate": "2006-06-20",
+	"endDate": "2006-06-24",
+	"material": {
+		"name": "Titus Andronicus"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Ninagawa Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Kotaro Yoshida",
+			"roles": [
+				{
+					"name": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Rei Asami",
+			"roles": [
+				{
+					"name": "Tamora"
+				}
+			]
+		},
+		{
+			"name": "Shun Oguri",
+			"roles": [
+				{
+					"name": "Aaron"
+				}
+			]
+		},
+		{
+			"name": "Hitomi Manaka",
+			"roles": [
+				{
+					"name": "Lavinia"
+				}
+			]
+		},
+		{
+			"name": "Haruhiko Jo",
+			"roles": [
+				{
+					"name": "Marcus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Shingo Tsurumi",
+			"roles": [
+				{
+					"name": "Saturninus"
+				}
+			]
+		},
+		{
+			"name": "Kyuzo Kawabe",
+			"roles": [
+				{
+					"name": "Aemilius"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				}
+			]
+		},
+		{
+			"name": "Natsue Ichikawa",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Takashi Hirota",
+			"roles": [
+				{
+					"name": "Lucius",
+					"characterName": "Lucius Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Hiroki Okawa",
+			"roles": [
+				{
+					"name": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Eiji Yokata",
+			"roles": [
+				{
+					"name": "Bassianus"
+				}
+			]
+		},
+		{
+			"name": "Ryuzabuio Otomo",
+			"roles": [
+				{
+					"name": "Alarbus"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Kenji Kodama",
+			"roles": [
+				{
+					"name": "Tribune",
+					"characterName": "Tribunes"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				}
+			]
+		},
+		{
+			"name": "Eiichi Seike",
+			"roles": [
+				{
+					"name": "Sempronius"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Tadashi Okada",
+			"roles": [
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Masato Shinkawa",
+			"roles": [
+				{
+					"name": "Mutius",
+					"characterName": "Mutius Andronicus"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Great Gidayu",
+			"roles": [
+				{
+					"name": "Clown"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				}
+			]
+		},
+		{
+			"name": "Masazumi Nitanda",
+			"roles": [
+				{
+					"name": "Quintus",
+					"characterName": "Quintus Andronicus"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Tatewaki Sasaki",
+			"roles": [
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Attendant",
+					"characterName": "Attendants"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Yutaka Suzuki",
+			"roles": [
+				{
+					"name": "Chiron"
+				}
+			]
+		},
+		{
+			"name": "Haruo Takayama",
+			"roles": [
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Tribune",
+					"characterName": "Tribunes"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Katsuhiro Kitagawa",
+			"roles": [
+				{
+					"name": "Tribune",
+					"characterName": "Tribunes"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				}
+			]
+		},
+		{
+			"name": "Makoto Tamura",
+			"roles": [
+				{
+					"name": "Publius"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Daisuke Sugiura",
+			"roles": [
+				{
+					"name": "Valentine"
+				},
+				{
+					"name": "Messenger"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Shiro Ishimoda",
+			"roles": [
+				{
+					"name": "Caius"
+				},
+				{
+					"name": "Captain"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Ko Hasegawa",
+			"roles": [
+				{
+					"name": "Martius",
+					"characterName": "Martius Andronicus"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Yoshihisa Ishida",
+			"roles": [
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Attendant",
+					"characterName": "Attendants"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Tsutomu Takahashi",
+			"roles": [
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Attendant",
+					"characterName": "Attendants"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		},
+		{
+			"name": "Kentaro Nishimoto",
+			"roles": [
+				{
+					"name": "Young Lucius"
+				}
+			]
+		},
+		{
+			"name": "Ushi Hasegawa",
+			"roles": [
+				{
+					"name": "Senator",
+					"characterName": "Senators"
+				},
+				{
+					"name": "Roman soldier",
+					"characterName": "Roman soldiers"
+				},
+				{
+					"name": "Attendant",
+					"characterName": "Attendants"
+				},
+				{
+					"name": "Goth soldier",
+					"characterName": "Goths"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Yukio Ninagawa"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tsukasa Nakagoshi"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Lily Komine"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tamotsu Harada"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Masahiro Inoue"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Yasuhiro Kasamatsu"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Masahiro Kunii"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "Sonsho Inoue"
+				},
+				{
+					"name": "Sachiko Ishimasu"
+				}
+			]
+		}
+	]
+}

@@ -23,10 +23,12 @@
 					"underlyingName": "King Henry V"
 				},
 				{
-					"name": "Lord John of Lancaster"
+					"name": "Lord John of Lancaster",
+					"underlyingName": "John of Lancaster, Duke of Bedford"
 				},
 				{
-					"name": "Ralph Neville, Earl of Westmorland"
+					"name": "Ralph Neville, Earl of Westmorland",
+					"underlyingName": "Ralph Neville, 1st Earl of Westmorland"
 				},
 				{
 					"name": "Sir Walter Blunt"
@@ -49,7 +51,8 @@
 					"name": "Peto"
 				},
 				{
-					"name": "Mistress Quickly"
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
 				},
 				{
 					"name": "Francis"
@@ -72,22 +75,27 @@
 			"name": "Rebels",
 			"characters": [
 				{
-					"name": "Henry Percy, Earl of Northumberland"
+					"name": "Henry Percy, Earl of Northumberland",
+					"underlyingName": "Henry Percy, 1st Earl of Northumberland"
 				},
 				{
-					"name": "Thomas Percy, Earl of Worcester"
+					"name": "Thomas Percy, Earl of Worcester",
+					"underlyingName": "Thomas Percy, 1st Earl of Worcester"
 				},
 				{
-					"name": "Harry Percy"
+					"name": "Harry Percy",
+					"underlyingName": "Sir Henry 'Hotspur' Percy"
 				},
 				{
-					"name": "Edmund, Lord Mortimer"
+					"name": "Edmund Mortimer",
+					"underlyingName": "Edmund Mortimer IV"
 				},
 				{
 					"name": "Owen Glendower"
 				},
 				{
-					"name": "Archibald, Earl of Douglas"
+					"name": "Archibald, Earl of Douglas",
+					"underlyingName": "Archibald, 4th Earl of Douglas"
 				},
 				{
 					"name": "Sir Richard Vernon, 8th Baron of Shipbrook"
@@ -99,10 +107,12 @@
 					"name": "Sir Michael"
 				},
 				{
-					"name": "Lady Percy"
+					"name": "Lady Percy",
+					"underlyingName": "Elizabeth Mortimer"
 				},
 				{
-					"name": "Lady Mortimer"
+					"name": "Lady Mortimer",
+					"underlyingName": "Catrin ferch Owain Glyndŵr"
 				}
 			]
 		},
@@ -112,7 +122,8 @@
 					"name": "Chamberlain"
 				},
 				{
-					"name": "Sheriff"
+					"name": "Sheriff",
+					"differentiator": "Henry IV, Part 1"
 				},
 				{
 					"name": "Travellers"

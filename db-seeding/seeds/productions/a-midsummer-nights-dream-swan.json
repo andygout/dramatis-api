@@ -1,0 +1,251 @@
+{
+	"name": "A Midsummer Night's Dream",
+	"startDate": "2006-06-07",
+	"pressDate": "2006-06-08",
+	"endDate": "2006-06-17",
+	"material": {
+		"name": "A Midsummer Night's Dream"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Dash Arts"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ajay Kumar",
+			"roles": [
+				{
+					"name": "Philostrate"
+				},
+				{
+					"name": "Puck"
+				}
+			]
+		},
+		{
+			"name": "Archana Ramaswamy",
+			"roles": [
+				{
+					"name": "Hippolyta",
+					"characterName": "Hippolyta, Queen of the Amazons"
+				},
+				{
+					"name": "Titania",
+					"characterName": "Titania, Queen of the Fairies"
+				}
+			]
+		},
+		{
+			"name": "P R Jijoy",
+			"roles": [
+				{
+					"name": "Theseus",
+					"characterName": "Theseus, Duke of Athens"
+				},
+				{
+					"name": "Oberon",
+					"characterName": "Oberon, King of the Fairies"
+				}
+			]
+		},
+		{
+			"name": "J Jayakumar",
+			"roles": [
+				{
+					"name": "Egeus"
+				},
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "Yuki Ellias",
+			"roles": [
+				{
+					"name": "Hermia"
+				}
+			]
+		},
+		{
+			"name": "Prasanna Mahagamage",
+			"roles": [
+				{
+					"name": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Chandan Roy Sanjal",
+			"roles": [
+				{
+					"name": "Lysander"
+				}
+			]
+		},
+		{
+			"name": "Shanaya Rafaat",
+			"roles": [
+				{
+					"name": "Helena"
+				}
+			]
+		},
+		{
+			"name": "J D Ashwatthama",
+			"roles": [
+				{
+					"name": "Peter Quince"
+				}
+			]
+		},
+		{
+			"name": "Joy Fernandes",
+			"roles": [
+				{
+					"name": "Nick Bottom"
+				}
+			]
+		},
+		{
+			"name": "Joyraj Bhattacharya",
+			"roles": [
+				{
+					"name": "Francis Flute"
+				}
+			]
+		},
+		{
+			"name": "T Gopalkrishnan",
+			"roles": [
+				{
+					"name": "Robin Starveling"
+				}
+			]
+		},
+		{
+			"name": "Umesh Jagtap",
+			"roles": [
+				{
+					"name": "Tom Snout"
+				}
+			]
+		},
+		{
+			"name": "Jitu Shastri",
+			"roles": [
+				{
+					"name": "Snug"
+				}
+			]
+		},
+		{
+			"name": "Faezeh Jalali",
+			"roles": [
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "M Palani",
+			"roles": [
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "D Padmakumar",
+			"roles": [
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "Tapan Das",
+			"roles": [
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "Dharminder Pawar",
+			"roles": [
+				{
+					"name": "Spirit",
+					"characterName": "Fairies"
+				}
+			]
+		},
+		{
+			"name": "Ram Pawar",
+			"roles": [
+				{
+					"name": "Boy"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tim Supple"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Sumant Jayakrishnan"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Auleikha Chaudhari"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Devissaro"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Quasar Thakore Padamsee"
+				}
+			]
+		}
+	]
+}

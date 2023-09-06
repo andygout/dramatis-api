@@ -1,0 +1,378 @@
+{
+	"name": "Pericles",
+	"startDate": "2006-11-02",
+	"pressDate": "2006-11-15",
+	"endDate": "2007-01-06",
+	"material": {
+		"name": "Pericles, Prince of Tyre"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Gower",
+					"characterName": "John Gower"
+				}
+			]
+		},
+		{
+			"name": "Lucian Msamati",
+			"roles": [
+				{
+					"name": "Pericles",
+					"characterName": "Pericles, Prince of Tyre"
+				}
+			]
+		},
+		{
+			"name": "Clarence Smith",
+			"roles": [
+				{
+					"name": "King Anticholus",
+					"characterName": "Antiochus, King of Antioch"
+				},
+				{
+					"name": "Pirate",
+					"characterName": "Three pirates"
+				},
+				{
+					"name": "Servant",
+					"characterName": "Servants"
+				},
+				{
+					"name": "Sailor",
+					"characterName": "Two sailors"
+				}
+			]
+		},
+		{
+			"name": "Ony Uhiara",
+			"roles": [
+				{
+					"name": "King Anticholus' daughter",
+					"characterName": "Daughter of Antiochus"
+				},
+				{
+					"name": "Marina"
+				}
+			]
+		},
+		{
+			"name": "Nyasha Hatendi",
+			"roles": [
+				{
+					"name": "Thaliart",
+					"characterName": "Thaliard"
+				},
+				{
+					"name": "Knight",
+					"characterName": "Five knights"
+				}
+			]
+		},
+		{
+			"name": "Ben Onwukwe",
+			"roles": [
+				{
+					"name": "Helicanus"
+				}
+			]
+		},
+		{
+			"name": "Maynard Eziashi",
+			"roles": [
+				{
+					"name": "Lord",
+					"characterName": "Lords"
+				},
+				{
+					"name": "Cleon",
+					"characterName": "Cleon, governor of Tarsus"
+				}
+			]
+		},
+		{
+			"name": "Jason Barnett",
+			"roles": [
+				{
+					"name": "Lord",
+					"characterName": "Lords"
+				},
+				{
+					"name": "Pirate",
+					"characterName": "Three pirates"
+				},
+				{
+					"name": "Knight",
+					"characterName": "Five knights"
+				},
+				{
+					"name": "Sailor",
+					"characterName": "Two sailors"
+				}
+			]
+		},
+		{
+			"name": "Frances Ashman",
+			"roles": [
+				{
+					"name": "Dionyza"
+				}
+			]
+		},
+		{
+			"name": "Mark Theodore",
+			"roles": [
+				{
+					"name": "Leonine"
+				},
+				{
+					"name": "Lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Robin Lawrence",
+			"roles": [
+				{
+					"name": "Master fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Master sailor"
+				}
+			]
+		},
+		{
+			"name": "Trystan Gravelle",
+			"roles": [
+				{
+					"name": "Fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Gentleman",
+					"characterName": "Gentlemen"
+				},
+				{
+					"name": "Sailor",
+					"characterName": "Two sailors"
+				}
+			]
+		},
+		{
+			"name": "Richard Katz",
+			"roles": [
+				{
+					"name": "Fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Boult"
+				}
+			]
+		},
+		{
+			"name": "Richard Moore",
+			"roles": [
+				{
+					"name": "King Simonides",
+					"characterName": "Simonides, King of Pentapolis"
+				},
+				{
+					"name": "Pander"
+				}
+			]
+		},
+		{
+			"name": "Kate Fleetwood",
+			"roles": [
+				{
+					"name": "Thaisa"
+				}
+			]
+		},
+		{
+			"name": "Danny Dalton",
+			"roles": [
+				{
+					"name": "Knight",
+					"characterName": "Five knights"
+				},
+				{
+					"name": "Servant",
+					"characterName": "Servants"
+				},
+				{
+					"name": "Pirate",
+					"characterName": "Three pirates"
+				}
+			]
+		},
+		{
+			"name": "Simon Harrison",
+			"roles": [
+				{
+					"name": "Knight",
+					"characterName": "Five knights"
+				},
+				{
+					"name": "Lord",
+					"characterName": "Lords"
+				},
+				{
+					"name": "Pirate",
+					"characterName": "Three pirates"
+				}
+			]
+		},
+		{
+			"name": "Ashley Rolfe",
+			"roles": [
+				{
+					"name": "Knight",
+					"characterName": "Five knights"
+				},
+				{
+					"name": "Gentleman",
+					"characterName": "Gentlemen"
+				}
+			]
+		},
+		{
+			"name": "Amanda Daniels",
+			"roles": [
+				{
+					"name": "Lychorida"
+				}
+			]
+		},
+		{
+			"name": "Linda Bassett",
+			"roles": [
+				{
+					"name": "Cerimon"
+				},
+				{
+					"name": "Bawd"
+				}
+			]
+		},
+		{
+			"name": "Michelle Terry",
+			"roles": [
+				{
+					"name": "Philemon"
+				}
+			]
+		},
+		{
+			"name": "Nigel Cooke",
+			"roles": [
+				{
+					"name": "Lysimachus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dominic Cooke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mike Britton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Chris Davey"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Carolyn Downing"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Gary Yershon"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Michael Tubbs"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Associate Director",
+			"entities": [
+				{
+					"name": "Maria Aberg"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Russell Bolam"
+				}
+			]
+		}
+	]
+}

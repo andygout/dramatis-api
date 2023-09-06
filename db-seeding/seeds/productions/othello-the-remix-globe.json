@@ -1,0 +1,93 @@
+{
+	"name": "Othello: The Remix",
+	"startDate": "2012-05-05",
+	"endDate": "2012-05-06",
+	"material": {
+		"name": "Othello"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"name": "Q Brothers"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Chicago Shakespeare Theater"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Richard Jordan Productions"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Postell Pringle",
+			"roles": [
+				{
+					"name": "Othello"
+				}
+			]
+		},
+		{
+			"name": "GQ",
+			"roles": [
+				{
+					"name": "Iago"
+				},
+				{
+					"name": "Brabantio"
+				}
+			]
+		},
+		{
+			"name": "Jackson Doran",
+			"roles": [
+				{
+					"name": "Michael Cassio",
+					"characterName": "Cassio"
+				},
+				{
+					"name": "Emilia"
+				}
+			]
+		},
+		{
+			"name": "Clayton Stamper",
+			"roles": [
+				{
+					"name": "DJ"
+				}
+			]
+		},
+		{
+			"name": "JQ",
+			"roles": [
+				{
+					"name": "Roderigo"
+				},
+				{
+					"name": "Bianca"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors and Music",
+			"entities": [
+				{
+					"name": "Q Brothers"
+				}
+			]
+		}
+	]
+}

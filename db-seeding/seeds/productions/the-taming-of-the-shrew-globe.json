@@ -1,0 +1,153 @@
+{
+	"name": "The Taming of the Shrew (علاج ضد دستیاب ہے - Treatment is available)",
+	"startDate": "2012-05-25",
+	"endDate": "2012-05-26",
+	"material": {
+		"name": "The Taming of the Shrew"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Theatre Wallay"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Kashf Foundation"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nadia Jamil",
+			"roles": [
+				{
+					"name": "Kiran",
+					"characterName": "Katherina Minola"
+				}
+			]
+		},
+		{
+			"name": "Omair Rana",
+			"roles": [
+				{
+					"name": "Rustam",
+					"characterName": "Petruchio"
+				}
+			]
+		},
+		{
+			"name": "Salman Shahid",
+			"roles": [
+				{
+					"name": "Bashir",
+					"characterName": "Baptista Minola"
+				}
+			]
+		},
+		{
+			"name": "Karen David",
+			"roles": [
+				{
+					"name": "Bina",
+					"characterName": "Bianca Minola"
+				}
+			]
+		},
+		{
+			"name": "Ahmed Ali",
+			"roles": [
+				{
+					"name": "Tranio"
+				}
+			]
+		},
+		{
+			"name": "Daud Randle",
+			"roles": [
+				{
+					"name": "Curtis"
+				},
+				{
+					"name": "Waqaruddin",
+					"characterName": "Vincentio"
+				}
+			]
+		},
+		{
+			"name": "Hamza Kamal",
+			"roles": [
+				{
+					"name": "Begum",
+					"characterName": "Widow"
+				},
+				{
+					"name": "Safarish",
+					"characterName": "Grumio"
+				}
+			]
+		},
+		{
+			"name": "Maria Khan",
+			"roles": [
+				{
+					"name": "Ravi",
+					"characterName": "Christopher Sly"
+				}
+			]
+		},
+		{
+			"name": "Mukarram Kaleem",
+			"roles": [
+				{
+					"name": "Gremio"
+				}
+			]
+		},
+		{
+			"name": "Osman Khalid Butt",
+			"roles": [
+				{
+					"name": "Hasnat",
+					"characterName": "Hortensio"
+				}
+			]
+		},
+		{
+			"name": "Syed Abbas Hussain",
+			"roles": [
+				{
+					"name": "Biru",
+					"characterName": "Biondello"
+				}
+			]
+		},
+		{
+			"name": "Umer Naru",
+			"roles": [
+				{
+					"name": "Qazim",
+					"characterName": "Lucentio"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Haissam Hussain"
+				}
+			]
+		}
+	]
+}

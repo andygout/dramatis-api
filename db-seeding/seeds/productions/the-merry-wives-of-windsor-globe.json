@@ -1,0 +1,102 @@
+{
+	"name": "The Merry Wives of Windsor (Heri Wanawake Wa Windsor - Hail the Ladies of Windsor)",
+	"startDate": "2012-04-25",
+	"endDate": "2012-04-26",
+	"material": {
+		"name": "The Merry Wives of Windsor"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bitter Pill Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "The Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Mrisho Mpoto",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Chici Seii",
+			"roles": [
+				{
+					"name": "Mistress Margaret Page"
+				}
+			]
+		},
+		{
+			"name": "Lydiah Gitachu",
+			"roles": [
+				{
+					"name": "Mistress Alice Ford"
+				}
+			]
+		},
+		{
+			"name": "Joshua Ogatu",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "James Gathitu",
+			"roles": [
+				{
+					"name": "Frank Ford"
+				}
+			]
+		},
+		{
+			"name": "Neville Sanganyi",
+			"roles": [
+				{
+					"name": "Abraham Slender"
+				},
+				{
+					"name": "Fenton"
+				}
+			]
+		},
+		{
+			"name": "Sharon Nanjos",
+			"roles": [
+				{
+					"name": "Anne Page"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Daniel Goldman"
+				},
+				{
+					"name": "Sarah Norman"
+				}
+			]
+		}
+	]
+}

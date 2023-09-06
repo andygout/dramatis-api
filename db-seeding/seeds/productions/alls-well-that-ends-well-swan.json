@@ -1,0 +1,133 @@
+{
+	"name": "All's Well That Ends Well",
+	"startDate": "2006-09-04",
+	"endDate": "2006-09-04",
+	"material": {
+		"name": "All's Well That Ends Well"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Scottish Academy of Music and Drama"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nikki Thompson",
+			"roles": [
+				{
+					"name": "Countess of Roussillon"
+				}
+			]
+		},
+		{
+			"name": "Adetunji Kasim",
+			"roles": [
+				{
+					"name": "Bertam",
+					"characterName": "Bertam, Count of Roussillon"
+				}
+			]
+		},
+		{
+			"name": "Joe Arkley",
+			"roles": [
+				{
+					"name": "Lafeu",
+					"characterName": "Lafew"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Kate Romond",
+			"roles": [
+				{
+					"name": "Helena"
+				}
+			]
+		},
+		{
+			"name": "Julie Heatherill",
+			"roles": [
+				{
+					"name": "Widow",
+					"characterName": "Widow Capilet of Florence"
+				}
+			]
+		},
+		{
+			"name": "Aoife Hyslop",
+			"roles": [
+				{
+					"name": "Diana"
+				}
+			]
+		},
+		{
+			"name": "Mike Holdsworth",
+			"roles": [
+				{
+					"name": "King",
+					"characterName": "King of France"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Richard Madden",
+			"roles": [
+				{
+					"name": "French Lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Martin McCormick",
+			"roles": [
+				{
+					"name": "Messenger"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				}
+			]
+		},
+		{
+			"name": "Hank Ostendorf",
+			"roles": [
+				{
+					"name": "Parolles"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gavin Marshall"
+				}
+			]
+		}
+	]
+}

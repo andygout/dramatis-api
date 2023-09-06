@@ -1,0 +1,172 @@
+{
+	"name": "Much Ado About Nothing",
+	"startDate": "2006-09-05",
+	"endDate": "2006-09-05",
+	"material": {
+		"name": "Much Ado About Nothing"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bristol Old Vic Theatre School"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Thomas Adam",
+			"roles": [
+				{
+					"name": "Leonato"
+				}
+			]
+		},
+		{
+			"name": "Michelle Lukes",
+			"roles": [
+				{
+					"name": "Hero"
+				},
+				{
+					"name": "2nd Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		},
+		{
+			"name": "Emma Clifford",
+			"roles": [
+				{
+					"name": "Beatrice"
+				}
+			]
+		},
+		{
+			"name": "Oliver Millingham",
+			"roles": [
+				{
+					"name": "Don Pedro",
+					"characterName": "Don Pedro, Prince of Arragon"
+				}
+			]
+		},
+		{
+			"name": "Neil Jennings",
+			"roles": [
+				{
+					"name": "Don John"
+				},
+				{
+					"name": "1st Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		},
+		{
+			"name": "Peter Basham",
+			"roles": [
+				{
+					"name": "Benedick"
+				}
+			]
+		},
+		{
+			"name": "David Oakes",
+			"roles": [
+				{
+					"name": "Claudio"
+				}
+			]
+		},
+		{
+			"name": "Notzarina Reevers",
+			"roles": [
+				{
+					"name": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "Nick Whitley",
+			"roles": [
+				{
+					"name": "Borachio"
+				}
+			]
+		},
+		{
+			"name": "Paul Jellis",
+			"roles": [
+				{
+					"name": "Conrade"
+				},
+				{
+					"name": "Friar Francis"
+				}
+			]
+		},
+		{
+			"name": "David Edenfield",
+			"roles": [
+				{
+					"name": "Dogberry"
+				}
+			]
+		},
+		{
+			"name": "Matt Barber",
+			"roles": [
+				{
+					"name": "Verges"
+				},
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "John Hartoch"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lucy Wilkinson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "James Uren"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Gail Gordon"
+				}
+			]
+		}
+	]
+}

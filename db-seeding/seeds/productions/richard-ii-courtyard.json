@@ -1,0 +1,235 @@
+{
+	"name": "Richard II",
+	"startDate": "2006-11-16",
+	"endDate": "2006-11-18",
+	"material": {
+		"name": "Richard II"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Berliner Ensemble"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Carmen-Maja Antoni",
+			"roles": [
+				{
+					"name": "Duchess of Gloucester"
+				},
+				{
+					"name": "Lady",
+					"characterName": "Ladies"
+				},
+				{
+					"name": "Duchess of York"
+				}
+			]
+		},
+		{
+			"name": "Roman Kaminski",
+			"roles": [
+				{
+					"name": "John of Gaunt",
+					"characterName": "John of Gaunt, Duke of Lancaster"
+				},
+				{
+					"name": "Bishop of Carlisle"
+				}
+			]
+		},
+		{
+			"name": "Veit Schbert",
+			"roles": [
+				{
+					"name": "Henry Bolingbroke",
+					"characterName": "Henry Bolingbroke, Duke of Hereford"
+				}
+			]
+		},
+		{
+			"name": "Michael Maertens",
+			"roles": [
+				{
+					"name": "Richard II",
+					"characterName": "King Richard II"
+				}
+			]
+		},
+		{
+			"name": "Hanna Jurgens",
+			"roles": [
+				{
+					"name": "Queen Isabel"
+				}
+			]
+		},
+		{
+			"name": "Michael Rothmann",
+			"roles": [
+				{
+					"name": "Thomas Mowbray",
+					"characterName": "Thomas Mowbray, Duke of Norfolk"
+				},
+				{
+					"name": "Gardener's assistant",
+					"characterName": "Two gardener's men"
+				},
+				{
+					"name": "Captain"
+				},
+				{
+					"name": "3rd Delegate"
+				}
+			]
+		},
+		{
+			"name": "Dirk Ossig",
+			"roles": [
+				{
+					"name": "Aumerle",
+					"characterName": "Duke of Aumerle, Earl of Rutland"
+				}
+			]
+		},
+		{
+			"name": "Peter Donath",
+			"roles": [
+				{
+					"name": "Bushy"
+				},
+				{
+					"name": "Willoughby",
+					"characterName": "Lord Willoughby"
+				},
+				{
+					"name": "1st Delegate"
+				}
+			]
+		},
+		{
+			"name": "Alexander Doering",
+			"roles": [
+				{
+					"name": "Green"
+				},
+				{
+					"name": "Ross",
+					"characterName": "Lord Ross"
+				},
+				{
+					"name": "Gardener"
+				},
+				{
+					"name": "Soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "2nd Delegate"
+				}
+			]
+		},
+		{
+			"name": "Boris Jacoby",
+			"roles": [
+				{
+					"name": "Bagot"
+				},
+				{
+					"name": "Prison attendant",
+					"characterName": "Keeper of the prison at Pomfret"
+				}
+			]
+		},
+		{
+			"name": "Manfred Karge",
+			"roles": [
+				{
+					"name": "Duke of York",
+					"characterName": "Edmund of Langley, Duke of York"
+				}
+			]
+		},
+		{
+			"name": "Axel Werner",
+			"roles": [
+				{
+					"name": "Northumberland",
+					"characterName": "Henry Percy, Earl of Northumberland"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Claus Peymann"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Achim Freyer"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Maria-Elena Amos"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Konrad Lindenburgh"
+				},
+				{
+					"name": "Achim Freyer"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Alexander Bramann"
+				}
+			]
+		}
+	]
+}

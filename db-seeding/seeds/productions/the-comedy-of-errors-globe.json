@@ -1,0 +1,96 @@
+{
+	"name": "The Comedy of Errors (کمدی اشتباهات)",
+	"startDate": "2012-05-30",
+	"endDate": "2012-05-31",
+	"material": {
+		"name": "The Comedy of Errors"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Roy-e-Sabs"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Shakoor Shamshad",
+			"roles": [
+				{
+					"name": "Arsalan",
+					"characterName": "Antipholus of Ephesus"
+				}
+			]
+		},
+		{
+			"name": "Abdul Haq",
+			"roles": [
+				{
+					"name": "Antipholus of Syracuse"
+				}
+			]
+		},
+		{
+			"name": "Shah Mohammad",
+			"roles": [
+				{
+					"name": "Dromio of Syracuse"
+				}
+			]
+		},
+		{
+			"name": "Abida Frotan",
+			"roles": [
+				{
+					"name": "Adriana"
+				}
+			]
+		},
+		{
+			"name": "Basir Haider"
+		},
+		{
+			"name": "Farzana Sayed Ahmad",
+			"roles": [
+				{
+					"name": "Rodaba",
+					"characterName": "Luciana"
+				}
+			]
+		},
+		{
+			"name": "Ghulamnabi Tanha"
+		},
+		{
+			"name": "Shah Mamnoon Maqsudi",
+			"roles": [
+				{
+					"name": "Ehsan",
+					"characterName": "Egeon"
+				},
+				{
+					"name": "Luce"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Corinne Jaber"
+				}
+			]
+		}
+	]
+}

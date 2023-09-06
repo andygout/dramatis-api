@@ -1,0 +1,93 @@
+{
+	"name": "All's Well That Ends Well",
+	"format": "play",
+	"year": "1603",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bertam, Count of Roussillon"
+				},
+				{
+					"name": "Countess of Roussillon"
+				},
+				{
+					"name": "Helena",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Parolles"
+				},
+				{
+					"name": "Rynaldo"
+				},
+				{
+					"name": "Lavatch"
+				},
+				{
+					"name": "Page",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "King of France"
+				},
+				{
+					"name": "Lafew"
+				},
+				{
+					"name": "The brothers Dumaine"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "French Soliders"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Duke of Florence"
+				},
+				{
+					"name": "Widow Capilet of Florence"
+				},
+				{
+					"name": "Diana",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Mariana",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Citizens",
+					"differentiator": "All's Well That Ends Well"
+				}
+			]
+		}
+	]
+}

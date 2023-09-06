@@ -1,0 +1,204 @@
+{
+	"name": "The Merchant of Venice",
+	"startDate": "2007-03-22",
+	"pressDate": "2007-03-27",
+	"endDate": "2007-03-31",
+	"material": {
+		"name": "The Merchant of Venice"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Theatre for a New Audience"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "F Murray Abraham",
+			"roles": [
+				{
+					"name": "Shylock"
+				}
+			]
+		},
+		{
+			"name": "Kenajuan Bentley",
+			"roles": [
+				{
+					"name": "Launcelot Gobbo"
+				}
+			]
+		},
+		{
+			"name": "Arnie Burton",
+			"roles": [
+				{
+					"name": "Balthazar",
+					"characterName": "Balthasar"
+				}
+			]
+		},
+		{
+			"name": "Cameron Folmar",
+			"roles": [
+				{
+					"name": "Solanio"
+				}
+			]
+		},
+		{
+			"name": "Kate Forbes",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Ezra Knight",
+			"roles": [
+				{
+					"name": "Prince of Morocco"
+				}
+			]
+		},
+		{
+			"name": "John Lavelle",
+			"roles": [
+				{
+					"name": "Gratiano"
+				}
+			]
+		},
+		{
+			"name": "Nicole Lowrance",
+			"roles": [
+				{
+					"name": "Jessica"
+				}
+			]
+		},
+		{
+			"name": "Vince Nappo",
+			"roles": [
+				{
+					"name": "Lorenzo"
+				}
+			]
+		},
+		{
+			"name": "Tom Nelis",
+			"roles": [
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Saxon Palmer",
+			"roles": [
+				{
+					"name": "Bassanio"
+				}
+			]
+		},
+		{
+			"name": "Matthew Schneck",
+			"roles": [
+				{
+					"name": "Salerio"
+				}
+			]
+		},
+		{
+			"name": "Christen Simon",
+			"roles": [
+				{
+					"name": "Nerissa"
+				}
+			]
+		},
+		{
+			"name": "Marc Vietor",
+			"roles": [
+				{
+					"name": "Prince of Arragon"
+				},
+				{
+					"name": "Tubal"
+				},
+				{
+					"name": "Duke of Venice"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Darko Tresnjak"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "John Lee Beatty"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Linda Cho"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Weiner"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Jane Shaw"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "J Steven White"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Susanna Gellert"
+				}
+			]
+		}
+	]
+}

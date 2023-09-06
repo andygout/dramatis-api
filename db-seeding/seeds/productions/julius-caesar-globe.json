@@ -1,0 +1,95 @@
+{
+	"name": "Julius Caesar",
+	"startDate": "2012-05-01",
+	"endDate": "2012-05-02",
+	"material": {
+		"name": "Julius Caesar"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "I Termini Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Gabriele Portoghese",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Roberto Manzio",
+			"roles": [
+				{
+					"name": "Caius Cassius"
+				}
+			]
+		},
+		{
+			"name": "Liva Castiglioni",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Ersilia Lombardo",
+			"roles": [
+				{
+					"name": "Calphurnia"
+				}
+			]
+		},
+		{
+			"name": "Giandomenico Cupaiuolo",
+			"roles": [
+				{
+					"name": "Marcus Brutus"
+				}
+			]
+		},
+		{
+			"name": "Lucas Waldern Zanforlini",
+			"roles": [
+				{
+					"name": "Casca"
+				},
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Andrea Barraco"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Arcangela Di Lorenza"
+				}
+			]
+		}
+	]
+}

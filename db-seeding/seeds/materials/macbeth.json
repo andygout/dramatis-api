@@ -82,7 +82,8 @@
 					"name": "Three Murderers"
 				},
 				{
-					"name": "Porter"
+					"name": "Porter",
+					"differentiator": "Macbeth"
 				},
 				{
 					"name": "Lady Macbeth's doctor"
@@ -94,7 +95,8 @@
 					"name": "Lady Macbeth's caretaker"
 				},
 				{
-					"name": "Lord"
+					"name": "Lord",
+					"differentiator": "Macbeth"
 				},
 				{
 					"name": "First Apparition"

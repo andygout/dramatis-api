@@ -1,0 +1,200 @@
+{
+	"name": "Twelfth Night",
+	"startDate": "2007-02-28",
+	"endDate": "2007-03-03",
+	"material": {
+		"name": "Twelfth Night"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chekhov International Theatre Festival"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Vladimir Vdovichenkov",
+			"roles": [
+				{
+					"name": "Orsino",
+					"characterName": "Orsino, Duke of Illyria"
+				}
+			]
+		},
+		{
+			"name": "Sergey Mukhin",
+			"roles": [
+				{
+					"name": "Sebastian"
+				}
+			]
+		},
+		{
+			"name": "Mikhail Zhigalov",
+			"roles": [
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Vsevolod Boldin",
+			"roles": [
+				{
+					"name": "Sea Captain"
+				}
+			]
+		},
+		{
+			"name": "Yury Makeev",
+			"roles": [
+				{
+					"name": "Valentine"
+				}
+			]
+		},
+		{
+			"name": "Mikhail Dementyev",
+			"roles": [
+				{
+					"name": "Curio"
+				}
+			]
+		},
+		{
+			"name": "Alexander Feklistov",
+			"roles": [
+				{
+					"name": "Sir Toby Belch"
+				}
+			]
+		},
+		{
+			"name": "Dmitry Dyuzhev",
+			"roles": [
+				{
+					"name": "Sir Andrew Aguecheek"
+				}
+			]
+		},
+		{
+			"name": "Dmitry Shcherbina",
+			"roles": [
+				{
+					"name": "Malvolio"
+				}
+			]
+		},
+		{
+			"name": "Igor Yasulovich",
+			"roles": [
+				{
+					"name": "Feste"
+				}
+			]
+		},
+		{
+			"name": "Alexey Dadonov",
+			"roles": [
+				{
+					"name": "Olivia"
+				}
+			]
+		},
+		{
+			"name": "Andrey Kuzichev",
+			"roles": [
+				{
+					"name": "Viola"
+				}
+			]
+		},
+		{
+			"name": "Ilya Ilin",
+			"roles": [
+				{
+					"name": "Maria"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Declan Donnellan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Nick Ormerod"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Natalia Vedeneeva"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Judith Greenwood"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Nikolai Klishev"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Alberts Alberts"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Vladimir Pankov"
+				},
+				{
+					"name": "Alexander Gusev"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Evgeny Pisarev"
+				}
+			]
+		}
+	]
+}

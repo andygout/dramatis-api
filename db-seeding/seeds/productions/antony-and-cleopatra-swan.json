@@ -1,0 +1,323 @@
+{
+	"name": "Antony and Cleopatra",
+	"startDate": "2006-04-12",
+	"pressDate": "2006-04-19",
+	"endDate": "2006-10-14",
+	"material": {
+		"name": "Antony and Cleopatra"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Harriet Walter",
+			"roles": [
+				{
+					"name": "Cleopatra"
+				}
+			]
+		},
+		{
+			"name": "Patrick Stewart",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "John Hopkins",
+			"roles": [
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		},
+		{
+			"name": "James Hayes",
+			"roles": [
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "Ariyon Bakare",
+			"roles": [
+				{
+					"name": "Sextus Pompeius",
+					"characterName": "Sextus Pompey"
+				}
+			]
+		},
+		{
+			"name": "Mariah Gale",
+			"roles": [
+				{
+					"name": "Octavia"
+				}
+			]
+		},
+		{
+			"name": "Ken Bones",
+			"roles": [
+				{
+					"name": "Enobarbus",
+					"characterName": "Domitius Enobarbus"
+				}
+			]
+		},
+		{
+			"name": "Charis Jarman",
+			"roles": [
+				{
+					"name": "Eros"
+				},
+				{
+					"name": "Soothsayer"
+				}
+			]
+		},
+		{
+			"name": "Joseph Alessi",
+			"roles": [
+				{
+					"name": "Philo"
+				},
+				{
+					"name": "Ventidius"
+				},
+				{
+					"name": "Scarus"
+				}
+			]
+		},
+		{
+			"name": "Paul Barnhill",
+			"roles": [
+				{
+					"name": "Demetrius"
+				},
+				{
+					"name": "Canidius"
+				}
+			]
+		},
+		{
+			"name": "Rob Carroll",
+			"roles": [
+				{
+					"name": "Silius"
+				},
+				{
+					"name": "Wounded soldier",
+					"characterName": "Soldiers"
+				},
+				{
+					"name": "Proculeius"
+				}
+			]
+		},
+		{
+			"name": "Ewen Cummins",
+			"roles": [
+				{
+					"name": "Schoolmaster"
+				},
+				{
+					"name": "Mardian"
+				},
+				{
+					"name": "Seleucus"
+				}
+			]
+		},
+		{
+			"name": "Ravi Aujla",
+			"roles": [
+				{
+					"name": "Decretas"
+				},
+				{
+					"name": "Menecrates"
+				}
+			]
+		},
+		{
+			"name": "Edmund Kingsley",
+			"roles": [
+				{
+					"name": "Maecenas"
+				}
+			]
+		},
+		{
+			"name": "Keith Osborn",
+			"roles": [
+				{
+					"name": "Agrippa"
+				}
+			]
+		},
+		{
+			"name": "Luke Neal",
+			"roles": [
+				{
+					"name": "Dolabella"
+				}
+			]
+		},
+		{
+			"name": "Nick Court",
+			"roles": [
+				{
+					"name": "Thidias"
+				}
+			]
+		},
+		{
+			"name": "Golda Rusheuvel",
+			"roles": [
+				{
+					"name": "Charmian"
+				}
+			]
+		},
+		{
+			"name": "Emma Jay Thomas",
+			"roles": [
+				{
+					"name": "Iras"
+				}
+			]
+		},
+		{
+			"name": "Julian Bleach",
+			"roles": [
+				{
+					"name": "Alexas"
+				},
+				{
+					"name": "Clown"
+				}
+			]
+		},
+		{
+			"name": "David Rubin",
+			"roles": [
+				{
+					"name": "Diomedes"
+				},
+				{
+					"name": "Menas"
+				}
+			]
+		},
+		{
+			"name": "Allyson Brown",
+			"roles": [
+				{
+					"name": "Handmaid",
+					"characterName": "Servants"
+				}
+			]
+		},
+		{
+			"name": "Craig Gazey",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Stephen Brimson Lewis"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Kandis Cook"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Martin Slavin"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Michael Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Music and Musical Director",
+			"entities": [
+				{
+					"name": "Adrian Lee"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Steve Marmion"
+				}
+			]
+		}
+	]
+}

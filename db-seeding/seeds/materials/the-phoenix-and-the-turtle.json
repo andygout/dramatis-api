@@ -1,0 +1,14 @@
+{
+	"name": "The Phoenix and the Turtle",
+	"format": "poem",
+	"year": "1601",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	]
+}

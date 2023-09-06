@@ -1,0 +1,88 @@
+{
+	"name": "The Comedy of Errors",
+	"startDate": "2006-09-13",
+	"endDate": "2006-09-13",
+	"material": {
+		"name": "The Comedy of Errors"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Welsh College of Music and Drama"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jordan Bernarde"
+		},
+		{
+			"name": "Thomas Brownlee"
+		},
+		{
+			"name": "Tony Dodd"
+		},
+		{
+			"name": "Dyfan Dwyfor"
+		},
+		{
+			"name": "Amy Kirwan"
+		},
+		{
+			"name": "Rhodri Lewis"
+		},
+		{
+			"name": "Kimberley Nixon"
+		},
+		{
+			"name": "Eliza Parkes"
+		},
+		{
+			"name": "Niamh Quinn"
+		},
+		{
+			"name": "Gareth Rees"
+		},
+		{
+			"name": "John Schumacher"
+		},
+		{
+			"name": "Amanda Wilkin"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Elizabeth Freestone"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Scutt"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Emily Bull"
+				}
+			]
+		}
+	]
+}

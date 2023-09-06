@@ -1,0 +1,107 @@
+{
+	"name": "Much Ado About Nothing",
+	"format": "play",
+	"year": "1599",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Don Pedro, Prince of Arragon"
+				},
+				{
+					"name": "Benedick"
+				},
+				{
+					"name": "Claudio",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Don John"
+				},
+				{
+					"name": "Borachio"
+				},
+				{
+					"name": "Conrade"
+				},
+				{
+					"name": "Leonato"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Balthasar",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Friar Francis"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Hero"
+				},
+				{
+					"name": "Margaret",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Ursula"
+				},
+				{
+					"name": "Beatrice",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Dogberry"
+				},
+				{
+					"name": "Verges"
+				},
+				{
+					"name": "Sexton"
+				},
+				{
+					"name": "Watchmen"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Boy",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		}
+	]
+}

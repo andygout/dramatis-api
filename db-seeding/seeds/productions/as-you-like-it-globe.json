@@ -1,0 +1,129 @@
+{
+	"name": "As You Like It (როგორც შენ მოგწონს - rogorts shen mogts’ons)",
+	"startDate": "2012-05-18",
+	"endDate": "2012-05-19",
+	"material": {
+		"name": "As You Like It"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Marjanishvili Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ketevan Shatirishuili",
+			"roles": [
+				{
+					"name": "Rosalind"
+				}
+			]
+		},
+		{
+			"name": "Nato Kakhidze",
+			"roles": [
+				{
+					"name": "Celia"
+				}
+			]
+		},
+		{
+			"name": "Nika Kuchava",
+			"roles": [
+				{
+					"name": "Orlando",
+					"characterName": "Orlando de Boys"
+				}
+			]
+		},
+		{
+			"name": "Nata Murvanidze",
+			"roles": [
+				{
+					"name": "Jaques"
+				}
+			]
+		},
+		{
+			"name": "Beso Bratashvili",
+			"roles": [
+				{
+					"name": "Duke Senior"
+				},
+				{
+					"name": "Duke Frederick"
+				}
+			]
+		},
+		{
+			"name": "Ketevan Tskhakaia",
+			"roles": [
+				{
+					"name": "Adam"
+				}
+			]
+		},
+		{
+			"name": "Manana Kozakova",
+			"roles": [
+				{
+					"name": "Audrey"
+				}
+			]
+		},
+		{
+			"name": "Nikoloz Tavadze",
+			"roles": [
+				{
+					"name": "Oliver",
+					"characterName": "Oliver de Boys"
+				}
+			]
+		},
+		{
+			"name": "Onise Oniani",
+			"roles": [
+				{
+					"name": "Le Beau"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Levan Tsuladze"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Nino Surguladze"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Vakhtang Kakhidze"
+				}
+			]
+		}
+	]
+}

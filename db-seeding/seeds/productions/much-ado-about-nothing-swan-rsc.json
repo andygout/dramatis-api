@@ -1,0 +1,290 @@
+{
+	"name": "Much Ado About Nothing",
+	"startDate": "2006-05-11",
+	"pressDate": "2006-05-18",
+	"endDate": "2006-10-12",
+	"material": {
+		"name": "Much Ado About Nothing"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Patrick Robinson",
+			"roles": [
+				{
+					"name": "Don Pedro",
+					"characterName": "Don Pedro, Prince of Arragon"
+				}
+			]
+		},
+		{
+			"name": "Jonny Weir",
+			"roles": [
+				{
+					"name": "Don John"
+				}
+			]
+		},
+		{
+			"name": "Joseph Millson",
+			"roles": [
+				{
+					"name": "Benedick"
+				}
+			]
+		},
+		{
+			"name": "Adam Rayner",
+			"roles": [
+				{
+					"name": "Count Claudio",
+					"characterName": "Claudio"
+				}
+			]
+		},
+		{
+			"name": "Jamie Ballard",
+			"roles": [
+				{
+					"name": "Borachio"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Lumb",
+			"roles": [
+				{
+					"name": "Conrade"
+				}
+			]
+		},
+		{
+			"name": "Simon Bubb",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				}
+			]
+		},
+		{
+			"name": "Curtis Flowers",
+			"roles": [
+				{
+					"name": "Boy"
+				},
+				{
+					"name": "Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Day",
+			"roles": [
+				{
+					"name": "Leonato"
+				}
+			]
+		},
+		{
+			"name": "Leon Tanner",
+			"roles": [
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Morven Christie",
+			"roles": [
+				{
+					"name": "Hero"
+				}
+			]
+		},
+		{
+			"name": "Tamsin Greig",
+			"roles": [
+				{
+					"name": "Beatrice"
+				}
+			]
+		},
+		{
+			"name": "Amy Brown",
+			"roles": [
+				{
+					"name": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "Caroline Wildi",
+			"roles": [
+				{
+					"name": "Ursula"
+				}
+			]
+		},
+		{
+			"name": "Yvette Rochester-Duncan",
+			"roles": [
+				{
+					"name": "Balthasar"
+				}
+			]
+		},
+		{
+			"name": "Bette Bourne",
+			"roles": [
+				{
+					"name": "Dogberry"
+				}
+			]
+		},
+		{
+			"name": "Steven Beard",
+			"roles": [
+				{
+					"name": "Verges"
+				}
+			]
+		},
+		{
+			"name": "Patrick Romer",
+			"roles": [
+				{
+					"name": "Friar Francis"
+				}
+			]
+		},
+		{
+			"name": "John Heffernan",
+			"roles": [
+				{
+					"name": "Sexton"
+				}
+			]
+		},
+		{
+			"name": "Christopher Davies",
+			"roles": [
+				{
+					"name": "Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		},
+		{
+			"name": "Shane Frater",
+			"roles": [
+				{
+					"name": "Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		},
+		{
+			"name": "Sam O'Mahoney-Adams",
+			"roles": [
+				{
+					"name": "Watchman",
+					"characterName": "Watchmen"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Marianne Elliott"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lez Brotherston"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Christopher Shutt"
+				}
+			]
+		},
+		{
+			"name": "Choreographers",
+			"entities": [
+				{
+					"name": "Sarah Gorman"
+				},
+				{
+					"name": "Susannah Broughton"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Olly Fox"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Bruce O'Neil"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Alison de Burgh"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Alex Sims"
+				}
+			]
+		}
+	]
+}

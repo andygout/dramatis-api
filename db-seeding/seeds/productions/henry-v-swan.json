@@ -1,0 +1,167 @@
+{
+	"name": "Henry V (Enrico V)",
+	"startDate": "2007-02-01",
+	"endDate": "2007-02-03",
+	"material": {
+		"name": "Henry V"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Compagnia Pippo Delbono"
+				}
+			]
+		},
+		{
+			"name": "in collaboration with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Emilia Romagna Teatro Fondazione"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sarah Allen"
+		},
+		{
+			"name": "Jennifer Bossomworth"
+		},
+		{
+			"name": "Dina Choudhury"
+		},
+		{
+			"name": "Magherita Clemente"
+		},
+		{
+			"name": "Tom Coles"
+		},
+		{
+			"name": "Adam Collier"
+		},
+		{
+			"name": "Martin Copland-Gray"
+		},
+		{
+			"name": "Helen Crevel"
+		},
+		{
+			"name": "Robert Curtis"
+		},
+		{
+			"name": "Leondro D'Andrea"
+		},
+		{
+			"name": "Pippo Delbono",
+			"roles": [
+				{
+					"name": "Henry V",
+					"characterName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Lucia della Ferrera"
+		},
+		{
+			"name": "Gustavo Giacosa",
+			"roles": [
+				{
+					"name": "The French"
+				}
+			]
+		},
+		{
+			"name": "Richard Jameson"
+		},
+		{
+			"name": "Colleen Keenan"
+		},
+		{
+			"name": "Sara Kirkpatrick"
+		},
+		{
+			"name": "Anna Patalong"
+		},
+		{
+			"name": "Tom Phillips"
+		},
+		{
+			"name": "Nikki Pritchard"
+		},
+		{
+			"name": "Thomas Puddefoot"
+		},
+		{
+			"name": "Joshua Purfield-Clarke"
+		},
+		{
+			"name": "Pepe Robledo",
+			"roles": [
+				{
+					"name": "Friend of the King"
+				}
+			]
+		},
+		{
+			"name": "Naomi Said"
+		},
+		{
+			"name": "Lloyd Scarsbrook"
+		},
+		{
+			"name": "Bryony Taylor"
+		},
+		{
+			"name": "Tim Thurston"
+		},
+		{
+			"name": "Andy Travis"
+		},
+		{
+			"name": "Simon Wergrzyn"
+		},
+		{
+			"name": "Alastair Whatley"
+		},
+		{
+			"name": "Jeremy Williams"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Pippo Delbono"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Simone Goggiano"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Mario Intrugio"
+				}
+			]
+		}
+	]
+}

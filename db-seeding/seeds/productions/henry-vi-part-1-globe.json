@@ -1,0 +1,223 @@
+{
+	"name": "Henry VI, Part 1 (Хенри Шести први део - Henri Šesti prvi deo)",
+	"startDate": "2012-05-11",
+	"endDate": "2012-05-13",
+	"material": {
+		"name": "Henry VI, Part 1"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of Belgrade"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Hadži Nenad Maričić",
+			"roles": [
+				{
+					"name": "King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Slobodan Beštić",
+			"roles": [
+				{
+					"name": "Richard Plantagenet, later Duke of York",
+					"characterName": "Richard Plantagenet"
+				}
+			]
+		},
+		{
+			"name": "Tanasije Uzunović",
+			"roles": [
+				{
+					"name": "Duke of Gloucester",
+					"characterName": "Humphrey of Lancaster, Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Predrag Ejdus",
+			"roles": [
+				{
+					"name": "Bishop of Winchester",
+					"characterName": "Henry Beaufort, Bishop of Winchester"
+				}
+			]
+		},
+		{
+			"name": "Jelena Đulvezan",
+			"roles": [
+				{
+					"name": "Joan la Pucelle",
+					"characterName": "Joan la Pucelle, Joan of Arc"
+				}
+			]
+		},
+		{
+			"name": "Aleksander Srećković",
+			"roles": [
+				{
+					"name": "Charles, Dauphin of France",
+					"characterName": "Charles the Dauphin"
+				}
+			]
+		},
+		{
+			"name": "Bojan Krivokapić",
+			"roles": [
+				{
+					"name": "Basset"
+				}
+			]
+		},
+		{
+			"name": "Boris Pingović",
+			"roles": [
+				{
+					"name": "Duke of Somerset",
+					"characterName": "John Beaufort, Duke of Somerset"
+				}
+			]
+		},
+		{
+			"name": "Branco Jerenić",
+			"roles": [
+				{
+					"name": "Earl of Warwick",
+					"characterName": "Richard Beauchamp, Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Branislav Tomašević",
+			"roles": [
+				{
+					"name": "Earl of Suffolk",
+					"characterName": "William de la Pole, Earl of Suffolk"
+				}
+			]
+		},
+		{
+			"name": "Nebojša Kundačina",
+			"roles": [
+				{
+					"name": "Lord Talbot"
+				}
+			]
+		},
+		{
+			"name": "Pavle Jerinić",
+			"roles": [
+				{
+					"name": "Vernon"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nikita Milivojević"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Boris Maksimović"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Marina Medenica"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Bora Dugić"
+				}
+			]
+		},
+		{
+			"name": "Stage Movement",
+			"entities": [
+				{
+					"name": "Amalia Bennett"
+				}
+			]
+		},
+		{
+			"name": "Stage Speech",
+			"entities": [
+				{
+					"name": "Lјilјana Mrkić Popović"
+				}
+			]
+		},
+		{
+			"name": "Chorus Arrangements",
+			"entities": [
+				{
+					"name": "Dimosthenis Grivas"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Ivana Dimić"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Ivana Nenadović"
+				}
+			]
+		},
+		{
+			"name": "Assistant Costume Designers",
+			"entities": [
+				{
+					"name": "Srdjan Perić"
+				},
+				{
+					"name": "Marija Tavčar"
+				}
+			]
+		},
+		{
+			"name": "Jewellery Maker",
+			"entities": [
+				{
+					"name": "Srdjan Perić"
+				}
+			]
+		}
+	]
+}

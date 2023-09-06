@@ -1,0 +1,376 @@
+{
+	"name": "Troilus and Cressida",
+	"startDate": "2006-08-31",
+	"endDate": "2006-09-09",
+	"material": {
+		"name": "Troilus and Cressida"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Edinburgh International Festival"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Arthur Cox",
+			"roles": [
+				{
+					"name": "Calchas"
+				}
+			]
+		},
+		{
+			"name": "Henry Pettigrew",
+			"roles": [
+				{
+					"name": "Troilus"
+				}
+			]
+		},
+		{
+			"name": "Paul Jesson",
+			"roles": [
+				{
+					"name": "Pandarus"
+				}
+			]
+		},
+		{
+			"name": "Simon Armstrong",
+			"roles": [
+				{
+					"name": "Aeneas"
+				}
+			]
+		},
+		{
+			"name": "Annabel Scholey",
+			"roles": [
+				{
+					"name": "Cressida"
+				}
+			]
+		},
+		{
+			"name": "Richard Clothier",
+			"roles": [
+				{
+					"name": "Hector"
+				}
+			]
+		},
+		{
+			"name": "Adam Levy",
+			"roles": [
+				{
+					"name": "Paris"
+				}
+			]
+		},
+		{
+			"name": "Roger May",
+			"roles": [
+				{
+					"name": "Margarelon"
+				}
+			]
+		},
+		{
+			"name": "Ian Hogg",
+			"roles": [
+				{
+					"name": "Agamemnon",
+					"characterName": "Agamemnon, King of the Greeks"
+				}
+			]
+		},
+		{
+			"name": "John Franklyn-Robbins",
+			"roles": [
+				{
+					"name": "Nestor"
+				}
+			]
+		},
+		{
+			"name": "David Yelland",
+			"roles": [
+				{
+					"name": "Ulysses"
+				}
+			]
+		},
+		{
+			"name": "John Kane",
+			"roles": [
+				{
+					"name": "Menelaus"
+				}
+			]
+		},
+		{
+			"name": "Richard Wills-Cotton",
+			"roles": [
+				{
+					"name": "Diomedes"
+				}
+			]
+		},
+		{
+			"name": "Ian Hughes",
+			"roles": [
+				{
+					"name": "Thersites"
+				}
+			]
+		},
+		{
+			"name": "Julian Lewis Jones",
+			"roles": [
+				{
+					"name": "Ajax"
+				}
+			]
+		},
+		{
+			"name": "Vincent Regan",
+			"roles": [
+				{
+					"name": "Achilles"
+				}
+			]
+		},
+		{
+			"name": "Oliver Kieran-Jones",
+			"roles": [
+				{
+					"name": "Patroclus"
+				}
+			]
+		},
+		{
+			"name": "Jeffry Wickham",
+			"roles": [
+				{
+					"name": "Priam",
+					"characterName": "Priam, King of Troy"
+				}
+			]
+		},
+		{
+			"name": "Kate Miles",
+			"roles": [
+				{
+					"name": "Cassandra"
+				}
+			]
+		},
+		{
+			"name": "Rachel Pickup",
+			"roles": [
+				{
+					"name": "Helen"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Moore",
+			"roles": [
+				{
+					"name": "Andromache"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Thomson",
+			"roles": [
+				{
+					"name": "Trumpeter"
+				}
+			]
+		},
+		{
+			"name": "Tom Poulson",
+			"roles": [
+				{
+					"name": "Trumpeter"
+				}
+			]
+		},
+		{
+			"name": "John Beale",
+			"roles": [
+				{
+					"name": "Greek soldier",
+					"characterName": "Greek soldiers"
+				}
+			]
+		},
+		{
+			"name": "Jeronimo Best",
+			"roles": [
+				{
+					"name": "Greek soldier",
+					"characterName": "Greek soldiers"
+				}
+			]
+		},
+		{
+			"name": "Stephen Giles",
+			"roles": [
+				{
+					"name": "Greek soldier",
+					"characterName": "Greek soldiers"
+				}
+			]
+		},
+		{
+			"name": "Stephen Leask",
+			"roles": [
+				{
+					"name": "Greek soldier",
+					"characterName": "Greek soldiers"
+				}
+			]
+		},
+		{
+			"name": "Otis Waby",
+			"roles": [
+				{
+					"name": "Greek soldier",
+					"characterName": "Greek soldiers"
+				}
+			]
+		},
+		{
+			"name": "Stephen Hagan",
+			"roles": [
+				{
+					"name": "Antenor"
+				}
+			]
+		},
+		{
+			"name": "Kyle Redmond Jones",
+			"roles": [
+				{
+					"name": "Trojan soldier",
+					"characterName": "Trojan soldiers"
+				}
+			]
+		},
+		{
+			"name": "Patrick Knowles",
+			"roles": [
+				{
+					"name": "Trojan soldier",
+					"characterName": "Trojan soldiers"
+				}
+			]
+		},
+		{
+			"name": "Sean McConaghy",
+			"roles": [
+				{
+					"name": "Trojan soldier",
+					"characterName": "Trojan soldiers"
+				}
+			]
+		},
+		{
+			"name": "Danny Seldon",
+			"roles": [
+				{
+					"name": "Trojan soldier",
+					"characterName": "Trojan soldiers"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Peter Stein"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ferdinand Wögerbauer"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Anna Maria Heinrich"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Japhy Weideman"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Ferdinando Nicci"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Arturo Annechhino"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Emma Stuart"
+				}
+			]
+		}
+	]
+}

@@ -16,23 +16,28 @@
 			"characters": [
 				{
 					"name": "Beatrice",
-					"qualifier": "#1"
+					"qualifier": "#1",
+					"differentiator": "The B File"
 				},
 				{
 					"name": "Beatrice",
-					"qualifier": "#2"
+					"qualifier": "#2",
+					"differentiator": "The B File"
 				},
 				{
 					"name": "Beatrice",
-					"qualifier": "#3"
+					"qualifier": "#3",
+					"differentiator": "The B File"
 				},
 				{
 					"name": "Beatrice",
-					"qualifier": "#4"
+					"qualifier": "#4",
+					"differentiator": "The B File"
 				},
 				{
 					"name": "Beatrice",
-					"qualifier": "#5"
+					"qualifier": "#5",
+					"differentiator": "The B File"
 				}
 			]
 		}

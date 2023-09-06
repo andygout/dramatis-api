@@ -1,0 +1,93 @@
+{
+	"name": "Henry IV, Part 2 (Henrique IV, Segunda Parte)",
+	"startDate": "2012-05-15",
+	"endDate": "2012-05-16",
+	"material": {
+		"name": "Henry IV, Part 2"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Elkafka Espacio Teatral"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Horacio Acotsa",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Lautaro Vilo",
+			"roles": [
+				{
+					"name": "Prince Henry, later crowned Henry V",
+					"characterName": "Prince Henry"
+				}
+			]
+		},
+		{
+			"name": "Horacio Peña",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Graciela Martinelli",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Irina Alonso",
+			"roles": [
+				{
+					"name": "Doll Tearsheet"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ruben Szuchmacher"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Jorge Ferrari"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Barbara Togander"
+				}
+			]
+		}
+	]
+}

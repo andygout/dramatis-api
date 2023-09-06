@@ -1,0 +1,126 @@
+{
+	"name": "Merry Wives: The Musical",
+	"format": "musical",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"name": "based on the play",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Merry Wives of Windsor"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "music by",
+			"entities": [
+				{
+					"name": "Paul Englishby"
+				}
+			]
+		},
+		{
+			"name": "lyrics by",
+			"entities": [
+				{
+					"name": "Ranjit Bolt"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Nym",
+					"underlyingName": "Corporal Nym"
+				},
+				{
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
+				},
+				{
+					"name": "Robin"
+				},
+				{
+					"name": "Robert Shallow"
+				},
+				{
+					"name": "Abraham Slender"
+				},
+				{
+					"name": "Peter Simple"
+				},
+				{
+					"name": "George Page"
+				},
+				{
+					"name": "Mistress Page",
+					"underlyingName": "Mistress Margaret Page"
+				},
+				{
+					"name": "Anne Page"
+				},
+				{
+					"name": "Frank Ford"
+				},
+				{
+					"name": "Mistress Ford",
+					"underlyingName": "Mistress Alice Page"
+				},
+				{
+					"name": "Sir Hugh Evans"
+				},
+				{
+					"name": "Host of the Garter Inn"
+				},
+				{
+					"name": "Dr Caius",
+					"underlyingName": "Doctor Caius"
+				},
+				{
+					"name": "Jack Rugby",
+					"underlyingName": "John Rugby"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				},
+				{
+					"name": "Fenton"
+				},
+				{
+					"name": "Robert",
+					"differentiator": "The Merry Wives of Windsor"
+				},
+				{
+					"name": "John",
+					"differentiator": "The Merry Wives of Windsor"
+				},
+				{
+					"name": "Maid",
+					"differentiator": "Merry Wives: The Musical"
+				},
+				{
+					"name": "Children",
+					"underlyingName": "Several children of Windsor"
+				}
+			]
+		}
+	]
+}

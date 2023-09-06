@@ -1,0 +1,209 @@
+{
+	"name": "Pericles, Prince of Tyre",
+	"format": "play",
+	"year": "1608",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "John Gower"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Antiochus, King of Antioch"
+				},
+				{
+					"name": "Pericles, Prince of Tyre"
+				},
+				{
+					"name": "Daughter of Antiochus"
+				},
+				{
+					"name": "Thaliard"
+				},
+				{
+					"name": "Messenger of Antioch"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Helicanus"
+				},
+				{
+					"name": "Escanes"
+				},
+				{
+					"name": "Lords of Tyre"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Cleon, governor of Tarsus"
+				},
+				{
+					"name": "Dionyza"
+				},
+				{
+					"name": "Lord of Tarsus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Simonides, King of Pentapolis"
+				},
+				{
+					"name": "Thaisa"
+				},
+				{
+					"name": "Three lords of Pentapolis"
+				},
+				{
+					"name": "Five knights"
+				},
+				{
+					"name": "Marshal"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lychorida"
+				},
+				{
+					"name": "Two sailors"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Cerimon"
+				},
+				{
+					"name": "Two servants of Ephesus"
+				},
+				{
+					"name": "Philemon"
+				},
+				{
+					"name": "Two gentlemen of Ephesus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Leonine"
+				},
+				{
+					"name": "Marina"
+				},
+				{
+					"name": "Three pirates"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Pander"
+				},
+				{
+					"name": "Bawd"
+				},
+				{
+					"name": "Boult"
+				},
+				{
+					"name": "Two gentlemen of Mytilene"
+				},
+				{
+					"name": "Lysimachus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Sailor of Tyre"
+				},
+				{
+					"name": "Sailor of Mytilene"
+				},
+				{
+					"name": "Gentleman of Tyre"
+				},
+				{
+					"name": "Lord of Mytilene"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Diana",
+					"differentiator": "Pericles"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Messengers",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Ladies",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "Pericles"
+				},
+				{
+					"name": "Companion of Marina"
+				},
+				{
+					"name": "Priestesses"
+				},
+				{
+					"name": "Inhabitants of Ephesus"
+				}
+			]
+		}
+	]
+}

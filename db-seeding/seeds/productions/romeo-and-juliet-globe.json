@@ -1,0 +1,164 @@
+{
+	"name": "Romeo and Juliet (Romeu e Julieta)",
+	"startDate": "2012-05-19",
+	"endDate": "2012-05-20",
+	"material": {
+		"name": "Romeo and Juliet"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Grupo Galpão"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Eduardo Moreira",
+			"roles": [
+				{
+					"name": "Romeu",
+					"characterName": "Romeo Montague"
+				}
+			]
+		},
+		{
+			"name": "Fernanda Vianna",
+			"roles": [
+				{
+					"name": "Julieta",
+					"characterName": "Juliet Capulet"
+				}
+			]
+		},
+		{
+			"name": "Rodolfo Vaz",
+			"roles": [
+				{
+					"name": "Mercúcio",
+					"characterName": "Mercutio"
+				}
+			]
+		},
+		{
+			"name": "Paulo André",
+			"roles": [
+				{
+					"name": "Teobaldo",
+					"characterName": "Tybalt"
+				},
+				{
+					"name": "Frei Lourenço",
+					"characterName": "Friar Laurence"
+				}
+			]
+		},
+		{
+			"name": "Teuda Bara",
+			"roles": [
+				{
+					"name": "Ama",
+					"characterName": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Antonio Edson",
+			"roles": [
+				{
+					"name": "Narrador"
+				}
+			]
+		},
+		{
+			"name": "Beto Francis",
+			"roles": [
+				{
+					"name": "Príncipe",
+					"characterName": "Escalus, Prince of Verona"
+				},
+				{
+					"name": "Senhor Capuleto",
+					"characterName": "Lord Capulet"
+				}
+			]
+		},
+		{
+			"name": "Inês Peixoto",
+			"roles": [
+				{
+					"name": "Senhora Capuleto",
+					"characterName": "Lady Capulet"
+				}
+			]
+		},
+		{
+			"name": "Júlio Maciel",
+			"roles": [
+				{
+					"name": "Benvólio",
+					"characterName": "Benvolio"
+				}
+			]
+		},
+		{
+			"name": "Lydia Del Picchia",
+			"roles": [
+				{
+					"name": "Sansão",
+					"characterName": "Sampson"
+				},
+				{
+					"name": "Criado Capuleto",
+					"characterName": "Servingmen"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director and Designer",
+			"entities": [
+				{
+					"name": "Gabriel Villela"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Luciana Buarque"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Wagner Freire"
+				}
+			]
+		},
+		{
+			"name": "Sound Designers",
+			"entities": [
+				{
+					"name": "Rômulo Righi"
+				},
+				{
+					"name": "Vinícius Alves"
+				}
+			]
+		}
+	]
+}

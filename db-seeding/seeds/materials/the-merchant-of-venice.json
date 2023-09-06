@@ -1,0 +1,110 @@
+{
+	"name": "The Merchant of Venice",
+	"format": "play",
+	"year": "1597",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Duke of Venice",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Prince of Morocco"
+				},
+				{
+					"name": "Prince of Arragon"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Bassanio"
+				},
+				{
+					"name": "Portia",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Shylock"
+				},
+				{
+					"name": "Gratiano",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Salerio"
+				},
+				{
+					"name": "Solanio"
+				},
+				{
+					"name": "Lorenzo"
+				},
+				{
+					"name": "Nerissa"
+				},
+				{
+					"name": "Jessica",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Tubal"
+				},
+				{
+					"name": "Leonardo"
+				},
+				{
+					"name": "Balthasar",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Stephano",
+					"differentiator": "The Merchant of Venice"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Launcelot Gobbo"
+				},
+				{
+					"name": "Old Gobbo"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Magnificoes of Venice"
+				},
+				{
+					"name": "Officers of the Court of Justice"
+				},
+				{
+					"name": "Gaoler",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Servant",
+					"differentiator": "The Merchant of Venice"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "The Merchant of Venice"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,178 @@
+{
+	"name": "Macbeth",
+	"startDate": "2007-02-21",
+	"endDate": "2007-02-24",
+	"material": {
+		"name": "Macbeth"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Teatr Piesn Kozla (Song of the Goat Theatre)"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Christopher Siversten",
+			"roles": [
+				{
+					"name": "Banquo"
+				}
+			]
+		},
+		{
+			"name": "Alexander Rogaczewski",
+			"roles": [
+				{
+					"name": "Duncan",
+					"characterName": "King Duncan"
+				},
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Anna Zubrzycki",
+			"roles": [
+				{
+					"name": "Lady Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Emma Bonnici",
+			"roles": [
+				{
+					"name": "Lady Macduff"
+				},
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				}
+			]
+		},
+		{
+			"name": "Gabriel Paul Gawin",
+			"roles": [
+				{
+					"name": "Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Ian Morgan",
+			"roles": [
+				{
+					"name": "Macduff"
+				}
+			]
+		},
+		{
+			"name": "Ewan Downie",
+			"roles": [
+				{
+					"name": "Malcolm"
+				}
+			]
+		},
+		{
+			"name": "Rafal Habel",
+			"roles": [
+				{
+					"name": "Porter"
+				}
+			]
+		},
+		{
+			"name": "Mark McGurran",
+			"roles": [
+				{
+					"name": "Ross"
+				}
+			]
+		},
+		{
+			"name": "Albina Sejtaszajewa",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				},
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Irina Telminowa",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				},
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Olga Werlan",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				},
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Ixchel De Setiem",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				}
+			]
+		},
+		{
+			"name": "Mirjana Sajinoviç",
+			"roles": [
+				{
+					"name": "Witch",
+					"characterName": "Three Witches"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Grzegorz Bral"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Christina Gonzalez"
+				}
+			]
+		}
+	]
+}
