@@ -1,0 +1,151 @@
+{
+	"name": "King John",
+	"format": "play",
+	"year": "1596",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The English Party",
+			"characters": [
+				{
+					"name": "King John"
+				},
+				{
+					"name": "Prince Henry",
+					"underlyingName": "King Henry III"
+				},
+				{
+					"name": "Earl of Pembroke",
+					"underlyingName": "William Marshal, 1st Earl of Pembroke"
+				},
+				{
+					"name": "Earl of Salisbury",
+					"underlyingName": "William Longespée, 3rd Earl of Salisbury"
+				},
+				{
+					"name": "Earl of Essex",
+					"underlyingName": "Geoffrey Fitz Peter, 1st Earl of Essex"
+				},
+				{
+					"name": "Lord Bigot, Earl of Norfolk",
+					"underlyingName": "Roger Bigod"
+				},
+				{
+					"name": "Robert Faulconbridge"
+				},
+				{
+					"name": "Philip the Bastard",
+					"underlyingName": "Philip of Cognac"
+				},
+				{
+					"name": "Hubert",
+					"underlyingName": "Hubert de Burgh, Earl of Kent"
+				},
+				{
+					"name": "James Gurney"
+				},
+				{
+					"name": "Peter of Pomfret",
+					"underlyingName": "Peter of Wakefield"
+				},
+				{
+					"name": "English herald"
+				},
+				{
+					"name": "Executioner",
+					"differentiator": "King John #1"
+				},
+				{
+					"name": "English messenger"
+				},
+				{
+					"name": "Queen Eleanor",
+					"underlyingName": "Eleanor of Aquitaine"
+				},
+				{
+					"name": "Blanche of Castile"
+				},
+				{
+					"name": "Lady Faulconbridge"
+				}
+			]
+		},
+		{
+			"name": "The French Party",
+			"characters": [
+				{
+					"name": "King Philip II",
+					"underlyingName": "King Philip II of France"
+				},
+				{
+					"name": "Lewis the Dauphin",
+					"underlyingName": "King Louis VIII of France"
+				},
+				{
+					"name": "Arthur, Duke of Brittaine",
+					"underlyingName": "Arthur I"
+				},
+				{
+					"name": "Archduke of Austria"
+				},
+				{
+					"name": "Viscount of Melun"
+				},
+				{
+					"name": "Châtillon",
+					"underlyingName": "Walter III of Châtillon"
+				},
+				{
+					"name": "French herald"
+				},
+				{
+					"name": "French messenger"
+				},
+				{
+					"name": "Constance",
+					"underlyingName": "Constance, Duchess of Brittany"
+				}
+			]
+		},
+		{
+			"name": "The Pope's Legate",
+			"characters": [
+				{
+					"name": "Cardinal Pandulph",
+					"underlyingName": "Pandulf Verraccio"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lords",
+					"differentiator": "King John"
+				},
+				{
+					"name": "Sheriff",
+					"differentiator": "King John"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "King John"
+				},
+				{
+					"name": "Executioners"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "King John"
+				}
+			]
+		}
+	]
+}

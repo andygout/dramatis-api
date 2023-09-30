@@ -1,0 +1,200 @@
+{
+	"name": "Pericles (Περικλής - Periklís)",
+	"startDate": "2012-04-26",
+	"endDate": "2012-04-27",
+	"material": {
+		"name": "Pericles, Prince of Tyre"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of Greece"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Christos Loulis",
+			"roles": [
+				{
+					"name": "Pericles, Prince of Tyre"
+				}
+			]
+		},
+		{
+			"name": "Dimitris Paitas",
+			"roles": [
+				{
+					"name": "Gower",
+					"characterName": "John Gower"
+				}
+			]
+		},
+		{
+			"name": "Maria Skoula",
+			"roles": [
+				{
+					"name": "Thaisa"
+				}
+			]
+		},
+		{
+			"name": "Stefania Goulioti",
+			"roles": [
+				{
+					"name": "Marina"
+				},
+				{
+					"name": "Daughter of Antiochus"
+				}
+			]
+		},
+		{
+			"name": "Lydia Fotopoulou",
+			"roles": [
+				{
+					"name": "Dionyza"
+				},
+				{
+					"name": "Bawd"
+				}
+			]
+		},
+		{
+			"name": "Kostas Vasardanis",
+			"roles": [
+				{
+					"name": "Philemon"
+				},
+				{
+					"name": "Fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Lysimachus"
+				}
+			]
+		},
+		{
+			"name": "Manolis Mavromatakis",
+			"roles": [
+				{
+					"name": "Simonides, King of Pentapolis"
+				},
+				{
+					"name": "Boult"
+				}
+			]
+		},
+		{
+			"name": "Minas Hatzisavvas",
+			"roles": [
+				{
+					"name": "Cleon",
+					"characterName": "Cleon, governor of Tarsus"
+				},
+				{
+					"name": "Thaliard"
+				},
+				{
+					"name": "Fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				}
+			]
+		},
+		{
+			"name": "Giannis Voyiatzis",
+			"roles": [
+				{
+					"name": "Helicanus"
+				},
+				{
+					"name": "Pander"
+				}
+			]
+		},
+		{
+			"name": "Giorgos Glastras",
+			"roles": [
+				{
+					"name": "Leonine"
+				},
+				{
+					"name": "Fisherman",
+					"characterName": "Three fisherman of Pentapolis"
+				}
+			]
+		},
+		{
+			"name": "Yorgos Kotanidis",
+			"roles": [
+				{
+					"name": "Antiochus",
+					"characterName": "Antiochus, King of Antioch"
+				},
+				{
+					"name": "Cerimon"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Yannis Houvardas"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Ionna Tsami"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Lefteris Pavlopoulos"
+				}
+			]
+		},
+		{
+			"name": "Music Coach",
+			"entities": [
+				{
+					"name": "Melina Peonidou"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Natasha Triantafylli"
+				}
+			]
+		},
+		{
+			"name": "Dramaturg",
+			"entities": [
+				{
+					"name": "Vivi Spathoula"
+				}
+			]
+		}
+	]
+}

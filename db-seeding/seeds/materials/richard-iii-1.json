@@ -1,0 +1,251 @@
+{
+	"name": "Richard III",
+	"format": "play",
+	"year": "1593",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "House of York",
+			"characters": [
+				{
+					"name": "King Edward IV"
+				},
+				{
+					"name": "Edward, Prince of Wales",
+					"underlyingName": "King Edward V"
+				},
+				{
+					"name": "Richard, Duke of York",
+					"underlyingName": "Richard of Shrewsbury, Duke of York"
+				},
+				{
+					"name": "George, Duke of Clarence",
+					"underlyingName": "George Plantagenet, Duke of Clarence"
+				},
+				{
+					"name": "Richard, Duke of Gloucester",
+					"underlyingName": "King Richard III"
+				},
+				{
+					"name": "Duchess of York",
+					"underlyingName": "Cecily Neville, Duchess of York"
+				},
+				{
+					"name": "Edward Plantagenet",
+					"underlyingName": "Edward Plantagenet, 17th Earl of Warwick"
+				},
+				{
+					"name": "Margaret Plantagenet",
+					"underlyingName": "Margaret Plantagenet, Countess of Salisbury"
+				}
+			]
+		},
+		{
+			"name": "House of Lancaster",
+			"characters": [
+				{
+					"name": "Lady Anne",
+					"underlyingName": "Lady Anne Neville"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				},
+				{
+					"name": "Tressel"
+				},
+				{
+					"name": "Berkeley"
+				},
+				{
+					"name": "Ghost of King Henry VI",
+					"underlyingName": "King Henry VI"
+				},
+				{
+					"name": "Ghost of Edward, Prince of Wales",
+					"underlyingName": "Edward, Prince of Wales",
+					"differentiator": "King Henry VI's son"
+				}
+			]
+		},
+		{
+			"name": "Woodville family",
+			"characters": [
+				{
+					"name": "Queen Elizabeth",
+					"underlyingName": "Dame Elizabeth Grey (née Woodville)"
+				},
+				{
+					"name": "Anthony Woodville, Earl Rivers",
+					"underlyingName": "Anthony Woodville, 2nd Earl Rivers"
+				},
+				{
+					"name": "Marquis of Dorset",
+					"underlyingName": "Thomas Grey, 1st Marquess of Dorset, 1st Earl of Huntingdon, 7th Baron Ferrers of Groby"
+				},
+				{
+					"name": "Lord Richard Grey",
+					"underlyingName": "Sir Richard Grey"
+				},
+				{
+					"name": "Sir Thomas Vaughan"
+				}
+			]
+		},
+		{
+			"name": "Richard III's group",
+			"characters": [
+				{
+					"name": "Duke of Buckingham",
+					"underlyingName": "Henry Stafford, 2nd Duke of Buckingham"
+				},
+				{
+					"name": "Duke of Norfolk",
+					"underlyingName": "John Howard, 1st Duke of Norfolk"
+				},
+				{
+					"name": "Earl of Surrey",
+					"underlyingName": "Thomas Howard, 2nd Duke of Norfolk"
+				},
+				{
+					"name": "Lord Lovell",
+					"underlyingName": "Frances Lovell, 9th Baron Lovell, 6th Baron Holand, later 1st Viscount Lovell"
+				},
+				{
+					"name": "Sir Richard Ratcliffe"
+				},
+				{
+					"name": "Sir William Catesby"
+				},
+				{
+					"name": "Sir James Tyrrell"
+				},
+				{
+					"name": "Page",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Two murderers"
+				}
+			]
+		},
+		{
+			"name": "Earl of Richmond's group",
+			"characters": [
+				{
+					"name": "Henry, Earl of Richmond",
+					"underlyingName": "King Henry VII"
+				},
+				{
+					"name": "John de Vere, Earl of Oxford",
+					"underlyingName": "John de Vere, 13th Earl of Oxford"
+				},
+				{
+					"name": "Lord Stanley, Earl of Derby"
+				},
+				{
+					"name": "Sir James Blunt",
+					"underlyingName": "Sir James Blount"
+				},
+				{
+					"name": "Sir Walter Herbert"
+				},
+				{
+					"name": "Sir William Brandon"
+				}
+			]
+		},
+		{
+			"name": "Clergy",
+			"characters": [
+				{
+					"name": "Thomas Bourchier, Archbishop of Canterbury"
+				},
+				{
+					"name": "Thomas Rotheram, Archbishop of York"
+				},
+				{
+					"name": "John Morton, Bishop of Ely"
+				},
+				{
+					"name": "Christopher Urswick"
+				},
+				{
+					"name": "John",
+					"differentiator": "Richard III"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lord Hastings",
+					"underlyingName": "William Hastings, 1st Baron Hastings"
+				},
+				{
+					"name": "Sir Robert Brackenbury, Lieutenant of the Tower"
+				},
+				{
+					"name": "Keeper in the Tower"
+				},
+				{
+					"name": "Lord Mayor of London",
+					"underlyingName": "Sir Edmund Shaw"
+				},
+				{
+					"name": "Sheriff of Wiltshire",
+					"underlyingName": "Henry Long of Wraxall"
+				},
+				{
+					"name": "Hastings"
+				},
+				{
+					"name": "Scrivener"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Bishops",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Aldermen",
+					"differentiator": "Richard III"
+				},
+				{
+					"name": "Citizens",
+					"differentiator": "Richard III"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Mistress Jane Shore"
+				}
+			]
+		}
+	]
+}

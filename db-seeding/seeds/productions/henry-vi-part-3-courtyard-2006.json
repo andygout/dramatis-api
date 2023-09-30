@@ -1,0 +1,334 @@
+{
+	"name": "Henry VI, Part 3",
+	"startDate": "2006-07-21",
+	"pressDate": "2006-08-09",
+	"endDate": "2006-10-21",
+	"material": {
+		"name": "Henry VI, Part 3"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Chuk Iwuji",
+			"roles": [
+				{
+					"name": "King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Katy Stephens",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Wela Frasier",
+			"roles": [
+				{
+					"name": "Edward Prince of Wales",
+					"characterName": "Edward, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Keith Dunphy",
+			"roles": [
+				{
+					"name": "Lord Clifford"
+				}
+			]
+		},
+		{
+			"name": "Roger Watkins",
+			"roles": [
+				{
+					"name": "Duke of Salisbury"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Asbury",
+			"roles": [
+				{
+					"name": "Duke of Somerset"
+				}
+			]
+		},
+		{
+			"name": "Paul Hamilton",
+			"roles": [
+				{
+					"name": "Earl of Oxford",
+					"characterName": "John de Vere, Earl of Oxford"
+				}
+			]
+		},
+		{
+			"name": "Chris McGill",
+			"roles": [
+				{
+					"name": "Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Kieran Hill",
+			"roles": [
+				{
+					"name": "Earl of Westmorland",
+					"characterName": "Ralph Neville, Earl of Westmorland"
+				}
+			]
+		},
+		{
+			"name": "Lex Shrapnel",
+			"roles": [
+				{
+					"name": "Henry Earl of Richmond",
+					"characterName": "Henry, Earl of Richmond"
+				},
+				{
+					"name": "Son that has killed his father"
+				}
+			]
+		},
+		{
+			"name": "Patrice Naiambana",
+			"roles": [
+				{
+					"name": "Earl of Warwick",
+					"characterName": "Richard Nevil, Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Matt Costain",
+			"roles": [
+				{
+					"name": "Marquis of Montague",
+					"characterName": "Marquess of Montague"
+				}
+			]
+		},
+		{
+			"name": "Clive Wood",
+			"roles": [
+				{
+					"name": "Richard Plantagenet",
+					"characterName": "Richard Plantagenet, Duke of York"
+				}
+			]
+		},
+		{
+			"name": "Forbes Masson",
+			"roles": [
+				{
+					"name": "Edward",
+					"characterName": "Edward Plantagenet, Earl of March"
+				}
+			]
+		},
+		{
+			"name": "James Tucker",
+			"roles": [
+				{
+					"name": "George",
+					"characterName": "George Plantagenet, later Duke of Clarence"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Richard",
+					"characterName": "Richard Plantagenet, later Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Alexia Healy",
+			"roles": [
+				{
+					"name": "Rutland",
+					"characterName": "Edmund Plantegenet, Earl of Rutland"
+				},
+				{
+					"name": "Lady Bona"
+				}
+			]
+		},
+		{
+			"name": "Julius D'Silva",
+			"roles": [
+				{
+					"name": "Rutland's tutor",
+					"characterName": "Robert Aspell, Rutland's tutor"
+				}
+			]
+		},
+		{
+			"name": "Tom Hodgkins",
+			"roles": [
+				{
+					"name": "Lord Hastings"
+				}
+			]
+		},
+		{
+			"name": "John Mackay",
+			"roles": [
+				{
+					"name": "Sir John Montgomery"
+				}
+			]
+		},
+		{
+			"name": "Miles Richardson",
+			"roles": [
+				{
+					"name": "Duke of Norfolk"
+				}
+			]
+		},
+		{
+			"name": "Ann Ogbomo",
+			"roles": [
+				{
+					"name": "Lady Elizabeth Grey"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Streatfeild",
+			"roles": [
+				{
+					"name": "Lord Rivers",
+					"characterName": "Earl Rivers"
+				}
+			]
+		},
+		{
+			"name": "Keith Bartlett",
+			"roles": [
+				{
+					"name": "Father that has killed his son"
+				}
+			]
+		},
+		{
+			"name": "Antony Bunsee",
+			"roles": [
+				{
+					"name": "Keeper",
+					"characterName": "Two keepers"
+				}
+			]
+		},
+		{
+			"name": "Hannah Barrie",
+			"roles": [
+				{
+					"name": "Nurse",
+					"characterName": "Nurse to Prince Edward"
+				}
+			]
+		},
+		{
+			"name": "Richard Cordery",
+			"roles": [
+				{
+					"name": "Louis XI",
+					"characterName": "King Lewis XI"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Boyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Piper"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Heather Carson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Andrea J Cox"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "James Jones"
+				},
+				{
+					"name": "John Woolf"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Donnacadh O'Briain"
+				}
+			]
+		}
+	]
+}

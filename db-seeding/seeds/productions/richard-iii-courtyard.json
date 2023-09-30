@@ -1,0 +1,457 @@
+{
+	"name": "Richard III",
+	"startDate": "2007-01-11",
+	"pressDate": "2007-01-23",
+	"endDate": "2007-02-17",
+	"material": {
+		"name": "Richard III"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Forbes Masson",
+			"roles": [
+				{
+					"name": "King Edward IV"
+				}
+			]
+		},
+		{
+			"name": "James Tucker",
+			"roles": [
+				{
+					"name": "George Duke of Clarence",
+					"characterName": "George, Duke of Clarence"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Slinger",
+			"roles": [
+				{
+					"name": "Richard Duke of Gloucester",
+					"characterName": "Richard, Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Maureen Beattie",
+			"roles": [
+				{
+					"name": "Duchess of York"
+				}
+			]
+		},
+		{
+			"name": "Charles Hamblett",
+			"roles": [
+				{
+					"name": "Edward Prince of Wales",
+					"characterName": "Edward, Prince of Wales",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Michael Hood",
+			"roles": [
+				{
+					"name": "Edward Prince of Wales",
+					"characterName": "Edward, Prince of Wales",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "James Parris",
+			"roles": [
+				{
+					"name": "Edward Prince of Wales",
+					"characterName": "Edward, Prince of Wales",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Ralph Davis",
+			"roles": [
+				{
+					"name": "Richard Duke of York",
+					"characterName": "Richard, Duke of York",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Toby Millward",
+			"roles": [
+				{
+					"name": "Richard Duke of York",
+					"characterName": "Richard, Duke of York",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Oscar Powell",
+			"roles": [
+				{
+					"name": "Richard Duke of York",
+					"characterName": "Richard, Duke of York",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jack Fielding",
+			"roles": [
+				{
+					"name": "Edward Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alexander Morris",
+			"roles": [
+				{
+					"name": "Edward Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jamie Thomas",
+			"roles": [
+				{
+					"name": "Edward Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Alice Roberts",
+			"roles": [
+				{
+					"name": "Margaret Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Sophie Samuda",
+			"roles": [
+				{
+					"name": "Margaret Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Jessica Smith",
+			"roles": [
+				{
+					"name": "Margaret Plantagenet",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Richard Cordery",
+			"roles": [
+				{
+					"name": "Duke of Buckingham"
+				}
+			]
+		},
+		{
+			"name": "Matt Costain",
+			"roles": [
+				{
+					"name": "Sir Richard Ratcliffe"
+				}
+			]
+		},
+		{
+			"name": "Julius D'Silva",
+			"roles": [
+				{
+					"name": "Sir William Catesby"
+				}
+			]
+		},
+		{
+			"name": "John Mackay",
+			"roles": [
+				{
+					"name": "Sir James Tyrrell"
+				}
+			]
+		},
+		{
+			"name": "Keith Dunphy",
+			"roles": [
+				{
+					"name": "Lovell",
+					"characterName": "Lord Lovell"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Asbury",
+			"roles": [
+				{
+					"name": "Vaughan",
+					"characterName": "Sir Thomas Vaughan"
+				}
+			]
+		},
+		{
+			"name": "Ann Ogbomo",
+			"roles": [
+				{
+					"name": "Queen Elizabeth"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Streatfeild",
+			"roles": [
+				{
+					"name": "Lord Rivers",
+					"characterName": "Anthony Woodville, Earl Rivers"
+				}
+			]
+		},
+		{
+			"name": "Chris McGill",
+			"roles": [
+				{
+					"name": "Lord Grey",
+					"characterName": "Lord Richard Grey"
+				}
+			]
+		},
+		{
+			"name": "Wela Frasier",
+			"roles": [
+				{
+					"name": "Marquis of Dorset"
+				}
+			]
+		},
+		{
+			"name": "Roger Watkins",
+			"roles": [
+				{
+					"name": "Archbishop of York",
+					"characterName": "Thomas Rotheram, Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Tom Hodgkins",
+			"roles": [
+				{
+					"name": "Lord Hastings"
+				}
+			]
+		},
+		{
+			"name": "Keith Bartlett",
+			"roles": [
+				{
+					"name": "Lord Stanley",
+					"characterName": "Lord Stanley, Earl of Derby"
+				}
+			]
+		},
+		{
+			"name": "Miles Richardson",
+			"roles": [
+				{
+					"name": "Bishop of Ely",
+					"characterName": "John Morton, Bishop of Ely"
+				}
+			]
+		},
+		{
+			"name": "Katy Stephens",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Hannah Barrie",
+			"roles": [
+				{
+					"name": "Lady Anne"
+				}
+			]
+		},
+		{
+			"name": "Lex Shrapnel",
+			"roles": [
+				{
+					"name": "Earl of Richmond",
+					"characterName": "Henry, Earl of Richmond"
+				}
+			]
+		},
+		{
+			"name": "Paul Hamilton",
+			"roles": [
+				{
+					"name": "Earl of Oxford",
+					"characterName": "John de Vere, Earl of Oxford"
+				}
+			]
+		},
+		{
+			"name": "Kieran Hill",
+			"roles": [
+				{
+					"name": "Lord Mayor",
+					"characterName": "Lord Mayor of London"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Freshwater",
+			"roles": [
+				{
+					"name": "Sir Walter Herbert"
+				}
+			]
+		},
+		{
+			"name": "Alexia Healy",
+			"roles": [
+				{
+					"name": "Mistress Shore",
+					"characterName": "Mistress Jane Shore"
+				}
+			]
+		},
+		{
+			"name": "Chuk Iwuji",
+			"roles": [
+				{
+					"name": "Ghost of Henry VI",
+					"characterName": "Ghost of King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Patrice Naiambana",
+			"roles": [
+				{
+					"name": "Ghost of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Clive Wood",
+			"roles": [
+				{
+					"name": "Ghost of York"
+				}
+			]
+		},
+		{
+			"name": "Antony Bunsee",
+			"roles": [
+				{
+					"name": "Brackenbury",
+					"characterName": "Sir Robert Brackenbury, Lieutenant of the Tower"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Boyd"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Tom Piper"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Heather Carson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Andrea J Cox"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "James Jones"
+				},
+				{
+					"name": "John Woolf"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Donnacadh O'Briain"
+				}
+			]
+		}
+	]
+}

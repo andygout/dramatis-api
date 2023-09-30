@@ -1,0 +1,166 @@
+{
+	"name": "Much Ado About Nothing (Beaucoup de Bruit pour Rien - A lot of noise for nothing)",
+	"startDate": "2012-06-01",
+	"endDate": "2012-06-02",
+	"material": {
+		"name": "Much Ado About Nothing"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Compagnie Hypermobile"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Suzanne Aubert",
+			"roles": [
+				{
+					"name": "Hero"
+				}
+			]
+		},
+		{
+			"name": "Bruno Blairet",
+			"roles": [
+				{
+					"name": "Benedick"
+				}
+			]
+		},
+		{
+			"name": "Raphael Almosni",
+			"roles": [
+				{
+					"name": "Dogberry"
+				},
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Manon Combes",
+			"roles": [
+				{
+					"name": "Margaret"
+				}
+			]
+		},
+		{
+			"name": "François de Brauer",
+			"roles": [
+				{
+					"name": "Borachio"
+				}
+			]
+		},
+		{
+			"name": "Jean-Claude Jay",
+			"roles": [
+				{
+					"name": "Leonato"
+				}
+			]
+		},
+		{
+			"name": "Matthieu Marie",
+			"roles": [
+				{
+					"name": "Don Pedro",
+					"characterName": "Don Pedro, Prince of Arragon"
+				}
+			]
+		},
+		{
+			"name": "Laurent Menoret",
+			"roles": [
+				{
+					"name": "Claudio"
+				}
+			]
+		},
+		{
+			"name": "Alix Poisson",
+			"roles": [
+				{
+					"name": "Béatrice",
+					"characterName": "Beatrice"
+				}
+			]
+		},
+		{
+			"name": "Julien Villa",
+			"roles": [
+				{
+					"name": "Don Juan",
+					"characterName": "Don John"
+				},
+				{
+					"name": "Verjus",
+					"characterName": "Verges"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Clément Poirée"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Erwan Creff"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Hanna Sjödin"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Maëlle Payonne"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Stéphanie Gibert"
+				}
+			]
+		},
+		{
+			"name": "Assistant to Costume Designer",
+			"entities": [
+				{
+					"name": "Camille Lamy"
+				}
+			]
+		}
+	]
+}

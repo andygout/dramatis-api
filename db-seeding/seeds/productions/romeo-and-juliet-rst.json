@@ -1,0 +1,311 @@
+{
+	"name": "Romeo and Juliet",
+	"startDate": "2006-04-06",
+	"pressDate": "2006-04-18",
+	"endDate": "2006-10-14",
+	"material": {
+		"name": "Romeo and Juliet"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jonny Weir",
+			"roles": [
+				{
+					"name": "Escalus",
+					"characterName": "Escalus, Prince of Verona"
+				}
+			]
+		},
+		{
+			"name": "Jamie Ballard",
+			"roles": [
+				{
+					"name": "Mercutio"
+				}
+			]
+		},
+		{
+			"name": "Simon Bubb",
+			"roles": [
+				{
+					"name": "Paris",
+					"characterName": "Count Paris"
+				}
+			]
+		},
+		{
+			"name": "Amy Brown",
+			"roles": [
+				{
+					"name": "Page",
+					"characterName": "Page to Count Paris"
+				}
+			]
+		},
+		{
+			"name": "Patrick Romer",
+			"roles": [
+				{
+					"name": "Montague",
+					"characterName": "Lord Montague"
+				}
+			]
+		},
+		{
+			"name": "Eliza Hunt",
+			"roles": [
+				{
+					"name": "Lady Montague"
+				}
+			]
+		},
+		{
+			"name": "Rupert Evans",
+			"roles": [
+				{
+					"name": "Romeo",
+					"characterName": "Romeo Montague"
+				}
+			]
+		},
+		{
+			"name": "Geoffrey Lumb",
+			"roles": [
+				{
+					"name": "Benvolio"
+				}
+			]
+		},
+		{
+			"name": "John Heffernan",
+			"roles": [
+				{
+					"name": "Balthasar"
+				}
+			]
+		},
+		{
+			"name": "Curtis Flowers",
+			"roles": [
+				{
+					"name": "Abram"
+				}
+			]
+		},
+		{
+			"name": "Nicholas Day",
+			"roles": [
+				{
+					"name": "Capulet",
+					"characterName": "Lord Capulet"
+				}
+			]
+		},
+		{
+			"name": "Caroline Wildi",
+			"roles": [
+				{
+					"name": "Lady Capulet"
+				}
+			]
+		},
+		{
+			"name": "Morven Christie",
+			"roles": [
+				{
+					"name": "Juliet",
+					"characterName": "Juliet Capulet"
+				}
+			]
+		},
+		{
+			"name": "Adam Rayner",
+			"roles": [
+				{
+					"name": "Tybalt"
+				}
+			]
+		},
+		{
+			"name": "Sorcha Cusack",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Sam O'Mahoney-Adams",
+			"roles": [
+				{
+					"name": "Peter"
+				}
+			]
+		},
+		{
+			"name": "Leon Tanner",
+			"roles": [
+				{
+					"name": "Cousin Capulet"
+				}
+			]
+		},
+		{
+			"name": "Shane Frater",
+			"roles": [
+				{
+					"name": "Sampson"
+				}
+			]
+		},
+		{
+			"name": "Christopher Davies",
+			"roles": [
+				{
+					"name": "Gregory"
+				}
+			]
+		},
+		{
+			"name": "David Fielder",
+			"roles": [
+				{
+					"name": "Friar Laurence"
+				}
+			]
+		},
+		{
+			"name": "Steven Beard",
+			"roles": [
+				{
+					"name": "Friar John"
+				}
+			]
+		},
+		{
+			"name": "Yvette Rochester-Duncan",
+			"roles": [
+				{
+					"name": "Singer"
+				}
+			]
+		},
+		{
+			"name": "Olivia Coldicutt",
+			"roles": [
+				{
+					"name": "Young Girl",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Lucy Morris",
+			"roles": [
+				{
+					"name": "Young Girl",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Lucy Walkind",
+			"roles": [
+				{
+					"name": "Young Girl",
+					"isAlternate": true
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Nancy Meckler"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Katrina Lindsay"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Neil Austin"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Ilona Sekacz"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Bruce O'Neil"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Rachel Grunwald"
+				}
+			]
+		}
+	]
+}

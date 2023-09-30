@@ -1,0 +1,322 @@
+{
+	"name": "Coriolanus",
+	"startDate": "2007-02-22",
+	"pressDate": "2007-03-06",
+	"endDate": "2007-03-31",
+	"material": {
+		"name": "Coriolanus"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "William Houston",
+			"roles": [
+				{
+					"name": "Caius Martius",
+					"characterName": "Caius Martius Coriolanus"
+				}
+			]
+		},
+		{
+			"name": "Janet Suzman",
+			"roles": [
+				{
+					"name": "Volumnia"
+				}
+			]
+		},
+		{
+			"name": "Eleanor Matsuura",
+			"roles": [
+				{
+					"name": "Virgilia"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Clowes",
+			"roles": [
+				{
+					"name": "Young Martius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Edward Statham",
+			"roles": [
+				{
+					"name": "Young Martius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Daniel Wilkinson",
+			"roles": [
+				{
+					"name": "Young Martius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Darlene Johnson",
+			"roles": [
+				{
+					"name": "Valeria"
+				}
+			]
+		},
+		{
+			"name": "Riann Steele",
+			"roles": [
+				{
+					"name": "Gentlewoman"
+				}
+			]
+		},
+		{
+			"name": "Michael Hadley",
+			"roles": [
+				{
+					"name": "Cominius"
+				}
+			]
+		},
+		{
+			"name": "Oliver Senton",
+			"roles": [
+				{
+					"name": "Titus Lartius"
+				}
+			]
+		},
+		{
+			"name": "Timothy West",
+			"roles": [
+				{
+					"name": "Menenius",
+					"characterName": "Menenius Agrippa"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Melia",
+			"roles": [
+				{
+					"name": "First Roman senator",
+					"characterName": "Roman Senators"
+				}
+			]
+		},
+		{
+			"name": "Arthur Kohn",
+			"roles": [
+				{
+					"name": "Second Roman senator",
+					"characterName": "Roman Senators"
+				}
+			]
+		},
+		{
+			"name": "Fred Ridgeway",
+			"roles": [
+				{
+					"name": "Sicinius Velutus"
+				}
+			]
+		},
+		{
+			"name": "Darren Tunstall",
+			"roles": [
+				{
+					"name": "Junius Brutus"
+				}
+			]
+		},
+		{
+			"name": "Luke Rutherford",
+			"roles": [
+				{
+					"name": "Aediles"
+				}
+			]
+		},
+		{
+			"name": "Danny Seldon",
+			"roles": [
+				{
+					"name": "Messenger",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Second watchman"
+				}
+			]
+		},
+		{
+			"name": "Jonty Stephens",
+			"roles": [
+				{
+					"name": "First citizen"
+				},
+				{
+					"name": "Third servingman",
+					"characterName": "Attendants"
+				}
+			]
+		},
+		{
+			"name": "Frances Jeater",
+			"roles": [
+				{
+					"name": "Second citizen"
+				}
+			]
+		},
+		{
+			"name": "Steve Varnom",
+			"roles": [
+				{
+					"name": "Third citizen"
+				},
+				{
+					"name": "First servingman",
+					"characterName": "Attendants"
+				}
+			]
+		},
+		{
+			"name": "Trevor White",
+			"roles": [
+				{
+					"name": "Tullus Aufidius"
+				}
+			]
+		},
+		{
+			"name": "Guy Burgess",
+			"roles": [
+				{
+					"name": "First senator"
+				}
+			]
+		},
+		{
+			"name": "Ricky Champ",
+			"roles": [
+				{
+					"name": "Second senator"
+				},
+				{
+					"name": "First watchman"
+				},
+				{
+					"name": "First conspirator",
+					"characterName": "Conspirators"
+				}
+			]
+		},
+		{
+			"name": "Robert Orme",
+			"roles": [
+				{
+					"name": "Second servingman",
+					"characterName": "Attendants"
+				}
+			]
+		},
+		{
+			"name": "Curtis Flowers",
+			"roles": [
+				{
+					"name": "Second conspirator",
+					"characterName": "Conspirators"
+				}
+			]
+		},
+		{
+			"name": "Richard Pepple",
+			"roles": [
+				{
+					"name": "Third conspirator",
+					"characterName": "Conspirators"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Richard Hudson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Martin Slavin"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Paul Englishby"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Christopher Rolls"
+				}
+			]
+		}
+	]
+}

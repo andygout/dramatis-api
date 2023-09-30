@@ -76,7 +76,8 @@
 			"name": "Robert Blythe",
 			"roles": [
 				{
-					"name": "Earl of Warwick"
+					"name": "Earl of Warwick",
+					"characterName": "Richard Beauchamp, Earl of Warwick"
 				},
 				{
 					"name": "Gower"
@@ -268,7 +269,8 @@
 			"name": "John Wood",
 			"roles": [
 				{
-					"name": "Justice Shallow"
+					"name": "Justice Shallow",
+					"characterName": "Justice Robert Shallow"
 				}
 			]
 		}

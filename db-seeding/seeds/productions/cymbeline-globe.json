@@ -1,0 +1,129 @@
+{
+	"name": "Cymbeline",
+	"startDate": "2012-05-02",
+	"endDate": "2012-05-03",
+	"material": {
+		"name": "Cymbeline"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The South Sudan Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Arkangelo Maku",
+			"roles": [
+				{
+					"name": "Cymbeline, King of Britain"
+				}
+			]
+		},
+		{
+			"name": "Margaret Kowarto",
+			"roles": [
+				{
+					"name": "Imogen",
+					"characterName": "Princess Imogen"
+				}
+			]
+		},
+		{
+			"name": "Francis Paulino Lugali",
+			"roles": [
+				{
+					"name": "Posthumus Leonatus"
+				}
+			]
+		},
+		{
+			"name": "Buturs Peter",
+			"roles": [
+				{
+					"name": "Iachimo"
+				}
+			]
+		},
+		{
+			"name": "Dominic Gorgory",
+			"roles": [
+				{
+					"name": "Cloten",
+					"characterName": "Lord Cloten"
+				}
+			]
+		},
+		{
+			"name": "Ester Liberato Bagirasas",
+			"roles": [
+				{
+					"name": "Queen"
+				}
+			]
+		},
+		{
+			"name": "James Oyuac",
+			"roles": [
+				{
+					"name": "Caius Lucius"
+				}
+			]
+		},
+		{
+			"name": "Justin Mongo",
+			"roles": [
+				{
+					"name": "Guiderius"
+				}
+			]
+		},
+		{
+			"name": "Korino Justin",
+			"roles": [
+				{
+					"name": "Pisanio"
+				}
+			]
+		},
+		{
+			"name": "Malai Maluak",
+			"roles": [
+				{
+					"name": "Arviragus"
+				}
+			]
+		},
+		{
+			"name": "Victor Lado",
+			"roles": [
+				{
+					"name": "Belarius"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Joseph Abuk"
+				},
+				{
+					"name": "Derik Uya Alfred"
+				}
+			]
+		}
+	]
+}

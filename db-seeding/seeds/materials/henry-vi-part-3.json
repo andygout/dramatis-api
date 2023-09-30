@@ -1,0 +1,206 @@
+{
+	"name": "Henry VI, Part 3",
+	"format": "play",
+	"year": "1591",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Of the King's party",
+			"characters": [
+				{
+					"name": "King Henry VI"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				},
+				{
+					"name": "Edward, Prince of Wales",
+					"differentiator": "King Henry VI's son"
+				},
+				{
+					"name": "Henry Holland, Duke of Exeter",
+					"underlyingName": "Henry Holland, 3rd Duke of Exeter"
+				},
+				{
+					"name": "Duke of Somerset"
+				},
+				{
+					"name": "Earl of Northumberland",
+					"underlyingName": "Henry Percy, 3rd Earl of Northumberland"
+				},
+				{
+					"name": "Ralph Neville, Earl of Westmorland",
+					"underlyingName": "Ralph Neville, 2nd Earl of Westmorland"
+				},
+				{
+					"name": "John de Vere, Earl of Oxford",
+					"underlyingName": "John de Vere, 13th Earl of Oxford"
+				},
+				{
+					"name": "Henry, Earl of Richmond",
+					"underlyingName": "King Henry VII"
+				},
+				{
+					"name": "Lord Clifford",
+					"underlyingName": "John Clifford, 9th Baron Clifford"
+				},
+				{
+					"name": "Sir John Somerville"
+				}
+			]
+		},
+		{
+			"name": "Of the Duke of York's party",
+			"characters": [
+				{
+					"name": "Richard Plantagenet, Duke of York",
+					"underlyingName": "Richard Plantagenet, 3rd Duke of York"
+				},
+				{
+					"name": "Edward Plantagenet, Earl of March",
+					"underlyingName": "King Edward IV"
+				},
+				{
+					"name": "Richard Plantagenet, later Duke of Gloucester",
+					"underlyingName": "King Richard III"
+				},
+				{
+					"name": "George Plantagenet, later Duke of Clarence",
+					"underlyingName": "George Plantagenet, Duke of Clarence"
+				},
+				{
+					"name": "Edmund Plantegenet, Earl of Rutland"
+				},
+				{
+					"name": "Sir John Mortimer"
+				},
+				{
+					"name": "Sir Hugh Mortimer"
+				},
+				{
+					"name": "Duke of Norfolk",
+					"underlyingName": "John Mowbray, 3rd Duke of Norfolk"
+				},
+				{
+					"name": "Marquess of Montague"
+				},
+				{
+					"name": "Richard Nevil, Earl of Warwick",
+					"underlyingName": "Richard Neville, 16th Earl of Warwick"
+				},
+				{
+					"name": "Earl of Pembroke",
+					"underlyingName": "William Herbert, 1st Earl of Pembroke"
+				},
+				{
+					"name": "Lord Hastings",
+					"underlyingName": "William Hastings, 1st Baron Hastings"
+				},
+				{
+					"name": "Lord Stafford",
+					"underlyingName": "Sir Humphrey Stafford, 1st Earl of Devon"
+				},
+				{
+					"name": "Sir William Stanley"
+				},
+				{
+					"name": "Sir John Montgomery"
+				},
+				{
+					"name": "Lady Elizabeth Grey",
+					"underlyingName": "Dame Elizabeth Grey (née Woodville)"
+				},
+				{
+					"name": "Prince Edward",
+					"underlyingName": "King Edward V"
+				},
+				{
+					"name": "Earl Rivers",
+					"underlyingName": "Anthony Woodville, 2nd Earl Rivers"
+				},
+				{
+					"name": "King Lewis XI",
+					"underlyingName": "King Lewis XI of France"
+				},
+				{
+					"name": "Lady Bona",
+					"underlyingName": "Lady Bona of Savoy, Duchess of Milan"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Messengers",
+					"differentiator": "Henry VI, Part 3"
+				},
+				{
+					"name": "Robert Aspell, Rutland's tutor"
+				},
+				{
+					"name": "Son that has killed his father"
+				},
+				{
+					"name": "Father that has killed his son"
+				},
+				{
+					"name": "Two keepers"
+				},
+				{
+					"name": "Nobleman"
+				},
+				{
+					"name": "Posts"
+				},
+				{
+					"name": "Three watchmen"
+				},
+				{
+					"name": "Hunstman"
+				},
+				{
+					"name": "Lieutenant of the Tower of London"
+				},
+				{
+					"name": "Mayor of York",
+					"underlyingName": "Thomas of Beverley, Mayor of York"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Soldiers",
+					"differentiator": "Henry VI, Part 3"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry VI, Part 3"
+				},
+				{
+					"name": "Admiral Bourbon",
+					"underlyingName": "Jean V de Bueil"
+				},
+				{
+					"name": "Alderman"
+				},
+				{
+					"name": "Mayor of Coventry",
+					"underlyingName": "John Brett, Mayor of Coventry"
+				},
+				{
+					"name": "Nurse to Prince Edward"
+				}
+			]
+		}
+	]
+}

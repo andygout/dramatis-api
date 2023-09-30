@@ -1,0 +1,77 @@
+{
+	"name": "Richard III (理查三世 - Lǐ chá sānshì)",
+	"startDate": "2012-04-28",
+	"endDate": "2012-04-29",
+	"material": {
+		"name": "Richard III"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of China"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Zhang Dongyu",
+			"roles": [
+				{
+					"name": "Richard, Duke of Gloucester, later King Richard",
+					"characterName": "King Richard III"
+				}
+			]
+		},
+		{
+			"name": "She Nannan",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Zhang Xin",
+			"roles": [
+				{
+					"name": "Lady Anne"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Wang Xiaoying"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Liu Kedong"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Peng Dinghuang"
+				}
+			]
+		}
+	]
+}

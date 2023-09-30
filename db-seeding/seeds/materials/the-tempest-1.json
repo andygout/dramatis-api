@@ -1,0 +1,95 @@
+{
+	"name": "The Tempest",
+	"format": "play",
+	"year": "1611",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alonso, King of Naples"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Prospero"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Ferdinand",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Gonzalo"
+				},
+				{
+					"name": "Adrian",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Francisco",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Caliban"
+				},
+				{
+					"name": "Trinculo"
+				},
+				{
+					"name": "Stephano",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Master of a ship"
+				},
+				{
+					"name": "Boatswain"
+				},
+				{
+					"name": "Mariners"
+				},
+				{
+					"name": "Miranda"
+				},
+				{
+					"name": "Ariel"
+				},
+				{
+					"name": "Iris",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Ceres"
+				},
+				{
+					"name": "Juno"
+				},
+				{
+					"name": "Nymphs",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Reapers"
+				},
+				{
+					"name": "Spirits",
+					"differentiator": "The Tempest"
+				}
+			]
+		}
+	]
+}

@@ -1,7 +1,7 @@
 {
 	"name": "Othello",
 	"format": "play",
-	"year": "1603",
+	"year": "1604",
 	"writingCredits": [
 		{
 			"entities": [
@@ -27,7 +27,8 @@
 					"name": "Cassio"
 				},
 				{
-					"name": "Emilia"
+					"name": "Emilia",
+					"differentiator": "Othello"
 				},
 				{
 					"name": "Bianca",
@@ -40,10 +41,12 @@
 					"name": "Roderigo"
 				},
 				{
-					"name": "Duke of Venice"
+					"name": "Duke of Venice",
+					"differentiator": "Othello"
 				},
 				{
-					"name": "Gratiano"
+					"name": "Gratiano",
+					"differentiator": "Othello"
 				},
 				{
 					"name": "Lodovico"
@@ -67,7 +70,8 @@
 					"differentiator": "Othello"
 				},
 				{
-					"name": "Gentlemen"
+					"name": "Gentlemen",
+					"differentiator": "Othello"
 				},
 				{
 					"name": "Messenger",

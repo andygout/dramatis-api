@@ -1,0 +1,141 @@
+{
+	"name": "Othello",
+	"startDate": "2006-04-26",
+	"pressDate": "2006-04-27",
+	"endDate": "2006-04-29",
+	"material": {
+		"name": "Othello"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Münchner Kammerspiele"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Thomas Thieme",
+			"roles": [
+				{
+					"name": "Othello"
+				}
+			]
+		},
+		{
+			"name": "Werner Rehm",
+			"roles": [
+				{
+					"name": "Brabantio"
+				}
+			]
+		},
+		{
+			"name": "Stefan Merki",
+			"roles": [
+				{
+					"name": "Cassio"
+				}
+			]
+		},
+		{
+			"name": "Wolfgang Pregler",
+			"roles": [
+				{
+					"name": "Iago"
+				}
+			]
+		},
+		{
+			"name": "Bernd Rawert",
+			"roles": [
+				{
+					"name": "Roderigo"
+				}
+			]
+		},
+		{
+			"name": "Wolfgang Hinze",
+			"roles": [
+				{
+					"name": "Duke of Venice"
+				}
+			]
+		},
+		{
+			"name": "Julia Jentsch",
+			"roles": [
+				{
+					"name": "Desdemona"
+				}
+			]
+		},
+		{
+			"name": "Sheri Hagen",
+			"roles": [
+				{
+					"name": "Emilia"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Luk Perceval"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Katrin Brack"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Ursula Rezenbrink"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Max Keller"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Jens Thomas"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Johannes von Matuschka"
+				}
+			]
+		}
+	]
+}

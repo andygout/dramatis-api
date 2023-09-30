@@ -1,0 +1,42 @@
+{
+	"name": "The Two Gentlemen of Verona (Vakomana Vaviri Ve Zimbabwe - Two Zimbabwean Boys)",
+	"startDate": "2012-05-09",
+	"endDate": "2012-05-10",
+	"material": {
+		"name": "The Two Gentlemen of Verona"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Two Gents Productions"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Denton Chikura"
+		},
+		{
+			"name": "Tonderai Munyevu"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Arne Pohlmeier"
+				}
+			]
+		}
+	]
+}

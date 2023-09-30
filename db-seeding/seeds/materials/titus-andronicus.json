@@ -1,7 +1,7 @@
 {
 	"name": "Titus Andronicus",
 	"format": "play",
-	"year": "1593",
+	"year": "1594",
 	"writingCredits": [
 		{
 			"entities": [
@@ -32,17 +32,16 @@
 					"differentiator": "Titus Andronicus"
 				},
 				{
-					"name": "Lucius",
-					"differentiator": "Titus Andronicus"
+					"name": "Lucius Andronicus"
 				},
 				{
-					"name": "Quintus"
+					"name": "Quintus Andronicus"
 				},
 				{
-					"name": "Martius"
+					"name": "Martius Andronicus"
 				},
 				{
-					"name": "Mutius"
+					"name": "Mutius Andronicus"
 				},
 				{
 					"name": "Lavinia"
@@ -51,7 +50,8 @@
 					"name": "Young Lucius"
 				},
 				{
-					"name": "Sempronius"
+					"name": "Sempronius",
+					"differentiator": "Titus Andronicus"
 				},
 				{
 					"name": "Caius"
@@ -61,7 +61,7 @@
 					"differentiator": "Titus Andronicus"
 				},
 				{
-					"name": "Æmilius"
+					"name": "Aemilius"
 				},
 				{
 					"name": "Nurse",
@@ -83,7 +83,8 @@
 					"name": "Tribunes"
 				},
 				{
-					"name": "Roman Soldiers"
+					"name": "Roman soldiers",
+					"differentiator": "Titus Andronicus"
 				},
 				{
 					"name": "Attendants",

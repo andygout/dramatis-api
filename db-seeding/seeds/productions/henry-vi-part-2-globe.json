@@ -1,0 +1,147 @@
+{
+	"name": "Henry VI, Part 2 (Henri i Gjashtë 2)",
+	"startDate": "2012-05-12",
+	"endDate": "2012-05-13",
+	"material": {
+		"name": "Henry VI, Part 2"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of Albania"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Indrit Çobani",
+			"roles": [
+				{
+					"name": "King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Emira Hysaj",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Roland Saro",
+			"roles": [
+				{
+					"name": "Richard, son of Duke of York",
+					"characterName": "Richard Plantagenet"
+				},
+				{
+					"name": "Dick the Butcher"
+				}
+			]
+		},
+		{
+			"name": "Kristaq Skrami",
+			"roles": [
+				{
+					"name": "Humphrey, Duke of Gloucester",
+					"characterName": "Humphrey of Lancaster, Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Dritan Boriçi",
+			"roles": [
+				{
+					"name": "Duke of Suffolk (William de la Pole)",
+					"characterName": "William de la Pole, Duke of Suffolk"
+				}
+			]
+		},
+		{
+			"name": "Bujar Asqeriu",
+			"roles": [
+				{
+					"name": "Jack Cade"
+				}
+			]
+		},
+		{
+			"name": "Vasjan Lami",
+			"roles": [
+				{
+					"name": "Richard Plantagenet, Duke of York"
+				}
+			]
+		},
+		{
+			"name": "Yilka Mujo",
+			"roles": [
+				{
+					"name": "Eleanor, Duchess of Gloucester",
+					"characterName": "Eleanor Cobham, Duchess of Gloucester"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Adonis Filipi"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Genci Shkodrani"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Anila Zajmi-Katanolli"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Armand Broshka"
+				}
+			]
+		},
+		{
+			"name": "Scenic Movement",
+			"entities": [
+				{
+					"name": "Giorgia Maddamma"
+				}
+			]
+		},
+		{
+			"name": "Assistant Scenic Movement",
+			"entities": [
+				{
+					"name": "Sara Bizzoga"
+				}
+			]
+		}
+	]
+}

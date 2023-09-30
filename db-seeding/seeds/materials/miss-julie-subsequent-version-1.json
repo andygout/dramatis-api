@@ -30,7 +30,8 @@
 				},
 				{
 					"name": "John",
-					"underlyingName": "Jean"
+					"underlyingName": "Jean",
+					"differentiator": "Miss Julie"
 				},
 				{
 					"name": "Christine"

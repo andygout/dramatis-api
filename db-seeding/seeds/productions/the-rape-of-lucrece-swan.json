@@ -1,0 +1,87 @@
+{
+	"name": "The Rape of Lucrece",
+	"startDate": "2006-09-10",
+	"endDate": "2006-09-10",
+	"material": {
+		"name": "The Rape of Lucrece"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Ariyon Bakare"
+		},
+		{
+			"name": "Rob Carroll"
+		},
+		{
+			"name": "David Fielder"
+		},
+		{
+			"name": "Jane Lapotaire"
+		},
+		{
+			"name": "Patrick Romer"
+		},
+		{
+			"name": "Robert Gill"
+		},
+		{
+			"name": "Teddy Kempner"
+		},
+		{
+			"name": "James Laurenson"
+		},
+		{
+			"name": "Michael Mears"
+		},
+		{
+			"name": "Caitlin Mottram"
+		},
+		{
+			"name": "Malcolm Ridley"
+		},
+		{
+			"name": "Andrea Riseborough"
+		},
+		{
+			"name": "Barry Stanton"
+		},
+		{
+			"name": "Simon Thorp"
+		},
+		{
+			"name": "Susie Trayling"
+		},
+		{
+			"name": "Ben Turner"
+		},
+		{
+			"name": "Pauline Turner"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		}
+	]
+}

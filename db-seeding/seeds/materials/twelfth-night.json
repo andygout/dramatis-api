@@ -1,7 +1,7 @@
 {
 	"name": "Twelfth Night",
 	"format": "play",
-	"year": "1601",
+	"year": "1602",
 	"writingCredits": [
 		{
 			"entities": [
@@ -18,10 +18,11 @@
 					"name": "Viola"
 				},
 				{
-					"name": "Sebastian"
+					"name": "Sebastian",
+					"differentiator": "Twelfth Night"
 				},
 				{
-					"name": "Duke Orsino"
+					"name": "Orsino, Duke of Illyria"
 				},
 				{
 					"name": "Olivia",
@@ -46,7 +47,8 @@
 					"name": "Fabian"
 				},
 				{
-					"name": "Antonio"
+					"name": "Antonio",
+					"differentiator": "Twelfth Night"
 				},
 				{
 					"name": "Valentine",

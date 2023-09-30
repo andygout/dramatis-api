@@ -1,0 +1,275 @@
+{
+	"name": "Henry V",
+	"startDate": "2012-06-07",
+	"endDate": "2012-06-09",
+	"material": {
+		"name": "Henry V"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Shakespeare's Globe"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Brid Brennan",
+			"roles": [
+				{
+					"name": "Chorus"
+				},
+				{
+					"name": "Queen Isabel"
+				}
+			]
+		},
+		{
+			"name": "Graham Butler",
+			"roles": [
+				{
+					"name": "Duke of Bourbon"
+				},
+				{
+					"name": "Alexander Court"
+				}
+			]
+		},
+		{
+			"name": "Nigel Cooke",
+			"roles": [
+				{
+					"name": "Duke of Exeter",
+					"characterName": "Thomas Beaufort, Duke of Exeter"
+				}
+			]
+		},
+		{
+			"name": "Giles Cooper",
+			"roles": [
+				{
+					"name": "Montjoy"
+				},
+				{
+					"name": "Monsieur le Fer"
+				},
+				{
+					"name": "Sir Thomas Grey"
+				}
+			]
+		},
+		{
+			"name": "Sam Cox",
+			"roles": [
+				{
+					"name": "Pistol"
+				}
+			]
+		},
+		{
+			"name": "Kurt Egyiawan",
+			"roles": [
+				{
+					"name": "Louis the Dauphin",
+					"characterName": "Louis, Duke of Guyenne and Dauphin of France"
+				},
+				{
+					"name": "Lord Scroop",
+					"characterName": "Lord Henry Scroop"
+				}
+			]
+		},
+		{
+			"name": "Matthew Flynn",
+			"roles": [
+				{
+					"name": "Captain Gower"
+				}
+			]
+		},
+		{
+			"name": "David Hargreaves",
+			"roles": [
+				{
+					"name": "King of France"
+				},
+				{
+					"name": "Nym"
+				},
+				{
+					"name": "Sir Thomas Erpingham"
+				}
+			]
+		},
+		{
+			"name": "Beruce Khan",
+			"roles": [
+				{
+					"name": "John Bates"
+				},
+				{
+					"name": "Duke of York"
+				}
+			]
+		},
+		{
+			"name": "James Lailey",
+			"roles": [
+				{
+					"name": "Earl of Westmorland",
+					"characterName": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Captain Macmorris"
+				}
+			]
+		},
+		{
+			"name": "Brendan O'Hea",
+			"roles": [
+				{
+					"name": "Captain Fluellen"
+				},
+				{
+					"name": "Bishop of Ely"
+				}
+			]
+		},
+		{
+			"name": "Jamie Parker",
+			"roles": [
+				{
+					"name": "Henry V",
+					"characterName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Paul Rider",
+			"roles": [
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Archbishop of Canterbury"
+				},
+				{
+					"name": "Duke of Burgundy"
+				}
+			]
+		},
+		{
+			"name": "Olivia Ross",
+			"roles": [
+				{
+					"name": "Princess Katherine",
+					"characterName": "Princess Catherine"
+				},
+				{
+					"name": "Boy"
+				}
+			]
+		},
+		{
+			"name": "Chris Starkie",
+			"roles": [
+				{
+					"name": "Michael Williams"
+				},
+				{
+					"name": "Earl of Cambridge",
+					"characterName": "Richard, Earl of Cambridge"
+				},
+				{
+					"name": "Duke of Orléans"
+				},
+				{
+					"name": "Captain Jamy"
+				}
+			]
+		},
+		{
+			"name": "Lisa Stevenson",
+			"roles": [
+				{
+					"name": "Hostess Quickly",
+					"characterName": "Hostess"
+				},
+				{
+					"name": "Alice"
+				}
+			]
+		},
+		{
+			"name": "Roger Watkins",
+			"roles": [
+				{
+					"name": "Constable of France",
+					"characterName": "Charles Delabreth, Constable of France"
+				},
+				{
+					"name": "Governor of Harfleur"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dominic Dromgoole"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Jonathan Fensom"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Siân Williams"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Claire van Kampen"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Adrian Woodward"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Kate Waters"
+				}
+			]
+		}
+	]
+}

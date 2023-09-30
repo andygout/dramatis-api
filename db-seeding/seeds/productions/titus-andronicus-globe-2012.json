@@ -1,0 +1,179 @@
+{
+	"name": "Titus Andronicus (泰特斯 - Tài tè sī)",
+	"startDate": "2012-05-03",
+	"endDate": "2012-05-04",
+	"material": {
+		"name": "Titus Andronicus"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tang Shu-wing Theatre Studio",
+					"members": [
+						{
+							"name": "Phoebe Chuk Nga-yin"
+						}
+					]
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Andy Ng Wai-shek",
+			"roles": [
+				{
+					"name": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Ivy Pang Ngan-ling",
+			"roles": [
+				{
+					"name": "Tamora"
+				}
+			]
+		},
+		{
+			"name": "Chu Pak-hong",
+			"roles": [
+				{
+					"name": "Aaron"
+				}
+			]
+		},
+		{
+			"name": "Guthrie Yip Wing-wong",
+			"roles": [
+				{
+					"name": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Eric Tang Chi-kin",
+			"roles": [
+				{
+					"name": "Chiron"
+				}
+			]
+		},
+		{
+			"name": "German Cheung Ming-yiu",
+			"roles": [
+				{
+					"name": "Lucius Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Rex Kwok Wing-tung",
+			"roles": [
+				{
+					"name": "Quintus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Aska Leung Ka-wai",
+			"roles": [
+				{
+					"name": "Martius Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Lai Yuk-ching",
+			"roles": [
+				{
+					"name": "Lavinia"
+				}
+			]
+		},
+		{
+			"name": "Franky Mcnugget",
+			"roles": [
+				{
+					"name": "Marcus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Masu Wong Siu-fai",
+			"roles": [
+				{
+					"name": "Saturninus"
+				}
+			]
+		},
+		{
+			"name": "Angus Chan Kin-ho",
+			"roles": [
+				{
+					"name": "Bassianus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tang Shu-wing"
+				}
+			]
+		},
+		{
+			"name": "Set and Costume Designer",
+			"entities": [
+				{
+					"name": "Ricky Chan Chi-kuen"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Production Manager",
+			"entities": [
+				{
+					"name": "Ebona Yeung Yuen-ching"
+				}
+			]
+		},
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Wendy Yuen Sze-man"
+				}
+			]
+		},
+		{
+			"name": "Assistant Stage Manager",
+			"entities": [
+				{
+					"name": "Franco Yau Hoo-ron"
+				}
+			]
+		},
+		{
+			"name": "Assistant to Director",
+			"entities": [
+				{
+					"name": "Louie Lai Hiu-shan"
+				}
+			]
+		}
+	]
+}

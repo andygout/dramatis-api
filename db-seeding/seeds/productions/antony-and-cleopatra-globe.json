@@ -1,0 +1,235 @@
+{
+	"name": "Antony and Cleopatra (Antonıus ile Kleopatra)",
+	"startDate": "2012-05-26",
+	"endDate": "2012-05-27",
+	"material": {
+		"name": "Antony and Cleopatra"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Oyun Atölyesi"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Haluk Bilginer",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Zerrin Tekindor",
+			"roles": [
+				{
+					"name": "Cleopatra"
+				}
+			]
+		},
+		{
+			"name": "Mert Fırat",
+			"roles": [
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Emre Karayel",
+			"roles": [
+				{
+					"name": "Sextus Pompey"
+				},
+				{
+					"name": "Scarus"
+				},
+				{
+					"name": "Köylü"
+				}
+			]
+		},
+		{
+			"name": "Kevork Malikyan",
+			"roles": [
+				{
+					"name": "Enobarbus",
+					"characterName": "Domitius Enobarbus"
+				},
+				{
+					"name": "Peasant"
+				}
+			]
+		},
+		{
+			"name": "Eurim Alasya",
+			"roles": [
+				{
+					"name": "Octavia"
+				}
+			]
+		},
+		{
+			"name": "Gözde Kırgız",
+			"roles": [
+				{
+					"name": "Charmian"
+				}
+			]
+		},
+		{
+			"name": "Muharrem Özcan",
+			"roles": [
+				{
+					"name": "Menas"
+				},
+				{
+					"name": "Thidias"
+				}
+			]
+		},
+		{
+			"name": "Onur Ünsal",
+			"roles": [
+				{
+					"name": "Haberci",
+					"characterName": "Messengers"
+				},
+				{
+					"name": "Eros"
+				},
+				{
+					"name": "Seleucus"
+				}
+			]
+		},
+		{
+			"name": "Tuğçe Karaoğlan",
+			"roles": [
+				{
+					"name": "Iras"
+				}
+			]
+		},
+		{
+			"name": "Zeynep Alkaya",
+			"roles": [
+				{
+					"name": "Mardian"
+				}
+			]
+		},
+		{
+			"name": "Evrim Alasya",
+			"roles": [
+				{
+					"name": "Oktavia",
+					"characterName": "Octavia"
+				},
+				{
+					"name": "Alexas"
+				}
+			]
+		},
+		{
+			"name": "Mehmet Özbek",
+			"roles": [
+				{
+					"name": "Lepidus"
+				},
+				{
+					"name": "Agrippa"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Kemal Aydoğan"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Bengi Günay"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "İrfan Varlı"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Tolga Çebi"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Janbi Ceylan"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "Seda Türkmen"
+				},
+				{
+					"name": "Selin Yeninci"
+				},
+				{
+					"name": "Yağmur Mısırlıoğlu"
+				},
+				{
+					"name": "Öykü Esendemir"
+				}
+			]
+		},
+		{
+			"name": "Assistant Set Designers",
+			"entities": [
+				{
+					"name": "Efe Soykaraman"
+				},
+				{
+					"name": "Aygül İleri"
+				}
+			]
+		},
+		{
+			"name": "Assistant Lighting Designers",
+			"entities": [
+				{
+					"name": "Gülşah Çınar"
+				}
+			]
+		}
+	]
+}

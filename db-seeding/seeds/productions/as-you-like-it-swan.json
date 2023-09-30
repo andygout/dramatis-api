@@ -1,0 +1,218 @@
+{
+	"name": "As You Like It",
+	"startDate": "2007-03-06",
+	"endDate": "2007-03-10",
+	"material": {
+		"name": "As You Like It"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Sheffield Theatres"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Eve Best",
+			"roles": [
+				{
+					"name": "Rosalind"
+				}
+			]
+		},
+		{
+			"name": "Lisa Dillon",
+			"roles": [
+				{
+					"name": "Celia"
+				}
+			]
+		},
+		{
+			"name": "Sam Troughton",
+			"roles": [
+				{
+					"name": "Orlando",
+					"characterName": "Orlando de Boys"
+				}
+			]
+		},
+		{
+			"name": "Harry Peacock",
+			"roles": [
+				{
+					"name": "Touchstone"
+				}
+			]
+		},
+		{
+			"name": "Daniel Weyman",
+			"roles": [
+				{
+					"name": "Jaques"
+				}
+			]
+		},
+		{
+			"name": "Christopher Brandon",
+			"roles": [
+				{
+					"name": "Oliver",
+					"characterName": "Oliver de Boys"
+				}
+			]
+		},
+		{
+			"name": "Christopher Ravenscroft",
+			"roles": [
+				{
+					"name": "Duke Senior"
+				},
+				{
+					"name": "Duke Frederick"
+				}
+			]
+		},
+		{
+			"name": "Christopher Saul",
+			"roles": [
+				{
+					"name": "Corin"
+				}
+			]
+		},
+		{
+			"name": "Drew Mulligan",
+			"roles": [
+				{
+					"name": "Amiens"
+				},
+				{
+					"name": "Jaques de Boys"
+				}
+			]
+		},
+		{
+			"name": "Michael Taibi",
+			"roles": [
+				{
+					"name": "Charles"
+				},
+				{
+					"name": "William"
+				}
+			]
+		},
+		{
+			"name": "Natalie Grady",
+			"roles": [
+				{
+					"name": "Hisperia",
+					"characterName": "Hesperia"
+				},
+				{
+					"name": "Audrey"
+				}
+			]
+		},
+		{
+			"name": "Olivia Darnley",
+			"roles": [
+				{
+					"name": "Phebe"
+				}
+			]
+		},
+		{
+			"name": "Patrick Godfrey",
+			"roles": [
+				{
+					"name": "Hymen",
+					"characterName": "Masquer representing Hymen"
+				},
+				{
+					"name": "Sir Oliver Martext"
+				}
+			]
+		},
+		{
+			"name": "Richard Glaves",
+			"roles": [
+				{
+					"name": "Silvius"
+				},
+				{
+					"name": "Le Beau"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Samuel West"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Katrina Lindsay"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Peter Mumford"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Arditti"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Leah Hausman"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Howard Goodall"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		}
+	]
+}

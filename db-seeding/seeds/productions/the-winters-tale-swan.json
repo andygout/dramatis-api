@@ -1,0 +1,319 @@
+{
+	"name": "The Winter's Tale",
+	"startDate": "2006-10-26",
+	"pressDate": "2006-11-15",
+	"endDate": "2007-01-06",
+	"material": {
+		"name": "The Winter's Tale"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Trystan Gravelle",
+			"roles": [
+				{
+					"name": "Archidamus"
+				},
+				{
+					"name": "Young Shepherd"
+				}
+			]
+		},
+		{
+			"name": "Joseph Mydell",
+			"roles": [
+				{
+					"name": "Camillo"
+				}
+			]
+		},
+		{
+			"name": "Anton Lesser",
+			"roles": [
+				{
+					"name": "Leontes",
+					"characterName": "Leontes, King of Sicilia"
+				}
+			]
+		},
+		{
+			"name": "Kate Fleetwood",
+			"roles": [
+				{
+					"name": "Hermione"
+				}
+			]
+		},
+		{
+			"name": "Jonathan Clowes",
+			"roles": [
+				{
+					"name": "Mamillius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Edward Statham",
+			"roles": [
+				{
+					"name": "Mamillius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Nigel Cooke",
+			"roles": [
+				{
+					"name": "Polixenes"
+				}
+			]
+		},
+		{
+			"name": "Frances Ashman",
+			"roles": [
+				{
+					"name": "Lady",
+					"characterName": "Ladies"
+				},
+				{
+					"name": "Dorcas"
+				}
+			]
+		},
+		{
+			"name": "Ony Uhiara",
+			"roles": [
+				{
+					"name": "Lady",
+					"characterName": "Ladies"
+				}
+			]
+		},
+		{
+			"name": "Nyasha Hatendi",
+			"roles": [
+				{
+					"name": "Sicilian lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Ashley Rolfe",
+			"roles": [
+				{
+					"name": "Sicilian lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Mark Theodore",
+			"roles": [
+				{
+					"name": "Sicilian lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Ben Onwukwe",
+			"roles": [
+				{
+					"name": "Antigonus"
+				}
+			]
+		},
+		{
+			"name": "Linda Bassett",
+			"roles": [
+				{
+					"name": "Paulina"
+				}
+			]
+		},
+		{
+			"name": "Jason Barnett",
+			"roles": [
+				{
+					"name": "Gaoler"
+				},
+				{
+					"name": "Shepherd's servant",
+					"characterName": "Servant of the Old Shepherd"
+				}
+			]
+		},
+		{
+			"name": "Amanda Daniels",
+			"roles": [
+				{
+					"name": "Emilia"
+				},
+				{
+					"name": "Mopsa"
+				}
+			]
+		},
+		{
+			"name": "Danny Dalton",
+			"roles": [
+				{
+					"name": "Servant",
+					"characterName": "Servants"
+				}
+			]
+		},
+		{
+			"name": "Robin Lawrence",
+			"roles": [
+				{
+					"name": "Officer",
+					"characterName": "Officers"
+				},
+				{
+					"name": "Time"
+				}
+			]
+		},
+		{
+			"name": "Clarence Smith",
+			"roles": [
+				{
+					"name": "Cleomenes"
+				}
+			]
+		},
+		{
+			"name": "Maynard Eziashi",
+			"roles": [
+				{
+					"name": "Dion"
+				}
+			]
+		},
+		{
+			"name": "Richard Katz",
+			"roles": [
+				{
+					"name": "Autolycus"
+				}
+			]
+		},
+		{
+			"name": "Simon Harrison",
+			"roles": [
+				{
+					"name": "Florizel"
+				}
+			]
+		},
+		{
+			"name": "Michelle Terry",
+			"roles": [
+				{
+					"name": "Perdita"
+				}
+			]
+		},
+		{
+			"name": "Richard Moore",
+			"roles": [
+				{
+					"name": "Old Shepherd"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dominic Cooke"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Mike Britton"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Chris Davey"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Carolyn Downing"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Liz Ranken"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Gary Yershon"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Michael Tubbs"
+				}
+			]
+		},
+		{
+			"name": "Associate Director",
+			"entities": [
+				{
+					"name": "Maria Aberg"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Russell Bolam"
+				}
+			]
+		}
+	]
+}

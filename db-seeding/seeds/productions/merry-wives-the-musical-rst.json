@@ -1,0 +1,415 @@
+{
+	"name": "Merry Wives: The Musical",
+	"startDate": "2006-12-02",
+	"pressDate": "2006-12-12",
+	"endDate": "2007-02-10",
+	"material": {
+		"name": "Merry Wives: The Musical"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Simon Callow",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Ian Pirie",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Ian Conningham",
+			"roles": [
+				{
+					"name": "Nym"
+				}
+			]
+		},
+		{
+			"name": "Brendan O'Hea",
+			"roles": [
+				{
+					"name": "Pistol"
+				}
+			]
+		},
+		{
+			"name": "Matt Cross",
+			"roles": [
+				{
+					"name": "Robin"
+				}
+			]
+		},
+		{
+			"name": "Jeffery Dench",
+			"roles": [
+				{
+					"name": "Robert Shallow"
+				}
+			]
+		},
+		{
+			"name": "Simon Trinder",
+			"roles": [
+				{
+					"name": "Abraham Slender"
+				}
+			]
+		},
+		{
+			"name": "Tobias Beer",
+			"roles": [
+				{
+					"name": "Peter Simple"
+				}
+			]
+		},
+		{
+			"name": "Rob Edwards",
+			"roles": [
+				{
+					"name": "George Page"
+				}
+			]
+		},
+		{
+			"name": "Hadyn Gwynne",
+			"roles": [
+				{
+					"name": "Mistress Page"
+				}
+			]
+		},
+		{
+			"name": "Scarlett Strallen",
+			"roles": [
+				{
+					"name": "Anne Page"
+				}
+			]
+		},
+		{
+			"name": "Alistair McGowan",
+			"roles": [
+				{
+					"name": "Frank Ford"
+				}
+			]
+		},
+		{
+			"name": "Alexandra Gilbreath",
+			"roles": [
+				{
+					"name": "Mistress Ford"
+				}
+			]
+		},
+		{
+			"name": "Ian Hughes",
+			"roles": [
+				{
+					"name": "Sir Hugh Evans"
+				}
+			]
+		},
+		{
+			"name": "Robert Burt",
+			"roles": [
+				{
+					"name": "Host of the Garter Inn"
+				}
+			]
+		},
+		{
+			"name": "Paul Chahidi",
+			"roles": [
+				{
+					"name": "Dr Caius"
+				}
+			]
+		},
+		{
+			"name": "Christopher Colley",
+			"roles": [
+				{
+					"name": "Jack Rugby"
+				}
+			]
+		},
+		{
+			"name": "Judi Dench",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Martin Crewes",
+			"roles": [
+				{
+					"name": "Fenton"
+				}
+			]
+		},
+		{
+			"name": "Simon Thomas",
+			"roles": [
+				{
+					"name": "Robert"
+				}
+			]
+		},
+		{
+			"name": "Dominic Colchester",
+			"roles": [
+				{
+					"name": "John"
+				}
+			]
+		},
+		{
+			"name": "Mary Doherty",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Anna Lowe",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Lisa Thorner",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Callum Ainslie",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Nathaniel Barber",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "James Burman",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Cian Cheesbrough",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Daniel Ciotkowski",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Jeremy Franklin",
+			"roles": [
+				{
+					"name": "Child (group #1)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Lois Hamblett",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Harry Heap",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Sam Pigott",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "William Savage",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Hamish Watson",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		},
+		{
+			"name": "Jojo Wheatley",
+			"roles": [
+				{
+					"name": "Child (group #2)",
+					"characterName": "Children"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Stephen Brimson Lewis"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Michael Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Orchestrations",
+			"entities": [
+				{
+					"name": "Paul Englishby"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Bruce O'Neil"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Mitchell Moreno"
+				}
+			]
+		},
+		{
+			"name": "Casting Directors",
+			"entities": [
+				{
+					"name": "Sam Jones"
+				},
+				{
+					"name": "Lucy Jenkins"
+				},
+				{
+					"name": "Janine Snape"
+				}
+			]
+		}
+	]
+}

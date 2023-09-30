@@ -1,0 +1,199 @@
+{
+	"name": "Troilus and Cressida (A Toroihi raua ko Kahira)",
+	"startDate": "2012-04-23",
+	"endDate": "2012-04-24",
+	"material": {
+		"name": "Troilus and Cressida"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Ngakau Toa Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Kimo Houltha",
+			"roles": [
+				{
+					"name": "Troilus"
+				}
+			]
+		},
+		{
+			"name": "Awhina Henare Rose Ashby",
+			"roles": [
+				{
+					"name": "Cressida"
+				}
+			]
+		},
+		{
+			"name": "Juanita Hepi",
+			"roles": [
+				{
+					"name": "Thersites"
+				},
+				{
+					"name": "Andromache"
+				}
+			]
+		},
+		{
+			"name": "Rawiri Paratene",
+			"roles": [
+				{
+					"name": "Pandarus"
+				}
+			]
+		},
+		{
+			"name": "Calvin Tuteao",
+			"roles": [
+				{
+					"name": "Ulysses"
+				}
+			]
+		},
+		{
+			"name": "James Tito",
+			"roles": [
+				{
+					"name": "Diomedes"
+				}
+			]
+		},
+		{
+			"name": "Janus Webster",
+			"roles": [
+				{
+					"name": "Aeneas"
+				}
+			]
+		},
+		{
+			"name": "Maaka Pohatu",
+			"roles": [
+				{
+					"name": "Ajax"
+				}
+			]
+		},
+		{
+			"name": "Matu Ngaropo"
+		},
+		{
+			"name": "Rangi Rangitukunda",
+			"roles": [
+				{
+					"name": "Patroclus"
+				}
+			]
+		},
+		{
+			"name": "Roimata Fox",
+			"roles": [
+				{
+					"name": "Alexander"
+				},
+				{
+					"name": "Helen"
+				}
+			]
+		},
+		{
+			"name": "Scotty Morrison",
+			"roles": [
+				{
+					"name": "Agamemnon",
+					"characterName": "Agamemnon, King of the Greeks"
+				}
+			]
+		},
+		{
+			"name": "Waihoroi Shortland",
+			"roles": [
+				{
+					"name": "Nestor"
+				}
+			]
+		},
+		{
+			"name": "Waimihi Hotere",
+			"roles": [
+				{
+					"name": "Cassandra"
+				},
+				{
+					"name": "Servant"
+				}
+			]
+		},
+		{
+			"name": "Whatanui Flavell",
+			"roles": [
+				{
+					"name": "Menelaus"
+				},
+				{
+					"name": "Paris"
+				}
+			]
+		},
+		{
+			"name": "William Davis",
+			"roles": [
+				{
+					"name": "Priam, King of Troy"
+				},
+				{
+					"name": "Calchas"
+				}
+			]
+		},
+		{
+			"name": "Xavier Horan",
+			"roles": [
+				{
+					"name": "Hector"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Rawiri Paratene"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Shona Tawhiaro"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Richard Nunns"
+				}
+			]
+		}
+	]
+}

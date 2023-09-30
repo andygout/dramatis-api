@@ -1,0 +1,178 @@
+{
+	"name": "The Merchant of Venice (הסוחר מוונציה)",
+	"startDate": "2012-05-28",
+	"endDate": "2012-05-29",
+	"material": {
+		"name": "The Merchant of Venice"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Habima National Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jacob Cohen",
+			"roles": [
+				{
+					"name": "Shylock"
+				}
+			]
+		},
+		{
+			"name": "Alon Ophir",
+			"roles": [
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Yousef Sweid",
+			"roles": [
+				{
+					"name": "Bassanio"
+				}
+			]
+		},
+		{
+			"name": "Hila Feldman",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Aviv Alush",
+			"roles": [
+				{
+					"name": "Gratiano"
+				}
+			]
+		},
+		{
+			"name": "Danny Leshman",
+			"roles": [
+				{
+					"name": "Solanio"
+				},
+				{
+					"name": "Prince of Morocco"
+				}
+			]
+		},
+		{
+			"name": "Liraz Chaamami",
+			"roles": [
+				{
+					"name": "Jessica"
+				}
+			]
+		},
+		{
+			"name": "Nir Zelichowski",
+			"roles": [
+				{
+					"name": "Lorenzo"
+				}
+			]
+		},
+		{
+			"name": "Rinat Matatov",
+			"roles": [
+				{
+					"name": "Nerissa"
+				}
+			]
+		},
+		{
+			"name": "Tomer Sharon",
+			"roles": [
+				{
+					"name": "Launcelot Gobbo"
+				}
+			]
+		},
+		{
+			"name": "Yoav Donat",
+			"roles": [
+				{
+					"name": "Salerio"
+				},
+				{
+					"name": "Prince of Arragon"
+				}
+			]
+		},
+		{
+			"name": "Uri Hochman",
+			"roles": [
+				{
+					"name": "The Duke of Venice",
+					"characterName": "Duke of Venice"
+				},
+				{
+					"name": "Old Gobbo"
+				},
+				{
+					"name": "Jailer",
+					"characterName": "Gaoler"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ilan Ronen"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Shani Tur"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Maor Zabar"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Ori Vidislavski"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Miri Lazar"
+				}
+			]
+		}
+	]
+}

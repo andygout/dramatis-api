@@ -1,0 +1,130 @@
+{
+	"name": "Venus and Adonis",
+	"startDate": "2007-03-15",
+	"endDate": "2007-03-17",
+	"material": {
+		"name": "Venus and Adonis"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Harriet Walter",
+			"roles": [
+				{
+					"name": "Narrator"
+				}
+			]
+		},
+		{
+			"name": "Lynn Robertson Bruce",
+			"roles": [
+				{
+					"name": "Puppeteer"
+				}
+			]
+		},
+		{
+			"name": "Nele de Craecker",
+			"roles": [
+				{
+					"name": "Puppeteer"
+				}
+			]
+		},
+		{
+			"name": "Roger Lade",
+			"roles": [
+				{
+					"name": "Puppeteer"
+				}
+			]
+		},
+		{
+			"name": "Rachel Leonard",
+			"roles": [
+				{
+					"name": "Puppeteer"
+				}
+			]
+		},
+		{
+			"name": "Sarah Wright",
+			"roles": [
+				{
+					"name": "Puppeteer"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Doran"
+				}
+			]
+		},
+		{
+			"name": "Directors of Puppetry",
+			"entities": [
+				{
+					"name": "Steve Tiplady"
+				},
+				{
+					"name": "Lyndie Wright"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Robert Jones"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Adam Crosthwaite"
+				},
+				{
+					"name": "Vince Herbert"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "John Woolf"
+				}
+			]
+		}
+	]
+}

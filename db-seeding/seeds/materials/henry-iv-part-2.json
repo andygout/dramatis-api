@@ -1,7 +1,7 @@
 {
 	"name": "Henry IV, Part 2",
 	"format": "play",
-	"year": "1599",
+	"year": "1598",
 	"writingCredits": [
 		{
 			"entities": [
@@ -23,19 +23,22 @@
 					"underlyingName": "King Henry V"
 				},
 				{
-					"name": "Prince John of Lancaster"
+					"name": "Prince John of Lancaster",
+					"underlyingName": "John of Lancaster, Duke of Bedford"
 				},
 				{
-					"name": "Humphrey, Duke of Gloucester"
+					"name": "Humphrey of Lancaster, Duke of Gloucester"
 				},
 				{
-					"name": "Thomas, Duke of Clarence"
+					"name": "Thomas of Lancaster, Duke of Clarence"
 				},
 				{
-					"name": "Earl of Warwick"
+					"name": "Richard Beauchamp, Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
 				},
 				{
-					"name": "Earl of Surrey"
+					"name": "Earl of Surrey",
+					"underlyingName": "Thomas Fitzalan, Earl of Surrey"
 				},
 				{
 					"name": "Earl of Westmorland",
@@ -57,10 +60,12 @@
 					"underlyingName": "Richard Scroop, Archbishop of York"
 				},
 				{
-					"name": "Lord Bardolph"
+					"name": "Lord Bardolph",
+					"underlyingName": "Thomas Bardolf, 5th Baron Bardolf"
 				},
 				{
-					"name": "Lord Mowbray"
+					"name": "Lord Mowbray",
+					"underlyingName": "Thomas de Mowbray, 4th Earl of Norfolk"
 				},
 				{
 					"name": "Lord Hastings"
@@ -70,13 +75,14 @@
 				},
 				{
 					"name": "Earl of Northumberland",
-					"underlyingName": "Henry Percy, Earl of Northumberland"
+					"underlyingName": "Henry Percy, 1st Earl of Northumberland"
 				},
 				{
 					"name": "Lady Northumberland"
 				},
 				{
-					"name": "Lady Percy"
+					"name": "Lady Percy",
+					"underlyingName": "Elizabeth Mortimer"
 				},
 				{
 					"name": "Travers"
@@ -90,7 +96,8 @@
 			"name": "Court",
 			"characters": [
 				{
-					"name": "Lord Chief Justice"
+					"name": "Lord Chief Justice",
+					"underlyingName": "Sir William Gascoigne"
 				},
 				{
 					"name": "Servant",
@@ -114,13 +121,14 @@
 					"name": "Sir John Falstaff"
 				},
 				{
-					"name": "Falstaff's Page"
+					"name": "Falstaff's page"
 				},
 				{
 					"name": "Bardolph"
 				},
 				{
-					"name": "Pistol"
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
 				},
 				{
 					"name": "Ned Poins"
@@ -129,10 +137,12 @@
 					"name": "Peto"
 				},
 				{
-					"name": "Mistress Quickly"
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
 				},
 				{
-					"name": "Doll Tearsheet"
+					"name": "Doll Tearsheet",
+					"underlyingName": "Dorothy 'Doll' Tearsheet"
 				},
 				{
 					"name": "Francis"
@@ -172,7 +182,7 @@
 					"name": "Epilogue"
 				},
 				{
-					"name": "Justice Shallow"
+					"name": "Justice Robert Shallow"
 				},
 				{
 					"name": "Justice Silence"

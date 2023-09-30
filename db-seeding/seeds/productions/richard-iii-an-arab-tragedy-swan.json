@@ -1,0 +1,199 @@
+{
+	"name": "Richard III: An Arab Tragedy",
+	"startDate": "2007-02-08",
+	"pressDate": "2007-02-13",
+	"endDate": "2007-02-17",
+	"material": {
+		"name": "Richard III: An Arab Tragedy"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Culture Project (Kuwait)"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Sulayman Al-Bassam Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Carole Abboud",
+			"roles": [
+				{
+					"name": "Queen Elizabeth"
+				}
+			]
+		},
+		{
+			"name": "Bashar Abdullah",
+			"roles": [
+				{
+					"name": "Emir Grey"
+				},
+				{
+					"name": "Ratcliffe"
+				}
+			]
+		},
+		{
+			"name": "Faisal Al Ameeri",
+			"roles": [
+				{
+					"name": "Emir Rivers"
+				}
+			]
+		},
+		{
+			"name": "Sulayman Al-Bassam",
+			"roles": [
+				{
+					"name": "Ambassador"
+				}
+			]
+		},
+		{
+			"name": "Nicolas Daniel",
+			"roles": [
+				{
+					"name": "Minister of State Hastings"
+				},
+				{
+					"name": "Lord Mayor"
+				}
+			]
+		},
+		{
+			"name": "Monadhil Daood",
+			"roles": [
+				{
+					"name": "King Edward IV"
+				},
+				{
+					"name": "Catesby"
+				}
+			]
+		},
+		{
+			"name": "Christopher Harvey",
+			"roles": [
+				{
+					"name": "General Richmond"
+				}
+			]
+		},
+		{
+			"name": "Nadine Joma'a",
+			"roles": [
+				{
+					"name": "Lady Anne"
+				},
+				{
+					"name": "Mistress Shore",
+					"characterName": "Mistress Jane Shore"
+				}
+			]
+		},
+		{
+			"name": "Maritez Julapang",
+			"roles": [
+				{
+					"name": "Maid"
+				}
+			]
+		},
+		{
+			"name": "Fayez Kazak",
+			"roles": [
+				{
+					"name": "Emir Gloucester, later King Richard III"
+				}
+			]
+		},
+		{
+			"name": "Jassim Al-Nabhan",
+			"roles": [
+				{
+					"name": "Emir Clarence"
+				},
+				{
+					"name": "Stanley"
+				}
+			]
+		},
+		{
+			"name": "Amal Omran",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				},
+				{
+					"name": "Crown Prince Edward"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Sulayman Al-Bassam"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "George Tomlinson"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Abdulla Al Awadi"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Richard Williamson"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Lewis Gibson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "Sandra Al-Saleh"
+				},
+				{
+					"name": "Faisal Al Ameeri"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,127 @@
+{
+	"name": "Macbeth (Makbet)",
+	"startDate": "2012-05-08",
+	"endDate": "2012-05-10",
+	"material": {
+		"name": "Macbeth"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Teatr im. Jana Kochanowskiego"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Michał Majnicz",
+			"roles": [
+				{
+					"name": "Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Judyta Paradzińska",
+			"roles": [
+				{
+					"name": "Lady Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Mirosław Bednarek",
+			"roles": [
+				{
+					"name": "Macduff"
+				}
+			]
+		},
+		{
+			"name": "Adam Ciołek",
+			"roles": [
+				{
+					"name": "Malcolm"
+				}
+			]
+		},
+		{
+			"name": "Przemysław Kozłowski",
+			"roles": [
+				{
+					"name": "Banquo"
+				}
+			]
+		},
+		{
+			"name": "Aleksandra Cwen",
+			"roles": [
+				{
+					"name": "Lady Macduff"
+				}
+			]
+		},
+		{
+			"name": "Grzegorz Minkiewicz",
+			"roles": [
+				{
+					"name": "King Duncan"
+				},
+				{
+					"name": "Seyton"
+				}
+			]
+		},
+		{
+			"name": "Leszek Malec",
+			"roles": [
+				{
+					"name": "Ross"
+				}
+			]
+		},
+		{
+			"name": "Michał Świtała",
+			"roles": [
+				{
+					"name": "Lennox"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Maja Kleczewska"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Katarzyna Borkowska"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Waldemar Wróblewski"
+				}
+			]
+		}
+	]
+}

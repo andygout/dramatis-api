@@ -1,0 +1,133 @@
+{
+	"name": "Henry VI, Part 3 (Хенри Шестиот дел 3 - Henri Šesti Del 3)",
+	"startDate": "2012-05-12",
+	"endDate": "2012-05-13",
+	"material": {
+		"name": "Henry VI, Part 3"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "National Theatre of Bitola"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Peter Gorko",
+			"roles": [
+				{
+					"name": "King Henry VI"
+				}
+			]
+		},
+		{
+			"name": "Gabriela Petrushevska",
+			"roles": [
+				{
+					"name": "Queen Margaret"
+				}
+			]
+		},
+		{
+			"name": "Nikolche Projchevski",
+			"roles": [
+				{
+					"name": "Edward, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Sonja Mihajlova",
+			"roles": [
+				{
+					"name": "Earl of Warwick",
+					"characterName": "Richard Nevil, Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "Martin Mirchevski",
+			"roles": [
+				{
+					"name": "Richard, Duke of Gloucester",
+					"characterName": "Richard Plantagenet, later Duke of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Filip Mirchevski",
+			"roles": [
+				{
+					"name": "George, Duke of Clarence",
+					"characterName": "George Plantagenet, later Duke of Clarence"
+				}
+			]
+		},
+		{
+			"name": "Ivan Jercic",
+			"roles": [
+				{
+					"name": "Earl Rivers"
+				}
+			]
+		},
+		{
+			"name": "Kristina Hristova Nikolova",
+			"roles": [
+				{
+					"name": "King Louis",
+					"characterName": "King Lewis XI"
+				}
+			]
+		},
+		{
+			"name": "Ognen Drangovski",
+			"roles": [
+				{
+					"name": "Edward, Earl of March, later Edward IV",
+					"characterName": "Edward Plantagenet, Earl of March"
+				}
+			]
+		},
+		{
+			"name": "Valentina Gramosli",
+			"roles": [
+				{
+					"name": "Lady Elizabeth Gray",
+					"characterName": "Lady Elizabeth Grey"
+				},
+				{
+					"name": "Lady Bona"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "John Blondell"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Miodrag Necak"
+				}
+			]
+		}
+	]
+}

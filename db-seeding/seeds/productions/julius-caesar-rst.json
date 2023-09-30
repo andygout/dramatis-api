@@ -1,0 +1,292 @@
+{
+	"name": "Julius Caesar",
+	"startDate": "2006-05-06",
+	"pressDate": "2006-05-16",
+	"endDate": "2006-10-10",
+	"material": {
+		"name": "Julius Caesar"
+	},
+	"venue": {
+		"name": "Royal Shakespeare Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Rubin",
+			"roles": [
+				{
+					"name": "Flavius"
+				},
+				{
+					"name": "Pindarus"
+				}
+			]
+		},
+		{
+			"name": "Ewen Cummins",
+			"roles": [
+				{
+					"name": "Marullus"
+				},
+				{
+					"name": "Cicero"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "James Hayes",
+			"roles": [
+				{
+					"name": "Julius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Joseph Alessi",
+			"roles": [
+				{
+					"name": "Casca"
+				},
+				{
+					"name": "Messala"
+				}
+			]
+		},
+		{
+			"name": "Golda Rusheuvel",
+			"roles": [
+				{
+					"name": "Calphurnia"
+				}
+			]
+		},
+		{
+			"name": "Ariyon Bakare",
+			"roles": [
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Luke Neal",
+			"roles": [
+				{
+					"name": "Soothsayer"
+				},
+				{
+					"name": "Titinius"
+				}
+			]
+		},
+		{
+			"name": "John Light",
+			"roles": [
+				{
+					"name": "Brutus",
+					"characterName": "Marcus Brutus"
+				}
+			]
+		},
+		{
+			"name": "Finbar Lynch",
+			"roles": [
+				{
+					"name": "Caius Cassius"
+				}
+			]
+		},
+		{
+			"name": "Craig Gazey",
+			"roles": [
+				{
+					"name": "Lucius"
+				}
+			]
+		},
+		{
+			"name": "Rob Carroll",
+			"roles": [
+				{
+					"name": "Trebonius"
+				}
+			]
+		},
+		{
+			"name": "Keith Osborn",
+			"roles": [
+				{
+					"name": "Decius Brutus"
+				}
+			]
+		},
+		{
+			"name": "Paul Barnhill",
+			"roles": [
+				{
+					"name": "Cinna",
+					"characterDifferentiator": "Julius Caesar #1"
+				},
+				{
+					"name": "Lucilius"
+				}
+			]
+		},
+		{
+			"name": "Chris Jarman",
+			"roles": [
+				{
+					"name": "Metellus Cimber"
+				}
+			]
+		},
+		{
+			"name": "Mariah Gale",
+			"roles": [
+				{
+					"name": "Portia"
+				}
+			]
+		},
+		{
+			"name": "Ravi Aujla",
+			"roles": [
+				{
+					"name": "Caius Ligarius"
+				}
+			]
+		},
+		{
+			"name": "Allyson Brown",
+			"roles": [
+				{
+					"name": "Caesar's servant",
+					"characterName": "Servant to Julius Caesar"
+				}
+			]
+		},
+		{
+			"name": "Edmund Kingsley",
+			"roles": [
+				{
+					"name": "Popilius",
+					"characterName": "Popilius Lena"
+				},
+				{
+					"name": "Cinna the poet",
+					"characterName": "Cinna",
+					"characterDifferentiator": "Julius Caesar #2"
+				},
+				{
+					"name": "Young Cato"
+				}
+			]
+		},
+		{
+			"name": "Nick Court",
+			"roles": [
+				{
+					"name": "Artemidorus"
+				},
+				{
+					"name": "Octavius Caesar"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Seam Holmes"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Stephen Brimson Lewis"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Kandis Cook"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Paul Anderson"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Chris Branch"
+				},
+				{
+					"name": "Tom Haines"
+				},
+				{
+					"name": "Jeremy Dunn"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Michael Ashcroft"
+				}
+			]
+		},
+		{
+			"name": "Music and Musical Director",
+			"entities": [
+				{
+					"name": "Adrian Lee"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Poonam Brah"
+				}
+			]
+		}
+	]
+}

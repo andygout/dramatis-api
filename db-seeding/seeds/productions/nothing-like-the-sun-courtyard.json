@@ -1,0 +1,194 @@
+{
+	"name": "Nothing Like the Sun",
+	"startDate": "2007-02-24",
+	"endDate": "2007-02-25",
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Opera North"
+				}
+			]
+		},
+		{
+			"name": "in collaboration with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Anna Maria Friman",
+			"roles": [
+				{
+					"name": "Soprano"
+				}
+			]
+		},
+		{
+			"name": "John Potter",
+			"roles": [
+				{
+					"name": "Tenor"
+				}
+			]
+		},
+		{
+			"name": "Gavin Friday",
+			"roles": [
+				{
+					"name": "Spoken voice"
+				}
+			]
+		},
+		{
+			"name": "Richard Dillane"
+		},
+		{
+			"name": "Nina Sosanya"
+		},
+		{
+			"name": "Christopher Bradley",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Howard Breakspear",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Gavin Bryars",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Judith Burgin",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Jim Holmes",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Colin Honour",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "Katie Wilkinson",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		},
+		{
+			"name": "James Woodrow",
+			"roles": [
+				{
+					"name": "Ensemble"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Project Director",
+			"entities": [
+				{
+					"name": "Dominic Gray"
+				}
+			]
+		},
+		{
+			"name": "Film Director",
+			"entities": [
+				{
+					"name": "Pippa Nissen"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Simon Spencer"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Tim Oliver"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Alexader Balanescu"
+				},
+				{
+					"name": "Gavin Bryars"
+				},
+				{
+					"name": "Mira Calix"
+				},
+				{
+					"name": "Gavin Friday"
+				},
+				{
+					"name": "Natalie Merchant"
+				},
+				{
+					"name": "Nico Muhly"
+				},
+				{
+					"name": "Antony Jonson"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Jim Holmes"
+				}
+			]
+		}
+	]
+}

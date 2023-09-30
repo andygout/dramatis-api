@@ -1,0 +1,298 @@
+{
+	"name": "Titus Andronicus",
+	"startDate": "2006-05-20",
+	"pressDate": "2006-05-30",
+	"endDate": "2006-10-06",
+	"material": {
+		"name": "Titus Andronicus"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Shakespeare's Globe"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Patrick Moy",
+			"roles": [
+				{
+					"name": "Saturninus"
+				}
+			]
+		},
+		{
+			"name": "Simon Wilson",
+			"roles": [
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Caius"
+				}
+			]
+		},
+		{
+			"name": "Douglas Hodge",
+			"roles": [
+				{
+					"name": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Richard O'Callaghan",
+			"roles": [
+				{
+					"name": "Marcus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Laura Rees",
+			"roles": [
+				{
+					"name": "Lavinia"
+				}
+			]
+		},
+		{
+			"name": "Davud Sturzaker",
+			"roles": [
+				{
+					"name": "Lucius",
+					"characterName": "Lucius Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Thomas Padden",
+			"roles": [
+				{
+					"name": "Martius",
+					"characterName": "Martius Andronicus"
+				},
+				{
+					"name": "Valentine"
+				}
+			]
+		},
+		{
+			"name": "Jake Harders",
+			"roles": [
+				{
+					"name": "Mutius",
+					"characterName": "Mutius Andronicus"
+				},
+				{
+					"name": "Publius"
+				}
+			]
+		},
+		{
+			"name": "Eliot Giuralarocca",
+			"roles": [
+				{
+					"name": "Quintus",
+					"characterName": "Quintus Andronicus"
+				},
+				{
+					"name": "Peasant"
+				}
+			]
+		},
+		{
+			"name": "Hugh Wyld",
+			"roles": [
+				{
+					"name": "Young Lucius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Steven Williams",
+			"roles": [
+				{
+					"name": "Young Lucius",
+					"isAlternate": true
+				}
+			]
+		},
+		{
+			"name": "Chris Emmett",
+			"roles": [
+				{
+					"name": "Plebeian"
+				},
+				{
+					"name": "Æmilius"
+				}
+			]
+		},
+		{
+			"name": "Claire Nielson",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Geraldine Alexander",
+			"roles": [
+				{
+					"name": "Tamora"
+				}
+			]
+		},
+		{
+			"name": "Ben Crystal",
+			"roles": [
+				{
+					"name": "Alarbus"
+				}
+			]
+		},
+		{
+			"name": "Richard Riddell",
+			"roles": [
+				{
+					"name": "Chiron"
+				}
+			]
+		},
+		{
+			"name": "Sam Alexander",
+			"roles": [
+				{
+					"name": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Shaun Parkes",
+			"roles": [
+				{
+					"name": "Aaron"
+				}
+			]
+		},
+		{
+			"name": "Samuel Bawden",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Christopher Chandler",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "William Hazell",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Andrew Mathys",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "James Sanderson",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		},
+		{
+			"name": "Seamus Whitty",
+			"roles": [
+				{
+					"name": "Bestiaris"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Lucy Bailey"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "William Dudley"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Siân Williams"
+				},
+				{
+					"name": "Glynn MacDonald"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Django Bates"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Adrian Woodward"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Richard Hartley"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,178 @@
+{
+	"name": "The Taming of the Shrew",
+	"startDate": "2006-11-02",
+	"endDate": "2006-11-11",
+	"material": {
+		"name": "The Taming of the Shrew"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Propeller"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Bob Barrett",
+			"roles": [
+				{
+					"name": "Baptista",
+					"characterName": "Baptista Minola"
+				}
+			]
+		},
+		{
+			"name": "Jason Baughan",
+			"roles": [
+				{
+					"name": "Grumio"
+				},
+				{
+					"name": "A Pedant",
+					"characterName": "Pedant of Mantua"
+				}
+			]
+		},
+		{
+			"name": "Tony Bell",
+			"roles": [
+				{
+					"name": "Tranio"
+				}
+			]
+		},
+		{
+			"name": "Dugald Bruce-Lockhart",
+			"roles": [
+				{
+					"name": "Christopher Sly"
+				},
+				{
+					"name": "Petruchio"
+				}
+			]
+		},
+		{
+			"name": "Alasdair Craig",
+			"roles": [
+				{
+					"name": "Biondello"
+				}
+			]
+		},
+		{
+			"name": "Joe Flynn",
+			"roles": [
+				{
+					"name": "Curtis"
+				}
+			]
+		},
+		{
+			"name": "Chris Myles",
+			"roles": [
+				{
+					"name": "Gremio"
+				},
+				{
+					"name": "Vincentio"
+				}
+			]
+		},
+		{
+			"name": "Simon Scardifield",
+			"roles": [
+				{
+					"name": "Katherine",
+					"characterName": "Katherina Minola"
+				}
+			]
+		},
+		{
+			"name": "Jack Tarlton",
+			"roles": [
+				{
+					"name": "Hortensio"
+				}
+			]
+		},
+		{
+			"name": "Dominic Tighe",
+			"roles": [
+				{
+					"name": "The Tailor",
+					"characterName": "Tailor"
+				},
+				{
+					"name": "The Widow",
+					"characterName": "Widow"
+				}
+			]
+		},
+		{
+			"name": "Jon Trenchard",
+			"roles": [
+				{
+					"name": "Bianca",
+					"characterName": "Bianca Minola"
+				}
+			]
+		},
+		{
+			"name": "Tam Williams",
+			"roles": [
+				{
+					"name": "Lucentio"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Edward Hall"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Michael Pavelka"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Mark Howland"
+				},
+				{
+					"name": "Ben Ormerod"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Propeller"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,124 @@
+{
+	"name": "Venus and Adonis (U-Venas No Adonisi)",
+	"startDate": "2012-04-21",
+	"endDate": "2012-04-22",
+	"material": {
+		"name": "Venus and Adonis"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Isango Ensemble"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Bongiwe Mapassa",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		},
+		{
+			"name": "Busiaiwe Ngejane",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		},
+		{
+			"name": "Katlego Mmusi",
+			"roles": [
+				{
+					"name": "Death"
+				}
+			]
+		},
+		{
+			"name": "Luvo Rasemeni",
+			"roles": [
+				{
+					"name": "Boar"
+				}
+			]
+		},
+		{
+			"name": "Mhlekazi Whawha Mosiea",
+			"roles": [
+				{
+					"name": "Adonis"
+				}
+			]
+		},
+		{
+			"name": "Noluthando Ngejane",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		},
+		{
+			"name": "Pauline Malufane",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		},
+		{
+			"name": "Zamile Gantana",
+			"roles": [
+				{
+					"name": "Cupid"
+				}
+			]
+		},
+		{
+			"name": "Zanele Mbatha",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		},
+		{
+			"name": "Zoleka Mpotsha",
+			"roles": [
+				{
+					"name": "Venus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Mark Dornford-Day"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Mandisi Dyantyis"
+				}
+			]
+		}
+	]
+}

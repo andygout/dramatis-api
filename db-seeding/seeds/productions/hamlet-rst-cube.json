@@ -1,0 +1,34 @@
+{
+	"name": "Hamlet",
+	"startDate": "2006-10-31",
+	"endDate": "2006-11-01",
+	"material": {
+		"name": "Hamlet"
+	},
+	"venue": {
+		"name": "The Cube"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Tiny Ninja Theater"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dov Weinstein"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,53 @@
+{
+	"name": "The Phoenix and the Turtle",
+	"startDate": "2006-11-05",
+	"endDate": "2006-11-05",
+	"material": {
+		"name": "The Phoenix and the Turtle"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Peter de Jersey"
+		},
+		{
+			"name": "Joanne Pearce"
+		},
+		{
+			"name": "David Troughton"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Deborah Shaw"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "John Woolf"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,295 @@
+{
+	"name": "Henry IV, Part 1",
+	"startDate": "2006-07-06",
+	"pressDate": "2006-07-11",
+	"endDate": "2006-07-15",
+	"material": {
+		"name": "Henry IV, Part 1"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chicago Shakespeare Theater"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Lively",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Jeffrey Carlson",
+			"roles": [
+				{
+					"name": "Henry (Hal)",
+					"characterName": "Henry, Prince of Wales"
+				}
+			]
+		},
+		{
+			"name": "Jay Whittaker",
+			"roles": [
+				{
+					"name": "Prince John of Lancaster",
+					"characterName": "Lord John of Lancaster"
+				}
+			]
+		},
+		{
+			"name": "Brian Herriott",
+			"roles": [
+				{
+					"name": "Humphrey, Duke of Gloucester"
+				},
+				{
+					"name": "Edmund Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Matt Schwader",
+			"roles": [
+				{
+					"name": "Thomas, Duke of Clarence"
+				}
+			]
+		},
+		{
+			"name": "Scott Jaeck",
+			"roles": [
+				{
+					"name": "Earl of Westmorland",
+					"characterName": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Sheriff"
+				}
+			]
+		},
+		{
+			"name": "Robert Scogin",
+			"roles": [
+				{
+					"name": "Lord Chief Justice"
+				},
+				{
+					"name": "Thomas Percy",
+					"characterName": "Thomas Percy, Earl of Worcester"
+				}
+			]
+		},
+		{
+			"name": "Braden Moran",
+			"roles": [
+				{
+					"name": "Sir Walter Blunt"
+				}
+			]
+		},
+		{
+			"name": "Greg Vinkler",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Lusia Stus",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Timothy Edward Kane",
+			"roles": [
+				{
+					"name": "Edward Poins",
+					"characterName": "Ned Poins"
+				},
+				{
+					"name": "Sir Michael"
+				}
+			]
+		},
+		{
+			"name": "Dan Kenney",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Ross Lehman",
+			"roles": [
+				{
+					"name": "Peto"
+				}
+			]
+		},
+		{
+			"name": "Matt Hawkins",
+			"roles": [
+				{
+					"name": "Gadshill"
+				},
+				{
+					"name": "Musician"
+				}
+			]
+		},
+		{
+			"name": "Mike Nussbaum",
+			"roles": [
+				{
+					"name": "Francis"
+				}
+			]
+		},
+		{
+			"name": "Richard Manera",
+			"roles": [
+				{
+					"name": "Musician"
+				},
+				{
+					"name": "Harpist"
+				}
+			]
+		},
+		{
+			"name": "Bruce A Young",
+			"roles": [
+				{
+					"name": "Henry Percy",
+					"characterName": "Henry Percy, Earl of Northumberland"
+				},
+				{
+					"name": "Sir Richard Vernon",
+					"characterName": "Sir Richard Vernon, 8th Baron of Shipbrook"
+				}
+			]
+		},
+		{
+			"name": "Douglas Thompson",
+			"roles": [
+				{
+					"name": "Henry Percy (Hotspur)",
+					"characterName": "Harry Percy"
+				}
+			]
+		},
+		{
+			"name": "Kate Fry",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "John Reeger",
+			"roles": [
+				{
+					"name": "Owen Glendower"
+				},
+				{
+					"name": "Archbishop of York",
+					"characterName": "Richard Scroop, Archbishop of York"
+				}
+			]
+		},
+		{
+			"name": "Jessie Mueller",
+			"roles": [
+				{
+					"name": "Lady Mortimer"
+				}
+			]
+		},
+		{
+			"name": "Kevin Gudahl",
+			"roles": [
+				{
+					"name": "Earl of Douglas",
+					"characterName": "Archibald, Earl of Douglas"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Barbara Gaines"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Neil Patel"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Virgil C Johnson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Ken Billington"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Lindsay Jones"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Alaric Jans"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Robin H McFarquahar"
+				}
+			]
+		}
+	]
+}

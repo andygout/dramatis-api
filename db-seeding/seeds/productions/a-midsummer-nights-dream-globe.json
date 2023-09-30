@@ -1,0 +1,152 @@
+{
+	"name": "A Midsummer Night's Dream (한여름밤의 꿈 - han-yeoleumbam-ui kkum - The dream of a summer night)",
+	"startDate": "2012-04-30",
+	"endDate": "2012-05-01",
+	"material": {
+		"name": "A Midsummer Night's Dream"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Yohangza Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Hae-Kyun Cheong",
+			"roles": [
+				{
+					"name": "Gabbi",
+					"characterName": "Oberon, King of the Fairies"
+				}
+			]
+		},
+		{
+			"name": "Ji-Youn Kim",
+			"roles": [
+				{
+					"name": "Dot",
+					"characterName": "Titania, Queen of the Fairies"
+				}
+			]
+		},
+		{
+			"name": "Sang-Bo Kim",
+			"roles": [
+				{
+					"name": "Duduri",
+					"characterName": "Puck"
+				}
+			]
+		},
+		{
+			"name": "Jung-Yong Jeon",
+			"roles": [
+				{
+					"name": "Duduri",
+					"characterName": "Puck"
+				}
+			]
+		},
+		{
+			"name": "Seung-Hae Nam",
+			"roles": [
+				{
+					"name": "Beok",
+					"characterName": "Hermia"
+				}
+			]
+		},
+		{
+			"name": "Jin-Gon Kim",
+			"roles": [
+				{
+					"name": "Hang",
+					"characterName": "Lysander"
+				}
+			]
+		},
+		{
+			"name": "Hyun-Seok Chang",
+			"roles": [
+				{
+					"name": "Loo",
+					"characterName": "Demetrius"
+				}
+			]
+		},
+		{
+			"name": "Eun-Hee Kim",
+			"roles": [
+				{
+					"name": "Ik",
+					"characterName": "Helena"
+				}
+			]
+		},
+		{
+			"name": "A-Young Jeong",
+			"roles": [
+				{
+					"name": "Ajumi",
+					"characterName": "Nick Bottom"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jung-Ung Yang"
+				}
+			]
+		},
+		{
+			"name": "Designers",
+			"entities": [
+				{
+					"name": "Yun-Soo Lee"
+				},
+				{
+					"name": "Eun-Kyu Lee"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Myoung-Ah Lee"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Yun-Jung Lee"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Eun-Jung Kim"
+				}
+			]
+		}
+	]
+}

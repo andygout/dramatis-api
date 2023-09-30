@@ -1,0 +1,360 @@
+{
+	"name": "The Two Gentlemen of Verona",
+	"startDate": "2006-08-27",
+	"endDate": "2006-08-27",
+	"material": {
+		"name": "The Two Gentlemen of Verona"
+	},
+	"venue": {
+		"name": "Courtyard Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Nós do Morro"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Gallery 37"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Thiago dos Santos Martins",
+			"roles": [
+				{
+					"name": "Valentine"
+				}
+			]
+		},
+		{
+			"name": "Renan Monteiro",
+			"roles": [
+				{
+					"name": "Proteus"
+				}
+			]
+		},
+		{
+			"name": "Roberta Rodrigues",
+			"roles": [
+				{
+					"name": "Sylvia",
+					"characterName": "Silvia"
+				}
+			]
+		},
+		{
+			"name": "Luis Henrique Delfino Rodrigues",
+			"roles": [
+				{
+					"name": "Duke of Milan"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Mary Sheila de Paula Costa",
+			"roles": [
+				{
+					"name": "Julia"
+				}
+			]
+		},
+		{
+			"name": "Cecília Aparecida da Silva Alves",
+			"roles": [
+				{
+					"name": "Lucetta"
+				}
+			]
+		},
+		{
+			"name": "Aldino Santos Brito",
+			"roles": [
+				{
+					"name": "Speed"
+				}
+			]
+		},
+		{
+			"name": "Alexis Martins Fróes Abraham",
+			"roles": [
+				{
+					"name": "Launce"
+				}
+			]
+		},
+		{
+			"name": "Sandro de Matos Ribeiro",
+			"roles": [
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Joáo André Rodrigues de Lima",
+			"roles": [
+				{
+					"name": "Panthino"
+				}
+			]
+		},
+		{
+			"name": "Pedro Caetano Gonçalves de Lima",
+			"roles": [
+				{
+					"name": "Thurio"
+				}
+			]
+		},
+		{
+			"name": "Diogo de Brito Sales",
+			"roles": [
+				{
+					"name": "Crab"
+				},
+				{
+					"name": "Eglamour"
+				}
+			]
+		},
+		{
+			"name": "Renato Rocha",
+			"roles": [
+				{
+					"name": "Host",
+					"characterName": "Host of the inn"
+				},
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				}
+			]
+		},
+		{
+			"name": "Micael Leandro de Farias Borges",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				}
+			]
+		},
+		{
+			"name": "Tatiana Delfina Rodriguez",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Mariana de Oliveira Bezerra",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Lana Hall",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Tasnim Baxter",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Joshua Purfield-Clark",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Natalie Lyon",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Shafiq Dad",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Dina Choudhury",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "André Hesson",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Omar Khan",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Onelia Sylvester",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		},
+		{
+			"name": "Andrew Nguyen",
+			"roles": [
+				{
+					"name": "Outlaw",
+					"characterName": "Outlaws"
+				},
+				{
+					"name": "Chorus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Guti Fraga"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Fernando Mello da Costa"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Kika de Medina"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "José Frederico Canto Pinheiro"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "John Leonard"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Johayne Hildefonso"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Gabriela Geluda"
+				},
+				{
+					"name": "Wellington Soares"
+				}
+			]
+		}
+	]
+}

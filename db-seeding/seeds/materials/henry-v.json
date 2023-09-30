@@ -13,39 +13,46 @@
 	],
 	"characterGroups": [
 		{
-			"name": "The English",
 			"characters": [
 				{
 					"name": "Chorus",
 					"differentiator": "Henry V"
-				},
+				}
+			]
+		},
+		{
+			"name": "The English",
+			"characters": [
 				{
 					"name": "King Henry V"
 				},
 				{
-					"name": "Duke of Gloucester"
+					"name": "Humphrey of Lancaster, Duke of Gloucester"
 				},
 				{
-					"name": "Duke of Bedford"
+					"name": "John of Lancaster, Duke of Bedford"
 				},
 				{
-					"name": "Duke of Clarence"
+					"name": "Thomas of Lancaster, Duke of Clarence"
 				},
 				{
-					"name": "Duke of Exeter"
+					"name": "Thomas Beaufort, Duke of Exeter"
 				},
 				{
-					"name": "Duke of York"
+					"name": "Duke of York",
+					"underlyingName": "Edward, 2nd Duke of York"
 				},
 				{
-					"name": "Earl of Salisbury"
+					"name": "Thomas Montagu, Earl of Salisbury",
+					"underlyingName": "Thomas Montagu, 4th Earl of Salisbury"
 				},
 				{
-					"name": "Earl of Westmorland",
-					"underlyingName": "Ralph Neville, Earl of Westmorland"
+					"name": "Ralph Neville, Earl of Westmorland",
+					"underlyingName": "Ralph Neville, 1st Earl of Westmorland"
 				},
 				{
-					"name": "Earl of Warwick"
+					"name": "Richard Beauchamp, Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
 				},
 				{
 					"name": "Sir Thomas Erpingham"
@@ -76,26 +83,31 @@
 					"differentiator": "Henry V"
 				},
 				{
-					"name": "Pistol"
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
 				},
 				{
-					"name": "Nym"
+					"name": "Nym",
+					"underlyingName": "Corporal Nym"
 				},
 				{
 					"name": "Bardolph"
 				},
 				{
-					"name": "Boy"
+					"name": "Boy",
+					"differentiator": "Henry V"
 				},
 				{
 					"name": "Hostess",
-					"underlyingName": "Mistress Quickly"
+					"underlyingName": "Mistress Nell Quickly"
 				},
 				{
-					"name": "Archbishop of Canterbury"
+					"name": "Archbishop of Canterbury",
+					"underlyingName": "Henry Chichele, Archbishop of Canterbury"
 				},
 				{
-					"name": "Bishop of Ely"
+					"name": "Bishop of Ely",
+					"underlyingName": "John Fordham, Bishop of Ely"
 				}
 			]
 		},
@@ -103,10 +115,12 @@
 			"name": "The English (traitors)",
 			"characters": [
 				{
-					"name": "Richard, Earl of Cambridge"
+					"name": "Richard, Earl of Cambridge",
+					"underlyingName": "Richard of Conisburgh, 3rd Earl of Cambridge"
 				},
 				{
-					"name": "Lord Henry Scroop"
+					"name": "Lord Henry Scroop",
+					"underlyingName": "Henry Scrope, 2rd Baron Scrope of Masham"
 				},
 				{
 					"name": "Sir Thomas Grey"
@@ -118,40 +132,47 @@
 			"characters": [
 				{
 					"name": "King of France",
-					"differentiator": "Henry V"
+					"underlyingName": "King Charles VI of France"
 				},
 				{
-					"name": "Queen Isabel"
+					"name": "Queen Isabel",
+					"underlyingName": "Isabeau of Bavaria"
 				},
 				{
-					"name": "Louis, Duke of Guyenne and Dauphin of France"
+					"name": "Louis, Duke of Guyenne and Dauphin of France",
+					"underlyingName": "Louis, Duke of Guyenne"
 				},
 				{
-					"name": "Katherine",
-					"differentiator": "Henry V"
+					"name": "Princess Catherine",
+					"underlyingName": "Catherine of Valois"
 				},
 				{
 					"name": "Alice",
 					"differentiator": "Henry V"
 				},
 				{
-					"name": "Charles Delabreth, Constable of France"
+					"name": "Charles Delabreth, Constable of France",
+					"underlyingName": "Charles I d'Albret"
 				},
 				{
-					"name": "Duke of Bourbon"
+					"name": "Duke of Bourbon",
+					"underlyingName": "John of Bourbon"
 				},
 				{
-					"name": "Duke of Orléans"
+					"name": "Duke of Orléans",
+					"underlyingName": "Charles of Orléans"
 				},
 				{
-					"name": "Duke of Berry"
+					"name": "Duke of Berry",
+					"underlyingName": "John of Berry"
 				},
 				{
 					"name": "Duke of Burgundy",
-					"differentiator": "Henry V"
+					"underlyingName": "John I"
 				},
 				{
-					"name": "Lord Rambures"
+					"name": "Lord Rambures",
+					"underlyingName": "David de Rambures"
 				},
 				{
 					"name": "Lord Grandpré"

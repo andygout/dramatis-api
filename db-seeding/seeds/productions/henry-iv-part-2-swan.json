@@ -1,0 +1,323 @@
+{
+	"name": "Henry IV, Part 2",
+	"startDate": "2006-07-06",
+	"pressDate": "2006-07-11",
+	"endDate": "2006-07-15",
+	"material": {
+		"name": "Henry IV, Part 2"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chicago Shakespeare Theater"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "David Lively",
+			"roles": [
+				{
+					"name": "King Henry IV"
+				}
+			]
+		},
+		{
+			"name": "Jeffrey Carlson",
+			"roles": [
+				{
+					"name": "Henry (Hal)",
+					"characterName": "Prince Henry"
+				}
+			]
+		},
+		{
+			"name": "Jay Whittaker",
+			"roles": [
+				{
+					"name": "Prince John of Lancaster"
+				},
+				{
+					"name": "Francis Feeble"
+				}
+			]
+		},
+		{
+			"name": "Brian Herriott",
+			"roles": [
+				{
+					"name": "Humphrey, Duke of Gloucester",
+					"characterName": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "Travers"
+				},
+				{
+					"name": "Peter Bullcalf"
+				}
+			]
+		},
+		{
+			"name": "Matt Schwader",
+			"roles": [
+				{
+					"name": "Thomas, Duke of Clarence",
+					"characterName": "Thomas of Lancaster, Duke of Clarence"
+				},
+				{
+					"name": "Falstaff's page"
+				}
+			]
+		},
+		{
+			"name": "Scott Jaeck",
+			"roles": [
+				{
+					"name": "Earl of Westmorland"
+				},
+				{
+					"name": "Fang"
+				}
+			]
+		},
+		{
+			"name": "Robert Scogin",
+			"roles": [
+				{
+					"name": "Lord Chief Justice"
+				}
+			]
+		},
+		{
+			"name": "Braden Moran",
+			"roles": [
+				{
+					"name": "Cower"
+				},
+				{
+					"name": "Ralph Mouldy"
+				}
+			]
+		},
+		{
+			"name": "Matt Hawkins",
+			"roles": [
+				{
+					"name": "Harcourt"
+				},
+				{
+					"name": "Musician"
+				},
+				{
+					"name": "Simon Shadow"
+				}
+			]
+		},
+		{
+			"name": "Greg Vinkler",
+			"roles": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"name": "Lusia Stus",
+			"roles": [
+				{
+					"name": "Mistress Quickly"
+				}
+			]
+		},
+		{
+			"name": "Timothy Edward Kane",
+			"roles": [
+				{
+					"name": "Edward Poins",
+					"characterName": "Ned Poins"
+				},
+				{
+					"name": "Morton"
+				}
+			]
+		},
+		{
+			"name": "Dan Kenney",
+			"roles": [
+				{
+					"name": "Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Ross Lehman",
+			"roles": [
+				{
+					"name": "Peto"
+				},
+				{
+					"name": "Lord Hastings"
+				},
+				{
+					"name": "Rumour"
+				}
+			]
+		},
+		{
+			"name": "Kevin Gudahl",
+			"roles": [
+				{
+					"name": "Pistol"
+				},
+				{
+					"name": "Lord Bardolph"
+				}
+			]
+		},
+		{
+			"name": "Susan Hart",
+			"roles": [
+				{
+					"name": "Doll Tearsheet"
+				}
+			]
+		},
+		{
+			"name": "Bruce A Young",
+			"roles": [
+				{
+					"name": "Snare"
+				},
+				{
+					"name": "Henry Percy",
+					"characterName": "Earl of Northumberland"
+				}
+			]
+		},
+		{
+			"name": "Mike Nussbaum",
+			"roles": [
+				{
+					"name": "Francis"
+				},
+				{
+					"name": "Justice Robert Shallow"
+				}
+			]
+		},
+		{
+			"name": "Richard Manera",
+			"roles": [
+				{
+					"name": "Musician"
+				},
+				{
+					"name": "Thomas Wart"
+				}
+			]
+		},
+		{
+			"name": "Kate Fry",
+			"roles": [
+				{
+					"name": "Lady Percy"
+				}
+			]
+		},
+		{
+			"name": "John Reeger",
+			"roles": [
+				{
+					"name": "Archbishop of York"
+				},
+				{
+					"name": "Davie",
+					"characterName": "Davy"
+				}
+			]
+		},
+		{
+			"name": "Douglas Thompson",
+			"roles": [
+				{
+					"name": "Lord Mowbray"
+				}
+			]
+		},
+		{
+			"name": "Dale Benson",
+			"roles": [
+				{
+					"name": "Justice Silence"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Barbara Gaines"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Neil Patel"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Virgil C Johnson"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Ken Billington"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Lindsay Jones"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Alaric Jans"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Robin H McFarquahar"
+				}
+			]
+		}
+	]
+}

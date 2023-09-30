@@ -1,0 +1,156 @@
+{
+	"name": "Timon of Athens",
+	"format": "play",
+	"year": "1608",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Timon of Athens"
+				},
+				{
+					"name": "Flavius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Flaminius"
+				},
+				{
+					"name": "Lucilius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Servilius"
+				},
+				{
+					"name": "Servants of Timon"
+				},
+				{
+					"name": "Alcibiades"
+				},
+				{
+					"name": "Phrynia"
+				},
+				{
+					"name": "Timandra"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Apemantus"
+				},
+				{
+					"name": "Fool",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Page",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Three strangers"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lucius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Lucullus"
+				},
+				{
+					"name": "Sempronius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Ventidius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Caphis"
+				},
+				{
+					"name": "Philotus"
+				},
+				{
+					"name": "Titus",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Hortensius"
+				},
+				{
+					"name": "Servants of the flattering lords"
+				},
+				{
+					"name": "Servants of Timon's creditors"
+				},
+				{
+					"name": "Poet",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Painter"
+				},
+				{
+					"name": "Jeweller"
+				},
+				{
+					"name": "Merchant"
+				},
+				{
+					"name": "Old Athenian"
+				},
+				{
+					"name": "Seven senators"
+				},
+				{
+					"name": "Three bandits"
+				},
+				{
+					"name": "Soldier",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Two messengers"
+				},
+				{
+					"name": "Cupid in the masque"
+				},
+				{
+					"name": "Amazons in the masque"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Timon of Athens"
+				}
+			]
+		}
+	]
+}

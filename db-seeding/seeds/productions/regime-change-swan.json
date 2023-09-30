@@ -1,0 +1,117 @@
+{
+	"name": "Regime Change",
+	"startDate": "2006-06-10",
+	"endDate": "2006-06-10",
+	"material": {
+		"name": "Regime Change"
+	},
+	"venue": {
+		"name": "Swan Theatre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		},
+		{
+			"name": "in collaboration with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "BBC Radio 3"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Joseph Alessi",
+			"roles": [
+				{
+					"name": "Coiler"
+				}
+			]
+		},
+		{
+			"name": "Ali Barisik",
+			"roles": [
+				{
+					"name": "Umit"
+				}
+			]
+		},
+		{
+			"name": "Julian Bleach",
+			"roles": [
+				{
+					"name": "Vlas"
+				}
+			]
+		},
+		{
+			"name": "Mariah Gale",
+			"roles": [
+				{
+					"name": "Natascha"
+				}
+			]
+		},
+		{
+			"name": "Henry Goodman",
+			"roles": [
+				{
+					"name": "Lutz"
+				}
+			]
+		},
+		{
+			"name": "John Hopkins",
+			"roles": [
+				{
+					"name": "Ahmet"
+				}
+			]
+		},
+		{
+			"name": "Golda Rusheuvel",
+			"roles": [
+				{
+					"name": "Jean"
+				}
+			]
+		},
+		{
+			"name": "David Rubin",
+			"roles": [
+				{
+					"name": "Dreyer"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Project Director",
+			"entities": [
+				{
+					"name": "Jonquil Panting"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Adrian Lee"
+				}
+			]
+		}
+	]
+}

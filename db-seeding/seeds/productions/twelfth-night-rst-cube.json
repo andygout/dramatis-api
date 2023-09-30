@@ -1,0 +1,97 @@
+{
+	"name": "Twelfth Night",
+	"startDate": "2006-11-02",
+	"endDate": "2006-11-04",
+	"material": {
+		"name": "Twelfth Night"
+	},
+	"venue": {
+		"name": "The Cube"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Filter"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Paul Brennan",
+			"roles": [
+				{
+					"name": "Orsino",
+					"characterName": "Orsino, Duke of Illyria"
+				},
+				{
+					"name": "Sir Andrew Aguecheek"
+				}
+			]
+		},
+		{
+			"name": "Polly Frame",
+			"roles": [
+				{
+					"name": "Viola"
+				},
+				{
+					"name": "Sebastian"
+				}
+			]
+		},
+		{
+			"name": "Ferdy Roberts",
+			"roles": [
+				{
+					"name": "Malvolio"
+				},
+				{
+					"name": "Antonio"
+				}
+			]
+		},
+		{
+			"name": "Oliver Dimsdale",
+			"roles": [
+				{
+					"name": "Sir Toby Belch"
+				}
+			]
+		},
+		{
+			"name": "Kirsty Bushell",
+			"roles": [
+				{
+					"name": "Olivia"
+				}
+			]
+		},
+		{
+			"name": "Gemma Saunders",
+			"roles": [
+				{
+					"name": "Maria"
+				},
+				{
+					"name": "Feste"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Sean Holmes"
+				}
+			]
+		}
+	]
+}

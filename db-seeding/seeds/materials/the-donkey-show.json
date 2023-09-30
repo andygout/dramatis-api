@@ -28,11 +28,12 @@
 		{
 			"characters": [
 				{
-					"name": "Oberon"
+					"name": "Oberon",
+					"underlyingName": "Oberon, King of the Fairies"
 				},
 				{
 					"name": "Tytania",
-					"underlyingName": "Titania"
+					"underlyingName": "Titania, Queen of the Fairies"
 				},
 				{
 					"name": "Dr Wheelgood",

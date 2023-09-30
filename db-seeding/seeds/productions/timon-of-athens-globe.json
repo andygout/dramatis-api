@@ -1,0 +1,93 @@
+{
+	"name": "Timon of Athens (Timon aus Athen)",
+	"startDate": "2012-05-31",
+	"endDate": "2012-06-01",
+	"material": {
+		"name": "Timon of Athens"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bremer Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Michael Meyer",
+			"roles": [
+				{
+					"name": "Timon of Athens"
+				}
+			]
+		},
+		{
+			"name": "Petra Janina Shultz",
+			"roles": [
+				{
+					"name": "Apemantus"
+				}
+			]
+		},
+		{
+			"name": "Erika Spalke",
+			"roles": [
+				{
+					"name": "Flaminius"
+				}
+			]
+		},
+		{
+			"name": "Gunnar Haberland",
+			"roles": [
+				{
+					"name": "Lucullus"
+				},
+				{
+					"name": "Ventidius"
+				}
+			]
+		},
+		{
+			"name": "Peter Lüchinger",
+			"roles": [
+				{
+					"name": "Sempronius"
+				},
+				{
+					"name": "Painter"
+				}
+			]
+		},
+		{
+			"name": "Svea A Auerbach"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Sebastian Kautz"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Ushi Leinhäuser"
+				}
+			]
+		}
+	]
+}

@@ -1,7 +1,7 @@
 {
 	"name": "Hamlet",
 	"format": "play",
-	"year": "1601",
+	"year": "1602",
 	"writingCredits": [
 		{
 			"entities": [
@@ -18,7 +18,8 @@
 					"name": "Barnardo"
 				},
 				{
-					"name": "Francisco"
+					"name": "Francisco",
+					"differentiator": "Hamlet"
 				},
 				{
 					"name": "Captain in Fortinbras' Army"
@@ -43,7 +44,8 @@
 					"name": "Voltemand"
 				},
 				{
-					"name": "Cornelius"
+					"name": "Cornelius",
+					"differentiator": "Hamlet"
 				},
 				{
 					"name": "Laertes"
@@ -99,6 +101,9 @@
 				},
 				{
 					"name": "Priest"
+				},
+				{
+					"name": "Players"
 				}
 			]
 		}

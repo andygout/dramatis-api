@@ -1,0 +1,167 @@
+{
+	"name": "Love's Labour's Lost",
+	"startDate": "2012-05-22",
+	"endDate": "2012-05-23",
+	"material": {
+		"name": "Love's Labour's Lost"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Deafinitely Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Stephen Collins",
+			"roles": [
+				{
+					"name": "Ferdinand, King of Navarre",
+					"characterName": "King Ferdinand of Navarre"
+				}
+		]
+		},
+		{
+			"name": "Matthew Gurney",
+			"roles": [
+				{
+					"name": "Berowne",
+					"characterName": "Lord Berowne"
+				}
+			]
+		},
+		{
+			"name": "Nadia Nadarajah",
+			"roles": [
+				{
+					"name": "Princess of France"
+				}
+			]
+		},
+		{
+			"name": "Charlotte Arrowsmith",
+			"roles": [
+				{
+					"name": "Rosaline",
+					"characterName": "Lady Rosaline"
+				}
+			]
+		},
+		{
+			"name": "Adam Bassatt",
+			"roles": [
+				{
+					"name": "Don Adriano de Armado"
+				}
+			]
+		},
+		{
+			"name": "Brian Duffy",
+			"roles": [
+				{
+					"name": "Boyet"
+				}
+			]
+		},
+		{
+			"name": "David Sands",
+			"roles": [
+				{
+					"name": "Longaville",
+					"characterName": "Lord Longaville"
+				},
+				{
+					"name": "Costard"
+				}
+			]
+		},
+		{
+			"name": "Donna Mullings",
+			"roles": [
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Maria",
+					"characterName": "Lady Maria"
+				}
+			]
+		},
+		{
+			"name": "Patricia Gorman",
+			"roles": [
+				{
+					"name": "Katherine",
+					"characterName": "Lady Katharine"
+				},
+				{
+					"name": "Jaquenetta"
+				}
+			]
+		},
+		{
+			"name": "Vitalis Katakinas",
+			"roles": [
+				{
+					"name": "Holofernes"
+				},
+				{
+					"name": "Dumaine",
+					"characterName": "Lord Dumaine"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Paula Garfield"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Simon Heap"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Fiona Albrow"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Philippa Herrick"
+				}
+			]
+		},
+		{
+			"name": "Creative Interpreter",
+			"entities": [
+				{
+					"name": "Kate Furby"
+				}
+			]
+		}
+	]
+}

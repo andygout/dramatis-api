@@ -1,0 +1,226 @@
+{
+	"name": "Timon of Athens",
+	"startDate": "2006-10-24",
+	"endDate": "2006-10-28",
+	"material": {
+		"name": "Timon of Athens"
+	},
+	"venue": {
+		"name": "Shakespeare Centre"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Cardboard Citizens"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Nelly Alfandari",
+			"roles": [
+				{
+					"name": "Lucullus"
+				},
+				{
+					"name": "Caphis"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Seven senators"
+				}
+			]
+		},
+		{
+			"name": "Ricci Beevas",
+			"roles": [
+				{
+					"name": "Flavius"
+				}
+			]
+		},
+		{
+			"name": "Agron Biba",
+			"roles": [
+				{
+					"name": "Timon",
+					"characterName": "Timon of Athens"
+				},
+				{
+					"name": "Ventidius"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Seven senators"
+				}
+			]
+		},
+		{
+			"name": "Charlie Folorunsho",
+			"roles": [
+				{
+					"name": "Apemantus"
+				}
+			]
+		},
+		{
+			"name": "Jo Galbraith",
+			"roles": [
+				{
+					"name": "Sempronius"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Seven senators"
+				},
+				{
+					"name": "Hortensius"
+				}
+			]
+		},
+		{
+			"name": "Jakob B Goode",
+			"roles": [
+				{
+					"name": "Poet"
+				},
+				{
+					"name": "Servilius"
+				},
+				{
+					"name": "Lord",
+					"characterName": "Lords"
+				}
+			]
+		},
+		{
+			"name": "Mahdad Majdian",
+			"roles": [
+				{
+					"name": "Timon",
+					"characterName": "Timon of Athens"
+				},
+				{
+					"name": "Lucius"
+				},
+				{
+					"name": "Titus"
+				}
+			]
+		},
+		{
+			"name": "Simeon Moore",
+			"roles": [
+				{
+					"name": "Timon",
+					"characterName": "Timon of Athens"
+				}
+			]
+		},
+		{
+			"name": "Patrick Onione",
+			"roles": [
+				{
+					"name": "Flaminius"
+				},
+				{
+					"name": "Old Athenian"
+				},
+				{
+					"name": "Senator",
+					"characterName": "Seven senators"
+				}
+			]
+		},
+		{
+			"name": "Dave Rogers",
+			"roles": [
+				{
+					"name": "Alcibiades"
+				},
+				{
+					"name": "Varro's servant",
+					"characterName": "Servants of Timon's creditors"
+				}
+			]
+		},
+		{
+			"name": "Redley Silva",
+			"roles": [
+				{
+					"name": "Painter"
+				},
+				{
+					"name": "Philotus"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Adrian Jackson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Fred Meller"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Ian Saunders"
+				}
+			]
+		},
+		{
+			"name": "Choreographers",
+			"entities": [
+				{
+					"name": "Linda Dobell"
+				},
+				{
+					"name": "Anna Morrissey"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "David Baird"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Terry King"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Nick Frogg"
+				}
+			]
+		}
+	]
+}

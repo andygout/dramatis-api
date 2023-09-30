@@ -1,0 +1,158 @@
+{
+	"name": "King Lear",
+	"startDate": "2006-11-15",
+	"endDate": "2006-11-18",
+	"material": {
+		"name": "King Lear"
+	},
+	"venue": {
+		"name": "The Cube"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Yellow Earth Theatre"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Shanghai Dramatic Arts Centre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Zhou Ye Mang",
+			"roles": [
+				{
+					"name": "King Lear"
+				}
+			]
+		},
+		{
+			"name": "Zhang Lu",
+			"roles": [
+				{
+					"name": "Goneril"
+				}
+			]
+		},
+		{
+			"name": "Xie Li",
+			"roles": [
+				{
+					"name": "Regan"
+				}
+			]
+		},
+		{
+			"name": "Nina Kwok",
+			"roles": [
+				{
+					"name": "Cordelia"
+				},
+				{
+					"name": "Oswald"
+				}
+			]
+		},
+		{
+			"name": "David Yip",
+			"roles": [
+				{
+					"name": "Albany",
+					"characterName": "Duke of Albany"
+				},
+				{
+					"name": "Gloucester",
+					"characterName": "Earl of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Daniel York",
+			"roles": [
+				{
+					"name": "Cornwall",
+					"characterName": "Duke of Cornwall"
+				},
+				{
+					"name": "Edgar"
+				}
+			]
+		},
+		{
+			"name": "He Ju",
+			"roles": [
+				{
+					"name": "Kent",
+					"characterName": "Earl of Kent"
+				}
+			]
+		},
+		{
+			"name": "Matt McCooey",
+			"roles": [
+				{
+					"name": "Edmund"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "David Tse Ka-Shing"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Sang Qi"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Dong Hu University"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Li Ning"
+				}
+			]
+		},
+		{
+			"name": "Video Designer",
+			"entities": [
+				{
+					"name": "Doug Kuhrt"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Wang Jiwei"
+				}
+			]
+		}
+	]
+}

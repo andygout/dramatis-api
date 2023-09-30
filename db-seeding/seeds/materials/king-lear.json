@@ -1,7 +1,7 @@
 {
 	"name": "King Lear",
 	"format": "play",
-	"year": "1606",
+	"year": "1605",
 	"writingCredits": [
 		{
 			"entities": [
@@ -24,7 +24,8 @@
 					"name": "Earl of Kent"
 				},
 				{
-					"name": "Fool"
+					"name": "Fool",
+					"differentiator": "King Lear"
 				},
 				{
 					"name": "Edgar"

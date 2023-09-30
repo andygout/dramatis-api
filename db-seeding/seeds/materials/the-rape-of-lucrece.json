@@ -1,0 +1,14 @@
+{
+	"name": "The Rape of Lucrece",
+	"format": "poem",
+	"year": "1594",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	]
+}

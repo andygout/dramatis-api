@@ -1,0 +1,190 @@
+{
+	"name": "Measure for Measure (мера за меру - Mera za meru)",
+	"startDate": "2012-04-24",
+	"endDate": "2012-04-25",
+	"material": {
+		"name": "Measure for Measure"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Vakhtangov Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sergey Epishev",
+			"roles": [
+				{
+					"name": "Vincentio, Duke of Vienna"
+				},
+				{
+					"name": "Angelo"
+				}
+			]
+		},
+		{
+			"name": "Evgeniya Kregzhde",
+			"roles": [
+				{
+					"name": "Isabella"
+				}
+			]
+		},
+		{
+			"name": "Vladimir Beldiyan",
+			"roles": [
+				{
+					"name": "Claudio"
+				}
+			]
+		},
+		{
+			"name": "Aleksei Kuznetsov",
+			"roles": [
+				{
+					"name": "Escalus"
+				}
+			]
+		},
+		{
+			"name": "Aleksandra Streltsina",
+			"roles": [
+				{
+					"name": "Mariana"
+				}
+			]
+		},
+		{
+			"name": "Anna Antonova",
+			"roles": [
+				{
+					"name": "Francisca"
+				},
+				{
+					"name": "Mistress Overdone"
+				}
+			]
+		},
+		{
+			"name": "Artur Ivanov",
+			"roles": [
+				{
+					"name": "Provost"
+				}
+			]
+		},
+		{
+			"name": "Evgeniy Kosyrev",
+			"roles": [
+				{
+					"name": "Pompey"
+				}
+			]
+		},
+		{
+			"name": "Maria Berdinskikh",
+			"roles": [
+				{
+					"name": "Juliet"
+				}
+			]
+		},
+		{
+			"name": "Oleg Lopuhov",
+			"roles": [
+				{
+					"name": "Lucio"
+				}
+			]
+		},
+		{
+			"name": "Valeriy Ushakov",
+			"roles": [
+				{
+					"name": "Froth"
+				},
+				{
+					"name": "Friar Peter"
+				}
+			]
+		},
+		{
+			"name": "Leonid Bichevin",
+			"roles": [
+				{
+					"name": "Elbow"
+				},
+				{
+					"name": "Abhorson"
+				}
+			]
+		},
+		{
+			"name": "Victor Dobronravov",
+			"roles": [
+				{
+					"name": "Judge"
+				},
+				{
+					"name": "Barnardine"
+				},
+				{
+					"name": "Messenger"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Yury Butusov"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Aleksandr Orlov"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Maya Shaevdatuashvili"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Faustus Latenas"
+				}
+			]
+		},
+		{
+			"name": "Ballet master",
+			"entities": [
+				{
+					"name": "Nikolay Reutov"
+				}
+			]
+		}
+	]
+}

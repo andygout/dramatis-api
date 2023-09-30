@@ -1,0 +1,120 @@
+{
+	"name": "King Lear (Кароль Лір - Karoĺ Lir)",
+	"startDate": "2012-05-17",
+	"endDate": "2012-05-18",
+	"material": {
+		"name": "King Lear"
+	},
+	"venue": {
+		"name": "Globe Theatre"
+	},
+	"festival": {
+		"name": "Globe to Globe"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Belarus Free Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Aleh Sidorchik",
+			"roles": [
+				{
+					"name": "Lear",
+					"characterName": "King Lear"
+				}
+			]
+		},
+		{
+			"name": "Hanna Slatvinskaya",
+			"roles": [
+				{
+					"name": "Cordelia"
+				}
+			]
+		},
+		{
+			"name": "Pavel Garadnitski",
+			"roles": [
+				{
+					"name": "Earl of Gloucester"
+				}
+			]
+		},
+		{
+			"name": "Pavel Arakelian",
+			"roles": [
+				{
+					"name": "Fool"
+				}
+			]
+		},
+		{
+			"name": "Siarhei Kvachonak",
+			"roles": [
+				{
+					"name": "Edgar"
+				}
+			]
+		},
+		{
+			"name": "Aliaksei Naronovich",
+			"roles": [
+				{
+					"name": "Edmund"
+				},
+				{
+					"name": "King of France"
+				}
+			]
+		},
+		{
+			"name": "Dzianis Tarasenka",
+			"roles": [
+				{
+					"name": "Earl of Kent"
+				}
+			]
+		},
+		{
+			"name": "Maryna Yurevich",
+			"roles": [
+				{
+					"name": "Regan"
+				}
+			]
+		},
+		{
+			"name": "Yana Rusakevich",
+			"roles": [
+				{
+					"name": "Goneril"
+				}
+			]
+		},
+		{
+			"name": "Yuliva Shauchuk",
+			"roles": [
+				{
+					"name": "Oswald"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Vladimir Shcherban"
+				}
+			]
+		}
+	]
+}

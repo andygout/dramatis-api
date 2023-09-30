@@ -1,0 +1,209 @@
+{
+	"name": "Henry VIII",
+	"startDate": "2006-08-23",
+	"endDate": "2006-09-02",
+	"material": {
+		"name": "Henry VIII"
+	},
+	"venue": {
+		"name": "Holy Trinity Church"
+	},
+	"festival": {
+		"name": "The Complete Works"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "AandBC"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Antony Byrne",
+			"roles": [
+				{
+					"name": "King Henry VIII"
+				}
+			]
+		},
+		{
+			"name": "Corinne Jaber",
+			"roles": [
+				{
+					"name": "Katherine of Aragon",
+					"characterName": "Queen Katherine"
+				}
+			]
+		},
+		{
+			"name": "Aoife McMahon",
+			"roles": [
+				{
+					"name": "Anne Bullen"
+				}
+			]
+		},
+		{
+			"name": "Anthony O'Donnell",
+			"roles": [
+				{
+					"name": "Cardinal Wolsey"
+				}
+			]
+		},
+		{
+			"name": "Clive Mendus",
+			"roles": [
+				{
+					"name": "Cardinal Campeius"
+				}
+			]
+		},
+		{
+			"name": "Jem Wall",
+			"roles": [
+				{
+					"name": "Cranmer",
+					"characterName": "Thomas Cranmer, Archbishop of Canterbury"
+				}
+			]
+		},
+		{
+			"name": "Derek Hutchinson",
+			"roles": [
+				{
+					"name": "Duke of Buckingham"
+				}
+			]
+		},
+		{
+			"name": "David Anen",
+			"roles": [
+				{
+					"name": "Duke of Norfolk"
+				}
+			]
+		},
+		{
+			"name": "Ed Woodall",
+			"roles": [
+				{
+					"name": "Duke of Suffolk"
+				}
+			]
+		},
+		{
+			"name": "Jimmy Akingbola",
+			"roles": [
+				{
+					"name": "Duke of Surrey",
+					"characterName": "Earl of Surrey"
+				}
+			]
+		},
+		{
+			"name": "James Pearse",
+			"roles": [
+				{
+					"name": "Lord Chamberlain"
+				}
+			]
+		},
+		{
+			"name": "David Weston",
+			"roles": [
+				{
+					"name": "Lovell",
+					"characterName": "Sir Thomas Lovell"
+				}
+			]
+		},
+		{
+			"name": "Peter Luke Kenny",
+			"roles": [
+				{
+					"name": "Cromwell",
+					"characterName": "Thomas Cromwell"
+				}
+			]
+		},
+		{
+			"name": "Cara Kelly",
+			"roles": [
+				{
+					"name": "Old Lady"
+				}
+			]
+		},
+		{
+			"name": "Amy Finegan",
+			"roles": [
+				{
+					"name": "Patience"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gregory Thompson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ellen Cairns"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Judith Greenwood"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Jem Wall"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "David Stoll"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Amy Finegan"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Clare Lizzimore"
+				}
+			]
+		}
+	]
+}
