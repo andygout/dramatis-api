@@ -11,7 +11,11 @@ const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'materials': '📖',
 	'productions': '🎭',
 	'venues': '🏛️'
-}
+};
+
+const PAUSE_DURATION_IN_MILLISECONDS = 1000;
+
+const pause = duration => new Promise(resolve => setTimeout(resolve, duration));
 
 async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 
@@ -22,6 +26,8 @@ async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 		method: 'POST',
 		body: JSON.stringify(instance)
 	}
+
+	await pause(PAUSE_DURATION_IN_MILLISECONDS);
 
 	const response = await fetch(url, settings);
 
