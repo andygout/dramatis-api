@@ -9,6 +9,7 @@ import {
 import { getShowQueries as getCharacterShowQueries } from './character';
 import { getShowQueries as getCompanyShowQueries } from './company';
 import { getShowQueries as getFestivalShowQueries } from './festival';
+import { getShowQueries as getFestivalSeriesShowQueries } from './festival-series';
 import {
 	getCreateQuery as getMaterialCreateQuery,
 	getEditQuery as getMaterialEditQuery,
@@ -76,6 +77,7 @@ const getShowQueries = {
 	[MODELS.CHARACTER]: getCharacterShowQueries,
 	[MODELS.COMPANY]: getCompanyShowQueries,
 	[MODELS.FESTIVAL]: getFestivalShowQueries,
+	[MODELS.FESTIVAL_SERIES]: getFestivalSeriesShowQueries,
 	[MODELS.MATERIAL]: getMaterialShowQueries,
 	[MODELS.PERSON]: getPersonShowQueries,
 	[MODELS.PRODUCTION]: getProductionShowQueries,

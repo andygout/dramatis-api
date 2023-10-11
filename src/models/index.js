@@ -10,6 +10,7 @@ import CompanyWithMembers from './CompanyWithMembers';
 import CreativeCredit from './CreativeCredit';
 import CrewCredit from './CrewCredit';
 import Festival from './Festival';
+import FestivalSeries from './FestivalSeries';
 import Material from './Material';
 import MaterialBase from './MaterialBase';
 import NominatedProductionIdentifier from './NominatedProductionIdentifier';
@@ -40,6 +41,7 @@ export {
 	CreativeCredit,
 	CrewCredit,
 	Festival,
+	FestivalSeries,
 	Material,
 	MaterialBase,
 	NominatedProductionIdentifier,
