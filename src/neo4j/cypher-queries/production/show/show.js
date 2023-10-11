@@ -213,6 +213,8 @@ export default () => `
 
 		OPTIONAL MATCH (collectionProduction)-[:PART_OF_FESTIVAL]->(festival:Festival)
 
+		OPTIONAL MATCH (festival)-[:PART_OF_FESTIVAL_SERIES]->(festivalSeries:FestivalSeries)
+
 		WITH
 			production,
 			collectionProduction,
@@ -224,7 +226,11 @@ export default () => `
 				ELSE festival {
 					model: 'FESTIVAL',
 					.uuid,
-					.name
+					.name,
+					festivalSeries: CASE WHEN festivalSeries IS NULL
+						THEN null
+						ELSE festivalSeries { model: 'FESTIVAL_SERIES', .uuid, .name }
+					END
 				}
 			END AS festival
 

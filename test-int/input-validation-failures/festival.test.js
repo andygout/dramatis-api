@@ -49,6 +49,12 @@ describe('Input validation failures: Festival instance', () => {
 						name: [
 							'Value is too short'
 						]
+					},
+					festivalSeries: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -79,6 +85,12 @@ describe('Input validation failures: Festival instance', () => {
 						name: [
 							'Value is too long'
 						]
+					},
+					festivalSeries: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -112,6 +124,95 @@ describe('Input validation failures: Festival instance', () => {
 						differentiator: [
 							'Value is too long'
 						]
+					},
+					festivalSeries: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					}
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('festival series name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instance = new Festival({
+					name: '2008',
+					festivalSeries: {
+						name: ABOVE_MAX_LENGTH_STRING
+					}
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2008',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					festivalSeries: {
+						uuid: undefined,
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: [
+								'Value is too long'
+							]
+						}
+					}
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('festival series differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instance = new Festival({
+					name: '2008',
+					festivalSeries: {
+						name: 'Edinburgh International Festival',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: '2008',
+					differentiator: '',
+					hasErrors: true,
+					errors: {},
+					festivalSeries: {
+						uuid: undefined,
+						name: 'Edinburgh International Festival',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: [
+								'Value is too long'
+							]
+						}
 					}
 				};
 

@@ -17,11 +17,15 @@ describe('Festival with multiple productions', () => {
 	const ANTONY_AND_CLEOPATRA_SWAN_THEATRE_PRODUCTION_UUID = 'ANTONY_AND_CLEOPATRA_PRODUCTION_UUID';
 	const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
 	const JULIUS_CAESAR_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = 'JULIUS_CAESAR_PRODUCTION_UUID';
+	const EDINBURGH_INTERNATIONAL_FESTIVAL_2006_FESTIVAL_UUID = '2006_FESTIVAL_UUID';
+	const EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID = 'EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID';
+	const TROILUS_AND_CRESSIDA_KINGS_THEATRE_PRODUCTION_UUID = 'TROILUS_AND_CRESSIDA_PRODUCTION_UUID';
 
 	let theCompleteWorksFestival;
 	let romeoAndJulietRoyalShakespeareProduction;
 	let antonyAndCleopatraSwanProduction;
 	let juliusCaesarRoyalShakespeareProduction;
+	let troilusAndCressidaKingsProduction;
 
 	const sandbox = createSandbox();
 
@@ -78,6 +82,29 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
+		await chai.request(app)
+			.post('/festivals')
+			.send({
+				name: '2006',
+				festivalSeries: {
+					name: 'Edinburgh International Festival'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Troilus and Cressida',
+				startDate: '2006-08-14',
+				endDate: '2006-08-26',
+				venue: {
+					name: 'King\'s Theatre'
+				},
+				festival: {
+					name: '2006'
+				}
+			});
+
 		theCompleteWorksFestival = await chai.request(app)
 			.get(`/festivals/${THE_COMPLETE_WORKS_FESTIVAL_UUID}`);
 
@@ -89,6 +116,9 @@ describe('Festival with multiple productions', () => {
 
 		juliusCaesarRoyalShakespeareProduction = await chai.request(app)
 			.get(`/productions/${JULIUS_CAESAR_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
+
+		troilusAndCressidaKingsProduction = await chai.request(app)
+			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_THEATRE_PRODUCTION_UUID}`);
 
 	});
 
@@ -162,7 +192,8 @@ describe('Festival with multiple productions', () => {
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
-				name: 'The Complete Works'
+				name: 'The Complete Works',
+				festivalSeries: null
 			};
 
 			const { festival } = romeoAndJulietRoyalShakespeareProduction.body;
@@ -180,7 +211,8 @@ describe('Festival with multiple productions', () => {
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
-				name: 'The Complete Works'
+				name: 'The Complete Works',
+				festivalSeries: null
 			};
 
 			const { festival } = antonyAndCleopatraSwanProduction.body;
@@ -198,10 +230,34 @@ describe('Festival with multiple productions', () => {
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
-				name: 'The Complete Works'
+				name: 'The Complete Works',
+				festivalSeries: null
 			};
 
 			const { festival } = juliusCaesarRoyalShakespeareProduction.body;
+
+			expect(festival).to.deep.equal(expectedFestival);
+
+		});
+
+	});
+
+	describe('Troilus and Cressida at King\'s Theatre (production)', () => {
+
+		it('attributes festival as The Complete Works', () => {
+
+			const expectedFestival = {
+				model: 'FESTIVAL',
+				uuid: EDINBURGH_INTERNATIONAL_FESTIVAL_2006_FESTIVAL_UUID,
+				name: '2006',
+				festivalSeries: {
+					model: 'FESTIVAL_SERIES',
+					uuid: EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID,
+					name: 'Edinburgh International Festival'
+				}
+			};
+
+			const { festival } = troilusAndCressidaKingsProduction.body;
 
 			expect(festival).to.deep.equal(expectedFestival);
 

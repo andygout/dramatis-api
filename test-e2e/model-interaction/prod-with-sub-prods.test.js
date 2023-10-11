@@ -13,6 +13,8 @@ describe('Production with sub-productions', () => {
 
 	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 	const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
+	const STOPPARD_FESTIVAL_2002_FESTIVAL_UUID = '2002_FESTIVAL_UUID';
+	const STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID = 'STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID';
 	const VOYAGE_MATERIAL_UUID = 'VOYAGE_MATERIAL_UUID';
 	const TOM_STOPPARD_JR_PERSON_UUID = 'TOM_STOPPARD_JR_PERSON_UUID';
 	const THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID = 'THE_SUB_STRAUSSLER_GROUP_COMPANY_UUID';
@@ -25,7 +27,6 @@ describe('Production with sub-productions', () => {
 	const ALEXANDER_HERZEN_SR_CHARACTER_UUID = 'ALEXANDER_HERZEN_SR_CHARACTER_UUID';
 	const VOYAGE_OLIVIER_PRODUCTION_UUID = 'VOYAGE_PRODUCTION_UUID';
 	const STOPPARD_SEASON_UUID = 'STOPPARD_SEASON_SEASON_UUID';
-	const STOPPARD_FESTIVAL_UUID = 'STOPPARD_FESTIVAL_FESTIVAL_UUID';
 	const TREVOR_NUNN_JR_PERSON_UUID = 'TREVOR_NUNN_JR_PERSON_UUID';
 	const SUB_NATIONAL_THEATRE_COMPANY_UUID = 'SUB_NATIONAL_THEATRE_COMPANY_COMPANY_UUID';
 	const NICK_STARR_JR_PERSON_UUID = 'NICK_STARR_JR_PERSON_UUID';
@@ -51,6 +52,7 @@ describe('Production with sub-productions', () => {
 	const SUE_MILLIN_SR_PERSON_UUID = 'SUE_MILLIN_SR_PERSON_UUID';
 	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = 'VOYAGE_2_PRODUCTION_UUID';
 	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = 'VIVIAN_BEAUMONT_THEATRE_VENUE_UUID';
+	const PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID = 'PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID';
 	const SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID = 'SHIPWRECK_2_PRODUCTION_UUID';
 	const SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = 'SALVAGE_2_PRODUCTION_UUID';
 	const THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID = 'THE_COAST_OF_UTOPIA_2_PRODUCTION_UUID';
@@ -64,7 +66,7 @@ describe('Production with sub-productions', () => {
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;
 	let stoppardSeason;
-	let stoppardFestival;
+	let stoppardFestival2002;
 	let trevorNunnJrPerson;
 	let subNationalTheatreCompany;
 	let nickStarrJrPerson;
@@ -96,6 +98,15 @@ describe('Production with sub-productions', () => {
 						name: 'Olivier Theatre'
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/festivals')
+			.send({
+				name: '2002',
+				festivalSeries: {
+					name: 'Stoppard Festival'
+				}
 			});
 
 		await chai.request(app)
@@ -246,7 +257,7 @@ describe('Production with sub-productions', () => {
 					name: 'Stoppard Season'
 				},
 				festival: {
-					name: 'Stoppard Festival'
+					name: '2002'
 				},
 				producerCredits: [
 					{
@@ -333,7 +344,7 @@ describe('Production with sub-productions', () => {
 					name: 'Stoppard Season'
 				},
 				festival: {
-					name: 'Stoppard Festival'
+					name: '2002'
 				},
 				producerCredits: [
 					{
@@ -420,7 +431,7 @@ describe('Production with sub-productions', () => {
 					name: 'Stoppard Season'
 				},
 				festival: {
-					name: 'Stoppard Festival'
+					name: '2002'
 				},
 				producerCredits: [
 					{
@@ -507,7 +518,7 @@ describe('Production with sub-productions', () => {
 					name: 'Stoppard Season'
 				},
 				festival: {
-					name: 'Stoppard Festival'
+					name: '2002'
 				},
 				subProductions: [
 					{
@@ -600,6 +611,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Vivian Beaumont Theatre'
+				},
+				festival: {
+					name: 'Pre-Revolution Russia Festival'
 				}
 			});
 
@@ -615,6 +629,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Vivian Beaumont Theatre'
+				},
+				festival: {
+					name: 'Pre-Revolution Russia Festival'
 				}
 			});
 
@@ -630,6 +647,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Vivian Beaumont Theatre'
+				},
+				festival: {
+					name: 'Pre-Revolution Russia Festival'
 				}
 			});
 
@@ -644,6 +664,9 @@ describe('Production with sub-productions', () => {
 				},
 				venue: {
 					name: 'Vivian Beaumont Theatre'
+				},
+				festival: {
+					name: 'Pre-Revolution Russia Festival'
 				},
 				subProductions: [
 					{
@@ -685,8 +708,8 @@ describe('Production with sub-productions', () => {
 		stoppardSeason = await chai.request(app)
 			.get(`/seasons/${STOPPARD_SEASON_UUID}`);
 
-		stoppardFestival = await chai.request(app)
-			.get(`/festivals/${STOPPARD_FESTIVAL_UUID}`);
+		stoppardFestival2002 = await chai.request(app)
+			.get(`/festivals/${STOPPARD_FESTIVAL_2002_FESTIVAL_UUID}`);
 
 		trevorNunnJrPerson = await chai.request(app)
 			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
@@ -789,8 +812,13 @@ describe('Production with sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: STOPPARD_FESTIVAL_UUID,
-						name: 'Stoppard Festival'
+						uuid: STOPPARD_FESTIVAL_2002_FESTIVAL_UUID,
+						name: '2002',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Stoppard Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -940,8 +968,13 @@ describe('Production with sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: STOPPARD_FESTIVAL_UUID,
-						name: 'Stoppard Festival'
+						uuid: STOPPARD_FESTIVAL_2002_FESTIVAL_UUID,
+						name: '2002',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Stoppard Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -1091,8 +1124,13 @@ describe('Production with sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: STOPPARD_FESTIVAL_UUID,
-						name: 'Stoppard Festival'
+						uuid: STOPPARD_FESTIVAL_2002_FESTIVAL_UUID,
+						name: '2002',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Stoppard Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -1251,8 +1289,13 @@ describe('Production with sub-productions', () => {
 				},
 				festival: {
 					model: 'FESTIVAL',
-					uuid: STOPPARD_FESTIVAL_UUID,
-					name: 'Stoppard Festival'
+					uuid: STOPPARD_FESTIVAL_2002_FESTIVAL_UUID,
+					name: '2002',
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						uuid: STOPPARD_FESTIVAL_FESTIVAL_SERIES_UUID,
+						name: 'Stoppard Festival'
+					}
 				},
 				surProduction: null,
 				producerCredits: [
@@ -1406,7 +1449,12 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID,
+						name: 'Pre-Revolution Russia Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1458,7 +1506,12 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID,
+						name: 'Pre-Revolution Russia Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1510,7 +1563,12 @@ describe('Production with sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID,
+						name: 'Pre-Revolution Russia Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -1571,7 +1629,12 @@ describe('Production with sub-productions', () => {
 					surVenue: null
 				},
 				season: null,
-				festival: null,
+				festival: {
+					model: 'FESTIVAL',
+					uuid: PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID,
+					name: 'Pre-Revolution Russia Festival',
+					festivalSeries: null
+				},
 				surProduction: null,
 				producerCredits: [],
 				cast: [],
@@ -1901,7 +1964,7 @@ describe('Production with sub-productions', () => {
 
 	});
 
-	describe('Stoppard Festival (festival)', () => {
+	describe('Stoppard Festival 2002 (festival)', () => {
 
 		it('includes productions in this festival and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
@@ -1977,7 +2040,7 @@ describe('Production with sub-productions', () => {
 				}
 			];
 
-			const { productions } = stoppardFestival.body;
+			const { productions } = stoppardFestival2002.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

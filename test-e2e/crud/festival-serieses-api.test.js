@@ -127,7 +127,8 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				model: 'FESTIVAL_SERIES',
 				uuid: FESTIVAL_SERIES_UUID,
 				name: 'Connections',
-				differentiator: null
+				differentiator: null,
+				festivals: []
 			};
 
 			expect(response).to.have.status(200);
