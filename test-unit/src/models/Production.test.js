@@ -6,7 +6,7 @@ import {
 	CastMember,
 	CreativeCredit,
 	CrewCredit,
-	Festival,
+	FestivalBase,
 	MaterialBase,
 	ProducerCredit,
 	Season,
@@ -36,9 +36,9 @@ describe('Production model', () => {
 
 	};
 
-	const FestivalStub = function () {
+	const FestivalBaseStub = function () {
 
-		return createStubInstance(Festival);
+		return createStubInstance(FestivalBase);
 
 	};
 
@@ -84,7 +84,7 @@ describe('Production model', () => {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
 				CrewCredit: CrewCreditStub,
-				Festival: FestivalStub,
+				FestivalBase: FestivalBaseStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
 				Season: SeasonStub,
@@ -302,7 +302,7 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', () => {
 
 				const instance = createInstance({ name: 'Hamlet' });
-				expect(instance.festival instanceof Festival).to.be.true;
+				expect(instance.festival instanceof FestivalBase).to.be.true;
 
 			});
 
@@ -314,7 +314,7 @@ describe('Production model', () => {
 						name: 'The Complete Works'
 					}
 				});
-				expect(instance.festival instanceof Festival).to.be.true;
+				expect(instance.festival instanceof FestivalBase).to.be.true;
 
 			});
 

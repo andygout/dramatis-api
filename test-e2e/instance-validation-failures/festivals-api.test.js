@@ -51,6 +51,12 @@ describe('Instance validation failures: Festivals API', () => {
 						name: [
 							'Value is too short'
 						]
+					},
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -86,6 +92,12 @@ describe('Instance validation failures: Festivals API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
+					},
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -144,6 +156,12 @@ describe('Instance validation failures: Festivals API', () => {
 						name: [
 							'Value is too short'
 						]
+					},
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -185,6 +203,12 @@ describe('Instance validation failures: Festivals API', () => {
 						differentiator: [
 							'Name and differentiator combination already exists'
 						]
+					},
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -253,6 +277,12 @@ describe('Instance validation failures: Festivals API', () => {
 						associations: [
 							'Production'
 						]
+					},
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 

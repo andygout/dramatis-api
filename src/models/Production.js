@@ -9,7 +9,7 @@ import {
 	CastMember,
 	CreativeCredit,
 	CrewCredit,
-	Festival,
+	FestivalBase,
 	MaterialBase,
 	ProducerCredit,
 	Season,
@@ -51,7 +51,7 @@ export default class Production extends Entity {
 
 		this.season = new Season(season);
 
-		this.festival = new Festival(festival);
+		this.festival = new FestivalBase(festival);
 
 		this.subProductions = subProductions
 			? subProductions.map(subProduction => new SubProductionIdentifier(subProduction))

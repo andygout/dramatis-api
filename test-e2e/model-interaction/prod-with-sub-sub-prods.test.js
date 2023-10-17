@@ -13,6 +13,8 @@ describe('Production with sub-sub-productions', () => {
 
 	const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = 'BERKELEY_REPERTORY_THEATRE_VENUE_UUID';
 	const RODA_THEATRE_VENUE_UUID = 'RODA_THEATRE_VENUE_UUID';
+	const AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID = '2009_FESTIVAL_UUID';
+	const AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID = 'AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
 	const FERDINAND_FOO_JR_PERSON_UUID = 'FERDINAND_FOO_JR_PERSON_UUID';
 	const SUB_INKISTS_LTD_COMPANY_UUID = 'SUB_INKISTS_LTD_COMPANY_UUID';
@@ -37,7 +39,6 @@ describe('Production with sub-sub-productions', () => {
 	const BAR_SR_CHARACTER_UUID = 'BAR_SR_CHARACTER_UUID';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
 	const AFGHAN_HISTORY_SEASON_UUID = 'AFGHAN_HISTORY_SEASON_SEASON_UUID';
-	const AFGHAN_HISTORY_FESTIVAL_UUID = 'AFGHAN_HISTORY_FESTIVAL_FESTIVAL_UUID';
 	const NICOLAS_KENT_JR_PERSON_UUID = 'NICOLAS_KENT_JR_PERSON_UUID';
 	const SUB_TRICYCLE_THEATRE_COMPANY_UUID = 'SUB_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
 	const ZOË_INGENHAAG_JR_PERSON_UUID = 'ZOE_INGENHAAG_JR_PERSON_UUID';
@@ -82,6 +83,7 @@ describe('Production with sub-sub-productions', () => {
 	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = 'CHARLOTTE_PADGHAM_SR_PERSON_UUID';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_2_PRODUCTION_UUID';
 	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+	const WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID = 'WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID';
 	const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = 'DURANDS_LINE_2_PRODUCTION_UUID';
 	const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = 'CAMPAIGN_2_PRODUCTION_UUID';
 	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_2_PRODUCTION_UUID';
@@ -107,7 +109,7 @@ describe('Production with sub-sub-productions', () => {
 	let berkeleyRepertoryTheatreVenue;
 	let rodaTheatreVenue;
 	let afghanHistorySeason;
-	let afghanHistoryFestival;
+	let afghanHistoryFestival2009;
 	let nicolasKentJrPerson;
 	let subTricycleTheatreCompany;
 	let zoëIngenhaagJrPerson;
@@ -139,6 +141,15 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Roda Theatre'
 					}
 				]
+			});
+
+		await chai.request(app)
+			.post('/festivals')
+			.send({
+				name: '2009',
+				festivalSeries: {
+					name: 'Afghan History Festival'
+				}
 			});
 
 		await chai.request(app)
@@ -592,7 +603,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -679,7 +690,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -766,7 +777,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -853,7 +864,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				subProductions: [
 					{
@@ -951,7 +962,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1038,7 +1049,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1125,7 +1136,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1212,7 +1223,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				subProductions: [
 					{
@@ -1310,7 +1321,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1397,7 +1408,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1484,7 +1495,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				producerCredits: [
 					{
@@ -1571,7 +1582,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				subProductions: [
 					{
@@ -1669,7 +1680,7 @@ describe('Production with sub-sub-productions', () => {
 					name: 'Afghan History Season'
 				},
 				festival: {
-					name: 'Afghan History Festival'
+					name: '2009'
 				},
 				subProductions: [
 					{
@@ -1762,6 +1773,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1777,6 +1791,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1792,6 +1809,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1807,6 +1827,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				},
 				subProductions: [
 					{
@@ -1833,6 +1856,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1848,6 +1874,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1863,6 +1892,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1878,6 +1910,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				},
 				subProductions: [
 					{
@@ -1904,6 +1939,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1919,6 +1957,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1934,6 +1975,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				}
 			});
 
@@ -1949,6 +1993,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				},
 				subProductions: [
 					{
@@ -1975,6 +2022,9 @@ describe('Production with sub-sub-productions', () => {
 				},
 				venue: {
 					name: 'Tricycle Theatre'
+				},
+				festival: {
+					name: 'World Politics Festival'
 				},
 				subProductions: [
 					{
@@ -2025,8 +2075,8 @@ describe('Production with sub-sub-productions', () => {
 		afghanHistorySeason = await chai.request(app)
 			.get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
 
-		afghanHistoryFestival = await chai.request(app)
-			.get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_UUID}`);
+		afghanHistoryFestival2009 = await chai.request(app)
+			.get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID}`);
 
 		nicolasKentJrPerson = await chai.request(app)
 			.get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
@@ -2129,8 +2179,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [
 						{
@@ -2192,8 +2247,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -2346,8 +2406,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -2500,8 +2565,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -2743,8 +2813,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [
 						{
@@ -2806,8 +2881,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -2960,8 +3040,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -3114,8 +3199,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -3357,8 +3447,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [
 						{
@@ -3420,8 +3515,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -3574,8 +3674,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -3728,8 +3833,13 @@ describe('Production with sub-sub-productions', () => {
 							},
 							festival: {
 								model: 'FESTIVAL',
-								uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-								name: 'Afghan History Festival'
+								uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+								name: '2009',
+								festivalSeries: {
+									model: 'FESTIVAL_SERIES',
+									uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+									name: 'Afghan History Festival'
+								}
 							},
 							producerCredits: [
 								{
@@ -3980,8 +4090,13 @@ describe('Production with sub-sub-productions', () => {
 				},
 				festival: {
 					model: 'FESTIVAL',
-					uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-					name: 'Afghan History Festival'
+					uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+					name: '2009',
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+						name: 'Afghan History Festival'
+					}
 				},
 				surProduction: null,
 				producerCredits: [
@@ -4145,8 +4260,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -4300,8 +4420,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -4455,8 +4580,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					subProductions: [],
 					producerCredits: [
@@ -4620,8 +4750,13 @@ describe('Production with sub-sub-productions', () => {
 				},
 				festival: {
 					model: 'FESTIVAL',
-					uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-					name: 'Afghan History Festival'
+					uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+					name: '2009',
+					festivalSeries: {
+						model: 'FESTIVAL_SERIES',
+						uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+						name: 'Afghan History Festival'
+					}
 				},
 				surProduction: {
 					model: 'PRODUCTION',
@@ -4673,8 +4808,13 @@ describe('Production with sub-sub-productions', () => {
 					},
 					festival: {
 						model: 'FESTIVAL',
-						uuid: AFGHAN_HISTORY_FESTIVAL_UUID,
-						name: 'Afghan History Festival'
+						uuid: AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID,
+						name: '2009',
+						festivalSeries: {
+							model: 'FESTIVAL_SERIES',
+							uuid: AFGHAN_HISTORY_FESTIVAL_FESTIVAL_SERIES_UUID,
+							name: 'Afghan History Festival'
+						}
 					},
 					producerCredits: [
 						{
@@ -4919,7 +5059,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -4970,7 +5115,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5025,7 +5175,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5080,7 +5235,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5137,7 +5297,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -5188,7 +5353,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5243,7 +5413,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5298,7 +5473,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5355,7 +5535,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [
 						{
 							model: 'PRODUCTION',
@@ -5406,7 +5591,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5461,7 +5651,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5516,7 +5711,12 @@ describe('Production with sub-sub-productions', () => {
 								surVenue: null
 							},
 							season: null,
-							festival: null,
+							festival: {
+								model: 'FESTIVAL',
+								uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+								name: 'World Politics Festival',
+								festivalSeries: null
+							},
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
@@ -5582,7 +5782,12 @@ describe('Production with sub-sub-productions', () => {
 					surVenue: null
 				},
 				season: null,
-				festival: null,
+				festival: {
+					model: 'FESTIVAL',
+					uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+					name: 'World Politics Festival',
+					festivalSeries: null
+				},
 				surProduction: null,
 				producerCredits: [],
 				cast: [],
@@ -5648,7 +5853,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5704,7 +5914,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5760,7 +5975,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					subProductions: [],
 					producerCredits: [],
 					cast: [],
@@ -5826,7 +6046,12 @@ describe('Production with sub-sub-productions', () => {
 					surVenue: null
 				},
 				season: null,
-				festival: null,
+				festival: {
+					model: 'FESTIVAL',
+					uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+					name: 'World Politics Festival',
+					festivalSeries: null
+				},
 				surProduction: {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -5867,7 +6092,12 @@ describe('Production with sub-sub-productions', () => {
 						surVenue: null
 					},
 					season: null,
-					festival: null,
+					festival: {
+						model: 'FESTIVAL',
+						uuid: WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID,
+						name: 'World Politics Festival',
+						festivalSeries: null
+					},
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
@@ -6954,7 +7184,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			const { productions } = afghanHistoryFestival.body;
+			const { productions } = afghanHistoryFestival2009.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
 

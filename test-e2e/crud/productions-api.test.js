@@ -1718,7 +1718,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				festival: {
 					model: 'FESTIVAL',
 					uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
-					name: 'The Complete Works'
+					name: 'The Complete Works',
+					festivalSeries: null
 				},
 				surProduction: null,
 				subProductions: [
@@ -4750,7 +4751,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				festival: {
 					model: 'FESTIVAL',
 					uuid: GLOBE_TO_GLOBE_FESTIVAL_UUID,
-					name: 'Globe to Globe'
+					name: 'Globe to Globe',
+					festivalSeries: null
 				},
 				surProduction: null,
 				subProductions: [
