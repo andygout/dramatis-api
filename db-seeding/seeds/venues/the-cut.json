@@ -1,0 +1,15 @@
+{
+	"name": "The Cut",
+	"subVenues": [
+		{
+			"name": "Main House",
+			"differentiator": "The Cut"
+		},
+		{
+			"name": "Studio"
+		},
+		{
+			"name": "Upstairs"
+		}
+	]
+}

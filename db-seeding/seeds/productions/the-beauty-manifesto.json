@@ -1,0 +1,166 @@
+{
+	"name": "The Beauty Manifesto",
+	"startDate": "2011-07-04",
+	"endDate": "2011-07-04",
+	"material": {
+		"name": "The Beauty Manifesto"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Junk Shop"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jessica Stone",
+			"roles": [
+				{
+					"name": "Chloe"
+				}
+			]
+		},
+		{
+			"name": "Andrew Swannell",
+			"roles": [
+				{
+					"name": "Robert"
+				}
+			]
+		},
+		{
+			"name": "Lucy Roberts",
+			"roles": [
+				{
+					"name": "Paloma"
+				}
+			]
+		},
+		{
+			"name": "Sam Lane",
+			"roles": [
+				{
+					"name": "Silas"
+				}
+			]
+		},
+		{
+			"name": "Harry Davidson",
+			"roles": [
+				{
+					"name": "Sam"
+				}
+			]
+		},
+		{
+			"name": "Anna Lehane",
+			"roles": [
+				{
+					"name": "Ella"
+				}
+			]
+		},
+		{
+			"name": "Annie Roberts",
+			"roles": [
+				{
+					"name": "Alexis"
+				}
+			]
+		},
+		{
+			"name": "Beckie Knowles",
+			"roles": [
+				{
+					"name": "Ambassador",
+					"characterName": "Ambassadors"
+				}
+			]
+		},
+		{
+			"name": "Katy Gore",
+			"roles": [
+				{
+					"name": "Ambassador",
+					"characterName": "Ambassadors"
+				}
+			]
+		},
+		{
+			"name": "Rachael Caulton",
+			"roles": [
+				{
+					"name": "Ambassador",
+					"characterName": "Ambassadors"
+				}
+			]
+		},
+		{
+			"name": "Ruby Tebbs",
+			"roles": [
+				{
+					"name": "Ambassador",
+					"characterName": "Ambassadors"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Beth Shoulder"
+				},
+				{
+					"name": "Loreto Murray"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Ellen Boyd"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Ellen Boyd"
+				}
+			]
+		},
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Lexie Stewart"
+				}
+			]
+		},
+		{
+			"name": "Lighting Operator",
+			"entities": [
+				{
+					"name": "Jessica Pickford"
+				}
+			]
+		}
+	]
+}

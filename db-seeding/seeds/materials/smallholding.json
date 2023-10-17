@@ -1,0 +1,27 @@
+{
+	"name": "Smallholding",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Chris Dunkley"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Andy",
+					"differentiator": "Smallholding"
+				},
+				{
+					"name": "Jen"
+				}
+			]
+		}
+	]
+}

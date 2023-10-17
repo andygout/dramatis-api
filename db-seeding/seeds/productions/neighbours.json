@@ -1,0 +1,71 @@
+{
+	"name": "Neighbours",
+	"startDate": "2013-05-03",
+	"endDate": "2013-05-12",
+	"material": {
+		"name": "Neighbours"
+	},
+	"venue": {
+		"name": "The Old Print Works"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Nuffield"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Steven Atkinson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Richard Kent"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Plater"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Mic Pool"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Hayley Kaimakliotis"
+				}
+			]
+		}
+	]
+}

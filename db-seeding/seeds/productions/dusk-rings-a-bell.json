@@ -1,0 +1,53 @@
+{
+	"name": "Dusk Rings a Bell",
+	"startDate": "2011-04-28",
+	"endDate": "2011-05-08",
+	"material": {
+		"name": "Dusk Rings a Bell"
+	},
+	"venue": {
+		"name": "The Old Print Works"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Paul Blair",
+			"roles": [
+				{
+					"name": "Ray"
+				}
+			]
+		},
+		{
+			"name": "Katherine Kingsley",
+			"roles": [
+				{
+					"name": "Molly"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Steven Atkinson"
+				}
+			]
+		}
+	]
+}

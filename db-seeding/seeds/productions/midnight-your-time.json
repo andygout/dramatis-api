@@ -1,0 +1,45 @@
+{
+	"name": "Midnight Your Time",
+	"startDate": "2011-04-30",
+	"endDate": "2011-05-08",
+	"material": {
+		"name": "Midnight Your Time"
+	},
+	"venue": {
+		"name": "The Old Print Works"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Diana Quick",
+			"roles": [
+				{
+					"name": "Judy"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Michael Longhurst"
+				}
+			]
+		}
+	]
+}

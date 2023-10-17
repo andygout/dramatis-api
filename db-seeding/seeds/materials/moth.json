@@ -1,0 +1,27 @@
+{
+	"name": "Moth",
+	"format": "play",
+	"year": "2013",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Declan Greene"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Claryssa"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "Moth"
+				}
+			]
+		}
+	]
+}

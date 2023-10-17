@@ -2,7 +2,8 @@
 	"name": "Young Vic",
 	"subVenues": [
 		{
-			"name": "Main House"
+			"name": "Main House",
+			"differentiator": "Young Vic"
 		},
 		{
 			"name": "The Maria"

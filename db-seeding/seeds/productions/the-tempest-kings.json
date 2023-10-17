@@ -1,0 +1,78 @@
+{
+	"name": "The Tempest",
+	"startDate": "2006-08-13",
+	"endDate": "2006-08-16",
+	"material": {
+		"name": "The Tempest"
+	},
+	"venue": {
+		"name": "King's Theatre"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Mokwha Repertory Company"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tae-Suk Oh"
+				}
+			]
+		},
+		{
+			"name": "Stage Designer",
+			"entities": [
+				{
+					"name": "Eun-A Cho"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designers",
+			"entities": [
+				{
+					"name": "Aikawa Masaaki"
+				},
+				{
+					"name": "Kyung-Chun Lee"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Aikawa Masaaki"
+				}
+			]
+		},
+		{
+			"name": "Choreography",
+			"entities": [
+				{
+					"name": "Keun-Sung Moon"
+				}
+			]
+		},
+		{
+			"name": "Music Arranger",
+			"entities": [
+				{
+					"name": "Eun-Jeung Wu"
+				}
+			]
+		}
+	]
+}

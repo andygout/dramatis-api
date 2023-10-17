@@ -1,0 +1,177 @@
+{
+	"name": "We Lost Elijah",
+	"startDate": "2013-07-05",
+	"endDate": "2013-07-05",
+	"material": {
+		"name": "We Lost Elijah"
+	},
+	"venue": {
+		"name": "The Shed"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal & Derngate Youth Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jessica Lee",
+			"roles": [
+				{
+					"name": "Kara"
+				}
+			]
+		},
+		{
+			"name": "Sarah Limey",
+			"roles": [
+				{
+					"name": "Grace"
+				}
+			]
+		},
+		{
+			"name": "Ryan Leder",
+			"roles": [
+				{
+					"name": "Maxwell"
+				}
+			]
+		},
+		{
+			"name": "Walter Hall",
+			"roles": [
+				{
+					"name": "Titus"
+				}
+			]
+		},
+		{
+			"name": "Alex Roberts",
+			"roles": [
+				{
+					"name": "Malachi"
+				}
+			]
+		},
+		{
+			"name": "Jake Ward",
+			"roles": [
+				{
+					"name": "Elijah"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Kilby-Smith",
+			"roles": [
+				{
+					"name": "Becky"
+				}
+			]
+		},
+		{
+			"name": "Jessica Slinn",
+			"roles": [
+				{
+					"name": "Holly"
+				}
+			]
+		},
+		{
+			"name": "Robyn Cullingford-Agnew",
+			"roles": [
+				{
+					"name": "Rioter",
+					"characterName": "Rioters"
+				}
+			]
+		},
+		{
+			"name": "Michael Herd",
+			"roles": [
+				{
+					"name": "Rioter",
+					"characterName": "Rioters"
+				}
+			]
+		},
+		{
+			"name": "Tiwa Ibirogba-Olulode",
+			"roles": [
+				{
+					"name": "Shana"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Georgia Munnion"
+				}
+			]
+		},
+		{
+			"name": "Set and Costume Designer",
+			"entities": [
+				{
+					"name": "Ellie Davies"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David Middleton"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Martin Thompson"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Lighting Operator",
+			"entities": [
+				{
+					"name": "David Middleton"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"entities": [
+				{
+					"name": "Martin Thompson"
+				}
+			]
+		},
+		{
+			"name": "Chaperone",
+			"entities": [
+				{
+					"name": "Erica Martin"
+				}
+			]
+		}
+	]
+}

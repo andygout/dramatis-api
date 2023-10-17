@@ -1,0 +1,82 @@
+{
+	"name": "Smallholding",
+	"startDate": "2013-05-07",
+	"endDate": "2013-05-11",
+	"material": {
+		"name": "Smallholding"
+	},
+	"venue": {
+		"name": "Main House",
+		"differentiator": "The Cut"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Nuffield"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Chris New",
+			"roles": [
+				{
+					"name": "Andy"
+				}
+			]
+		},
+		{
+			"name": "Matti Houghton",
+			"roles": [
+				{
+					"name": "Jen"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Patrick Sandford"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Fabrice Serafino"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "David W Kidd"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Rob Jones"
+				}
+			]
+		}
+	]
+}

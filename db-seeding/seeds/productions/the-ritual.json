@@ -1,0 +1,136 @@
+{
+	"name": "The Ritual",
+	"startDate": "2012-06-21",
+	"endDate": "2012-06-21",
+	"material": {
+		"name": "The Ritual"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Rotherham College of Arts and Technology"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Rebecca Stordy",
+			"roles": [
+				{
+					"name": "Marcia"
+				}
+			]
+		},
+		{
+			"name": "Oliver Burkhill",
+			"roles": [
+				{
+					"name": "Joel"
+				}
+			]
+		},
+		{
+			"name": "Kristy Conrad",
+			"roles": [
+				{
+					"name": "Ana"
+				}
+			]
+		},
+		{
+			"name": "Connor Dye",
+			"roles": [
+				{
+					"name": "Mauro"
+				}
+			]
+		},
+		{
+			"name": "Casey Wade",
+			"roles": [
+				{
+					"name": "Lia"
+				}
+			]
+		},
+		{
+			"name": "James Williams",
+			"roles": [
+				{
+					"name": "Celso"
+				}
+			]
+		},
+		{
+			"name": "Brooke Wragg",
+			"roles": [
+				{
+					"name": "Bianca"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Denny Smith"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Emma Williams",
+					"differentiator": "3"
+				}
+			]
+		},
+		{
+			"name": "Lighting",
+			"entities": [
+				{
+					"name": "Rebecca Roadhouse"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Rhian Richardson"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Lydia Emerson"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Deputy Stage Manager",
+			"entities": [
+				{
+					"name": "Rebecca Peacock"
+				}
+			]
+		}
+	]
+}

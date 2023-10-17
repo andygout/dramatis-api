@@ -1,0 +1,23 @@
+{
+	"name": "Midnight Your Time",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Adam Brace"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Judy"
+				}
+			]
+		}
+	]
+}

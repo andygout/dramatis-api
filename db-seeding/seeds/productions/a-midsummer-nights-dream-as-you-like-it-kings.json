@@ -1,0 +1,47 @@
+{
+	"name": "A Midsummer Night's Dream (As You Like It)",
+	"startDate": "2012-08-24",
+	"endDate": "2012-08-26",
+	"material": {
+		"name": "A Midsummer Night's Dream"
+	},
+	"venue": {
+		"name": "King's Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Dmitry Krymov's Laboratory"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Moscow School of Dramatic Arts"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Dmitry Krymov"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Vera Martynova"
+				}
+			]
+		}
+	]
+}

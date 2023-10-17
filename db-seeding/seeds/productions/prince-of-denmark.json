@@ -1,0 +1,252 @@
+{
+	"name": "Prince of Denmark",
+	"startDate": "2012-06-25",
+	"endDate": "2012-06-25",
+	"material": {
+		"name": "Prince of Denmark"
+	},
+	"venue": {
+		"name": "Lyttelton Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Calderdale Theatre Scool, West Yorkshire"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Joseph Finegold",
+			"roles": [
+				{
+					"name": "Laertes"
+				}
+			]
+		},
+		{
+			"name": "Sol Cotton",
+			"roles": [
+				{
+					"name": "Reynaldo"
+				}
+			]
+		},
+		{
+			"name": "William Pugh",
+			"roles": [
+				{
+					"name": "Osric"
+				}
+			]
+		},
+		{
+			"name": "Katy Rainford",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Patrick Costello",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Daniel Cox",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "James Huson",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "Joe Cotton",
+			"roles": [
+				{
+					"name": "Player Prince"
+				}
+			]
+		},
+		{
+			"name": "Aidan Good",
+			"roles": [
+				{
+					"name": "Marcellus"
+				}
+			]
+		},
+		{
+			"name": "William Foulds",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				},
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				}
+			]
+		},
+		{
+			"name": "Billy Marston",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				},
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				}
+			]
+		},
+		{
+			"name": "Jujin Whippey",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				},
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				}
+			]
+		},
+		{
+			"name": "Flo Hutchinson",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Jodie Pilkington",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Juliette Strobel",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Tippy Uhuru",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Fin Pritchard",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				},
+				{
+					"name": "Guard",
+					"characterName": "Guards"
+				}
+			]
+		},
+		{
+			"name": "Michael James",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Catherine Russell",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Gillie Kerrod"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Tony Clark"
+				}
+			]
+		},
+		{
+			"name": "Costume",
+			"entities": [
+				{
+					"name": "Jacquie Lambert"
+				},
+				{
+					"name": "Pauline Starr"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Ian Stapleton"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "Stephen Finegold"
+				},
+				{
+					"name": "Ben Healey"
+				}
+			]
+		}
+	]
+}

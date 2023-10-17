@@ -1,0 +1,120 @@
+{
+	"name": "The Wind-Up Bird Chronicle",
+	"startDate": "2011-08-20",
+	"endDate": "2011-08-24",
+	"material": {
+		"name": "The Wind-Up Bird Chronicle",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "King's Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"name": "Pamela Lubell"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Wind-Up Productions"
+				}
+			]
+		},
+		{
+			"name": "executive produced by",
+			"entities": [
+				{
+					"name": "Rafe Fogel"
+				},
+				{
+					"name": "Erin Craig"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "James Yaegashi"
+		},
+		{
+			"name": "Stacey Yen"
+		},
+		{
+			"name": "James Saito"
+		},
+		{
+			"name": "Maureen Sebastian"
+		},
+		{
+			"name": "Toshiji Takeshima"
+		},
+		{
+			"name": "Mina Nishimura"
+		},
+		{
+			"name": "Akira Takayama"
+		},
+		{
+			"name": "Akira Ito"
+		},
+		{
+			"name": "Yoshihiro Watanabe"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Stephen Earnhart"
+				}
+			]
+		},
+		{
+			"name": "Set Design and Puppet Director",
+			"entities": [
+				{
+					"name": "Tom Lee"
+				}
+			]
+		},
+		{
+			"name": "Projection Designer",
+			"entities": [
+				{
+					"name": "Adam Larsen"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Laura Mroczkowski"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Jane Shaw"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Oana Botez-Ban"
+				}
+			]
+		}
+	]
+}

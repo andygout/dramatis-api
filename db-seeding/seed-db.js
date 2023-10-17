@@ -8,6 +8,7 @@ const BASE_URL = 'http://localhost:3000';
 
 const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'award-ceremonies': '🏆',
+	'festivals': '🎪',
 	'materials': '📖',
 	'productions': '🎭',
 	'venues': '🏛️'
@@ -94,6 +95,11 @@ async function seedDatabase () {
 
 	// eslint-disable-next-line no-console
 	console.log('🟢 Seeding Neo4j database: Commenced');
+
+	await seedInstances('festivals');
+
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['festivals']} Festival seeds sown`);
 
 	await seedInstances('venues');
 

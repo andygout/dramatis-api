@@ -1,0 +1,155 @@
+{
+	"name": "Ailie and the Alien",
+	"startDate": "2013-07-04",
+	"endDate": "2013-07-04",
+	"material": {
+		"name": "Ailie and the Alien"
+	},
+	"venue": {
+		"name": "The Shed"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "UROCK Youth Theatre"
+				},
+				{
+					"name": "Diane Goldsmith"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Jessica Scrine",
+			"roles": [
+				{
+					"name": "Claire"
+				},
+				{
+					"name": "Mother Alien"
+				}
+			]
+		},
+		{
+			"name": "Maddie Collins",
+			"roles": [
+				{
+					"name": "Ailie"
+				}
+			]
+		},
+		{
+			"name": "Kristina Burns",
+			"roles": [
+				{
+					"name": "Beth"
+				}
+			]
+		},
+		{
+			"name": "George Lacey",
+			"roles": [
+				{
+					"name": "Igor"
+				}
+			]
+		},
+		{
+			"name": "Matthew Rowell",
+			"roles": [
+				{
+					"name": "Darren"
+				}
+			]
+		},
+		{
+			"name": "Ellis Frank",
+			"roles": [
+				{
+					"name": "Finn"
+				}
+			]
+		},
+		{
+			"name": "Connor Frost",
+			"roles": [
+				{
+					"name": "Harrison"
+				},
+				{
+					"name": "Geography Teacher"
+				}
+			]
+		},
+		{
+			"name": "Tai Carter",
+			"roles": [
+				{
+					"name": "Father Alien"
+				}
+			]
+		},
+		{
+			"name": "Isobel Collins",
+			"roles": [
+				{
+					"name": "Sister Alien"
+				}
+			]
+		},
+		{
+			"name": "Grant Butler",
+			"roles": [
+				{
+					"name": "Ericson"
+				},
+				{
+					"name": "PE Teacher"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Tom Fox"
+				}
+			]
+		},
+		{
+			"name": "Rehearsal Director",
+			"entities": [
+				{
+					"name": "Adam Fox"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technician",
+			"entities": [
+				{
+					"name": "Sarah Pedley"
+				}
+			]
+		},
+		{
+			"name": "Hannah Dillamore",
+			"entities": [
+				{
+					"name": "Chaperone"
+				}
+			]
+		}
+	]
+}
