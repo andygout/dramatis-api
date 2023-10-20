@@ -1,0 +1,86 @@
+{
+	"name": "Mudlarks",
+	"startDate": "2012-05-05",
+	"endDate": "2012-05-06",
+	"material": {
+		"name": "Mudlarks"
+	},
+	"venue": {
+		"name": "Upstairs"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		},
+		{
+			"name": "presented in association with",
+			"entities": [
+				{
+					"name": "Lucy Jackson"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Scott Hazell"
+		},
+		{
+			"name": "James Marchant"
+		},
+		{
+			"name": "Mike Noble"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Will Wrightson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Amy Jane Cook"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Joshua Carr"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Richard Hammarton"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Hayley Kaimakliotis"
+				}
+			]
+		}
+	]
+}

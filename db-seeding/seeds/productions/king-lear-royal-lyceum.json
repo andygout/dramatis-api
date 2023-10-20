@@ -1,0 +1,99 @@
+{
+	"name": "King Lear",
+	"startDate": "2006-08-13",
+	"endDate": "2006-08-16",
+	"material": {
+		"name": "King Lear"
+	},
+	"venue": {
+		"name": "Royal Lyceum Theatre"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Contemporary Legend Theatre"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Wu Hsing-kuo",
+			"roles": [
+				{
+					"name": "King Lear"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Wu Hsing-kuo"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Tim Yip"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Chang Wang"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designers",
+			"entities": [
+				{
+					"name": "Tommy Wong"
+				},
+				{
+					"name": "Wong Choo-yean"
+				}
+			]
+		},
+		{
+			"name": "Music Composer",
+			"entities": [
+				{
+					"name": "Lee Yi-chin"
+				}
+			]
+		},
+		{
+			"name": "Singing Arrangers",
+			"entities": [
+				{
+					"name": "Lee Men"
+				},
+				{
+					"name": "Wu Hsing-kuo"
+				}
+			]
+		},
+		{
+			"name": "Music Arranger",
+			"entities": [
+				{
+					"name": "Li Han-chiang"
+				}
+			]
+		}
+	]
+}

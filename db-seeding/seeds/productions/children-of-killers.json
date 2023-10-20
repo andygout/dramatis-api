@@ -1,0 +1,232 @@
+{
+	"name": "Children of Killers",
+	"startDate": "2011-07-01",
+	"endDate": "2011-07-01",
+	"material": {
+		"name": "Children of Killers"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "City Academy Bristol"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Bristol Old Vic"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Azeem Allha",
+			"roles": [
+				{
+					"name": "Emmanuel"
+				}
+			]
+		},
+		{
+			"name": "Chanika Cox",
+			"roles": [
+				{
+					"name": "Mama"
+				}
+			]
+		},
+		{
+			"name": "Omar Currie",
+			"roles": [
+				{
+					"name": "Bosco"
+				}
+			]
+		},
+		{
+			"name": "Chris Daniels",
+			"roles": [
+				{
+					"name": "Vincent"
+				}
+			]
+		},
+		{
+			"name": "Le-Kayla Hamilton",
+			"roles": [
+				{
+					"name": "Esperance"
+				}
+			]
+		},
+		{
+			"name": "Chelsea Jones",
+			"roles": [
+				{
+					"name": "Felicite"
+				}
+			]
+		},
+		{
+			"name": "Andre McMiller",
+			"roles": [
+				{
+					"name": "Innocent"
+				}
+			]
+		},
+		{
+			"name": "Mubarak Aidad",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Joel Airey",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Phillipa Clemmings",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Emily Greenslade",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Liam Kearns",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Maisie Newman",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Jabari Ngozi",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Elmi Rashid Elmi",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Lara Simpson",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		},
+		{
+			"name": "Edith Woolley",
+			"roles": [
+				{
+					"name": "Gahahamuka Ensemble",
+					"characterName": "Chorus of Ghosts"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Miranda Cromwell"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Liesel Corp"
+				}
+			]
+		},
+		{
+			"name": "Musical Director",
+			"entities": [
+				{
+					"name": "Norman Stephenson"
+				}
+			]
+		},
+		{
+			"name": "Associate Musical Director",
+			"entities": [
+				{
+					"name": "Lizzie Wescott"
+				}
+			]
+		},
+		{
+			"name": "Assistant Directors",
+			"entities": [
+				{
+					"name": "Harriet Hill-Payne"
+				},
+				{
+					"name": "Tom Brennan"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Lighting Technician",
+			"entities": [
+				{
+					"name": "Chris Swain"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,134 @@
+{
+	"name": "Those Legs",
+	"startDate": "2011-07-02",
+	"endDate": "2011-07-02",
+	"material": {
+		"name": "Those Legs"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Bedford College"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Charlotte Shearsmith",
+			"roles": [
+				{
+					"name": "Georgia"
+				}
+			]
+		},
+		{
+			"name": "Perrie Walker",
+			"roles": [
+				{
+					"name": "Lana"
+				}
+			]
+		},
+		{
+			"name": "Scarlet Forrest",
+			"roles": [
+				{
+					"name": "Carer 2"
+				}
+			]
+		},
+		{
+			"name": "Richard Bass",
+			"roles": [
+				{
+					"name": "Plumber"
+				}
+			]
+		},
+		{
+			"name": "Shelby Codrington",
+			"roles": [
+				{
+					"name": "Carer 1"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Directors",
+			"entities": [
+				{
+					"name": "Daniel Stone"
+				},
+				{
+					"name": "Nigel Clauzel"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Assistant Stage Managers",
+			"entities": [
+				{
+					"name": "Marc Warner"
+				},
+				{
+					"name": "David Green"
+				},
+				{
+					"name": "Bruce Adams"
+				},
+				{
+					"name": "Harriet McGuigan"
+				},
+				{
+					"name": "Francesca Gambarotto"
+				}
+			]
+		},
+		{
+			"name": "Camera Operator",
+			"entities": [
+				{
+					"name": "Rob Collins"
+				}
+			]
+		},
+		{
+			"name": "AV / Media Technician",
+			"entities": [
+				{
+					"name": "Mike Russell"
+				}
+			]
+		},
+		{
+			"name": "Sound Operator",
+			"entities": [
+				{
+					"name": "Simon Barker"
+				}
+			]
+		},
+		{
+			"name": "Set Construction",
+			"entities": [
+				{
+					"name": "Ralph Wadley"
+				}
+			]
+		}
+	]
+}

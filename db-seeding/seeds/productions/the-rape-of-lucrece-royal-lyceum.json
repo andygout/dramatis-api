@@ -1,0 +1,68 @@
+{
+	"name": "The Rape of Lucrece",
+	"startDate": "2012-08-22",
+	"endDate": "2012-08-26",
+	"material": {
+		"name": "The Rape of Lucrece",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Royal Lyceum Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Royal Shakespeare Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Camille O'Sullivan"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Elizabeth Freestone"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Lily Arnold"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Vince Herbert"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Feargal Murray"
+				},
+				{
+					"name": "Camille O'Sullivan"
+				}
+			]
+		}
+	]
+}

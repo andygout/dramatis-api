@@ -1,0 +1,100 @@
+{
+	"name": "On Behalf of Nature",
+	"startDate": "2013-08-16",
+	"endDate": "2013-10-18",
+	"venue": {
+		"name": "Royal Lyceum Theatre"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"name": "Meredith Monk"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Vocal Ensemble"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Sidney Chen"
+		},
+		{
+			"name": "Ellen Fisher"
+		},
+		{
+			"name": "Katie Geissinger"
+		},
+		{
+			"name": "Meredith Monk"
+		},
+		{
+			"name": "Bruce Rameker",
+			"roles": [
+				{
+					"name": "Voice"
+				}
+			]
+		},
+		{
+			"name": "Allison Sniffin",
+			"roles": [
+				{
+					"name": "Voice"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Music and Direction",
+			"entities": [
+				{
+					"name": "Meredith Monk"
+				}
+			]
+		},
+		{
+			"name": "Lighting",
+			"entities": [
+				{
+					"name": "Elaine Buckholtz"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Jody Elff"
+				}
+			]
+		},
+		{
+			"name": "Scenography and Costume Design",
+			"entities": [
+				{
+					"name": "Toshio Yabara"
+				}
+			]
+		},
+		{
+			"name": "Video Editing",
+			"entities": [
+				{
+					"name": "Meredith Monk"
+				},
+				{
+					"name": "Michael Grenadier"
+				}
+			]
+		}
+	]
+}

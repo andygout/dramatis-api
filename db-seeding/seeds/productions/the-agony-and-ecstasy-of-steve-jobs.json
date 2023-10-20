@@ -1,0 +1,36 @@
+{
+	"name": "The Agony and Ecstasy of Steve Jobs",
+	"startDate": "2012-05-05",
+	"endDate": "2012-05-06",
+	"material": {
+		"name": "The Agony and Ecstasy of Steve Jobs"
+	},
+	"venue": {
+		"name": "Main House",
+		"differentiator": "The Cut"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jean-Michele Gregory"
+				}
+			]
+		}
+	]
+}

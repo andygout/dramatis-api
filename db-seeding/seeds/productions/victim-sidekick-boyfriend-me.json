@@ -1,0 +1,35 @@
+{
+	"name": "Victim Sidekick Boyfriend Me",
+	"startDate": "2012-06-23",
+	"endDate": "2012-06-23",
+	"material": {
+		"name": "Victim Sidekick Boyfriend Me"
+	},
+	"venue": {
+		"name": "Cottesloe Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Marine Academy, Plymouth"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matt Taylor"
+				}
+			]
+		}
+	]
+}

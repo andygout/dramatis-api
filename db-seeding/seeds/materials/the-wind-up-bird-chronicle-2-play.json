@@ -1,0 +1,28 @@
+{
+	"name": "The Wind-Up Bird Chronicle",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Stephen Earnhart"
+				},
+				{
+					"name": "Greg Pierce"
+				}
+			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Wind-Up Bird Chronicle",
+					"differentiator": "1"
+				}
+			]
+		}
+	]
+}

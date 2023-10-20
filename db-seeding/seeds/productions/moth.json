@@ -1,0 +1,85 @@
+{
+	"name": "Moth",
+	"startDate": "2013-05-02",
+	"endDate": "2013-05-10",
+	"material": {
+		"name": "Moth"
+	},
+	"venue": {
+		"name": "The Rifle Hall"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Stacey Gregg",
+			"roles": [
+				{
+					"name": "Claryssa"
+				}
+			]
+		},
+		{
+			"name": "Jordan Mifsúd",
+			"roles": [
+				{
+					"name": "Sebastian"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Prasanna Puwanarajah"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "James Cotterill"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Jack Knowles"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "George Dennis"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Carla Morris"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,202 @@
+{
+	"name": "What Are They Like?",
+	"startDate": "2013-07-08",
+	"endDate": "2013-07-08",
+	"material": {
+		"name": "What Are They Like?"
+	},
+	"venue": {
+		"name": "Olivier Theatre"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "Connections"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Winstanley College"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Guen Lambert",
+			"roles": [
+				{
+					"name": "Roberta"
+				}
+			]
+		},
+		{
+			"name": "Deborah Oscar",
+			"roles": [
+				{
+					"name": "Frances"
+				}
+			]
+		},
+		{
+			"name": "Paiton Barker",
+			"roles": [
+				{
+					"name": "Steph"
+				}
+			]
+		},
+		{
+			"name": "Rebecca Miller",
+			"roles": [
+				{
+					"name": "Grace"
+				}
+			]
+		},
+		{
+			"name": "Brad Roby",
+			"roles": [
+				{
+					"name": "Nick"
+				}
+			]
+		},
+		{
+			"name": "James Walters",
+			"roles": [
+				{
+					"name": "Gary"
+				}
+			]
+		},
+		{
+			"name": "Alexi Papadopoulos",
+			"roles": [
+				{
+					"name": "Johnny"
+				}
+			]
+		},
+		{
+			"name": "Joely Garland",
+			"roles": [
+				{
+					"name": "Indira"
+				}
+			]
+		},
+		{
+			"name": "Samantha Kinane",
+			"roles": [
+				{
+					"name": "Alison"
+				}
+			]
+		},
+		{
+			"name": "Peter Gondwe",
+			"roles": [
+				{
+					"name": "Patrick"
+				}
+			]
+		},
+		{
+			"name": "Beth Sutherland",
+			"roles": [
+				{
+					"name": "Sarah"
+				}
+			]
+		},
+		{
+			"name": "Rhiannon Armstrong",
+			"roles": [
+				{
+					"name": "Meera"
+				}
+			]
+		},
+		{
+			"name": "Harry Cartwright",
+			"roles": [
+				{
+					"name": "Singer"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Jayne Courtney"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Robert Fletcher"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Steve Unsworth"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Technicians",
+			"entities": [
+				{
+					"name": "Steve Unsworth"
+				},
+				{
+					"name": "Michael Frsost"
+				}
+			]
+		},
+		{
+			"name": "Video Operator",
+			"entities": [
+				{
+					"name": "Michael Frost"
+				}
+			]
+		},
+		{
+			"name": "Crew",
+			"entities": [
+				{
+					"name": "Alexander Webster"
+				}
+			]
+		},
+		{
+			"name": "Crew - Operating trap feed",
+			"entities": [
+				{
+					"name": "Shauna Brady"
+				}
+			]
+		},
+		{
+			"name": "Chaperone",
+			"entities": [
+				{
+					"name": "Lisa Baty"
+				}
+			]
+		}
+	]
+}

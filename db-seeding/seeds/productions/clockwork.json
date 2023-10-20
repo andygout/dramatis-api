@@ -1,0 +1,84 @@
+{
+	"name": "Clockwork",
+	"startDate": "2012-05-04",
+	"endDate": "2012-05-13",
+	"material": {
+		"name": "Clockwork"
+	},
+	"venue": {
+		"name": "Studio"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "HighTide Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "HighTide"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Rachel Atkins"
+		},
+		{
+			"name": "Shomarri Diaz"
+		},
+		{
+			"name": "Kern Falconer"
+		},
+		{
+			"name": "Russell Floyd"
+		},
+		{
+			"name": "Matilda Ziegler"
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Steven Atkinson"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Richard Kent"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Matt Prentice"
+				}
+			]
+		},
+		{
+			"name": "Music and Sound Designer",
+			"entities": [
+				{
+					"name": "Tom Mills"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Camilla Evans"
+				}
+			]
+		}
+	]
+}

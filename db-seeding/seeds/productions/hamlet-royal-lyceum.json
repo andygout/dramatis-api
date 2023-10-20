@@ -1,0 +1,179 @@
+{
+	"name": "Hamlet",
+	"startDate": "2013-08-10",
+	"endDate": "2013-08-13",
+	"material": {
+		"name": "Hamlet"
+	},
+	"venue": {
+		"name": "Royal Lyceum Theatre"
+	},
+	"festival": {
+		"name": "2013",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "The Wooster Group"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Scott Shepherd",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Ari Fliakos",
+			"roles": [
+				{
+					"name": "Claudius"
+				},
+				{
+					"name": "Marcellus"
+				},
+				{
+					"name": "Ghost"
+				},
+				{
+					"name": "Gravedigger",
+					"characterName": "First Gravedigger"
+				}
+			]
+		},
+		{
+			"name": "Kate Valk",
+			"roles": [
+				{
+					"name": "Gertrude"
+				},
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Greg Mehrten",
+			"roles": [
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Priest"
+				}
+			]
+		},
+		{
+			"name": "Casey Spooner",
+			"roles": [
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "Player King"
+				}
+			]
+		},
+		{
+			"name": "Daniel Pettrow",
+			"roles": [
+				{
+					"name": "Horatio"
+				},
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "Player Queen"
+				}
+			]
+		},
+		{
+			"name": "Koosil-ja",
+			"roles": [
+				{
+					"name": "Nurse"
+				}
+			]
+		},
+		{
+			"name": "Alessandro Magania",
+			"roles": [
+				{
+					"name": "Barnardo"
+				},
+				{
+					"name": "Voltemand"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Elizabeth LeCompte"
+				}
+			]
+		},
+		{
+			"name": "Set",
+			"entities": [
+				{
+					"name": "Ruud van den Akker"
+				}
+			]
+		},
+		{
+			"name": "Lighting",
+			"entities": [
+				{
+					"name": "Jennifer Tipton"
+				}
+			]
+		},
+		{
+			"name": "Sound",
+			"entities": [
+				{
+					"name": "Bobby McElver"
+				},
+				{
+					"name": "Matt Schloss"
+				},
+				{
+					"name": "Omar Zubair"
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"entities": [
+				{
+					"name": "Andrew Schneider"
+				},
+				{
+					"name": "Aron Deyo"
+				}
+			]
+		}
+	]
+}

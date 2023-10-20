@@ -3,7 +3,8 @@
 	"startDate": "2006-09-10",
 	"endDate": "2006-09-10",
 	"material": {
-		"name": "The Rape of Lucrece"
+		"name": "The Rape of Lucrece",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

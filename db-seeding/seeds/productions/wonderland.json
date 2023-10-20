@@ -1,0 +1,48 @@
+{
+	"name": "Wonderland",
+	"startDate": "2012-08-29",
+	"endDate": "2012-09-01",
+	"venue": {
+		"name": "Royal Lyceum Theatre"
+	},
+	"festival": {
+		"name": "2012",
+		"differentiator": "Edinburgh International Festival"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Vanishing Point"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Matthew Lenton"
+				}
+			]
+		},
+		{
+			"name": "Set, Lighting, and Projection Designer",
+			"entities": [
+				{
+					"name": "Kai Fischer"
+				}
+			]
+		},
+		{
+			"name": "Composer and Sound Designer",
+			"entities": [
+				{
+					"name": "Mark Melville"
+				}
+			]
+		}
+	]
+}

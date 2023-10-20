@@ -1,0 +1,26 @@
+{
+	"name": "The Rape of Lucrece",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"writingCredits": [
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Elizabeth Freestone"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Rape of Lucrece",
+					"differentiator": "1"
+				}
+			]
+		}
+	]
+}
