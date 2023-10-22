@@ -19,6 +19,14 @@ describe('Different characters with the same name from the same material', () =>
 	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
 	const PAUL_SHEARER_PERSON_UUID = 'PAUL_SHEARER_PERSON_UUID';
 	const LEO_WRINGER_PERSON_UUID = 'LEO_WRINGER_PERSON_UUID';
+	const HENRY_VI_PART_2_MATERIAL_UUID = 'HENRY_VI_PART_2_MATERIAL_UUID';
+	const RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID = 'RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID';
+	const JACK_CADE_CHARACTER_UUID = 'JACK_CADE_CHARACTER_UUID';
+	const RICHARD_PLANTAGENET_CHARACTER_UUID = 'RICHARD_PLANTAGENET_CHARACTER_UUID';
+	const HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID = 'HENRY_VI_PART_2_PRODUCTION_UUID';
+	const COURTYARD_THEATRE_VENUE_UUID = 'COURTYARD_THEATRE_VENUE_UUID';
+	const CLIVE_WOOD_PERSON_UUID = 'CLIVE_WOOD_PERSON_UUID';
+	const JONATHAN_SLINGER_PERSON_UUID = 'JONATHAN_SLINGER_PERSON_UUID';
 
 	let cinnaCharacter1;
 	let cinnaCharacter2;
@@ -27,6 +35,13 @@ describe('Different characters with the same name from the same material', () =>
 	let juliusCaesarBarbicanProduction;
 	let paulShearerPerson;
 	let leoWringerPerson;
+	let richardPlantagenetDukeOfYorkCharacter;
+	let richardPlantagenetCharacter;
+	let jackCadeCharacter;
+	let henryVIPart2Material;
+	let henryVIPart2CourtyardProduction;
+	let cliveWoodPerson;
+	let jonathanSlingerPerson;
 
 	const sandbox = createSandbox();
 
@@ -99,6 +114,67 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Henry VI, Part 2',
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Richard Plantagenet, Duke of York',
+								underlyingName: 'Richard Plantagenet, 3rd Duke of York'
+							},
+							{
+								name: 'Jack Cade'
+							},
+							{
+								name: 'Richard Plantagenet',
+								underlyingName: 'King Richard III'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Henry VI, Part 2',
+				startDate: '2006-07-14',
+				pressDate: '2006-08-09',
+				endDate: '2006-10-21',
+				material: {
+					name: 'Henry VI, Part 2'
+				},
+				venue: {
+					name: 'Courtyard Theatre'
+				},
+				cast: [
+					{
+						name: 'Clive Wood',
+						roles: [
+							{
+								name: 'Richard Plantagenet',
+								characterName: 'Richard Plantagenet, Duke of York'
+							},
+							{
+								name: 'Jack Cade'
+							}
+						]
+					},
+					{
+						name: 'Jonathan Slinger',
+						roles: [
+							{
+								name: 'Richard',
+								characterName: 'Richard Plantagenet'
+							}
+						]
+					}
+				]
+			});
+
 		cinnaCharacter1 = await chai.request(app)
 			.get(`/characters/${CINNA_CHARACTER_1_UUID}`);
 
@@ -119,6 +195,27 @@ describe('Different characters with the same name from the same material', () =>
 
 		leoWringerPerson = await chai.request(app)
 			.get(`/people/${LEO_WRINGER_PERSON_UUID}`);
+
+		richardPlantagenetDukeOfYorkCharacter = await chai.request(app)
+			.get(`/characters/${RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID}`);
+
+		richardPlantagenetCharacter = await chai.request(app)
+			.get(`/characters/${RICHARD_PLANTAGENET_CHARACTER_UUID}`);
+
+		jackCadeCharacter = await chai.request(app)
+			.get(`/characters/${JACK_CADE_CHARACTER_UUID}`);
+
+		henryVIPart2Material = await chai.request(app)
+			.get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
+
+		henryVIPart2CourtyardProduction = await chai.request(app)
+			.get(`/productions/${HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID}`);
+
+		cliveWoodPerson = await chai.request(app)
+			.get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
+
+		jonathanSlingerPerson = await chai.request(app)
+			.get(`/people/${JONATHAN_SLINGER_PERSON_UUID}`);
 
 	});
 
@@ -423,6 +520,308 @@ describe('Different characters with the same name from the same material', () =>
 			];
 
 			const { castMemberProductions } = leoWringerPerson.body;
+
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+
+		});
+
+	});
+
+	describe('Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) (character)', () => {
+
+		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with matching portrayal role name but different portrayal characterName)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2006-07-14',
+					endDate: '2006-10-21',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: CLIVE_WOOD_PERSON_UUID,
+							name: 'Clive Wood',
+							roleName: 'Richard Plantagenet',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: [
+								{
+									model: 'CHARACTER',
+									uuid: JACK_CADE_CHARACTER_UUID,
+									name: 'Jack Cade',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { productions } = richardPlantagenetDukeOfYorkCharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) (character)', () => {
+
+		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with same name as portrayal role name)', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2006-07-14',
+					endDate: '2006-10-21',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: JONATHAN_SLINGER_PERSON_UUID,
+							name: 'Jonathan Slinger',
+							roleName: 'Richard',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				}
+			];
+
+			const { productions } = richardPlantagenetCharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Jack Cade (character)', () => {
+
+		it('includes productions in which character was portrayed including in portrayer\'s other roles the correct duplicate-named character', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2006-07-14',
+					endDate: '2006-10-21',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: CLIVE_WOOD_PERSON_UUID,
+							name: 'Clive Wood',
+							roleName: 'Jack Cade',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: [
+								{
+									model: 'CHARACTER',
+									uuid: RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID,
+									name: 'Richard Plantagenet',
+									qualifier: null,
+									isAlternate: false
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { productions } = jackCadeCharacter.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Henry VI, Part 2 (material)', () => {
+
+		it('includes Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) and Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) in its characters', () => {
+
+			const expectedCharacters = [
+				{
+					model: 'CHARACTER',
+					uuid: RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID,
+					name: 'Richard Plantagenet, Duke of York',
+					qualifier: null
+				},
+				{
+					model: 'CHARACTER',
+					uuid: JACK_CADE_CHARACTER_UUID,
+					name: 'Jack Cade',
+					qualifier: null
+				},
+				{
+					model: 'CHARACTER',
+					uuid: RICHARD_PLANTAGENET_CHARACTER_UUID,
+					name: 'Richard Plantagenet',
+					qualifier: null
+				}
+			];
+
+			const { characterGroups: [{ characters }] } = henryVIPart2Material.body;
+
+			expect(characters).to.deep.equal(expectedCharacters);
+
+		});
+
+	});
+
+	describe('Henry VI, Part 2 at Courtyard Theatre (production)', () => {
+
+		it('includes cast with Clive Wood as Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) and Jonathan Slinger as Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III)', () => {
+
+			const expectedCast = [
+				{
+					model: 'PERSON',
+					uuid: CLIVE_WOOD_PERSON_UUID,
+					name: 'Clive Wood',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID,
+							name: 'Richard Plantagenet',
+							qualifier: null,
+							isAlternate: false
+						},
+						{
+							model: 'CHARACTER',
+							uuid: JACK_CADE_CHARACTER_UUID,
+							name: 'Jack Cade',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				},
+				{
+					model: 'PERSON',
+					uuid: JONATHAN_SLINGER_PERSON_UUID,
+					name: 'Jonathan Slinger',
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: RICHARD_PLANTAGENET_CHARACTER_UUID,
+							name: 'Richard',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { cast } = henryVIPart2CourtyardProduction.body;
+
+			expect(cast).to.deep.equal(expectedCast);
+
+		});
+
+	});
+
+	describe('Clive Wood (person)', () => {
+
+		it('includes in their production credits their portrayal of Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) (i.e. and not Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III))', () => {
+
+			const expectedCastMemberProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2006-07-14',
+					endDate: '2006-10-21',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID,
+							name: 'Richard Plantagenet',
+							qualifier: null,
+							isAlternate: false
+						},
+						{
+							model: 'CHARACTER',
+							uuid: JACK_CADE_CHARACTER_UUID,
+							name: 'Jack Cade',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { castMemberProductions } = cliveWoodPerson.body;
+
+			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+
+		});
+
+	});
+
+	describe('Jonathan Slinger (person)', () => {
+
+		it('includes in their production credits their portrayal of Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) (i.e. and not Richard Plantagenet, Duke of York (i.e. 3rd Duke of York))', () => {
+
+			const expectedCastMemberProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2006-07-14',
+					endDate: '2006-10-21',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					roles: [
+						{
+							model: 'CHARACTER',
+							uuid: RICHARD_PLANTAGENET_CHARACTER_UUID,
+							name: 'Richard',
+							qualifier: null,
+							isAlternate: false
+						}
+					]
+				}
+			];
+
+			const { castMemberProductions } = jonathanSlingerPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
 

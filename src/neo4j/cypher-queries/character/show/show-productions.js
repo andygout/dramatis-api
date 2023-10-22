@@ -27,8 +27,8 @@ export default () => `
 			<-[productionRel:PRODUCTION_OF]-(production:Production)-[role:HAS_CAST_MEMBER]->(person:Person)
 			WHERE
 				(
-					character.name IN [role.roleName, role.characterName] OR
-					characterDepiction.displayName IN [role.roleName, role.characterName]
+					character.name = COALESCE(role.characterName, role.roleName) OR
+					characterDepiction.displayName = COALESCE(role.characterName, role.roleName)
 				) AND
 				(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
@@ -45,8 +45,8 @@ export default () => `
 		OPTIONAL MATCH (materialForProduction)-[otherCharacterDepiction:DEPICTS]->(otherCharacter:Character)
 			WHERE
 				(
-					otherCharacter.name IN [otherRole.roleName, otherRole.characterName] OR
-					otherCharacterDepiction.displayName IN [otherRole.roleName, otherRole.characterName]
+					otherCharacter.name = COALESCE(otherRole.characterName, otherRole.roleName) OR
+					otherCharacterDepiction.displayName = COALESCE(otherRole.characterName, otherRole.roleName)
 				) AND
 				(
 					otherRole.characterDifferentiator IS NULL OR
