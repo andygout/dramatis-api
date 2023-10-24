@@ -350,10 +350,7 @@ export default () => `
 		OPTIONAL MATCH (castMember)<-[role]-(collectionProduction)-[:PRODUCTION_OF]->
 			(:Material)-[characterRel:DEPICTS]->(character:Character)
 			WHERE
-				(
-					role.roleName IN [character.name, characterRel.displayName] OR
-					role.characterName IN [character.name, characterRel.displayName]
-				) AND
+				COALESCE(role.characterName, role.roleName) IN [character.name, characterRel.displayName] AND
 				(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
 
 		WITH DISTINCT
