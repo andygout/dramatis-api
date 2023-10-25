@@ -81,6 +81,28 @@ describe('Different characters with the same name from the same material', () =>
 			});
 
 		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Shakespeare\'s Romans',
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Lucius Cinna',
+								underlyingName: 'Cinna',
+								differentiator: '1'
+							},
+							{
+								name: 'Gaius Helvius Cinna',
+								underlyingName: 'Cinna',
+								differentiator: '2'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -337,6 +359,18 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
+		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
+
+			const expectedVariantNamedDepictions = [
+				'Lucius Cinna'
+			];
+
+			const { variantNamedDepictions } = cinnaCharacter1.body;
+
+			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+
+		});
+
 		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
@@ -411,6 +445,18 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = cinnaCharacter2.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
+
+			const expectedVariantNamedDepictions = [
+				'Gaius Helvius Cinna'
+			];
+
+			const { variantNamedDepictions } = cinnaCharacter2.body;
+
+			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
 
 		});
 
