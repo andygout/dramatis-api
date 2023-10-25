@@ -11,6 +11,10 @@ export default () => `
 				(
 					character.name = variantNamedPortrayal.characterName OR
 					depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
+				) AND
+				(
+					variantNamedPortrayal.characterDifferentiator IS NULL OR
+					variantNamedPortrayal.characterDifferentiator = character.differentiator
 				)
 
 		WITH variantNamedPortrayal

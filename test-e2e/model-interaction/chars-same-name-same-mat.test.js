@@ -19,6 +19,10 @@ describe('Different characters with the same name from the same material', () =>
 	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
 	const PAUL_SHEARER_PERSON_UUID = 'PAUL_SHEARER_PERSON_UUID';
 	const LEO_WRINGER_PERSON_UUID = 'LEO_WRINGER_PERSON_UUID';
+	const JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'JULIUS_CAESAR_2_PRODUCTION_UUID';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
+	const PAUL_BARNHILL_PERSON_UUID = 'PAUL_BARNHILL_PERSON_UUID';
+	const EDMUND_KINGSLEY_PERSON_UUID = 'EDMUND_KINGSLEY_PERSON_UUID';
 	const HENRY_VI_PART_2_MATERIAL_UUID = 'HENRY_VI_PART_2_MATERIAL_UUID';
 	const RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID = 'RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID';
 	const JACK_CADE_CHARACTER_UUID = 'JACK_CADE_CHARACTER_UUID';
@@ -107,6 +111,43 @@ describe('Different characters with the same name from the same material', () =>
 						roles: [
 							{
 								name: 'Cinna',
+								characterDifferentiator: '2'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Julius Caesar',
+				startDate: '2006-05-06',
+				pressDate: '2006-05-16',
+				endDate: '2006-10-10',
+				material: {
+					name: 'Julius Caesar'
+				},
+				venue: {
+					name: 'Royal Shakespeare Theatre'
+				},
+				cast: [
+					{
+						name: 'Paul Barnhill',
+						roles: [
+							{
+								name: 'Lucius Cornelius Cinna',
+								characterName: 'Cinna',
+								characterDifferentiator: '1'
+							}
+						]
+					},
+					{
+						name: 'Edmund Kingsley',
+						roles: [
+							{
+								name: 'Cinna the poet',
+								characterName: 'Cinna',
 								characterDifferentiator: '2'
 							}
 						]
@@ -232,6 +273,31 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
+					uuid: JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Julius Caesar',
+					startDate: '2006-05-06',
+					endDate: '2006-10-10',
+					venue: {
+						model: 'VENUE',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+						name: 'Royal Shakespeare Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: PAUL_BARNHILL_PERSON_UUID,
+							name: 'Paul Barnhill',
+							roleName: 'Lucius Cornelius Cinna',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2005-04-14',
@@ -271,6 +337,18 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
+		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+
+			const expectedVariantNamedPortrayals = [
+				'Lucius Cornelius Cinna'
+			];
+
+			const { variantNamedPortrayals } = cinnaCharacter1.body;
+
+			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+
+		});
+
 	});
 
 	describe('Cinna (character) (#2)', () => {
@@ -278,6 +356,31 @@ describe('Different characters with the same name from the same material', () =>
 		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with same name)', () => {
 
 			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Julius Caesar',
+					startDate: '2006-05-06',
+					endDate: '2006-10-10',
+					venue: {
+						model: 'VENUE',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+						name: 'Royal Shakespeare Theatre',
+						surVenue: null
+					},
+					surProduction: null,
+					performers: [
+						{
+							model: 'PERSON',
+							uuid: EDMUND_KINGSLEY_PERSON_UUID,
+							name: 'Edmund Kingsley',
+							roleName: 'Cinna the poet',
+							qualifier: null,
+							isAlternate: false,
+							otherRoles: []
+						}
+					]
+				},
 				{
 					model: 'PRODUCTION',
 					uuid: JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID,
@@ -308,6 +411,18 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = cinnaCharacter2.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+
+			const expectedVariantNamedPortrayals = [
+				'Cinna the poet'
+			];
+
+			const { variantNamedPortrayals } = cinnaCharacter2.body;
+
+			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
 
 		});
 
