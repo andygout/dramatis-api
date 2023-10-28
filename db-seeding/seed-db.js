@@ -14,7 +14,7 @@ const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'venues': '🏛️'
 };
 
-const PAUSE_DURATION_IN_MILLISECONDS = 1000;
+const PAUSE_DURATION_IN_MILLISECONDS = 500;
 
 const pause = duration => new Promise(resolve => setTimeout(resolve, duration));
 
