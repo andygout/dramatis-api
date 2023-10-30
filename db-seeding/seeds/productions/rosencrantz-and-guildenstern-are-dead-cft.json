@@ -1,0 +1,281 @@
+{
+	"name": "Rosencrantz and Guildenstern Are Dead",
+	"startDate": "2011-05-20",
+	"pressDate": "2011-05-31",
+	"endDate": "2011-06-11",
+	"material": {
+		"name": "Rosencrantz and Guildenstern Are Dead"
+	},
+	"venue": {
+		"name": "Festival Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chichester Festival Theatre"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Theatre Royal Haymarket"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Samuel Barnett",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "Jamie Parker",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "Chris Andrew Mellon",
+			"roles": [
+				{
+					"name": "The Player"
+				}
+			]
+		},
+		{
+			"name": "Charlie Hamblett",
+			"roles": [
+				{
+					"name": "Alfred"
+				}
+			]
+		},
+		{
+			"name": "Stephen Pallister",
+			"roles": [
+				{
+					"name": "Player King"
+				}
+			]
+		},
+		{
+			"name": "Trevor Allan Davies",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Zac Fox",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Greg Last",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "James Northcote",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Keith Thompson",
+			"roles": [
+				{
+					"name": "Musican"
+				}
+			]
+		},
+		{
+			"name": "Katherine Press",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Jack Hawkins",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "James Simmons",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Fiona Gillies",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Andrew Jarvis",
+			"roles": [
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Ambassador"
+				}
+			]
+		},
+		{
+			"name": "Tomm Coles",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		},
+		{
+			"name": "Elizabeth Hopper",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		},
+		{
+			"name": "Jody Elen Machin",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		},
+		{
+			"name": "Michael Benz",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Tom Golding",
+			"roles": [
+				{
+					"name": "Fortinbras"
+				},
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Trevor Nunn"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Simon Higlett"
+				}
+			]
+		},
+		{
+			"name": "Costume Designer",
+			"entities": [
+				{
+					"name": "Fotini Dimou"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Tim Mitchell"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Paul Groothuis"
+				}
+			]
+		},
+		{
+			"name": "Choreographer",
+			"entities": [
+				{
+					"name": "Etta Murfitt"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Steven Edis"
+				}
+			]
+		},
+		{
+			"name": "Fight Director",
+			"entities": [
+				{
+					"name": "Malcolm Ranson"
+				}
+			]
+		},
+		{
+			"name": "Casting Director",
+			"entities": [
+				{
+					"name": "Maggie Lunn"
+				}
+			]
+		}
+	]
+}
