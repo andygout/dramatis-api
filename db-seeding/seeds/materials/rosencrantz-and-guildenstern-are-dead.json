@@ -1,0 +1,66 @@
+{
+	"name": "Rosencrantz and Guildenstern Are Dead",
+	"format": "play",
+	"year": "1966",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Tom Stoppard"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "The Player"
+				},
+				{
+					"name": "Players"
+				},
+				{
+					"name": "Hamlet"
+				},
+				{
+					"name": "Ophelia"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Gertrude"
+				},
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Fortinbras"
+				},
+				{
+					"name": "Horatio"
+				},
+				{
+					"name": "Ambassador",
+					"underlyingName": "English Ambassador"
+				},
+				{
+					"name": "Courtiers",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Hamlet"
+				}
+			]
+		}
+	]
+}

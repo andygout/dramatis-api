@@ -1,0 +1,204 @@
+{
+	"name": "Rosencrantz and Guildenstern Are Dead",
+	"startDate": "2017-02-25",
+	"pressDate": "2017-03-07",
+	"endDate": "2017-05-06",
+	"material": {
+		"name": "Rosencrantz and Guildenstern Are Dead"
+	},
+	"venue": {
+		"name": "Old Vic Theatre"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Old Vic Theatre Company"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Daniel Radcliffe",
+			"roles": [
+				{
+					"name": "Rosencrantz"
+				}
+			]
+		},
+		{
+			"name": "Joshua McGuire",
+			"roles": [
+				{
+					"name": "Guildenstern"
+				}
+			]
+		},
+		{
+			"name": "David Haig",
+			"roles": [
+				{
+					"name": "The Player"
+				}
+			]
+		},
+		{
+			"name": "Hermeilio Miguel Aquino",
+			"roles": [
+				{
+					"name": "Courtier",
+					"characterName": "Courtiers"
+				}
+			]
+		},
+		{
+			"name": "Louisa Beadel",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "William Chubb",
+			"roles": [
+				{
+					"name": "Polonius"
+				}
+			]
+		},
+		{
+			"name": "Josie Dunn",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Matthew Durkan",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Wil Johnson",
+			"roles": [
+				{
+					"name": "Claudius"
+				}
+			]
+		},
+		{
+			"name": "Luke Mullins",
+			"roles": [
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Theo Ogundipe",
+			"roles": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Marianne Oldham",
+			"roles": [
+				{
+					"name": "Gertrude"
+				}
+			]
+		},
+		{
+			"name": "Evlyne Oyedokun",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Alex Sawyer",
+			"roles": [
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		},
+		{
+			"name": "Helena Wilson",
+			"roles": [
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"name": "Tim van Eyken",
+			"roles": [
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Player",
+					"characterName": "Players"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "David Leveaux"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Anna Fleischle"
+				}
+			]
+		},
+		{
+			"name": "Lighting Designer",
+			"entities": [
+				{
+					"name": "Howard Harrison"
+				}
+			]
+		},
+		{
+			"name": "Sound Designer",
+			"entities": [
+				{
+					"name": "Fergus O'Hare"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Corin Buckeridge"
+				}
+			]
+		}
+	]
+}
