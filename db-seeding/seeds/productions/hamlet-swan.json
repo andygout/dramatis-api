@@ -99,7 +99,8 @@
 			"name": "Tauriq Jenkins",
 			"roles": [
 				{
-					"name": "Osric"
+					"name": "Osric",
+					"characterName": "Osrick"
 				},
 				{
 					"name": "Marcellus"

@@ -172,7 +172,8 @@
 			"name": "Michael Sheldon",
 			"roles": [
 				{
-					"name": "Lucianus"
+					"name": "Lucianus",
+					"characterName": "Player of Lucianus"
 				},
 				{
 					"name": "English Ambassador"

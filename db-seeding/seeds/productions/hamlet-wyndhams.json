@@ -57,7 +57,7 @@
 				},
 				{
 					"name": "Third Player",
-					"characterName": "Lucianus"
+					"characterName": "Player of Lucianus"
 				},
 				{
 					"name": "Second Gravedigger"
@@ -84,7 +84,8 @@
 			"name": "Ian Drysdale",
 			"roles": [
 				{
-					"name": "Osric"
+					"name": "Osric",
+					"characterName": "Osrick"
 				}
 			]
 		},

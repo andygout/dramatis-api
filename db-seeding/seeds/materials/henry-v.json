@@ -55,6 +55,10 @@
 					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
 				},
 				{
+					"name": "John Holland, Earl of Huntingdon",
+					"underlyingName": "John Holland, 2nd Duke of Exeter, 2nd Earl of Huntingdon"
+				},
+				{
 					"name": "Sir Thomas Erpingham"
 				},
 				{
@@ -159,6 +163,9 @@
 					"underlyingName": "John of Bourbon"
 				},
 				{
+					"name": "Duke of Britaine"
+				},
+				{
 					"name": "Duke of Orléans",
 					"underlyingName": "Charles of Orléans"
 				},
@@ -194,11 +201,27 @@
 		{
 			"characters": [
 				{
+					"name": "Lords",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Ladies",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Henry V"
+				},
+				{
 					"name": "Soldiers",
 					"differentiator": "Henry V"
 				},
 				{
-					"name": "Servants",
+					"name": "Citizens",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Messengers",
 					"differentiator": "Henry V"
 				},
 				{
@@ -206,7 +229,7 @@
 					"differentiator": "Henry V"
 				},
 				{
-					"name": "Lords",
+					"name": "Servants",
 					"differentiator": "Henry V"
 				}
 			]

@@ -21,10 +21,10 @@
 					"name": "Desdemona"
 				},
 				{
-					"name": "Iago"
+					"name": "Cassio"
 				},
 				{
-					"name": "Cassio"
+					"name": "Iago"
 				},
 				{
 					"name": "Emilia",
@@ -35,14 +35,18 @@
 					"differentiator": "Othello"
 				},
 				{
-					"name": "Brabantio"
-				},
-				{
 					"name": "Roderigo"
-				},
+				}
+			]
+		},
+		{
+			"characters": [
 				{
 					"name": "Duke of Venice",
 					"differentiator": "Othello"
+				},
+				{
+					"name": "Brabantio"
 				},
 				{
 					"name": "Gratiano",
@@ -53,28 +57,27 @@
 				},
 				{
 					"name": "Montano"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Senators of Venice"
 				},
 				{
-					"name": "Clown",
+					"name": "Gentlemen of Cyprus"
+				},
+				{
+					"name": "Musicians",
 					"differentiator": "Othello"
-				},
-				{
-					"name": "Senators",
-					"differentiator": "Othello"
-				},
-				{
-					"name": "Sailor"
 				},
 				{
 					"name": "Officers",
 					"differentiator": "Othello"
 				},
 				{
-					"name": "Gentlemen",
-					"differentiator": "Othello"
-				},
-				{
-					"name": "Messenger",
+					"name": "Clown",
 					"differentiator": "Othello"
 				},
 				{
@@ -82,11 +85,23 @@
 					"differentiator": "Othello"
 				},
 				{
+					"name": "Sailor",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Othello"
+				},
+				{
 					"name": "Attendants",
 					"differentiator": "Othello"
 				},
 				{
-					"name": "Musicians",
+					"name": "Servants",
 					"differentiator": "Othello"
 				}
 			]
