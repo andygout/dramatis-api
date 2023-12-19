@@ -15,6 +15,20 @@
 		{
 			"characters": [
 				{
+					"name": "Orsino, Duke of Illyria"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Curio"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
 					"name": "Viola"
 				},
 				{
@@ -22,14 +36,19 @@
 					"differentiator": "Twelfth Night"
 				},
 				{
-					"name": "Orsino, Duke of Illyria"
+					"name": "Sea Captain"
 				},
+				{
+					"name": "Antonio",
+					"differentiator": "Twelfth Night"
+				}
+			]
+		},
+		{
+			"characters": [
 				{
 					"name": "Olivia",
 					"differentiator": "Twelfth Night"
-				},
-				{
-					"name": "Malvolio"
 				},
 				{
 					"name": "Maria"
@@ -41,30 +60,40 @@
 					"name": "Sir Andrew Aguecheek"
 				},
 				{
-					"name": "Feste"
+					"name": "Malvolio"
 				},
 				{
 					"name": "Fabian"
 				},
 				{
-					"name": "Antonio",
-					"differentiator": "Twelfth Night"
+					"name": "Feste"
 				},
 				{
-					"name": "Valentine",
+					"name": "Priest",
 					"differentiator": "Twelfth Night"
-				},
-				{
-					"name": "Curio"
 				},
 				{
 					"name": "Servant of Olivia"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Musicians",
+					"differentiator": "Twelfth Night"
 				},
 				{
-					"name": "Sea Captain"
+					"name": "Lords",
+					"differentiator": "Twelfth Night"
 				},
 				{
-					"name": "Priest"
+					"name": "Sailors",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Twelfth Night"
 				}
 			]
 		}

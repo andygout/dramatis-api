@@ -16,20 +16,9 @@
 			"characters": [
 				{
 					"name": "Julius Caesar"
-				}
-			]
-		},
-		{
-			"name": "Triumvirs after Caesar's death",
-			"characters": [
-				{
-					"name": "Octavius Caesar"
 				},
 				{
-					"name": "Mark Antony"
-				},
-				{
-					"name": "Lepidus"
+					"name": "Calphurnia"
 				}
 			]
 		},
@@ -64,19 +53,21 @@
 			]
 		},
 		{
-			"name": "Tribunes",
+			"name": "Triumvirs after Caesar's death",
 			"characters": [
 				{
-					"name": "Flavius",
-					"differentiator": "Julius Caesar"
+					"name": "Octavius Caesar"
 				},
 				{
-					"name": "Marullus"
+					"name": "Mark Antony"
+				},
+				{
+					"name": "Lepidus"
 				}
 			]
 		},
 		{
-			"name": "Roman Senate Senators",
+			"name": "Roman Senators",
 			"characters": [
 				{
 					"name": "Cicero"
@@ -91,44 +82,19 @@
 			]
 		},
 		{
-			"name": "Citizens",
+			"name": "Tribunes of the People",
 			"characters": [
 				{
-					"name": "Calphurnia"
-				},
-				{
-					"name": "Portia",
+					"name": "Flavius",
 					"differentiator": "Julius Caesar"
 				},
 				{
-					"name": "Soothsayer",
-					"differentiator": "Julius Caesar"
-				},
-				{
-					"name": "Artemidorus"
-				},
-				{
-					"name": "Cinna",
-					"differentiator": "Julius Caesar #2"
-				},
-				{
-					"name": "Cobbler"
-				},
-				{
-					"name": "Carpenter"
-				},
-				{
-					"name": "Poet",
-					"differentiator": "Julius Caesar"
-				},
-				{
-					"name": "Lucius",
-					"differentiator": "Julius Caesar"
+					"name": "Marullus"
 				}
 			]
 		},
 		{
-			"name": "Loyal to Brutus and Cassius",
+			"name": "Followers of Brutus and Cassius",
 			"characters": [
 				{
 					"name": "Volumnius"
@@ -168,6 +134,40 @@
 			]
 		},
 		{
+			"name": "Citizens",
+			"characters": [
+				{
+					"name": "Portia",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Artemidorus"
+				},
+				{
+					"name": "Cinna",
+					"differentiator": "Julius Caesar #2"
+				},
+				{
+					"name": "Lucius",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Soothsayer",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Poet",
+					"differentiator": "Julius Caesar"
+				},
+				{
+					"name": "Cobbler"
+				},
+				{
+					"name": "Carpenter"
+				}
+			]
+		},
+		{
 			"characters": [
 				{
 					"name": "Servant to Julius Caesar"
@@ -191,7 +191,8 @@
 					"differentiator": "Julius Caesar"
 				},
 				{
-					"name": "Plebeians"
+					"name": "Plebeians",
+					"differentiator": "Julius Caesar"
 				},
 				{
 					"name": "Attendants",

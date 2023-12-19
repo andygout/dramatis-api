@@ -25,40 +25,40 @@
 				},
 				{
 					"name": "Macbeth"
-				},
-				{
-					"name": "Lady Macbeth"
-				},
+				}
+			]
+		},
+		{
+			"name": "Thanes of Scotland",
+			"characters": [
 				{
 					"name": "Banquo"
-				},
-				{
-					"name": "Fleance"
 				},
 				{
 					"name": "Macduff"
 				},
 				{
-					"name": "Lady Macduff"
-				},
-				{
-					"name": "Macduff's son"
+					"name": "Lennox"
 				},
 				{
 					"name": "Ross"
 				},
 				{
-					"name": "Lennox"
+					"name": "Menteith"
 				},
 				{
 					"name": "Angus",
 					"differentiator": "Macbeth"
 				},
 				{
-					"name": "Menteith"
-				},
-				{
 					"name": "Caithness"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Fleance"
 				},
 				{
 					"name": "Siward"
@@ -70,33 +70,54 @@
 					"name": "Seyton"
 				},
 				{
-					"name": "Hecate"
-				},
-				{
-					"name": "Three Witches"
+					"name": "Macduff's son"
 				},
 				{
 					"name": "Captain in the Scottish army"
 				},
 				{
-					"name": "Three Murderers"
+					"name": "Doctor at the English Court"
+				},
+				{
+					"name": "Lady Macbeth's doctor"
 				},
 				{
 					"name": "Porter",
 					"differentiator": "Macbeth"
 				},
 				{
-					"name": "Lady Macbeth's doctor"
-				},
-				{
-					"name": "Doctor at the English Court"
-				},
-				{
-					"name": "Lady Macbeth's caretaker"
-				},
-				{
-					"name": "Lord",
+					"name": "Old Man",
 					"differentiator": "Macbeth"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lady Macbeth"
+				},
+				{
+					"name": "Lady Macduff"
+				},
+				{
+					"name": "Gentlewoman attendant on Lady Macbeth"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Three Witches"
+				},
+				{
+					"name": "Three other Witches"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Hecate"
 				},
 				{
 					"name": "First Apparition"
@@ -106,6 +127,36 @@
 				},
 				{
 					"name": "Third Apparition"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Three Murderers"
+				},
+				{
+					"name": "Other Murderers"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lords",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Macbeth"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Macbeth"
 				},
 				{
 					"name": "Attendants",
@@ -113,14 +164,6 @@
 				},
 				{
 					"name": "Messengers",
-					"differentiator": "Macbeth"
-				},
-				{
-					"name": "Servants",
-					"differentiator": "Macbeth"
-				},
-				{
-					"name": "Soldiers",
 					"differentiator": "Macbeth"
 				}
 			]

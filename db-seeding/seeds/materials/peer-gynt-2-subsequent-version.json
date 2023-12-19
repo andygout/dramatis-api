@@ -139,7 +139,8 @@
 					"name": "Seaman"
 				},
 				{
-					"name": "Priest"
+					"name": "Priest",
+					"differentiator": "Peer Gynt"
 				},
 				{
 					"name": "Button Moulder",

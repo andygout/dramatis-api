@@ -13,7 +13,7 @@
 	],
 	"characterGroups": [
 		{
-			"name": "Of the King's party",
+			"name": "The King's party",
 			"characters": [
 				{
 					"name": "King Henry IV"
@@ -53,7 +53,7 @@
 			]
 		},
 		{
-			"name": "Rebels",
+			"name": "The Rebels",
 			"characters": [
 				{
 					"name": "Archbishop of York",
@@ -100,8 +100,7 @@
 					"underlyingName": "Sir William Gascoigne"
 				},
 				{
-					"name": "Servant",
-					"differentiator": "Henry IV, Part 2"
+					"name": "Servant of the Lord Chief Justice"
 				},
 				{
 					"name": "Gower"
@@ -110,7 +109,7 @@
 					"name": "Beadle"
 				},
 				{
-					"name": "Two Grooms"
+					"name": "Grooms"
 				}
 			]
 		},
@@ -150,6 +149,9 @@
 				{
 					"name": "William",
 					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Drawer"
 				}
 			]
 		},
@@ -195,6 +197,26 @@
 				},
 				{
 					"name": "Fang"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Porter",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Page",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Captain",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Henry IV, Part 2"
 				},
 				{
 					"name": "Messengers",
@@ -207,6 +229,13 @@
 				{
 					"name": "Soldiers",
 					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Beadles"
 				},
 				{
 					"name": "Attendants",

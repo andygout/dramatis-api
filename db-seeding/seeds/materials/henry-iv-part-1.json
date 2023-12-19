@@ -13,7 +13,7 @@
 	],
 	"characterGroups": [
 		{
-			"name": "Of the King's party",
+			"name": "The King's party",
 			"characters": [
 				{
 					"name": "King Henry IV"
@@ -72,7 +72,7 @@
 			]
 		},
 		{
-			"name": "Rebels",
+			"name": "The Rebels",
 			"characters": [
 				{
 					"name": "Henry Percy, Earl of Northumberland",
@@ -98,7 +98,8 @@
 					"underlyingName": "Archibald, 4th Earl of Douglas"
 				},
 				{
-					"name": "Sir Richard Vernon, 8th Baron of Shipbrook"
+					"name": "Sir Richard Vernon",
+					"underlyingName": "Sir Richard Vernon, 8th Baron of Shipbrook"
 				},
 				{
 					"name": "Richard Scroop, Archbishop of York"
@@ -137,6 +138,10 @@
 				},
 				{
 					"name": "Officers",
+					"differentiator": "Henry IV, Part 1"
+				},
+				{
+					"name": "Soldiers",
 					"differentiator": "Henry IV, Part 1"
 				},
 				{
