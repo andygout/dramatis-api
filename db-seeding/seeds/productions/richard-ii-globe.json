@@ -3,7 +3,8 @@
 	"startDate": "2012-05-04",
 	"endDate": "2012-05-05",
 	"material": {
-		"name": "Richard II"
+		"name": "Richard II",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -42,8 +43,7 @@
 			"name": "Hussein Nakhle",
 			"roles": [
 				{
-					"name": "John of Gaunt",
-					"characterName": "John of Gaunt, Duke of Lancaster"
+					"name": "John of Gaunt"
 				}
 			]
 		},
@@ -51,8 +51,7 @@
 			"name": "Nicola Zreineh",
 			"roles": [
 				{
-					"name": "Bolingbroke",
-					"characterName": "Henry Bolingbroke, Duke of Hereford"
+					"name": "Bolingbroke"
 				}
 			]
 		},
@@ -87,8 +86,7 @@
 			"name": "Mohammed Eid",
 			"roles": [
 				{
-					"name": "Ross",
-					"characterName": "Lord Ross"
+					"name": "Ross"
 				}
 			]
 		},
@@ -96,8 +94,7 @@
 			"name": "Iyad Hurani",
 			"roles": [
 				{
-					"name": "Percy",
-					"characterName": "Harry 'Hotspur' Percy"
+					"name": "Percy"
 				}
 			]
 		},
@@ -105,8 +102,7 @@
 			"name": "Firas Farah",
 			"roles": [
 				{
-					"name": "Duke of Aumerle",
-					"characterName": "Duke of Aumerle, Earl of Rutland"
+					"name": "Duke of Aumerle"
 				}
 			]
 		},
@@ -122,12 +118,10 @@
 			"name": "Ihab Zahdeh",
 			"roles": [
 				{
-					"name": "Thomas Mowbray",
-					"characterName": "Thomas Mowbray, Duke of Norfolk"
+					"name": "Thomas Mowbray"
 				},
 				{
-					"name": "Welsh captain",
-					"characterName": "Captain of the Welsh army"
+					"name": "Welsh captain"
 				},
 				{
 					"name": "Guard"

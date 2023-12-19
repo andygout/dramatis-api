@@ -1,0 +1,85 @@
+{
+	"name": "Much Ado About Nothing (Beaucoup de Bruit pour Rien - A lot of noise for nothing)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Much Ado About Nothing",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Jude Lucas"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Don Pedro",
+					"underlyingName": "Don Pedro, Prince of Arragon"
+				},
+				{
+					"name": "Benedick"
+				},
+				{
+					"name": "Claudio",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Don Juan",
+					"underlyingName": "Don John"
+				},
+				{
+					"name": "Borachio"
+				},
+				{
+					"name": "Leonato"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Hero"
+				},
+				{
+					"name": "Margaret",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Béatrice",
+					"underlyingName": "Beatrice",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Dogberry"
+				},
+				{
+					"name": "Verjus",
+					"underlyingName": "Verges"
+				}
+			]
+		}
+	]
+}

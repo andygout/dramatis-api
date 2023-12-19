@@ -3,7 +3,8 @@
 	"startDate": "2013-08-20",
 	"endDate": "2013-08-21",
 	"material": {
-		"name": "Coriolanus"
+		"name": "The Tragedy of Coriolanus",
+		"differentiator": "4"
 	},
 	"venue": {
 		"name": "Edinburgh Playhouse"

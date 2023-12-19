@@ -1,0 +1,83 @@
+{
+	"name": "Henry VIII",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry VIII",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				},
+				{
+					"name": "John Fletcher"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Jose Padilla"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Henry VIII",
+					"underlyingName": "King Henry VIII"
+				},
+				{
+					"name": "Buckingham",
+					"underlyingName": "Edward Stafford, 3rd Duke of Buckingham"
+				},
+				{
+					"name": "Norfolk",
+					"underlyingName": "Thomas Howard, 2nd Duke of Norfolk"
+				},
+				{
+					"name": "Suffolk",
+					"underlyingName": "Charles Brandon, 1st Duke of Suffolk"
+				},
+				{
+					"name": "Sands-Intendente",
+					"underlyingName": "William Sandys, 1st Baron Sandys"
+				},
+				{
+					"name": "Chamberlain",
+					"underlyingName": "Charles Somerset, 1st Earl of Worcester"
+				},
+				{
+					"name": "Wolsey",
+					"underlyingName": "Cardinal Thomas Wolsey"
+				},
+				{
+					"name": "Gardiner",
+					"underlyingName": "Stephen Gardiner"
+				},
+				{
+					"name": "Cranmer",
+					"underlyingName": "Thomas Cranmer"
+				},
+				{
+					"name": "Catalina of Aragon",
+					"underlyingName": "Catherine of Aragon"
+				},
+				{
+					"name": "Ann Boleyn",
+					"underlyingName": "Anne Boleyn"
+				},
+				{
+					"name": "Beatrix"
+				}
+			]
+		}
+	]
+}

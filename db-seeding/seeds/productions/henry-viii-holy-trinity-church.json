@@ -3,7 +3,8 @@
 	"startDate": "2006-08-23",
 	"endDate": "2006-09-02",
 	"material": {
-		"name": "Henry VIII"
+		"name": "Henry VIII",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Holy Trinity Church"

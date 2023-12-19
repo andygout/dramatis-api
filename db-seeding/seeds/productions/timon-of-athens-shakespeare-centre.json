@@ -3,7 +3,8 @@
 	"startDate": "2006-10-24",
 	"endDate": "2006-10-28",
 	"material": {
-		"name": "Timon of Athens"
+		"name": "Timon of Athens",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Shakespeare Centre"

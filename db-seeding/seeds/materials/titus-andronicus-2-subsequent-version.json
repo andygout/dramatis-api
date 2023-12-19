@@ -1,0 +1,142 @@
+{
+	"name": "Titus Andronicus (タイタス・アンドロニカス - Taitasu Andoronikasu)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "Titus Andronicus",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Kazuko Matsuoka"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Saturninus"
+				},
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Titus Andronicus"
+				},
+				{
+					"name": "Marcus Andronicus"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Lucius",
+					"underlyingName": "Lucius Andronicus"
+				},
+				{
+					"name": "Quintus",
+					"underlyingName": "Quintus Andronicus"
+				},
+				{
+					"name": "Martius",
+					"underlyingName": "Martius Andronicus"
+				},
+				{
+					"name": "Mutius",
+					"underlyingName": "Mutius Andronicus"
+				},
+				{
+					"name": "Lavinia"
+				},
+				{
+					"name": "Young Lucius"
+				},
+				{
+					"name": "Sempronius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Caius"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Aemilius"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Clown",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Captain",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Tribunes"
+				},
+				{
+					"name": "Roman soldiers",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Goths",
+			"characters": [
+				{
+					"name": "Tamora"
+				},
+				{
+					"name": "Alarbus"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Chiron"
+				},
+				{
+					"name": "Aaron",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Goths"
+				}
+			]
+		}
+	]
+}

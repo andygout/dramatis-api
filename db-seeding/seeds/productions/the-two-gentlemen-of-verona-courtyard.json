@@ -3,7 +3,8 @@
 	"startDate": "2006-08-27",
 	"endDate": "2006-08-27",
 	"material": {
-		"name": "The Two Gentlemen of Verona"
+		"name": "The Two Gentlemen of Verona",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Courtyard Theatre"
@@ -46,8 +47,7 @@
 			"name": "Roberta Rodrigues",
 			"roles": [
 				{
-					"name": "Sylvia",
-					"characterName": "Silvia"
+					"name": "Sylvia"
 				}
 			]
 		},
@@ -133,8 +133,7 @@
 			"name": "Renato Rocha",
 			"roles": [
 				{
-					"name": "Host",
-					"characterName": "Host of the inn"
+					"name": "Host"
 				},
 				{
 					"name": "Outlaw",

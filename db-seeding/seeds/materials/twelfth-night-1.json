@@ -1,0 +1,102 @@
+{
+	"name": "Twelfth Night",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1602",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Orsino, Duke of Illyria"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Curio"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Viola"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Sea Captain"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "Twelfth Night"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Olivia",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Maria"
+				},
+				{
+					"name": "Sir Toby Belch"
+				},
+				{
+					"name": "Sir Andrew Aguecheek"
+				},
+				{
+					"name": "Malvolio"
+				},
+				{
+					"name": "Fabian"
+				},
+				{
+					"name": "Feste"
+				},
+				{
+					"name": "Priest",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Servant of Olivia"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Musicians",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Sailors",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Twelfth Night"
+				}
+			]
+		}
+	]
+}

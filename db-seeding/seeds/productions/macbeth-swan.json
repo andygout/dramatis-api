@@ -3,7 +3,8 @@
 	"startDate": "2007-02-21",
 	"endDate": "2007-02-24",
 	"material": {
-		"name": "Macbeth"
+		"name": "Macbeth",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

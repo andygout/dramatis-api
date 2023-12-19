@@ -3,7 +3,8 @@
 	"startDate": "2012-04-25",
 	"endDate": "2012-04-26",
 	"material": {
-		"name": "The Merry Wives of Windsor"
+		"name": "The Merry Wives of Windsor (Heri Wanawake Wa Windsor - Hail the Ladies of Windsor)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"

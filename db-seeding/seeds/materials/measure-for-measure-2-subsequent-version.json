@@ -1,0 +1,105 @@
+{
+	"name": "Measure for Measure (мера за меру - Mera za meru)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Measure for Measure",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Vakhtangov Theatre"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Vincentio, Duke of Vienna",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Angelo",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Escalus"
+				},
+				{
+					"name": "Claudio",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Lucio"
+				},
+				{
+					"name": "Provost"
+				},
+				{
+					"name": "Friar Peter"
+				},
+				{
+					"name": "Elbow"
+				},
+				{
+					"name": "Froth"
+				},
+				{
+					"name": "Pompey"
+				},
+				{
+					"name": "Abhorson"
+				},
+				{
+					"name": "Barnardine"
+				},
+				{
+					"name": "Justice",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Isabella"
+				},
+				{
+					"name": "Mariana",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Juliet"
+				},
+				{
+					"name": "Francisca"
+				},
+				{
+					"name": "Mistress Overdone"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Messenger",
+					"differentiator": "Measure for Measure"
+				},
+				{
+					"name": "Judge",
+					"differentiator": "Measure for Measure"
+				}
+			]
+		}
+	]
+}

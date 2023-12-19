@@ -1,9 +1,10 @@
 {
-	"name": "Coriolanus",
+	"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
 	"startDate": "2007-04-25",
 	"endDate": "2007-04-29",
 	"material": {
-		"name": "Coriolanus"
+		"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Barbican Theatre"
@@ -96,7 +97,7 @@
 			"roles": [
 				{
 					"name": "Roman Senator",
-					"characterName": "Roman Senators"
+					"characterName": "Roman senators"
 				},
 				{
 					"name": "Patrician 1",
@@ -108,17 +109,20 @@
 			"name": "Hiroshi Tomioka",
 			"roles": [
 				{
-					"name": "Citizen 5"
+					"name": "Citizen 5",
+					 "characterName": "Citizens"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Officer 1"
+					"name": "Officer 1",
+					"characterName": "Officers"
 				}
 			]
 		},
@@ -126,7 +130,8 @@
 			"name": "Hiroki Okawa",
 			"roles": [
 				{
-					"name": "Citizen 1"
+					"name": "Citizen 1",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -134,10 +139,11 @@
 				},
 				{
 					"name": "Roman 1",
-					"characterName": "Roman Citizens"
+					"characterName": "Roman citizens"
 				},
 				{
-					"name": "Servingman 3"
+					"name": "Servingman 3",
+					"characterName": "Servingmen"
 				}
 			]
 		},
@@ -145,7 +151,8 @@
 			"name": "Masahiro Kobayashi",
 			"roles": [
 				{
-					"name": "Citizen 2"
+					"name": "Citizen 2",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -157,7 +164,8 @@
 			"name": "Tetsuo Takase",
 			"roles": [
 				{
-					"name": "Citizen 4"
+					"name": "Citizen 4",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "A Citizen of Antium"
@@ -180,7 +188,8 @@
 			"name": "Ben Hiura",
 			"roles": [
 				{
-					"name": "Citizen 3"
+					"name": "Citizen 3",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -188,10 +197,11 @@
 				},
 				{
 					"name": "Roman 3",
-					"characterName": "Roman Citizens"
+					"characterName": "Roman citizens"
 				},
 				{
-					"name": "Servingman 1"
+					"name": "Servingman 1",
+					"characterName": "Servingmen"
 				}
 			]
 		},
@@ -202,7 +212,8 @@
 					"name": "Nicanor"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Messenger",
@@ -213,7 +224,8 @@
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				}
 			]
 		},
@@ -225,17 +237,20 @@
 					"characterName": "Aediles"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Lieutenant"
+					"name": "Lieutenant",
+					"characterName": "Lieutenants"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				}
 			]
 		},
@@ -243,17 +258,20 @@
 			"name": "Yukio Tsukamoto",
 			"roles": [
 				{
-					"name": "Servingman 2"
+					"name": "Servingman 2",
+					"characterName": "Servingmen"
 				},
 				{
-					"name": "Citizen 7"
+					"name": "Citizen 7",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Officer 2"
+					"name": "Officer 2",
+					"characterName": "Officers"
 				}
 			]
 		},
@@ -265,17 +283,20 @@
 					"characterName": "Conspirators"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				},
 				{
-					"name": "Sentinel 2"
+					"name": "Sentinel 2",
+					"characterName": "Sentinels"
 				}
 			]
 		},
@@ -287,17 +308,20 @@
 					"characterName": "Conspirators"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				},
 				{
-					"name": "Lieutenant"
+					"name": "Lieutenant",
+					"characterName": "Lieutenants"
 				}
 			]
 		},
@@ -305,17 +329,20 @@
 			"name": "Kiyoshi Fukuda",
 			"roles": [
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier 1",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Bugler"
+					"name": "Bugler",
+					"characterName": "Buglers"
 				}
 			]
 		},
@@ -327,10 +354,12 @@
 					"characterName": "Messengers"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
-					"name": "Servingman"
+					"name": "Servingman",
+					"characterName": "Servingmen"
 				},
 				{
 					"name": "Soldier",
@@ -346,10 +375,12 @@
 					"characterName": "Messengers"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
-					"name": "Servingman"
+					"name": "Servingman",
+					"characterName": "Servingmen"
 				},
 				{
 					"name": "Soldier",
@@ -361,17 +392,20 @@
 			"name": "Naoto Kaji",
 			"roles": [
 				{
-					"name": "Sentinel 1"
+					"name": "Sentinel 1",
+					"characterName": "Sentinels"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				}
 			]
 		},
@@ -380,10 +414,11 @@
 			"roles": [
 				{
 					"name": "Roman Senator 3",
-					"characterName": "Roman Senators"
+					"characterName": "Roman senators"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -400,11 +435,11 @@
 			"roles": [
 				{
 					"name": "Roman Senator 2",
-					"characterName": "Roman Senators"
+					"characterName": "Roman senators"
 				},
 				{
 					"name": "Volscian Senator 1",
-					"characterName": "Volscian Senators"
+					"characterName": "Volscian senators"
 				},
 				{
 					"name": "Patrician 2",
@@ -417,17 +452,19 @@
 			"roles": [
 				{
 					"name": "Herald",
-					"characterName": "Roman Herald"
+					"characterName": "Roman herald"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				},
 				{
 					"name": "Conspirator 2",
@@ -439,7 +476,8 @@
 			"name": "Kai",
 			"roles": [
 				{
-					"name": "Citizen 8"
+					"name": "Citizen 8",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier 2",
@@ -447,7 +485,7 @@
 				},
 				{
 					"name": "Roman 2",
-					"characterName": "Roman Citizens"
+					"characterName": "Roman citizens"
 				}
 			]
 		},
@@ -455,7 +493,8 @@
 			"name": "Akihiko Tsunoda",
 			"roles": [
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -467,10 +506,12 @@
 			"name": "Go Fujinuma",
 			"roles": [
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
-					"name": "Servingman"
+					"name": "Servingman",
+					"characterName": "Servingmen"
 				},
 				{
 					"name": "Soldier",
@@ -490,7 +531,8 @@
 			"name": "Yutaka Izumi",
 			"roles": [
 				{
-					"name": "Citizen 6"
+					"name": "Citizen 6",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -506,14 +548,16 @@
 			"name": "Seichiro Kawasaki",
 			"roles": [
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				}
 			]
 		},
@@ -521,14 +565,16 @@
 			"name": "Seiji Kawasaki",
 			"roles": [
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
 					"characterName": "Soldiers"
 				},
 				{
-					"name": "Senator"
+					"name": "Senator",
+					"characterName": "Senators"
 				}
 			]
 		},
@@ -540,10 +586,12 @@
 					"characterName": "Messengers"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
-					"name": "Servingman"
+					"name": "Servingman",
+					"characterName": "Servingmen"
 				},
 				{
 					"name": "Soldier",
@@ -558,7 +606,8 @@
 					"name": "Adrian"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -574,7 +623,8 @@
 			"name": "Daisuke Sugiura",
 			"roles": [
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				},
 				{
 					"name": "Soldier",
@@ -589,7 +639,8 @@
 					"name": "Young Martius"
 				},
 				{
-					"name": "Citizen"
+					"name": "Citizen",
+					"characterName": "Citizens"
 				}
 			]
 		}

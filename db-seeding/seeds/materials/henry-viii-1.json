@@ -1,0 +1,250 @@
+{
+	"name": "Henry VIII",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1613",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				},
+				{
+					"name": "John Fletcher"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Henry VIII"
+				},
+				{
+					"name": "Duke of Buckingham",
+					"underlyingName": "Edward Stafford, 3rd Duke of Buckingham"
+				},
+				{
+					"name": "Duke of Norfolk",
+					"underlyingName": "Thomas Howard, 2nd Duke of Norfolk"
+				},
+				{
+					"name": "Duke of Suffolk",
+					"underlyingName": "Charles Brandon, 1st Duke of Suffolk"
+				},
+				{
+					"name": "Earl of Surrey",
+					"underlyingName": "Thomas Howard, 3rd Duke of Norfolk"
+				},
+				{
+					"name": "Lord Abergavenny",
+					"underlyingName": "George Nevill, 5th Baron Bergavenny"
+				},
+				{
+					"name": "Lord Sands",
+					"underlyingName": "William Sandys, 1st Baron Sandys"
+				},
+				{
+					"name": "Lord Chamberlain",
+					"underlyingName": "Charles Somerset, 1st Earl of Worcester"
+				},
+				{
+					"name": "Lord Chancellor",
+					"underlyingName": "Thomas More"
+				},
+				{
+					"name": "Sir Henry Guilford"
+				},
+				{
+					"name": "Sir Thomas Lovell"
+				},
+				{
+					"name": "Sir Nicholas Vaux",
+					"underlyingName": "Nicholas Vaux, 1st Baron Vaux of Harrowden"
+				},
+				{
+					"name": "Sir Anthony Denny"
+				},
+				{
+					"name": "Cardinal Wolsey",
+					"underlyingName": "Cardinal Thomas Wolsey"
+				},
+				{
+					"name": "Thomas Cromwell"
+				},
+				{
+					"name": "Secretary to Wolsey"
+				},
+				{
+					"name": "Servant to Wolsey"
+				},
+				{
+					"name": "Cardinal Campeius",
+					"underlyingName": "Lorenzo Campeggio"
+				},
+				{
+					"name": "Capuchius",
+					"underlyingName": "Eustice Chapuys"
+				},
+				{
+					"name": "Gardiner",
+					"underlyingName": "Stephen Gardiner"
+				},
+				{
+					"name": "Page to Gardiner"
+				},
+				{
+					"name": "Bishop of Lincoln",
+					"underlyingName": "John Longland"
+				},
+				{
+					"name": "Thomas Cranmer, Archbishop of Canterbury",
+					"underlyingName": "Thomas Cranmer"
+				},
+				{
+					"name": "Brandon"
+				},
+				{
+					"name": "Sergeant-at-arms"
+				},
+				{
+					"name": "Surveyor to the Duke of Buckingham"
+				},
+				{
+					"name": "Three gentlemen"
+				},
+				{
+					"name": "Scribe"
+				},
+				{
+					"name": "Crier"
+				},
+				{
+					"name": "Messenger to Queen Katherine"
+				},
+				{
+					"name": "Keeper of the Council Chamber"
+				},
+				{
+					"name": "Doctor Butts",
+					"underlyingName": "Sir William Butts"
+				},
+				{
+					"name": "Porter",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Porter's man"
+				},
+				{
+					"name": "Garter King-of-Arms"
+				},
+				{
+					"name": "Queen Katherine",
+					"underlyingName": "Catherine of Aragon"
+				},
+				{
+					"name": "Griffith"
+				},
+				{
+					"name": "Patience"
+				},
+				{
+					"name": "Gentlewoman",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Anne Bullen",
+					"underlyingName": "Anne Boleyn"
+				},
+				{
+					"name": "Old Lady"
+				},
+				{
+					"name": "Speaker of the prologue and epilogue",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Ladies",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Bishops",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Priests"
+				},
+				{
+					"name": "Vergers"
+				},
+				{
+					"name": "Judges"
+				},
+				{
+					"name": "Lord Mayor of London",
+					"underlyingName": "Sir Stephen Peacock"
+				},
+				{
+					"name": "Aldermen",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Citizens",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Guards",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Tipstaves"
+				},
+				{
+					"name": "Halberdiers"
+				},
+				{
+					"name": "Scribes"
+				},
+				{
+					"name": "Secretaries"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Pursuivants"
+				},
+				{
+					"name": "Pages",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Choristers"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "Henry VIII"
+				},
+				{
+					"name": "Spirits",
+					"differentiator": "Henry VIII"
+				}
+			]
+		}
+	]
+}

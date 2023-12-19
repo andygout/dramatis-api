@@ -1,0 +1,248 @@
+{
+	"name": "Henry IV, Part 2",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1598",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The King's party",
+			"characters": [
+				{
+					"name": "King Henry IV"
+				},
+				{
+					"name": "Prince Henry",
+					"underlyingName": "King Henry V"
+				},
+				{
+					"name": "Prince John of Lancaster",
+					"underlyingName": "John of Lancaster, Duke of Bedford"
+				},
+				{
+					"name": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "Thomas of Lancaster, Duke of Clarence"
+				},
+				{
+					"name": "Richard Beauchamp, Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
+				},
+				{
+					"name": "Earl of Surrey",
+					"underlyingName": "Thomas Fitzalan, Earl of Surrey"
+				},
+				{
+					"name": "Earl of Westmorland",
+					"underlyingName": "Ralph Neville, Earl of Westmorland"
+				},
+				{
+					"name": "Harcourt"
+				},
+				{
+					"name": "Sir John Blunt"
+				}
+			]
+		},
+		{
+			"name": "The Rebels",
+			"characters": [
+				{
+					"name": "Archbishop of York",
+					"underlyingName": "Richard Scroop, Archbishop of York"
+				},
+				{
+					"name": "Lord Bardolph",
+					"underlyingName": "Thomas Bardolf, 5th Baron Bardolf"
+				},
+				{
+					"name": "Lord Mowbray",
+					"underlyingName": "Thomas de Mowbray, 4th Earl of Norfolk"
+				},
+				{
+					"name": "Lord Hastings"
+				},
+				{
+					"name": "Sir John Coleville"
+				},
+				{
+					"name": "Earl of Northumberland",
+					"underlyingName": "Henry Percy, 1st Earl of Northumberland"
+				},
+				{
+					"name": "Lady Northumberland"
+				},
+				{
+					"name": "Lady Percy",
+					"underlyingName": "Elizabeth Mortimer"
+				},
+				{
+					"name": "Travers"
+				},
+				{
+					"name": "Morton"
+				}
+			]
+		},
+		{
+			"name": "Court",
+			"characters": [
+				{
+					"name": "Lord Chief Justice",
+					"underlyingName": "Sir William Gascoigne"
+				},
+				{
+					"name": "Servant of the Lord Chief Justice"
+				},
+				{
+					"name": "Gower"
+				},
+				{
+					"name": "Beadle"
+				},
+				{
+					"name": "Grooms"
+				}
+			]
+		},
+		{
+			"name": "Eastcheap",
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Falstaff's page"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
+				},
+				{
+					"name": "Ned Poins"
+				},
+				{
+					"name": "Peto"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				},
+				{
+					"name": "Doll Tearsheet",
+					"underlyingName": "Dorothy 'Doll' Tearsheet"
+				},
+				{
+					"name": "Francis"
+				},
+				{
+					"name": "William",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Drawer"
+				}
+			]
+		},
+		{
+			"name": "Recruits",
+			"characters": [
+				{
+					"name": "Ralph Mouldy"
+				},
+				{
+					"name": "Simon Shadow"
+				},
+				{
+					"name": "Thomas Wart"
+				},
+				{
+					"name": "Francis Feeble"
+				},
+				{
+					"name": "Peter Bullcalf"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Rumour"
+				},
+				{
+					"name": "Epilogue"
+				},
+				{
+					"name": "Justice Robert Shallow"
+				},
+				{
+					"name": "Justice Silence"
+				},
+				{
+					"name": "Davy"
+				},
+				{
+					"name": "Snare"
+				},
+				{
+					"name": "Fang"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Porter",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Page",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Captain",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "Henry IV, Part 2"
+				},
+				{
+					"name": "Beadles"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry IV, Part 2"
+				}
+			]
+		}
+	]
+}

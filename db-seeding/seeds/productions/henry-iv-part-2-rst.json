@@ -4,7 +4,8 @@
 	"pressDate": "2014-04-16",
 	"endDate": "2014-09-06",
 	"material": {
-		"name": "Henry IV, Part 2"
+		"name": "Henry IV, Part 2",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

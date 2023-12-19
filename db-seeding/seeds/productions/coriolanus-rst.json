@@ -4,7 +4,8 @@
 	"pressDate": "2007-03-06",
 	"endDate": "2007-03-31",
 	"material": {
-		"name": "Coriolanus"
+		"name": "Coriolanus",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -121,7 +122,7 @@
 			"roles": [
 				{
 					"name": "First Roman senator",
-					"characterName": "Roman Senators"
+					"characterName": "Roman senators"
 				}
 			]
 		},
@@ -130,7 +131,7 @@
 			"roles": [
 				{
 					"name": "Second Roman senator",
-					"characterName": "Roman Senators"
+					"characterName": "Roman senators"
 				}
 			]
 		},

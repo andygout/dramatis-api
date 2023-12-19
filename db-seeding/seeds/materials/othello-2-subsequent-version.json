@@ -1,0 +1,66 @@
+{
+	"name": "Othello",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "Othello",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Feridun Zaimoglu"
+				},
+				{
+					"name": "Günter Senkel"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Othello"
+				},
+				{
+					"name": "Desdemona"
+				},
+				{
+					"name": "Cassio"
+				},
+				{
+					"name": "Iago"
+				},
+				{
+					"name": "Emilia",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Roderigo"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Duke of Venice",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Brabantio"
+				}
+			]
+		}
+	]
+}

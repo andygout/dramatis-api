@@ -1,0 +1,68 @@
+{
+	"name": "Othello: The Remix",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Othello",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Q Brothers"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Othello"
+				},
+				{
+					"name": "Michael Cassio",
+					"underlyingName": "Cassio"
+				},
+				{
+					"name": "Iago"
+				},
+				{
+					"name": "Emilia",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Bianca",
+					"differentiator": "Othello"
+				},
+				{
+					"name": "Roderigo"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Brabantio"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "DJ"
+				}
+			]
+		}
+	]
+}

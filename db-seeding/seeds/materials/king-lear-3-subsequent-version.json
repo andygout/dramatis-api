@@ -1,0 +1,36 @@
+{
+	"name": "King Lear",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2011",
+	"originalVersionMaterial": {
+		"name": "King Lear",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Wu Hsing-kuo"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Lear"
+				}
+			]
+		}
+	]
+}

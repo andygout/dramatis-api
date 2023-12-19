@@ -3,7 +3,8 @@
 	"startDate": "2006-08-31",
 	"endDate": "2006-09-09",
 	"material": {
-		"name": "Troilus and Cressida"
+		"name": "Troilus and Cressida",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

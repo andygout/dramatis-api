@@ -1,0 +1,49 @@
+{
+	"name": "Henry V (Enrico V)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry V",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Pippo Delbono"
+				}
+			]
+		},
+		{
+			"name": "after",
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The English",
+			"characters": [
+				{
+					"name": "King Henry V"
+				},
+				{
+					"name": "Friend of the King"
+				}
+			]
+		},
+
+		{
+			"name": "The French",
+			"characters": [
+				{
+					"name": "The French"
+				}
+			]
+		}
+	]
+}

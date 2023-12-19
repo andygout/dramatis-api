@@ -1,0 +1,27 @@
+{
+	"name": "Venus and Adonis",
+	"differentiator": "1",
+	"format": "poem",
+	"year": "1593",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Venus"
+				},
+				{
+					"name": "Adonis"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,145 @@
+{
+	"name": "Richard III",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "Richard III",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "edited by",
+			"entities": [
+				{
+					"name": "Sean Buckley"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "House of York",
+			"characters": [
+				{
+					"name": "King Edward",
+					"underlyingName": "King Edward IV"
+				},
+				{
+					"name": "Edward",
+					"underlyingName": "King Edward V"
+				},
+				{
+					"name": "Young York",
+					"underlyingName": "Richard of Shrewsbury, Duke of York"
+				},
+				{
+					"name": "Clarence",
+					"underlyingName": "George Plantagenet, Duke of Clarence"
+				},
+				{
+					"name": "Richard III",
+					"underlyingName": "King Richard III"
+				},
+				{
+					"name": "Duchess of York",
+					"underlyingName": "Cecily Neville, Duchess of York"
+				},
+				{
+					"name": "Clarence's son",
+					"underlyingName": "Edward Plantagenet, 17th Earl of Warwick"
+				}
+			]
+		},
+		{
+			"name": "House of Lancaster",
+			"characters": [
+				{
+					"name": "Lady Anne",
+					"underlyingName": "Lady Anne Neville"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				}
+			]
+		},
+		{
+			"name": "Woodville family",
+			"characters": [
+				{
+					"name": "Queen Elizabeth",
+					"underlyingName": "Dame Elizabeth Grey (née Woodville)"
+				},
+				{
+					"name": "Rivers",
+					"underlyingName": "Anthony Woodville, 2nd Earl Rivers"
+				}
+			]
+		},
+		{
+			"name": "Richard III's group",
+			"characters": [
+				{
+					"name": "Lord Buckingham",
+					"underlyingName": "Henry Stafford, 2nd Duke of Buckingham"
+				},
+				{
+					"name": "Catesby",
+					"underlyingName": "Sir William Catesby"
+				},
+				{
+					"name": "Tyrrell",
+					"underlyingName": "Sir James Tyrrell"
+				},
+				{
+					"name": "Two murderers"
+				}
+			]
+		},
+		{
+			"name": "Earl of Richmond's group",
+			"characters": [
+				{
+					"name": "Richmond",
+					"underlyingName": "King Henry VII"
+				},
+				{
+					"name": "Stanley",
+					"underlyingName": "Lord Stanley, Earl of Derby"
+				}
+			]
+		},
+		{
+			"name": "Clergy",
+			"characters": [
+				{
+					"name": "Cardinal",
+					"underlyingName": "Thomas Bourchier, Archbishop of Canterbury"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Brakenbury",
+					"underlyingName": "Sir Robert Brackenbury, Lieutenant of the Tower"
+				},
+				{
+					"name": "Lord Mayor",
+					"underlyingName": "Sir Edmund Shaw"
+				},
+				{
+					"name": "Hastings"
+				}
+			]
+		}
+	]
+}

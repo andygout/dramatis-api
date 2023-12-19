@@ -3,7 +3,8 @@
 	"startDate": "2012-08-24",
 	"endDate": "2012-08-26",
 	"material": {
-		"name": "A Midsummer Night's Dream"
+		"name": "A Midsummer Night's Dream",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "King's Theatre"

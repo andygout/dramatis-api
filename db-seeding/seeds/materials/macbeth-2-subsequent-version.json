@@ -1,0 +1,81 @@
+{
+	"name": "Macbeth (Makbet)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Macbeth",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Antoni Libera"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Dunkan",
+					"underlyingName": "King Duncan"
+				},
+				{
+					"name": "Malcolm"
+				},
+				{
+					"name": "Makbet",
+					"underlyingName": "Macbeth"
+				}
+			]
+		},
+		{
+			"name": "Thanes of Scotland",
+			"characters": [
+				{
+					"name": "Banquo"
+				},
+				{
+					"name": "Macduff"
+				},
+				{
+					"name": "Lenox",
+					"underlyingName": "Lennox"
+				},
+				{
+					"name": "Rosse",
+					"underlyingName": "Ross"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Seyton"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lady Makbet",
+					"underlyingName": "Lady Macbeth"
+				},
+				{
+					"name": "Lady Macduff"
+				}
+			]
+		}
+	]
+}

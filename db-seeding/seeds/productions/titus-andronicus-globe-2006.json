@@ -4,7 +4,8 @@
 	"pressDate": "2006-05-30",
 	"endDate": "2006-10-06",
 	"material": {
-		"name": "Titus Andronicus"
+		"name": "Titus Andronicus",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Globe Theatre"

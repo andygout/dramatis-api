@@ -1,0 +1,122 @@
+{
+	"name": "Pericles (Περικλής - Periklís)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Pericles, Prince of Tyre",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Dionisis Kapsalis"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Gower",
+					"underlyingName": "John Gower"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Antiochus",
+					"underlyingName": "Antiochus, King of Antioch"
+				},
+				{
+					"name": "Pericles, Prince of Tyre"
+				},
+				{
+					"name": "Daughter of Antiochus"
+				},
+				{
+					"name": "Thaliard"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Helicanus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Cleon",
+					"underlyingName": "Cleon, governor of Tarsus"
+				},
+				{
+					"name": "Dionyza"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Fishermen",
+					"underlyingName": "Three fisherman of Pentapolis"
+				},
+				{
+					"name": "Simonides, King of Pentapolis"
+				},
+				{
+					"name": "Thaisa"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Cerimon"
+				},
+				{
+					"name": "Philemon"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Leonine"
+				},
+				{
+					"name": "Marina"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Pander"
+				},
+				{
+					"name": "Bawd"
+				},
+				{
+					"name": "Boult"
+				},
+				{
+					"name": "Lysimachus"
+				}
+			]
+		}
+	]
+}

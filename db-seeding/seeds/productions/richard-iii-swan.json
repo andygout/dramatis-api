@@ -3,7 +3,8 @@
 	"startDate": "2006-09-08",
 	"endDate": "2006-09-08",
 	"material": {
-		"name": "Richard III"
+		"name": "Richard III",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -26,8 +27,7 @@
 			"name": "Ross Armstrong",
 			"roles": [
 				{
-					"name": "Richard III",
-					"characterName": "Richard, Duke of Gloucester"
+					"name": "Richard III"
 				}
 			]
 		},
@@ -35,20 +35,16 @@
 			"name": "Matt Bannister",
 			"roles": [
 				{
-					"name": "King Edward",
-					"characterName": "King Edward IV"
+					"name": "King Edward"
 				},
 				{
-					"name": "Brakenbury",
-					"characterName": "Sir Robert Brackenbury, Lieutenant of the Tower"
+					"name": "Brakenbury"
 				},
 				{
-					"name": "Rivers",
-					"characterName": "Anthony Woodville, Earl Rivers"
+					"name": "Rivers"
 				},
 				{
-					"name": "Lord Mayor",
-					"characterName": "Lord Mayor of London"
+					"name": "Lord Mayor"
 				}
 			]
 		},
@@ -56,20 +52,16 @@
 			"name": "Mark Edel-Hunt",
 			"roles": [
 				{
-					"name": "Clarence",
-					"characterName": "George, Duke of Clarence"
+					"name": "Clarence"
 				},
 				{
-					"name": "Cardinal",
-					"characterName": "Thomas Bourchier, Archbishop of Canterbury"
+					"name": "Cardinal"
 				},
 				{
-					"name": "Young York",
-					"characterName": "Richard, Duke of York"
+					"name": "Young York"
 				},
 				{
-					"name": "Richmond",
-					"characterName": "Henry, Earl of Richmond"
+					"name": "Richmond"
 				}
 			]
 		},
@@ -97,12 +89,10 @@
 					"characterName": "Two murderers"
 				},
 				{
-					"name": "Clarence's son",
-					"characterName": "Edward Plantagenet"
+					"name": "Clarence's son"
 				},
 				{
-					"name": "Catesby",
-					"characterName": "Sir William Catesby"
+					"name": "Catesby"
 				}
 			]
 		},
@@ -110,12 +100,10 @@
 			"name": "John-Paul McLeod",
 			"roles": [
 				{
-					"name": "Edward",
-					"characterName": "Edward, Prince of Wales"
+					"name": "Edward"
 				},
 				{
-					"name": "Stanley",
-					"characterName": "Lord Stanley, Earl of Derby"
+					"name": "Stanley"
 				},
 				{
 					"name": "First executioner",
@@ -135,8 +123,7 @@
 			"name": "Aidan O'Reilly",
 			"roles": [
 				{
-					"name": "Lord Buckingham",
-					"characterName": "Duke of Buckingham"
+					"name": "Lord Buckingham"
 				}
 			]
 		},
@@ -155,8 +142,7 @@
 					"name": "Hastings"
 				},
 				{
-					"name": "Tyrrell",
-					"characterName": "Sir James Tyrrell"
+					"name": "Tyrrell"
 				}
 			]
 		}

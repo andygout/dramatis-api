@@ -3,7 +3,8 @@
 	"startDate": "2012-05-12",
 	"endDate": "2012-05-13",
 	"material": {
-		"name": "Henry VI, Part 3"
+		"name": "Henry VI, Part 3 (Хенри Шестиот дел 3 - Henri Šesti Del 3)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -50,8 +51,7 @@
 			"name": "Sonja Mihajlova",
 			"roles": [
 				{
-					"name": "Earl of Warwick",
-					"characterName": "Richard Nevil, Earl of Warwick"
+					"name": "Earl of Warwick"
 				}
 			]
 		},
@@ -59,8 +59,7 @@
 			"name": "Martin Mirchevski",
 			"roles": [
 				{
-					"name": "Richard, Duke of Gloucester",
-					"characterName": "Richard Plantagenet, later Duke of Gloucester"
+					"name": "Richard, Duke of Gloucester"
 				}
 			]
 		},
@@ -68,8 +67,7 @@
 			"name": "Filip Mirchevski",
 			"roles": [
 				{
-					"name": "George, Duke of Clarence",
-					"characterName": "George Plantagenet, later Duke of Clarence"
+					"name": "George, Duke of Clarence"
 				}
 			]
 		},
@@ -85,8 +83,7 @@
 			"name": "Kristina Hristova Nikolova",
 			"roles": [
 				{
-					"name": "King Louis",
-					"characterName": "King Lewis XI"
+					"name": "King Louis"
 				}
 			]
 		},
@@ -94,8 +91,7 @@
 			"name": "Ognen Drangovski",
 			"roles": [
 				{
-					"name": "Edward, Earl of March, later Edward IV",
-					"characterName": "Edward Plantagenet, Earl of March"
+					"name": "Edward, Earl of March, later Edward IV"
 				}
 			]
 		},
@@ -103,8 +99,7 @@
 			"name": "Valentina Gramosli",
 			"roles": [
 				{
-					"name": "Lady Elizabeth Gray",
-					"characterName": "Lady Elizabeth Grey"
+					"name": "Lady Elizabeth Gray"
 				},
 				{
 					"name": "Lady Bona"

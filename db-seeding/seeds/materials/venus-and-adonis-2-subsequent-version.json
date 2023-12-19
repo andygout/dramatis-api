@@ -1,0 +1,40 @@
+{
+	"name": "Venus and Adonis (U-Venas No Adonisi)",
+	"differentiator": "2",
+	"format": "poem",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Venus and Adonis",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Isango Ensemble"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Venus"
+				},
+				{
+					"name": "Adonis"
+				}
+			]
+		}
+	]
+}

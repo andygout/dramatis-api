@@ -4,7 +4,8 @@
 	"pressDate": "2005-04-20",
 	"endDate": "2005-05-14",
 	"material": {
-		"name": "Julius Caesar"
+		"name": "Julius Caesar",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Barbican Theatre"

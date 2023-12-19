@@ -4,7 +4,8 @@
 	"pressDate": "2007-05-31",
 	"endDate": "2007-06-21",
 	"material": {
-		"name": "King Lear"
+		"name": "King Lear",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Courtyard Theatre"

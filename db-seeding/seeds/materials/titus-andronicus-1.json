@@ -1,0 +1,126 @@
+{
+	"name": "Titus Andronicus",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1594",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Saturninus"
+				},
+				{
+					"name": "Bassianus"
+				},
+				{
+					"name": "Titus Andronicus"
+				},
+				{
+					"name": "Marcus Andronicus"
+				},
+				{
+					"name": "Publius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Lucius Andronicus"
+				},
+				{
+					"name": "Quintus Andronicus"
+				},
+				{
+					"name": "Martius Andronicus"
+				},
+				{
+					"name": "Mutius Andronicus"
+				},
+				{
+					"name": "Lavinia"
+				},
+				{
+					"name": "Young Lucius"
+				},
+				{
+					"name": "Sempronius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Caius"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Aemilius"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Clown",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Tribunes"
+				},
+				{
+					"name": "Roman soldiers",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Plebeians",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Titus Andronicus"
+				}
+			]
+		},
+		{
+			"name": "Goths",
+			"characters": [
+				{
+					"name": "Tamora"
+				},
+				{
+					"name": "Alarbus"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Chiron"
+				},
+				{
+					"name": "Aaron",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Goths"
+				}
+			]
+		}
+	]
+}

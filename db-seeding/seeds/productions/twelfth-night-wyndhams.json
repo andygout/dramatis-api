@@ -5,7 +5,8 @@
 	"pressDate": "2008-12-10",
 	"endDate": "2009-03-07",
 	"material": {
-		"name": "Twelfth Night"
+		"name": "Twelfth Night",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Wyndham's Theatre"

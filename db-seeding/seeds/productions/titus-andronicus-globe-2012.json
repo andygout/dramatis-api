@@ -3,7 +3,8 @@
 	"startDate": "2012-05-03",
 	"endDate": "2012-05-04",
 	"material": {
-		"name": "Titus Andronicus"
+		"name": "Titus Andronicus (泰特斯 - Tài tè sī)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"

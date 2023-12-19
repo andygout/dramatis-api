@@ -1,0 +1,125 @@
+{
+	"name": "A Midsummer Night's Dream",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "A Midsummer Night's Dream",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Dr Abhijit Gupta"
+				},
+				{
+					"name": "Ajay Kumar"
+				},
+				{
+					"name": "Kaushalya Fernando"
+				},
+				{
+					"name": "T C Narayan"
+				},
+				{
+					"name": "Dr Rajeev Naik"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Athenians",
+			"characters": [
+				{
+					"name": "Theseus",
+					"underlyingName": "Theseus, Duke of Athens"
+				},
+				{
+					"name": "Hippolyta",
+					"underlyingName": "Hippolyta, Queen of the Amazons"
+				},
+				{
+					"name": "Egeus"
+				},
+				{
+					"name": "Philostrate"
+				}
+			]
+		},
+		{
+			"name": "The Lovers",
+			"characters": [
+				{
+					"name": "Hermia"
+				},
+				{
+					"name": "Lysander"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "A Midsummer Night's Dream"
+				},
+				{
+					"name": "Helena",
+					"differentiator": "A Midsummer Night's Dream"
+				}
+			]
+		},
+		{
+			"name": "The Fairies",
+			"characters": [
+				{
+					"name": "Oberon",
+					"underlyingName": "Oberon, King of the Fairies"
+				},
+				{
+					"name": "Titania",
+					"underlyingName": "Titania, Queen of the Fairies"
+				},
+				{
+					"name": "Puck"
+				},
+				{
+					"name": "Spirits"
+				},
+				{
+					"name": "Boy",
+					"underlyingName": "The Changeling Boy"
+				}
+			]
+		},
+		{
+			"name": "The Mechanicals",
+			"characters": [
+				{
+					"name": "Peter Quince"
+				},
+				{
+					"name": "Nick Bottom"
+				},
+				{
+					"name": "Francis Flute"
+				},
+				{
+					"name": "Tom Snout"
+				},
+				{
+					"name": "Snug"
+				},
+				{
+					"name": "Robin Starveling"
+				}
+			]
+		}
+	]
+}

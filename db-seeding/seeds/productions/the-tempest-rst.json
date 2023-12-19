@@ -4,7 +4,8 @@
 	"pressDate": "2006-08-08",
 	"endDate": "2006-10-12",
 	"material": {
-		"name": "The Tempest"
+		"name": "The Tempest",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

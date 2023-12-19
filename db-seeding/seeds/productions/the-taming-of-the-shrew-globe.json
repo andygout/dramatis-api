@@ -3,7 +3,8 @@
 	"startDate": "2012-05-25",
 	"endDate": "2012-05-26",
 	"material": {
-		"name": "The Taming of the Shrew"
+		"name": "The Taming of the Shrew (علاج ضد دستیاب ہے - Treatment is available)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -30,8 +31,7 @@
 			"name": "Nadia Jamil",
 			"roles": [
 				{
-					"name": "Kiran",
-					"characterName": "Katherina Minola"
+					"name": "Kiran"
 				}
 			]
 		},
@@ -39,8 +39,7 @@
 			"name": "Omair Rana",
 			"roles": [
 				{
-					"name": "Rustam",
-					"characterName": "Petruchio"
+					"name": "Rustam"
 				}
 			]
 		},
@@ -48,8 +47,7 @@
 			"name": "Salman Shahid",
 			"roles": [
 				{
-					"name": "Bashir",
-					"characterName": "Baptista Minola"
+					"name": "Bashir"
 				}
 			]
 		},
@@ -57,8 +55,7 @@
 			"name": "Karen David",
 			"roles": [
 				{
-					"name": "Bina",
-					"characterName": "Bianca Minola"
+					"name": "Bina"
 				}
 			]
 		},
@@ -77,8 +74,7 @@
 					"name": "Curtis"
 				},
 				{
-					"name": "Waqaruddin",
-					"characterName": "Vincentio"
+					"name": "Waqaruddin"
 				}
 			]
 		},
@@ -86,12 +82,10 @@
 			"name": "Hamza Kamal",
 			"roles": [
 				{
-					"name": "Begum",
-					"characterName": "Widow"
+					"name": "Begum"
 				},
 				{
-					"name": "Safarish",
-					"characterName": "Grumio"
+					"name": "Safarish"
 				}
 			]
 		},
@@ -99,8 +93,7 @@
 			"name": "Maria Khan",
 			"roles": [
 				{
-					"name": "Ravi",
-					"characterName": "Christopher Sly"
+					"name": "Ravi"
 				}
 			]
 		},
@@ -116,8 +109,7 @@
 			"name": "Osman Khalid Butt",
 			"roles": [
 				{
-					"name": "Hasnat",
-					"characterName": "Hortensio"
+					"name": "Hasnat"
 				}
 			]
 		},
@@ -125,8 +117,7 @@
 			"name": "Syed Abbas Hussain",
 			"roles": [
 				{
-					"name": "Biru",
-					"characterName": "Biondello"
+					"name": "Biru"
 				}
 			]
 		},
@@ -134,8 +125,7 @@
 			"name": "Umer Naru",
 			"roles": [
 				{
-					"name": "Qazim",
-					"characterName": "Lucentio"
+					"name": "Qazim"
 				}
 			]
 		}
@@ -146,6 +136,30 @@
 			"entities": [
 				{
 					"name": "Haissam Hussain"
+				}
+			]
+		},
+		{
+			"name": "Set Designer",
+			"entities": [
+				{
+					"name": "Laila Rehman"
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"entities": [
+				{
+					"name": "Mekaal Hasan"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Naveed Shahzad"
 				}
 			]
 		}

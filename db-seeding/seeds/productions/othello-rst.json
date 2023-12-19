@@ -4,7 +4,8 @@
 	"pressDate": "2006-04-27",
 	"endDate": "2006-04-29",
 	"material": {
-		"name": "Othello"
+		"name": "Othello",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

@@ -1,0 +1,146 @@
+{
+	"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2007",
+	"originalVersionMaterial": {
+		"name": "Coriolanus",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Kazuko Matsuoka"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Caius Martius Coriolanus"
+				},
+				{
+					"name": "Titus Lartius"
+				},
+				{
+					"name": "Cominius"
+				},
+				{
+					"name": "Menenius Agrippa"
+				},
+				{
+					"name": "Sicinius Velutus"
+				},
+				{
+					"name": "Junius Brutus"
+				},
+				{
+					"name": "Roman citizens"
+				},
+				{
+					"name": "Roman herald"
+				},
+				{
+					"name": "Volumnia"
+				},
+				{
+					"name": "Virgilia"
+				},
+				{
+					"name": "Young Martius"
+				},
+				{
+					"name": "Valeria"
+				},
+				{
+					"name": "Roman senators"
+				}
+			]
+		},
+		{
+			"name": "Volscians",
+			"characters": [
+				{
+					"name": "Nicanor"
+				},
+				{
+					"name": "Tullus Aufidius"
+				},
+				{
+					"name": "Conspirators"
+				},
+				{
+					"name": "Adrian",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "A Citizen of Antium"
+				},
+				{
+					"name": "Volscian senators"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Gentlewoman",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Patricians"
+				},
+				{
+					"name": "Aediles"
+				},
+				{
+					"name": "Lieutenants"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Sentinels",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Buglers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Senators",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Citizens",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Servingmen",
+					"differentiator": "Coriolanus"
+				}
+			]
+		}
+	]
+}

@@ -3,7 +3,8 @@
 	"startDate": "2006-09-13",
 	"endDate": "2006-09-16",
 	"material": {
-		"name": "Measure for Measure"
+		"name": "Measure for Measure",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Courtyard Theatre"

@@ -3,7 +3,8 @@
 	"startDate": "2006-10-31",
 	"endDate": "2006-11-01",
 	"material": {
-		"name": "Hamlet"
+		"name": "Hamlet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "The Cube"

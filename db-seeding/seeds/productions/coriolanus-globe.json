@@ -3,7 +3,8 @@
 	"startDate": "2012-05-21",
 	"endDate": "2012-05-22",
 	"material": {
-		"name": "Coriolanus"
+		"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"

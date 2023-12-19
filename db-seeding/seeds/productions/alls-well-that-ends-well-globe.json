@@ -3,7 +3,8 @@
 	"startDate": "2012-05-23",
 	"endDate": "2012-05-24",
 	"material": {
-		"name": "All's Well That Ends Well"
+		"name": "All's Well That Ends Well (મારો પિયો ગયો રંગૂન - Maro Piyo Gayo Rangoon - My brother went to Rangoon)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Meenal Patel",
 			"roles": [
 				{
-					"name": "Kunti",
-					"characterName": "Countess of Roussillon"
+					"name": "Kunti"
 				}
 			]
 		},
@@ -35,8 +35,7 @@
 			"name": "Utkarsh Mazumdar",
 			"roles": [
 				{
-					"name": "Gokuldas Gandhi",
-					"characterName": "King of France"
+					"name": "Gokuldas Gandhi"
 				}
 			]
 		},
@@ -44,8 +43,7 @@
 			"name": "Chirag Vora",
 			"roles": [
 				{
-					"name": "Bharatram",
-					"characterName": "Bertam, Count of Roussillon"
+					"name": "Bharatram"
 				}
 			]
 		},
@@ -53,8 +51,7 @@
 			"name": "Mansi Parekh",
 			"roles": [
 				{
-					"name": "Heli",
-					"characterName": "Helena"
+					"name": "Heli"
 				}
 			]
 		},
@@ -62,8 +59,7 @@
 			"name": "Satchit Puranik",
 			"roles": [
 				{
-					"name": "Parbat",
-					"characterName": "Parolles"
+					"name": "Parbat"
 				}
 			]
 		},
@@ -80,8 +76,7 @@
 			"name": "Archan Trivedi",
 			"roles": [
 				{
-					"name": "Laffabhai",
-					"characterName": "Lafew"
+					"name": "Laffabhai"
 				}
 			]
 		},
@@ -89,8 +84,7 @@
 			"name": "Natasha Singh",
 			"roles": [
 				{
-					"name": "Thuwang",
-					"characterName": "Widow Capilet of Florence"
+					"name": "Thuwang"
 				}
 			]
 		},
@@ -98,8 +92,7 @@
 			"name": "Nishi Doshi",
 			"roles": [
 				{
-					"name": "Alkini",
-					"characterName": "Diana"
+					"name": "Alkini"
 				}
 			]
 		}

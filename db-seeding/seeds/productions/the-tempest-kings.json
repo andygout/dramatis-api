@@ -3,7 +3,8 @@
 	"startDate": "2006-08-13",
 	"endDate": "2006-08-16",
 	"material": {
-		"name": "The Tempest"
+		"name": "The Tempest",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "King's Theatre"

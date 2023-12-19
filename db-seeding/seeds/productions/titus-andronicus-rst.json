@@ -1,10 +1,11 @@
 {
-	"name": "Titus Andronicus",
+	"name": "Titus Andronicus (タイタス・アンドロニカス - Taitasu Andoronikasu)",
 	"startDate": "2006-06-16",
 	"pressDate": "2006-06-20",
 	"endDate": "2006-06-24",
 	"material": {
-		"name": "Titus Andronicus"
+		"name": "Titus Andronicus (タイタス・アンドロニカス - Taitasu Andoronikasu)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"
@@ -95,8 +96,7 @@
 			"name": "Takashi Hirota",
 			"roles": [
 				{
-					"name": "Lucius",
-					"characterName": "Lucius Andronicus"
+					"name": "Lucius"
 				}
 			]
 		},
@@ -182,8 +182,7 @@
 			"name": "Masato Shinkawa",
 			"roles": [
 				{
-					"name": "Mutius",
-					"characterName": "Mutius Andronicus"
+					"name": "Mutius"
 				},
 				{
 					"name": "Senator",
@@ -215,8 +214,7 @@
 			"name": "Masazumi Nitanda",
 			"roles": [
 				{
-					"name": "Quintus",
-					"characterName": "Quintus Andronicus"
+					"name": "Quintus"
 				},
 				{
 					"name": "Goth soldier",
@@ -349,8 +347,7 @@
 			"name": "Ko Hasegawa",
 			"roles": [
 				{
-					"name": "Martius",
-					"characterName": "Martius Andronicus"
+					"name": "Martius"
 				},
 				{
 					"name": "Goth soldier",

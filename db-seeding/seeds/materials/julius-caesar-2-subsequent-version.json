@@ -1,0 +1,76 @@
+{
+	"name": "Julius Caesar",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Julius Caesar",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Vincenzio Manna"
+				},
+				{
+					"name": "Andrea Barraco"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Julius Caesar"
+				},
+				{
+					"name": "Calphurnia"
+				}
+			]
+		},
+		{
+			"name": "Conspirators against Caesar",
+			"characters": [
+				{
+					"name": "Marcus Brutus"
+				},
+				{
+					"name": "Caius Cassius"
+				},
+				{
+					"name": "Casca"
+				}
+			]
+		},
+		{
+			"name": "Triumvirs after Caesar's death",
+			"characters": [
+				{
+					"name": "Octavius Caesar"
+				},
+				{
+					"name": "Mark Antony"
+				}
+			]
+		},
+		{
+			"name": "Citizens",
+			"characters": [
+				{
+					"name": "Portia",
+					"differentiator": "Julius Caesar"
+				}
+			]
+		}
+	]
+}

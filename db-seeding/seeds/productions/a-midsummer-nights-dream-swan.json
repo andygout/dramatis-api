@@ -4,7 +4,8 @@
 	"pressDate": "2006-06-08",
 	"endDate": "2006-06-17",
 	"material": {
-		"name": "A Midsummer Night's Dream"
+		"name": "A Midsummer Night's Dream",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -38,12 +39,10 @@
 			"name": "Archana Ramaswamy",
 			"roles": [
 				{
-					"name": "Hippolyta",
-					"characterName": "Hippolyta, Queen of the Amazons"
+					"name": "Hippolyta"
 				},
 				{
-					"name": "Titania",
-					"characterName": "Titania, Queen of the Fairies"
+					"name": "Titania"
 				}
 			]
 		},
@@ -51,12 +50,10 @@
 			"name": "P R Jijoy",
 			"roles": [
 				{
-					"name": "Theseus",
-					"characterName": "Theseus, Duke of Athens"
+					"name": "Theseus"
 				},
 				{
-					"name": "Oberon",
-					"characterName": "Oberon, King of the Fairies"
+					"name": "Oberon"
 				}
 			]
 		},
@@ -68,7 +65,7 @@
 				},
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},
@@ -157,7 +154,7 @@
 			"roles": [
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},
@@ -166,7 +163,7 @@
 			"roles": [
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},
@@ -175,7 +172,7 @@
 			"roles": [
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},
@@ -184,7 +181,7 @@
 			"roles": [
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},
@@ -193,7 +190,7 @@
 			"roles": [
 				{
 					"name": "Spirit",
-					"characterName": "Fairies"
+					"characterName": "Spirits"
 				}
 			]
 		},

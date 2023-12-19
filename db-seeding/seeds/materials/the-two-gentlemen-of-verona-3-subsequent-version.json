@@ -1,0 +1,27 @@
+{
+	"name": "The Two Gentlemen of Verona (Vakomana Vaviri Ve Zimbabwe - Two Zimbabwean Boys)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Two Gentlemen of Verona",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Noel Marerwa"
+				}
+			]
+		}
+	]
+}

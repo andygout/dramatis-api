@@ -1,0 +1,129 @@
+{
+	"name": "King Lear",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1605",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Lear"
+				},
+				{
+					"name": "Goneril"
+				},
+				{
+					"name": "Regan"
+				},
+				{
+					"name": "Cordelia"
+				},
+				{
+					"name": "Duke of Albany"
+				},
+				{
+					"name": "Duke of Cornwall"
+				},
+				{
+					"name": "King of France",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Duke of Burgundy",
+					"differentiator": "King Lear"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Earl of Kent"
+				},
+				{
+					"name": "Earl of Gloucester"
+				},
+				{
+					"name": "Edgar"
+				},
+				{
+					"name": "Edmund"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Oswald"
+				},
+				{
+					"name": "Fool",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Three Knights"
+				},
+				{
+					"name": "Curan"
+				},
+				{
+					"name": "Gentleman",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Three Servants"
+				},
+				{
+					"name": "Old Man",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Two Messengers"
+				},
+				{
+					"name": "Doctor"
+				},
+				{
+					"name": "Captain"
+				},
+				{
+					"name": "Herald"
+				},
+				{
+					"name": "Two Officers"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Knights of Lear's train"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "King Lear"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "King Lear"
+				}
+			]
+		}
+	]
+}

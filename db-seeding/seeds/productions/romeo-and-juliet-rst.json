@@ -4,7 +4,8 @@
 	"pressDate": "2006-04-18",
 	"endDate": "2006-10-14",
 	"material": {
-		"name": "Romeo and Juliet"
+		"name": "Romeo and Juliet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

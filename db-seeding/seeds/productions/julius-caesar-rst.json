@@ -4,7 +4,8 @@
 	"pressDate": "2006-05-16",
 	"endDate": "2006-10-10",
 	"material": {
-		"name": "Julius Caesar"
+		"name": "Julius Caesar",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

@@ -3,7 +3,8 @@
 	"startDate": "2012-05-30",
 	"endDate": "2012-05-31",
 	"material": {
-		"name": "The Comedy of Errors"
+		"name": "The Comedy of Errors (کمدی اشتباهات)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Shakoor Shamshad",
 			"roles": [
 				{
-					"name": "Arsalan",
-					"characterName": "Antipholus of Ephesus"
+					"name": "Arsalan of Kabul"
 				}
 			]
 		},
@@ -35,7 +35,7 @@
 			"name": "Abdul Haq",
 			"roles": [
 				{
-					"name": "Antipholus of Syracuse"
+					"name": "Arsalan of Samarkand"
 				}
 			]
 		},
@@ -43,7 +43,7 @@
 			"name": "Shah Mohammad",
 			"roles": [
 				{
-					"name": "Dromio of Syracuse"
+					"name": "Bostan of Samarkand"
 				}
 			]
 		},
@@ -51,31 +51,34 @@
 			"name": "Abida Frotan",
 			"roles": [
 				{
-					"name": "Adriana"
+					"name": "Sodaba"
 				}
 			]
 		},
 		{
-			"name": "Basir Haider"
+			"name": "Basir Haider",
+			"roles": [
+				{
+					"name": "Bostan of Kabul"
+				}
+			]
 		},
 		{
 			"name": "Farzana Sayed Ahmad",
 			"roles": [
 				{
-					"name": "Rodaba",
-					"characterName": "Luciana"
+					"name": "Rodaba"
+				},
+				{
+					"name": "Courtesan"
 				}
 			]
-		},
-		{
-			"name": "Ghulamnabi Tanha"
 		},
 		{
 			"name": "Shah Mamnoon Maqsudi",
 			"roles": [
 				{
-					"name": "Ehsan",
-					"characterName": "Egeon"
+					"name": "Ehsan"
 				},
 				{
 					"name": "Luce"

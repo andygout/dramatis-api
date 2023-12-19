@@ -3,7 +3,8 @@
 	"startDate": "2012-05-19",
 	"endDate": "2012-05-20",
 	"material": {
-		"name": "Romeo and Juliet"
+		"name": "Romeo and Juliet (Romeu e Julieta)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Eduardo Moreira",
 			"roles": [
 				{
-					"name": "Romeu",
-					"characterName": "Romeo Montague"
+					"name": "Romeu"
 				}
 			]
 		},
@@ -35,8 +35,7 @@
 			"name": "Fernanda Vianna",
 			"roles": [
 				{
-					"name": "Julieta",
-					"characterName": "Juliet Capulet"
+					"name": "Julieta"
 				}
 			]
 		},
@@ -44,8 +43,7 @@
 			"name": "Rodolfo Vaz",
 			"roles": [
 				{
-					"name": "Mercúcio",
-					"characterName": "Mercutio"
+					"name": "Mercúcio"
 				}
 			]
 		},
@@ -53,12 +51,10 @@
 			"name": "Paulo André",
 			"roles": [
 				{
-					"name": "Teobaldo",
-					"characterName": "Tybalt"
+					"name": "Teobaldo"
 				},
 				{
-					"name": "Frei Lourenço",
-					"characterName": "Friar Laurence"
+					"name": "Frei Lourenço"
 				}
 			]
 		},
@@ -66,8 +62,7 @@
 			"name": "Teuda Bara",
 			"roles": [
 				{
-					"name": "Ama",
-					"characterName": "Nurse"
+					"name": "Ama"
 				}
 			]
 		},
@@ -83,12 +78,10 @@
 			"name": "Beto Francis",
 			"roles": [
 				{
-					"name": "Príncipe",
-					"characterName": "Escalus, Prince of Verona"
+					"name": "Príncipe"
 				},
 				{
-					"name": "Senhor Capuleto",
-					"characterName": "Lord Capulet"
+					"name": "Senhor Capuleto"
 				}
 			]
 		},
@@ -96,8 +89,7 @@
 			"name": "Inês Peixoto",
 			"roles": [
 				{
-					"name": "Senhora Capuleto",
-					"characterName": "Lady Capulet"
+					"name": "Senhora Capuleto"
 				}
 			]
 		},
@@ -105,8 +97,7 @@
 			"name": "Júlio Maciel",
 			"roles": [
 				{
-					"name": "Benvólio",
-					"characterName": "Benvolio"
+					"name": "Benvólio"
 				}
 			]
 		},
@@ -114,12 +105,10 @@
 			"name": "Lydia Del Picchia",
 			"roles": [
 				{
-					"name": "Sansão",
-					"characterName": "Sampson"
+					"name": "Sansão"
 				},
 				{
-					"name": "Criado Capuleto",
-					"characterName": "Servingmen"
+					"name": "Criado Capuleto"
 				}
 			]
 		}
@@ -157,6 +146,14 @@
 				},
 				{
 					"name": "Vinícius Alves"
+				}
+			]
+		},
+		{
+			"name": "Puppet Designer",
+			"entities": [
+				{
+					"name": "Aguinaldo Pinho"
 				}
 			]
 		}

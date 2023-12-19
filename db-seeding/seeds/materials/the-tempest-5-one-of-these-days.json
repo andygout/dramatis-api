@@ -1,0 +1,60 @@
+{
+	"name": "One of These Days",
+	"format": "play",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Leo Butler"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Tempest",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Captain Farrell"
+				},
+				{
+					"name": "Captain Skelton"
+				},
+				{
+					"name": "Colonel Fleming"
+				},
+				{
+					"name": "Corporal O'Connor"
+				},
+				{
+					"name": "Dermot"
+				},
+				{
+					"name": "Ellen"
+				},
+				{
+					"name": "Lieutenant Coyle"
+				},
+				{
+					"name": "Lieutenant Ryan"
+				},
+				{
+					"name": "Maryanne"
+				},
+				{
+					"name": "Sergeant Browne"
+				}
+			]
+		}
+	]
+}

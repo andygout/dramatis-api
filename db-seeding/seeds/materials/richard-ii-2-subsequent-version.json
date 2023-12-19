@@ -1,0 +1,138 @@
+{
+	"name": "Richard II",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "Richard II",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Thomas Brasch"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Richard II",
+					"underlyingName": "King Richard II"
+				},
+				{
+					"name": "John of Gaunt",
+					"underlyingName": "John of Gaunt, Duke of Lancaster"
+				},
+				{
+					"name": "Duke of York",
+					"underlyingName": "Edmund of Langley, Duke of York"
+				},
+				{
+					"name": "Aumerle",
+					"underlyingName": "Edward, 2nd Duke of York"
+				},
+				{
+					"name": "Thomas Mowbray",
+					"underlyingName": "Thomas de Mowbray, 1st Duke of Norfolk"
+				},
+				{
+					"name": "Queen Isabel",
+					"differentiator": "Richard II"
+				},
+				{
+					"name": "Duchess of York",
+					"differentiator": "Richard II"
+				},
+				{
+					"name": "Duchess of Gloucester",
+					"underlyingName": "Eleanor de Bohun"
+				},
+				{
+					"name": "Ladies", 
+					"differentiator": "Richard II"
+				}
+			]
+		},
+		{
+			"name": "Rebels",
+			"characters": [
+				{
+					"name": "Henry Bolingbroke",
+					"underlyingName": "King Henry IV"
+				},
+				{
+					"name": "Northumberland",
+					"underlyingName": "Henry Percy, 1st Earl of Northumberland"
+				},
+				{
+					"name": "Ross",
+					"underlyingName": "William de Ros, 6th Baron Ros"
+				},
+				{
+					"name": "Willoughby",
+					"underlyingName": "William Willoughby, 5th Baron Willoughby de Eresby"
+				}
+			]
+		},
+		{
+			"name": "Richard's allies",
+			"characters": [
+				{
+					"name": "Bagot",
+					"underlyingName": "Sir William Bagot"
+				},
+				{
+					"name": "Bushy",
+					"underlyingName": "Sir John Bussy"
+				},
+				{
+					"name": "Green",
+					"underlyingName": "Sir Henry Green, JP"
+				},
+				{
+					"name": "Bishop of Carlisle",
+					"underlyingName": "Thomas Merke"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Captain",
+					"underlyingName": "Captain of the Welsh army"
+				},
+				{
+					"name": "Gardener"
+				},
+				{
+					"name": "Gardener's assistant",
+					"underlyingName": "Two gardener's men"
+				},
+				{
+					"name": "Prison attendant",
+					"underlyingName": "Keeper of the prison at Pomfret"
+				},
+				{
+					"name": "Delegates",
+					"differentiator": "Richard II"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Richard II"
+				}
+			]
+		}
+	]
+}

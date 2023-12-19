@@ -1,0 +1,114 @@
+{
+	"name": "The Winter's Tale (Ìtàn Ògìnìntìn - History of Ògìnìntìn)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Winter's Tale",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Tade Ipadeola"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Sicilia",
+			"characters": [
+				{
+					"name": "Ṣàngó",
+					"underlyingName": "Leontes, King of Sicilia"
+				},
+				{
+					"name": "Ọya",
+					"underlyingName": "Hermione"
+				},
+				{
+					"name": "Mamillius"
+				},
+				{
+					"name": "Olú lá",
+					"underlyingName": "Perdita"
+				},
+				{
+					"name": "Adéagbo",
+					"underlyingName": "Camillo"
+				},
+				{
+					"name": "Antigonus"
+				},
+				{
+					"name": "Paulina"
+				},
+				{
+					"name": "Emilia",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Courtier"
+				},
+				{
+					"name": "Guard",
+					"differentiator": "The Winter's Tale"
+				}
+			]
+		},
+		{
+			"name": "Bohemia",
+			"characters": [
+				{
+					"name": "Ogùn",
+					"underlyingName": "Polixenes"
+				},
+				{
+					"name": "F láw wó",
+					"underlyingName": "Florizel"
+				},
+				{
+					"name": "Autolycus"
+				},
+				{
+					"name": "Darandaran",
+					"underlyingName": "Old Shepherd"
+				},
+				{
+					"name": "Young Shepherd"
+				},
+				{
+					"name": "Mopsa"
+				},
+				{
+					"name": "Dorcas"
+				},
+				{
+					"name": "Hooligans"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Ìgba",
+					"underlyingName": "Time"
+				}
+			]
+		}
+	]
+}

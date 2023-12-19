@@ -1,0 +1,75 @@
+{
+	"name": "All's Well That Ends Well",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "All's Well That Ends Well",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "edited by",
+			"entities": [
+				{
+					"name": "Katie Douglas"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bertram",
+					"underlyingName": "Bertam, Count of Roussillon"
+				},
+				{
+					"name": "Countess of Roussillon"
+				},
+				{
+					"name": "Helena",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Parolles"
+				},
+				{
+					"name": "King",
+					"underlyingName": "King of France"
+				},
+				{
+					"name": "Lafeu",
+					"underlyingName": "Lafew"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Messenger",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Widow",
+					"underlyingName": "Widow Capilet of Florence"
+				},
+				{
+					"name": "Diana",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "All's Well That Ends Well"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,134 @@
+{
+	"name": "Antony and Cleopatra (Antonıus ile Kleopatra)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Antony and Cleopatra",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Bülent Bozkurt"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Triumvirs",
+			"characters": [
+				{
+					"name": "Mark Antony"
+				},
+				{
+					"name": "Octavius Caesar"
+				},
+				{
+					"name": "Lepidus"
+				}
+			]
+		},
+		{
+			"name": "Mark Antony's party",
+			"characters": [
+				{
+					"name": "Enobarbus",
+					"underlyingName": "Domitius Enobarbus"
+				},
+				{
+					"name": "Eros"
+				},
+				{
+					"name": "Scarus"
+				}
+			]
+		},
+		{
+			"name": "Octavius Caesar's party",
+			"characters": [
+				{
+					"name": "Agrippa"
+				},
+				{
+					"name": "Thidias"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Sextus Pompey"
+				}
+			]
+		},
+		{
+			"name": "Sextus Pompey's friends",
+			"characters": [
+				{
+					"name": "Menas"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Cleopatra"
+				}
+			]
+		},
+		{
+			"name": "Cleopatra's party",
+			"characters": [
+				{
+					"name": "Charmian"
+				},
+				{
+					"name": "Iras"
+				},
+				{
+					"name": "Alexas"
+				},
+				{
+					"name": "Mardian"
+				},
+				{
+					"name": "Seleucus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Oktavia",
+					"underlyingName": "Octavia"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Peasant"
+				},
+				{
+					"name": "Köylü"
+				},
+				{
+					"name": "Haberci",
+					"underlyingName": "Messengers",
+					"differentiator": "Antony and Cleopatra"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,80 @@
+{
+	"name": "The Two Gentlemen of Verona",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1594",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Duke of Milan"
+				},
+				{
+					"name": "Silvia"
+				},
+				{
+					"name": "Thurio"
+				},
+				{
+					"name": "Eglamour"
+				},
+				{
+					"name": "Proteus"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Julia"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Lucetta"
+				},
+				{
+					"name": "Speed"
+				},
+				{
+					"name": "Launce"
+				},
+				{
+					"name": "Crab"
+				},
+				{
+					"name": "Panthino"
+				},
+				{
+					"name": "Host of the inn"
+				},
+				{
+					"name": "Outlaws"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "The Two Gentlemen of Verona"
+				}
+			]
+		}
+	]
+}

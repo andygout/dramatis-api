@@ -3,7 +3,8 @@
 	"startDate": "2012-04-30",
 	"endDate": "2012-05-01",
 	"material": {
-		"name": "A Midsummer Night's Dream"
+		"name": "A Midsummer Night's Dream (한여름밤의 꿈 - han-yeoleumbam-ui kkum - The dream of a summer night)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Hae-Kyun Cheong",
 			"roles": [
 				{
-					"name": "Gabbi",
-					"characterName": "Oberon, King of the Fairies"
+					"name": "Gabbi"
 				}
 			]
 		},
@@ -35,8 +35,7 @@
 			"name": "Ji-Youn Kim",
 			"roles": [
 				{
-					"name": "Dot",
-					"characterName": "Titania, Queen of the Fairies"
+					"name": "Dot"
 				}
 			]
 		},
@@ -62,8 +61,7 @@
 			"name": "Seung-Hae Nam",
 			"roles": [
 				{
-					"name": "Beok",
-					"characterName": "Hermia"
+					"name": "Beok"
 				}
 			]
 		},
@@ -71,8 +69,7 @@
 			"name": "Jin-Gon Kim",
 			"roles": [
 				{
-					"name": "Hang",
-					"characterName": "Lysander"
+					"name": "Hang"
 				}
 			]
 		},
@@ -80,8 +77,7 @@
 			"name": "Hyun-Seok Chang",
 			"roles": [
 				{
-					"name": "Loo",
-					"characterName": "Demetrius"
+					"name": "Loo"
 				}
 			]
 		},
@@ -89,8 +85,7 @@
 			"name": "Eun-Hee Kim",
 			"roles": [
 				{
-					"name": "Ik",
-					"characterName": "Helena"
+					"name": "Ik"
 				}
 			]
 		},
@@ -98,8 +93,7 @@
 			"name": "A-Young Jeong",
 			"roles": [
 				{
-					"name": "Ajumi",
-					"characterName": "Nick Bottom"
+					"name": "Ajumi"
 				}
 			]
 		}

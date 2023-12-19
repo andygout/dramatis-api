@@ -3,7 +3,8 @@
 	"startDate": "2007-02-10",
 	"endDate": "2007-02-17",
 	"material": {
-		"name": "Henry VI, Part 2"
+		"name": "Henry VI, Part 2",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Courtyard Theatre"

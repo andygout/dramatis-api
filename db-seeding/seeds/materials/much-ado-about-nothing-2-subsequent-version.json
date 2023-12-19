@@ -1,0 +1,95 @@
+{
+	"name": "Much Ado About Nothing",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "Much Ado About Nothing",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "edited by",
+			"entities": [
+				{
+					"name": "Ben Power"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Don Pedro",
+					"underlyingName": "Don Pedro, Prince of Arragon"
+				},
+				{
+					"name": "Benedick"
+				},
+				{
+					"name": "Claudio",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Don John"
+				},
+				{
+					"name": "Borachio"
+				},
+				{
+					"name": "Conrade"
+				},
+				{
+					"name": "Leonato"
+				},
+				{
+					"name": "Friar Francis"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Hero"
+				},
+				{
+					"name": "Margaret",
+					"differentiator": "Much Ado About Nothing"
+				},
+				{
+					"name": "Beatrice",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Dogberry"
+				},
+				{
+					"name": "Verges"
+				},
+				{
+					"name": "Watchmen"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Messengers",
+					"differentiator": "Much Ado About Nothing"
+				}
+			]
+		}
+	]
+}

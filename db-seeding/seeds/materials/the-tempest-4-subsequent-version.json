@@ -1,0 +1,75 @@
+{
+	"name": "The Tempest (দ্যা টেম্পেস্ট - Dyā ṭēmpēsṭa)",
+	"differentiator": "4",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Tempest",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated and adapted by",
+			"entities": [
+				{
+					"name": "Rubayet Ahmed"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alonso",
+					"underlyingName": "Alonso, King of Naples"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Prospero"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Ferdinand",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Gonzalo"
+				},
+				{
+					"name": "Caliban"
+				},
+				{
+					"name": "Trinculo"
+				},
+				{
+					"name": "Stephano",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Miranda"
+				},
+				{
+					"name": "Ariel"
+				},
+				{
+					"name": "Spirits",
+					"differentiator": "The Tempest"
+				}
+			]
+		}
+	]
+}

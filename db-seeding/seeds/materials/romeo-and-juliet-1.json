@@ -1,0 +1,156 @@
+{
+	"name": "Romeo and Juliet",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1596",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Ruling house of Verona",
+			"characters": [
+				{
+					"name": "Escalus, Prince of Verona"
+				},
+				{
+					"name": "Mercutio"
+				},
+				{
+					"name": "Count Paris"
+				},
+				{
+					"name": "Page to Count Paris"
+				}
+			]
+		},
+		{
+			"name": "House of Montague",
+			"characters": [
+				{
+					"name": "Lord Montague"
+				},
+				{
+					"name": "Lady Montague"
+				},
+				{
+					"name": "Romeo Montague"
+				},
+				{
+					"name": "Benvolio"
+				},
+				{
+					"name": "Abram"
+				},
+				{
+					"name": "Balthasar",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		},
+		{
+			"name": "House of Capulet",
+			"characters": [
+				{
+					"name": "Lord Capulet"
+				},
+				{
+					"name": "Lady Capulet"
+				},
+				{
+					"name": "Juliet Capulet"
+				},
+				{
+					"name": "Tybalt"
+				},
+				{
+					"name": "Old man of the Capulet family"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "Romeo and Juliet"
+				},
+				{
+					"name": "Peter",
+					"differentiator": "Romeo and Juliet"
+				},
+				{
+					"name": "Sampson"
+				},
+				{
+					"name": "Gregory"
+				},
+				{
+					"name": "Anthony"
+				},
+				{
+					"name": "Potpan"
+				},
+				{
+					"name": "Clown",
+					"differentiator": "Romeo and Juliet"
+				},
+				{
+					"name": "Servingmen",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Friar Laurence"
+				},
+				{
+					"name": "Friar John"
+				},
+				{
+					"name": "Apothecary of Mantua"
+				},
+				{
+					"name": "Simon Catling"
+				},
+				{
+					"name": "Hugh Rebeck"
+				},
+				{
+					"name": "James Soundpost"
+				},
+				{
+					"name": "Members of the Watch"
+				},
+				{
+					"name": "Citizens of Verona"
+				},
+				{
+					"name": "Maskers"
+				},
+				{
+					"name": "Torchbearers"
+				},
+				{
+					"name": "Pages",
+					"differentiator": "Romeo and Juliet"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Chorus",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		}
+	]
+}

@@ -3,7 +3,8 @@
 	"startDate": "2012-04-28",
 	"endDate": "2012-04-29",
 	"material": {
-		"name": "Richard III"
+		"name": "Richard III (理查三世 - Lǐ chá sānshì)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Zhang Dongyu",
 			"roles": [
 				{
-					"name": "Richard, Duke of Gloucester, later King Richard",
-					"characterName": "King Richard III"
+					"name": "Richard, Duke of Gloucester, later King Richard"
 				}
 			]
 		},

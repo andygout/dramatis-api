@@ -1,0 +1,27 @@
+{
+	"name": "The Tempest",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2011",
+	"originalVersionMaterial": {
+		"name": "The Tempest",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Tae-Suk Oh"
+				}
+			]
+		}
+	]
+}

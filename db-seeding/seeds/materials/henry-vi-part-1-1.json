@@ -1,0 +1,245 @@
+{
+	"name": "Henry VI, Part 1",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1590",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The English",
+			"characters": [
+				{
+					"name": "King Henry VI"
+				},
+				{
+					"name": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "John of Lancaster, Duke of Bedford"
+				},
+				{
+					"name": "Thomas Beaufort, Duke of Exeter"
+				},
+				{
+					"name": "Henry Beaufort, Bishop of Winchester",
+					"underlyingName": "Cardinal Henry Beaufort, Bishop of Winchester"
+				},
+				{
+					"name": "John Beaufort, Duke of Somerset",
+					"underlyingName": "John Beaufort, 1st Duke of Somerset"
+				},
+				{
+					"name": "Richard Plantagenet",
+					"underlyingName": "Richard Plantagenet, 3rd Duke of York"
+				},
+				{
+					"name": "Richard Beauchamp, Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
+				},
+				{
+					"name": "Thomas Montagu, Earl of Salisbury",
+					"underlyingName": "Thomas Montagu, 4th Earl of Salisbury"
+				},
+				{
+					"name": "William de la Pole, Earl of Suffolk",
+					"underlyingName": "William de la Pole, 1st Duke of Suffolk"
+				},
+				{
+					"name": "Lord Talbot",
+					"underlyingName": "John Talbot, 1st Earl of Shrewsbury"
+				},
+				{
+					"name": "John Talbot",
+					"underlyingName": "John Talbot, 1st Viscount Lisle"
+				},
+				{
+					"name": "Edmund Mortimer, Earl of March"
+				},
+				{
+					"name": "Sir William Glansdale"
+				},
+				{
+					"name": "Sir Thomas Gargrave"
+				},
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Sir William Lucy"
+				},
+				{
+					"name": "Richard Woodville, Lieutenant of the Tower of London"
+				},
+				{
+					"name": "Mayor of London"
+				},
+				{
+					"name": "Vernon",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Basset"
+				},
+				{
+					"name": "Laywer of the Temple"
+				},
+				{
+					"name": "Papal Legate"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Wardens of the Tower of London"
+				},
+				{
+					"name": "Servingmen",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Officer",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Soldier",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Captains",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Gaoler",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Watch",
+					"differentiator": "Henry VI, Part 1"
+				}
+			]
+		},
+		{
+			"name": "The French",
+			"characters": [
+				{
+					"name": "Charles the Dauphin",
+					"underlyingName": "King Charles VII of France"
+				},
+				{
+					"name": "Reignier, Duke of Anjou"
+				},
+				{
+					"name": "Duke of Alençon",
+					"underlyingName": "John II of Alençon"
+				},
+				{
+					"name": "Bastard of Orléans",
+					"underlyingName": "Jean de Dunois, Count of Dunois"
+				},
+				{
+					"name": "Duke of Burgundy",
+					"underlyingName": "Philip III"
+				},
+				{
+					"name": "General of the French army at Bordeaux"
+				},
+				{
+					"name": "Master gunner of Orleans"
+				},
+				{
+					"name": "Boy",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Shepherd"
+				},
+				{
+					"name": "Joan la Pucelle, Joan of Arc",
+					"underlyingName": "Joan of Arc"
+				},
+				{
+					"name": "Margaret",
+					"underlyingName": "Margaret of Anjou"
+				},
+				{
+					"name": "Countess of Auvergne"
+				},
+				{
+					"name": "Porter of the Countess of Auvergne"
+				},
+				{
+					"name": "French sergeant"
+				},
+				{
+					"name": "French sentinel"
+				},
+				{
+					"name": "French solider"
+				},
+				{
+					"name": "French scout"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "English heralds"
+				},
+				{
+					"name": "French heralds"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Sentinels"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Gaolers",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Courtiers",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Governor of Paris"
+				},
+				{
+					"name": "Ambassadors",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Fiends"
+				}
+			]
+		}
+	]
+}

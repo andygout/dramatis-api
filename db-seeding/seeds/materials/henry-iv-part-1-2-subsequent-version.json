@@ -1,0 +1,86 @@
+{
+	"name": "Henry IV, Part 1 (Enrique IV, Primera Parte)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry IV, Part 1",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Alfredo Michel"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "José Ramón Enríquez"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The King's party",
+			"characters": [
+				{
+					"name": "King Henry IV"
+				},
+				{
+					"name": "Prince Henry (Hal)",
+					"underlyingName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Eastcheap",
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Poins",
+					"underlyingName": "Ned Poins"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				}
+			]
+		},
+		{
+			"name": "The Rebels",
+			"characters": [
+				{
+					"name": "Thomas Percy, Earl of Worcester",
+					"underlyingName": "Thomas Percy, 1st Earl of Worcester"
+				},
+				{
+					"name": "Henry Percy (Hotspur)",
+					"underlyingName": "Sir Henry 'Hotspur' Percy"
+				},
+				{
+					"name": "Lady Percy",
+					"underlyingName": "Elizabeth Mortimer"
+				},
+				{
+					"name": "Lady Mortimer",
+					"underlyingName": "Catrin ferch Owain Glyndŵr"
+				}
+			]
+		}
+	]
+}

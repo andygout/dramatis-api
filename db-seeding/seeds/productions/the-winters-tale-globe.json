@@ -3,7 +3,8 @@
 	"startDate": "2012-05-24",
 	"endDate": "2012-05-25",
 	"material": {
-		"name": "The Winter's Tale"
+		"name": "The Winter's Tale (Ìtàn Ògìnìntìn - History of Ògìnìntìn)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Olawale Adebayo",
 			"roles": [
 				{
-					"name": "Ṣàngó",
-					"characterName": "Leontes, King of Sicilia"
+					"name": "Ṣàngó"
 				}
 			]
 		},
@@ -35,8 +35,7 @@
 			"name": "Kehinde Bankole",
 			"roles": [
 				{
-					"name": "Ọya",
-					"characterName": "Hermione"
+					"name": "Ọya"
 				}
 			]
 		},
@@ -44,8 +43,7 @@
 			"name": "Olúwatóyin Alli-Hakeem",
 			"roles": [
 				{
-					"name": "Olú lá",
-					"characterName": "Perdita"
+					"name": "Olú lá"
 				},
 				{
 					"name": "Courtier"
@@ -79,11 +77,11 @@
 					"characterName": "Lords"
 				},
 				{
-					"name": "Young Shepherd",
-					"characterName": "Clown"
+					"name": "Young Shepherd"
 				},
 				{
-					"name": "Hooligan"
+					"name": "Hooligan",
+					"characterName": "Hooligans"
 				}
 			]
 		},
@@ -91,8 +89,7 @@
 			"name": "Amos Oluronbi Olutokun",
 			"roles": [
 				{
-					"name": "Darandaran",
-					"characterName": "Old Shepherd"
+					"name": "Darandaran"
 				}
 			]
 		},
@@ -106,8 +103,7 @@
 					"name": "Guard"
 				},
 				{
-					"name": "F láw wó",
-					"characterName": "Florizel"
+					"name": "F láw wó"
 				}
 			]
 		},
@@ -115,8 +111,7 @@
 			"name": "Motúnràyò Oròbíyi",
 			"roles": [
 				{
-					"name": "Ìgba",
-					"characterName": "Time"
+					"name": "Ìgba"
 				}
 			]
 		},
@@ -124,8 +119,7 @@
 			"name": "Olarotimi Fakunle",
 			"roles": [
 				{
-					"name": "Ogùn",
-					"characterName": "Polixenes"
+					"name": "Ogùn"
 				}
 			]
 		},
@@ -133,8 +127,7 @@
 			"name": "Olásúnkànmi Adèbàyo",
 			"roles": [
 				{
-					"name": "Adéagbo",
-					"characterName": "Camillo"
+					"name": "Adéagbo"
 				}
 			]
 		},
@@ -156,7 +149,8 @@
 			"name": "Taiwo 'Keleko' Adesoji",
 			"roles": [
 				{
-					"name": "Hooligan"
+					"name": "Hooligan",
+					"characterName": "Hooligans"
 				}
 			]
 		}
