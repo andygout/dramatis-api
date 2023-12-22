@@ -6,7 +6,7 @@
   "license": "MS-RSL",
   "main": "src/app.js",
   "scripts": {
-    "lint": "eslint --ext .js src/ test-e2e/ test-int/ test-unit/",
+    "lint": "eslint --ext .js db-seeding/ src/ test-e2e/ test-int/ test-unit/",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
     "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
