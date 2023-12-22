@@ -50,9 +50,14 @@ async function seedInstances (pluralisedModel) {
 	const directoryName = pluralisedModel;
 	const modelUrlRoute = pluralisedModel;
 
+	const modelEmoji = PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel];
+
 	const directoryPath = path.join(__dirname, `seeds/${directoryName}`);
 
 	const seedFilenames = fs.readdirSync(directoryPath);
+
+	// eslint-disable-next-line no-console
+	console.log(`🟢 Seeding Neo4j database: ${modelEmoji} Commenced sowing ${seedFilenames.length} ${pluralisedModel} seeds`);
 
 	const createInstanceFunctions =
 		seedFilenames
