@@ -39,15 +39,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 	const MID_WIBBLE_SECTION_I_MATERIAL_UUID = 'MID_WIBBLE_SECTION_I_MATERIAL_UUID';
 	const MID_WIBBLE_SECTION_II_MATERIAL_UUID = 'MID_WIBBLE_SECTION_II_MATERIAL_UUID';
 	const SUR_WIBBLE_MATERIAL_UUID = 'SUR_WIBBLE_MATERIAL_UUID';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '2010_2_AWARD_CEREMONY_UUID';
+	const WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID = '2010_2_AWARD_CEREMONY_UUID';
 	const WORDSMITH_AWARD_UUID = 'WORDSMITH_AWARD_AWARD_UUID';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '2009_2_AWARD_CEREMONY_UUID';
+	const PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID = '2009_2_AWARD_CEREMONY_UUID';
 	const PLAYWRITING_PRIZE_AWARD_UUID = 'PLAYWRITING_PRIZE_AWARD_UUID';
-	const DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '2008_2_AWARD_CEREMONY_UUID';
+	const DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID = '2008_2_AWARD_CEREMONY_UUID';
 	const DRAMATISTS_MEDAL_AWARD_UUID = 'DRAMATISTS_MEDAL_AWARD_UUID';
-	const SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '2009_4_AWARD_CEREMONY_UUID';
+	const SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID = '2009_4_AWARD_CEREMONY_UUID';
 	const SCRIPTING_SHIELD_AWARD_UUID = 'SCRIPTING_SHIELD_AWARD_UUID';
-	const TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '2009_6_AWARD_CEREMONY_UUID';
+	const TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID = '2009_6_AWARD_CEREMONY_UUID';
 	const TRAGEDIANS_TROPHY_AWARD_UUID = 'TRAGEDIANS_TROPHY_AWARD_UUID';
 
 	let subPlughPartIOriginalVersionMaterial;
@@ -722,7 +722,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -765,7 +765,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -803,7 +803,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -868,7 +868,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -911,7 +911,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -949,7 +949,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1014,7 +1014,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1057,7 +1057,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1095,7 +1095,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1160,7 +1160,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1203,7 +1203,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1241,7 +1241,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1306,7 +1306,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1349,7 +1349,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1387,7 +1387,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1452,7 +1452,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1495,7 +1495,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1533,7 +1533,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1598,7 +1598,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1641,7 +1641,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1679,7 +1679,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1744,7 +1744,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1787,7 +1787,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1825,7 +1825,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -1890,7 +1890,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -1933,7 +1933,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -1971,7 +1971,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -2064,7 +2064,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2107,7 +2107,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2163,7 +2163,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2206,7 +2206,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2244,7 +2244,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2291,7 +2291,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -2356,7 +2356,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2399,7 +2399,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2437,7 +2437,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2484,7 +2484,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -2549,7 +2549,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2592,7 +2592,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2648,7 +2648,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2691,7 +2691,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2729,7 +2729,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2776,7 +2776,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -2841,7 +2841,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -2884,7 +2884,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2922,7 +2922,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -2969,7 +2969,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -3034,7 +3034,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -3077,7 +3077,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3133,7 +3133,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -3176,7 +3176,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3214,7 +3214,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3261,7 +3261,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -3326,7 +3326,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -3369,7 +3369,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3407,7 +3407,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3454,7 +3454,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -3547,7 +3547,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3603,7 +3603,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3659,7 +3659,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -3702,7 +3702,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3740,7 +3740,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3787,7 +3787,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3830,7 +3830,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -3895,7 +3895,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -3951,7 +3951,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4007,7 +4007,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -4050,7 +4050,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4088,7 +4088,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4135,7 +4135,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4178,7 +4178,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -4243,7 +4243,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4299,7 +4299,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4355,7 +4355,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -4398,7 +4398,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4436,7 +4436,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4483,7 +4483,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4526,7 +4526,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -4619,7 +4619,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -4662,7 +4662,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4700,7 +4700,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -4765,7 +4765,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -4808,7 +4808,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4846,7 +4846,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -4911,7 +4911,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -4954,7 +4954,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -4992,7 +4992,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5057,7 +5057,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5100,7 +5100,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5138,7 +5138,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5203,7 +5203,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5246,7 +5246,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5284,7 +5284,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5349,7 +5349,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5392,7 +5392,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5430,7 +5430,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5495,7 +5495,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5538,7 +5538,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5576,7 +5576,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5641,7 +5641,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5684,7 +5684,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5722,7 +5722,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5787,7 +5787,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -5830,7 +5830,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -5868,7 +5868,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -5961,7 +5961,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6004,7 +6004,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6060,7 +6060,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6103,7 +6103,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6141,7 +6141,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6188,7 +6188,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -6253,7 +6253,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6296,7 +6296,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6334,7 +6334,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6381,7 +6381,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -6446,7 +6446,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6489,7 +6489,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6545,7 +6545,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6588,7 +6588,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6626,7 +6626,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6673,7 +6673,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -6738,7 +6738,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6781,7 +6781,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6819,7 +6819,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -6866,7 +6866,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -6931,7 +6931,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -6974,7 +6974,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7030,7 +7030,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -7073,7 +7073,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7111,7 +7111,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7158,7 +7158,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -7223,7 +7223,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -7266,7 +7266,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7304,7 +7304,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7351,7 +7351,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -7444,7 +7444,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7500,7 +7500,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7556,7 +7556,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -7599,7 +7599,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7637,7 +7637,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7684,7 +7684,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7727,7 +7727,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -7792,7 +7792,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7848,7 +7848,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7904,7 +7904,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -7947,7 +7947,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -7985,7 +7985,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8032,7 +8032,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8075,7 +8075,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
@@ -8140,7 +8140,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8196,7 +8196,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8252,7 +8252,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: DRAMATISTS_MEDAL_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+								uuid: DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID,
 								name: '2008',
 								categories: [
 									{
@@ -8295,7 +8295,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8333,7 +8333,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: SCRIPTING_SHIELD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: SCRIPTING_SHIELD_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8380,7 +8380,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: TRAGEDIANS_TROPHY_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+								uuid: TRAGEDIANS_TROPHY_2009_AWARD_CEREMONY_UUID,
 								name: '2009',
 								categories: [
 									{
@@ -8423,7 +8423,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 						ceremonies: [
 							{
 								model: 'AWARD_CEREMONY',
-								uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+								uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 								name: '2010',
 								categories: [
 									{
