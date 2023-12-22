@@ -44,7 +44,7 @@ describe('Venue model', () => {
 
 	describe('constructor method', () => {
 
-		describe('sub-venues property', () => {
+		describe('subVenues property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
@@ -53,7 +53,7 @@ describe('Venue model', () => {
 
 			});
 
-			it('assigns array of sub-venues if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of subVenues if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'National Theatre',
@@ -138,7 +138,7 @@ describe('Venue model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('calls associated sub-venues\' runDatabaseValidations method', async () => {
+		it('calls associated subVenues\' runDatabaseValidations method', async () => {
 
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
