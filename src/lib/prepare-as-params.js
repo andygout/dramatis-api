@@ -57,7 +57,7 @@ export const prepareAsParams = instance => {
 
 	const hasUuidIfRequired = key => item =>
 		!REQUIRES_NON_EMPTY_UUID_KEYS.has(key) ||
-		!Object.prototype.hasOwnProperty.call(item, 'uuid') ||
+		!Object.hasOwn(item, 'uuid') ||
 		Boolean(item.uuid);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {

@@ -6,7 +6,7 @@ const isObjectWithErrors = item => isObjectWithKeys(item) && hasErrors(item);
 
 export const hasErrors = instance => {
 
-	for (const prop in instance) if (Object.prototype.hasOwnProperty.call(instance, prop)) {
+	for (const prop in instance) if (Object.hasOwn(instance, prop)) {
 
 		const value = instance[prop];
 
