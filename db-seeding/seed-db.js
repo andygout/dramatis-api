@@ -26,7 +26,7 @@ async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 		},
 		method: 'POST',
 		body: JSON.stringify(instance)
-	}
+	};
 
 	await pause(PAUSE_DURATION_IN_MILLISECONDS);
 
@@ -43,7 +43,7 @@ async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 
 	return;
 
-};
+}
 
 async function seedInstances (pluralisedModel) {
 
@@ -80,6 +80,7 @@ async function seedInstances (pluralisedModel) {
 					} catch (parsingError) {
 						// eslint-disable-next-line no-console
 						console.log(`❌ Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
+						// eslint-disable-next-line no-console
 						console.log(parsingError);
 
 						return Promise.resolve();
@@ -106,7 +107,7 @@ async function seedInstances (pluralisedModel) {
 
 	return;
 
-};
+}
 
 async function seedDatabase () {
 
@@ -139,10 +140,10 @@ async function seedDatabase () {
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['award-ceremonies']} Award ceremony seeds sown`);
 
 	// eslint-disable-next-line no-console
-	console.log(`🆗 Seeding Neo4j database: Complete`);
+	console.log('🆗 Seeding Neo4j database: Complete');
 
 	return;
 
-};
+}
 
 seedDatabase();
