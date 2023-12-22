@@ -60,20 +60,32 @@ async function seedInstances (pluralisedModel) {
 
 				const filenamePathSlug = `${directoryName}/${filename}`;
 
+				const modelEmoji = PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel];
+
 				try {
 
 					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
 
-					// Parse with jsonlint rather than JSON.parse() because
-					// its errors specify the line of parse errors.
-					const instance = jsonlint.parse(rawData.toString());
+					let instance;
+
+					try {
+						// Parse with jsonlint rather than JSON.parse() because
+						// its errors specify the line of parse errors.
+						instance = jsonlint.parse(rawData.toString());
+					} catch (parsingError) {
+						// eslint-disable-next-line no-console
+						console.log(`❌ Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
+						console.log(parsingError);
+
+						return Promise.resolve();
+					}
 
 					const url = `${BASE_URL}/${modelUrlRoute}`;
 
 					return performFetch(
 						url,
 						instance,
-						PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel],
+						modelEmoji,
 						filenamePathSlug
 					);
 
