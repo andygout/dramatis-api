@@ -359,7 +359,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
-		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
+		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
 
 			const expectedVariantNamedDepictions = [
 				'Lucius Cinna'
@@ -371,7 +371,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
-		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Lucius Cornelius Cinna'
@@ -448,7 +448,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
-		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
+		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
 
 			const expectedVariantNamedDepictions = [
 				'Gaius Helvius Cinna'
@@ -460,7 +460,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		});
 
-		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Cinna the poet'

@@ -216,7 +216,7 @@ describe('Character with variant names from productions of the same material', (
 
 	describe('Ghost (character)', () => {
 
-		it('includes variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+		it('includes variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Ghost of King Hamlet',
