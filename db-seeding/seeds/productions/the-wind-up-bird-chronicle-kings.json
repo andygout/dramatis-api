@@ -9,6 +9,10 @@
 	"venue": {
 		"name": "King's Theatre"
 	},
+	"festival": {
+		"name": "2011",
+		"differentiator": "Edinburgh International Festival"
+	},	
 	"producerCredits": [
 		{
 			"entities": [
