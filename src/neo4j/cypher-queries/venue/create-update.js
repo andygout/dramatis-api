@@ -8,9 +8,9 @@ const getCreateUpdateQuery = action => {
 		[ACTIONS.UPDATE]: `
 			MATCH (venue:Venue { uuid: $uuid })
 
-			OPTIONAL MATCH (venue)-[relationship:HAS_SUB_VENUE]->(:Venue)
+			OPTIONAL MATCH (venue)-[subVenueRel:HAS_SUB_VENUE]->(:Venue)
 
-			DELETE relationship
+			DELETE subVenueRel
 
 			WITH DISTINCT venue
 
