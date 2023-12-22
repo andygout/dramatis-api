@@ -505,7 +505,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		});
 
-		it('includes distinct variant named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
+		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
 
 			const expectedVariantNamedDepictions = [
 				'Henry, Prince of Wales',
@@ -524,7 +524,7 @@ describe('Character with variant depiction and portrayal names', () => {
 		// 'Henry, Prince of Wales' does not appear in this list because the portrayal
 		// was in a production of the material that used this name as the display name for King Henry V,
 		// and so this name instead only appears under variant depiction names.
-		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Hal',
@@ -752,7 +752,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 	describe('Sir John Falstaff (character)', () => {
 
-		it('includes no variant named depictions where none exist', () => {
+		it('includes no variant-named depictions where none exist', () => {
 
 			const expectedVariantNamedDepictions = [];
 
@@ -762,7 +762,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		});
 
-		it('includes no variant named portrayals where none exist', () => {
+		it('includes no variant-named portrayals where none exist', () => {
 
 			const expectedVariantNamedPortrayals = [];
 

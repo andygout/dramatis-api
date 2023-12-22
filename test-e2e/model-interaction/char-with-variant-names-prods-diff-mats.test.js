@@ -361,7 +361,7 @@ describe('Character with variant names from productions of different materials',
 
 		});
 
-		it('includes distinct variant named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
+		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
 
 			const expectedVariantNamedPortrayals = [
 				'Hamlet, Prince of Denmark',
