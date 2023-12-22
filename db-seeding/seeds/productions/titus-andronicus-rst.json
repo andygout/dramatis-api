@@ -21,6 +21,26 @@
 					"name": "Ninagawa Company"
 				}
 			]
+		},
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Horipro Inc"
+				},
+				{
+					"model": "COMPANY",
+					"name": "Saitama Arts Foundation"
+				}
+			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"name": "Thelma Holt"
+				}
+			]
 		}
 	],
 	"cast": [

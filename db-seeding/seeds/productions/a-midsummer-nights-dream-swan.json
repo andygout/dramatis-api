@@ -21,6 +21,15 @@
 					"name": "Dash Arts"
 				}
 			]
+		},
+		{
+			"name": "in association with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "British Council"
+				}
+			]
 		}
 	],
 	"cast": [

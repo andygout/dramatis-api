@@ -20,6 +20,15 @@
 					"name": "Royal Shakespeare Company"
 				}
 			]
+		},
+		{
+			"name": "by arrangement with",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Little Angel Theatre"
+				}
+			]
 		}
 	],
 	"cast": [
