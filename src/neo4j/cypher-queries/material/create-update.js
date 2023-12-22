@@ -28,9 +28,9 @@ const getCreateUpdateQuery = action => {
 
 			WITH DISTINCT material
 
-			OPTIONAL MATCH (material)-[sourceMaterialCreditRel:USES_SOURCE_MATERIAL]->(:Material)
+			OPTIONAL MATCH (material)-[sourceMaterialRel:USES_SOURCE_MATERIAL]->(:Material)
 
-			DELETE sourceMaterialCreditRel
+			DELETE sourceMaterialRel
 
 			WITH DISTINCT material
 
