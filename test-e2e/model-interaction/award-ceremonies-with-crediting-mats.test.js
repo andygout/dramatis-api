@@ -72,14 +72,14 @@ describe('Award ceremonies with crediting materials', () => {
 	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
 	const FUGA_ALMEIDA_PRODUCTION_UUID = 'FUGA_PRODUCTION_UUID';
 	const GRAULT_GIELGUD_PRODUCTION_UUID = 'GRAULT_PRODUCTION_UUID';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '2009_2_AWARD_CEREMONY_UUID';
+	const WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID = '2009_2_AWARD_CEREMONY_UUID';
 	const WORDSMITH_AWARD_UUID = 'WORDSMITH_AWARD_AWARD_UUID';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID = '2010_2_AWARD_CEREMONY_UUID';
-	const WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '2008_2_AWARD_CEREMONY_UUID';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID = '2008_4_AWARD_CEREMONY_UUID';
+	const WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID = '2010_2_AWARD_CEREMONY_UUID';
+	const WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID = '2008_2_AWARD_CEREMONY_UUID';
+	const PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID = '2008_4_AWARD_CEREMONY_UUID';
 	const PLAYWRITING_PRIZE_AWARD_UUID = 'PLAYWRITING_PRIZE_AWARD_UUID';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID = '2009_4_AWARD_CEREMONY_UUID';
-	const PLAYWRITING_PRIZE_TWO_THOUSAND_AND_SEVEN_AWARD_CEREMONY_UUID = '2007_2_AWARD_CEREMONY_UUID';
+	const PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID = '2009_4_AWARD_CEREMONY_UUID';
+	const PLAYWRITING_PRIZE2007AWARD_CEREMONY_UUID = '2007_2_AWARD_CEREMONY_UUID';
 
 	let wordsmithAward2009AwardCeremony;
 	let playwritingPrize2009AwardCeremony;
@@ -1067,10 +1067,10 @@ describe('Award ceremonies with crediting materials', () => {
 			});
 
 		wordsmithAward2009AwardCeremony = await chai.request(app)
-			.get(`/award-ceremonies/${WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID}`);
 
 		playwritingPrize2009AwardCeremony = await chai.request(app)
-			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`);
 
 		johnDoePerson = await chai.request(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
@@ -1720,7 +1720,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -1791,7 +1791,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -1877,7 +1877,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -1948,7 +1948,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -2034,7 +2034,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -2084,7 +2084,7 @@ describe('Award ceremonies with crediting materials', () => {
 						},
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_SEVEN_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE2007AWARD_CEREMONY_UUID,
 							name: '2007',
 							categories: [
 								{
@@ -2137,7 +2137,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -2201,7 +2201,7 @@ describe('Award ceremonies with crediting materials', () => {
 						},
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -2269,7 +2269,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -2326,7 +2326,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -2412,7 +2412,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -2513,7 +2513,7 @@ describe('Award ceremonies with crediting materials', () => {
 						},
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_SEVEN_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE2007AWARD_CEREMONY_UUID,
 							name: '2007',
 							categories: [
 								{
@@ -2566,7 +2566,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -2630,7 +2630,7 @@ describe('Award ceremonies with crediting materials', () => {
 						},
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -2702,7 +2702,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -2824,7 +2824,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -2888,7 +2888,7 @@ describe('Award ceremonies with crediting materials', () => {
 						},
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -2960,7 +2960,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3017,7 +3017,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -3105,7 +3105,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3162,7 +3162,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -3251,7 +3251,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3308,7 +3308,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID,
 							name: '2010',
 							categories: [
 								{
@@ -3395,7 +3395,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3466,7 +3466,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3552,7 +3552,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3623,7 +3623,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3709,7 +3709,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3780,7 +3780,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -3866,7 +3866,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -3940,7 +3940,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -3997,7 +3997,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -4086,7 +4086,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -4143,7 +4143,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -4232,7 +4232,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -4303,7 +4303,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{
@@ -4378,7 +4378,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: PLAYWRITING_PRIZE_TWO_THOUSAND_AND_NINE_AWARD_CEREMONY_UUID,
+							uuid: PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID,
 							name: '2009',
 							categories: [
 								{
@@ -4449,7 +4449,7 @@ describe('Award ceremonies with crediting materials', () => {
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WORDSMITH_AWARD_TWO_THOUSAND_AND_EIGHT_AWARD_CEREMONY_UUID,
+							uuid: WORDSMITH_AWARD_2008_AWARD_CEREMONY_UUID,
 							name: '2008',
 							categories: [
 								{

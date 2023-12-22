@@ -320,7 +320,7 @@ describe('Production model', () => {
 
 		});
 
-		describe('sub-productions property', () => {
+		describe('subProductions property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
@@ -329,7 +329,7 @@ describe('Production model', () => {
 
 			});
 
-			it('assigns array of sub-productions if included in props, retaining those with empty or whitespace-only string uuids', () => {
+			it('assigns array of subProductions if included in props, retaining those with empty or whitespace-only string uuids', () => {
 
 				const props = {
 					subProductions: [
@@ -1016,7 +1016,7 @@ describe('Production model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('calls associated sub-productions\' runDatabaseValidations method', async () => {
+		it('calls associated subProductions\' runDatabaseValidations method', async () => {
 
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',

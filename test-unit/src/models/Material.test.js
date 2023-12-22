@@ -226,7 +226,7 @@ describe('Material model', () => {
 
 		});
 
-		describe('sub-materials property', () => {
+		describe('subMaterials property', () => {
 
 			it('assigns empty array if absent from props', () => {
 
@@ -235,7 +235,7 @@ describe('Material model', () => {
 
 			});
 
-			it('assigns array of sub-materials if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of subMaterials if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
 					name: 'The Coast of Utopia',
@@ -470,7 +470,7 @@ describe('Material model', () => {
 
 	describe('runDatabaseValidations method', () => {
 
-		it('calls associated sub-materials\' runDatabaseValidations method', async () => {
+		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
 
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',

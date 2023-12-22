@@ -30,18 +30,18 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 	const MID_WIBBLE_SECTION_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'MID_WIBBLE_SECTION_I_PRODUCTION_UUID';
 	const MID_WIBBLE_SECTION_II_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'MID_WIBBLE_SECTION_II_PRODUCTION_UUID';
 	const SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID = 'SUR_WIBBLE_PRODUCTION_UUID';
-	const LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = '2020_2_AWARD_CEREMONY_UUID';
+	const LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID = '2020_2_AWARD_CEREMONY_UUID';
 	const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'LAURENCE_OLIVIER_AWARDS_AWARD_UUID';
 	const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
 	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
 	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
-	const EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = '2019_2_AWARD_CEREMONY_UUID';
+	const EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID = '2019_2_AWARD_CEREMONY_UUID';
 	const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = 'EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID';
-	const CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '2018_2_AWARD_CEREMONY_UUID';
+	const CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID = '2018_2_AWARD_CEREMONY_UUID';
 	const CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID = 'CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID';
-	const THE_STAGE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '2018_4_AWARD_CEREMONY_UUID';
+	const THE_STAGE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID = '2018_4_AWARD_CEREMONY_UUID';
 	const THE_STAGE_THEATRE_AWARDS_AWARD_UUID = 'THE_STAGE_THEATRE_AWARDS_AWARD_UUID';
-	const WHATSONSTAGE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID = '2018_6_AWARD_CEREMONY_UUID';
+	const WHATSONSTAGE_AWARDS_2018_AWARD_CEREMONY_UUID = '2018_6_AWARD_CEREMONY_UUID';
 	const WHATSONSTAGE_AWARDS_AWARD_UUID = 'WHATSONSTAGE_AWARDS_AWARD_UUID';
 
 	let laurenceOlivierAwards2020AwardCeremony;
@@ -489,13 +489,13 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			});
 
 		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
-			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`);
 
 		eveningStandardTheatreAwards2019AwardCeremony = await chai.request(app)
-			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID}`);
 
 		criticsCircleTheatreAwards2018AwardCeremony = await chai.request(app)
-			.get(`/award-ceremonies/${CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID}`);
+			.get(`/award-ceremonies/${CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID}`);
 
 		conorCorgePerson = await chai.request(app)
 			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
@@ -906,7 +906,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -1018,7 +1018,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -1110,7 +1110,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -1253,7 +1253,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -1364,7 +1364,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -1455,7 +1455,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -1597,7 +1597,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -1707,7 +1707,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -1797,7 +1797,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -1938,7 +1938,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -2050,7 +2050,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -2147,7 +2147,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -2272,7 +2272,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -2370,7 +2370,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -2467,7 +2467,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -2606,7 +2606,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -2718,7 +2718,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -2801,7 +2801,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -2940,7 +2940,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -3052,7 +3052,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -3149,7 +3149,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -3270,7 +3270,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -3364,7 +3364,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -3461,7 +3461,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -3585,7 +3585,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: THE_STAGE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: THE_STAGE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -3665,7 +3665,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -3777,7 +3777,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -3856,7 +3856,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -3980,7 +3980,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: THE_STAGE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: THE_STAGE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4045,7 +4045,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WHATSONSTAGE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: WHATSONSTAGE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4121,7 +4121,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4233,7 +4233,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -4330,7 +4330,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -4461,7 +4461,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4565,7 +4565,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -4662,7 +4662,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -4786,7 +4786,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: THE_STAGE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: THE_STAGE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4866,7 +4866,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -4978,7 +4978,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: EVENING_STANDARD_THEATRE_AWARDS_TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID,
+							uuid: EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID,
 							name: '2019',
 							categories: [
 								{
@@ -5067,7 +5067,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: LAURENCE_OLIVIER_AWARDS_TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
+							uuid: LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID,
 							name: '2020',
 							categories: [
 								{
@@ -5191,7 +5191,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: THE_STAGE_THEATRE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: THE_STAGE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
@@ -5256,7 +5256,7 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
-							uuid: WHATSONSTAGE_AWARDS_TWO_THOUSAND_AND_EIGHTEEN_AWARD_CEREMONY_UUID,
+							uuid: WHATSONSTAGE_AWARDS_2018_AWARD_CEREMONY_UUID,
 							name: '2018',
 							categories: [
 								{
