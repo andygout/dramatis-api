@@ -96,7 +96,7 @@ async function seedInstances (pluralisedModel) {
 
 				} catch (error) {
 
-					throw new Error(`${filenamePathSlug}: ${error.message}`);
+					throw new Error(`${filenamePathSlug}: ${error.message}`, { cause: error });
 
 				}
 

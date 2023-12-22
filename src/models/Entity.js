@@ -40,7 +40,7 @@ export default class Entity extends Base {
 
 	hasDifferentiatorProperty () {
 
-		return Object.prototype.hasOwnProperty.call(this, 'differentiator');
+		return Object.hasOwn(this, 'differentiator');
 
 	}
 

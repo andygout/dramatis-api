@@ -59,7 +59,7 @@ export default class Base {
 
 			(opts.properties || defaultProperties).forEach(property => {
 
-				if (Object.prototype.hasOwnProperty.call(this, property))
+				if (Object.hasOwn(this, property))
 					this.addPropertyError(property, uniquenessErrorMessage);
 
 			});
